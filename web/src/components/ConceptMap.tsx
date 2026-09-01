@@ -1,82 +1,122 @@
-import {
-  forceCenter,
-  forceCollide,
-  forceLink,
-  forceManyBody,
-  forceSimulation,
-  type SimulationLinkDatum,
-  type SimulationNodeDatum,
-} from "d3-force";
+import dagre, {
+  type EdgeLabel,
+  type GraphLabel,
+  type NodeLabel,
+  type Point,
+} from "@dagrejs/dagre";
 import { useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { concepts, domainMeta, type Domain } from "../data/concepts";
+import { ancestorCountOf, reducedEdges } from "../lib/prerequisiteGraph";
 
-interface GraphNode extends SimulationNodeDatum {
+interface PositionedNode {
   id: string;
   title: string;
   domain: Domain;
   hasLesson: boolean;
+  x: number;
+  y: number;
+  radius: number;
 }
 
-interface GraphLink extends SimulationLinkDatum<GraphNode> {
+interface PositionedEdge {
   source: string;
   target: string;
+  points: { x: number; y: number }[];
 }
 
 interface Layout {
-  nodes: GraphNode[];
-  links: GraphLink[];
+  nodes: PositionedNode[];
+  links: PositionedEdge[];
   neighbors: Map<string, Set<string>>;
   bounds: { x: number; y: number; w: number; h: number };
 }
 
-function computeLayout(): Layout {
-  const nodes: GraphNode[] = concepts.map((c) => ({
-    id: c.id,
-    title: c.title,
-    domain: c.domain,
-    hasLesson: Boolean(c.embedUrl),
-  }));
+const CHAR_WIDTH = 4.2;
 
-  const links: GraphLink[] = concepts.flatMap((c) =>
-    c.prerequisites.map((prereqId) => ({ source: prereqId, target: c.id })),
+function radiusFor(id: string): number {
+  const ancestors = ancestorCountOf.get(id) ?? 0;
+  return Math.min(4 + Math.sqrt(ancestors) * 1.6, 14);
+}
+
+function computeLayout(domainFilter: Domain | "all"): Layout {
+  const nodeList = concepts.filter(
+    (c) => domainFilter === "all" || c.domain === domainFilter,
+  );
+  const nodeIds = new Set(nodeList.map((c) => c.id));
+  const edgeList = reducedEdges.filter(
+    ([u, v]) => nodeIds.has(u) && nodeIds.has(v),
   );
 
-  const neighbors = new Map<string, Set<string>>();
-  for (const node of nodes) neighbors.set(node.id, new Set());
-  for (const link of links) {
-    neighbors.get(link.source)?.add(link.target);
-    neighbors.get(link.target)?.add(link.source);
+  const g = new dagre.graphlib.Graph<GraphLabel, NodeLabel, EdgeLabel>();
+  g.setGraph({
+    rankdir: "TB",
+    nodesep: 26,
+    ranksep: 56,
+    marginx: 20,
+    marginy: 20,
+  });
+  g.setDefaultEdgeLabel(() => ({}));
+
+  // Give dagre just the dot's footprint, not the label's. Reserving full
+  // label width would balloon any wide rank (root/leaf ranks can hold 20+
+  // nodes) into an enormous width and crush the vertical aspect ratio we
+  // actually want. Labels can still overlap a little in dense ranks — hover
+  // highlighting and zoom make individual nodes readable regardless.
+  for (const c of nodeList) {
+    const r = radiusFor(c.id);
+    g.setNode(c.id, { width: r * 2 + 6, height: r * 2 + 6 });
+  }
+  for (const [u, v] of edgeList) {
+    g.setEdge(u, v);
   }
 
-  const simulation = forceSimulation(nodes)
-    .force(
-      "link",
-      forceLink<GraphNode, GraphLink>(links)
-        .id((d) => d.id)
-        .distance(42)
-        .strength(0.5),
-    )
-    .force("charge", forceManyBody().strength(-85))
-    .force("collide", forceCollide(15))
-    .force("center", forceCenter(0, 0))
-    .stop();
+  dagre.layout(g);
 
-  for (let i = 0; i < 350; i++) simulation.tick();
+  const neighbors = new Map<string, Set<string>>();
+  for (const id of nodeIds) neighbors.set(id, new Set());
+  for (const [u, v] of edgeList) {
+    neighbors.get(u)?.add(v);
+    neighbors.get(v)?.add(u);
+  }
+
+  const nodes: PositionedNode[] = nodeList.map((c) => {
+    const label = g.node(c.id);
+    return {
+      id: c.id,
+      title: c.title,
+      domain: c.domain,
+      hasLesson: Boolean(c.embedUrl),
+      x: label.x!,
+      y: label.y!,
+      radius: radiusFor(c.id),
+    };
+  });
+  const nodeById = new Map(nodes.map((n) => [n.id, n]));
+
+  const links: PositionedEdge[] = edgeList.map(([u, v]) => {
+    const edge = g.edge(u, v);
+    const points = (edge?.points ?? []).map((p: Point) => ({ x: p.x, y: p.y }));
+    if (points.length === 0) {
+      const a = nodeById.get(u)!;
+      const b = nodeById.get(v)!;
+      points.push({ x: a.x, y: a.y }, { x: b.x, y: b.y });
+    }
+    return { source: u, target: v, points };
+  });
 
   let minX = Infinity;
   let minY = Infinity;
   let maxX = -Infinity;
   let maxY = -Infinity;
-  for (const node of nodes) {
-    const x = node.x ?? 0;
-    const y = node.y ?? 0;
-    if (x < minX) minX = x;
-    if (x > maxX) maxX = x;
-    if (y < minY) minY = y;
-    if (y > maxY) maxY = y;
+  for (const n of nodes) {
+    const rightEdge = n.x + n.radius + 8 + n.title.length * CHAR_WIDTH;
+    if (n.x - n.radius < minX) minX = n.x - n.radius;
+    if (rightEdge > maxX) maxX = rightEdge;
+    if (n.y - n.radius < minY) minY = n.y - n.radius;
+    if (n.y + n.radius > maxY) maxY = n.y + n.radius;
   }
-  const pad = 40;
+  const pad = 30;
 
   return {
     nodes,
@@ -91,10 +131,24 @@ function computeLayout(): Layout {
   };
 }
 
+const domainOptions: { id: Domain | "all"; label: string }[] = [
+  { id: "all", label: "All domains" },
+  ...(Object.entries(domainMeta) as [Domain, (typeof domainMeta)[Domain]][]).map(
+    ([id, meta]) => ({ id, label: meta.label }),
+  ),
+];
+
 export function ConceptMap() {
   const navigate = useNavigate();
-  const layout = useMemo(() => computeLayout(), []);
+  const [selectedDomain, setSelectedDomain] = useState<Domain | "all">("all");
+  const layout = useMemo(() => computeLayout(selectedDomain), [selectedDomain]);
   const [viewBox, setViewBox] = useState(layout.bounds);
+  const [renderedDomain, setRenderedDomain] = useState(selectedDomain);
+  if (renderedDomain !== selectedDomain) {
+    setRenderedDomain(selectedDomain);
+    setViewBox(layout.bounds);
+  }
+
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [isDragging, setIsDragging] = useState(false);
@@ -107,7 +161,7 @@ export function ConceptMap() {
       const cx = vb.x + vb.w / 2;
       const cy = vb.y + vb.h / 2;
       const w = Math.min(
-        Math.max(vb.w * factor, layout.bounds.w * 0.08),
+        Math.max(vb.w * factor, layout.bounds.w * 0.05),
         layout.bounds.w * 2.5,
       );
       const h = w * (vb.h / vb.w);
@@ -160,13 +214,37 @@ export function ConceptMap() {
 
   function linkOpacity(source: string, target: string) {
     if (hoveredId) {
-      return source === hoveredId || target === hoveredId ? 0.8 : 0.06;
+      return source === hoveredId || target === hoveredId ? 0.85 : 0.06;
     }
-    return 0.35;
+    return 0.4;
   }
 
   return (
     <div className="relative">
+      <div className="mb-4 flex flex-wrap gap-2">
+        {domainOptions.map((opt) => (
+          <button
+            key={opt.id}
+            type="button"
+            onClick={() => setSelectedDomain(opt.id)}
+            className={`font-body flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+              selectedDomain === opt.id
+                ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)]"
+                : "border-[var(--line)] bg-[var(--panel)] text-[var(--ink-soft)] hover:text-[var(--ink)]"
+            }`}
+          >
+            {opt.id !== "all" && (
+              <span
+                className="inline-block h-2 w-2 rounded-full"
+                style={{ background: domainMeta[opt.id].color }}
+                aria-hidden="true"
+              />
+            )}
+            {opt.label}
+          </button>
+        ))}
+      </div>
+
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <input
           type="text"
@@ -208,7 +286,7 @@ export function ConceptMap() {
           viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`}
           className="h-[70vh] w-full touch-none"
           role="img"
-          aria-label="Map of concepts connected by prerequisite relationships"
+          aria-label="Map of concepts connected by prerequisite relationships, arranged from earlier topics at the top to later topics at the bottom"
         >
           <defs>
             <marker
@@ -238,23 +316,17 @@ export function ConceptMap() {
           />
 
           <g>
-            {layout.links.map((link, i) => {
-              const source = link.source as unknown as GraphNode;
-              const target = link.target as unknown as GraphNode;
-              return (
-                <line
-                  key={i}
-                  x1={source.x}
-                  y1={source.y}
-                  x2={target.x}
-                  y2={target.y}
-                  stroke="var(--ink-soft)"
-                  strokeWidth={0.6}
-                  opacity={linkOpacity(source.id, target.id)}
-                  markerEnd="url(#arrow)"
-                />
-              );
-            })}
+            {layout.links.map((link, i) => (
+              <polyline
+                key={i}
+                points={link.points.map((p) => `${p.x},${p.y}`).join(" ")}
+                fill="none"
+                stroke="var(--ink-soft)"
+                strokeWidth={0.7}
+                opacity={linkOpacity(link.source, link.target)}
+                markerEnd="url(#arrow)"
+              />
+            ))}
           </g>
 
           <g>
@@ -269,11 +341,16 @@ export function ConceptMap() {
                 style={{ cursor: "pointer" }}
               >
                 {node.hasLesson && (
-                  <circle r={9} fill="none" stroke="var(--accent)" strokeWidth={1.5} />
+                  <circle
+                    r={node.radius + 3.5}
+                    fill="none"
+                    stroke="var(--accent)"
+                    strokeWidth={1.5}
+                  />
                 )}
-                <circle r={5.5} fill={domainMeta[node.domain].color} />
+                <circle r={node.radius} fill={domainMeta[node.domain].color} />
                 <text
-                  x={8}
+                  x={node.radius + 6}
                   y={3}
                   fontSize={6.5}
                   fill="var(--ink)"
@@ -308,6 +385,7 @@ export function ConceptMap() {
           />
           Lesson available
         </span>
+        <span>Bigger dot = more prerequisites lead into it</span>
       </div>
     </div>
   );

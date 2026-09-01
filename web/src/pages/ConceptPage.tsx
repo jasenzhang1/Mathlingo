@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
-import { concepts, conceptById, domainMeta } from "../data/concepts";
+import { conceptById, domainMeta } from "../data/concepts";
+import { prereqsOf, unlocksOf } from "../lib/prerequisiteGraph";
 
 export function ConceptPage() {
   const { id } = useParams();
@@ -30,11 +31,13 @@ export function ConceptPage() {
     );
   }
 
-  const prerequisites = concept.prerequisites
+  const prerequisites = (prereqsOf.get(concept.id) ?? [])
     .map((prereqId) => conceptById.get(prereqId))
     .filter((c) => c !== undefined);
 
-  const unlocks = concepts.filter((c) => c.prerequisites.includes(concept.id));
+  const unlocks = (unlocksOf.get(concept.id) ?? [])
+    .map((unlockId) => conceptById.get(unlockId))
+    .filter((c) => c !== undefined);
 
   const meta = domainMeta[concept.domain];
 
