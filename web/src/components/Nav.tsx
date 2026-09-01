@@ -26,6 +26,9 @@ export function Nav() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Logo />
         <nav className="hidden items-center gap-8 font-body text-sm text-[var(--ink-soft)] md:flex">
+          <a href="/#map" className="hover:text-[var(--ink)]">
+            Concept map
+          </a>
           <a href="/#topics" className="hover:text-[var(--ink)]">
             Topics
           </a>
