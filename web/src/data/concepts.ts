@@ -157,7 +157,17 @@ export const concepts: Concept[] = [
     title: "Bernoulli and Binomial Distributions",
     domain: "probability",
     blurb: "A single yes/no trial, and the count of successes over many of them.",
-    prerequisites: ["pmf", "binomial-theorem", "mutual-independence"],
+    // The lesson states E[X] = np and Var(X) = np(1 - p), so it genuinely needs
+    // both. `pmf` and `expectation` are transitively implied via `variance` and
+    // are dropped from the map by the transitive reduction; they are listed here
+    // because they are real requirements of the lesson.
+    prerequisites: [
+      "pmf",
+      "binomial-theorem",
+      "mutual-independence",
+      "expectation",
+      "variance",
+    ],
     embedUrl:
       "https://vanessawong.my.canva.site/024-bernoulli-and-binomial-distributions",
   },
@@ -173,7 +183,8 @@ export const concepts: Concept[] = [
     title: "Hypergeometric Distribution",
     domain: "probability",
     blurb: "Sampling without replacement from a finite population of two types.",
-    prerequisites: ["counting-methods", "pmf"],
+    // Mean nK/N, and a variance carrying the finite-population correction.
+    prerequisites: ["counting-methods", "pmf", "expectation", "variance"],
   },
   {
     id: "geometric-distribution",
@@ -194,14 +205,19 @@ export const concepts: Concept[] = [
     title: "Normal Distribution",
     domain: "probability",
     blurb: "The bell curve, and why it shows up everywhere.",
-    prerequisites: ["pdf"],
+    // Parameterised by its mean and variance, so it depends on both more
+    // directly than any other distribution. Adding them here is also what
+    // carries Expectation and Variance to the rest of the continuous branch:
+    // Chi-Square, t, and F all reach them through Normal or Gamma.
+    prerequisites: ["pdf", "expectation", "variance"],
   },
   {
     id: "uniform-distribution",
     title: "Uniform Distribution",
     domain: "probability",
     blurb: "Every outcome in a range is equally likely.",
-    prerequisites: ["pdf"],
+    // Mean (a + b)/2 and variance (b - a)^2/12.
+    prerequisites: ["pdf", "expectation", "variance"],
   },
   {
     id: "exponential-distribution",

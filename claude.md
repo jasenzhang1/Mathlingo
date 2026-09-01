@@ -22,3 +22,5 @@ The user may choose to highlight and keep certain output from their interaction 
 This final step checks for understanding. The student will be assessed in multiple ways. First, typical definitions and exact answer questions. Then, open-ended questions about a method and why it works. And finally, a multidisciplinary question that may allude to previous concepts that they should remember. 
 
 Depending on the speed and accuracy of their responses, the AI grader will give them a grade and grades from previous units may also be affected.
+
+See `assessment.md` for the full framework — where problems come from, how open-ended answers are adjudicated, how the EXP bar rises and decays, and how blame flows back to prerequisites. The engine is in `web/src/lib/assessment/`.

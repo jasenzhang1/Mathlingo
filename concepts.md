@@ -27,13 +27,13 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Cumulative Distribution Function (CDF) | Random Variables | — |
 | Probability Mass Function (PMF) | Discrete vs Continuous Random Variables, Cumulative Distribution Function (CDF) | — |
 | Probability Density Function (PDF) | Discrete vs Continuous Random Variables, Cumulative Distribution Function (CDF) | — |
-| Bernoulli and Binomial Distributions | Probability Mass Function (PMF), Binomial Theorem, Mutual Independence | ✅ |
+| Bernoulli and Binomial Distributions | Probability Mass Function (PMF), Binomial Theorem, Mutual Independence, Expectation, Variance | ✅ |
 | Poisson Distribution | Bernoulli and Binomial Distributions | — |
-| Hypergeometric Distribution | Counting Methods, Probability Mass Function (PMF) | — |
+| Hypergeometric Distribution | Counting Methods, Probability Mass Function (PMF), Expectation, Variance | — |
 | Geometric Distribution | Bernoulli and Binomial Distributions | — |
 | Negative Binomial Distribution | Geometric Distribution | — |
-| Normal Distribution | Probability Density Function (PDF) | — |
-| Uniform Distribution | Probability Density Function (PDF) | — |
+| Normal Distribution | Probability Density Function (PDF), Expectation, Variance | — |
+| Uniform Distribution | Probability Density Function (PDF), Expectation, Variance | — |
 | Exponential Distribution | Probability Density Function (PDF), Poisson Distribution | — |
 | Gamma Distribution | Exponential Distribution | — |
 | Beta Distribution | Gamma Distribution | — |
