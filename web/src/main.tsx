@@ -3,17 +3,14 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
-import { LessonPage } from './pages/LessonPage.tsx'
+import { ConceptPage } from './pages/ConceptPage.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route
-          path="/topics/:topicId/lessons/:lessonId"
-          element={<LessonPage />}
-        />
+        <Route path="/concepts/:id" element={<ConceptPage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

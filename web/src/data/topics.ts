@@ -1,12 +1,5 @@
 export type Track = "refresh" | "bootcamp";
 
-export interface Lesson {
-  id: string;
-  title: string;
-  description: string;
-  embedUrl: string;
-}
-
 export interface Topic {
   id: string;
   name: string;
@@ -14,7 +7,6 @@ export interface Topic {
   description: string;
   hours: number;
   tracks: Track[];
-  lessons?: Lesson[];
 }
 
 export const topics: Topic[] = [
@@ -44,16 +36,6 @@ export const topics: Topic[] = [
       "From Bayes' rule to hypothesis testing, motivated with real examples like a tennis serve's speed variance.",
     hours: 9,
     tracks: ["refresh", "bootcamp"],
-    lessons: [
-      {
-        id: "bernoulli-binomial",
-        title: "Bernoulli and Binomial Distributions",
-        description:
-          "The building blocks of discrete probability: a single yes/no trial, and what happens when you repeat it.",
-        embedUrl:
-          "https://vanessawong.my.canva.site/024-bernoulli-and-binomial-distributions",
-      },
-    ],
   },
   {
     id: "ml-foundations",

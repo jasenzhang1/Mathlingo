@@ -36,6 +36,13 @@ export function Hero({ onPickPath }: HeroProps) {
           </button>
         </div>
 
+        <a
+          href="#map"
+          className="font-body mt-6 inline-block text-sm font-medium text-[var(--accent)] hover:underline"
+        >
+          Or explore the concept map →
+        </a>
+
         <dl className="font-body mx-auto mt-16 grid max-w-2xl grid-cols-2 gap-8 text-left sm:grid-cols-4 sm:text-center">
           {[
             ["6", "core subjects"],
