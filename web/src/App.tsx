@@ -62,6 +62,7 @@ function App() {
           onToggle={toggleTopic}
         />
         <Features />
+        <Community />
         <BootcampCallout />
         <Signup />
       </main>
