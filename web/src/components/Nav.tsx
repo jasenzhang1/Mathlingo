@@ -30,6 +30,9 @@ export function Nav() {
           <a href="#how-it-works" className="hover:text-[var(--ink)]">
             How it works
           </a>
+          <a href="#community" className="hover:text-[var(--ink)]">
+            Community
+          </a>
           <a href="#bootcamp" className="hover:text-[var(--ink)]">
             Bootcamp
           </a>
