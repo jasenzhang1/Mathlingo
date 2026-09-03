@@ -109,6 +109,29 @@ export function AccountPage() {
                 </p>
               )}
 
+              {/*
+                'incomplete' means Stripe created the subscription but the first
+                payment never cleared — usually an abandoned checkout or an
+                unconfirmed 3-D Secure step. Showing a bare "Free" here is what
+                makes this baffling: the user believes they paid, so the state
+                has to be named.
+              */}
+              {subscription.status === "incomplete" && (
+                <p className="font-body mt-3 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
+                  Your payment hasn't completed, so the plan isn't active yet.
+                  Nothing has been charged. Start checkout again to finish it —
+                  if your bank asked you to confirm the payment, that step needs
+                  completing.
+                </p>
+              )}
+
+              {subscription.status === "incomplete_expired" && (
+                <p className="font-body mt-3 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
+                  Your last checkout expired before payment completed, so it was
+                  cancelled. Nothing was charged — you can subscribe again below.
+                </p>
+              )}
+
               <div className="mt-5 flex flex-wrap gap-3">
                 {subscription.hasBillingAccount && (
                   <button
@@ -125,7 +148,12 @@ export function AccountPage() {
                     to="/pricing"
                     className="font-body rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
                   >
-                    {subscription.tier === "free" ? "See plans" : "Upgrade"}
+                    {subscription.status === "incomplete" ||
+                    subscription.status === "incomplete_expired"
+                      ? "Complete payment"
+                      : subscription.tier === "free"
+                        ? "See plans"
+                        : "Upgrade"}
                   </Link>
                 )}
               </div>

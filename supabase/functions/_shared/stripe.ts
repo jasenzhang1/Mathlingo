@@ -14,8 +14,14 @@ export function stripeClient(): Stripe {
       "STRIPE_SECRET_KEY is not set. Run: supabase secrets set STRIPE_SECRET_KEY=sk_...",
     );
   }
+  /**
+   * `apiVersion` is deliberately not pinned here. The SDK's TypeScript types are
+   * generated for the exact version it ships with, so naming a different one is
+   * a type error at deploy time — and the failure message points at the version
+   * string rather than explaining itself. Letting the SDK use its own default
+   * keeps types and runtime in agreement.
+   */
   return new Stripe(key, {
-    apiVersion: "2025-02-24.acacia",
     httpClient: Stripe.createFetchHttpClient(),
   });
 }

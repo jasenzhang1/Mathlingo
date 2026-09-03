@@ -86,29 +86,85 @@ Deno.serve(async (req) => {
         return new Response("No customer on subscription.", { status: 400 });
       }
 
+      const deleted = event.type === "customer.subscription.deleted";
       const priceId = subscription.items.data[0]?.price?.id ?? "";
-      const tier = event.type === "customer.subscription.deleted"
-        ? "free"
-        : (tierForPrice(priceId) ?? "free");
+      const mapped = tierForPrice(priceId);
 
-      const periodEnd = subscription.items.data[0]?.current_period_end;
+      /**
+       * An unrecognised price used to fall back to 'free', which meant a
+       * mistyped STRIPE_PRICE_* secret produced a *paying customer on the free
+       * tier* — status 'active', tier 'free' — with a green webhook delivery and
+       * nothing in the logs. Throwing instead makes Stripe mark the delivery
+       * failed and retry, and names the offending price id so the mismatch is
+       * findable.
+       */
+      if (!deleted && !mapped) {
+        throw new Error(
+          `Price ${priceId} maps to no tier. Check STRIPE_PRICE_GRADED ` +
+            `(currently ${Deno.env.get("STRIPE_PRICE_GRADED") ?? "unset"}) and ` +
+            `STRIPE_PRICE_TUTORED (currently ${Deno.env.get("STRIPE_PRICE_TUTORED") ?? "unset"}).`,
+        );
+      }
+
+      const tier = deleted ? "free" : mapped!;
+
+      /**
+       * `current_period_end` moved from the subscription object onto its items
+       * in a 2025 API version. Which one is populated depends on the API
+       * version the account is pinned to, so read both — getting this wrong
+       * silently stores a null period end, and `effective_tier` would then
+       * treat a paying customer as entitled forever.
+       */
+      const withPeriod = subscription as unknown as { current_period_end?: number };
+      const periodEnd =
+        subscription.items.data[0]?.current_period_end ?? withPeriod.current_period_end;
+
+      const fields = {
+        stripe_customer_id: customerId,
+        stripe_subscription_id: subscription.id,
+        tier,
+        status: deleted ? "canceled" : subscription.status,
+        current_period_end: periodEnd ? new Date(periodEnd * 1000).toISOString() : null,
+        cancel_at_period_end: subscription.cancel_at_period_end ?? false,
+        updated_at: new Date().toISOString(),
+      };
+
+      /**
+       * Resolve the user before writing.
+       *
+       * This was an `update ... eq(stripe_customer_id)`, which returns NO error
+       * when it matches nothing — so a customer with no row yet produced a
+       * successful, green, entirely ineffective delivery. Stripe does not
+       * guarantee event ordering, so `customer.subscription.created` can arrive
+       * before `checkout.session.completed`, and a subscription started from the
+       * Customer Portal has no checkout event at all.
+       *
+       * `subscription_data.metadata.supabase_user_id` is set when the Checkout
+       * session is created, which gives a second way home when the customer id
+       * is not yet on file.
+       */
+      const { data: existing } = await db
+        .from("subscriptions")
+        .select("user_id")
+        .eq("stripe_customer_id", customerId)
+        .maybeSingle();
+
+      const metadataUserId = subscription.metadata?.supabase_user_id;
+      const userId = (existing?.user_id as string | undefined) ?? metadataUserId;
+
+      if (!userId) {
+        throw new Error(
+          `No user for Stripe customer ${customerId}: no subscriptions row, and ` +
+            `the subscription carries no supabase_user_id metadata.`,
+        );
+      }
 
       const { error } = await db
         .from("subscriptions")
-        .update({
-          stripe_subscription_id: subscription.id,
-          tier,
-          status:
-            event.type === "customer.subscription.deleted" ? "canceled" : subscription.status,
-          current_period_end: periodEnd
-            ? new Date(periodEnd * 1000).toISOString()
-            : null,
-          cancel_at_period_end: subscription.cancel_at_period_end ?? false,
-          updated_at: new Date().toISOString(),
-        })
-        .eq("stripe_customer_id", customerId);
+        .upsert({ user_id: userId, ...fields }, { onConflict: "user_id" });
 
       if (error) throw new Error(error.message);
+      console.log(`subscription ${subscription.id}: user ${userId} -> ${tier} (${fields.status})`);
     }
 
     return new Response(JSON.stringify({ received: true }), {

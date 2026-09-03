@@ -129,11 +129,15 @@ card number.
    - *Graded* — recurring, monthly, $8. Copy the **price id** (`price_...`).
    - *Tutored* — recurring, monthly, $15. Copy its price id.
 3. **Developers → API keys** → copy the **Secret key** (`sk_test_...`).
-4. **Developers → Webhooks → Add endpoint**:
-   - URL: `https://YOUR_PROJECT_REF.supabase.co/functions/v1/stripe-webhook`
-   - Events: `checkout.session.completed`, `customer.subscription.created`,
+4. **Developers → Webhooks** (Stripe now labels this area *Event destinations*,
+   and the button *Add destination* — same feature, renamed). Note the order:
+   events are chosen **before** the URL.
+   - **Events**: `checkout.session.completed`, `customer.subscription.created`,
      `customer.subscription.updated`, `customer.subscription.deleted`
-   - Copy the **signing secret** (`whsec_...`).
+   - **Events from**: *Your account* (not Connected accounts)
+   - **Destination type**: *Webhook endpoint* (not Amazon EventBridge)
+   - **URL**: `https://YOUR_PROJECT_REF.supabase.co/functions/v1/stripe-webhook`
+   - Create, then reveal and copy the **signing secret** (`whsec_...`).
 5. **Settings → Billing → Customer portal** → activate it.
 
 ### Deploy with billing
