@@ -132,12 +132,12 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Concept | Prerequisites | Lesson |
 |---|---|---|
 | Change of Variables (Jacobian) | Probability Density Function (PDF), Determinant | — |
-| Covariance Matrix | Covariance, Positive Definite Matrices | — |
+| Covariance Matrix | Covariance, Variance, Positive Definite Matrices | — |
 | Bivariate Normal | Normal Distribution, Covariance, Change of Variables (Jacobian) | — |
 | Multivariate Normal | Bivariate Normal, Covariance Matrix, Eigendecomposition | — |
 | Pearson Correlation | Correlation, Sample Variance | — |
-| Central Limit Theorem | Modes of Convergence, Moment Generating Function (MGF), Law of Large Numbers | — |
-| Kullback-Leibler Divergence | Probability Density Function (PDF), Probability Mass Function (PMF), Expectation | — |
+| Central Limit Theorem | Modes of Convergence, Moment Generating Function (MGF), Law of Large Numbers, Normal Distribution, Mutual Independence | — |
+| Kullback-Leibler Divergence | Probability Density Function (PDF), Probability Mass Function (PMF), Expectation, Jensen's Inequality | — |
 
 ## Statistical Inference (25)
 
