@@ -181,6 +181,37 @@ export function updateMemory(
   };
 }
 
+/**
+ * Collapse a whole session's item grades into the single review grade FSRS
+ * expects.
+ *
+ * This exists because of a mismatch that is easy to miss and expensive to get
+ * wrong. FSRS models one review *occasion* per card, with days in between; its
+ * stability update is driven by `1 - retrievability`, i.e. by how much you had
+ * forgotten before being tested. We assess a concept with many items in a single
+ * sitting, where elapsed time is ~0 and retrievability is ~1. Feeding each item
+ * to `updateMemory` separately therefore adds no stability for a correct answer
+ * (the growth term vanishes) while still applying the full lapse penalty for
+ * each miss — so a long, mostly-successful session ends with *lower* stability
+ * than a short one, and the learner is told to come back tomorrow. That is the
+ * opposite of what the evidence says.
+ *
+ * So: many items, one review. Accuracy across the session picks the grade.
+ */
+export function sessionGrade(grades: ReviewGrade[]): ReviewGrade {
+  if (grades.length === 0) return AGAIN;
+
+  const lapses = grades.filter((g) => g === AGAIN).length;
+
+  // Enough of the session went wrong that the concept was not really recalled.
+  // A third is deliberately lenient: the selector targets a 75% success rate, so
+  // some misses are by design and must not be read as a lapse.
+  if (lapses / grades.length >= 1 / 3) return AGAIN;
+
+  const mean = grades.reduce((sum, g) => sum + g, 0) / grades.length;
+  return clamp(Math.round(mean), HARD, EASY) as ReviewGrade;
+}
+
 /** Timestamp at which the concept should be re-assessed. */
 export function dueAt(state: MemoryState, conceptId: string): number {
   const interval = intervalForRetention(

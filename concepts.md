@@ -5,7 +5,7 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 232 concepts.**
+**Total: 236 concepts.**
 
 ## Probability (56)
 
@@ -68,7 +68,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Fisher Information | Likelihood vs Probability, Maximum Likelihood Estimation | — |
 | Cramér–Rao Lower Bound | Fisher Information, Unbiased Estimator | — |
 
-## Linear Algebra (53)
+## Linear Algebra (54)
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -85,6 +85,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Matrices | Matrix Multiplication | — |
 | Trace | Matrices | — |
 | Linear Transformations | Matrices | — |
+| Matrix Calculus (Gradients & Jacobians) | Linear Transformations, Vector Norm | — |
 | Vector Spaces | Vector Operations | — |
 | Span | Vector Spaces, Linear Dependence | — |
 | Basis | Span, Linear Dependence | — |
@@ -202,7 +203,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Generalized Linear Model (GLM) | Logistic Regression, Exponential Family | — |
 | Cox Proportional Hazards Model | Generalized Linear Model (GLM), Maximum Likelihood Estimation | — |
 
-## Machine Learning (47)
+## Machine Learning (50)
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -210,9 +211,12 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Types of Machine Learning | Machine Learning Introduction | — |
 | Supervised vs Unsupervised Learning | Types of Machine Learning | — |
 | Classification vs Regression | Supervised vs Unsupervised Learning | — |
+| Perceptron | Classification vs Regression | — |
+| Neural Networks | Perceptron, Matrix Calculus (Gradients & Jacobians) | — |
+| Backpropagation | Neural Networks, Gradient Descent | — |
 | Loss Functions | Machine Learning Introduction | — |
 | Cross Entropy Loss | Loss Functions, Likelihood vs Probability | — |
-| Gradient Descent | Loss Functions | — |
+| Gradient Descent | Loss Functions, Matrix Calculus (Gradients & Jacobians) | — |
 | Bias Variance Tradeoff | Loss Functions, Variance | — |
 | Overfitting and Underfitting | Bias Variance Tradeoff | — |
 | Curse of Dimensionality | Machine Learning Introduction | — |
@@ -269,7 +273,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Gaussian Mixture Models | EM Algorithm, Multivariate Normal | — |
 | Variational Inference: ELBO | Mixture Models and Latent Variables, Kullback-Leibler Divergence | — |
 | Laplace Approximation | Maximum Likelihood Estimation, Multivariate Normal | — |
-| Variational Inference: VAEs | Variational Inference: ELBO, Gradient Descent | — |
+| Variational Inference: VAEs | Variational Inference: ELBO, Neural Networks, Backpropagation | — |
 | Gaussian Process | Multivariate Normal, Kernel | — |
 | Reproducing Kernel Hilbert Space (RKHS) | Kernel, Mercer's Theorem | — |
 | Wasserstein Distance | Kullback-Leibler Divergence | — |

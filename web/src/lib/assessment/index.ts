@@ -3,6 +3,7 @@
  * design; the layer numbering below matches the sections of that document.
  *
  *   1. sourcing.ts     — where problems come from, and the gates they must clear
+ *      retrieval.ts    — aiming a search at a pool's gaps, and merging what returns
  *   2. types.ts        — response formats, rubrics, and the uniform Grade shape
  *   3. mastery.ts      — difficulty, ability, and what a response is worth
  *      exp.ts          — the bar the learner sees
@@ -13,6 +14,7 @@
 
 export * from "./types";
 export * from "./sourcing";
+export * from "./retrieval";
 export * from "./mastery";
 export * from "./scheduling";
 export * from "./exp";

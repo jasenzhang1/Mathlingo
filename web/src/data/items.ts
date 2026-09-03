@@ -100,7 +100,12 @@ export const items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A tennis player lands {n} first serves in a row's worth of attempts, each independently good with probability {p}. What is the probability that exactly {k} of them are good? Give a decimal to three places.",
+    /**
+     * The stem said the player "lands {n} first serves" and then asked how many
+     * were good — but landing a serve *is* the success, so it stated the answer
+     * was n before asking for it. The player attempts n serves; k of them land.
+     */
+    stem: "A tennis player attempts {n} first serves, each landing independently with probability {p}. What is the probability that exactly {k} of them land? Give a decimal to three places.",
     params: [
       { name: "n", range: [6, 12], integer: true },
       { name: "k", range: [2, 8], integer: true, constraints: ["k <= n"] },
@@ -261,6 +266,213 @@ export const items: Item[] = [
     expectedSeconds: 150,
     prereqClosure: ["column-space", "row-space"],
     source: STRANG_18_06,
+    status: "live",
+  },
+
+  // -------------------------------------------------------------------------
+  // Bernoulli & Binomial — the first lesson with a full playable bank.
+  // Authored from assessments/bernoulli-binomial.md; every numeric answerKey
+  // below was verified by script before being written here.
+  // -------------------------------------------------------------------------
+  {
+    id: "bernoulli-binomial--recall-four-conditions",
+    conceptId: "bernoulli-binomial",
+    format: "multi-select",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem:
+      "Which conditions must hold for a count to follow a Binomial distribution? Select all that apply.",
+    choices: [
+      { id: "a", text: "A fixed number of trials, decided in advance", correct: true },
+      { id: "b", text: "Each trial has exactly two outcomes", correct: true },
+      { id: "c", text: "The same success probability on every trial", correct: true },
+      { id: "d", text: "The trials are mutually independent", correct: true },
+      {
+        id: "e",
+        text: "n must be large (at least 30)",
+        correct: false,
+        misconception: {
+          id: "confuses-model-with-approximation",
+          description:
+            "Confuses the binomial model itself with the large-n condition for its Normal approximation.",
+          blameConceptId: "bernoulli-binomial",
+        },
+      },
+      {
+        id: "f",
+        text: "p must be at least 0.5",
+        correct: false,
+        misconception: {
+          id: "invents-p-constraint",
+          description: "Invents a constraint on p; any p in [0,1] is valid.",
+          blameConceptId: "bernoulli-binomial",
+        },
+      },
+    ],
+    difficulty: -0.4,
+    discrimination: 1.3,
+    expectedSeconds: 45,
+    prereqClosure: ["mutual-independence", "pmf"],
+    source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--apply-at-least-one",
+    conceptId: "bernoulli-binomial",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "A component fails on any given day with probability 0.02, independently of other days. " +
+      "Over 30 days, what is the probability of at least one failure? Give a decimal to three places.",
+    answerKey: 0.4545,
+    tolerance: 0.01,
+    difficulty: 0.3,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["mutual-independence", "pmf"],
+    source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--apply-inverse-moments",
+    conceptId: "bernoulli-binomial",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A binomial distribution has mean 6 and variance 2.4. Find n. " +
+      "(Hint: divide the variance by the mean.)",
+    answerKey: 10,
+    tolerance: 0.001,
+    difficulty: 0.9,
+    discrimination: 1.7,
+    expectedSeconds: 150,
+    prereqClosure: ["expectation", "variance"],
+    source: CASELLA_BERGER,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--apply-overbooking",
+    conceptId: "bernoulli-binomial",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "An airline sells 108 tickets for a 100-seat plane. Each passenger shows up independently " +
+      "with probability 0.90. What is the probability the flight is overbooked (more than 100 " +
+      "passengers arrive)? Give a decimal to three places.",
+    answerKey: 0.143,
+    tolerance: 0.01,
+    difficulty: 1.5,
+    discrimination: 1.5,
+    expectedSeconds: 210,
+    prereqClosure: ["pmf", "mutual-independence"],
+    source: BLITZSTEIN,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--explain-binomial-coefficient",
+    conceptId: "bernoulli-binomial",
+    format: "derivation",
+    cognitive: "explain",
+    channels: ["typed", "handwritten", "spoken"],
+    stem:
+      "The binomial PMF is C(n,k)·pᵏ(1−p)ⁿ⁻ᵏ. Explain what the C(n,k) factor is counting, " +
+      "and what pᵏ(1−p)ⁿ⁻ᵏ alone would give you without it.",
+    rubric: {
+      elements: [
+        {
+          id: "one-sequence",
+          description:
+            "States that pᵏ(1−p)ⁿ⁻ᵏ is the probability of ONE specific ordering of k successes and n−k failures.",
+          weight: 2,
+          required: true,
+          misconception: {
+            id: "treats-single-sequence-as-total",
+            description:
+              "Treats the probability of one ordering as the probability of the whole event.",
+            blameConceptId: "pmf",
+          },
+        },
+        {
+          id: "counts-orderings",
+          description:
+            "States that C(n,k) counts how many distinct orderings produce exactly k successes.",
+          weight: 2,
+          required: true,
+          misconception: {
+            id: "forgets-binomial-coefficient",
+            description: "Omits or misidentifies the counting role of the binomial coefficient.",
+            blameConceptId: "binomial-theorem",
+          },
+        },
+        {
+          id: "why-multiply",
+          description:
+            "Notes the orderings are mutually exclusive, so their probabilities add — giving a multiplication by the count.",
+          weight: 1,
+        },
+      ],
+    },
+    difficulty: 0.8,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["binomial-theorem", "pmf"],
+    source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--transfer-free-throws",
+    conceptId: "bernoulli-binomial",
+    format: "derivation",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten", "spoken"],
+    stem:
+      "Why can't two free throws by the same player be modelled as Binomial(2, p)? " +
+      "Think about player confidence — and say what the violation does to the variance.",
+    rubric: {
+      elements: [
+        {
+          id: "names-violation",
+          description:
+            "Identifies that independence and/or constant p fails: making the first shot can change the probability of making the second.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "assumes-independence",
+            description: "Applies the binomial without checking whether trials are independent.",
+            blameConceptId: "mutual-independence",
+          },
+        },
+        {
+          id: "consequence-on-variance",
+          description:
+            "States the consequence: positive correlation makes Var(X) = 2p(1−p) + 2Cov exceed the binomial's 2p(1−p), so the model understates the spread (more 0s and 2s, fewer 1s).",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "honest-caveat",
+          description:
+            "Bonus: notes the dependence may be small in practice, so the binomial can still be a serviceable approximation — whether a violated assumption matters is quantitative.",
+          weight: 1,
+        },
+      ],
+      forbiddenMoves: [
+        {
+          id: "phrase-without-mechanism",
+          description:
+            "Answers only 'the trials aren't independent' with no mechanism and no consequence.",
+          weight: 1,
+        },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.8,
+    expectedSeconds: 240,
+    prereqClosure: ["mutual-independence", "variance"],
+    source: OCW_18_05,
     status: "live",
   },
 ];

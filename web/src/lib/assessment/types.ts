@@ -204,6 +204,30 @@ export interface Item {
 }
 
 /**
+ * Per-element verdict from a model judge.
+ *
+ * `credit` is continuous rather than a hit/miss flag because understanding is
+ * not binary: "the variance is n times a single trial's" and "it's a sum of
+ * independent trials, and variances of independent variables add, so it is n
+ * times one trial's" are both non-zero, and grading them the same tells the
+ * learner nothing about the difference. The `justification` is what the learner
+ * actually reads — it must say why this credit and not full credit.
+ */
+export interface RubricVerdict {
+  elementId: string;
+  /** Copied from the rubric so the UI can render without re-joining. */
+  description: string;
+  weight: number;
+  required: boolean;
+  /** 0 = absent or wrong, 1 = fully present and justified. */
+  credit: number;
+  /** One sentence: what earned this credit, and what full credit needed. */
+  justification: string;
+  /** True when this is a forbidden move rather than a positive element. */
+  forbidden?: boolean;
+}
+
+/**
  * What a grader returns, whatever the format or channel. Every adjudicator —
  * numeric comparison, CAS equivalence, model judge on a proof, transcribed
  * speech — produces this same shape so the scoring layer stays format-blind.
@@ -211,6 +235,11 @@ export interface Item {
 export interface Grade {
   /** Partial credit in [0, 1]. */
   score: number;
+  /**
+   * Element-by-element detail, when a rubric was applied. Deterministic graders
+   * leave this empty; the model judge always fills it.
+   */
+  breakdown?: RubricVerdict[];
   rubricElementsHit: string[];
   rubricElementsMissed: string[];
   /** Diagnosed wrong paths, used for prerequisite blame. */

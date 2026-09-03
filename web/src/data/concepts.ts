@@ -546,6 +546,19 @@ export const concepts: Concept[] = [
     prerequisites: ["matrices"],
   },
   {
+    // Added to give `gradient-descent` and the neural-network branch of
+    // machine-learning something to stand on: the graph previously had no
+    // concept defining what a gradient or a Jacobian even is, despite
+    // gradient-descent being named after one. Grounded in Math for Machine
+    // Learning ch. 5 (Vector Calculus) and Strang's treatment of gradients
+    // in the optimization chapters of Linear Algebra and Learning from Data.
+    id: "matrix-calculus",
+    title: "Matrix Calculus (Gradients & Jacobians)",
+    domain: "linear-algebra",
+    blurb: "The gradient of a scalar function and the Jacobian of a vector function, in vector form.",
+    prerequisites: ["linear-transformations", "vector-norm"],
+  },
+  {
     id: "vector-spaces",
     title: "Vector Spaces",
     domain: "linear-algebra",
@@ -1297,6 +1310,32 @@ export const concepts: Concept[] = [
     prerequisites: ["supervised-vs-unsupervised-learning"],
   },
   {
+    // The three concepts below (perceptron, neural-networks, backpropagation)
+    // fill a gap the graph had no coverage for at all: ISL ch. 10 ("Deep
+    // Learning") and Bishop ch. 5 ("Neural Networks") both give this a full
+    // chapter, and `variational-inference-vaes` already referenced "a neural
+    // network" in its own blurb with nothing upstream to define one.
+    id: "perceptron",
+    title: "Perceptron",
+    domain: "machine-learning",
+    blurb: "The simplest linear classifier: a weighted sum of inputs, thresholded.",
+    prerequisites: ["classification-vs-regression"],
+  },
+  {
+    id: "neural-networks",
+    title: "Neural Networks",
+    domain: "machine-learning",
+    blurb: "Layers of perceptron-like units with nonlinear activations, composed together.",
+    prerequisites: ["perceptron", "matrix-calculus"],
+  },
+  {
+    id: "backpropagation",
+    title: "Backpropagation",
+    domain: "machine-learning",
+    blurb: "Computing a neural network's gradient efficiently with the chain rule.",
+    prerequisites: ["neural-networks", "gradient-descent"],
+  },
+  {
     id: "loss-functions",
     title: "Loss Functions",
     domain: "machine-learning",
@@ -1315,7 +1354,7 @@ export const concepts: Concept[] = [
     title: "Gradient Descent",
     domain: "machine-learning",
     blurb: "Iteratively nudging parameters downhill to minimize a loss function.",
-    prerequisites: ["loss-functions"],
+    prerequisites: ["loss-functions", "matrix-calculus"],
   },
   {
     id: "bias-variance-tradeoff",
@@ -1691,7 +1730,7 @@ export const concepts: Concept[] = [
     title: "Variational Inference: VAEs",
     domain: "graphical-models",
     blurb: "Learning a latent-variable generative model with a neural network and the ELBO.",
-    prerequisites: ["variational-inference-elbo", "gradient-descent"],
+    prerequisites: ["variational-inference-elbo", "neural-networks", "backpropagation"],
   },
   {
     id: "gaussian-process",

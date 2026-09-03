@@ -56,7 +56,9 @@ assessment.
 
 ### 1.3 Retrieval pipeline
 
-Runs offline, per concept, producing draft items:
+*Implemented in [`retrieval.ts`](web/src/lib/assessment/retrieval.ts), with the first corpus adapter
+in [`wassermanAdapter.ts`](web/tools/wassermanAdapter.ts).* Runs offline, per concept, producing
+draft items:
 
 1. **Query expansion.** Concept title plus aliases, standard notation, and the chapters that cover it
    in each registered text. "Sufficient Statistic" also searches for *factorisation theorem*,
@@ -69,6 +71,24 @@ Runs offline, per concept, producing draft items:
 5. **Prerequisite-closure check** (§1.4). The gate a generic question bank cannot implement.
 6. **Templating** (§1.5).
 7. **Verification** (§1.6).
+
+`buildRetrievalBrief` turns a pool's coverage gaps into a search specification — which cognitive
+levels are short, what difficulty band to aim at, which concepts a candidate may draw on — and
+`ingestCandidates` folds what comes back in, rejecting duplicates, leaks, and anything the
+verification gate blocks. Making the brief a *value* rather than a prompt is what makes a retrieval
+run reproducible: the same pool state yields the same brief, so a run can be replayed and diffed when
+the items it produced turn out to be bad.
+
+Deduplication is Jaccard over word shingles of a normalised stem, with **digits collapsed to `#`**.
+That last detail is the one that matters: two instances of the same template differ only in their
+numbers, and a comparison that treats them as distinct will happily admit a hundred clones. Genuine
+paraphrase needs embeddings, which plug in via `IngestOptions.similarity`.
+
+**What a real run showed.** Against Wasserman, retrieving for Expectation on the concept title alone
+returned **one** candidate; adding notation aliases (`E(X)`, `expected value`) returned **eight**,
+all on-topic. Textbook exercises say "Find E(X)" and never "here is an expectation problem", so the
+alias table is the single highest-leverage input to a run — worth more than any amount of cleverness
+in the ranking.
 
 ### 1.4 Prerequisite leakage — the check that matters most
 
@@ -137,6 +157,32 @@ Going live additionally requires:
   learner's bar (`applyReview` checks `item.status === "live"`). Once the item has 30+ exposures and
   no flags from §4, it graduates. This is the single most important safety property in the design: a
   question nobody has vetted can never cost a learner EXP they earned.
+
+### 1.7 The authoring stage, and why retrieval alone accepts nothing
+
+Running the pipeline end-to-end against Wasserman produced a result worth recording, because it is
+easy to mistake for a bug: **zero candidates were accepted, and that is correct.**
+
+Two gates stop them, in order. First, `checkLicence` blocks every restricted-tier candidate with no
+recorded rewrite approval — the design working exactly as §1.2 specifies. Simulating that approval to
+see what lay behind it, they were still blocked, for a more fundamental reason: *no answer key, no
+rubric, no tolerance.* A textbook exercise is a **problem**, not an **item**. It has a question and
+nothing else; the key, the rubric elements, the misconception tags on distractors, and the solver all
+have to be produced.
+
+So the pipeline has three stages, not two, and the middle one is a model's job:
+
+```
+retrieval  ->  authoring  ->  ingest
+(adapters)     (rewrite +      (dedupe, verify,
+               key + rubric)    seed, shadow)
+```
+
+Retrieval finds *skeletons*. Authoring turns a skeleton into an original stem with a computed key and
+a rubric — the step that also discharges the restricted-tier obligation, since the text it emits is
+ours. Only then does `ingestCandidates` have something it can accept. That the verification gate
+refuses everything until authoring has run is the strongest evidence the gate is set correctly: there
+is no path by which a raw scrape reaches a learner.
 
 ---
 
@@ -210,6 +256,48 @@ Agreement with human re-grades is measured continuously per item (§4) and a rub
 apply consistently is treated as a defective rubric, not a defective learner.
 
 ---
+
+### 2.7 The grading pipeline
+
+`grading.md` fixes the shape of grading for non-deterministic answers, and the implementation follows
+it stage for stage:
+
+```
+submission (text | image | audio)
+   -> normalize      normalize.ts + transcribe function + useSpeechInput
+   -> route          router.ts
+   -> grade          grading.ts (exact, math) | modelGrader.ts + grade function (llm)
+   -> rubric scores  RubricVerdict[]
+   -> final score + feedback + confidence   rubric.ts
+```
+
+Three properties are load-bearing, and each rules out a failure that is hard to detect once shipped.
+
+**Normalization happens before routing, not inside each grader.** By the time anything is graded, a
+typed answer, a photo of handwritten work, and a dictated explanation are all just text. Grading
+therefore *cannot* depend on channel — which is what stops handwriting from being marked more
+leniently than typing simply because a different code path handled it. What survives normalization is
+the transcript and its confidence, which the learner is shown: when OCR misreads a subscript, the
+resulting mark is otherwise inexplicable, and an uncertain reading discounts the confidence of the
+grade built on top of it.
+
+**Every grader emits rubric scores.** Not just the model judge — exact and math grading produce the
+same `RubricVerdict[]`. For multiple-choice this is more than bookkeeping: each correct option becomes
+a rubric element and each incorrect one a *forbidden move* carrying the misconception the author
+already tagged it with, so a wrong selection propagates prerequisite blame through the identical path
+a missed rubric element does in a written proof. Items without an authored rubric get one derived
+from their own answer key, so "everything depends on a rubric" holds with no exceptions.
+
+**One scoring function.** `scoreFromVerdicts` is the only code that turns credit into a mark, shared
+by all three branches. The LLM judge deliberately returns credit and justifications but *never* a
+score — models are unreliable at weighted arithmetic, and a second implementation in the Edge Function
+would be free to drift away from the client's. Since the final mark is a pure function of the stored
+verdicts, a rubric revision can be replayed over the response log offline rather than re-billing every
+past answer through the API; migration `0003` stores the verdicts for exactly that reason.
+
+Audio is transcribed in the browser via the Web Speech API rather than uploaded. That costs a
+dependency (Chrome/Edge only; Firefox falls back to typing) and buys a real guarantee: no recording of
+a learner's voice ever leaves their machine.
 
 ## 3. Difficulty, grading, and the EXP bar
 
@@ -465,6 +553,38 @@ Fluency and knowledge are different things and this is where the distinction pay
 learner keeps their mastery and gets asked again sooner, which is the correct treatment for someone
 who can derive it but cannot yet recall it — the stated goal in `README.md` of material that is
 "drilled and fluent for professionals".
+
+### 5.1b A session is one review, not many
+
+FSRS is a model of review *occasions* separated by days, and its stability update is driven by
+`1 − retrievability`: you gain stability in proportion to how much you had forgotten before being
+tested. We assess a concept with a dozen or more items in a single sitting, where elapsed time is
+effectively zero and retrievability is ~1.
+
+Feeding each item to `updateMemory` separately is therefore actively wrong, and wrong in a direction
+that is easy to miss. The growth term `exp(w₁₀(1 − R)) − 1` vanishes when `R ≈ 1`, so a correct answer
+adds nothing; but the lapse branch has no such damping, so every miss applies its full penalty. Net
+effect: **stability ratchets downward over a session**, and the more questions a learner answers the
+worse their schedule gets. Simulating a θ = 2 learner over 25 items produced a stability of 0.33 days
+— the app would congratulate them on mastering the concept and then demand a re-assessment the next
+morning.
+
+So the unit of scheduling is the **session**, matching the decision in `types.ts` that the unit of
+memory is the concept. Ability still updates per item — every answer is real evidence about what the
+learner knows, and that is what the IRT layer is for — but memory updates once, recomputed from a
+`SessionContext.anchor` (the memory state as of before the first answer) so that applying the nth
+result is idempotent rather than compounding. `sessionGrade` collapses the sitting's item grades into
+one FSRS grade: a lapse rate at or above ⅓ makes the session `AGAIN`, otherwise the mean grade rounds
+into `HARD`/`GOOD`/`EASY`. The ⅓ is deliberately lenient because §3.5 targets a 75% success rate —
+some misses are by design and must not read as forgetting.
+
+With that in place the same θ = 2 learner ends at ~4 days, holds 90% retrievability for three, and on
+repeat sessions answered at the due date the interval compounds 3 → 12 → 7 → 20 → 52 days, with a
+weak session correctly knocking it back down.
+
+One known inaccuracy: a page reload starts a new session, so an interrupted sitting is scheduled as
+two occasions. Fixing it means persisting the anchor server-side, which is not worth a table for the
+size of the error.
 
 ### 5.2 Target retention varies across the graph
 

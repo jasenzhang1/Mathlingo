@@ -10,8 +10,8 @@ import {
   updateItemDifficulty,
 } from "./mastery";
 import { clamp } from "./numeric";
-import { destabilise, reviewGradeFor, updateMemory } from "./scheduling";
-import type { ConceptState, Grade, Item, ReviewGrade } from "./types";
+import { destabilise, reviewGradeFor, sessionGrade, updateMemory } from "./scheduling";
+import type { ConceptState, Grade, Item, MemoryState, ReviewGrade } from "./types";
 
 /**
  * The orchestrator: one graded response in, a new set of concept states out.
@@ -54,6 +54,24 @@ export interface ReviewOutcome {
   propagation: { conceptId: string; weight: number; direction: "credit" | "debit" }[];
 }
 
+/**
+ * One sitting on one concept. Ability is updated per item — every answer is
+ * genuine evidence about what the learner knows — but memory is updated once
+ * for the whole session, recomputed from `anchor` each time so that applying
+ * the nth item's result is idempotent rather than compounding.
+ *
+ * A page reload starts a new session. That is a real (small) inaccuracy: the
+ * second half of an interrupted sitting is scheduled as if it were a separate
+ * occasion. The alternative is persisting the anchor server-side, which is not
+ * worth a table for the size of the error.
+ */
+export interface SessionContext {
+  /** Memory as of before this session's first graded item. */
+  anchor: MemoryState | undefined;
+  /** Review grades from this session's earlier items, oldest first. */
+  grades: ReviewGrade[];
+}
+
 export function blankState(conceptId: string): ConceptState {
   return { conceptId, ability: { ...PRIOR_ABILITY } };
 }
@@ -73,6 +91,7 @@ export function applyReview(
   item: Item,
   grade: Grade,
   now: number,
+  session?: SessionContext,
 ): ReviewOutcome {
   const target = stateFor(states, item.conceptId);
   const expBefore = expFor(target, now);
@@ -90,11 +109,22 @@ export function applyReview(
   const updated = new Map<string, ConceptState>();
   const propagation: ReviewOutcome["propagation"] = [];
 
+  /**
+   * With a session, memory is recomputed from the pre-session anchor using
+   * every grade in the sitting; without one, each call is its own occasion.
+   * See SessionContext for why the distinction matters.
+   */
+  const memory = counts
+    ? session
+      ? updateMemory(session.anchor, sessionGrade([...session.grades, reviewGrade]), now)
+      : updateMemory(target.memory, reviewGrade, now)
+    : target.memory;
+
   const nextTarget: ConceptState = counts
     ? {
         conceptId: target.conceptId,
         ability: updateAbility(target.ability, item, score),
-        memory: updateMemory(target.memory, reviewGrade, now),
+        memory,
       }
     : target;
   updated.set(item.conceptId, nextTarget);
