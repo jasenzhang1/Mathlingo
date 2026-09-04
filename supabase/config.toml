@@ -1,0 +1,28 @@
+# Supabase project configuration.
+
+project_id = "mathlingo"
+
+# Edge Functions require a valid Supabase JWT by default, which is what we want
+# everywhere the *user* is the caller.
+[functions.tutor]
+verify_jwt = true
+
+[functions.grade]
+verify_jwt = true
+
+[functions.transcribe]
+verify_jwt = true
+
+[functions.stripe-checkout]
+verify_jwt = true
+
+[functions.stripe-portal]
+verify_jwt = true
+
+# The webhook is called by Stripe, which has no Supabase JWT, so JWT
+# verification must be off. Authentication happens instead by verifying Stripe's
+# signature header against the endpoint's signing secret — see the function.
+# Without that signature check this endpoint would let anyone grant themselves a
+# paid subscription, so it is not optional.
+[functions.stripe-webhook]
+verify_jwt = false

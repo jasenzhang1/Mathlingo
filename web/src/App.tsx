@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BootcampCallout } from "./components/BootcampCallout";
+import { Community } from "./components/Community";
 import { Features } from "./components/Features";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
@@ -44,6 +45,7 @@ function App() {
           onToggle={toggleTopic}
         />
         <Features />
+        <Community />
         <BootcampCallout />
         <Signup />
       </main>
