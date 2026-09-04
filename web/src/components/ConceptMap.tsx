@@ -8,6 +8,13 @@ import { useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { concepts, domainMeta, type Domain } from "../data/concepts";
 import { ancestorCountOf, reducedEdges } from "../lib/prerequisiteGraph";
+import {
+  MAX_PROFICIENCY,
+  fillSegmentPath,
+  proficiencyRatio,
+} from "../lib/proficiencyFill";
+import { useAuth } from "../lib/auth/useAuth";
+import { useProficiency } from "../lib/useProficiency";
 
 interface PositionedNode {
   id: string;
@@ -138,8 +145,39 @@ const domainOptions: { id: Domain | "all"; label: string }[] = [
   ),
 ];
 
+/** A node's circle: hollow at 0/100, filled from the bottom, solid at 100/100. */
+function ProficiencyDot({
+  radius,
+  color,
+  value,
+  strokeWidth = 1,
+}: {
+  radius: number;
+  color: string;
+  value: number;
+  strokeWidth?: number;
+}) {
+  const fill = fillSegmentPath(radius, proficiencyRatio(value));
+
+  return (
+    <>
+      <circle r={radius} fill="var(--panel)" />
+      {fill && <path d={fill} fill={color} />}
+      <circle
+        r={radius}
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        opacity={value > 0 ? 1 : 0.75}
+      />
+    </>
+  );
+}
+
 export function ConceptMap() {
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const { proficiency } = useProficiency();
   const [selectedDomain, setSelectedDomain] = useState<Domain | "all">("all");
   const layout = useMemo(() => computeLayout(selectedDomain), [selectedDomain]);
   const [viewBox, setViewBox] = useState(layout.bounds);
@@ -340,6 +378,9 @@ export function ConceptMap() {
                 opacity={nodeOpacity(node.id)}
                 style={{ cursor: "pointer" }}
               >
+                <title>{`${node.title} — proficiency ${Math.round(
+                  proficiency.get(node.id) ?? 0,
+                )}/${MAX_PROFICIENCY}`}</title>
                 {node.hasLesson && (
                   <circle
                     r={node.radius + 3.5}
@@ -348,7 +389,11 @@ export function ConceptMap() {
                     strokeWidth={1.5}
                   />
                 )}
-                <circle r={node.radius} fill={domainMeta[node.domain].color} />
+                <ProficiencyDot
+                  radius={node.radius}
+                  color={domainMeta[node.domain].color}
+                  value={proficiency.get(node.id) ?? 0}
+                />
                 <text
                   x={node.radius + 6}
                   y={3}
@@ -385,7 +430,22 @@ export function ConceptMap() {
           />
           Lesson available
         </span>
+        <span className="flex items-center gap-1.5">
+          {[0, 50, MAX_PROFICIENCY].map((value) => (
+            <svg key={value} width={14} height={14} aria-hidden="true">
+              <g transform="translate(7, 7)">
+                <ProficiencyDot
+                  radius={5.5}
+                  color="var(--ink-soft)"
+                  value={value}
+                />
+              </g>
+            </svg>
+          ))}
+          How full = your proficiency, 0/100 to {MAX_PROFICIENCY}/{MAX_PROFICIENCY}
+        </span>
         <span>Bigger dot = more prerequisites lead into it</span>
+        {!user && <span>Sign in to see your own progress on the map.</span>}
       </div>
     </div>
   );

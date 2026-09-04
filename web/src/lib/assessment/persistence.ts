@@ -72,6 +72,23 @@ export async function loadConceptState(
   return data ? rowToState(data as ConceptStateRow) : blankState(conceptId);
 }
 
+/**
+ * Every concept this user has been assessed on. Concepts with no row have never
+ * been attempted, so callers treat them as blank (proficiency 0) rather than
+ * this function inventing a row per concept — there are hundreds of them and
+ * the map only needs the ones that carry progress.
+ */
+export async function loadAllConceptStates(
+  userId: string,
+): Promise<ConceptState[]> {
+  const { data } = await supabase
+    .from("concept_states")
+    .select("*")
+    .eq("user_id", userId);
+
+  return ((data as ConceptStateRow[]) ?? []).map(rowToState);
+}
+
 /** Upserts one or more concept states — the review may have touched prerequisites too. */
 export async function saveConceptStates(
   userId: string,
