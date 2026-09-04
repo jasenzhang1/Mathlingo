@@ -1,4 +1,4 @@
-import { concepts } from "../data/concepts";
+import { conceptById, concepts } from "../data/concepts";
 
 /**
  * The authored `prerequisites` arrays in concepts.ts are meant to be immediate
@@ -101,3 +101,37 @@ export const ancestorsOf = ancestorReach;
 export const descendantCountOf = new Map<string, number>(
   allNodeIds.map((id) => [id, descendantReach.get(id)?.size ?? 0]),
 );
+
+/**
+ * Length of the longest prerequisite chain ending at each concept: 0 for one
+ * you can start cold, 1 for one whose prerequisites are all roots, and so on.
+ *
+ * This is "how far in" a concept sits, which is what orders the list view.
+ * ancestorCountOf cannot stand in for it: a concept resting on a dozen
+ * unrelated roots is still a first step, while the twentieth link of a chain
+ * is not.
+ */
+export const depthOf = new Map<string, number>();
+{
+  const visiting = new Set<string>();
+
+  function depth(id: string): number {
+    const cached = depthOf.get(id);
+    if (cached !== undefined) return cached;
+    // A cycle in the authored prerequisites would recurse forever; count the
+    // back edge as nothing rather than take the whole map down with it.
+    if (visiting.has(id)) return 0;
+
+    visiting.add(id);
+    const prereqs = conceptById.get(id)?.prerequisites ?? [];
+    const value = prereqs.length
+      ? Math.max(...prereqs.map((prereqId) => depth(prereqId) + 1))
+      : 0;
+    visiting.delete(id);
+
+    depthOf.set(id, value);
+    return value;
+  }
+
+  for (const id of allNodeIds) depth(id);
+}
