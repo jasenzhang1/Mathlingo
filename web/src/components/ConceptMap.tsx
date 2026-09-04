@@ -21,9 +21,17 @@ interface PositionedNode {
   title: string;
   domain: Domain;
   hasLesson: boolean;
+  /** Centre of the circle. The label hangs directly below it. */
   x: number;
   y: number;
   radius: number;
+  /** Title split into the lines drawn under the circle. */
+  lines: string[];
+  /** Width of the widest label line. */
+  labelW: number;
+  /** Footprint reserved in the layout: circle, gap and every label line. */
+  boxW: number;
+  boxH: number;
 }
 
 interface PositionedEdge {
@@ -39,11 +47,70 @@ interface Layout {
   bounds: { x: number; y: number; w: number; h: number };
 }
 
-const CHAR_WIDTH = 4.2;
+const FONT_SIZE = 6.5;
+const LINE_HEIGHT = 7.4;
+/** Average glyph advance at FONT_SIZE, used to measure labels without a DOM. */
+const CHAR_WIDTH = 3.45;
+/** Labels wrap rather than grow past this; a long single word may still exceed it. */
+const MAX_LABEL_WIDTH = 68;
+/** Circle bottom to the top of the first line of text. */
+const LABEL_GAP = 3;
+/** Slack around the circle so the "lesson available" ring stays inside the box. */
+const RING_PAD = 4.5;
+
+function textWidth(text: string): number {
+  return text.length * CHAR_WIDTH;
+}
+
+/** Greedy wrap: fill each line until the next word would cross `limit`. */
+function wrapAt(words: string[], limit: number): string[] {
+  const lines: string[] = [];
+  let line = "";
+  for (const word of words) {
+    const candidate = line ? `${line} ${word}` : word;
+    if (line && textWidth(candidate) > limit) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = candidate;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+/**
+ * Wrap a title into the block drawn under its circle. A plain greedy pass
+ * leaves a stubby last line ("Principal / Component / Analysis / (Matrix)");
+ * re-wrapping at the average width the same line count allows evens the block
+ * out, which reads better as a single shape under the dot.
+ */
+function wrapTitle(title: string): string[] {
+  const words = title.split(/\s+/).filter(Boolean);
+  if (words.length === 0) return [title];
+
+  const lines = wrapAt(words, MAX_LABEL_WIDTH);
+  if (lines.length < 2) return lines;
+
+  const longestWord = Math.max(...words.map(textWidth));
+  const balanced = Math.max(longestWord, textWidth(title) / lines.length);
+  const evened = wrapAt(words, balanced);
+  return evened.length === lines.length ? evened : lines;
+}
 
 function radiusFor(id: string): number {
   const ancestors = ancestorCountOf.get(id) ?? 0;
   return Math.min(4 + Math.sqrt(ancestors) * 1.6, 14);
+}
+
+/** The label block's own width, and the whole circle-plus-label footprint. */
+function boxFor(radius: number, lines: string[]) {
+  const labelW = Math.max(...lines.map(textWidth));
+  return {
+    labelW,
+    boxW: Math.max((radius + RING_PAD) * 2, labelW + 4),
+    boxH: (radius + RING_PAD) * 2 + LABEL_GAP + lines.length * LINE_HEIGHT,
+  };
 }
 
 function computeLayout(domainFilter: Domain | "all"): Layout {
@@ -58,21 +125,27 @@ function computeLayout(domainFilter: Domain | "all"): Layout {
   const g = new dagre.graphlib.Graph<GraphLabel, NodeLabel, EdgeLabel>();
   g.setGraph({
     rankdir: "TB",
-    nodesep: 26,
-    ranksep: 56,
+    nodesep: 10,
+    ranksep: 34,
     marginx: 20,
     marginy: 20,
   });
   g.setDefaultEdgeLabel(() => ({}));
 
-  // Give dagre just the dot's footprint, not the label's. Reserving full
-  // label width would balloon any wide rank (root/leaf ranks can hold 20+
-  // nodes) into an enormous width and crush the vertical aspect ratio we
-  // actually want. Labels can still overlap a little in dense ranks — hover
-  // highlighting and zoom make individual nodes readable regardless.
+  // A node is the circle *and* its wrapped label — one picture. Handing dagre
+  // that whole footprint is what keeps edges out of the text: routing goes
+  // around the box, and an edge's endpoints land on the box border rather
+  // than crossing it. Wrapping is what keeps the cost affordable; a label laid
+  // out on one line would make wide ranks (20+ nodes) absurdly wide.
+  const boxes = new Map<
+    string,
+    { lines: string[]; labelW: number; boxW: number; boxH: number }
+  >();
   for (const c of nodeList) {
-    const r = radiusFor(c.id);
-    g.setNode(c.id, { width: r * 2 + 6, height: r * 2 + 6 });
+    const lines = wrapTitle(c.title);
+    const box = { lines, ...boxFor(radiusFor(c.id), lines) };
+    boxes.set(c.id, box);
+    g.setNode(c.id, { width: box.boxW, height: box.boxH });
   }
   for (const [u, v] of edgeList) {
     g.setEdge(u, v);
@@ -89,14 +162,21 @@ function computeLayout(domainFilter: Domain | "all"): Layout {
 
   const nodes: PositionedNode[] = nodeList.map((c) => {
     const label = g.node(c.id);
+    const box = boxes.get(c.id)!;
+    const radius = radiusFor(c.id);
     return {
       id: c.id,
       title: c.title,
       domain: c.domain,
       hasLesson: Boolean(c.embedUrl),
+      // dagre centres the box; the circle sits at the top of it, label below.
       x: label.x!,
-      y: label.y!,
-      radius: radiusFor(c.id),
+      y: label.y! - box.boxH / 2 + radius + RING_PAD,
+      radius,
+      lines: box.lines,
+      labelW: box.labelW,
+      boxW: box.boxW,
+      boxH: box.boxH,
     };
   });
   const nodeById = new Map(nodes.map((n) => [n.id, n]));
@@ -117,11 +197,11 @@ function computeLayout(domainFilter: Domain | "all"): Layout {
   let maxX = -Infinity;
   let maxY = -Infinity;
   for (const n of nodes) {
-    const rightEdge = n.x + n.radius + 8 + n.title.length * CHAR_WIDTH;
-    if (n.x - n.radius < minX) minX = n.x - n.radius;
-    if (rightEdge > maxX) maxX = rightEdge;
-    if (n.y - n.radius < minY) minY = n.y - n.radius;
-    if (n.y + n.radius > maxY) maxY = n.y + n.radius;
+    const top = n.y - n.radius - RING_PAD;
+    minX = Math.min(minX, n.x - n.boxW / 2);
+    maxX = Math.max(maxX, n.x + n.boxW / 2);
+    minY = Math.min(minY, top);
+    maxY = Math.max(maxY, top + n.boxH);
   }
   const pad = 30;
 
@@ -454,14 +534,31 @@ export function ConceptMap() {
                   color={domainMeta[node.domain].color}
                   value={proficiency.get(node.id) ?? 0}
                 />
+                {/* Paper behind the label: reserving the footprint keeps
+                    edges off it in the common case, but a long diagonal
+                    between ranks can still sweep across, and the node should
+                    read as one opaque picture when it does. */}
+                <rect
+                  x={-node.labelW / 2 - 2}
+                  y={node.radius + RING_PAD + LABEL_GAP - 1}
+                  width={node.labelW + 4}
+                  height={node.lines.length * LINE_HEIGHT + 2}
+                  rx={1.5}
+                  fill="var(--panel)"
+                />
                 <text
-                  x={node.radius + 6}
-                  y={3}
-                  fontSize={6.5}
+                  x={0}
+                  y={node.radius + RING_PAD + LABEL_GAP + FONT_SIZE * 0.8}
+                  fontSize={FONT_SIZE}
+                  textAnchor="middle"
                   fill="var(--ink)"
                   className="font-body select-none"
                 >
-                  {node.title}
+                  {node.lines.map((line, i) => (
+                    <tspan key={i} x={0} dy={i === 0 ? 0 : LINE_HEIGHT}>
+                      {line}
+                    </tspan>
+                  ))}
                 </text>
               </g>
             ))}
