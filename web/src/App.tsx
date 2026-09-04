@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BootcampCallout } from "./components/BootcampCallout";
+import { Community } from "./components/Community";
 import { ConceptMap } from "./components/ConceptMap";
 import { Features } from "./components/Features";
 import { Footer } from "./components/Footer";

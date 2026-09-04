@@ -1,4 +1,5 @@
 import type { Item, SourceRef } from "../lib/assessment/types";
+import { mlItems } from "./items-ml";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -475,6 +476,14 @@ export const items: Item[] = [
     source: OCW_18_05,
     status: "live",
   },
+
+  /**
+   * The machine-learning domain, ported from `assessments/ml-01…ml-09.md`:
+   * 250 items across all 50 concepts, five per concept. Kept in
+   * `items-ml/` rather than inline because the seed bank above is a
+   * fixture set for the framework, and this is a curriculum.
+   */
+  ...mlItems,
 ];
 
 export const itemsByConcept = new Map<string, Item[]>();

@@ -64,7 +64,33 @@ gradient despite `gradient-descent` being named after one, and no neural-network
 | LA-7 | [la-07-spectral-theory-and-special-matrices.md](la-07-spectral-theory-and-special-matrices.md) | Spectral Theorem → Matrix Stability (7) | done (35 items) |
 | LA-8 | [la-08-svd-and-applications.md](la-08-svd-and-applications.md) | SVD → PCA (Matrix Edition) (6) | done (30 items) |
 
-**Machine Learning: 50 / 50 concepts done (~255 items).**
+**Machine Learning: 50 / 50 concepts done (250 items) — and the only domain that
+is also servable.** All 250 are ported into typed `Item` entries under
+[`web/src/data/items-ml/`](../web/src/data/items-ml/), one file per cluster,
+spread into [`items.ts`](../web/src/data/items.ts). They ship at `shadow`: the
+text and rubrics are authored, but the IRT parameters are seeds from graph depth
+rather than estimates from exposure — which is exactly the status `retrieval.ts`
+assigns newly accepted items and `calibration.ts` promotes out of once the
+numbers justify it. `npm run audit:coverage` reports the gap between this table
+and what the app can actually serve.
+
+All 250 clear `verifyItem` with no blockers and no warnings. Where a markdown
+item cited a concept that is not upstream of the concept under test —
+`type-i-ii-error` from `confusion-matrices`, `sample-mean` from
+`k-fold-cross-validation`, `bernoulli-binomial` from `splitting-criteria`,
+`eckart-young` from `pca`, and a dozen more — the port keeps the connection but
+states the borrowed fact in the stem, so the item tests the concept rather than
+whether the learner happened to meet a sideways neighbour. Two of those look like
+genuinely missing prerequisite edges rather than authoring slips, and are worth a
+graph decision: `ensemble-methods` has no probability concept upstream at all
+despite resting entirely on a variance-of-an-average argument, and `kernel-pca`
+does not have `mercers-theorem` upstream despite needing its condition to be
+well defined.
+
+The 50 machine-learning wiki articles live in
+[`web/src/data/wiki/ml/`](../web/src/data/wiki/ml/), grouped into the same nine
+clusters, so each concept page now has the article and the questions side by
+side.
 
 | # | File | Concepts | Status |
 |---|---|---|---|
