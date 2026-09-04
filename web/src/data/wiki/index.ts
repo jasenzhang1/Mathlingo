@@ -10,7 +10,9 @@ import { confidenceIntervalWiki } from "./confidence-interval";
 import { covarianceMatrixWiki } from "./covariance-matrix";
 import { dataTypesWiki } from "./data-types";
 import { directedVsUndirectedGraphsWiki } from "./directed-vs-undirected-graphs";
+import { effectSizeWiki } from "./effect-size";
 import { emAlgorithmWiki } from "./em-algorithm";
+import { equivalenceTestingWiki } from "./equivalence-testing";
 import { fischersExactTestWiki } from "./fischers-exact-test";
 import { gaussianMixtureModelsWiki } from "./gaussian-mixture-models";
 import { gaussianProcessWiki } from "./gaussian-process";
@@ -18,10 +20,15 @@ import { graphsWiki } from "./graphs";
 import { hmmWiki } from "./hmm";
 import { hypothesisTestWiki } from "./hypothesis-test";
 import { klDivergenceWiki } from "./kl-divergence";
+import { kolmogorovSmirnovTestWiki } from "./kolmogorov-smirnov-test";
+import { kruskalWallisTestWiki } from "./kruskal-wallis-test";
 import { laplaceApproximationWiki } from "./laplace-approximation";
 import { markovChainsWiki } from "./markov-chains";
 import { markovRandomFieldsWiki } from "./markov-random-fields";
+import { mcnemarTestWiki } from "./mcnemar-test";
 import { mixtureModelsAndLatentVariablesWiki } from "./mixture-models-and-latent-variables";
+import { mlWikiArticles } from "./ml";
+import { multipleTestingWiki } from "./multiple-testing";
 import { multivariateNormalWiki } from "./multivariate-normal";
 import { oneSampleProportionsZTestWiki } from "./one-sample-proportions-z-test";
 import { oneSampleTTestWiki } from "./one-sample-t-test";
@@ -30,20 +37,24 @@ import { pValueWiki } from "./p-value";
 import { pairedTTestWiki } from "./paired-t-test";
 import { parameterVsStatisticWiki } from "./parameter-vs-statistic";
 import { pearsonCorrelationWiki } from "./pearson-correlation";
+import { permutationTestWiki } from "./permutation-test";
 import { populationVsSampleWiki } from "./population-vs-sample";
+import { predictionIntervalWiki } from "./prediction-interval";
+import { regressionWikis } from "./regression";
 import { rejectionRegionWiki } from "./rejection-region";
 import { rkhsWiki } from "./rkhs";
 import { sampleMeanWiki } from "./sample-mean";
 import { sampleVarianceWiki } from "./sample-variance";
 import { samplingDistributionWiki } from "./sampling-distribution";
 import { samplingMethodsWiki } from "./sampling-methods";
+import { sequentialTestingWiki } from "./sequential-testing";
 import { standardErrorWiki } from "./standard-error";
 import { testStatisticWiki } from "./test-statistic";
+import { twoSampleProportionsZTestWiki } from "./two-sample-proportions-z-test";
 import { twoSampleTTestWiki } from "./two-sample-t-test";
 import { twoSampleZTestWiki } from "./two-sample-z-test";
-import { mlWikiArticles } from "./ml";
-import { regressionWikis } from "./regression";
 import { typeIIIErrorWiki } from "./type-i-ii-error";
+import { wilcoxonSignedRankTestWiki } from "./wilcoxon-signed-rank-test";
 import type { WikiArticle } from "./types";
 import { variationalInferenceElboWiki } from "./variational-inference-elbo";
 import { variationalInferenceVaesWiki } from "./variational-inference-vaes";
@@ -107,6 +118,21 @@ const articles: WikiArticle[] = [
   fischersExactTestWiki,
   wilcoxonRankSumTestWiki,
   bootstrappingWiki,
+
+  // Cluster 4: beyond a single comparison
+  twoSampleProportionsZTestWiki,
+  effectSizeWiki,
+  multipleTestingWiki,
+  equivalenceTestingWiki,
+  sequentialTestingWiki,
+  predictionIntervalWiki,
+
+  // Cluster 5: distribution-free methods
+  permutationTestWiki,
+  wilcoxonSignedRankTestWiki,
+  kruskalWallisTestWiki,
+  mcnemarTestWiki,
+  kolmogorovSmirnovTestWiki,
 
   // Multivariate Probability & Asymptotics
   centralLimitTheoremWiki,
