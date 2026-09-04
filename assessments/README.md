@@ -36,6 +36,35 @@ than by hand per item — flagged inline as `[verified]` once checked. Anything 
 
 **Probability & Statistics: 81 / 81 concepts done (~618 items).**
 
+## Servable status: multivariate probability
+
+`bernoulli-binomial` was the pilot for turning an authored cluster into a playable pool. The
+`multivariate-probability` domain is the second, and the first done as a whole domain: all 7 concepts
+now carry 8 live `Item` entries each in [`items.ts`](../web/src/data/items.ts) — 56 items — clearing
+every bar `auditCoverage` sets (8+ live, live items at recall/apply/explain, difficulty spread 2.0
+logits). Each also has a wiki article in `web/src/data/wiki/`, so the lesson a learner reads sets out
+the same arguments the derivation rubrics require.
+
+The 8 items per concept expand the md cluster's 5, which covers the four cognitive levels but not the
+pool depth: a monthly review cadence against a 5-item pool has the learner recognising instances
+rather than re-deriving. Every numeric `answerKey` was computed twice, by two independent
+implementations, before being written.
+
+Three prerequisite edges were added to `concepts.ts` in the process, each found by
+`checkPrereqClosure` blocking an item and each a real gap rather than a mis-filed item — the same way
+the Expectation/Variance edges on `bernoulli-binomial` were found:
+
+| Concept | Edge added | Why |
+|---|---|---|
+| `central-limit-theorem` | `normal-distribution`, `mutual-independence` | The theorem's conclusion names N(0, 1) and its hypothesis is iid sampling; neither was reachable |
+| `covariance-matrix` | `variance` | The diagonal of Σ *is* the variances, and every quadratic form aᵀΣa is one; Variance was reachable only through Covariance's ancestors, which do not include it |
+| `kl-divergence` | `jensen-inequality` | Gibbs' inequality — the non-negativity that licenses "minimise the KL" at all — is one application of Jensen to −log |
+
+One edge was deliberately *not* added: `change-of-variables-jacobian` → `invertible-matrices`. That
+would push the whole rank/subspaces branch in front of a lesson whose affine case needs only
+det(A⁻¹) = 1/det(A), so the affine item supplies A's invertibility as a stem hypothesis instead,
+exactly as the concept's own definition supplies g's.
+
 ## Graph additions (this sweep)
 
 Four concepts were added to `concepts.ts`/`concepts.md`, grounded in textbooks added to the corpus
@@ -101,7 +130,7 @@ The graph itself now has 236 concepts (232 original + the 4 added this sweep —
 
 | # | File | Concepts | Status |
 |---|---|---|---|
-| MP-1 | [mp-01-multivariate-probability.md](mp-01-multivariate-probability.md) | CLT, Jacobian, Covariance Matrix, Bivariate/Multivariate Normal, Pearson r, KL Divergence (7 — entire domain) | done (35 items) |
+| MP-1 | [mp-01-multivariate-probability.md](mp-01-multivariate-probability.md) | CLT, Jacobian, Covariance Matrix, Bivariate/Multivariate Normal, Pearson r, KL Divergence (7 — entire domain) | done (35 items); **servable** — 56 live items in `items.ts` |
 | REG-1 | [reg-01-foundations.md](reg-01-foundations.md) | Regression → Normal Equations (6) | done (30 items) |
 | REG-2 | [reg-02-ols-geometry-and-multiple-regression.md](reg-02-ols-geometry-and-multiple-regression.md) | Geometric OLS → Homoskedasticity (5) | done (25 items) |
 | REG-3 | [reg-03-model-fit-and-diagnostics.md](reg-03-model-fit-and-diagnostics.md) | OLS Properties → VIF (6) | done (30 items) |
@@ -110,6 +139,32 @@ The graph itself now has 236 concepts (232 original + the 4 added this sweep —
 | GM-1 | [gm-01-graphs-and-markov-structure.md](gm-01-graphs-and-markov-structure.md) | Graphs → HMM (6) | done (30 items) |
 | GM-2 | [gm-02-latent-variables-and-em.md](gm-02-latent-variables-and-em.md) | Mixture Models → Laplace Approximation (4) | done (20 items) |
 | GM-3 | [gm-03-variational-inference-and-kernels.md](gm-03-variational-inference-and-kernels.md) | ELBO → Wasserstein Distance (5) | done (25 items) |
+
+### Graphical Models: now servable in the app
+
+The graphical-models domain is the first to cross from *authored* (markdown, above) to *servable*
+(`Item` entries the app can actually quiz on). All 15 concepts now have **8 live items each — 120
+items** — in [`items.graphical-models.ts`](../web/src/data/items.graphical-models.ts), spread over
+recall / apply / explain / transfer, and all 15 clear `auditCoverage`'s bar (8+ live items, all three
+required levels present, difficulty spread ≥ 1.5 logits; the tightest is `gaussian-mixture-models` at
+1.85). `verifyItem` reports zero blockers across the whole bank. Each concept also has a wiki article
+in [`web/src/data/wiki/`](../web/src/data/wiki/).
+
+Every numeric `answerKey` in the cluster was recomputed independently before being written here — 21
+keys, from the alarm posterior (0.334) and the Ising pair (0.731) through the Laplace variance on a
+Beta(3,2) target (0.074) to the GP posterior mean and variance (1.213, 0.632).
+
+**One deliberate divergence from the markdown above.** Several of its strongest cross-referential
+items reach sideways across the graph: the stationary distribution as an eigenvector, EM as soft
+K-means, BIC for choosing K in a GMM. Those target concepts are *not* upstream of the
+graphical-models concepts in `concepts.ts`, so `checkPrereqClosure` blocks the items — correctly, since
+a learner who has legitimately reached `markov-chains` has not necessarily met
+`eigenvalues-eigenvectors`. Rather than widen the prerequisite graph as a side effect of authoring,
+the servable versions are re-framed to be self-contained (the stationary distribution via the balance
+equations, EM via responsibilities, GMM's K-means comparison stated inline rather than assumed), and
+the cross-links live in the wiki, where they cost nothing. Whether those edges genuinely belong in
+the graph is a real question, but it deserves its own decision rather than being settled by what one
+cluster of items happened to need.
 
 Every numeric or derivation claim in these final 51 concepts was verified the same way as the rest of
 the bank — script-checked where arithmetic was involved (the ridge-regularization eigenvalue shift
