@@ -36,6 +36,35 @@ than by hand per item — flagged inline as `[verified]` once checked. Anything 
 
 **Probability & Statistics: 81 / 81 concepts done (~618 items).**
 
+## Servable status: multivariate probability
+
+`bernoulli-binomial` was the pilot for turning an authored cluster into a playable pool. The
+`multivariate-probability` domain is the second, and the first done as a whole domain: all 7 concepts
+now carry 8 live `Item` entries each in [`items.ts`](../web/src/data/items.ts) — 56 items — clearing
+every bar `auditCoverage` sets (8+ live, live items at recall/apply/explain, difficulty spread 2.0
+logits). Each also has a wiki article in `web/src/data/wiki/`, so the lesson a learner reads sets out
+the same arguments the derivation rubrics require.
+
+The 8 items per concept expand the md cluster's 5, which covers the four cognitive levels but not the
+pool depth: a monthly review cadence against a 5-item pool has the learner recognising instances
+rather than re-deriving. Every numeric `answerKey` was computed twice, by two independent
+implementations, before being written.
+
+Three prerequisite edges were added to `concepts.ts` in the process, each found by
+`checkPrereqClosure` blocking an item and each a real gap rather than a mis-filed item — the same way
+the Expectation/Variance edges on `bernoulli-binomial` were found:
+
+| Concept | Edge added | Why |
+|---|---|---|
+| `central-limit-theorem` | `normal-distribution`, `mutual-independence` | The theorem's conclusion names N(0, 1) and its hypothesis is iid sampling; neither was reachable |
+| `covariance-matrix` | `variance` | The diagonal of Σ *is* the variances, and every quadratic form aᵀΣa is one; Variance was reachable only through Covariance's ancestors, which do not include it |
+| `kl-divergence` | `jensen-inequality` | Gibbs' inequality — the non-negativity that licenses "minimise the KL" at all — is one application of Jensen to −log |
+
+One edge was deliberately *not* added: `change-of-variables-jacobian` → `invertible-matrices`. That
+would push the whole rank/subspaces branch in front of a lesson whose affine case needs only
+det(A⁻¹) = 1/det(A), so the affine item supplies A's invertibility as a stem hypothesis instead,
+exactly as the concept's own definition supplies g's.
+
 ## Graph additions (this sweep)
 
 Four concepts were added to `concepts.ts`/`concepts.md`, grounded in textbooks added to the corpus
@@ -101,7 +130,7 @@ The graph itself now has 236 concepts (232 original + the 4 added this sweep —
 
 | # | File | Concepts | Status |
 |---|---|---|---|
-| MP-1 | [mp-01-multivariate-probability.md](mp-01-multivariate-probability.md) | CLT, Jacobian, Covariance Matrix, Bivariate/Multivariate Normal, Pearson r, KL Divergence (7 — entire domain) | done (35 items) |
+| MP-1 | [mp-01-multivariate-probability.md](mp-01-multivariate-probability.md) | CLT, Jacobian, Covariance Matrix, Bivariate/Multivariate Normal, Pearson r, KL Divergence (7 — entire domain) | done (35 items); **servable** — 56 live items in `items.ts` |
 | REG-1 | [reg-01-foundations.md](reg-01-foundations.md) | Regression → Normal Equations (6) | done (30 items) |
 | REG-2 | [reg-02-ols-geometry-and-multiple-regression.md](reg-02-ols-geometry-and-multiple-regression.md) | Geometric OLS → Homoskedasticity (5) | done (25 items) |
 | REG-3 | [reg-03-model-fit-and-diagnostics.md](reg-03-model-fit-and-diagnostics.md) | OLS Properties → VIF (6) | done (30 items) |
