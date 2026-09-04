@@ -5,7 +5,7 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 236 concepts.**
+**Total: 247 concepts.**
 
 ## Probability (56)
 
@@ -139,7 +139,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Central Limit Theorem | Modes of Convergence, Moment Generating Function (MGF), Law of Large Numbers, Normal Distribution, Mutual Independence | — |
 | Kullback-Leibler Divergence | Probability Density Function (PDF), Probability Mass Function (PMF), Expectation, Jensen's Inequality | — |
 
-## Statistical Inference (25)
+## Statistical Inference (36)
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -168,6 +168,17 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Fisher's Exact Test | Chi Square Test of Independence, Hypergeometric Distribution | — |
 | Wilcoxon Rank Sum Test | Order Statistics, Hypothesis Test | — |
 | Bootstrapping | Sampling Distribution, Sample Mean | — |
+| Two Sample Proportions Z-Test | One Sample Proportions Z-Test, Two Sample Z-Test | — |
+| Effect Size | Hypothesis Test, Standard Error | — |
+| Multiple Testing | P-Value, Type I and Type II Error | — |
+| Equivalence Testing | Confidence Interval, Hypothesis Test | — |
+| Sequential Testing and Optional Stopping | P-Value, Type I and Type II Error | — |
+| Prediction Interval | Confidence Interval, Sampling Distribution | — |
+| Permutation Test | Hypothesis Test, P-Value | — |
+| Wilcoxon Signed Rank Test | Wilcoxon Rank Sum Test, Paired T-Test | — |
+| Kruskal-Wallis Test | Wilcoxon Rank Sum Test, Chi Square Distribution | — |
+| McNemar's Test | Chi Square Test of Independence, Paired T-Test | — |
+| Kolmogorov-Smirnov Test | Chi Square Goodness of Fit Test, CDF | — |
 
 ## Regression (29)
 

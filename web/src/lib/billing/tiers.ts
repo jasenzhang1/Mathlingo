@@ -47,7 +47,7 @@ export const PLANS: TierPlan[] = [
     priceLabel: "$0",
     tagline: "The whole curriculum, and everything that can be graded exactly.",
     features: [
-      "All 236 concepts, slides and wiki",
+      "All 247 concepts, slides and wiki",
       "Multiple-choice and numeric assessment",
       "Proficiency tracking and spaced review",
       "Forums — ask, answer, post problems",

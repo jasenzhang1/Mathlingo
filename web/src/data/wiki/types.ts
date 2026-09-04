@@ -1,6 +1,6 @@
 /**
  * Wiki articles are structured data rather than free-form markup so that all
- * 236 lessons render consistently and can be authored without touching React.
+ * 247 lessons render consistently and can be authored without touching React.
  * Math is written in unicode (σ², Σ, √) — good enough for the notation density
  * of this curriculum, and avoids pulling in a LaTeX renderer for now.
  */
