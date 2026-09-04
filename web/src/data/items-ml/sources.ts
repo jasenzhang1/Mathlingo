@@ -8,8 +8,11 @@ import type { SourceRef } from "../../lib/assessment/types";
  * markdown is the design record, these objects are the servable form.
  *
  * Generated-tier carries the highest verification burden precisely because no
- * editor has ever checked it (see `sourcing.ts`), which is why every item below
- * ships at `shadow` rather than `live`.
+ * editor has ever checked it (see `sourcing.ts`). Clusters 1-9 were designed in
+ * the markdown first and ported here; clusters 10-12 cover concepts added to the
+ * graph later and were authored directly in this typed form, with the markdown
+ * written as an index rather than as a full transcript — stated plainly there so
+ * the direction of authorship is not misread.
  */
 function bank(n: string, cluster: string, file: string): SourceRef {
   return {
@@ -29,3 +32,6 @@ export const ML_06 = bank("06", "trees and ensembles", "ml-06-trees-and-ensemble
 export const ML_07 = bank("07", "clustering and dimensionality reduction", "ml-07-clustering-and-dimensionality-reduction.md");
 export const ML_08 = bank("08", "neural networks", "ml-08-neural-networks.md");
 export const ML_09 = bank("09", "Gaussian processes", "ml-09-gaussian-processes.md");
+export const ML_10 = bank("10", "practical modelling and evaluation", "ml-10-practical-modelling.md");
+export const ML_11 = bank("11", "deep learning", "ml-11-deep-learning.md");
+export const ML_12 = bank("12", "further paradigms and methods", "ml-12-further-paradigms.md");

@@ -208,7 +208,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Poisson Regression | Generalized Linear Model (GLM), Poisson Distribution | — |
 | Cox Proportional Hazards Model | Generalized Linear Model (GLM), Maximum Likelihood Estimation | — |
 
-## Machine Learning (50)
+## Machine Learning (78)
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -262,6 +262,34 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Independent Component Analysis (ICA) | Principal Component Analysis (PCA), Kullback-Leibler Divergence | — |
 | GP Regression | Multivariate Normal, Kernel | — |
 | GP Classification | GP Regression, Logistic Regression | — |
+| Feature Scaling | Curse of Dimensionality, Training vs Validation vs Test Set | — |
+| Feature Selection | Curse of Dimensionality, K-Fold Cross-Validation, Data Leakage | — |
+| Class Imbalance | Confusion Matrices, Loss Functions | — |
+| Precision-Recall Curves | ROC Curves, Class Imbalance | — |
+| Probability Calibration | ROC Curves, Cross Entropy Loss, Training vs Validation vs Test Set | — |
+| Nested Cross-Validation | Hyperparameters, Data Leakage | — |
+| Learning Curves | Overfitting and Underfitting, K-Fold Cross-Validation | — |
+| Distribution Shift | Training vs Validation vs Test Set, Generative vs Discriminative Models, Data Leakage | — |
+| Model Interpretability | Random Forests, Sensitivity Analysis | — |
+| Anomaly Detection | Clustering Methods, Generative vs Discriminative Models, Curse of Dimensionality | — |
+| Activation Functions | Neural Networks | — |
+| SGD and Adaptive Optimizers | Gradient Descent, Backpropagation | — |
+| Dropout | Neural Networks, Overfitting and Underfitting | — |
+| Batch Normalization | Backpropagation, Feature Scaling | — |
+| Convolutional Neural Networks | Neural Networks, Activation Functions, Overfitting and Underfitting | — |
+| Recurrent Neural Networks | Backpropagation, Activation Functions | — |
+| Attention Mechanism | Recurrent Neural Networks, Dot Product, Variance | — |
+| Transformers | Attention Mechanism, Batch Normalization | — |
+| Embeddings | Neural Networks, Principal Component Analysis (PCA) | — |
+| Autoencoders | Neural Networks, Probabilistic PCA | — |
+| Transfer Learning | Convolutional Neural Networks, Embeddings, Feature Scaling | — |
+| Self-Supervised Learning | Transfer Learning, Autoencoders | — |
+| Reinforcement Learning | Types of Machine Learning, Markov Chains | — |
+| Multi-Armed Bandits | Reinforcement Learning, Confidence Interval | — |
+| Bayesian Optimization | GP Regression, Hyperparameters | — |
+| Stacking | Ensemble Methods, Nested Cross-Validation | — |
+| Hierarchical Clustering | Clustering Methods | — |
+| Density-Based Clustering | Clustering Methods, K-Means Clustering | — |
 
 ## Graphical Models & Bayesian ML (15)
 

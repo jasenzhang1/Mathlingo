@@ -8,10 +8,13 @@ import { ml06TreesAndEnsembles } from "./ml-06-trees-and-ensembles";
 import { ml07ClusteringAndDimensionalityReduction } from "./ml-07-clustering-and-dimensionality-reduction";
 import { ml08NeuralNetworks } from "./ml-08-neural-networks";
 import { ml09GaussianProcesses } from "./ml-09-gaussian-processes";
+import { ml10PracticalModelling } from "./ml-10-practical-modelling";
+import { ml11DeepLearning } from "./ml-11-deep-learning";
+import { ml12FurtherParadigms } from "./ml-12-further-paradigms";
 
 /**
- * All 50 `machine-learning` domain articles, grouped into the same nine clusters
- * the question bank uses (`assessments/ml-01…ml-09.md`).
+ * All 78 `machine-learning` domain articles, grouped into the same twelve clusters
+ * the question bank uses (`assessments/ml-01…ml-12.md`).
  *
  * Grouped by cluster rather than one file per concept — the pilot's layout —
  * because these articles are deliberately cross-referential: `bagging` cites the
@@ -29,4 +32,7 @@ export const mlWikiArticles: WikiArticle[] = [
   ...ml07ClusteringAndDimensionalityReduction,
   ...ml08NeuralNetworks,
   ...ml09GaussianProcesses,
+  ...ml10PracticalModelling,
+  ...ml11DeepLearning,
+  ...ml12FurtherParadigms,
 ];

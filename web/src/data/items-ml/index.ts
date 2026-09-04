@@ -8,10 +8,13 @@ import { ml06Items } from "./ml-06-trees-and-ensembles";
 import { ml07Items } from "./ml-07-clustering-and-dimensionality-reduction";
 import { ml08Items } from "./ml-08-neural-networks";
 import { ml09Items } from "./ml-09-gaussian-processes";
+import { ml10Items } from "./ml-10-practical-modelling";
+import { ml11Items } from "./ml-11-deep-learning";
+import { ml12Items } from "./ml-12-further-paradigms";
 
 /**
  * The servable form of the machine-learning question bank: eight items per
- * concept across all 50 concepts in the `machine-learning` domain — 400 in
+ * concept across all 78 concepts in the `machine-learning` domain — 624 in
  * total — at two each of recall, apply, explain and transfer.
  *
  * Items 1-5 per concept are the port of `assessments/ml-01…ml-09.md`, which
@@ -36,4 +39,7 @@ export const mlItems: Item[] = [
   ...ml07Items,
   ...ml08Items,
   ...ml09Items,
+  ...ml10Items,
+  ...ml11Items,
+  ...ml12Items,
 ];
