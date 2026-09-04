@@ -111,6 +111,32 @@ The graph itself now has 236 concepts (232 original + the 4 added this sweep —
 | GM-2 | [gm-02-latent-variables-and-em.md](gm-02-latent-variables-and-em.md) | Mixture Models → Laplace Approximation (4) | done (20 items) |
 | GM-3 | [gm-03-variational-inference-and-kernels.md](gm-03-variational-inference-and-kernels.md) | ELBO → Wasserstein Distance (5) | done (25 items) |
 
+### Graphical Models: now servable in the app
+
+The graphical-models domain is the first to cross from *authored* (markdown, above) to *servable*
+(`Item` entries the app can actually quiz on). All 15 concepts now have **8 live items each — 120
+items** — in [`items.graphical-models.ts`](../web/src/data/items.graphical-models.ts), spread over
+recall / apply / explain / transfer, and all 15 clear `auditCoverage`'s bar (8+ live items, all three
+required levels present, difficulty spread ≥ 1.5 logits; the tightest is `gaussian-mixture-models` at
+1.85). `verifyItem` reports zero blockers across the whole bank. Each concept also has a wiki article
+in [`web/src/data/wiki/`](../web/src/data/wiki/).
+
+Every numeric `answerKey` in the cluster was recomputed independently before being written here — 21
+keys, from the alarm posterior (0.334) and the Ising pair (0.731) through the Laplace variance on a
+Beta(3,2) target (0.074) to the GP posterior mean and variance (1.213, 0.632).
+
+**One deliberate divergence from the markdown above.** Several of its strongest cross-referential
+items reach sideways across the graph: the stationary distribution as an eigenvector, EM as soft
+K-means, BIC for choosing K in a GMM. Those target concepts are *not* upstream of the
+graphical-models concepts in `concepts.ts`, so `checkPrereqClosure` blocks the items — correctly, since
+a learner who has legitimately reached `markov-chains` has not necessarily met
+`eigenvalues-eigenvectors`. Rather than widen the prerequisite graph as a side effect of authoring,
+the servable versions are re-framed to be self-contained (the stationary distribution via the balance
+equations, EM via responsibilities, GMM's K-means comparison stated inline rather than assumed), and
+the cross-links live in the wiki, where they cost nothing. Whether those edges genuinely belong in
+the graph is a real question, but it deserves its own decision rather than being settled by what one
+cluster of items happened to need.
+
 Every numeric or derivation claim in these final 51 concepts was verified the same way as the rest of
 the bank — script-checked where arithmetic was involved (the ridge-regularization eigenvalue shift
 that repairs a genuinely singular X'X, det 0→15.01; the exact R²=r² identity confirmed on real

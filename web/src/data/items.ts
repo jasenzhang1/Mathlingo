@@ -1,4 +1,5 @@
 import type { Item, SourceRef } from "../lib/assessment/types";
+import { graphicalModelsItems } from "./items.graphical-models";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -475,6 +476,13 @@ export const items: Item[] = [
     source: OCW_18_05,
     status: "live",
   },
+
+  // -------------------------------------------------------------------------
+  // Graphical Models & Bayesian ML — all 15 concepts, 8 items each. Kept in its
+  // own module so this file stays readable; see items.graphical-models.ts for
+  // the authoring notes.
+  // -------------------------------------------------------------------------
+  ...graphicalModelsItems,
 ];
 
 export const itemsByConcept = new Map<string, Item[]>();
