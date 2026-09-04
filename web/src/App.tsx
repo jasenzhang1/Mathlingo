@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BootcampCallout } from "./components/BootcampCallout";
-import { ConceptMap } from "./components/ConceptMap";
+import { Community } from "./components/Community";
 import { Features } from "./components/Features";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
@@ -38,23 +38,6 @@ function App() {
       <Nav />
       <main>
         <Hero onPickPath={pickPath} />
-        <section id="map" className="border-b border-[var(--line)]">
-          <div className="mx-auto max-w-6xl px-6 py-16">
-            <div className="text-center">
-              <h2 className="font-display text-3xl text-[var(--ink)] md:text-4xl">
-                Explore the concept map
-              </h2>
-              <p className="font-body mx-auto mt-3 max-w-xl text-[var(--ink-soft)]">
-                Every concept we teach, connected by what you need to know
-                first. Drag to pan, use the buttons to zoom, and click a node
-                to jump into its lesson.
-              </p>
-            </div>
-            <div className="mt-8">
-              <ConceptMap />
-            </div>
-          </div>
-        </section>
         <TopicGrid
           filter={filter}
           onFilterChange={setFilter}
@@ -62,6 +45,7 @@ function App() {
           onToggle={toggleTopic}
         />
         <Features />
+        <Community />
         <BootcampCallout />
         <Signup />
       </main>

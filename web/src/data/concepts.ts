@@ -854,7 +854,10 @@ export const concepts: Concept[] = [
     title: "Covariance Matrix",
     domain: "multivariate-probability",
     blurb: "Every pairwise covariance among a vector of random variables, in one matrix.",
-    prerequisites: ["covariance", "positive-definite-matrices"],
+    // Variance was reachable only through Covariance's own ancestors, which do
+    // not include it. The diagonal of Σ *is* the variances, and every quadratic
+    // form aᵀΣa is one, so the edge is a real dependency rather than a tidy-up.
+    prerequisites: ["covariance", "variance", "positive-definite-matrices"],
   },
   {
     id: "bivariate-normal",
@@ -882,14 +885,28 @@ export const concepts: Concept[] = [
     title: "Central Limit Theorem",
     domain: "multivariate-probability",
     blurb: "Why sums of many independent variables look normal, almost no matter what.",
-    prerequisites: ["modes-of-convergence", "mgf", "law-of-large-numbers"],
+    // Normal Distribution and Mutual Independence were both missing: the
+    // theorem's conclusion names N(0, 1) and its hypothesis is iid sampling, so
+    // neither can be stated without them. Found by `checkPrereqClosure`
+    // blocking the CLT items, the same way the Expectation/Variance edges on
+    // `bernoulli-binomial` were found.
+    prerequisites: [
+      "modes-of-convergence",
+      "mgf",
+      "law-of-large-numbers",
+      "normal-distribution",
+      "mutual-independence",
+    ],
   },
   {
     id: "kl-divergence",
     title: "Kullback-Leibler Divergence",
     domain: "multivariate-probability",
     blurb: "A measure of how one probability distribution diverges from another.",
-    prerequisites: ["pdf", "pmf", "expectation"],
+    // Gibbs' inequality — the non-negativity that licenses "minimise the KL" as
+    // an objective at all — is one application of Jensen's inequality to the
+    // convex function −log. The edge records that dependency.
+    prerequisites: ["pdf", "pmf", "expectation", "jensen-inequality"],
   },
 
   // ---------------------------------------------------------------------
@@ -1070,6 +1087,83 @@ export const concepts: Concept[] = [
     blurb: "Estimating a statistic's sampling distribution by resampling your own data.",
     prerequisites: ["sampling-distribution", "sample-mean"],
   },
+  {
+    id: "two-sample-proportions-z-test",
+    title: "Two Sample Proportions Z-Test",
+    domain: "statistics",
+    blurb: "Comparing two rates — the test behind nearly every A/B experiment.",
+    prerequisites: ["one-sample-proportions-z-test", "two-sample-z-test"],
+  },
+  {
+    id: "effect-size",
+    title: "Effect Size",
+    domain: "statistics",
+    blurb: "How big the difference is, on a scale that does not grow with the sample.",
+    prerequisites: ["p-value", "standard-error"],
+  },
+  {
+    id: "multiple-testing",
+    title: "Multiple Testing",
+    domain: "statistics",
+    blurb: "Run enough tests and something is significant by construction. Bonferroni, FWER, and FDR.",
+    prerequisites: ["p-value", "type-i-ii-error"],
+  },
+  {
+    id: "equivalence-testing",
+    title: "Equivalence Testing",
+    domain: "statistics",
+    blurb: "Establishing that an effect is negligible, which failing to reject never does.",
+    prerequisites: ["confidence-interval", "hypothesis-test"],
+  },
+  {
+    id: "sequential-testing",
+    title: "Sequential Testing and Optional Stopping",
+    domain: "statistics",
+    blurb: "Why peeking inflates the error rate, and the designs that let you stop early anyway.",
+    prerequisites: ["p-value", "type-i-ii-error"],
+  },
+  {
+    id: "prediction-interval",
+    title: "Prediction Interval",
+    domain: "statistics",
+    blurb: "A range for the next observation, not for a parameter — and it never shrinks to zero.",
+    prerequisites: ["confidence-interval", "sampling-distribution"],
+  },
+  {
+    id: "permutation-test",
+    title: "Permutation Test",
+    domain: "statistics",
+    blurb: "Build the null distribution by reshuffling the labels the null says are arbitrary.",
+    prerequisites: ["hypothesis-test", "p-value", "counting-methods"],
+  },
+  {
+    id: "wilcoxon-signed-rank-test",
+    title: "Wilcoxon Signed Rank Test",
+    domain: "statistics",
+    blurb: "The paired counterpart of the rank-sum test: ranks the within-pair differences.",
+    prerequisites: ["wilcoxon-rank-sum-test", "paired-t-test"],
+  },
+  {
+    id: "kruskal-wallis-test",
+    title: "Kruskal-Wallis Test",
+    domain: "statistics",
+    blurb: "Comparing three or more groups on ranks alone.",
+    prerequisites: ["wilcoxon-rank-sum-test", "chi-square-distribution"],
+  },
+  {
+    id: "mcnemar-test",
+    title: "McNemar's Test",
+    domain: "statistics",
+    blurb: "Paired categorical data, where only the disagreements carry information.",
+    prerequisites: ["chi-square-test-of-independence", "paired-t-test"],
+  },
+  {
+    id: "kolmogorov-smirnov-test",
+    title: "Kolmogorov-Smirnov Test",
+    domain: "statistics",
+    blurb: "Comparing distributions through the largest gap between their CDFs — no binning required.",
+    prerequisites: ["chi-square-goodness-of-fit-test", "cdf"],
+  },
 
   // ---------------------------------------------------------------------
   // Regression
@@ -1152,11 +1246,26 @@ export const concepts: Concept[] = [
     prerequisites: ["ols-assumptions"],
   },
   {
+    id: "weighted-least-squares",
+    title: "Weighted Least Squares",
+    domain: "regression",
+    blurb: "Down-weighting noisier observations to restore efficiency under known heteroskedasticity.",
+    prerequisites: ["homoskedasticity"],
+  },
+  {
     id: "ols-properties",
     title: "OLS Properties",
     domain: "regression",
     blurb: "Why OLS is the best linear unbiased estimator under its assumptions.",
-    prerequisites: ["ols-assumptions", "linear-regression-probabilistic-version"],
+    /**
+     * `central-limit-theorem` is a genuine prerequisite, not a convenience: the
+     * asymptotic normality of beta-hat without normal errors is one of the four
+     * properties this concept covers, and it is the CLT applied to beta-hat as a
+     * weighted sum of the observations. The gap surfaced as a prereq-closure
+     * block on an authored item, the same way `bernoulli-binomial`'s missing
+     * expectation/variance edges did.
+     */
+    prerequisites: ["ols-assumptions", "linear-regression-probabilistic-version", "central-limit-theorem"],
   },
   {
     id: "ssr-sse-sst",
@@ -1192,6 +1301,13 @@ export const concepts: Concept[] = [
     domain: "regression",
     blurb: "Quantifying how much collinearity inflates a coefficient's variance.",
     prerequisites: ["effect-of-adding-another-variable"],
+  },
+  {
+    id: "outliers-leverage-influence",
+    title: "Outliers, Leverage, and Influence",
+    domain: "regression",
+    blurb: "Telling apart an unusual response, an unusual predictor value, and a point that actually moves the fit.",
+    prerequisites: ["geometric-interpretation-of-ols"],
   },
   {
     id: "aic-bic",
@@ -1236,6 +1352,28 @@ export const concepts: Concept[] = [
     prerequisites: ["lasso", "ridge-regression"],
   },
   {
+    id: "polynomial-regression",
+    title: "Polynomial Regression",
+    domain: "regression",
+    blurb: "Fitting curved relationships by adding powers of a predictor as extra linear-model columns.",
+    /**
+     * `vif` is a genuine prerequisite, not a convenience: x and x² are
+     * strongly correlated by construction over any positive range, so
+     * diagnosing and centring away that structural collinearity is a normal
+     * part of this concept, not an optional aside. Surfaced by
+     * `checkPrereqClosure` blocking an authored item, the same way the
+     * `central-limit-theorem` edge on `ols-properties` was found.
+     */
+    prerequisites: ["multiple-linear-regression", "vif"],
+  },
+  {
+    id: "quantile-regression",
+    title: "Quantile Regression",
+    domain: "regression",
+    blurb: "Modeling a conditional quantile of the response instead of its mean.",
+    prerequisites: ["ordinary-least-squares"],
+  },
+  {
     id: "loess-smoothing",
     title: "LOESS Smoothing",
     domain: "regression",
@@ -1269,6 +1407,13 @@ export const concepts: Concept[] = [
     domain: "regression",
     blurb: "A single framework that unifies linear, logistic, and Poisson regression.",
     prerequisites: ["logistic-regression", "exponential-family"],
+  },
+  {
+    id: "poisson-regression",
+    title: "Poisson Regression",
+    domain: "regression",
+    blurb: "Modeling count outcomes with a log link and a mean-equals-variance response distribution.",
+    prerequisites: ["glm", "poisson-distribution"],
   },
   {
     id: "cox-proportional-hazards-model",
@@ -1639,6 +1784,283 @@ export const concepts: Concept[] = [
     domain: "machine-learning",
     blurb: "Squashing a Gaussian process through a logistic link for classification.",
     prerequisites: ["gp-regression", "logistic-regression"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Machine Learning — practical modelling and evaluation.
+  //
+  // Every concept below was already being *referred to* by articles and items
+  // in the fifty above — feature scaling by k-NN, SVM and gradient descent,
+  // calibration by ROC/AUC and naive Bayes, precision-recall by ROC's own
+  // imbalance warning — without existing as a node anyone could study. These
+  // close those dangling references.
+  //
+  // All new edges point from a new concept to an existing one, so no existing
+  // concept's ancestor set (and therefore no existing item's seeded difficulty)
+  // changes. Where a new concept arguably belongs *upstream* of an old one —
+  // `feature-scaling` before `knn` is the clearest case — that rewiring is left
+  // as a graph decision and recorded in assessments/README.md.
+  // ---------------------------------------------------------------------
+  {
+    id: "feature-scaling",
+    title: "Feature Scaling",
+    domain: "machine-learning",
+    blurb:
+      "Standardising and normalising features — and which methods silently depend on it.",
+    prerequisites: ["curse-of-dimensionality", "training-validation-test-set"],
+  },
+  {
+    id: "feature-selection",
+    title: "Feature Selection",
+    domain: "machine-learning",
+    blurb:
+      "Filter, wrapper and embedded methods for deciding which features earn their place.",
+    // `data-leakage` is a real prerequisite, not a cross-reference: selecting
+    // features outside the resampling fold is the defining mistake here, and it
+    // cannot be explained to someone who has not met leakage.
+    prerequisites: ["curse-of-dimensionality", "k-fold-cross-validation", "data-leakage"],
+  },
+  {
+    id: "class-imbalance",
+    title: "Class Imbalance",
+    domain: "machine-learning",
+    blurb:
+      "What breaks when one class is rare, and which of the standard remedies actually help.",
+    prerequisites: ["confusion-matrices", "loss-functions"],
+  },
+  {
+    id: "precision-recall-curves",
+    title: "Precision-Recall Curves",
+    domain: "machine-learning",
+    blurb:
+      "The curve to read when positives are rare and ROC flatters the model.",
+    prerequisites: ["roc-curves", "class-imbalance"],
+  },
+  {
+    id: "probability-calibration",
+    title: "Probability Calibration",
+    domain: "machine-learning",
+    blurb:
+      "When a predicted 0.7 really means 70% — measuring it, and fixing it when it does not.",
+    // The calibration map must itself be fitted on held-out data, so the
+    // train/validation/test split is upstream of doing this correctly.
+    prerequisites: ["roc-curves", "cross-entropy-loss", "training-validation-test-set"],
+  },
+  {
+    id: "nested-cross-validation",
+    title: "Nested Cross-Validation",
+    domain: "machine-learning",
+    blurb:
+      "Scoring the whole selection procedure rather than its luckiest configuration.",
+    prerequisites: ["hyperparameters", "data-leakage"],
+  },
+  {
+    id: "learning-curves",
+    title: "Learning Curves",
+    domain: "machine-learning",
+    blurb:
+      "Error against training-set size — the diagnostic that says whether more data would help.",
+    prerequisites: ["overfitting-underfitting", "k-fold-cross-validation"],
+  },
+  {
+    id: "distribution-shift",
+    title: "Distribution Shift",
+    domain: "machine-learning",
+    blurb:
+      "Covariate shift, label shift and concept drift — why a good model stops being one.",
+    // A deployed model shapes the data it is next retrained on, which is a
+    // leakage-shaped failure and needs `data-leakage` to state.
+    prerequisites: ["training-validation-test-set", "generative-vs-discriminative-models", "data-leakage"],
+  },
+  {
+    id: "model-interpretability",
+    title: "Model Interpretability",
+    domain: "machine-learning",
+    blurb:
+      "Permutation importance, partial dependence and Shapley values — and what each does not tell you.",
+    prerequisites: ["random-forests", "sensitivity-analysis"],
+  },
+  {
+    id: "anomaly-detection",
+    title: "Anomaly Detection",
+    domain: "machine-learning",
+    blurb:
+      "Finding the unusual when you have almost no examples of it, and often no labels at all.",
+    // High dimension is why the field's methods look the way they do: distance
+    // and density both degrade, which is exactly what isolation- and
+    // reconstruction-based scores are designed to sidestep.
+    prerequisites: ["clustering-methods", "generative-vs-discriminative-models", "curse-of-dimensionality"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Machine Learning — deep learning.
+  //
+  // `neural-networks` and `backpropagation` previously dead-ended: the graph
+  // could train a dense network and had nothing to say about what is actually
+  // built with one. This branch runs from the pieces every architecture shares
+  // (activations, optimisers, the two standard regularisers) through the three
+  // architectural families, to the representations they produce.
+  // ---------------------------------------------------------------------
+  {
+    id: "activation-functions",
+    title: "Activation Functions",
+    domain: "machine-learning",
+    blurb:
+      "Sigmoid, tanh, ReLU and its successors — the nonlinearity that stops depth collapsing.",
+    prerequisites: ["neural-networks"],
+  },
+  {
+    id: "sgd-and-adaptive-optimizers",
+    title: "SGD and Adaptive Optimizers",
+    domain: "machine-learning",
+    blurb:
+      "Momentum, RMSProp and Adam — why plain gradient descent is rarely what actually runs.",
+    prerequisites: ["gradient-descent", "backpropagation"],
+  },
+  {
+    id: "dropout",
+    title: "Dropout",
+    domain: "machine-learning",
+    blurb:
+      "Randomly deleting units at training time, and why that regularises rather than breaks.",
+    prerequisites: ["neural-networks", "overfitting-underfitting"],
+  },
+  {
+    id: "batch-normalization",
+    title: "Batch Normalization",
+    domain: "machine-learning",
+    blurb:
+      "Normalising activations mid-network — what it fixes, and the train/inference asymmetry it creates.",
+    prerequisites: ["backpropagation", "feature-scaling"],
+  },
+  {
+    id: "convolutional-neural-networks",
+    title: "Convolutional Neural Networks",
+    domain: "machine-learning",
+    blurb:
+      "Weight sharing and locality — turning an image's structure into a prior on the architecture.",
+    // The architecture *is* a regularisation choice — a prior expressed in which
+    // weights exist — so the overfitting story is upstream of understanding why
+    // it works and why augmentation is not optional.
+    prerequisites: ["neural-networks", "activation-functions", "overfitting-underfitting"],
+  },
+  {
+    id: "recurrent-neural-networks",
+    title: "Recurrent Neural Networks",
+    domain: "machine-learning",
+    blurb:
+      "Sharing weights across time for sequences, and the gradient problem that follows.",
+    prerequisites: ["backpropagation", "activation-functions"],
+  },
+  {
+    id: "attention-mechanism",
+    title: "Attention Mechanism",
+    domain: "machine-learning",
+    blurb:
+      "Queries, keys and values — letting every position look directly at every other.",
+    // The √d scaling is derived from the variance of a sum of independent
+    // products, so `variance` is genuinely needed rather than merely cited.
+    prerequisites: ["recurrent-neural-networks", "dot-product", "variance"],
+  },
+  {
+    id: "transformers",
+    title: "Transformers",
+    domain: "machine-learning",
+    blurb:
+      "Self-attention, multiple heads and positional encoding — attention as the whole architecture.",
+    prerequisites: ["attention-mechanism", "batch-normalization"],
+  },
+  {
+    id: "embeddings",
+    title: "Embeddings",
+    domain: "machine-learning",
+    blurb:
+      "Learned dense vectors for discrete things, where geometry carries meaning.",
+    prerequisites: ["neural-networks", "pca"],
+  },
+  {
+    id: "autoencoders",
+    title: "Autoencoders",
+    domain: "machine-learning",
+    blurb:
+      "Reconstructing the input through a bottleneck — nonlinear dimensionality reduction that learns.",
+    prerequisites: ["neural-networks", "probabilistic-pca"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Machine Learning — further paradigms and methods.
+  //
+  // Reinforcement learning was named in `types-of-machine-learning` and defined
+  // nowhere; stacking was named in `ensemble-methods`, DBSCAN and hierarchical
+  // clustering in `clustering-methods`, and Bayesian optimisation in
+  // `gp-regression`. Each is given a node here.
+  // ---------------------------------------------------------------------
+  {
+    id: "transfer-learning",
+    title: "Transfer Learning",
+    domain: "machine-learning",
+    blurb:
+      "Reusing a model trained elsewhere — feature extraction, fine-tuning, and when it backfires.",
+    // Matching the pretrained model's own input normalisation is not optional
+    // and is the most common silent mistake here, so `feature-scaling` is
+    // genuinely needed rather than merely adjacent.
+    prerequisites: ["convolutional-neural-networks", "embeddings", "feature-scaling"],
+  },
+  {
+    id: "self-supervised-learning",
+    title: "Self-Supervised Learning",
+    domain: "machine-learning",
+    blurb:
+      "Manufacturing labels from the input itself — the engine behind modern pretraining.",
+    prerequisites: ["transfer-learning", "autoencoders"],
+  },
+  {
+    id: "reinforcement-learning",
+    title: "Reinforcement Learning",
+    domain: "machine-learning",
+    blurb:
+      "Learning from delayed, evaluative reward through interaction rather than from labels.",
+    prerequisites: ["types-of-machine-learning", "markov-chains"],
+  },
+  {
+    id: "multi-armed-bandits",
+    title: "Multi-Armed Bandits",
+    domain: "machine-learning",
+    blurb:
+      "Exploration versus exploitation in its simplest complete form, with regret as the scoreboard.",
+    prerequisites: ["reinforcement-learning", "confidence-interval"],
+  },
+  {
+    id: "bayesian-optimization",
+    title: "Bayesian Optimization",
+    domain: "machine-learning",
+    blurb:
+      "Tuning something expensive by modelling the score surface and its uncertainty.",
+    prerequisites: ["gp-regression", "hyperparameters"],
+  },
+  {
+    id: "stacking",
+    title: "Stacking",
+    domain: "machine-learning",
+    blurb:
+      "Training a model to combine models — and the out-of-fold discipline that keeps it honest.",
+    prerequisites: ["ensemble-methods", "nested-cross-validation"],
+  },
+  {
+    id: "hierarchical-clustering",
+    title: "Hierarchical Clustering",
+    domain: "machine-learning",
+    blurb:
+      "Dendrograms and linkage rules — every granularity at once, and the cut still to choose.",
+    prerequisites: ["clustering-methods"],
+  },
+  {
+    id: "density-based-clustering",
+    title: "Density-Based Clustering",
+    domain: "machine-learning",
+    blurb:
+      "DBSCAN: clusters as connected dense regions, with noise as a first-class outcome.",
+    prerequisites: ["clustering-methods", "k-means-clustering"],
   },
 
   // ---------------------------------------------------------------------

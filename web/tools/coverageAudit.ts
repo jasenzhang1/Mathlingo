@@ -1,15 +1,19 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { concepts } from "../src/data/concepts.ts";
-import { loadItemBank } from "../src/data/items.ts";
+import { itemsByConcept } from "../src/data/items.ts";
+import { wikiByConcept } from "../src/data/wiki/index.ts";
 
 /**
- * Answers one question: which concepts can actually be assessed today?
+ * Answers one question: what can a learner actually do on a concept today?
  *
- * Two banks exist and they are not the same thing:
+ * Three banks exist and they are not the same thing:
  *   assessments/*.md   — authored question banks, prose. Human-readable design.
  *   web/src/data/items — the servable bank. Only these reach a learner.
- * A concept "has questions" in the first sense long before the app can quiz on it.
+ *   web/src/data/wiki  — the article a concept page renders on its Wiki tab.
+ * A concept "has questions" in the first sense long before the app can quiz on
+ * it, and can be quizzable with nothing to read, or readable with nothing to
+ * answer. All three are reported separately below for that reason.
  */
 
 const ROOT = join(import.meta.dirname, "..", "..");
@@ -69,9 +73,23 @@ const withServable = all.filter((id) =>
 
 const pct = (n: number) => `${((n / all.length) * 100).toFixed(1)}%`;
 
+const withWiki = all.filter((id) => wikiByConcept.has(id));
+const withEither = all.filter(
+  (id) => (authored.get(id) ?? 0) > 0 || (itemsByConcept.get(id) ?? []).length > 0,
+);
+
 console.log(`concepts in the map:            ${all.length}`);
 console.log(`  with authored questions (md): ${withAuthored.length}  (${pct(withAuthored.length)})`);
+console.log(`  with questions in either form: ${withEither.length}  (${pct(withEither.length)})`);
 console.log(`  with SERVABLE items (app):    ${withServable.length}  (${pct(withServable.length)})`);
+console.log(`  with a wiki article (app):    ${withWiki.length}  (${pct(withWiki.length)})`);
+
+// A wiki article keyed to an id that is not in the graph renders nowhere.
+const wikiOrphans = [...wikiByConcept.keys()].filter((id) => !all.includes(id));
+if (wikiOrphans.length) {
+  console.log(`\nwiki articles with no matching concept id (${wikiOrphans.length}):`);
+  console.log("  " + wikiOrphans.join(", "));
+}
 
 console.log(`\nservable today:`);
 for (const id of withServable) {
@@ -85,9 +103,29 @@ const totalQuestions = [...authored.values()].reduce((a, b) => a + b, 0);
 console.log(`\nauthored questions in assessments/*.md: ${totalQuestions}`);
 
 const missingAuthored = all.filter((id) => (authored.get(id) ?? 0) === 0);
-if (missingAuthored.length) {
-  console.log(`\nno authored questions found for ${missingAuthored.length} concepts:`);
-  console.log("  " + missingAuthored.join(", "));
+
+/**
+ * Most clusters were designed in markdown and ported into `items.ts`, so a
+ * concept with no markdown rows genuinely has no questions. Clusters ml-10..12
+ * invert that: those concepts were added to the graph after their neighbours
+ * shipped and were authored directly in typed form, with the markdown written
+ * as an index rather than a transcript. Splitting the two cases keeps this
+ * report from calling an authorship direction a coverage gap.
+ */
+const authoredInCodeOnly = missingAuthored.filter((id) =>
+  (itemsByConcept.get(id) ?? []).some((i) => i.status === "live" || i.status === "shadow"),
+);
+const genuinelyMissing = missingAuthored.filter((id) => !authoredInCodeOnly.includes(id));
+
+if (authoredInCodeOnly.length) {
+  console.log(
+    `\nauthored directly in items.ts rather than markdown (${authoredInCodeOnly.length} concepts):`,
+  );
+  console.log("  " + authoredInCodeOnly.join(", "));
+}
+if (genuinelyMissing.length) {
+  console.log(`\nno questions at all, in either form (${genuinelyMissing.length} concepts):`);
+  console.log("  " + genuinelyMissing.join(", "));
 }
 
 // Sections written for ids that are not in the concept map at all — either a

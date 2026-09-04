@@ -26,6 +26,8 @@ For certain topics, we wish to challenge the learner to think about why certain 
 
 #### 5. AI scoring
 
-In conjunction with the first idea of memory, an AI grader will assess how much a user knows a topic by how well they answer the open-ended question. The AI grader can grade hand-written answers, voice answers, or typed answers. The AI can even have a conversation with the user to mimic an interview, and give the user a grade on several topics at once. 
+In conjunction with the first idea of memory, an AI grader will assess how much a user knows a topic by how well they answer the open-ended question. The AI grader can grade hand-written answers, voice answers, or typed answers. The AI can even have a conversation with the user to mimic an interview, and give the user a grade on several topics at once.
 
+#### 6. Community Q&A
 
+Learners can submit their own question-and-answer cards to a shared deck. Cards earn their author reputation as the community upvotes them, the strongest cards get pinned to the top of the deck, and milestones — a first card, ten upvotes, cards across three subjects — unlock badges. The best explanation of a concept is usually written by someone who just finished struggling with it.

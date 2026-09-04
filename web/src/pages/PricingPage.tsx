@@ -112,7 +112,7 @@ export function PricingPage() {
                     </span>
                   ) : plan.id === "free" ? (
                     <Link
-                      to="/#map"
+                      to="/map"
                       className="font-body block rounded-full border border-[var(--line)] px-4 py-2.5 text-center text-sm font-medium text-[var(--ink)] hover:border-[var(--accent)]"
                     >
                       Start learning

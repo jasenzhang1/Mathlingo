@@ -5,7 +5,7 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 236 concepts.**
+**Total: 280 concepts.**
 
 ## Probability (56)
 
@@ -132,14 +132,14 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Concept | Prerequisites | Lesson |
 |---|---|---|
 | Change of Variables (Jacobian) | Probability Density Function (PDF), Determinant | — |
-| Covariance Matrix | Covariance, Positive Definite Matrices | — |
+| Covariance Matrix | Covariance, Variance, Positive Definite Matrices | — |
 | Bivariate Normal | Normal Distribution, Covariance, Change of Variables (Jacobian) | — |
 | Multivariate Normal | Bivariate Normal, Covariance Matrix, Eigendecomposition | — |
 | Pearson Correlation | Correlation, Sample Variance | — |
-| Central Limit Theorem | Modes of Convergence, Moment Generating Function (MGF), Law of Large Numbers | — |
-| Kullback-Leibler Divergence | Probability Density Function (PDF), Probability Mass Function (PMF), Expectation | — |
+| Central Limit Theorem | Modes of Convergence, Moment Generating Function (MGF), Law of Large Numbers, Normal Distribution, Mutual Independence | — |
+| Kullback-Leibler Divergence | Probability Density Function (PDF), Probability Mass Function (PMF), Expectation, Jensen's Inequality | — |
 
-## Statistical Inference (25)
+## Statistical Inference (36)
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -168,8 +168,19 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Fisher's Exact Test | Chi Square Test of Independence, Hypergeometric Distribution | — |
 | Wilcoxon Rank Sum Test | Order Statistics, Hypothesis Test | — |
 | Bootstrapping | Sampling Distribution, Sample Mean | — |
+| Two Sample Proportions Z-Test | One Sample Proportions Z-Test, Two Sample Z-Test | — |
+| Effect Size | P-Value, Standard Error | — |
+| Multiple Testing | P-Value, Type I and Type II Error | — |
+| Equivalence Testing | Confidence Interval, Hypothesis Test | — |
+| Sequential Testing and Optional Stopping | P-Value, Type I and Type II Error | — |
+| Prediction Interval | Confidence Interval, Sampling Distribution | — |
+| Permutation Test | Hypothesis Test, P-Value, Counting Methods | — |
+| Wilcoxon Signed Rank Test | Wilcoxon Rank Sum Test, Paired T-Test | — |
+| Kruskal-Wallis Test | Wilcoxon Rank Sum Test, Chi Square Distribution | — |
+| McNemar's Test | Chi Square Test of Independence, Paired T-Test | — |
+| Kolmogorov-Smirnov Test | Chi Square Goodness of Fit Test, CDF | — |
 
-## Regression (29)
+## Regression (34)
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -184,26 +195,31 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Linear Regression, Probabilistic Version | Multiple Linear Regression, Maximum Likelihood Estimation, Normal Distribution | — |
 | OLS Assumptions | Multiple Linear Regression | — |
 | Homoskedasticity | OLS Assumptions | — |
-| OLS Properties | OLS Assumptions, Linear Regression, Probabilistic Version | — |
+| Weighted Least Squares | Homoskedasticity | — |
+| OLS Properties | OLS Assumptions, Linear Regression, Probabilistic Version, Central Limit Theorem | — |
 | SSR, SSE, SST | Simple Linear Regression | — |
 | R² | SSR, SSE, SST | — |
 | ANOVA | SSR, SSE, SST, F-Distribution, Hypothesis Test | — |
 | Effect of Adding Another Variable | Multiple Linear Regression, R² | — |
 | Variance Inflation Factor (VIF) | Effect of Adding Another Variable | — |
+| Outliers, Leverage, and Influence | Geometric Interpretation of OLS | — |
 | AIC, BIC | Linear Regression, Probabilistic Version, Maximum Likelihood Estimation | — |
 | Forward, Backward, Stepwise Selection | AIC, BIC, Multiple Linear Regression | — |
 | Regularization | Multiple Linear Regression, Bias Variance Tradeoff | — |
 | LASSO | Regularization | — |
 | Ridge Regression | Regularization | — |
 | Elastic Net | LASSO, Ridge Regression | — |
+| Polynomial Regression | Multiple Linear Regression, Variance Inflation Factor (VIF) | — |
+| Quantile Regression | Ordinary Least Squares | — |
 | LOESS Smoothing | Simple Linear Regression | — |
 | Mixed Effect Models | Multiple Linear Regression, Sampling Methods | — |
 | Logistic Regression | Maximum Likelihood Estimation, Bernoulli and Binomial Distributions, Multiple Linear Regression | — |
 | Probit Regression | Logistic Regression, Normal Distribution | — |
 | Generalized Linear Model (GLM) | Logistic Regression, Exponential Family | — |
+| Poisson Regression | Generalized Linear Model (GLM), Poisson Distribution | — |
 | Cox Proportional Hazards Model | Generalized Linear Model (GLM), Maximum Likelihood Estimation | — |
 
-## Machine Learning (50)
+## Machine Learning (78)
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -257,6 +273,34 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Independent Component Analysis (ICA) | Principal Component Analysis (PCA), Kullback-Leibler Divergence | — |
 | GP Regression | Multivariate Normal, Kernel | — |
 | GP Classification | GP Regression, Logistic Regression | — |
+| Feature Scaling | Curse of Dimensionality, Training vs Validation vs Test Set | — |
+| Feature Selection | Curse of Dimensionality, K-Fold Cross-Validation, Data Leakage | — |
+| Class Imbalance | Confusion Matrices, Loss Functions | — |
+| Precision-Recall Curves | ROC Curves, Class Imbalance | — |
+| Probability Calibration | ROC Curves, Cross Entropy Loss, Training vs Validation vs Test Set | — |
+| Nested Cross-Validation | Hyperparameters, Data Leakage | — |
+| Learning Curves | Overfitting and Underfitting, K-Fold Cross-Validation | — |
+| Distribution Shift | Training vs Validation vs Test Set, Generative vs Discriminative Models, Data Leakage | — |
+| Model Interpretability | Random Forests, Sensitivity Analysis | — |
+| Anomaly Detection | Clustering Methods, Generative vs Discriminative Models, Curse of Dimensionality | — |
+| Activation Functions | Neural Networks | — |
+| SGD and Adaptive Optimizers | Gradient Descent, Backpropagation | — |
+| Dropout | Neural Networks, Overfitting and Underfitting | — |
+| Batch Normalization | Backpropagation, Feature Scaling | — |
+| Convolutional Neural Networks | Neural Networks, Activation Functions, Overfitting and Underfitting | — |
+| Recurrent Neural Networks | Backpropagation, Activation Functions | — |
+| Attention Mechanism | Recurrent Neural Networks, Dot Product, Variance | — |
+| Transformers | Attention Mechanism, Batch Normalization | — |
+| Embeddings | Neural Networks, Principal Component Analysis (PCA) | — |
+| Autoencoders | Neural Networks, Probabilistic PCA | — |
+| Transfer Learning | Convolutional Neural Networks, Embeddings, Feature Scaling | — |
+| Self-Supervised Learning | Transfer Learning, Autoencoders | — |
+| Reinforcement Learning | Types of Machine Learning, Markov Chains | — |
+| Multi-Armed Bandits | Reinforcement Learning, Confidence Interval | — |
+| Bayesian Optimization | GP Regression, Hyperparameters | — |
+| Stacking | Ensemble Methods, Nested Cross-Validation | — |
+| Hierarchical Clustering | Clustering Methods | — |
+| Density-Based Clustering | Clustering Methods, K-Means Clustering | — |
 
 ## Graphical Models & Bayesian ML (15)
 

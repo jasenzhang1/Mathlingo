@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.tsx'
 import { AuthProvider } from './lib/auth/AuthContext.tsx'
 import { AccountPage } from './pages/AccountPage.tsx'
+import { ConceptMapPage } from './pages/ConceptMapPage.tsx'
 import { ConceptPage } from './pages/ConceptPage.tsx'
 import { ForgotPasswordPage } from './pages/ForgotPasswordPage.tsx'
 import { LoginPage } from './pages/LoginPage.tsx'
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')!).render(
       <AuthProvider>
         <Routes>
           <Route path="/" element={<App />} />
+          <Route path="/map" element={<ConceptMapPage />} />
           <Route path="/concepts/:id" element={<ConceptPage />} />
           <Route path="/concepts/:id/discussion/:postId" element={<PostPage />} />
           <Route path="/pricing" element={<PricingPage />} />
