@@ -4,7 +4,27 @@ Authored questions for every concept in the `probability` (56) and `statistics` 
 [`concepts.ts`](../web/src/data/concepts.ts) — 81 concepts total. Structure follows
 [`assessment.md`](../assessment.md): four cognitive levels per concept, misconception tags naming a
 `blameConceptId`, and difficulty seeds in logits from `expectedDifficulty` (concept depth in the
-graph). Ready to become `Item` entries in [`items.ts`](../web/src/data/items.ts).
+graph).
+
+**Two banks, and the difference matters.** These markdown files are the authored
+design — human-readable, and the source everything else is written from. Only typed
+`Item` entries under [`web/src/data/`](../web/src/data/) are actually served to a
+learner, so a concept has questions in the first sense long before the app can quiz
+on it. `npm run audit:coverage` reports both numbers side by side.
+
+| Domain | Authored here | Wired into the app | Full 8-item live pool |
+|---|---|---|---|
+| Statistics | 25 / 25 | 25 | 25 |
+| Graphical Models | 15 / 15 | 15 | 15 |
+| Multivariate Probability | 7 / 7 | 7 | 7 |
+| Machine Learning | 50 / 50 | 50 | 0 — pools are at 5 items, below `MIN_LIVE_ITEMS` |
+| Probability | 56 / 56 | 2 | 1 |
+| Linear Algebra | 54 / 54 | 1 | 0 |
+| Regression | 29 / 29 | 29 | 29 |
+
+`auditCoverage` calls a pool adequate only at 8 or more live items with coverage at
+recall/apply/explain and a difficulty spread of at least 1.5 logits, so the last
+column is the one that says a concept is genuinely assessable today.
 
 **Format note.** [`bernoulli-binomial.md`](bernoulli-binomial.md) was written first, at full essay
 depth per item, as a pilot. That density doesn't scale to 81 concepts, so everything after it uses a
@@ -12,6 +32,11 @@ denser table: one row per question, with rubric/misconception detail folded into
 prose note reserved for the standout transfer items in each concept — the ones worth explaining, the
 way the free-throw question was worth explaining. Both formats carry the same rigor; only the prose
 budget differs.
+
+**Counts in the tables below** are item rows counted the way
+[`coverageAudit.ts`](../web/tools/coverageAudit.ts) counts them — table rows keyed
+`R1`/`A2`/`E1`/`T1`, plus the pilot file's bolded prose headers — so they can be
+regenerated rather than trusted.
 
 **Numeric claims** in every cluster are verified in batch against a small computation script rather
 than by hand per item — flagged inline as `[verified]` once checked. Anything not yet checked is
@@ -21,20 +46,20 @@ than by hand per item — flagged inline as `[verified]` once checked. Anything 
 
 | # | File | Concepts | Status |
 |---|---|---|---|
-| — | [bernoulli-binomial.md](bernoulli-binomial.md) | Bernoulli and Binomial Distributions (pilot, full depth) | done (25 items) |
+| — | [bernoulli-binomial.md](bernoulli-binomial.md) | Bernoulli and Binomial Distributions (pilot, full depth) | done (24 items) |
 | 1 | [foundations-of-probability.md](foundations-of-probability.md) | Set Theory → Mutual Independence (11) | done (77 items) |
 | 2 | [random-variables-and-density.md](random-variables-and-density.md) | Random Variables → Variance (7) | done (49 items) |
 | 3 | [discrete-distributions.md](discrete-distributions.md) | Poisson, Hypergeometric, Geometric, Negative Binomial (4) | done (30 items) |
-| 4 | [continuous-distributions.md](continuous-distributions.md) | Normal → F-Distribution (8) | done (56 items) |
-| 5 | [joint-and-conditional-structure.md](joint-and-conditional-structure.md) | Joint/Marginal/Conditional, Covariance, LTE (5) | pending |
-| 6 | [mgf-likelihood-and-estimation.md](mgf-likelihood-and-estimation.md) | MGF → Exponential Family (8) | pending |
-| 7 | [inequalities-and-convergence.md](inequalities-and-convergence.md) | Markov → Order Statistics (6) | pending |
-| 8 | [estimation-theory.md](estimation-theory.md) | Sufficient Statistic → Cramér–Rao (5) | pending |
-| 9 | [statistics-foundations.md](statistics-foundations.md) | Population vs Sample → Sample Variance (6) | pending |
+| 4 | [continuous-distributions.md](continuous-distributions.md) | Normal → F-Distribution (8) | done (57 items) |
+| 5 | [joint-and-conditional-structure.md](joint-and-conditional-structure.md) | Joint/Marginal/Conditional, Covariance, LTE (5) | done (35 items) |
+| 6 | [mgf-likelihood-and-estimation.md](mgf-likelihood-and-estimation.md) | MGF → Exponential Family (8) | done (56 items) |
+| 7 | [inequalities-and-convergence.md](inequalities-and-convergence.md) | Markov → Order Statistics (6) | done (42 items) |
+| 8 | [estimation-theory.md](estimation-theory.md) | Sufficient Statistic → Cramér–Rao (5) | done (35 items) |
+| 9 | [statistics-foundations.md](statistics-foundations.md) | Population vs Sample → Sample Variance (6) | done (42 items) |
 | 10 | [hypothesis-testing-machinery.md](hypothesis-testing-machinery.md) | Sampling Distribution → Confidence Interval (9) | done (63 items) |
-| 11 | [named-tests-and-resampling.md](named-tests-and-resampling.md) | Z/t-tests, chi-square, Wilcoxon, Bootstrap (11) | done (44 items) |
+| 11 | [named-tests-and-resampling.md](named-tests-and-resampling.md) | Z/t-tests, chi-square, Wilcoxon, Bootstrap (11) | done (55 items) |
 
-**Probability & Statistics: 81 / 81 concepts done (~618 items).**
+**Probability & Statistics: 81 / 81 concepts done (565 items).**
 
 ## Servable status: multivariate probability
 
@@ -80,7 +105,7 @@ gradient despite `gradient-descent` being named after one, and no neural-network
 | `neural-networks` | machine-learning | *ISL* ch. 10 ("Deep Learning"), Bishop ch. 5 ("Neural Networks") — entirely unrepresented until now |
 | `backpropagation` | machine-learning | *Math for ML* §5.6, Bishop §5.3 — the algorithm that trains a neural network |
 
-**Linear Algebra: 54 / 54 concepts done (~271 items).**
+**Linear Algebra: 54 / 54 concepts done (273 items).**
 
 | # | File | Concepts | Status |
 |---|---|---|---|
@@ -141,17 +166,17 @@ side.
 
 # The entire concept graph: complete
 
-**All 236 concepts done — every domain in `concepts.ts`.** ~1780 items across 39 files.
+**All 236 concepts done — every domain in `concepts.ts`.** 1,343 items across 38 files.
 
-| Domain | Concepts | File(s) |
-|---|---|---|
-| Probability + Statistics (one combined sweep) | 81 | `bernoulli-binomial.md` + 11 clusters |
-| Linear Algebra | 54 | `la-01`…`la-08` |
-| Machine Learning | 50 | `ml-01`…`ml-09` |
-| Multivariate Probability & Asymptotics | 7 | `mp-01-multivariate-probability.md` |
-| Regression | 29 | `reg-01`…`reg-05` |
-| Graphical Models & Bayesian ML | 15 | `gm-01`…`gm-03` |
-| **Total** | **236** | **39 files** |
+| Domain | Concepts | Items | File(s) |
+|---|---|---|---|
+| Probability + Statistics (one combined sweep) | 81 | 565 | `bernoulli-binomial.md` + 11 clusters |
+| Linear Algebra | 54 | 273 | `la-01`…`la-08` |
+| Machine Learning | 50 | 250 | `ml-01`…`ml-09` |
+| Multivariate Probability & Asymptotics | 7 | 35 | `mp-01-multivariate-probability.md` |
+| Regression | 29 | 145 | `reg-01`…`reg-05` |
+| Graphical Models & Bayesian ML | 15 | 75 | `gm-01`…`gm-03` |
+| **Total** | **236** | **1,343** | **38 files** |
 
 The graph itself now has 236 concepts (232 original + the 4 added this sweep — `matrix-calculus`,
 `perceptron`, `neural-networks`, `backpropagation`; see the "Graph additions" section above).

@@ -1173,7 +1173,15 @@ export const concepts: Concept[] = [
     title: "OLS Properties",
     domain: "regression",
     blurb: "Why OLS is the best linear unbiased estimator under its assumptions.",
-    prerequisites: ["ols-assumptions", "linear-regression-probabilistic-version"],
+    /**
+     * `central-limit-theorem` is a genuine prerequisite, not a convenience: the
+     * asymptotic normality of beta-hat without normal errors is one of the four
+     * properties this concept covers, and it is the CLT applied to beta-hat as a
+     * weighted sum of the observations. The gap surfaced as a prereq-closure
+     * block on an authored item, the same way `bernoulli-binomial`'s missing
+     * expectation/variance edges did.
+     */
+    prerequisites: ["ols-assumptions", "linear-regression-probabilistic-version", "central-limit-theorem"],
   },
   {
     id: "ssr-sse-sst",

@@ -184,7 +184,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Linear Regression, Probabilistic Version | Multiple Linear Regression, Maximum Likelihood Estimation, Normal Distribution | — |
 | OLS Assumptions | Multiple Linear Regression | — |
 | Homoskedasticity | OLS Assumptions | — |
-| OLS Properties | OLS Assumptions, Linear Regression, Probabilistic Version | — |
+| OLS Properties | OLS Assumptions, Linear Regression, Probabilistic Version, Central Limit Theorem | — |
 | SSR, SSE, SST | Simple Linear Regression | — |
 | R² | SSR, SSE, SST | — |
 | ANOVA | SSR, SSE, SST, F-Distribution, Hypothesis Test | — |

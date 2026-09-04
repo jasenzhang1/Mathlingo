@@ -42,6 +42,7 @@ import { testStatisticWiki } from "./test-statistic";
 import { twoSampleTTestWiki } from "./two-sample-t-test";
 import { twoSampleZTestWiki } from "./two-sample-z-test";
 import { mlWikiArticles } from "./ml";
+import { regressionWikis } from "./regression";
 import { typeIIIErrorWiki } from "./type-i-ii-error";
 import type { WikiArticle } from "./types";
 import { variationalInferenceElboWiki } from "./variational-inference-elbo";
@@ -153,7 +154,7 @@ const articles: WikiArticle[] = [
  * "coming soon" state, the same way `embedUrl` does for slides.
  */
 export const wikiByConcept = new Map<string, WikiArticle>(
-  [...articles, ...mlWikiArticles].map((article) => [article.conceptId, article]),
+  [...articles, ...regressionWikis, ...mlWikiArticles].map((article) => [article.conceptId, article]),
 );
 
 export type { WikiArticle } from "./types";
