@@ -2,6 +2,7 @@ import type { Item, SourceRef } from "../lib/assessment/types";
 import { graphicalModelsItems } from "./items.graphical-models";
 import { mlItems } from "./items-ml";
 import { statisticsFoundationsItems } from "./items.statistics-foundations";
+import { statisticsInferenceItems } from "./items.statistics-inference";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -2847,6 +2848,7 @@ export const items: Item[] = [
   // by cluster into its own modules; see those files for the authoring notes.
   // -------------------------------------------------------------------------
   ...statisticsFoundationsItems,
+  ...statisticsInferenceItems,
 ];
 
 export const itemsByConcept = new Map<string, Item[]>();
