@@ -20,20 +20,44 @@ import { normalEquationsWiki } from "./normal-equations";
 import { olsAssumptionsWiki } from "./ols-assumptions";
 import { olsPropertiesWiki } from "./ols-properties";
 import { ordinaryLeastSquaresWiki } from "./ordinary-least-squares";
+import { outliersLeverageInfluenceWiki } from "./outliers-leverage-influence";
+import { poissonRegressionWiki } from "./poisson-regression";
+import { polynomialRegressionWiki } from "./polynomial-regression";
 import { probitRegressionWiki } from "./probit-regression";
+import { quantileRegressionWiki } from "./quantile-regression";
 import { rSquaredWiki } from "./r-squared";
 import { regressToTheMeanWiki } from "./regress-to-the-mean";
 import { regressionWiki } from "./regression";
+import { regularizationWiki } from "./regularization";
 import { ridgeRegressionWiki } from "./ridge-regression";
 import { simpleLinearRegressionWiki } from "./simple-linear-regression";
 import { ssrSseSstWiki } from "./ssr-sse-sst";
-import { regularizationWiki } from "./regularization";
 import { vifWiki } from "./vif";
+import { weightedLeastSquaresWiki } from "./weighted-least-squares";
 
 /**
- * All 29 concepts of the `regression` domain, in curriculum order rather than
+ * All 34 concepts of the `regression` domain, in curriculum order rather than
  * alphabetical: the order a learner meets them walking down the prerequisite
- * graph, matching the five clusters of `assessments/reg-01`…`reg-05`.
+ * graph, matching the five clusters of `assessments/reg-01`…`reg-05` — with
+ * five additions folded into their natural cluster:
+ *
+ *   - `weighted-least-squares` after `homoskedasticity` (its direct remedy)
+ *   - `outliers-leverage-influence` after `vif` (the diagnostics cluster)
+ *   - `polynomial-regression` and `quantile-regression` before `loess-smoothing`
+ *     (alternatives to plain OLS that still fit inside reg-04's arc)
+ *   - `poisson-regression` after `glm` (a named worked example of the
+ *     framework, the same way `cox-proportional-hazards-model` is)
+ *
+ * Each was a genuine gap rather than a nice-to-have: `weighted-least-squares`
+ * and `poisson-regression` were both already named by other concepts'
+ * blurbs (`homoskedasticity`'s remedies, `glm`'s own "unifies linear,
+ * logistic, and Poisson regression") without ever being defined; `leverage`
+ * was already computed in `geometric-interpretation-of-ols` but had no
+ * concept of its own to attach Cook's distance to; `polynomial-regression`
+ * was the explicit forward-reference in `loess-smoothing`'s "usual workflow"
+ * paragraph; `quantile-regression` was the generalisation `ordinary-least-
+ * squares`'s own wiki gestures at when it contrasts squared and absolute
+ * loss.
  */
 export const regressionWikis: WikiArticle[] = [
   // reg-01 — foundations
@@ -50,6 +74,7 @@ export const regressionWikis: WikiArticle[] = [
   linearRegressionProbabilisticVersionWiki,
   olsAssumptionsWiki,
   homoskedasticityWiki,
+  weightedLeastSquaresWiki,
 
   // reg-03 — model fit and diagnostics
   olsPropertiesWiki,
@@ -58,6 +83,7 @@ export const regressionWikis: WikiArticle[] = [
   anovaWiki,
   effectOfAddingAnotherVariableWiki,
   vifWiki,
+  outliersLeverageInfluenceWiki,
 
   // reg-04 — model selection and regularization
   aicBicWiki,
@@ -66,6 +92,8 @@ export const regressionWikis: WikiArticle[] = [
   lassoWiki,
   ridgeRegressionWiki,
   elasticNetWiki,
+  polynomialRegressionWiki,
+  quantileRegressionWiki,
   loessSmoothingWiki,
 
   // reg-05 — generalized and special regression
@@ -73,5 +101,6 @@ export const regressionWikis: WikiArticle[] = [
   logisticRegressionWiki,
   probitRegressionWiki,
   glmWiki,
+  poissonRegressionWiki,
   coxProportionalHazardsModelWiki,
 ];

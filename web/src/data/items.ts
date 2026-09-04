@@ -7,6 +7,7 @@ import { statisticsNonparametricItems } from "./items.statistics-nonparametric";
 import { statisticsTestsItems } from "./items.statistics-tests";
 import { mlItems } from "./items-ml";
 import { regressionDiagnosticsItems } from "./items/regression-diagnostics";
+import { regressionExtensionsItems } from "./items/regression-extensions";
 import { regressionFoundationsItems } from "./items/regression-foundations";
 import { regressionGeneralizedItems } from "./items/regression-generalized";
 import { regressionGeometryItems } from "./items/regression-geometry";
@@ -537,6 +538,7 @@ export const items: Item[] = [
   ...regressionDiagnosticsItems,
   ...regressionSelectionItems,
   ...regressionGeneralizedItems,
+  ...regressionExtensionsItems,
 
   // =========================================================================
   // Multivariate Probability & Asymptotics — the whole domain, 7 concepts.
