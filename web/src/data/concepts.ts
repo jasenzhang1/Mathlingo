@@ -854,7 +854,10 @@ export const concepts: Concept[] = [
     title: "Covariance Matrix",
     domain: "multivariate-probability",
     blurb: "Every pairwise covariance among a vector of random variables, in one matrix.",
-    prerequisites: ["covariance", "positive-definite-matrices"],
+    // Variance was reachable only through Covariance's own ancestors, which do
+    // not include it. The diagonal of Σ *is* the variances, and every quadratic
+    // form aᵀΣa is one, so the edge is a real dependency rather than a tidy-up.
+    prerequisites: ["covariance", "variance", "positive-definite-matrices"],
   },
   {
     id: "bivariate-normal",
@@ -882,14 +885,28 @@ export const concepts: Concept[] = [
     title: "Central Limit Theorem",
     domain: "multivariate-probability",
     blurb: "Why sums of many independent variables look normal, almost no matter what.",
-    prerequisites: ["modes-of-convergence", "mgf", "law-of-large-numbers"],
+    // Normal Distribution and Mutual Independence were both missing: the
+    // theorem's conclusion names N(0, 1) and its hypothesis is iid sampling, so
+    // neither can be stated without them. Found by `checkPrereqClosure`
+    // blocking the CLT items, the same way the Expectation/Variance edges on
+    // `bernoulli-binomial` were found.
+    prerequisites: [
+      "modes-of-convergence",
+      "mgf",
+      "law-of-large-numbers",
+      "normal-distribution",
+      "mutual-independence",
+    ],
   },
   {
     id: "kl-divergence",
     title: "Kullback-Leibler Divergence",
     domain: "multivariate-probability",
     blurb: "A measure of how one probability distribution diverges from another.",
-    prerequisites: ["pdf", "pmf", "expectation"],
+    // Gibbs' inequality — the non-negativity that licenses "minimise the KL" as
+    // an objective at all — is one application of Jensen's inequality to the
+    // convex function −log. The edge records that dependency.
+    prerequisites: ["pdf", "pmf", "expectation", "jensen-inequality"],
   },
 
   // ---------------------------------------------------------------------
