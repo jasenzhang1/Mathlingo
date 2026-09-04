@@ -1,4 +1,9 @@
 import type { Item, SourceRef } from "../lib/assessment/types";
+import { regressionDiagnosticsItems } from "./items/regression-diagnostics";
+import { regressionFoundationsItems } from "./items/regression-foundations";
+import { regressionGeneralizedItems } from "./items/regression-generalized";
+import { regressionGeometryItems } from "./items/regression-geometry";
+import { regressionSelectionItems } from "./items/regression-selection";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -475,6 +480,15 @@ export const items: Item[] = [
     source: OCW_18_05,
     status: "live",
   },
+
+  // --- Regression -----------------------------------------------------------
+  // Authored from assessments/reg-01..reg-05; see web/src/data/items/ for the
+  // per-cluster files and the shared source registry.
+  ...regressionFoundationsItems,
+  ...regressionGeometryItems,
+  ...regressionDiagnosticsItems,
+  ...regressionSelectionItems,
+  ...regressionGeneralizedItems,
 ];
 
 export const itemsByConcept = new Map<string, Item[]>();
