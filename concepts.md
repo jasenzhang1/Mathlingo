@@ -169,7 +169,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Wilcoxon Rank Sum Test | Order Statistics, Hypothesis Test | — |
 | Bootstrapping | Sampling Distribution, Sample Mean | — |
 | Two Sample Proportions Z-Test | One Sample Proportions Z-Test, Two Sample Z-Test | — |
-| Effect Size | Hypothesis Test, Standard Error | — |
+| Effect Size | P-Value, Standard Error | — |
 | Multiple Testing | P-Value, Type I and Type II Error | — |
 | Equivalence Testing | Confidence Interval, Hypothesis Test | — |
 | Sequential Testing and Optional Stopping | P-Value, Type I and Type II Error | — |

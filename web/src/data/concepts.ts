@@ -1099,7 +1099,7 @@ export const concepts: Concept[] = [
     title: "Effect Size",
     domain: "statistics",
     blurb: "How big the difference is, on a scale that does not grow with the sample.",
-    prerequisites: ["hypothesis-test", "standard-error"],
+    prerequisites: ["p-value", "standard-error"],
   },
   {
     id: "multiple-testing",

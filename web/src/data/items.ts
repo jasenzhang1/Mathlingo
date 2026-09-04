@@ -2,6 +2,7 @@ import type { Item, SourceRef } from "../lib/assessment/types";
 import { graphicalModelsItems } from "./items.graphical-models";
 import { statisticsFoundationsItems } from "./items.statistics-foundations";
 import { statisticsInferenceItems } from "./items.statistics-inference";
+import { statisticsComparisonsItems } from "./items.statistics-comparisons";
 import { statisticsTestsItems } from "./items.statistics-tests";
 import { mlItems } from "./items-ml";
 import { regressionDiagnosticsItems } from "./items/regression-diagnostics";
@@ -2865,6 +2866,7 @@ export const items: Item[] = [
   ...statisticsFoundationsItems,
   ...statisticsInferenceItems,
   ...statisticsTestsItems,
+  ...statisticsComparisonsItems,
 ];
 
 export const itemsByConcept = new Map<string, Item[]>();
