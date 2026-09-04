@@ -3,6 +3,7 @@ import { graphicalModelsItems } from "./items.graphical-models";
 import { mlItems } from "./items-ml";
 import { statisticsFoundationsItems } from "./items.statistics-foundations";
 import { statisticsInferenceItems } from "./items.statistics-inference";
+import { statisticsTestsItems } from "./items.statistics-tests";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -2849,6 +2850,7 @@ export const items: Item[] = [
   // -------------------------------------------------------------------------
   ...statisticsFoundationsItems,
   ...statisticsInferenceItems,
+  ...statisticsTestsItems,
 ];
 
 export const itemsByConcept = new Map<string, Item[]>();

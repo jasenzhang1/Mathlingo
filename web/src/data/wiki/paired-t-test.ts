@@ -55,15 +55,15 @@ export const pairedTTestWiki: WikiArticle = {
             "Ten subjects are measured before and after. Between-subject SD is 15 in both conditions; " +
             "the before/after correlation is 0.9. Each subject improves by about 3 units.",
           steps: [
-            "Unpaired SE of the difference: √(15²/10 + 15²/10) = √45 ≈ 6.7. T ≈ 3/6.7 = 0.45 — nowhere near significant.",
-            "Paired: Var(d) = 225 + 225 − 2(0.9)(225) = 90, so s_d ≈ 9.49.",
-            "Paired SE = 9.49/√10 ≈ 3.0. T ≈ 3/3.0 = 1.0 — still not significant here, but the " +
-              "statistic has more than doubled.",
+            "Unpaired SE of the difference: √(15²/10 + 15²/10) = √45 ≈ 6.71. T ≈ 3/6.71 = 0.45 — nowhere near significant.",
+            "Paired: Var(d) = 225 + 225 − 2(0.9)(225) = 450 − 405 = 45, so s_d = √45 ≈ 6.71.",
+            "Paired SE = 6.71/√10 ≈ 2.12. T ≈ 3/2.12 = 1.41 — still short of the 2.26 needed at " +
+              "9 df, but the statistic has more than tripled.",
           ],
           answer:
-            "Pairing cut the standard error from 6.7 to 3.0 — a factor of 2.2 — on identical " +
-            "measurements. Achieving that by brute force would have required roughly five times the " +
-            "subjects.",
+            "Pairing cut the standard error from 6.71 to 2.12 — a factor of 3.16 — on identical " +
+            "measurements. Achieving that by brute force would have required about ten times the " +
+            "subjects, since precision scales only as √n.",
         },
         {
           kind: "callout",
