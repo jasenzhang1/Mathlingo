@@ -12,9 +12,14 @@ design — human-readable, and the source everything else is written from. Only 
 learner, so a concept has questions in the first sense long before the app can quiz
 on it. `npm run audit:coverage` reports both numbers side by side.
 
+The one exception is machine-learning clusters 10-12, which invert that direction:
+those 28 concepts were added to the graph after their neighbours shipped, so their
+items were authored directly in typed form and the markdown is an index rather than
+a transcript. The audit reports them separately for that reason.
+
 | Domain | Authored here | Wired into the app | Full 8-item live pool |
 |---|---|---|---|
-| Machine Learning | 50 / 50 | 50 | 50 |
+| Machine Learning | 78 / 78 | 78 | 78 |
 | Regression | 29 / 29 | 29 | 29 |
 | Statistics | 25 / 25 | 25 | 25 |
 | Graphical Models | 15 / 15 | 15 | 15 |
