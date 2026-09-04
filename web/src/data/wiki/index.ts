@@ -41,6 +41,7 @@ import { standardErrorWiki } from "./standard-error";
 import { testStatisticWiki } from "./test-statistic";
 import { twoSampleTTestWiki } from "./two-sample-t-test";
 import { twoSampleZTestWiki } from "./two-sample-z-test";
+import { mlWikiArticles } from "./ml";
 import { typeIIIErrorWiki } from "./type-i-ii-error";
 import type { WikiArticle } from "./types";
 import { variationalInferenceElboWiki } from "./variational-inference-elbo";
@@ -138,11 +139,21 @@ const articles: WikiArticle[] = [
 ];
 
 /**
+ * The `machine-learning` domain is kept in its own module (`./ml`) rather than
+ * listed here: fifty articles grouped into the nine clusters of
+ * `assessments/ml-01…ml-09.md`, deliberately cross-referential within a cluster
+ * — `bagging` cites the ensemble variance formula from `ensemble-methods`,
+ * `random-forests` cites `bagging`'s correlation floor, and
+ * `splitting-criteria` closes the loop back to the Bernoulli variance in the
+ * pilot article above.
+ */
+
+/**
  * Concept id -> wiki article. Lessons without an article yet fall through to a
  * "coming soon" state, the same way `embedUrl` does for slides.
  */
 export const wikiByConcept = new Map<string, WikiArticle>(
-  articles.map((article) => [article.conceptId, article]),
+  [...articles, ...mlWikiArticles].map((article) => [article.conceptId, article]),
 );
 
 export type { WikiArticle } from "./types";

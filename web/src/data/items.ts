@@ -1,5 +1,6 @@
 import type { Item, SourceRef } from "../lib/assessment/types";
 import { graphicalModelsItems } from "./items.graphical-models";
+import { mlItems } from "./items-ml";
 import { statisticsFoundationsItems } from "./items.statistics-foundations";
 
 /**
@@ -2832,6 +2833,14 @@ export const items: Item[] = [
   // the authoring notes.
   // -------------------------------------------------------------------------
   ...graphicalModelsItems,
+
+  // -------------------------------------------------------------------------
+  // Machine Learning — all 50 concepts, 5 items each, ported from
+  // assessments/ml-01…ml-09.md. Kept in its own directory (one module per
+  // cluster) for the same reason as the block above: the seed bank at the top
+  // of this file is a fixture set for the framework, and this is a curriculum.
+  // -------------------------------------------------------------------------
+  ...mlItems,
 
   // -------------------------------------------------------------------------
   // Statistical Inference — the `statistics` domain, 8 items per concept. Split
