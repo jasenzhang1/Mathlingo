@@ -477,9 +477,42 @@ export const items: Item[] = [
   },
 ];
 
+/**
+ * Index of the hand-authored items only. Tools import this synchronously.
+ */
 export const itemsByConcept = new Map<string, Item[]>();
 for (const item of items) {
   const bucket = itemsByConcept.get(item.conceptId);
   if (bucket) bucket.push(item);
   else itemsByConcept.set(item.conceptId, [item]);
+}
+
+/**
+ * The full bank, loaded on demand.
+ *
+ * The imported bank is ~1.6 MB of JSON — larger than the entire rest of the
+ * application. Importing it statically put every one of 1,300 questions into
+ * the main bundle, so a visitor reading the landing page downloaded the whole
+ * curriculum's assessments before seeing anything. A dynamic import moves it to
+ * its own chunk, fetched the first time someone opens an Assessment tab.
+ *
+ * The promise is cached, so the fetch happens once per session rather than once
+ * per concept.
+ */
+let fullBank: Promise<Map<string, Item[]>> | null = null;
+
+export function loadItemBank(): Promise<Map<string, Item[]>> {
+  fullBank ??= import("./items.generated").then(({ generatedItems }) => {
+    const index = new Map<string, Item[]>();
+    // Hand-authored items are indexed first, so where both exist for a concept
+    // the reviewed ones lead — they carry real multiple-choice distractors that
+    // the imported bank could not supply.
+    for (const item of [...items, ...generatedItems]) {
+      const bucket = index.get(item.conceptId);
+      if (bucket) bucket.push(item);
+      else index.set(item.conceptId, [item]);
+    }
+    return index;
+  });
+  return fullBank;
 }

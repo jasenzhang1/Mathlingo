@@ -23,7 +23,7 @@ export const bernoulliBinomialWiki: WikiArticle = {
         },
         {
           kind: "formula",
-          latex: "P(X = x) = pˣ(1 − p)¹⁻ˣ,  x ∈ {0, 1}",
+          latex: "P(X = x) = p^{x}(1-p)^{1-x}, \\qquad x \\in \\{0, 1\\}",
           caption: "Bernoulli(p) probability mass function",
         },
         {
@@ -85,7 +85,7 @@ export const bernoulliBinomialWiki: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "P(X = k) = C(n, k) · pᵏ (1 − p)ⁿ⁻ᵏ,  k = 0, 1, …, n",
+          latex: "P(X = k) = \\binom{n}{k} p^{k}(1-p)^{n-k}, \\qquad k = 0, 1, \\ldots, n",
           caption: "Binomial(n, p) probability mass function",
         },
         {
@@ -127,7 +127,7 @@ export const bernoulliBinomialWiki: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "F(x) = P(X ≤ x) = Σₖ₌ₓ C(n,k) pᵏ (1 − p)ⁿ⁻ᵏ",
+          latex: "F(x) = P(X \\le x) = \\sum_{k=0}^{\\lfloor x \\rfloor} \\binom{n}{k} p^{k}(1-p)^{n-k}",
           caption: "Binomial CDF — a step function, jumping at each integer",
         },
         {

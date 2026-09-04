@@ -1,12 +1,33 @@
+import { lazy, Suspense } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import { AssessmentPanel } from "../components/assessment/AssessmentPanel";
-import { DiscussionFeed } from "../components/discussion/DiscussionFeed";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
-import { TutorChat } from "../components/tutor/TutorChat";
-import { WikiView } from "../components/wiki/WikiView";
+
+/**
+ * Each tab is its own chunk, loaded when first opened.
+ *
+ * Only one tab is ever visible, and they carry heavy dependencies that most
+ * visitors never touch: the wiki pulls in KaTeX and its fonts (~300 kB), the
+ * assessment tab pulls in the item bank. Importing them statically put all of
+ * that in front of someone who came to read the slides.
+ */
+const WikiView = lazy(() =>
+  import("../components/wiki/WikiView").then((m) => ({ default: m.WikiView })),
+);
+const TutorChat = lazy(() =>
+  import("../components/tutor/TutorChat").then((m) => ({ default: m.TutorChat })),
+);
+const AssessmentPanel = lazy(() =>
+  import("../components/assessment/AssessmentPanel").then((m) => ({
+    default: m.AssessmentPanel,
+  })),
+);
+const DiscussionFeed = lazy(() =>
+  import("../components/discussion/DiscussionFeed").then((m) => ({
+    default: m.DiscussionFeed,
+  })),
+);
 import { conceptById, domainMeta } from "../data/concepts";
-import { wikiByConcept } from "../data/wiki";
 import { prereqsOf, unlocksOf } from "../lib/prerequisiteGraph";
 
 const TABS = [
@@ -134,6 +155,7 @@ export function ConceptPage() {
           </div>
 
           <div className="mt-6">
+            <Suspense fallback={<TabSkeleton />}>
             {activeTab === "slides" &&
               (concept.embedUrl ? (
                 <div className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--panel)] shadow-md">
@@ -152,7 +174,7 @@ export function ConceptPage() {
                 </div>
               ))}
 
-            {activeTab === "wiki" && <WikiView article={wikiByConcept.get(concept.id)} />}
+            {activeTab === "wiki" && <WikiView conceptId={concept.id} />}
 
             {/* Keyed by concept so navigating between lessons starts a fresh
                 conversation and a fresh assessment session rather than carrying
@@ -174,6 +196,7 @@ export function ConceptPage() {
             )}
 
             {activeTab === "forum" && <DiscussionFeed conceptId={concept.id} />}
+            </Suspense>
           </div>
 
           {activeTab === "slides" && unlocks.length > 0 && (
@@ -197,6 +220,16 @@ export function ConceptPage() {
         </div>
       </main>
       <Footer />
+    </div>
+  );
+}
+
+/** Placeholder while a tab’s chunk is fetched. */
+function TabSkeleton() {
+  return (
+    <div className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-6">
+      <div className="h-3 w-1/3 rounded bg-[var(--line)]" />
+      <div className="mt-3 h-3 w-2/3 rounded bg-[var(--line)]" />
     </div>
   );
 }

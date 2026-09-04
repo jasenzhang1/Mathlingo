@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
-import { openBillingPortal } from "../lib/billing/api";
+import { openBillingPortal, syncSubscription } from "../lib/billing/api";
 import { PLANS } from "../lib/billing/tiers";
 import { useSubscription } from "../lib/billing/useSubscription";
 import { useAuth } from "../lib/auth/useAuth";
@@ -27,10 +27,42 @@ export function AccountPage() {
     const timer = setInterval(() => {
       attempts++;
       void refresh();
-      if (attempts >= 5 || subscription.tier !== "free") clearInterval(timer);
+      if (attempts >= 4 || subscription.tier !== "free") clearInterval(timer);
     }, 1500);
     return () => clearInterval(timer);
   }, [justPaid, refresh, subscription.tier]);
+
+  /**
+   * Still on the free tier several seconds after paying means the webhook did
+   * not arrive or did not apply. Retrying the read is pointless at that stage —
+   * the row is wrong, not stale — so go and ask Stripe directly. Runs once.
+   */
+  const [reconciled, setReconciled] = useState(false);
+  useEffect(() => {
+    if (!justPaid || reconciled || loading || subscription.tier !== "free") return;
+    const timer = setTimeout(() => {
+      setReconciled(true);
+      void resync();
+    }, 7000);
+    return () => clearTimeout(timer);
+    // resync is stable enough for this one-shot; re-running on identity changes
+    // would restart the timer on every render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [justPaid, reconciled, loading, subscription.tier]);
+
+  /**
+   * Reads live state from Stripe and rewrites our row. The escape hatch for a
+   * webhook that never arrived — without it, a missed event leaves a paying
+   * customer on the free tier with no way to correct it from the UI.
+   */
+  async function resync() {
+    setError(null);
+    setBusy(true);
+    const result = await syncSubscription();
+    if (!result.ok) setError(result.message ?? "Couldn't refresh from Stripe.");
+    await refresh();
+    setBusy(false);
+  }
 
   async function manage() {
     setError(null);
@@ -140,9 +172,19 @@ export function AccountPage() {
                     disabled={busy}
                     className="font-body rounded-full border border-[var(--line)] px-4 py-2 text-sm font-medium text-[var(--ink)] hover:border-[var(--accent)] disabled:opacity-50"
                   >
-                    {busy ? "Opening…" : "Manage billing"}
+                    Manage billing
                   </button>
                 )}
+
+                <button
+                  type="button"
+                  onClick={() => void resync()}
+                  disabled={busy}
+                  className="font-body rounded-full border border-[var(--line)] px-4 py-2 text-sm font-medium text-[var(--ink-soft)] hover:border-[var(--accent)] hover:text-[var(--ink)] disabled:opacity-50"
+                  title="Re-read your subscription directly from Stripe"
+                >
+                  {busy ? "Checking…" : "Refresh from Stripe"}
+                </button>
                 {subscription.tier !== "tutored" && (
                   <Link
                     to="/pricing"

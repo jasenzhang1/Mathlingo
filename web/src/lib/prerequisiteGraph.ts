@@ -89,6 +89,15 @@ export const ancestorCountOf = new Map<string, number>(
   allNodeIds.map((id) => [id, ancestorReach.get(id)?.size ?? 0]),
 );
 
+/**
+ * Every concept transitively upstream of each concept.
+ *
+ * This is what `prereqClosure` is validated against: an item for concept C may
+ * only draw on C and C's ancestors, otherwise it is quietly testing material the
+ * learner has not reached yet — and the resulting failure gets blamed on C.
+ */
+export const ancestorsOf = ancestorReach;
+
 export const descendantCountOf = new Map<string, number>(
   allNodeIds.map((id) => [id, descendantReach.get(id)?.size ?? 0]),
 );

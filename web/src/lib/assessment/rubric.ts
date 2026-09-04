@@ -165,6 +165,55 @@ export function scoreFromVerdicts(verdicts: RubricVerdict[]): number {
   return clamp01(score);
 }
 
+/**
+ * Why the final score is what it is.
+ *
+ * The caps are the part a learner cannot reconstruct from the element numbers:
+ * scoring 90, 95 and 100 but omitting a required idea yields 50, and without an
+ * explanation that reads as a bug. This returns the uncapped weighted total
+ * alongside the final one, and names the cap that applied.
+ */
+export interface ScoreExplanation {
+  /** Weighted mean of element credit, before caps. */
+  weighted: number;
+  /** What the learner is actually scored. */
+  final: number;
+  cap?: {
+    kind: "required-missing" | "forbidden-move";
+    /** The element or move responsible. */
+    description: string;
+  };
+}
+
+export function explainScore(verdicts: RubricVerdict[]): ScoreExplanation {
+  const elements = verdicts.filter((v) => !v.forbidden);
+  const total = elements.reduce((sum, v) => sum + v.weight, 0);
+  const weighted =
+    total > 0 ? elements.reduce((sum, v) => sum + v.weight * v.credit, 0) / total : 0;
+
+  const final = scoreFromVerdicts(verdicts);
+
+  if (final >= weighted) return { weighted, final };
+
+  // Forbidden moves cap hardest, so check them first — if both bind, that is
+  // the one that actually determined the score.
+  const move = verdicts.find((v) => v.forbidden && v.credit >= 0.5);
+  if (move && final <= FORBIDDEN_CAP) {
+    return { weighted, final, cap: { kind: "forbidden-move", description: move.description } };
+  }
+
+  const missing = elements.find((v) => v.required && v.credit < REQUIRED_CREDIT_BAR);
+  if (missing) {
+    return {
+      weighted,
+      final,
+      cap: { kind: "required-missing", description: missing.description },
+    };
+  }
+
+  return { weighted, final };
+}
+
 /** Misconceptions to blame, given how each element scored. */
 export function misconceptionsFrom(rubric: Rubric, verdicts: RubricVerdict[]) {
   const credit = new Map(verdicts.map((v) => [v.elementId, v.credit]));

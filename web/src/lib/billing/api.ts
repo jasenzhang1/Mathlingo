@@ -81,6 +81,23 @@ async function invokeForUrl(
   return { ok: true, url: data.url };
 }
 
+/**
+ * Asks Stripe for the current state and rewrites our row from it.
+ *
+ * The escape hatch for a missed webhook. Called explicitly by the user
+ * ("Refresh") and automatically when we return from checkout still looking
+ * unpaid — the case where the webhook is the thing that failed, so waiting for
+ * one more retry is exactly the wrong move.
+ */
+export async function syncSubscription(): Promise<{ ok: boolean; message?: string }> {
+  const { error } = await supabase.functions.invoke("stripe-sync", { body: {} });
+  if (error) {
+    const failure = await describeFunctionError(error);
+    return { ok: false, message: failure.message };
+  }
+  return { ok: true };
+}
+
 /** Starts Checkout. The browser leaves this app for Stripe's hosted page. */
 export function startCheckout(tier: Exclude<Tier, "free">) {
   return invokeForUrl("stripe-checkout", { tier });

@@ -1,6 +1,45 @@
+import { useEffect, useState } from "react";
+import { loadArticle } from "../../data/wiki";
 import type { WikiArticle, WikiBlock } from "../../data/wiki/types";
+import { BlockMath, RichText } from "./Math";
 
-export function WikiView({ article }: { article: WikiArticle | undefined }) {
+export function WikiView({ conceptId }: { conceptId: string }) {
+  /**
+   * Articles are fetched per domain (see data/wiki/index.ts), so this is a
+   * network round trip on the first lesson opened in a given domain.
+   *
+   * The concept id is stored *alongside* the article rather than tracking a
+   * separate `loading` flag. That makes "loaded, but for a different concept"
+   * indistinguishable from "not loaded" — which is what we want when the user
+   * navigates mid-fetch — and it avoids setting state synchronously in the
+   * effect just to reset the flag.
+   */
+  const [loaded, setLoaded] = useState<{
+    conceptId: string;
+    article: WikiArticle | undefined;
+  } | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    void loadArticle(conceptId).then((found) => {
+      if (!cancelled) setLoaded({ conceptId, article: found });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [conceptId]);
+
+  const article = loaded?.conceptId === conceptId ? loaded.article : undefined;
+
+  if (loaded?.conceptId !== conceptId) {
+    return (
+      <div className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] px-6 py-7">
+        <div className="h-3 w-2/3 rounded bg-[var(--line)]" />
+        <div className="mt-3 h-3 w-1/2 rounded bg-[var(--line)]" />
+      </div>
+    );
+  }
+
   if (!article) {
     return (
       <div className="rounded-2xl border border-dashed border-[var(--line)] bg-[var(--panel)] px-6 py-16 text-center">
@@ -11,7 +50,9 @@ export function WikiView({ article }: { article: WikiArticle | undefined }) {
 
   return (
     <article className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] px-6 py-7 md:px-8">
-      <p className="font-body text-[15px] leading-relaxed text-[var(--ink)]">{article.summary}</p>
+      <p className="font-body text-[15px] leading-relaxed text-[var(--ink)]">
+        <RichText text={article.summary} />
+      </p>
 
       {article.sections.map((section) => (
         <section key={section.heading} className="mt-9">
@@ -46,13 +87,15 @@ function Block({ block }: { block: WikiBlock }) {
   switch (block.kind) {
     case "prose":
       return (
-        <p className="font-body text-[15px] leading-relaxed text-[var(--ink)]">{block.text}</p>
+        <p className="font-body text-[15px] leading-relaxed text-[var(--ink)]">
+          <RichText text={block.text} />
+        </p>
       );
 
     case "formula":
       return (
         <figure className="my-1 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-5 py-4 text-center">
-          <p className="font-body text-base text-[var(--ink)]">{block.latex}</p>
+          <BlockMath latex={block.latex} />
           {block.caption && (
             <figcaption className="font-body mt-2 text-xs text-[var(--ink-soft)]">
               {block.caption}
@@ -67,9 +110,11 @@ function Block({ block }: { block: WikiBlock }) {
           {block.items.map((item) => (
             <div key={item.term} className="flex flex-col gap-0.5 sm:flex-row sm:gap-3">
               <dt className="shrink-0 text-sm font-semibold text-[var(--ink)] sm:w-56">
-                {item.term}
+                <RichText text={item.term} />
               </dt>
-              <dd className="text-sm text-[var(--ink-soft)]">{item.description}</dd>
+              <dd className="text-sm text-[var(--ink-soft)]">
+                <RichText text={item.description} />
+              </dd>
             </div>
           ))}
         </dl>
@@ -81,16 +126,18 @@ function Block({ block }: { block: WikiBlock }) {
           <p className="font-body text-xs font-semibold uppercase tracking-wide text-[var(--accent)]">
             {block.title}
           </p>
-          <p className="font-body mt-2 text-[15px] text-[var(--ink)]">{block.problem}</p>
+          <p className="font-body mt-2 text-[15px] text-[var(--ink)]">
+            <RichText text={block.problem} />
+          </p>
           <ol className="font-body mt-3 flex list-decimal flex-col gap-1 pl-5">
             {block.steps.map((step, i) => (
               <li key={i} className="text-sm text-[var(--ink-soft)]">
-                {step}
+                <RichText text={step} />
               </li>
             ))}
           </ol>
           <p className="font-body mt-3 text-sm font-semibold text-[var(--ink)]">
-            Answer: {block.answer}
+            Answer: <RichText text={block.answer} />
           </p>
         </div>
       );
@@ -107,7 +154,7 @@ function Block({ block }: { block: WikiBlock }) {
         >
           <p className="font-body text-sm font-semibold text-[var(--ink)]">{block.title}</p>
           <p className="font-body mt-1 text-sm leading-relaxed text-[var(--ink-soft)]">
-            {block.text}
+            <RichText text={block.text} />
           </p>
         </aside>
       );
@@ -137,7 +184,7 @@ function Block({ block }: { block: WikiBlock }) {
                       key={j}
                       className="border-b border-[var(--line)] px-3 py-2 text-[var(--ink-soft)]"
                     >
-                      {cell}
+                      <RichText text={cell} />
                     </td>
                   ))}
                 </tr>
@@ -155,7 +202,7 @@ function Block({ block }: { block: WikiBlock }) {
     case "list": {
       const items = block.items.map((item, i) => (
         <li key={i} className="font-body text-[15px] leading-relaxed text-[var(--ink)]">
-          {item}
+          <RichText text={item} />
         </li>
       ));
       return block.ordered ? (

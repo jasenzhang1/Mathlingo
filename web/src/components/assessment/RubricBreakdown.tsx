@@ -1,3 +1,4 @@
+import { explainScore } from "../../lib/assessment/rubric";
 import type { RubricVerdict } from "../../lib/assessment/types";
 
 /**
@@ -13,17 +14,18 @@ import type { RubricVerdict } from "../../lib/assessment/types";
  * perfectly should learn what they did right, not just see a checkmark.
  */
 
-function creditLabel(credit: number): string {
-  if (credit >= 1) return "Full";
-  if (credit >= 0.75) return "Nearly";
-  if (credit >= 0.5) return "Partial";
-  if (credit >= 0.25) return "Minimal";
-  return "Missing";
+/**
+ * Credit is shown as the actual number out of 100, not a band word. A learner
+ * comparing two attempts needs to see that 68 became 81; "Partial" twice hides
+ * exactly the improvement they were working for.
+ */
+function creditOutOf100(credit: number): number {
+  return Math.round(credit * 100);
 }
 
 function creditColor(credit: number): string {
-  if (credit >= 0.75) return "var(--teal)";
-  if (credit >= 0.5) return "#c98a00";
+  if (credit >= 0.7) return "var(--teal)";
+  if (credit >= 0.45) return "#c98a00";
   return "#c0392b";
 }
 
@@ -32,6 +34,12 @@ export function RubricBreakdown({ breakdown }: { breakdown: RubricVerdict[] }) {
 
   const elements = breakdown.filter((b) => !b.forbidden);
   const violations = breakdown.filter((b) => b.forbidden);
+
+  // Weights are only worth showing when they differ — otherwise the column is
+  // noise. When they do differ it is the answer to "why isn't my total the
+  // average of these numbers?".
+  const weighted = new Set(elements.map((e) => e.weight)).size > 1;
+  const totalWeight = elements.reduce((sum, e) => sum + e.weight, 0);
 
   return (
     <div className="mt-4">
@@ -53,22 +61,29 @@ export function RubricBreakdown({ breakdown }: { breakdown: RubricVerdict[] }) {
                     (required)
                   </span>
                 )}
+                {weighted && (
+                  <span className="font-body ml-1.5 text-xs font-normal text-[var(--ink-soft)]">
+                    · worth {Math.round((element.weight / totalWeight) * 100)}% of this
+                    question
+                  </span>
+                )}
               </p>
               <span
-                className="font-body shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold"
+                className="font-body shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold tabular-nums"
                 style={{
                   color: creditColor(element.credit),
                   background: `color-mix(in srgb, ${creditColor(element.credit)} 12%, transparent)`,
                 }}
               >
-                {creditLabel(element.credit)}
+                {creditOutOf100(element.credit)}
+                <span className="font-normal opacity-70">/100</span>
               </span>
             </div>
 
             <div
               className="mt-2 h-1 w-full overflow-hidden rounded-full bg-[var(--line)]"
               role="img"
-              aria-label={`${Math.round(element.credit * 100)} percent credit`}
+              aria-label={`${creditOutOf100(element.credit)} out of 100`}
             >
               <div
                 className="h-full rounded-full"
@@ -87,6 +102,32 @@ export function RubricBreakdown({ breakdown }: { breakdown: RubricVerdict[] }) {
           </li>
         ))}
       </ul>
+
+      {/* The arithmetic, when it isn't simply the weighted average. */}
+      {(() => {
+        const explanation = explainScore(breakdown);
+        if (!explanation.cap) return null;
+        return (
+          <p className="font-body mt-3 rounded-xl border border-[#c98a00]/30 bg-[#c98a00]/5 px-3 py-2 text-sm text-[var(--ink)]">
+            These elements average{" "}
+            <strong>{Math.round(explanation.weighted * 100)}/100</strong>, but the score
+            is capped at <strong>{Math.round(explanation.final * 100)}/100</strong>{" "}
+            {explanation.cap.kind === "required-missing" ? (
+              <>
+                because a required part of the answer is missing: “
+                {explanation.cap.description}”. That idea is load-bearing — without it
+                the rest doesn't establish the result.
+              </>
+            ) : (
+              <>
+                because the answer relies on a step that isn't valid: “
+                {explanation.cap.description}”. Reaching the right result by an invalid
+                route won't generalise to the next problem.
+              </>
+            )}
+          </p>
+        );
+      })()}
 
       {violations.length > 0 && (
         <div className="mt-3">

@@ -1,4 +1,4 @@
-import { complete, extractJson } from "../_shared/anthropic.ts";
+import { complete, errorCode, extractJson, userMessageFor } from "../_shared/anthropic.ts";
 import { json, preflight } from "../_shared/cors.ts";
 import { requireTier } from "../_shared/entitlement.ts";
 
@@ -18,6 +18,14 @@ import { requireTier } from "../_shared/entitlement.ts";
  * at weighted sums, and keeping the weights in code means a rubric change can be
  * replayed over the stored response log instead of re-billing thousands of API
  * calls.
+ *
+ * Note on reproducibility: this used to pass `temperature: 0`, which Claude 5
+ * models reject outright. Consistency between two gradings of the same answer
+ * therefore rests on the fixed credit anchors in the prompt and on snapping the
+ * returned credit to them (see `snapCredit` in the client's modelGrader) — a
+ * coarse scale the judge can hit repeatably, rather than a sampling parameter.
+ * Marks may still differ across gradings; that is what `confidence` and the
+ * human-review path in assessment.md §4 exist for.
  */
 
 interface RubricElement {
@@ -54,10 +62,10 @@ function systemPrompt(): string {
 Return ONLY a JSON object, no prose around it:
 {
   "elements": [
-    { "id": "<rubric element id>", "credit": <0..1>, "justification": "<one sentence>" }
+    { "id": "<rubric element id>", "credit": <integer 0-100>, "justification": "<one sentence>" }
   ],
   "forbidden": [
-    { "id": "<forbidden move id>", "credit": <0..1 — how fully the answer commits it>, "justification": "<one sentence>" }
+    { "id": "<forbidden move id>", "credit": <integer 0-100 — how fully the answer commits it>, "justification": "<one sentence>" }
   ],
   "confidence": <0..1>,
   "feedback": "<2-4 sentences to the student>",
@@ -66,12 +74,16 @@ Return ONLY a JSON object, no prose around it:
 
 Include EVERY rubric element in "elements", including ones scored 0. Include every forbidden move in "forbidden", scored 0 if not committed.
 
-CREDIT ANCHORS — use these, and prefer them to intermediate values:
-- 1.0  Fully present, correct, and justified. The reasoning is actually stated, not implied.
-- 0.75 Correct and present, but the justification is thin, implicit, or asserted without support.
-- 0.5  Partially there: the right idea with the mechanism missing, wrong, or hand-waved.
-- 0.25 Gestures at the idea using its vocabulary, without demonstrating it.
-- 0.0  Absent, or present but wrong.
+CREDIT SCALE — an integer from 0 to 100 per element. These are reference points, not the only permitted values; use the whole range and pick the number that actually fits.
+- 100    Fully present, correct, and justified. The reasoning is stated, not implied.
+- 85-95  Correct and complete, with a small gap: a step compressed, a term left undefined.
+- 70-84  Correct and present, but the justification is thin, implicit, or asserted without support.
+- 45-69  Partially there: the right idea with the mechanism missing, wrong, or hand-waved.
+- 20-44  Gestures at the idea using its vocabulary, without demonstrating it.
+- 1-19   A trace of the right direction, but nothing established.
+- 0      Absent, or present but wrong.
+
+Distinguish genuinely different answers with genuinely different numbers — two answers that are not equally good should not both get 75. But do not manufacture precision: if an element is simply absent it is 0, and if it is fully established it is 100.
 
 RULES
 - Judge each element independently against its own description. Do not let a strong answer on one element inflate another.
@@ -118,6 +130,10 @@ ${input.answer}
 
 const clamp01 = (n: number) => Math.max(0, Math.min(1, Number.isFinite(n) ? n : 0));
 
+/** Element credit travels the wire as an integer 0-100; the client scales it. */
+const clampCredit = (n: number) =>
+  Math.round(Math.max(0, Math.min(100, Number.isFinite(n) ? n : 0)));
+
 Deno.serve(async (req) => {
   const pre = preflight(req);
   if (pre) return pre;
@@ -153,9 +169,6 @@ Deno.serve(async (req) => {
         },
       ],
       maxTokens: 2000,
-      // Grading must be as close to deterministic as the API allows: the same
-      // answer graded twice must not land on two different scores.
-      temperature: 0,
     });
 
     const verdict = extractJson<JudgeVerdict>(raw);
@@ -171,7 +184,7 @@ Deno.serve(async (req) => {
         .filter((entry) => entry?.id)
         .map((entry) => ({
           id: String(entry.id),
-          credit: clamp01(Number(entry.credit)),
+          credit: clampCredit(Number(entry.credit)),
           justification: String(entry.justification ?? ""),
         }));
 
@@ -183,8 +196,10 @@ Deno.serve(async (req) => {
       nextStep: verdict.nextStep ? String(verdict.nextStep) : undefined,
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    console.error("grade:", message);
-    return json({ error: message }, 500);
+    // Full detail to the logs, a usable sentence to the learner, and a short
+    // code in between: enough for an operator to identify the fault from a bug
+    // report without digging through logs, but carrying no provider detail.
+    console.error("grade:", error instanceof Error ? error.message : String(error));
+    return json({ error: userMessageFor(error), code: errorCode(error) }, 500);
   }
 });

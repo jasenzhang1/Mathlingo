@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { concepts } from "../src/data/concepts.ts";
-import { itemsByConcept } from "../src/data/items.ts";
+import { loadItemBank } from "../src/data/items.ts";
 
 /**
  * Answers one question: which concepts can actually be assessed today?
@@ -60,6 +60,7 @@ for (const file of readdirSync(DIR).filter((f) => f.endsWith(".md"))) {
   }
 }
 
+const itemsByConcept = await loadItemBank();
 const all = concepts.map((c) => c.id);
 const withAuthored = all.filter((id) => (authored.get(id) ?? 0) > 0);
 const withServable = all.filter((id) =>

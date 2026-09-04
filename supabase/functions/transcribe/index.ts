@@ -1,4 +1,4 @@
-import { complete, extractJson } from "../_shared/anthropic.ts";
+import { complete, errorCode, extractJson, userMessageFor } from "../_shared/anthropic.ts";
 import { json, preflight } from "../_shared/cors.ts";
 import { requireTier } from "../_shared/entitlement.ts";
 
@@ -88,7 +88,6 @@ Deno.serve(async (req) => {
         },
       ],
       maxTokens: 1500,
-      temperature: 0,
     });
 
     const result = extractJson<TranscriptionResult>(raw);
@@ -99,8 +98,7 @@ Deno.serve(async (req) => {
       notes: result.notes ? String(result.notes) : undefined,
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    console.error("transcribe:", message);
-    return json({ error: message }, 500);
+    console.error("transcribe:", error instanceof Error ? error.message : String(error));
+    return json({ error: userMessageFor(error), code: errorCode(error) }, 500);
   }
 });

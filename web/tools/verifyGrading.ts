@@ -1,5 +1,10 @@
-import { itemsByConcept } from "../src/data/items.ts";
-import { makeVerdict, rubricFor, scoreFromVerdicts } from "../src/lib/assessment/rubric.ts";
+import { loadItemBank } from "../src/data/items.ts";
+import {
+  explainScore,
+  makeVerdict,
+  rubricFor,
+  scoreFromVerdicts,
+} from "../src/lib/assessment/rubric.ts";
 import { routeGrader } from "../src/lib/assessment/router.ts";
 import type { RubricVerdict } from "../src/lib/assessment/types.ts";
 
@@ -78,11 +83,71 @@ for (const a of [0, 0.25, 0.5, 0.75, 1]) {
   previous = score;
 }
 
+// --- 1/100 granularity ------------------------------------------------------
+console.log("\n1/100 granularity — one point of credit must move the score:");
+{
+  let indistinguishable = 0;
+  for (let c = 0; c < 100; c++) {
+    const lower = scoreFromVerdicts(rubric(c / 100, 1, 1));
+    const upper = scoreFromVerdicts(rubric((c + 1) / 100, 1, 1));
+    // Below the required bar the cap flattens everything, which is intended.
+    if (c / 100 >= 0.5 && lower === upper) indistinguishable++;
+  }
+  if (indistinguishable > 0) {
+    console.error(`  FAIL ${indistinguishable} single-point steps produced no change`);
+    failures++;
+  } else {
+    console.log("  ok   every 1-point step above the required bar changes the total");
+  }
+
+  const a = scoreFromVerdicts(rubric(0.68, 0.68, 0.68));
+  const b = scoreFromVerdicts(rubric(0.81, 0.81, 0.81));
+  console.log(
+    `  68/100 across the board -> ${Math.round(a * 100)}/100; ` +
+      `81/100 -> ${Math.round(b * 100)}/100`,
+  );
+  if (a === b) {
+    console.error("  FAIL 68 and 81 are indistinguishable");
+    failures++;
+  }
+}
+
+// --- Score explanation ------------------------------------------------------
+console.log("\nscore explanation (why the total isn't the average):");
+{
+  const capped = explainScore(rubric(0.2, 1, 1));
+  console.log(
+    `  required element at 20/100: weighted ${Math.round(capped.weighted * 100)}` +
+      ` -> final ${Math.round(capped.final * 100)}, cap: ${capped.cap?.kind ?? "none"}`,
+  );
+  if (capped.cap?.kind !== "required-missing") {
+    console.error("  FAIL expected a required-missing cap");
+    failures++;
+  }
+
+  const clean = explainScore(rubric(0.9, 0.9, 0.9));
+  if (clean.cap) {
+    console.error("  FAIL an uncapped answer reported a cap");
+    failures++;
+  } else {
+    console.log(`  uncapped answer: no cap reported, ${Math.round(clean.final * 100)}/100`);
+  }
+
+  const move = explainScore([...rubric(1, 1, 1), forbidden("phrase", 1)]);
+  if (move.cap?.kind !== "forbidden-move") {
+    console.error("  FAIL expected a forbidden-move cap");
+    failures++;
+  } else {
+    console.log(
+      `  forbidden move: weighted ${Math.round(move.weighted * 100)} -> final ${Math.round(move.final * 100)}`,
+    );
+  }
+}
+
 console.log("\ndominance — strictly better answers never score lower:");
-const anchors = [0, 0.25, 0.5, 0.75, 1];
 let inversions = 0;
 for (let trial = 0; trial < 20000; trial++) {
-  const pick = () => anchors[Math.floor(Math.random() * anchors.length)]!;
+  const pick = () => Math.round(Math.random() * 100) / 100;
   const [d, s, u] = [pick(), pick(), pick()];
   const weak = scoreFromVerdicts(rubric(d, s, u));
   const strong = scoreFromVerdicts(
@@ -99,6 +164,7 @@ if (inversions > 0) {
 
 // --- Every item routes somewhere and has a rubric ----------------------------
 console.log("\nrouting and rubric coverage (grading.md: everything needs a rubric):");
+const itemsByConcept = await loadItemBank();
 const all = [...itemsByConcept.values()].flat();
 const byKind: Record<string, number> = {};
 for (const item of all) {

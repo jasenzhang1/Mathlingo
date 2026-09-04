@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { conceptById } from "../../data/concepts";
-import { itemsByConcept } from "../../data/items";
+import { loadItemBank } from "../../data/items";
 import { expFor, type ExpSnapshot } from "../../lib/assessment/exp";
 import { gradeSubmission } from "../../lib/assessment/grading";
 import type { RawSubmission } from "../../lib/assessment/normalize";
@@ -73,8 +73,21 @@ export function AssessmentPanel({
    * placeholders, are dropped here rather than at selection time — an item that
    * cannot be rendered should never be a candidate in the first place.
    */
+  // The bank is a separate chunk (see loadItemBank); until it arrives the pool
+  // is empty, which the loading phase below already covers.
+  const [bank, setBank] = useState<Map<string, Item[]> | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    void loadItemBank().then((loaded) => {
+      if (!cancelled) setBank(loaded);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const pool = useMemo(() => {
-    const all = itemsByConcept.get(conceptId) ?? [];
+    const all = bank?.get(conceptId) ?? [];
     const servable = all.filter(canInstantiate);
     if (servable.length < all.length) {
       const broken = all.filter((i) => !canInstantiate(i)).map((i) => i.id);
@@ -88,15 +101,15 @@ export function AssessmentPanel({
      * middle of a sitting distorts the schedule.
      */
     return canGrade ? servable : servable.filter((i) => routeGrader(i) !== "llm");
-  }, [conceptId, canGrade]);
+  }, [bank, conceptId, canGrade]);
 
   /** How many open-response items the current tier is not seeing. */
   const withheldCount = useMemo(() => {
     if (canGrade) return 0;
-    return (itemsByConcept.get(conceptId) ?? []).filter(
+    return (bank?.get(conceptId) ?? []).filter(
       (i) => canInstantiate(i) && routeGrader(i) === "llm",
     ).length;
-  }, [conceptId, canGrade]);
+  }, [bank, conceptId, canGrade]);
 
   // Load persisted proficiency. Signed-out learners get a working session with
   // in-memory state; nothing is written until they have an account to write to.
@@ -106,7 +119,7 @@ export function AssessmentPanel({
     async function load() {
       // Wait for the tier before choosing a pool, or the session would start on
       // the free subset and then be rebuilt underneath the learner.
-      if (subLoading) return;
+      if (subLoading || !bank) return;
 
       if (pool.length === 0) {
         if (!cancelled) setPhase({ kind: "empty" });
@@ -136,7 +149,7 @@ export function AssessmentPanel({
     return () => {
       cancelled = true;
     };
-  }, [user, conceptId, pool.length, subLoading]);
+  }, [user, conceptId, pool.length, subLoading, bank]);
 
   // The bar decays continuously, so it needs a clock rather than a render-time
   // Date.now() — otherwise the displayed proficiency and the "due for review"
@@ -490,7 +503,8 @@ function Feedback({
               : "bg-red-50 text-red-700"
           }`}
         >
-          {scoreBand(grade.score)} · {Math.round(grade.score * 100)}%
+          {scoreBand(grade.score)} · {Math.round(grade.score * 100)}
+          <span className="font-normal opacity-70">/100</span>
         </span>
         {item.status === "live" && (
           <span className="font-body text-sm text-[var(--ink-soft)]">

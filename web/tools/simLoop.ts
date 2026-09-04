@@ -1,4 +1,4 @@
-﻿import { itemsByConcept } from "../src/data/items.ts";
+﻿import { loadItemBank } from "../src/data/items.ts";
 import {
   applyReview,
   blankState,
@@ -10,6 +10,7 @@ import { probabilityCorrect } from "../src/lib/assessment/mastery.ts";
 import type { ConceptState, Grade } from "../src/lib/assessment/types.ts";
 
 const CONCEPT = "bernoulli-binomial";
+const itemsByConcept = await loadItemBank();
 const pool = itemsByConcept.get(CONCEPT) ?? [];
 console.log(`pool: ${pool.length} items (${pool.filter((i) => i.status === "live").length} live)`);
 console.log("levels:", [...new Set(pool.map((i) => i.cognitive))].join(", "));

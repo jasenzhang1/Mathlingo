@@ -33,7 +33,14 @@ export async function describeFunctionError(error: unknown): Promise<FunctionFai
     try {
       const body = await context.clone().json();
       const detail = typeof body?.error === "string" ? body.error : JSON.stringify(body);
-      return { reason: "error", message: `${context.status}: ${detail.slice(0, 300)}` };
+      // The function's own message is already written for a reader, so it is
+      // shown as-is rather than prefixed with an HTTP status they can't use.
+      // The fault code is appended only when present, for bug reports.
+      const code = typeof body?.code === "string" ? body.code : null;
+      return {
+        reason: "error",
+        message: code ? `${detail.slice(0, 300)} (${code})` : detail.slice(0, 300),
+      };
     } catch {
       return { reason: "error", message: `${context.status}: ${context.statusText}` };
     }

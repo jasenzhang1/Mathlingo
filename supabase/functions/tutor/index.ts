@@ -1,4 +1,4 @@
-import { complete, type Message } from "../_shared/anthropic.ts";
+import { complete, errorCode, userMessageFor, type Message } from "../_shared/anthropic.ts";
 import { json, preflight } from "../_shared/cors.ts";
 import { requireTier } from "../_shared/entitlement.ts";
 
@@ -75,13 +75,11 @@ Deno.serve(async (req) => {
       system: systemPrompt(conceptTitle),
       messages,
       maxTokens: 800,
-      temperature: 1,
     });
 
     return json({ reply });
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    console.error("tutor:", message);
-    return json({ error: message }, 500);
+    console.error("tutor:", error instanceof Error ? error.message : String(error));
+    return json({ error: userMessageFor(error), code: errorCode(error) }, 500);
   }
 });

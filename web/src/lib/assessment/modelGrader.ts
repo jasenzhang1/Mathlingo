@@ -41,12 +41,16 @@ interface JudgeResponse {
   nextStep?: string;
 }
 
-/** Snap to the anchors the prompt defines, so repeat gradings agree. */
-function snapCredit(raw: number): number {
-  const value = Math.max(0, Math.min(1, Number.isFinite(raw) ? raw : 0));
-  return [0, 0.25, 0.5, 0.75, 1].reduce((best, anchor) =>
-    Math.abs(anchor - value) < Math.abs(best - value) ? anchor : best,
-  );
+/**
+ * The judge reports credit as an integer 0-100; internally credit is a 0..1
+ * fraction, because that is what the weighted rubric arithmetic multiplies by.
+ * Quantising to 1/100 keeps the two representations exactly convertible, so a
+ * displayed "73/100" is the number that was actually scored, not a rounding of
+ * something else.
+ */
+function toCredit(raw: number): number {
+  const value = Number.isFinite(raw) ? raw : 0;
+  return Math.round(Math.max(0, Math.min(100, value))) / 100;
 }
 
 export async function gradeOpenResponse(input: {
@@ -77,7 +81,7 @@ export async function gradeOpenResponse(input: {
   const justifications = new Map<string, string>();
   for (const entry of [...(data.elements ?? []), ...(data.forbidden ?? [])]) {
     if (!entry?.id) continue;
-    credits.set(entry.id, snapCredit(entry.credit));
+    credits.set(entry.id, toCredit(entry.credit));
     justifications.set(entry.id, String(entry.justification ?? ""));
   }
 
