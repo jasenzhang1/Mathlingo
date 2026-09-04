@@ -1134,7 +1134,7 @@ export const concepts: Concept[] = [
     title: "Permutation Test",
     domain: "statistics",
     blurb: "Build the null distribution by reshuffling the labels the null says are arbitrary.",
-    prerequisites: ["hypothesis-test", "p-value"],
+    prerequisites: ["hypothesis-test", "p-value", "counting-methods"],
   },
   {
     id: "wilcoxon-signed-rank-test",

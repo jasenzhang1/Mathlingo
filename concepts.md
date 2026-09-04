@@ -174,7 +174,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Equivalence Testing | Confidence Interval, Hypothesis Test | — |
 | Sequential Testing and Optional Stopping | P-Value, Type I and Type II Error | — |
 | Prediction Interval | Confidence Interval, Sampling Distribution | — |
-| Permutation Test | Hypothesis Test, P-Value | — |
+| Permutation Test | Hypothesis Test, P-Value, Counting Methods | — |
 | Wilcoxon Signed Rank Test | Wilcoxon Rank Sum Test, Paired T-Test | — |
 | Kruskal-Wallis Test | Wilcoxon Rank Sum Test, Chi Square Distribution | — |
 | McNemar's Test | Chi Square Test of Independence, Paired T-Test | — |

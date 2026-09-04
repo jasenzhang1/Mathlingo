@@ -3,6 +3,7 @@ import { graphicalModelsItems } from "./items.graphical-models";
 import { statisticsFoundationsItems } from "./items.statistics-foundations";
 import { statisticsInferenceItems } from "./items.statistics-inference";
 import { statisticsComparisonsItems } from "./items.statistics-comparisons";
+import { statisticsNonparametricItems } from "./items.statistics-nonparametric";
 import { statisticsTestsItems } from "./items.statistics-tests";
 import { mlItems } from "./items-ml";
 import { regressionDiagnosticsItems } from "./items/regression-diagnostics";
@@ -2867,6 +2868,7 @@ export const items: Item[] = [
   ...statisticsInferenceItems,
   ...statisticsTestsItems,
   ...statisticsComparisonsItems,
+  ...statisticsNonparametricItems,
 ];
 
 export const itemsByConcept = new Map<string, Item[]>();
