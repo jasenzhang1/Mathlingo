@@ -1,5 +1,6 @@
 import type { Item, SourceRef } from "../lib/assessment/types";
 import { graphicalModelsItems } from "./items.graphical-models";
+import { statisticsFoundationsItems } from "./items.statistics-foundations";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -2831,6 +2832,12 @@ export const items: Item[] = [
   // the authoring notes.
   // -------------------------------------------------------------------------
   ...graphicalModelsItems,
+
+  // -------------------------------------------------------------------------
+  // Statistical Inference — the `statistics` domain, 8 items per concept. Split
+  // by cluster into its own modules; see those files for the authoring notes.
+  // -------------------------------------------------------------------------
+  ...statisticsFoundationsItems,
 ];
 
 export const itemsByConcept = new Map<string, Item[]>();
