@@ -48,7 +48,7 @@ export function ConceptPage() {
             We couldn't find that concept.
           </p>
           <Link
-            to="/#map"
+            to="/map"
             className="font-body mt-6 inline-block text-sm font-medium text-[var(--accent)] hover:underline"
           >
             ← Back to the concept map
@@ -75,7 +75,7 @@ export function ConceptPage() {
       <main>
         <div className="mx-auto max-w-4xl px-6 py-12">
           <Link
-            to="/#map"
+            to="/map"
             className="font-body text-sm font-medium text-[var(--accent)] hover:underline"
           >
             ← Back to the concept map
