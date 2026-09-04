@@ -5,7 +5,7 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 236 concepts.**
+**Total: 241 concepts.**
 
 ## Probability (56)
 
@@ -169,7 +169,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Wilcoxon Rank Sum Test | Order Statistics, Hypothesis Test | — |
 | Bootstrapping | Sampling Distribution, Sample Mean | — |
 
-## Regression (29)
+## Regression (34)
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -184,23 +184,28 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Linear Regression, Probabilistic Version | Multiple Linear Regression, Maximum Likelihood Estimation, Normal Distribution | — |
 | OLS Assumptions | Multiple Linear Regression | — |
 | Homoskedasticity | OLS Assumptions | — |
+| Weighted Least Squares | Homoskedasticity | — |
 | OLS Properties | OLS Assumptions, Linear Regression, Probabilistic Version, Central Limit Theorem | — |
 | SSR, SSE, SST | Simple Linear Regression | — |
 | R² | SSR, SSE, SST | — |
 | ANOVA | SSR, SSE, SST, F-Distribution, Hypothesis Test | — |
 | Effect of Adding Another Variable | Multiple Linear Regression, R² | — |
 | Variance Inflation Factor (VIF) | Effect of Adding Another Variable | — |
+| Outliers, Leverage, and Influence | Geometric Interpretation of OLS | — |
 | AIC, BIC | Linear Regression, Probabilistic Version, Maximum Likelihood Estimation | — |
 | Forward, Backward, Stepwise Selection | AIC, BIC, Multiple Linear Regression | — |
 | Regularization | Multiple Linear Regression, Bias Variance Tradeoff | — |
 | LASSO | Regularization | — |
 | Ridge Regression | Regularization | — |
 | Elastic Net | LASSO, Ridge Regression | — |
+| Polynomial Regression | Multiple Linear Regression, Variance Inflation Factor (VIF) | — |
+| Quantile Regression | Ordinary Least Squares | — |
 | LOESS Smoothing | Simple Linear Regression | — |
 | Mixed Effect Models | Multiple Linear Regression, Sampling Methods | — |
 | Logistic Regression | Maximum Likelihood Estimation, Bernoulli and Binomial Distributions, Multiple Linear Regression | — |
 | Probit Regression | Logistic Regression, Normal Distribution | — |
 | Generalized Linear Model (GLM) | Logistic Regression, Exponential Family | — |
+| Poisson Regression | Generalized Linear Model (GLM), Poisson Distribution | — |
 | Cox Proportional Hazards Model | Generalized Linear Model (GLM), Maximum Likelihood Estimation | — |
 
 ## Machine Learning (50)

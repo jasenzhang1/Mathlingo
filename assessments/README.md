@@ -20,7 +20,7 @@ on it. `npm run audit:coverage` reports both numbers side by side.
 | Machine Learning | 50 / 50 | 50 | 0 — pools are at 5 items, below `MIN_LIVE_ITEMS` |
 | Probability | 56 / 56 | 2 | 1 |
 | Linear Algebra | 54 / 54 | 1 | 0 |
-| Regression | 29 / 29 | 29 | 29 |
+| Regression | 34 / 34 | 34 | 34 |
 
 `auditCoverage` calls a pool adequate only at 8 or more live items with coverage at
 recall/apply/explain and a difficulty spread of at least 1.5 logits, so the last
@@ -174,7 +174,7 @@ side.
 | Linear Algebra | 54 | 273 | `la-01`…`la-08` |
 | Machine Learning | 50 | 250 | `ml-01`…`ml-09` |
 | Multivariate Probability & Asymptotics | 7 | 35 | `mp-01-multivariate-probability.md` |
-| Regression | 29 | 145 | `reg-01`…`reg-05` |
+| Regression | 34 | 165 | `reg-01`…`reg-06` |
 | Graphical Models & Bayesian ML | 15 | 75 | `gm-01`…`gm-03` |
 | **Total** | **236** | **1,343** | **38 files** |
 
@@ -191,6 +191,7 @@ The graph itself now has 236 concepts (232 original + the 4 added this sweep —
 | REG-3 | [reg-03-model-fit-and-diagnostics.md](reg-03-model-fit-and-diagnostics.md) | OLS Properties → VIF (6) | done (30 items) |
 | REG-4 | [reg-04-model-selection-and-regularization.md](reg-04-model-selection-and-regularization.md) | AIC/BIC → LOESS (7) | done (35 items) |
 | REG-5 | [reg-05-generalized-and-special-regression.md](reg-05-generalized-and-special-regression.md) | Mixed Effects → Cox PH (5) | done (25 items) |
+| REG-6 | [reg-06-extensions.md](reg-06-extensions.md) | Weighted LS, Outliers/Leverage/Influence, Polynomial, Quantile, Poisson Regression (5, added post-sweep) | done (20 items); **servable** — 40 live items in `items.ts` |
 | GM-1 | [gm-01-graphs-and-markov-structure.md](gm-01-graphs-and-markov-structure.md) | Graphs → HMM (6) | done (30 items) |
 | GM-2 | [gm-02-latent-variables-and-em.md](gm-02-latent-variables-and-em.md) | Mixture Models → Laplace Approximation (4) | done (20 items) |
 | GM-3 | [gm-03-variational-inference-and-kernels.md](gm-03-variational-inference-and-kernels.md) | ELBO → Wasserstein Distance (5) | done (25 items) |

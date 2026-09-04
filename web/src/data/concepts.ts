@@ -1169,6 +1169,13 @@ export const concepts: Concept[] = [
     prerequisites: ["ols-assumptions"],
   },
   {
+    id: "weighted-least-squares",
+    title: "Weighted Least Squares",
+    domain: "regression",
+    blurb: "Down-weighting noisier observations to restore efficiency under known heteroskedasticity.",
+    prerequisites: ["homoskedasticity"],
+  },
+  {
     id: "ols-properties",
     title: "OLS Properties",
     domain: "regression",
@@ -1219,6 +1226,13 @@ export const concepts: Concept[] = [
     prerequisites: ["effect-of-adding-another-variable"],
   },
   {
+    id: "outliers-leverage-influence",
+    title: "Outliers, Leverage, and Influence",
+    domain: "regression",
+    blurb: "Telling apart an unusual response, an unusual predictor value, and a point that actually moves the fit.",
+    prerequisites: ["geometric-interpretation-of-ols"],
+  },
+  {
     id: "aic-bic",
     title: "AIC, BIC",
     domain: "regression",
@@ -1261,6 +1275,28 @@ export const concepts: Concept[] = [
     prerequisites: ["lasso", "ridge-regression"],
   },
   {
+    id: "polynomial-regression",
+    title: "Polynomial Regression",
+    domain: "regression",
+    blurb: "Fitting curved relationships by adding powers of a predictor as extra linear-model columns.",
+    /**
+     * `vif` is a genuine prerequisite, not a convenience: x and x² are
+     * strongly correlated by construction over any positive range, so
+     * diagnosing and centring away that structural collinearity is a normal
+     * part of this concept, not an optional aside. Surfaced by
+     * `checkPrereqClosure` blocking an authored item, the same way the
+     * `central-limit-theorem` edge on `ols-properties` was found.
+     */
+    prerequisites: ["multiple-linear-regression", "vif"],
+  },
+  {
+    id: "quantile-regression",
+    title: "Quantile Regression",
+    domain: "regression",
+    blurb: "Modeling a conditional quantile of the response instead of its mean.",
+    prerequisites: ["ordinary-least-squares"],
+  },
+  {
     id: "loess-smoothing",
     title: "LOESS Smoothing",
     domain: "regression",
@@ -1294,6 +1330,13 @@ export const concepts: Concept[] = [
     domain: "regression",
     blurb: "A single framework that unifies linear, logistic, and Poisson regression.",
     prerequisites: ["logistic-regression", "exponential-family"],
+  },
+  {
+    id: "poisson-regression",
+    title: "Poisson Regression",
+    domain: "regression",
+    blurb: "Modeling count outcomes with a log link and a mean-equals-variance response distribution.",
+    prerequisites: ["glm", "poisson-distribution"],
   },
   {
     id: "cox-proportional-hazards-model",
