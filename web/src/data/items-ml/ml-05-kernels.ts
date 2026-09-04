@@ -43,7 +43,7 @@ export const ml05Items: Item[] = [
     expectedSeconds: 55,
     prereqClosure: ["kernel", "dot-product"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "kernel--recall-the-trick",
@@ -97,7 +97,7 @@ export const ml05Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["kernel"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "kernel--apply-polynomial-cost",
@@ -137,7 +137,7 @@ export const ml05Items: Item[] = [
     expectedSeconds: 170,
     prereqClosure: ["kernel", "dot-product"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "kernel--explain-infinite-dimensional-case",
@@ -169,7 +169,7 @@ export const ml05Items: Item[] = [
     expectedSeconds: 160,
     prereqClosure: ["kernel"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "kernel--transfer-kernelisation-condition",
@@ -207,7 +207,101 @@ export const ml05Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["kernel", "dot-product"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "kernel--apply-polynomial-value",
+    conceptId: "kernel",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "For the polynomial kernel K(x, z) = (x·z + 1)², compute K(x, z) with x = (1, 2) and z = (3, 1).",
+    answerKey: 36,
+    tolerance: 0.001,
+    difficulty: 0.19,
+    discrimination: 1.2,
+    expectedSeconds: 70,
+    prereqClosure: ["kernel", "dot-product"],
+    source: ML_05,
+    status: "live",
+  },
+  {
+    id: "kernel--explain-similarity-reading",
+    conceptId: "kernel",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "A kernel is often described as a similarity measure. Why is that a fair reading, and what stops any similarity function you invent from being usable as one?",
+    rubric: {
+      elements: [
+        {
+          id: "similarity-reading",
+          description:
+            "K(x, z) says how alike two points are, and it is a fair reading because an inner product is large for aligned vectors and small for unrelated ones.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "not-any-function",
+          description:
+            "Not every similarity function qualifies: it must correspond to an actual inner product in some space, or the geometry the kernelised algorithm assumes does not exist.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "names-the-test",
+          description:
+            "Bonus: names the checkable condition — every matrix of pairwise kernel values must be positive semidefinite.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 0.95,
+    discrimination: 1.5,
+    expectedSeconds: 180,
+    prereqClosure: ["kernel", "dot-product"],
+    source: ML_05,
+    status: "live",
+  },
+  {
+    id: "kernel--transfer-non-vector-objects",
+    conceptId: "kernel",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Kernels exist for strings, graphs and trees — objects with no natural coordinate representation. Why is that possible, and what does it let an otherwise vector-only algorithm do?",
+    rubric: {
+      elements: [
+        {
+          id: "only-pairwise-similarity-needed",
+          description:
+            "A kernelised algorithm never touches coordinates — it needs only a number for each pair of objects, so anything that can supply a valid pairwise similarity can be its input.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "concrete-consequence",
+          description:
+            "So a maximum-margin classifier or a clustering method can run directly on DNA sequences or molecule graphs without anyone inventing a feature vector for them.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "validity-still-required",
+          description:
+            "Bonus: notes the similarity must still be a valid kernel, which is the practical burden in designing one.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.5,
+    expectedSeconds: 200,
+    prereqClosure: ["kernel", "dot-product"],
+    source: ML_05,
+    status: "live",
   },
 
   // --- Mercer's Theorem -----------------------------------------------------
@@ -239,7 +333,7 @@ export const ml05Items: Item[] = [
     expectedSeconds: 70,
     prereqClosure: ["mercers-theorem", "kernel", "positive-definite-matrices"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "mercers-theorem--recall-what-it-buys",
@@ -293,7 +387,7 @@ export const ml05Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["mercers-theorem"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "mercers-theorem--apply-why-check-the-matrix",
@@ -325,7 +419,7 @@ export const ml05Items: Item[] = [
     expectedSeconds: 170,
     prereqClosure: ["mercers-theorem", "positive-definite-matrices"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "mercers-theorem--explain-same-condition",
@@ -363,7 +457,7 @@ export const ml05Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["mercers-theorem", "positive-definite-matrices", "symmetric-matrices"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "mercers-theorem--transfer-custom-kernel-risk",
@@ -401,7 +495,135 @@ export const ml05Items: Item[] = [
     expectedSeconds: 230,
     prereqClosure: ["mercers-theorem", "kernel", "positive-definite-matrices"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "mercers-theorem--apply-closure-properties",
+    conceptId: "mercers-theorem",
+    format: "multi-select",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "K₁ and K₂ are valid kernels and c > 0 is a constant. Select every expression that is guaranteed to be a valid kernel.",
+    choices: [
+      { id: "a", text: "K₁ + K₂", correct: true },
+      { id: "b", text: "c · K₁", correct: true },
+      { id: "c", text: "K₁ · K₂ (pointwise product)", correct: true },
+      {
+        id: "d",
+        text: "K₁ − K₂",
+        correct: false,
+        misconception: {
+          id: "difference-assumed-closed",
+          description:
+            "Subtraction is not among the closure properties, and for good reason: a difference of positive semidefinite matrices can easily have a negative eigenvalue.",
+          blameConceptId: "positive-definite-matrices",
+        },
+      },
+      {
+        id: "e",
+        text: "−K₁",
+        correct: false,
+        misconception: {
+          id: "negation-assumed-closed",
+          description:
+            "Negating flips every eigenvalue's sign, so a positive semidefinite matrix becomes negative semidefinite — the condition fails outright.",
+          blameConceptId: "mercers-theorem",
+        },
+      },
+    ],
+    difficulty: 1.2,
+    discrimination: 1.5,
+    expectedSeconds: 90,
+    prereqClosure: ["mercers-theorem", "positive-definite-matrices"],
+    source: ML_05,
+    status: "live",
+  },
+  {
+    id: "mercers-theorem--explain-necessity-direction",
+    conceptId: "mercers-theorem",
+    format: "derivation",
+    cognitive: "explain",
+    channels: ["typed", "handwritten"],
+    stem: "Prove the easy direction: if K(x, z) = ⟨φ(x), φ(z)⟩ for some feature map φ, then every kernel matrix it produces is positive semidefinite.",
+    rubric: {
+      elements: [
+        {
+          id: "sets-up-the-quadratic-form",
+          description:
+            "Writes ΣᵢΣⱼ cᵢcⱼK(xᵢ, xⱼ) = ΣᵢΣⱼ cᵢcⱼ⟨φ(xᵢ), φ(xⱼ)⟩ for arbitrary coefficients c.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "pulls-out-the-norm",
+          description:
+            "Uses bilinearity of the inner product to recognise the double sum as ‖Σᵢ cᵢφ(xᵢ)‖².",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "concludes",
+          description:
+            "Concludes it is ≥ 0 because a squared norm cannot be negative, which is the definition of positive semidefinite.",
+          weight: 3,
+          required: true,
+        },
+      ],
+      forbiddenMoves: [
+        {
+          id: "asserts-without-bilinearity",
+          description:
+            "Jumps straight to the squared norm without the bilinearity step that produces it.",
+          weight: 1,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.7,
+    expectedSeconds: 260,
+    prereqClosure: ["mercers-theorem", "dot-product", "positive-definite-matrices"],
+    source: ML_05,
+    status: "live",
+  },
+  {
+    id: "mercers-theorem--transfer-covariance-connection",
+    conceptId: "mercers-theorem",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "A covariance matrix must be positive semidefinite, because a variance cannot be negative. What does that tell you about using a kernel as the covariance function of a random process?",
+    rubric: {
+      elements: [
+        {
+          id: "same-condition-again",
+          description:
+            "It is the same condition once more: the matrix of pairwise covariances the kernel generates must be a valid covariance matrix, which is exactly Mercer's requirement.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "consequence-of-violating-it",
+          description:
+            "An invalid kernel would imply some linear combination of the process's values has negative variance — an incoherent model, not merely a poorly performing one.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "so-the-same-kernels-transfer",
+          description:
+            "Bonus: notes this is why the same kernel catalogue serves margin classifiers and Gaussian processes alike.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.6,
+    expectedSeconds: 230,
+    prereqClosure: ["mercers-theorem", "positive-definite-matrices", "symmetric-matrices"],
+    source: ML_05,
+    status: "live",
   },
 
   // --- Radial Basis Function ------------------------------------------------
@@ -434,7 +656,7 @@ export const ml05Items: Item[] = [
     expectedSeconds: 50,
     prereqClosure: ["rbf", "kernel"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "rbf--recall-when-largest",
@@ -488,7 +710,7 @@ export const ml05Items: Item[] = [
     expectedSeconds: 30,
     prereqClosure: ["rbf"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "rbf--apply-evaluate",
@@ -504,7 +726,7 @@ export const ml05Items: Item[] = [
     expectedSeconds: 60,
     prereqClosure: ["rbf", "kernel"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "rbf--explain-bandwidth-role",
@@ -542,7 +764,7 @@ export const ml05Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["rbf", "kernel"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "rbf--transfer-infinite-dimensional",
@@ -581,6 +803,100 @@ export const ml05Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["rbf", "kernel"],
     source: ML_05,
-    status: "shadow",
+    status: "live",
   },
+
+  {
+    id: "rbf--apply-gamma-form",
+    conceptId: "rbf",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "For the RBF kernel written as exp(−γ‖x − z‖²) with γ = 0.5 and ‖x − z‖² = 4, compute K(x, z) to three decimal places.",
+    answerKey: 0.135,
+    tolerance: 0.005,
+    difficulty: 0.4,
+    discrimination: 1.2,
+    expectedSeconds: 60,
+    prereqClosure: ["rbf", "kernel"],
+    source: ML_05,
+    status: "live",
+  },
+  {
+    id: "rbf--explain-scaling-requirement",
+    conceptId: "rbf",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Why is a single γ meaningless unless the features have been put on a common scale?",
+    rubric: {
+      elements: [
+        {
+          id: "distance-sums-across-features",
+          description:
+            "‖x − z‖² sums squared differences across all features, so a feature measured in the thousands contributes vastly more to that sum than one measured in units.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "one-gamma-cannot-fit-all",
+          description:
+            "A single γ then sets an appropriate bandwidth for the dominant feature and an absurd one for the rest — the units, not the modeller, decide which features the kernel is sensitive to.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "practical-note",
+          description:
+            "Bonus: notes that the common default γ = 1/(d · Var(X)) only makes sense once the data is standardised.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.05,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["rbf", "kernel", "vector-operations"],
+    source: ML_05,
+    status: "live",
+  },
+  {
+    id: "rbf--transfer-limits-of-gamma",
+    conceptId: "rbf",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Describe what the RBF kernel matrix approaches as γ → 0 and as γ → ∞, and what each limit does to a model built on it.",
+    rubric: {
+      elements: [
+        {
+          id: "gamma-to-zero",
+          description:
+            "γ → 0: every entry tends to 1, so all points look identical and the model can no longer distinguish them — an effectively constant, maximally rigid fit.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "gamma-to-infinity",
+          description:
+            "γ → ∞: off-diagonal entries tend to 0 and the matrix approaches the identity, so each training point is similar only to itself — the model memorises the training set and generalises to nothing.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "reading-the-two-limits",
+          description:
+            "Bonus: identifies these as the two failure modes γ interpolates between, which is why it must be tuned jointly with the regularisation strength.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["rbf", "kernel"],
+    source: ML_05,
+    status: "live",
+  },
+
 ];

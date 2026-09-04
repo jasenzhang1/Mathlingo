@@ -37,7 +37,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["ml-introduction"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "ml-introduction--recall-vs-rule-based",
@@ -91,7 +91,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 30,
     prereqClosure: ["ml-introduction"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "ml-introduction--apply-classify-two-filters",
@@ -127,7 +127,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 70,
     prereqClosure: ["ml-introduction"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "ml-introduction--explain-hard-to-articulate",
@@ -173,7 +173,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 150,
     prereqClosure: ["ml-introduction"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "ml-introduction--transfer-spectrum-not-binary",
@@ -211,7 +211,125 @@ export const ml01Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["ml-introduction"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "ml-introduction--apply-name-the-three-parts",
+    conceptId: "ml-introduction",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "A learning problem needs a task, a source of experience, and a performance measure. Identify all three for: 'a system that gets better at recommending films the longer someone uses it.'",
+    rubric: {
+      elements: [
+        {
+          id: "task",
+          description: "Task: predicting which films this person will rate highly, or rank for them.",
+          weight: 2,
+          required: true,
+        },
+        {
+          id: "experience",
+          description:
+            "Experience: the person's accumulating watch history and ratings, plus other users' behaviour.",
+          weight: 2,
+          required: true,
+        },
+        {
+          id: "performance-measure",
+          description:
+            "Performance measure: something concretely stated — rating prediction error, click-through, watch-completion rate — not just 'better recommendations'.",
+          weight: 3,
+          required: true,
+        },
+      ],
+      forbiddenMoves: [
+        {
+          id: "measure-left-vague",
+          description:
+            "Leaves the performance measure as 'user satisfaction' or 'accuracy' with no statement of what is counted, which is exactly the part that makes a learning problem well posed.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 0.1,
+    discrimination: 1.3,
+    expectedSeconds: 140,
+    prereqClosure: ["ml-introduction"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "ml-introduction--explain-risk-vs-empirical-risk",
+    conceptId: "ml-introduction",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Training minimises the average loss on the data you have, but the quantity you care about is the average loss on data you have not seen. Why can you never compute the second one, and what follows from that?",
+    rubric: {
+      elements: [
+        {
+          id: "expectation-over-unknown-distribution",
+          description:
+            "The quantity of interest is an expectation over the data-generating distribution, which is exactly what you do not have — you only have a sample from it.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-follows",
+          description:
+            "So you minimise the sample average and hope it tracks the true one, which is why held-out evaluation and regularisation exist at all rather than being optional refinements.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.75,
+    discrimination: 1.5,
+    expectedSeconds: 190,
+    prereqClosure: ["ml-introduction"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "ml-introduction--transfer-when-not-to-use-ml",
+    conceptId: "ml-introduction",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Give a task where reaching for machine learning would be the wrong call, and state the property of the task that makes ordinary code the better answer.",
+    rubric: {
+      elements: [
+        {
+          id: "concrete-task",
+          description:
+            "Names a concrete task whose rule is published or fully specified — computing sales tax, validating a checksum, applying a contractual discount schedule.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "the-deciding-property",
+          description:
+            "Identifies the property: the rule is already known and exactly stateable, so learning it approximately from examples can only lose accuracy while adding data dependence.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "costs-named",
+          description:
+            "Bonus: names a concrete cost of the wrong choice — unexplainable errors on cases a rule would handle exactly, or a model that silently drifts.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.25,
+    discrimination: 1.4,
+    expectedSeconds: 200,
+    prereqClosure: ["ml-introduction"],
+    source: ML_01,
+    status: "live",
   },
 
   // --- Loss Functions -------------------------------------------------------
@@ -243,7 +361,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["loss-functions", "ml-introduction"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "loss-functions--recall-required-property",
@@ -297,7 +415,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 30,
     prereqClosure: ["loss-functions"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "loss-functions--apply-squared-error-value",
@@ -313,7 +431,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 30,
     prereqClosure: ["loss-functions"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "loss-functions--explain-why-squaring-penalises",
@@ -353,7 +471,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 150,
     prereqClosure: ["loss-functions"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "loss-functions--transfer-loss-matches-output-type",
@@ -391,7 +509,96 @@ export const ml01Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["loss-functions"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "loss-functions--apply-absolute-vs-squared",
+    conceptId: "loss-functions",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "Predictions miss the truth by 1, 1, 1 and 5 on four examples. Compute the total squared-error loss.",
+    answerKey: 28,
+    tolerance: 0.001,
+    difficulty: 0.15,
+    discrimination: 1.2,
+    expectedSeconds: 80,
+    prereqClosure: ["loss-functions"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "loss-functions--explain-which-statistic-is-recovered",
+    conceptId: "loss-functions",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Minimising expected squared error returns the conditional mean, while minimising expected absolute error returns the conditional median. Why does that make the choice of loss a modelling decision rather than a convenience?",
+    rubric: {
+      elements: [
+        {
+          id: "loss-selects-the-summary",
+          description:
+            "The loss determines which summary of the conditional distribution the model reports — you are choosing what the prediction *means*, not just how it is fitted.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "when-they-differ",
+          description:
+            "On skewed targets the mean and median differ substantially, so the two losses give genuinely different predictions on the same data, and one of them answers the question being asked.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.6,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["loss-functions"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "loss-functions--transfer-asymmetric-cost",
+    conceptId: "loss-functions",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "A retailer's under-stocking costs a lost sale worth £40; over-stocking costs a day of warehousing worth £2. What does using squared error here assert, and what should be done instead?",
+    rubric: {
+      elements: [
+        {
+          id: "what-squared-error-asserts",
+          description:
+            "Squared error is symmetric, so it asserts that a unit of under-stocking and a unit of over-stocking cost the same — a claim about the business that is false by a factor of twenty.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-consequence",
+          description:
+            "The model will deliver the balanced-cost answer to a question nobody asked, systematically under-stocking relative to what the true costs imply.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "the-fix",
+          description:
+            "Names an asymmetric or quantile loss encoding the real cost ratio, rather than post-processing the predictions of a symmetric one.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.1,
+    discrimination: 1.5,
+    expectedSeconds: 200,
+    prereqClosure: ["loss-functions"],
+    source: ML_01,
+    status: "live",
   },
 
   // --- Types of Machine Learning -------------------------------------------
@@ -417,7 +624,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 30,
     prereqClosure: ["types-of-machine-learning", "ml-introduction"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "types-of-machine-learning--recall-rl-vs-supervised",
@@ -471,7 +678,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["types-of-machine-learning"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "types-of-machine-learning--apply-classify-three-tasks",
@@ -495,7 +702,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 60,
     prereqClosure: ["types-of-machine-learning"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "types-of-machine-learning--explain-labels-as-the-line",
@@ -527,7 +734,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 150,
     prereqClosure: ["types-of-machine-learning"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "types-of-machine-learning--transfer-same-task-either-framing",
@@ -559,7 +766,111 @@ export const ml01Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["types-of-machine-learning"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "types-of-machine-learning--apply-place-self-supervised",
+    conceptId: "types-of-machine-learning",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "A model is trained by hiding a word in a sentence and predicting it from the surrounding words. Which family does that belong to, and why is the answer arguably both?",
+    rubric: {
+      elements: [
+        {
+          id: "structurally-supervised",
+          description:
+            "Structurally supervised: there is a target for every example and a loss comparing the prediction to it.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "practically-unsupervised",
+          description:
+            "Practically unsupervised: no human labelled anything — the targets are manufactured from the raw input itself.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "why-the-distinction-blurs",
+          description:
+            "Bonus: notes this is why 'self-supervised' is named separately, and why the labels axis is a description of where supervision comes from rather than a clean partition.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 0.2,
+    discrimination: 1.4,
+    expectedSeconds: 150,
+    prereqClosure: ["types-of-machine-learning"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "types-of-machine-learning--explain-rl-data-not-independent",
+    conceptId: "types-of-machine-learning",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "In supervised learning the training data is fixed before the model exists. In reinforcement learning it is not. Explain what changes as a result.",
+    rubric: {
+      elements: [
+        {
+          id: "agent-generates-its-own-data",
+          description:
+            "The agent's own actions determine which states it visits, so the data distribution depends on the current policy and shifts as the policy improves.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "consequence",
+          description:
+            "So the data is not independent of the model being fitted: a policy that never tries an action never learns about it, and evaluation cannot simply be held-out scoring of a fixed set.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.7,
+    discrimination: 1.5,
+    expectedSeconds: 190,
+    prereqClosure: ["types-of-machine-learning"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "types-of-machine-learning--transfer-active-learning-budget",
+    conceptId: "types-of-machine-learning",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "A team can afford to have 500 of their 100,000 records labelled by an expert. Rather than sampling 500 at random, they let the model choose which ones. Why might that be better, and what could go wrong?",
+    rubric: {
+      elements: [
+        {
+          id: "why-better",
+          description:
+            "Labels spent where the model is most uncertain are more informative per unit of cost than labels on cases it already handles confidently.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-goes-wrong",
+          description:
+            "The labelled set is no longer a random sample of the population, so it is biased toward the boundary — it cannot be used to estimate performance, and an early wrong model can steer the selection into a blind spot it never escapes.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.2,
+    discrimination: 1.5,
+    expectedSeconds: 210,
+    prereqClosure: ["types-of-machine-learning"],
+    source: ML_01,
+    status: "live",
   },
 
   // --- Supervised vs Unsupervised Learning ---------------------------------
@@ -591,7 +902,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["supervised-vs-unsupervised-learning", "types-of-machine-learning"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "supervised-vs-unsupervised-learning--recall-clustering",
@@ -641,7 +952,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 25,
     prereqClosure: ["supervised-vs-unsupervised-learning"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "supervised-vs-unsupervised-learning--apply-is-pca-supervised",
@@ -672,7 +983,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 70,
     prereqClosure: ["supervised-vs-unsupervised-learning"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "supervised-vs-unsupervised-learning--explain-evaluation-asymmetry",
@@ -704,7 +1015,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 150,
     prereqClosure: ["supervised-vs-unsupervised-learning"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "supervised-vs-unsupervised-learning--transfer-start-unsupervised",
@@ -736,7 +1047,114 @@ export const ml01Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["supervised-vs-unsupervised-learning"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "supervised-vs-unsupervised-learning--apply-sort-five-methods",
+    conceptId: "supervised-vs-unsupervised-learning",
+    format: "multi-select",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "Select every method that uses no label or outcome information at all.",
+    choices: [
+      { id: "a", text: "k-means clustering", correct: true },
+      { id: "b", text: "principal component analysis", correct: true },
+      { id: "c", text: "an autoencoder reconstructing its own input", correct: true },
+      {
+        id: "d",
+        text: "k-nearest-neighbours classification",
+        correct: false,
+        misconception: {
+          id: "knn-mistaken-for-unsupervised",
+          description:
+            "The shared 'k' with k-means is a coincidence of notation. k-NN votes on its neighbours' *labels*, which makes it supervised.",
+          blameConceptId: "supervised-vs-unsupervised-learning",
+        },
+      },
+      {
+        id: "e",
+        text: "linear discriminant analysis",
+        correct: false,
+        misconception: {
+          id: "lda-mistaken-for-unsupervised",
+          description:
+            "It looks like PCA and is not: it chooses directions that separate *known classes*, so it cannot run without labels.",
+          blameConceptId: "supervised-vs-unsupervised-learning",
+        },
+      },
+    ],
+    difficulty: 0.35,
+    discrimination: 1.5,
+    expectedSeconds: 90,
+    prereqClosure: ["supervised-vs-unsupervised-learning"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "supervised-vs-unsupervised-learning--explain-clusters-are-not-classes",
+    conceptId: "supervised-vs-unsupervised-learning",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "A clustering run returns four clean, well-separated groups. Why is that not yet evidence that four groups exist in the data?",
+    rubric: {
+      elements: [
+        {
+          id: "algorithms-always-return-clusters",
+          description:
+            "The algorithm was asked for four groups and will return four from any data, including pure noise — the output's existence is not evidence about the input.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-would-be-evidence",
+          description:
+            "Names what would count: comparison against a null reference, stability of the assignments across resamples, or an external variable the clusters predict but were not given.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.8,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["supervised-vs-unsupervised-learning"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "supervised-vs-unsupervised-learning--transfer-semi-supervised-case",
+    conceptId: "supervised-vs-unsupervised-learning",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "With 200 labelled examples and 50,000 unlabelled ones, how can the unlabelled data help fit a classifier at all, given it contains no answers?",
+    rubric: {
+      elements: [
+        {
+          id: "unlabelled-data-constrains-the-boundary",
+          description:
+            "The unlabelled points reveal where the data actually lies, which constrains where a plausible boundary can sit — it should pass through sparse regions rather than through the middle of a dense cluster.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "assumption-being-made",
+          description:
+            "Names the assumption this rests on: that points in the same dense region tend to share a label. Where that fails, the unlabelled data actively misleads.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.3,
+    discrimination: 1.5,
+    expectedSeconds: 210,
+    prereqClosure: ["supervised-vs-unsupervised-learning"],
+    source: ML_01,
+    status: "live",
   },
 
   // --- Classification vs Regression ----------------------------------------
@@ -763,7 +1181,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["classification-vs-regression", "supervised-vs-unsupervised-learning"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "classification-vs-regression--recall-house-price",
@@ -813,7 +1231,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 25,
     prereqClosure: ["classification-vs-regression"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "classification-vs-regression--apply-classify-four",
@@ -837,7 +1255,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 60,
     prereqClosure: ["classification-vs-regression"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "classification-vs-regression--explain-reframing-consequences",
@@ -869,7 +1287,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 160,
     prereqClosure: ["classification-vs-regression"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "classification-vs-regression--transfer-clinical-threshold",
@@ -907,7 +1325,111 @@ export const ml01Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["classification-vs-regression"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "classification-vs-regression--apply-ordinal-target",
+    conceptId: "classification-vs-regression",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "A target is a 1-to-5 star rating. Say what each framing gets wrong: treating it as regression, and treating it as five unordered classes.",
+    rubric: {
+      elements: [
+        {
+          id: "regression-assumes-equal-gaps",
+          description:
+            "Regression assumes the gap from 1★ to 2★ equals the gap from 4★ to 5★, and that fractional predictions like 3.7★ are meaningful.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "classification-discards-order",
+          description:
+            "Five unordered classes throws the ordering away, so predicting 1★ when the truth is 5★ costs exactly the same as predicting 4★.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "names-the-middle-ground",
+          description:
+            "Bonus: names ordinal regression as the framing built for exactly this case.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 0.45,
+    discrimination: 1.4,
+    expectedSeconds: 160,
+    prereqClosure: ["classification-vs-regression"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "classification-vs-regression--explain-same-model-family",
+    conceptId: "classification-vs-regression",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Almost every model family has both a classifier and a regressor version — trees, forests, boosting, k-NN, neural networks. What actually differs between the two versions, and what does not?",
+    rubric: {
+      elements: [
+        {
+          id: "what-changes",
+          description:
+            "The output layer and the loss change: a discrete output with a classification loss, or a real-valued output with a regression loss.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-stays",
+          description:
+            "The underlying mechanism does not — the same splits, the same neighbours, the same architecture — which is why the idea is worth learning once rather than twice.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.95,
+    discrimination: 1.5,
+    expectedSeconds: 180,
+    prereqClosure: ["classification-vs-regression"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "classification-vs-regression--transfer-cost-of-a-near-miss",
+    conceptId: "classification-vs-regression",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "A model predicts 79 when the truth is 81, and the decision threshold is 80. Score this under both framings and say what the disagreement tells you about how to choose one.",
+    rubric: {
+      elements: [
+        {
+          id: "both-scores",
+          description:
+            "As regression, squared error (79 − 81)² = 4, a small miss. As classification, predicted 'below', truth 'above' — a full misclassification.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "neither-is-wrong",
+          description:
+            "Both scores are correct; they answer different questions. The framing to choose is the one whose notion of failure matches the real cost of the decision being made.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.45,
+    discrimination: 1.5,
+    expectedSeconds: 200,
+    prereqClosure: ["classification-vs-regression"],
+    source: ML_01,
+    status: "live",
   },
 
   // --- Curse of Dimensionality ---------------------------------------------
@@ -941,7 +1463,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 50,
     prereqClosure: ["curse-of-dimensionality", "ml-introduction"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "curse-of-dimensionality--recall-distances",
@@ -995,7 +1517,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["curse-of-dimensionality"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "curse-of-dimensionality--apply-sample-blowup",
@@ -1011,7 +1533,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 60,
     prereqClosure: ["curse-of-dimensionality"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "curse-of-dimensionality--explain-volume-at-the-corners",
@@ -1050,7 +1572,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["curse-of-dimensionality"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "curse-of-dimensionality--transfer-knn-degradation",
@@ -1082,7 +1604,89 @@ export const ml01Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["curse-of-dimensionality"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "curse-of-dimensionality--apply-neighbourhood-side-length",
+    conceptId: "curse-of-dimensionality",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "To capture a fraction r of the data in a d-dimensional unit cube, a cubic neighbourhood must have side r^(1/d). With r = 0.01 and d = 100, what side length is needed? Give three decimal places.",
+    answerKey: 0.955,
+    tolerance: 0.005,
+    difficulty: 0.2,
+    discrimination: 1.4,
+    expectedSeconds: 110,
+    prereqClosure: ["curse-of-dimensionality"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "curse-of-dimensionality--explain-why-anything-works",
+    conceptId: "curse-of-dimensionality",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Images with a million pixels are learned from far fewer than the astronomically many examples the curse of dimensionality seems to demand. Why does that not contradict it?",
+    rubric: {
+      elements: [
+        {
+          id: "effective-vs-ambient-dimension",
+          description:
+            "Real data does not fill its ambient space: the pixel patterns that constitute photographs are a vanishing subset of all possible pixel arrays, so the data lies near a much lower-dimensional surface.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "the-curse-applies-to-the-effective-one",
+          description:
+            "The sample requirement is governed by that effective dimension, not the nominal one — the curse is real and simply not being paid at the nominal rate.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.65,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["curse-of-dimensionality"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "curse-of-dimensionality--transfer-which-methods-suffer",
+    conceptId: "curse-of-dimensionality",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Some methods degrade sharply as irrelevant features are added and others barely notice. What property separates the two groups?",
+    rubric: {
+      elements: [
+        {
+          id: "the-separating-property",
+          description:
+            "Whether the method combines all features into a single distance or similarity. Anything that does — nearest neighbours, distance-based clustering, radial kernels — has every added feature diluting the signal in that one number.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "the-resistant-group",
+          description:
+            "Methods that consider features one at a time or weight them individually — trees, and linear models with a sparsity penalty — can ignore an uninformative feature rather than averaging it in.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.15,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["curse-of-dimensionality"],
+    source: ML_01,
+    status: "live",
   },
 
   // --- Training vs Validation vs Test Set ----------------------------------
@@ -1122,7 +1726,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 60,
     prereqClosure: ["training-validation-test-set", "supervised-vs-unsupervised-learning"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "training-validation-test-set--recall-repeated-test-checks",
@@ -1176,7 +1780,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["training-validation-test-set"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "training-validation-test-set--apply-70-15-15",
@@ -1214,7 +1818,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 100,
     prereqClosure: ["training-validation-test-set"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "training-validation-test-set--explain-selection-leakage",
@@ -1246,7 +1850,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["training-validation-test-set"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "training-validation-test-set--transfer-private-leaderboard",
@@ -1278,7 +1882,111 @@ export const ml01Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["training-validation-test-set"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "training-validation-test-set--apply-choose-a-split-scheme",
+    conceptId: "training-validation-test-set",
+    format: "multi-select",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "Select every situation in which a uniformly random row-wise split would produce a misleading evaluation.",
+    choices: [
+      { id: "a", text: "Daily sales data, predicting next month's demand", correct: true },
+      { id: "b", text: "Several clinical measurements per patient, predicting patient outcome", correct: true },
+      { id: "c", text: "News articles syndicated to multiple sites under different ids", correct: true },
+      {
+        id: "d",
+        text: "Independently collected survey responses, one per respondent, in no particular order",
+        correct: false,
+        misconception: {
+          id: "random-split-called-unsafe-when-safe",
+          description:
+            "This is exactly the exchangeable case a random split assumes. Treating every dataset as unsafe is as unhelpful as treating none as unsafe.",
+          blameConceptId: "training-validation-test-set",
+        },
+      },
+    ],
+    difficulty: 0.5,
+    discrimination: 1.5,
+    expectedSeconds: 110,
+    prereqClosure: ["training-validation-test-set"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "training-validation-test-set--explain-winners-curse",
+    conceptId: "training-validation-test-set",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "You try 200 configurations and report the best validation score. Explain why that number is biased upward even if all 200 models were genuinely equal in quality.",
+    rubric: {
+      elements: [
+        {
+          id: "maximum-of-noisy-estimates",
+          description:
+            "Each score is the true quality plus noise, and the maximum of 200 such draws sits systematically above their common mean — you selected the configuration that got luckiest on that sample.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "so-the-number-is-not-performance",
+          description:
+            "The reported figure therefore measures the winner's luck as well as its quality, which is why an untouched test set is needed to estimate the latter.",
+          weight: 4,
+          required: true,
+        },
+      ],
+      forbiddenMoves: [
+        {
+          id: "blames-overfitting-the-training-set",
+          description:
+            "Attributes the bias to the models overfitting the training data, which is a different mechanism and would not arise if all 200 were equal in true quality.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.0,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["training-validation-test-set"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "training-validation-test-set--transfer-preprocessing-inside-the-split",
+    conceptId: "training-validation-test-set",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Why must a scaler, an imputer or an encoder be fitted on the training split alone rather than on the whole dataset before splitting — and what practical device enforces this?",
+    rubric: {
+      elements: [
+        {
+          id: "fitted-transforms-are-model-parameters",
+          description:
+            "A fitted transform has parameters estimated from data — a mean, a category vocabulary — so fitting it on everything lets validation and test rows influence how training rows are represented.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-device",
+          description:
+            "Names the practical enforcement: wrapping every fitted step in a pipeline, so cross-validation refits the whole chain inside each fold rather than reusing one global fit.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.5,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["training-validation-test-set"],
+    source: ML_01,
+    status: "live",
   },
 
   // --- Data Leakage ---------------------------------------------------------
@@ -1312,7 +2020,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 50,
     prereqClosure: ["data-leakage", "training-validation-test-set"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "data-leakage--recall-classic-example",
@@ -1366,7 +2074,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["data-leakage"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "data-leakage--apply-collections-flag",
@@ -1398,7 +2106,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 120,
     prereqClosure: ["data-leakage"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "data-leakage--explain-preprocessing-leakage",
@@ -1436,7 +2144,7 @@ export const ml01Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["data-leakage", "training-validation-test-set"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "data-leakage--transfer-great-in-dev-fails-in-prod",
@@ -1468,6 +2176,125 @@ export const ml01Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["data-leakage"],
     source: ML_01,
-    status: "shadow",
+    status: "live",
   },
+
+  {
+    id: "data-leakage--apply-spot-the-leaks",
+    conceptId: "data-leakage",
+    format: "multi-select",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "A model predicts whether a customer will cancel their subscription this month. Select every feature that is likely leakage.",
+    choices: [
+      { id: "a", text: "Whether a cancellation-confirmation email was sent", correct: true },
+      { id: "b", text: "Number of refund requests processed this month", correct: true },
+      { id: "c", text: "Date the account was closed", correct: true },
+      {
+        id: "d",
+        text: "Number of logins in the previous three months",
+        correct: false,
+        misconception: {
+          id: "legitimate-history-called-leakage",
+          description:
+            "Prior behaviour recorded before the prediction moment is exactly the signal the model is supposed to use. Treating all predictive features as suspect is the opposite failure.",
+          blameConceptId: "data-leakage",
+        },
+      },
+      {
+        id: "e",
+        text: "The subscription tier the customer signed up on",
+        correct: false,
+        misconception: {
+          id: "static-attribute-called-leakage",
+          description:
+            "Set at sign-up, long before the outcome, and available at prediction time.",
+          blameConceptId: "data-leakage",
+        },
+      },
+    ],
+    difficulty: 0.55,
+    discrimination: 1.6,
+    expectedSeconds: 120,
+    prereqClosure: ["data-leakage"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "data-leakage--explain-duplicate-rows",
+    conceptId: "data-leakage",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Why are near-duplicate records a form of leakage even when every feature is legitimately available at prediction time?",
+    rubric: {
+      elements: [
+        {
+          id: "duplicates-straddle-the-split",
+          description:
+            "A duplicate landing in both training and test means the model has effectively already seen the test row, so its score there measures memorisation rather than generalisation.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "no-individual-feature-is-at-fault",
+          description:
+            "No single feature is illegitimate — the leak is in the *split*, which is why deduplication belongs to splitting rather than to data cleaning.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "concrete-sources",
+          description:
+            "Bonus: names concrete sources — the same customer under two ids, an article syndicated to two sites, augmented copies of one image.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.05,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["data-leakage", "training-validation-test-set"],
+    source: ML_01,
+    status: "live",
+  },
+  {
+    id: "data-leakage--transfer-treat-a-good-score-as-a-bug",
+    conceptId: "data-leakage",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "A colleague reports 99.4% cross-validated accuracy on a problem domain experts consider roughly 80% achievable. Describe how you would investigate, and what specifically you would look for.",
+    rubric: {
+      elements: [
+        {
+          id: "treats-it-as-a-bug-report",
+          description:
+            "Treats the result as a defect to investigate rather than a success to celebrate — a score above what the problem allows is evidence about the pipeline, not about the model.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "concrete-checks",
+          description:
+            "Names concrete checks: inspect the highest-importance features and ask when each value is written relative to the outcome; verify the split is by group and by time; confirm every fitted transform sits inside the fold; check for duplicate rows.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "other-signals",
+          description:
+            "Bonus: notes corroborating signals — validation error below training error, or a single feature carrying implausible importance nobody can explain mechanistically.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.6,
+    expectedSeconds: 230,
+    prereqClosure: ["data-leakage", "training-validation-test-set"],
+    source: ML_01,
+    status: "live",
+  },
+
 ];

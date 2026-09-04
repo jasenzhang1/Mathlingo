@@ -93,28 +93,32 @@ gradient despite `gradient-descent` being named after one, and no neural-network
 | LA-7 | [la-07-spectral-theory-and-special-matrices.md](la-07-spectral-theory-and-special-matrices.md) | Spectral Theorem → Matrix Stability (7) | done (35 items) |
 | LA-8 | [la-08-svd-and-applications.md](la-08-svd-and-applications.md) | SVD → PCA (Matrix Edition) (6) | done (30 items) |
 
-**Machine Learning: 50 / 50 concepts done (250 items) — and the only domain that
-is also servable.** All 250 are ported into typed `Item` entries under
+**Machine Learning: 50 / 50 concepts done — 400 servable items.** The 250
+authored here are ported into typed `Item` entries under
 [`web/src/data/items-ml/`](../web/src/data/items-ml/), one file per cluster,
-spread into [`items.ts`](../web/src/data/items.ts). They ship at `shadow`: the
-text and rubrics are authored, but the IRT parameters are seeds from graph depth
-rather than estimates from exposure — which is exactly the status `retrieval.ts`
-assigns newly accepted items and `calibration.ts` promotes out of once the
-numbers justify it. `npm run audit:coverage` reports the gap between this table
-and what the app can actually serve.
+spread into [`items.ts`](../web/src/data/items.ts). A further 150 — a second
+apply, explain and transfer per concept — were written on top to bring every
+pool to the `MIN_LIVE_ITEMS = 8` bar `calibration.ts` sets, matching the 2/2/2/2
+level mix and format spread the statistics, multivariate-probability and
+graphical-models banks use. All ship `live`, as those banks do.
+`npm run audit:coverage` reports the gap between this table and what the app can
+actually serve.
 
-All 250 clear `verifyItem` with no blockers and no warnings. Where a markdown
+All 400 clear `verifyItem` with no blockers and no warnings. Where a markdown
 item cited a concept that is not upstream of the concept under test —
 `type-i-ii-error` from `confusion-matrices`, `sample-mean` from
 `k-fold-cross-validation`, `bernoulli-binomial` from `splitting-criteria`,
 `eckart-young` from `pca`, and a dozen more — the port keeps the connection but
 states the borrowed fact in the stem, so the item tests the concept rather than
-whether the learner happened to meet a sideways neighbour. Two of those look like
-genuinely missing prerequisite edges rather than authoring slips, and are worth a
-graph decision: `ensemble-methods` has no probability concept upstream at all
-despite resting entirely on a variance-of-an-average argument, and `kernel-pca`
-does not have `mercers-theorem` upstream despite needing its condition to be
-well defined.
+whether the learner happened to meet a sideways neighbour. Three of those look
+like genuinely missing prerequisite edges rather than authoring slips, and are
+worth a graph decision rather than a silent patch:
+
+| Concept | Missing upstream | Why it looks like an omission |
+|---|---|---|
+| `ensemble-methods` | any probability concept | Its entire justification is a variance-of-an-average argument, and nothing upstream defines variance |
+| `kernel-pca` | `mercers-theorem` | The kernel matrix must satisfy Mercer's condition or the eigendecomposition is not of any underlying PCA |
+| `generative-vs-discriminative-models` | `bayes-rule` | The generative route *is* P(y\|x) ∝ P(x\|y)P(y); `naive-bayes` declares the edge but its own parent does not |
 
 The 50 machine-learning wiki articles live in
 [`web/src/data/wiki/ml/`](../web/src/data/wiki/ml/), grouped into the same nine

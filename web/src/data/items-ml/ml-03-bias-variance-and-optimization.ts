@@ -41,7 +41,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["bias-variance-tradeoff", "loss-functions", "variance"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "bias-variance-tradeoff--recall-high-bias",
@@ -95,7 +95,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["bias-variance-tradeoff"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "bias-variance-tradeoff--apply-attribute-two-fits",
@@ -135,7 +135,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 150,
     prereqClosure: ["bias-variance-tradeoff"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "bias-variance-tradeoff--explain-why-they-trade-off",
@@ -174,7 +174,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["bias-variance-tradeoff", "variance"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "bias-variance-tradeoff--transfer-decomposition-as-a-move",
@@ -214,7 +214,95 @@ export const ml03Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["bias-variance-tradeoff", "variance", "expectation"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "bias-variance-tradeoff--apply-compute-decomposition",
+    conceptId: "bias-variance-tradeoff",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "At a point x, a model's expected squared error decomposes as bias² + variance + σ². The bias is 0.4, the variance is 0.25, and the irreducible noise variance is 0.1. What is the expected squared error?",
+    answerKey: 0.51,
+    tolerance: 0.005,
+    difficulty: 0.35,
+    discrimination: 1.3,
+    expectedSeconds: 90,
+    prereqClosure: ["bias-variance-tradeoff", "variance"],
+    source: ML_03,
+    status: "live",
+  },
+  {
+    id: "bias-variance-tradeoff--explain-which-lever-for-which-term",
+    conceptId: "bias-variance-tradeoff",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Collecting more data reduces one term of the decomposition and leaves another untouched. Say which is which, and what that implies about when a data-collection budget is worth spending.",
+    rubric: {
+      elements: [
+        {
+          id: "data-reduces-variance-only",
+          description:
+            "More data shrinks the variance term and leaves bias alone, since bias is a property of the model class rather than of the sample.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "implication-for-spending",
+          description:
+            "So a high-variance model is the one worth buying data for; on a high-bias model the same spend converges to the same wrong answer with tighter intervals, and a richer model class is what is actually needed.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.0,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["bias-variance-tradeoff", "variance"],
+    source: ML_03,
+    status: "live",
+  },
+  {
+    id: "bias-variance-tradeoff--transfer-scope-of-the-decomposition",
+    conceptId: "bias-variance-tradeoff",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "The clean additive decomposition into bias², variance and noise is specific to squared-error loss. What survives the move to 0–1 classification loss and what does not?",
+    rubric: {
+      elements: [
+        {
+          id: "algebra-does-not-transfer",
+          description:
+            "The exact additive identity does not: analogues for 0–1 loss exist but the terms do not simply add, and definitions of them disagree between authors.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "intuition-does",
+          description:
+            "The intuition does: too rigid a model misses the pattern systematically, too flexible a model chases the sample, and the best complexity sits between.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "concrete-difference",
+          description:
+            "Bonus: notes a concrete difference — under 0–1 loss a change in the estimated probability that does not cross the threshold changes nothing at all, which has no analogue under squared error.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["bias-variance-tradeoff", "loss-functions"],
+    source: ML_03,
+    status: "live",
   },
 
   // --- Overfitting and Underfitting ----------------------------------------
@@ -248,7 +336,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 55,
     prereqClosure: ["overfitting-underfitting", "bias-variance-tradeoff"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "overfitting-underfitting--recall-symptom",
@@ -302,7 +390,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["overfitting-underfitting"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "overfitting-underfitting--apply-diagnose-two",
@@ -339,7 +427,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 130,
     prereqClosure: ["overfitting-underfitting"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "overfitting-underfitting--explain-regularisation-adds-bias",
@@ -379,7 +467,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["overfitting-underfitting", "bias-variance-tradeoff"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "overfitting-underfitting--transfer-more-data-asymmetry",
@@ -417,7 +505,119 @@ export const ml03Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["overfitting-underfitting", "bias-variance-tradeoff", "variance"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "overfitting-underfitting--apply-diagnose-four-cases",
+    conceptId: "overfitting-underfitting",
+    format: "multi-select",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "Select every train/validation error pair that indicates overfitting.",
+    choices: [
+      { id: "a", text: "training 2%, validation 24%", correct: true },
+      { id: "b", text: "training 0%, validation 18%", correct: true },
+      {
+        id: "c",
+        text: "training 31%, validation 33%",
+        correct: false,
+        misconception: {
+          id: "high-level-small-gap-called-overfitting",
+          description:
+            "Both errors are high and close together — that is underfitting. The level judges bias; only the gap judges variance.",
+          blameConceptId: "overfitting-underfitting",
+        },
+      },
+      {
+        id: "d",
+        text: "training 12%, validation 4%",
+        correct: false,
+        misconception: {
+          id: "reversed-gap-called-overfitting",
+          description:
+            "Validation below training is rare and normally signals a broken split, a leaky feature, or regularisation applied only at training time — not overfitting.",
+          blameConceptId: "data-leakage",
+        },
+      },
+    ],
+    difficulty: 0.4,
+    discrimination: 1.5,
+    expectedSeconds: 100,
+    prereqClosure: ["overfitting-underfitting"],
+    source: ML_03,
+    status: "live",
+  },
+  {
+    id: "overfitting-underfitting--explain-interpolation-is-not-learning",
+    conceptId: "overfitting-underfitting",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "A depth-unlimited decision tree reaches 100% training accuracy on 1,000 rows. Explain what it has actually stored, and why the optimiser could not have avoided this on its own.",
+    rubric: {
+      elements: [
+        {
+          id: "what-it-stored",
+          description:
+            "It grew leaves until each held rows of a single class — in the limit one row per leaf — so a leaf encodes a specific training row rather than a rule, mislabelled rows included.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-the-optimiser-cannot-tell",
+          description:
+            "The training objective cannot distinguish noise from signal: both are just numbers that reduce the loss, so capacity spent on noise is indistinguishable from capacity spent well until unseen data arrives.",
+          weight: 5,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.05,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["overfitting-underfitting"],
+    source: ML_03,
+    status: "live",
+  },
+  {
+    id: "overfitting-underfitting--transfer-early-stopping-as-regularisation",
+    conceptId: "overfitting-underfitting",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Early stopping adds no penalty term and changes no architecture, yet it is described as a regularisation technique. Justify that description.",
+    rubric: {
+      elements: [
+        {
+          id: "limits-effective-capacity",
+          description:
+            "Halting before convergence limits how far the parameters travel from their initialisation, so the model never reaches the most flexible fit it is capable of — effective capacity is constrained even though nominal capacity is not.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "same-bias-variance-trade",
+          description:
+            "The trade is the familiar one: accepting some systematic error to stop the fit tracking the sample's noise.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "the-formal-link",
+          description:
+            "Bonus: notes that for gradient descent on a linear model the correspondence is close to exact — stopping early approximates an L2 penalty whose strength falls as training proceeds.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["overfitting-underfitting", "bias-variance-tradeoff"],
+    source: ML_03,
+    status: "live",
   },
 
   // --- Gradient Descent -----------------------------------------------------
@@ -449,7 +649,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["gradient-descent", "loss-functions", "matrix-calculus"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gradient-descent--recall-large-eta",
@@ -503,7 +703,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["gradient-descent"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gradient-descent--apply-one-step",
@@ -519,7 +719,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 70,
     prereqClosure: ["gradient-descent", "matrix-calculus"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gradient-descent--explain-why-subtract",
@@ -557,7 +757,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 170,
     prereqClosure: ["gradient-descent", "matrix-calculus"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gradient-descent--transfer-why-stochastic",
@@ -589,7 +789,102 @@ export const ml03Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["gradient-descent"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "gradient-descent--apply-two-steps",
+    conceptId: "gradient-descent",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "For L(θ) = (θ − 3)² with ∇L(θ) = 2(θ − 3), start at θ = 0 with η = 0.1. What is θ after two gradient descent steps?",
+    answerKey: 1.08,
+    tolerance: 0.005,
+    difficulty: 0.8,
+    discrimination: 1.3,
+    expectedSeconds: 110,
+    prereqClosure: ["gradient-descent", "matrix-calculus"],
+    source: ML_03,
+    status: "live",
+  },
+  {
+    id: "gradient-descent--explain-scaling-is-a-conditioning-fix",
+    conceptId: "gradient-descent",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "One feature ranges over [0, 1] and another over [0, 100000]. Explain why this slows gradient descent badly, and why trees are unaffected by the same data.",
+    rubric: {
+      elements: [
+        {
+          id: "elongated-loss-surface",
+          description:
+            "The loss surface becomes a long narrow valley: curvature is enormous in one direction and tiny in another.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "step-size-set-by-the-wrong-direction",
+          description:
+            "The usable step size is capped by the steepest direction, while progress is needed along the shallowest — so the iterates zig-zag and convergence takes far more steps than the problem warrants.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-trees-are-immune",
+          description:
+            "Trees never combine features into one number — each split compares values within a single feature — so no shared step size exists to be mis-set.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.5,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["gradient-descent", "loss-functions"],
+    source: ML_03,
+    status: "live",
+  },
+  {
+    id: "gradient-descent--transfer-convexity-and-guarantees",
+    conceptId: "gradient-descent",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "On a convex loss, gradient descent with a suitable step size finds the global minimum. Neural network losses are not convex. Why does that trouble theory more than practice?",
+    rubric: {
+      elements: [
+        {
+          id: "what-is-actually-lost",
+          description:
+            "Without convexity the guarantee weakens to converging to *a* stationary point rather than *the* minimum, and which one depends on initialisation.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-practice-copes",
+          description:
+            "In large networks the many minima reached tend to be of comparable quality, and the stochastic noise in mini-batch gradients helps escape poor basins and saddle points, so the distinction rarely decides the outcome.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "honest-caveat",
+          description:
+            "Bonus: notes this is an empirical observation about the loss landscapes that arise in practice, not a theorem.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.0,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["gradient-descent", "loss-functions"],
+    source: ML_03,
+    status: "live",
   },
 
   // --- Cross Entropy Loss ---------------------------------------------------
@@ -621,7 +916,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 50,
     prereqClosure: ["cross-entropy-loss", "loss-functions", "likelihood-vs-probability"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "cross-entropy-loss--recall-nll-identity",
@@ -675,7 +970,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["cross-entropy-loss", "likelihood-vs-probability"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "cross-entropy-loss--apply-confident-wrong",
@@ -691,7 +986,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 75,
     prereqClosure: ["cross-entropy-loss"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "cross-entropy-loss--explain-unbounded-penalty",
@@ -728,7 +1023,7 @@ export const ml03Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["cross-entropy-loss"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "cross-entropy-loss--transfer-mle-identity",
@@ -775,6 +1070,100 @@ export const ml03Items: Item[] = [
     expectedSeconds: 300,
     prereqClosure: ["cross-entropy-loss", "likelihood-vs-probability"],
     source: ML_03,
-    status: "shadow",
+    status: "live",
   },
+
+  {
+    id: "cross-entropy-loss--apply-compare-two-predictions",
+    conceptId: "cross-entropy-loss",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "With y = 0 and a predicted probability of class 1 equal to ŷ = 0.25, compute the binary cross-entropy loss using natural logarithms, to three decimal places.",
+    answerKey: 0.288,
+    tolerance: 0.005,
+    difficulty: 0.85,
+    discrimination: 1.3,
+    expectedSeconds: 90,
+    prereqClosure: ["cross-entropy-loss"],
+    source: ML_03,
+    status: "live",
+  },
+  {
+    id: "cross-entropy-loss--explain-gradient-cancellation",
+    conceptId: "cross-entropy-loss",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Pairing a sigmoid output with cross-entropy gives a gradient of exactly (p̂ − y) with respect to the pre-activation score. Pairing it with squared error does not. Why does that difference matter most in precisely the worst case?",
+    rubric: {
+      elements: [
+        {
+          id: "squared-error-stalls",
+          description:
+            "Under squared error the gradient carries a factor of the sigmoid's derivative, which is near zero when the model is confidently wrong — so learning is slowest exactly where the error is largest.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "cross-entropy-cancels-it",
+          description:
+            "Under cross-entropy that factor cancels, leaving a gradient proportional to how wrong the prediction is — the more wrong, the larger the update.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "pairing-is-deliberate",
+          description:
+            "Bonus: notes the pairing is a design choice rather than a coincidence, which is why frameworks fuse the two into one operator.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["cross-entropy-loss", "loss-functions"],
+    source: ML_03,
+    status: "live",
+  },
+  {
+    id: "cross-entropy-loss--transfer-accuracy-and-loss-can-diverge",
+    conceptId: "cross-entropy-loss",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Over a training run, validation accuracy improves while validation cross-entropy gets worse. Explain how both can happen at once, and how you would decide which to act on.",
+    rubric: {
+      elements: [
+        {
+          id: "different-quantities",
+          description:
+            "Accuracy depends only on which class scores highest, while cross-entropy depends on the whole probability vector — so a model can fix a few borderline cases while growing overconfident on the rest.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "how-to-decide",
+          description:
+            "Which to act on follows from the use: a downstream expected-cost or thresholding decision needs trustworthy probabilities and should track cross-entropy; a pure top-1 decision can follow accuracy.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "calibration-remedies",
+          description:
+            "Bonus: names a remedy if probabilities matter — temperature scaling, or label smoothing to cap how confident the optimiser may become.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.05,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["cross-entropy-loss", "loss-functions"],
+    source: ML_03,
+    status: "live",
+  },
+
 ];

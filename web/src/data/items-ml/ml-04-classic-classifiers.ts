@@ -46,7 +46,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 55,
     prereqClosure: ["generative-vs-discriminative-models", "classification-vs-regression"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "generative-vs-discriminative-models--recall-advantage",
@@ -100,7 +100,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["generative-vs-discriminative-models"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "generative-vs-discriminative-models--apply-classify-two-methods",
@@ -131,7 +131,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 90,
     prereqClosure: ["generative-vs-discriminative-models"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "generative-vs-discriminative-models--explain-asymmetry",
@@ -163,7 +163,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["generative-vs-discriminative-models"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "generative-vs-discriminative-models--transfer-image-generation",
@@ -201,7 +201,126 @@ export const ml04Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["generative-vs-discriminative-models"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "generative-vs-discriminative-models--apply-sort-methods",
+    conceptId: "generative-vs-discriminative-models",
+    format: "multi-select",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "Select every method that models a distribution over the *inputs*, not only the label given the inputs.",
+    choices: [
+      { id: "a", text: "Naive Bayes", correct: true },
+      { id: "b", text: "Linear discriminant analysis", correct: true },
+      { id: "c", text: "A Gaussian mixture model", correct: true },
+      {
+        id: "d",
+        text: "A support vector machine",
+        correct: false,
+        misconception: {
+          id: "svm-called-generative",
+          description:
+            "An SVM models neither the inputs nor a probability — it produces a boundary and a signed distance, which is the most purely discriminative case there is.",
+          blameConceptId: "generative-vs-discriminative-models",
+        },
+      },
+      {
+        id: "e",
+        text: "Gradient-boosted decision trees",
+        correct: false,
+        misconception: {
+          id: "trees-called-generative",
+          description:
+            "Trees partition the input space but never model its density — they cannot say how probable a given input is, let alone sample one.",
+          blameConceptId: "generative-vs-discriminative-models",
+        },
+      },
+    ],
+    difficulty: 0.4,
+    discrimination: 1.5,
+    expectedSeconds: 100,
+    prereqClosure: ["generative-vs-discriminative-models"],
+    source: ML_04,
+    status: "live",
+  },
+  {
+    id: "generative-vs-discriminative-models--explain-sample-size-crossover",
+    conceptId: "generative-vs-discriminative-models",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "A generative classifier often beats its discriminative counterpart on small samples and loses on large ones. Explain both halves.",
+    rubric: {
+      elements: [
+        {
+          id: "assumptions-substitute-for-data",
+          description:
+            "The generative model's density assumptions supply structure the data would otherwise have to provide, so it reaches its best performance from very few examples.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "wrong-assumptions-set-a-floor",
+          description:
+            "Those same assumptions are usually somewhat wrong, and that error does not vanish with more data — so its asymptotic performance is capped while the discriminative model keeps improving past it.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-real-question",
+          description:
+            "Bonus: concludes that the useful question is not which family is better but where on the sample-size axis the problem sits.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.05,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["generative-vs-discriminative-models"],
+    source: ML_04,
+    status: "live",
+  },
+  {
+    id: "generative-vs-discriminative-models--transfer-shifted-prior",
+    conceptId: "generative-vs-discriminative-models",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "A model was trained where 10% of cases were positive, and is deployed where the true rate is 30%, with everything else unchanged. Why is that a one-line adjustment for a generative classifier and a refit for a discriminative one?",
+    rubric: {
+      elements: [
+        {
+          id: "prior-is-explicit",
+          description:
+            "A generative model factors the posterior into P(x | y) and P(y), so the class prior is a separate, named quantity that can simply be replaced with the deployment rate.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "discriminative-baked-in",
+          description:
+            "A discriminative model estimates P(y | x) as one inseparable object with the training prior baked into it, so there is no term to swap — it must be refitted or post-hoc corrected.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-caveat",
+          description:
+            "Bonus: notes this holds because only the prior shifted; if P(x | y) also changed, neither adjustment is valid.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["generative-vs-discriminative-models"],
+    source: ML_04,
+    status: "live",
   },
 
   // --- Naive Bayes ----------------------------------------------------------
@@ -235,7 +354,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["naive-bayes", "bayes-rule", "generative-vs-discriminative-models"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "naive-bayes--recall-why-naive",
@@ -289,7 +408,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["naive-bayes"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "naive-bayes--apply-free-and-money",
@@ -327,7 +446,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 170,
     prereqClosure: ["naive-bayes"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "naive-bayes--explain-parameter-count",
@@ -373,7 +492,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["naive-bayes"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "naive-bayes--transfer-bayes-rule-assembly",
@@ -412,7 +531,95 @@ export const ml04Items: Item[] = [
     expectedSeconds: 280,
     prereqClosure: ["naive-bayes", "bayes-rule", "conditional-probability"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "naive-bayes--apply-laplace-smoothing",
+    conceptId: "naive-bayes",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A word appears 0 times in the 200 words of spam training text, over a vocabulary of 50 words. With add-one smoothing, P(word | spam) = (count + 1)/(total + V). Compute it to four decimal places.",
+    answerKey: 0.004,
+    tolerance: 0.0005,
+    difficulty: 0.85,
+    discrimination: 1.3,
+    expectedSeconds: 100,
+    prereqClosure: ["naive-bayes"],
+    source: ML_04,
+    status: "live",
+  },
+  {
+    id: "naive-bayes--explain-log-space",
+    conceptId: "naive-bayes",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Every real naive Bayes implementation sums logarithms rather than multiplying probabilities. Why is that necessary rather than merely tidy, and why does it not change the answer?",
+    rubric: {
+      elements: [
+        {
+          id: "underflow",
+          description:
+            "Multiplying thousands of numbers well below 1 underflows to exactly 0 in floating point, at which point every class scores 0 and the comparison is meaningless.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "log-is-monotone",
+          description:
+            "The logarithm is strictly increasing, so it preserves the ordering and the argmax is unchanged — the products become sums that stay in representable range.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.35,
+    discrimination: 1.5,
+    expectedSeconds: 190,
+    prereqClosure: ["naive-bayes"],
+    source: ML_04,
+    status: "live",
+  },
+  {
+    id: "naive-bayes--transfer-good-classifier-bad-estimator",
+    conceptId: "naive-bayes",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Naive Bayes is described as a poor probability estimator and a good classifier. Explain why those are not two separate observations but one.",
+    rubric: {
+      elements: [
+        {
+          id: "double-counting-correlated-evidence",
+          description:
+            "Correlated features are treated as independent, so their shared evidence is counted several times over, driving the estimated posterior toward 0 or 1.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "argmax-usually-survives",
+          description:
+            "That inflation is usually in the direction the evidence already pointed, so the ranking of classes is preserved even as the numbers become badly calibrated — one mechanism, two consequences.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "practical-implication",
+          description:
+            "Bonus: draws the implication — use it for the label, not for the probability, unless the output is calibrated afterwards.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["naive-bayes", "bayes-rule"],
+    source: ML_04,
+    status: "live",
   },
 
   // --- Linear Discriminant Analysis ----------------------------------------
@@ -445,7 +652,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 70,
     prereqClosure: ["lda", "multivariate-normal", "generative-vs-discriminative-models"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "lda--recall-dropping-shared-covariance",
@@ -499,7 +706,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["lda"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "lda--apply-cancellation-argument",
@@ -539,7 +746,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["lda", "multivariate-normal", "positive-definite-matrices"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "lda--explain-why-generative",
@@ -571,7 +778,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["lda", "generative-vs-discriminative-models"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "lda--transfer-when-qda-wins",
@@ -609,7 +816,101 @@ export const ml04Items: Item[] = [
     expectedSeconds: 230,
     prereqClosure: ["lda", "variance", "covariance-matrix"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "lda--apply-parameter-counts",
+    conceptId: "lda",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "With d = 4 features and K = 3 classes, a covariance matrix has d(d+1)/2 free entries. How many covariance parameters does QDA estimate in total, given one covariance matrix per class?",
+    answerKey: 30,
+    tolerance: 0.001,
+    difficulty: 1.4,
+    discrimination: 1.3,
+    expectedSeconds: 120,
+    prereqClosure: ["lda", "covariance-matrix", "symmetric-matrices"],
+    source: ML_04,
+    status: "live",
+  },
+  {
+    id: "lda--explain-lda-vs-pca-directions",
+    conceptId: "lda",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "LDA also serves as dimensionality reduction. Describe a dataset on which its top direction and a variance-maximising unsupervised direction would point almost perpendicular to each other, and say why.",
+    rubric: {
+      elements: [
+        {
+          id: "the-configuration",
+          description:
+            "Two elongated class clusters lying side by side: the greatest total variance runs *along* their shared long axis, while the classes are separated *across* it.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-they-differ",
+          description:
+            "The unsupervised direction maximises total spread and never consults labels, so it picks the long axis; LDA maximises between-class relative to within-class scatter and picks the separating direction.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "consequence",
+          description:
+            "Bonus: notes the consequence — projecting onto the top unsupervised component here would discard exactly the information a classifier needs.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["lda", "covariance-matrix"],
+    source: ML_04,
+    status: "live",
+  },
+  {
+    id: "lda--transfer-regularised-middle-ground",
+    conceptId: "lda",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Regularised discriminant analysis shrinks each class covariance toward the pooled one, with a parameter controlling how far. What does each end of that parameter recover, and why is the middle often best?",
+    rubric: {
+      elements: [
+        {
+          id: "the-two-ends",
+          description:
+            "Full shrinkage recovers LDA's single shared covariance; no shrinkage recovers QDA's per-class ones.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-the-middle",
+          description:
+            "The middle trades a little of QDA's flexibility for far more stable covariance estimates, which matters exactly when there are too few examples per class to estimate K full matrices reliably.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "chosen-on-held-out-data",
+          description:
+            "Bonus: notes the shrinkage parameter is chosen on held-out data, like any other complexity control.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.6,
+    expectedSeconds: 230,
+    prereqClosure: ["lda", "covariance-matrix", "variance"],
+    source: ML_04,
+    status: "live",
   },
 
   // --- K Nearest Neighbors --------------------------------------------------
@@ -642,7 +943,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["knn", "classification-vs-regression"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "knn--recall-lazy-learning",
@@ -696,7 +997,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["knn"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "knn--apply-effect-of-k",
@@ -734,7 +1035,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 150,
     prereqClosure: ["knn"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "knn--explain-curse-of-dimensionality",
@@ -774,7 +1075,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 170,
     prereqClosure: ["knn", "curse-of-dimensionality"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "knn--transfer-feature-scaling",
@@ -813,7 +1114,102 @@ export const ml04Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["knn"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "knn--apply-prediction-cost",
+    conceptId: "knn",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A naive k-NN scan computes one distance per training point per query, each costing d operations. With n = 50,000 training points and d = 20 features, how many operations does a single prediction take?",
+    answerKey: 1000000,
+    tolerance: 1,
+    difficulty: 0.5,
+    discrimination: 1.2,
+    expectedSeconds: 90,
+    prereqClosure: ["knn"],
+    source: ML_04,
+    status: "live",
+  },
+  {
+    id: "knn--explain-cost-profile-is-reversed",
+    conceptId: "knn",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Most models are expensive to train and cheap to serve. k-NN is the reverse. Explain why, and what that means for deploying it.",
+    rubric: {
+      elements: [
+        {
+          id: "no-training-all-prediction",
+          description:
+            "Fitting is just storing the data, while every prediction must compute distances to the whole training set — the work is deferred rather than avoided.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "deployment-consequences",
+          description:
+            "Deployment must carry the entire training set in memory and pay per query, so latency and cost grow with the dataset rather than staying fixed — the opposite of the usual operational profile.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "index-structures-and-their-limit",
+          description:
+            "Bonus: notes that KD-trees and ball trees help in low dimensions and degrade to the linear scan in high ones.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.1,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["knn"],
+    source: ML_04,
+    status: "live",
+  },
+  {
+    id: "knn--transfer-k-equals-one-training-error",
+    conceptId: "knn",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "1-NN achieves zero training error on any dataset, including one with randomly assigned labels. What does that demonstrate about training error in general, and what follows for choosing k?",
+    rubric: {
+      elements: [
+        {
+          id: "why-it-is-zero",
+          description:
+            "Every training point is its own nearest neighbour at distance 0, so it reproduces every training label exactly — including mislabelled ones.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "what-it-demonstrates",
+          description:
+            "It is the cleanest demonstration that zero training error carries no information about generalisation: a model can achieve it on pure noise without having learned anything.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "so-k-needs-held-out-data",
+          description:
+            "So k cannot be chosen by fit and must be chosen on held-out data — training error would select k = 1 every time.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["knn", "classification-vs-regression"],
+    source: ML_04,
+    status: "live",
   },
 
   // --- Support Vector Machine ----------------------------------------------
@@ -847,7 +1243,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 50,
     prereqClosure: ["svm", "kernel", "classification-vs-regression"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "svm--recall-support-vectors",
@@ -901,7 +1297,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["svm"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "svm--apply-remove-distant-point",
@@ -932,7 +1328,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 130,
     prereqClosure: ["svm"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "svm--explain-why-max-margin-generalises",
@@ -964,7 +1360,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 170,
     prereqClosure: ["svm"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "svm--transfer-kernel-trick",
@@ -1004,7 +1400,101 @@ export const ml04Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["svm", "kernel", "dot-product"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "svm--apply-margin-from-norm",
+    conceptId: "svm",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "For a hard-margin SVM the margin width is 2/‖w‖. If ‖w‖ = 0.5, what is the margin width?",
+    answerKey: 4,
+    tolerance: 0.001,
+    difficulty: 0.35,
+    discrimination: 1.2,
+    expectedSeconds: 60,
+    prereqClosure: ["svm", "vector-operations"],
+    source: ML_04,
+    status: "live",
+  },
+  {
+    id: "svm--explain-C-direction",
+    conceptId: "svm",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "In the soft-margin objective ½‖w‖² + C·Σξᵢ, does a large C mean more regularisation or less? Justify it from the formula, and say why the direction is so often reversed.",
+    rubric: {
+      elements: [
+        {
+          id: "large-c-is-less-regularisation",
+          description:
+            "Large C means *less* regularisation: it raises the price of every margin violation, so the fit tries hard to classify each training point and the margin narrows.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "reads-it-from-the-formula",
+          description:
+            "Justifies it from the objective — C multiplies the data-fit term rather than the complexity term, so it is the reciprocal of the λ that multiplies a penalty in ridge-style formulations.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "consequence-of-getting-it-backwards",
+          description:
+            "Bonus: notes that reversing it turns a hyperparameter sweep into a search for the most overfit model on the grid.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.1,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["svm"],
+    source: ML_04,
+    status: "live",
+  },
+  {
+    id: "svm--transfer-scaling-and-outliers",
+    conceptId: "svm",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "An SVM is robust to distant outliers yet highly sensitive to unstandardised features. Explain why both are true, given that both concern the geometry of the data.",
+    rubric: {
+      elements: [
+        {
+          id: "outlier-robustness",
+          description:
+            "A point far from the boundary has coefficient zero and no influence on the solution at all, so a distant outlier is simply ignored — unlike a squared-error fit, which it would drag.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "scale-sensitivity",
+          description:
+            "The margin is a distance measured in the input metric, so a feature with a large numeric range dominates ‖w‖ and the margin geometry — the units decide which directions the boundary can afford to be far from.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "reconciles-them",
+          description:
+            "Bonus: reconciles the two — robustness is about which *points* matter, scale sensitivity about which *directions* do.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["svm", "vector-operations"],
+    source: ML_04,
+    status: "live",
   },
 
   // --- SVMs for Regression --------------------------------------------------
@@ -1038,7 +1528,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 55,
     prereqClosure: ["svms-for-regression", "svm"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "svms-for-regression--recall-epsilon",
@@ -1092,7 +1582,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["svms-for-regression"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "svms-for-regression--apply-large-epsilon",
@@ -1124,7 +1614,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 140,
     prereqClosure: ["svms-for-regression", "svm"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "svms-for-regression--explain-tube-vs-margin",
@@ -1156,7 +1646,7 @@ export const ml04Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["svms-for-regression", "svm"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "svms-for-regression--transfer-robustness-to-outliers",
@@ -1188,6 +1678,88 @@ export const ml04Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["svms-for-regression", "svm"],
     source: ML_04,
-    status: "shadow",
+    status: "live",
   },
+
+  {
+    id: "svms-for-regression--apply-epsilon-insensitive-loss",
+    conceptId: "svms-for-regression",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "With ε = 0.5, the ε-insensitive loss is max(0, |y − f(x)| − ε). Residuals on four points are 0.2, 0.4, 1.5 and 2.0. What is the total loss?",
+    answerKey: 2.5,
+    tolerance: 0.005,
+    difficulty: 0.75,
+    discrimination: 1.3,
+    expectedSeconds: 110,
+    prereqClosure: ["svms-for-regression", "svm"],
+    source: ML_04,
+    status: "live",
+  },
+  {
+    id: "svms-for-regression--explain-epsilon-has-units",
+    conceptId: "svms-for-regression",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Why is a library's default value of ε a value rather than a judgement about your data, and what should be done about that?",
+    rubric: {
+      elements: [
+        {
+          id: "epsilon-has-units",
+          description:
+            "ε is measured in the units of the target, so ε = 0.1 means something entirely different when y is a probability than when y is a house price in pounds.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-to-do",
+          description:
+            "Either standardise the target so the default is interpretable, or choose ε from the noise scale actually expected — the width of variation you are content to ignore.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.15,
+    discrimination: 1.5,
+    expectedSeconds: 190,
+    prereqClosure: ["svms-for-regression", "svm"],
+    source: ML_04,
+    status: "live",
+  },
+  {
+    id: "svms-for-regression--transfer-why-displaced-by-boosted-trees",
+    conceptId: "svms-for-regression",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Support vector regression was largely displaced by gradient-boosted trees for large tabular regression. Give the reason, and one setting where it is still the better choice.",
+    rubric: {
+      elements: [
+        {
+          id: "scaling-in-n",
+          description:
+            "Training scales roughly cubically in the number of samples and the kernel matrix is n × n, so it becomes infeasible at the sample sizes tabular problems now reach.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "where-it-still-wins",
+          description:
+            "Names a setting where it still wins: small n with smooth continuous structure, where a kernel expresses the expected smoothness directly and a tree's piecewise-constant fit would be a poor match — and no feature scaling burden is being avoided anyway.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.5,
+    expectedSeconds: 220,
+    prereqClosure: ["svms-for-regression", "svm", "kernel"],
+    source: ML_04,
+    status: "live",
+  },
+
 ];

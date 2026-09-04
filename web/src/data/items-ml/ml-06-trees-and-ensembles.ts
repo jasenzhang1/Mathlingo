@@ -51,7 +51,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 50,
     prereqClosure: ["decision-tree", "classification-vs-regression"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "decision-tree--recall-scale-invariance",
@@ -105,7 +105,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["decision-tree"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "decision-tree--apply-rescaling-income",
@@ -136,7 +136,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 110,
     prereqClosure: ["decision-tree"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "decision-tree--explain-greedy",
@@ -174,7 +174,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 170,
     prereqClosure: ["decision-tree"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "decision-tree--transfer-two-fixes",
@@ -213,7 +213,124 @@ export const ml06Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["decision-tree"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "decision-tree--apply-extrapolation-limit",
+    conceptId: "decision-tree",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "A regression tree is trained on houses between 50 and 250 m². It is asked to price a 600 m² house. What will it predict, and why can no amount of tuning change that?",
+    rubric: {
+      elements: [
+        {
+          id: "predicts-a-training-mean",
+          description:
+            "It predicts the mean of the training targets in whichever leaf the 600 m² house falls into — the leaf holding the largest houses it saw.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "structurally-bounded",
+          description:
+            "Every prediction is an average of training targets, so the output is bounded by the training range no matter how the tree is grown — extrapolation is impossible by construction, not by mis-tuning.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "contrast",
+          description:
+            "Bonus: contrasts with a linear model, which extrapolates the trend — sometimes wrongly, but it does produce a value outside the observed range.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 0.5,
+    discrimination: 1.5,
+    expectedSeconds: 160,
+    prereqClosure: ["decision-tree", "classification-vs-regression"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "decision-tree--explain-axis-aligned-limitation",
+    conceptId: "decision-tree",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "A boundary at x₁ + x₂ = 1 is a single straight line. Why is it awkward for a tree, and what boundary shape is easy for a tree and awkward for a linear model?",
+    rubric: {
+      elements: [
+        {
+          id: "diagonal-needs-a-staircase",
+          description:
+            "Every split is axis-aligned, so a diagonal must be approximated by a staircase of many cuts, and the corners stay wrong however many are used.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-reverse-case",
+          description:
+            "A rectangular region — a box in two features — takes a tree two splits and takes a linear model an interaction term and some luck.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "neither-dominates",
+          description:
+            "Bonus: concludes that neither family dominates; they fail in different directions, which is part of why ensembling across families helps.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.05,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["decision-tree"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "decision-tree--transfer-instability-and-interpretation",
+    conceptId: "decision-tree",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Trees are prized for interpretability. Why does their instability undercut that claim, and what would you need to establish before presenting a single tree as an explanation?",
+    rubric: {
+      elements: [
+        {
+          id: "root-change-cascades",
+          description:
+            "The structure is built top-down, so a handful of different rows can change which split wins at the root, and every subtree below it changes with that — producing a visibly different tree of similar accuracy.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-that-means-for-explanation",
+          description:
+            "So the specific splits shown are one of many near-equivalent stories the data supports; presenting them as *the* explanation overstates what was established.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-to-check",
+          description:
+            "Names what would support it: refit on bootstrap resamples and check that the same splits and orderings recur, rather than reading a single fit.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["decision-tree"],
+    source: ML_06,
+    status: "live",
   },
 
   // --- Splitting Criteria ---------------------------------------------------
@@ -246,7 +363,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["splitting-criteria", "decision-tree"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "splitting-criteria--recall-pure-node",
@@ -296,7 +413,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 30,
     prereqClosure: ["splitting-criteria"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "splitting-criteria--apply-gini-90-10",
@@ -312,7 +429,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 60,
     prereqClosure: ["splitting-criteria"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "splitting-criteria--explain-gini-is-twice-bernoulli-variance",
@@ -359,7 +476,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["splitting-criteria"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "splitting-criteria--transfer-size-imbalance",
@@ -397,7 +514,96 @@ export const ml06Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["splitting-criteria", "decision-tree"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "splitting-criteria--apply-weighted-reduction",
+    conceptId: "splitting-criteria",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A node of 100 samples has Gini 0.5. A split sends 70 samples to a child with Gini 0.408 and 30 to a pure child. Compute the weighted impurity reduction, to three decimal places.",
+    answerKey: 0.214,
+    tolerance: 0.005,
+    difficulty: 0.75,
+    discrimination: 1.4,
+    expectedSeconds: 140,
+    prereqClosure: ["splitting-criteria"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "splitting-criteria--explain-why-weight-the-children",
+    conceptId: "splitting-criteria",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "The impurity reduction weights each child by its share of the samples. What would go wrong if the children's impurities were simply averaged unweighted?",
+    rubric: {
+      elements: [
+        {
+          id: "tiny-pure-children-would-win",
+          description:
+            "A split peeling off a single point into a trivially pure child would score as well as one cleanly separating half the data, since the unweighted average would count that one-sample child equally.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "weights-restore-proportionality",
+          description:
+            "Weighting by sample share makes the criterion measure how much impurity was actually removed from the data, not how pure the cleanest child happens to be.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.25,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["splitting-criteria"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "splitting-criteria--transfer-high-cardinality-bias",
+    conceptId: "splitting-criteria",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "A dataset includes a customer ID column. Explain what raw information gain does with it, why the criterion cannot object, and what the standard corrections are.",
+    rubric: {
+      elements: [
+        {
+          id: "id-maximises-gain",
+          description:
+            "Splitting on the ID puts one row in each child, every child is perfectly pure, and the gain is maximal — the criterion rates the most useless possible split highest.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-the-criterion-cannot-object",
+          description:
+            "Purity is all the criterion measures, and the split is genuinely perfect by that measure — nothing in it expresses that the rule will never fire again on a new customer.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "corrections",
+          description:
+            "Names corrections: gain ratio dividing by the split's own entropy to penalise many-valued features, binary-only splitting, or simply excluding identifier columns.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.75,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["splitting-criteria", "decision-tree"],
+    source: ML_06,
+    status: "live",
   },
 
   // --- Pruning Trees --------------------------------------------------------
@@ -430,7 +636,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 50,
     prereqClosure: ["pruning-trees", "decision-tree", "overfitting-underfitting"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "pruning-trees--recall-what-it-is",
@@ -484,7 +690,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["pruning-trees"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "pruning-trees--apply-alpha-regimes",
@@ -521,7 +727,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 150,
     prereqClosure: ["pruning-trees"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "pruning-trees--explain-alpha-on-validation",
@@ -553,7 +759,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["pruning-trees", "overfitting-underfitting"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "pruning-trees--transfer-pruning-vs-ensembling",
@@ -592,7 +798,102 @@ export const ml06Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["pruning-trees", "decision-tree"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "pruning-trees--apply-cost-complexity-comparison",
+    conceptId: "pruning-trees",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "Cost-complexity is R(T) + α·|leaves|. Subtree A has R = 0.10 with 12 leaves; subtree B has R = 0.16 with 4 leaves. At which α are the two exactly tied? Give four decimal places.",
+    answerKey: 0.0075,
+    tolerance: 0.0005,
+    difficulty: 1.4,
+    discrimination: 1.5,
+    expectedSeconds: 160,
+    prereqClosure: ["pruning-trees"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "pruning-trees--explain-xor-argument-for-post-pruning",
+    conceptId: "pruning-trees",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "On an XOR pattern, no single feature reduces impurity at all — every candidate first split scores zero. Use that to explain why growing large and cutting back beats stopping early.",
+    rubric: {
+      elements: [
+        {
+          id: "early-stopping-halts-immediately",
+          description:
+            "Early stopping evaluates each split in isolation, sees zero gain, and returns a stump — never discovering that two levels separate the classes perfectly.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "post-pruning-judges-subtrees",
+          description:
+            "Growing first and cutting back judges a subtree by what it collectively achieves, so a worthless-looking split that enables excellent ones below it survives.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-general-point",
+          description:
+            "Bonus: identifies this as the greedy algorithm's blind spot made concrete — local scoring cannot see two moves ahead.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.75,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["pruning-trees", "decision-tree"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "pruning-trees--transfer-why-forests-do-not-prune",
+    conceptId: "pruning-trees",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Random forests deliberately grow deep, unpruned trees, while boosting uses very shallow ones. Explain both choices in terms of where each method controls complexity.",
+    rubric: {
+      elements: [
+        {
+          id: "forests-want-unstable-members",
+          description:
+            "A forest removes instability by averaging, so it *wants* each tree low-bias and high-variance — pruning would add bias that the averaging cannot undo.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "boosting-wants-weak-members",
+          description:
+            "Boosting builds complexity up from a deliberately weak base learner, so deep trees would overshoot in a single round and defeat the incremental correction.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-common-point",
+          description:
+            "In both cases complexity is controlled at the ensemble level rather than the tree level, which is why pruning is a single-tree technique first and foremost.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.25,
+    discrimination: 1.6,
+    expectedSeconds: 230,
+    prereqClosure: ["pruning-trees", "decision-tree", "overfitting-underfitting"],
+    source: ML_06,
+    status: "live",
   },
 
   // --- Ensemble Methods -----------------------------------------------------
@@ -619,7 +920,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["ensemble-methods", "decision-tree"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "ensemble-methods--recall-why-it-works",
@@ -673,7 +974,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["ensemble-methods"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "ensemble-methods--apply-averaged-variance",
@@ -689,7 +990,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 60,
     prereqClosure: ["ensemble-methods"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "ensemble-methods--explain-diversity-requirement",
@@ -721,7 +1022,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["ensemble-methods"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "ensemble-methods--transfer-bagging-vs-boosting-philosophy",
@@ -759,7 +1060,101 @@ export const ml06Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["ensemble-methods"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "ensemble-methods--apply-correlation-floor",
+    conceptId: "ensemble-methods",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "The variance of an average of B models is ρσ² + (1 − ρ)σ²/B. With σ² = 1, ρ = 0.6 and B = 100, what is the variance of the averaged prediction? Give three decimal places.",
+    answerKey: 0.604,
+    tolerance: 0.005,
+    difficulty: 0.75,
+    discrimination: 1.4,
+    expectedSeconds: 130,
+    prereqClosure: ["ensemble-methods"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "ensemble-methods--explain-which-term-to-attack",
+    conceptId: "ensemble-methods",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "In ρσ² + (1 − ρ)σ²/B, which term should a practitioner spend effort on, and why is adding more members usually the lesser lever?",
+    rubric: {
+      elements: [
+        {
+          id: "second-term-vanishes",
+          description:
+            "The second term already falls with B and is small once B is in the hundreds — going from 100 to 1,000 members shrinks something that barely matters.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "first-term-is-the-floor",
+          description:
+            "The first term does not depend on B at all: it is a floor set by how correlated the members are, so reducing ρ is the only way past it.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "design-consequence",
+          description:
+            "Bonus: draws the design consequence — this is why methods bother to force members apart rather than simply adding more of them.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.25,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["ensemble-methods"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "ensemble-methods--transfer-stacking-and-its-risk",
+    conceptId: "ensemble-methods",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Stacking trains a second model to combine the first models' predictions. Where does its diversity come from, and what is the specific way it goes wrong if implemented carelessly?",
+    rubric: {
+      elements: [
+        {
+          id: "diversity-from-model-families",
+          description:
+            "Diversity comes from using genuinely different model families, which fail on different examples rather than being different draws of one method.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-leakage-failure",
+          description:
+            "The failure mode is leakage: if the combiner is trained on predictions the base models made for rows they were fitted on, it learns to trust whichever model memorised hardest, and the whole stack is optimistic.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "the-fix",
+          description:
+            "Bonus: names the fix — train the combiner on out-of-fold predictions so every prediction it sees came from a model that did not see that row.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.75,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["ensemble-methods", "decision-tree"],
+    source: ML_06,
+    status: "live",
   },
 
   // --- Bagging --------------------------------------------------------------
@@ -792,7 +1187,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 50,
     prereqClosure: ["bagging", "ensemble-methods"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "bagging--recall-what-it-reduces",
@@ -842,7 +1237,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 30,
     prereqClosure: ["bagging"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "bagging--apply-resampling-procedure",
@@ -874,7 +1269,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 150,
     prereqClosure: ["bagging"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "bagging--explain-which-base-learners",
@@ -906,7 +1301,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["bagging", "ensemble-methods"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "bagging--transfer-oob-estimate",
@@ -944,7 +1339,95 @@ export const ml06Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["bagging"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "bagging--apply-oob-fraction",
+    conceptId: "bagging",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A bootstrap sample draws n rows with replacement from n. The probability a given row is never drawn is (1 − 1/n)ⁿ, which tends to e⁻¹. Give that limiting fraction to three decimal places.",
+    answerKey: 0.368,
+    tolerance: 0.005,
+    difficulty: 0.6,
+    discrimination: 1.3,
+    expectedSeconds: 90,
+    prereqClosure: ["bagging"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "bagging--explain-why-trees-are-the-base-learner",
+    conceptId: "bagging",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Bagging is almost always applied to deep trees rather than to some other model. What property of trees makes them the natural base learner, and what would happen with a stable one?",
+    rubric: {
+      elements: [
+        {
+          id: "instability-creates-diversity",
+          description:
+            "Trees are unstable: a slightly different sample changes which split wins at the root and thus the whole structure — so 'slightly different data' is enough to produce genuinely different models.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "stable-learners-give-nothing",
+          description:
+            "A stable learner produces near-identical members across resamples, their average is essentially the original model, and the systematic error is untouched — the procedure costs B fits and returns nothing.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.15,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["bagging", "ensemble-methods", "decision-tree"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "bagging--transfer-oob-vs-cross-validation",
+    conceptId: "bagging",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Out-of-bag error is often described as free cross-validation. Where is that fair, and where does the analogy break down?",
+    rubric: {
+      elements: [
+        {
+          id: "where-it-is-fair",
+          description:
+            "Fair in that every row is scored by models that never saw it, at no extra fitting cost — it is genuinely held-out and available during training.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "where-it-breaks",
+          description:
+            "It breaks in that each row is predicted by only about a third of the ensemble rather than the whole thing, so the estimate is slightly pessimistic — noticeably so when the ensemble is small.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "practical-verdict",
+          description:
+            "Bonus: gives the practical verdict — close enough to k-fold for model selection on a large forest, not a substitute for a final held-out test set.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.65,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["bagging", "ensemble-methods"],
+    source: ML_06,
+    status: "live",
   },
 
   // --- Random Forests -------------------------------------------------------
@@ -978,7 +1461,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 50,
     prereqClosure: ["random-forests", "bagging", "splitting-criteria"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "random-forests--recall-why-subsample",
@@ -1032,7 +1515,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["random-forests"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "random-forests--apply-dominant-feature",
@@ -1064,7 +1547,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 160,
     prereqClosure: ["random-forests", "bagging", "splitting-criteria"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "random-forests--explain-diversity-connection",
@@ -1104,7 +1587,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["random-forests", "ensemble-methods", "bagging"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "random-forests--transfer-nearly-free-lunch",
@@ -1142,7 +1625,102 @@ export const ml06Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["random-forests", "bagging", "ensemble-methods"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "random-forests--apply-default-mtry",
+    conceptId: "random-forests",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "For classification the usual default is to consider √d features at each split. With d = 64 features, how many are considered per split?",
+    answerKey: 8,
+    tolerance: 0.001,
+    difficulty: 0.35,
+    discrimination: 1.2,
+    expectedSeconds: 60,
+    prereqClosure: ["random-forests"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "random-forests--explain-importance-bias",
+    conceptId: "random-forests",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "The default impurity-based feature importance from a forest is known to be biased. In which direction, why, and what should be used instead?",
+    rubric: {
+      elements: [
+        {
+          id: "direction-and-cause",
+          description:
+            "It favours high-cardinality and continuous features, because they offer more candidate split points and therefore more chances to reduce impurity by luck alone.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "correlated-features-split-credit",
+          description:
+            "Correlated features also divide their importance between them, so each looks unimportant even when the group jointly matters.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "the-alternatives",
+          description:
+            "Names honest alternatives: permutation importance computed on held-out data, or SHAP values.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.1,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["random-forests", "splitting-criteria"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "random-forests--transfer-when-boosting-wins",
+    conceptId: "random-forests",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Gradient boosting usually beats a random forest at the top of a leaderboard, yet forests remain the recommended first model on new tabular data. Reconcile those two facts.",
+    rubric: {
+      elements: [
+        {
+          id: "boosting-wins-after-tuning",
+          description:
+            "Boosting's advantage is realised only after tuning — the round count, learning rate and depth interact, and a wrong setting actively harms results.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "forest-is-strong-untuned",
+          description:
+            "A forest gives most of the achievable accuracy with essentially no tuning, cannot be hurt by adding trees, and reports an out-of-bag estimate for free — so it establishes a trustworthy baseline before any effort is spent.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-decision-rule",
+          description:
+            "Bonus: draws the rule — start with a forest to find out what the problem allows, then spend tuning budget on boosting only if the gap is worth it.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.5,
+    expectedSeconds: 220,
+    prereqClosure: ["random-forests", "bagging", "ensemble-methods"],
+    source: ML_06,
+    status: "live",
   },
 
   // --- AdaBoost -------------------------------------------------------------
@@ -1176,7 +1754,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 55,
     prereqClosure: ["adaboost", "ensemble-methods"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "adaboost--recall-diversity-mechanism",
@@ -1230,7 +1808,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["adaboost"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "adaboost--apply-weight-direction",
@@ -1261,7 +1839,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 110,
     prereqClosure: ["adaboost"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "adaboost--explain-why-bias-reduction",
@@ -1299,7 +1877,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["adaboost", "ensemble-methods"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "adaboost--transfer-noise-sensitivity",
@@ -1337,7 +1915,110 @@ export const ml06Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["adaboost", "ensemble-methods"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "adaboost--apply-vote-weight",
+    conceptId: "adaboost",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "AdaBoost's vote weight is α = ½·ln((1 − ε)/ε). A weak learner has weighted error ε = 0.2. Compute α to three decimal places.",
+    answerKey: 0.693,
+    tolerance: 0.005,
+    difficulty: 0.75,
+    discrimination: 1.4,
+    expectedSeconds: 110,
+    prereqClosure: ["adaboost"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "adaboost--explain-alpha-behaviour",
+    conceptId: "adaboost",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Read the vote weight α = ½·ln((1 − ε)/ε) at ε = 0.5, at ε near 0, and at ε > 0.5. What does each case say about the requirement AdaBoost places on a weak learner?",
+    rubric: {
+      elements: [
+        {
+          id: "at-half",
+          description:
+            "At ε = 0.5, α = 0: a learner no better than chance gets no vote at all and contributes nothing.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "near-zero",
+          description:
+            "As ε → 0, α → ∞: an almost-perfect learner is given an overwhelming vote.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "above-half",
+          description:
+            "For ε > 0.5, α is negative — a worse-than-random learner is used backwards, which still contributes information.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "the-requirement",
+          description:
+            "Concludes that the only requirement is beating chance, which is what makes depth-1 stumps a legitimate base learner.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.25,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["adaboost"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "adaboost--transfer-loss-choice-and-noise",
+    conceptId: "adaboost",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "AdaBoost is equivalent to stagewise fitting under an exponential loss. Use that to explain its noise sensitivity, and say what changing the loss buys.",
+    rubric: {
+      elements: [
+        {
+          id: "exponential-loss-is-unbounded",
+          description:
+            "The exponential loss grows without bound as an example is misclassified more confidently, which is exactly what drives a mislabelled point's weight up round after round.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-loss-is-the-cause",
+          description:
+            "So the fragility is a property of the loss rather than of boosting as such — the reweighting is just that loss's gradient in disguise.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-a-different-loss-buys",
+          description:
+            "Names the payoff: a logistic or otherwise bounded loss penalises confident errors far less steeply, so a single wrong label cannot capture the ensemble.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.75,
+    discrimination: 1.6,
+    expectedSeconds: 230,
+    prereqClosure: ["adaboost", "ensemble-methods"],
+    source: ML_06,
+    status: "live",
   },
 
   // --- Gradient Boosting ----------------------------------------------------
@@ -1371,7 +2052,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 60,
     prereqClosure: ["gradient-boosting", "ensemble-methods", "gradient-descent"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gradient-boosting--recall-generalisation",
@@ -1425,7 +2106,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["gradient-boosting"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gradient-boosting--apply-residual-derivation",
@@ -1456,7 +2137,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["gradient-boosting", "matrix-calculus"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gradient-boosting--explain-function-space",
@@ -1496,7 +2177,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["gradient-boosting", "gradient-descent"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gradient-boosting--transfer-overfitting-with-rounds",
@@ -1535,7 +2216,95 @@ export const ml06Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["gradient-boosting", "ensemble-methods"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "gradient-boosting--apply-shrinkage-tradeoff",
+    conceptId: "gradient-boosting",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "As a rule of thumb, halving the learning rate requires roughly doubling the number of rounds for a comparable fit. A model uses ν = 0.1 with 500 rounds. Roughly how many rounds would ν = 0.0125 need?",
+    answerKey: 4000,
+    tolerance: 1,
+    difficulty: 1.2,
+    discrimination: 1.3,
+    expectedSeconds: 120,
+    prereqClosure: ["gradient-boosting"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "gradient-boosting--explain-depth-sets-interaction-order",
+    conceptId: "gradient-boosting",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "In gradient boosting, tree depth is often described as setting the interaction order rather than the model's complexity. Explain what depth 1 and depth 2 each permit.",
+    rubric: {
+      elements: [
+        {
+          id: "depth-one-is-additive",
+          description:
+            "Depth 1 — a stump — splits on one feature, so the summed model is purely additive: a sum of functions of individual features, with no interactions at all.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "depth-two-allows-pairs",
+          description:
+            "Depth 2 allows a split on one feature followed by another, so the model can express pairwise interactions, and depth k up to k-way ones.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-it-is-not-just-complexity",
+          description:
+            "Bonus: notes that this makes depth a statement about the *kind* of structure the model may represent, which is why it is chosen from domain knowledge as much as from validation.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.7,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["gradient-boosting", "decision-tree"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "gradient-boosting--transfer-loss-menu",
+    conceptId: "gradient-boosting",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "A forecasting team needs the 90th percentile of demand rather than its mean, so that stock covers demand 90% of the time. How does gradient boosting accommodate that, and what property of the algorithm makes it possible?",
+    rubric: {
+      elements: [
+        {
+          id: "quantile-loss",
+          description:
+            "Fit with a pinball (quantile) loss at τ = 0.9, whose minimiser is the conditional 90th percentile rather than the conditional mean.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "only-the-gradient-is-needed",
+          description:
+            "It is possible because the algorithm never needs the loss's minimiser in closed form — only its gradient at each training point — so any differentiable loss can be substituted without changing the machinery.",
+          weight: 5,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.2,
+    discrimination: 1.6,
+    expectedSeconds: 230,
+    prereqClosure: ["gradient-boosting", "loss-functions", "gradient-descent"],
+    source: ML_06,
+    status: "live",
   },
 
   // --- XGBoost --------------------------------------------------------------
@@ -1569,7 +2338,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 50,
     prereqClosure: ["xgboost", "gradient-boosting"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "xgboost--recall-what-regularisation-targets",
@@ -1623,7 +2392,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["xgboost"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "xgboost--apply-penalty-parallel",
@@ -1661,7 +2430,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["xgboost", "gradient-boosting"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "xgboost--explain-engineering-vs-statistics",
@@ -1699,7 +2468,7 @@ export const ml06Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["xgboost", "gradient-boosting"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "xgboost--transfer-tabular-vs-unstructured",
@@ -1737,6 +2506,100 @@ export const ml06Items: Item[] = [
     expectedSeconds: 230,
     prereqClosure: ["xgboost", "gradient-boosting", "decision-tree"],
     source: ML_06,
-    status: "shadow",
+    status: "live",
   },
+
+  {
+    id: "xgboost--apply-leaf-weight-formula",
+    conceptId: "xgboost",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "XGBoost's optimal leaf weight is −Σg/(Σh + λ), where g and h are the summed gradients and Hessians in the leaf. With Σg = 6, Σh = 4 and λ = 2, compute the leaf weight.",
+    answerKey: -1,
+    tolerance: 0.005,
+    difficulty: 1.25,
+    discrimination: 1.4,
+    expectedSeconds: 110,
+    prereqClosure: ["xgboost", "gradient-boosting"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "xgboost--explain-gamma-as-a-split-threshold",
+    conceptId: "xgboost",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "In Ω(f) = γT + ½λ‖w‖², the γ term is often described as a minimum gain required to justify a split. Explain why penalising the leaf count has exactly that effect.",
+    rubric: {
+      elements: [
+        {
+          id: "a-split-adds-a-leaf",
+          description:
+            "Every split converts one leaf into two, so it adds γ to the objective — a fixed cost charged for the extra leaf.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "so-gain-must-exceed-gamma",
+          description:
+            "The split is therefore taken only if the loss reduction it buys exceeds γ, which is precisely a minimum-gain threshold expressed as a penalty rather than as a stopping rule.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-that-is-better",
+          description:
+            "Bonus: notes the advantage over an external stopping rule — the threshold is inside the criterion the split finder already optimises, so it is applied consistently everywhere.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["xgboost", "gradient-boosting"],
+    source: ML_06,
+    status: "live",
+  },
+  {
+    id: "xgboost--transfer-second-order-payoff",
+    conceptId: "xgboost",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Standard gradient boosting uses only the first derivative of the loss; XGBoost uses a second-order expansion. What does the extra derivative buy, and why is it affordable here when second-order methods are usually not?",
+    rubric: {
+      elements: [
+        {
+          id: "newton-step-not-gradient-step",
+          description:
+            "Using the Hessian makes each leaf value a Newton step rather than a gradient step, so the update is scaled by the local curvature and converges in fewer rounds.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-affordable",
+          description:
+            "It is affordable because the Hessian needed is per-example and scalar — the second derivative of the loss with respect to that example's prediction — not a full parameter-space matrix to be formed or inverted.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "also-feeds-the-split-gain",
+          description:
+            "Bonus: notes the same quantities feed the split-gain formula, so the curvature improves which splits are chosen and not just the leaf values.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.35,
+    discrimination: 1.6,
+    expectedSeconds: 240,
+    prereqClosure: ["xgboost", "gradient-boosting", "matrix-calculus"],
+    source: ML_06,
+    status: "live",
+  },
+
 ];

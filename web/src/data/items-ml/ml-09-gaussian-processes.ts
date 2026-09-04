@@ -43,7 +43,7 @@ export const ml09Items: Item[] = [
     expectedSeconds: 60,
     prereqClosure: ["gp-regression", "multivariate-normal", "kernel"],
     source: ML_09,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gp-regression--recall-kernel-role",
@@ -97,7 +97,7 @@ export const ml09Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["gp-regression", "kernel"],
     source: ML_09,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gp-regression--apply-uncertainty-from-conditioning",
@@ -129,7 +129,7 @@ export const ml09Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["gp-regression", "multivariate-normal", "covariance-matrix"],
     source: ML_09,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gp-regression--explain-error-bars-widen",
@@ -176,7 +176,7 @@ export const ml09Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["gp-regression", "kernel", "multivariate-normal"],
     source: ML_09,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gp-regression--transfer-bayesian-optimisation",
@@ -221,7 +221,101 @@ export const ml09Items: Item[] = [
     expectedSeconds: 240,
     prereqClosure: ["gp-regression", "multivariate-normal"],
     source: ML_09,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "gp-regression--apply-cost-scaling",
+    conceptId: "gp-regression",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "Exact GP inference costs O(n³). If fitting 1,000 training points takes 2 seconds, roughly how many seconds should 4,000 points take, assuming the cubic term dominates?",
+    answerKey: 128,
+    tolerance: 1,
+    difficulty: 1.5,
+    discrimination: 1.3,
+    expectedSeconds: 120,
+    prereqClosure: ["gp-regression"],
+    source: ML_09,
+    status: "live",
+  },
+  {
+    id: "gp-regression--explain-variance-ignores-y",
+    conceptId: "gp-regression",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "The GP predictive variance K** − K*ᵀ(K + σ²I)⁻¹K* contains no y at all. State what that means operationally, and why it is a limitation worth knowing before relying on GP error bars.",
+    rubric: {
+      elements: [
+        {
+          id: "depends-on-where-not-what",
+          description:
+            "Uncertainty depends only on *where* you observed, not on what you saw there — the error bars are fixed by the design of the inputs once the kernel is chosen.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-limitation",
+          description:
+            "So surprising or badly fitting observations do not widen the interval: a region densely sampled but poorly explained still reports high confidence, and only a misfit kernel or a re-estimated noise term can reflect it.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "consequence-of-the-gaussian-assumption",
+          description:
+            "Bonus: attributes this to the Gaussian assumption itself, where the conditional covariance never involves the conditioning values.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.7,
+    expectedSeconds: 230,
+    prereqClosure: ["gp-regression", "multivariate-normal", "covariance-matrix"],
+    source: ML_09,
+    status: "live",
+  },
+  {
+    id: "gp-regression--transfer-kernel-encodes-beliefs",
+    conceptId: "gp-regression",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Kernels can be added and multiplied to give new kernels. How would you build a covariance function for a signal that repeats yearly while drifting slowly upward, and what does that show about where a GP's assumptions live?",
+    rubric: {
+      elements: [
+        {
+          id: "composition",
+          description:
+            "Add a periodic kernel with a one-year period to a smooth long-length-scale kernel, so the sum expresses both the repetition and the drift.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "assumptions-live-in-the-kernel",
+          description:
+            "Shows that a GP's modelling assumptions live entirely in the covariance function rather than in a parametric form — you state what kind of function you expect, not how many coefficients it has.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "still-must-be-valid",
+          description:
+            "Bonus: notes the composed kernel is automatically valid because sums and products of kernels are kernels.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.6,
+    expectedSeconds: 240,
+    prereqClosure: ["gp-regression", "kernel"],
+    source: ML_09,
+    status: "live",
   },
 
   // --- GP Classification ----------------------------------------------------
@@ -255,7 +349,7 @@ export const ml09Items: Item[] = [
     expectedSeconds: 70,
     prereqClosure: ["gp-classification", "gp-regression", "logistic-regression"],
     source: ML_09,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gp-classification--recall-tractability",
@@ -309,7 +403,7 @@ export const ml09Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["gp-classification", "gp-regression"],
     source: ML_09,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gp-classification--apply-why-closed-form-breaks",
@@ -347,7 +441,7 @@ export const ml09Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["gp-classification", "gp-regression", "multivariate-normal"],
     source: ML_09,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gp-classification--explain-shared-sigmoid",
@@ -387,7 +481,7 @@ export const ml09Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["gp-classification", "logistic-regression"],
     source: ML_09,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "gp-classification--transfer-generalises-logistic-regression",
@@ -425,6 +519,133 @@ export const ml09Items: Item[] = [
     expectedSeconds: 240,
     prereqClosure: ["gp-classification", "gp-regression", "logistic-regression", "mle"],
     source: ML_09,
-    status: "shadow",
+    status: "live",
   },
+
+  {
+    id: "gp-classification--apply-pick-an-approximation",
+    conceptId: "gp-classification",
+    format: "mcq",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "A team needs calibrated class probabilities from a GP classifier and has found the cheapest approximation over-confident. Which description best explains why?",
+    choices: [
+      {
+        id: "a",
+        text: "Fitting a Gaussian at the posterior's mode using local curvature ignores the tails, so a skewed posterior is represented as narrower than it is",
+        correct: true,
+      },
+      {
+        id: "b",
+        text: "The approximation uses too few training points",
+        correct: false,
+        misconception: {
+          id: "approximation-error-blamed-on-sample-size",
+          description:
+            "The over-confidence is a property of fitting a Gaussian to a non-Gaussian posterior; it does not go away with more data.",
+          blameConceptId: "gp-classification",
+        },
+      },
+      {
+        id: "c",
+        text: "The sigmoid link saturates, so all probabilities are pushed to 0.5",
+        correct: false,
+        misconception: {
+          id: "over-confidence-inverted",
+          description:
+            "Describes the opposite symptom. Over-confidence means probabilities pushed toward 0 and 1, not toward the middle.",
+          blameConceptId: "gp-classification",
+        },
+      },
+      {
+        id: "d",
+        text: "The kernel is not positive semidefinite",
+        correct: false,
+        misconception: {
+          id: "calibration-blamed-on-kernel-validity",
+          description:
+            "An invalid kernel breaks the model outright rather than producing a well-behaved but over-confident posterior.",
+          blameConceptId: "mercers-theorem",
+        },
+      },
+    ],
+    difficulty: 1.6,
+    discrimination: 1.5,
+    expectedSeconds: 80,
+    prereqClosure: ["gp-classification", "gp-regression"],
+    source: ML_09,
+    status: "live",
+  },
+  {
+    id: "gp-classification--explain-cost-of-multiclass",
+    conceptId: "gp-classification",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Extending GP classification from two classes to K replaces the sigmoid with a softmax over K latent processes. What does that change, and what does it leave exactly as it was?",
+    rubric: {
+      elements: [
+        {
+          id: "what-changes",
+          description:
+            "The cost: K latent GPs must be inferred rather than one, multiplying both the linear algebra and the approximation work by K.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-does-not",
+          description:
+            "The intractability is unchanged in kind — a softmax likelihood is no more conjugate to a Gaussian prior than a sigmoid one, so the same families of approximation are still required.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.25,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["gp-classification", "gp-regression"],
+    source: ML_09,
+    status: "live",
+  },
+  {
+    id: "gp-classification--transfer-when-not-to-use-it",
+    conceptId: "gp-classification",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Name a setting where GP classification is the right tool and one where it clearly is not, and justify both from its properties rather than from convention.",
+    rubric: {
+      elements: [
+        {
+          id: "right-setting",
+          description:
+            "Right where n is small, each label is expensive, and calibrated uncertainty drives a decision — a clinical or experimental-design setting, where the O(n³) cost is irrelevant and the posterior is the product.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "wrong-setting",
+          description:
+            "Wrong at large n with cheap labels and a top-1 decision — the cubic cost is prohibitive, approximate inference erodes the calibration that was the reason to choose it, and a discriminative model gets the argmax for far less.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "justified-from-properties",
+          description:
+            "Both justifications reference the model's actual properties — cost, calibration, approximation — rather than appeals to what is commonly used.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.75,
+    discrimination: 1.5,
+    expectedSeconds: 250,
+    prereqClosure: ["gp-classification", "gp-regression", "logistic-regression"],
+    source: ML_09,
+    status: "live",
+  },
+
 ];

@@ -41,7 +41,7 @@ export const ml08Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["perceptron", "classification-vs-regression"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "perceptron--recall-learning-rule",
@@ -95,7 +95,7 @@ export const ml08Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["perceptron"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "perceptron--apply-classify-point",
@@ -111,7 +111,7 @@ export const ml08Items: Item[] = [
     expectedSeconds: 50,
     prereqClosure: ["perceptron"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "perceptron--explain-xor",
@@ -143,7 +143,7 @@ export const ml08Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["perceptron"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "perceptron--transfer-same-boundary-different-training",
@@ -181,7 +181,95 @@ export const ml08Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["perceptron", "classification-vs-regression"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "perceptron--apply-update-step",
+    conceptId: "perceptron",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A perceptron has w = (1, −1) and b = 0. The point x = (2, 3) has true label +1, and the update rule is w ← w + η(y − ŷ)x with η = 1 and ŷ = sign(w·x + b) ∈ {−1, +1}. What is the first component of the updated w?",
+    answerKey: 5,
+    tolerance: 0.001,
+    difficulty: 0.55,
+    discrimination: 1.4,
+    expectedSeconds: 120,
+    prereqClosure: ["perceptron"],
+    source: ML_08,
+    status: "live",
+  },
+  {
+    id: "perceptron--explain-mistake-driven-geometry",
+    conceptId: "perceptron",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Give the geometric reading of the perceptron update: what does adding a misclassified positive example's x to w actually do, and why does doing nothing on correct examples still converge?",
+    rubric: {
+      elements: [
+        {
+          id: "rotates-w-toward-x",
+          description:
+            "Adding x rotates the weight vector toward that example, which raises w·x and pushes the score for that point in the direction it should have had.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-no-op-is-fine",
+          description:
+            "Correctly classified points need no correction, so the rule only ever moves in response to evidence that the current boundary is wrong — and each correction is bounded, which is what makes the mistake count finite when the data is separable.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.05,
+    discrimination: 1.5,
+    expectedSeconds: 190,
+    prereqClosure: ["perceptron"],
+    source: ML_08,
+    status: "live",
+  },
+  {
+    id: "perceptron--transfer-convergence-guarantee-limits",
+    conceptId: "perceptron",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "The perceptron is guaranteed to converge on linearly separable data. Why is that guarantee much weaker than it sounds, in two distinct ways?",
+    rubric: {
+      elements: [
+        {
+          id: "any-separator-not-a-good-one",
+          description:
+            "It converges to *some* separating hyperplane, with no claim that it is a good one — the answer depends on the order examples arrived in, and nothing maximises the distance to the data.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "non-separable-never-terminates",
+          description:
+            "On data that is not linearly separable — which is most real data — it never terminates at all, cycling indefinitely rather than settling on a best-available boundary.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-fixes-each",
+          description:
+            "Bonus: notes what each gap motivated — a margin criterion for the first, a soft-margin or a smooth loss for the second.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.75,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["perceptron", "classification-vs-regression"],
+    source: ML_08,
+    status: "live",
   },
 
   // --- Neural Networks ------------------------------------------------------
@@ -215,7 +303,7 @@ export const ml08Items: Item[] = [
     expectedSeconds: 55,
     prereqClosure: ["neural-networks", "perceptron", "matrix-calculus"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "neural-networks--recall-linear-collapse",
@@ -269,7 +357,7 @@ export const ml08Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["neural-networks"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "neural-networks--apply-composition-derivation",
@@ -301,7 +389,7 @@ export const ml08Items: Item[] = [
     expectedSeconds: 160,
     prereqClosure: ["neural-networks", "matrix-multiplication", "linear-transformations"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "neural-networks--explain-depth-vs-width",
@@ -339,7 +427,7 @@ export const ml08Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["neural-networks", "perceptron"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "neural-networks--transfer-hidden-layer-solves-xor",
@@ -377,7 +465,103 @@ export const ml08Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["neural-networks", "perceptron"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "neural-networks--apply-parameter-count",
+    conceptId: "neural-networks",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A fully connected network maps 10 inputs to a hidden layer of 20 units, then to 5 outputs. Counting every weight and every bias, how many parameters does it have?",
+    answerKey: 325,
+    tolerance: 0.001,
+    difficulty: 0.9,
+    discrimination: 1.3,
+    expectedSeconds: 120,
+    prereqClosure: ["neural-networks", "matrices", "matrix-multiplication"],
+    source: ML_08,
+    status: "live",
+  },
+  {
+    id: "neural-networks--explain-symmetric-initialisation",
+    conceptId: "neural-networks",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Why must the weights of a hidden layer be initialised to different random values rather than all to the same constant — zero included?",
+    rubric: {
+      elements: [
+        {
+          id: "identical-units-stay-identical",
+          description:
+            "Units in a layer with identical incoming weights compute identical outputs, so they receive identical gradients and are updated identically — they remain the same unit forever.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "layer-collapses-to-one-unit",
+          description:
+            "The layer therefore has the effective capacity of a single unit no matter how wide it is, and the symmetry is never broken by training itself.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "scale-matters-too",
+          description:
+            "Bonus: notes that the *scale* of the random values matters as well — schemes like Xavier or He initialisation keep activation and gradient variance stable across layers.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["neural-networks", "perceptron"],
+    source: ML_08,
+    status: "live",
+  },
+  {
+    id: "neural-networks--transfer-relu-still-nonlinear",
+    conceptId: "neural-networks",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "ReLU is linear on x > 0 and linear on x < 0. Given that composing linear maps collapses a network, why does a ReLU network not collapse?",
+    rubric: {
+      elements: [
+        {
+          id: "piecewise-linear-is-not-linear",
+          description:
+            "ReLU is piecewise linear, not linear: the kink at 0 means max(0, a + b) ≠ max(0, a) + max(0, b) in general, so it is not a linear map and the composition argument does not apply.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "which-piece-depends-on-input",
+          description:
+            "Which linear piece each unit is on depends on the input, so the network as a whole is a linear function on each region of input space but a different one per region — exponentially many regions with depth.",
+          weight: 4,
+          required: true,
+        },
+      ],
+      forbiddenMoves: [
+        {
+          id: "claims-relu-is-smooth-nonlinear",
+          description:
+            "Justifies it by calling ReLU 'a nonlinear curve like the sigmoid', which misdescribes the function and misses that the kink alone is what does the work.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.05,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["neural-networks", "linear-transformations"],
+    source: ML_08,
+    status: "live",
   },
 
   // --- Backpropagation ------------------------------------------------------
@@ -411,7 +595,7 @@ export const ml08Items: Item[] = [
     expectedSeconds: 55,
     prereqClosure: ["backpropagation", "neural-networks", "gradient-descent"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "backpropagation--recall-what-it-is-not",
@@ -465,7 +649,7 @@ export const ml08Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["backpropagation"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "backpropagation--apply-early-layer-chain",
@@ -497,7 +681,7 @@ export const ml08Items: Item[] = [
     expectedSeconds: 170,
     prereqClosure: ["backpropagation", "matrix-calculus", "neural-networks"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "backpropagation--explain-efficiency",
@@ -535,7 +719,7 @@ export const ml08Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["backpropagation", "neural-networks"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "backpropagation--transfer-vanishing-gradients",
@@ -574,6 +758,94 @@ export const ml08Items: Item[] = [
     expectedSeconds: 230,
     prereqClosure: ["backpropagation", "neural-networks", "gradient-descent"],
     source: ML_08,
-    status: "shadow",
+    status: "live",
   },
+
+  {
+    id: "backpropagation--apply-sigmoid-shrinkage",
+    conceptId: "backpropagation",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "The sigmoid's derivative is at most 0.25. Backpropagating through 4 sigmoid layers multiplies the gradient by one such factor per layer. What is the largest possible value of 0.25⁴, as a decimal?",
+    answerKey: 0.00390625,
+    tolerance: 0.0001,
+    difficulty: 1.0,
+    discrimination: 1.3,
+    expectedSeconds: 90,
+    prereqClosure: ["backpropagation", "neural-networks"],
+    source: ML_08,
+    status: "live",
+  },
+  {
+    id: "backpropagation--explain-forward-pass-must-be-kept",
+    conceptId: "backpropagation",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Training a deep network runs out of memory long before it runs out of parameters. Why does backpropagation need memory proportional to depth × batch size, and what trades that back?",
+    rubric: {
+      elements: [
+        {
+          id: "activations-are-needed",
+          description:
+            "Each layer's parameter gradient is built from the activation that layer received, so every forward activation must be retained until the backward pass reaches it.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "scales-with-depth-and-batch",
+          description:
+            "That is one stored tensor per layer per example in the batch, so memory scales with depth × batch size rather than with parameter count — which is why batch size is bounded by memory, not compute.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "checkpointing",
+          description:
+            "Bonus: names gradient checkpointing — discard activations and recompute them on the backward pass, trading time for space.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.7,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["backpropagation", "neural-networks"],
+    source: ML_08,
+    status: "live",
+  },
+  {
+    id: "backpropagation--transfer-why-reverse-mode",
+    conceptId: "backpropagation",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Derivatives can be propagated forwards through a computation instead of backwards, at a cost of one pass per input. Why is the backward direction the right choice for training, and when would the forward direction win?",
+    rubric: {
+      elements: [
+        {
+          id: "the-asymmetry",
+          description:
+            "Names the asymmetry: forward mode costs one pass per input and backward mode one pass per output. Training has millions of parameters and a single scalar loss, so the backward direction is cheaper by the ratio between them.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "when-forward-wins",
+          description:
+            "Forward mode wins in the opposite shape — few inputs and many outputs, such as a sensitivity analysis of many quantities with respect to one or two parameters.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.2,
+    discrimination: 1.6,
+    expectedSeconds: 230,
+    prereqClosure: ["backpropagation", "matrix-calculus"],
+    source: ML_08,
+    status: "live",
+  },
+
 ];

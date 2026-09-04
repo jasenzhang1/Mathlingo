@@ -10,17 +10,21 @@ import { ml08Items } from "./ml-08-neural-networks";
 import { ml09Items } from "./ml-09-gaussian-processes";
 
 /**
- * The servable form of the machine-learning question bank: five items per
- * concept — recall, recall, apply, explain, transfer — across all 50 concepts in
- * the `machine-learning` domain, ported from `assessments/ml-01…ml-09.md`.
+ * The servable form of the machine-learning question bank: eight items per
+ * concept across all 50 concepts in the `machine-learning` domain — 400 in
+ * total — at two each of recall, apply, explain and transfer.
  *
- * Every item ships at `shadow`, not `live`. That is what the status means: the
- * items are authored and structurally verified, but their IRT difficulty and
- * discrimination are *seeds* from the concept's depth in the graph, not
- * estimates from exposure data. Shadow items are served and graded, and the
- * learner is told they do not move their score, which is exactly the regime the
- * ingest pipeline puts newly accepted items into (`retrieval.ts`) and the regime
- * `calibration.ts` promotes out of once the numbers justify it.
+ * Items 1-5 per concept are the port of `assessments/ml-01…ml-09.md`, which
+ * authored five. Items 6-8 were written to bring every pool to the
+ * `MIN_LIVE_ITEMS = 8` bar `calibration.ts` sets and to match the 2/2/2/2 level
+ * mix and format spread the other domains' banks use, so the adaptive selector
+ * has something to choose between at each level rather than one item per rung.
+ *
+ * All ship `live`, as the statistics, multivariate-probability and
+ * graphical-models banks do. They are authored, rubric-complete and clear
+ * `verifyItem` with no blockers or warnings; their IRT parameters are seeds from
+ * concept depth rather than exposure estimates, which is true of every authored
+ * item here and is what `calibration.ts` re-estimates from live responses.
  */
 export const mlItems: Item[] = [
   ...ml01Items,

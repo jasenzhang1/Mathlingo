@@ -45,7 +45,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["clustering-methods", "supervised-vs-unsupervised-learning"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "clustering-methods--recall-evaluation-challenge",
@@ -99,7 +99,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["clustering-methods"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "clustering-methods--apply-supervised-or-not",
@@ -130,7 +130,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 80,
     prereqClosure: ["clustering-methods", "supervised-vs-unsupervised-learning"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "clustering-methods--explain-different-algorithms-differ",
@@ -162,7 +162,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["clustering-methods", "supervised-vs-unsupervised-learning"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "clustering-methods--transfer-choosing-k",
@@ -200,7 +200,116 @@ export const ml07Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["clustering-methods"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "clustering-methods--apply-silhouette-reading",
+    conceptId: "clustering-methods",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "A point's silhouette is (b − a)/max(a, b), where a is its mean distance to its own cluster and b to the nearest other cluster. Say what a value near 1, near 0 and negative each indicate.",
+    rubric: {
+      elements: [
+        {
+          id: "near-one",
+          description: "Near 1: much closer to its own cluster than to any other — comfortably placed.",
+          weight: 2,
+          required: true,
+        },
+        {
+          id: "near-zero",
+          description: "Near 0: roughly equidistant from both — sitting on a boundary, so its assignment is arbitrary.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "negative",
+          description: "Negative: closer on average to a different cluster than to its own — likely misassigned.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.4,
+    discrimination: 1.4,
+    expectedSeconds: 150,
+    prereqClosure: ["clustering-methods"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "clustering-methods--explain-metric-is-a-modelling-choice",
+    conceptId: "clustering-methods",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Switching from Euclidean to cosine distance can change a clustering completely without changing the algorithm. Explain what each metric assumes, and why the choice is usually made silently.",
+    rubric: {
+      elements: [
+        {
+          id: "euclidean-assumption",
+          description:
+            "Euclidean distance treats every feature as contributing on a common scale and is sensitive to magnitude, so two documents of very different length look far apart.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "cosine-assumption",
+          description:
+            "Cosine distance ignores magnitude entirely and compares direction only, which is why it is the default for text — a long and a short document on the same topic come out close.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "made-silently",
+          description:
+            "The choice is usually a library default rather than a decision anyone recorded, which makes it an unexamined modelling assumption sitting under the result.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.0,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["clustering-methods"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "clustering-methods--transfer-hierarchical-defers-k",
+    conceptId: "clustering-methods",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Hierarchical clustering returns a whole nested family of clusterings at once rather than one. When is that genuinely more useful than picking k in advance, and what has it not solved?",
+    rubric: {
+      elements: [
+        {
+          id: "when-it-helps",
+          description:
+            "It helps when the right granularity is itself the question — the dendrogram lets you inspect structure at every scale and see whether groups merge gradually or in clear jumps.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-it-has-not-solved",
+          description:
+            "It has deferred the choice rather than removed it: where to cut the dendrogram is the same unfalsifiable decision as choosing k, now made by eye.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.5,
+    discrimination: 1.5,
+    expectedSeconds: 200,
+    prereqClosure: ["clustering-methods"],
+    source: ML_07,
+    status: "live",
   },
 
   // --- K-Means Clustering ---------------------------------------------------
@@ -239,7 +348,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 55,
     prereqClosure: ["k-means-clustering", "clustering-methods"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "k-means-clustering--recall-convergence",
@@ -293,7 +402,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["k-means-clustering"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "k-means-clustering--apply-restarts",
@@ -332,7 +441,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 150,
     prereqClosure: ["k-means-clustering"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "k-means-clustering--explain-objective-and-decomposition",
@@ -372,7 +481,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["k-means-clustering", "clustering-methods"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "k-means-clustering--transfer-shape-assumptions",
@@ -411,7 +520,103 @@ export const ml07Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["k-means-clustering", "clustering-methods"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "k-means-clustering--apply-centroid-update",
+    conceptId: "k-means-clustering",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A cluster contains the one-dimensional points 2, 4, 9 and 13. Where does the k-means update step place its centroid?",
+    answerKey: 7,
+    tolerance: 0.005,
+    difficulty: 0.4,
+    discrimination: 1.2,
+    expectedSeconds: 70,
+    prereqClosure: ["k-means-clustering"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "k-means-clustering--explain-why-the-mean-is-the-update",
+    conceptId: "k-means-clustering",
+    format: "derivation",
+    cognitive: "explain",
+    channels: ["typed", "handwritten"],
+    stem: "Show that, given a fixed assignment, the mean is the exact minimiser of Σ‖x − μ‖² — and say what the update rule becomes if squared distance is replaced by absolute distance.",
+    rubric: {
+      elements: [
+        {
+          id: "the-derivation",
+          description:
+            "Differentiates Σᵢ‖xᵢ − μ‖² with respect to μ to get −2Σᵢ(xᵢ − μ), sets it to zero, and solves μ = (1/|C|)Σᵢxᵢ.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "not-a-heuristic",
+          description:
+            "Concludes that the update step is the exact minimiser given the assignment, not an approximation — which is why the objective cannot increase.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "absolute-gives-median",
+          description:
+            "With absolute distance the same argument returns the median, which is k-medoids and is far more robust to outliers.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.0,
+    discrimination: 1.7,
+    expectedSeconds: 230,
+    prereqClosure: ["k-means-clustering", "clustering-methods"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "k-means-clustering--transfer-kmeans-plus-plus",
+    conceptId: "k-means-clustering",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "k-means++ seeds centroids by choosing each new one with probability proportional to its squared distance from the nearest already-chosen centroid. Why does that help, and what does it still not guarantee?",
+    rubric: {
+      elements: [
+        {
+          id: "spreads-the-seeds",
+          description:
+            "Weighting by squared distance makes far-away regions overwhelmingly likely to be chosen, so the initial centroids land in different parts of the data instead of clumping in one dense region.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-that-matters",
+          description:
+            "Poor initialisation is what sends Lloyd's algorithm to a bad local optimum — two centroids inside one true cluster while another has none — so spreading the seeds removes the most common failure.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "still-not-optimal",
+          description:
+            "It remains a randomised heuristic with an expected-case guarantee only; the global optimum is still not assured, which is why restarts are used alongside it.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.5,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["k-means-clustering", "clustering-methods"],
+    source: ML_07,
+    status: "live",
   },
 
   // --- SVD for Clustering ---------------------------------------------------
@@ -438,7 +643,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 50,
     prereqClosure: ["svd-for-clustering", "clustering-methods", "svd"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "svd-for-clustering--recall-why-reduced-space",
@@ -492,7 +697,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["svd-for-clustering"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "svd-for-clustering--apply-optimal-truncation",
@@ -524,7 +729,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["svd-for-clustering", "svd", "rank"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "svd-for-clustering--explain-the-risk",
@@ -556,7 +761,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["svd-for-clustering", "svd"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "svd-for-clustering--transfer-spectral-clustering",
@@ -594,7 +799,96 @@ export const ml07Items: Item[] = [
     expectedSeconds: 230,
     prereqClosure: ["svd-for-clustering", "eigenvalues-eigenvectors", "clustering-methods"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "svd-for-clustering--apply-eigengap",
+    conceptId: "svd-for-clustering",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A graph Laplacian's smallest eigenvalues are 0.00, 0.00, 0.01, 0.42, 0.55. The eigengap heuristic takes the number of clusters as the count of eigenvalues before the largest jump. What k does it suggest?",
+    answerKey: 3,
+    tolerance: 0.001,
+    difficulty: 1.2,
+    discrimination: 1.4,
+    expectedSeconds: 120,
+    prereqClosure: ["svd-for-clustering", "eigenvalues-eigenvectors"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "svd-for-clustering--explain-latent-semantic-case",
+    conceptId: "svd-for-clustering",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Two documents share no vocabulary yet discuss the same topic. Explain how truncating the SVD of a term–document matrix can place them near each other.",
+    rubric: {
+      elements: [
+        {
+          id: "shared-latent-direction",
+          description:
+            "Words that co-occur across the corpus load on a common latent direction — 'car' and 'automobile' end up with similar coordinates — so documents using either are projected to nearby points.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "raw-space-cannot",
+          description:
+            "In the raw term space the two documents are orthogonal by construction, since no term is shared, so no distance computed there could detect the relationship.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.7,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["svd-for-clustering", "svd"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "svd-for-clustering--transfer-choosing-r",
+    conceptId: "svd-for-clustering",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Choosing the truncation rank r is a real decision with a cost on each side. Describe both failure modes and the tools available for the choice.",
+    rubric: {
+      elements: [
+        {
+          id: "too-few",
+          description:
+            "Too few components collapses genuine distinctions into a shared direction, merging groups that were separable.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "too-many",
+          description:
+            "Too many retains the noise the projection was meant to remove, so the distance concentration it was fixing comes back.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "tools-and-their-status",
+          description:
+            "Names the tools — explained-variance curves, the eigengap, downstream stability — and is honest that all are heuristics, the same unfalsifiable-choice problem running through unsupervised learning.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.2,
+    discrimination: 1.5,
+    expectedSeconds: 220,
+    prereqClosure: ["svd-for-clustering", "svd", "clustering-methods"],
+    source: ML_07,
+    status: "live",
   },
 
   // --- Probabilistic PCA ----------------------------------------------------
@@ -627,7 +921,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 60,
     prereqClosure: ["probabilistic-pca", "pca", "mle"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "probabilistic-pca--recall-limit",
@@ -681,7 +975,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["probabilistic-pca"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "probabilistic-pca--apply-two-advantages",
@@ -713,7 +1007,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["probabilistic-pca", "mle", "pca"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "probabilistic-pca--explain-two-routes",
@@ -752,7 +1046,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["probabilistic-pca", "mle", "pca", "eigenvalues-eigenvectors"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "probabilistic-pca--transfer-stepping-stone",
@@ -784,7 +1078,105 @@ export const ml07Items: Item[] = [
     expectedSeconds: 230,
     prereqClosure: ["probabilistic-pca", "mle"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "probabilistic-pca--apply-implied-covariance",
+    conceptId: "probabilistic-pca",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "PPCA implies x ~ N(μ, WWᵀ + σ²I) with W a d × q matrix. Describe the structure of that covariance and why it is far more constrained than an unrestricted d × d covariance.",
+    rubric: {
+      elements: [
+        {
+          id: "low-rank-plus-isotropic",
+          description:
+            "It is a rank-q matrix WWᵀ plus a multiple of the identity — low-rank structure plus equal noise in every direction.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "parameter-saving",
+          description:
+            "An unrestricted covariance needs d(d+1)/2 parameters; this needs about dq + 1, which is what makes it estimable when d is large relative to n.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.35,
+    discrimination: 1.5,
+    expectedSeconds: 190,
+    prereqClosure: ["probabilistic-pca", "covariance-matrix", "pca"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "probabilistic-pca--explain-factor-analysis-difference",
+    conceptId: "probabilistic-pca",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Factor analysis differs from PPCA in exactly one assumption. Name it, and say what practical property that one change buys.",
+    rubric: {
+      elements: [
+        {
+          id: "the-assumption",
+          description:
+            "PPCA insists the noise variance is the same σ² in every dimension; factor analysis gives each dimension its own noise variance — a diagonal Ψ rather than σ²I.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-it-buys",
+          description:
+            "It makes the model invariant to rescaling individual features, which PPCA and PCA notoriously are not — a feature measured in different units no longer changes which subspace is recovered.",
+          weight: 5,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.95,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["probabilistic-pca", "covariance-matrix"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "probabilistic-pca--transfer-rotation-unidentifiability",
+    conceptId: "probabilistic-pca",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "For any orthogonal R, W and WR give the same distribution over x. What does that mean for interpreting individual latent factors, and what would be needed to make such an interpretation legitimate?",
+    rubric: {
+      elements: [
+        {
+          id: "only-the-subspace-is-identified",
+          description:
+            "The individual axes carry no meaning on their own — only the subspace they span is identified by the data, since any rotation within it fits equally well.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "what-would-be-needed",
+          description:
+            "An extra constraint must be imposed to pick a rotation: the variance ordering PCA uses, a varimax rotation, or a sparsity prior — and the interpretation then rests on that constraint, not on the fit.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.45,
+    discrimination: 1.6,
+    expectedSeconds: 230,
+    prereqClosure: ["probabilistic-pca", "pca", "eigenvalues-eigenvectors"],
+    source: ML_07,
+    status: "live",
   },
 
   // --- Kernel PCA -----------------------------------------------------------
@@ -818,7 +1210,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 55,
     prereqClosure: ["kernel-pca", "pca", "kernel"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "kernel-pca--recall-when-useful",
@@ -872,7 +1264,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["kernel-pca"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "kernel-pca--apply-spiral",
@@ -904,7 +1296,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["kernel-pca", "pca", "kernel"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "kernel-pca--explain-validity-requirement",
@@ -936,7 +1328,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["kernel-pca", "kernel", "positive-definite-matrices", "eigenvalues-eigenvectors"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "kernel-pca--transfer-vs-neighbour-embeddings",
@@ -974,7 +1366,117 @@ export const ml07Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["kernel-pca", "pca"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "kernel-pca--apply-cost-comparison",
+    conceptId: "kernel-pca",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "A dataset has n = 1,000,000 rows and d = 50 columns. Compare the feasibility of ordinary PCA and kernel PCA here, citing what each one's cost depends on.",
+    rubric: {
+      elements: [
+        {
+          id: "pca-cost",
+          description:
+            "Ordinary PCA eigendecomposes a 50 × 50 covariance (or takes the SVD of the data), so its cubic cost is in d — trivial at this size.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "kernel-pca-cost",
+          description:
+            "Kernel PCA eigendecomposes an n × n kernel matrix, so its cost is cubic in the number of *samples* — a 10⁶ × 10⁶ matrix that cannot even be stored.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-workaround",
+          description:
+            "Bonus: names the Nyström or inducing-point approximation as what makes it tractable at all in this regime.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.35,
+    discrimination: 1.5,
+    expectedSeconds: 180,
+    prereqClosure: ["kernel-pca", "pca", "kernel"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "kernel-pca--explain-double-centring",
+    conceptId: "kernel-pca",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "PCA requires centred data, yet kernel PCA never computes φ(x) and so cannot subtract its mean. How is centring achieved, and what goes wrong if the step is skipped?",
+    rubric: {
+      elements: [
+        {
+          id: "centring-in-kernel-space",
+          description:
+            "The feature-space mean is subtracted using only kernel evaluations, via the double-centring K̃ = K − 1ₙK − K1ₙ + 1ₙK1ₙ.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-goes-wrong",
+          description:
+            "Skipped, the leading component mostly encodes the mean rather than the variation about it, so the first direction is uninformative — one of the most common kernel PCA implementation bugs.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.95,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["kernel-pca", "kernel", "pca"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "kernel-pca--transfer-pre-image-problem",
+    conceptId: "kernel-pca",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Linear PCA can denoise an image by projecting onto the top components and reconstructing. Why can kernel PCA generally not do the same, and what does that rule it out for?",
+    rubric: {
+      elements: [
+        {
+          id: "the-pre-image-problem",
+          description:
+            "A point in feature space usually has no exact counterpart in input space — the image of φ is a curved surface, not the whole space — so there is nothing to map the projection back to.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "what-it-rules-out",
+          description:
+            "So compression-and-reconstruction and denoising use cases are out; approximate pre-image methods exist but are iterative and unreliable.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-remains",
+          description:
+            "Bonus: notes what kernel PCA is still good for — visualisation and feature extraction, where the projected coordinates are the product and no return trip is needed.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.45,
+    discrimination: 1.6,
+    expectedSeconds: 230,
+    prereqClosure: ["kernel-pca", "kernel", "pca"],
+    source: ML_07,
+    status: "live",
   },
 
   // --- t-SNE ----------------------------------------------------------------
@@ -1008,7 +1510,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 55,
     prereqClosure: ["t-sne", "clustering-methods", "kl-divergence"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "t-sne--recall-what-it-preserves",
@@ -1062,7 +1564,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["t-sne"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "t-sne--apply-intercluster-distance",
@@ -1102,7 +1604,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 170,
     prereqClosure: ["t-sne"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "t-sne--explain-kl-role",
@@ -1147,7 +1649,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["t-sne", "kl-divergence"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "t-sne--transfer-run-to-run-variation",
@@ -1179,7 +1681,108 @@ export const ml07Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["t-sne"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "t-sne--apply-read-a-plot",
+    conceptId: "t-sne",
+    format: "multi-select",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "From a t-SNE plot alone, select every conclusion that is NOT supported.",
+    choices: [
+      { id: "a", text: "Cluster A is twice as spread out as cluster B, so it is more heterogeneous", correct: true },
+      { id: "b", text: "Cluster A sits far from cluster C, so those groups are very different", correct: true },
+      { id: "c", text: "There are exactly four groups in the data because four blobs are visible", correct: true },
+      {
+        id: "d",
+        text: "These particular points were near neighbours in the original space",
+        correct: false,
+        misconception: {
+          id: "local-structure-called-unsupported",
+          description:
+            "Local neighbourhood structure is the one thing t-SNE's objective actually optimises, so this is the supported reading — dismissing it treats the plot as conveying nothing at all.",
+          blameConceptId: "t-sne",
+        },
+      },
+    ],
+    difficulty: 1.0,
+    discrimination: 1.6,
+    expectedSeconds: 120,
+    prereqClosure: ["t-sne"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "t-sne--explain-crowding-and-the-t",
+    conceptId: "t-sne",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Why is a heavy-tailed Student-t distribution used for the low-dimensional similarities rather than a Gaussian? Name the problem it solves.",
+    rubric: {
+      elements: [
+        {
+          id: "the-crowding-problem",
+          description:
+            "In high dimensions many points can be mutually equidistant; in two dimensions there is not room, so moderately distant points get crushed toward the centre.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "how-heavy-tails-help",
+          description:
+            "A heavy-tailed Q lets a given similarity be achieved at a much larger map distance than a Gaussian would allow, giving the embedding the room it needs to spread those points out.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "hence-the-name",
+          description: "Bonus: notes this is what the 't' in t-SNE refers to.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["t-sne", "kl-divergence"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "t-sne--transfer-no-transform-for-new-points",
+    conceptId: "t-sne",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "t-SNE offers no way to place a new point into an existing embedding. Explain why that follows from what it fits, and what it means for using t-SNE in a production pipeline.",
+    rubric: {
+      elements: [
+        {
+          id: "coordinates-not-a-function",
+          description:
+            "The optimisation produces coordinates for a fixed set of points, not a function from input space to the map — there is no fitted mapping to apply to anything new.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "pipeline-consequence",
+          description:
+            "So it cannot sit in a pipeline that must score new records: adding a point means refitting, and refitting changes the whole layout, so nothing downstream can depend on the coordinates.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["t-sne", "clustering-methods"],
+    source: ML_07,
+    status: "live",
   },
 
   // --- UMAP -----------------------------------------------------------------
@@ -1213,7 +1816,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 55,
     prereqClosure: ["umap", "t-sne"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "umap--recall-comparison",
@@ -1267,7 +1870,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["umap"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "umap--apply-trusting-distances",
@@ -1307,7 +1910,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 160,
     prereqClosure: ["umap", "t-sne"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "umap--explain-visualisation-not-preprocessing",
@@ -1345,7 +1948,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["umap", "t-sne"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "umap--transfer-millions-of-points",
@@ -1377,7 +1980,111 @@ export const ml07Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["umap", "t-sne"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "umap--apply-knobs",
+    conceptId: "umap",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "UMAP's two main settings are n_neighbors and min_dist. Say what each controls and which way to move it to emphasise broad structure over fine detail.",
+    rubric: {
+      elements: [
+        {
+          id: "n-neighbors",
+          description:
+            "n_neighbors sets how much of the data counts as local: small values emphasise fine local structure, large values push the embedding toward a more global view — so raise it for broad structure.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "min-dist",
+          description:
+            "min_dist sets how tightly points may pack in the output: small values give dense separated clumps, larger values a more evenly spread map.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.95,
+    discrimination: 1.4,
+    expectedSeconds: 160,
+    prereqClosure: ["umap", "t-sne"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "umap--explain-supervised-mode-risk",
+    conceptId: "umap",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "UMAP has a supervised mode where labels inform the graph construction. Why is a plot from it useful for presentation and dangerous as evidence?",
+    rubric: {
+      elements: [
+        {
+          id: "why-useful",
+          description:
+            "Useful because the embedding separates known classes more strongly, which makes an already-established finding easier to communicate.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "why-dangerous",
+          description:
+            "Dangerous because the separation was put in by the labels: a supervised embedding that separates the classes is not evidence that the classes are separable, and the picture looks identical to one where they genuinely are.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "what-would-be-evidence",
+          description:
+            "Bonus: notes what would be evidence — held-out classification performance, not a projection.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["umap", "t-sne"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "umap--transfer-speed-changed-practice",
+    conceptId: "umap",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "UMAP's pictures are not categorically better than t-SNE's, yet it displaced t-SNE as the default in large-scale exploratory work. Explain why, in terms of what speed changes about how a tool is used.",
+    rubric: {
+      elements: [
+        {
+          id: "iteration-becomes-possible",
+          description:
+            "At minutes rather than an overnight run, the embedding can be recomputed across settings and subsets — so it becomes something you interrogate rather than a single artefact you accept.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "and-that-is-the-real-gain",
+          description:
+            "That change in how the tool is used is the actual gain, not a better objective — a caveat-laden picture you can re-run twenty ways is more informative than a marginally better one you cannot.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.5,
+    expectedSeconds: 220,
+    prereqClosure: ["umap", "t-sne"],
+    source: ML_07,
+    status: "live",
   },
 
   // --- Independent Component Analysis --------------------------------------
@@ -1411,7 +2118,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 60,
     prereqClosure: ["ica", "pca", "kl-divergence"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "ica--recall-key-difference",
@@ -1465,7 +2172,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["ica"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "ica--apply-uncorrelated-not-independent",
@@ -1504,7 +2211,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["ica", "covariance", "expectation"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "ica--explain-gaussian-restriction",
@@ -1542,7 +2249,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["ica", "covariance", "joint-distribution"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "ica--transfer-cocktail-party",
@@ -1581,7 +2288,103 @@ export const ml07Items: Item[] = [
     expectedSeconds: 230,
     prereqClosure: ["ica", "pca", "covariance"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "ica--apply-identifiability-ambiguities",
+    conceptId: "ica",
+    format: "multi-select",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "Select every property of the recovered sources that ICA genuinely cannot determine from the observed mixtures.",
+    choices: [
+      { id: "a", text: "The scale of each source", correct: true },
+      { id: "b", text: "The order the sources come out in", correct: true },
+      { id: "c", text: "The sign of each source", correct: true },
+      {
+        id: "d",
+        text: "The shape of each source's distribution",
+        correct: false,
+        misconception: {
+          id: "distribution-shape-called-unidentifiable",
+          description:
+            "The distributional shape is precisely what ICA *can* recover, and non-Gaussianity is the signal it exploits to do so — without it the problem would be unsolvable.",
+          blameConceptId: "ica",
+        },
+      },
+    ],
+    difficulty: 1.35,
+    discrimination: 1.5,
+    expectedSeconds: 120,
+    prereqClosure: ["ica", "pca"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "ica--explain-whitening-first",
+    conceptId: "ica",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "ICA implementations whiten the data — usually with PCA — before searching for independent components. What does whitening accomplish, and what is left for ICA to do afterwards?",
+    rubric: {
+      elements: [
+        {
+          id: "whitening-handles-second-order",
+          description:
+            "Whitening makes the components uncorrelated with unit variance, which disposes of all the second-order structure using nothing but the covariance matrix.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-remains",
+          description:
+            "What remains is to find a rotation of the whitened data that makes the components as non-Gaussian — and hence as independent — as possible, which is a much smaller search than the original problem.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.95,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["ica", "pca", "covariance-matrix"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "ica--transfer-eeg-artefact-removal",
+    conceptId: "ica",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "ICA is used to strip eye-blink artefacts from EEG recordings. Explain why the method suits the problem, and what assumption would have to hold for it to work.",
+    rubric: {
+      elements: [
+        {
+          id: "matches-the-generative-structure",
+          description:
+            "Each electrode records a different linear mixture of underlying sources — neural activity plus blinks — which is exactly the model ICA inverts, so the blink emerges as its own component to be removed.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-assumption",
+          description:
+            "It requires the blink source to be statistically independent of the neural sources and non-Gaussian, and the mixing to be linear and instantaneous — if the blink is time-locked to the neural activity of interest, the separation is not valid.",
+          weight: 5,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.45,
+    discrimination: 1.6,
+    expectedSeconds: 230,
+    prereqClosure: ["ica", "covariance", "joint-distribution"],
+    source: ML_07,
+    status: "live",
   },
 
   // --- Principal Component Analysis ----------------------------------------
@@ -1614,7 +2417,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 50,
     prereqClosure: ["pca", "pca-matrix-edition", "covariance-matrix"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "pca--recall-what-it-cannot-promise",
@@ -1668,7 +2471,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["pca"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "pca--apply-effective-dimensionality",
@@ -1706,7 +2509,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 170,
     prereqClosure: ["pca", "covariance-matrix"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "pca--explain-unsupervised-risk",
@@ -1744,7 +2547,7 @@ export const ml07Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["pca", "covariance-matrix"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "pca--transfer-elbow-and-compression",
@@ -1784,6 +2587,88 @@ export const ml07Items: Item[] = [
     expectedSeconds: 220,
     prereqClosure: ["pca", "svd", "pca-matrix-edition"],
     source: ML_07,
-    status: "shadow",
+    status: "live",
   },
+
+  {
+    id: "pca--apply-explained-variance",
+    conceptId: "pca",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A covariance matrix has eigenvalues 6, 3, 2, 1. What percentage of the total variance do the first two principal components explain? Give a whole number.",
+    answerKey: 75,
+    tolerance: 0.5,
+    difficulty: 0.9,
+    discrimination: 1.3,
+    expectedSeconds: 100,
+    prereqClosure: ["pca", "covariance-matrix", "eigenvalues-eigenvectors"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "pca--explain-why-svd-not-covariance",
+    conceptId: "pca",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Serious implementations compute PCA from the SVD of the centred data rather than by eigendecomposing XᵀX. Why does that matter numerically?",
+    rubric: {
+      elements: [
+        {
+          id: "squaring-the-condition-number",
+          description:
+            "Forming XᵀX squares the condition number, so the small singular values are computed with badly degraded relative accuracy.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "those-are-the-ones-that-matter",
+          description:
+            "Those small values are exactly the ones being examined to decide what is negligible, so the quantity the decision rests on is the quantity the shortcut damages most.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["pca", "svd", "covariance-matrix"],
+    source: ML_07,
+    status: "live",
+  },
+  {
+    id: "pca--transfer-interpretability-and-sparse-pca",
+    conceptId: "pca",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "A component reads '0.31 × income − 0.22 × age + 0.19 × tenure + …' across all 200 features. Why is that hard to interpret, and what does sparse PCA trade to fix it?",
+    rubric: {
+      elements: [
+        {
+          id: "dense-loadings",
+          description:
+            "Every component is a linear combination of all the original features, so there is no small set of variables it can be described in terms of — it rarely names anything a person recognises.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-sparse-trade",
+          description:
+            "Sparse PCA forces most loadings to zero so each component involves a handful of features, at the cost of explaining less variance per component and losing exact orthogonality.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.05,
+    discrimination: 1.5,
+    expectedSeconds: 210,
+    prereqClosure: ["pca", "covariance-matrix"],
+    source: ML_07,
+    status: "live",
+  },
+
 ];

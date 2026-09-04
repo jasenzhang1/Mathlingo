@@ -39,7 +39,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["multiclass-classification", "classification-vs-regression"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "multiclass-classification--recall-one-vs-rest",
@@ -93,7 +93,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["multiclass-classification"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "multiclass-classification--apply-ovr-count",
@@ -109,7 +109,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 30,
     prereqClosure: ["multiclass-classification"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "multiclass-classification--explain-ovr-vs-ovo",
@@ -146,7 +146,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 170,
     prereqClosure: ["multiclass-classification"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "multiclass-classification--transfer-softmax-at-scale",
@@ -184,7 +184,95 @@ export const ml02Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["multiclass-classification"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "multiclass-classification--apply-ovo-count",
+    conceptId: "multiclass-classification",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "Using one-vs-one for a 10-class problem, how many binary classifiers are trained?",
+    answerKey: 45,
+    tolerance: 0.001,
+    difficulty: 0.4,
+    discrimination: 1.2,
+    expectedSeconds: 60,
+    prereqClosure: ["multiclass-classification"],
+    source: ML_02,
+    status: "live",
+  },
+  {
+    id: "multiclass-classification--explain-softmax-normalisation",
+    conceptId: "multiclass-classification",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Softmax divides each exponentiated score by the sum over all classes. What does that normalisation enforce, and why is it wrong for a task where an article can be about both sport and politics?",
+    rubric: {
+      elements: [
+        {
+          id: "enforces-mutual-exclusivity",
+          description:
+            "The normalisation forces the outputs to sum to 1, so raising one class's probability necessarily lowers the others — it encodes that exactly one label is correct.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "wrong-for-multi-label",
+          description:
+            "When several labels can be simultaneously true that coupling is false, and the right construction is K independent sigmoids whose outputs need not sum to anything.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.05,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["multiclass-classification"],
+    source: ML_02,
+    status: "live",
+  },
+  {
+    id: "multiclass-classification--transfer-averaging-choice",
+    conceptId: "multiclass-classification",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "A 20-class model is reported at 96% by one metric and 41% by another, on the same predictions. Explain how both can be right, and what the gap tells you about the model.",
+    rubric: {
+      elements: [
+        {
+          id: "micro-vs-macro",
+          description:
+            "Pooling all predictions before computing the metric lets the large classes dominate; averaging the metric per class first gives every class equal weight regardless of size.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-the-gap-means",
+          description:
+            "A large gap means the model performs well on the common classes and badly on the rare ones — it is telling you exactly where the failure is concentrated.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-values-statement",
+          description:
+            "Bonus: notes that choosing which to report is a statement about whether the typical example or the typical class matters.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["multiclass-classification"],
+    source: ML_02,
+    status: "live",
   },
 
   // --- Confusion Matrices ---------------------------------------------------
@@ -210,7 +298,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["confusion-matrices", "classification-vs-regression"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "confusion-matrices--recall-error-type-mapping",
@@ -264,7 +352,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["confusion-matrices"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "confusion-matrices--apply-compute-three-metrics",
@@ -308,7 +396,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 120,
     prereqClosure: ["confusion-matrices"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "confusion-matrices--explain-accuracy-under-imbalance",
@@ -346,7 +434,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["confusion-matrices"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "confusion-matrices--transfer-which-error-costs-more",
@@ -384,7 +472,95 @@ export const ml02Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["confusion-matrices"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "confusion-matrices--apply-f1-from-counts",
+    conceptId: "confusion-matrices",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A classifier has precision 0.8 and recall 0.5. Compute its F1 score, the harmonic mean 2·P·R/(P + R), to three decimal places.",
+    answerKey: 0.615,
+    tolerance: 0.005,
+    difficulty: 0.4,
+    discrimination: 1.3,
+    expectedSeconds: 90,
+    prereqClosure: ["confusion-matrices"],
+    source: ML_02,
+    status: "live",
+  },
+  {
+    id: "confusion-matrices--explain-f1-ignores-tn",
+    conceptId: "confusion-matrices",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "F1 is built from precision and recall, and neither of those mentions true negatives. What does that mean F1 cannot see, and when does it matter?",
+    rubric: {
+      elements: [
+        {
+          id: "three-of-four-cells",
+          description:
+            "F1 uses only TP, FP and FN — three of the four cells — so correctly rejected negatives contribute nothing to the score.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "when-it-matters",
+          description:
+            "It matters when correctly leaving negatives alone is itself valuable — a screening tool whose value is partly in not alarming healthy people — where a metric involving specificity is the honest one.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "equal-weighting-assumption",
+          description:
+            "Bonus: notes that the harmonic mean also assumes precision and recall matter equally, which Fβ exists to relax.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.05,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["confusion-matrices"],
+    source: ML_02,
+    status: "live",
+  },
+  {
+    id: "confusion-matrices--transfer-offdiagonal-diagnosis",
+    conceptId: "confusion-matrices",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "For a 10-class digit classifier, why is the full 10 × 10 confusion matrix worth reading rather than just the per-class F1 scores?",
+    rubric: {
+      elements: [
+        {
+          id: "off-diagonals-carry-the-diagnosis",
+          description:
+            "The off-diagonal entries say *which* class each error went to: a model confusing 4s with 9s has a different problem from one confusing 4s with 7s, and per-class scores collapse both into one number.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "actionability",
+          description:
+            "That distinction is what suggests the fix — more training data for a specific pair, a feature that separates them, or a merged label if the classes are genuinely not distinguishable.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.5,
+    expectedSeconds: 200,
+    prereqClosure: ["confusion-matrices"],
+    source: ML_02,
+    status: "live",
   },
 
   // --- ROC Curves -----------------------------------------------------------
@@ -416,7 +592,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["roc-curves", "confusion-matrices"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "roc-curves--recall-random-auc",
@@ -466,7 +642,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 30,
     prereqClosure: ["roc-curves"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "roc-curves--apply-interpret-auc",
@@ -496,7 +672,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 60,
     prereqClosure: ["roc-curves"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "roc-curves--explain-why-all-thresholds",
@@ -528,7 +704,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 170,
     prereqClosure: ["roc-curves"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "roc-curves--transfer-imbalance-denominator",
@@ -568,7 +744,95 @@ export const ml02Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["roc-curves", "confusion-matrices"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "roc-curves--apply-count-ordered-pairs",
+    conceptId: "roc-curves",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A model scores 3 positives above all 4 negatives except for one negative that outranks one positive. Of the 12 positive–negative pairs, how many are correctly ordered? (AUC is that count divided by 12.)",
+    answerKey: 11,
+    tolerance: 0.001,
+    difficulty: 0.5,
+    discrimination: 1.3,
+    expectedSeconds: 120,
+    prereqClosure: ["roc-curves"],
+    source: ML_02,
+    status: "live",
+  },
+  {
+    id: "roc-curves--explain-auc-probabilistic-reading",
+    conceptId: "roc-curves",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "AUC equals the probability that a randomly chosen positive scores higher than a randomly chosen negative. Use that reading to explain why AUC is threshold-free and why it says nothing about calibration.",
+    rubric: {
+      elements: [
+        {
+          id: "threshold-free",
+          description:
+            "The statement involves only the *ordering* of scores, so no threshold appears in it — AUC is a property of the ranking alone.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "silent-on-calibration",
+          description:
+            "Any monotone rescaling of the scores leaves every pairwise comparison unchanged, so AUC is identical for a confidently correct model and a barely-committed one with the same ordering.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-checks-calibration",
+          description:
+            "Bonus: names what would check it — a reliability diagram, or a proper scoring rule like the Brier score or log loss.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.15,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["roc-curves"],
+    source: ML_02,
+    status: "live",
+  },
+  {
+    id: "roc-curves--transfer-partial-auc",
+    conceptId: "roc-curves",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "A fraud team can investigate at most 0.5% of transactions, so any operating point above that false-positive rate is unreachable. Why is a single AUC figure a poor summary here, and what would be better?",
+    rubric: {
+      elements: [
+        {
+          id: "auc-averages-over-unreachable-points",
+          description:
+            "AUC integrates over the entire false-positive range, so most of what it summarises is operating points the team can never adopt — two models with equal AUC can differ sharply in the sliver that matters.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "better-alternatives",
+          description:
+            "Names a better summary: partial AUC restricted to the reachable FPR region, precision at a fixed review budget, or the confusion matrix at the actual threshold.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.65,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["roc-curves", "confusion-matrices"],
+    source: ML_02,
+    status: "live",
   },
 
   // --- K-Fold Cross-Validation ---------------------------------------------
@@ -607,7 +871,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 70,
     prereqClosure: ["k-fold-cross-validation", "training-validation-test-set"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "k-fold-cross-validation--recall-advantage",
@@ -661,7 +925,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 40,
     prereqClosure: ["k-fold-cross-validation"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "k-fold-cross-validation--apply-fold-sizes",
@@ -677,7 +941,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 45,
     prereqClosure: ["k-fold-cross-validation"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "k-fold-cross-validation--explain-averaging-reduces-variance",
@@ -723,7 +987,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["k-fold-cross-validation", "variance", "expectation"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "k-fold-cross-validation--transfer-cost-tradeoff",
@@ -761,7 +1025,95 @@ export const ml02Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["k-fold-cross-validation"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "k-fold-cross-validation--apply-count-the-fits",
+    conceptId: "k-fold-cross-validation",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "Nested cross-validation uses an outer 5-fold loop, and inside each outer fold an inner 4-fold loop evaluates 6 hyperparameter settings. Counting only the inner-loop fits, how many model fits does the whole procedure perform?",
+    answerKey: 120,
+    tolerance: 0.001,
+    difficulty: 1.3,
+    discrimination: 1.4,
+    expectedSeconds: 140,
+    prereqClosure: ["k-fold-cross-validation"],
+    source: ML_02,
+    status: "live",
+  },
+  {
+    id: "k-fold-cross-validation--explain-loocv-tradeoff",
+    conceptId: "k-fold-cross-validation",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Leave-one-out cross-validation trains on n − 1 points every time, so its estimate is nearly unbiased. Why is it nonetheless usually not the best choice?",
+    rubric: {
+      elements: [
+        {
+          id: "highly-correlated-estimates",
+          description:
+            "The n training sets are nearly identical, so the n error estimates are strongly positively correlated — and averaging correlated quantities reduces variance far less than averaging independent ones.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "and-the-cost",
+          description:
+            "It also costs n model fits rather than 5 or 10, so it pays the most and gets a low-bias but high-variance estimate in return.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "the-exception",
+          description:
+            "Bonus: notes the exception — for least-squares linear models it has a closed form via leverage values, costing one fit rather than n.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.8,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["k-fold-cross-validation"],
+    source: ML_02,
+    status: "live",
+  },
+  {
+    id: "k-fold-cross-validation--transfer-forward-chaining",
+    conceptId: "k-fold-cross-validation",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Describe how cross-validation must be restructured for a time series, and what a standard random-fold version would actually be measuring.",
+    rubric: {
+      elements: [
+        {
+          id: "forward-chaining",
+          description:
+            "Use forward chaining: train on a prefix of the series and validate on the block immediately after it, rolling the boundary forward — folds are ordered, never shuffled.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-random-folds-measure",
+          description:
+            "Random folds train on data from after the validation period, so the score measures interpolation between known points rather than forecasting — a quantity that is optimistic and unavailable in deployment.",
+          weight: 5,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.3,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["k-fold-cross-validation", "training-validation-test-set"],
+    source: ML_02,
+    status: "live",
   },
 
   // --- Hyperparameters ------------------------------------------------------
@@ -795,7 +1147,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 55,
     prereqClosure: ["hyperparameters", "k-fold-cross-validation"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "hyperparameters--recall-where-tuned",
@@ -849,7 +1201,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["hyperparameters"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "hyperparameters--apply-classify-two",
@@ -880,7 +1232,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 80,
     prereqClosure: ["hyperparameters"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "hyperparameters--explain-why-not-gradient-descent",
@@ -912,7 +1264,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 190,
     prereqClosure: ["hyperparameters", "overfitting-underfitting"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "hyperparameters--transfer-grid-search-blowup",
@@ -950,7 +1302,95 @@ export const ml02Items: Item[] = [
     expectedSeconds: 200,
     prereqClosure: ["hyperparameters"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
+  },
+
+
+  {
+    id: "hyperparameters--apply-grid-size",
+    conceptId: "hyperparameters",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A grid search tries 4 values each of 5 hyperparameters, and scores every combination with 5-fold cross-validation. How many model fits does it perform?",
+    answerKey: 5120,
+    tolerance: 0.001,
+    difficulty: 1.3,
+    discrimination: 1.3,
+    expectedSeconds: 120,
+    prereqClosure: ["hyperparameters", "k-fold-cross-validation"],
+    source: ML_02,
+    status: "live",
+  },
+  {
+    id: "hyperparameters--explain-log-scale-search",
+    conceptId: "hyperparameters",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Learning rates, regularisation strengths and kernel bandwidths are conventionally searched on a log scale rather than a linear one. Why?",
+    rubric: {
+      elements: [
+        {
+          id: "variation-is-multiplicative",
+          description:
+            "What matters about these parameters is their order of magnitude — the difference between 0.001 and 0.01 is as consequential as between 0.1 and 1, while 0.501 and 0.502 are indistinguishable.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "linear-grid-wastes-budget",
+          description:
+            "A linear grid spends almost all its points in one order of magnitude and never visits the others, so most of the search budget buys no information.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.75,
+    discrimination: 1.5,
+    expectedSeconds: 190,
+    prereqClosure: ["hyperparameters"],
+    source: ML_02,
+    status: "live",
+  },
+  {
+    id: "hyperparameters--transfer-why-random-beats-grid",
+    conceptId: "hyperparameters",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "At an equal budget of 27 fits over 3 hyperparameters, random search usually beats a 3 × 3 × 3 grid. Give the geometric reason, and the assumption about the problem that makes it hold.",
+    rubric: {
+      elements: [
+        {
+          id: "distinct-values-per-parameter",
+          description:
+            "The grid tries only 3 distinct values of each hyperparameter across all 27 fits; 27 random draws try up to 27 distinct values of each.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-assumption",
+          description:
+            "It holds because effective dimension is usually low — one or two hyperparameters dominate and the rest barely matter — so the random design explores the important one nine times as finely.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "when-it-fails",
+          description:
+            "Bonus: notes it would not hold if every hyperparameter mattered equally and interacted strongly.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.25,
+    discrimination: 1.6,
+    expectedSeconds: 230,
+    prereqClosure: ["hyperparameters"],
+    source: ML_02,
+    status: "live",
   },
 
   // --- Sensitivity Analysis -------------------------------------------------
@@ -984,7 +1424,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 55,
     prereqClosure: ["sensitivity-analysis", "hyperparameters"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "sensitivity-analysis--recall-unstable-model",
@@ -1038,7 +1478,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 35,
     prereqClosure: ["sensitivity-analysis"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "sensitivity-analysis--apply-learning-rate-cliff",
@@ -1078,7 +1518,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 160,
     prereqClosure: ["sensitivity-analysis", "hyperparameters"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "sensitivity-analysis--explain-vs-tuning",
@@ -1109,7 +1549,7 @@ export const ml02Items: Item[] = [
     expectedSeconds: 180,
     prereqClosure: ["sensitivity-analysis", "hyperparameters"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
   {
     id: "sensitivity-analysis--transfer-safety-critical",
@@ -1147,6 +1587,122 @@ export const ml02Items: Item[] = [
     expectedSeconds: 210,
     prereqClosure: ["sensitivity-analysis", "hyperparameters"],
     source: ML_02,
-    status: "shadow",
+    status: "live",
   },
+
+  {
+    id: "sensitivity-analysis--apply-choose-between-two-models",
+    conceptId: "sensitivity-analysis",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "Model A scores 0.87 at its best penalty value and drops to 0.61 if that value moves by a factor of two. Model B scores 0.85 across three orders of magnitude. Which would you deploy, and why is the 0.02 gap not decisive?",
+    rubric: {
+      elements: [
+        {
+          id: "chooses-b",
+          description: "Chooses B for a production deployment.",
+          weight: 2,
+          required: true,
+        },
+        {
+          id: "peak-was-selected-on-noise",
+          description:
+            "A's peak was located using finite validation data, so the true optimum is probably not exactly where A found it — the 0.02 advantage is within the noise of the selection procedure.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "drift-moves-the-optimum",
+          description:
+            "Under distribution drift the optimal setting moves, and A falls off its peak while B does not — the fragility is not within the noise.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.35,
+    discrimination: 1.5,
+    expectedSeconds: 180,
+    prereqClosure: ["sensitivity-analysis", "hyperparameters"],
+    source: ML_02,
+    status: "live",
+  },
+  {
+    id: "sensitivity-analysis--explain-one-at-a-time-blind-spot",
+    conceptId: "sensitivity-analysis",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Varying each hyperparameter alone while holding the others at their tuned values is the most common sensitivity check. What can it miss entirely?",
+    rubric: {
+      elements: [
+        {
+          id: "explores-only-a-cross",
+          description:
+            "It explores a cross through the space — one line per parameter through the chosen point — and nothing off those lines.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "interactions-invisible",
+          description:
+            "So interacting parameters, such as learning rate and batch size, can make the surface look flat along every axis while a cliff sits a short diagonal step away.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "the-fix",
+          description:
+            "Bonus: names global methods — random sweeps over the joint space, or variance-based sensitivity indices — as what actually covers it.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.8,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["sensitivity-analysis", "hyperparameters"],
+    source: ML_02,
+    status: "live",
+  },
+  {
+    id: "sensitivity-analysis--transfer-data-sensitivity",
+    conceptId: "sensitivity-analysis",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem: "Sensitivity analysis can vary the data as well as the settings. Describe how you would check whether a conclusion rests on a handful of observations, and what you would conclude either way.",
+    rubric: {
+      elements: [
+        {
+          id: "method",
+          description:
+            "Refit on bootstrap resamples, or with the most influential points removed, and observe how much the conclusion moves.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-instability-means",
+          description:
+            "Large swings mean the finding is carried by a few rows, so it should be reported with that caveat, or the rows themselves audited — a result that depends on five observations is a claim about those observations.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "stability-is-a-finding",
+          description:
+            "Bonus: notes that stability is itself a positive result worth reporting rather than a null outcome.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.3,
+    discrimination: 1.5,
+    expectedSeconds: 220,
+    prereqClosure: ["sensitivity-analysis"],
+    source: ML_02,
+    status: "live",
+  },
+
 ];
