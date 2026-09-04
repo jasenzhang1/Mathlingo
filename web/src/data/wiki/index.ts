@@ -1,8 +1,16 @@
 import { bernoulliBinomialWiki } from "./bernoulli-binomial";
+import { bootstrappingWiki } from "./bootstrapping";
+import { chiSquareGoodnessOfFitTestWiki } from "./chi-square-goodness-of-fit-test";
+import { chiSquareTestOfIndependenceWiki } from "./chi-square-test-of-independence";
 import { confidenceIntervalWiki } from "./confidence-interval";
 import { dataTypesWiki } from "./data-types";
+import { fischersExactTestWiki } from "./fischers-exact-test";
 import { hypothesisTestWiki } from "./hypothesis-test";
+import { oneSampleProportionsZTestWiki } from "./one-sample-proportions-z-test";
+import { oneSampleTTestWiki } from "./one-sample-t-test";
+import { oneSampleZTestWiki } from "./one-sample-z-test";
 import { pValueWiki } from "./p-value";
+import { pairedTTestWiki } from "./paired-t-test";
 import { parameterVsStatisticWiki } from "./parameter-vs-statistic";
 import { populationVsSampleWiki } from "./population-vs-sample";
 import { rejectionRegionWiki } from "./rejection-region";
@@ -12,7 +20,10 @@ import { samplingDistributionWiki } from "./sampling-distribution";
 import { samplingMethodsWiki } from "./sampling-methods";
 import { standardErrorWiki } from "./standard-error";
 import { testStatisticWiki } from "./test-statistic";
+import { twoSampleTTestWiki } from "./two-sample-t-test";
+import { twoSampleZTestWiki } from "./two-sample-z-test";
 import { typeIIIErrorWiki } from "./type-i-ii-error";
+import { wilcoxonRankSumTestWiki } from "./wilcoxon-rank-sum-test";
 import type { WikiArticle } from "./types";
 
 /**
@@ -39,6 +50,19 @@ const articles: WikiArticle[] = [
   pValueWiki,
   typeIIIErrorWiki,
   confidenceIntervalWiki,
+
+  // --- statistics: named tests and resampling -------------------------------
+  oneSampleZTestWiki,
+  oneSampleTTestWiki,
+  oneSampleProportionsZTestWiki,
+  twoSampleZTestWiki,
+  twoSampleTTestWiki,
+  pairedTTestWiki,
+  chiSquareTestOfIndependenceWiki,
+  chiSquareGoodnessOfFitTestWiki,
+  fischersExactTestWiki,
+  wilcoxonRankSumTestWiki,
+  bootstrappingWiki,
 ];
 
 export const wikiByConcept = new Map<string, WikiArticle>(
