@@ -118,7 +118,7 @@ gradient despite `gradient-descent` being named after one, and no neural-network
 | LA-7 | [la-07-spectral-theory-and-special-matrices.md](la-07-spectral-theory-and-special-matrices.md) | Spectral Theorem → Matrix Stability (7) | done (35 items) |
 | LA-8 | [la-08-svd-and-applications.md](la-08-svd-and-applications.md) | SVD → PCA (Matrix Edition) (6) | done (30 items) |
 
-**Machine Learning: 50 / 50 concepts done — 400 servable items.** The 250
+**Machine Learning: 78 / 78 concepts done — 624 servable items.** (Clusters 1-9 below cover the original 50; 10-12 cover the 28 added later.) The 250
 authored here are ported into typed `Item` entries under
 [`web/src/data/items-ml/`](../web/src/data/items-ml/), one file per cluster,
 spread into [`items.ts`](../web/src/data/items.ts). A further 150 — a second
@@ -161,6 +161,47 @@ side.
 | ML-7 | [ml-07-clustering-and-dimensionality-reduction.md](ml-07-clustering-and-dimensionality-reduction.md) | Clustering → PCA (9) | done (45 items) |
 | ML-8 | [ml-08-neural-networks.md](ml-08-neural-networks.md) | Perceptron, Neural Networks, Backprop (3), all new | done (15 items) |
 | ML-9 | [ml-09-gaussian-processes.md](ml-09-gaussian-processes.md) | GP Regression, GP Classification (2) | done (10 items) |
+| ML-10 | [ml-10-practical-modelling.md](ml-10-practical-modelling.md) | Feature Scaling → Anomaly Detection (10, all new) | done (80 items) |
+| ML-11 | [ml-11-deep-learning.md](ml-11-deep-learning.md) | Activation Functions → Autoencoders (10, all new) | done (80 items) |
+| ML-12 | [ml-12-further-paradigms.md](ml-12-further-paradigms.md) | Transfer Learning → Density-Based Clustering (8, all new) | done (64 items) |
+
+## Machine Learning: the domain extension
+
+Clusters 10-12 add **28 concepts** to the graph, taking `machine-learning` from 50 to 78 and the
+whole map from 236 to 264. Two kinds of gap motivated them.
+
+**Dangling references.** Nineteen of the twenty-eight were already being *cited* by the fifty
+articles and 400 items of clusters 1-9 without existing as a node anyone could study — feature
+scaling by `knn`, `svm`, `rbf`, `gradient-descent` and `pca`; calibration by `roc-curves`,
+`naive-bayes` and `gp-classification`; precision-recall by `roc-curves`' own imbalance warning;
+stacking by `ensemble-methods`; DBSCAN and hierarchical clustering by `clustering-methods`. Adding
+them closes references the curriculum was already making.
+
+**A dead end.** `neural-networks` and `backpropagation` led nowhere: the graph could train a dense
+network and had nothing to say about activations, optimisers, or any architecture. Cluster 11 runs
+from the pieces every architecture shares to convolutions, recurrence, attention and transformers,
+and to the representations they produce.
+
+These three clusters invert the usual authorship direction — the concepts postdate clusters 1-9, so
+their items were written directly in typed form and the markdown is an index rather than a
+transcript. `npm run audit:coverage` now reports that distinction explicitly rather than counting it
+as a coverage gap.
+
+**Graph edges.** New concepts point only at existing ones, so no existing concept's ancestor set —
+and therefore no shipped item's seeded difficulty — changed. Seven edges *between new concepts and
+old ones* were added during authoring, each because `verifyItem` caught an item that genuinely
+needed it: `feature-selection` → `data-leakage`, `probability-calibration` →
+`training-validation-test-set`, `distribution-shift` → `data-leakage`, `anomaly-detection` →
+`curse-of-dimensionality`, `convolutional-neural-networks` → `overfitting-underfitting`,
+`attention-mechanism` → `variance`, `transfer-learning` → `feature-scaling`. Four further items were
+rewritten to be self-contained instead, where the edge would have been a stretch.
+
+One more standing graph question joins the three below: `feature-scaling` arguably belongs
+*upstream* of `knn`, `svm` and `rbf` rather than beside them. That rewiring would shift those
+concepts' ancestor counts and the seeded difficulty of items already shipped, so it is left as a
+decision rather than made silently.
+
+**Machine Learning totals: 78 / 78 concepts, 624 live items, 78 wiki articles.**
 
 ---
 
