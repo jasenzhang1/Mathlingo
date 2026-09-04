@@ -14,17 +14,22 @@ on it. `npm run audit:coverage` reports both numbers side by side.
 
 | Domain | Authored here | Wired into the app | Full 8-item live pool |
 |---|---|---|---|
+| Machine Learning | 50 / 50 | 50 | 50 |
+| Regression | 29 / 29 | 29 | 29 |
 | Statistics | 25 / 25 | 25 | 25 |
 | Graphical Models | 15 / 15 | 15 | 15 |
 | Multivariate Probability | 7 / 7 | 7 | 7 |
-| Machine Learning | 50 / 50 | 50 | 0 — pools are at 5 items, below `MIN_LIVE_ITEMS` |
 | Probability | 56 / 56 | 2 | 1 |
 | Linear Algebra | 54 / 54 | 1 | 0 |
-| Regression | 29 / 29 | 29 | 29 |
 
 `auditCoverage` calls a pool adequate only at 8 or more live items with coverage at
 recall/apply/explain and a difficulty spread of at least 1.5 logits, so the last
-column is the one that says a concept is genuinely assessable today.
+column is the one that says a concept is genuinely assessable today. The two rows
+still short of it are `probability` and `linear-algebra`: both are fully authored
+here, and neither has been turned into `Item` entries yet.
+
+These counts move as other sweeps land. Regenerate rather than edit them by hand —
+`npm run audit:coverage` prints the same figures.
 
 **Format note.** [`bernoulli-binomial.md`](bernoulli-binomial.md) was written first, at full essay
 depth per item, as a pilot. That density doesn't scale to 81 concepts, so everything after it uses a
