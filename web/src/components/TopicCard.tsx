@@ -34,15 +34,9 @@ export function TopicCard({ topic, selected, onToggle }: TopicCardProps) {
         ✓
       </span>
 
-      <h3 className="font-display mt-4 text-xl text-[var(--ink)]">
+      <h3 className="font-display mt-4 flex-1 text-xl text-[var(--ink)]">
         {topic.name}
       </h3>
-      <p className="mt-1 text-sm font-medium text-[var(--teal)]">
-        {topic.tagline}
-      </p>
-      <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--ink-soft)]">
-        {topic.description}
-      </p>
 
       <div className="mt-5 flex items-center gap-2 text-xs text-[var(--ink-soft)]">
         <span>~{topic.hours} hrs</span>
