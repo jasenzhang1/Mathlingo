@@ -27,7 +27,7 @@ const DiscussionFeed = lazy(() =>
     default: m.DiscussionFeed,
   })),
 );
-import { conceptById, domainMeta } from "../data/concepts";
+import { conceptById } from "../data/concepts";
 import { prereqsOf, unlocksOf } from "../lib/prerequisiteGraph";
 
 const TABS = [
@@ -53,8 +53,18 @@ export function ConceptPage() {
   const activeTab: TabId =
     TABS.some((t) => t.id === requested) ? (requested as TabId) : "slides";
 
+  // Where "Back" returns to: the concept map or its list view, whichever the
+  // student opened this lesson from (see ConceptMap/ConceptList, which set
+  // this), falling back to the map for a direct link or a click from
+  // somewhere else in the app (e.g. a prerequisite chip).
+  const from = searchParams.get("from");
+  const backHref = from === "list" ? "/map?view=list" : "/map";
+
   function selectTab(tab: TabId) {
-    setSearchParams(tab === "slides" ? {} : { tab }, { replace: true });
+    const next = new URLSearchParams(searchParams);
+    if (tab === "slides") next.delete("tab");
+    else next.set("tab", tab);
+    setSearchParams(next, { replace: true });
   }
 
   if (!concept) {
@@ -88,32 +98,19 @@ export function ConceptPage() {
     .map((unlockId) => conceptById.get(unlockId))
     .filter((c) => c !== undefined);
 
-  const meta = domainMeta[concept.domain];
-
   return (
     <div className="min-h-screen bg-[var(--paper)]">
       <Nav />
       <main>
         <div className="mx-auto max-w-4xl px-6 py-12">
           <Link
-            to="/map"
+            to={backHref}
             className="font-body text-sm font-medium text-[var(--accent)] hover:underline"
           >
-            ← Back to the concept map
+            ← Back
           </Link>
 
-          <span
-            className="font-body mt-5 inline-flex items-center gap-1.5 rounded-full border border-[var(--line)] px-3 py-1 text-xs font-medium text-[var(--ink-soft)]"
-          >
-            <span
-              className="inline-block h-2 w-2 rounded-full"
-              style={{ background: meta.color }}
-              aria-hidden="true"
-            />
-            {meta.label}
-          </span>
-
-          <h1 className="font-display mt-3 text-3xl text-[var(--ink)] md:text-4xl">
+          <h1 className="font-display mt-5 text-3xl text-[var(--ink)] md:text-4xl">
             {concept.title}
           </h1>
           <p className="font-body mt-2 max-w-2xl text-[var(--ink-soft)]">

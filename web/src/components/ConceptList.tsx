@@ -214,7 +214,7 @@ function ConceptRow({
   return (
     <li>
       <Link
-        to={`/concepts/${concept.id}`}
+        to={`/concepts/${concept.id}?from=list`}
         className="flex items-center gap-3 rounded-xl px-2 py-2 transition-colors hover:bg-[var(--accent-soft)] sm:px-3"
       >
         <span className="font-body w-8 shrink-0 text-xs tabular-nums text-[var(--ink-soft)] sm:w-12">

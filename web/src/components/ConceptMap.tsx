@@ -547,7 +547,7 @@ export function ConceptMap() {
                 transform={`translate(${node.x}, ${node.y})`}
                 onPointerEnter={() => setHoveredId(node.id)}
                 onPointerLeave={() => setHoveredId(null)}
-                onClick={() => navigate(`/concepts/${node.id}`)}
+                onClick={() => navigate(`/concepts/${node.id}?from=map`)}
                 opacity={nodeOpacity(node.id)}
                 style={{ cursor: "pointer" }}
               >
