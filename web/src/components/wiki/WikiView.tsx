@@ -138,7 +138,7 @@ function Block({ block }: { block: WikiBlock }) {
       return (
         <div className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-5">
           <p className="font-body text-xs font-semibold uppercase tracking-wide text-[var(--accent)]">
-            {block.title}
+            <RichText text={block.title} />
           </p>
           <p className="font-body mt-2 text-[15px] text-[var(--ink)]">
             <RichText text={block.problem} />
@@ -166,7 +166,9 @@ function Block({ block }: { block: WikiBlock }) {
             background: isWarning ? "rgba(209,73,91,0.06)" : "rgba(15,154,142,0.07)",
           }}
         >
-          <p className="font-body text-sm font-semibold text-[var(--ink)]">{block.title}</p>
+          <p className="font-body text-sm font-semibold text-[var(--ink)]">
+            <RichText text={block.title} />
+          </p>
           <p className="font-body mt-1 text-sm leading-relaxed text-[var(--ink-soft)]">
             <RichText text={block.text} />
           </p>
