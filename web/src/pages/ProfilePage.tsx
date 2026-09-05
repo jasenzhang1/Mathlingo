@@ -14,6 +14,7 @@ import {
   loadProfileByUsername,
   updateOwnProfile,
 } from "../lib/profiles";
+import { getSchoolNameForDomain } from "../data/eduDomains";
 
 function SubjectBar({
   label,
@@ -251,6 +252,11 @@ export function ProfilePage() {
               <p className="font-body text-sm text-[var(--ink-soft)]">
                 @{profile.username}
               </p>
+              {profile.school && (
+                <p className="font-body mt-1 inline-flex items-center rounded-full bg-[var(--accent-soft)] px-2.5 py-0.5 text-xs font-medium text-[var(--accent)]">
+                  {getSchoolNameForDomain(profile.school)}
+                </p>
+              )}
             </div>
           </div>
           {isOwner && !editing && (

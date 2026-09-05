@@ -14,6 +14,9 @@ export interface Profile {
   bio: string | null;
   showProficiency: boolean;
   showAchievements: boolean;
+  /** Email domain (e.g. "ucla.edu"), set only by the signup trigger — never client-editable. */
+  school: string | null;
+  isStudent: boolean;
 }
 
 interface ProfileRow {
@@ -23,10 +26,12 @@ interface ProfileRow {
   bio: string | null;
   show_proficiency: boolean;
   show_achievements: boolean;
+  school: string | null;
+  is_student: boolean;
 }
 
 const COLUMNS =
-  "id, username, display_name, bio, show_proficiency, show_achievements";
+  "id, username, display_name, bio, show_proficiency, show_achievements, school, is_student";
 
 function rowToProfile(row: ProfileRow): Profile {
   return {
@@ -36,6 +41,8 @@ function rowToProfile(row: ProfileRow): Profile {
     bio: row.bio,
     showProficiency: row.show_proficiency,
     showAchievements: row.show_achievements,
+    school: row.school,
+    isStudent: row.is_student,
   };
 }
 

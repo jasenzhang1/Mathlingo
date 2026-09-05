@@ -65,6 +65,20 @@ Deno.serve(async (req) => {
       );
     }
 
+    // The student discount is applied here rather than trusted from the
+    // client, for the same reason the price is resolved server-side above: a
+    // client that could name its own discount could name any discount.
+    // `is_student` is itself only ever set by the signup trigger from the
+    // verified account email (supabase/migrations/0006_student_verification.sql),
+    // never by a client write.
+    const { data: profile } = await db
+      .from("profiles")
+      .select("is_student")
+      .eq("id", user.id)
+      .maybeSingle();
+    const studentCoupon = Deno.env.get("STRIPE_STUDENT_COUPON_ID");
+    const applyStudentDiscount = Boolean(profile?.is_student) && Boolean(studentCoupon);
+
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
       customer: customerId,
@@ -73,7 +87,12 @@ Deno.serve(async (req) => {
       line_items: [{ price, quantity: 1 }],
       success_url: `${origin}/account?checkout=success`,
       cancel_url: `${origin}/pricing?checkout=cancelled`,
-      allow_promotion_codes: true,
+      // Stripe rejects passing both `discounts` and `allow_promotion_codes`
+      // on the same session, so an automatic student discount takes the
+      // place of the manual promo-code field rather than sitting beside it.
+      ...(applyStudentDiscount
+        ? { discounts: [{ coupon: studentCoupon }] }
+        : { allow_promotion_codes: true }),
       subscription_data: { metadata: { supabase_user_id: user.id } },
     });
 

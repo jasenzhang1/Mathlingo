@@ -6,9 +6,11 @@ import { startCheckout } from "../lib/billing/api";
 import { PLANS, type Tier } from "../lib/billing/tiers";
 import { useSubscription } from "../lib/billing/useSubscription";
 import { useAuth } from "../lib/auth/useAuth";
+import { useOwnProfile } from "../lib/profiles";
 
 export function PricingPage() {
   const { user } = useAuth();
+  const profile = useOwnProfile();
   const { subscription, loading } = useSubscription();
   const [searchParams] = useSearchParams();
   const [pending, setPending] = useState<Tier | null>(null);
@@ -46,6 +48,12 @@ export function PricingPage() {
             arguing with you about it.
           </p>
         </div>
+
+        {profile?.isStudent && (
+          <p className="font-body mx-auto mt-6 max-w-md rounded-xl bg-[var(--accent-soft)] px-4 py-3 text-center text-sm text-[var(--accent)]">
+            Your student discount applies automatically at checkout.
+          </p>
+        )}
 
         {cancelled && (
           <p className="font-body mx-auto mt-6 max-w-md rounded-xl bg-[var(--panel)] px-4 py-3 text-center text-sm text-[var(--ink-soft)]">

@@ -128,5 +128,10 @@ export function getEmailDomain(email: string): string | null {
 export function getSchoolName(email: string): string | null {
   const domain = getEmailDomain(email);
   if (!domain) return null;
-  return EDU_DOMAINS[domain] ?? null;
+  return getSchoolNameForDomain(domain);
+}
+
+/** Friendly name for a bare domain (e.g. "ucla.edu" -> "UCLA"), falling back to the domain itself. */
+export function getSchoolNameForDomain(domain: string): string {
+  return EDU_DOMAINS[domain.toLowerCase()] ?? domain;
 }

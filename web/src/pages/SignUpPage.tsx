@@ -10,6 +10,7 @@ import {
   GoogleButton,
 } from "../components/auth/AuthLayout";
 import { useAuth } from "../lib/auth/useAuth";
+import { getSchoolName, isEduEmail } from "../data/eduDomains";
 
 export function SignUpPage() {
   const { signUp, signInWithGoogle } = useAuth();
@@ -45,9 +46,16 @@ export function SignUpPage() {
   }
 
   if (submitted) {
+    const schoolName = getSchoolName(email);
     return (
       <AuthLayout title="Check your email">
         <AuthNotice message={`We sent a confirmation link to ${email}. Click it to activate your account.`} />
+        {isEduEmail(email) && (
+          <p className="font-body -mt-2 text-sm text-[var(--ink-soft)]">
+            {schoolName ? <>You're in as a {schoolName} student</> : <>You're in with a verified student email</>}{" "}
+            — your student discount and school forum will be waiting once you confirm.
+          </p>
+        )}
         <Link to="/login" className="font-body text-sm font-medium text-[var(--accent)] hover:underline">
           Back to login
         </Link>

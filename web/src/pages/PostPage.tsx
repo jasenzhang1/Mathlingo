@@ -32,6 +32,16 @@ export function PostPage() {
   const [posting, setPosting] = useState(false);
 
   const concept = conceptId ? conceptById.get(conceptId) : undefined;
+  // The school forum reuses this same route with a synthetic `school:<domain>`
+  // id (see SchoolBoardPage) — it isn't in the concept catalog, so it needs
+  // its own back link rather than the concept map's.
+  const isSchoolBoard = conceptId?.startsWith("school:") ?? false;
+  const backHref = isSchoolBoard ? "/school" : `/concepts/${conceptId}?tab=discussion`;
+  const backLabel = isSchoolBoard
+    ? "Back to your school forum"
+    : concept
+      ? `Back to ${concept.title}`
+      : "Back to the discussion";
 
   const load = useCallback(async () => {
     if (!postId) return;
@@ -95,7 +105,7 @@ export function PostPage() {
       setError(error);
       return;
     }
-    navigate(`/concepts/${conceptId}?tab=discussion`);
+    navigate(backHref);
   }
 
   if (loading) {
@@ -113,10 +123,10 @@ export function PostPage() {
           <h1 className="font-display text-2xl text-[var(--ink)]">Post not found</h1>
           {conceptId && (
             <Link
-              to={`/concepts/${conceptId}?tab=discussion`}
+              to={backHref}
               className="font-body mt-4 inline-block text-sm font-medium text-[var(--accent)] hover:underline"
             >
-              ← Back to the discussion
+              ← {backLabel}
             </Link>
           )}
         </div>
@@ -127,10 +137,10 @@ export function PostPage() {
   return (
     <Shell>
       <Link
-        to={`/concepts/${conceptId}?tab=discussion`}
+        to={backHref}
         className="font-body text-sm font-medium text-[var(--accent)] hover:underline"
       >
-        ← {concept ? `Back to ${concept.title}` : "Back to the discussion"}
+        ← {backLabel}
       </Link>
 
       {error && (

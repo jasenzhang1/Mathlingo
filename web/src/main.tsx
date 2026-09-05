@@ -13,6 +13,7 @@ import { PostPage } from "./pages/PostPage.tsx";
 import { PricingPage } from "./pages/PricingPage.tsx";
 import { ProfilePage } from "./pages/ProfilePage.tsx";
 import { ResetPasswordPage } from "./pages/ResetPasswordPage.tsx";
+import { SchoolBoardPage } from "./pages/SchoolBoardPage.tsx";
 import { SignUpPage } from "./pages/SignUpPage.tsx";
 
 createRoot(document.getElementById("root")!).render(
@@ -30,6 +31,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/account" element={<AccountPage />} />
           <Route path="/u/:username" element={<ProfilePage />} />
+          <Route path="/school" element={<SchoolBoardPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />

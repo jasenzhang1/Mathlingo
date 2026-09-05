@@ -78,6 +78,16 @@ function UserMenu() {
                 My profile
               </Link>
             )}
+            {profile?.school && (
+              <Link
+                to="/school"
+                role="menuitem"
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-3 py-2 text-left text-sm text-[var(--ink)] hover:bg-[var(--paper)]"
+              >
+                Your school forum
+              </Link>
+            )}
             <Link
               to="/account"
               role="menuitem"
