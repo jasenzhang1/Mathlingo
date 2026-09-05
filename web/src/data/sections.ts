@@ -581,4 +581,27 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
   ],
+
+  python: [
+    {
+      id: "containers-and-iteration",
+      label: "Containers & Iteration",
+      conceptIds: [
+        "python-lists",
+        "python-dicts",
+        "python-loops",
+        "python-comprehensions",
+      ],
+    },
+    {
+      id: "numpy",
+      label: "NumPy",
+      conceptIds: ["numpy-arrays", "numpy-broadcasting"],
+    },
+    {
+      id: "pandas",
+      label: "pandas",
+      conceptIds: ["pandas-dataframes", "pandas-groupby"],
+    },
+  ],
 };
