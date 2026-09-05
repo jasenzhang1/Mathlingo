@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import type { Concept } from "../data/concepts";
 import { DAY_MS } from "../lib/assessment/numeric";
@@ -243,6 +243,15 @@ interface SubjectSession {
   startMode: "review" | "drill";
 }
 
+/**
+ * Scroll position, remembered across a visit to a lesson and back. This
+ * component unmounts entirely on that round trip (it's a different route),
+ * so the scroll container would otherwise reset to the top every time.
+ * Module-level rather than localStorage: it only needs to survive for the
+ * life of this browser tab, not a full reload.
+ */
+let savedScrollTop = 0;
+
 export function ConceptList() {
   const { user } = useAuth();
   const { proficiency, dueAt, bleeding, refresh } = useProficiency();
@@ -250,6 +259,13 @@ export function ConceptList() {
   const [open, setOpen] = useState<Set<string>>(loadOpen);
   const [session, setSession] = useState<SubjectSession | null>(null);
   const location = useLocation();
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Runs before paint so the restored position never flashes the top first.
+  useLayoutEffect(() => {
+    const el = scrollRef.current;
+    if (el) el.scrollTop = savedScrollTop;
+  }, []);
 
   // A search result for a subject/subtopic links here as `#chapter-panel-<domain>`
   // — force that chapter open (it may have been collapsed) before scrolling to
@@ -370,7 +386,13 @@ export function ConceptList() {
         </div>
       </div>
 
-      <div className="min-h-0 flex-1 overflow-y-auto">
+      <div
+        ref={scrollRef}
+        onScroll={(e) => {
+          savedScrollTop = e.currentTarget.scrollTop;
+        }}
+        className="min-h-0 flex-1 overflow-y-auto"
+      >
         {visible.length === 0 ? (
           <p className="font-body rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-6 text-sm text-[var(--ink-soft)] shadow-sm">
             No concept matches “{query.trim()}”.

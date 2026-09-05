@@ -307,17 +307,29 @@ interface SubjectSession {
   startMode: "review" | "drill";
 }
 
+/**
+ * The domain filter and pan/zoom, remembered across a visit to a lesson and
+ * back. This component unmounts entirely on that round trip (it's a
+ * different route), so anything the student set here would otherwise reset
+ * to the default view every time. Module-level rather than localStorage: it
+ * only needs to survive for the life of this browser tab, not a full reload.
+ */
+let savedSelectedDomain: Domain | "all" = "all";
+let savedViewBox: ViewBox | null = null;
+
 export function ConceptMap() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { proficiency, bleeding, refresh } = useProficiency();
-  const [selectedDomain, setSelectedDomain] = useState<Domain | "all">("all");
+  const [selectedDomain, setSelectedDomain] = useState<Domain | "all">(
+    savedSelectedDomain,
+  );
   const [session, setSession] = useState<SubjectSession | null>(null);
   const layout = useMemo(() => computeLayout(selectedDomain), [selectedDomain]);
   const [aspect, setAspect] = useState<number | null>(null);
   // null = "wherever the map opens": derived from the layout and the measured
   // aspect below. Panning and zooming replace it with a concrete box.
-  const [viewBox, setViewBox] = useState<ViewBox | null>(null);
+  const [viewBox, setViewBox] = useState<ViewBox | null>(savedViewBox);
   const view = viewBox ?? initialViewOf(layout.bounds, aspect);
   const [renderedDomain, setRenderedDomain] = useState(selectedDomain);
   if (renderedDomain !== selectedDomain) {
@@ -344,6 +356,14 @@ export function ConceptMap() {
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    savedSelectedDomain = selectedDomain;
+  }, [selectedDomain]);
+
+  useEffect(() => {
+    savedViewBox = viewBox;
+  }, [viewBox]);
 
   const zoom = (factor: number) => {
     const fit = fitViewOf(layout.bounds, aspect);
