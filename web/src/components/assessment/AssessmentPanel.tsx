@@ -20,7 +20,7 @@ import {
   type SessionContext,
 } from "../../lib/assessment/review";
 import { canInstantiate, instantiate } from "../../lib/assessment/templating";
-import type { ConceptState, Grade, Item } from "../../lib/assessment/types";
+import type { ConceptState, Grade, Item, ItemFormat } from "../../lib/assessment/types";
 import { useAuth } from "../../lib/auth/useAuth";
 import { useSubscription } from "../../lib/billing/useSubscription";
 import { UpgradePrompt } from "../billing/UpgradePrompt";
@@ -65,6 +65,15 @@ export function AssessmentPanel({
 
   /** Levels covered this session, so one sitting can't be all arithmetic. */
   const coveredLevels = useRef<Set<string>>(new Set());
+  /**
+   * `code` items served this session, and the format of the last one served —
+   * together these drive the code-item quota in `selectNextItem`, so a
+   * programming concept actually asks the learner to write code rather than
+   * only to recognise it. Refs rather than state: they are read when picking
+   * the next item, and nothing renders from them.
+   */
+  const codeServed = useRef(0);
+  const lastFormat = useRef<ItemFormat | undefined>(undefined);
   /** When the current item was shown — latency is part of the FSRS grade. */
   const shownAt = useRef<number>(0);
   /**
@@ -151,6 +160,8 @@ export function AssessmentPanel({
     }
 
     coveredLevels.current = new Set();
+    codeServed.current = 0;
+    lastFormat.current = undefined;
     session.current = { anchor: undefined, grades: [] };
     void load();
     return () => {
@@ -181,6 +192,8 @@ export function AssessmentPanel({
       const template = selectNextItem(pool, currentState, {
         recentItemIds: recent,
         coveredLevels: coveredLevels.current,
+        codeServed: codeServed.current,
+        lastFormat: lastFormat.current,
       });
       if (!template) {
         setPhase({ kind: "empty" });
@@ -266,6 +279,8 @@ export function AssessmentPanel({
       session.current.grades.push(outcome.reviewGrade);
     }
     coveredLevels.current.add(item.cognitive);
+    if (item.format === "code") codeServed.current += 1;
+    lastFormat.current = item.format;
     setState(target);
     setRecentIds((prev) => [item.id, ...prev].slice(0, 10));
     setPhase({ kind: "graded", item, grade, outcome });

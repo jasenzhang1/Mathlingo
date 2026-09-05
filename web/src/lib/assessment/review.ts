@@ -11,7 +11,14 @@ import {
 } from "./mastery";
 import { clamp } from "./numeric";
 import { destabilise, reviewGradeFor, sessionGrade, updateMemory } from "./scheduling";
-import type { ConceptState, Grade, Item, MemoryState, ReviewGrade } from "./types";
+import type {
+  ConceptState,
+  Grade,
+  Item,
+  ItemFormat,
+  MemoryState,
+  ReviewGrade,
+} from "./types";
 
 /**
  * The orchestrator: one graded response in, a new set of concept states out.
@@ -214,11 +221,43 @@ function applyPropagation(
  */
 const TARGET_SUCCESS = 0.75;
 
+/**
+ * How many `code` items a session should serve before they stop being
+ * privileged, on a concept whose pool has them. Without a quota a code item is
+ * just one more candidate competing on difficulty, so a pool of eight
+ * multiple-choice items and three code items serves code rarely and by
+ * accident — which for a programming concept gets the assessment wrong:
+ * recognising correct code and writing it are different skills, and only one
+ * of them is the point of the lesson.
+ */
+export const CODE_ITEM_QUOTA = 3;
+
+/**
+ * Enough to beat any ordinary difficulty-fit gap (the fit term spans 1.0 and
+ * the discrimination tiebreak 0.15), so an under-quota code item wins its
+ * round outright rather than merely being nudged.
+ */
+const CODE_QUOTA_BONUS = 1.2;
+
+/**
+ * Applied instead when the previous item was also code, so the quota
+ * interleaves — code, something else, code — rather than front-loading the
+ * session with three editors in a row. Still positive, so code keeps priority
+ * over an equally-fitting non-code item and the quota is always reached.
+ */
+const CODE_CONSECUTIVE_BONUS = 0.1;
+
 export interface SelectionContext {
   /** Item ids the learner has seen recently, most recent first. */
   recentItemIds?: string[];
   /** Cognitive levels already covered in this session; uncovered levels are favoured. */
   coveredLevels?: Set<string>;
+  /** `code` items already served this session, counted against `CODE_ITEM_QUOTA`. */
+  codeServed?: number;
+  /** Format of the item served immediately before this one, to avoid clumping code items. */
+  lastFormat?: ItemFormat;
+  /** Overrides `CODE_ITEM_QUOTA`; 0 disables the code-item guarantee entirely. */
+  codeQuota?: number;
 }
 
 export function selectNextItem(
@@ -232,6 +271,7 @@ export function selectNextItem(
   if (servable.length === 0) return undefined;
 
   const recent = context.recentItemIds ?? [];
+  const codeQuota = context.codeQuota ?? CODE_ITEM_QUOTA;
 
   let best: Item | undefined;
   let bestScore = -Infinity;
@@ -253,6 +293,14 @@ export function selectNextItem(
     // Favour an untouched cognitive level, so a session cannot be all arithmetic.
     if (context.coveredLevels && !context.coveredLevels.has(item.cognitive)) {
       score += 0.2;
+    }
+
+    // Writing code is its own skill, so a concept that has code items owes the
+    // learner a few of them per session regardless of how the difficulty fit
+    // happens to fall. Past the quota the bonus lapses and code items go back
+    // to competing on their merits.
+    if (item.format === "code" && (context.codeServed ?? 0) < codeQuota) {
+      score += context.lastFormat === "code" ? CODE_CONSECUTIVE_BONUS : CODE_QUOTA_BONUS;
     }
 
     // Shadow items are worth serving occasionally to calibrate them, but they

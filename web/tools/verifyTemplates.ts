@@ -117,6 +117,29 @@ for (const item of templated) {
 // needed here the way pythonSandbox.ts needs one for a long-lived interpreter.
 console.log("\ncode items (reference solution vs. its own tests):");
 const codeItems = items.filter((i) => i.format === "code");
+
+// Preflight the third-party packages code items declare. Without this a
+// missing NumPy surfaces as every test of every NumPy item "failing", which
+// reads as a bank full of broken reference solutions rather than as one
+// missing dependency on this machine.
+const declaredPackages = [...new Set(codeItems.flatMap((i) => i.codePackages ?? []))].sort();
+const unavailable = declaredPackages.filter(
+  (pkg) => spawnSync("python3", ["-c", `import ${pkg}`], { encoding: "utf8" }).status !== 0,
+);
+if (unavailable.length > 0) {
+  fail(
+    `code items declare ${unavailable.join(", ")}, which this python3 cannot import.\n` +
+      `    The browser gets these from Pyodide, but verifying a reference solution here\n` +
+      `    needs them locally:  pip install ${unavailable.join(" ")}`,
+  );
+}
+if (declaredPackages.length > 0) {
+  console.log(
+    `  packages declared: ${declaredPackages.join(", ")}` +
+      (unavailable.length === 0 ? " (all importable)" : ""),
+  );
+}
+
 let codeItemsChecked = 0;
 for (const item of codeItems) {
   if (!item.referenceSolution) {
@@ -140,6 +163,24 @@ for (const item of codeItems) {
         `${item.id} / ${test.id}: reference solution failed its own test.\n` +
           `    stdout: ${stdout || "(empty)"}\n    stderr: ${result.stderr.trim() || "(empty)"}`,
       );
+    }
+
+    // The other half of the check: a test the *unimplemented* starter also
+    // passes measures nothing. It matters more here than for other formats
+    // because a code item's rubric is "fraction of tests passed", so a
+    // vacuous test is partial credit for a submission that does nothing.
+    // Assertions of the form "the input was not mutated" are the usual
+    // offenders — trivially true of an empty function body.
+    if (item.starterCode) {
+      const stubScript = buildTestScript(item.starterCode, test);
+      const stub = spawnSync("python3", ["-c", stubScript], { encoding: "utf8", timeout: 5000 });
+      if (!stub.error && stub.stdout.trim().endsWith("__MATHLINGO_TEST_PASS__")) {
+        fail(
+          `${item.id} / ${test.id}: passes against starterCode, so it gives credit for an ` +
+            `unimplemented answer. Assert the returned value too, not only a side effect that ` +
+            `did not happen.`,
+        );
+      }
     }
   }
   codeItemsChecked++;

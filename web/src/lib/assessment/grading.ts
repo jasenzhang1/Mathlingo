@@ -178,7 +178,7 @@ async function gradeCode(item: Item, answer: NormalizedAnswer): Promise<RubricVe
   // normalizeSubmission already rejects an empty answer.text before grading
   // is ever reached, so no separate "nothing submitted" branch is needed here.
   const { runCodeTests } = await import("./pythonSandbox");
-  const outcomes = await runCodeTests(answer.text, tests);
+  const outcomes = await runCodeTests(answer.text, tests, item.codePackages);
   const outcomeById = new Map(outcomes.map((o) => [o.id, o]));
 
   return rubric.elements.map((element) => {

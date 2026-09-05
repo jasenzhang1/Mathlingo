@@ -23,6 +23,7 @@ const PYODIDE_CDN = `https://cdn.jsdelivr.net/pyodide/v${PYODIDE_VERSION}/full/`
 
 interface PyodideInterface {
   runPythonAsync: (code: string) => Promise<unknown>;
+  loadPackage: (names: string[]) => Promise<unknown>;
   setStdout: (options: { batched: (msg: string) => void }) => void;
   setStderr: (options: { batched: (msg: string) => void }) => void;
 }
@@ -58,6 +59,24 @@ async function getPyodide(): Promise<PyodideInterface> {
     return window.loadPyodide({ indexURL: PYODIDE_CDN });
   })();
   return pyodidePromise;
+}
+
+/**
+ * Packages already loaded into the live interpreter. Pyodide's own
+ * `loadPackage` is idempotent, but it still resolves its lockfile and logs on
+ * every call, so tracking what has been loaded keeps the common case — a
+ * second NumPy item in the same session — free.
+ */
+const loadedPackages = new Set<string>();
+
+async function ensurePackages(
+  pyodide: PyodideInterface,
+  packages: string[] | undefined,
+): Promise<void> {
+  const missing = (packages ?? []).filter((name) => !loadedPackages.has(name));
+  if (missing.length === 0) return;
+  await pyodide.loadPackage(missing);
+  for (const name of missing) loadedPackages.add(name);
 }
 
 /** The last line of a Pyodide `PythonError` message is the actual exception. */
@@ -104,8 +123,19 @@ function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
  * counts are small enough (single digits) that this costs milliseconds, not
  * something worth an interpreter pool for.
  */
-export async function runCodeTests(code: string, tests: CodeTest[]): Promise<CodeTestOutcome[]> {
+export async function runCodeTests(
+  code: string,
+  tests: CodeTest[],
+  packages?: string[],
+): Promise<CodeTestOutcome[]> {
   const pyodide = await getPyodide();
+
+  // Outside the per-test loop and outside its try/catch: a package that fails
+  // to load is an environment failure, not a wrong answer, and reporting it as
+  // every test failing would tell the learner their code is broken when it is
+  // not. Letting it reject propagates to the caller as a grading error.
+  await ensurePackages(pyodide, packages);
+
   const outcomes: CodeTestOutcome[] = [];
 
   for (const test of tests) {

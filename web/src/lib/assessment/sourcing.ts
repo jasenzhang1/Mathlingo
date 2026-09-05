@@ -13,6 +13,15 @@ import type { Item, SourceTier } from "./types";
  */
 
 /** What each tier permits. Enforced at ingest, not left to an author's judgement. */
+/**
+ * Packages a `code` item may use beyond the standard library, and so the ones
+ * worth checking are declared in `Item.codePackages`. Pyodide ships far more
+ * than this; the list is what the Python bank actually teaches, kept short on
+ * purpose so an unfamiliar import is a deliberate decision rather than a typo
+ * that quietly works on the author's machine.
+ */
+const THIRD_PARTY_CODE_PACKAGES = ["numpy", "pandas"] as const;
+
 export const tierPolicy: Record<
   SourceTier,
   { verbatimAllowed: boolean; attributionRequired: boolean; note: string }
@@ -167,6 +176,25 @@ export function checkStructure(item: Item): CheckResult[] {
         "Code item has no referenceSolution, so tools/verifyTemplates.ts cannot confirm its tests are satisfiable.",
         "warn",
       );
+    }
+    // A third-party import that isn't declared in `codePackages` passes
+    // verification — the authoring machine has the package installed — and then
+    // fails in the browser, where Pyodide only has what it was told to load.
+    // Catch the mismatch here, at authoring time, where it is cheap.
+    const sources = [
+      item.referenceSolution ?? "",
+      item.starterCode ?? "",
+      ...(item.codeTests ?? []).flatMap((t) => [t.run, t.check]),
+    ].join("\n");
+    const declared = new Set(item.codePackages ?? []);
+    for (const pkg of THIRD_PARTY_CODE_PACKAGES) {
+      const imported = new RegExp(`^\\s*(?:import|from)\\s+${pkg}\\b`, "m").test(sources);
+      if (imported && !declared.has(pkg)) {
+        fail(
+          "code-packages",
+          `Code item imports ${pkg} but does not list it in codePackages, so Pyodide will not load it and every test will fail in the browser.`,
+        );
+      }
     }
   }
 

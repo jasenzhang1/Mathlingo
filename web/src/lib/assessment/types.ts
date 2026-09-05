@@ -205,6 +205,15 @@ export interface Item {
   /** For `code` items: pre-filled editor content, typically a function stub. */
   starterCode?: string;
   /**
+   * For `code` items: third-party packages the submission needs, by their
+   * Pyodide package name (`"numpy"`, `"pandas"`). Loaded before the first test
+   * runs; anything in the standard library needs no entry. Declared per item
+   * rather than sniffed from the source because loading is what makes a code
+   * item slow to start — pandas is a multi-megabyte download — and an item
+   * that does not need it should never pay for it.
+   */
+  codePackages?: string[];
+  /**
    * For `code` items: an author's model solution. Used only by
    * `tools/verifyTemplates.ts` to confirm `codeTests` are actually satisfiable
    * and mutually consistent — never shipped to the client or the grader.
