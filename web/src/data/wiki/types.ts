@@ -9,6 +9,13 @@ export type WikiBlock =
   | { kind: "prose"; text: string }
   /** A centered, monospaced display formula with an optional caption. */
   | { kind: "formula"; latex: string; caption?: string }
+  /**
+   * A verbatim code listing. Distinct from `formula` because that one goes
+   * through KaTeX, which is right for notation and wrong for source: it
+   * italicises identifiers, collapses the spacing that indentation depends on,
+   * and rejects a comment marker outright.
+   */
+  | { kind: "code"; source: string; caption?: string }
   /** Definition-list rows, e.g. parameter meanings. */
   | { kind: "definitions"; items: { term: string; description: string }[] }
   /** A worked example: statement, then steps, then the answer. */

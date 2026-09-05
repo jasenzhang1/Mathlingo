@@ -5,7 +5,8 @@ export type Domain =
   | "statistics"
   | "regression"
   | "machine-learning"
-  | "graphical-models";
+  | "graphical-models"
+  | "python";
 
 export interface DomainMeta {
   label: string;
@@ -23,6 +24,14 @@ export const domainMeta: Record<Domain, DomainMeta> = {
   regression: { label: "Regression", color: "#2f6fed" },
   "machine-learning": { label: "Machine Learning", color: "#16a34a" },
   "graphical-models": { label: "Graphical Models & Bayesian ML", color: "#a855f7" },
+  /**
+   * Deliberately last. Chapter order is an editorial call (see
+   * `lib/learningOrder.ts`), and the math spine is the book — Python is the
+   * toolkit you carry through it. It is also the one chapter with no edges into
+   * or out of the rest of the graph, so a learner can read it cold, first or
+   * last, without any of the ordering above changing meaning.
+   */
+  python: { label: "Python for Data Work", color: "#ea7317" },
 };
 
 export interface Concept {
@@ -2174,6 +2183,82 @@ export const concepts: Concept[] = [
     domain: "graphical-models",
     blurb: "Measuring the distance between distributions as the cost of moving mass.",
     prerequisites: ["kl-divergence"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Python for Data Work
+  //
+  // A self-contained chain: the two built-in containers, then the loop forms
+  // that walk them, then comprehensions as the expression version of those
+  // loops — and then the same operations again at array and table scale, where
+  // the loop disappears into a vectorised call. The whole point of the chapter
+  // is that last move, so `numpy-arrays` genuinely depends on the loop it
+  // replaces: you cannot see what vectorisation buys you without first having
+  // written the `for` it eliminates.
+  // ---------------------------------------------------------------------
+  {
+    id: "python-lists",
+    title: "Lists, Indexing, and Slicing",
+    domain: "python",
+    blurb:
+      "Ordered, mutable sequences — and the half-open slice convention that makes a[:k] + a[k:] whole again.",
+    prerequisites: [],
+  },
+  {
+    id: "python-dicts",
+    title: "Dictionaries and Sets",
+    domain: "python",
+    blurb:
+      "Hash-based lookup in O(1): counting, grouping, inverting, and why keys must be hashable.",
+    prerequisites: ["python-lists"],
+  },
+  {
+    id: "python-loops",
+    title: "Loops, enumerate, and zip",
+    domain: "python",
+    blurb:
+      "Iterating over items rather than indices — and reaching for enumerate or zip when you need both.",
+    prerequisites: ["python-lists", "python-dicts"],
+  },
+  {
+    id: "python-comprehensions",
+    title: "Comprehensions",
+    domain: "python",
+    blurb:
+      "The same loop written as one expression, for lists, dicts, and sets — and when a loop is still clearer.",
+    prerequisites: ["python-loops"],
+  },
+  {
+    id: "numpy-arrays",
+    title: "NumPy Arrays and Vectorization",
+    domain: "python",
+    blurb:
+      "One dtype, one contiguous block, and elementwise operations that push the loop into C.",
+    prerequisites: ["python-lists", "python-loops"],
+  },
+  {
+    id: "numpy-broadcasting",
+    title: "Broadcasting and Axis Reductions",
+    domain: "python",
+    blurb:
+      "Shape alignment from the trailing axis, and what axis= actually means in a sum, mean, or argmax.",
+    prerequisites: ["numpy-arrays"],
+  },
+  {
+    id: "pandas-dataframes",
+    title: "pandas Series and DataFrames",
+    domain: "python",
+    blurb:
+      "Labelled arrays: the index is the point, and .loc and .iloc are not interchangeable.",
+    prerequisites: ["numpy-arrays", "python-dicts"],
+  },
+  {
+    id: "pandas-groupby",
+    title: "groupby, Merge, and Reshape",
+    domain: "python",
+    blurb:
+      "Split-apply-combine, joins that silently change row counts, and the long/wide pivot.",
+    prerequisites: ["pandas-dataframes", "python-comprehensions"],
   },
 ];
 

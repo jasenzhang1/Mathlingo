@@ -1,4 +1,4 @@
-# Assessment Bank — Probability & Statistics
+# Assessment Bank
 
 Authored questions for every concept in the `probability` (56) and `statistics` (25) domains of
 [`concepts.ts`](../web/src/data/concepts.ts) — 81 concepts total. Structure follows
@@ -12,14 +12,16 @@ design — human-readable, and the source everything else is written from. Only 
 learner, so a concept has questions in the first sense long before the app can quiz
 on it. `npm run audit:coverage` reports both numbers side by side.
 
-The one exception is machine-learning clusters 10-12, which invert that direction:
-those 28 concepts were added to the graph after their neighbours shipped, so their
-items were authored directly in typed form and the markdown is an index rather than
-a transcript. The audit reports them separately for that reason.
+The exceptions are machine-learning clusters 10-12 and the whole `python` domain,
+which invert that direction: those concepts were added to the graph after their
+neighbours shipped, so their items were authored directly in typed form and the
+markdown is an index rather than a transcript. The audit reports them separately
+for that reason.
 
 | Domain | Authored here | Wired into the app | Full 8-item live pool |
 |---|---|---|---|
 | Machine Learning | 78 / 78 | 78 | 78 |
+| Python for Data Work | 8 / 8 | 8 | 8 |
 | Regression | 34 / 34 | 34 | 34 |
 | Statistics | 25 / 25 | 25 | 25 |
 | Graphical Models | 15 / 15 | 15 | 15 |
@@ -70,6 +72,16 @@ than by hand per item — flagged inline as `[verified]` once checked. Anything 
 | 11 | [named-tests-and-resampling.md](named-tests-and-resampling.md) | Z/t-tests, chi-square, Wilcoxon, Bootstrap (11) | done (55 items) |
 
 **Probability & Statistics: 81 / 81 concepts done (565 items).**
+
+## Python for Data Work
+
+| # | File | Concepts | Status |
+|---|---|---|---|
+| PY | [python.md](python.md) | Lists → groupby/Merge/Reshape (8) | done (64 items, authored in typed form) |
+
+**Python for Data Work: 8 / 8 concepts done (64 items).** The one chapter with no prerequisite edges
+into or out of the rest of the graph; see [python.md](python.md) for why it exists and how its
+distractors are chosen.
 
 ## Servable status: multivariate probability
 

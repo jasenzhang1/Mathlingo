@@ -5,7 +5,7 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 280 concepts.**
+**Total: 288 concepts.**
 
 ## Probability (56)
 
@@ -322,3 +322,19 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Reproducing Kernel Hilbert Space (RKHS) | Kernel, Mercer's Theorem | — |
 | Wasserstein Distance | Kullback-Leibler Divergence | — |
 
+## Python for Data Work (8)
+
+The toolkit rather than the mathematics, and the one chapter with no prerequisite edges into or out
+of the rest of the graph — a learner can read it cold, first or last. It is listed last in
+`domainMeta`, which is what puts it last in the concept map's chapter order.
+
+| Concept | Prerequisites | Lesson |
+|---|---|---|
+| Lists, Indexing, and Slicing | — | — |
+| Dictionaries and Sets | Lists, Indexing, and Slicing | — |
+| Loops, enumerate, and zip | Lists, Indexing, and Slicing, Dictionaries and Sets | — |
+| Comprehensions | Loops, enumerate, and zip | — |
+| NumPy Arrays and Vectorization | Lists, Indexing, and Slicing, Loops, enumerate, and zip | — |
+| Broadcasting and Axis Reductions | NumPy Arrays and Vectorization | — |
+| pandas Series and DataFrames | NumPy Arrays and Vectorization, Dictionaries and Sets | — |
+| groupby, Merge, and Reshape | pandas Series and DataFrames, Comprehensions | — |

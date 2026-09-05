@@ -72,6 +72,10 @@ function checkBlock(block: WikiBlock, where: string) {
       checkLatex(block.latex, where);
       if (block.caption) checkProse(block.caption, where);
       break;
+    case "code":
+      // The source is verbatim, never LaTeX. Only the caption is prose.
+      if (block.caption) checkProse(block.caption, where);
+      break;
     case "definitions":
       for (const item of block.items) {
         checkProse(item.term, where);

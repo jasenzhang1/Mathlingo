@@ -104,6 +104,20 @@ function Block({ block }: { block: WikiBlock }) {
         </figure>
       );
 
+    case "code":
+      return (
+        <figure className="my-1">
+          <pre className="overflow-x-auto rounded-xl border border-[var(--line)] bg-[var(--paper)] px-5 py-4 text-[13px] leading-relaxed text-[var(--ink)]">
+            <code>{block.source}</code>
+          </pre>
+          {block.caption && (
+            <figcaption className="font-body mt-2 text-xs text-[var(--ink-soft)]">
+              {block.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+
     case "definitions":
       return (
         <dl className="font-body flex flex-col gap-2">

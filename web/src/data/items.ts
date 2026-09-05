@@ -6,6 +6,7 @@ import { statisticsComparisonsItems } from "./items.statistics-comparisons";
 import { statisticsNonparametricItems } from "./items.statistics-nonparametric";
 import { statisticsTestsItems } from "./items.statistics-tests";
 import { mlItems } from "./items-ml";
+import { pythonItems } from "./items/python";
 import { regressionDiagnosticsItems } from "./items/regression-diagnostics";
 import { regressionExtensionsItems } from "./items/regression-extensions";
 import { regressionFoundationsItems } from "./items/regression-foundations";
@@ -2871,6 +2872,13 @@ export const items: Item[] = [
   ...statisticsTestsItems,
   ...statisticsComparisonsItems,
   ...statisticsNonparametricItems,
+
+  // -------------------------------------------------------------------------
+  // Python for Data Work — all 8 concepts, 8 items each. Authored directly in
+  // typed form rather than ported from markdown; see assessments/python.md for
+  // the design record and why that direction was taken.
+  // -------------------------------------------------------------------------
+  ...pythonItems,
 ];
 
 /**

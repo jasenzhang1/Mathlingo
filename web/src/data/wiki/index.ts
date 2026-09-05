@@ -1,186 +1,73 @@
-import { bernoulliBinomialWiki } from "./bernoulli-binomial";
-import { bivariateNormalWiki } from "./bivariate-normal";
-import { bootstrappingWiki } from "./bootstrapping";
-import { centralLimitTheoremWiki } from "./central-limit-theorem";
-import { changeOfVariablesJacobianWiki } from "./change-of-variables-jacobian";
-import { chiSquareGoodnessOfFitTestWiki } from "./chi-square-goodness-of-fit-test";
-import { chiSquareTestOfIndependenceWiki } from "./chi-square-test-of-independence";
-import { conditionalIndependenceDSeparationWiki } from "./conditional-independence-d-separation";
-import { confidenceIntervalWiki } from "./confidence-interval";
-import { covarianceMatrixWiki } from "./covariance-matrix";
-import { dataTypesWiki } from "./data-types";
-import { directedVsUndirectedGraphsWiki } from "./directed-vs-undirected-graphs";
-import { effectSizeWiki } from "./effect-size";
-import { emAlgorithmWiki } from "./em-algorithm";
-import { equivalenceTestingWiki } from "./equivalence-testing";
-import { fischersExactTestWiki } from "./fischers-exact-test";
-import { gaussianMixtureModelsWiki } from "./gaussian-mixture-models";
-import { gaussianProcessWiki } from "./gaussian-process";
-import { graphsWiki } from "./graphs";
-import { hmmWiki } from "./hmm";
-import { hypothesisTestWiki } from "./hypothesis-test";
-import { klDivergenceWiki } from "./kl-divergence";
-import { kolmogorovSmirnovTestWiki } from "./kolmogorov-smirnov-test";
-import { kruskalWallisTestWiki } from "./kruskal-wallis-test";
-import { laplaceApproximationWiki } from "./laplace-approximation";
-import { markovChainsWiki } from "./markov-chains";
-import { markovRandomFieldsWiki } from "./markov-random-fields";
-import { mcnemarTestWiki } from "./mcnemar-test";
-import { mixtureModelsAndLatentVariablesWiki } from "./mixture-models-and-latent-variables";
-import { mlWikiArticles } from "./ml";
-import { multipleTestingWiki } from "./multiple-testing";
-import { multivariateNormalWiki } from "./multivariate-normal";
-import { oneSampleProportionsZTestWiki } from "./one-sample-proportions-z-test";
-import { oneSampleTTestWiki } from "./one-sample-t-test";
-import { oneSampleZTestWiki } from "./one-sample-z-test";
-import { pValueWiki } from "./p-value";
-import { pairedTTestWiki } from "./paired-t-test";
-import { parameterVsStatisticWiki } from "./parameter-vs-statistic";
-import { pearsonCorrelationWiki } from "./pearson-correlation";
-import { permutationTestWiki } from "./permutation-test";
-import { populationVsSampleWiki } from "./population-vs-sample";
-import { predictionIntervalWiki } from "./prediction-interval";
-import { regressionWikis } from "./regression";
-import { rejectionRegionWiki } from "./rejection-region";
-import { rkhsWiki } from "./rkhs";
-import { sampleMeanWiki } from "./sample-mean";
-import { sampleVarianceWiki } from "./sample-variance";
-import { samplingDistributionWiki } from "./sampling-distribution";
-import { samplingMethodsWiki } from "./sampling-methods";
-import { sequentialTestingWiki } from "./sequential-testing";
-import { standardErrorWiki } from "./standard-error";
-import { testStatisticWiki } from "./test-statistic";
-import { twoSampleProportionsZTestWiki } from "./two-sample-proportions-z-test";
-import { twoSampleTTestWiki } from "./two-sample-t-test";
-import { twoSampleZTestWiki } from "./two-sample-z-test";
-import { typeIIIErrorWiki } from "./type-i-ii-error";
-import { wilcoxonSignedRankTestWiki } from "./wilcoxon-signed-rank-test";
+import { conceptById, type Domain } from "../concepts";
 import type { WikiArticle } from "./types";
-import { variationalInferenceElboWiki } from "./variational-inference-elbo";
-import { variationalInferenceVaesWiki } from "./variational-inference-vaes";
-import { wassersteinDistanceWiki } from "./wasserstein-distance";
-import { wilcoxonRankSumTestWiki } from "./wilcoxon-rank-sum-test";
 
 /**
- * Every article in the wiki, in the order a learner would meet them: the
- * probability pilot, then statistical inference, then multivariate probability,
- * then the graphical-models domain in prerequisite order (graphs -> Markov
- * structure -> latent variables -> variational inference and kernels), matching
- * the cluster split in `assessments/statistics-foundations.md`,
- * `assessments/hypothesis-testing-machinery.md`,
- * `assessments/named-tests-and-resampling.md`, `assessments/mp-01.md` and
- * `assessments/gm-*.md`.
+ * Articles are loaded per domain, on demand.
  *
- * Each domain was written as a whole rather than article by article, so they
- * cross-reference deliberately. The twenty-five `statistics` articles build one
- * argument: a statistic is random before you see data, so it has a sampling
- * distribution, whose spread is the standard error, which is the denominator of
- * every test statistic and the half-width of every interval — and the eleven
- * named tests are that one template with different assumptions about what is
- * known. The seven `multivariate-probability` articles: the Jacobian article's
- * affine case is what produces the MVN's |Σ|^(−1/2), the covariance-matrix
- * article's whitening is the MVN article's standardisation, and the bivariate
- * normal is written as the k = 2 case you can still draw. The fifteen
- * `graphical-models` articles pick up from there — the MVN is what a Gaussian
- * process generalises to infinitely many dimensions, and KL divergence is what
- * the ELBO's lower bound and the Wasserstein comparison both rest on.
+ * The wiki is by some margin the largest thing in this repository — several
+ * hundred articles, most of them long. Importing them statically put every one
+ * into the main bundle, so a visitor reading the landing page downloaded the
+ * whole curriculum's prose before seeing anything. This is the same trade
+ * `items.ts` makes for the question bank, for the same reason: a lesson page
+ * needs exactly one article, and which one is not known until it is opened.
+ *
+ * The unit of loading is the domain rather than the article. Articles within a
+ * domain are written as one argument and cross-reference each other constantly,
+ * so a learner who opens one is very likely to open its neighbours — and one
+ * chunk per article would trade a large bundle for a few hundred round trips.
+ *
+ * `linear-algebra` and `probability` are deliberately absent below. Both have
+ * article modules on disk (`./linear-algebra`, `./probability`) that no version
+ * of this file has ever imported; wiring them in would put ~90 unreviewed
+ * articles in front of learners as a side effect of a refactor, so they stay
+ * unwired until someone lands them on purpose.
  */
-const articles: WikiArticle[] = [
-  bernoulliBinomialWiki,
+const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
+  statistics: () => import("./core").then((m) => m.coreWikiArticles),
+  "multivariate-probability": () => import("./core").then((m) => m.coreWikiArticles),
+  "graphical-models": () => import("./core").then((m) => m.coreWikiArticles),
+  // The Bernoulli/Binomial pilot is the one `probability` article that shipped,
+  // and it lives in ./core with the rest of the hand-written set.
+  probability: () => import("./core").then((m) => m.coreWikiArticles),
+  regression: () => import("./regression").then((m) => m.regressionWikis),
+  "machine-learning": () => import("./ml").then((m) => m.mlWikiArticles),
+  python: () => import("./python").then((m) => m.pythonWikiArticles),
+};
 
-  // Statistical Inference — cluster 1: foundations
-  populationVsSampleWiki,
-  parameterVsStatisticWiki,
-  dataTypesWiki,
-  samplingMethodsWiki,
-  sampleMeanWiki,
-  sampleVarianceWiki,
+/** Domain -> its articles, indexed by concept id. Cached, so each chunk is fetched once. */
+const cache = new Map<Domain, Promise<Map<string, WikiArticle>>>();
 
-  // Cluster 2: inference machinery
-  samplingDistributionWiki,
-  standardErrorWiki,
-  testStatisticWiki,
-  rejectionRegionWiki,
-  hypothesisTestWiki,
-  pValueWiki,
-  typeIIIErrorWiki,
-  confidenceIntervalWiki,
-
-  // Cluster 3: named tests and resampling
-  oneSampleZTestWiki,
-  oneSampleTTestWiki,
-  oneSampleProportionsZTestWiki,
-  twoSampleZTestWiki,
-  twoSampleTTestWiki,
-  pairedTTestWiki,
-  chiSquareTestOfIndependenceWiki,
-  chiSquareGoodnessOfFitTestWiki,
-  fischersExactTestWiki,
-  wilcoxonRankSumTestWiki,
-  bootstrappingWiki,
-
-  // Cluster 4: beyond a single comparison
-  twoSampleProportionsZTestWiki,
-  effectSizeWiki,
-  multipleTestingWiki,
-  equivalenceTestingWiki,
-  sequentialTestingWiki,
-  predictionIntervalWiki,
-
-  // Cluster 5: distribution-free methods
-  permutationTestWiki,
-  wilcoxonSignedRankTestWiki,
-  kruskalWallisTestWiki,
-  mcnemarTestWiki,
-  kolmogorovSmirnovTestWiki,
-
-  // Multivariate Probability & Asymptotics
-  centralLimitTheoremWiki,
-  changeOfVariablesJacobianWiki,
-  covarianceMatrixWiki,
-  bivariateNormalWiki,
-  multivariateNormalWiki,
-  pearsonCorrelationWiki,
-  klDivergenceWiki,
-
-  // Graphical Models & Bayesian ML — cluster 1: graphs and Markov structure
-  graphsWiki,
-  directedVsUndirectedGraphsWiki,
-  conditionalIndependenceDSeparationWiki,
-  markovRandomFieldsWiki,
-  markovChainsWiki,
-  hmmWiki,
-
-  // Cluster 2: latent variables and EM
-  mixtureModelsAndLatentVariablesWiki,
-  emAlgorithmWiki,
-  gaussianMixtureModelsWiki,
-  laplaceApproximationWiki,
-
-  // Cluster 3: variational inference and kernels
-  variationalInferenceElboWiki,
-  variationalInferenceVaesWiki,
-  gaussianProcessWiki,
-  rkhsWiki,
-  wassersteinDistanceWiki,
-];
+function loadDomain(domain: Domain): Promise<Map<string, WikiArticle>> {
+  let pending = cache.get(domain);
+  if (!pending) {
+    const load = loaders[domain];
+    pending = load
+      ? load().then((articles) => new Map(articles.map((a) => [a.conceptId, a])))
+      : Promise.resolve(new Map<string, WikiArticle>());
+    cache.set(domain, pending);
+  }
+  return pending;
+}
 
 /**
- * The `machine-learning` domain is kept in its own module (`./ml`) rather than
- * listed here: fifty articles grouped into the nine clusters of
- * `assessments/ml-01…ml-09.md`, deliberately cross-referential within a cluster
- * — `bagging` cites the ensemble variance formula from `ensemble-methods`,
- * `random-forests` cites `bagging`'s correlation floor, and
- * `splitting-criteria` closes the loop back to the Bernoulli variance in the
- * pilot article above.
+ * The article for a concept, or undefined if none has been written yet —
+ * lessons without one fall through to a "coming soon" state, the same way
+ * `embedUrl` does for slides.
  */
+export async function loadArticle(conceptId: string): Promise<WikiArticle | undefined> {
+  const concept = conceptById.get(conceptId);
+  if (!concept) return undefined;
+  return (await loadDomain(concept.domain)).get(conceptId);
+}
 
 /**
- * Concept id -> wiki article. Lessons without an article yet fall through to a
- * "coming soon" state, the same way `embedUrl` does for slides.
+ * Every article, in one map. This pulls every chunk, so it is for the tools
+ * (`audit:coverage`, `verify:wiki`) rather than for anything a learner loads.
  */
-export const wikiByConcept = new Map<string, WikiArticle>(
-  [...articles, ...regressionWikis, ...mlWikiArticles].map((article) => [article.conceptId, article]),
-);
+export async function loadAllArticles(): Promise<Map<string, WikiArticle>> {
+  const domains = Object.keys(loaders) as Domain[];
+  const maps = await Promise.all(domains.map(loadDomain));
+  return new Map(maps.flatMap((m) => [...m]));
+}
 
 export type { WikiArticle } from "./types";
