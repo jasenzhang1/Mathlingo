@@ -12,9 +12,10 @@ import type { SourceRef } from "../../lib/assessment/types";
  * the markdown first and ported here; clusters 10-12 cover concepts added to the
  * graph later and were authored directly in this typed form, with the markdown
  * written as an index rather than as a full transcript — stated plainly there so
- * the direction of authorship is not misread. Cluster 13 was authored the same
- * way, and is numbered after 12 because that is when it was written; it is
- * taught before it.
+ * the direction of authorship is not misread. Clusters 13-15 were authored the
+ * same way. They are numbered after 12 because that is when they were written,
+ * and taught around it: 13 and 14 extend the deep-learning branch before it,
+ * 15 rests on it and comes after.
  */
 function bank(n: string, cluster: string, file: string): SourceRef {
   return {
@@ -38,3 +39,5 @@ export const ML_10 = bank("10", "practical modelling and evaluation", "ml-10-pra
 export const ML_11 = bank("11", "deep learning", "ml-11-deep-learning.md");
 export const ML_12 = bank("12", "further paradigms and methods", "ml-12-further-paradigms.md");
 export const ML_13 = bank("13", "neural network architectures", "ml-13-neural-architectures.md");
+export const ML_14 = bank("14", "training deep networks at scale", "ml-14-training-at-scale.md");
+export const ML_15 = bank("15", "scaling, adapting and serving", "ml-15-adapting-and-serving.md");

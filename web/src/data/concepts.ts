@@ -2118,6 +2118,86 @@ export const concepts: Concept[] = [
   },
 
   // ---------------------------------------------------------------------
+  // Machine Learning — training deep networks at scale.
+  //
+  // Clusters 11 and 13 cover what gets built and why. Nothing covers what it
+  // takes to actually train one: the graph could not say how weights are
+  // initialised, why transformers normalise per-token rather than per-batch,
+  // what a warmup is for, or why a run that fits on one device is a different
+  // problem from one that does not. Each of these is a decision every
+  // practitioner makes and none of them had a node.
+  // ---------------------------------------------------------------------
+  {
+    id: "weight-initialization",
+    title: "Weight Initialization",
+    domain: "machine-learning",
+    blurb:
+      "Xavier and He scaling — choosing the starting variance so signal neither dies nor explodes with depth.",
+    // Both schemes are derived by asking that the variance of the activations
+    // be preserved layer to layer, so `variance` is the argument rather than a
+    // citation, and the fan-in factor differs by activation. `loss-functions`
+    // is here because the standard check on an initialisation is the loss it
+    // reports at step zero — ln(k) for k balanced classes — which cannot be
+    // stated without it.
+    prerequisites: [
+      "neural-networks",
+      "activation-functions",
+      "variance",
+      "loss-functions",
+    ],
+  },
+  {
+    id: "layer-normalization",
+    title: "Layer Normalization",
+    domain: "machine-learning",
+    blurb:
+      "Normalising across features rather than across the batch — and why every transformer uses it.",
+    // The content that matters here is pre-norm versus post-norm and the
+    // batch-independence argument, neither of which can be stated without the
+    // architecture that made the choice consequential.
+    prerequisites: ["batch-normalization", "transformers"],
+  },
+  {
+    id: "learning-rate-schedules",
+    title: "Learning Rate Schedules",
+    domain: "machine-learning",
+    blurb:
+      "Warmup, decay and cosine annealing — the hyperparameter that is a function of time, not a number.",
+    prerequisites: ["sgd-and-adaptive-optimizers", "layer-normalization"],
+  },
+  {
+    id: "data-augmentation",
+    title: "Data Augmentation",
+    domain: "machine-learning",
+    blurb:
+      "Manufacturing training examples from invariances you already believe, and the ones you do not.",
+    // Augmentation is defined as a training-split-only transform, and its worst
+    // failure — augmenting before the split, so near-duplicates land on both
+    // sides — cannot even be stated without the split.
+    prerequisites: [
+      "convolutional-neural-networks",
+      "overfitting-underfitting",
+      "training-validation-test-set",
+    ],
+  },
+  {
+    id: "mixed-precision-training",
+    title: "Mixed Precision Training",
+    domain: "machine-learning",
+    blurb:
+      "Half-precision arithmetic with a full-precision safety net — loss scaling, master weights, and what underflows.",
+    prerequisites: ["sgd-and-adaptive-optimizers", "backpropagation"],
+  },
+  {
+    id: "distributed-training",
+    title: "Distributed Training",
+    domain: "machine-learning",
+    blurb:
+      "Data, model and pipeline parallelism — what is split, what is communicated, and what the batch size does to the schedule.",
+    prerequisites: ["learning-rate-schedules", "mixed-precision-training"],
+  },
+
+  // ---------------------------------------------------------------------
   // Machine Learning — further paradigms and methods.
   //
   // Reinforcement learning was named in `types-of-machine-learning` and defined
@@ -2191,6 +2271,87 @@ export const concepts: Concept[] = [
     blurb:
       "DBSCAN: clusters as connected dense regions, with noise as a first-class outcome.",
     prerequisites: ["clustering-methods", "k-means-clustering"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Machine Learning — scaling, adapting and serving.
+  //
+  // The last stretch of the deep-learning branch, and the part a professional
+  // actually spends time on: how big a model should be for a compute budget,
+  // what the input is chopped into before it is embedded, how a pretrained
+  // model is bent to a new task without retraining it, how a preference is
+  // turned into an objective, and how a trained model is made small enough to
+  // serve. Everything here depends on the adaptation concepts above, which is
+  // why it reads after them rather than beside them.
+  // ---------------------------------------------------------------------
+  {
+    id: "scaling-laws",
+    title: "Scaling Laws",
+    domain: "machine-learning",
+    blurb:
+      "Loss as a power law in parameters, data and compute — and the budget question that follows from it.",
+    prerequisites: ["learning-curves", "autoregressive-models"],
+  },
+  {
+    id: "tokenization",
+    title: "Tokenization",
+    domain: "machine-learning",
+    blurb:
+      "Byte-pair encoding and its relatives: the vocabulary decision made before any weight is trained.",
+    prerequisites: ["embeddings", "autoregressive-models"],
+  },
+  {
+    id: "contrastive-learning",
+    title: "Contrastive Learning",
+    domain: "machine-learning",
+    blurb:
+      "Pulling matched pairs together and pushing everything else apart — InfoNCE, and where the negatives come from.",
+    // The InfoNCE objective is literally a cross-entropy over similarity
+    // scores with the positive as the correct class, so the loss is not an
+    // analogy to classification — it is one.
+    prerequisites: ["self-supervised-learning", "cross-entropy-loss", "embeddings"],
+  },
+  {
+    id: "parameter-efficient-fine-tuning",
+    title: "Parameter-Efficient Fine-Tuning",
+    domain: "machine-learning",
+    blurb:
+      "LoRA and adapters: training a low-rank correction instead of every weight, and why that is usually enough.",
+    // LoRA is a rank constraint written as BA with an inner dimension r, and
+    // the parameter arithmetic that motivates it is rank arithmetic.
+    prerequisites: ["transfer-learning", "rank", "transformers"],
+  },
+  {
+    id: "instruction-tuning-and-rlhf",
+    title: "Instruction Tuning and RLHF",
+    domain: "machine-learning",
+    blurb:
+      "Turning a next-token predictor into something that follows instructions, and the KL leash that keeps it there.",
+    prerequisites: ["reinforcement-learning", "autoregressive-models", "kl-divergence"],
+  },
+  {
+    id: "knowledge-distillation",
+    title: "Knowledge Distillation",
+    domain: "machine-learning",
+    blurb:
+      "Training a small model on a large one's full output distribution rather than on the labels.",
+    // The method was introduced to compress an ensemble into one model, and the
+    // comparison against paying for every member at inference is the clearest
+    // statement of what it buys.
+    prerequisites: [
+      "cross-entropy-loss",
+      "kl-divergence",
+      "neural-networks",
+      "ensemble-methods",
+    ],
+  },
+  {
+    id: "quantization",
+    title: "Quantization",
+    domain: "machine-learning",
+    blurb:
+      "Storing and computing in 8 or 4 bits — where the error goes, and why serving is memory-bound anyway.",
+    prerequisites: ["mixed-precision-training", "knowledge-distillation"],
   },
 
   // ---------------------------------------------------------------------
