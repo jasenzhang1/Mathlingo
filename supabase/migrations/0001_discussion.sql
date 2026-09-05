@@ -10,6 +10,11 @@
 --    author. Without RLS enabled, the anon key would let anyone edit anything.
 --  * `parent_id` on comments exists now so threaded replies can be added later
 --    without a schema migration, even though the first UI renders them flat.
+--  * Re-runnable: every statement is guarded, so applying this to a database
+--    that already has it is a no-op rather than an error. Policies need an
+--    explicit `drop policy if exists` because Postgres has no
+--    `create policy if not exists` — without it a second run aborts at the
+--    first policy with 42710 and nothing after it is applied.
 
 -- ---------------------------------------------------------------------------
 -- profiles: public display info, mirroring auth.users
@@ -25,10 +30,12 @@ create table if not exists public.profiles (
 
 alter table public.profiles enable row level security;
 
+drop policy if exists "profiles are publicly readable" on public.profiles;
 create policy "profiles are publicly readable"
   on public.profiles for select
   using (true);
 
+drop policy if exists "users can update their own profile" on public.profiles;
 create policy "users can update their own profile"
   on public.profiles for update
   using (auth.uid() = id)
@@ -88,21 +95,25 @@ create index if not exists posts_concept_created_idx
 
 alter table public.posts enable row level security;
 
+drop policy if exists "posts are publicly readable" on public.posts;
 create policy "posts are publicly readable"
   on public.posts for select
   using (true);
 
+drop policy if exists "authenticated users can create their own posts" on public.posts;
 create policy "authenticated users can create their own posts"
   on public.posts for insert
   to authenticated
   with check (auth.uid() = author_id);
 
+drop policy if exists "authors can update their own posts" on public.posts;
 create policy "authors can update their own posts"
   on public.posts for update
   to authenticated
   using (auth.uid() = author_id)
   with check (auth.uid() = author_id);
 
+drop policy if exists "authors can delete their own posts" on public.posts;
 create policy "authors can delete their own posts"
   on public.posts for delete
   to authenticated
@@ -127,21 +138,25 @@ create index if not exists comments_post_created_idx
 
 alter table public.comments enable row level security;
 
+drop policy if exists "comments are publicly readable" on public.comments;
 create policy "comments are publicly readable"
   on public.comments for select
   using (true);
 
+drop policy if exists "authenticated users can create their own comments" on public.comments;
 create policy "authenticated users can create their own comments"
   on public.comments for insert
   to authenticated
   with check (auth.uid() = author_id);
 
+drop policy if exists "authors can update their own comments" on public.comments;
 create policy "authors can update their own comments"
   on public.comments for update
   to authenticated
   using (auth.uid() = author_id)
   with check (auth.uid() = author_id);
 
+drop policy if exists "authors can delete their own comments" on public.comments;
 create policy "authors can delete their own comments"
   on public.comments for delete
   to authenticated
@@ -163,21 +178,25 @@ create table if not exists public.post_votes (
 
 alter table public.post_votes enable row level security;
 
+drop policy if exists "votes are publicly readable" on public.post_votes;
 create policy "votes are publicly readable"
   on public.post_votes for select
   using (true);
 
+drop policy if exists "authenticated users can cast their own votes" on public.post_votes;
 create policy "authenticated users can cast their own votes"
   on public.post_votes for insert
   to authenticated
   with check (auth.uid() = user_id);
 
+drop policy if exists "users can change their own votes" on public.post_votes;
 create policy "users can change their own votes"
   on public.post_votes for update
   to authenticated
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);
 
+drop policy if exists "users can retract their own votes" on public.post_votes;
 create policy "users can retract their own votes"
   on public.post_votes for delete
   to authenticated

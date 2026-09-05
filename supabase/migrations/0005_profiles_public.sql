@@ -20,7 +20,16 @@ set username = lower(
 where username is null;
 
 alter table public.profiles
-  alter column username set not null,
+  alter column username set not null;
+
+-- Split from the statement above and drop-guarded so this file is re-runnable:
+-- Postgres has no `add constraint if not exists`, so a second run of an
+-- unguarded `add constraint` fails with 42710 the way an unguarded
+-- `create policy` does.
+alter table public.profiles
+  drop constraint if exists profiles_username_format;
+
+alter table public.profiles
   add constraint profiles_username_format
     check (username ~ '^[a-z0-9][a-z0-9-]{2,29}$');
 
