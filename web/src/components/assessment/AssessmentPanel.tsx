@@ -40,9 +40,14 @@ type Phase =
 export function AssessmentPanel({
   conceptId,
   conceptTitle,
+  onStateChange,
 }: {
   conceptId: string;
   conceptTitle: string;
+  /** Fired whenever this concept's persisted state changes — on initial load
+   *  and after every grade — so a caller running several concepts in sequence
+   *  (a review/drill session) can track live proficiency without polling. */
+  onStateChange?: (state: ConceptState) => void;
 }) {
   const { user } = useAuth();
   const { can, loading: subLoading } = useSubscription();
@@ -100,7 +105,9 @@ export function AssessmentPanel({
      * computed from the items actually answered, so an ungradeable one in the
      * middle of a sitting distorts the schedule.
      */
-    return canGrade ? servable : servable.filter((i) => routeGrader(i) !== "llm");
+    return canGrade
+      ? servable
+      : servable.filter((i) => routeGrader(i) !== "llm");
   }, [bank, conceptId, canGrade]);
 
   /** How many open-response items the current tier is not seeing. */
@@ -162,6 +169,13 @@ export function AssessmentPanel({
 
   const exp: ExpSnapshot = useMemo(() => expFor(state, now), [state, now]);
 
+  useEffect(() => {
+    onStateChange?.(state);
+    // onStateChange is expected to be stable per conceptId (a useCallback in
+    // the caller); state is the only thing that should retrigger this.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
+
   const nextItem = useCallback(
     (currentState: ConceptState, recent: string[]) => {
       const template = selectNextItem(pool, currentState, {
@@ -213,7 +227,11 @@ export function AssessmentPanel({
       setPhase({ kind: "grading", item });
     }
 
-    const result = await gradeSubmission({ item, raw, latencySeconds: latency });
+    const result = await gradeSubmission({
+      item,
+      raw,
+      latencySeconds: latency,
+    });
 
     if (!result.ok) {
       if (result.reason === "empty") {
@@ -270,14 +288,20 @@ export function AssessmentPanel({
   }
 
   if (phase.kind === "loading") {
-    return <PanelShell><Skeleton /></PanelShell>;
+    return (
+      <PanelShell>
+        <Skeleton />
+      </PanelShell>
+    );
   }
 
   if (phase.kind === "empty") {
     // If the only items for this concept are open-response ones, the tier is
     // the reason the pool is empty — say that rather than "nothing here yet".
     if (!canGrade && withheldCount > 0) {
-      return <UpgradePrompt entitlement="ai-grading" signedIn={Boolean(user)} />;
+      return (
+        <UpgradePrompt entitlement="ai-grading" signedIn={Boolean(user)} />
+      );
     }
     return (
       <PanelShell>
@@ -295,7 +319,10 @@ export function AssessmentPanel({
         {!user && (
           <p className="font-body mt-3 rounded-lg bg-[var(--paper)] px-3 py-2 text-xs text-[var(--ink-soft)]">
             You're not signed in, so this session won't be saved.{" "}
-            <Link to="/login" className="font-medium text-[var(--accent)] hover:underline">
+            <Link
+              to="/login"
+              className="font-medium text-[var(--accent)] hover:underline"
+            >
               Log in
             </Link>{" "}
             to keep your proficiency and get review reminders.
@@ -327,7 +354,9 @@ export function AssessmentPanel({
             onClick={() => nextItem(state, recentIds)}
             className="font-body mt-5 rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
           >
-            {state.ability.observations === 0 ? "Start assessment" : "Next question"}
+            {state.ability.observations === 0
+              ? "Start assessment"
+              : "Next question"}
           </button>
 
           {/* Say plainly what is being held back, rather than quietly serving a
@@ -336,7 +365,10 @@ export function AssessmentPanel({
             <p className="font-body mt-4 border-t border-[var(--line)] pt-4 text-xs text-[var(--ink-soft)]">
               {withheldCount} question{withheldCount === 1 ? "" : "s"} on this
               concept ask you to explain your reasoning, and need AI grading.{" "}
-              <Link to="/pricing" className="font-medium text-[var(--accent)] hover:underline">
+              <Link
+                to="/pricing"
+                className="font-medium text-[var(--accent)] hover:underline"
+              >
                 See plans
               </Link>
             </p>
@@ -387,15 +419,20 @@ export function AssessmentPanel({
           )}
 
           {phase.kind === "grading" && (
-            <p className="font-body mt-4 text-sm text-[var(--ink-soft)]">Grading…</p>
+            <p className="font-body mt-4 text-sm text-[var(--ink-soft)]">
+              Grading…
+            </p>
           )}
 
           {phase.kind === "ungradeable" && (
             <div className="mt-4 rounded-xl border border-dashed border-[var(--line)] bg-[var(--paper)] p-4">
-              <p className="font-body text-sm text-[var(--ink)]">{phase.message}</p>
+              <p className="font-body text-sm text-[var(--ink)]">
+                {phase.message}
+              </p>
               <p className="font-body mt-2 text-xs text-[var(--ink-soft)]">
-                Nothing was recorded — a guessed score would corrupt your proficiency
-                estimate. Check your answer against the rubric below.
+                Nothing was recorded — a guessed score would corrupt your
+                proficiency estimate. Check your answer against the rubric
+                below.
               </p>
               {phase.item.rubric && <RubricList item={phase.item} />}
               <button
@@ -515,7 +552,9 @@ function Feedback({
       </div>
 
       {grade.feedback && (
-        <p className="font-body mt-3 text-sm text-[var(--ink)]">{grade.feedback}</p>
+        <p className="font-body mt-3 text-sm text-[var(--ink)]">
+          {grade.feedback}
+        </p>
       )}
 
       {/* For handwritten and spoken answers, what we read is what was graded —
@@ -535,8 +574,9 @@ function Feedback({
           {grade.transcriptConfidence !== undefined &&
             grade.transcriptConfidence < 0.6 && (
               <p className="font-body mt-2 text-xs text-[var(--ink-soft)]">
-                If that isn't what you meant, this reading was the problem rather
-                than your reasoning — it counted for less because of that.
+                If that isn't what you meant, this reading was the problem
+                rather than your reasoning — it counted for less because of
+                that.
               </p>
             )}
         </div>
@@ -549,8 +589,8 @@ function Feedback({
       {grade.adjudicator === "model-judge" && grade.confidence < 0.6 && (
         <p className="font-body mt-3 rounded-xl bg-[var(--paper)] px-3 py-2 text-xs text-[var(--ink-soft)]">
           The grader wasn't confident about this one — possibly because your
-          approach differs from the one the rubric anticipated. It's been flagged
-          for review, and it counts for less toward your proficiency.
+          approach differs from the one the rubric anticipated. It's been
+          flagged for review, and it counts for less toward your proficiency.
         </p>
       )}
 

@@ -15,6 +15,7 @@ import {
 } from "../lib/proficiencyFill";
 import { useAuth } from "../lib/auth/useAuth";
 import { useProficiency } from "../lib/useProficiency";
+import { ReviewSession } from "./assessment/ReviewSession";
 
 interface PositionedNode {
   id: string;
@@ -265,9 +266,9 @@ function initialViewOf(bounds: ViewBox, aspect: number | null): ViewBox {
 
 const domainOptions: { id: Domain | "all"; label: string }[] = [
   { id: "all", label: "All domains" },
-  ...(Object.entries(domainMeta) as [Domain, (typeof domainMeta)[Domain]][]).map(
-    ([id, meta]) => ({ id, label: meta.label }),
-  ),
+  ...(
+    Object.entries(domainMeta) as [Domain, (typeof domainMeta)[Domain]][]
+  ).map(([id, meta]) => ({ id, label: meta.label })),
 ];
 
 /** A node's circle: hollow at 0/100, filled from the bottom, solid at 100/100. */
@@ -299,11 +300,19 @@ function ProficiencyDot({
   );
 }
 
+interface SubjectSession {
+  subjectLabel: string;
+  color: string;
+  conceptIds: string[];
+  startMode: "review" | "drill";
+}
+
 export function ConceptMap() {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { proficiency } = useProficiency();
+  const { proficiency, bleeding, refresh } = useProficiency();
   const [selectedDomain, setSelectedDomain] = useState<Domain | "all">("all");
+  const [session, setSession] = useState<SubjectSession | null>(null);
   const layout = useMemo(() => computeLayout(selectedDomain), [selectedDomain]);
   const [aspect, setAspect] = useState<number | null>(null);
   // null = "wherever the map opens": derived from the layout and the measured
@@ -397,9 +406,14 @@ export function ConceptMap() {
     return 0.4;
   }
 
+  const bleedingIds =
+    selectedDomain === "all"
+      ? []
+      : layout.nodes.filter((n) => bleeding.has(n.id)).map((n) => n.id);
+
   return (
     <div className="relative flex h-full min-h-0 flex-col">
-      <div className="mb-3 flex shrink-0 gap-2 overflow-x-auto pb-1">
+      <div className="mb-3 flex shrink-0 items-center gap-2 overflow-x-auto pb-1">
         {domainOptions.map((opt) => (
           <button
             key={opt.id}
@@ -421,6 +435,25 @@ export function ConceptMap() {
             {opt.label}
           </button>
         ))}
+        {selectedDomain !== "all" && (
+          <button
+            type="button"
+            onClick={() =>
+              setSession({
+                subjectLabel: domainMeta[selectedDomain].label,
+                color: domainMeta[selectedDomain].color,
+                conceptIds:
+                  bleedingIds.length > 0
+                    ? bleedingIds
+                    : layout.nodes.map((n) => n.id),
+                startMode: bleedingIds.length > 0 ? "review" : "drill",
+              })
+            }
+            className="font-body shrink-0 whitespace-nowrap rounded-full bg-[var(--accent)] px-3 py-1.5 text-xs font-semibold text-white transition-opacity hover:opacity-90"
+          >
+            {bleedingIds.length > 0 ? "Review" : "Drill"}
+          </button>
+        )}
       </div>
 
       <div className="mb-3 flex shrink-0 items-center justify-between gap-3">
@@ -567,18 +600,21 @@ export function ConceptMap() {
       </div>
 
       <div className="font-body mt-3 flex shrink-0 gap-x-5 overflow-x-auto pb-1 text-xs text-[var(--ink-soft)]">
-        {(Object.entries(domainMeta) as [Domain, (typeof domainMeta)[Domain]][]).map(
-          ([domain, meta]) => (
-            <span key={domain} className="flex shrink-0 items-center gap-1.5 whitespace-nowrap">
-              <span
-                className="inline-block h-2.5 w-2.5 rounded-full"
-                style={{ background: meta.color }}
-                aria-hidden="true"
-              />
-              {meta.label}
-            </span>
-          ),
-        )}
+        {(
+          Object.entries(domainMeta) as [Domain, (typeof domainMeta)[Domain]][]
+        ).map(([domain, meta]) => (
+          <span
+            key={domain}
+            className="flex shrink-0 items-center gap-1.5 whitespace-nowrap"
+          >
+            <span
+              className="inline-block h-2.5 w-2.5 rounded-full"
+              style={{ background: meta.color }}
+              aria-hidden="true"
+            />
+            {meta.label}
+          </span>
+        ))}
         <span className="flex shrink-0 items-center gap-1.5 whitespace-nowrap">
           <span
             className="inline-block h-2.5 w-2.5 rounded-full border-[1.5px]"
@@ -599,7 +635,8 @@ export function ConceptMap() {
               </g>
             </svg>
           ))}
-          How full = your proficiency, 0/100 to {MAX_PROFICIENCY}/{MAX_PROFICIENCY}
+          How full = your proficiency, 0/100 to {MAX_PROFICIENCY}/
+          {MAX_PROFICIENCY}
         </span>
         <span className="shrink-0 whitespace-nowrap">
           Bigger dot = more prerequisites lead into it
@@ -610,6 +647,19 @@ export function ConceptMap() {
           </span>
         )}
       </div>
+
+      {session && (
+        <ReviewSession
+          subjectLabel={session.subjectLabel}
+          color={session.color}
+          conceptIds={session.conceptIds}
+          startMode={session.startMode}
+          onExit={() => {
+            setSession(null);
+            refresh();
+          }}
+        />
+      )}
     </div>
   );
 }

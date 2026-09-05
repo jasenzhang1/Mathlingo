@@ -1,4 +1,4 @@
-import { daysBetween } from "./numeric";
+import { DAY_MS, daysBetween } from "./numeric";
 import { masteryLevel } from "./mastery";
 import { dueAt, retrievability, targetRetentionFor } from "./scheduling";
 import type { ConceptState } from "./types";
@@ -38,9 +38,30 @@ export interface ExpSnapshot {
   dueAt?: number;
   /** True once the bar has decayed past the target — time to re-assess. */
   due: boolean;
+  /**
+   * When the bar actually starts sliding: `dueAt` plus the grace period. Past
+   * this point the bar reads its true, decayed value instead of holding at
+   * `ceiling` — the difference between "this is due" and "this is now losing
+   * you points".
+   */
+  gracePeriodEndsAt?: number;
+  /**
+   * True once the grace period has elapsed and the bar is actually below
+   * `ceiling` as a result — the concepts a "Review" button should surface,
+   * as opposed to ones merely due but still within grace.
+   */
+  bleeding: boolean;
   /** Has the learner cleared the gate to move on to dependent concepts? */
   unlocked: boolean;
 }
+
+/**
+ * How long a concept can sit past its due date before the bar actually starts
+ * dropping. The due date alone would otherwise dock the learner the instant
+ * FSRS says they're due, even if that lands at 2am — a day's slack turns "due"
+ * into a warning rather than an immediate penalty.
+ */
+export const GRACE_PERIOD_MS = DAY_MS;
 
 /**
  * The bar level a learner must reach before dependent concepts open up
@@ -74,6 +95,7 @@ export function expFor(state: ConceptState, now: number): ExpSnapshot {
       ceiling,
       retrievability: 1,
       due: state.ability.observations === 0,
+      bleeding: false,
       unlocked: ceiling >= UNLOCK_THRESHOLD,
     };
   }
@@ -81,13 +103,18 @@ export function expFor(state: ConceptState, now: number): ExpSnapshot {
   const elapsed = daysBetween(state.memory.lastReviewedAt, now);
   const r = retrievability(state.memory.stability, elapsed);
   const due = dueAt(state.memory, state.conceptId);
+  const gracePeriodEndsAt = due + GRACE_PERIOD_MS;
+  const pastGrace = now >= gracePeriodEndsAt;
+  const value = pastGrace ? ceiling * r : ceiling;
 
   return {
-    value: ceiling * r,
+    value,
     ceiling,
     retrievability: r,
     dueAt: due,
     due: now >= due,
+    gracePeriodEndsAt,
+    bleeding: pastGrace && value < ceiling,
     unlocked: ceiling >= UNLOCK_THRESHOLD,
   };
 }

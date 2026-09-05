@@ -6,6 +6,7 @@ import { useAuth } from "../lib/auth/useAuth";
 import { chapters } from "../lib/learningOrder";
 import { MAX_PROFICIENCY, proficiencyRatio } from "../lib/proficiencyFill";
 import { useProficiency } from "../lib/useProficiency";
+import { ReviewSession } from "./assessment/ReviewSession";
 
 /**
  * The concept map's other reading: the same concepts as a table of contents,
@@ -235,11 +236,19 @@ function ConceptRow({
   );
 }
 
+interface SubjectSession {
+  subjectLabel: string;
+  color: string;
+  conceptIds: string[];
+  startMode: "review" | "drill";
+}
+
 export function ConceptList() {
   const { user } = useAuth();
-  const { proficiency, dueAt } = useProficiency();
+  const { proficiency, dueAt, bleeding, refresh } = useProficiency();
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState<Set<string>>(loadOpen);
+  const [session, setSession] = useState<SubjectSession | null>(null);
 
   useEffect(() => {
     try {
@@ -366,6 +375,9 @@ export function ConceptList() {
                 },
                 null,
               );
+              const bleedingIds = chapter.concepts
+                .filter((c) => bleeding.has(c.id))
+                .map((c) => c.id);
 
               return (
                 <section
@@ -402,6 +414,24 @@ export function ConceptList() {
                         color={chapter.color}
                         label={`${chapter.label} average proficiency`}
                       />
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setSession({
+                            subjectLabel: chapter.label,
+                            color: chapter.color,
+                            conceptIds:
+                              bleedingIds.length > 0
+                                ? bleedingIds
+                                : chapter.concepts.map((c) => c.id),
+                            startMode:
+                              bleedingIds.length > 0 ? "review" : "drill",
+                          })
+                        }
+                        className="font-body shrink-0 rounded-full bg-[var(--accent)] px-3 py-1.5 text-xs font-semibold text-white transition-opacity hover:opacity-90"
+                      >
+                        {bleedingIds.length > 0 ? "Review" : "Drill"}
+                      </button>
                     </div>
                     {chapterDueAt !== null && (
                       <p className="font-body mt-1.5 pl-[26px] text-xs">
@@ -501,6 +531,19 @@ export function ConceptList() {
           <span>Sign in to see your own progress on each concept.</span>
         )}
       </div>
+
+      {session && (
+        <ReviewSession
+          subjectLabel={session.subjectLabel}
+          color={session.color}
+          conceptIds={session.conceptIds}
+          startMode={session.startMode}
+          onExit={() => {
+            setSession(null);
+            refresh();
+          }}
+        />
+      )}
     </div>
   );
 }

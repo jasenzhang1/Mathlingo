@@ -49,9 +49,11 @@ export function ProficiencyBar({ exp }: { exp: ExpSnapshot }) {
         {exp.dueAt && (
           <>
             {" "}
-            {exp.due
-              ? "Due for review now."
-              : `Next review around ${new Date(exp.dueAt).toLocaleDateString()}.`}
+            {exp.bleeding
+              ? "Past its grace period and fading — review now."
+              : exp.due
+                ? "Due for review — you have a day of grace before it starts fading."
+                : `Next review around ${new Date(exp.dueAt).toLocaleDateString()}.`}
           </>
         )}
       </p>
