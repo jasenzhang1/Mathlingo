@@ -16,19 +16,20 @@ import type { WikiArticle } from "./types";
  * so a learner who opens one is very likely to open its neighbours — and one
  * chunk per article would trade a large bundle for a few hundred round trips.
  *
- * `linear-algebra` and `probability` are deliberately absent below. Both have
- * article modules on disk (`./linear-algebra`, `./probability`) that no version
- * of this file has ever imported; wiring them in would put ~90 unreviewed
- * articles in front of learners as a side effect of a refactor, so they stay
- * unwired until someone lands them on purpose.
+ * `linear-algebra` is deliberately absent below. It has an article module on
+ * disk (`./linear-algebra`) that no version of this file has ever imported;
+ * wiring it in would put ~35 unreviewed articles in front of learners as a
+ * side effect of a refactor, so it stays unwired until someone lands it on
+ * purpose. `probability` was in the same state — its ~55 articles, including
+ * the one for `set-theory`, existed on disk but were never wired in, which
+ * left the Set Theory lesson's wiki tab permanently on "coming soon" — and is
+ * now wired below.
  */
 const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
   statistics: () => import("./core").then((m) => m.coreWikiArticles),
   "multivariate-probability": () => import("./core").then((m) => m.coreWikiArticles),
   "graphical-models": () => import("./core").then((m) => m.coreWikiArticles),
-  // The Bernoulli/Binomial pilot is the one `probability` article that shipped,
-  // and it lives in ./core with the rest of the hand-written set.
-  probability: () => import("./core").then((m) => m.coreWikiArticles),
+  probability: () => import("./probability").then((m) => m.default),
   regression: () => import("./regression").then((m) => m.regressionWikis),
   "machine-learning": () => import("./ml").then((m) => m.mlWikiArticles),
   python: () => import("./python").then((m) => m.pythonWikiArticles),
