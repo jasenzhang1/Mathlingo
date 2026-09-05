@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Concept } from "../data/concepts";
+import { DAY_MS } from "../lib/assessment/numeric";
 import { useAuth } from "../lib/auth/useAuth";
 import { chapters } from "../lib/learningOrder";
 import { MAX_PROFICIENCY, proficiencyRatio } from "../lib/proficiencyFill";
@@ -20,6 +21,11 @@ import { useProficiency } from "../lib/useProficiency";
  * scroll; 7 folders you open the one you want is a contents page. Chapters open
  * by default and sections closed, so the first thing on screen is every subject
  * and what it covers.
+ *
+ * Each subject is its own card, laid out in CSS columns rather than a grid —
+ * a restaurant menu, not a spreadsheet: cards fill the left column top to
+ * bottom before spilling into the right one, and a card never splits across
+ * the break. One column under the width a two-up menu would feel cramped.
  */
 
 const STORAGE_KEY = "mathlingo:concept-list-open";
@@ -93,6 +99,32 @@ function LessonDot() {
       className="inline-block h-2 w-2 shrink-0 rounded-full border-[1.5px] align-middle"
       style={{ borderColor: "var(--accent)" }}
     />
+  );
+}
+
+/**
+ * Days until the soonest-expiring reviewed topic in a subject starts sliding
+ * down its forgetting curve — a nudge to brush up before it does, surfaced per
+ * subject rather than per concept so it reads at a glance from the panel
+ * header instead of requiring a hunt through every row's bar.
+ */
+function ExpiryNotice({ dueAt }: { dueAt: number | null }) {
+  if (dueAt === null) return null;
+
+  const days = Math.ceil((dueAt - Date.now()) / DAY_MS);
+
+  if (days <= 0) {
+    return (
+      <span className="font-body font-medium text-[var(--accent)]">
+        A topic is due for review now
+      </span>
+    );
+  }
+
+  return (
+    <span className="font-body text-[var(--ink-soft)]">
+      Soonest topic starts fading in {days} {days === 1 ? "day" : "days"}
+    </span>
   );
 }
 
@@ -205,7 +237,7 @@ function ConceptRow({
 
 export function ConceptList() {
   const { user } = useAuth();
-  const { proficiency } = useProficiency();
+  const { proficiency, dueAt } = useProficiency();
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState<Set<string>>(loadOpen);
 
@@ -253,7 +285,8 @@ export function ConceptList() {
 
   const matchCount = visible.reduce(
     (n, chapter) =>
-      n + chapter.sectionRows.reduce((m, section) => m + section.rows.length, 0),
+      n +
+      chapter.sectionRows.reduce((m, section) => m + section.rows.length, 0),
     0,
   );
   const sectionCount = chapters.reduce((n, c) => n + c.sections.length, 0);
@@ -311,125 +344,148 @@ export function ConceptList() {
         </div>
       </div>
 
-      <div className="min-h-0 flex-1 overflow-y-auto rounded-2xl border border-[var(--line)] bg-[var(--panel)] shadow-sm">
+      <div className="min-h-0 flex-1 overflow-y-auto">
         {visible.length === 0 ? (
-          <p className="font-body p-6 text-sm text-[var(--ink-soft)]">
+          <p className="font-body rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-6 text-sm text-[var(--ink-soft)] shadow-sm">
             No concept matches “{query.trim()}”.
           </p>
         ) : (
-          visible.map((chapter) => {
-            const key = domainKey(chapter.domain);
-            const chapterOpen = isOpen(key);
-            const total = chapter.concepts.reduce(
-              (sum, c) => sum + (proficiency.get(c.id) ?? 0),
-              0,
-            );
+          <div className="columns-1 gap-4 lg:columns-2">
+            {visible.map((chapter) => {
+              const key = domainKey(chapter.domain);
+              const chapterOpen = isOpen(key);
+              const total = chapter.concepts.reduce(
+                (sum, c) => sum + (proficiency.get(c.id) ?? 0),
+                0,
+              );
+              const chapterDueAt = chapter.concepts.reduce<number | null>(
+                (soonest, c) => {
+                  const d = dueAt.get(c.id);
+                  if (d === undefined) return soonest;
+                  return soonest === null ? d : Math.min(soonest, d);
+                },
+                null,
+              );
 
-            return (
-              <section key={chapter.domain}>
-                <header className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[var(--line)] bg-[var(--panel)] px-3 py-2.5 sm:px-4">
-                  <button
-                    type="button"
-                    onClick={() => toggleNode(key)}
-                    onKeyDown={folderKeys(chapterOpen, (next) =>
-                      setNode(key, next),
+              return (
+                <section
+                  key={chapter.domain}
+                  className="mb-4 break-inside-avoid overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--panel)] shadow-sm"
+                >
+                  <header className="border-b border-[var(--line)] px-3 py-2.5 sm:px-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <button
+                        type="button"
+                        onClick={() => toggleNode(key)}
+                        onKeyDown={folderKeys(chapterOpen, (next) =>
+                          setNode(key, next),
+                        )}
+                        aria-expanded={chapterOpen}
+                        aria-controls={`chapter-${chapter.domain}`}
+                        className="flex min-w-0 flex-1 items-center gap-2.5 text-left"
+                      >
+                        <Chevron open={chapterOpen} />
+                        <Folder open={chapterOpen} color={chapter.color} />
+                        <h2 className="font-display truncate text-sm text-[var(--ink)]">
+                          <span className="text-[var(--ink-soft)]">
+                            {chapter.number}.
+                          </span>{" "}
+                          {chapter.label}
+                        </h2>
+                        <span className="font-body hidden shrink-0 text-xs text-[var(--ink-soft)] sm:inline">
+                          {chapter.sections.length} sections ·{" "}
+                          {chapter.concepts.length} concepts
+                        </span>
+                      </button>
+                      <ProgressMeter
+                        value={total / chapter.concepts.length}
+                        color={chapter.color}
+                        label={`${chapter.label} average proficiency`}
+                      />
+                    </div>
+                    {chapterDueAt !== null && (
+                      <p className="font-body mt-1.5 pl-[26px] text-xs">
+                        <ExpiryNotice dueAt={chapterDueAt} />
+                      </p>
                     )}
-                    aria-expanded={chapterOpen}
-                    aria-controls={`chapter-${chapter.domain}`}
-                    className="flex min-w-0 flex-1 items-center gap-2.5 text-left"
-                  >
-                    <Chevron open={chapterOpen} />
-                    <Folder open={chapterOpen} color={chapter.color} />
-                    <h2 className="font-display truncate text-sm text-[var(--ink)]">
-                      <span className="text-[var(--ink-soft)]">
-                        {chapter.number}.
-                      </span>{" "}
-                      {chapter.label}
-                    </h2>
-                    <span className="font-body hidden shrink-0 text-xs text-[var(--ink-soft)] sm:inline">
-                      {chapter.sections.length} sections ·{" "}
-                      {chapter.concepts.length} concepts
-                    </span>
-                  </button>
-                  <ProgressMeter
-                    value={total / chapter.concepts.length}
-                    color={chapter.color}
-                    label={`${chapter.label} average proficiency`}
-                  />
-                </header>
+                  </header>
 
-                {chapterOpen && (
-                  <div id={`chapter-${chapter.domain}`} className="p-1 sm:p-2">
-                    {chapter.sectionRows.map((section) => {
-                      const sKey = sectionKey(chapter.domain, section.id);
-                      const sectionOpen = isOpen(sKey);
-                      const sectionTotal = section.concepts.reduce(
-                        (sum, c) => sum + (proficiency.get(c.id) ?? 0),
-                        0,
-                      );
+                  {chapterOpen && (
+                    <div
+                      id={`chapter-${chapter.domain}`}
+                      className="p-1 sm:p-2"
+                    >
+                      {chapter.sectionRows.map((section) => {
+                        const sKey = sectionKey(chapter.domain, section.id);
+                        const sectionOpen = isOpen(sKey);
+                        const sectionTotal = section.concepts.reduce(
+                          (sum, c) => sum + (proficiency.get(c.id) ?? 0),
+                          0,
+                        );
 
-                      return (
-                        <div key={section.id}>
-                          <div className="flex items-center gap-3 rounded-xl px-2 py-1.5 transition-colors hover:bg-[var(--paper)] sm:px-3">
-                            <button
-                              type="button"
-                              onClick={() => toggleNode(sKey)}
-                              onKeyDown={folderKeys(sectionOpen, (next) =>
-                                setNode(sKey, next),
-                              )}
-                              aria-expanded={sectionOpen}
-                              aria-controls={`section-${chapter.domain}-${section.id}`}
-                              className="flex min-w-0 flex-1 items-center gap-2 pl-3 text-left"
-                            >
-                              <Chevron open={sectionOpen} />
-                              <Folder
-                                open={sectionOpen}
-                                color={chapter.color}
-                              />
-                              <span className="font-body truncate text-sm font-medium text-[var(--ink)]">
-                                <span className="tabular-nums text-[var(--ink-soft)]">
-                                  {chapter.number}.{section.number}
-                                </span>{" "}
-                                {section.label}
-                              </span>
-                              <span className="font-body shrink-0 text-xs tabular-nums text-[var(--ink-soft)]">
-                                {searching
-                                  ? `${section.rows.length}/${section.concepts.length}`
-                                  : section.concepts.length}
-                              </span>
-                            </button>
-                            <ProgressMeter
-                              value={sectionTotal / section.concepts.length}
-                              color={chapter.color}
-                              label={`${section.label} average proficiency`}
-                              className="w-10 sm:w-16"
-                            />
-                          </div>
-
-                          {sectionOpen && (
-                            <ul
-                              id={`section-${chapter.domain}-${section.id}`}
-                              className="ml-[26px] border-l border-[var(--line)] pl-1"
-                            >
-                              {section.rows.map(({ concept, position }) => (
-                                <ConceptRow
-                                  key={concept.id}
-                                  concept={concept}
-                                  number={`${chapter.number}.${section.number}.${position}`}
+                        return (
+                          <div key={section.id}>
+                            <div className="flex items-center gap-3 rounded-xl px-2 py-1.5 transition-colors hover:bg-[var(--paper)] sm:px-3">
+                              <button
+                                type="button"
+                                onClick={() => toggleNode(sKey)}
+                                onKeyDown={folderKeys(sectionOpen, (next) =>
+                                  setNode(sKey, next),
+                                )}
+                                aria-expanded={sectionOpen}
+                                aria-controls={`section-${chapter.domain}-${section.id}`}
+                                className="flex min-w-0 flex-1 items-center gap-2 pl-3 text-left"
+                              >
+                                <Chevron open={sectionOpen} />
+                                <Folder
+                                  open={sectionOpen}
                                   color={chapter.color}
-                                  value={proficiency.get(concept.id) ?? 0}
                                 />
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-              </section>
-            );
-          })
+                                <span className="font-body truncate text-sm font-medium text-[var(--ink)]">
+                                  <span className="tabular-nums text-[var(--ink-soft)]">
+                                    {chapter.number}.{section.number}
+                                  </span>{" "}
+                                  {section.label}
+                                </span>
+                                <span className="font-body shrink-0 text-xs tabular-nums text-[var(--ink-soft)]">
+                                  {searching
+                                    ? `${section.rows.length}/${section.concepts.length}`
+                                    : section.concepts.length}
+                                </span>
+                              </button>
+                              <ProgressMeter
+                                value={sectionTotal / section.concepts.length}
+                                color={chapter.color}
+                                label={`${section.label} average proficiency`}
+                                className="w-10 sm:w-16"
+                              />
+                            </div>
+
+                            {sectionOpen && (
+                              <ul
+                                id={`section-${chapter.domain}-${section.id}`}
+                                className="ml-[26px] border-l border-[var(--line)] pl-1"
+                              >
+                                {section.rows.map(({ concept, position }) => (
+                                  <ConceptRow
+                                    key={concept.id}
+                                    concept={concept}
+                                    number={`${chapter.number}.${section.number}.${position}`}
+                                    color={chapter.color}
+                                    value={proficiency.get(concept.id) ?? 0}
+                                  />
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </section>
+              );
+            })}
+          </div>
         )}
       </div>
 
@@ -441,7 +497,9 @@ export function ConceptList() {
         <span>
           Sections follow the chapters of the books each subject is taught from
         </span>
-        {!user && <span>Sign in to see your own progress on each concept.</span>}
+        {!user && (
+          <span>Sign in to see your own progress on each concept.</span>
+        )}
       </div>
     </div>
   );
