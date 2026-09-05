@@ -619,7 +619,13 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
     {
       id: "numpy",
       label: "NumPy",
-      conceptIds: ["numpy-arrays", "numpy-broadcasting"],
+      conceptIds: [
+        "numpy-arrays",
+        "numpy-array-creation",
+        "numpy-indexing",
+        "numpy-broadcasting",
+        "numpy-matrices",
+      ],
     },
     {
       id: "pandas",

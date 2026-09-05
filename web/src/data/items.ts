@@ -10,6 +10,7 @@ import { pythonItems } from "./items/python";
 import { pythonFundamentalsItems } from "./items/python-fundamentals";
 import { pythonControlFlowItems } from "./items/python-control-flow";
 import { pythonContainersSplitItems } from "./items/python-containers-split";
+import { numpyExpandedItems } from "./items/numpy-expanded";
 import { regressionDiagnosticsItems } from "./items/regression-diagnostics";
 import { regressionExtensionsItems } from "./items/regression-extensions";
 import { regressionFoundationsItems } from "./items/regression-foundations";
@@ -2902,6 +2903,13 @@ export const items: Item[] = [
   // python-sets up to 8 live each, after python-lists/python-dicts were split.
   // -------------------------------------------------------------------------
   ...pythonContainersSplitItems,
+
+  // -------------------------------------------------------------------------
+  // NumPy expansion — array creation (arange/linspace/zeros/ones/eye),
+  // indexing/masking, and matrices (@, transpose, linalg), inserted between
+  // numpy-arrays and pandas.
+  // -------------------------------------------------------------------------
+  ...numpyExpandedItems,
 ];
 
 /**

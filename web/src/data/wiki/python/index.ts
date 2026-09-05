@@ -1,5 +1,8 @@
 import { numpyArraysWiki } from "./numpy-arrays";
+import { numpyArrayCreationWiki } from "./numpy-array-creation";
+import { numpyIndexingWiki } from "./numpy-indexing";
 import { numpyBroadcastingWiki } from "./numpy-broadcasting";
+import { numpyMatricesWiki } from "./numpy-matrices";
 import { pandasDataframesWiki } from "./pandas-dataframes";
 import { pandasGroupbyWiki } from "./pandas-groupby";
 import { pythonComprehensionsWiki } from "./python-comprehensions";
@@ -48,7 +51,10 @@ export const pythonWikiArticles: WikiArticle[] = [
   pythonLoopsWiki,
   pythonComprehensionsWiki,
   numpyArraysWiki,
+  numpyArrayCreationWiki,
+  numpyIndexingWiki,
   numpyBroadcastingWiki,
+  numpyMatricesWiki,
   pandasDataframesWiki,
   pandasGroupbyWiki,
 ];

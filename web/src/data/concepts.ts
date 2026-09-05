@@ -2325,12 +2325,36 @@ export const concepts: Concept[] = [
     prerequisites: ["python-list-operations", "python-loops"],
   },
   {
+    id: "numpy-array-creation",
+    title: "Creating Arrays: arange, linspace, and Friends",
+    domain: "python",
+    blurb:
+      "arange for a step size, linspace for a point count, and zeros/ones/full/eye for a shape with no data yet.",
+    prerequisites: ["numpy-arrays"],
+  },
+  {
+    id: "numpy-indexing",
+    title: "Indexing, Boolean Masks, and Fancy Indexing",
+    domain: "python",
+    blurb:
+      "A[i, j] over nested brackets, a[a > 0] over a loop, and which selections return a view versus a copy.",
+    prerequisites: ["numpy-array-creation"],
+  },
+  {
     id: "numpy-broadcasting",
     title: "Broadcasting and Axis Reductions",
     domain: "python",
     blurb:
       "Shape alignment from the trailing axis, and what axis= actually means in a sum, mean, or argmax.",
-    prerequisites: ["numpy-arrays"],
+    prerequisites: ["numpy-indexing"],
+  },
+  {
+    id: "numpy-matrices",
+    title: "Matrices: @, Transpose, and linalg",
+    domain: "python",
+    blurb:
+      "@ for matrix multiplication versus * for elementwise, plus the identity, inverse, and solve from numpy.linalg.",
+    prerequisites: ["numpy-broadcasting"],
   },
   {
     id: "pandas-dataframes",
