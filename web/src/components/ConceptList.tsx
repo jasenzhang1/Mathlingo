@@ -187,16 +187,11 @@ function ConceptRow({
         <span className="font-body w-8 shrink-0 text-xs tabular-nums text-[var(--ink-soft)] sm:w-12">
           {number}
         </span>
-        <span className="min-w-0 flex-1">
-          <span className="flex items-center gap-1.5">
-            <span className="font-body truncate text-sm font-medium text-[var(--ink)]">
-              {concept.title}
-            </span>
-            {concept.embedUrl && <LessonDot />}
+        <span className="flex min-w-0 flex-1 items-center gap-1.5">
+          <span className="font-body truncate text-sm font-medium text-[var(--ink)]">
+            {concept.title}
           </span>
-          <span className="font-body hidden truncate text-xs text-[var(--ink-soft)] sm:block">
-            {concept.blurb}
-          </span>
+          {concept.embedUrl && <LessonDot />}
         </span>
         <ProgressMeter
           value={value}
