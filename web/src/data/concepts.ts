@@ -1997,6 +1997,127 @@ export const concepts: Concept[] = [
   },
 
   // ---------------------------------------------------------------------
+  // Machine Learning — neural network architectures.
+  //
+  // Cluster 11 stops at three families and the representations they produce.
+  // What it does not do is put the families side by side, or carry the sequence
+  // story past attention: an LSTM is described in a paragraph of
+  // `recurrent-neural-networks` and has no node, next-token prediction is
+  // assumed by `transformers` and defined nowhere, and the linear-recurrence
+  // models that now compete with attention on long sequences are absent
+  // entirely. This branch is the architecture zoo — what each family assumes
+  // about its data, and what that assumption costs.
+  // ---------------------------------------------------------------------
+  {
+    id: "architecture-families",
+    title: "Architecture Families",
+    domain: "machine-learning",
+    blurb:
+      "Dense, convolutional, recurrent and attentional networks compared by the assumption each one builds into its wiring.",
+    // Reads as a comparison of the three families cluster 11 introduces, so it
+    // genuinely requires all three rather than merely mentioning them.
+    prerequisites: [
+      "convolutional-neural-networks",
+      "recurrent-neural-networks",
+      "transformers",
+    ],
+  },
+  {
+    id: "residual-networks",
+    title: "Residual Networks",
+    domain: "machine-learning",
+    blurb:
+      "Adding the input back to the output of a block, and why that one change made depth usable.",
+    // The argument is a derivative computation: the skip contributes a +1 term
+    // to the Jacobian, so the chain of factors backpropagation multiplies can
+    // no longer collapse to zero. That is `backpropagation`, not intuition.
+    prerequisites: ["backpropagation", "convolutional-neural-networks"],
+  },
+  {
+    id: "lstm-and-gru",
+    title: "LSTM and GRU",
+    domain: "machine-learning",
+    blurb:
+      "Gated cells that carry a memory forward by addition, so gradients survive hundreds of steps.",
+    prerequisites: ["recurrent-neural-networks", "activation-functions"],
+  },
+  {
+    id: "autoregressive-models",
+    title: "Autoregressive Models",
+    domain: "machine-learning",
+    blurb:
+      "Factorising a joint distribution into a product of next-step conditionals — the objective behind every language model.",
+    // The factorisation is the chain rule of probability applied n − 1 times;
+    // without `conditional-probability` the objective cannot even be stated.
+    prerequisites: ["conditional-probability", "lstm-and-gru", "transformers"],
+  },
+  {
+    id: "state-space-models",
+    title: "State Space Models",
+    domain: "machine-learning",
+    blurb:
+      "A linear recurrence that also runs as a convolution — S4 and Mamba, and why linear time matters again.",
+    // Diagonalising the transition matrix is what turns the recurrence into a
+    // closed form, and the eigenvalue moduli are what decide whether memory
+    // decays or blows up. Both are `eigenvalues-eigenvectors`.
+    //
+    // `attention-mechanism` is a genuine prerequisite rather than a neighbour:
+    // the family exists to buy back linear time in the sequence length, and
+    // every design decision in it — the two evaluation forms, the fixed-size
+    // generation state, the hybrid stacks — is an answer to what attention
+    // costs. A learner who has not met attention cannot read any of it.
+    prerequisites: [
+      "lstm-and-gru",
+      "convolutional-neural-networks",
+      "eigenvalues-eigenvectors",
+      "attention-mechanism",
+    ],
+  },
+  {
+    id: "graph-neural-networks",
+    title: "Graph Neural Networks",
+    domain: "machine-learning",
+    blurb:
+      "Message passing over edges — a convolution for data whose neighbourhoods are given rather than gridded.",
+    prerequisites: ["graphs", "convolutional-neural-networks"],
+  },
+  {
+    id: "generative-adversarial-networks",
+    title: "Generative Adversarial Networks",
+    domain: "machine-learning",
+    blurb:
+      "A generator and a discriminator trained against each other, and the equilibrium that is hard to reach.",
+    // The optimal-discriminator substitution turns the game's value into a
+    // Jensen-Shannon divergence, which is where mode collapse and vanishing
+    // generator gradients are actually read off.
+    prerequisites: [
+      "generative-vs-discriminative-models",
+      "neural-networks",
+      "kl-divergence",
+    ],
+  },
+  {
+    id: "diffusion-models",
+    title: "Diffusion Models",
+    domain: "machine-learning",
+    blurb:
+      "Destroy the data with noise on a fixed schedule, then learn to undo one step at a time.",
+    prerequisites: [
+      "autoencoders",
+      "normal-distribution",
+      "generative-adversarial-networks",
+    ],
+  },
+  {
+    id: "mixture-of-experts",
+    title: "Mixture of Experts",
+    domain: "machine-learning",
+    blurb:
+      "Routing each token to a few of many sub-networks, so capacity grows without the compute growing with it.",
+    prerequisites: ["transformers", "ensemble-methods"],
+  },
+
+  // ---------------------------------------------------------------------
   // Machine Learning — further paradigms and methods.
   //
   // Reinforcement learning was named in `types-of-machine-learning` and defined

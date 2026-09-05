@@ -11,10 +11,11 @@ import { ml09Items } from "./ml-09-gaussian-processes";
 import { ml10Items } from "./ml-10-practical-modelling";
 import { ml11Items } from "./ml-11-deep-learning";
 import { ml12Items } from "./ml-12-further-paradigms";
+import { ml13Items } from "./ml-13-neural-architectures";
 
 /**
  * The servable form of the machine-learning question bank: eight items per
- * concept across all 78 concepts in the `machine-learning` domain — 624 in
+ * concept across all 87 concepts in the `machine-learning` domain — 696 in
  * total — at two each of recall, apply, explain and transfer.
  *
  * Items 1-5 per concept are the port of `assessments/ml-01…ml-09.md`, which
@@ -28,6 +29,10 @@ import { ml12Items } from "./ml-12-further-paradigms";
  * `verifyItem` with no blockers or warnings; their IRT parameters are seeds from
  * concept depth rather than exposure estimates, which is true of every authored
  * item here and is what `calibration.ts` re-estimates from live responses.
+ *
+ * Cluster 13 is spread before 12 for the same reason `wiki/ml/index.ts` orders
+ * it that way: it is numbered by when it was authored and read in the order it
+ * is taught.
  */
 export const mlItems: Item[] = [
   ...ml01Items,
@@ -41,5 +46,6 @@ export const mlItems: Item[] = [
   ...ml09Items,
   ...ml10Items,
   ...ml11Items,
+  ...ml13Items,
   ...ml12Items,
 ];

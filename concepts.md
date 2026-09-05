@@ -5,7 +5,7 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 288 concepts.**
+**Total: 297 concepts.**
 
 ## Probability (56)
 
@@ -219,7 +219,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Poisson Regression | Generalized Linear Model (GLM), Poisson Distribution | — |
 | Cox Proportional Hazards Model | Generalized Linear Model (GLM), Maximum Likelihood Estimation | — |
 
-## Machine Learning (78)
+## Machine Learning (87)
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -293,6 +293,15 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Transformers | Attention Mechanism, Batch Normalization | — |
 | Embeddings | Neural Networks, Principal Component Analysis (PCA) | — |
 | Autoencoders | Neural Networks, Probabilistic PCA | — |
+| Architecture Families | Convolutional Neural Networks, Recurrent Neural Networks, Transformers | — |
+| Residual Networks | Backpropagation, Convolutional Neural Networks | — |
+| LSTM and GRU | Recurrent Neural Networks, Activation Functions | — |
+| Autoregressive Models | Conditional Probability, LSTM and GRU, Transformers | — |
+| State Space Models | LSTM and GRU, Convolutional Neural Networks, Eigenvalues and Eigenvectors, Attention Mechanism | — |
+| Graph Neural Networks | Graphs, Convolutional Neural Networks | — |
+| Generative Adversarial Networks | Generative vs Discriminative Models, Neural Networks, Kullback-Leibler Divergence | — |
+| Diffusion Models | Autoencoders, Normal Distribution, Generative Adversarial Networks | — |
+| Mixture of Experts | Transformers, Ensemble Methods | — |
 | Transfer Learning | Convolutional Neural Networks, Embeddings, Feature Scaling | — |
 | Self-Supervised Learning | Transfer Learning, Autoencoders | — |
 | Reinforcement Learning | Types of Machine Learning, Markov Chains | — |

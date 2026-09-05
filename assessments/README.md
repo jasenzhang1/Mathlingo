@@ -12,7 +12,7 @@ design — human-readable, and the source everything else is written from. Only 
 learner, so a concept has questions in the first sense long before the app can quiz
 on it. `npm run audit:coverage` reports both numbers side by side.
 
-The exceptions are machine-learning clusters 10-12 and the whole `python` domain,
+The exceptions are machine-learning clusters 10-13 and the whole `python` domain,
 which invert that direction: those concepts were added to the graph after their
 neighbours shipped, so their items were authored directly in typed form and the
 markdown is an index rather than a transcript. The audit reports them separately
@@ -20,7 +20,7 @@ for that reason.
 
 | Domain | Authored here | Wired into the app | Full 8-item live pool |
 |---|---|---|---|
-| Machine Learning | 78 / 78 | 78 | 78 |
+| Machine Learning | 87 / 87 | 87 | 87 |
 | Python for Data Work | 8 / 8 | 8 | 8 |
 | Regression | 34 / 34 | 34 | 34 |
 | Statistics | 25 / 25 | 25 | 25 |
@@ -186,11 +186,14 @@ side.
 | ML-10 | [ml-10-practical-modelling.md](ml-10-practical-modelling.md) | Feature Scaling → Anomaly Detection (10, all new) | done (80 items) |
 | ML-11 | [ml-11-deep-learning.md](ml-11-deep-learning.md) | Activation Functions → Autoencoders (10, all new) | done (80 items) |
 | ML-12 | [ml-12-further-paradigms.md](ml-12-further-paradigms.md) | Transfer Learning → Density-Based Clustering (8, all new) | done (64 items) |
+| ML-13 | [ml-13-neural-architectures.md](ml-13-neural-architectures.md) | Architecture Families → Mixture of Experts (9, all new) | done (72 items) |
 
 ## Machine Learning: the domain extension
 
 Clusters 10-12 add **28 concepts** to the graph, taking `machine-learning` from 50 to 78 and the
-whole map from 236 to 264. Two kinds of gap motivated them.
+whole map from 236 to 264. Two kinds of gap motivated them. Cluster 13 later adds **9 more**, taking
+the domain to 87; its own gaps are set out in
+[ml-13-neural-architectures.md](ml-13-neural-architectures.md).
 
 **Dangling references.** Nineteen of the twenty-eight were already being *cited* by the fifty
 articles and 400 items of clusters 1-9 without existing as a node anyone could study — feature
@@ -204,7 +207,7 @@ network and had nothing to say about activations, optimisers, or any architectur
 from the pieces every architecture shares to convolutions, recurrence, attention and transformers,
 and to the representations they produce.
 
-These three clusters invert the usual authorship direction — the concepts postdate clusters 1-9, so
+These clusters — 10-13 — invert the usual authorship direction — the concepts postdate clusters 1-9, so
 their items were written directly in typed form and the markdown is an index rather than a
 transcript. `npm run audit:coverage` now reports that distinction explicitly rather than counting it
 as a coverage gap.
@@ -216,7 +219,8 @@ needed it: `feature-selection` → `data-leakage`, `probability-calibration` →
 `training-validation-test-set`, `distribution-shift` → `data-leakage`, `anomaly-detection` →
 `curse-of-dimensionality`, `convolutional-neural-networks` → `overfitting-underfitting`,
 `attention-mechanism` → `variance`, `transfer-learning` → `feature-scaling`. Four further items were
-rewritten to be self-contained instead, where the edge would have been a stretch.
+rewritten to be self-contained instead, where the edge would have been a stretch. Cluster 13 added
+four more edges on the same terms, listed in its own file.
 
 One more standing graph question joins the three below: `feature-scaling` arguably belongs
 *upstream* of `knn`, `svm` and `rbf` rather than beside them. That rewiring would shift those

@@ -531,6 +531,21 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
+      id: "architectures",
+      label: "Neural Network Architectures",
+      conceptIds: [
+        "architecture-families",
+        "residual-networks",
+        "lstm-and-gru",
+        "autoregressive-models",
+        "state-space-models",
+        "graph-neural-networks",
+        "generative-adversarial-networks",
+        "diffusion-models",
+        "mixture-of-experts",
+      ],
+    },
+    {
       id: "further-paradigms",
       label: "Further Paradigms & Methods",
       conceptIds: [
