@@ -1,0 +1,137 @@
+// A curated set of common US college/university .edu domains, mapped to
+// display names. Not exhaustive — any address ending in .edu still
+// qualifies for the student discount, this list just lets us show a
+// friendly school name instead of the raw domain when we recognize it.
+export const EDU_DOMAINS: Record<string, string> = {
+  "harvard.edu": "Harvard University",
+  "mit.edu": "MIT",
+  "stanford.edu": "Stanford University",
+  "berkeley.edu": "UC Berkeley",
+  "ucla.edu": "UCLA",
+  "ucsd.edu": "UC San Diego",
+  "uci.edu": "UC Irvine",
+  "ucdavis.edu": "UC Davis",
+  "ucsb.edu": "UC Santa Barbara",
+  "usc.edu": "USC",
+  "caltech.edu": "Caltech",
+  "cornell.edu": "Cornell University",
+  "columbia.edu": "Columbia University",
+  "yale.edu": "Yale University",
+  "princeton.edu": "Princeton University",
+  "upenn.edu": "University of Pennsylvania",
+  "brown.edu": "Brown University",
+  "dartmouth.edu": "Dartmouth College",
+  "duke.edu": "Duke University",
+  "nyu.edu": "New York University",
+  "northwestern.edu": "Northwestern University",
+  "uchicago.edu": "University of Chicago",
+  "jhu.edu": "Johns Hopkins University",
+  "cmu.edu": "Carnegie Mellon University",
+  "gatech.edu": "Georgia Tech",
+  "umich.edu": "University of Michigan",
+  "umn.edu": "University of Minnesota",
+  "wisc.edu": "University of Wisconsin–Madison",
+  "illinois.edu": "University of Illinois Urbana-Champaign",
+  "osu.edu": "Ohio State University",
+  "psu.edu": "Penn State University",
+  "rutgers.edu": "Rutgers University",
+  "purdue.edu": "Purdue University",
+  "indiana.edu": "Indiana University",
+  "utexas.edu": "UT Austin",
+  "tamu.edu": "Texas A&M University",
+  "rice.edu": "Rice University",
+  "ufl.edu": "University of Florida",
+  "fsu.edu": "Florida State University",
+  "miami.edu": "University of Miami",
+  "unc.edu": "UNC Chapel Hill",
+  "virginia.edu": "University of Virginia",
+  "vt.edu": "Virginia Tech",
+  "gwu.edu": "George Washington University",
+  "georgetown.edu": "Georgetown University",
+  "bu.edu": "Boston University",
+  "bc.edu": "Boston College",
+  "northeastern.edu": "Northeastern University",
+  "tufts.edu": "Tufts University",
+  "brandeis.edu": "Brandeis University",
+  "umass.edu": "UMass Amherst",
+  "uconn.edu": "University of Connecticut",
+  "asu.edu": "Arizona State University",
+  "arizona.edu": "University of Arizona",
+  "colorado.edu": "University of Colorado Boulder",
+  "washington.edu": "University of Washington",
+  "uoregon.edu": "University of Oregon",
+  "oregonstate.edu": "Oregon State University",
+  "wsu.edu": "Washington State University",
+  "byu.edu": "Brigham Young University",
+  "utah.edu": "University of Utah",
+  "unm.edu": "University of New Mexico",
+  "unlv.edu": "UNLV",
+  "unr.edu": "University of Nevada, Reno",
+  "sdsu.edu": "San Diego State University",
+  "sfsu.edu": "San Francisco State University",
+  "sjsu.edu": "San Jose State University",
+  "csulb.edu": "Cal State Long Beach",
+  "fullerton.edu": "Cal State Fullerton",
+  "calpoly.edu": "Cal Poly San Luis Obispo",
+  "iastate.edu": "Iowa State University",
+  "uiowa.edu": "University of Iowa",
+  "ku.edu": "University of Kansas",
+  "k-state.edu": "Kansas State University",
+  "missouri.edu": "University of Missouri",
+  "wustl.edu": "Washington University in St. Louis",
+  "unl.edu": "University of Nebraska–Lincoln",
+  "okstate.edu": "Oklahoma State University",
+  "ou.edu": "University of Oklahoma",
+  "lsu.edu": "Louisiana State University",
+  "tulane.edu": "Tulane University",
+  "olemiss.edu": "University of Mississippi",
+  "msstate.edu": "Mississippi State University",
+  "auburn.edu": "Auburn University",
+  "ua.edu": "University of Alabama",
+  "uga.edu": "University of Georgia",
+  "emory.edu": "Emory University",
+  "vanderbilt.edu": "Vanderbilt University",
+  "utk.edu": "University of Tennessee",
+  "uky.edu": "University of Kentucky",
+  "louisville.edu": "University of Louisville",
+  "wvu.edu": "West Virginia University",
+  "pitt.edu": "University of Pittsburgh",
+  "temple.edu": "Temple University",
+  "drexel.edu": "Drexel University",
+  "syr.edu": "Syracuse University",
+  "rochester.edu": "University of Rochester",
+  "buffalo.edu": "University at Buffalo",
+  "stonybrook.edu": "Stony Brook University",
+  "binghamton.edu": "Binghamton University",
+  "albany.edu": "University at Albany",
+  "rpi.edu": "Rensselaer Polytechnic Institute",
+  "case.edu": "Case Western Reserve University",
+  "udel.edu": "University of Delaware",
+  "umd.edu": "University of Maryland",
+  "umbc.edu": "UMBC",
+  "vcu.edu": "Virginia Commonwealth University",
+  "wm.edu": "William & Mary",
+  "ncsu.edu": "NC State University",
+  "clemson.edu": "Clemson University",
+  "sc.edu": "University of South Carolina",
+};
+
+export function isEduEmail(email: string): boolean {
+  return /\.edu$/i.test(email.trim());
+}
+
+export function getEmailDomain(email: string): string | null {
+  const match = email.trim().toLowerCase().match(/@([^@]+)$/);
+  return match ? match[1] : null;
+}
+
+export function getSchoolName(email: string): string | null {
+  const domain = getEmailDomain(email);
+  if (!domain) return null;
+  return getSchoolNameForDomain(domain);
+}
+
+/** Friendly name for a bare domain (e.g. "ucla.edu" -> "UCLA"), falling back to the domain itself. */
+export function getSchoolNameForDomain(domain: string): string {
+  return EDU_DOMAINS[domain.toLowerCase()] ?? domain;
+}

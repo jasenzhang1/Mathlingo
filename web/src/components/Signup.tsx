@@ -1,8 +1,12 @@
-import { useState, type FormEvent } from "react";
+import { useMemo, useState, type FormEvent } from "react";
+import { getSchoolName, isEduEmail } from "../data/eduDomains";
 
 export function Signup() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  const isStudent = useMemo(() => isEduEmail(email), [email]);
+  const schoolName = useMemo(() => getSchoolName(email), [email]);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -22,9 +26,22 @@ export function Signup() {
         </p>
 
         {submitted ? (
-          <p className="font-body mt-8 rounded-full border border-[var(--line)] bg-[var(--accent-soft)] px-6 py-3 text-sm font-medium text-[var(--ink)]">
-            You're on the list — we'll be in touch.
-          </p>
+          <div className="font-body mt-8 space-y-2">
+            <p className="rounded-full border border-[var(--line)] bg-[var(--accent-soft)] px-6 py-3 text-sm font-medium text-[var(--ink)]">
+              You're on the list — we'll be in touch.
+            </p>
+            {isStudent && (
+              <p className="text-sm text-[var(--ink-soft)]">
+                {schoolName ? (
+                  <>You're in as a {schoolName} student</>
+                ) : (
+                  <>You're in with a verified student email</>
+                )}{" "}
+                — you'll get the student discount and an invite to your
+                school's forum when we launch.
+              </p>
+            )}
+          </div>
         ) : (
           <form
             onSubmit={handleSubmit}
@@ -50,6 +67,13 @@ export function Signup() {
               Join the waitlist
             </button>
           </form>
+        )}
+
+        {!submitted && isStudent && (
+          <p className="font-body mt-3 text-sm text-[var(--ink-soft)]">
+            {schoolName ?? "Student"} email detected — join with this address
+            to unlock the student discount and your school's forum.
+          </p>
         )}
       </div>
     </section>

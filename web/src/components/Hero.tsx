@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface HeroProps {
   onPickPath: (path: "refresh" | "bootcamp") => void;
 }
@@ -35,6 +37,13 @@ export function Hero({ onPickPath }: HeroProps) {
             Break into ML / data roles
           </button>
         </div>
+
+        <Link
+          to="/map"
+          className="font-body mt-6 inline-block text-sm font-medium text-[var(--accent)] hover:underline"
+        >
+          Or explore the concept map →
+        </Link>
 
         <dl className="font-body mx-auto mt-16 grid max-w-2xl grid-cols-2 gap-8 text-left sm:grid-cols-4 sm:text-center">
           {[
