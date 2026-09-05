@@ -3,37 +3,48 @@ import { numpyBroadcastingWiki } from "./numpy-broadcasting";
 import { pandasDataframesWiki } from "./pandas-dataframes";
 import { pandasGroupbyWiki } from "./pandas-groupby";
 import { pythonComprehensionsWiki } from "./python-comprehensions";
-import { pythonDictsWiki } from "./python-dicts";
-import { pythonListsWiki } from "./python-lists";
+import { pythonDictionariesWiki } from "./python-dictionaries";
+import { pythonSetsWiki } from "./python-sets";
+import { pythonListsIntroWiki } from "./python-lists-intro";
+import { pythonIndexingWiki } from "./python-indexing";
+import { pythonSlicingWiki } from "./python-slicing";
+import { pythonListOperationsWiki } from "./python-list-operations";
 import { pythonLoopsWiki } from "./python-loops";
 import { pythonVariablesTypesWiki } from "./python-variables-types";
 import { pythonTypeConversionWiki } from "./python-type-conversion";
 import { pythonOperatorsWiki } from "./python-operators";
+import { pythonConditionalsWiki } from "./python-conditionals";
+import { pythonWhileLoopsWiki } from "./python-while-loops";
+import { pythonForLoopsWiki } from "./python-for-loops";
 import { pythonTuplesWiki } from "./python-tuples";
 import type { WikiArticle } from "../types";
 
 /**
- * The `python` domain, in prerequisite order: the two containers, the loop
- * forms that walk them, comprehensions as those loops written as expressions,
- * and then the same work again at array and table scale.
+ * The `python` domain, in prerequisite order: variables and types, control
+ * flow, the containers (split into intro/indexing/slicing/operations, plus
+ * tuples/dictionaries/sets), the loop forms that walk them, comprehensions as
+ * those loops written as expressions, and then the same work again at array
+ * and table scale.
  *
- * These eight are written as one argument, the way the statistics cluster is.
- * The argument is that a loop is a cost you can often delete: `python-loops`
- * establishes what iterating an element at a time actually does, `numpy-arrays`
- * shows the loop moving into compiled code, `numpy-broadcasting` shows it
- * disappearing into a shape rule, and `pandas-groupby`'s transform is the same
- * move once more at table scale — which is why that article closes by naming
- * keepdims explicitly. The pitfalls are chosen on the same principle: every
- * warning callout here is a failure that produces a plausible wrong answer
- * rather than an exception, because those are the ones drilling has to catch.
+ * The `python-lists` and `python-dicts` articles this file used to export
+ * were split into finer ones — see `items/python-containers-split.ts` and
+ * `items/python-control-flow.ts` for how the item banks were split/added
+ * alongside them.
  */
 export const pythonWikiArticles: WikiArticle[] = [
   pythonVariablesTypesWiki,
   pythonTypeConversionWiki,
   pythonOperatorsWiki,
-  pythonListsWiki,
+  pythonConditionalsWiki,
+  pythonWhileLoopsWiki,
+  pythonForLoopsWiki,
+  pythonListsIntroWiki,
+  pythonIndexingWiki,
+  pythonSlicingWiki,
+  pythonListOperationsWiki,
   pythonTuplesWiki,
-  pythonDictsWiki,
+  pythonDictionariesWiki,
+  pythonSetsWiki,
   pythonLoopsWiki,
   pythonComprehensionsWiki,
   numpyArraysWiki,

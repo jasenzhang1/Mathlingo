@@ -18,11 +18,18 @@ import type { Item, SourceRef } from "../../lib/assessment/types";
  * what the failure looks like when nothing raises. Drilling the exceptions
  * teaches nothing; the interpreter already teaches those.
  *
- * Prerequisite closures are tight because the chain is short — `python-lists`
- * may draw only on itself. Where an item genuinely wants a downstream idea (the
- * O(1) membership argument under `python-lists`, say) it is framed in terms the
- * learner already has, and the formal statement is left to the concept that
- * owns it.
+ * Prerequisite closures are kept tight — an item draws only on its own concept
+ * and named ancestors. Where an item genuinely wants a downstream idea (the
+ * O(1) membership argument under `python-list-operations`, say) it is framed
+ * in terms the learner already has, and the formal statement is left to the
+ * concept that owns it.
+ *
+ * The original `python-lists` and `python-dicts` concepts have since been
+ * split into finer ones (`python-lists-intro`, `python-indexing`,
+ * `python-slicing`, `python-list-operations`, `python-dictionaries`,
+ * `python-sets` — see `items/python-containers-split.ts`); the items below
+ * that predate the split were reassigned to whichever of those concepts they
+ * actually test, in place.
  */
 
 /** Authored from the concept and its prerequisites, with no external seed. */
@@ -58,11 +65,12 @@ const PANDAS_DOCS: SourceRef = {
 
 export const pythonItems: Item[] = [
   // =========================================================================
-  // Lists, Indexing, and Slicing
+  // Lists (split across python-indexing / python-slicing / python-list-operations
+  // — see the header comment above)
   // =========================================================================
   {
-    id: "python-lists--recall-negative-index",
-    conceptId: "python-lists",
+    id: "python-indexing--recall-negative-index",
+    conceptId: "python-indexing",
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
@@ -77,7 +85,7 @@ export const pythonItems: Item[] = [
           id: "negative-wraps-to-front",
           description:
             "Reads -1 as 'one before the start'. Negative indices count backwards from the end, so -1 is the last element and -len(a) is the first.",
-          blameConceptId: "python-lists",
+          blameConceptId: "python-indexing",
         },
       },
       {
@@ -88,7 +96,7 @@ export const pythonItems: Item[] = [
           id: "negative-is-error",
           description:
             "Imports the C convention, where a negative index is a memory bug. Python defines negative indexing as part of the sequence protocol.",
-          blameConceptId: "python-lists",
+          blameConceptId: "python-indexing",
         },
       },
       {
@@ -99,20 +107,20 @@ export const pythonItems: Item[] = [
           id: "index-is-relative",
           description:
             "Treats indexing as relative to some cursor. There is no cursor — an index is always absolute, measured from the start or, if negative, from the end.",
-          blameConceptId: "python-lists",
+          blameConceptId: "python-indexing",
         },
       },
     ],
     difficulty: -1.6,
     discrimination: 1.0,
     expectedSeconds: 15,
-    prereqClosure: ["python-lists"],
+    prereqClosure: ["python-indexing"],
     source: AUTHORED,
     status: "live",
   },
   {
-    id: "python-lists--recall-sort-returns",
-    conceptId: "python-lists",
+    id: "python-list-operations--recall-sort-returns",
+    conceptId: "python-list-operations",
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
@@ -127,7 +135,7 @@ export const pythonItems: Item[] = [
           id: "sort-returns-list",
           description:
             "Assumes sort() returns the sorted list. It sorts in place and returns None, so rebinding the name discards the list entirely — and no error is raised.",
-          blameConceptId: "python-lists",
+          blameConceptId: "python-list-operations",
         },
       },
       {
@@ -138,7 +146,7 @@ export const pythonItems: Item[] = [
           id: "sort-is-pure",
           description:
             "Assumes sort() leaves a alone, as sorted() would. It mutates — but the assignment then overwrites the name with the return value anyway.",
-          blameConceptId: "python-lists",
+          blameConceptId: "python-list-operations",
         },
       },
       {
@@ -149,20 +157,20 @@ export const pythonItems: Item[] = [
           id: "sort-assignment-errors",
           description:
             "Expects the language to catch the mistake. Nothing is ill-typed here; the failure is silent, which is exactly what makes it worth memorising.",
-          blameConceptId: "python-lists",
+          blameConceptId: "python-list-operations",
         },
       },
     ],
     difficulty: -0.9,
     discrimination: 1.4,
     expectedSeconds: 25,
-    prereqClosure: ["python-lists"],
+    prereqClosure: ["python-list-operations"],
     source: PYTHON_DOCS,
     status: "live",
   },
   {
-    id: "python-lists--apply-slice-length",
-    conceptId: "python-lists",
+    id: "python-slicing--apply-slice-length",
+    conceptId: "python-slicing",
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
@@ -173,13 +181,13 @@ export const pythonItems: Item[] = [
     difficulty: -1.1,
     discrimination: 1.2,
     expectedSeconds: 20,
-    prereqClosure: ["python-lists"],
+    prereqClosure: ["python-slicing"],
     source: AUTHORED,
     status: "live",
   },
   {
-    id: "python-lists--apply-out-of-range-slice",
-    conceptId: "python-lists",
+    id: "python-slicing--apply-out-of-range-slice",
+    conceptId: "python-slicing",
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
@@ -194,7 +202,7 @@ export const pythonItems: Item[] = [
           id: "slice-raises-too",
           description:
             "Applies the indexing rule to slicing. A slice clamps to the ends and returns whatever is in range — possibly nothing — rather than raising.",
-          blameConceptId: "python-lists",
+          blameConceptId: "python-slicing",
         },
       },
       {
@@ -205,7 +213,7 @@ export const pythonItems: Item[] = [
           id: "out-of-range-is-none",
           description:
             "Imports a lookup-with-default convention from dicts or from other languages. Neither expression returns None.",
-          blameConceptId: "python-lists",
+          blameConceptId: "python-slicing",
         },
       },
       {
@@ -216,20 +224,20 @@ export const pythonItems: Item[] = [
           id: "rules-reversed",
           description:
             "Has both rules, and has them backwards. Indexing is strict; slicing is forgiving.",
-          blameConceptId: "python-lists",
+          blameConceptId: "python-slicing",
         },
       },
     ],
     difficulty: -0.2,
     discrimination: 1.5,
     expectedSeconds: 35,
-    prereqClosure: ["python-lists"],
+    prereqClosure: ["python-slicing"],
     source: PYTHON_DOCS,
     status: "live",
   },
   {
-    id: "python-lists--apply-aliasing",
-    conceptId: "python-lists",
+    id: "python-list-operations--apply-aliasing",
+    conceptId: "python-list-operations",
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
@@ -254,7 +262,7 @@ export const pythonItems: Item[] = [
             id: "assignment-copies",
             description:
               "Believes assignment copies the value. In Python, assignment binds a name to an existing object; only an explicit slice, copy() or constructor makes a new one.",
-            blameConceptId: "python-lists",
+            blameConceptId: "python-list-operations",
           },
         },
         {
@@ -268,13 +276,13 @@ export const pythonItems: Item[] = [
     difficulty: 0.3,
     discrimination: 1.7,
     expectedSeconds: 90,
-    prereqClosure: ["python-lists"],
+    prereqClosure: ["python-list-operations"],
     source: AUTHORED,
     status: "live",
   },
   {
-    id: "python-lists--apply-repeated-inner-list",
-    conceptId: "python-lists",
+    id: "python-list-operations--apply-repeated-inner-list",
+    conceptId: "python-list-operations",
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
@@ -290,7 +298,7 @@ export const pythonItems: Item[] = [
           id: "outer-multiply-copies",
           description:
             "Assumes the outer * 2 duplicated the inner list. It repeated the reference, so both rows are the same object and one assignment shows up twice.",
-          blameConceptId: "python-lists",
+          blameConceptId: "python-list-operations",
         },
       },
       {
@@ -301,7 +309,7 @@ export const pythonItems: Item[] = [
           id: "inner-multiply-shares",
           description:
             "Attributes the sharing to the inner [0] * 3. Repeating immutable ints is harmless; it is repeating the mutable list that aliases.",
-          blameConceptId: "python-lists",
+          blameConceptId: "python-list-operations",
         },
       },
       {
@@ -312,20 +320,20 @@ export const pythonItems: Item[] = [
           id: "nested-multiply-errors",
           description:
             "Expects the construction to be rejected. It is perfectly legal, which is why the bug survives to run time.",
-          blameConceptId: "python-lists",
+          blameConceptId: "python-list-operations",
         },
       },
     ],
     difficulty: 0.8,
     discrimination: 1.6,
     expectedSeconds: 45,
-    prereqClosure: ["python-lists"],
+    prereqClosure: ["python-list-operations"],
     source: PYTHON_DOCS,
     status: "live",
   },
   {
-    id: "python-lists--explain-half-open",
-    conceptId: "python-lists",
+    id: "python-slicing--explain-half-open",
+    conceptId: "python-slicing",
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken", "handwritten"],
@@ -370,13 +378,13 @@ export const pythonItems: Item[] = [
     difficulty: 0.6,
     discrimination: 1.8,
     expectedSeconds: 150,
-    prereqClosure: ["python-lists"],
+    prereqClosure: ["python-slicing"],
     source: AUTHORED,
     status: "live",
   },
   {
-    id: "python-lists--transfer-mutate-while-iterating",
-    conceptId: "python-lists",
+    id: "python-list-operations--transfer-mutate-while-iterating",
+    conceptId: "python-list-operations",
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
@@ -394,7 +402,7 @@ export const pythonItems: Item[] = [
             id: "iteration-is-by-value",
             description:
               "Believes the loop holds a snapshot of the elements. It holds a position into the live list, which is why mutation during iteration changes what is visited.",
-            blameConceptId: "python-lists",
+            blameConceptId: "python-list-operations",
           },
         },
         {
@@ -421,17 +429,17 @@ export const pythonItems: Item[] = [
     difficulty: 1.3,
     discrimination: 1.9,
     expectedSeconds: 180,
-    prereqClosure: ["python-lists"],
+    prereqClosure: ["python-list-operations"],
     source: AUTHORED,
     status: "live",
   },
 
   // =========================================================================
-  // Dictionaries and Sets
+  // Dictionaries and Sets (split across python-dictionaries / python-sets)
   // =========================================================================
   {
-    id: "python-dicts--recall-missing-key",
-    conceptId: "python-dicts",
+    id: "python-dictionaries--recall-missing-key",
+    conceptId: "python-dictionaries",
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
@@ -446,7 +454,7 @@ export const pythonItems: Item[] = [
           id: "subscript-is-lenient",
           description:
             "Assumes subscripting has a default. It does not — the strictness of d[k] is the point of having .get() as a separate method.",
-          blameConceptId: "python-dicts",
+          blameConceptId: "python-dictionaries",
         },
       },
       {
@@ -457,7 +465,7 @@ export const pythonItems: Item[] = [
           id: "get-is-strict",
           description:
             "Treats .get() as a synonym for subscripting. Its whole purpose is to return a default instead of raising.",
-          blameConceptId: "python-dicts",
+          blameConceptId: "python-dictionaries",
         },
       },
       {
@@ -468,20 +476,20 @@ export const pythonItems: Item[] = [
           id: "read-inserts",
           description:
             "Describes defaultdict, not dict. A plain dict never grows on a read; only defaultdict inserts on a missing lookup.",
-          blameConceptId: "python-dicts",
+          blameConceptId: "python-dictionaries",
         },
       },
     ],
     difficulty: -1.4,
     discrimination: 1.2,
     expectedSeconds: 25,
-    prereqClosure: ["python-dicts"],
+    prereqClosure: ["python-dictionaries"],
     source: PYTHON_DOCS,
     status: "live",
   },
   {
-    id: "python-dicts--recall-hashable-keys",
-    conceptId: "python-dicts",
+    id: "python-dictionaries--recall-hashable-keys",
+    conceptId: "python-dictionaries",
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
@@ -496,7 +504,7 @@ export const pythonItems: Item[] = [
           id: "tuple-unhashable",
           description:
             "Assumes any container is unhashable. A tuple of hashable elements is itself hashable, which is why coordinate pairs make good keys.",
-          blameConceptId: "python-dicts",
+          blameConceptId: "python-dictionaries",
         },
       },
       {
@@ -507,7 +515,7 @@ export const pythonItems: Item[] = [
           id: "string-unhashable",
           description:
             "Strings are immutable and hashable — the most common key type there is.",
-          blameConceptId: "python-dicts",
+          blameConceptId: "python-dictionaries",
         },
       },
       {
@@ -518,20 +526,20 @@ export const pythonItems: Item[] = [
           id: "none-unhashable",
           description:
             "None is a perfectly ordinary hashable singleton and is legal as a key.",
-          blameConceptId: "python-dicts",
+          blameConceptId: "python-dictionaries",
         },
       },
     ],
     difficulty: -0.8,
     discrimination: 1.3,
     expectedSeconds: 25,
-    prereqClosure: ["python-dicts"],
+    prereqClosure: ["python-dictionaries"],
     source: PYTHON_DOCS,
     status: "live",
   },
   {
-    id: "python-dicts--apply-dedup-count",
-    conceptId: "python-dicts",
+    id: "python-sets--apply-dedup-count",
+    conceptId: "python-sets",
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
@@ -542,13 +550,13 @@ export const pythonItems: Item[] = [
     difficulty: -1.0,
     discrimination: 1.1,
     expectedSeconds: 30,
-    prereqClosure: ["python-dicts", "python-lists"],
+    prereqClosure: ["python-sets", "python-sets"],
     source: AUTHORED,
     status: "live",
   },
   {
-    id: "python-dicts--apply-grouping-pattern",
-    conceptId: "python-dicts",
+    id: "python-dictionaries--apply-grouping-pattern",
+    conceptId: "python-dictionaries",
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
@@ -566,7 +574,7 @@ export const pythonItems: Item[] = [
             id: "quadratic-grouping",
             description:
               "Scans the whole input once per distinct key, or calls .count() inside the loop, turning a linear job into a quadratic one.",
-            blameConceptId: "python-dicts",
+            blameConceptId: "python-dictionaries",
           },
         },
         {
@@ -587,13 +595,13 @@ export const pythonItems: Item[] = [
     difficulty: 0.1,
     discrimination: 1.6,
     expectedSeconds: 120,
-    prereqClosure: ["python-dicts", "python-lists"],
+    prereqClosure: ["python-dictionaries", "python-dictionaries"],
     source: AUTHORED,
     status: "live",
   },
   {
-    id: "python-dicts--apply-invert-collision",
-    conceptId: "python-dicts",
+    id: "python-dictionaries--apply-invert-collision",
+    conceptId: "python-dictionaries",
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
@@ -613,7 +621,7 @@ export const pythonItems: Item[] = [
           id: "inversion-is-lossless",
           description:
             "Assumes inversion is a bijection. It is only lossless when the values are distinct; duplicated values collapse, silently.",
-          blameConceptId: "python-dicts",
+          blameConceptId: "python-dictionaries",
         },
       },
       {
@@ -624,7 +632,7 @@ export const pythonItems: Item[] = [
           id: "collision-collects",
           description:
             "Expects dict assignment to accumulate. It replaces. Collecting requires setdefault or a defaultdict, written deliberately.",
-          blameConceptId: "python-dicts",
+          blameConceptId: "python-dictionaries",
         },
       },
       {
@@ -635,20 +643,20 @@ export const pythonItems: Item[] = [
           id: "duplicate-raises",
           description:
             "Expects a duplicate key to be rejected. Assignment to an existing key is the ordinary update path and never raises.",
-          blameConceptId: "python-dicts",
+          blameConceptId: "python-dictionaries",
         },
       },
     ],
     difficulty: 0.5,
     discrimination: 1.5,
     expectedSeconds: 50,
-    prereqClosure: ["python-dicts"],
+    prereqClosure: ["python-dictionaries"],
     source: AUTHORED,
     status: "live",
   },
   {
-    id: "python-dicts--explain-set-membership",
-    conceptId: "python-dicts",
+    id: "python-sets--explain-set-membership",
+    conceptId: "python-sets",
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken", "handwritten"],
@@ -673,7 +681,7 @@ export const pythonItems: Item[] = [
             id: "set-is-just-faster",
             description:
               "Asserts a set is faster without naming hashing. Without the mechanism the claim does not predict when it fails — an unhashable element, or a pathological hash.",
-            blameConceptId: "python-dicts",
+            blameConceptId: "python-sets",
           },
         },
         {
@@ -695,13 +703,13 @@ export const pythonItems: Item[] = [
     difficulty: 0.7,
     discrimination: 1.8,
     expectedSeconds: 150,
-    prereqClosure: ["python-dicts", "python-lists"],
+    prereqClosure: ["python-sets", "python-sets"],
     source: AUTHORED,
     status: "live",
   },
   {
-    id: "python-dicts--explain-why-hashable",
-    conceptId: "python-dicts",
+    id: "python-sets--explain-why-hashable",
+    conceptId: "python-sets",
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken", "handwritten"],
@@ -726,7 +734,7 @@ export const pythonItems: Item[] = [
             id: "arbitrary-restriction",
             description:
               "Treats the rule as an arbitrary language restriction rather than a consequence of how hash tables find things.",
-            blameConceptId: "python-dicts",
+            blameConceptId: "python-sets",
           },
         },
         {
@@ -740,13 +748,13 @@ export const pythonItems: Item[] = [
     difficulty: 1.0,
     discrimination: 1.7,
     expectedSeconds: 150,
-    prereqClosure: ["python-dicts"],
+    prereqClosure: ["python-sets"],
     source: AUTHORED,
     status: "live",
   },
   {
-    id: "python-dicts--transfer-join-two-tables",
-    conceptId: "python-dicts",
+    id: "python-dictionaries--transfer-join-two-tables",
+    conceptId: "python-dictionaries",
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
@@ -777,7 +785,7 @@ export const pythonItems: Item[] = [
             id: "index-loses-duplicates",
             description:
               "Replaces a many-to-many pairing with a one-to-one lookup and silently drops matches. This is the same failure a pandas merge makes visible as a changed row count.",
-            blameConceptId: "python-dicts",
+            blameConceptId: "python-dictionaries",
           },
         },
       ],
@@ -785,7 +793,7 @@ export const pythonItems: Item[] = [
     difficulty: 1.4,
     discrimination: 1.9,
     expectedSeconds: 200,
-    prereqClosure: ["python-dicts", "python-lists"],
+    prereqClosure: ["python-dictionaries", "python-dictionaries"],
     source: AUTHORED,
     status: "live",
   },
@@ -888,7 +896,7 @@ export const pythonItems: Item[] = [
     difficulty: -1.1,
     discrimination: 1.1,
     expectedSeconds: 20,
-    prereqClosure: ["python-loops", "python-dicts"],
+    prereqClosure: ["python-loops", "python-dictionaries"],
     source: PYTHON_DOCS,
     status: "live",
   },
@@ -905,7 +913,7 @@ export const pythonItems: Item[] = [
     difficulty: -0.7,
     discrimination: 1.4,
     expectedSeconds: 25,
-    prereqClosure: ["python-loops", "python-lists"],
+    prereqClosure: ["python-loops", "python-list-operations"],
     source: AUTHORED,
     status: "live",
   },
@@ -959,7 +967,7 @@ export const pythonItems: Item[] = [
     difficulty: 0.4,
     discrimination: 1.6,
     expectedSeconds: 60,
-    prereqClosure: ["python-loops", "python-lists"],
+    prereqClosure: ["python-loops", "python-list-operations"],
     source: PYTHON_DOCS,
     status: "live",
   },
@@ -1003,7 +1011,7 @@ export const pythonItems: Item[] = [
     difficulty: 0.9,
     discrimination: 1.6,
     expectedSeconds: 120,
-    prereqClosure: ["python-loops", "python-lists"],
+    prereqClosure: ["python-loops", "python-list-operations"],
     source: AUTHORED,
     status: "live",
   },
@@ -1048,7 +1056,7 @@ export const pythonItems: Item[] = [
     difficulty: 0.6,
     discrimination: 1.7,
     expectedSeconds: 150,
-    prereqClosure: ["python-loops", "python-lists"],
+    prereqClosure: ["python-loops", "python-list-operations"],
     source: AUTHORED,
     status: "live",
   },
@@ -1102,7 +1110,7 @@ export const pythonItems: Item[] = [
     difficulty: 1.1,
     discrimination: 1.9,
     expectedSeconds: 180,
-    prereqClosure: ["python-loops", "python-lists"],
+    prereqClosure: ["python-loops", "python-list-operations"],
     source: AUTHORED,
     status: "live",
   },
@@ -1152,7 +1160,7 @@ export const pythonItems: Item[] = [
     difficulty: 1.4,
     discrimination: 1.8,
     expectedSeconds: 180,
-    prereqClosure: ["python-loops", "python-lists"],
+    prereqClosure: ["python-loops", "python-list-operations"],
     source: AUTHORED,
     status: "live",
   },
@@ -1255,7 +1263,7 @@ export const pythonItems: Item[] = [
     difficulty: -0.2,
     discrimination: 1.5,
     expectedSeconds: 45,
-    prereqClosure: ["python-comprehensions", "python-lists"],
+    prereqClosure: ["python-comprehensions", "python-list-operations"],
     source: AUTHORED,
     status: "live",
   },
@@ -1272,7 +1280,7 @@ export const pythonItems: Item[] = [
     difficulty: -0.5,
     discrimination: 1.3,
     expectedSeconds: 30,
-    prereqClosure: ["python-comprehensions", "python-lists"],
+    prereqClosure: ["python-comprehensions", "python-list-operations"],
     source: AUTHORED,
     status: "live",
   },
@@ -1310,7 +1318,7 @@ export const pythonItems: Item[] = [
     difficulty: 0.7,
     discrimination: 1.6,
     expectedSeconds: 120,
-    prereqClosure: ["python-comprehensions", "python-loops", "python-lists"],
+    prereqClosure: ["python-comprehensions", "python-loops", "python-list-operations"],
     source: AUTHORED,
     status: "live",
   },
@@ -1496,7 +1504,7 @@ export const pythonItems: Item[] = [
     difficulty: 1.5,
     discrimination: 1.9,
     expectedSeconds: 200,
-    prereqClosure: ["python-comprehensions", "python-loops", "python-lists"],
+    prereqClosure: ["python-comprehensions", "python-loops", "python-list-operations"],
     source: AUTHORED,
     status: "live",
   },
@@ -1551,7 +1559,7 @@ export const pythonItems: Item[] = [
     difficulty: -1.2,
     discrimination: 1.3,
     expectedSeconds: 25,
-    prereqClosure: ["numpy-arrays", "python-lists"],
+    prereqClosure: ["numpy-arrays", "python-list-operations"],
     source: NUMPY_DOCS,
     status: "live",
   },
@@ -1670,7 +1678,7 @@ export const pythonItems: Item[] = [
     difficulty: 0.6,
     discrimination: 1.7,
     expectedSeconds: 60,
-    prereqClosure: ["numpy-arrays", "python-lists"],
+    prereqClosure: ["numpy-arrays", "python-list-operations"],
     source: NUMPY_DOCS,
     status: "live",
   },
@@ -1813,7 +1821,7 @@ export const pythonItems: Item[] = [
     difficulty: 0.8,
     discrimination: 1.7,
     expectedSeconds: 180,
-    prereqClosure: ["numpy-arrays", "python-lists"],
+    prereqClosure: ["numpy-arrays", "python-list-operations"],
     source: AUTHORED,
     status: "live",
   },
@@ -2952,7 +2960,7 @@ export const pythonItems: Item[] = [
     difficulty: 1.7,
     discrimination: 2.0,
     expectedSeconds: 240,
-    prereqClosure: ["pandas-groupby", "pandas-dataframes", "python-dicts"],
+    prereqClosure: ["pandas-groupby", "pandas-dataframes", "python-dictionaries"],
     source: AUTHORED,
     status: "live",
   },

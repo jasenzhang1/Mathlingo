@@ -2221,12 +2221,60 @@ export const concepts: Concept[] = [
     prerequisites: ["python-type-conversion"],
   },
   {
-    id: "python-lists",
-    title: "Lists, Indexing, and Slicing",
+    id: "python-conditionals",
+    title: "Conditionals: if, elif, else",
     domain: "python",
     blurb:
-      "Ordered, mutable sequences — and the half-open slice convention that makes a[:k] + a[k:] whole again.",
+      "The first logical expression that changes what a program does — indentation-delimited branches, and exactly one runs.",
     prerequisites: ["python-operators"],
+  },
+  {
+    id: "python-while-loops",
+    title: "while Loops",
+    domain: "python",
+    blurb:
+      "Repeating for as long as a condition holds — re-checked before every pass, including the first.",
+    prerequisites: ["python-conditionals"],
+  },
+  {
+    id: "python-for-loops",
+    title: "for Loops and range",
+    domain: "python",
+    blurb:
+      "Walking an iterable one item at a time, and range()'s half-open convention for counting a fixed number of times.",
+    prerequisites: ["python-conditionals"],
+  },
+  {
+    id: "python-lists-intro",
+    title: "Introduction to Lists",
+    domain: "python",
+    blurb:
+      "Building an ordered, mutable collection with [ ] — creation, len(), and membership before indexing gets involved.",
+    prerequisites: ["python-for-loops"],
+  },
+  {
+    id: "python-indexing",
+    title: "Indexing: Accessing List Items",
+    domain: "python",
+    blurb:
+      "Zero-based positions, and negative indices that count backward from the end without needing len().",
+    prerequisites: ["python-lists-intro"],
+  },
+  {
+    id: "python-slicing",
+    title: "Slicing: Getting Sublists",
+    domain: "python",
+    blurb:
+      "The half-open slice convention that makes a[:k] + a[k:] whole again — and why a slice never raises where an index would.",
+    prerequisites: ["python-indexing"],
+  },
+  {
+    id: "python-list-operations",
+    title: "Mutating Lists and Useful Methods",
+    domain: "python",
+    blurb:
+      "Aliasing (b = a shares one object), the mutating methods that return None, and sort/sorted/count/index.",
+    prerequisites: ["python-slicing"],
   },
   {
     id: "python-tuples",
@@ -2234,15 +2282,23 @@ export const concepts: Concept[] = [
     domain: "python",
     blurb:
       "Fixed, ordered, and immutable — the sequence you reach for when a list would invite the wrong kind of change.",
-    prerequisites: ["python-lists"],
+    prerequisites: ["python-list-operations"],
   },
   {
-    id: "python-dicts",
-    title: "Dictionaries and Sets",
+    id: "python-dictionaries",
+    title: "Dictionaries",
     domain: "python",
     blurb:
-      "Hash-based lookup in O(1): counting, grouping, inverting, and why keys must be hashable.",
-    prerequisites: ["python-lists"],
+      "Hash-based lookup by key in O(1): counting, grouping, inverting, and d[k] versus d.get(k).",
+    prerequisites: ["python-list-operations"],
+  },
+  {
+    id: "python-sets",
+    title: "Sets",
+    domain: "python",
+    blurb:
+      "A dict with the values thrown away: unique membership in O(1), set algebra, and why keys must be hashable.",
+    prerequisites: ["python-dictionaries"],
   },
   {
     id: "python-loops",
@@ -2250,7 +2306,7 @@ export const concepts: Concept[] = [
     domain: "python",
     blurb:
       "Iterating over items rather than indices — and reaching for enumerate or zip when you need both.",
-    prerequisites: ["python-lists", "python-dicts"],
+    prerequisites: ["python-list-operations", "python-dictionaries", "python-for-loops"],
   },
   {
     id: "python-comprehensions",
@@ -2266,7 +2322,7 @@ export const concepts: Concept[] = [
     domain: "python",
     blurb:
       "One dtype, one contiguous block, and elementwise operations that push the loop into C.",
-    prerequisites: ["python-lists", "python-loops"],
+    prerequisites: ["python-list-operations", "python-loops"],
   },
   {
     id: "numpy-broadcasting",
@@ -2282,7 +2338,7 @@ export const concepts: Concept[] = [
     domain: "python",
     blurb:
       "Labelled arrays: the index is the point, and .loc and .iloc are not interchangeable.",
-    prerequisites: ["numpy-arrays", "python-dicts"],
+    prerequisites: ["numpy-arrays", "python-dictionaries"],
   },
   {
     id: "pandas-groupby",

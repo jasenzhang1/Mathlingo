@@ -593,12 +593,25 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
+      id: "control-flow",
+      label: "Control Flow",
+      conceptIds: [
+        "python-conditionals",
+        "python-while-loops",
+        "python-for-loops",
+      ],
+    },
+    {
       id: "containers-and-iteration",
       label: "Containers & Iteration",
       conceptIds: [
-        "python-lists",
+        "python-lists-intro",
+        "python-indexing",
+        "python-slicing",
+        "python-list-operations",
         "python-tuples",
-        "python-dicts",
+        "python-dictionaries",
+        "python-sets",
         "python-loops",
         "python-comprehensions",
       ],
