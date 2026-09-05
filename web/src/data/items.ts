@@ -7,6 +7,7 @@ import { statisticsNonparametricItems } from "./items.statistics-nonparametric";
 import { statisticsTestsItems } from "./items.statistics-tests";
 import { mlItems } from "./items-ml";
 import { pythonItems } from "./items/python";
+import { pythonFundamentalsItems } from "./items/python-fundamentals";
 import { regressionDiagnosticsItems } from "./items/regression-diagnostics";
 import { regressionExtensionsItems } from "./items/regression-extensions";
 import { regressionFoundationsItems } from "./items/regression-foundations";
@@ -2879,6 +2880,13 @@ export const items: Item[] = [
   // the design record and why that direction was taken.
   // -------------------------------------------------------------------------
   ...pythonItems,
+
+  // -------------------------------------------------------------------------
+  // Python fundamentals — variables/types, type conversion, operators, and
+  // tuples, inserted as prerequisites ahead of python-lists for learners who
+  // haven't used Python before. Same 8-live-items-per-concept bar.
+  // -------------------------------------------------------------------------
+  ...pythonFundamentalsItems,
 ];
 
 /**

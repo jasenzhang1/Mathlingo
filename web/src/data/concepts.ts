@@ -2197,12 +2197,44 @@ export const concepts: Concept[] = [
   // written the `for` it eliminates.
   // ---------------------------------------------------------------------
   {
+    id: "python-variables-types",
+    title: "Variables and Core Data Types",
+    domain: "python",
+    blurb:
+      "Binding a name with = and the four building-block types — int, float, str, bool — everything else is built from.",
+    prerequisites: [],
+  },
+  {
+    id: "python-type-conversion",
+    title: "Type Conversion and Truthiness",
+    domain: "python",
+    blurb:
+      "Converting explicitly between types with int(), float(), str(), bool() — and why bool(\"0\") is True.",
+    prerequisites: ["python-variables-types"],
+  },
+  {
+    id: "python-operators",
+    title: "Arithmetic, Comparison, and Boolean Operators",
+    domain: "python",
+    blurb:
+      "// and % beyond plain division, short-circuiting and/or, and building strings with f-strings.",
+    prerequisites: ["python-type-conversion"],
+  },
+  {
     id: "python-lists",
     title: "Lists, Indexing, and Slicing",
     domain: "python",
     blurb:
       "Ordered, mutable sequences — and the half-open slice convention that makes a[:k] + a[k:] whole again.",
-    prerequisites: [],
+    prerequisites: ["python-operators"],
+  },
+  {
+    id: "python-tuples",
+    title: "Tuples",
+    domain: "python",
+    blurb:
+      "Fixed, ordered, and immutable — the sequence you reach for when a list would invite the wrong kind of change.",
+    prerequisites: ["python-lists"],
   },
   {
     id: "python-dicts",

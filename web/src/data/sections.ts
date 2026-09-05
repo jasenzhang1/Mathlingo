@@ -584,10 +584,20 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
 
   python: [
     {
+      id: "fundamentals",
+      label: "Fundamentals",
+      conceptIds: [
+        "python-variables-types",
+        "python-type-conversion",
+        "python-operators",
+      ],
+    },
+    {
       id: "containers-and-iteration",
       label: "Containers & Iteration",
       conceptIds: [
         "python-lists",
+        "python-tuples",
         "python-dicts",
         "python-loops",
         "python-comprehensions",

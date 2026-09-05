@@ -6,6 +6,10 @@ import { pythonComprehensionsWiki } from "./python-comprehensions";
 import { pythonDictsWiki } from "./python-dicts";
 import { pythonListsWiki } from "./python-lists";
 import { pythonLoopsWiki } from "./python-loops";
+import { pythonVariablesTypesWiki } from "./python-variables-types";
+import { pythonTypeConversionWiki } from "./python-type-conversion";
+import { pythonOperatorsWiki } from "./python-operators";
+import { pythonTuplesWiki } from "./python-tuples";
 import type { WikiArticle } from "../types";
 
 /**
@@ -24,7 +28,11 @@ import type { WikiArticle } from "../types";
  * rather than an exception, because those are the ones drilling has to catch.
  */
 export const pythonWikiArticles: WikiArticle[] = [
+  pythonVariablesTypesWiki,
+  pythonTypeConversionWiki,
+  pythonOperatorsWiki,
   pythonListsWiki,
+  pythonTuplesWiki,
   pythonDictsWiki,
   pythonLoopsWiki,
   pythonComprehensionsWiki,

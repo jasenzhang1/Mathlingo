@@ -48,11 +48,11 @@ export const topics: Topic[] = [
   },
   {
     id: "python",
-    name: "Python Fundamentals",
-    tagline: "Variables, types, and the data structures everything else builds on",
+    name: "Python for Data Work",
+    tagline: "From your first variable to vectorized NumPy and pandas",
     description:
-      "From your first variable to lists, dictionaries, and sets — the Python building blocks every other topic here assumes you already know.",
-    hours: 6,
+      "Variables, types, and conversion; lists, tuples, dicts, and sets; loops and comprehensions — then the same operations again at array and table scale in NumPy and pandas.",
+    hours: 10,
     tracks: ["refresh", "bootcamp"],
   },
   {
