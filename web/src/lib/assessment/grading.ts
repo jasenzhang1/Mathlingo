@@ -159,6 +159,47 @@ function gradeMath(item: Item, answer: NormalizedAnswer): RubricVerdict[] {
   ];
 }
 
+// --- Code execution -----------------------------------------------------------
+
+/**
+ * Runs the submission against `item.codeTests` in a sandboxed Python
+ * interpreter (see `pythonSandbox.ts`) and turns each test's pass/fail into a
+ * rubric verdict. Imported lazily so the Pyodide loader it pulls in is never
+ * fetched for a session that doesn't hit a `code`-format item.
+ */
+async function gradeCode(item: Item, answer: NormalizedAnswer): Promise<RubricVerdict[]> {
+  const tests = item.codeTests ?? [];
+  const rubric = rubricFor(item);
+
+  if (tests.length === 0) {
+    throw new Error(`Item ${item.id} has format "code" but no codeTests.`);
+  }
+
+  // normalizeSubmission already rejects an empty answer.text before grading
+  // is ever reached, so no separate "nothing submitted" branch is needed here.
+  const { runCodeTests } = await import("./pythonSandbox");
+  const outcomes = await runCodeTests(answer.text, tests);
+  const outcomeById = new Map(outcomes.map((o) => [o.id, o]));
+
+  return rubric.elements.map((element) => {
+    const test = tests.find((t) => `test-${t.id}` === element.id);
+    const outcome = test ? outcomeById.get(test.id) : undefined;
+    const passed = outcome?.passed ?? false;
+
+    return makeVerdict({
+      elementId: element.id,
+      description: element.description,
+      weight: element.weight,
+      credit: passed ? 1 : 0,
+      justification: passed
+        ? "Passed."
+        : outcome?.error
+          ? `Raised an error: ${outcome.error}`
+          : "Ran, but didn't produce the expected result for this case.",
+    });
+  });
+}
+
 // --- Pipeline ----------------------------------------------------------------
 
 export async function gradeSubmission(input: {
@@ -205,6 +246,17 @@ export async function gradeSubmission(input: {
     // A transcription step that was itself uncertain must discount the grade
     // built on top of it — otherwise a confident mark rests on a guessed word.
     confidence = judged.confidence * (answer.transcriptConfidence ?? 1);
+  } else if (kind === "code") {
+    try {
+      verdicts = await gradeCode(item, answer);
+    } catch (err) {
+      return {
+        ok: false,
+        reason: "error",
+        message: err instanceof Error ? err.message : "The code sandbox failed to load.",
+      };
+    }
+    confidence = 1;
   } else {
     verdicts = kind === "exact" ? gradeExact(item, answer) : gradeMath(item, answer);
     confidence = answer.transcriptConfidence ?? 1;
@@ -230,7 +282,13 @@ export async function gradeSubmission(input: {
       latencySeconds,
       channel: answer.channel,
       adjudicator:
-        kind === "llm" ? "model-judge" : kind === "math" ? "tolerance" : "key",
+        kind === "llm"
+          ? "model-judge"
+          : kind === "math"
+            ? "tolerance"
+            : kind === "code"
+              ? "sandbox"
+              : "key",
       feedback: feedback ?? summarise(verdicts, credit),
       transcript: answer.transcript,
       transcriptConfidence: answer.transcriptConfidence,

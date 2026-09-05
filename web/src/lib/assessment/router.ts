@@ -16,7 +16,9 @@ export type GraderKind =
   /** Numeric comparison within tolerance. */
   | "math"
   /** Model judge against a rubric. */
-  | "llm";
+  | "llm"
+  /** Executes the submission against `codeTests` in a sandboxed interpreter. */
+  | "code";
 
 export function routeGrader(item: Item): GraderKind {
   switch (item.format) {
@@ -41,6 +43,9 @@ export function routeGrader(item: Item): GraderKind {
     case "derivation":
     case "interview":
       return "llm";
+
+    case "code":
+      return "code";
   }
 }
 

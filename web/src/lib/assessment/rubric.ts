@@ -105,6 +105,18 @@ export function rubricFor(item: Item): Rubric {
         ],
       };
 
+    case "code":
+      // One element per test, none required: the score is simply the fraction
+      // of tests the submission passes, the same partial-credit shape as
+      // multi-select's "fraction of correct choices selected."
+      return {
+        elements: (item.codeTests ?? []).map((test) => ({
+          id: `test-${test.id}`,
+          description: test.description,
+          weight: 1,
+        })),
+      };
+
     default:
       // An open-response item with no authored rubric cannot be graded — there
       // is nothing to grade against. Callers surface this rather than guessing.

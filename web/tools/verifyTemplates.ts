@@ -1,4 +1,6 @@
+import { spawnSync } from "node:child_process";
 import { items } from "../src/data/items.ts";
+import { buildTestScript } from "../src/lib/assessment/codeTests.ts";
 import {
   canInstantiate,
   hasPlaceholders,
@@ -108,6 +110,41 @@ for (const item of templated) {
     console.log(`    key = ${Number(instance.answerKey).toFixed(4)}`);
   }
 }
+
+// --- 5. Code items: the reference solution actually passes its own tests ----
+// Runs on real CPython (not Pyodide, which the browser uses) — a subprocess
+// per test is already fully isolated, so no namespace-clearing trick is
+// needed here the way pythonSandbox.ts needs one for a long-lived interpreter.
+console.log("\ncode items (reference solution vs. its own tests):");
+const codeItems = items.filter((i) => i.format === "code");
+let codeItemsChecked = 0;
+for (const item of codeItems) {
+  if (!item.referenceSolution) {
+    fail(`${item.id} has no referenceSolution — its codeTests were never confirmed satisfiable`);
+    continue;
+  }
+  if (!item.codeTests?.length) {
+    fail(`${item.id} is format "code" but has no codeTests`);
+    continue;
+  }
+  for (const test of item.codeTests) {
+    const script = buildTestScript(item.referenceSolution, test);
+    const result = spawnSync("python3", ["-c", script], { encoding: "utf8", timeout: 5000 });
+    if (result.error) {
+      fail(`${item.id} / ${test.id}: couldn't run python3 (${result.error.message})`);
+      continue;
+    }
+    const stdout = result.stdout.trim();
+    if (!stdout.endsWith("__MATHLINGO_TEST_PASS__")) {
+      fail(
+        `${item.id} / ${test.id}: reference solution failed its own test.\n` +
+          `    stdout: ${stdout || "(empty)"}\n    stderr: ${result.stderr.trim() || "(empty)"}`,
+      );
+    }
+  }
+  codeItemsChecked++;
+}
+console.log(`  ${codeItemsChecked} code item(s), ${codeItems.reduce((n, i) => n + (i.codeTests?.length ?? 0), 0)} tests`);
 
 console.log(failures === 0 ? "\nAll checks passed." : `\n${failures} FAILURE(S).`);
 process.exit(failures === 0 ? 0 : 1);

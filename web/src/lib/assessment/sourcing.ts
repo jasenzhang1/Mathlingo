@@ -144,11 +144,30 @@ export function checkStructure(item: Item): CheckResult[] {
       "Parameterised item has no solver, so its answer key cannot be computed per instance.",
     );
   }
-  if (!item.params?.length && item.answerKey === undefined && !item.rubric && !item.choices) {
-    fail("answer-key", "Item has no answer key, rubric, or choices — nothing to grade against.");
+  if (
+    !item.params?.length &&
+    item.answerKey === undefined &&
+    !item.rubric &&
+    !item.choices &&
+    !item.codeTests?.length
+  ) {
+    fail("answer-key", "Item has no answer key, rubric, choices, or codeTests — nothing to grade against.");
   }
   if (item.format === "numeric" && item.tolerance === undefined) {
     fail("tolerance", "Numeric item has no tolerance; exact float comparison will fail honest answers.");
+  }
+
+  if (item.format === "code") {
+    if (!item.codeTests?.length) {
+      fail("code-tests", "Code item has no codeTests — nothing for the sandbox to check.");
+    }
+    if (!item.referenceSolution) {
+      fail(
+        "reference-solution",
+        "Code item has no referenceSolution, so tools/verifyTemplates.ts cannot confirm its tests are satisfiable.",
+        "warn",
+      );
+    }
   }
 
   if (item.choices) {

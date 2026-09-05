@@ -199,7 +199,7 @@ export function AssessmentPanel({
         return;
       }
 
-      setText("");
+      setText(item.starterCode ?? "");
       setSelected([]);
       setImage(null);
       setSpokenText("");

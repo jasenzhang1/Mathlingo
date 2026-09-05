@@ -11,6 +11,7 @@ import { pythonFundamentalsItems } from "./items/python-fundamentals";
 import { pythonControlFlowItems } from "./items/python-control-flow";
 import { pythonContainersSplitItems } from "./items/python-containers-split";
 import { numpyExpandedItems } from "./items/numpy-expanded";
+import { pythonCodeExerciseItems } from "./items/python-code-exercises";
 import { regressionDiagnosticsItems } from "./items/regression-diagnostics";
 import { regressionExtensionsItems } from "./items/regression-extensions";
 import { regressionFoundationsItems } from "./items/regression-foundations";
@@ -2910,6 +2911,13 @@ export const items: Item[] = [
   // numpy-arrays and pandas.
   // -------------------------------------------------------------------------
   ...numpyExpandedItems,
+
+  // -------------------------------------------------------------------------
+  // `code`-format items — the learner writes and submits executable Python,
+  // graded by running it against codeTests in a sandbox rather than judging
+  // free text. See src/lib/assessment/pythonSandbox.ts and codeTests.ts.
+  // -------------------------------------------------------------------------
+  ...pythonCodeExerciseItems,
 ];
 
 /**

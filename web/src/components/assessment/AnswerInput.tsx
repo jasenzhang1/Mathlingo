@@ -104,6 +104,37 @@ export function AnswerInput({
     );
   }
 
+  if (item.format === "code") {
+    return (
+      <div>
+        <textarea
+          value={text}
+          disabled={disabled}
+          onChange={(e) => onTextChange(e.target.value)}
+          rows={12}
+          spellCheck={false}
+          placeholder="Write your Python here"
+          className="font-mono w-full resize-y rounded-xl border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-sm text-[var(--ink)] outline-none focus:border-[var(--accent)] disabled:opacity-70"
+        />
+        {(item.codeTests ?? []).some((t) => !t.hidden) && (
+          <div className="font-body mt-2 space-y-1 text-xs text-[var(--ink-soft)]">
+            <p className="font-medium uppercase tracking-wide">Checked against</p>
+            <ul className="list-disc space-y-0.5 pl-4">
+              {(item.codeTests ?? [])
+                .filter((t) => !t.hidden)
+                .map((t) => (
+                  <li key={t.id}>{t.description}</li>
+                ))}
+            </ul>
+          </div>
+        )}
+        <p className="font-body mt-1.5 text-xs text-[var(--ink-soft)]">
+          Your code is run against each check above — partial credit for each one it passes.
+        </p>
+      </div>
+    );
+  }
+
   // short-answer, derivation, interview — free response, in whichever channel
   // the item permits.
   return (

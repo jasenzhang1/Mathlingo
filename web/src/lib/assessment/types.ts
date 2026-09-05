@@ -60,7 +60,9 @@ export type ItemFormat =
   | "short-answer"
   | "derivation"
   /** Multi-turn: the grader probes follow-ups, mock-interview style. */
-  | "interview";
+  | "interview"
+  /** The learner types executable code; the grader runs it against `codeTests`. */
+  | "code";
 
 /** How the learner physically produced the answer. */
 export type ResponseChannel = "typed" | "handwritten" | "spoken";
@@ -106,6 +108,26 @@ export interface Choice {
   correct: boolean;
   /** Why a learner would pick this. Required on every incorrect choice. */
   misconception?: Misconception;
+}
+
+/**
+ * One executable check for a `code`-format item. The learner's submission is
+ * run first, then `run` (typically a call into whatever they defined), then
+ * `check` — a boolean expression over names `run` bound — decides pass/fail.
+ * Each test is one rubric element, so partial credit is "fraction of tests
+ * passed," the same way a `multi-select` item's partial credit is "fraction
+ * of correct choices selected."
+ */
+export interface CodeTest {
+  id: string;
+  /** Shown to the learner, before and after grading — what this case checks. */
+  description: string;
+  /** Python statement(s) run after the submission, in the same namespace. */
+  run: string;
+  /** Python boolean expression, evaluated after `run`; must be True to pass. */
+  check: string;
+  /** Shown to the learner as a worked example before they submit. */
+  hidden?: boolean;
 }
 
 /**
@@ -178,6 +200,16 @@ export interface Item {
   tolerance?: number;
   choices?: Choice[];
   rubric?: Rubric;
+  /** For `code` items: the executable checks the submission is run against. */
+  codeTests?: CodeTest[];
+  /** For `code` items: pre-filled editor content, typically a function stub. */
+  starterCode?: string;
+  /**
+   * For `code` items: an author's model solution. Used only by
+   * `tools/verifyTemplates.ts` to confirm `codeTests` are actually satisfiable
+   * and mutually consistent — never shipped to the client or the grader.
+   */
+  referenceSolution?: string;
 
   /**
    * IRT difficulty on the logit scale, in the same units as learner ability:
@@ -248,7 +280,7 @@ export interface Grade {
   confidence: number;
   latencySeconds: number;
   channel: ResponseChannel;
-  adjudicator: "exact" | "tolerance" | "cas" | "key" | "model-judge" | "human";
+  adjudicator: "exact" | "tolerance" | "cas" | "key" | "model-judge" | "human" | "sandbox";
   /** Shown to the learner. Must name the specific gap, not "incorrect". */
   feedback?: string;
   /** For handwritten/spoken: what we believed the learner wrote or said. */
