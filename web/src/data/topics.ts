@@ -47,6 +47,15 @@ export const topics: Topic[] = [
     tracks: ["bootcamp"],
   },
   {
+    id: "python",
+    name: "Python Fundamentals",
+    tagline: "Variables, types, and the data structures everything else builds on",
+    description:
+      "From your first variable to lists, dictionaries, and sets — the Python building blocks every other topic here assumes you already know.",
+    hours: 6,
+    tracks: ["refresh", "bootcamp"],
+  },
+  {
     id: "dsa",
     name: "Data Structures & Algorithms",
     tagline: "The CS fundamentals technical interviews still test",
