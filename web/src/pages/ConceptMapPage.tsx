@@ -22,7 +22,7 @@ type ViewId = (typeof VIEWS)[number]["id"];
 
 const blurb: Record<ViewId, string> = {
   map: "Every concept we teach, connected by what you need to know first. Drag to pan, use the buttons to zoom, and click a node to open its lesson.",
-  list: "Every concept we teach, chapter by chapter, in the order you'd learn them. Your proficiency is on the right of each line.",
+  list: "Every concept we teach, as folders: a chapter per subject, sections following the chapters of the books it's taught from, and your proficiency on the right of each line.",
 };
 
 export function ConceptMapPage() {

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Concept } from "../data/concepts";
 import { useAuth } from "../lib/auth/useAuth";
@@ -13,10 +13,39 @@ import { useProficiency } from "../lib/useProficiency";
  *
  * The map answers "what does this depend on"; a list answers "what do I do
  * next", which is the question a graph of 280 nodes is bad at.
+ *
+ * It reads as folders, two deep: a chapter is a subject, a folder inside it is
+ * roughly a textbook chapter (Random Variables, The Four Fundamental
+ * Subspaces), and opening one shows its concepts. 278 lines of flat list is a
+ * scroll; 7 folders you open the one you want is a contents page. Chapters open
+ * by default and sections closed, so the first thing on screen is every subject
+ * and what it covers.
  */
 
-/** Proficiency as a bar. Sized in the caller, because rows and chapter headers
- *  carry the same meter at different widths. */
+const STORAGE_KEY = "mathlingo:concept-list-open";
+
+const domainKey = (domain: string) => `d:${domain}`;
+const sectionKey = (domain: string, sectionId: string) =>
+  `s:${domain}/${sectionId}`;
+
+/** Chapters open, sections closed — the contents-page reading. */
+const defaultOpen = () => new Set(chapters.map((c) => domainKey(c.domain)));
+
+function loadOpen(): Set<string> {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return defaultOpen();
+    const parsed: unknown = JSON.parse(stored);
+    if (!Array.isArray(parsed)) return defaultOpen();
+    return new Set(parsed.filter((k): k is string => typeof k === "string"));
+  } catch {
+    // Private mode, blocked storage, corrupted value — the list still works.
+    return defaultOpen();
+  }
+}
+
+/** Proficiency as a bar. Sized in the caller, because rows, section headers and
+ *  chapter headers carry the same meter at different widths. */
 function ProgressMeter({
   value,
   color,
@@ -67,6 +96,77 @@ function LessonDot() {
   );
 }
 
+function Chevron({ open }: { open: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 12 12"
+      className={`h-3 w-3 shrink-0 text-[var(--ink-soft)] transition-transform duration-150 ${
+        open ? "rotate-90" : ""
+      }`}
+      aria-hidden="true"
+    >
+      <path
+        d="M4 2 L8.5 6 L4 10"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+/** A folder in the chapter's colour: shut when the node is collapsed, tipped
+ *  open when it isn't, which is the one glance that says "there is more here". */
+function Folder({ open, color }: { open: boolean; color: string }) {
+  return (
+    <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0" aria-hidden="true">
+      {open ? (
+        <>
+          <path
+            d="M1.5 12.5V4a1 1 0 0 1 1-1h3.2l1.3 1.5h5.5a1 1 0 0 1 1 1v1.5"
+            fill="none"
+            stroke={color}
+            strokeWidth="1"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M1.5 12.5 3.7 6.8h11.3l-2.2 5.7Z"
+            fill={color}
+            fillOpacity="0.18"
+            stroke={color}
+            strokeWidth="1"
+            strokeLinejoin="round"
+          />
+        </>
+      ) : (
+        <path
+          d="M1.5 12.5V4a1 1 0 0 1 1-1h3.2l1.3 1.5h5.5a1 1 0 0 1 1 1v7Z"
+          fill={color}
+          fillOpacity="0.18"
+          stroke={color}
+          strokeWidth="1"
+          strokeLinejoin="round"
+        />
+      )}
+    </svg>
+  );
+}
+
+/** Left and right open and close the folder, the way they do in a file tree. */
+function folderKeys(open: boolean, setOpen: (next: boolean) => void) {
+  return (event: React.KeyboardEvent) => {
+    if (event.key === "ArrowRight" && !open) {
+      event.preventDefault();
+      setOpen(true);
+    } else if (event.key === "ArrowLeft" && open) {
+      event.preventDefault();
+      setOpen(false);
+    }
+  };
+}
+
 function ConceptRow({
   concept,
   number,
@@ -84,7 +184,7 @@ function ConceptRow({
         to={`/concepts/${concept.id}`}
         className="flex items-center gap-3 rounded-xl px-2 py-2 transition-colors hover:bg-[var(--accent-soft)] sm:px-3"
       >
-        <span className="font-body w-9 shrink-0 text-xs tabular-nums text-[var(--ink-soft)]">
+        <span className="font-body w-8 shrink-0 text-xs tabular-nums text-[var(--ink-soft)] sm:w-12">
           {number}
         </span>
         <span className="min-w-0 flex-1">
@@ -112,8 +212,22 @@ export function ConceptList() {
   const { user } = useAuth();
   const { proficiency } = useProficiency();
   const [query, setQuery] = useState("");
+  const [open, setOpen] = useState<Set<string>>(loadOpen);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify([...open]));
+    } catch {
+      // Not being able to remember which folders were open is not worth failing
+      // the render over.
+    }
+  }, [open]);
 
   const trimmedQuery = query.trim().toLowerCase();
+  // A search that only matched inside closed folders would look like no
+  // matches, so while one is running every folder holding a match is open.
+  const searching = trimmedQuery.length > 0;
+
   const visible = useMemo(
     () =>
       chapters
@@ -121,38 +235,85 @@ export function ConceptList() {
           ...chapter,
           number: index + 1,
           // Numbering stays absolute: filtering the list shouldn't renumber
-          // 4.17 into 4.2 and make two searches disagree about what a concept
-          // is called.
-          rows: chapter.concepts
-            .map((concept, i) => ({ concept, position: i + 1 }))
-            .filter(
-              ({ concept }) =>
-                !trimmedQuery ||
-                concept.title.toLowerCase().includes(trimmedQuery) ||
-                concept.blurb.toLowerCase().includes(trimmedQuery),
-            ),
+          // 4.2.17 into 4.2.2 and make two searches disagree about what a
+          // concept is called.
+          sectionRows: chapter.sections
+            .map((section, sectionIndex) => ({
+              ...section,
+              number: sectionIndex + 1,
+              rows: section.concepts
+                .map((concept, i) => ({ concept, position: i + 1 }))
+                .filter(
+                  ({ concept }) =>
+                    !trimmedQuery ||
+                    concept.title.toLowerCase().includes(trimmedQuery) ||
+                    concept.blurb.toLowerCase().includes(trimmedQuery),
+                ),
+            }))
+            .filter((section) => section.rows.length > 0),
         }))
-        .filter((chapter) => chapter.rows.length > 0),
+        .filter((chapter) => chapter.sectionRows.length > 0),
     [trimmedQuery],
   );
 
-  const matchCount = visible.reduce((n, chapter) => n + chapter.rows.length, 0);
+  const matchCount = visible.reduce(
+    (n, chapter) =>
+      n + chapter.sectionRows.reduce((m, section) => m + section.rows.length, 0),
+    0,
+  );
+  const sectionCount = chapters.reduce((n, c) => n + c.sections.length, 0);
+
+  const allKeys = useMemo(
+    () =>
+      chapters.flatMap((chapter) => [
+        domainKey(chapter.domain),
+        ...chapter.sections.map((s) => sectionKey(chapter.domain, s.id)),
+      ]),
+    [],
+  );
+
+  const isOpen = (key: string) => searching || open.has(key);
+  const anyOpen = open.size > 0;
+
+  function setNode(key: string, next: boolean) {
+    setOpen((prev) => {
+      const updated = new Set(prev);
+      if (next) {
+        updated.add(key);
+      } else {
+        updated.delete(key);
+      }
+      return updated;
+    });
+  }
+
+  const toggleNode = (key: string) => setNode(key, !open.has(key));
 
   return (
     <div className="relative flex h-full min-h-0 flex-col">
-      <div className="mb-3 flex shrink-0 flex-wrap items-center justify-between gap-3">
+      <div className="mb-3 flex shrink-0 flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-3">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search concepts…"
-          className="font-body w-full min-w-0 max-w-xs rounded-full border border-[var(--line)] bg-[var(--panel)] px-4 py-2 text-sm text-[var(--ink)] placeholder:text-[var(--ink-soft)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+          className="font-body w-full min-w-0 rounded-full border border-[var(--line)] bg-[var(--panel)] px-4 py-2 text-sm text-[var(--ink)] placeholder:text-[var(--ink-soft)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] sm:max-w-xs"
         />
-        <span className="font-body text-xs text-[var(--ink-soft)]">
-          {trimmedQuery
-            ? `${matchCount} matching ${matchCount === 1 ? "concept" : "concepts"}`
-            : `${matchCount} concepts in ${chapters.length} chapters`}
-        </span>
+        <div className="flex items-center justify-between gap-3">
+          <button
+            type="button"
+            onClick={() => setOpen(anyOpen ? new Set() : new Set(allKeys))}
+            disabled={searching}
+            className="font-body shrink-0 rounded-full border border-[var(--line)] px-3 py-1.5 text-xs text-[var(--ink-soft)] transition-colors hover:text-[var(--ink)] disabled:opacity-40"
+          >
+            {anyOpen ? "Collapse all" : "Expand all"}
+          </button>
+          <span className="font-body text-right text-xs text-[var(--ink-soft)]">
+            {searching
+              ? `${matchCount} matching ${matchCount === 1 ? "concept" : "concepts"}`
+              : `${matchCount} concepts · ${sectionCount} sections · ${chapters.length} chapters`}
+          </span>
+        </div>
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto rounded-2xl border border-[var(--line)] bg-[var(--panel)] shadow-sm">
@@ -162,6 +323,8 @@ export function ConceptList() {
           </p>
         ) : (
           visible.map((chapter) => {
+            const key = domainKey(chapter.domain);
+            const chapterOpen = isOpen(key);
             const total = chapter.concepts.reduce(
               (sum, c) => sum + (proficiency.get(c.id) ?? 0),
               0,
@@ -170,12 +333,18 @@ export function ConceptList() {
             return (
               <section key={chapter.domain}>
                 <header className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-[var(--line)] bg-[var(--panel)] px-3 py-2.5 sm:px-4">
-                  <div className="flex min-w-0 items-center gap-2.5">
-                    <span
-                      className="inline-block h-2.5 w-2.5 shrink-0 rounded-full"
-                      style={{ background: chapter.color }}
-                      aria-hidden="true"
-                    />
+                  <button
+                    type="button"
+                    onClick={() => toggleNode(key)}
+                    onKeyDown={folderKeys(chapterOpen, (next) =>
+                      setNode(key, next),
+                    )}
+                    aria-expanded={chapterOpen}
+                    aria-controls={`chapter-${chapter.domain}`}
+                    className="flex min-w-0 flex-1 items-center gap-2.5 text-left"
+                  >
+                    <Chevron open={chapterOpen} />
+                    <Folder open={chapterOpen} color={chapter.color} />
                     <h2 className="font-display truncate text-sm text-[var(--ink)]">
                       <span className="text-[var(--ink-soft)]">
                         {chapter.number}.
@@ -183,9 +352,10 @@ export function ConceptList() {
                       {chapter.label}
                     </h2>
                     <span className="font-body hidden shrink-0 text-xs text-[var(--ink-soft)] sm:inline">
+                      {chapter.sections.length} sections ·{" "}
                       {chapter.concepts.length} concepts
                     </span>
-                  </div>
+                  </button>
                   <ProgressMeter
                     value={total / chapter.concepts.length}
                     color={chapter.color}
@@ -193,17 +363,75 @@ export function ConceptList() {
                   />
                 </header>
 
-                <ul className="p-1 sm:p-2">
-                  {chapter.rows.map(({ concept, position }) => (
-                    <ConceptRow
-                      key={concept.id}
-                      concept={concept}
-                      number={`${chapter.number}.${position}`}
-                      color={chapter.color}
-                      value={proficiency.get(concept.id) ?? 0}
-                    />
-                  ))}
-                </ul>
+                {chapterOpen && (
+                  <div id={`chapter-${chapter.domain}`} className="p-1 sm:p-2">
+                    {chapter.sectionRows.map((section) => {
+                      const sKey = sectionKey(chapter.domain, section.id);
+                      const sectionOpen = isOpen(sKey);
+                      const sectionTotal = section.concepts.reduce(
+                        (sum, c) => sum + (proficiency.get(c.id) ?? 0),
+                        0,
+                      );
+
+                      return (
+                        <div key={section.id}>
+                          <div className="flex items-center gap-3 rounded-xl px-2 py-1.5 transition-colors hover:bg-[var(--paper)] sm:px-3">
+                            <button
+                              type="button"
+                              onClick={() => toggleNode(sKey)}
+                              onKeyDown={folderKeys(sectionOpen, (next) =>
+                                setNode(sKey, next),
+                              )}
+                              aria-expanded={sectionOpen}
+                              aria-controls={`section-${chapter.domain}-${section.id}`}
+                              className="flex min-w-0 flex-1 items-center gap-2 pl-3 text-left"
+                            >
+                              <Chevron open={sectionOpen} />
+                              <Folder
+                                open={sectionOpen}
+                                color={chapter.color}
+                              />
+                              <span className="font-body truncate text-sm font-medium text-[var(--ink)]">
+                                <span className="tabular-nums text-[var(--ink-soft)]">
+                                  {chapter.number}.{section.number}
+                                </span>{" "}
+                                {section.label}
+                              </span>
+                              <span className="font-body shrink-0 text-xs tabular-nums text-[var(--ink-soft)]">
+                                {searching
+                                  ? `${section.rows.length}/${section.concepts.length}`
+                                  : section.concepts.length}
+                              </span>
+                            </button>
+                            <ProgressMeter
+                              value={sectionTotal / section.concepts.length}
+                              color={chapter.color}
+                              label={`${section.label} average proficiency`}
+                              className="w-10 sm:w-16"
+                            />
+                          </div>
+
+                          {sectionOpen && (
+                            <ul
+                              id={`section-${chapter.domain}-${section.id}`}
+                              className="ml-[26px] border-l border-[var(--line)] pl-1"
+                            >
+                              {section.rows.map(({ concept, position }) => (
+                                <ConceptRow
+                                  key={concept.id}
+                                  concept={concept}
+                                  number={`${chapter.number}.${section.number}.${position}`}
+                                  color={chapter.color}
+                                  value={proficiency.get(concept.id) ?? 0}
+                                />
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </section>
             );
           })
@@ -216,7 +444,7 @@ export function ConceptList() {
           Lesson available
         </span>
         <span>
-          Ordered by what you need first, so a chapter reads top to bottom
+          Sections follow the chapters of the books each subject is taught from
         </span>
         {!user && <span>Sign in to see your own progress on each concept.</span>}
       </div>
