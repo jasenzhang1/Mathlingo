@@ -40,6 +40,30 @@ function rowToProfile(row: ProfileRow): Profile {
 }
 
 /**
+ * Distinguishes "no such profile" from "the profiles table isn't shaped
+ * right yet" — the latter is what every load here silently looked like
+ * before this existed, because a missing `username` column comes back as a
+ * normal Postgrest error, not a thrown exception, and an unmatched `.select`
+ * on a `maybeSingle()` query resolves `data: null` either way. Without this,
+ * a signed-in user whose Supabase project hasn't had
+ * `0005_profiles_public.sql` run against it sees their own profile reported
+ * as not existing, with nothing pointing at why.
+ */
+function explainProfileError(message: string | undefined): string | null {
+  if (!message) return null;
+  if (/schema cache|column .* does not exist|does not exist/i.test(message)) {
+    return "Profiles aren't fully set up on this database yet — run supabase/migrations/0005_profiles_public.sql (after 0001_discussion.sql) in the Supabase SQL Editor.";
+  }
+  return message;
+}
+
+export interface ProfileResult {
+  profile: Profile | null;
+  /** Set only when the lookup itself failed — never for a genuine no-match. */
+  error: string | null;
+}
+
+/**
  * A network failure (offline, Supabase unreachable) throws rather than
  * resolving with `{ data: null }` — without the try/catch here, a caller
  * `await`-ing this would hang its loading state forever instead of settling
@@ -48,29 +72,39 @@ function rowToProfile(row: ProfileRow): Profile {
  */
 export async function loadProfileByUsername(
   username: string,
-): Promise<Profile | null> {
+): Promise<ProfileResult> {
   try {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("profiles")
       .select(COLUMNS)
       .eq("username", username)
       .maybeSingle();
-    return data ? rowToProfile(data as ProfileRow) : null;
+    if (error)
+      return { profile: null, error: explainProfileError(error.message) };
+    return {
+      profile: data ? rowToProfile(data as ProfileRow) : null,
+      error: null,
+    };
   } catch {
-    return null;
+    return { profile: null, error: "Couldn't reach the server. Try again." };
   }
 }
 
-export async function loadProfileById(id: string): Promise<Profile | null> {
+export async function loadProfileById(id: string): Promise<ProfileResult> {
   try {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("profiles")
       .select(COLUMNS)
       .eq("id", id)
       .maybeSingle();
-    return data ? rowToProfile(data as ProfileRow) : null;
+    if (error)
+      return { profile: null, error: explainProfileError(error.message) };
+    return {
+      profile: data ? rowToProfile(data as ProfileRow) : null,
+      error: null,
+    };
   } catch {
-    return null;
+    return { profile: null, error: "Couldn't reach the server. Try again." };
   }
 }
 
@@ -109,7 +143,7 @@ export async function updateOwnProfile(
           "Usernames need 3-30 characters: lowercase letters, numbers, and hyphens.",
       };
     }
-    return { error: error.message };
+    return { error: explainProfileError(error.message) ?? error.message };
   } catch {
     return { error: "Couldn't reach the server. Try again." };
   }
@@ -154,8 +188,8 @@ export function useOwnProfile(): Profile | null {
       setProfile(null);
       return;
     }
-    void loadProfileById(user.id).then((p) => {
-      if (!cancelled) setProfile(p);
+    void loadProfileById(user.id).then(({ profile: loaded }) => {
+      if (!cancelled) setProfile(loaded);
     });
     return () => {
       cancelled = true;

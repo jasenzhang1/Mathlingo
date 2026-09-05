@@ -80,6 +80,7 @@ export function ProfilePage() {
   const navigate = useNavigate();
 
   const [profile, setProfile] = useState<Profile | null | undefined>(undefined);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [states, setStates] = useState<ConceptState[]>([]);
   const [editing, setEditing] = useState(false);
   const [form, setForm] = useState<EditForm | null>(null);
@@ -89,11 +90,14 @@ export function ProfilePage() {
   useEffect(() => {
     let cancelled = false;
     setProfile(undefined);
+    setLoadError(null);
     async function load() {
       if (!username) return;
-      const loaded = await loadProfileByUsername(username);
+      const { profile: loaded, error: fetchError } =
+        await loadProfileByUsername(username);
       if (cancelled) return;
       setProfile(loaded);
+      setLoadError(fetchError);
       if (loaded) setForm(formFrom(loaded));
     }
     void load();
@@ -206,10 +210,11 @@ export function ProfilePage() {
         <Nav />
         <main className="mx-auto max-w-3xl px-6 py-20 text-center">
           <h1 className="font-display text-2xl text-[var(--ink)]">
-            No such profile
+            {loadError ? "Couldn't load this profile" : "No such profile"}
           </h1>
           <p className="font-body mt-2 text-[var(--ink-soft)]">
-            Nobody at @{username} — check the username and try again.
+            {loadError ??
+              `Nobody at @${username} — check the username and try again.`}
           </p>
           <Link
             to="/"
