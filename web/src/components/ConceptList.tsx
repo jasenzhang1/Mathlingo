@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import type { Concept } from "../data/concepts";
 import { DAY_MS } from "../lib/assessment/numeric";
 import { useAuth } from "../lib/auth/useAuth";
@@ -249,6 +249,23 @@ export function ConceptList() {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState<Set<string>>(loadOpen);
   const [session, setSession] = useState<SubjectSession | null>(null);
+  const location = useLocation();
+
+  // A search result for a subject/subtopic links here as `#chapter-panel-<domain>`
+  // — force that chapter open (it may have been collapsed) before scrolling to
+  // it, or the anchor would land on a header with nothing visible beneath it.
+  useEffect(() => {
+    const match = /^#chapter-panel-(.+)$/.exec(location.hash);
+    if (!match) return;
+    setOpen((prev) => new Set(prev).add(domainKey(match[1]!)));
+    const id = location.hash.slice(1);
+    const timer = setTimeout(() => {
+      document
+        .getElementById(id)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 60);
+    return () => clearTimeout(timer);
+  }, [location.hash]);
 
   useEffect(() => {
     try {
@@ -382,7 +399,8 @@ export function ConceptList() {
               return (
                 <section
                   key={chapter.domain}
-                  className="mb-4 break-inside-avoid overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--panel)] shadow-sm"
+                  id={`chapter-panel-${chapter.domain}`}
+                  className="mb-4 scroll-mt-4 break-inside-avoid overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--panel)] shadow-sm"
                 >
                   <header className="border-b border-[var(--line)] px-3 py-2.5 sm:px-4">
                     <div className="flex items-center justify-between gap-3">

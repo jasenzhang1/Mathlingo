@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../lib/auth/useAuth";
+import { useOwnProfile } from "../lib/profiles";
+import { GlobalSearch } from "./GlobalSearch";
 
 function Logo() {
   return (
@@ -25,6 +27,7 @@ function initialsFor(email: string): string {
 
 function UserMenu() {
   const { user, signOut } = useAuth();
+  const profile = useOwnProfile();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -65,6 +68,16 @@ function UserMenu() {
             <div className="truncate px-3 py-2 text-xs text-[var(--ink-soft)]">
               {user.email}
             </div>
+            {profile && (
+              <Link
+                to={`/u/${profile.username}`}
+                role="menuitem"
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-3 py-2 text-left text-sm text-[var(--ink)] hover:bg-[var(--paper)]"
+              >
+                My profile
+              </Link>
+            )}
             <Link
               to="/account"
               role="menuitem"
@@ -88,15 +101,32 @@ function UserMenu() {
   );
 }
 
+function SearchToggleIcon() {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      className="h-4.5 w-4.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.6}
+      aria-hidden="true"
+    >
+      <circle cx={8.5} cy={8.5} r={5.5} />
+      <path d="M16.5 16.5 13 13" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function Nav() {
   const { user, loading } = useAuth();
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
 
   return (
     <header
       id="top"
       className="sticky top-0 z-40 border-b border-[var(--line)] bg-[var(--paper)]/90 backdrop-blur"
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-6xl items-center gap-3 px-6 py-4">
         <Logo />
         <nav className="hidden items-center gap-8 font-body text-sm text-[var(--ink-soft)] md:flex">
           <Link to="/map" className="hover:text-[var(--ink)]">
@@ -116,26 +146,46 @@ export function Nav() {
           </Link>
         </nav>
 
-        {loading ? null : user ? (
-          <UserMenu />
-        ) : (
-          <div className="flex items-center gap-3">
-            <Link
-              to="/login"
-              className="font-body hidden text-sm font-medium text-[var(--ink-soft)] hover:text-[var(--ink)] sm:inline"
-            >
-              Log in
-            </Link>
-            <Link
-              to="/signup"
-              className="font-body rounded-full px-4 py-2 text-sm font-medium text-[var(--accent-ink)] transition-opacity hover:opacity-90"
-              style={{ background: "var(--accent)" }}
-            >
-              Sign up
-            </Link>
-          </div>
-        )}
+        <GlobalSearch className="hidden flex-1 sm:block sm:max-w-xs" />
+
+        <button
+          type="button"
+          onClick={() => setMobileSearchOpen((v) => !v)}
+          aria-label="Search"
+          aria-expanded={mobileSearchOpen}
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[var(--ink-soft)] hover:text-[var(--ink)] sm:hidden"
+        >
+          <SearchToggleIcon />
+        </button>
+
+        <div className="ml-auto flex shrink-0 items-center gap-3">
+          {loading ? null : user ? (
+            <UserMenu />
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="font-body hidden text-sm font-medium text-[var(--ink-soft)] hover:text-[var(--ink)] sm:inline"
+              >
+                Log in
+              </Link>
+              <Link
+                to="/signup"
+                className="font-body rounded-full px-4 py-2 text-sm font-medium text-[var(--accent-ink)] transition-opacity hover:opacity-90"
+                style={{ background: "var(--accent)" }}
+              >
+                Sign up
+              </Link>
+            </>
+          )}
+        </div>
       </div>
+
+      {mobileSearchOpen && (
+        <div className="border-t border-[var(--line)] px-6 py-3 sm:hidden">
+          <GlobalSearch />
+        </div>
+      )}
     </header>
   );
 }

@@ -6,10 +6,12 @@ import { openBillingPortal, syncSubscription } from "../lib/billing/api";
 import { PLANS } from "../lib/billing/tiers";
 import { useSubscription } from "../lib/billing/useSubscription";
 import { useAuth } from "../lib/auth/useAuth";
+import { useOwnProfile } from "../lib/profiles";
 
 export function AccountPage() {
   const { user, loading: authLoading } = useAuth();
   const { subscription, loading, refresh } = useSubscription();
+  const profile = useOwnProfile();
   const [searchParams] = useSearchParams();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -39,7 +41,8 @@ export function AccountPage() {
    */
   const [reconciled, setReconciled] = useState(false);
   useEffect(() => {
-    if (!justPaid || reconciled || loading || subscription.tier !== "free") return;
+    if (!justPaid || reconciled || loading || subscription.tier !== "free")
+      return;
     const timer = setTimeout(() => {
       setReconciled(true);
       void resync();
@@ -102,6 +105,14 @@ export function AccountPage() {
       <main className="mx-auto max-w-3xl px-6 py-16">
         <h1 className="font-display text-3xl text-[var(--ink)]">Account</h1>
         <p className="font-body mt-2 text-[var(--ink-soft)]">{user?.email}</p>
+        {profile && (
+          <Link
+            to={`/u/${profile.username}`}
+            className="font-body mt-1 inline-block text-sm font-medium text-[var(--accent)] hover:underline"
+          >
+            View your public profile →
+          </Link>
+        )}
 
         {justPaid && subscription.tier !== "free" && (
           <p className="font-body mt-6 rounded-xl bg-[var(--teal)]/10 px-4 py-3 text-sm text-[var(--teal)]">
@@ -126,13 +137,14 @@ export function AccountPage() {
                 {plan.tagline}
               </p>
 
-              {subscription.currentPeriodEnd && subscription.tier !== "free" && (
-                <p className="font-body mt-3 text-sm text-[var(--ink-soft)]">
-                  {subscription.cancelAtPeriodEnd
-                    ? `Cancels on ${new Date(subscription.currentPeriodEnd).toLocaleDateString()}. You keep access until then.`
-                    : `Renews on ${new Date(subscription.currentPeriodEnd).toLocaleDateString()}.`}
-                </p>
-              )}
+              {subscription.currentPeriodEnd &&
+                subscription.tier !== "free" && (
+                  <p className="font-body mt-3 text-sm text-[var(--ink-soft)]">
+                    {subscription.cancelAtPeriodEnd
+                      ? `Cancels on ${new Date(subscription.currentPeriodEnd).toLocaleDateString()}. You keep access until then.`
+                      : `Renews on ${new Date(subscription.currentPeriodEnd).toLocaleDateString()}.`}
+                  </p>
+                )}
 
               {subscription.status === "past_due" && (
                 <p className="font-body mt-3 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
@@ -160,7 +172,8 @@ export function AccountPage() {
               {subscription.status === "incomplete_expired" && (
                 <p className="font-body mt-3 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
                   Your last checkout expired before payment completed, so it was
-                  cancelled. Nothing was charged — you can subscribe again below.
+                  cancelled. Nothing was charged — you can subscribe again
+                  below.
                 </p>
               )}
 
