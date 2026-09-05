@@ -6,6 +6,7 @@ import { statisticsComparisonsItems } from "./items.statistics-comparisons";
 import { statisticsNonparametricItems } from "./items.statistics-nonparametric";
 import { statisticsTestsItems } from "./items.statistics-tests";
 import { mlItems } from "./items-ml";
+import { multivariateFormsItems } from "./items.multivariate-forms";
 import { pythonItems } from "./items/python";
 import { pythonFundamentalsItems } from "./items/python-fundamentals";
 import { pythonControlFlowItems } from "./items/python-control-flow";
@@ -2852,6 +2853,15 @@ export const items: Item[] = [
     source: BISHOP,
     status: "live",
   },
+
+  // -------------------------------------------------------------------------
+  // Multivariate Probability — the four concepts added in the quadratic-forms
+  // sweep (Multivariate MGF, Quadratic Forms, Cochran's Theorem, Distribution
+  // of β̂), 8 items each. The seven older concepts of the domain are authored
+  // inline above; these are in their own module for the same reason the blocks
+  // below are — see items.multivariate-forms.ts for the authoring notes.
+  // -------------------------------------------------------------------------
+  ...multivariateFormsItems,
 
   // -------------------------------------------------------------------------
   // Graphical Models & Bayesian ML — all 15 concepts, 8 items each. Kept in its

@@ -2,6 +2,7 @@ import { bernoulliBinomialWiki } from "./bernoulli-binomial";
 import { bivariateNormalWiki } from "./bivariate-normal";
 import { bootstrappingWiki } from "./bootstrapping";
 import { centralLimitTheoremWiki } from "./central-limit-theorem";
+import { cochransTheoremWiki } from "./cochrans-theorem";
 import { changeOfVariablesJacobianWiki } from "./change-of-variables-jacobian";
 import { chiSquareGoodnessOfFitTestWiki } from "./chi-square-goodness-of-fit-test";
 import { chiSquareTestOfIndependenceWiki } from "./chi-square-test-of-independence";
@@ -10,6 +11,7 @@ import { confidenceIntervalWiki } from "./confidence-interval";
 import { covarianceMatrixWiki } from "./covariance-matrix";
 import { dataTypesWiki } from "./data-types";
 import { directedVsUndirectedGraphsWiki } from "./directed-vs-undirected-graphs";
+import { distributionOfBetaHatWiki } from "./distribution-of-beta-hat";
 import { effectSizeWiki } from "./effect-size";
 import { emAlgorithmWiki } from "./em-algorithm";
 import { equivalenceTestingWiki } from "./equivalence-testing";
@@ -28,6 +30,7 @@ import { markovRandomFieldsWiki } from "./markov-random-fields";
 import { mcnemarTestWiki } from "./mcnemar-test";
 import { mixtureModelsAndLatentVariablesWiki } from "./mixture-models-and-latent-variables";
 import { multipleTestingWiki } from "./multiple-testing";
+import { multivariateMgfWiki } from "./multivariate-mgf";
 import { multivariateNormalWiki } from "./multivariate-normal";
 import { oneSampleProportionsZTestWiki } from "./one-sample-proportions-z-test";
 import { oneSampleTTestWiki } from "./one-sample-t-test";
@@ -38,6 +41,7 @@ import { parameterVsStatisticWiki } from "./parameter-vs-statistic";
 import { pearsonCorrelationWiki } from "./pearson-correlation";
 import { permutationTestWiki } from "./permutation-test";
 import { populationVsSampleWiki } from "./population-vs-sample";
+import { quadraticFormsRandomVectorsWiki } from "./quadratic-forms-random-vectors";
 import { predictionIntervalWiki } from "./prediction-interval";
 import { rejectionRegionWiki } from "./rejection-region";
 import { rkhsWiki } from "./rkhs";
@@ -80,10 +84,16 @@ import { wilcoxonRankSumTestWiki } from "./wilcoxon-rank-sum-test";
  * distribution, whose spread is the standard error, which is the denominator of
  * every test statistic and the half-width of every interval — and the eleven
  * named tests are that one template with different assumptions about what is
- * known. The seven `multivariate-probability` articles: the Jacobian article's
+ * known. The eleven `multivariate-probability` articles: the Jacobian article's
  * affine case is what produces the MVN's |Σ|^(−1/2), the covariance-matrix
  * article's whitening is the MVN article's standardisation, and the bivariate
- * normal is written as the k = 2 case you can still draw. The fifteen
+ * normal is written as the k = 2 case you can still draw. The four added on top
+ * of those seven run the domain's second argument to its end: the multivariate
+ * MGF turns the MVN's closure properties into one substitution, quadratic forms
+ * are what every sum of squares in statistics actually is, Cochran's theorem
+ * says when their pieces are independent, and the distribution of beta-hat
+ * spends all three at once — every standard error and t-statistic a regression
+ * prints. The fifteen
  * `graphical-models` articles pick up from there — the MVN is what a Gaussian
  * process generalises to infinitely many dimensions, and KL divergence is what
  * the ELBO's lower bound and the Wasserstein comparison both rest on.
@@ -143,8 +153,16 @@ export const coreWikiArticles: WikiArticle[] = [
   covarianceMatrixWiki,
   bivariateNormalWiki,
   multivariateNormalWiki,
+  multivariateMgfWiki,
   pearsonCorrelationWiki,
   klDivergenceWiki,
+
+  // ... and its quadratic-form half, which ends in the regression payoff:
+  // XᵀAX, the rank condition that makes its pieces independent chi-squares,
+  // and the distribution of beta-hat those two facts produce.
+  quadraticFormsRandomVectorsWiki,
+  cochransTheoremWiki,
+  distributionOfBetaHatWiki,
 
   // Graphical Models & Bayesian ML — cluster 1: graphs and Markov structure
   graphsWiki,

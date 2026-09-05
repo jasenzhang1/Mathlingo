@@ -5,7 +5,9 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 288 concepts.**
+**Total: 292 concepts listed here.** `concepts.ts` currently holds 306: this file's Python for Data
+Work section still lists the original 8 concepts and has not been updated for the 14 added when that
+chapter was expanded. Every other domain matches.
 
 ## Probability (56)
 
@@ -127,7 +129,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Kronecker Product | Matrix Multiplication | — |
 | Subspace Operations | Vector Spaces, Span | — |
 
-## Multivariate & Asymptotics (7)
+## Multivariate & Asymptotics (11)
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -135,7 +137,11 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Covariance Matrix | Covariance, Variance, Positive Definite Matrices | — |
 | Bivariate Normal | Normal Distribution, Covariance, Change of Variables (Jacobian) | — |
 | Multivariate Normal | Bivariate Normal, Covariance Matrix, Eigendecomposition | — |
+| Multivariate MGF | Moment Generating Function (MGF), MGF Properties and Applications, Multivariate Normal, Covariance Matrix, Mutual Independence | — |
 | Pearson Correlation | Correlation, Sample Variance | — |
+| Quadratic Forms in Random Vectors | Multivariate Normal, Covariance Matrix, Trace, Rank, Chi Square Distribution | — |
+| Cochran's Theorem | Quadratic Forms in Random Vectors, Mutual Independence, Sample Variance, t-Distribution | — |
+| Distribution of β̂ | Cochran's Theorem, Multivariate MGF, Linear Regression (Probabilistic Version), Geometric Interpretation of OLS, F-Distribution | — |
 | Central Limit Theorem | Modes of Convergence, Moment Generating Function (MGF), Law of Large Numbers, Normal Distribution, Mutual Independence | — |
 | Kullback-Leibler Divergence | Probability Density Function (PDF), Probability Mass Function (PMF), Expectation, Jensen's Inequality | — |
 

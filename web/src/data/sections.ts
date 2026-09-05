@@ -252,7 +252,25 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "covariance-matrix",
         "bivariate-normal",
         "multivariate-normal",
+        "multivariate-mgf",
         "pearson-correlation",
+      ],
+    },
+    {
+      /**
+       * The section the domain was missing. Everything above describes a random
+       * vector; nothing described a *scalar built out of one*, which is what
+       * every sum of squares in statistics actually is. Quadratic forms supply
+       * the machinery, Cochran's theorem says when the pieces are independent,
+       * and beta-hat is where both get spent — the standard errors, t-statistics
+       * and F-tests a regression prints are this section's arithmetic.
+       */
+      id: "quadratic-forms",
+      label: "Quadratic Forms & the Regression Payoff",
+      conceptIds: [
+        "quadratic-forms-random-vectors",
+        "cochrans-theorem",
+        "distribution-of-beta-hat",
       ],
     },
     {

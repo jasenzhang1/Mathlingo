@@ -25,7 +25,7 @@ for that reason.
 | Regression | 34 / 34 | 34 | 34 |
 | Statistics | 25 / 25 | 25 | 25 |
 | Graphical Models | 15 / 15 | 15 | 15 |
-| Multivariate Probability | 7 / 7 | 7 | 7 |
+| Multivariate Probability | 11 / 11 | 11 | 11 |
 | Probability | 56 / 56 | 2 | 1 |
 | Linear Algebra | 54 / 54 | 1 | 0 |
 
@@ -86,11 +86,12 @@ distractors are chosen.
 ## Servable status: multivariate probability
 
 `bernoulli-binomial` was the pilot for turning an authored cluster into a playable pool. The
-`multivariate-probability` domain is the second, and the first done as a whole domain: all 7 concepts
-now carry 8 live `Item` entries each in [`items.ts`](../web/src/data/items.ts) — 56 items — clearing
-every bar `auditCoverage` sets (8+ live, live items at recall/apply/explain, difficulty spread 2.0
+`multivariate-probability` domain is the second, and the first done as a whole domain: its original 7
+concepts each carry 8 live `Item` entries in [`items.ts`](../web/src/data/items.ts) — 56 items —
+clearing every bar `auditCoverage` sets (8+ live, live items at recall/apply/explain, difficulty spread 2.0
 logits). Each also has a wiki article in `web/src/data/wiki/`, so the lesson a learner reads sets out
-the same arguments the derivation rubrics require.
+the same arguments the derivation rubrics require. (The domain has since grown to 11 concepts; see
+"The quadratic-forms extension" below.)
 
 The 8 items per concept expand the md cluster's 5, which covers the four cognitive levels but not the
 pool depth: a monthly review cadence against a 5-item pool has the learner recognising instances
@@ -111,6 +112,40 @@ One edge was deliberately *not* added: `change-of-variables-jacobian` → `inver
 would push the whole rank/subspaces branch in front of a lesson whose affine case needs only
 det(A⁻¹) = 1/det(A), so the affine item supplies A's invertibility as a stem hypothesis instead,
 exactly as the concept's own definition supplies g's.
+
+## The quadratic-forms extension (cluster MP-2)
+
+The domain stopped at *describing* a random vector. Four concepts were added to carry it to the place
+the rest of the curriculum actually needs it — the exact distribution of a regression's output:
+
+| Concept | Domain | Why it was missing |
+|---|---|---|
+| `multivariate-mgf` | multivariate-probability | The MVN's closure properties were being asserted from the density; M(t) = exp(tᵀμ + ½tᵀΣt) proves all of them in one substitution |
+| `quadratic-forms-random-vectors` | multivariate-probability | The sample variance, RSS, the Mahalanobis distance and every Wald statistic are XᵀAX; nothing in the graph said so, so each was taught as its own special case |
+| `cochrans-theorem` | multivariate-probability | Nothing anywhere explained why X̄ and S² are independent, which is the fact the t-distribution is built on |
+| `distribution-of-beta-hat` | multivariate-probability | `ols-properties` states β̂ ~ N(β, σ²(XᵀX)⁻¹) as a property; nothing derived it, or the chi-square for s², or their independence |
+
+`distribution-of-beta-hat` is filed under `multivariate-probability` rather than `regression`
+deliberately: it is this domain's payoff rather than a new regression method. β̂ is an affine map of a
+normal vector, s² is a quadratic form in the same vector, and their independence is Cochran's
+theorem — three results from the three concepts above it, spent at once.
+
+One prerequisite edge was added to an existing concept: `multivariate-mgf` → `mutual-independence`,
+because the factorisation criterion (X and Y independent iff the joint MGF is the product of the
+marginals) is one of the three theorems the lesson exists to deliver, so independence has to be
+upstream of it rather than borrowed sideways.
+
+Both banks ship. The markdown above is 29 items across the four concepts; the servable bank is 8 per
+concept — 32 items — in
+[`items.multivariate-forms.ts`](../web/src/data/items.multivariate-forms.ts), all `live`, all four
+pools clearing `auditCoverage` at a difficulty spread near 2.0. Every numeric key was computed twice,
+by hand and in NumPy: the E[XᵀAX] values 12 and 8 also against a two-million-draw Monte Carlo (11.99
+and 8.004), the centring matrix's χ²₄ mean and variance (3.995, 8.00) at n = 5, the ANOVA split
+70 = 54 + 16 giving F = 13.5, and the worked regression β̂ = (1, 1.7), RSS = 0.30, s² = 0.15,
+SE(β̂₁) = 0.17321, t = 9.8150.
+
+Four wiki articles ship with them in `web/src/data/wiki/`, wired into `wiki/core.ts` alongside the
+domain's existing seven.
 
 ## Graph additions (this sweep)
 
@@ -241,14 +276,23 @@ decision rather than made silently.
 | Graphical Models & Bayesian ML | 15 | 75 | `gm-01`…`gm-03` |
 | **Total** | **236** | **1,343** | **38 files** |
 
-The graph itself now has 236 concepts (232 original + the 4 added this sweep — `matrix-calculus`,
-`perceptron`, `neural-networks`, `backpropagation`; see the "Graph additions" section above).
+The graph itself had 236 concepts at that point (232 original + the 4 added in that sweep —
+`matrix-calculus`, `perceptron`, `neural-networks`, `backpropagation`; see the "Graph additions"
+section above).
+
+**That table is a snapshot of the sweep that closed the graph, not a current count**, and later
+sweeps have moved past it. Regenerate rather than trust it: `npm run audit:coverage` reports the live
+figures, which as of the quadratic-forms sweep are **306 concepts, all with servable items, 252 with
+a wiki article, and 1,392 authored questions across 45 markdown files** — the growth since is the
+Python chapter's expansion, machine-learning clusters 10-12, the regression extensions in `reg-06`,
+and this sweep's `mp-02`.
 
 ## Multivariate Probability, Regression, and Graphical Models — cluster index
 
 | # | File | Concepts | Status |
 |---|---|---|---|
-| MP-1 | [mp-01-multivariate-probability.md](mp-01-multivariate-probability.md) | CLT, Jacobian, Covariance Matrix, Bivariate/Multivariate Normal, Pearson r, KL Divergence (7 — entire domain) | done (35 items); **servable** — 56 live items in `items.ts` |
+| MP-1 | [mp-01-multivariate-probability.md](mp-01-multivariate-probability.md) | CLT, Jacobian, Covariance Matrix, Bivariate/Multivariate Normal, Pearson r, KL Divergence (7) | done (35 items); **servable** — 56 live items in `items.ts` |
+| MP-2 | [mp-02-quadratic-forms-and-regression.md](mp-02-quadratic-forms-and-regression.md) | Multivariate MGF, Quadratic Forms, Cochran's Theorem, Distribution of β̂ (4, all new) | done (29 items); **servable** — 32 live items in `items.multivariate-forms.ts` |
 | REG-1 | [reg-01-foundations.md](reg-01-foundations.md) | Regression → Normal Equations (6) | done (30 items) |
 | REG-2 | [reg-02-ols-geometry-and-multiple-regression.md](reg-02-ols-geometry-and-multiple-regression.md) | Geometric OLS → Homoskedasticity (5) | done (25 items) |
 | REG-3 | [reg-03-model-fit-and-diagnostics.md](reg-03-model-fit-and-diagnostics.md) | OLS Properties → VIF (6) | done (30 items) |

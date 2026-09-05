@@ -5,7 +5,7 @@
 //
 //   npm run ingest
 //
-// 1319 items across 235 concepts.
+// 1368 items across 244 concepts.
 
 import type { Item } from "../lib/assessment/types";
 
@@ -41906,6 +41906,1215 @@ export const generatedItems: Item[] = [
     "status": "live"
   },
   {
+    "id": "multivariate-mgf--r1",
+    "conceptId": "multivariate-mgf",
+    "format": "short-answer",
+    "cognitive": "recall",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Define the moment generating function of a random vector X in ℝᵏ.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "M_X(t) = E[exp(tᵀX)] for t in a neighbourhood of the origin",
+          "weight": 1,
+          "required": false
+        },
+        {
+          "id": "element-2",
+          "description": "the output is a scalar even though the argument is a vector",
+          "weight": 1,
+          "required": false
+        },
+        {
+          "id": "element-3",
+          "description": "equivalently it is the univariate MGF of the scalar projection tᵀX evaluated at 1",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 0.34,
+    "discrimination": 1.2,
+    "expectedSeconds": 45,
+    "prereqClosure": [
+      "multivariate-mgf"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "multivariate-mgf R1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "multivariate-mgf--r2",
+    "conceptId": "multivariate-mgf",
+    "format": "short-answer",
+    "cognitive": "recall",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "The MGF of X ~ N_k(μ, Σ) is:",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "exp(tᵀμ + ½tᵀΣt)",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "drops the ½ and answers exp(tᵀμ + tᵀΣt) — the factor is inherited from the univariate exp(sm + ½s²v), not an extra convention",
+          "weight": 0,
+          "misconception": {
+            "id": "multivariate-mgf--r2--misconception",
+            "description": "drops the ½ and answers exp(tᵀμ + tᵀΣt) — the factor is inherited from the univariate exp(sm + ½s²v), not an extra convention",
+            "blameConceptId": "multivariate-mgf"
+          }
+        }
+      ]
+    },
+    "difficulty": 0.64,
+    "discrimination": 1.2,
+    "expectedSeconds": 45,
+    "prereqClosure": [
+      "multivariate-mgf"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "multivariate-mgf R2"
+    },
+    "status": "live"
+  },
+  {
+    "id": "multivariate-mgf--a1",
+    "conceptId": "multivariate-mgf",
+    "format": "numeric",
+    "cognitive": "apply",
+    "channels": [
+      "typed",
+      "handwritten"
+    ],
+    "stem": "X ~ N₂(μ, Σ) with μ = (1,2)ᵀ and Σ = [[4,2],[2,3]]. Using M_Y(s) = M_X(sa) with a = (1,1)ᵀ, give Var(X₁ + X₂).",
+    "answerKey": 11,
+    "tolerance": 0.01,
+    "difficulty": 1.14,
+    "discrimination": 1.2,
+    "expectedSeconds": 90,
+    "prereqClosure": [
+      "multivariate-mgf",
+      "covariance-matrix"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "multivariate-mgf A1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "multivariate-mgf--a2",
+    "conceptId": "multivariate-mgf",
+    "format": "short-answer",
+    "cognitive": "apply",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "A vector in ℝ² has M(t) = exp(t₁ + 2t₂ + 2t₁² + 2t₁t₂ + 1.5t₂²). Name its distribution and give μ and Σ.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "the log is a quadratic with nothing above second order, which is the signature of a normal vector, so X ~ N₂(μ, Σ)",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "the linear part gives μ = (1,2)ᵀ",
+          "weight": 1,
+          "required": false
+        },
+        {
+          "id": "element-3",
+          "description": "matching ½σ₁₁ = 2 and ½σ₂₂ = 1.5 gives variances 4 and 3, while the cross term gives σ₁₂ = 2 directly, since the ½ and the two off-diagonal entries cancel",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "halves the cross-term coefficient as well, reporting σ₁₂ = 1",
+          "weight": 0,
+          "misconception": {
+            "id": "multivariate-mgf--a2--misconception",
+            "description": "halves the cross-term coefficient as well, reporting σ₁₂ = 1",
+            "blameConceptId": "multivariate-mgf"
+          }
+        }
+      ]
+    },
+    "difficulty": 1.44,
+    "discrimination": 1.2,
+    "expectedSeconds": 90,
+    "prereqClosure": [
+      "multivariate-mgf"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "multivariate-mgf A2"
+    },
+    "status": "live"
+  },
+  {
+    "id": "multivariate-mgf--e1",
+    "conceptId": "multivariate-mgf",
+    "format": "derivation",
+    "cognitive": "explain",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Derive M_X(t) = exp(tᵀμ + ½tᵀΣt) for X ~ N_k(μ, Σ) without integrating the density.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "by the projection definition of the multivariate normal, tᵀX is univariate N(tᵀμ, tᵀΣt)",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "the univariate MGF is E[exp(sY)] = exp(sm + ½s²v), and M_X(t) is that evaluated at s = 1 with m = tᵀμ and v = tᵀΣt",
+          "weight": 1,
+          "required": false
+        },
+        {
+          "id": "element-3",
+          "description": "uniqueness of MGFs turns the computation into a characterisation, so any vector with this MGF is multivariate normal",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 1.84,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "multivariate-mgf"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "multivariate-mgf E1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "multivariate-mgf--e2",
+    "conceptId": "multivariate-mgf",
+    "format": "derivation",
+    "cognitive": "explain",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Prove M_{AX+b}(t) = exp(tᵀb)·M_X(Aᵀt), and use it to show AX + b is N(Aμ + b, AΣAᵀ) when X is multivariate normal.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "tᵀ(AX + b) = (Aᵀt)ᵀX + tᵀb, so the constant leaves the expectation as exp(tᵀb) and the rest is M_X at Aᵀt — the transpose appears because the direction of the projection is pulled back through A",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "substituting the multivariate normal MGF gives exp(tᵀb + (Aᵀt)ᵀμ + ½(Aᵀt)ᵀΣ(Aᵀt)) = exp(tᵀ(Aμ + b) + ½tᵀ(AΣAᵀ)t), which is the N(Aμ + b, AΣAᵀ) MGF",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "writes M_X(At), losing the transpose and with it the AΣAᵀ that every covariance calculation depends on",
+          "weight": 0,
+          "misconception": {
+            "id": "multivariate-mgf--e2--misconception",
+            "description": "writes M_X(At), losing the transpose and with it the AΣAᵀ that every covariance calculation depends on",
+            "blameConceptId": "multivariate-mgf"
+          }
+        }
+      ]
+    },
+    "difficulty": 2.04,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "multivariate-mgf"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "multivariate-mgf E2"
+    },
+    "status": "live"
+  },
+  {
+    "id": "multivariate-mgf--t1",
+    "conceptId": "multivariate-mgf",
+    "format": "short-answer",
+    "cognitive": "transfer",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Why does the MGF argument show uncorrelated jointly normal blocks are independent, when zero covariance proves nothing in general?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "with Σ₁₂ = 0 the exponent's quadratic form splits as sᵀΣ₁₁s + uᵀΣ₂₂u with no cross terms left, so the joint MGF factors into the two marginal MGFs, which is equivalent to independence",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "the argument works because the multivariate normal's exponent contains nothing above second order, so killing the second-order cross term kills all the dependence there is, whereas a general distribution has higher-order coupling that zero covariance leaves untouched — exactly `covariance`'s Cov(X, X²) = 0 counterexample",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 2.34,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "multivariate-mgf"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "multivariate-mgf T1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "quadratic-forms-random-vectors--r1",
+    "conceptId": "quadratic-forms-random-vectors",
+    "format": "short-answer",
+    "cognitive": "recall",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "State E[XᵀAX] for a random vector with mean μ and covariance Σ.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "E[XᵀAX] = tr(AΣ) + μᵀAμ, and it holds for any distribution with those two moments — normality is nowhere in it",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 0.41,
+    "discrimination": 1.2,
+    "expectedSeconds": 45,
+    "prereqClosure": [
+      "quadratic-forms-random-vectors"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "quadratic-forms-random-vectors R1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "quadratic-forms-random-vectors--r2",
+    "conceptId": "quadratic-forms-random-vectors",
+    "format": "short-answer",
+    "cognitive": "recall",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "For X ~ N_k(0, I) and A symmetric, XᵀAX is chi-square exactly when:",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "A is idempotent, and then the degrees of freedom are rank(A), which for an idempotent matrix equals tr(A)",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "answers \"whenever A is positive definite\" — positive definiteness makes the form non-negative but says nothing about which distribution it has; idempotence is the condition",
+          "weight": 0,
+          "misconception": {
+            "id": "quadratic-forms-random-vectors--r2--misconception",
+            "description": "answers \"whenever A is positive definite\" — positive definiteness makes the form non-negative but says nothing about which distribution it has; idempotence is the condition",
+            "blameConceptId": "quadratic-forms-random-vectors"
+          }
+        }
+      ]
+    },
+    "difficulty": 0.71,
+    "discrimination": 1.2,
+    "expectedSeconds": 45,
+    "prereqClosure": [
+      "quadratic-forms-random-vectors"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "quadratic-forms-random-vectors R2"
+    },
+    "status": "live"
+  },
+  {
+    "id": "quadratic-forms-random-vectors--a1",
+    "conceptId": "quadratic-forms-random-vectors",
+    "format": "numeric",
+    "cognitive": "apply",
+    "channels": [
+      "typed",
+      "handwritten"
+    ],
+    "stem": "X has mean μ = (1,2)ᵀ and covariance Σ = [[4,2],[2,3]]. Compute E of the squared norm of X.",
+    "answerKey": 12,
+    "tolerance": 0.01,
+    "difficulty": 1.21,
+    "discrimination": 1.2,
+    "expectedSeconds": 90,
+    "prereqClosure": [
+      "quadratic-forms-random-vectors"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "quadratic-forms-random-vectors A1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "quadratic-forms-random-vectors--a2",
+    "conceptId": "quadratic-forms-random-vectors",
+    "format": "numeric",
+    "cognitive": "apply",
+    "channels": [
+      "typed",
+      "handwritten"
+    ],
+    "stem": "Same X. With A = [[1,−1],[−1,1]], compute E[(X₁ − X₂)²].",
+    "answerKey": 4,
+    "tolerance": 0.01,
+    "difficulty": 1.51,
+    "discrimination": 1.2,
+    "expectedSeconds": 90,
+    "prereqClosure": [
+      "quadratic-forms-random-vectors"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "quadratic-forms-random-vectors A2"
+    },
+    "status": "live"
+  },
+  {
+    "id": "quadratic-forms-random-vectors--e1",
+    "conceptId": "quadratic-forms-random-vectors",
+    "format": "derivation",
+    "cognitive": "explain",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Prove E[XᵀAX] = tr(AΣ) + μᵀAμ.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "XᵀAX is 1 × 1 so it equals its own trace, and the trace is cyclic, giving tr(AXXᵀ)",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "the trace is linear so expectation passes inside, leaving tr(A E[XXᵀ]) with E[XXᵀ] = Σ + μμᵀ",
+          "weight": 1,
+          "required": false
+        },
+        {
+          "id": "element-3",
+          "description": "expanding gives tr(AΣ) + tr(Aμμᵀ) = tr(AΣ) + μᵀAμ, the last step being the cyclic property once more on a scalar",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 1.91,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "quadratic-forms-random-vectors"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "quadratic-forms-random-vectors E1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "quadratic-forms-random-vectors--e2",
+    "conceptId": "quadratic-forms-random-vectors",
+    "format": "derivation",
+    "cognitive": "explain",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "For X ~ N_n(μ1, σ²I), show that XᵀCX/σ² ~ χ²_{n−1} where C = I − (1/n)11ᵀ is the centring matrix.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "C is symmetric and C² = C, since 1ᵀ1 = n makes the cross terms collapse, so C is an orthogonal projection with tr(C) = n − 1 = rank(C)",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "an idempotent quadratic form in a standard normal vector is χ² on rank(C) degrees of freedom",
+          "weight": 1,
+          "required": false
+        },
+        {
+          "id": "element-3",
+          "description": "the mean is annihilated because C1 = 0, so no noncentrality term survives and the distribution does not depend on μ at all",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 2.11,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "quadratic-forms-random-vectors"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "quadratic-forms-random-vectors E2"
+    },
+    "status": "live"
+  },
+  {
+    "id": "quadratic-forms-random-vectors--t1",
+    "conceptId": "quadratic-forms-random-vectors",
+    "format": "short-answer",
+    "cognitive": "transfer",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Why are degrees of freedom a dimension rather than a penalty for having estimated a parameter?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "the df of an idempotent quadratic form is rank(A), the dimension of the subspace A projects onto",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "centring projects onto the space orthogonal to the vector of ones, which has dimension n − 1, and fitting p regression coefficients leaves a residual space of dimension n − p — nothing is being \"subtracted for estimating something\", a subspace is being removed and its dimension is the count *(required: naming rank(A) as the df and reading n − 1 as a dimension)*",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "treats n − 1 as an arbitrary small-sample correction, which leaves the n − p in regression and the (r−1)(c−1) in a contingency table as three unrelated rules",
+          "weight": 0,
+          "misconception": {
+            "id": "quadratic-forms-random-vectors--t1--misconception",
+            "description": "treats n − 1 as an arbitrary small-sample correction, which leaves the n − p in regression and the (r−1)(c−1) in a contingency table as three unrelated rules",
+            "blameConceptId": "quadratic-forms-random-vectors"
+          }
+        }
+      ]
+    },
+    "difficulty": 2.41,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "quadratic-forms-random-vectors"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "quadratic-forms-random-vectors T1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "cochrans-theorem--r1",
+    "conceptId": "cochrans-theorem",
+    "format": "short-answer",
+    "cognitive": "recall",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "State Cochran's theorem.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "for X ~ N_n(0, σ²I), if the squared norm of X decomposes as a sum of quadratic forms XᵀA_iX with ranks r_i, then the ranks summing to n is equivalent to the pieces being independent, each χ²_{r_i} after dividing by σ²",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 0.48,
+    "discrimination": 1.2,
+    "expectedSeconds": 45,
+    "prereqClosure": [
+      "cochrans-theorem"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "cochrans-theorem R1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "cochrans-theorem--r2",
+    "conceptId": "cochrans-theorem",
+    "format": "short-answer",
+    "cognitive": "recall",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "The condition that makes the pieces independent chi-squares is:",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "that the ranks of the quadratic forms sum to n, the ambient dimension",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "answers \"that the pieces be uncorrelated\" — uncorrelatedness is a consequence, and outside the normal family it would not give independence anyway",
+          "weight": 0,
+          "misconception": {
+            "id": "cochrans-theorem--r2--misconception",
+            "description": "answers \"that the pieces be uncorrelated\" — uncorrelatedness is a consequence, and outside the normal family it would not give independence anyway",
+            "blameConceptId": "cochrans-theorem"
+          }
+        }
+      ]
+    },
+    "difficulty": 0.78,
+    "discrimination": 1.2,
+    "expectedSeconds": 45,
+    "prereqClosure": [
+      "cochrans-theorem"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "cochrans-theorem R2"
+    },
+    "status": "live"
+  },
+  {
+    "id": "cochrans-theorem--a1",
+    "conceptId": "cochrans-theorem",
+    "format": "numeric",
+    "cognitive": "apply",
+    "channels": [
+      "typed",
+      "handwritten"
+    ],
+    "stem": "Group A is (4,6,8) and group B is (10,12,14). Build the one-way decomposition and give the F-statistic.",
+    "answerKey": 13.5,
+    "tolerance": 0.01,
+    "difficulty": 1.28,
+    "discrimination": 1.2,
+    "expectedSeconds": 90,
+    "prereqClosure": [
+      "cochrans-theorem"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "cochrans-theorem A1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "cochrans-theorem--a2",
+    "conceptId": "cochrans-theorem",
+    "format": "short-answer",
+    "cognitive": "apply",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "For X₁,…,Xₙ iid N(μ, σ²), write the decomposition Cochran is applied to and check its rank condition.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "standardise to Z = (X − μ1)/σ ~ N_n(0, I) and split the squared norm as ZᵀPZ + ZᵀCZ with P = (1/n)11ᵀ and C = I − P",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "rank(P) = 1 and rank(C) = n − 1, which sum to n, so the two pieces are independent with the first χ²₁ and the second χ²_{n−1} *(required: the explicit rank count 1 + (n − 1) = n)*",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 1.58,
+    "discrimination": 1.2,
+    "expectedSeconds": 90,
+    "prereqClosure": [
+      "cochrans-theorem"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "cochrans-theorem A2"
+    },
+    "status": "live"
+  },
+  {
+    "id": "cochrans-theorem--e1",
+    "conceptId": "cochrans-theorem",
+    "format": "derivation",
+    "cognitive": "explain",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Use the decomposition to prove X̄ and S² are independent, and assemble the t-statistic from the pieces.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "the two pieces are functions of X̄ and of S² separately, so Cochran's independence transfers to them",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "the first gives √n(X̄ − μ)/σ ~ N(0,1) and the second gives (n−1)S²/σ² ~ χ²_{n−1}",
+          "weight": 1,
+          "required": false
+        },
+        {
+          "id": "element-3",
+          "description": "dividing the standard normal by the square root of the independent chi-square over its df cancels σ and leaves √n(X̄ − μ)/S ~ t_{n−1} — the independence is what licenses the ratio, since the t is defined only for independent numerator and denominator",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 1.98,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "cochrans-theorem"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "cochrans-theorem E1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "cochrans-theorem--e2",
+    "conceptId": "cochrans-theorem",
+    "format": "short-answer",
+    "cognitive": "explain",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Why does the theorem need the covariance to be σ²I specifically?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "the proof rotates to an orthonormal basis adapted to the subspaces, which is legitimate only because N(0, σ²I) is rotation-invariant — QᵀX has covariance QᵀσIQ = σ²I, the same distribution",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "with a general Σ that step fails, the pieces become weighted mixtures of chi-squares rather than chi-squares, and the nominal degrees of freedom are wrong, which is exactly what Welch and Satterthwaite corrections repair",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 2.18,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "cochrans-theorem"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "cochrans-theorem E2"
+    },
+    "status": "live"
+  },
+  {
+    "id": "cochrans-theorem--t1",
+    "conceptId": "cochrans-theorem",
+    "format": "short-answer",
+    "cognitive": "transfer",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "An ANOVA table's degrees-of-freedom column sums to n. What is that really asserting, and what breaks in an unbalanced design with sequential sums of squares?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "it asserts Cochran's rank condition, so the column summing correctly is the certificate that the sums of squares are independent chi-squares and the F-ratios are genuine F's",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "in an unbalanced design the subspaces for different factors are not orthogonal, so sequential sums of squares depend on the order the terms enter and the pieces are not independent — the ranks may still add up while the orthogonality that gave them meaning does not hold",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "reads the df column as bookkeeping that always works out, missing that it is a claim about orthogonal subspaces",
+          "weight": 0,
+          "misconception": {
+            "id": "cochrans-theorem--t1--misconception",
+            "description": "reads the df column as bookkeeping that always works out, missing that it is a claim about orthogonal subspaces",
+            "blameConceptId": "cochrans-theorem"
+          }
+        }
+      ]
+    },
+    "difficulty": 2.48,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "cochrans-theorem"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "cochrans-theorem T1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "distribution-of-beta-hat--r1",
+    "conceptId": "distribution-of-beta-hat",
+    "format": "short-answer",
+    "cognitive": "recall",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Under y = Xβ + ε with ε ~ N(0, σ²I) and X of full column rank, state the exact distribution of β̂.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "β̂ ~ N_p(β, σ²(XᵀX)⁻¹) — multivariate normal, unbiased, with a covariance that depends on the design and σ² but never on y",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 0.62,
+    "discrimination": 1.2,
+    "expectedSeconds": 45,
+    "prereqClosure": [
+      "distribution-of-beta-hat"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "distribution-of-beta-hat R1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "distribution-of-beta-hat--r2",
+    "conceptId": "distribution-of-beta-hat",
+    "format": "short-answer",
+    "cognitive": "recall",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "The exactness of that distribution in finite samples rests on:",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "the errors being Normal, together with β̂ being an exactly linear function of y",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "credits the central limit theorem — the CLT is the fallback when the errors are not Normal and delivers only an asymptotic statement, so it cannot be what makes a finite-sample result exact",
+          "weight": 0,
+          "misconception": {
+            "id": "distribution-of-beta-hat--r2--misconception",
+            "description": "credits the central limit theorem — the CLT is the fallback when the errors are not Normal and delivers only an asymptotic statement, so it cannot be what makes a finite-sample result exact",
+            "blameConceptId": "distribution-of-beta-hat"
+          }
+        }
+      ]
+    },
+    "difficulty": 0.92,
+    "discrimination": 1.2,
+    "expectedSeconds": 45,
+    "prereqClosure": [
+      "distribution-of-beta-hat"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "distribution-of-beta-hat R2"
+    },
+    "status": "live"
+  },
+  {
+    "id": "distribution-of-beta-hat--a1",
+    "conceptId": "distribution-of-beta-hat",
+    "format": "numeric",
+    "cognitive": "apply",
+    "channels": [
+      "typed",
+      "handwritten"
+    ],
+    "stem": "Four observations at x = 1,2,3,4 with an intercept, and σ² = 1. Compute Var(β̂₁). `,[−0.5,0.2]]]`",
+    "answerKey": 0.2,
+    "tolerance": 0.01,
+    "difficulty": 1.42,
+    "discrimination": 1.2,
+    "expectedSeconds": 90,
+    "prereqClosure": [
+      "distribution-of-beta-hat"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "distribution-of-beta-hat A1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "distribution-of-beta-hat--a2",
+    "conceptId": "distribution-of-beta-hat",
+    "format": "numeric",
+    "cognitive": "apply",
+    "channels": [
+      "typed",
+      "handwritten"
+    ],
+    "stem": "Same design with y = (3,4,6,8). Compute the t-statistic for the slope.",
+    "answerKey": 9.82,
+    "tolerance": 0.01,
+    "difficulty": 1.72,
+    "discrimination": 1.2,
+    "expectedSeconds": 90,
+    "prereqClosure": [
+      "distribution-of-beta-hat",
+      "quadratic-forms-random-vectors"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "distribution-of-beta-hat A2"
+    },
+    "status": "live"
+  },
+  {
+    "id": "distribution-of-beta-hat--e1",
+    "conceptId": "distribution-of-beta-hat",
+    "format": "derivation",
+    "cognitive": "explain",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Derive β̂ ~ N_p(β, σ²(XᵀX)⁻¹) from the affine-map rule for multivariate normals.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "β̂ = Ay with A = (XᵀX)⁻¹Xᵀ a fixed matrix, so β̂ is an affine image of y ~ N(Xβ, σ²I) and is therefore multivariate normal",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "its mean is AXβ = β and its covariance is A(σ²I)Aᵀ = σ²(XᵀX)⁻¹XᵀX(XᵀX)⁻¹ = σ²(XᵀX)⁻¹, where the collapse depends on the error covariance being a multiple of the identity",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 2.12,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "distribution-of-beta-hat"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "distribution-of-beta-hat E1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "distribution-of-beta-hat--e2",
+    "conceptId": "distribution-of-beta-hat",
+    "format": "derivation",
+    "cognitive": "explain",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Show that RSS/σ² ~ χ²_{n−p} and that it is independent of β̂, then assemble the t-statistic.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "residuals are e = (I − H)y = (I − H)ε since (I − H)X = 0, so RSS/σ² is a quadratic form in a standard normal vector with I − H idempotent of rank n − p, hence χ²_{n−p} and E[s²] = σ²",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "β̂ − β = (XᵀX)⁻¹Xᵀε is a linear form whose matrix satisfies (XᵀX)⁻¹Xᵀ(I − H) = 0, so by Cochran the fit and the residuals live in orthogonal subspaces and are independent",
+          "weight": 1,
+          "required": false
+        },
+        {
+          "id": "element-3",
+          "description": "dividing the standard normal (β̂ⱼ − βⱼ)/(σ√[(XᵀX)⁻¹]ⱼⱼ) by the root of the independent χ²_{n−p}/(n−p) cancels σ and gives t_{n−p} *(required: the orthogonality (XᵀX)⁻¹Xᵀ(I − H) = 0 as the source of the independence)*",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 2.32,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "distribution-of-beta-hat"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "distribution-of-beta-hat E2"
+    },
+    "status": "live"
+  },
+  {
+    "id": "distribution-of-beta-hat--t1",
+    "conceptId": "distribution-of-beta-hat",
+    "format": "short-answer",
+    "cognitive": "transfer",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "A joint F-test rejects while no individual t-statistic is significant. What does the geometry of β̂'s distribution say is going on?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "the F-test uses the full covariance σ²(XᵀX)⁻¹ and asks whether β̂ lies outside a confidence ellipsoid, while each t looks only at one coordinate's marginal",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "with strongly correlated predictors the ellipsoid is long and thin along a diagonal, so the origin can sit far outside it while lying inside every one-dimensional projection — collinearity inflates the diagonal of (XᵀX)⁻¹ without inflating the precision of the linear combination the data actually pin down",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "reads the disagreement as an error in one of the tests, rather than as a marginal and a joint statement about the same normal vector",
+          "weight": 0,
+          "misconception": {
+            "id": "distribution-of-beta-hat--t1--misconception",
+            "description": "reads the disagreement as an error in one of the tests, rather than as a marginal and a joint statement about the same normal vector",
+            "blameConceptId": "distribution-of-beta-hat"
+          }
+        }
+      ]
+    },
+    "difficulty": 2.52,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "distribution-of-beta-hat"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "distribution-of-beta-hat T1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "distribution-of-beta-hat--t2",
+    "conceptId": "distribution-of-beta-hat",
+    "format": "short-answer",
+    "cognitive": "transfer",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Which reported regression numbers survive dropping normality, and which survive dropping homoskedasticity?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "dropping normality leaves β̂ unbiased and BLUE by Gauss-Markov and asymptotically normal by the CLT, so t and F become approximations rather than exact — this is the honest reading of `ols-properties`' CLT argument, which is the fallback rather than the justification",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "dropping homoskedasticity breaks the covariance formula itself, since Cov(β̂) becomes (XᵀX)⁻¹XᵀΣX(XᵀX)⁻¹ and RSS is no longer chi-square, so every printed standard error is wrong rather than merely approximate, and sandwich estimators or weighted least squares are needed",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 2.62,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "distribution-of-beta-hat"
+    ],
+    "source": {
+      "id": "bank-mp-02-quadratic-forms-and-regression",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — mp-02-quadratic-forms-and-regression.md",
+      "locator": "distribution-of-beta-hat T2"
+    },
+    "status": "live"
+  },
+  {
     "id": "one-sample-z-test--r1",
     "conceptId": "one-sample-z-test",
     "format": "short-answer",
@@ -52006,6 +53215,904 @@ export const generatedItems: Item[] = [
       "tier": "generated",
       "title": "Mathlingo authored bank — reg-05-generalized-and-special-regression.md",
       "locator": "cox-proportional-hazards-model T1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "weighted-least-squares--r1",
+    "conceptId": "weighted-least-squares",
+    "format": "short-answer",
+    "cognitive": "recall",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "State the WLS objective and the correct weight for known error variance σᵢ².",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "Σwᵢ(yᵢ−xᵢᵀβ)², wᵢ=1/σᵢ²",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "places the weight in the denominator, or aims to equalise every term rather than weight by precision",
+          "weight": 0,
+          "misconception": {
+            "id": "weighted-least-squares--r1--misconception",
+            "description": "places the weight in the denominator, or aims to equalise every term rather than weight by precision",
+            "blameConceptId": "weighted-least-squares"
+          }
+        }
+      ]
+    },
+    "difficulty": 1.18,
+    "discrimination": 1.2,
+    "expectedSeconds": 45,
+    "prereqClosure": [
+      "weighted-least-squares"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "weighted-least-squares R1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "weighted-least-squares--a1",
+    "conceptId": "weighted-least-squares",
+    "format": "numeric",
+    "cognitive": "apply",
+    "channels": [
+      "typed",
+      "handwritten"
+    ],
+    "stem": "Five factory averages, sample sizes 20,20,20,80,80, weighted by wᵢ∝nᵢ. Ratio of an 80-unit weight to a 20-unit weight?",
+    "answerKey": 4,
+    "tolerance": 0.01,
+    "difficulty": 1.68,
+    "discrimination": 1.2,
+    "expectedSeconds": 90,
+    "prereqClosure": [
+      "weighted-least-squares"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "weighted-least-squares A1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "weighted-least-squares--e1",
+    "conceptId": "weighted-least-squares",
+    "format": "short-answer",
+    "cognitive": "explain",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Is WLS an exception to \"OLS is BLUE,\" or something else?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "the Aitken theorem generalises Gauss–Markov to a known non-scalar error covariance",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "WLS is its solution when that covariance is diagonal, and OLS is the Σ=σ²I special case",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "treats WLS beating OLS's variance as contradicting Gauss–Markov",
+          "weight": 0,
+          "misconception": {
+            "id": "weighted-least-squares--e1--misconception",
+            "description": "treats WLS beating OLS's variance as contradicting Gauss–Markov",
+            "blameConceptId": "weighted-least-squares"
+          }
+        }
+      ]
+    },
+    "difficulty": 2.38,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "weighted-least-squares"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "weighted-least-squares E1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "weighted-least-squares--t1",
+    "conceptId": "weighted-least-squares",
+    "format": "short-answer",
+    "cognitive": "transfer",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Contrast WLS against robust standard errors, and say which is the safer default when the variance structure is unknown.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "robust SEs keep β̂_OLS and repair only its uncertainty, valid under any unknown heteroskedasticity",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "WLS changes β̂ itself and is more efficient only when the weights are right — robust SEs are the safer default absent confidently known weights",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "conflates the two as interchangeable fixes for the same problem",
+          "weight": 0,
+          "misconception": {
+            "id": "weighted-least-squares--t1--misconception",
+            "description": "conflates the two as interchangeable fixes for the same problem",
+            "blameConceptId": "weighted-least-squares"
+          }
+        }
+      ]
+    },
+    "difficulty": 2.88,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "weighted-least-squares"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "weighted-least-squares T1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "outliers-leverage-influence--r1",
+    "conceptId": "outliers-leverage-influence",
+    "format": "short-answer",
+    "cognitive": "recall",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Distinguish an outlier, a high-leverage point, and an influential point.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "outlier: surprising response",
+          "weight": 1,
+          "required": false
+        },
+        {
+          "id": "element-2",
+          "description": "leverage: unusual predictor values, from X alone",
+          "weight": 1,
+          "required": false
+        },
+        {
+          "id": "element-3",
+          "description": "influence: how much removing the point would change the fit — needs both",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "collapses all three into one, or defines influence from X alone",
+          "weight": 0,
+          "misconception": {
+            "id": "outliers-leverage-influence--r1--misconception",
+            "description": "collapses all three into one, or defines influence from X alone",
+            "blameConceptId": "outliers-leverage-influence"
+          }
+        }
+      ]
+    },
+    "difficulty": 1.28,
+    "discrimination": 1.2,
+    "expectedSeconds": 45,
+    "prereqClosure": [
+      "outliers-leverage-influence"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "outliers-leverage-influence R1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "outliers-leverage-influence--a1",
+    "conceptId": "outliers-leverage-influence",
+    "format": "numeric",
+    "cognitive": "apply",
+    "channels": [
+      "typed",
+      "handwritten"
+    ],
+    "stem": "p+1=3, σ̂²=4, a point has eᵢ=4, hᵢᵢ=0.5. Cook's distance Dᵢ=[eᵢ²/((p+1)σ̂²)]·[hᵢᵢ/(1−hᵢᵢ)²]?",
+    "answerKey": 2.667,
+    "tolerance": 0.01,
+    "difficulty": 1.78,
+    "discrimination": 1.2,
+    "expectedSeconds": 90,
+    "prereqClosure": [
+      "outliers-leverage-influence"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "outliers-leverage-influence A1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "outliers-leverage-influence--e1",
+    "conceptId": "outliers-leverage-influence",
+    "format": "short-answer",
+    "cognitive": "explain",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Why does a high-leverage point often show a small raw residual?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "Var(eᵢ)=σ²(1−hᵢᵢ) shrinks toward 0 as hᵢᵢ→1, since the fit is dragged toward that point rather than resisting it — so scanning for large residuals alone misses the most consequential points *(required: the explicit Var(eᵢ) mechanism)*",
+          "weight": 1,
+          "required": true
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "treats residual size as leverage-independent",
+          "weight": 0,
+          "misconception": {
+            "id": "outliers-leverage-influence--e1--misconception",
+            "description": "treats residual size as leverage-independent",
+            "blameConceptId": "outliers-leverage-influence"
+          }
+        }
+      ]
+    },
+    "difficulty": 2.48,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "outliers-leverage-influence"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "outliers-leverage-influence E1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "outliers-leverage-influence--t1",
+    "conceptId": "outliers-leverage-influence",
+    "format": "short-answer",
+    "cognitive": "transfer",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Is a high Cook's distance by itself grounds for deleting a point?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "no — an influential point can be the single most informative observation",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "verify it first (data error vs. genuine extreme), and sequential deletion of several flagged points can produce a fit that looks stable only because it was shorn of everything that disagreed with it",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "treats high influence as sufficient justification for deletion",
+          "weight": 0,
+          "misconception": {
+            "id": "outliers-leverage-influence--t1--misconception",
+            "description": "treats high influence as sufficient justification for deletion",
+            "blameConceptId": "outliers-leverage-influence"
+          }
+        }
+      ]
+    },
+    "difficulty": 3.08,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "outliers-leverage-influence"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "outliers-leverage-influence T1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "polynomial-regression--r1",
+    "conceptId": "polynomial-regression",
+    "format": "short-answer",
+    "cognitive": "recall",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Why is Y=β₀+β₁X+β₂X²+ε fitted by ordinary least squares?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "it is linear in the coefficients β, even though the fitted curve is not a straight line in X",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "believes it needs an iterative nonlinear solver",
+          "weight": 0,
+          "misconception": {
+            "id": "polynomial-regression--r1--misconception",
+            "description": "believes it needs an iterative nonlinear solver",
+            "blameConceptId": "polynomial-regression"
+          }
+        }
+      ]
+    },
+    "difficulty": 1.22,
+    "discrimination": 1.2,
+    "expectedSeconds": 45,
+    "prereqClosure": [
+      "polynomial-regression"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "polynomial-regression R1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "polynomial-regression--a1",
+    "conceptId": "polynomial-regression",
+    "format": "short-answer",
+    "cognitive": "apply",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Ŷ=10+4X−0.5X². Value of X at the maximum, and the fitted value there?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "vertex at X=−b/2a=4; Ŷ(4)=18",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 1.72,
+    "discrimination": 1.2,
+    "expectedSeconds": 90,
+    "prereqClosure": [
+      "polynomial-regression"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "polynomial-regression A1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "polynomial-regression--e1",
+    "conceptId": "polynomial-regression",
+    "format": "short-answer",
+    "cognitive": "explain",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "X and X² report very high VIFs with perfectly clean data. Why, and what's the fix?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "over a positive range, large X mechanically gives large X², so the columns are correlated by construction, not from a data flaw",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "centre X at its mean before forming the powers, unchanged fitted values",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "treats the inflated VIF as a data defect",
+          "weight": 0,
+          "misconception": {
+            "id": "polynomial-regression--e1--misconception",
+            "description": "treats the inflated VIF as a data defect",
+            "blameConceptId": "polynomial-regression"
+          }
+        }
+      ]
+    },
+    "difficulty": 2.42,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "polynomial-regression"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "polynomial-regression E1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "polynomial-regression--t1",
+    "conceptId": "polynomial-regression",
+    "format": "short-answer",
+    "cognitive": "transfer",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Why does a cubic that fits training data beautifully sometimes predict wildly just outside the observed range?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "a line extrapolates at a constant rate",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "a polynomial's slope keeps changing, so high-order terms harmless inside the data can dominate and diverge just past its edge — the usual workflow uses LOESS to find the shape, a low-degree polynomial to quantify it, and a theory-grounded model to extrapolate",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "treats extrapolation risk as uniform across model types",
+          "weight": 0,
+          "misconception": {
+            "id": "polynomial-regression--t1--misconception",
+            "description": "treats extrapolation risk as uniform across model types",
+            "blameConceptId": "polynomial-regression"
+          }
+        }
+      ]
+    },
+    "difficulty": 3.02,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "polynomial-regression"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "polynomial-regression T1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "quantile-regression--r1",
+    "conceptId": "quantile-regression",
+    "format": "short-answer",
+    "cognitive": "recall",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "State the pinball loss ρ_τ(u) and what τ=0.5 reduces it to.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "ρ_τ(u)=u(τ−𝟙[u<0]); at τ=0.5, ρ_0.5(u)=½|u| — least absolute deviations",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "treats ρ_τ as symmetric for every τ, which would target only the median regardless of τ",
+          "weight": 0,
+          "misconception": {
+            "id": "quantile-regression--r1--misconception",
+            "description": "treats ρ_τ as symmetric for every τ, which would target only the median regardless of τ",
+            "blameConceptId": "quantile-regression"
+          }
+        }
+      ]
+    },
+    "difficulty": 1.05,
+    "discrimination": 1.2,
+    "expectedSeconds": 45,
+    "prereqClosure": [
+      "quantile-regression"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "quantile-regression R1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "quantile-regression--a1",
+    "conceptId": "quantile-regression",
+    "format": "numeric",
+    "cognitive": "apply",
+    "channels": [
+      "typed",
+      "handwritten"
+    ],
+    "stem": "ρ_τ(u)=u(τ−𝟙[u<0]), τ=0.3, u=−5. Loss?",
+    "answerKey": 3.5,
+    "tolerance": 0.01,
+    "difficulty": 1.55,
+    "discrimination": 1.2,
+    "expectedSeconds": 90,
+    "prereqClosure": [
+      "quantile-regression"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "quantile-regression A1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "quantile-regression--e1",
+    "conceptId": "quantile-regression",
+    "format": "derivation",
+    "cognitive": "explain",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Show the minimiser of E[ρ_τ(Y−c)] over c is the τ-th quantile of Y.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "split the expectation by Y above/below c, differentiate w.r.t. c, set to zero",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "the stationarity condition reduces to τ=P(Y≤c), the definition of the τ-th quantile",
+          "weight": 1,
+          "required": false
+        }
+      ]
+    },
+    "difficulty": 2.25,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "quantile-regression"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "quantile-regression E1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "quantile-regression--t1",
+    "conceptId": "quantile-regression",
+    "format": "short-answer",
+    "cognitive": "transfer",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "An OLS wage-education coefficient is $2,000/yr; τ=0.1 and τ=0.9 fits give $800 and $3,600. What does this reveal that OLS alone can't?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "the OLS number is a single average effect that can't distinguish a uniform wage shift from a widening spread",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "the pattern here shows education widens the conditional wage distribution rather than shifting it uniformly",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "assumes the OLS coefficient applies uniformly across the conditional distribution",
+          "weight": 0,
+          "misconception": {
+            "id": "quantile-regression--t1--misconception",
+            "description": "assumes the OLS coefficient applies uniformly across the conditional distribution",
+            "blameConceptId": "quantile-regression"
+          }
+        }
+      ]
+    },
+    "difficulty": 2.85,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "quantile-regression"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "quantile-regression T1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "poisson-regression--r1",
+    "conceptId": "poisson-regression",
+    "format": "short-answer",
+    "cognitive": "recall",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "State the Poisson regression model.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "Y|X ~ Poisson(μ), ln(μ)=xᵀβ — a log link on the mean",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "uses the identity link, which can predict a negative mean",
+          "weight": 0,
+          "misconception": {
+            "id": "poisson-regression--r1--misconception",
+            "description": "uses the identity link, which can predict a negative mean",
+            "blameConceptId": "poisson-regression"
+          }
+        }
+      ]
+    },
+    "difficulty": 1.33,
+    "discrimination": 1.2,
+    "expectedSeconds": 45,
+    "prereqClosure": [
+      "poisson-regression"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "poisson-regression R1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "poisson-regression--a1",
+    "conceptId": "poisson-regression",
+    "format": "numeric",
+    "cognitive": "apply",
+    "channels": [
+      "typed",
+      "handwritten"
+    ],
+    "stem": "Coefficient 0.25 on a promotion indicator. Multiplicative effect on expected count?",
+    "answerKey": 1.284,
+    "tolerance": 0.01,
+    "difficulty": 1.83,
+    "discrimination": 1.2,
+    "expectedSeconds": 90,
+    "prereqClosure": [
+      "poisson-regression"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "poisson-regression A1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "poisson-regression--e1",
+    "conceptId": "poisson-regression",
+    "format": "short-answer",
+    "cognitive": "explain",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Residual deviance 340 on 110 df. Diagnose, and distinguish the effect on β̂ from the effect on inference.",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "340/110≈3.1 ≫1 signals overdispersion",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "β̂ stays consistent (mean structure unaffected) but standard errors computed under Var=μ are too small, so intervals are too narrow and results look spuriously significant",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "reports the ratio without connecting it to what it implies about the variance assumption",
+          "weight": 0,
+          "misconception": {
+            "id": "poisson-regression--e1--misconception",
+            "description": "reports the ratio without connecting it to what it implies about the variance assumption",
+            "blameConceptId": "poisson-regression"
+          }
+        }
+      ]
+    },
+    "difficulty": 2.53,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "poisson-regression"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "poisson-regression E1"
+    },
+    "status": "live"
+  },
+  {
+    "id": "poisson-regression--t1",
+    "conceptId": "poisson-regression",
+    "format": "short-answer",
+    "cognitive": "transfer",
+    "channels": [
+      "typed",
+      "handwritten",
+      "spoken"
+    ],
+    "stem": "Compare quasi-Poisson and negative binomial as overdispersion remedies — when would you reach for each?",
+    "rubric": {
+      "elements": [
+        {
+          "id": "element-1",
+          "description": "quasi-Poisson keeps μ as the mean, allows Var=φμ, inflates SEs by √φ, leaves β̂ unchanged",
+          "weight": 1,
+          "required": true
+        },
+        {
+          "id": "element-2",
+          "description": "negative binomial is a genuinely different distribution, Var=μ+αμ², enabling likelihood-based comparisons (AIC, deviance tests) the quasi version can't support",
+          "weight": 1,
+          "required": false
+        }
+      ],
+      "forbiddenMoves": [
+        {
+          "id": "misconception",
+          "description": "treats the two remedies as interchangeable",
+          "weight": 0,
+          "misconception": {
+            "id": "poisson-regression--t1--misconception",
+            "description": "treats the two remedies as interchangeable",
+            "blameConceptId": "poisson-regression"
+          }
+        }
+      ]
+    },
+    "difficulty": 3.13,
+    "discrimination": 1.2,
+    "expectedSeconds": 150,
+    "prereqClosure": [
+      "poisson-regression"
+    ],
+    "source": {
+      "id": "bank-reg-06-extensions",
+      "tier": "generated",
+      "title": "Mathlingo authored bank — reg-06-extensions.md",
+      "locator": "poisson-regression T1"
     },
     "status": "live"
   },
