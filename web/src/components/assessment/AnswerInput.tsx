@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSpeechInput } from "../../lib/assessment/useSpeechInput";
 import type { Item, ResponseChannel } from "../../lib/assessment/types";
+import { CodeText } from "./CodeText";
 import { DrawingPad } from "./DrawingPad";
 
 /**
@@ -72,7 +73,9 @@ export function AnswerInput({
                 onChange={() => toggle(choice.id)}
                 className="mt-0.5 accent-[var(--accent)]"
               />
-              <span>{choice.text}</span>
+              <span>
+                <CodeText text={choice.text} />
+              </span>
             </label>
           );
         })}
