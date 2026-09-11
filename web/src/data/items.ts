@@ -10,6 +10,7 @@ import { multivariateFormsItems } from "./items.multivariate-forms";
 import { pythonItems } from "./items/python";
 import { pythonFundamentalsItems } from "./items/python-fundamentals";
 import { pythonControlFlowItems } from "./items/python-control-flow";
+import { pythonFunctionsItems } from "./items/python-functions";
 import { pythonContainersSplitItems } from "./items/python-containers-split";
 import { numpyExpandedItems } from "./items/numpy-expanded";
 import { pythonCodeExerciseItems } from "./items/python-code-exercises";
@@ -2907,6 +2908,12 @@ export const items: Item[] = [
   // operators and the containers chapter.
   // -------------------------------------------------------------------------
   ...pythonControlFlowItems,
+
+  // -------------------------------------------------------------------------
+  // Functions — def, parameters, return, and scope. Sits between control
+  // flow and the containers chapter.
+  // -------------------------------------------------------------------------
+  ...pythonFunctionsItems,
 
   // -------------------------------------------------------------------------
   // The additional items needed to bring python-lists-intro, python-indexing,

@@ -5,9 +5,7 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 292 concepts listed here.** `concepts.ts` currently holds 306: this file's Python for Data
-Work section still lists the original 8 concepts and has not been updated for the 14 added when that
-chapter was expanded. Every other domain matches.
+**Total: 310 concepts.**
 
 ## Probability (56)
 
@@ -225,7 +223,7 @@ chapter was expanded. Every other domain matches.
 | Poisson Regression | Generalized Linear Model (GLM), Poisson Distribution | — |
 | Cox Proportional Hazards Model | Generalized Linear Model (GLM), Maximum Likelihood Estimation | — |
 
-## Machine Learning (78)
+## Machine Learning (100)
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -299,6 +297,21 @@ chapter was expanded. Every other domain matches.
 | Transformers | Attention Mechanism, Batch Normalization | — |
 | Embeddings | Neural Networks, Principal Component Analysis (PCA) | — |
 | Autoencoders | Neural Networks, Probabilistic PCA | — |
+| Architecture Families | Convolutional Neural Networks, Recurrent Neural Networks, Transformers | — |
+| Residual Networks | Backpropagation, Convolutional Neural Networks | — |
+| LSTM and GRU | Recurrent Neural Networks, Activation Functions | — |
+| Autoregressive Models | Conditional Probability, LSTM and GRU, Transformers | — |
+| State Space Models | LSTM and GRU, Convolutional Neural Networks, Eigenvalues and Eigenvectors, Attention Mechanism | — |
+| Graph Neural Networks | Graphs, Convolutional Neural Networks | — |
+| Generative Adversarial Networks | Generative vs Discriminative Models, Neural Networks, Kullback-Leibler Divergence | — |
+| Diffusion Models | Autoencoders, Normal Distribution, Generative Adversarial Networks | — |
+| Mixture of Experts | Transformers, Ensemble Methods | — |
+| Weight Initialization | Neural Networks, Activation Functions, Variance, Loss Functions | — |
+| Layer Normalization | Batch Normalization, Transformers | — |
+| Learning Rate Schedules | SGD and Adaptive Optimizers, Layer Normalization | — |
+| Data Augmentation | Convolutional Neural Networks, Overfitting and Underfitting, Training/Validation/Test Set | — |
+| Mixed Precision Training | SGD and Adaptive Optimizers, Backpropagation | — |
+| Distributed Training | Learning Rate Schedules, Mixed Precision Training | — |
 | Transfer Learning | Convolutional Neural Networks, Embeddings, Feature Scaling | — |
 | Self-Supervised Learning | Transfer Learning, Autoencoders | — |
 | Reinforcement Learning | Types of Machine Learning, Markov Chains | — |
@@ -307,6 +320,13 @@ chapter was expanded. Every other domain matches.
 | Stacking | Ensemble Methods, Nested Cross-Validation | — |
 | Hierarchical Clustering | Clustering Methods | — |
 | Density-Based Clustering | Clustering Methods, K-Means Clustering | — |
+| Scaling Laws | Learning Curves, Autoregressive Models | — |
+| Tokenization | Embeddings, Autoregressive Models | — |
+| Contrastive Learning | Self-Supervised Learning, Cross-Entropy Loss, Embeddings | — |
+| Parameter-Efficient Fine-Tuning | Transfer Learning, Rank, Transformers | — |
+| Instruction Tuning and RLHF | Reinforcement Learning, Autoregressive Models, Kullback-Leibler Divergence | — |
+| Knowledge Distillation | Cross-Entropy Loss, Kullback-Leibler Divergence, Neural Networks, Ensemble Methods | — |
+| Quantization | Mixed Precision Training, Knowledge Distillation | — |
 
 ## Graphical Models & Bayesian ML (15)
 

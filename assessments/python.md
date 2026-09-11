@@ -20,8 +20,15 @@ implementation choices with nothing to link to.
 
 The chapter is scoped to the operations that recur regardless of what is being modelled — the two
 built-in containers, the loop forms that walk them, and the same work again at array and table scale.
-It is not an introduction to programming: functions, classes, modules, exceptions and file I/O are
-all deliberately out.
+It is not an introduction to programming: classes, modules, exceptions and file I/O are all
+deliberately out.
+
+**`python-functions` is the one exception**, added after the fact: every `code`-format item in this
+domain already has the learner write a `def`, so the syntax was load-bearing long before anything
+taught it. The concept sits between the control-flow chapter and containers (`python-for-loops` →
+`python-functions`), covers `def`, positional and default parameters, `return` vs. a bare `print`,
+and local scope, and stops short of `*args`/`**kwargs`, decorators, and closures — those stay out for
+the same reason classes do.
 
 ## Graph edges
 

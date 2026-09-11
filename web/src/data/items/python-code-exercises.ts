@@ -2490,4 +2490,88 @@ export const pythonCodeExerciseItems: Item[] = [
     source: AUTHORED,
     status: "live",
   },
+
+  // ===========================================================================
+  // python-functions
+  // ===========================================================================
+  {
+    id: "python-functions--code-is-even",
+    conceptId: "python-functions",
+    format: "code",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "Write a function is_even(n) that returns True if n is even and False otherwise.",
+    starterCode: "def is_even(n):\n    pass\n",
+    referenceSolution: "def is_even(n):\n    return n % 2 == 0\n",
+    codeTests: [
+      { id: "even", description: "is_even(4) is True", run: "result = is_even(4)", check: "result is True" },
+      { id: "odd", description: "is_even(7) is False", run: "result = is_even(7)", check: "result is False" },
+      { id: "zero", description: "is_even(0) is True", run: "result = is_even(0)", check: "result is True" },
+      { id: "negative", description: "is_even(-3) is False", run: "result = is_even(-3)", check: "result is False" },
+    ],
+    difficulty: -0.7,
+    discrimination: 1.1,
+    expectedSeconds: 45,
+    prereqClosure: ["python-functions"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "python-functions--code-default-argument",
+    conceptId: "python-functions",
+    format: "code",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "Write a function power(base, exponent=2) that returns base raised to exponent. Called with " +
+      "only base, it should square it.",
+    starterCode: "def power(base, exponent=2):\n    pass\n",
+    referenceSolution: "def power(base, exponent=2):\n    return base ** exponent\n",
+    codeTests: [
+      { id: "default-square", description: "power(5) == 25 — the default exponent squares", run: "result = power(5)", check: "result == 25" },
+      { id: "explicit-cube", description: "power(2, 3) == 8", run: "result = power(2, 3)", check: "result == 8" },
+      { id: "keyword-call", description: "power(base=3, exponent=4) == 81", run: "result = power(base=3, exponent=4)", check: "result == 81" },
+      { id: "exponent-one", description: "power(9, 1) == 9", run: "result = power(9, 1)", check: "result == 9" },
+    ],
+    difficulty: -0.2,
+    discrimination: 1.2,
+    expectedSeconds: 60,
+    prereqClosure: ["python-functions"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "python-functions--code-running-total-no-mutable-default",
+    conceptId: "python-functions",
+    format: "code",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "Write a function make_bucket() that returns a new empty list every time it is called — " +
+      "calling it twice must give two lists that do not share state, so appending to one never " +
+      "changes the other.",
+    starterCode: "def make_bucket():\n    pass\n",
+    referenceSolution: "def make_bucket():\n    return []\n",
+    codeTests: [
+      { id: "empty", description: "make_bucket() starts empty", run: "result = make_bucket()", check: "result == []" },
+      {
+        id: "independent",
+        description: "appending to one call's bucket leaves a second call's bucket empty",
+        run: "a = make_bucket()\na.append(1)\nresult = make_bucket()",
+        check: "result == []",
+      },
+      {
+        id: "returns-list",
+        description: "the return value is actually a list, not None",
+        run: "result = make_bucket()",
+        check: "isinstance(result, list)",
+      },
+    ],
+    difficulty: 0.1,
+    discrimination: 1.3,
+    expectedSeconds: 60,
+    prereqClosure: ["python-functions"],
+    source: AUTHORED,
+    status: "live",
+  },
 ];

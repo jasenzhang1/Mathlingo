@@ -19,6 +19,7 @@ import { pythonOperatorsWiki } from "./python-operators";
 import { pythonConditionalsWiki } from "./python-conditionals";
 import { pythonWhileLoopsWiki } from "./python-while-loops";
 import { pythonForLoopsWiki } from "./python-for-loops";
+import { pythonFunctionsWiki } from "./python-functions";
 import { pythonTuplesWiki } from "./python-tuples";
 import type { WikiArticle } from "../types";
 
@@ -41,6 +42,7 @@ export const pythonWikiArticles: WikiArticle[] = [
   pythonConditionalsWiki,
   pythonWhileLoopsWiki,
   pythonForLoopsWiki,
+  pythonFunctionsWiki,
   pythonListsIntroWiki,
   pythonIndexingWiki,
   pythonSlicingWiki,

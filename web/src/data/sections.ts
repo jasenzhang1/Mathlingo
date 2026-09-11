@@ -549,6 +549,33 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
+      id: "architectures",
+      label: "Neural Network Architectures",
+      conceptIds: [
+        "architecture-families",
+        "residual-networks",
+        "lstm-and-gru",
+        "autoregressive-models",
+        "state-space-models",
+        "graph-neural-networks",
+        "generative-adversarial-networks",
+        "diffusion-models",
+        "mixture-of-experts",
+      ],
+    },
+    {
+      id: "training-at-scale",
+      label: "Training Deep Networks at Scale",
+      conceptIds: [
+        "weight-initialization",
+        "layer-normalization",
+        "learning-rate-schedules",
+        "data-augmentation",
+        "mixed-precision-training",
+        "distributed-training",
+      ],
+    },
+    {
       id: "further-paradigms",
       label: "Further Paradigms & Methods",
       conceptIds: [
@@ -560,6 +587,19 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "stacking",
         "hierarchical-clustering",
         "density-based-clustering",
+      ],
+    },
+    {
+      id: "adapting-and-serving",
+      label: "Scaling, Adapting & Serving",
+      conceptIds: [
+        "scaling-laws",
+        "tokenization",
+        "contrastive-learning",
+        "parameter-efficient-fine-tuning",
+        "instruction-tuning-and-rlhf",
+        "knowledge-distillation",
+        "quantization",
       ],
     },
   ],
@@ -618,6 +658,11 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "python-while-loops",
         "python-for-loops",
       ],
+    },
+    {
+      id: "functions",
+      label: "Functions",
+      conceptIds: ["python-functions"],
     },
     {
       id: "containers-and-iteration",
