@@ -2245,6 +2245,14 @@ export const concepts: Concept[] = [
     prerequisites: ["python-conditionals"],
   },
   {
+    id: "python-functions",
+    title: "Functions: def, Parameters, and Return",
+    domain: "python",
+    blurb:
+      "Packaging a computation behind a name — positional and default parameters, return vs. a bare print, and the local scope a function body runs in.",
+    prerequisites: ["python-for-loops"],
+  },
+  {
     id: "python-lists-intro",
     title: "Introduction to Lists",
     domain: "python",

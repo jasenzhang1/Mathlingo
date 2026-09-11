@@ -602,6 +602,11 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
+      id: "functions",
+      label: "Functions",
+      conceptIds: ["python-functions"],
+    },
+    {
       id: "containers-and-iteration",
       label: "Containers & Iteration",
       conceptIds: [
