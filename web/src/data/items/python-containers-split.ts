@@ -71,7 +71,7 @@ export const pythonContainersSplitItems: Item[] = [
     format: "numeric",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "colors = [\"red\", \"green\", \"blue\", \"yellow\"]. What is len(colors)?",
+    stem: "`colors = [\"red\", \"green\", \"blue\", \"yellow\"]`. What is `len(colors)`?",
     answerKey: 4,
     difficulty: -1.6,
     discrimination: 1.0,
@@ -86,7 +86,7 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Can a single Python list hold values of different types, like [1, \"two\", 3.0]?",
+    stem: "Can a single Python list hold values of different types, like `[1, \"two\", 3.0]`?",
     choices: [
       { id: "a", text: "Yes — a list places no restriction on the types it holds", correct: true },
       {
@@ -113,16 +113,16 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "letters = [\"a\", \"b\", \"c\"]. What does \"z\" in letters evaluate to?",
+    stem: "`letters = [\"a\", \"b\", \"c\"]`. What does `\"z\" in letters` evaluate to?",
     choices: [
-      { id: "a", text: "False", correct: true },
+      { id: "a", text: "`False`", correct: true },
       {
         id: "b",
-        text: "True",
+        text: "`True`",
         correct: false,
         misconception: {
           id: "assumes-in-checks-anything",
-          description: "`in` checks whether the value is actually present as an element — \"z\" is not one of the three elements in the list.",
+          description: "`in` checks whether the value is actually present as an element — `\"z\"` is not one of the three elements in the list.",
           blameConceptId: "python-lists-intro",
         },
       },
@@ -150,12 +150,12 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "cart = []. What does bool(cart) evaluate to?",
+    stem: "`cart = []`. What does `bool(cart)` evaluate to?",
     choices: [
-      { id: "a", text: "False", correct: true },
+      { id: "a", text: "`False`", correct: true },
       {
         id: "b",
-        text: "True",
+        text: "`True`",
         correct: false,
         misconception: {
           id: "assumes-list-always-truthy",
@@ -177,7 +177,7 @@ export const pythonContainersSplitItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "rows = [[1, 2], [3, 4], [5, 6]]. What is len(rows)?",
+    stem: "`rows = [[1, 2], [3, 4], [5, 6]]`. What is `len(rows)`?",
     answerKey: 3,
     difficulty: -0.3,
     discrimination: 1.1,
@@ -222,16 +222,16 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "words = [\"cat\", \"dog\"]. Which is true: len(words) counts characters, or len(words) counts list items?",
+    stem: "`words = [\"cat\", \"dog\"]`. Which is true: `len(words)` counts characters, or `len(words)` counts list items?",
     choices: [
-      { id: "a", text: "len(words) counts list items — it's 2, not the total character count", correct: true },
+      { id: "a", text: "`len(words)` counts list items — it's `2`, not the total character count", correct: true },
       {
         id: "b",
-        text: "len(words) counts every character across all the strings — it's 6",
+        text: "`len(words)` counts every character across all the strings — it's `6`",
         correct: false,
         misconception: {
           id: "confuses-len-semantics-across-types",
-          description: "len() always counts the top-level elements of whatever it's given — for a list, that's items, not characters buried inside them, even though len() on a bare string does count characters.",
+          description: "`len()` always counts the top-level elements of whatever it's given — for a list, that's items, not characters buried inside them, even though `len()` on a bare string does count characters.",
           blameConceptId: "python-lists-intro",
         },
       },
@@ -253,12 +253,12 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "letters = [\"a\", \"b\", \"c\", \"d\"]. What is letters[2]?",
+    stem: "`letters = [\"a\", \"b\", \"c\", \"d\"]`. What is `letters[2]`?",
     choices: [
-      { id: "a", text: "\"c\"", correct: true },
+      { id: "a", text: "`\"c\"`", correct: true },
       {
         id: "b",
-        text: "\"b\"",
+        text: "`\"b\"`",
         correct: false,
         misconception: {
           id: "off-by-one-index",
@@ -282,10 +282,10 @@ export const pythonContainersSplitItems: Item[] = [
     channels: ["typed"],
     stem: "For a non-empty list, what index refers to the first element?",
     choices: [
-      { id: "a", text: "0", correct: true },
+      { id: "a", text: "`0`", correct: true },
       {
         id: "b",
-        text: "1",
+        text: "`1`",
         correct: false,
         misconception: {
           id: "one-based-indexing",
@@ -307,22 +307,22 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "nums = [10, 20, 30]. What does nums[3] do?",
+    stem: "`nums = [10, 20, 30]`. What does `nums[3]` do?",
     choices: [
-      { id: "a", text: "Raises an IndexError", correct: true },
+      { id: "a", text: "Raises an `IndexError`", correct: true },
       {
         id: "b",
-        text: "Returns None",
+        text: "Returns `None`",
         correct: false,
         misconception: {
           id: "out-of-range-returns-none",
-          description: "Indexing does not fail softly — an out-of-range index raises IndexError rather than returning a placeholder.",
+          description: "Indexing does not fail softly — an out-of-range index raises `IndexError` rather than returning a placeholder.",
           blameConceptId: "python-indexing",
         },
       },
       {
         id: "c",
-        text: "Wraps around to nums[0]",
+        text: "Wraps around to `nums[0]`",
         correct: false,
         misconception: {
           id: "assumes-circular-indexing",
@@ -344,12 +344,12 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "word = \"python\". What is word[0]?",
+    stem: "`word = \"python\"`. What is `word[0]`?",
     choices: [
-      { id: "a", text: "\"p\"", correct: true },
+      { id: "a", text: "`\"p\"`", correct: true },
       {
         id: "b",
-        text: "\"python\"",
+        text: "`\"python\"`",
         correct: false,
         misconception: {
           id: "assumes-strings-not-indexable",
@@ -371,7 +371,7 @@ export const pythonContainersSplitItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "nums = [10, 20, 30, 40, 50]. What is nums[-2]?",
+    stem: "`nums = [10, 20, 30, 40, 50]`. What is `nums[-2]`?",
     answerKey: 40,
     difficulty: -0.4,
     discrimination: 1.3,
@@ -386,7 +386,7 @@ export const pythonContainersSplitItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "For a list of length n, explain how positive and negative indices relate to each other — specifically, what positive index is equivalent to index -1?",
+    stem: "For a list of length `n`, explain how positive and negative indices relate to each other — specifically, what positive index is equivalent to index `-1`?",
     rubric: {
       elements: [
         {
@@ -415,9 +415,9 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "nums has 5 elements. Which of nums[10] and nums[10:20] is guaranteed to raise an error?",
+    stem: "`nums` has 5 elements. Which of `nums[10]` and `nums[10:20]` is guaranteed to raise an error?",
     choices: [
-      { id: "a", text: "Only nums[10]", correct: true },
+      { id: "a", text: "Only `nums[10]`", correct: true },
       {
         id: "b",
         text: "Both", correct: false,
@@ -445,16 +445,16 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "letters = [\"a\", \"b\", \"c\", \"d\", \"e\"]. What does letters[:3] return?",
+    stem: "`letters = [\"a\", \"b\", \"c\", \"d\", \"e\"]`. What does `letters[:3]` return?",
     choices: [
-      { id: "a", text: "['a', 'b', 'c']", correct: true },
+      { id: "a", text: "`['a', 'b', 'c']`", correct: true },
       {
         id: "b",
-        text: "['a', 'b', 'c', 'd']",
+        text: "`['a', 'b', 'c', 'd']`",
         correct: false,
         misconception: {
           id: "stop-is-inclusive",
-          description: "Treats the stop index as inclusive. A slice's stop is exclusive — letters[:3] takes indices 0, 1, 2 only.",
+          description: "Treats the stop index as inclusive. A slice's stop is exclusive — `letters[:3]` takes indices 0, 1, 2 only.",
           blameConceptId: "python-slicing",
         },
       },
@@ -472,12 +472,12 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "nums = [0, 1, 2, 3, 4]. What does nums[2:] return?",
+    stem: "`nums = [0, 1, 2, 3, 4]`. What does `nums[2:]` return?",
     choices: [
-      { id: "a", text: "[2, 3, 4]", correct: true },
+      { id: "a", text: "`[2, 3, 4]`", correct: true },
       {
         id: "b",
-        text: "[0, 1, 2]",
+        text: "`[0, 1, 2]`",
         correct: false,
         misconception: {
           id: "swaps-start-and-implied-stop",
@@ -501,14 +501,14 @@ export const pythonContainersSplitItems: Item[] = [
     channels: ["typed"],
     stem: "Which slice reverses a list?",
     choices: [
-      { id: "a", text: "a[::-1]", correct: true },
+      { id: "a", text: "`a[::-1]`", correct: true },
       {
         id: "b",
-        text: "a[:-1]",
+        text: "`a[:-1]`",
         correct: false,
         misconception: {
           id: "confuses-negative-stop-with-negative-step",
-          description: "a[:-1] takes everything except the last element — it does not reverse anything. Reversing requires a step of -1, written a[::-1].",
+          description: "`a[:-1]` takes everything except the last element — it does not reverse anything. Reversing requires a step of -1, written `a[::-1]`.",
           blameConceptId: "python-slicing",
         },
       },
@@ -526,12 +526,12 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "nums = [10, 20, 30, 40, 50, 60]. What does nums[::2] return?",
+    stem: "`nums = [10, 20, 30, 40, 50, 60]`. What does `nums[::2]` return?",
     choices: [
-      { id: "a", text: "[10, 30, 50]", correct: true },
+      { id: "a", text: "`[10, 30, 50]`", correct: true },
       {
         id: "b",
-        text: "[10, 20]",
+        text: "`[10, 20]`",
         correct: false,
         misconception: {
           id: "reads-step-as-stop",
@@ -553,16 +553,16 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "a = [1, 2, 3]; b = a[:]; b.append(4). Does a change?",
+    stem: "`a = [1, 2, 3]; b = a[:]; b.append(4)`. Does `a` change?",
     choices: [
-      { id: "a", text: "No — a[:] built an independent copy", correct: true },
+      { id: "a", text: "No — `a[:]` built an independent copy", correct: true },
       {
         id: "b",
-        text: "Yes — a becomes [1, 2, 3, 4] too",
+        text: "Yes — `a` becomes `[1, 2, 3, 4]` too",
         correct: false,
         misconception: {
           id: "assumes-slice-aliases",
-          description: "A full slice a[:] constructs a new list object rather than aliasing the original, unlike plain assignment (b = a).",
+          description: "A full slice `a[:]` constructs a new list object rather than aliasing the original, unlike plain assignment (`b = a`).",
           blameConceptId: "python-slicing",
         },
       },
@@ -585,16 +585,16 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "nums = [1, 2, 3]; nums.append(4). What is nums now?",
+    stem: "`nums = [1, 2, 3]; nums.append(4)`. What is `nums` now?",
     choices: [
-      { id: "a", text: "[1, 2, 3, 4]", correct: true },
+      { id: "a", text: "`[1, 2, 3, 4]`", correct: true },
       {
         id: "b",
-        text: "[4, 1, 2, 3]",
+        text: "`[4, 1, 2, 3]`",
         correct: false,
         misconception: {
           id: "assumes-append-prepends",
-          description: "append() always adds to the end of the list, never the beginning — insert(0, x) is what would prepend.",
+          description: "`append()` always adds to the end of the list, never the beginning — `insert(0, x)` is what would prepend.",
           blameConceptId: "python-list-operations",
         },
       },
@@ -612,16 +612,16 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "nums = [10, 20, 30]; x = nums.pop(). What is x?",
+    stem: "`nums = [10, 20, 30]; x = nums.pop()`. What is `x`?",
     choices: [
-      { id: "a", text: "30", correct: true },
+      { id: "a", text: "`30`", correct: true },
       {
         id: "b",
-        text: "None",
+        text: "`None`",
         correct: false,
         misconception: {
           id: "confuses-pop-with-sort",
-          description: "pop() returns the removed element — it is sort() that mutates in place and returns None.",
+          description: "`pop()` returns the removed element — it is `sort()` that mutates in place and returns `None`.",
           blameConceptId: "python-list-operations",
         },
       },
@@ -639,16 +639,16 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "nums = [5, 3, 8, 1]; result = sorted(nums). What is nums after this line?",
+    stem: "`nums = [5, 3, 8, 1]; result = sorted(nums)`. What is `nums` after this line?",
     choices: [
-      { id: "a", text: "[5, 3, 8, 1] — unchanged", correct: true },
+      { id: "a", text: "`[5, 3, 8, 1]` — unchanged", correct: true },
       {
         id: "b",
-        text: "[1, 3, 5, 8]",
+        text: "`[1, 3, 5, 8]`",
         correct: false,
         misconception: {
           id: "confuses-sorted-with-sort",
-          description: "sorted() returns a new sorted list and leaves the original alone — it is .sort() that mutates in place.",
+          description: "`sorted()` returns a new sorted list and leaves the original alone — it is `.sort()` that mutates in place.",
           blameConceptId: "python-list-operations",
         },
       },
@@ -666,7 +666,7 @@ export const pythonContainersSplitItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken", "handwritten"],
-    stem: "b = a; b.append(4) changes what a sees, but b = a; b = b + [4] does not. Explain the distinction being tested here.",
+    stem: "`b = a; b.append(4)` changes what `a` sees, but `b = a; b = b + [4]` does not. Explain the distinction being tested here.",
     rubric: {
       elements: [
         {
@@ -707,14 +707,14 @@ export const pythonContainersSplitItems: Item[] = [
     channels: ["typed"],
     stem: "Which of these creates a dictionary?",
     choices: [
-      { id: "a", text: "person = {\"name\": \"Ada\", \"age\": 36}", correct: true },
+      { id: "a", text: "`person = {\"name\": \"Ada\", \"age\": 36}`", correct: true },
       {
         id: "b",
-        text: "person = [\"name\", \"Ada\", \"age\", 36]",
+        text: "`person = [\"name\", \"Ada\", \"age\", 36]`",
         correct: false,
         misconception: {
           id: "confuses-dict-with-flat-list",
-          description: "A flat list has no key-value structure — retrieving 'age' would require knowing its position, defeating the point of a dict.",
+          description: "A flat list has no key-value structure — retrieving `'age'` would require knowing its position, defeating the point of a dict.",
           blameConceptId: "python-dictionaries",
         },
       },
@@ -732,26 +732,26 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "scores = {\"Ada\": 90}. What does scores.get(\"Grace\", 0) return?",
+    stem: "`scores = {\"Ada\": 90}`. What does `scores.get(\"Grace\", 0)` return?",
     choices: [
-      { id: "a", text: "0", correct: true },
+      { id: "a", text: "`0`", correct: true },
       {
         id: "b",
-        text: "Raises a KeyError",
+        text: "Raises a `KeyError`",
         correct: false,
         misconception: {
           id: "confuses-get-with-brackets",
-          description: "Bracket access (scores[\"Grace\"]) raises KeyError on a missing key; .get() with a default never raises — it returns the default instead.",
+          description: "Bracket access (`scores[\"Grace\"]`) raises `KeyError` on a missing key; `.get()` with a default never raises — it returns the default instead.",
           blameConceptId: "python-dictionaries",
         },
       },
       {
         id: "c",
-        text: "None",
+        text: "`None`",
         correct: false,
         misconception: {
           id: "ignores-explicit-default",
-          description: ".get(key, default) returns the given default when the key is missing, not None — None is only the fallback when no default is supplied.",
+          description: "`.get(key, default)` returns the given default when the key is missing, not `None` — `None` is only the fallback when no default is supplied.",
           blameConceptId: "python-dictionaries",
         },
       },
@@ -803,12 +803,12 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "nums = set([1, 2, 2, 3, 3, 3]). What is nums?",
+    stem: "`nums = set([1, 2, 2, 3, 3, 3])`. What is `nums`?",
     choices: [
-      { id: "a", text: "{1, 2, 3}", correct: true },
+      { id: "a", text: "`{1, 2, 3}`", correct: true },
       {
         id: "b",
-        text: "[1, 2, 2, 3, 3, 3]",
+        text: "`[1, 2, 2, 3, 3, 3]`",
         correct: false,
         misconception: {
           id: "assumes-set-preserves-duplicates",
@@ -830,16 +830,16 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What is the type of the value produced by {}?",
+    stem: "What is the type of the value produced by `{}`?",
     choices: [
-      { id: "a", text: "dict", correct: true },
+      { id: "a", text: "`dict`", correct: true },
       {
         id: "b",
-        text: "set",
+        text: "`set`",
         correct: false,
         misconception: {
           id: "assumes-empty-braces-are-set",
-          description: "{} is reserved for an empty dict; an empty set must be built with set() explicitly, since curly braces alone are ambiguous.",
+          description: "`{}` is reserved for an empty dict; an empty set must be built with `set()` explicitly, since curly braces alone are ambiguous.",
           blameConceptId: "python-sets",
         },
       },
@@ -857,26 +857,26 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "a = {1, 2, 3}; b = {2, 3, 4}. What is a - b?",
+    stem: "`a = {1, 2, 3}; b = {2, 3, 4}`. What is `a - b`?",
     choices: [
-      { id: "a", text: "{1}", correct: true },
+      { id: "a", text: "`{1}`", correct: true },
       {
         id: "b",
-        text: "{4}",
+        text: "`{4}`",
         correct: false,
         misconception: {
           id: "reverses-difference-direction",
-          description: "a - b keeps what's in a but not in b; it is not symmetric, so this answer describes b - a instead.",
+          description: "`a - b` keeps what's in `a` but not in `b`; it is not symmetric, so this answer describes `b - a` instead.",
           blameConceptId: "python-sets",
         },
       },
       {
         id: "c",
-        text: "{2, 3}",
+        text: "`{2, 3}`",
         correct: false,
         misconception: {
           id: "confuses-difference-with-intersection",
-          description: "{2, 3} is a & b, the intersection — difference (-) removes the shared elements rather than keeping only them.",
+          description: "`{2, 3}` is `a & b`, the intersection — difference (`-`) removes the shared elements rather than keeping only them.",
           blameConceptId: "python-sets",
         },
       },
@@ -921,12 +921,12 @@ export const pythonContainersSplitItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "tags = list(set([\"b\", \"a\", \"c\"])). Is tags guaranteed to equal [\"b\", \"a\", \"c\"] in that order?",
+    stem: "`tags = list(set([\"b\", \"a\", \"c\"]))`. Is `tags` guaranteed to equal `[\"b\", \"a\", \"c\"]` in that order?",
     choices: [
       { id: "a", text: "No — a set carries no ordering guarantee, so the result order is unspecified", correct: true },
       {
         id: "b",
-        text: "Yes — Python preserves the original list's order through set()",
+        text: "Yes — Python preserves the original list's order through `set()`",
         correct: false,
         misconception: {
           id: "assumes-set-preserves-order",

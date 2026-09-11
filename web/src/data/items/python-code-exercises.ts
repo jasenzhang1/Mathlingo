@@ -50,8 +50,8 @@ export const pythonCodeExerciseItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "Write a function classify_sign(n) that returns the string \"negative\" if n < 0, " +
-      "\"zero\" if n == 0, and \"positive\" if n > 0.",
+      "Write a function `classify_sign(n)` that returns the string `\"negative\"` if n < 0, " +
+      "`\"zero\"` if n == 0, and `\"positive\"` if n > 0.",
     starterCode: "def classify_sign(n):\n    pass\n",
     referenceSolution:
       "def classify_sign(n):\n    if n < 0:\n        return \"negative\"\n    elif n == 0:\n        return \"zero\"\n    else:\n        return \"positive\"\n",
@@ -75,8 +75,8 @@ export const pythonCodeExerciseItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "Write a function count_digits(n) that returns how many digits are in the non-negative " +
-      "integer n, using a while loop (not str(n)). count_digits(0) should return 1.",
+      "Write a function `count_digits(n)` that returns how many digits are in the non-negative " +
+      "integer n, using a while loop (not `str(n)`). `count_digits(0)` should return 1.",
     starterCode: "def count_digits(n):\n    pass\n",
     referenceSolution:
       "def count_digits(n):\n    if n == 0:\n        return 1\n    count = 0\n    while n > 0:\n        n //= 10\n        count += 1\n    return count\n",
@@ -100,8 +100,8 @@ export const pythonCodeExerciseItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "Write a function sum_of_squares(n) that returns 1² + 2² + ... + n², using a for loop over " +
-      "range(). sum_of_squares(0) should return 0.",
+      "Write a function `sum_of_squares(n)` that returns 1² + 2² + ... + n², using a for loop over " +
+      "`range()`. `sum_of_squares(0)` should return 0.",
     starterCode: "def sum_of_squares(n):\n    pass\n",
     referenceSolution:
       "def sum_of_squares(n):\n    total = 0\n    for i in range(1, n + 1):\n        total += i * i\n    return total\n",
@@ -124,7 +124,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function second_item(lst) that returns the second element of lst.",
+    stem: "Write a function `second_item(lst)` that returns the second element of lst.",
     starterCode: "def second_item(lst):\n    pass\n",
     referenceSolution: "def second_item(lst):\n    return lst[1]\n",
     codeTests: [
@@ -146,7 +146,7 @@ export const pythonCodeExerciseItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "Write a function last_n(lst, n) that returns the last n elements of lst, as a list, " +
+      "Write a function `last_n(lst, n)` that returns the last n elements of lst, as a list, " +
       "using slicing (not a loop).",
     starterCode: "def last_n(lst, n):\n    pass\n",
     referenceSolution: "def last_n(lst, n):\n    return lst[-n:]\n",
@@ -169,7 +169,7 @@ export const pythonCodeExerciseItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "Write a function append_and_sort(lst, x) that returns a NEW sorted list containing every " +
+      "Write a function `append_and_sort(lst, x)` that returns a NEW sorted list containing every " +
       "element of lst plus x, without modifying lst itself.",
     starterCode: "def append_and_sort(lst, x):\n    pass\n",
     referenceSolution: "def append_and_sort(lst, x):\n    return sorted(lst + [x])\n",
@@ -197,7 +197,7 @@ export const pythonCodeExerciseItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "Write a function count_letters(word) that returns a dict mapping each character in word " +
+      "Write a function `count_letters(word)` that returns a dict mapping each character in word " +
       "to how many times it appears.",
     starterCode: "def count_letters(word):\n    pass\n",
     referenceSolution:
@@ -221,7 +221,7 @@ export const pythonCodeExerciseItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "Write a function to_fahrenheit(celsius) that converts a Celsius temperature to Fahrenheit: " +
+      "Write a function `to_fahrenheit(celsius)` that converts a Celsius temperature to Fahrenheit: " +
       "F = C * 9/5 + 32. Return a float.",
     starterCode: "def to_fahrenheit(celsius):\n    pass\n",
     referenceSolution: "def to_fahrenheit(celsius):\n    return celsius * 9 / 5 + 32\n",
@@ -243,7 +243,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function make_label(name, count) that returns the string \"name: count\" — the name, a colon and a space, then the count. make_label(\"apples\", 3) is \"apples: 3\".",
+    stem: "Write a function `make_label(name, count)` that returns the string `\"name: count\"` — the name, a colon and a space, then the count. `make_label(\"apples\", 3)` is `\"apples: 3\"`.",
     starterCode: "def make_label(name, count):\n    pass\n",
     referenceSolution: "def make_label(name, count):\n    return f\"{name}: {count}\"\n",
     codeTests: [
@@ -279,7 +279,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function swap(a, b) that returns a tuple with the two values in the opposite order. swap(1, 2) is (2, 1).",
+    stem: "Write a function `swap(a, b)` that returns a tuple with the two values in the opposite order. `swap(1, 2)` is `(2, 1)`.",
     starterCode: "def swap(a, b):\n    pass\n",
     referenceSolution: "def swap(a, b):\n    return (b, a)\n",
     codeTests: [
@@ -315,7 +315,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function type_name(value) that returns the name of the value's type as a string: \"int\", \"float\", \"str\" or \"bool\". type_name(3) is \"int\".",
+    stem: "Write a function `type_name(value)` that returns the name of the value's type as a string: `\"int\"`, `\"float\"`, `\"str\"` or `\"bool\"`. `type_name(3)` is `\"int\"`.",
     starterCode: "def type_name(value):\n    pass\n",
     referenceSolution: "def type_name(value):\n    return type(value).__name__\n",
     codeTests: [
@@ -357,7 +357,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function to_int_or_none(text) that returns the integer text represents, or None if text is not a valid integer. to_int_or_none(\"42\") is 42; to_int_or_none(\"4.2\") is None.",
+    stem: "Write a function `to_int_or_none(text)` that returns the integer text represents, or None if text is not a valid integer. `to_int_or_none(\"42\")` is 42; `to_int_or_none(\"4.2\")` is None.",
     starterCode: "def to_int_or_none(text):\n    pass\n",
     referenceSolution: "def to_int_or_none(text):\n    try:\n        return int(text)\n    except ValueError:\n        return None\n",
     codeTests: [
@@ -399,7 +399,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function is_blank(value) that returns True when the value is falsy — 0, \"\", an empty list, None, False — and False otherwise. Use Python's own notion of truthiness rather than listing the cases.",
+    stem: "Write a function `is_blank(value)` that returns True when the value is falsy — 0, `\"\"`, an empty list, None, False — and False otherwise. Use Python's own notion of truthiness rather than listing the cases.",
     starterCode: "def is_blank(value):\n    pass\n",
     referenceSolution: "def is_blank(value):\n    return not value\n",
     codeTests: [
@@ -453,7 +453,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function total_from_strings(values) that takes a list of strings holding whole numbers and returns their sum as an integer. total_from_strings([\"1\", \"2\", \"3\"]) is 6.",
+    stem: "Write a function `total_from_strings(values)` that takes a list of strings holding whole numbers and returns their sum as an integer. `total_from_strings([\"1\", \"2\", \"3\"])` is 6.",
     starterCode: "def total_from_strings(values):\n    pass\n",
     referenceSolution: "def total_from_strings(values):\n    return sum(int(v) for v in values)\n",
     codeTests: [
@@ -495,7 +495,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function even_and_positive(n) that returns True only when n is both even and greater than zero. even_and_positive(4) is True; even_and_positive(-4) is False.",
+    stem: "Write a function `even_and_positive(n)` that returns True only when n is both even and greater than zero. `even_and_positive(4)` is True; `even_and_positive(-4)` is False.",
     starterCode: "def even_and_positive(n):\n    pass\n",
     referenceSolution: "def even_and_positive(n):\n    return n % 2 == 0 and n > 0\n",
     codeTests: [
@@ -537,7 +537,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function average_of_three(a, b, c) that returns the mean of the three numbers as a float. average_of_three(1, 2, 3) is 2.0.",
+    stem: "Write a function `average_of_three(a, b, c)` that returns the mean of the three numbers as a float. `average_of_three(1, 2, 3)` is 2.0.",
     starterCode: "def average_of_three(a, b, c):\n    pass\n",
     referenceSolution: "def average_of_three(a, b, c):\n    return (a + b + c) / 3\n",
     codeTests: [
@@ -573,7 +573,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function grade_letter(score) that returns \"A\" for 90 and above, \"B\" for 80-89, \"C\" for 70-79, and \"F\" below 70.",
+    stem: "Write a function `grade_letter(score)` that returns `\"A\"` for 90 and above, `\"B\"` for 80-89, `\"C\"` for 70-79, and `\"F\"` below 70.",
     starterCode: "def grade_letter(score):\n    pass\n",
     referenceSolution: "def grade_letter(score):\n    if score >= 90:\n        return \"A\"\n    elif score >= 80:\n        return \"B\"\n    elif score >= 70:\n        return \"C\"\n    else:\n        return \"F\"\n",
     codeTests: [
@@ -621,7 +621,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function fizz_or_buzz(n) returning \"fizzbuzz\" if n divides by both 3 and 5, \"fizz\" if only by 3, \"buzz\" if only by 5, and otherwise n itself as a string.",
+    stem: "Write a function `fizz_or_buzz(n)` returning `\"fizzbuzz\"` if n divides by both 3 and 5, `\"fizz\"` if only by 3, `\"buzz\"` if only by 5, and otherwise n itself as a string.",
     starterCode: "def fizz_or_buzz(n):\n    pass\n",
     referenceSolution: "def fizz_or_buzz(n):\n    if n % 15 == 0:\n        return \"fizzbuzz\"\n    elif n % 3 == 0:\n        return \"fizz\"\n    elif n % 5 == 0:\n        return \"buzz\"\n    else:\n        return str(n)\n",
     codeTests: [
@@ -663,7 +663,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function collatz_steps(n) that counts how many steps it takes to reach 1, where each step halves an even number and does 3n + 1 to an odd one. collatz_steps(1) is 0.",
+    stem: "Write a function `collatz_steps(n)` that counts how many steps it takes to reach 1, where each step halves an even number and does 3n + 1 to an odd one. `collatz_steps(1)` is 0.",
     starterCode: "def collatz_steps(n):\n    pass\n",
     referenceSolution: "def collatz_steps(n):\n    steps = 0\n    while n != 1:\n        n = n // 2 if n % 2 == 0 else 3 * n + 1\n        steps += 1\n    return steps\n",
     codeTests: [
@@ -705,7 +705,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function power_above(limit) that returns the smallest power of 2 strictly greater than limit. power_above(10) is 16; power_above(16) is 32.",
+    stem: "Write a function `power_above(limit)` that returns the smallest power of 2 strictly greater than limit. `power_above(10)` is 16; `power_above(16)` is 32.",
     starterCode: "def power_above(limit):\n    pass\n",
     referenceSolution: "def power_above(limit):\n    value = 1\n    while value <= limit:\n        value *= 2\n    return value\n",
     codeTests: [
@@ -747,7 +747,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function factorial(n) that returns n! — the product of every whole number from 1 to n. factorial(0) is 1.",
+    stem: "Write a function `factorial(n)` that returns n! — the product of every whole number from 1 to n. `factorial(0)` is 1.",
     starterCode: "def factorial(n):\n    pass\n",
     referenceSolution: "def factorial(n):\n    total = 1\n    for i in range(2, n + 1):\n        total *= i\n    return total\n",
     codeTests: [
@@ -789,7 +789,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function count_vowels(text) that returns how many of the characters in text are vowels (a, e, i, o, u), counting upper and lower case alike.",
+    stem: "Write a function `count_vowels(text)` that returns how many of the characters in text are vowels (a, e, i, o, u), counting upper and lower case alike.",
     starterCode: "def count_vowels(text):\n    pass\n",
     referenceSolution: "def count_vowels(text):\n    total = 0\n    for ch in text.lower():\n        if ch in \"aeiou\":\n            total += 1\n    return total\n",
     codeTests: [
@@ -831,7 +831,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function contains(items, target) that returns True if target appears anywhere in the list items, and False otherwise. Use Python's `in` operator rather than a loop.",
+    stem: "Write a function `contains(items, target)` that returns True if target appears anywhere in the list items, and False otherwise. Use Python's `in` operator rather than a loop.",
     starterCode: "def contains(items, target):\n    pass\n",
     referenceSolution: "def contains(items, target):\n    return target in items\n",
     codeTests: [
@@ -873,7 +873,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function repeat_list(items, n) that returns a new list containing the contents of items repeated n times. repeat_list([1, 2], 3) is [1, 2, 1, 2, 1, 2].",
+    stem: "Write a function `repeat_list(items, n)` that returns a new list containing the contents of items repeated n times. `repeat_list([1, 2], 3)` is `[1, 2, 1, 2, 1, 2]`.",
     starterCode: "def repeat_list(items, n):\n    pass\n",
     referenceSolution: "def repeat_list(items, n):\n    return items * n\n",
     codeTests: [
@@ -909,7 +909,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function combine(a, b) that returns a new list with every element of a followed by every element of b, leaving both inputs unchanged.",
+    stem: "Write a function `combine(a, b)` that returns a new list with every element of a followed by every element of b, leaving both inputs unchanged.",
     starterCode: "def combine(a, b):\n    pass\n",
     referenceSolution: "def combine(a, b):\n    return a + b\n",
     codeTests: [
@@ -945,7 +945,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function first_and_last(items) that returns a tuple of the first and last elements of the list. first_and_last([1, 2, 3]) is (1, 3).",
+    stem: "Write a function `first_and_last(items)` that returns a tuple of the first and last elements of the list. `first_and_last([1, 2, 3])` is `(1, 3)`.",
     starterCode: "def first_and_last(items):\n    pass\n",
     referenceSolution: "def first_and_last(items):\n    return (items[0], items[-1])\n",
     codeTests: [
@@ -987,7 +987,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function middle_item(items) that returns the element in the middle of an odd-length list. middle_item([1, 2, 3]) is 2.",
+    stem: "Write a function `middle_item(items)` that returns the element in the middle of an odd-length list. `middle_item([1, 2, 3])` is 2.",
     starterCode: "def middle_item(items):\n    pass\n",
     referenceSolution: "def middle_item(items):\n    return items[len(items) // 2]\n",
     codeTests: [
@@ -1029,7 +1029,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function every_other(items) that returns a new list with every second element, starting from the first. every_other([1, 2, 3, 4, 5]) is [1, 3, 5]. Use a slice, not a loop.",
+    stem: "Write a function `every_other(items)` that returns a new list with every second element, starting from the first. `every_other([1, 2, 3, 4, 5])` is `[1, 3, 5]`. Use a slice, not a loop.",
     starterCode: "def every_other(items):\n    pass\n",
     referenceSolution: "def every_other(items):\n    return items[::2]\n",
     codeTests: [
@@ -1065,7 +1065,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function reverse_list(items) that returns a new list with the elements in reverse order, leaving the original unchanged. Use a slice.",
+    stem: "Write a function `reverse_list(items)` that returns a new list with the elements in reverse order, leaving the original unchanged. Use a slice.",
     starterCode: "def reverse_list(items):\n    pass\n",
     referenceSolution: "def reverse_list(items):\n    return items[::-1]\n",
     codeTests: [
@@ -1101,7 +1101,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function remove_all(items, value) that returns a new list with every occurrence of value removed, leaving the original list unchanged.",
+    stem: "Write a function `remove_all(items, value)` that returns a new list with every occurrence of value removed, leaving the original list unchanged.",
     starterCode: "def remove_all(items, value):\n    pass\n",
     referenceSolution: "def remove_all(items, value):\n    return [x for x in items if x != value]\n",
     codeTests: [
@@ -1143,7 +1143,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function pop_smallest(items) that removes the smallest element from the list in place and returns it. The list passed in should be shorter afterwards.",
+    stem: "Write a function `pop_smallest(items)` that removes the smallest element from the list in place and returns it. The list passed in should be shorter afterwards.",
     starterCode: "def pop_smallest(items):\n    pass\n",
     referenceSolution: "def pop_smallest(items):\n    smallest = min(items)\n    items.remove(smallest)\n    return smallest\n",
     codeTests: [
@@ -1179,7 +1179,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function min_max(numbers) that returns a tuple holding the smallest and largest values in the list, in that order. min_max([3, 1, 2]) is (1, 3).",
+    stem: "Write a function `min_max(numbers)` that returns a tuple holding the smallest and largest values in the list, in that order. `min_max([3, 1, 2])` is `(1, 3)`.",
     starterCode: "def min_max(numbers):\n    pass\n",
     referenceSolution: "def min_max(numbers):\n    return (min(numbers), max(numbers))\n",
     codeTests: [
@@ -1221,7 +1221,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function swap_pair(pair) that takes a two-element tuple and returns a new tuple with the elements exchanged. swap_pair((1, 2)) is (2, 1).",
+    stem: "Write a function `swap_pair(pair)` that takes a two-element tuple and returns a new tuple with the elements exchanged. `swap_pair((1, 2))` is `(2, 1)`.",
     starterCode: "def swap_pair(pair):\n    pass\n",
     referenceSolution: "def swap_pair(pair):\n    first, second = pair\n    return (second, first)\n",
     codeTests: [
@@ -1257,7 +1257,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function summarise_record(record) that unpacks a (name, count, score) tuple and returns the string \"name scored score over count runs\". Round nothing — use the values as given.",
+    stem: "Write a function `summarise_record(record)` that unpacks a (name, count, score) tuple and returns the string `\"name scored score over count runs\"`. Round nothing — use the values as given.",
     starterCode: "def summarise_record(record):\n    pass\n",
     referenceSolution: "def summarise_record(record):\n    name, count, score = record\n    return f\"{name} scored {score} over {count} runs\"\n",
     codeTests: [
@@ -1287,7 +1287,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function get_or_default(mapping, key, default) that returns the value stored under key, or default if the key is absent. Do not raise a KeyError.",
+    stem: "Write a function `get_or_default(mapping, key, default)` that returns the value stored under key, or default if the key is absent. Do not raise a KeyError.",
     starterCode: "def get_or_default(mapping, key, default):\n    pass\n",
     referenceSolution: "def get_or_default(mapping, key, default):\n    return mapping.get(key, default)\n",
     codeTests: [
@@ -1329,7 +1329,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function invert(mapping) that returns a new dictionary with keys and values swapped. invert({\"a\": 1}) is {1: \"a\"}. Assume the values are unique.",
+    stem: "Write a function `invert(mapping)` that returns a new dictionary with keys and values swapped. `invert({\"a\": 1})` is `{1: \"a\"}`. Assume the values are unique.",
     starterCode: "def invert(mapping):\n    pass\n",
     referenceSolution: "def invert(mapping):\n    return {value: key for key, value in mapping.items()}\n",
     codeTests: [
@@ -1365,7 +1365,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function unique_sorted(items) that returns a sorted list of the distinct values in items. unique_sorted([3, 1, 3, 2]) is [1, 2, 3].",
+    stem: "Write a function `unique_sorted(items)` that returns a sorted list of the distinct values in items. `unique_sorted([3, 1, 3, 2])` is `[1, 2, 3]`.",
     starterCode: "def unique_sorted(items):\n    pass\n",
     referenceSolution: "def unique_sorted(items):\n    return sorted(set(items))\n",
     codeTests: [
@@ -1407,7 +1407,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function common(a, b) that returns a sorted list of the values appearing in both lists. common([1, 2, 3], [2, 3, 4]) is [2, 3].",
+    stem: "Write a function `common(a, b)` that returns a sorted list of the values appearing in both lists. `common([1, 2, 3], [2, 3, 4])` is `[2, 3]`.",
     starterCode: "def common(a, b):\n    pass\n",
     referenceSolution: "def common(a, b):\n    return sorted(set(a) & set(b))\n",
     codeTests: [
@@ -1443,7 +1443,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function only_in_first(a, b) that returns a sorted list of the values present in a but not in b. only_in_first([1, 2, 3], [2]) is [1, 3].",
+    stem: "Write a function `only_in_first(a, b)` that returns a sorted list of the values present in a but not in b. `only_in_first([1, 2, 3], [2])` is `[1, 3]`.",
     starterCode: "def only_in_first(a, b):\n    pass\n",
     referenceSolution: "def only_in_first(a, b):\n    return sorted(set(a) - set(b))\n",
     codeTests: [
@@ -1479,7 +1479,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function index_of_max(numbers) that returns the position of the largest value. If the largest appears more than once, return the first position. Use enumerate.",
+    stem: "Write a function `index_of_max(numbers)` that returns the position of the largest value. If the largest appears more than once, return the first position. Use enumerate.",
     starterCode: "def index_of_max(numbers):\n    pass\n",
     referenceSolution: "def index_of_max(numbers):\n    best = 0\n    for i, value in enumerate(numbers):\n        if value > numbers[best]:\n            best = i\n    return best\n",
     codeTests: [
@@ -1521,7 +1521,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function pair_up(names, scores) that returns a list of (name, score) tuples pairing the two lists position by position. Stop at the shorter list. Use zip.",
+    stem: "Write a function `pair_up(names, scores)` that returns a list of (name, score) tuples pairing the two lists position by position. Stop at the shorter list. Use zip.",
     starterCode: "def pair_up(names, scores):\n    pass\n",
     referenceSolution: "def pair_up(names, scores):\n    return list(zip(names, scores))\n",
     codeTests: [
@@ -1557,7 +1557,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function numbered_lines(lines) that returns a list of strings \"1. first\", \"2. second\", and so on — numbering from 1. Use enumerate's start argument.",
+    stem: "Write a function `numbered_lines(lines)` that returns a list of strings `\"1. first\"`, `\"2. second\"`, and so on — numbering from 1. Use enumerate's start argument.",
     starterCode: "def numbered_lines(lines):\n    pass\n",
     referenceSolution: "def numbered_lines(lines):\n    return [f\"{i}. {line}\" for i, line in enumerate(lines, start=1)]\n",
     codeTests: [
@@ -1593,7 +1593,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function squares(n) that returns the list of squares of 0 up to but not including n. squares(4) is [0, 1, 4, 9]. Use a list comprehension.",
+    stem: "Write a function `squares(n)` that returns the list of squares of 0 up to but not including n. `squares(4)` is `[0, 1, 4, 9]`. Use a list comprehension.",
     starterCode: "def squares(n):\n    pass\n",
     referenceSolution: "def squares(n):\n    return [i * i for i in range(n)]\n",
     codeTests: [
@@ -1629,7 +1629,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function even_only(numbers) that returns a new list holding just the even values, in their original order. Use a comprehension with a condition.",
+    stem: "Write a function `even_only(numbers)` that returns a new list holding just the even values, in their original order. Use a comprehension with a condition.",
     starterCode: "def even_only(numbers):\n    pass\n",
     referenceSolution: "def even_only(numbers):\n    return [n for n in numbers if n % 2 == 0]\n",
     codeTests: [
@@ -1665,7 +1665,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function word_lengths(words) that returns a dictionary mapping each word to its length. word_lengths([\"hi\", \"there\"]) is {\"hi\": 2, \"there\": 5}. Use a dict comprehension.",
+    stem: "Write a function `word_lengths(words)` that returns a dictionary mapping each word to its length. `word_lengths([\"hi\", \"there\"])` is `{\"hi\": 2, \"there\": 5}`. Use a dict comprehension.",
     starterCode: "def word_lengths(words):\n    pass\n",
     referenceSolution: "def word_lengths(words):\n    return {word: len(word) for word in words}\n",
     codeTests: [
@@ -1701,7 +1701,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function double_all(values) that takes a list of numbers and returns a NumPy array with every value doubled. Do the doubling on the array itself rather than looping.",
+    stem: "Write a function `double_all(values)` that takes a list of numbers and returns a NumPy array with every value doubled. Do the doubling on the array itself rather than looping.",
     starterCode: "import numpy as np\n\n\ndef double_all(values):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef double_all(values):\n    return np.array(values) * 2\n",
     codePackages: ["numpy"],
@@ -1744,7 +1744,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function normalise(values) that returns a NumPy array with the mean subtracted and the result divided by the standard deviation, so the output has mean 0 and standard deviation 1.",
+    stem: "Write a function `normalise(values)` that returns a NumPy array with the mean subtracted and the result divided by the standard deviation, so the output has mean 0 and standard deviation 1.",
     starterCode: "import numpy as np\n\n\ndef normalise(values):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef normalise(values):\n    a = np.array(values, dtype=float)\n    return (a - a.mean()) / a.std()\n",
     codePackages: ["numpy"],
@@ -1787,7 +1787,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function elementwise_product(a, b) that returns a NumPy array holding the product of each matching pair of entries — not the dot product.",
+    stem: "Write a function `elementwise_product(a, b)` that returns a NumPy array holding the product of each matching pair of entries — not the dot product.",
     starterCode: "import numpy as np\n\n\ndef elementwise_product(a, b):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef elementwise_product(a, b):\n    return np.array(a) * np.array(b)\n",
     codePackages: ["numpy"],
@@ -1824,7 +1824,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function evens_up_to(n) that returns a NumPy array of the even numbers from 0 up to but not including n. evens_up_to(7) is array([0, 2, 4, 6]). Use np.arange.",
+    stem: "Write a function `evens_up_to(n)` that returns a NumPy array of the even numbers from 0 up to but not including n. `evens_up_to(7)` is `array([0, 2, 4, 6])`. Use np.arange.",
     starterCode: "import numpy as np\n\n\ndef evens_up_to(n):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef evens_up_to(n):\n    return np.arange(0, n, 2)\n",
     codePackages: ["numpy"],
@@ -1861,7 +1861,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function unit_interval(k) that returns k evenly spaced values from 0 to 1 inclusive, as a NumPy array. unit_interval(3) is array([0. , 0.5, 1. ]). Use np.linspace.",
+    stem: "Write a function `unit_interval(k)` that returns k evenly spaced values from 0 to 1 inclusive, as a NumPy array. `unit_interval(3)` is `array([0. , 0.5, 1. ])`. Use np.linspace.",
     starterCode: "import numpy as np\n\n\ndef unit_interval(k):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef unit_interval(k):\n    return np.linspace(0, 1, k)\n",
     codePackages: ["numpy"],
@@ -1898,7 +1898,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function identity_plus(n, c) that returns the n by n identity matrix with c added to every entry, as a NumPy array.",
+    stem: "Write a function `identity_plus(n, c)` that returns the n by n identity matrix with c added to every entry, as a NumPy array.",
     starterCode: "import numpy as np\n\n\ndef identity_plus(n, c):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef identity_plus(n, c):\n    return np.eye(n) + c\n",
     codePackages: ["numpy"],
@@ -1935,7 +1935,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function positives(a) that returns a NumPy array of just the strictly positive entries of a, in order. Use a boolean mask rather than a loop.",
+    stem: "Write a function `positives(a)` that returns a NumPy array of just the strictly positive entries of a, in order. Use a boolean mask rather than a loop.",
     starterCode: "import numpy as np\n\n\ndef positives(a):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef positives(a):\n    arr = np.array(a)\n    return arr[arr > 0]\n",
     codePackages: ["numpy"],
@@ -1972,7 +1972,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function pick(a, indices) that returns a NumPy array holding the entries of a at the given positions, in the order the positions are listed. Use fancy indexing.",
+    stem: "Write a function `pick(a, indices)` that returns a NumPy array holding the entries of a at the given positions, in the order the positions are listed. Use fancy indexing.",
     starterCode: "import numpy as np\n\n\ndef pick(a, indices):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef pick(a, indices):\n    return np.array(a)[np.array(indices)]\n",
     codePackages: ["numpy"],
@@ -2009,7 +2009,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function clip_negatives(a) that returns a NumPy array with every negative entry replaced by 0, leaving the input array unmodified.",
+    stem: "Write a function `clip_negatives(a)` that returns a NumPy array with every negative entry replaced by 0, leaving the input array unmodified.",
     starterCode: "import numpy as np\n\n\ndef clip_negatives(a):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef clip_negatives(a):\n    out = np.array(a).copy()\n    out[out < 0] = 0\n    return out\n",
     codePackages: ["numpy"],
@@ -2046,7 +2046,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function row_sums(m) that returns a NumPy array holding the sum of each row of the 2-D input. For [[1, 2], [3, 4]] that is [3, 7].",
+    stem: "Write a function `row_sums(m)` that returns a NumPy array holding the sum of each row of the 2-D input. For `[[1, 2], [3, 4]]` that is `[3, 7]`.",
     starterCode: "import numpy as np\n\n\ndef row_sums(m):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef row_sums(m):\n    return np.array(m).sum(axis=1)\n",
     codePackages: ["numpy"],
@@ -2083,7 +2083,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function center_columns(m) that subtracts each column's mean from that column, returning a NumPy array whose columns each have mean 0. Rely on broadcasting.",
+    stem: "Write a function `center_columns(m)` that subtracts each column's mean from that column, returning a NumPy array whose columns each have mean 0. Rely on broadcasting.",
     starterCode: "import numpy as np\n\n\ndef center_columns(m):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef center_columns(m):\n    arr = np.array(m, dtype=float)\n    return arr - arr.mean(axis=0)\n",
     codePackages: ["numpy"],
@@ -2120,7 +2120,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function outer_sum(a, b) that returns the 2-D NumPy array whose entry at row i, column j is a[i] + b[j]. Use broadcasting, not a nested loop.",
+    stem: "Write a function `outer_sum(a, b)` that returns the 2-D NumPy array whose entry at row i, column j is `a[i]` + `b[j]`. Use broadcasting, not a nested loop.",
     starterCode: "import numpy as np\n\n\ndef outer_sum(a, b):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef outer_sum(a, b):\n    return np.array(a)[:, None] + np.array(b)[None, :]\n",
     codePackages: ["numpy"],
@@ -2157,7 +2157,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function matmul(a, b) that returns the matrix product of the two 2-D inputs as a NumPy array. Use the @ operator, not elementwise multiplication.",
+    stem: "Write a function `matmul(a, b)` that returns the matrix product of the two 2-D inputs as a NumPy array. Use the @ operator, not elementwise multiplication.",
     starterCode: "import numpy as np\n\n\ndef matmul(a, b):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef matmul(a, b):\n    return np.array(a) @ np.array(b)\n",
     codePackages: ["numpy"],
@@ -2200,7 +2200,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function gram(a) that returns A transposed times A, as a NumPy array. For an n by k input the result is k by k.",
+    stem: "Write a function `gram(a)` that returns A transposed times A, as a NumPy array. For an n by k input the result is k by k.",
     starterCode: "import numpy as np\n\n\ndef gram(a):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef gram(a):\n    arr = np.array(a)\n    return arr.T @ arr\n",
     codePackages: ["numpy"],
@@ -2237,7 +2237,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function solve_system(a, b) that returns the x solving A x = b, as a NumPy array. Use np.linalg.solve rather than inverting A.",
+    stem: "Write a function `solve_system(a, b)` that returns the x solving A x = b, as a NumPy array. Use np.linalg.solve rather than inverting A.",
     starterCode: "import numpy as np\n\n\ndef solve_system(a, b):\n    pass\n",
     referenceSolution: "import numpy as np\n\n\ndef solve_system(a, b):\n    return np.linalg.solve(np.array(a, dtype=float), np.array(b, dtype=float))\n",
     codePackages: ["numpy"],
@@ -2274,7 +2274,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function column_mean(df, column) that returns the mean of the named column as a float.",
+    stem: "Write a function `column_mean(df, column)` that returns the mean of the named column as a float.",
     starterCode: "import pandas as pd\n\n\ndef column_mean(df, column):\n    pass\n",
     referenceSolution: "import pandas as pd\n\n\ndef column_mean(df, column):\n    return float(df[column].mean())\n",
     codePackages: ["pandas"],
@@ -2311,7 +2311,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function filter_rows(df, column, threshold) that returns a DataFrame holding only the rows where the named column is strictly greater than threshold.",
+    stem: "Write a function `filter_rows(df, column, threshold)` that returns a DataFrame holding only the rows where the named column is strictly greater than threshold.",
     starterCode: "import pandas as pd\n\n\ndef filter_rows(df, column, threshold):\n    pass\n",
     referenceSolution: "import pandas as pd\n\n\ndef filter_rows(df, column, threshold):\n    return df[df[column] > threshold]\n",
     codePackages: ["pandas"],
@@ -2348,7 +2348,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function add_total_column(df) that returns a copy of the DataFrame with an extra column \"total\" holding the row-wise sum of the existing numeric columns. The input must not be modified.",
+    stem: "Write a function `add_total_column(df)` that returns a copy of the DataFrame with an extra column `\"total\"` holding the row-wise sum of the existing numeric columns. The input must not be modified.",
     starterCode: "import pandas as pd\n\n\ndef add_total_column(df):\n    pass\n",
     referenceSolution: "import pandas as pd\n\n\ndef add_total_column(df):\n    out = df.copy()\n    out[\"total\"] = df.sum(axis=1)\n    return out\n",
     codePackages: ["pandas"],
@@ -2385,7 +2385,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function mean_by(df, key, value) that returns a Series of the mean of the value column within each group of the key column.",
+    stem: "Write a function `mean_by(df, key, value)` that returns a Series of the mean of the value column within each group of the key column.",
     starterCode: "import pandas as pd\n\n\ndef mean_by(df, key, value):\n    pass\n",
     referenceSolution: "import pandas as pd\n\n\ndef mean_by(df, key, value):\n    return df.groupby(key)[value].mean()\n",
     codePackages: ["pandas"],
@@ -2422,7 +2422,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function count_by(df, key) that returns a Series giving how many rows fall in each group of the key column.",
+    stem: "Write a function `count_by(df, key)` that returns a Series giving how many rows fall in each group of the key column.",
     starterCode: "import pandas as pd\n\n\ndef count_by(df, key):\n    pass\n",
     referenceSolution: "import pandas as pd\n\n\ndef count_by(df, key):\n    return df.groupby(key).size()\n",
     codePackages: ["pandas"],
@@ -2459,7 +2459,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function merge_frames(left, right, key) that returns the inner join of the two DataFrames on the named column — only keys present in both survive.",
+    stem: "Write a function `merge_frames(left, right, key)` that returns the inner join of the two DataFrames on the named column — only keys present in both survive.",
     starterCode: "import pandas as pd\n\n\ndef merge_frames(left, right, key):\n    pass\n",
     referenceSolution: "import pandas as pd\n\n\ndef merge_frames(left, right, key):\n    return left.merge(right, on=key, how=\"inner\")\n",
     codePackages: ["pandas"],
@@ -2500,7 +2500,7 @@ export const pythonCodeExerciseItems: Item[] = [
     format: "code",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Write a function is_even(n) that returns True if n is even and False otherwise.",
+    stem: "Write a function `is_even(n)` that returns True if n is even and False otherwise.",
     starterCode: "def is_even(n):\n    pass\n",
     referenceSolution: "def is_even(n):\n    return n % 2 == 0\n",
     codeTests: [
@@ -2523,7 +2523,7 @@ export const pythonCodeExerciseItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "Write a function power(base, exponent=2) that returns base raised to exponent. Called with " +
+      "Write a function `power(base, exponent=2)` that returns base raised to exponent. Called with " +
       "only base, it should square it.",
     starterCode: "def power(base, exponent=2):\n    pass\n",
     referenceSolution: "def power(base, exponent=2):\n    return base ** exponent\n",
@@ -2547,7 +2547,7 @@ export const pythonCodeExerciseItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "Write a function make_bucket() that returns a new empty list every time it is called — " +
+      "Write a function `make_bucket()` that returns a new empty list every time it is called — " +
       "calling it twice must give two lists that do not share state, so appending to one never " +
       "changes the other.",
     starterCode: "def make_bucket():\n    pass\n",
