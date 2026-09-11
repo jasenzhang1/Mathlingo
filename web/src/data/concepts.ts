@@ -908,6 +908,82 @@ export const concepts: Concept[] = [
     ],
   },
   {
+    id: "multivariate-mgf",
+    title: "Multivariate MGF",
+    domain: "multivariate-probability",
+    blurb: "One scalar function of a vector argument that pins down a whole joint distribution.",
+    /**
+     * `multivariate-normal` is upstream rather than downstream on purpose. The
+     * general definition M(t) = E[e^(tᵀX)] is cheap; what makes the tool worth
+     * a lesson is that it turns the MVN's closure properties into two lines of
+     * algebra, and a learner cannot see that before meeting the family whose
+     * MGF exp(tᵀμ + ½tᵀΣt) is the whole payoff.
+     */
+    prerequisites: [
+      "mgf",
+      "mgf-properties",
+      "multivariate-normal",
+      "covariance-matrix",
+      // The factorisation criterion — X and Y independent iff the joint MGF is
+      // the product of the marginals — is one of the three theorems this lesson
+      // exists to deliver, so independence has to be upstream of it rather than
+      // borrowed sideways.
+      "mutual-independence",
+    ],
+  },
+  {
+    id: "quadratic-forms-random-vectors",
+    title: "Quadratic Forms in Random Vectors",
+    domain: "multivariate-probability",
+    blurb: "XᵀAX — the shape every sum of squares in statistics turns out to have.",
+    /**
+     * `trace` and `rank` are load-bearing, not decorative: E[XᵀAX] = tr(AΣ) +
+     * μᵀAμ is proved by the cyclic property of the trace, and the degrees of
+     * freedom of the resulting chi-square is rank(A). `chi-square-distribution`
+     * is what the form converges on whenever A is idempotent.
+     */
+    prerequisites: [
+      "multivariate-normal",
+      "covariance-matrix",
+      "trace",
+      "rank",
+      "chi-square-distribution",
+    ],
+  },
+  {
+    id: "cochrans-theorem",
+    title: "Cochran's Theorem",
+    domain: "multivariate-probability",
+    blurb: "When a sum of squares splits into independent chi-squares, and why the ranks have to add up.",
+    prerequisites: [
+      "quadratic-forms-random-vectors",
+      "mutual-independence",
+      "sample-variance",
+      "t-distribution",
+    ],
+  },
+  {
+    id: "distribution-of-beta-hat",
+    title: "Distribution of β̂",
+    domain: "multivariate-probability",
+    blurb: "Every standard error, t-statistic and F-test a regression prints, derived from one multivariate normal.",
+    /**
+     * Filed under `multivariate-probability` rather than `regression` because
+     * it is the domain's payoff rather than a new regression method: β̂ is an
+     * affine map of a normal vector, s² is a quadratic form in the same vector,
+     * and their independence is Cochran's theorem. `geometric-interpretation-of-ols`
+     * is the edge that supplies the hat matrix, whose idempotency is what makes
+     * the residual sum of squares a chi-square at all.
+     */
+    prerequisites: [
+      "cochrans-theorem",
+      "multivariate-mgf",
+      "linear-regression-probabilistic-version",
+      "geometric-interpretation-of-ols",
+      "f-distribution",
+    ],
+  },
+  {
     id: "kl-divergence",
     title: "Kullback-Leibler Divergence",
     domain: "multivariate-probability",
