@@ -31,6 +31,7 @@ const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
   "graphical-models": () => import("./core").then((m) => m.coreWikiArticles),
   probability: () => import("./probability").then((m) => m.default),
   regression: () => import("./regression").then((m) => m.regressionWikis),
+  "time-series": () => import("./time-series").then((m) => m.timeSeriesWikis),
   "machine-learning": () => import("./ml").then((m) => m.mlWikiArticles),
   // Deep learning concepts were split out of `machine-learning` (most articles
   // live in `./ml`) and one, `variational-inference-vaes`, out of
