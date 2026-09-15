@@ -20,6 +20,7 @@ import { regressionFoundationsItems } from "./items/regression-foundations";
 import { regressionGeneralizedItems } from "./items/regression-generalized";
 import { regressionGeometryItems } from "./items/regression-geometry";
 import { regressionSelectionItems } from "./items/regression-selection";
+import { timeSeriesItems } from "./items/time-series";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -547,6 +548,7 @@ export const items: Item[] = [
   ...regressionSelectionItems,
   ...regressionGeneralizedItems,
   ...regressionExtensionsItems,
+  ...timeSeriesItems,
 
   // =========================================================================
   // Multivariate Probability & Asymptotics — the whole domain, 7 concepts.
