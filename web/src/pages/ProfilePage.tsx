@@ -9,6 +9,7 @@ import type { ConceptState } from "../lib/assessment/types";
 import { useAuth } from "../lib/auth/useAuth";
 import { chapters } from "../lib/learningOrder";
 import { proficiencyRatio } from "../lib/proficiencyFill";
+import { TopicMasteryGrid } from "../components/TopicMasteryGrid";
 import {
   type Profile,
   loadProfileByUsername,
@@ -388,6 +389,17 @@ export function ProfilePage() {
                   value={s.value}
                 />
               ))}
+            </div>
+          </div>
+        )}
+
+        {canSeeProficiency && (
+          <div className="mt-10">
+            <h2 className="font-display text-lg text-[var(--ink)]">
+              Topic mastery
+            </h2>
+            <div className="mt-4 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5 shadow-sm">
+              <TopicMasteryGrid states={states} />
             </div>
           </div>
         )}
