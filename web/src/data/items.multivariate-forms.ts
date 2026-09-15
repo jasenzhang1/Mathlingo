@@ -5,7 +5,11 @@ import type { Item, SourceRef } from "../lib/assessment/types";
  * in the quadratic-forms sweep — Multivariate MGF, Quadratic Forms in Random
  * Vectors, Cochran's Theorem, and the Distribution of β̂ — at eight items each,
  * authored from `assessments/mp-02-quadratic-forms-and-regression.md` and the
- * matching wiki articles.
+ * matching wiki articles. A fifth pool, Conditional Distributions of the
+ * Multivariate Normal, was added later: it is the concept the first two of
+ * these four culminate in, deriving the conditional formula
+ * `multivariate-normal`'s closure table only states, using the MGF's
+ * independence theorem and the quadratic-forms bilinear identity together.
  *
  * Eight is the bar `auditCoverage` sets: 8+ live items, live coverage at
  * recall/apply/explain, and a difficulty spread of at least 1.5 logits. All
@@ -1348,6 +1352,337 @@ export const multivariateFormsItems: Item[] = [
       "linear-regression-probabilistic-version",
       "covariance-matrix",
     ],
+    source: AUTHORED,
+    status: "live",
+  },
+
+  // =========================================================================
+  // Conditional Distributions of the Multivariate Normal
+  // =========================================================================
+  {
+    id: "conditional-multivariate-normal--recall-formula",
+    conceptId: "conditional-multivariate-normal",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "handwritten", "spoken"],
+    stem:
+      "For X ~ N_k(μ, Σ) partitioned into blocks X₁, X₂, state the distribution of X₁ | X₂ = x₂, and " +
+      "name the standard linear-algebra object the resulting covariance matrix is.",
+    rubric: {
+      elements: [
+        {
+          id: "mean",
+          description: "Gives the conditional mean μ₁ + Σ₁₂Σ₂₂⁻¹(x₂ − μ₂).",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "covariance",
+          description: "Gives the conditional covariance Σ₁₁ − Σ₁₂Σ₂₂⁻¹Σ₂₁.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "schur-complement",
+          description:
+            "Identifies that covariance as the Schur complement of Σ₂₂ in Σ.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 0.4,
+    discrimination: 1.3,
+    expectedSeconds: 60,
+    prereqClosure: ["conditional-multivariate-normal", "multivariate-normal", "schur-complement"],
+    source: CASELLA_BERGER,
+    status: "live",
+  },
+  {
+    id: "conditional-multivariate-normal--recall-no-x2-dependence",
+    conceptId: "conditional-multivariate-normal",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The conditional covariance Σ₁₁ − Σ₁₂Σ₂₂⁻¹Σ₂₁ of X₁ | X₂ = x₂:",
+    choices: [
+      {
+        id: "a",
+        text: "Does not depend on the observed value x₂ at all",
+        correct: true,
+      },
+      {
+        id: "b",
+        text: "Grows linearly in x₂, since further observations should reduce uncertainty more",
+        correct: false,
+        misconception: {
+          id: "confuses-mean-and-covariance-dependence",
+          description:
+            "Assigns x₂-dependence to the covariance, when only the conditional mean is a function " +
+            "of x₂; the covariance term in the derivation comes entirely from Var(W), a fixed " +
+            "quantity computed before any value of X₂ is observed.",
+          blameConceptId: "conditional-multivariate-normal",
+        },
+      },
+      {
+        id: "c",
+        text: "Equals Σ₁₁ exactly, since conditioning cannot change a covariance",
+        correct: false,
+        misconception: {
+          id: "denies-any-shrinkage",
+          description:
+            "Ignores the Σ₁₂Σ₂₂⁻¹Σ₂₁ subtraction entirely — conditioning on a correlated variable " +
+            "does shrink the covariance in the positive-semidefinite order, it just does so by a " +
+            "fixed amount rather than one that varies with x₂.",
+          blameConceptId: "quadratic-forms-random-vectors",
+        },
+      },
+      {
+        id: "d",
+        text: "Is undefined unless Σ₁₂ = 0",
+        correct: false,
+        misconception: {
+          id: "requires-uncorrelated-blocks",
+          description:
+            "Σ₁₂ = 0 is the case where conditioning changes nothing (X₁ ⊥ X₂ already); the formula " +
+            "is defined and informative precisely when Σ₁₂ ≠ 0.",
+          blameConceptId: "covariance-matrix",
+        },
+      },
+    ],
+    difficulty: 0.75,
+    discrimination: 1.5,
+    expectedSeconds: 60,
+    prereqClosure: ["conditional-multivariate-normal", "multivariate-normal"],
+    source: CASELLA_BERGER,
+    status: "live",
+  },
+  {
+    id: "conditional-multivariate-normal--apply-conditional-mean",
+    conceptId: "conditional-multivariate-normal",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "X ~ N₂(μ, Σ) with μ = (1, 2)ᵀ and Σ = [[4, 2], [2, 3]]. Compute E[X₁ | X₂ = 4].",
+    answerKey: 2.3333,
+    tolerance: 0.01,
+    difficulty: 1.05,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["conditional-multivariate-normal", "covariance-matrix"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "conditional-multivariate-normal--apply-conditional-variance",
+    conceptId: "conditional-multivariate-normal",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "X ~ N₂(μ, Σ) with μ = (1, 2)ᵀ and Σ = [[4, 2], [2, 3]]. Compute Var(X₁ | X₂ = 4), and confirm " +
+      "it is smaller than the unconditional Var(X₁).",
+    answerKey: 2.6667,
+    tolerance: 0.01,
+    difficulty: 1.2,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["conditional-multivariate-normal", "quadratic-forms-random-vectors", "covariance-matrix"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "conditional-multivariate-normal--explain-derive-via-residual",
+    conceptId: "conditional-multivariate-normal",
+    format: "derivation",
+    cognitive: "explain",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Derive X₁ | X₂ = x₂ ~ N(μ₁ + Σ₁₂Σ₂₂⁻¹(x₂ − μ₂), Σ₁₁ − Σ₁₂Σ₂₂⁻¹Σ₂₁) by constructing " +
+      "W = X₁ − Σ₁₂Σ₂₂⁻¹X₂ and showing it is independent of X₂.",
+    rubric: {
+      elements: [
+        {
+          id: "cov-zero",
+          description:
+            "Computes Cov(W, X₂) = Σ₁₂ − Σ₁₂Σ₂₂⁻¹Σ₂₂ = 0 using the bilinear identity " +
+            "Cov(aᵀX, bᵀX) = aᵀΣb, showing the coefficient B = Σ₁₂Σ₂₂⁻¹ is exactly what zeroes it.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "independence-via-mgf",
+          description:
+            "Invokes the multivariate MGF's factorisation theorem: (W, X₂) is jointly normal with " +
+            "zero cross-covariance, so the joint MGF factors and W ⊥ X₂.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "invert-and-shift",
+          description:
+            "Computes Var(W) = Σ₁₁ − Σ₁₂Σ₂₂⁻¹Σ₂₁ and E[W] = μ₁ − Σ₁₂Σ₂₂⁻¹μ₂, then substitutes " +
+            "X₁ = W + Σ₁₂Σ₂₂⁻¹X₂ with X₂ fixed at x₂ to shift the mean by Σ₁₂Σ₂₂⁻¹x₂ and leave the " +
+            "covariance untouched.",
+          weight: 3,
+        },
+      ],
+      forbiddenMoves: [
+        {
+          id: "integrates-the-joint-density",
+          description:
+            "Divides the joint density by the marginal of X₂ and completes the square by hand. " +
+            "Correct, but it is exactly the computation this construction is built to avoid, and it " +
+            "obscures why the covariance term is independent of x₂.",
+          weight: 0,
+        },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.6,
+    expectedSeconds: 300,
+    prereqClosure: [
+      "conditional-multivariate-normal",
+      "multivariate-mgf",
+      "quadratic-forms-random-vectors",
+      "multivariate-normal",
+    ],
+    source: BANERJEE_ROY,
+    status: "live",
+  },
+  {
+    id: "conditional-multivariate-normal--explain-why-covariance-fixed",
+    conceptId: "conditional-multivariate-normal",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "handwritten", "spoken"],
+    stem:
+      "A learner asks why Var(X₁ | X₂ = x₂) does not depend on the observed x₂, when the conditional " +
+      "mean plainly does. Explain, in terms of the residual W = X₁ − Σ₁₂Σ₂₂⁻¹X₂.",
+    rubric: {
+      elements: [
+        {
+          id: "residual-independent",
+          description:
+            "States that W is constructed to be independent of X₂, so its distribution — including " +
+            "its variance — is fixed before any value of X₂ is observed.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "mean-carries-the-shift",
+          description:
+            "Explains that X₁ = W + Σ₁₂Σ₂₂⁻¹X₂, so fixing X₂ = x₂ only ever adds the constant " +
+            "Σ₁₂Σ₂₂⁻¹x₂ to the mean — it cannot touch Var(W), since a constant shift never changes a " +
+            "variance.",
+          weight: 3,
+        },
+        {
+          id: "contrast-general-case",
+          description:
+            "Contrasts with a general joint distribution, where Var(X₁ | X₂ = x₂) is genuinely a " +
+            "function of x₂ (heteroskedastic conditionals), which is why constant-variance " +
+            "conditionals are automatic under joint normality rather than an assumption imposed from " +
+            "outside.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.75,
+    discrimination: 1.4,
+    expectedSeconds: 210,
+    prereqClosure: ["conditional-multivariate-normal", "multivariate-mgf"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "conditional-multivariate-normal--transfer-regression-coefficient",
+    conceptId: "conditional-multivariate-normal",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten", "spoken"],
+    stem:
+      "Explain why Σ₁₂Σ₂₂⁻¹ — the matrix in the conditional mean formula — is also called the " +
+      "population multiple-regression coefficient, and why that makes linear regression exact rather " +
+      "than approximate under joint normality.",
+    rubric: {
+      elements: [
+        {
+          id: "best-linear-predictor",
+          description:
+            "Identifies Σ₁₂Σ₂₂⁻¹X₂ as the projection of X₁ onto the span of X₂ that minimises mean " +
+            "squared error — the population analogue of ordinary least squares.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "conditional-mean-equals-best-linear-predictor",
+          description:
+            "Notes that under joint normality the conditional mean E[X₁ | X₂ = x₂] is exactly this " +
+            "linear function, whereas for a general joint distribution the best predictor is linear " +
+            "only as an approximation — a nonlinear E[X₁ | X₂ = x₂] is the generic case.",
+          weight: 3,
+        },
+        {
+          id: "link-to-beta-hat",
+          description:
+            "Connects this to `distribution-of-beta-hat`: β̂ = (XᵀX)⁻¹Xᵀy is the sample version of the " +
+            "same object, which is why OLS is the maximum-likelihood estimator under a normal error " +
+            "model rather than merely a reasonable heuristic.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.35,
+    discrimination: 1.5,
+    expectedSeconds: 240,
+    prereqClosure: ["conditional-multivariate-normal", "covariance-matrix"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "conditional-multivariate-normal--transfer-gaussian-process",
+    conceptId: "conditional-multivariate-normal",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten", "spoken"],
+    stem:
+      "A Gaussian process posterior at unobserved inputs, given noiseless observations at training " +
+      "points, is computed with the same mean and covariance formulas as X₁ | X₂ = x₂. Explain the " +
+      "correspondence: what plays the role of X₁, X₂, and Σ?",
+    rubric: {
+      elements: [
+        {
+          id: "role-mapping",
+          description:
+            "Maps X₂ to the function values at the training inputs (observed), X₁ to the function " +
+            "values at the test inputs (to be predicted), and Σ to the kernel matrix built from the " +
+            "covariance function evaluated at all pairs of inputs, training and test.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "posterior-is-the-conditional",
+          description:
+            "States that the GP posterior mean and covariance are literally " +
+            "μ₁ + Σ₁₂Σ₂₂⁻¹(x₂ − μ₂) and Σ₁₁ − Σ₁₂Σ₂₂⁻¹Σ₂₁ with these substitutions — no new formula " +
+            "is introduced, only a new source for Σ.",
+          weight: 3,
+        },
+        {
+          id: "uncertainty-shrinks-near-data",
+          description:
+            "Notes the shrinkage fact carries over: posterior variance at a test point is smaller " +
+            "than the prior variance, and shrinks most where the kernel makes that point highly " +
+            "correlated with the training inputs — i.e., near observed data.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.5,
+    discrimination: 1.4,
+    expectedSeconds: 240,
+    prereqClosure: ["conditional-multivariate-normal", "multivariate-normal", "covariance-matrix"],
     source: AUTHORED,
     status: "live",
   },
