@@ -32,6 +32,14 @@ const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
   probability: () => import("./probability").then((m) => m.default),
   regression: () => import("./regression").then((m) => m.regressionWikis),
   "machine-learning": () => import("./ml").then((m) => m.mlWikiArticles),
+  // Deep learning concepts were split out of `machine-learning` (most articles
+  // live in `./ml`) and one, `variational-inference-vaes`, out of
+  // `graphical-models` (its article lives in `./core`). Load both chunks.
+  "deep-learning": () =>
+    Promise.all([import("./ml"), import("./core")]).then(([ml, core]) => [
+      ...ml.mlWikiArticles,
+      ...core.coreWikiArticles,
+    ]),
   python: () => import("./python").then((m) => m.pythonWikiArticles),
 };
 
