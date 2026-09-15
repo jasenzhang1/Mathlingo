@@ -507,11 +507,6 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
-      id: "neural-networks",
-      label: "Neural Networks",
-      conceptIds: ["perceptron", "neural-networks", "backpropagation"],
-    },
-    {
       id: "gaussian-processes",
       label: "Gaussian Processes",
       conceptIds: ["gp-regression", "gp-classification"],
@@ -533,8 +528,28 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
-      id: "deep-learning",
-      label: "Deep Learning",
+      id: "further-paradigms",
+      label: "Further Paradigms & Methods",
+      conceptIds: [
+        "reinforcement-learning",
+        "multi-armed-bandits",
+        "bayesian-optimization",
+        "stacking",
+        "hierarchical-clustering",
+        "density-based-clustering",
+      ],
+    },
+  ],
+
+  "deep-learning": [
+    {
+      id: "neural-networks",
+      label: "Neural Networks",
+      conceptIds: ["perceptron", "neural-networks", "backpropagation"],
+    },
+    {
+      id: "core-concepts",
+      label: "Core Concepts",
       conceptIds: [
         "activation-functions",
         "sgd-and-adaptive-optimizers",
@@ -558,6 +573,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "autoregressive-models",
         "state-space-models",
         "graph-neural-networks",
+        "variational-inference-vaes",
         "generative-adversarial-networks",
         "diffusion-models",
         "mixture-of-experts",
@@ -576,23 +592,11 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
-      id: "further-paradigms",
-      label: "Further Paradigms & Methods",
-      conceptIds: [
-        "transfer-learning",
-        "self-supervised-learning",
-        "reinforcement-learning",
-        "multi-armed-bandits",
-        "bayesian-optimization",
-        "stacking",
-        "hierarchical-clustering",
-        "density-based-clustering",
-      ],
-    },
-    {
       id: "adapting-and-serving",
       label: "Scaling, Adapting & Serving",
       conceptIds: [
+        "transfer-learning",
+        "self-supervised-learning",
         "scaling-laws",
         "tokenization",
         "contrastive-learning",
@@ -632,7 +636,6 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "Variational Inference & Kernels",
       conceptIds: [
         "variational-inference-elbo",
-        "variational-inference-vaes",
         "gaussian-process",
         "rkhs",
         "wasserstein-distance",

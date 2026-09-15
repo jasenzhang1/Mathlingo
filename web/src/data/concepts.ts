@@ -5,6 +5,7 @@ export type Domain =
   | "statistics"
   | "regression"
   | "machine-learning"
+  | "deep-learning"
   | "graphical-models"
   | "python";
 
@@ -23,6 +24,7 @@ export const domainMeta: Record<Domain, DomainMeta> = {
   statistics: { label: "Statistical Inference", color: "#e0a72f" },
   regression: { label: "Regression", color: "#2f6fed" },
   "machine-learning": { label: "Machine Learning", color: "#16a34a" },
+  "deep-learning": { label: "Deep Learning", color: "#ec4899" },
   "graphical-models": { label: "Graphical Models & Bayesian ML", color: "#a855f7" },
   /**
    * Deliberately last. Chapter order is an editorial call (see
@@ -1547,21 +1549,21 @@ export const concepts: Concept[] = [
     // network" in its own blurb with nothing upstream to define one.
     id: "perceptron",
     title: "Perceptron",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb: "The simplest linear classifier: a weighted sum of inputs, thresholded.",
     prerequisites: ["classification-vs-regression"],
   },
   {
     id: "neural-networks",
     title: "Neural Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb: "Layers of perceptron-like units with nonlinear activations, composed together.",
     prerequisites: ["perceptron", "matrix-calculus"],
   },
   {
     id: "backpropagation",
     title: "Backpropagation",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb: "Computing a neural network's gradient efficiently with the chain rule.",
     prerequisites: ["neural-networks", "gradient-descent"],
   },
@@ -1989,7 +1991,7 @@ export const concepts: Concept[] = [
   {
     id: "activation-functions",
     title: "Activation Functions",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Sigmoid, tanh, ReLU and its successors — the nonlinearity that stops depth collapsing.",
     prerequisites: ["neural-networks"],
@@ -1997,7 +1999,7 @@ export const concepts: Concept[] = [
   {
     id: "sgd-and-adaptive-optimizers",
     title: "SGD and Adaptive Optimizers",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Momentum, RMSProp and Adam — why plain gradient descent is rarely what actually runs.",
     prerequisites: ["gradient-descent", "backpropagation"],
@@ -2005,7 +2007,7 @@ export const concepts: Concept[] = [
   {
     id: "dropout",
     title: "Dropout",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Randomly deleting units at training time, and why that regularises rather than breaks.",
     prerequisites: ["neural-networks", "overfitting-underfitting"],
@@ -2013,7 +2015,7 @@ export const concepts: Concept[] = [
   {
     id: "batch-normalization",
     title: "Batch Normalization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Normalising activations mid-network — what it fixes, and the train/inference asymmetry it creates.",
     prerequisites: ["backpropagation", "feature-scaling"],
@@ -2021,7 +2023,7 @@ export const concepts: Concept[] = [
   {
     id: "convolutional-neural-networks",
     title: "Convolutional Neural Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Weight sharing and locality — turning an image's structure into a prior on the architecture.",
     // The architecture *is* a regularisation choice — a prior expressed in which
@@ -2032,7 +2034,7 @@ export const concepts: Concept[] = [
   {
     id: "recurrent-neural-networks",
     title: "Recurrent Neural Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Sharing weights across time for sequences, and the gradient problem that follows.",
     prerequisites: ["backpropagation", "activation-functions"],
@@ -2040,7 +2042,7 @@ export const concepts: Concept[] = [
   {
     id: "attention-mechanism",
     title: "Attention Mechanism",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Queries, keys and values — letting every position look directly at every other.",
     // The √d scaling is derived from the variance of a sum of independent
@@ -2050,7 +2052,7 @@ export const concepts: Concept[] = [
   {
     id: "transformers",
     title: "Transformers",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Self-attention, multiple heads and positional encoding — attention as the whole architecture.",
     prerequisites: ["attention-mechanism", "batch-normalization"],
@@ -2058,7 +2060,7 @@ export const concepts: Concept[] = [
   {
     id: "embeddings",
     title: "Embeddings",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Learned dense vectors for discrete things, where geometry carries meaning.",
     prerequisites: ["neural-networks", "pca"],
@@ -2066,7 +2068,7 @@ export const concepts: Concept[] = [
   {
     id: "autoencoders",
     title: "Autoencoders",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Reconstructing the input through a bottleneck — nonlinear dimensionality reduction that learns.",
     prerequisites: ["neural-networks", "probabilistic-pca"],
@@ -2087,7 +2089,7 @@ export const concepts: Concept[] = [
   {
     id: "architecture-families",
     title: "Architecture Families",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Dense, convolutional, recurrent and attentional networks compared by the assumption each one builds into its wiring.",
     // Reads as a comparison of the three families cluster 11 introduces, so it
@@ -2101,7 +2103,7 @@ export const concepts: Concept[] = [
   {
     id: "residual-networks",
     title: "Residual Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Adding the input back to the output of a block, and why that one change made depth usable.",
     // The argument is a derivative computation: the skip contributes a +1 term
@@ -2112,7 +2114,7 @@ export const concepts: Concept[] = [
   {
     id: "lstm-and-gru",
     title: "LSTM and GRU",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Gated cells that carry a memory forward by addition, so gradients survive hundreds of steps.",
     prerequisites: ["recurrent-neural-networks", "activation-functions"],
@@ -2120,7 +2122,7 @@ export const concepts: Concept[] = [
   {
     id: "autoregressive-models",
     title: "Autoregressive Models",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Factorising a joint distribution into a product of next-step conditionals — the objective behind every language model.",
     // The factorisation is the chain rule of probability applied n − 1 times;
@@ -2130,7 +2132,7 @@ export const concepts: Concept[] = [
   {
     id: "state-space-models",
     title: "State Space Models",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "A linear recurrence that also runs as a convolution — S4 and Mamba, and why linear time matters again.",
     // Diagonalising the transition matrix is what turns the recurrence into a
@@ -2152,7 +2154,7 @@ export const concepts: Concept[] = [
   {
     id: "graph-neural-networks",
     title: "Graph Neural Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Message passing over edges — a convolution for data whose neighbourhoods are given rather than gridded.",
     prerequisites: ["graphs", "convolutional-neural-networks"],
@@ -2160,7 +2162,7 @@ export const concepts: Concept[] = [
   {
     id: "generative-adversarial-networks",
     title: "Generative Adversarial Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "A generator and a discriminator trained against each other, and the equilibrium that is hard to reach.",
     // The optimal-discriminator substitution turns the game's value into a
@@ -2175,7 +2177,7 @@ export const concepts: Concept[] = [
   {
     id: "diffusion-models",
     title: "Diffusion Models",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Destroy the data with noise on a fixed schedule, then learn to undo one step at a time.",
     prerequisites: [
@@ -2187,7 +2189,7 @@ export const concepts: Concept[] = [
   {
     id: "mixture-of-experts",
     title: "Mixture of Experts",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Routing each token to a few of many sub-networks, so capacity grows without the compute growing with it.",
     prerequisites: ["transformers", "ensemble-methods"],
@@ -2206,7 +2208,7 @@ export const concepts: Concept[] = [
   {
     id: "weight-initialization",
     title: "Weight Initialization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Xavier and He scaling — choosing the starting variance so signal neither dies nor explodes with depth.",
     // Both schemes are derived by asking that the variance of the activations
@@ -2225,7 +2227,7 @@ export const concepts: Concept[] = [
   {
     id: "layer-normalization",
     title: "Layer Normalization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Normalising across features rather than across the batch — and why every transformer uses it.",
     // The content that matters here is pre-norm versus post-norm and the
@@ -2236,7 +2238,7 @@ export const concepts: Concept[] = [
   {
     id: "learning-rate-schedules",
     title: "Learning Rate Schedules",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Warmup, decay and cosine annealing — the hyperparameter that is a function of time, not a number.",
     prerequisites: ["sgd-and-adaptive-optimizers", "layer-normalization"],
@@ -2244,7 +2246,7 @@ export const concepts: Concept[] = [
   {
     id: "data-augmentation",
     title: "Data Augmentation",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Manufacturing training examples from invariances you already believe, and the ones you do not.",
     // Augmentation is defined as a training-split-only transform, and its worst
@@ -2259,7 +2261,7 @@ export const concepts: Concept[] = [
   {
     id: "mixed-precision-training",
     title: "Mixed Precision Training",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Half-precision arithmetic with a full-precision safety net — loss scaling, master weights, and what underflows.",
     prerequisites: ["sgd-and-adaptive-optimizers", "backpropagation"],
@@ -2267,7 +2269,7 @@ export const concepts: Concept[] = [
   {
     id: "distributed-training",
     title: "Distributed Training",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Data, model and pipeline parallelism — what is split, what is communicated, and what the batch size does to the schedule.",
     prerequisites: ["learning-rate-schedules", "mixed-precision-training"],
@@ -2284,7 +2286,7 @@ export const concepts: Concept[] = [
   {
     id: "transfer-learning",
     title: "Transfer Learning",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Reusing a model trained elsewhere — feature extraction, fine-tuning, and when it backfires.",
     // Matching the pretrained model's own input normalisation is not optional
@@ -2295,7 +2297,7 @@ export const concepts: Concept[] = [
   {
     id: "self-supervised-learning",
     title: "Self-Supervised Learning",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Manufacturing labels from the input itself — the engine behind modern pretraining.",
     prerequisites: ["transfer-learning", "autoencoders"],
@@ -2363,7 +2365,7 @@ export const concepts: Concept[] = [
   {
     id: "scaling-laws",
     title: "Scaling Laws",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Loss as a power law in parameters, data and compute — and the budget question that follows from it.",
     prerequisites: ["learning-curves", "autoregressive-models"],
@@ -2371,7 +2373,7 @@ export const concepts: Concept[] = [
   {
     id: "tokenization",
     title: "Tokenization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Byte-pair encoding and its relatives: the vocabulary decision made before any weight is trained.",
     prerequisites: ["embeddings", "autoregressive-models"],
@@ -2379,7 +2381,7 @@ export const concepts: Concept[] = [
   {
     id: "contrastive-learning",
     title: "Contrastive Learning",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Pulling matched pairs together and pushing everything else apart — InfoNCE, and where the negatives come from.",
     // The InfoNCE objective is literally a cross-entropy over similarity
@@ -2390,7 +2392,7 @@ export const concepts: Concept[] = [
   {
     id: "parameter-efficient-fine-tuning",
     title: "Parameter-Efficient Fine-Tuning",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "LoRA and adapters: training a low-rank correction instead of every weight, and why that is usually enough.",
     // LoRA is a rank constraint written as BA with an inner dimension r, and
@@ -2400,7 +2402,7 @@ export const concepts: Concept[] = [
   {
     id: "instruction-tuning-and-rlhf",
     title: "Instruction Tuning and RLHF",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Turning a next-token predictor into something that follows instructions, and the KL leash that keeps it there.",
     prerequisites: ["reinforcement-learning", "autoregressive-models", "kl-divergence"],
@@ -2408,7 +2410,7 @@ export const concepts: Concept[] = [
   {
     id: "knowledge-distillation",
     title: "Knowledge Distillation",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Training a small model on a large one's full output distribution rather than on the labels.",
     // The method was introduced to compress an ensemble into one model, and the
@@ -2424,7 +2426,7 @@ export const concepts: Concept[] = [
   {
     id: "quantization",
     title: "Quantization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Storing and computing in 8 or 4 bits — where the error goes, and why serving is memory-bound anyway.",
     prerequisites: ["mixed-precision-training", "knowledge-distillation"],
@@ -2517,7 +2519,7 @@ export const concepts: Concept[] = [
   {
     id: "variational-inference-vaes",
     title: "Variational Inference: VAEs",
-    domain: "graphical-models",
+    domain: "deep-learning",
     blurb: "Learning a latent-variable generative model with a neural network and the ELBO.",
     prerequisites: ["variational-inference-elbo", "neural-networks", "backpropagation"],
   },
