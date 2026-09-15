@@ -53,24 +53,35 @@ export function InlineMath({ latex }: { latex: string }) {
 }
 
 /**
- * Renders prose containing inline math delimited by single dollar signs.
+ * Renders prose containing inline math delimited by single dollar signs, and
+ * inline code delimited by backticks.
  *
  * Authoring maths inside sentences as `$np(1-p)$` keeps the article source
  * readable, which matters when there are hundreds of them to write and review.
  * A `\$` escapes a literal dollar sign, so prices and currency still work.
+ * Code references — `a[-1]`, `is None`, `sorted(xs)` — are marked the same
+ * way, with backticks, so a plain-English sentence can tell them apart from
+ * the surrounding prose.
  */
 export function RichText({ text }: { text: string }) {
   const parts = useMemo(() => splitMath(text), [text]);
 
   return (
     <>
-      {parts.map((part, i) =>
-        part.math ? (
-          <InlineMath key={i} latex={part.text} />
-        ) : (
-          <span key={i}>{part.text}</span>
-        ),
-      )}
+      {parts.map((part, i) => {
+        if (part.kind === "math") return <InlineMath key={i} latex={part.text} />;
+        if (part.kind === "code") {
+          return (
+            <code
+              key={i}
+              className="rounded bg-[var(--paper)] px-1 py-0.5 font-mono text-[0.9em] text-[var(--ink)]"
+            >
+              {part.text}
+            </code>
+          );
+        }
+        return <span key={i}>{part.text}</span>;
+      })}
     </>
   );
 }
