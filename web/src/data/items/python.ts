@@ -74,7 +74,7 @@ export const pythonItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For a non-empty list a, what does a[-1] evaluate to?",
+    stem: "For a non-empty list a, what does `a[-1]` evaluate to?",
     choices: [
       { id: "a", text: "The last element", correct: true },
       {
@@ -84,13 +84,13 @@ export const pythonItems: Item[] = [
         misconception: {
           id: "negative-wraps-to-front",
           description:
-            "Reads -1 as 'one before the start'. Negative indices count backwards from the end, so -1 is the last element and -len(a) is the first.",
+            "Reads `-1` as 'one before the start'. Negative indices count backwards from the end, so `-1` is the last element and `-len(a)` is the first.",
           blameConceptId: "python-indexing",
         },
       },
       {
         id: "c",
-        text: "IndexError — indices cannot be negative",
+        text: "`IndexError` — indices cannot be negative",
         correct: false,
         misconception: {
           id: "negative-is-error",
@@ -124,34 +124,34 @@ export const pythonItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "After running a = [3, 1, 2]; a = a.sort(), what is a?",
+    stem: "After running a = `[3, 1, 2]`; a = `a.sort()`, what is a?",
     choices: [
-      { id: "a", text: "None", correct: true },
+      { id: "a", text: "`None`", correct: true },
       {
         id: "b",
-        text: "[1, 2, 3]",
+        text: "`[1, 2, 3]`",
         correct: false,
         misconception: {
           id: "sort-returns-list",
           description:
-            "Assumes sort() returns the sorted list. It sorts in place and returns None, so rebinding the name discards the list entirely — and no error is raised.",
+            "Assumes `sort()` returns the sorted list. It sorts in place and returns `None`, so rebinding the name discards the list entirely — and no error is raised.",
           blameConceptId: "python-list-operations",
         },
       },
       {
         id: "c",
-        text: "[3, 1, 2]",
+        text: "`[3, 1, 2]`",
         correct: false,
         misconception: {
           id: "sort-is-pure",
           description:
-            "Assumes sort() leaves a alone, as sorted() would. It mutates — but the assignment then overwrites the name with the return value anyway.",
+            "Assumes `sort()` leaves a alone, as `sorted()` would. It mutates — but the assignment then overwrites the name with the return value anyway.",
           blameConceptId: "python-list-operations",
         },
       },
       {
         id: "d",
-        text: "A TypeError is raised",
+        text: "A `TypeError` is raised",
         correct: false,
         misconception: {
           id: "sort-assignment-errors",
@@ -175,7 +175,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]. How many elements are in a[3:8]?",
+      "a = `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]`. How many elements are in `a[3:8]`?",
     answerKey: 5,
     tolerance: 0,
     difficulty: -1.1,
@@ -191,12 +191,12 @@ export const pythonItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "a has five elements. What do a[10] and a[10:20] each produce?",
+    stem: "a has five elements. What do `a[10]` and `a[10:20]` each produce?",
     choices: [
-      { id: "a", text: "a[10] raises IndexError; a[10:20] returns []", correct: true },
+      { id: "a", text: "`a[10]` raises `IndexError`; `a[10:20]` returns `[]`", correct: true },
       {
         id: "b",
-        text: "Both raise IndexError",
+        text: "Both raise `IndexError`",
         correct: false,
         misconception: {
           id: "slice-raises-too",
@@ -207,18 +207,18 @@ export const pythonItems: Item[] = [
       },
       {
         id: "c",
-        text: "Both return None",
+        text: "Both return `None`",
         correct: false,
         misconception: {
           id: "out-of-range-is-none",
           description:
-            "Imports a lookup-with-default convention from dicts or from other languages. Neither expression returns None.",
+            "Imports a lookup-with-default convention from dicts or from other languages. Neither expression returns `None`.",
           blameConceptId: "python-slicing",
         },
       },
       {
         id: "d",
-        text: "a[10] returns None; a[10:20] raises IndexError",
+        text: "`a[10]` returns `None`; `a[10:20]` raises `IndexError`",
         correct: false,
         misconception: {
           id: "rules-reversed",
@@ -242,7 +242,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "a = [1, 2, 3]; b = a; c = a[:]; b.append(4); c.append(5). State the final value of a, b and c, and say why b and c behaved differently.",
+      "a = `[1, 2, 3]`; b = a; c = `a[:]`; `b.append(4)`; `c.append(5)`. State the final value of a, b and c, and say why b and c behaved differently.",
     rubric: {
       elements: [
         {
@@ -261,7 +261,7 @@ export const pythonItems: Item[] = [
           misconception: {
             id: "assignment-copies",
             description:
-              "Believes assignment copies the value. In Python, assignment binds a name to an existing object; only an explicit slice, copy() or constructor makes a new one.",
+              "Believes assignment copies the value. In Python, assignment binds a name to an existing object; only an explicit slice, `copy()` or constructor makes a new one.",
             blameConceptId: "python-list-operations",
           },
         },
@@ -287,12 +287,12 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "grid = [[0] * 3] * 2, then grid[0][0] = 1. What is grid?",
+      "grid = `[[0] * 3]` * 2, then `grid[0][0]` = 1. What is grid?",
     choices: [
-      { id: "a", text: "[[1, 0, 0], [1, 0, 0]]", correct: true },
+      { id: "a", text: "`[[1, 0, 0], [1, 0, 0]]`", correct: true },
       {
         id: "b",
-        text: "[[1, 0, 0], [0, 0, 0]]",
+        text: "`[[1, 0, 0], [0, 0, 0]]`",
         correct: false,
         misconception: {
           id: "outer-multiply-copies",
@@ -303,18 +303,18 @@ export const pythonItems: Item[] = [
       },
       {
         id: "c",
-        text: "[[1, 1, 1], [1, 1, 1]]",
+        text: "`[[1, 1, 1], [1, 1, 1]]`",
         correct: false,
         misconception: {
           id: "inner-multiply-shares",
           description:
-            "Attributes the sharing to the inner [0] * 3. Repeating immutable ints is harmless; it is repeating the mutable list that aliases.",
+            "Attributes the sharing to the inner `[0]` * 3. Repeating immutable ints is harmless; it is repeating the mutable list that aliases.",
           blameConceptId: "python-list-operations",
         },
       },
       {
         id: "d",
-        text: "TypeError — a list of lists cannot be multiplied",
+        text: "`TypeError` — a list of lists cannot be multiplied",
         correct: false,
         misconception: {
           id: "nested-multiply-errors",
@@ -338,7 +338,7 @@ export const pythonItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken", "handwritten"],
     stem:
-      "Python slices exclude their right endpoint: a[1:4] returns three elements, not four. Give two concrete properties this convention buys, and explain what would break if the endpoint were inclusive.",
+      "Python slices exclude their right endpoint: `a[1:4]` returns three elements, not four. Give two concrete properties this convention buys, and explain what would break if the endpoint were inclusive.",
     rubric: {
       elements: [
         {
@@ -389,7 +389,7 @@ export const pythonItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "A colleague removes items inside a loop: for x in a: if bad(x): a.remove(x). On a = [1, 1, 2, 1] with bad(x) meaning x == 1, this leaves [1, 2] rather than [2]. Explain the mechanism, say why no exception is raised, and give a correct rewrite.",
+      "A colleague removes items inside a loop: for x in a: if `bad(x)`: `a.remove(x)`. On a = `[1, 1, 2, 1]` with `bad(x)` meaning x == 1, this leaves `[1, 2]` rather than `[2]`. Explain the mechanism, say why no exception is raised, and give a correct rewrite.",
     rubric: {
       elements: [
         {
@@ -443,34 +443,34 @@ export const pythonItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "d is a dict with no key 'z'. What do d['z'] and d.get('z') each do?",
+    stem: "d is a dict with no key 'z'. What do `d['z']` and `d.get('z')` each do?",
     choices: [
-      { id: "a", text: "d['z'] raises KeyError; d.get('z') returns None", correct: true },
+      { id: "a", text: "`d['z']` raises `KeyError`; `d.get('z')` returns `None`", correct: true },
       {
         id: "b",
-        text: "Both return None",
+        text: "Both return `None`",
         correct: false,
         misconception: {
           id: "subscript-is-lenient",
           description:
-            "Assumes subscripting has a default. It does not — the strictness of d[k] is the point of having .get() as a separate method.",
+            "Assumes subscripting has a default. It does not — the strictness of `d[k]` is the point of having `.get()` as a separate method.",
           blameConceptId: "python-dictionaries",
         },
       },
       {
         id: "c",
-        text: "Both raise KeyError",
+        text: "Both raise `KeyError`",
         correct: false,
         misconception: {
           id: "get-is-strict",
           description:
-            "Treats .get() as a synonym for subscripting. Its whole purpose is to return a default instead of raising.",
+            "Treats `.get()` as a synonym for subscripting. Its whole purpose is to return a default instead of raising.",
           blameConceptId: "python-dictionaries",
         },
       },
       {
         id: "d",
-        text: "d['z'] inserts 'z' with value None and returns it",
+        text: "`d['z']` inserts 'z' with value `None` and returns it",
         correct: false,
         misconception: {
           id: "read-inserts",
@@ -520,12 +520,12 @@ export const pythonItems: Item[] = [
       },
       {
         id: "d",
-        text: "None",
+        text: "`None`",
         correct: false,
         misconception: {
           id: "none-unhashable",
           description:
-            "None is a perfectly ordinary hashable singleton and is legal as a key.",
+            "`None` is a perfectly ordinary hashable singleton and is legal as a key.",
           blameConceptId: "python-dictionaries",
         },
       },
@@ -544,7 +544,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "words = ['ox', 'ant', 'ox', 'bee', 'ant', 'ox']. How many entries does the dict produced by counting occurrences of each word have?",
+      "words = `['ox', 'ant', 'ox', 'bee', 'ant', 'ox']`. How many entries does the dict produced by counting occurrences of each word have?",
     answerKey: 3,
     tolerance: 0,
     difficulty: -1.0,
@@ -573,7 +573,7 @@ export const pythonItems: Item[] = [
           misconception: {
             id: "quadratic-grouping",
             description:
-              "Scans the whole input once per distinct key, or calls .count() inside the loop, turning a linear job into a quadratic one.",
+              "Scans the whole input once per distinct key, or calls `.count()` inside the loop, turning a linear job into a quadratic one.",
             blameConceptId: "python-dictionaries",
           },
         },
@@ -637,7 +637,7 @@ export const pythonItems: Item[] = [
       },
       {
         id: "d",
-        text: "A KeyError is raised on the duplicate",
+        text: "A `KeyError` is raised on the duplicate",
         correct: false,
         misconception: {
           id: "duplicate-raises",
@@ -828,7 +828,7 @@ export const pythonItems: Item[] = [
         misconception: {
           id: "enumerate-is-range",
           description:
-            "Treats enumerate as range(len(a)). It yields both parts, which is the entire reason it exists.",
+            "Treats enumerate as `range(len(a))`. It yields both parts, which is the entire reason it exists.",
           blameConceptId: "python-loops",
         },
       },
@@ -867,7 +867,7 @@ export const pythonItems: Item[] = [
         misconception: {
           id: "iterates-values",
           description:
-            "Guesses values. The default is keys — d.values() is the explicit way to ask for values, and d.items() for both.",
+            "Guesses values. The default is keys — `d.values()` is the explicit way to ask for values, and `d.items()` for both.",
           blameConceptId: "python-loops",
         },
       },
@@ -878,7 +878,7 @@ export const pythonItems: Item[] = [
         misconception: {
           id: "iterates-items",
           description:
-            "Assumes iteration means .items(). Unpacking the result as `for k, v in d` then fails, or worse, unpacks a two-character string key into two names.",
+            "Assumes iteration means `.items()`. Unpacking the result as `for k, v in d` then fails, or worse, unpacks a two-character string key into two names.",
           blameConceptId: "python-loops",
         },
       },
@@ -907,7 +907,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "names has 7 entries and scores has 5. How many pairs does zip(names, scores) yield?",
+      "names has 7 entries and scores has 5. How many pairs does `zip(names, scores)` yield?",
     answerKey: 5,
     tolerance: 0,
     difficulty: -0.7,
@@ -924,11 +924,11 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "a = ['p', 'q', 'r']. What does `for i, x in enumerate(a, 1)` produce on its first step, and what happens if the body evaluates a[i]?",
+      "a = `['p', 'q', 'r']`. What does `for i, x in enumerate(a, 1)` produce on its first step, and what happens if the body evaluates `a[i]`?",
     choices: [
       {
         id: "a",
-        text: "i = 1, x = 'p'; a[i] reads 'q' — one element past x, and the last step raises IndexError",
+        text: "i = 1, x = 'p'; `a[i]` reads 'q' — one element past x, and the last step raises `IndexError`",
         correct: true,
       },
       {
@@ -938,13 +938,13 @@ export const pythonItems: Item[] = [
         misconception: {
           id: "start-skips-element",
           description:
-            "Believes start advances the position read. It only renumbers the label; iteration still begins at a[0].",
+            "Believes start advances the position read. It only renumbers the label; iteration still begins at `a[0]`.",
           blameConceptId: "python-loops",
         },
       },
       {
         id: "c",
-        text: "i = 1, x = 'p'; a[i] reads 'p', since the numbering was adjusted to match",
+        text: "i = 1, x = 'p'; `a[i]` reads 'p', since the numbering was adjusted to match",
         correct: false,
         misconception: {
           id: "start-reindexes-container",
@@ -955,7 +955,7 @@ export const pythonItems: Item[] = [
       },
       {
         id: "d",
-        text: "TypeError — enumerate takes only one argument",
+        text: "`TypeError` — enumerate takes only one argument",
         correct: false,
         misconception: {
           id: "no-start-argument",
@@ -978,7 +978,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "rows = [[1, 2, 3], [4, 5, 6]]. State what zip(*rows) yields, and explain what the * is doing.",
+      "rows = `[[1, 2, 3], [4, 5, 6]]`. State what `zip(*rows)` yields, and explain what the * is doing.",
     rubric: {
       elements: [
         {
@@ -1121,7 +1121,7 @@ export const pythonItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "A function loops `for row in rows:` and afterwards uses `row` to build its return value. It works in testing and raises NameError in production. Explain what input triggers it, why the code passed testing, and what the loop-variable rule is.",
+      "A function loops `for row in rows:` and afterwards uses `row` to build its return value. It works in testing and raises `NameError` in production. Explain what input triggers it, why the code passed testing, and what the loop-variable rule is.",
     rubric: {
       elements: [
         {
@@ -1184,7 +1184,7 @@ export const pythonItems: Item[] = [
         misconception: {
           id: "parens-make-tuple",
           description:
-            "Reasons by analogy from [] giving a list. Parentheses around a comprehension give a lazy generator; a tuple needs tuple(...) explicitly.",
+            "Reasons by analogy from `[]` giving a list. Parentheses around a comprehension give a lazy generator; a tuple needs `tuple(...)` explicitly.",
           blameConceptId: "python-comprehensions",
         },
       },
@@ -1224,7 +1224,7 @@ export const pythonItems: Item[] = [
     cognitive: "recall",
     channels: ["typed"],
     stem:
-      "For a list a of length n, compare the lengths of [x for x in a if x > 0] and [x if x > 0 else 0 for x in a].",
+      "For a list a of length n, compare the lengths of `[x for x in a if x > 0]` and `[x if x > 0 else 0 for x in a]`.",
     choices: [
       { id: "a", text: "The first is at most n; the second is exactly n", correct: true },
       {
@@ -1274,7 +1274,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "a = [-3, 0, 2, -1, 5, 4]. How many elements are in [x * x for x in a if x > 0]?",
+      "a = `[-3, 0, 2, -1, 5, 4]`. How many elements are in `[x * x for x in a if x > 0]`?",
     answerKey: 3,
     tolerance: 0,
     difficulty: -0.5,
@@ -1291,7 +1291,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "grid = [[1, 2], [3, 4]]. State the output of [x for row in grid for x in row], and say what would happen if the two for clauses were written in the opposite order.",
+      "grid = `[[1, 2], [3, 4]]`. State the output of `[x for row in grid for x in row]`, and say what would happen if the two for clauses were written in the opposite order.",
     rubric: {
       elements: [
         {
@@ -1329,7 +1329,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "g = (x for x in [1, 2, 3]). A script calls sum(g), then sum(g) again. What are the two results?",
+      "g = (x for x in `[1, 2, 3]`). A script calls `sum(g)`, then `sum(g)` again. What are the two results?",
     choices: [
       { id: "a", text: "6, then 0", correct: true },
       {
@@ -1345,23 +1345,23 @@ export const pythonItems: Item[] = [
       },
       {
         id: "c",
-        text: "6, then a StopIteration is raised",
+        text: "6, then a `StopIteration` is raised",
         correct: false,
         misconception: {
           id: "exhaustion-raises",
           description:
-            "Expects exhaustion to surface as an exception. sum() absorbs StopIteration and returns its start value, so the second call succeeds with a wrong-looking 0.",
+            "Expects exhaustion to surface as an exception. `sum()` absorbs `StopIteration` and returns its start value, so the second call succeeds with a wrong-looking 0.",
           blameConceptId: "python-comprehensions",
         },
       },
       {
         id: "d",
-        text: "A TypeError on the first call — a generator has no length",
+        text: "A `TypeError` on the first call — a generator has no length",
         correct: false,
         misconception: {
           id: "sum-needs-length",
           description:
-            "sum() iterates and needs no length. It is len(g) that would be a TypeError.",
+            "`sum()` iterates and needs no length. It is `len(g)` that would be a `TypeError`.",
           blameConceptId: "python-comprehensions",
         },
       },
@@ -1519,12 +1519,12 @@ export const pythonItems: Item[] = [
     cognitive: "recall",
     channels: ["typed"],
     stem:
-      "For lists a = [1, 2] and b = [3, 4], a + b is [1, 2, 3, 4]. What is np.array(a) + np.array(b)?",
+      "For lists a = `[1, 2]` and b = `[3, 4]`, a + b is `[1, 2, 3, 4]`. What is `np.array(a)` + `np.array(b)`?",
     choices: [
-      { id: "a", text: "array([4, 6])", correct: true },
+      { id: "a", text: "`array([4, 6])`", correct: true },
       {
         id: "b",
-        text: "array([1, 2, 3, 4])",
+        text: "`array([1, 2, 3, 4])`",
         correct: false,
         misconception: {
           id: "array-plus-concatenates",
@@ -1540,13 +1540,13 @@ export const pythonItems: Item[] = [
         misconception: {
           id: "plus-reduces",
           description:
-            "Confuses an elementwise operation with a reduction. + preserves shape; np.sum collapses it.",
+            "Confuses an elementwise operation with a reduction. `+` preserves shape; `np.sum` collapses it.",
           blameConceptId: "numpy-arrays",
         },
       },
       {
         id: "d",
-        text: "A ValueError — arrays cannot be added",
+        text: "A `ValueError` — arrays cannot be added",
         correct: false,
         misconception: {
           id: "addition-invalid",
@@ -1570,7 +1570,7 @@ export const pythonItems: Item[] = [
     cognitive: "recall",
     channels: ["typed"],
     stem:
-      "a = np.array([1, 2, 3]) has dtype int64. What does a[0] = 2.7 leave in a[0]?",
+      "a = `np.array([1, 2, 3])` has dtype int64. What does `a[0]` = 2.7 leave in `a[0]`?",
     choices: [
       { id: "a", text: "2 — the value is truncated to the array's dtype", correct: true },
       {
@@ -1597,7 +1597,7 @@ export const pythonItems: Item[] = [
       },
       {
         id: "d",
-        text: "A TypeError is raised",
+        text: "A `TypeError` is raised",
         correct: false,
         misconception: {
           id: "dtype-mismatch-raises",
@@ -1621,7 +1621,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "a = np.array([-2, 0, 3, 7, -1, 4]). How many elements does a[a > 0] contain?",
+      "a = `np.array([-2, 0, 3, 7, -1, 4])`. How many elements does `a[a > 0]` contain?",
     answerKey: 3,
     tolerance: 0,
     difficulty: -0.6,
@@ -1638,7 +1638,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "a = np.arange(10). Compare b = a[2:5] with c = a[[2, 3, 4]]. Writing b[0] = 99 and c[1] = 88 — which writes reach a?",
+      "a = `np.arange(10)`. Compare b = `a[2:5]` with c = `a[[2, 3, 4]]`. Writing `b[0]` = 99 and `c[1]` = 88 — which writes reach a?",
     choices: [
       { id: "a", text: "Only b's write; c is a copy", correct: true },
       {
@@ -1708,7 +1708,7 @@ export const pythonItems: Item[] = [
           misconception: {
             id: "mask-preserves-length",
             description:
-              "Assumes boolean indexing keeps the original length. It selects, so the result is generally shorter — which is why np.where and a mask are not interchangeable.",
+              "Assumes boolean indexing keeps the original length. It selects, so the result is generally shorter — which is why `np.where` and a mask are not interchangeable.",
             blameConceptId: "numpy-arrays",
           },
         },
@@ -1832,7 +1832,7 @@ export const pythonItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "A pipeline stores counts in an integer array, then normalises in place with counts /= counts.sum(). In one version this raises; in another it silently produces all zeros. Explain both outcomes and give a fix.",
+      "A pipeline stores counts in an integer array, then normalises in place with counts /= `counts.sum()`. In one version this raises; in another it silently produces all zeros. Explain both outcomes and give a fix.",
     rubric: {
       elements: [
         {
@@ -1897,7 +1897,7 @@ export const pythonItems: Item[] = [
         misconception: {
           id: "aligns-from-left",
           description:
-            "Reverses the rule. Left-alignment would make a (3,) vector broadcast down the rows of a (3, 4) matrix; the actual right-alignment makes it broadcast across the columns, which is why (3, 4) with (3,) is an error.",
+            "Reverses the rule. Left-alignment would make a (3,) vector broadcast down the rows of a `(3, 4)` matrix; the actual right-alignment makes it broadcast across the columns, which is why `(3, 4)` with (3,) is an error.",
           blameConceptId: "numpy-broadcasting",
         },
       },
@@ -1937,7 +1937,7 @@ export const pythonItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "A has shape (3, 4). What is the shape of A.sum(axis=0)?",
+    stem: "A has shape `(3, 4)`. What is the shape of `A.sum(axis=0)`?",
     choices: [
       { id: "a", text: "(4,) — axis 0 is collapsed, leaving the column sums", correct: true },
       {
@@ -1953,12 +1953,12 @@ export const pythonItems: Item[] = [
       },
       {
         id: "c",
-        text: "(3, 1) — the axis is kept with length 1",
+        text: "`(3, 1)` — the axis is kept with length 1",
         correct: false,
         misconception: {
           id: "keepdims-is-default",
           description:
-            "Describes keepdims=True, which is not the default. Without it the axis is dropped entirely.",
+            "Describes keepdims=`True`, which is not the default. Without it the axis is dropped entirely.",
           blameConceptId: "numpy-broadcasting",
         },
       },
@@ -1969,7 +1969,7 @@ export const pythonItems: Item[] = [
         misconception: {
           id: "axis-ignored",
           description:
-            "Describes A.sum() with no axis. Supplying an axis reduces along that one axis only.",
+            "Describes `A.sum()` with no axis. Supplying an axis reduces along that one axis only.",
           blameConceptId: "numpy-broadcasting",
         },
       },
@@ -1988,7 +1988,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Give the broadcast result shape, or say why it fails, for each pair: (3, 4) with (4,); (3, 4) with (3,); (3, 1) with (1, 4); (5, 1, 3) with (4, 3).",
+      "Give the broadcast result shape, or say why it fails, for each pair: `(3, 4)` with (4,); `(3, 4)` with (3,); `(3, 1)` with `(1, 4)`; `(5, 1, 3)` with `(4, 3)`.",
     rubric: {
       elements: [
         {
@@ -2007,7 +2007,7 @@ export const pythonItems: Item[] = [
           misconception: {
             id: "assumes-length-match-suffices",
             description:
-              "Accepts (3, 4) with (3,) because 3 appears in both shapes. Broadcasting compares aligned positions, not the multiset of lengths.",
+              "Accepts `(3, 4)` with (3,) because 3 appears in both shapes. Broadcasting compares aligned positions, not the multiset of lengths.",
             blameConceptId: "numpy-broadcasting",
           },
         },
@@ -2027,23 +2027,23 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A has shape (3, 4). Which expression subtracts each row's own mean from that row?",
+      "A has shape `(3, 4)`. Which expression subtracts each row's own mean from that row?",
     choices: [
-      { id: "a", text: "A - A.mean(axis=1, keepdims=True)", correct: true },
+      { id: "a", text: "A - `A.mean(axis=1, keepdims=True)`", correct: true },
       {
         id: "b",
-        text: "A - A.mean(axis=1)",
+        text: "A - `A.mean(axis=1)`",
         correct: false,
         misconception: {
           id: "forgot-keepdims",
           description:
-            "The means have shape (3,), which right-aligns against the 4 columns and raises. The fix is keepdims=True, or an explicit [:, None].",
+            "The means have shape (3,), which right-aligns against the 4 columns and raises. The fix is keepdims=`True`, or an explicit `[:, None]`.",
           blameConceptId: "numpy-broadcasting",
         },
       },
       {
         id: "c",
-        text: "A - A.mean(axis=0)",
+        text: "A - `A.mean(axis=0)`",
         correct: false,
         misconception: {
           id: "wrong-axis",
@@ -2054,7 +2054,7 @@ export const pythonItems: Item[] = [
       },
       {
         id: "d",
-        text: "A - A.mean()",
+        text: "A - `A.mean()`",
         correct: false,
         misconception: {
           id: "global-mean",
@@ -2078,7 +2078,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "x has shape (1000,). How many elements does x[:, None] - x[None, :] contain?",
+      "x has shape (1000,). How many elements does `x[:, None]` - `x[None, :]` contain?",
     answerKey: 1000000,
     tolerance: 0,
     difficulty: 0.5,
@@ -2095,7 +2095,7 @@ export const pythonItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken", "handwritten"],
     stem:
-      "Why does keepdims=True exist, when the reduced axis has length 1 and carries no information?",
+      "Why does keepdims=`True` exist, when the reduced axis has length 1 and carries no information?",
     rubric: {
       elements: [
         {
@@ -2234,9 +2234,9 @@ export const pythonItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What is the difference between df['x'] and df[['x']]?",
+    stem: "What is the difference between `df['x']` and `df[['x']]`?",
     choices: [
-      { id: "a", text: "The first is a Series; the second is a one-column DataFrame", correct: true },
+      { id: "a", text: "The first is a `Series`; the second is a one-column `DataFrame`", correct: true },
       {
         id: "b",
         text: "Nothing — both select the column x",
@@ -2244,7 +2244,7 @@ export const pythonItems: Item[] = [
         misconception: {
           id: "brackets-equivalent",
           description:
-            "Both do select x, but they return different types, so a downstream .mean() gives a scalar in one case and a Series in the other.",
+            "Both do select x, but they return different types, so a downstream `.mean()` gives a scalar in one case and a `Series` in the other.",
           blameConceptId: "pandas-dataframes",
         },
       },
@@ -2261,12 +2261,12 @@ export const pythonItems: Item[] = [
       },
       {
         id: "d",
-        text: "The second raises KeyError unless x is a MultiIndex level",
+        text: "The second raises `KeyError` unless x is a `MultiIndex` level",
         correct: false,
         misconception: {
           id: "list-selection-needs-multiindex",
           description:
-            "List-of-columns selection is the ordinary way to take a subset of columns and needs no MultiIndex.",
+            "List-of-columns selection is the ordinary way to take a subset of columns and needs no `MultiIndex`.",
           blameConceptId: "pandas-dataframes",
         },
       },
@@ -2285,9 +2285,9 @@ export const pythonItems: Item[] = [
     cognitive: "recall",
     channels: ["typed"],
     stem:
-      "s has index ['a', 'b', 'c', 'd']. How many elements do s.loc['a':'c'] and s.iloc[0:2] return?",
+      "s has index `['a', 'b', 'c', 'd']`. How many elements do `s.loc['a':'c']` and `s.iloc[0:2]` return?",
     choices: [
-      { id: "a", text: "3 and 2 — .loc includes its endpoint, .iloc does not", correct: true },
+      { id: "a", text: "3 and 2 — `.loc` includes its endpoint, `.iloc` does not", correct: true },
       {
         id: "b",
         text: "2 and 2 — both follow Python's half-open rule",
@@ -2295,7 +2295,7 @@ export const pythonItems: Item[] = [
         misconception: {
           id: "loc-is-half-open",
           description:
-            "Applies the standard slice convention to label slicing. With labels there is no defined 'one past the end' to stop before, so .loc includes the endpoint — the one place pandas breaks the Python rule.",
+            "Applies the standard slice convention to label slicing. With labels there is no defined 'one past the end' to stop before, so `.loc` includes the endpoint — the one place pandas breaks the Python rule.",
           blameConceptId: "pandas-dataframes",
         },
       },
@@ -2306,7 +2306,7 @@ export const pythonItems: Item[] = [
         misconception: {
           id: "iloc-is-inclusive",
           description:
-            ".iloc is positional and keeps the ordinary half-open rule. Only label-based slicing is inclusive.",
+            "`.iloc` is positional and keeps the ordinary half-open rule. Only label-based slicing is inclusive.",
           blameConceptId: "pandas-dataframes",
         },
       },
@@ -2336,7 +2336,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "s1 has index ['a', 'b', 'c'] and s2 has index ['b', 'c', 'd'], both complete with no missing values. How many entries does s1 + s2 have?",
+      "s1 has index `['a', 'b', 'c']` and s2 has index `['b', 'c', 'd']`, both complete with no missing values. How many entries does s1 + s2 have?",
     answerKey: 4,
     tolerance: 0,
     difficulty: 0.2,
@@ -2353,7 +2353,7 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Using the two Series above, state which entries of s1 + s2 are NaN and why, and give the call that would treat a missing label as zero instead.",
+      "Using the two `Series` above, state which entries of s1 + s2 are `NaN` and why, and give the call that would treat a missing label as zero instead.",
     rubric: {
       elements: [
         {
@@ -2372,7 +2372,7 @@ export const pythonItems: Item[] = [
           misconception: {
             id: "aligns-by-position",
             description:
-              "Assumes two equal-length Series add position by position. They do not — which is why a filtered or reordered Series still adds correctly, and why two complete inputs can produce NaNs.",
+              "Assumes two equal-length `Series` add position by position. They do not — which is why a filtered or reordered `Series` still adds correctly, and why two complete inputs can produce NaNs.",
             blameConceptId: "pandas-dataframes",
           },
         },
@@ -2397,9 +2397,9 @@ export const pythonItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "df has a default RangeIndex of 0..99. After sub = df[df.x > 0] keeps rows 5, 12 and 40, what does sub.loc[0] do?",
+      "df has a default `RangeIndex` of 0..99. After sub = `df[df.x > 0]` keeps rows 5, 12 and 40, what does `sub.loc[0]` do?",
     choices: [
-      { id: "a", text: "Raises KeyError — label 0 is not in the filtered index", correct: true },
+      { id: "a", text: "Raises `KeyError` — label 0 is not in the filtered index", correct: true },
       {
         id: "b",
         text: "Returns the first row of sub, which was row 5 of df",
@@ -2407,7 +2407,7 @@ export const pythonItems: Item[] = [
         misconception: {
           id: "loc-is-positional",
           description:
-            "Treats .loc as positional. Filtering keeps the original labels, so sub's index is [5, 12, 40] and 0 is simply absent. .iloc[0] is the positional request.",
+            "Treats `.loc` as positional. Filtering keeps the original labels, so sub's index is `[5, 12, 40]` and 0 is simply absent. `.iloc[0]` is the positional request.",
           blameConceptId: "pandas-dataframes",
         },
       },
@@ -2424,12 +2424,12 @@ export const pythonItems: Item[] = [
       },
       {
         id: "d",
-        text: "Returns NaN",
+        text: "Returns `NaN`",
         correct: false,
         misconception: {
           id: "missing-label-gives-nan",
           description:
-            "Confuses lookup with alignment. Alignment fills unmatched labels with NaN; a direct .loc lookup of an absent label raises.",
+            "Confuses lookup with alignment. Alignment fills unmatched labels with `NaN`; a direct .loc lookup of an absent label raises.",
           blameConceptId: "pandas-dataframes",
         },
       },
@@ -2448,7 +2448,7 @@ export const pythonItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken", "handwritten"],
     stem:
-      "A Series is often described as 'a NumPy array with an index'. Explain what the index buys that the array alone does not, and one thing it costs.",
+      "A `Series` is often described as 'a NumPy array with an index'. Explain what the index buys that the array alone does not, and one thing it costs.",
     rubric: {
       elements: [
         {
@@ -2473,7 +2473,7 @@ export const pythonItems: Item[] = [
           misconception: {
             id: "index-is-free-labelling",
             description:
-              "Treats the index as decoration on top of an array. It changes the semantics of arithmetic, which is why the same code on arrays and on Series can give different-length answers.",
+              "Treats the index as decoration on top of an array. It changes the semantics of arithmetic, which is why the same code on arrays and on `Series` can give different-length answers.",
             blameConceptId: "pandas-dataframes",
           },
         },
@@ -2493,7 +2493,7 @@ export const pythonItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken", "handwritten"],
     stem:
-      "Explain what SettingWithCopyWarning is telling you when df[df.x > 0]['y'] = 1 triggers it, and why df.loc[df.x > 0, 'y'] = 1 is not merely a stylistic improvement.",
+      "Explain what `SettingWithCopyWarning` is telling you when `df[df.x > 0]['y']` = 1 triggers it, and why `df.loc[df.x > 0, 'y']` = 1 is not merely a stylistic improvement.",
     rubric: {
       elements: [
         {
@@ -2546,7 +2546,7 @@ export const pythonItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "A report divides df['revenue'].sum() by len(df) to get an average, while a colleague uses df['revenue'].mean(). The two disagree. Explain why, say which is right, and describe how you would decide.",
+      "A report divides `df['revenue'].sum()` by `len(df)` to get an average, while a colleague uses `df['revenue'].mean()`. The two disagree. Explain why, say which is right, and describe how you would decide.",
     rubric: {
       elements: [
         {
@@ -2558,7 +2558,7 @@ export const pythonItems: Item[] = [
           misconception: {
             id: "nan-is-zero",
             description:
-              "Assumes NaN behaves as 0. It is skipped, not zeroed — which changes the denominator, not just the numerator, and is why the two calculations differ.",
+              "Assumes `NaN` behaves as 0. It is skipped, not zeroed — which changes the denominator, not just the numerator, and is why the two calculations differ.",
             blameConceptId: "pandas-dataframes",
           },
         },
@@ -2596,7 +2596,7 @@ export const pythonItems: Item[] = [
     cognitive: "recall",
     channels: ["typed"],
     stem:
-      "df has 500 rows and 12 distinct values of the column k. How many rows does df.groupby('k')['v'].mean() return?",
+      "df has 500 rows and 12 distinct values of the column k. How many rows does `df.groupby('k')['v'].mean()` return?",
     choices: [
       { id: "a", text: "12 — one per group", correct: true },
       {
@@ -2716,21 +2716,21 @@ export const pythonItems: Item[] = [
     stem:
       "Which expression subtracts each row's group mean from its own value, leaving one row per original row?",
     choices: [
-      { id: "a", text: "df['v'] - df.groupby('k')['v'].transform('mean')", correct: true },
+      { id: "a", text: "`df['v']` - `df.groupby('k')['v'].transform('mean')`", correct: true },
       {
         id: "b",
-        text: "df['v'] - df.groupby('k')['v'].mean()",
+        text: "`df['v']` - `df.groupby('k')['v'].mean()`",
         correct: false,
         misconception: {
           id: "agg-then-subtract",
           description:
-            "The aggregation is indexed by k, not by df's index, so alignment matches group labels against row labels and yields a mostly-NaN result of the wrong length — a silent failure, not an error.",
+            "The aggregation is indexed by k, not by df's index, so alignment matches group labels against row labels and yields a mostly-`NaN` result of the wrong length — a silent failure, not an error.",
           blameConceptId: "pandas-groupby",
         },
       },
       {
         id: "c",
-        text: "df.groupby('k')['v'].apply(lambda s: s - s.mean()).reset_index(drop=True)",
+        text: "`df.groupby('k')['v'].apply(lambda s: s - s.mean()).reset_index(drop=True)`",
         correct: false,
         misconception: {
           id: "apply-then-drop-index",
@@ -2741,7 +2741,7 @@ export const pythonItems: Item[] = [
       },
       {
         id: "d",
-        text: "df['v'] - df['v'].mean()",
+        text: "`df['v']` - `df['v'].mean()`",
         correct: false,
         misconception: {
           id: "global-mean",

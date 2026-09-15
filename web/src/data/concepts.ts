@@ -951,6 +951,29 @@ export const concepts: Concept[] = [
     ],
   },
   {
+    id: "conditional-multivariate-normal",
+    title: "Conditional Distributions of the Multivariate Normal",
+    domain: "multivariate-probability",
+    blurb: "Where X₁ | X₂ = x₂'s mean and covariance formulas actually come from, derived rather than quoted.",
+    /**
+     * The formula in `multivariate-normal`'s closure table is stated, not
+     * derived — this concept is the derivation, and it needs both of that
+     * article's siblings to do it. `multivariate-mgf` supplies the
+     * independence-from-zero-covariance argument the proof turns on;
+     * `quadratic-forms-random-vectors` supplies the Var(aᵀX) = aᵀΣa machinery
+     * used to compute the residual's covariance. `schur-complement` is upstream
+     * because the resulting covariance formula Σ₁₁ − Σ₁₂Σ₂₂⁻¹Σ₂₁ is exactly
+     * that complement, and the connection is the payoff, not a coincidence to
+     * gloss over.
+     */
+    prerequisites: [
+      "multivariate-normal",
+      "multivariate-mgf",
+      "quadratic-forms-random-vectors",
+      "schur-complement",
+    ],
+  },
+  {
     id: "cochrans-theorem",
     title: "Cochran's Theorem",
     domain: "multivariate-probability",

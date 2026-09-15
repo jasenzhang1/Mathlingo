@@ -274,6 +274,19 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
+      /**
+       * Both halves of the section above feed this one concept: the MGF's
+       * independence-from-zero-covariance theorem and quadratic forms' Var(aᵀX)
+       * machinery are exactly what deriving X₁ | X₂ = x₂ needs. It is placed
+       * after `quadratic-forms` rather than immediately following
+       * `multivariate-distributions` so that both prerequisites are already
+       * behind a learner who reaches it.
+       */
+      id: "conditional-normals",
+      label: "Conditioning a Multivariate Normal",
+      conceptIds: ["conditional-multivariate-normal"],
+    },
+    {
       id: "asymptotics",
       label: "Asymptotics & Divergences",
       conceptIds: ["central-limit-theorem", "kl-divergence"],

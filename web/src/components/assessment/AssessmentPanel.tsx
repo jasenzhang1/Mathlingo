@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { CodeText } from "./CodeText";
 import { conceptById } from "../../data/concepts";
 import { loadItemBank } from "../../data/items";
 import { expFor, type ExpSnapshot } from "../../lib/assessment/exp";
@@ -399,7 +400,7 @@ export function AssessmentPanel({
           <ItemHeader item={phase.item} />
 
           <p className="font-body mt-3 whitespace-pre-wrap text-[var(--ink)]">
-            {phase.item.stem}
+            <CodeText text={phase.item.stem} />
           </p>
 
           <div className="mt-5">
@@ -568,7 +569,7 @@ function Feedback({
 
       {grade.feedback && (
         <p className="font-body mt-3 text-sm text-[var(--ink)]">
-          {grade.feedback}
+          <CodeText text={grade.feedback} />
         </p>
       )}
 

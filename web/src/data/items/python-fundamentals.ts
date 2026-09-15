@@ -38,12 +38,12 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "x = 5 then x = \"five\". What happens?",
+    stem: "`x = 5` then `x = \"five\"`. What happens?",
     choices: [
-      { id: "a", text: "Nothing goes wrong; x now refers to the string \"five\"", correct: true },
+      { id: "a", text: "Nothing goes wrong; `x` now refers to the string `\"five\"`", correct: true },
       {
         id: "b",
-        text: "TypeError, because x was already bound to an int",
+        text: "`TypeError`, because `x` was already bound to an `int`",
         correct: false,
         misconception: {
           id: "names-have-fixed-type",
@@ -54,7 +54,7 @@ export const pythonFundamentalsItems: Item[] = [
       },
       {
         id: "c",
-        text: "x becomes the string \"5\" instead of \"five\"",
+        text: "`x` becomes the string `\"5\"` instead of `\"five\"`",
         correct: false,
         misconception: {
           id: "assignment-converts",
@@ -64,7 +64,7 @@ export const pythonFundamentalsItems: Item[] = [
       },
       {
         id: "d",
-        text: "Both bindings exist; x refers to both values now",
+        text: "Both bindings exist; `x` refers to both values now",
         correct: false,
         misconception: {
           id: "names-accumulate",
@@ -86,7 +86,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "numeric",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What does True + True + False evaluate to?",
+    stem: "What does `True + True + False` evaluate to?",
     answerKey: 2,
     difficulty: -1.4,
     discrimination: 1.0,
@@ -101,26 +101,26 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What is type(None)?",
+    stem: "What is `type(None)`?",
     choices: [
-      { id: "a", text: "<class 'NoneType'>", correct: true },
+      { id: "a", text: "`<class 'NoneType'>`", correct: true },
       {
         id: "b",
-        text: "<class 'bool'>",
+        text: "`<class 'bool'>`",
         correct: false,
         misconception: {
           id: "none-is-false",
-          description: "Conflates None with False because both are 'falsy' in a boolean context. Falsy is a behavior under bool(); it does not make two values the same type.",
+          description: "Conflates `None` with `False` because both are 'falsy' in a boolean context. Falsy is a behavior under `bool()`; it does not make two values the same type.",
           blameConceptId: "python-variables-types",
         },
       },
       {
         id: "c",
-        text: "<class 'int'>",
+        text: "`<class 'int'>`",
         correct: false,
         misconception: {
           id: "none-is-zero",
-          description: "Conflates None with 0 for the same reason — both are falsy, but None has its own dedicated type distinct from every numeric type.",
+          description: "Conflates `None` with `0` for the same reason — both are falsy, but `None` has its own dedicated type distinct from every numeric type.",
           blameConceptId: "python-variables-types",
         },
       },
@@ -138,26 +138,26 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "value = \"3.0\". What is type(value)?",
+    stem: "`value = \"3.0\"`. What is `type(value)`?",
     choices: [
-      { id: "a", text: "<class 'str'>", correct: true },
+      { id: "a", text: "`<class 'str'>`", correct: true },
       {
         id: "b",
-        text: "<class 'float'>",
+        text: "`<class 'float'>`",
         correct: false,
         misconception: {
           id: "quoted-number-is-numeric",
-          description: "Judges type by what the text looks like rather than by the quotes around it. Anything inside quotes is a str, regardless of its content.",
+          description: "Judges type by what the text looks like rather than by the quotes around it. Anything inside quotes is a `str`, regardless of its content.",
           blameConceptId: "python-variables-types",
         },
       },
       {
         id: "c",
-        text: "<class 'int'>",
+        text: "`<class 'int'>`",
         correct: false,
         misconception: {
           id: "quoted-number-is-numeric",
-          description: "Judges type by what the text looks like rather than by the quotes around it. Anything inside quotes is a str, regardless of its content.",
+          description: "Judges type by what the text looks like rather than by the quotes around it. Anything inside quotes is a `str`, regardless of its content.",
           blameConceptId: "python-variables-types",
         },
       },
@@ -177,10 +177,10 @@ export const pythonFundamentalsItems: Item[] = [
     channels: ["typed"],
     stem: "Which of these is a valid Python variable name?",
     choices: [
-      { id: "a", text: "total_score", correct: true },
+      { id: "a", text: "`total_score`", correct: true },
       {
         id: "b",
-        text: "2nd_place",
+        text: "`2nd_place`",
         correct: false,
         misconception: {
           id: "name-starts-with-digit",
@@ -190,7 +190,7 @@ export const pythonFundamentalsItems: Item[] = [
       },
       {
         id: "c",
-        text: "total-score",
+        text: "`total-score`",
         correct: false,
         misconception: {
           id: "hyphen-in-name",
@@ -248,7 +248,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "None, 0, and \"\" are all falsy in a boolean context. Explain why they are not the same value, and give one situation where treating None as equivalent to 0 would produce a wrong answer.",
+    stem: "`None`, `0`, and `\"\"` are all falsy in a boolean context. Explain why they are not the same value, and give one situation where treating `None` as equivalent to `0` would produce a wrong answer.",
     rubric: {
       elements: [
         {
@@ -278,16 +278,16 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "a = 5; b = a; b = 10. What is a after this?",
+    stem: "`a = 5; b = a; b = 10`. What is `a` after this?",
     choices: [
-      { id: "a", text: "5", correct: true },
+      { id: "a", text: "`5`", correct: true },
       {
         id: "b",
-        text: "10",
+        text: "`10`",
         correct: false,
         misconception: {
           id: "assumes-shared-binding-for-immutables",
-          description: "Assumes b = a keeps a and b permanently linked. b = a only copies which object b points at; rebinding b afterward does not affect a. (Whether a *mutation*, rather than a rebinding, would be shared depends on the object's type — the question for a later concept.)",
+          description: "Assumes `b = a` keeps `a` and `b` permanently linked. `b = a` only copies which object `b` points at; rebinding `b` afterward does not affect `a`. (Whether a *mutation*, rather than a rebinding, would be shared depends on the object's type — the question for a later concept.)",
           blameConceptId: "python-variables-types",
         },
       },
@@ -309,7 +309,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "numeric",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What does int(7.9) evaluate to?",
+    stem: "What does `int(7.9)` evaluate to?",
     answerKey: 7,
     difficulty: -1.6,
     discrimination: 1.1,
@@ -324,22 +324,22 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What happens when you run int(\"twelve\")?",
+    stem: "What happens when you run `int(\"twelve\")`?",
     choices: [
-      { id: "a", text: "Raises a ValueError", correct: true },
+      { id: "a", text: "Raises a `ValueError`", correct: true },
       {
         id: "b",
-        text: "Returns 12",
+        text: "Returns `12`",
         correct: false,
         misconception: {
           id: "int-parses-words",
-          description: "Assumes int() can interpret number words. int() only parses digit text; a word like 'twelve' is not a valid integer literal.",
+          description: "Assumes `int()` can interpret number words. `int()` only parses digit text; a word like 'twelve' is not a valid integer literal.",
           blameConceptId: "python-type-conversion",
         },
       },
       {
         id: "c",
-        text: "Returns 0",
+        text: "Returns `0`",
         correct: false,
         misconception: {
           id: "invalid-conversion-defaults-zero",
@@ -361,7 +361,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "What does bool(\"0\") evaluate to?",
+    stem: "What does `bool(\"0\")` evaluate to?",
     choices: [
       { id: "a", text: "True", correct: true },
       {
@@ -370,7 +370,7 @@ export const pythonFundamentalsItems: Item[] = [
         correct: false,
         misconception: {
           id: "truthiness-reads-content",
-          description: "Judges truthiness by what the string's characters look like, rather than by whether the string is empty. Only the empty string \"\" is falsy — any non-empty string, including \"0\" and \"False\", is truthy.",
+          description: "Judges truthiness by what the string's characters look like, rather than by whether the string is empty. Only the empty string `\"\"` is falsy — any non-empty string, including `\"0\"` and `\"False\"`, is truthy.",
           blameConceptId: "python-type-conversion",
         },
       },
@@ -388,7 +388,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "price = \"19\"; total = int(price) * 2 + int(\"1\"). What is total?",
+    stem: "`price = \"19\"; total = int(price) * 2 + int(\"1\")`. What is `total`?",
     answerKey: 39,
     difficulty: -0.2,
     discrimination: 1.3,
@@ -403,7 +403,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "What does int(-3.7) evaluate to?",
+    stem: "What does `int(-3.7)` evaluate to?",
     answerKey: -3,
     difficulty: 0.0,
     discrimination: 1.4,
@@ -418,7 +418,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken", "handwritten"],
-    stem: "int(3.9) is 3 and int(-3.9) is -3. Explain the rule int() actually follows, and why it is not the same as rounding to the nearest integer.",
+    stem: "`int(3.9)` is 3 and `int(-3.9)` is -3. Explain the rule `int()` actually follows, and why it is not the same as rounding to the nearest integer.",
     rubric: {
       elements: [
         {
@@ -434,7 +434,7 @@ export const pythonFundamentalsItems: Item[] = [
           required: true,
           misconception: {
             id: "int-rounds",
-            description: "Believes int() rounds to the nearest whole number rather than truncating.",
+            description: "Believes `int()` rounds to the nearest whole number rather than truncating.",
             blameConceptId: "python-type-conversion",
           },
         },
@@ -483,16 +483,16 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "x = 3.0; y = str(x); z = float(y). Is z == x?",
+    stem: "`x = 3.0; y = str(x); z = float(y)`. Is `z == x`?",
     choices: [
-      { id: "a", text: "True", correct: true },
+      { id: "a", text: "`True`", correct: true },
       {
         id: "b",
-        text: "False, because converting to str and back introduces rounding error",
+        text: "False, because converting to `str` and back introduces rounding error",
         correct: false,
         misconception: {
           id: "assumes-roundtrip-lossy",
-          description: "Assumes every conversion loses precision. Converting a float to its str form and back is exact for values that display cleanly, like 3.0 — no information is lost in this particular round trip.",
+          description: "Assumes every conversion loses precision. Converting a float to its str form and back is exact for values that display cleanly, like `3.0` — no information is lost in this particular round trip.",
           blameConceptId: "python-type-conversion",
         },
       },
@@ -514,7 +514,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "numeric",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What does 17 // 5 evaluate to?",
+    stem: "What does `17 // 5` evaluate to?",
     answerKey: 3,
     difficulty: -1.7,
     discrimination: 1.0,
@@ -529,7 +529,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "numeric",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What does 17 % 5 evaluate to?",
+    stem: "What does `17 % 5` evaluate to?",
     answerKey: 2,
     difficulty: -1.5,
     discrimination: 1.0,
@@ -546,14 +546,14 @@ export const pythonFundamentalsItems: Item[] = [
     channels: ["typed"],
     stem: "Which operator checks whether two values are equal, without changing either one?",
     choices: [
-      { id: "a", text: "==", correct: true },
+      { id: "a", text: "`==`", correct: true },
       {
         id: "b",
-        text: "=",
+        text: "`=`",
         correct: false,
         misconception: {
           id: "confuses-equals-with-assign",
-          description: "Confuses assignment (=) with equality comparison (==) — the single most common syntax slip for people new to the language.",
+          description: "Confuses assignment (`=`) with equality comparison (`==`) — the single most common syntax slip for people new to the language.",
           blameConceptId: "python-operators",
         },
       },
@@ -571,7 +571,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "What does -7 // 2 evaluate to?",
+    stem: "What does `-7 // 2` evaluate to?",
     answerKey: -4,
     difficulty: -0.4,
     discrimination: 1.5,
@@ -586,16 +586,16 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "age = 15. What does age >= 18 and 1 / 0 evaluate to (i.e. does it raise)?",
+    stem: "`age = 15`. What does `age >= 18 and 1 / 0` evaluate to (i.e. does it raise)?",
     choices: [
-      { id: "a", text: "False, and no exception is raised", correct: true },
+      { id: "a", text: "`False`, and no exception is raised", correct: true },
       {
         id: "b",
-        text: "It raises a ZeroDivisionError",
+        text: "It raises a `ZeroDivisionError`",
         correct: false,
         misconception: {
           id: "assumes-both-sides-always-evaluate",
-          description: "Assumes Python evaluates both operands of `and` regardless of the left side. Because age >= 18 is already False, and short-circuits: the right side is never evaluated, so the division by zero never happens.",
+          description: "Assumes Python evaluates both operands of `and` regardless of the left side. Because `age >= 18` is already `False`, `and` short-circuits: the right side is never evaluated, so the division by zero never happens.",
           blameConceptId: "python-operators",
         },
       },
@@ -613,7 +613,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken", "handwritten"],
-    stem: "5 == \"5\" evaluates to False rather than raising an error. Explain why Python allows comparing values of different types at all, and what the result means when the types genuinely can't match.",
+    stem: "`5 == \"5\"` evaluates to `False` rather than raising an error. Explain why Python allows comparing values of different types at all, and what the result means when the types genuinely can't match.",
     rubric: {
       elements: [
         {
@@ -643,7 +643,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "\"Score: \" + 10 raises a TypeError, but f\"Score: {10}\" works fine. Explain why the two behave differently even though both are trying to combine text and a number.",
+    stem: "`\"Score: \" + 10` raises a `TypeError`, but `f\"Score: {10}\"` works fine. Explain why the two behave differently even though both are trying to combine text and a number.",
     rubric: {
       elements: [
         {
@@ -673,26 +673,26 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "x = 5. What does 0 < x < 3 evaluate to?",
+    stem: "`x = 5`. What does `0 < x < 3` evaluate to?",
     choices: [
-      { id: "a", text: "False", correct: true },
+      { id: "a", text: "`False`", correct: true },
       {
         id: "b",
-        text: "True, because x is a positive number",
+        text: "`True`, because `x` is a positive number",
         correct: false,
         misconception: {
           id: "reads-chain-as-or",
-          description: "Reads the chained comparison as if either half being true is enough. 0 < x < 3 is equivalent to (0 < x) and (x < 3) — both halves must hold, and x < 3 fails for x = 5.",
+          description: "Reads the chained comparison as if either half being true is enough. `0 < x < 3` is equivalent to `(0 < x) and (x < 3)` — both halves must hold, and `x < 3` fails for `x = 5`.",
           blameConceptId: "python-operators",
         },
       },
       {
         id: "c",
-        text: "3, because that's the upper bound",
+        text: "`3`, because that's the upper bound",
         correct: false,
         misconception: {
           id: "returns-bound-not-bool",
-          description: "Assumes a comparison chain returns one of the compared values rather than a boolean. Every comparison, chained or not, evaluates to True or False.",
+          description: "Assumes a comparison chain returns one of the compared values rather than a boolean. Every comparison, chained or not, evaluates to `True` or `False`.",
           blameConceptId: "python-operators",
         },
       },
@@ -714,12 +714,12 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "coords = (1, 2); coords[0] = 5. What happens?",
+    stem: "`coords = (1, 2); coords[0] = 5`. What happens?",
     choices: [
-      { id: "a", text: "Raises a TypeError", correct: true },
+      { id: "a", text: "Raises a `TypeError`", correct: true },
       {
         id: "b",
-        text: "coords becomes (5, 2)",
+        text: "`coords` becomes `(5, 2)`",
         correct: false,
         misconception: {
           id: "assumes-tuples-mutable",
@@ -729,11 +729,11 @@ export const pythonFundamentalsItems: Item[] = [
       },
       {
         id: "c",
-        text: "Raises an IndexError",
+        text: "Raises an `IndexError`",
         correct: false,
         misconception: {
           id: "confuses-error-type",
-          description: "Index 0 is perfectly valid for a 2-element tuple — the failure is about attempting to mutate an immutable object, which raises TypeError, not about the index being out of range.",
+          description: "Index 0 is perfectly valid for a 2-element tuple — the failure is about attempting to mutate an immutable object, which raises `TypeError`, not about the index being out of range.",
           blameConceptId: "python-tuples",
         },
       },
@@ -751,16 +751,16 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What is the type of (5)?",
+    stem: "What is the type of `(5)`?",
     choices: [
-      { id: "a", text: "<class 'int'>", correct: true },
+      { id: "a", text: "`<class 'int'>`", correct: true },
       {
         id: "b",
-        text: "<class 'tuple'>",
+        text: "`<class 'tuple'>`",
         correct: false,
         misconception: {
           id: "parens-alone-make-tuple",
-          description: "Assumes parentheses alone create a tuple. Without a trailing comma, (5) is just the number 5 grouped in parentheses — the comma is what actually builds a tuple.",
+          description: "Assumes parentheses alone create a tuple. Without a trailing comma, `(5)` is just the number 5 grouped in parentheses — the comma is what actually builds a tuple.",
           blameConceptId: "python-tuples",
         },
       },
@@ -778,7 +778,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "numeric",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "point = (10, 20, 30). What is point[-1]?",
+    stem: "`point = (10, 20, 30)`. What is `point[-1]`?",
     answerKey: 30,
     difficulty: -1.6,
     discrimination: 0.9,
@@ -793,7 +793,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "name, age = (\"Ada\", 36). What are the values of name and age after this line runs?",
+    stem: "`name, age = (\"Ada\", 36)`. What are the values of `name` and `age` after this line runs?",
     rubric: {
       elements: [
         {
@@ -824,10 +824,10 @@ export const pythonFundamentalsItems: Item[] = [
     channels: ["typed"],
     stem: "A function needs to return a fixed (row, column) pair that the caller should never modify. Which is the better return type?",
     choices: [
-      { id: "a", text: "tuple", correct: true },
+      { id: "a", text: "`tuple`", correct: true },
       {
         id: "b",
-        text: "list",
+        text: "`list`",
         correct: false,
         misconception: {
           id: "defaults-to-list",
@@ -908,12 +908,12 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "row = ([1, 2], 3); row[0].append(4). Is this legal, and what is row afterward?",
+    stem: "`row = ([1, 2], 3); row[0].append(4)`. Is this legal, and what is `row` afterward?",
     choices: [
-      { id: "a", text: "Legal — row becomes ([1, 2, 4], 3)", correct: true },
+      { id: "a", text: "Legal — `row` becomes `([1, 2, 4], 3)`", correct: true },
       {
         id: "b",
-        text: "Raises a TypeError, since row is a tuple",
+        text: "Raises a `TypeError`, since `row` is a tuple",
         correct: false,
         misconception: {
           id: "immutability-is-transitive",

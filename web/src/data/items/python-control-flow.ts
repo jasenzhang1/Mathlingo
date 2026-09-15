@@ -92,7 +92,7 @@ export const pythonControlFlowItems: Item[] = [
       { id: "a", text: "Indentation", correct: true },
       {
         id: "b",
-        text: "Curly braces { }",
+        text: "Curly braces `{ }`",
         correct: false,
         misconception: {
           id: "expects-braces",
@@ -115,7 +115,7 @@ export const pythonControlFlowItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "age = 20\nif age < 13:\n    print(\"child\")\nelif age < 20:\n    print(\"teen\")\nelse:\n    print(\"adult\")\nWhat gets printed?",
+      "`age = 20\nif age < 13:\n    print(\"child\")\nelif age < 20:\n    print(\"teen\")\nelse:\n    print(\"adult\")`\nWhat gets printed?",
     rubric: {
       elements: [
         { id: "correct-output", description: "States that \"adult\" is printed, since age < 13 and age < 20 are both False for age = 20.", weight: 3, required: true },
@@ -134,7 +134,7 @@ export const pythonControlFlowItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "cart = []. What does `if cart: print(\"has items\") else: print(\"empty\")` print?",
+    stem: "`cart = []`. What does `if cart: print(\"has items\") else: print(\"empty\")` print?",
     choices: [
       { id: "a", text: "empty", correct: true },
       {
@@ -161,16 +161,16 @@ export const pythonControlFlowItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "x = 5. Given `if x > 0:` with a nested `if x > 10: print('big')` inside it (no else anywhere), what prints?",
+    stem: "`x = 5`. Given `if x > 0:` with a nested `if x > 10: print('big')` inside it (no else anywhere), what prints?",
     choices: [
       { id: "a", text: "Nothing", correct: true },
       {
         id: "b",
-        text: "'big'",
+        text: "`'big'`",
         correct: false,
         misconception: {
           id: "assumes-outer-true-implies-print",
-          description: "The outer condition being true only allows the inner check to run — the inner condition (x > 10) still has to hold, and it doesn't for x = 5.",
+          description: "The outer condition being true only allows the inner check to run — the inner condition (`x > 10`) still has to hold, and it doesn't for `x = 5`.",
           blameConceptId: "python-conditionals",
         },
       },
@@ -208,7 +208,7 @@ export const pythonControlFlowItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "count = 0. What does `if count:` evaluate as?",
+    stem: "`count = 0`. What does `if count:` evaluate as?",
     choices: [
       { id: "a", text: "False — the branch is skipped", correct: true },
       {
@@ -217,7 +217,7 @@ export const pythonControlFlowItems: Item[] = [
         correct: false,
         misconception: {
           id: "assumes-condition-must-be-comparison",
-          description: "Any expression can be a condition; Python calls bool() on it. bool(0) is False, so the branch is simply skipped, not an error.",
+          description: "Any expression can be a condition; Python calls `bool()` on it. `bool(0)` is `False`, so the branch is simply skipped, not an error.",
           blameConceptId: "python-conditionals",
         },
       },
@@ -266,7 +266,7 @@ export const pythonControlFlowItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "x = 10. How many times does `while x < 5: print(x)` run its body?",
+    stem: "`x = 10`. How many times does `while x < 5: print(x)` run its body?",
     choices: [
       { id: "a", text: "Zero times", correct: true },
       {
@@ -292,7 +292,7 @@ export const pythonControlFlowItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What does break do inside a while loop?",
+    stem: "What does `break` do inside a while loop?",
     choices: [
       { id: "a", text: "Exits the loop immediately", correct: true },
       {
@@ -301,7 +301,7 @@ export const pythonControlFlowItems: Item[] = [
         correct: false,
         misconception: {
           id: "confuses-break-with-continue",
-          description: "That's what continue does. break exits the loop entirely; continue just skips the rest of the current iteration.",
+          description: "That's what `continue` does. `break` exits the loop entirely; `continue` just skips the rest of the current iteration.",
           blameConceptId: "python-while-loops",
         },
       },
@@ -319,7 +319,7 @@ export const pythonControlFlowItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "count = 0\nwhile count < 3:\n    print(count)\n    count += 1\nWhat gets printed, in order?",
+    stem: "`count = 0\nwhile count < 3:\n    print(count)\n    count += 1`\nWhat gets printed, in order?",
     rubric: {
       elements: [
         { id: "correct-sequence", description: "States 0, 1, 2 are printed in that order, and 3 is never printed because the loop stops once count < 3 is False.", weight: 3, required: true },
@@ -338,7 +338,7 @@ export const pythonControlFlowItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "count = 0\nwhile count < 3:\n    print(count)\nWhat happens when this runs?",
+    stem: "`count = 0\nwhile count < 3:\n    print(count)`\nWhat happens when this runs?",
     choices: [
       { id: "a", text: "It loops forever, printing 0 repeatedly", correct: true },
       {
@@ -347,7 +347,7 @@ export const pythonControlFlowItems: Item[] = [
         correct: false,
         misconception: {
           id: "assumes-loop-var-auto-increments",
-          description: "Nothing inside the body changes count, so count < 3 stays True forever — the loop variable does not update itself.",
+          description: "Nothing inside the body changes `count`, so `count < 3` stays `True` forever — the loop variable does not update itself.",
           blameConceptId: "python-while-loops",
         },
       },
@@ -365,7 +365,7 @@ export const pythonControlFlowItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "n = 0\nwhile n < 4:\n    n += 1\n    if n == 2:\n        continue\n    print(n)\nWhat gets printed?",
+    stem: "`n = 0\nwhile n < 4:\n    n += 1\n    if n == 2:\n        continue\n    print(n)`\nWhat gets printed?",
     rubric: {
       elements: [
         { id: "correct-output", description: "States 1, 3, 4 are printed — when n == 2, continue skips the print(n) call for that iteration only.", weight: 3, required: true },
@@ -384,7 +384,7 @@ export const pythonControlFlowItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why `while True:` is a legitimate pattern despite its condition never becoming False on its own, and what must be true of the loop body for it to actually terminate.",
+    stem: "Explain why `while True:` is a legitimate pattern despite its condition never becoming `False` on its own, and what must be true of the loop body for it to actually terminate.",
     rubric: {
       elements: [
         { id: "legitimate-use", description: "Names a legitimate use case, e.g. repeatedly prompting for input until a valid or 'quit' value is seen.", weight: 3, required: true },
@@ -435,7 +435,7 @@ export const pythonControlFlowItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "How many values does range(5) produce?",
+    stem: "How many values does `range(5)` produce?",
     rubric: {
       elements: [{ id: "correct", description: "States 5 — the values 0, 1, 2, 3, 4 (stop is exclusive).", weight: 3, required: true }],
     },
@@ -452,7 +452,7 @@ export const pythonControlFlowItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "for fruit in [\"apple\", \"banana\"]: print(fruit). What is fruit each time through the loop?",
+    stem: "`for fruit in [\"apple\", \"banana\"]: print(fruit)`. What is `fruit` each time through the loop?",
     choices: [
       { id: "a", text: "It's rebound to the next item in the list on each pass", correct: true },
       {
@@ -479,7 +479,7 @@ export const pythonControlFlowItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What is the first value produced by range(2, 5)?",
+    stem: "What is the first value produced by `range(2, 5)`?",
     rubric: {
       elements: [{ id: "correct", description: "States 2 — range(start, stop) begins at start.", weight: 3, required: true }],
     },
@@ -496,7 +496,7 @@ export const pythonControlFlowItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "for i in range(4):\n    print(i * i)\nWhat gets printed, in order?",
+    stem: "`for i in range(4):\n    print(i * i)`\nWhat gets printed, in order?",
     rubric: {
       elements: [{ id: "correct", description: "States 0, 1, 4, 9 — the squares of 0, 1, 2, 3.", weight: 3, required: true }],
     },
@@ -513,7 +513,7 @@ export const pythonControlFlowItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "List the values produced by range(1, 10, 3).",
+    stem: "List the values produced by `range(1, 10, 3)`.",
     rubric: {
       elements: [{ id: "correct", description: "States 1, 4, 7 — starting at 1, stepping by 3, stopping before 10.", weight: 3, required: true }],
     },
@@ -530,12 +530,12 @@ export const pythonControlFlowItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "for x in [10, 20, 30]:\n    pass\nprint(x)\nWhat gets printed, right after the loop?",
+    stem: "`for x in [10, 20, 30]:\n    pass\nprint(x)`\nWhat gets printed, right after the loop?",
     choices: [
-      { id: "a", text: "30", correct: true },
+      { id: "a", text: "`30`", correct: true },
       {
         id: "b",
-        text: "Nothing prints — x doesn't exist outside the loop",
+        text: "Nothing prints — `x` doesn't exist outside the loop",
         correct: false,
         misconception: {
           id: "assumes-loop-var-scoped-to-body",

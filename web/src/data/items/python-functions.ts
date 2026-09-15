@@ -34,24 +34,24 @@ export const pythonFunctionsItems: Item[] = [
     channels: ["typed"],
     stem: "Which keyword begins a function definition in Python?",
     choices: [
-      { id: "a", text: "def", correct: true },
+      { id: "a", text: "`def`", correct: true },
       {
         id: "b",
-        text: "function",
+        text: "`function`",
         correct: false,
         misconception: {
           id: "expects-function-keyword",
-          description: "Python defines a function with def, not a function keyword borrowed from another language.",
+          description: "Python defines a function with `def`, not a `function` keyword borrowed from another language.",
           blameConceptId: "python-functions",
         },
       },
       {
         id: "c",
-        text: "func",
+        text: "`func`",
         correct: false,
         misconception: {
           id: "expects-func-keyword",
-          description: "func is not a Python keyword; the function-defining keyword is def.",
+          description: "`func` is not a Python keyword; the function-defining keyword is `def`.",
           blameConceptId: "python-functions",
         },
       },
@@ -69,16 +69,16 @@ export const pythonFunctionsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "def add(a, b):\n    print(a + b)\n\nresult = add(2, 3)\nWhat is result?",
+    stem: "`def add(a, b):\n    print(a + b)\n\nresult = add(2, 3)`\nWhat is `result`?",
     choices: [
-      { id: "a", text: "None", correct: true },
+      { id: "a", text: "`None`", correct: true },
       {
         id: "b",
-        text: "5",
+        text: "`5`",
         correct: false,
         misconception: {
           id: "conflates-print-and-return",
-          description: "print displays a value to the screen; it does not hand a value back to the caller. Without a return statement the function returns None regardless of what it printed.",
+          description: "`print` displays a value to the screen; it does not hand a value back to the caller. Without a `return` statement the function returns `None` regardless of what it printed.",
           blameConceptId: "python-functions",
         },
       },
@@ -88,7 +88,7 @@ export const pythonFunctionsItems: Item[] = [
         correct: false,
         misconception: {
           id: "expects-error-on-missing-return",
-          description: "A function with no return statement runs cleanly and returns None — nothing raises.",
+          description: "A function with no `return` statement runs cleanly and returns `None` — nothing raises.",
           blameConceptId: "python-functions",
         },
       },
@@ -107,12 +107,12 @@ export const pythonFunctionsItems: Item[] = [
     cognitive: "recall",
     channels: ["typed"],
     stem:
-      "def greet(name):\n    return \"Hi, \" + name\ngreet(\"Ada\")\nWhat is name called, and what is \"Ada\" called?",
+      "`def greet(name):\n    return \"Hi, \" + name\ngreet(\"Ada\")`\nWhat is `name` called, and what is `\"Ada\"` called?",
     choices: [
-      { id: "a", text: "name is a parameter; \"Ada\" is an argument", correct: true },
+      { id: "a", text: "`name` is a parameter; `\"Ada\"` is an argument", correct: true },
       {
         id: "b",
-        text: "name is an argument; \"Ada\" is a parameter",
+        text: "`name` is an argument; `\"Ada\"` is a parameter",
         correct: false,
         misconception: {
           id: "swaps-parameter-and-argument",
@@ -145,7 +145,7 @@ export const pythonFunctionsItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "def greet(name, greeting=\"Hello\"):\n    return greeting + \", \" + name + \"!\"\nprint(greet(\"Ada\"))\nprint(greet(\"Ada\", \"Hi\"))\nWhat gets printed, on each of the two lines?",
+      "`def greet(name, greeting=\"Hello\"):\n    return greeting + \", \" + name + \"!\"\nprint(greet(\"Ada\"))\nprint(greet(\"Ada\", \"Hi\"))`\nWhat gets printed, on each of the two lines?",
     rubric: {
       elements: [
         {
@@ -175,22 +175,22 @@ export const pythonFunctionsItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "def subtract(a, b):\n    return a - b\nprint(subtract(b=2, a=5))\nWhat prints?",
+    stem: "`def subtract(a, b):\n    return a - b\nprint(subtract(b=2, a=5))`\nWhat prints?",
     choices: [
-      { id: "a", text: "3", correct: true },
+      { id: "a", text: "`3`", correct: true },
       {
         id: "b",
-        text: "-3",
+        text: "`-3`",
         correct: false,
         misconception: {
           id: "treats-keywords-as-positional",
-          description: "Keyword arguments bind by name, not by the order they are written in — b=2, a=5 sets a to 5 and b to 2 regardless of which is written first.",
+          description: "Keyword arguments bind by name, not by the order they are written in — `b=2, a=5` sets `a` to 5 and `b` to 2 regardless of which is written first.",
           blameConceptId: "python-functions",
         },
       },
       {
         id: "c",
-        text: "Raises a TypeError",
+        text: "Raises a `TypeError`",
         correct: false,
         misconception: {
           id: "expects-error-on-reordered-keywords",
@@ -213,16 +213,16 @@ export const pythonFunctionsItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "def collect(item, bucket=[]):\n    bucket.append(item)\n    return bucket\ncollect(1)\nprint(collect(2))\nWhat prints?",
+      "`def collect(item, bucket=[]):\n    bucket.append(item)\n    return bucket\ncollect(1)\nprint(collect(2))`\nWhat prints?",
     choices: [
-      { id: "a", text: "[1, 2]", correct: true },
+      { id: "a", text: "`[1, 2]`", correct: true },
       {
         id: "b",
-        text: "[2]",
+        text: "`[2]`",
         correct: false,
         misconception: {
           id: "assumes-fresh-default-each-call",
-          description: "A mutable default value is evaluated once, when the def statement runs — not fresh on every call. Every call that omits bucket shares that same list, so the item from the first call is still there.",
+          description: "A mutable default value is evaluated once, when the `def` statement runs — not fresh on every call. Every call that omits `bucket` shares that same list, so the item from the first call is still there.",
           blameConceptId: "python-functions",
         },
       },
@@ -232,7 +232,7 @@ export const pythonFunctionsItems: Item[] = [
         correct: false,
         misconception: {
           id: "expects-error-on-reused-default",
-          description: "Reusing the shared default list is not an error — append just runs on whatever the list already holds. That is exactly what makes the bug silent.",
+          description: "Reusing the shared default list is not an error — `append` just runs on whatever the list already holds. That is exactly what makes the bug silent.",
           blameConceptId: "python-functions",
         },
       },
@@ -251,7 +251,7 @@ export const pythonFunctionsItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten"],
     stem:
-      "def collect(item, bucket=[]):\n    bucket.append(item)\n    return bucket\nExplain why a third call, collect(3), does not return a list containing only 3, and rewrite the signature and body so it would.",
+      "`def collect(item, bucket=[]):\n    bucket.append(item)\n    return bucket`\nExplain why a third call, `collect(3)`, does not return a list containing only 3, and rewrite the signature and body so it would.",
     rubric: {
       elements: [
         {
@@ -261,7 +261,7 @@ export const pythonFunctionsItems: Item[] = [
           required: true,
           misconception: {
             id: "assumes-fresh-default-each-call",
-            description: "Believes each call with no bucket argument starts a new empty list, when in fact all such calls share the single list object created when the function was defined.",
+            description: "Believes each call with no `bucket` argument starts a new empty list, when in fact all such calls share the single list object created when the function was defined.",
             blameConceptId: "python-functions",
           },
         },
@@ -287,7 +287,7 @@ export const pythonFunctionsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "total = 0\ndef add_all(nums):\n    total = 0\n    for n in nums:\n        total += n\n    return total\n\nprint(add_all([1, 2, 3]))\nprint(total)\nWhat prints on each line, and why doesn't the function's loop change the global total?",
+      "`total = 0\ndef add_all(nums):\n    total = 0\n    for n in nums:\n        total += n\n    return total\n\nprint(add_all([1, 2, 3]))\nprint(total)`\nWhat prints on each line, and why doesn't the function's loop change the global `total`?",
     rubric: {
       elements: [
         {
@@ -310,7 +310,7 @@ export const pythonFunctionsItems: Item[] = [
           required: true,
           misconception: {
             id: "assumes-function-mutates-outer-variable",
-            description: "Believes an assignment inside a function writes through to a same-named variable in the enclosing scope. In Python, assigning to a name inside a function makes it local unless the name is declared global first.",
+            description: "Believes an assignment inside a function writes through to a same-named variable in the enclosing scope. In Python, assigning to a name inside a function makes it local unless the name is declared `global` first.",
             blameConceptId: "python-functions",
           },
         },

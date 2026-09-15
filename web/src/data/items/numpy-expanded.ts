@@ -32,7 +32,7 @@ export const numpyExpandedItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What does np.arange(5) produce, as a list of values?",
+    stem: "What does `np.arange(5)` produce, as a list of values?",
     rubric: {
       elements: [{ id: "correct", description: "States [0, 1, 2, 3, 4] — stop is exclusive, exactly like Python's range().", weight: 3, required: true }],
     },
@@ -49,16 +49,16 @@ export const numpyExpandedItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "np.linspace(0, 10, 5) — is 10 included in the result?",
+    stem: "`np.linspace(0, 10, 5)` — is `10` included in the result?",
     choices: [
-      { id: "a", text: "Yes — linspace's stop is inclusive by default", correct: true },
+      { id: "a", text: "Yes — `linspace`'s stop is inclusive by default", correct: true },
       {
         id: "b",
-        text: "No — linspace excludes the stop value, like arange",
+        text: "No — `linspace` excludes the stop value, like `arange`",
         correct: false,
         misconception: {
           id: "assumes-linspace-excludes-stop",
-          description: "linspace defaults to endpoint=True, including the stop value — the opposite convention from arange and range().",
+          description: "`linspace` defaults to `endpoint=True`, including the stop value — the opposite convention from `arange` and `range()`.",
           blameConceptId: "numpy-array-creation",
         },
       },
@@ -76,7 +76,7 @@ export const numpyExpandedItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What does np.eye(3) produce?",
+    stem: "What does `np.eye(3)` produce?",
     choices: [
       { id: "a", text: "The 3x3 identity matrix", correct: true },
       {
@@ -85,7 +85,7 @@ export const numpyExpandedItems: Item[] = [
         correct: false,
         misconception: {
           id: "confuses-eye-with-ones",
-          description: "np.ones(3) produces a length-3 array of 1.0. np.eye(n) produces the n x n identity matrix — 1s on the diagonal, 0 elsewhere.",
+          description: "`np.ones(3)` produces a length-3 array of 1.0. `np.eye(n)` produces the n x n identity matrix — 1s on the diagonal, 0 elsewhere.",
           blameConceptId: "numpy-array-creation",
         },
       },
@@ -103,7 +103,7 @@ export const numpyExpandedItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "List the values produced by np.arange(2, 10, 2).",
+    stem: "List the values produced by `np.arange(2, 10, 2)`.",
     rubric: {
       elements: [{ id: "correct", description: "States 2, 4, 6, 8 — starting at 2, stepping by 2, stopping before 10.", weight: 3, required: true }],
     },
@@ -120,7 +120,7 @@ export const numpyExpandedItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "What is the shape of the array produced by np.zeros((3, 4))?",
+    stem: "What is the shape of the array produced by `np.zeros((3, 4))`?",
     rubric: {
       elements: [{ id: "correct", description: "States (3, 4) — 3 rows, 4 columns, all filled with 0.0.", weight: 3, required: true }],
     },
@@ -137,16 +137,16 @@ export const numpyExpandedItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "What does np.arange(6).reshape(2, 3) produce?",
+    stem: "What does `np.arange(6).reshape(2, 3)` produce?",
     choices: [
-      { id: "a", text: "[[0, 1, 2], [3, 4, 5]]", correct: true },
+      { id: "a", text: "`[[0, 1, 2], [3, 4, 5]]`", correct: true },
       {
         id: "b",
-        text: "[[0, 1], [2, 3], [4, 5]]",
+        text: "`[[0, 1], [2, 3], [4, 5]]`",
         correct: false,
         misconception: {
           id: "swaps-reshape-dimensions",
-          description: "reshape(2, 3) means 2 rows of 3, not 3 rows of 2 — the first argument is the number of rows.",
+          description: "`reshape(2, 3)` means 2 rows of 3, not 3 rows of 2 — the first argument is the number of rows.",
           blameConceptId: "numpy-array-creation",
         },
       },
@@ -164,7 +164,7 @@ export const numpyExpandedItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "You want exactly 50 evenly spaced points between 0 and 1 for a plot. Explain why linspace is the right tool here rather than arange, and what could go wrong if you used arange instead.",
+    stem: "You want exactly 50 evenly spaced points between 0 and 1 for a plot. Explain why `linspace` is the right tool here rather than `arange`, and what could go wrong if you used `arange` instead.",
     rubric: {
       elements: [
         { id: "linspace-by-count", description: "States that linspace takes the number of points directly (num=50), guaranteeing exactly 50 regardless of floating-point step accumulation.", weight: 3, required: true },
@@ -184,16 +184,16 @@ export const numpyExpandedItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "What is the dtype of np.zeros(3), by default?",
+    stem: "What is the dtype of `np.zeros(3)`, by default?",
     choices: [
-      { id: "a", text: "float64", correct: true },
+      { id: "a", text: "`float64`", correct: true },
       {
         id: "b",
-        text: "int64",
+        text: "`int64`",
         correct: false,
         misconception: {
           id: "assumes-zeros-defaults-int",
-          description: "np.zeros and np.ones default to float64 regardless of the shape argument's type — only functions like arange infer dtype from their numeric arguments.",
+          description: "`np.zeros` and `np.ones` default to `float64` regardless of the shape argument's type — only functions like `arange` infer dtype from their numeric arguments.",
           blameConceptId: "numpy-array-creation",
         },
       },
@@ -215,16 +215,16 @@ export const numpyExpandedItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For a 2-D array A, which is the idiomatic way to get the element at row 1, column 2?",
+    stem: "For a 2-D array `A`, which is the idiomatic way to get the element at row 1, column 2?",
     choices: [
-      { id: "a", text: "A[1, 2]", correct: true },
+      { id: "a", text: "`A[1, 2]`", correct: true },
       {
         id: "b",
-        text: "A[1][2]",
+        text: "`A[1][2]`",
         correct: false,
         misconception: {
           id: "uses-nested-list-style",
-          description: "A[1][2] also works on a NumPy array, but A[1, 2] is the idiomatic single-indexing-operation form NumPy is built around, and the only one that extends cleanly to slices.",
+          description: "`A[1][2]` also works on a NumPy array, but `A[1, 2]` is the idiomatic single-indexing-operation form NumPy is built around, and the only one that extends cleanly to slices.",
           blameConceptId: "numpy-indexing",
         },
       },
@@ -242,7 +242,7 @@ export const numpyExpandedItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For a 2-D array A, what does A[:, 2] select?",
+    stem: "For a 2-D array `A`, what does `A[:, 2]` select?",
     choices: [
       { id: "a", text: "Every row's element at column 2 — the whole third column", correct: true },
       {
@@ -251,7 +251,7 @@ export const numpyExpandedItems: Item[] = [
         correct: false,
         misconception: {
           id: "swaps-axis-order",
-          description: "The colon in the first position means 'every row'; the 2 in the second position picks the column. A[2, :] would select the row instead.",
+          description: "The colon in the first position means 'every row'; the 2 in the second position picks the column. `A[2, :]` would select the row instead.",
           blameConceptId: "numpy-indexing",
         },
       },
@@ -269,12 +269,12 @@ export const numpyExpandedItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "a = np.array([3, -1, 4]). What is the type/shape of a > 0?",
+    stem: "`a = np.array([3, -1, 4])`. What is the type/shape of `a > 0`?",
     choices: [
-      { id: "a", text: "A boolean array of the same shape as a: [True, False, True]", correct: true },
+      { id: "a", text: "A boolean array of the same shape as `a`: `[True, False, True]`", correct: true },
       {
         id: "b",
-        text: "A single boolean: False, since not every element is positive",
+        text: "A single boolean: `False`, since not every element is positive",
         correct: false,
         misconception: {
           id: "assumes-comparison-reduces",
@@ -296,7 +296,7 @@ export const numpyExpandedItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "a = np.array([3, -1, 4, -1, 5]). What does a[a > 0] return?",
+    stem: "`a = np.array([3, -1, 4, -1, 5])`. What does `a[a > 0]` return?",
     rubric: {
       elements: [{ id: "correct", description: "States array([3, 4, 5]) — only the positive elements, in their original order.", weight: 3, required: true }],
     },
@@ -313,7 +313,7 @@ export const numpyExpandedItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "a = np.array([10, 20, 30, 40, 50]). What does a[[3, 0, 1]] return?",
+    stem: "`a = np.array([10, 20, 30, 40, 50])`. What does `a[[3, 0, 1]]` return?",
     rubric: {
       elements: [{ id: "correct", description: "States array([40, 10, 20]) — selected by position in exactly the order given, not sorted.", weight: 3, required: true }],
     },
@@ -330,7 +330,7 @@ export const numpyExpandedItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "a = np.array([1, 2, 3, 4]); b = a[1:3]; b[0] = 99. Does a change?",
+    stem: "`a = np.array([1, 2, 3, 4]); b = a[1:3]; b[0] = 99`. Does `a` change?",
     choices: [
       { id: "a", text: "Yes — a plain slice is a view sharing the same memory", correct: true },
       {
@@ -377,16 +377,16 @@ export const numpyExpandedItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "a = np.array([3, -1, 4, -1]). Which produces a NEW array with negatives replaced by 0, leaving a itself unchanged: a[a < 0] = 0, or np.where(a < 0, 0, a)?",
+    stem: "`a = np.array([3, -1, 4, -1])`. Which produces a NEW array with negatives replaced by 0, leaving `a` itself unchanged: `a[a < 0] = 0`, or `np.where(a < 0, 0, a)`?",
     choices: [
-      { id: "a", text: "np.where(a < 0, 0, a) — it returns a new array; a[a < 0] = 0 mutates a in place", correct: true },
+      { id: "a", text: "`np.where(a < 0, 0, a)` — it returns a new array; `a[a < 0] = 0` mutates `a` in place", correct: true },
       {
         id: "b",
-        text: "a[a < 0] = 0 — it returns a new array without touching a",
+        text: "`a[a < 0] = 0` — it returns a new array without touching `a`",
         correct: false,
         misconception: {
           id: "assumes-masked-assignment-is-non-mutating",
-          description: "a[a < 0] = 0 is an in-place assignment through the mask — it mutates a directly, the opposite of a non-mutating operation.",
+          description: "`a[a < 0] = 0` is an in-place assignment through the mask — it mutates `a` directly, the opposite of a non-mutating operation.",
           blameConceptId: "numpy-indexing",
         },
       },
@@ -408,16 +408,16 @@ export const numpyExpandedItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For two 2-D arrays A and B of compatible shape, which operator computes the matrix product rather than the elementwise product?",
+    stem: "For two 2-D arrays `A` and `B` of compatible shape, which operator computes the matrix product rather than the elementwise product?",
     choices: [
-      { id: "a", text: "@", correct: true },
+      { id: "a", text: "`@`", correct: true },
       {
         id: "b",
-        text: "*",
+        text: "`*`",
         correct: false,
         misconception: {
           id: "assumes-star-is-matmul",
-          description: "* is elementwise multiplication in NumPy, applied position by position — @ is the dedicated matrix-multiplication operator.",
+          description: "`*` is elementwise multiplication in NumPy, applied position by position — `@` is the dedicated matrix-multiplication operator.",
           blameConceptId: "numpy-matrices",
         },
       },
@@ -435,16 +435,16 @@ export const numpyExpandedItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What is A @ np.eye(3) for a (3, 3) matrix A?",
+    stem: "What is `A @ np.eye(3)` for a (3, 3) matrix `A`?",
     choices: [
-      { id: "a", text: "A, unchanged", correct: true },
+      { id: "a", text: "`A`, unchanged", correct: true },
       {
         id: "b",
         text: "A zero matrix",
         correct: false,
         misconception: {
           id: "confuses-identity-with-zero",
-          description: "np.eye(n) is the identity matrix (1s on the diagonal), not a zero matrix — multiplying by it leaves A unchanged, the matrix analogue of multiplying a number by 1.",
+          description: "`np.eye(n)` is the identity matrix (1s on the diagonal), not a zero matrix — multiplying by it leaves `A` unchanged, the matrix analogue of multiplying a number by 1.",
           blameConceptId: "numpy-matrices",
         },
       },
@@ -462,7 +462,7 @@ export const numpyExpandedItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "A has shape (3, 4) and B has shape (4, 2). What is the shape of A @ B?",
+    stem: "`A` has shape (3, 4) and `B` has shape (4, 2). What is the shape of `A @ B`?",
     rubric: {
       elements: [{ id: "correct", description: "States (3, 2) — the outer dimensions survive; the matching inner dimension (4) disappears.", weight: 3, required: true }],
     },
@@ -479,9 +479,9 @@ export const numpyExpandedItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A has shape (3, 4) and B has shape (3, 2). What happens when you compute A @ B?",
+    stem: "`A` has shape (3, 4) and `B` has shape (3, 2). What happens when you compute `A @ B`?",
     choices: [
-      { id: "a", text: "Raises a ValueError — the inner dimensions (4 and 3) don't match", correct: true },
+      { id: "a", text: "Raises a `ValueError` — the inner dimensions (4 and 3) don't match", correct: true },
       {
         id: "b",
         text: "Broadcasts and returns shape (3, 2)",
@@ -506,7 +506,7 @@ export const numpyExpandedItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A has shape (2, 3) and x has shape (3,). What is the shape of A @ x?",
+    stem: "`A` has shape (2, 3) and `x` has shape (3,). What is the shape of `A @ x`?",
     rubric: {
       elements: [{ id: "correct", description: "States (2,) — one dot product per row of A, producing a 1-D vector of length 2.", weight: 3, required: true }],
     },
@@ -523,16 +523,16 @@ export const numpyExpandedItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "You need to find x such that A @ x == b, for a square, invertible A. Which is the better-practiced approach?",
+    stem: "You need to find `x` such that `A @ x == b`, for a square, invertible `A`. Which is the better-practiced approach?",
     choices: [
-      { id: "a", text: "np.linalg.solve(A, b)", correct: true },
+      { id: "a", text: "`np.linalg.solve(A, b)`", correct: true },
       {
         id: "b",
-        text: "np.linalg.inv(A) @ b",
+        text: "`np.linalg.inv(A) @ b`",
         correct: false,
         misconception: {
           id: "prefers-explicit-inverse",
-          description: "Both give a mathematically correct answer, but solve() avoids forming the inverse explicitly, which is cheaper and more numerically stable — inv() is best reserved for when the inverse matrix itself is actually needed.",
+          description: "Both give a mathematically correct answer, but `solve()` avoids forming the inverse explicitly, which is cheaper and more numerically stable — `inv()` is best reserved for when the inverse matrix itself is actually needed.",
           blameConceptId: "numpy-matrices",
         },
       },
@@ -550,7 +550,7 @@ export const numpyExpandedItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken", "handwritten"],
-    stem: "Using * instead of @ between two same-shaped square matrices runs without raising any error. Explain why this is considered a particularly dangerous class of bug, and what it computes instead of the intended matrix product.",
+    stem: "Using `*` instead of `@` between two same-shaped square matrices runs without raising any error. Explain why this is considered a particularly dangerous class of bug, and what it computes instead of the intended matrix product.",
     rubric: {
       elements: [
         { id: "no-error-raised", description: "States that A * B is a valid, legal operation on two same-shaped arrays (elementwise multiplication), so nothing signals that a different operation was intended.", weight: 3, required: true },
@@ -570,7 +570,7 @@ export const numpyExpandedItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "A is a (2, 3) transformation matrix. X holds 100 stacked 3-vectors as shape (100, 3). Give an expression that applies A to every row of X at once, and state its output shape.",
+    stem: "`A` is a (2, 3) transformation matrix. `X` holds 100 stacked 3-vectors as shape (100, 3). Give an expression that applies `A` to every row of `X` at once, and state its output shape.",
     rubric: {
       elements: [
         { id: "expression", description: "Gives X @ A.T (or an equivalent correctly-shaped product).", weight: 3, required: true },
