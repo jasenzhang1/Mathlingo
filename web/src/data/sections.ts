@@ -28,18 +28,53 @@ export interface SectionSpec {
 }
 
 export const sectionSpecs: Record<Domain, SectionSpec[]> = {
+  "discrete-math": [
+    {
+      id: "logic-and-proof",
+      label: "Logic & Proof Techniques",
+      conceptIds: [
+        "propositional-logic",
+        "logical-equivalences",
+        "direct-proof",
+        "proof-by-contradiction",
+        "mathematical-induction",
+        "strong-induction",
+        "recursion",
+      ],
+    },
+    {
+      id: "sets-and-functions",
+      label: "Sets & Functions",
+      conceptIds: [
+        "set-theory",
+        "functions-relations",
+        "injections-surjections-bijections",
+        "cardinality",
+      ],
+    },
+    {
+      id: "combinatorics",
+      label: "Combinatorics",
+      conceptIds: [
+        "counting-methods",
+        "factorials",
+        "permutations",
+        "combinations",
+        "stars-and-bars",
+        "binomial-theorem",
+      ],
+    },
+  ],
+
   probability: [
     {
       id: "foundations",
       label: "Foundations of Probability",
       conceptIds: [
-        "set-theory",
         "pie-boole",
         "sigma-algebra",
         "axioms-of-probability",
         "probability-function",
-        "counting-methods",
-        "binomial-theorem",
         "conditional-probability",
         "bayes-rule",
         "independence-set-theory",
