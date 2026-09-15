@@ -1,10 +1,12 @@
 export type Domain =
+  | "discrete-math"
   | "probability"
   | "linear-algebra"
   | "multivariate-probability"
   | "statistics"
   | "regression"
   | "machine-learning"
+  | "deep-learning"
   | "graphical-models"
   | "stochastic-processes"
   | "stochastic-calculus"
@@ -16,6 +18,7 @@ export interface DomainMeta {
 }
 
 export const domainMeta: Record<Domain, DomainMeta> = {
+  "discrete-math": { label: "Discrete Math Fundamentals", color: "#be185d" },
   probability: { label: "Probability", color: "#5b3df0" },
   "linear-algebra": { label: "Linear Algebra", color: "#0f9a8e" },
   "multivariate-probability": {
@@ -25,6 +28,7 @@ export const domainMeta: Record<Domain, DomainMeta> = {
   statistics: { label: "Statistical Inference", color: "#e0a72f" },
   regression: { label: "Regression", color: "#2f6fed" },
   "machine-learning": { label: "Machine Learning", color: "#16a34a" },
+  "deep-learning": { label: "Deep Learning", color: "#ec4899" },
   "graphical-models": { label: "Graphical Models & Bayesian ML", color: "#a855f7" },
   "stochastic-processes": { label: "Stochastic Processes", color: "#c2410c" },
   "stochastic-calculus": { label: "Stochastic Calculus", color: "#0891b2" },
@@ -51,15 +55,179 @@ export interface Concept {
 
 export const concepts: Concept[] = [
   // ---------------------------------------------------------------------
-  // Probability
+  // Discrete Math Fundamentals
   // ---------------------------------------------------------------------
+  {
+    id: "propositional-logic",
+    title: "Propositional Logic",
+    domain: "discrete-math",
+    blurb: "If-then, iff, not, and, or — statements, connectives, and truth tables.",
+    prerequisites: [],
+  },
+  {
+    id: "logical-equivalences",
+    title: "Logical Equivalences & Quantifiers",
+    domain: "discrete-math",
+    blurb: "De Morgan's laws, contrapositives, and the ∀/∃ quantifiers that state theorems.",
+    prerequisites: ["propositional-logic"],
+  },
+  {
+    id: "direct-proof",
+    title: "Direct Proof",
+    domain: "discrete-math",
+    blurb: "Chaining if-then statements from hypothesis to conclusion.",
+    prerequisites: ["logical-equivalences"],
+  },
+  {
+    id: "proof-by-contradiction",
+    title: "Proof by Contradiction",
+    domain: "discrete-math",
+    blurb: "Assuming the negation of what you want and deriving an absurdity.",
+    prerequisites: ["logical-equivalences"],
+  },
+  {
+    id: "mathematical-induction",
+    title: "Mathematical Induction",
+    domain: "discrete-math",
+    blurb: "Proving a statement for every n from a base case and an inductive step.",
+    prerequisites: ["direct-proof"],
+  },
+  {
+    id: "strong-induction",
+    title: "Strong Induction",
+    domain: "discrete-math",
+    blurb: "Proving the inductive step from every smaller case, not just the one before it.",
+    prerequisites: ["mathematical-induction"],
+  },
+  {
+    id: "recursion",
+    title: "Recursion & Recurrence Relations",
+    domain: "discrete-math",
+    blurb: "Defining a sequence or structure in terms of smaller instances of itself.",
+    prerequisites: ["strong-induction"],
+  },
+  {
+    id: "fibonacci-numbers",
+    title: "Fibonacci Numbers",
+    domain: "discrete-math",
+    blurb: "The recurrence F(n) = F(n-1) + F(n-2), and the closed form hiding inside it.",
+    prerequisites: ["recursion"],
+  },
   {
     id: "set-theory",
     title: "Set Theory",
-    domain: "probability",
+    domain: "discrete-math",
     blurb: "Unions, intersections, complements — the language everything else is written in.",
     prerequisites: [],
   },
+  {
+    id: "power-set",
+    title: "Power Set",
+    domain: "discrete-math",
+    blurb: "The set of all subsets of a set, and why it has 2^n elements.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "cartesian-product",
+    title: "Cartesian Product",
+    domain: "discrete-math",
+    blurb: "Pairing every element of one set with every element of another.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "proof-by-sets",
+    title: "Proof by Sets (Double Inclusion)",
+    domain: "discrete-math",
+    blurb: "Proving two sets equal by showing each is a subset of the other, or by chasing a single element.",
+    prerequisites: ["set-theory", "direct-proof"],
+  },
+  {
+    id: "functions-relations",
+    title: "Functions & Relations",
+    domain: "discrete-math",
+    blurb: "Domains, codomains, and the correspondence rules that connect them.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "equivalence-relations",
+    title: "Equivalence Relations & Partitions",
+    domain: "discrete-math",
+    blurb: "Reflexive, symmetric, transitive relations, and the partition of a set they induce.",
+    prerequisites: ["functions-relations"],
+  },
+  {
+    id: "injections-surjections-bijections",
+    title: "Injections, Surjections, and Bijections",
+    domain: "discrete-math",
+    blurb: "One-to-one, onto, and both at once — and what each says about the sets involved.",
+    prerequisites: ["functions-relations"],
+  },
+  {
+    id: "cardinality",
+    title: "Cardinality & Countability",
+    domain: "discrete-math",
+    blurb: "Comparing the size of infinite sets with a bijection instead of a count.",
+    prerequisites: ["injections-surjections-bijections"],
+  },
+  {
+    id: "counting-methods",
+    title: "Counting Methods",
+    domain: "discrete-math",
+    blurb: "The rule of sum and rule of product — the two principles everything else in combinatorics builds from.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "pigeonhole-principle",
+    title: "Pigeonhole Principle",
+    domain: "discrete-math",
+    blurb: "If you stuff more pigeons than holes, some hole gets at least two.",
+    prerequisites: ["counting-methods"],
+  },
+  {
+    id: "factorials",
+    title: "Factorials",
+    domain: "discrete-math",
+    blurb: "n! — the number of ways to arrange n distinct objects in order.",
+    prerequisites: ["counting-methods"],
+  },
+  {
+    id: "permutations",
+    title: "Permutations",
+    domain: "discrete-math",
+    blurb: "Ordered selections of k objects from n, and where n!/(n-k)! comes from.",
+    prerequisites: ["factorials"],
+  },
+  {
+    id: "combinations",
+    title: "Combinations",
+    domain: "discrete-math",
+    blurb: "Unordered selections of k objects from n — permutations with the ordering divided back out.",
+    prerequisites: ["permutations"],
+  },
+  {
+    id: "stars-and-bars",
+    title: "Stars and Bars",
+    domain: "discrete-math",
+    blurb: "Counting the ways to split n identical items into k groups.",
+    prerequisites: ["combinations"],
+  },
+  {
+    id: "integer-partitions",
+    title: "Integer Partitions",
+    domain: "discrete-math",
+    blurb: "Splitting n into a sum of positive integers where order doesn't matter — unlike stars and bars, the groups aren't labeled.",
+    prerequisites: ["stars-and-bars"],
+  },
+  {
+    id: "binomial-theorem",
+    title: "Binomial Theorem",
+    domain: "discrete-math",
+    blurb: "Expanding (a + b)^n, and where those binomial coefficients come from.",
+    prerequisites: ["combinations"],
+  },
+  // ---------------------------------------------------------------------
+  // Probability
+  // ---------------------------------------------------------------------
   {
     id: "pie-boole",
     title: "PIE, Boole's Inequality",
@@ -87,20 +255,6 @@ export const concepts: Concept[] = [
     domain: "probability",
     blurb: "Assigning a number in [0,1] to every event, consistently.",
     prerequisites: ["axioms-of-probability"],
-  },
-  {
-    id: "counting-methods",
-    title: "Counting Methods",
-    domain: "probability",
-    blurb: "Permutations and combinations for counting outcomes without listing them.",
-    prerequisites: ["set-theory"],
-  },
-  {
-    id: "binomial-theorem",
-    title: "Binomial Theorem",
-    domain: "probability",
-    blurb: "Expanding (a + b)^n, and where those binomial coefficients come from.",
-    prerequisites: ["counting-methods"],
   },
   {
     id: "conditional-probability",
@@ -955,6 +1109,29 @@ export const concepts: Concept[] = [
     ],
   },
   {
+    id: "conditional-multivariate-normal",
+    title: "Conditional Distributions of the Multivariate Normal",
+    domain: "multivariate-probability",
+    blurb: "Where X₁ | X₂ = x₂'s mean and covariance formulas actually come from, derived rather than quoted.",
+    /**
+     * The formula in `multivariate-normal`'s closure table is stated, not
+     * derived — this concept is the derivation, and it needs both of that
+     * article's siblings to do it. `multivariate-mgf` supplies the
+     * independence-from-zero-covariance argument the proof turns on;
+     * `quadratic-forms-random-vectors` supplies the Var(aᵀX) = aᵀΣa machinery
+     * used to compute the residual's covariance. `schur-complement` is upstream
+     * because the resulting covariance formula Σ₁₁ − Σ₁₂Σ₂₂⁻¹Σ₂₁ is exactly
+     * that complement, and the connection is the payoff, not a coincidence to
+     * gloss over.
+     */
+    prerequisites: [
+      "multivariate-normal",
+      "multivariate-mgf",
+      "quadratic-forms-random-vectors",
+      "schur-complement",
+    ],
+  },
+  {
     id: "cochrans-theorem",
     title: "Cochran's Theorem",
     domain: "multivariate-probability",
@@ -1551,21 +1728,21 @@ export const concepts: Concept[] = [
     // network" in its own blurb with nothing upstream to define one.
     id: "perceptron",
     title: "Perceptron",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb: "The simplest linear classifier: a weighted sum of inputs, thresholded.",
     prerequisites: ["classification-vs-regression"],
   },
   {
     id: "neural-networks",
     title: "Neural Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb: "Layers of perceptron-like units with nonlinear activations, composed together.",
     prerequisites: ["perceptron", "matrix-calculus"],
   },
   {
     id: "backpropagation",
     title: "Backpropagation",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb: "Computing a neural network's gradient efficiently with the chain rule.",
     prerequisites: ["neural-networks", "gradient-descent"],
   },
@@ -1993,7 +2170,7 @@ export const concepts: Concept[] = [
   {
     id: "activation-functions",
     title: "Activation Functions",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Sigmoid, tanh, ReLU and its successors — the nonlinearity that stops depth collapsing.",
     prerequisites: ["neural-networks"],
@@ -2001,7 +2178,7 @@ export const concepts: Concept[] = [
   {
     id: "sgd-and-adaptive-optimizers",
     title: "SGD and Adaptive Optimizers",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Momentum, RMSProp and Adam — why plain gradient descent is rarely what actually runs.",
     prerequisites: ["gradient-descent", "backpropagation"],
@@ -2009,7 +2186,7 @@ export const concepts: Concept[] = [
   {
     id: "dropout",
     title: "Dropout",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Randomly deleting units at training time, and why that regularises rather than breaks.",
     prerequisites: ["neural-networks", "overfitting-underfitting"],
@@ -2017,7 +2194,7 @@ export const concepts: Concept[] = [
   {
     id: "batch-normalization",
     title: "Batch Normalization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Normalising activations mid-network — what it fixes, and the train/inference asymmetry it creates.",
     prerequisites: ["backpropagation", "feature-scaling"],
@@ -2025,7 +2202,7 @@ export const concepts: Concept[] = [
   {
     id: "convolutional-neural-networks",
     title: "Convolutional Neural Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Weight sharing and locality — turning an image's structure into a prior on the architecture.",
     // The architecture *is* a regularisation choice — a prior expressed in which
@@ -2036,7 +2213,7 @@ export const concepts: Concept[] = [
   {
     id: "recurrent-neural-networks",
     title: "Recurrent Neural Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Sharing weights across time for sequences, and the gradient problem that follows.",
     prerequisites: ["backpropagation", "activation-functions"],
@@ -2044,7 +2221,7 @@ export const concepts: Concept[] = [
   {
     id: "attention-mechanism",
     title: "Attention Mechanism",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Queries, keys and values — letting every position look directly at every other.",
     // The √d scaling is derived from the variance of a sum of independent
@@ -2054,7 +2231,7 @@ export const concepts: Concept[] = [
   {
     id: "transformers",
     title: "Transformers",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Self-attention, multiple heads and positional encoding — attention as the whole architecture.",
     prerequisites: ["attention-mechanism", "batch-normalization"],
@@ -2062,7 +2239,7 @@ export const concepts: Concept[] = [
   {
     id: "embeddings",
     title: "Embeddings",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Learned dense vectors for discrete things, where geometry carries meaning.",
     prerequisites: ["neural-networks", "pca"],
@@ -2070,7 +2247,7 @@ export const concepts: Concept[] = [
   {
     id: "autoencoders",
     title: "Autoencoders",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Reconstructing the input through a bottleneck — nonlinear dimensionality reduction that learns.",
     prerequisites: ["neural-networks", "probabilistic-pca"],
@@ -2091,7 +2268,7 @@ export const concepts: Concept[] = [
   {
     id: "architecture-families",
     title: "Architecture Families",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Dense, convolutional, recurrent and attentional networks compared by the assumption each one builds into its wiring.",
     // Reads as a comparison of the three families cluster 11 introduces, so it
@@ -2105,7 +2282,7 @@ export const concepts: Concept[] = [
   {
     id: "residual-networks",
     title: "Residual Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Adding the input back to the output of a block, and why that one change made depth usable.",
     // The argument is a derivative computation: the skip contributes a +1 term
@@ -2116,7 +2293,7 @@ export const concepts: Concept[] = [
   {
     id: "lstm-and-gru",
     title: "LSTM and GRU",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Gated cells that carry a memory forward by addition, so gradients survive hundreds of steps.",
     prerequisites: ["recurrent-neural-networks", "activation-functions"],
@@ -2124,7 +2301,7 @@ export const concepts: Concept[] = [
   {
     id: "autoregressive-models",
     title: "Autoregressive Models",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Factorising a joint distribution into a product of next-step conditionals — the objective behind every language model.",
     // The factorisation is the chain rule of probability applied n − 1 times;
@@ -2134,7 +2311,7 @@ export const concepts: Concept[] = [
   {
     id: "state-space-models",
     title: "State Space Models",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "A linear recurrence that also runs as a convolution — S4 and Mamba, and why linear time matters again.",
     // Diagonalising the transition matrix is what turns the recurrence into a
@@ -2156,7 +2333,7 @@ export const concepts: Concept[] = [
   {
     id: "graph-neural-networks",
     title: "Graph Neural Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Message passing over edges — a convolution for data whose neighbourhoods are given rather than gridded.",
     prerequisites: ["graphs", "convolutional-neural-networks"],
@@ -2164,7 +2341,7 @@ export const concepts: Concept[] = [
   {
     id: "generative-adversarial-networks",
     title: "Generative Adversarial Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "A generator and a discriminator trained against each other, and the equilibrium that is hard to reach.",
     // The optimal-discriminator substitution turns the game's value into a
@@ -2179,7 +2356,7 @@ export const concepts: Concept[] = [
   {
     id: "diffusion-models",
     title: "Diffusion Models",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Destroy the data with noise on a fixed schedule, then learn to undo one step at a time.",
     prerequisites: [
@@ -2191,7 +2368,7 @@ export const concepts: Concept[] = [
   {
     id: "mixture-of-experts",
     title: "Mixture of Experts",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Routing each token to a few of many sub-networks, so capacity grows without the compute growing with it.",
     prerequisites: ["transformers", "ensemble-methods"],
@@ -2210,7 +2387,7 @@ export const concepts: Concept[] = [
   {
     id: "weight-initialization",
     title: "Weight Initialization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Xavier and He scaling — choosing the starting variance so signal neither dies nor explodes with depth.",
     // Both schemes are derived by asking that the variance of the activations
@@ -2229,7 +2406,7 @@ export const concepts: Concept[] = [
   {
     id: "layer-normalization",
     title: "Layer Normalization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Normalising across features rather than across the batch — and why every transformer uses it.",
     // The content that matters here is pre-norm versus post-norm and the
@@ -2240,7 +2417,7 @@ export const concepts: Concept[] = [
   {
     id: "learning-rate-schedules",
     title: "Learning Rate Schedules",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Warmup, decay and cosine annealing — the hyperparameter that is a function of time, not a number.",
     prerequisites: ["sgd-and-adaptive-optimizers", "layer-normalization"],
@@ -2248,7 +2425,7 @@ export const concepts: Concept[] = [
   {
     id: "data-augmentation",
     title: "Data Augmentation",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Manufacturing training examples from invariances you already believe, and the ones you do not.",
     // Augmentation is defined as a training-split-only transform, and its worst
@@ -2263,7 +2440,7 @@ export const concepts: Concept[] = [
   {
     id: "mixed-precision-training",
     title: "Mixed Precision Training",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Half-precision arithmetic with a full-precision safety net — loss scaling, master weights, and what underflows.",
     prerequisites: ["sgd-and-adaptive-optimizers", "backpropagation"],
@@ -2271,7 +2448,7 @@ export const concepts: Concept[] = [
   {
     id: "distributed-training",
     title: "Distributed Training",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Data, model and pipeline parallelism — what is split, what is communicated, and what the batch size does to the schedule.",
     prerequisites: ["learning-rate-schedules", "mixed-precision-training"],
@@ -2288,7 +2465,7 @@ export const concepts: Concept[] = [
   {
     id: "transfer-learning",
     title: "Transfer Learning",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Reusing a model trained elsewhere — feature extraction, fine-tuning, and when it backfires.",
     // Matching the pretrained model's own input normalisation is not optional
@@ -2299,7 +2476,7 @@ export const concepts: Concept[] = [
   {
     id: "self-supervised-learning",
     title: "Self-Supervised Learning",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Manufacturing labels from the input itself — the engine behind modern pretraining.",
     prerequisites: ["transfer-learning", "autoencoders"],
@@ -2367,7 +2544,7 @@ export const concepts: Concept[] = [
   {
     id: "scaling-laws",
     title: "Scaling Laws",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Loss as a power law in parameters, data and compute — and the budget question that follows from it.",
     prerequisites: ["learning-curves", "autoregressive-models"],
@@ -2375,7 +2552,7 @@ export const concepts: Concept[] = [
   {
     id: "tokenization",
     title: "Tokenization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Byte-pair encoding and its relatives: the vocabulary decision made before any weight is trained.",
     prerequisites: ["embeddings", "autoregressive-models"],
@@ -2383,7 +2560,7 @@ export const concepts: Concept[] = [
   {
     id: "contrastive-learning",
     title: "Contrastive Learning",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Pulling matched pairs together and pushing everything else apart — InfoNCE, and where the negatives come from.",
     // The InfoNCE objective is literally a cross-entropy over similarity
@@ -2394,7 +2571,7 @@ export const concepts: Concept[] = [
   {
     id: "parameter-efficient-fine-tuning",
     title: "Parameter-Efficient Fine-Tuning",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "LoRA and adapters: training a low-rank correction instead of every weight, and why that is usually enough.",
     // LoRA is a rank constraint written as BA with an inner dimension r, and
@@ -2404,7 +2581,7 @@ export const concepts: Concept[] = [
   {
     id: "instruction-tuning-and-rlhf",
     title: "Instruction Tuning and RLHF",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Turning a next-token predictor into something that follows instructions, and the KL leash that keeps it there.",
     prerequisites: ["reinforcement-learning", "autoregressive-models", "kl-divergence"],
@@ -2412,7 +2589,7 @@ export const concepts: Concept[] = [
   {
     id: "knowledge-distillation",
     title: "Knowledge Distillation",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Training a small model on a large one's full output distribution rather than on the labels.",
     // The method was introduced to compress an ensemble into one model, and the
@@ -2428,7 +2605,7 @@ export const concepts: Concept[] = [
   {
     id: "quantization",
     title: "Quantization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Storing and computing in 8 or 4 bits — where the error goes, and why serving is memory-bound anyway.",
     prerequisites: ["mixed-precision-training", "knowledge-distillation"],
@@ -2521,7 +2698,7 @@ export const concepts: Concept[] = [
   {
     id: "variational-inference-vaes",
     title: "Variational Inference: VAEs",
-    domain: "graphical-models",
+    domain: "deep-learning",
     blurb: "Learning a latent-variable generative model with a neural network and the ELBO.",
     prerequisites: ["variational-inference-elbo", "neural-networks", "backpropagation"],
   },

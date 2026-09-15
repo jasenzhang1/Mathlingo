@@ -5,19 +5,52 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 325 concepts.**
+**Total: 366 concepts.**
 
-## Probability (56)
+## Discrete Math Fundamentals (24)
+
+The logical and combinatorial toolkit the rest of the spine assumes: how a proof is built, how sets
+and functions are described, and how outcomes are counted. `Set Theory`, `Counting Methods`, and
+`Binomial Theorem` moved here from Probability — `Probability` still cites `Set Theory` (for
+`PIE, Boole's Inequality` and `Sigma Algebra`) and `Counting Methods` (for `Hypergeometric
+Distribution` and `Permutation Test`) across the domain boundary, the same way `Graphs` in
+Graphical Models already did.
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
+| Propositional Logic | — | — |
+| Logical Equivalences & Quantifiers | Propositional Logic | — |
+| Direct Proof | Logical Equivalences & Quantifiers | — |
+| Proof by Contradiction | Logical Equivalences & Quantifiers | — |
+| Mathematical Induction | Direct Proof | — |
+| Strong Induction | Mathematical Induction | — |
+| Recursion & Recurrence Relations | Strong Induction | — |
+| Fibonacci Numbers | Recursion & Recurrence Relations | — |
 | Set Theory | — | — |
+| Power Set | Set Theory | — |
+| Cartesian Product | Set Theory | — |
+| Proof by Sets (Double Inclusion) | Set Theory, Direct Proof | — |
+| Functions & Relations | Set Theory | — |
+| Equivalence Relations & Partitions | Functions & Relations | — |
+| Injections, Surjections, and Bijections | Functions & Relations | — |
+| Cardinality & Countability | Injections, Surjections, and Bijections | — |
+| Counting Methods | Set Theory | — |
+| Pigeonhole Principle | Counting Methods | — |
+| Factorials | Counting Methods | — |
+| Permutations | Factorials | — |
+| Combinations | Permutations | — |
+| Stars and Bars | Combinations | — |
+| Integer Partitions | Stars and Bars | — |
+| Binomial Theorem | Combinations | — |
+
+## Probability (53)
+
+| Concept | Prerequisites | Lesson |
+|---|---|---|
 | PIE, Boole's Inequality | Set Theory | — |
 | Sigma Algebra | Set Theory | — |
 | Axioms of Probability | Sigma Algebra | — |
 | Probability Function | Axioms of Probability | — |
-| Counting Methods | Set Theory | — |
-| Binomial Theorem | Counting Methods | — |
 | Conditional Probability | Probability Function | — |
 | Bayes' Rule | Conditional Probability | — |
 | Independence (Set Theory) | Probability Function | — |
@@ -223,7 +256,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Poisson Regression | Generalized Linear Model (GLM), Poisson Distribution | — |
 | Cox Proportional Hazards Model | Generalized Linear Model (GLM), Maximum Likelihood Estimation | — |
 
-## Machine Learning (100)
+## Machine Learning (63)
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -231,9 +264,6 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Types of Machine Learning | Machine Learning Introduction | — |
 | Supervised vs Unsupervised Learning | Types of Machine Learning | — |
 | Classification vs Regression | Supervised vs Unsupervised Learning | — |
-| Perceptron | Classification vs Regression | — |
-| Neural Networks | Perceptron, Matrix Calculus (Gradients & Jacobians) | — |
-| Backpropagation | Neural Networks, Gradient Descent | — |
 | Loss Functions | Machine Learning Introduction | — |
 | Cross Entropy Loss | Loss Functions, Likelihood vs Probability | — |
 | Gradient Descent | Loss Functions, Matrix Calculus (Gradients & Jacobians) | — |
@@ -287,6 +317,25 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Distribution Shift | Training vs Validation vs Test Set, Generative vs Discriminative Models, Data Leakage | — |
 | Model Interpretability | Random Forests, Sensitivity Analysis | — |
 | Anomaly Detection | Clustering Methods, Generative vs Discriminative Models, Curse of Dimensionality | — |
+| Reinforcement Learning | Types of Machine Learning, Markov Chains | — |
+| Multi-Armed Bandits | Reinforcement Learning, Confidence Interval | — |
+| Bayesian Optimization | GP Regression, Hyperparameters | — |
+| Stacking | Ensemble Methods, Nested Cross-Validation | — |
+| Hierarchical Clustering | Clustering Methods | — |
+| Density-Based Clustering | Clustering Methods, K-Means Clustering | — |
+
+## Deep Learning (38)
+
+Anything built from weight vectors and a forward pass — from the single perceptron through the
+architectures, training tricks, and generative models built on top of it. Split out of Machine
+Learning so the "classical" toolkit (trees, kernels, clustering) and the neural-network toolkit
+each read as their own arc.
+
+| Concept | Prerequisites | Lesson |
+|---|---|---|
+| Perceptron | Classification vs Regression | — |
+| Neural Networks | Perceptron, Matrix Calculus (Gradients & Jacobians) | — |
+| Backpropagation | Neural Networks, Gradient Descent | — |
 | Activation Functions | Neural Networks | — |
 | SGD and Adaptive Optimizers | Gradient Descent, Backpropagation | — |
 | Dropout | Neural Networks, Overfitting and Underfitting | — |
@@ -303,6 +352,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Autoregressive Models | Conditional Probability, LSTM and GRU, Transformers | — |
 | State Space Models | LSTM and GRU, Convolutional Neural Networks, Eigenvalues and Eigenvectors, Attention Mechanism | — |
 | Graph Neural Networks | Graphs, Convolutional Neural Networks | — |
+| Variational Inference: VAEs | Variational Inference: ELBO, Neural Networks, Backpropagation | — |
 | Generative Adversarial Networks | Generative vs Discriminative Models, Neural Networks, Kullback-Leibler Divergence | — |
 | Diffusion Models | Autoencoders, Normal Distribution, Generative Adversarial Networks | — |
 | Mixture of Experts | Transformers, Ensemble Methods | — |
@@ -314,12 +364,6 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Distributed Training | Learning Rate Schedules, Mixed Precision Training | — |
 | Transfer Learning | Convolutional Neural Networks, Embeddings, Feature Scaling | — |
 | Self-Supervised Learning | Transfer Learning, Autoencoders | — |
-| Reinforcement Learning | Types of Machine Learning, Markov Chains | — |
-| Multi-Armed Bandits | Reinforcement Learning, Confidence Interval | — |
-| Bayesian Optimization | GP Regression, Hyperparameters | — |
-| Stacking | Ensemble Methods, Nested Cross-Validation | — |
-| Hierarchical Clustering | Clustering Methods | — |
-| Density-Based Clustering | Clustering Methods, K-Means Clustering | — |
 | Scaling Laws | Learning Curves, Autoregressive Models | — |
 | Tokenization | Embeddings, Autoregressive Models | — |
 | Contrastive Learning | Self-Supervised Learning, Cross-Entropy Loss, Embeddings | — |
@@ -328,7 +372,7 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Knowledge Distillation | Cross-Entropy Loss, Kullback-Leibler Divergence, Neural Networks, Ensemble Methods | — |
 | Quantization | Mixed Precision Training, Knowledge Distillation | — |
 
-## Graphical Models & Bayesian ML (15)
+## Graphical Models & Bayesian ML (14)
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -343,7 +387,6 @@ When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, doma
 | Gaussian Mixture Models | EM Algorithm, Multivariate Normal | — |
 | Variational Inference: ELBO | Mixture Models and Latent Variables, Kullback-Leibler Divergence | — |
 | Laplace Approximation | Maximum Likelihood Estimation, Multivariate Normal | — |
-| Variational Inference: VAEs | Variational Inference: ELBO, Neural Networks, Backpropagation | — |
 | Gaussian Process | Multivariate Normal, Kernel | — |
 | Reproducing Kernel Hilbert Space (RKHS) | Kernel, Mercer's Theorem | — |
 | Wasserstein Distance | Kullback-Leibler Divergence | — |
