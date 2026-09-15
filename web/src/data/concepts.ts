@@ -6,6 +6,8 @@ export type Domain =
   | "regression"
   | "machine-learning"
   | "graphical-models"
+  | "stochastic-processes"
+  | "stochastic-calculus"
   | "python";
 
 export interface DomainMeta {
@@ -24,6 +26,8 @@ export const domainMeta: Record<Domain, DomainMeta> = {
   regression: { label: "Regression", color: "#2f6fed" },
   "machine-learning": { label: "Machine Learning", color: "#16a34a" },
   "graphical-models": { label: "Graphical Models & Bayesian ML", color: "#a855f7" },
+  "stochastic-processes": { label: "Stochastic Processes", color: "#c2410c" },
+  "stochastic-calculus": { label: "Stochastic Calculus", color: "#0891b2" },
   /**
    * Deliberately last. Chapter order is an editorial call (see
    * `lib/learningOrder.ts`), and the math spine is the book — Python is the
@@ -2541,6 +2545,150 @@ export const concepts: Concept[] = [
     domain: "graphical-models",
     blurb: "Measuring the distance between distributions as the cost of moving mass.",
     prerequisites: ["kl-divergence"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Stochastic Processes
+  //
+  // Deliberately small: just the two building blocks the Stochastic Calculus
+  // chapter borrows as prerequisites. Simple Random Walk is the discrete
+  // process with independent ±1 steps; Brownian Motion is its continuous-time
+  // limit (Shreve, Stochastic Calculus for Finance II, ch. 3). A full
+  // stochastic-processes curriculum (Poisson processes, general Markov
+  // processes, renewal theory, ...) would grow this chapter, but nothing here
+  // needs more than these two to reach stochastic calculus.
+  // ---------------------------------------------------------------------
+  {
+    id: "simple-random-walk",
+    title: "Simple Random Walk",
+    domain: "stochastic-processes",
+    blurb:
+      "Sum up independent ±1 coin flips — the first process where 'independent increments' and 'fair game' become precise, and the discrete skeleton every continuous-time model below is a limit of.",
+    prerequisites: ["bernoulli-binomial", "independence-set-theory"],
+  },
+  {
+    id: "brownian-motion",
+    title: "Brownian Motion",
+    domain: "stochastic-processes",
+    blurb:
+      "The continuous-time, continuous-path limit of the simple random walk: independent Gaussian increments, and a path so jagged it has no derivative anywhere.",
+    prerequisites: ["simple-random-walk", "normal-distribution", "central-limit-theorem"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Stochastic Calculus
+  //
+  // Follows the spine of Shreve's Stochastic Calculus for Finance II:
+  // Continuous-Time Models — ch. 2 (information/martingales), ch. 4 (the
+  // Itô integral, Itô-Doeblin formula, and Black-Scholes-Merton equation),
+  // ch. 5 (Girsanov's theorem and risk-neutral pricing), and ch. 6 (the
+  // Feynman-Kac link back to PDEs). Brownian Motion and Simple Random Walk
+  // are borrowed from the Stochastic Processes chapter above rather than
+  // redefined here.
+  // ---------------------------------------------------------------------
+  {
+    id: "filtrations-and-adapted-processes",
+    title: "Filtrations and Adapted Processes",
+    domain: "stochastic-calculus",
+    blurb:
+      "Formalizing 'everything observable by time t' as a growing sigma-algebra, and calling a process adapted when it only looks at the past.",
+    prerequisites: ["sigma-algebra", "brownian-motion"],
+  },
+  {
+    id: "martingales-continuous-time",
+    title: "Martingales in Continuous Time",
+    domain: "stochastic-calculus",
+    blurb:
+      "A process whose best forecast of tomorrow is today's value — Brownian motion is one, and it's the property every hedging and pricing argument ahead leans on.",
+    prerequisites: ["filtrations-and-adapted-processes", "expectation", "simple-random-walk"],
+  },
+  {
+    id: "quadratic-variation",
+    title: "Quadratic Variation",
+    domain: "stochastic-calculus",
+    blurb:
+      "Brownian motion accumulates (ΔW)² at rate dt even though it has no derivative — the single fact that makes dW·dW behave like dt in every Itô computation.",
+    prerequisites: ["brownian-motion"],
+  },
+  {
+    id: "ito-integral",
+    title: "Itô Integral",
+    domain: "stochastic-calculus",
+    blurb:
+      "Defining ∫ Δ dW against an integrator of unbounded variation by evaluating the integrand at the left endpoint of every partition — and why that choice is what keeps the integral a martingale.",
+    prerequisites: ["quadratic-variation", "martingales-continuous-time"],
+  },
+  {
+    id: "ito-doeblin-formula",
+    title: "Itô's Lemma (Itô-Doeblin Formula)",
+    domain: "stochastic-calculus",
+    blurb:
+      "The chain rule for stochastic processes: a second-order correction term survives differentiation because (dW)² = dt instead of vanishing.",
+    prerequisites: ["ito-integral"],
+  },
+  {
+    id: "stochastic-differential-equations",
+    title: "Stochastic Differential Equations (SDEs)",
+    domain: "stochastic-calculus",
+    blurb:
+      "Equations of the form dX = μ(X,t) dt + σ(X,t) dW — an ODE plus a noise term whose size can itself depend on where the process currently is.",
+    prerequisites: ["ito-doeblin-formula"],
+  },
+  {
+    id: "geometric-brownian-motion",
+    title: "Geometric Brownian Motion",
+    domain: "stochastic-calculus",
+    blurb:
+      "The SDE dS = μS dt + σS dW, solved by applying Itô's lemma to log S — the default model for a stock price and the engine behind Black-Scholes.",
+    prerequisites: ["stochastic-differential-equations"],
+  },
+  {
+    id: "multidimensional-ito-calculus",
+    title: "Multidimensional Itô Calculus",
+    domain: "stochastic-calculus",
+    blurb:
+      "Itô's lemma and its cross-variation terms when several, possibly correlated, Brownian motions drive the same process.",
+    prerequisites: ["ito-doeblin-formula"],
+  },
+  {
+    id: "black-scholes-merton-equation",
+    title: "Black-Scholes-Merton Equation",
+    domain: "stochastic-calculus",
+    blurb:
+      "Hedging an option with a self-financing stock-and-bond portfolio and setting the resulting drift to zero turns option pricing into a backward parabolic PDE.",
+    prerequisites: ["geometric-brownian-motion"],
+  },
+  {
+    id: "girsanov-theorem",
+    title: "Girsanov's Theorem",
+    domain: "stochastic-calculus",
+    blurb:
+      "Changing probability measure can cancel a process's drift entirely — turning a Brownian motion with drift under one measure into a driftless one under another.",
+    prerequisites: ["martingales-continuous-time", "stochastic-differential-equations"],
+  },
+  {
+    id: "risk-neutral-pricing",
+    title: "Risk-Neutral Pricing",
+    domain: "stochastic-calculus",
+    blurb:
+      "Under the measure Girsanov's theorem supplies, every discounted asset price is a martingale — so a derivative's price is just a discounted expectation, no drift assumption required.",
+    prerequisites: ["girsanov-theorem"],
+  },
+  {
+    id: "martingale-representation-theorem",
+    title: "Martingale Representation Theorem",
+    domain: "stochastic-calculus",
+    blurb:
+      "Every martingale in a Brownian filtration is itself an Itô integral of some adapted process — the fact that guarantees a replicating hedge always exists.",
+    prerequisites: ["ito-integral", "girsanov-theorem"],
+  },
+  {
+    id: "feynman-kac-theorem",
+    title: "Feynman-Kac Theorem",
+    domain: "stochastic-calculus",
+    blurb:
+      "The bridge back to PDEs: a conditional expectation of a diffusion solves a parabolic PDE, and that PDE's solution recovers the expectation — Black-Scholes-Merton is the special case.",
+    prerequisites: ["stochastic-differential-equations", "black-scholes-merton-equation"],
   },
 
   // ---------------------------------------------------------------------

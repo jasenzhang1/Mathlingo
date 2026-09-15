@@ -640,6 +640,49 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
     },
   ],
 
+  "stochastic-processes": [
+    {
+      id: "foundations",
+      label: "From Random Walk to Brownian Motion",
+      conceptIds: ["simple-random-walk", "brownian-motion"],
+    },
+  ],
+
+  "stochastic-calculus": [
+    {
+      id: "information-and-martingales",
+      label: "Information and Martingales",
+      conceptIds: ["filtrations-and-adapted-processes", "martingales-continuous-time"],
+    },
+    {
+      id: "ito-calculus",
+      label: "Itô Calculus",
+      conceptIds: [
+        "quadratic-variation",
+        "ito-integral",
+        "ito-doeblin-formula",
+        "multidimensional-ito-calculus",
+      ],
+    },
+    {
+      id: "sdes-and-pricing",
+      label: "SDEs and Risk-Neutral Pricing",
+      conceptIds: [
+        "stochastic-differential-equations",
+        "geometric-brownian-motion",
+        "black-scholes-merton-equation",
+        "girsanov-theorem",
+        "risk-neutral-pricing",
+        "martingale-representation-theorem",
+      ],
+    },
+    {
+      id: "pde-connections",
+      label: "Connections with PDEs",
+      conceptIds: ["feynman-kac-theorem"],
+    },
+  ],
+
   python: [
     {
       id: "fundamentals",
