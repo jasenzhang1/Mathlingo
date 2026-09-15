@@ -30,6 +30,7 @@ import { markovRandomFieldsWiki } from "./markov-random-fields";
 import { mcnemarTestWiki } from "./mcnemar-test";
 import { mixtureModelsAndLatentVariablesWiki } from "./mixture-models-and-latent-variables";
 import { multipleTestingWiki } from "./multiple-testing";
+import { conditionalMultivariateNormalWiki } from "./conditional-multivariate-normal";
 import { multivariateMgfWiki } from "./multivariate-mgf";
 import { multivariateNormalWiki } from "./multivariate-normal";
 import { oneSampleProportionsZTestWiki } from "./one-sample-proportions-z-test";
@@ -154,6 +155,9 @@ export const coreWikiArticles: WikiArticle[] = [
   bivariateNormalWiki,
   multivariateNormalWiki,
   multivariateMgfWiki,
+  // The payoff the previous two exist to reach: deriving the conditional
+  // formula multivariateNormalWiki's closure table only states.
+  conditionalMultivariateNormalWiki,
   pearsonCorrelationWiki,
   klDivergenceWiki,
 

@@ -28,18 +28,60 @@ export interface SectionSpec {
 }
 
 export const sectionSpecs: Record<Domain, SectionSpec[]> = {
+  "discrete-math": [
+    {
+      id: "logic-and-proof",
+      label: "Logic & Proof Techniques",
+      conceptIds: [
+        "propositional-logic",
+        "logical-equivalences",
+        "direct-proof",
+        "proof-by-contradiction",
+        "mathematical-induction",
+        "strong-induction",
+        "recursion",
+        "fibonacci-numbers",
+      ],
+    },
+    {
+      id: "sets-and-functions",
+      label: "Sets & Functions",
+      conceptIds: [
+        "set-theory",
+        "power-set",
+        "cartesian-product",
+        "proof-by-sets",
+        "functions-relations",
+        "equivalence-relations",
+        "injections-surjections-bijections",
+        "cardinality",
+      ],
+    },
+    {
+      id: "combinatorics",
+      label: "Combinatorics",
+      conceptIds: [
+        "counting-methods",
+        "pigeonhole-principle",
+        "factorials",
+        "permutations",
+        "combinations",
+        "stars-and-bars",
+        "integer-partitions",
+        "binomial-theorem",
+      ],
+    },
+  ],
+
   probability: [
     {
       id: "foundations",
       label: "Foundations of Probability",
       conceptIds: [
-        "set-theory",
         "pie-boole",
         "sigma-algebra",
         "axioms-of-probability",
         "probability-function",
-        "counting-methods",
-        "binomial-theorem",
         "conditional-probability",
         "bayes-rule",
         "independence-set-theory",
@@ -272,6 +314,19 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "cochrans-theorem",
         "distribution-of-beta-hat",
       ],
+    },
+    {
+      /**
+       * Both halves of the section above feed this one concept: the MGF's
+       * independence-from-zero-covariance theorem and quadratic forms' Var(aᵀX)
+       * machinery are exactly what deriving X₁ | X₂ = x₂ needs. It is placed
+       * after `quadratic-forms` rather than immediately following
+       * `multivariate-distributions` so that both prerequisites are already
+       * behind a learner who reaches it.
+       */
+      id: "conditional-normals",
+      label: "Conditioning a Multivariate Normal",
+      conceptIds: ["conditional-multivariate-normal"],
     },
     {
       id: "asymptotics",

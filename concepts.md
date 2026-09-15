@@ -5,19 +5,52 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 310 concepts.**
+**Total: 331 concepts.**
 
-## Probability (56)
+## Discrete Math Fundamentals (24)
+
+The logical and combinatorial toolkit the rest of the spine assumes: how a proof is built, how sets
+and functions are described, and how outcomes are counted. `Set Theory`, `Counting Methods`, and
+`Binomial Theorem` moved here from Probability — `Probability` still cites `Set Theory` (for
+`PIE, Boole's Inequality` and `Sigma Algebra`) and `Counting Methods` (for `Hypergeometric
+Distribution` and `Permutation Test`) across the domain boundary, the same way `Graphs` in
+Graphical Models already did.
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
+| Propositional Logic | — | — |
+| Logical Equivalences & Quantifiers | Propositional Logic | — |
+| Direct Proof | Logical Equivalences & Quantifiers | — |
+| Proof by Contradiction | Logical Equivalences & Quantifiers | — |
+| Mathematical Induction | Direct Proof | — |
+| Strong Induction | Mathematical Induction | — |
+| Recursion & Recurrence Relations | Strong Induction | — |
+| Fibonacci Numbers | Recursion & Recurrence Relations | — |
 | Set Theory | — | — |
+| Power Set | Set Theory | — |
+| Cartesian Product | Set Theory | — |
+| Proof by Sets (Double Inclusion) | Set Theory, Direct Proof | — |
+| Functions & Relations | Set Theory | — |
+| Equivalence Relations & Partitions | Functions & Relations | — |
+| Injections, Surjections, and Bijections | Functions & Relations | — |
+| Cardinality & Countability | Injections, Surjections, and Bijections | — |
+| Counting Methods | Set Theory | — |
+| Pigeonhole Principle | Counting Methods | — |
+| Factorials | Counting Methods | — |
+| Permutations | Factorials | — |
+| Combinations | Permutations | — |
+| Stars and Bars | Combinations | — |
+| Integer Partitions | Stars and Bars | — |
+| Binomial Theorem | Combinations | — |
+
+## Probability (53)
+
+| Concept | Prerequisites | Lesson |
+|---|---|---|
 | PIE, Boole's Inequality | Set Theory | — |
 | Sigma Algebra | Set Theory | — |
 | Axioms of Probability | Sigma Algebra | — |
 | Probability Function | Axioms of Probability | — |
-| Counting Methods | Set Theory | — |
-| Binomial Theorem | Counting Methods | — |
 | Conditional Probability | Probability Function | — |
 | Bayes' Rule | Conditional Probability | — |
 | Independence (Set Theory) | Probability Function | — |

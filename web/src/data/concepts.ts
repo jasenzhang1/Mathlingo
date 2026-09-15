@@ -1,4 +1,5 @@
 export type Domain =
+  | "discrete-math"
   | "probability"
   | "linear-algebra"
   | "multivariate-probability"
@@ -15,6 +16,7 @@ export interface DomainMeta {
 }
 
 export const domainMeta: Record<Domain, DomainMeta> = {
+  "discrete-math": { label: "Discrete Math Fundamentals", color: "#be185d" },
   probability: { label: "Probability", color: "#5b3df0" },
   "linear-algebra": { label: "Linear Algebra", color: "#0f9a8e" },
   "multivariate-probability": {
@@ -49,15 +51,179 @@ export interface Concept {
 
 export const concepts: Concept[] = [
   // ---------------------------------------------------------------------
-  // Probability
+  // Discrete Math Fundamentals
   // ---------------------------------------------------------------------
+  {
+    id: "propositional-logic",
+    title: "Propositional Logic",
+    domain: "discrete-math",
+    blurb: "If-then, iff, not, and, or — statements, connectives, and truth tables.",
+    prerequisites: [],
+  },
+  {
+    id: "logical-equivalences",
+    title: "Logical Equivalences & Quantifiers",
+    domain: "discrete-math",
+    blurb: "De Morgan's laws, contrapositives, and the ∀/∃ quantifiers that state theorems.",
+    prerequisites: ["propositional-logic"],
+  },
+  {
+    id: "direct-proof",
+    title: "Direct Proof",
+    domain: "discrete-math",
+    blurb: "Chaining if-then statements from hypothesis to conclusion.",
+    prerequisites: ["logical-equivalences"],
+  },
+  {
+    id: "proof-by-contradiction",
+    title: "Proof by Contradiction",
+    domain: "discrete-math",
+    blurb: "Assuming the negation of what you want and deriving an absurdity.",
+    prerequisites: ["logical-equivalences"],
+  },
+  {
+    id: "mathematical-induction",
+    title: "Mathematical Induction",
+    domain: "discrete-math",
+    blurb: "Proving a statement for every n from a base case and an inductive step.",
+    prerequisites: ["direct-proof"],
+  },
+  {
+    id: "strong-induction",
+    title: "Strong Induction",
+    domain: "discrete-math",
+    blurb: "Proving the inductive step from every smaller case, not just the one before it.",
+    prerequisites: ["mathematical-induction"],
+  },
+  {
+    id: "recursion",
+    title: "Recursion & Recurrence Relations",
+    domain: "discrete-math",
+    blurb: "Defining a sequence or structure in terms of smaller instances of itself.",
+    prerequisites: ["strong-induction"],
+  },
+  {
+    id: "fibonacci-numbers",
+    title: "Fibonacci Numbers",
+    domain: "discrete-math",
+    blurb: "The recurrence F(n) = F(n-1) + F(n-2), and the closed form hiding inside it.",
+    prerequisites: ["recursion"],
+  },
   {
     id: "set-theory",
     title: "Set Theory",
-    domain: "probability",
+    domain: "discrete-math",
     blurb: "Unions, intersections, complements — the language everything else is written in.",
     prerequisites: [],
   },
+  {
+    id: "power-set",
+    title: "Power Set",
+    domain: "discrete-math",
+    blurb: "The set of all subsets of a set, and why it has 2^n elements.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "cartesian-product",
+    title: "Cartesian Product",
+    domain: "discrete-math",
+    blurb: "Pairing every element of one set with every element of another.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "proof-by-sets",
+    title: "Proof by Sets (Double Inclusion)",
+    domain: "discrete-math",
+    blurb: "Proving two sets equal by showing each is a subset of the other, or by chasing a single element.",
+    prerequisites: ["set-theory", "direct-proof"],
+  },
+  {
+    id: "functions-relations",
+    title: "Functions & Relations",
+    domain: "discrete-math",
+    blurb: "Domains, codomains, and the correspondence rules that connect them.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "equivalence-relations",
+    title: "Equivalence Relations & Partitions",
+    domain: "discrete-math",
+    blurb: "Reflexive, symmetric, transitive relations, and the partition of a set they induce.",
+    prerequisites: ["functions-relations"],
+  },
+  {
+    id: "injections-surjections-bijections",
+    title: "Injections, Surjections, and Bijections",
+    domain: "discrete-math",
+    blurb: "One-to-one, onto, and both at once — and what each says about the sets involved.",
+    prerequisites: ["functions-relations"],
+  },
+  {
+    id: "cardinality",
+    title: "Cardinality & Countability",
+    domain: "discrete-math",
+    blurb: "Comparing the size of infinite sets with a bijection instead of a count.",
+    prerequisites: ["injections-surjections-bijections"],
+  },
+  {
+    id: "counting-methods",
+    title: "Counting Methods",
+    domain: "discrete-math",
+    blurb: "The rule of sum and rule of product — the two principles everything else in combinatorics builds from.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "pigeonhole-principle",
+    title: "Pigeonhole Principle",
+    domain: "discrete-math",
+    blurb: "If you stuff more pigeons than holes, some hole gets at least two.",
+    prerequisites: ["counting-methods"],
+  },
+  {
+    id: "factorials",
+    title: "Factorials",
+    domain: "discrete-math",
+    blurb: "n! — the number of ways to arrange n distinct objects in order.",
+    prerequisites: ["counting-methods"],
+  },
+  {
+    id: "permutations",
+    title: "Permutations",
+    domain: "discrete-math",
+    blurb: "Ordered selections of k objects from n, and where n!/(n-k)! comes from.",
+    prerequisites: ["factorials"],
+  },
+  {
+    id: "combinations",
+    title: "Combinations",
+    domain: "discrete-math",
+    blurb: "Unordered selections of k objects from n — permutations with the ordering divided back out.",
+    prerequisites: ["permutations"],
+  },
+  {
+    id: "stars-and-bars",
+    title: "Stars and Bars",
+    domain: "discrete-math",
+    blurb: "Counting the ways to split n identical items into k groups.",
+    prerequisites: ["combinations"],
+  },
+  {
+    id: "integer-partitions",
+    title: "Integer Partitions",
+    domain: "discrete-math",
+    blurb: "Splitting n into a sum of positive integers where order doesn't matter — unlike stars and bars, the groups aren't labeled.",
+    prerequisites: ["stars-and-bars"],
+  },
+  {
+    id: "binomial-theorem",
+    title: "Binomial Theorem",
+    domain: "discrete-math",
+    blurb: "Expanding (a + b)^n, and where those binomial coefficients come from.",
+    prerequisites: ["combinations"],
+  },
+  // ---------------------------------------------------------------------
+  // Probability
+  // ---------------------------------------------------------------------
   {
     id: "pie-boole",
     title: "PIE, Boole's Inequality",
@@ -85,20 +251,6 @@ export const concepts: Concept[] = [
     domain: "probability",
     blurb: "Assigning a number in [0,1] to every event, consistently.",
     prerequisites: ["axioms-of-probability"],
-  },
-  {
-    id: "counting-methods",
-    title: "Counting Methods",
-    domain: "probability",
-    blurb: "Permutations and combinations for counting outcomes without listing them.",
-    prerequisites: ["set-theory"],
-  },
-  {
-    id: "binomial-theorem",
-    title: "Binomial Theorem",
-    domain: "probability",
-    blurb: "Expanding (a + b)^n, and where those binomial coefficients come from.",
-    prerequisites: ["counting-methods"],
   },
   {
     id: "conditional-probability",
@@ -950,6 +1102,29 @@ export const concepts: Concept[] = [
       "trace",
       "rank",
       "chi-square-distribution",
+    ],
+  },
+  {
+    id: "conditional-multivariate-normal",
+    title: "Conditional Distributions of the Multivariate Normal",
+    domain: "multivariate-probability",
+    blurb: "Where X₁ | X₂ = x₂'s mean and covariance formulas actually come from, derived rather than quoted.",
+    /**
+     * The formula in `multivariate-normal`'s closure table is stated, not
+     * derived — this concept is the derivation, and it needs both of that
+     * article's siblings to do it. `multivariate-mgf` supplies the
+     * independence-from-zero-covariance argument the proof turns on;
+     * `quadratic-forms-random-vectors` supplies the Var(aᵀX) = aᵀΣa machinery
+     * used to compute the residual's covariance. `schur-complement` is upstream
+     * because the resulting covariance formula Σ₁₁ − Σ₁₂Σ₂₂⁻¹Σ₂₁ is exactly
+     * that complement, and the connection is the payoff, not a coincidence to
+     * gloss over.
+     */
+    prerequisites: [
+      "multivariate-normal",
+      "multivariate-mgf",
+      "quadratic-forms-random-vectors",
+      "schur-complement",
     ],
   },
   {
