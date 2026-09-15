@@ -40,6 +40,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "mathematical-induction",
         "strong-induction",
         "recursion",
+        "fibonacci-numbers",
       ],
     },
     {
@@ -47,7 +48,11 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "Sets & Functions",
       conceptIds: [
         "set-theory",
+        "power-set",
+        "cartesian-product",
+        "proof-by-sets",
         "functions-relations",
+        "equivalence-relations",
         "injections-surjections-bijections",
         "cardinality",
       ],
@@ -57,10 +62,12 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "Combinatorics",
       conceptIds: [
         "counting-methods",
+        "pigeonhole-principle",
         "factorials",
         "permutations",
         "combinations",
         "stars-and-bars",
+        "integer-partitions",
         "binomial-theorem",
       ],
     },

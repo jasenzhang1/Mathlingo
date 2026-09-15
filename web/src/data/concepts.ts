@@ -101,6 +101,13 @@ export const concepts: Concept[] = [
     prerequisites: ["strong-induction"],
   },
   {
+    id: "fibonacci-numbers",
+    title: "Fibonacci Numbers",
+    domain: "discrete-math",
+    blurb: "The recurrence F(n) = F(n-1) + F(n-2), and the closed form hiding inside it.",
+    prerequisites: ["recursion"],
+  },
+  {
     id: "set-theory",
     title: "Set Theory",
     domain: "discrete-math",
@@ -108,11 +115,39 @@ export const concepts: Concept[] = [
     prerequisites: [],
   },
   {
+    id: "power-set",
+    title: "Power Set",
+    domain: "discrete-math",
+    blurb: "The set of all subsets of a set, and why it has 2^n elements.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "cartesian-product",
+    title: "Cartesian Product",
+    domain: "discrete-math",
+    blurb: "Pairing every element of one set with every element of another.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "proof-by-sets",
+    title: "Proof by Sets (Double Inclusion)",
+    domain: "discrete-math",
+    blurb: "Proving two sets equal by showing each is a subset of the other, or by chasing a single element.",
+    prerequisites: ["set-theory", "direct-proof"],
+  },
+  {
     id: "functions-relations",
     title: "Functions & Relations",
     domain: "discrete-math",
     blurb: "Domains, codomains, and the correspondence rules that connect them.",
     prerequisites: ["set-theory"],
+  },
+  {
+    id: "equivalence-relations",
+    title: "Equivalence Relations & Partitions",
+    domain: "discrete-math",
+    blurb: "Reflexive, symmetric, transitive relations, and the partition of a set they induce.",
+    prerequisites: ["functions-relations"],
   },
   {
     id: "injections-surjections-bijections",
@@ -134,6 +169,13 @@ export const concepts: Concept[] = [
     domain: "discrete-math",
     blurb: "The rule of sum and rule of product — the two principles everything else in combinatorics builds from.",
     prerequisites: ["set-theory"],
+  },
+  {
+    id: "pigeonhole-principle",
+    title: "Pigeonhole Principle",
+    domain: "discrete-math",
+    blurb: "If you stuff more pigeons than holes, some hole gets at least two.",
+    prerequisites: ["counting-methods"],
   },
   {
     id: "factorials",
@@ -162,6 +204,13 @@ export const concepts: Concept[] = [
     domain: "discrete-math",
     blurb: "Counting the ways to split n identical items into k groups.",
     prerequisites: ["combinations"],
+  },
+  {
+    id: "integer-partitions",
+    title: "Integer Partitions",
+    domain: "discrete-math",
+    blurb: "Splitting n into a sum of positive integers where order doesn't matter — unlike stars and bars, the groups aren't labeled.",
+    prerequisites: ["stars-and-bars"],
   },
   {
     id: "binomial-theorem",

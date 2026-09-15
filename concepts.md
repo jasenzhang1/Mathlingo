@@ -5,9 +5,9 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 324 concepts.**
+**Total: 331 concepts.**
 
-## Discrete Math Fundamentals (17)
+## Discrete Math Fundamentals (24)
 
 The logical and combinatorial toolkit the rest of the spine assumes: how a proof is built, how sets
 and functions are described, and how outcomes are counted. `Set Theory`, `Counting Methods`, and
@@ -25,15 +25,22 @@ Graphical Models already did.
 | Mathematical Induction | Direct Proof | — |
 | Strong Induction | Mathematical Induction | — |
 | Recursion & Recurrence Relations | Strong Induction | — |
+| Fibonacci Numbers | Recursion & Recurrence Relations | — |
 | Set Theory | — | — |
+| Power Set | Set Theory | — |
+| Cartesian Product | Set Theory | — |
+| Proof by Sets (Double Inclusion) | Set Theory, Direct Proof | — |
 | Functions & Relations | Set Theory | — |
+| Equivalence Relations & Partitions | Functions & Relations | — |
 | Injections, Surjections, and Bijections | Functions & Relations | — |
 | Cardinality & Countability | Injections, Surjections, and Bijections | — |
 | Counting Methods | Set Theory | — |
+| Pigeonhole Principle | Counting Methods | — |
 | Factorials | Counting Methods | — |
 | Permutations | Factorials | — |
 | Combinations | Permutations | — |
 | Stars and Bars | Combinations | — |
+| Integer Partitions | Stars and Bars | — |
 | Binomial Theorem | Combinations | — |
 
 ## Probability (53)
