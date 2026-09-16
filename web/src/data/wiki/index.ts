@@ -41,6 +41,8 @@ const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
       ...core.coreWikiArticles,
     ]),
   python: () => import("./python").then((m) => m.pythonWikiArticles),
+  "stochastic-processes": () => import("./stochastic").then((m) => m.stochasticWikiArticles),
+  "stochastic-calculus": () => import("./stochastic").then((m) => m.stochasticWikiArticles),
 };
 
 /** Domain -> its articles, indexed by concept id. Cached, so each chunk is fetched once. */
