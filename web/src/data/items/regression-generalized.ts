@@ -1584,4 +1584,1246 @@ export const regressionGeneralizedItems: Item[] = [
     source: SINGER_WILLETT,
     status: "live",
   },
+
+  // ===========================================================================
+  // Doubling pass — additional items per concept
+  // ===========================================================================
+
+  // --- Mixed Effect Models -----------------------------------------------------
+  {
+    id: "mixed-effect-models--recall-random-intercept-meaning",
+    conceptId: "mixed-effect-models",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The random intercept in a random-intercept model represents:",
+    choices: [
+      { id: "a", text: "each group's deviation from the overall (fixed-effect) intercept, drawn from a shared distribution", correct: true },
+      {
+        id: "b",
+        text: "a separate fixed coefficient estimated independently per group, with no shared distribution linking them",
+        correct: false,
+        misconception: {
+          id: "random-intercept-confused-with-per-group-fixed-effect",
+          description:
+            "That describes a fixed effect per group (like a dummy variable per group), which shares no distribution across groups — the defining feature of a random intercept.",
+          blameConceptId: "mixed-effect-models",
+        },
+      },
+      {
+        id: "c",
+        text: "the residual (within-group) variance",
+        correct: false,
+        misconception: {
+          id: "random-intercept-confused-with-residual-variance",
+          description: "The random intercept captures between-group differences in baseline level; residual variance is a separate, within-group quantity.",
+          blameConceptId: "mixed-effect-models",
+        },
+      },
+      {
+        id: "d",
+        text: "the correlation between two random effects",
+        correct: false,
+        misconception: {
+          id: "random-intercept-confused-with-correlation",
+          description: "A correlation between random effects is a separate parameter that only arises once a model has more than one random effect.",
+          blameConceptId: "mixed-effect-models",
+        },
+      },
+    ],
+    difficulty: -1.6,
+    discrimination: 1.1,
+    expectedSeconds: 40,
+    prereqClosure: ["mixed-effect-models"],
+    source: VERBEKE_MOLENBERGHS,
+    status: "live",
+  },
+  {
+    id: "mixed-effect-models--recall-intercept-vs-slope",
+    conceptId: "mixed-effect-models",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "Distinguish a 'random intercept' from a 'random slope' in one sentence each.",
+    rubric: {
+      elements: [
+        {
+          id: "definitions",
+          description: "A random intercept lets each group have its own baseline level; a random slope lets each group have its own effect (strength of relationship) for a given predictor.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.2,
+    discrimination: 1.1,
+    expectedSeconds: 45,
+    prereqClosure: ["mixed-effect-models"],
+    source: VERBEKE_MOLENBERGHS,
+    status: "live",
+  },
+  {
+    id: "mixed-effect-models--apply-icc-alternate-values",
+    conceptId: "mixed-effect-models",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A random-intercept model estimates between-group variance τ² = 4 and within-group variance σ² = 16. What is the intraclass correlation, τ²/(τ² + σ²)? Give a decimal to two places.",
+    answerKey: 0.2,
+    tolerance: 0.01,
+    difficulty: -0.5,
+    discrimination: 1.3,
+    expectedSeconds: 90,
+    prereqClosure: ["mixed-effect-models", "sample-variance"],
+    source: VERBEKE_MOLENBERGHS,
+    status: "live",
+  },
+  {
+    id: "mixed-effect-models--apply-effective-n-alternate",
+    conceptId: "mixed-effect-models",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A dataset has 300 observations: 30 groups with 10 observations each, and the intraclass correlation is " +
+      "0.3. Using n_eff ≈ n / (1 + (m − 1)·ICC), what is the effective sample size? Give a whole number.",
+    answerKey: 81,
+    tolerance: 1,
+    difficulty: 0.4,
+    discrimination: 1.4,
+    expectedSeconds: 110,
+    prereqClosure: ["mixed-effect-models", "sample-mean", "sample-variance"],
+    source: VERBEKE_MOLENBERGHS,
+    status: "live",
+  },
+  {
+    id: "mixed-effect-models--explain-reml-vs-ml",
+    conceptId: "mixed-effect-models",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why maximum likelihood estimates of the variance components in a mixed model are biased downward " +
+      "in small samples, and what remedy is standard.",
+    rubric: {
+      elements: [
+        {
+          id: "ml-bias-cause",
+          description:
+            "ML estimates of variance components do not account for the loss of degrees of freedom from estimating the fixed effects first, so they are biased downward, especially with few groups.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "reml-remedy",
+          description:
+            "Standard remedy: restricted maximum likelihood (REML), which corrects for this by estimating the variance components after accounting for the fixed effects.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.4,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["mixed-effect-models"],
+    source: VERBEKE_MOLENBERGHS,
+    status: "live",
+  },
+  {
+    id: "mixed-effect-models--explain-boundary-variance-estimate",
+    conceptId: "mixed-effect-models",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "A random-intercept model with very few groups (say, 4) is fit, and the estimated between-group variance " +
+      "τ² is reported as exactly 0. Explain why this outcome is common with few groups, and why it does not " +
+      "necessarily mean there is truly no group effect.",
+    rubric: {
+      elements: [
+        {
+          id: "boundary-estimation-artifact",
+          description:
+            "With only a handful of groups there is very little information to estimate a between-group variance precisely, and the estimator is bounded at zero, so a small true τ² is frequently estimated as exactly the boundary value 0 rather than a small positive number.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "not-evidence-of-no-effect",
+          description:
+            "This is a small-sample estimation artifact, not evidence the groups truly do not differ — a likelihood-ratio test against a model without the random effect, or a Bayesian approach with a weakly informative prior, handles the boundary problem more honestly.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["mixed-effect-models"],
+    source: VERBEKE_MOLENBERGHS,
+    status: "live",
+  },
+  {
+    id: "mixed-effect-models--transfer-crossed-effects",
+    conceptId: "mixed-effect-models",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A crossed random-effects design has both 'student' and 'teacher' as separate grouping factors that are " +
+      "not nested (many students see many teachers, and vice versa). Explain how this differs structurally from " +
+      "the nested student-within-school design, and why a single random intercept per school would misrepresent " +
+      "this structure.",
+    rubric: {
+      elements: [
+        {
+          id: "crossed-vs-nested",
+          description:
+            "In crossed effects, membership in one factor does not determine membership in the other (a student can have any teacher), unlike nesting where every student belongs to exactly one school — so the model needs two separate random intercepts (one for student, one for teacher), not one nested hierarchy.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "single-intercept-misrepresents",
+          description:
+            "Forcing a single nested random intercept would either ignore one factor's variation entirely or falsely assume every student saw only one teacher, misattributing variance to the wrong source.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["mixed-effect-models"],
+    source: VERBEKE_MOLENBERGHS,
+    status: "live",
+  },
+  {
+    id: "mixed-effect-models--transfer-mixed-model-does-not-fix-cv-leakage",
+    conceptId: "mixed-effect-models",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A colleague argues: 'since a mixed model already accounts for group correlation, I no longer need to " +
+      "worry about which observations came from the same subject when reporting my final results.' Evaluate " +
+      "this claim, distinguishing what the model itself handles from what still needs care when reporting or " +
+      "validating results.",
+    rubric: {
+      elements: [
+        {
+          id: "model-handles-inference-not-validation",
+          description:
+            "The mixed model's variance components correctly account for within-group correlation in the fitted parameter estimates and their standard errors, but this does not automatically fix downstream steps like cross-validation: a naive random split can still put observations from the same subject into both train and test, leaking information.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "group-aware-splitting-still-needed",
+          description: "Group structure must still be respected explicitly when splitting data for validation (e.g. group k-fold), even though the model's own inference already accounts for it.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.35,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["mixed-effect-models"],
+    source: VERBEKE_MOLENBERGHS,
+    status: "live",
+  },
+
+  // --- Logistic Regression -----------------------------------------------------
+  {
+    id: "logistic-regression--recall-linear-decision-boundary",
+    conceptId: "logistic-regression",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The decision boundary implied by logistic regression (classify as 1 if P(Y=1|X) > 0.5) is:",
+    choices: [
+      { id: "a", text: "linear in X, since P > 0.5 corresponds exactly to Xβ > 0", correct: true },
+      {
+        id: "b",
+        text: "always curved, because the sigmoid function itself is nonlinear",
+        correct: false,
+        misconception: {
+          id: "boundary-thought-curved-because-sigmoid-nonlinear",
+          description: "The sigmoid is nonlinear, but the set of points where it crosses 0.5 is exactly Xβ = 0, which is linear.",
+          blameConceptId: "logistic-regression",
+        },
+      },
+      {
+        id: "c",
+        text: "undefined, since logistic regression produces probabilities, not an explicit decision rule",
+        correct: false,
+        misconception: {
+          id: "boundary-thought-undefined",
+          description: "A threshold on the predicted probability induces a perfectly well-defined decision boundary, exactly like any other classifier.",
+          blameConceptId: "logistic-regression",
+        },
+      },
+      {
+        id: "d",
+        text: "quadratic in X",
+        correct: false,
+        misconception: {
+          id: "boundary-thought-quadratic",
+          description: "Nothing in the plain logistic model introduces a quadratic term; the boundary is linear unless quadratic terms are explicitly added as predictors.",
+          blameConceptId: "logistic-regression",
+        },
+      },
+    ],
+    difficulty: -1.6,
+    discrimination: 1.1,
+    expectedSeconds: 40,
+    prereqClosure: ["logistic-regression"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "logistic-regression--recall-deviance",
+    conceptId: "logistic-regression",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "What role does the deviance play in evaluating a fitted logistic regression model, and how does it relate to the log-likelihood?",
+    rubric: {
+      elements: [
+        {
+          id: "deviance-definition",
+          description: "Deviance is −2 times the log-likelihood (relative to a saturated model), summarising lack of fit; smaller deviance means a better-fitting model.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.1,
+    discrimination: 1.1,
+    expectedSeconds: 45,
+    prereqClosure: ["logistic-regression", "mle"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "logistic-regression--apply-sigmoid-negative",
+    conceptId: "logistic-regression",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "For an observation with Xβ = −1, what is the predicted P(Y = 1 | X)? Give a decimal to four places.",
+    answerKey: 0.2689,
+    tolerance: 0.001,
+    difficulty: 0.5,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["logistic-regression", "bernoulli-binomial"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "logistic-regression--apply-odds-ratio-single-coefficient",
+    conceptId: "logistic-regression",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A logistic regression coefficient on a binary treatment indicator is 0.7. What is the odds ratio for treated vs untreated, e^0.7? Give a decimal to two places.",
+    answerKey: 2.01,
+    tolerance: 0.01,
+    difficulty: 0.9,
+    discrimination: 1.5,
+    expectedSeconds: 90,
+    prereqClosure: ["logistic-regression", "bernoulli-binomial"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "logistic-regression--explain-constant-logit-slope-varying-probability-slope",
+    conceptId: "logistic-regression",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why a logistic regression coefficient's sign tells you the direction of the effect on the " +
+      "log-odds, but not, by itself, how large the effect on the predicted probability is at a particular point.",
+    rubric: {
+      elements: [
+        {
+          id: "constant-effect-on-logit",
+          description: "The coefficient is the constant slope on the log-odds (logit) scale, so its sign correctly gives the direction of the effect on probability everywhere.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "varying-effect-on-probability",
+          description:
+            "The derivative of the sigmoid varies with the current probability — largest near p = 0.5 and near zero at the extremes — so the same one-unit change in X moves the probability by very different amounts depending on where the baseline probability sits, even though the log-odds always moves by exactly β.",
+          weight: 5,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.5,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["logistic-regression", "bernoulli-binomial"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "logistic-regression--explain-accuracy-vs-pseudo-r2",
+    conceptId: "logistic-regression",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "A logistic regression model achieves 95% training accuracy but a McFadden's pseudo-R² of only 0.15. " +
+      "Explain why accuracy and pseudo-R² can disagree this much, and which one is more informative here.",
+    rubric: {
+      elements: [
+        {
+          id: "accuracy-inflated-by-imbalance",
+          description:
+            "Accuracy can be high on an imbalanced dataset simply by predicting the majority class most of the time, regardless of how well the model actually explains the log-odds beyond a naive baseline.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "pseudo-r2-more-informative",
+          description:
+            "Pseudo-R² compares the fitted model's likelihood to a null (intercept-only) model, so a low value indicates the predictors add little explanatory power over guessing the base rate — on imbalanced data this is usually the more informative of the two.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.85,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["logistic-regression", "mle"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "logistic-regression--transfer-multicollinearity-vs-separation",
+    conceptId: "logistic-regression",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A hospital fits a logistic regression to predict readmission risk and finds a predictor with an " +
+      "enormous coefficient and enormous standard error, similar to a perfect-separation symptom, but a data " +
+      "check confirms no perfect separation exists. Give an alternative diagnosis and the check that would " +
+      "distinguish it from separation.",
+    rubric: {
+      elements: [
+        {
+          id: "multicollinearity-diagnosis",
+          description:
+            "Alternative diagnosis: severe multicollinearity between that predictor and another already in the model, which inflates the variance of both coefficients' estimates without any single predictor perfectly separating the classes.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "vif-check",
+          description:
+            "Check: examine the variance inflation factor (or pairwise/partial correlations) among predictors, which would be large under multicollinearity but is a different diagnostic from checking for a perfectly separating linear combination directly.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.15,
+    discrimination: 1.7,
+    expectedSeconds: 240,
+    prereqClosure: ["logistic-regression", "mle", "bernoulli-binomial"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "logistic-regression--transfer-interaction-needed-for-nonadditivity",
+    conceptId: "logistic-regression",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Logistic regression's log-odds are additive in the predictors by construction. Explain what this means " +
+      "for how two predictors' effects combine, and describe what has to be added to the model if the two " +
+      "predictors' effects are not actually additive on the log-odds scale (e.g. a drug's effect differs by sex).",
+    rubric: {
+      elements: [
+        {
+          id: "additivity-meaning",
+          description:
+            "Additivity means each predictor's estimated effect on the log-odds is assumed constant regardless of the level of the other predictors — the model has no way to represent one predictor changing the size of another's effect unless told to.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "interaction-term-needed",
+          description:
+            "If the true effects are not additive, an interaction term (the product of the two predictors) must be added explicitly; without it, the model reports an averaged effect that describes neither subgroup well.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.8,
+    expectedSeconds: 240,
+    prereqClosure: ["logistic-regression", "multiple-linear-regression"],
+    source: ISLR,
+    status: "live",
+  },
+
+  // --- Probit Regression -----------------------------------------------------------
+  {
+    id: "probit-regression--recall-inverse-link-equals-linear-predictor",
+    conceptId: "probit-regression",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "In probit regression, Φ⁻¹(P(Y = 1 | X)) equals:",
+    choices: [
+      { id: "a", text: "Xβ — the linear predictor directly, via the inverse of the normal CDF link", correct: true },
+      {
+        id: "b",
+        text: "the log-odds, ln(P/(1 − P))",
+        correct: false,
+        misconception: {
+          id: "inverse-link-confused-with-logit",
+          description: "The log-odds is the logit link's inverse relationship, used by logistic regression — probit's link is the normal CDF, not the logit.",
+          blameConceptId: "probit-regression",
+        },
+      },
+      {
+        id: "c",
+        text: "P(Y = 1 | X) itself",
+        correct: false,
+        misconception: {
+          id: "inverse-link-confused-with-probability",
+          description: "Φ⁻¹ transforms the probability onto the linear-predictor scale; it is not the probability itself.",
+          blameConceptId: "probit-regression",
+        },
+      },
+      {
+        id: "d",
+        text: "the variance of the latent error term",
+        correct: false,
+        misconception: {
+          id: "inverse-link-confused-with-latent-variance",
+          description: "The latent error's variance is fixed at 1 by convention and is not what the inverse link computes.",
+          blameConceptId: "probit-regression",
+        },
+      },
+    ],
+    difficulty: -1.5,
+    discrimination: 1.1,
+    expectedSeconds: 40,
+    prereqClosure: ["probit-regression", "normal-distribution"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "probit-regression--recall-phi-vs-lowercase-phi",
+    conceptId: "probit-regression",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "State what Φ and φ each denote in the probit model, and which one is the actual link function.",
+    rubric: {
+      elements: [
+        { id: "definitions", description: "Φ is the standard normal CDF; φ is the standard normal density (PDF).", weight: 3, required: true },
+        { id: "which-is-link", description: "Φ, the CDF, is the link function; φ, the density, is not used as the link.", weight: 3, required: true },
+      ],
+    },
+    difficulty: -1.1,
+    discrimination: 1.1,
+    expectedSeconds: 45,
+    prereqClosure: ["probit-regression", "normal-distribution"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "probit-regression--apply-latent-threshold-positive",
+    conceptId: "probit-regression",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Under the latent-variable derivation, an observation has Xβ = 0.5. What is P(Y = 1 | X)? Give a decimal " +
+      "to four places. (Φ(0.5) ≈ 0.6915.)",
+    answerKey: 0.6915,
+    tolerance: 0.002,
+    difficulty: 0.4,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["probit-regression", "normal-distribution"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "probit-regression--apply-latent-threshold-negative",
+    conceptId: "probit-regression",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Under the same setup, what is P(Y = 1 | X) at Xβ = −1.0? Give a decimal to four places. (Φ(−1.0) ≈ 0.1587.)",
+    answerKey: 0.1587,
+    tolerance: 0.002,
+    difficulty: 0.85,
+    discrimination: 1.4,
+    expectedSeconds: 100,
+    prereqClosure: ["probit-regression", "normal-distribution"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "probit-regression--explain-no-odds-ratio",
+    conceptId: "probit-regression",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Explain why probit regression coefficients cannot be reported as odds ratios the way logistic regression coefficients can.",
+    rubric: {
+      elements: [
+        {
+          id: "odds-ratio-specific-to-logit",
+          description:
+            "An odds ratio is specific to the logit link, since exponentiating a logistic coefficient directly converts additivity on the log-odds into a multiplicative effect on the odds; the normal-CDF form has no equivalent closed-form transformation of its coefficients.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "marginal-effects-instead",
+          description:
+            "Probit coefficients are instead usually interpreted via marginal effects — the change in probability at a specific point, computed as φ(Xβ)·β — which depends on where Xβ is, unlike a single constant odds ratio.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["probit-regression", "normal-distribution"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "probit-regression--explain-marginal-effect-depends-on-point",
+    conceptId: "probit-regression",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "The marginal effect of a predictor in probit regression is φ(Xβ)·β, which changes depending on the " +
+      "value of Xβ. Explain why this makes 'the effect of X' an ambiguous phrase in a probit model unless a " +
+      "reference point is specified.",
+    rubric: {
+      elements: [
+        {
+          id: "phi-peaks-at-zero",
+          description:
+            "Because φ(Xβ) is largest when Xβ ≈ 0 (probability near 0.5) and shrinks toward the extremes, the same coefficient β produces very different marginal effects on probability depending on whether the evaluation point is near the middle of the distribution or in a tail.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "needs-a-reference-point",
+          description:
+            "A single number 'the effect of X' is only meaningful once a specific evaluation point (e.g. the sample mean, or a particular subject's covariates) is fixed — unlike an odds ratio, which is the same everywhere on the log-odds scale.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.95,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["probit-regression", "normal-distribution"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "probit-regression--transfer-theoretical-vs-curve-fit-justification",
+    conceptId: "probit-regression",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A biostatistician chooses probit over logistic regression specifically because their outcome comes from " +
+      "thresholding an assumed normally-distributed liability (e.g. disease-risk liability in genetics). Explain " +
+      "how this justification differs from an argument based purely on curve fit, and what would undermine it.",
+    rubric: {
+      elements: [
+        {
+          id: "theoretical-not-empirical",
+          description:
+            "The justification is theoretical — a substantive claim about the data-generating process (an underlying continuous liability that is normally distributed and crosses a threshold) — not merely empirical curve-fitting drawing its warrant from which link happens to minimise a loss.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "undermined-by-nonnormal-liability",
+          description:
+            "It would be undermined by evidence the true liability is not well-approximated by a normal distribution (e.g. it is heavy-tailed or skewed), in which case the probit's theoretical justification would not hold even if its numerical fit still looked reasonable.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.25,
+    discrimination: 1.7,
+    expectedSeconds: 240,
+    prereqClosure: ["probit-regression", "normal-distribution"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "probit-regression--transfer-rescaling-shortcut-limits",
+    conceptId: "probit-regression",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A researcher fits a logistic regression and reports the coefficients rescaled by 1/1.6 as if they were " +
+      "probit coefficients, skipping a probit fit entirely. Evaluate whether this shortcut is reliable, and " +
+      "state the condition under which it is roughly valid.",
+    rubric: {
+      elements: [
+        {
+          id: "approximation-not-identity",
+          description:
+            "The 1.6-ish rescaling factor is only an approximation that holds when the two curves are close, which is true away from the extreme tails; it is not an exact algebraic identity between the two models' coefficients, so it can mislead when predictions concentrate near 0 or 1 where the two link functions diverge most.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "condition-for-validity",
+          description:
+            "The shortcut is roughly valid only for datasets where predicted probabilities stay well within the middle of the (0,1) range, and should not substitute for an actual probit fit whenever probabilities near the extremes matter.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.3,
+    discrimination: 1.7,
+    expectedSeconds: 240,
+    prereqClosure: ["probit-regression", "logistic-regression", "normal-distribution"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+
+  // --- Generalized Linear Model (GLM) -------------------------------------------------
+  {
+    id: "glm--recall-canonical-link-definition",
+    conceptId: "glm",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The 'canonical link' for a GLM's response distribution is defined as:",
+    choices: [
+      { id: "a", text: "the link function equal to the distribution's own natural parameter as a function of the mean", correct: true },
+      {
+        id: "b",
+        text: "whichever link function makes the fitting algorithm converge fastest",
+        correct: false,
+        misconception: {
+          id: "canonical-link-confused-with-convergence-speed",
+          description: "Canonical status is a property of the exponential-family form, not a claim about which link fits fastest in practice.",
+          blameConceptId: "glm",
+        },
+      },
+      {
+        id: "c",
+        text: "the identity link, applied to every GLM",
+        correct: false,
+        misconception: {
+          id: "canonical-link-assumed-always-identity",
+          description: "The canonical link differs by distribution — logit for Bernoulli, log for Poisson, identity only for Normal.",
+          blameConceptId: "glm",
+        },
+      },
+      {
+        id: "d",
+        text: "a link chosen purely by convention, with no relation to the distribution",
+        correct: false,
+        misconception: {
+          id: "canonical-link-thought-arbitrary",
+          description: "The canonical link is derived directly from the exponential-family form of the response distribution, not chosen arbitrarily.",
+          blameConceptId: "exponential-family",
+        },
+      },
+    ],
+    difficulty: -1.6,
+    discrimination: 1.1,
+    expectedSeconds: 40,
+    prereqClosure: ["glm", "exponential-family"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "glm--recall-binomial-response-and-link",
+    conceptId: "glm",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "For a binomial (count-of-successes-out-of-trials) response, name the response distribution used in the corresponding GLM and its canonical link.",
+    rubric: {
+      elements: [
+        { id: "answer", description: "Binomial response distribution, with the logit link as its canonical link.", weight: 4, required: true },
+      ],
+    },
+    difficulty: -1.2,
+    discrimination: 1.1,
+    expectedSeconds: 45,
+    prereqClosure: ["glm", "logistic-regression"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "glm--apply-poisson-negative-coefficient",
+    conceptId: "glm",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A Poisson regression with a log link has a coefficient of −0.5 on a safety-intervention indicator. By what multiplicative factor does the intervention change the expected count, e^−0.5? Give a decimal to three places.",
+    answerKey: 0.607,
+    tolerance: 0.005,
+    difficulty: 0.6,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["glm", "exponential-family"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "glm--apply-logit-coefficient-interpretation",
+    conceptId: "glm",
+    format: "mcq",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "A GLM for a proportion between 0 and 1 (not a count) uses a binomial response and a logit link. The fitted coefficient on a predictor is 0.4. What is the correct interpretation?",
+    choices: [
+      { id: "a", text: "A one-unit increase in the predictor multiplies the odds of the outcome by e^0.4 ≈ 1.49", correct: true },
+      {
+        id: "b",
+        text: "It multiplies the proportion itself by e^0.4",
+        correct: false,
+        misconception: {
+          id: "logit-coefficient-applied-to-proportion-scale",
+          description: "Exponentiating a logit coefficient gives a multiplicative effect on the odds, not on the proportion (probability) directly.",
+          blameConceptId: "glm",
+        },
+      },
+      {
+        id: "c",
+        text: "It adds 0.4 to the proportion directly",
+        correct: false,
+        misconception: {
+          id: "logit-coefficient-treated-as-identity-link",
+          description: "An additive effect on the response scale is what the identity link would give; the logit link's coefficient is additive on the log-odds, not the proportion.",
+          blameConceptId: "glm",
+        },
+      },
+      {
+        id: "d",
+        text: "It has no closed-form interpretation, unlike the Poisson (log-link) case",
+        correct: false,
+        misconception: {
+          id: "logit-coefficient-thought-uninterpretable",
+          description: "The logit link always has the odds-ratio interpretation via exponentiation, just as reliably as the log link's multiplicative interpretation.",
+          blameConceptId: "glm",
+        },
+      },
+    ],
+    difficulty: 1.1,
+    discrimination: 1.5,
+    expectedSeconds: 100,
+    prereqClosure: ["glm", "logistic-regression", "exponential-family"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "glm--explain-canonical-pairing-benefit",
+    conceptId: "glm",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain what it means for a GLM's response distribution and link to be 'canonically paired', and what " +
+      "practical property this pairing buys during fitting (iteratively reweighted least squares).",
+    rubric: {
+      elements: [
+        {
+          id: "pairing-defined",
+          description: "A canonical pairing uses the link equal to the distribution's natural parameter, so the linear predictor directly equals the natural parameter of the exponential-family form.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "practical-benefit",
+          description:
+            "Practically, this simplifies the score equations and expected-information (Fisher scoring) computations used by IRLS, since several terms that would otherwise need to be tracked separately coincide — non-canonical links still work but require carrying the extra link derivative explicitly.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["glm", "exponential-family"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "glm--explain-variance-function-baked-in",
+    conceptId: "glm",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "A Poisson GLM assumes Var(Y) = μ exactly. Explain, using the concept of a GLM's variance function, how " +
+      "this assumption is baked into the model's estimating equations even before any data is seen.",
+    rubric: {
+      elements: [
+        {
+          id: "variance-function-per-distribution",
+          description:
+            "Each exponential-family response has its own variance function V(μ) relating the mean to the variance (V(μ) = μ for Poisson, μ(1−μ) for Bernoulli, a constant for Normal), and the GLM's weighted fitting step weights each observation by the inverse of this variance function — the mean-variance relationship is a modelling choice baked into how much each point is trusted, not something checked afterward.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "overdispersion-link",
+          description: "Bonus: notes this is exactly why overdispersion (real variance exceeding μ) breaks the standard-error calculation without necessarily biasing the coefficient point estimates much.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.95,
+    discrimination: 1.6,
+    expectedSeconds: 220,
+    prereqClosure: ["glm", "exponential-family"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "glm--transfer-offset-vs-covariate",
+    conceptId: "glm",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A GLM predicting monthly claims count uses an offset term (a fixed coefficient of 1 on log(exposure " +
+      "months)) rather than treating exposure as an ordinary predictor. Explain what an offset accomplishes " +
+      "here, and why it differs from just including log(exposure) as a regular covariate with its own estimated " +
+      "coefficient.",
+    rubric: {
+      elements: [
+        {
+          id: "offset-forces-proportionality",
+          description:
+            "An offset forces the model to assume the response scales exactly proportionally with exposure (rate × exposure), the standard assumption for count data collected over varying observation periods — it turns the model into one for the underlying rate, with exposure entering only to convert that rate back into an expected count.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "estimated-coefficient-relaxes-assumption",
+          description:
+            "Estimating log(exposure)'s coefficient freely instead would let the data override that proportionality assumption, appropriate only if there is reason to think the count-exposure relationship is not exactly linear — otherwise the offset is the more principled, parameter-free choice.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.2,
+    discrimination: 1.7,
+    expectedSeconds: 240,
+    prereqClosure: ["glm", "exponential-family"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+  {
+    id: "glm--transfer-zero-mass-breaks-gamma",
+    conceptId: "glm",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A GLM is fit with a log link on a response that can equal exactly zero for many observations (e.g. " +
+      "insurance claims, many of which are $0). Explain the specific problem this creates for the standard " +
+      "gamma-with-log-link GLM, and name a model designed for this situation.",
+    rubric: {
+      elements: [
+        {
+          id: "gamma-support-excludes-zero",
+          description:
+            "The gamma distribution's support is strictly positive, so it cannot assign any probability mass to an outcome of exactly zero — a response with a genuine spike at zero is structurally incompatible with a plain gamma GLM, not merely poorly fit by it.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "fix-named",
+          description:
+            "Names a fix designed for this: a tweedie GLM (allowing a point mass at zero alongside a continuous positive part), or a two-part hurdle/zero-inflated model that separately models whether the outcome is zero and, if not, its positive magnitude.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.31,
+    discrimination: 1.7,
+    expectedSeconds: 240,
+    prereqClosure: ["glm", "exponential-family"],
+    source: BISHOP_PRML,
+    status: "live",
+  },
+
+  // --- Cox Proportional Hazards Model -------------------------------------------------
+  {
+    id: "cox-proportional-hazards-model--recall-censoring-definition",
+    conceptId: "cox-proportional-hazards-model",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "In the Cox model, 'censoring' refers to:",
+    choices: [
+      { id: "a", text: "a subject's true event time being known only to exceed some observed time, e.g. because the study ended before they had the event", correct: true },
+      {
+        id: "b",
+        text: "a subject being removed from the dataset entirely and excluded from the analysis",
+        correct: false,
+        misconception: {
+          id: "censoring-confused-with-exclusion",
+          description: "Censored subjects stay in the analysis and contribute information (they remain in risk sets) — they are not dropped.",
+          blameConceptId: "cox-proportional-hazards-model",
+        },
+      },
+      {
+        id: "c",
+        text: "a subject who had the event at the very start of the study",
+        correct: false,
+        misconception: {
+          id: "censoring-confused-with-early-event",
+          description: "An early event is a fully observed event time, the opposite of censoring, which means the event time is not fully observed.",
+          blameConceptId: "cox-proportional-hazards-model",
+        },
+      },
+      {
+        id: "d",
+        text: "an error in the recorded event time that must be corrected before analysis",
+        correct: false,
+        misconception: {
+          id: "censoring-confused-with-data-error",
+          description: "Censoring is an expected, modelled feature of survival data, not a data-entry error to be fixed.",
+          blameConceptId: "cox-proportional-hazards-model",
+        },
+      },
+    ],
+    difficulty: -1.6,
+    discrimination: 1.1,
+    expectedSeconds: 40,
+    prereqClosure: ["cox-proportional-hazards-model"],
+    source: SINGER_WILLETT,
+    status: "live",
+  },
+  {
+    id: "cox-proportional-hazards-model--recall-baseline-hazard-role",
+    conceptId: "cox-proportional-hazards-model",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "What does the baseline hazard h₀(t) represent in the Cox model, and why does the model never need to estimate its functional form to fit β?",
+    rubric: {
+      elements: [
+        { id: "baseline-hazard-definition", description: "h₀(t) is the hazard for a hypothetical subject with all covariates equal to zero, as a function of time.", weight: 3, required: true },
+        {
+          id: "cancels-in-partial-likelihood",
+          description: "β is fit via the partial likelihood, in which h₀(t) cancels out of every risk-set comparison, so its shape never needs to be specified or estimated for β to be found.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.1,
+    discrimination: 1.1,
+    expectedSeconds: 50,
+    prereqClosure: ["cox-proportional-hazards-model"],
+    source: SINGER_WILLETT,
+    status: "live",
+  },
+  {
+    id: "cox-proportional-hazards-model--apply-hazard-ratio-negative-coefficient",
+    conceptId: "cox-proportional-hazards-model",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A Cox model reports a coefficient of −0.5 on a treatment indicator. What is the hazard ratio, e^−0.5? Give a decimal to three places.",
+    answerKey: 0.607,
+    tolerance: 0.005,
+    difficulty: 0.5,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["cox-proportional-hazards-model"],
+    source: SINGER_WILLETT,
+    status: "live",
+  },
+  {
+    id: "cox-proportional-hazards-model--apply-risk-set-size-alternate",
+    conceptId: "cox-proportional-hazards-model",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "A trial follows 100 patients. By the time of the 20th event, 12 patients have already had the event and " +
+      "8 have been censored before that time. How many patients are in the risk set for the 20th event, " +
+      "including the one who fails? Give a whole number.",
+    answerKey: 80,
+    tolerance: 0.001,
+    difficulty: 0.9,
+    discrimination: 1.5,
+    expectedSeconds: 110,
+    prereqClosure: ["cox-proportional-hazards-model"],
+    source: SINGER_WILLETT,
+    status: "live",
+  },
+  {
+    id: "cox-proportional-hazards-model--explain-ratio-independent-of-baseline-shape",
+    conceptId: "cox-proportional-hazards-model",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why the Cox model's coefficients can be interpreted the same way (as log hazard ratios) " +
+      "regardless of what the true, unspecified shape of h₀(t) turns out to be.",
+    rubric: {
+      elements: [
+        {
+          id: "multiplicative-and-shape-independent",
+          description:
+            "The covariate effect enters multiplicatively as exp(xᵀβ), which scales the hazard by the same factor at every time t regardless of what h₀(t) happens to be — so the ratio of hazards between two covariate profiles is exp(xᵀβ) at every t, and does not depend on h₀(t)'s shape at all.",
+          weight: 5,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.5,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["cox-proportional-hazards-model"],
+    source: SINGER_WILLETT,
+    status: "live",
+  },
+  {
+    id: "cox-proportional-hazards-model--explain-no-median-survival-alone",
+    conceptId: "cox-proportional-hazards-model",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why the Cox model cannot, on its own, provide a predicted median survival time for a new " +
+      "subject with specific covariates, even though it readily provides a hazard ratio.",
+    rubric: {
+      elements: [
+        {
+          id: "hazard-ratio-is-only-relative",
+          description:
+            "A hazard ratio only describes the multiplicative relationship between two subjects' hazards; getting from a hazard to a survival time additionally requires knowing the baseline hazard's actual shape (or the cumulative baseline hazard), which the partial-likelihood fit of β deliberately never estimates.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "breslow-estimator-needed",
+          description: "A separate, additional estimate of the baseline cumulative hazard (e.g. the Breslow estimator) is needed on top of the fitted β to produce absolute survival predictions.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.7,
+    expectedSeconds: 230,
+    prereqClosure: ["cox-proportional-hazards-model"],
+    source: SINGER_WILLETT,
+    status: "live",
+  },
+  {
+    id: "cox-proportional-hazards-model--transfer-timing-vs-cure-effect",
+    conceptId: "cox-proportional-hazards-model",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A Cox model is fit to compare two treatments, and the resulting hazard ratio is reported as the headline " +
+      "result. A referee objects that this hides whether the treatment effect is about delaying the event or " +
+      "about preventing it in a fraction of patients who would otherwise never have it. Explain the distinction " +
+      "the referee is pointing to, and why the Cox model's structure cannot tell the two apart.",
+    rubric: {
+      elements: [
+        {
+          id: "distinction-named",
+          description:
+            "The referee is distinguishing an accelerating/decelerating effect on timing for everyone who would eventually have the event, versus a 'cure' effect where a genuine subgroup never experiences the event at all (a mixture-cure scenario) — both can produce a similar-looking constant hazard ratio over the observed follow-up.",
+          weight: 5,
+          required: true,
+        },
+        {
+          id: "cox-cannot-distinguish",
+          description:
+            "The plain Cox model assumes proportional hazards over the whole population and has no built-in mechanism to represent a subgroup that is simply never at risk, so it cannot distinguish these two very different clinical stories from the hazard ratio alone — a cure-rate or mixture model is needed to separate them.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.2,
+    discrimination: 1.8,
+    expectedSeconds: 250,
+    prereqClosure: ["cox-proportional-hazards-model"],
+    source: SINGER_WILLETT,
+    status: "live",
+  },
+  {
+    id: "cox-proportional-hazards-model--transfer-semi-vs-fully-parametric",
+    conceptId: "cox-proportional-hazards-model",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Compare the Cox model's semi-parametric structure to a fully parametric survival model (e.g. assuming " +
+      "an exponential or Weibull baseline hazard). What is gained by leaving h₀(t) unspecified, and what is " +
+      "given up?",
+    rubric: {
+      elements: [
+        {
+          id: "gained-robustness",
+          description: "Gained: robustness — the estimated β does not depend on correctly guessing the shape of the baseline hazard, which is hard to know a priori and easy to get wrong.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "given-up-absolute-predictions-and-efficiency",
+          description:
+            "Given up: the model alone cannot produce absolute survival probabilities or extrapolate hazard behaviour beyond the observed follow-up period without an additional baseline-hazard estimate, whereas a correctly-specified fully parametric model can do both directly and often more efficiently (smaller standard errors) if its parametric assumption happens to be right.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.32,
+    discrimination: 1.7,
+    expectedSeconds: 250,
+    prereqClosure: ["cox-proportional-hazards-model", "glm"],
+    source: SINGER_WILLETT,
+    status: "live",
+  },
 ];
