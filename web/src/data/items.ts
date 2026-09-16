@@ -285,6 +285,36 @@ export const items: Item[] = [
     source: OCW_18_05,
     status: "live",
   },
+  {
+    id: "bayes-rule--recall-statement",
+    conceptId: "bayes-rule",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "State Bayes' Rule for P(A | B) in terms of P(B | A), P(A), and P(B).",
+    rubric: {
+      elements: [
+        {
+          id: "formula",
+          description: "Gives P(A | B) = P(B | A)·P(A) / P(B).",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "names-the-parts",
+          description:
+            "Names P(A) as the prior, P(B | A) as the likelihood, and P(A | B) as the posterior.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: -1.8,
+    discrimination: 1.0,
+    expectedSeconds: 40,
+    prereqClosure: ["conditional-probability", "probability-function"],
+    source: OCW_18_05,
+    status: "live",
+  },
 
   // --- Rank -----------------------------------------------------------------
   {
@@ -326,6 +356,53 @@ export const items: Item[] = [
     difficulty: 0.2,
     discrimination: 1.5,
     expectedSeconds: 150,
+    prereqClosure: ["column-space", "row-space"],
+    source: STRANG_18_06,
+    status: "live",
+  },
+  {
+    id: "rank--recall-definition",
+    conceptId: "rank",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The rank of a matrix A is:",
+    choices: [
+      { id: "a", text: "the dimension of its column space (equivalently, of its row space)", correct: true },
+      {
+        id: "b",
+        text: "the number of rows of A",
+        correct: false,
+        misconception: {
+          id: "rank-as-row-count",
+          description: "Confuses the ambient dimension of the row space with the number of independent directions actually spanned within it.",
+          blameConceptId: "row-space",
+        },
+      },
+      {
+        id: "c",
+        text: "the number of nonzero entries of A",
+        correct: false,
+        misconception: {
+          id: "rank-as-nonzero-count",
+          description: "Treats rank as a count of nonzero entries rather than as a dimension of a spanned subspace.",
+          blameConceptId: "column-space",
+        },
+      },
+      {
+        id: "d",
+        text: "the largest entry of A",
+        correct: false,
+        misconception: {
+          id: "rank-as-largest-entry",
+          description: "Confuses rank, a structural property of the matrix as a linear map, with the size of one number inside it.",
+          blameConceptId: "column-space",
+        },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.1,
+    expectedSeconds: 30,
     prereqClosure: ["column-space", "row-space"],
     source: STRANG_18_06,
     status: "live",
@@ -535,6 +612,277 @@ export const items: Item[] = [
     expectedSeconds: 240,
     prereqClosure: ["mutual-independence", "variance"],
     source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--recall-mean-variance-formula",
+    conceptId: "bernoulli-binomial",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "handwritten", "spoken"],
+    stem: "State the mean and the variance of X ~ Binomial(n, p) in terms of n and p.",
+    rubric: {
+      elements: [
+        { id: "mean", description: "Gives E[X] = np.", weight: 2, required: true },
+        { id: "variance", description: "Gives Var(X) = np(1 − p).", weight: 2, required: true },
+      ],
+    },
+    difficulty: -2.2,
+    discrimination: 1.0,
+    expectedSeconds: 40,
+    prereqClosure: ["expectation", "variance"],
+    source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--recall-support",
+    conceptId: "bernoulli-binomial",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "For X ~ Binomial(n, p), what is the support of X (the set of values it can take)?",
+    choices: [
+      { id: "a", text: "{0, 1, 2, …, n}", correct: true },
+      {
+        id: "b",
+        text: "{0, 1}",
+        correct: false,
+        misconception: {
+          id: "confuses-with-bernoulli",
+          description: "Gives the support of a single Bernoulli trial rather than of the count of n such trials.",
+          blameConceptId: "bernoulli-binomial",
+        },
+      },
+      {
+        id: "c",
+        text: "All nonnegative integers",
+        correct: false,
+        misconception: {
+          id: "drops-the-upper-bound",
+          description: "Forgets that a count of successes out of n trials can never exceed n.",
+          blameConceptId: "pmf",
+        },
+      },
+      {
+        id: "d",
+        text: "{1, 2, …, n}",
+        correct: false,
+        misconception: {
+          id: "excludes-zero-successes",
+          description: "Excludes the possibility of zero successes, which has positive probability (1 − p)ⁿ whenever p < 1.",
+          blameConceptId: "pmf",
+        },
+      },
+    ],
+    difficulty: -2.5,
+    discrimination: 1.0,
+    expectedSeconds: 25,
+    prereqClosure: ["pmf"],
+    source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--apply-no-successes",
+    conceptId: "bernoulli-binomial",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "A salesperson closes a sale with probability 0.25 on each of 8 independent calls in a day. " +
+      "What is the probability that none of the calls result in a sale? Give a decimal to three places.",
+    answerKey: 0.1,
+    tolerance: 0.005,
+    difficulty: -0.7,
+    discrimination: 1.2,
+    expectedSeconds: 60,
+    prereqClosure: ["pmf", "mutual-independence"],
+    source: BLITZSTEIN,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--apply-defect-count",
+    conceptId: "bernoulli-binomial",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A factory's defect rate is 5% per unit, independently across units. In a sample of 15 units, " +
+      "what is the probability that exactly 2 are defective? Give a decimal to three places.",
+    answerKey: 0.135,
+    tolerance: 0.005,
+    difficulty: 0.1,
+    discrimination: 1.3,
+    expectedSeconds: 90,
+    prereqClosure: ["pmf", "binomial-theorem"],
+    source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--apply-n-from-variance-p",
+    conceptId: "bernoulli-binomial",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A binomial distribution has variance 4 and p = 0.2. Find n. (Hint: divide the variance by p(1 − p).)",
+    answerKey: 25,
+    tolerance: 0.001,
+    difficulty: 1.1,
+    discrimination: 1.6,
+    expectedSeconds: 120,
+    prereqClosure: ["expectation", "variance"],
+    source: CASELLA_BERGER,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--explain-why-independence-needed",
+    conceptId: "bernoulli-binomial",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "The binomial PMF C(n,k)pᵏ(1−p)ⁿ⁻ᵏ assumes the trials are independent. Explain what would go wrong " +
+      "with the formula if consecutive trials were positively correlated.",
+    rubric: {
+      elements: [
+        {
+          id: "multiplication-needs-independence",
+          description:
+            "Explains that multiplying pᵏ(1−p)ⁿ⁻ᵏ for one ordering is only valid because independence lets probabilities of individual outcomes multiply.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "assumes-independence",
+            description: "Applies the binomial formula without checking whether trials are independent.",
+            blameConceptId: "mutual-independence",
+          },
+        },
+        {
+          id: "consequence",
+          description:
+            "Notes that positive correlation would make extreme counts (near 0 or near n) more likely than the formula predicts, understating the true spread.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.0,
+    discrimination: 1.5,
+    expectedSeconds: 150,
+    prereqClosure: ["mutual-independence", "pmf"],
+    source: BLITZSTEIN,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--explain-symmetry-p-and-complement",
+    conceptId: "bernoulli-binomial",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why P(X = k) for Binomial(n, p) equals P(X = n − k) for Binomial(n, 1 − p), using the roles " +
+      "of 'success' and 'failure.'",
+    rubric: {
+      elements: [
+        {
+          id: "relabelling",
+          description:
+            "Explains that swapping the labels 'success' and 'failure' turns k successes out of n into n − k 'successes' under the relabelled scheme with probability 1 − p.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "coefficient-symmetry",
+          description: "Notes C(n, k) = C(n, n − k), so the counting factor matches under the relabelling too.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.6,
+    discrimination: 1.4,
+    expectedSeconds: 120,
+    prereqClosure: ["pmf", "binomial-theorem"],
+    source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--transfer-sum-of-binomials",
+    conceptId: "bernoulli-binomial",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "X ~ Binomial(10, 0.3) and Y ~ Binomial(15, 0.3) are independent. A colleague claims X + Y ~ " +
+      "Binomial(25, 0.3). Is this correct? Justify it, and say what condition would make it fail.",
+    rubric: {
+      elements: [
+        {
+          id: "correct-given-equal-p",
+          description:
+            "States the claim is correct here, because X and Y can each be written as sums of independent Bernoulli(0.3) trials, so X + Y is a sum of 25 independent Bernoulli(0.3) trials.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "would-fail-if-p-differs",
+          description:
+            "Identifies that the result fails if the two binomials have different success probabilities — the sum is then not binomial at all.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "assumes-sum-always-binomial",
+            description: "Assumes any sum of independent binomials is binomial, without checking that the success probabilities match.",
+            blameConceptId: "bernoulli-binomial",
+          },
+        },
+      ],
+    },
+    difficulty: 1.8,
+    discrimination: 1.7,
+    expectedSeconds: 180,
+    prereqClosure: ["mutual-independence", "pmf"],
+    source: BLITZSTEIN,
+    status: "live",
+  },
+  {
+    id: "bernoulli-binomial--transfer-negative-correlation-variance",
+    conceptId: "bernoulli-binomial",
+    format: "derivation",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Suppose n Bernoulli(p) trials are negatively correlated (as when sampling without replacement from " +
+      "a finite population), so Cov(Xᵢ, Xⱼ) < 0 for i ≠ j. Compare Var(ΣXᵢ) to the binomial variance " +
+      "np(1 − p), and give the intuitive reason using a finite-population argument.",
+    rubric: {
+      elements: [
+        {
+          id: "variance-decomposition",
+          description:
+            "Writes Var(ΣXᵢ) = np(1 − p) + n(n − 1)·Cov(Xᵢ, Xⱼ), so negative pairwise covariance pulls the total below the binomial value.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "assumes-independence",
+            description: "Applies the binomial variance formula without accounting for the covariance terms between correlated trials.",
+            blameConceptId: "mutual-independence",
+          },
+        },
+        {
+          id: "intuition",
+          description:
+            "Explains the mechanism: sampling without replacement means an early success depletes the finite pool of remaining successes, making a later success less likely — so counts cluster closer to the mean than independent trials would.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.8,
+    expectedSeconds: 240,
+    prereqClosure: ["mutual-independence", "variance"],
+    source: CASELLA_BERGER,
     status: "live",
   },
 
@@ -2850,6 +3198,1866 @@ export const items: Item[] = [
     difficulty: 1.7,
     discrimination: 1.9,
     expectedSeconds: 240,
+    prereqClosure: ["jensen-inequality", "expectation"],
+    source: BISHOP,
+    status: "live",
+  },
+
+  // =========================================================================
+  // Second authoring pass — doubling the pool for every concept above that
+  // already had a full 8-item bank, keeping the difficulty spread wide and
+  // adding genuine recall where the original pool leaned toward apply/explain.
+  // =========================================================================
+
+  // --- Central Limit Theorem (additional items) -----------------------------
+  {
+    id: "central-limit-theorem--recall-variance-requirement",
+    conceptId: "central-limit-theorem",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The classical central limit theorem requires the population to have:",
+    choices: [
+      { id: "a", text: "finite variance", correct: true },
+      {
+        id: "b",
+        text: "a known variance",
+        correct: false,
+        misconception: {
+          id: "clt-needs-known-variance",
+          description: "Confuses needing a finite variance for the theorem to hold with needing to already know its value.",
+          blameConceptId: "central-limit-theorem",
+        },
+      },
+      {
+        id: "c",
+        text: "a symmetric shape",
+        correct: false,
+        misconception: {
+          id: "clt-needs-symmetry",
+          description: "Skewness only slows convergence; it does not block the theorem.",
+          blameConceptId: "central-limit-theorem",
+        },
+      },
+      {
+        id: "d",
+        text: "at least 30 observations",
+        correct: false,
+        misconception: {
+          id: "rule-of-thumb-as-hypothesis",
+          description: "Promotes a rule of thumb about approximation quality into a hypothesis of the theorem, which is a statement about a limit.",
+          blameConceptId: "central-limit-theorem",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.2,
+    expectedSeconds: 35,
+    prereqClosure: ["variance"],
+    source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "central-limit-theorem--recall-what-converges",
+    conceptId: "central-limit-theorem",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "State the CLT's conclusion in words: as n grows, what shape does the distribution of the sample " +
+      "mean approach, and around what center and spread?",
+    rubric: {
+      elements: [
+        {
+          id: "shape",
+          description: "States that the (standardized) sample mean's distribution approaches Normal.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "center-and-spread",
+          description: "Names the center as μ and the spread as σ/√n (before standardizing).",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.6,
+    discrimination: 1.1,
+    expectedSeconds: 40,
+    prereqClosure: ["normal-distribution", "variance"],
+    source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "central-limit-theorem--apply-standard-error",
+    conceptId: "central-limit-theorem",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "A population has standard deviation 40. A sample of n = 25 is drawn. What is the standard error " +
+      "of the sample mean X̄?",
+    answerKey: 8,
+    tolerance: 0.01,
+    difficulty: 0.4,
+    discrimination: 1.3,
+    expectedSeconds: 45,
+    prereqClosure: ["variance"],
+    source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "central-limit-theorem--apply-tail-probability",
+    conceptId: "central-limit-theorem",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A population has mean 10 and standard deviation 5, and n = 49. Using the CLT approximation, what is " +
+      "P(X̄ < 9)? Give a decimal to three places.",
+    answerKey: 0.081,
+    tolerance: 0.005,
+    difficulty: 1.3,
+    discrimination: 1.6,
+    expectedSeconds: 120,
+    prereqClosure: ["normal-distribution", "variance", "cdf"],
+    source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "central-limit-theorem--explain-autocorrelated-data",
+    conceptId: "central-limit-theorem",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "The CLT requires the Xᵢ to be independent. Explain what specifically fails, and what happens to the " +
+      "usual standard-error formula, if the data instead consists of repeated measurements on a single " +
+      "individual over time (autocorrelated).",
+    rubric: {
+      elements: [
+        {
+          id: "independence-fails",
+          description: "Explains that consecutive measurements on the same individual are correlated, so the iid hypothesis is violated.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "iid-assumed-without-checking",
+            description: "Applies the CLT's σ/√n standard error without checking that the observations are actually independent.",
+            blameConceptId: "mutual-independence",
+          },
+        },
+        {
+          id: "consequence",
+          description:
+            "States that the effective sample size is smaller than n, so σ/√n underestimates the true standard error and confidence intervals built from it are too narrow.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.4,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["mutual-independence", "variance"],
+    source: WASSERMAN,
+    status: "live",
+  },
+  {
+    id: "central-limit-theorem--explain-skewness-slows-convergence",
+    conceptId: "central-limit-theorem",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why the CLT approximation for X̄ is worse, at the same n, when the population is heavily " +
+      "skewed than when it is symmetric.",
+    rubric: {
+      elements: [
+        {
+          id: "berry-esseen-intuition",
+          description:
+            "Explains that the rate of convergence to Normality depends on higher moments (informally, the Berry–Esseen bound scales with the population's third absolute moment relative to σ³√n).",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "skew-has-larger-third-moment",
+          description:
+            "States that a skewed population has a larger third moment than a symmetric one, so its sample mean's distribution takes larger n to look Normal.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "n-30-treated-as-universal",
+            description: "Treats 'n ≥ 30 is enough' as a universal fact, ignoring that the needed n depends on how skewed the population is.",
+            blameConceptId: "central-limit-theorem",
+          },
+        },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["variance", "modes-of-convergence"],
+    source: WASSERMAN,
+    status: "live",
+  },
+  {
+    id: "central-limit-theorem--transfer-small-n-skewed-tail",
+    conceptId: "central-limit-theorem",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A quality engineer treats X̄ as exactly Normal for a sample of n = 5 drawn from a heavily " +
+      "right-skewed lead-time distribution, in order to set a 99.9% control limit. Explain why this " +
+      "application is risky, and what evidence would make it more defensible.",
+    rubric: {
+      elements: [
+        {
+          id: "n-too-small-for-skew",
+          description:
+            "Explains that n = 5 is far too small for the CLT to have taken effect on a heavily skewed population, especially for an extreme (99.9%) quantile that sits deep in the tail where the approximation error is worst.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "assumes-clt-always-applies",
+            description: "Invokes the CLT as though it applies uniformly well regardless of n, skewness, or how extreme the quantile of interest is.",
+            blameConceptId: "central-limit-theorem",
+          },
+        },
+        {
+          id: "remedy",
+          description:
+            "Recommends checking with simulation, bootstrapping, or a larger historical sample rather than trusting the Normal approximation at the tail.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.8,
+    expectedSeconds: 180,
+    prereqClosure: ["variance", "modes-of-convergence"],
+    source: WASSERMAN,
+    status: "live",
+  },
+  {
+    id: "central-limit-theorem--transfer-large-n-not-sufficient",
+    conceptId: "central-limit-theorem",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Two analysts each build a 95% CI for a mean from n = 10,000 observations. One is averaging iid " +
+      "transaction amounts; the other is averaging daily website error counts collected during a period " +
+      "when a single outage caused correlated spikes across many days. Explain why the same n offers very " +
+      "different protection in the two cases.",
+    rubric: {
+      elements: [
+        {
+          id: "independence-not-n-is-the-condition",
+          description:
+            "States that the CLT's guarantee needs independence, not merely a large n — large n alone does not fix a violated independence assumption.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "large-n-fixes-all",
+            description: "Assumes any sufficiently large n makes the CLT's Normal approximation trustworthy, regardless of whether the data are independent.",
+            blameConceptId: "central-limit-theorem",
+          },
+        },
+        {
+          id: "effective-n-smaller",
+          description:
+            "Explains that correlated spikes during the outage mean the second dataset's effective sample size is much smaller than 10,000, so its naive standard error understates the true uncertainty.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.8,
+    expectedSeconds: 210,
+    prereqClosure: ["mutual-independence", "modes-of-convergence"],
+    source: WASSERMAN,
+    status: "live",
+  },
+
+  // --- Change of Variables (Jacobian) (additional items) --------------------
+  {
+    id: "change-of-variables-jacobian--recall-univariate-name",
+    conceptId: "change-of-variables-jacobian",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "In the one-dimensional change-of-variables formula, the factor |dg⁻¹/dy| is:",
+    choices: [
+      { id: "a", text: "the derivative of the inverse transformation, evaluated at y", correct: true },
+      {
+        id: "b",
+        text: "the second derivative of g",
+        correct: false,
+        misconception: {
+          id: "confuses-order-of-derivative",
+          description: "Names the wrong order of derivative; the formula needs only the first derivative of the inverse map.",
+          blameConceptId: "determinant",
+        },
+      },
+      {
+        id: "c",
+        text: "the integral of g over its domain",
+        correct: false,
+        misconception: {
+          id: "confuses-derivative-with-integral",
+          description: "Substitutes an integral for a derivative, which are opposite operations.",
+          blameConceptId: "pdf",
+        },
+      },
+      {
+        id: "d",
+        text: "the inverse function g⁻¹ itself",
+        correct: false,
+        misconception: {
+          id: "confuses-function-with-its-derivative",
+          description: "Confuses the transformation with its rate of change.",
+          blameConceptId: "determinant",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.1,
+    expectedSeconds: 30,
+    prereqClosure: ["determinant"],
+    source: STRANG_18_06,
+    status: "live",
+  },
+  {
+    id: "change-of-variables-jacobian--recall-three-factors",
+    conceptId: "change-of-variables-jacobian",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "In f_Y(y) = f_X(g⁻¹(y))·|det J(y)|, name what each of the three pieces on the right-hand side " +
+      "contributes, in one phrase each.",
+    rubric: {
+      elements: [
+        {
+          id: "composition",
+          description: "f_X(g⁻¹(y)) evaluates the original density at the point that maps to y.",
+          weight: 2,
+          required: true,
+        },
+        {
+          id: "determinant",
+          description: "det J is the local volume-scaling factor of the transformation.",
+          weight: 2,
+          required: true,
+        },
+        {
+          id: "absolute-value",
+          description: "The absolute value keeps the result nonnegative, since a density can never be negative.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: -1.3,
+    discrimination: 1.1,
+    expectedSeconds: 60,
+    prereqClosure: ["determinant", "pdf"],
+    source: CASELLA_BERGER,
+    status: "live",
+  },
+  {
+    id: "change-of-variables-jacobian--apply-exponential-from-uniform",
+    conceptId: "change-of-variables-jacobian",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "X ~ Uniform(0, 1) and Y = −ln(X). Using the change-of-variables formula, evaluate the density of Y " +
+      "at y = 1. Give a decimal to four places.",
+    answerKey: 0.3679,
+    tolerance: 0.001,
+    difficulty: 0.5,
+    discrimination: 1.4,
+    expectedSeconds: 120,
+    prereqClosure: ["pdf", "cdf"],
+    source: BLITZSTEIN,
+    status: "live",
+  },
+  {
+    id: "change-of-variables-jacobian--apply-linear-map-determinant",
+    conceptId: "change-of-variables-jacobian",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "For the linear map (x₁, x₂) ↦ (2x₁ + x₂, x₁ + 3x₂), compute the absolute value of the Jacobian " +
+      "determinant.",
+    answerKey: 5,
+    tolerance: 0.001,
+    difficulty: 1.0,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["determinant", "matrices"],
+    source: STRANG_18_06,
+    status: "live",
+  },
+  {
+    id: "change-of-variables-jacobian--explain-inverse-function-theorem-link",
+    conceptId: "change-of-variables-jacobian",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "The 1-D formula is sometimes written using g'(x) evaluated at x = g⁻¹(y) instead of (g⁻¹)'(y) " +
+      "evaluated at y. Explain why these give the same number.",
+    rubric: {
+      elements: [
+        {
+          id: "inverse-function-theorem",
+          description: "Invokes (g⁻¹)'(y) = 1/g'(g⁻¹(y)), the inverse function theorem, to relate the two expressions.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "same-value",
+          description: "Concludes both expressions, evaluated at their corresponding points, give the identical number — they are two ways of writing the same formula.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "treats-as-two-different-formulas",
+            description: "Treats the two expressions as competing formulas rather than as algebraically identical restatements.",
+            blameConceptId: "determinant",
+          },
+        },
+      ],
+    },
+    difficulty: 1.2,
+    discrimination: 1.5,
+    expectedSeconds: 150,
+    prereqClosure: ["pdf", "determinant"],
+    source: CASELLA_BERGER,
+    status: "live",
+  },
+  {
+    id: "change-of-variables-jacobian--explain-non-injective-failure",
+    conceptId: "change-of-variables-jacobian",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why the basic change-of-variables formula fails outright — not just becomes harder — when " +
+      "g is not injective, using Y = X² for X ranging over all of ℝ as the example.",
+    rubric: {
+      elements: [
+        {
+          id: "multiple-preimages",
+          description:
+            "Explains that a single y > 0 has two preimages (±√y), so probability mass from two different x-regions maps to the same y and must both be counted.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "applies-single-branch-formula",
+            description: "Applies the single-branch change-of-variables formula to a map that is not injective, silently dropping one preimage's contribution.",
+            blameConceptId: "pdf",
+          },
+        },
+        {
+          id: "corrected-formula",
+          description: "States the fix: sum |g'(xᵢ)|⁻¹f_X(xᵢ) over every preimage xᵢ of y, rather than using only one branch.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.7,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["pdf", "determinant"],
+    source: CASELLA_BERGER,
+    status: "live",
+  },
+  {
+    id: "change-of-variables-jacobian--transfer-inverse-transform-sampling",
+    conceptId: "change-of-variables-jacobian",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A simulation library draws U ~ Uniform(0, 1) and returns Y = F_Y⁻¹(U) to sample from a target " +
+      "density f_Y. Explain why this is a special case of the change-of-variables formula, and identify " +
+      "what plays the role of the Jacobian.",
+    rubric: {
+      elements: [
+        {
+          id: "maps-to-the-formula",
+          description:
+            "Identifies g = F_Y⁻¹ as the transformation, f_U ≡ 1 as the base density, and shows the Jacobian factor is d/du F_Y⁻¹(u) = 1/f_Y(F_Y⁻¹(u)).",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "self-consistency",
+          description: "Substitutes back into the general formula to show it returns exactly f_Y(y), confirming the technique works for any continuous distribution with an invertible CDF.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "treats-as-unrelated-trick",
+            description: "Treats inverse-transform sampling as an unrelated programming trick rather than an instance of the change-of-variables formula.",
+            blameConceptId: "pdf",
+          },
+        },
+      ],
+    },
+    difficulty: 2.2,
+    discrimination: 1.8,
+    expectedSeconds: 210,
+    prereqClosure: ["pdf", "determinant"],
+    source: BLITZSTEIN,
+    status: "live",
+  },
+  {
+    id: "change-of-variables-jacobian--transfer-mode-does-not-transform-like-mean",
+    conceptId: "change-of-variables-jacobian",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A researcher fits a Normal posterior for log(θ) and reports the posterior mode of θ by simply " +
+      "exponentiating the posterior mode of log(θ). Explain what changes about the density (not just the " +
+      "point estimate) under this transformation, and why the mode does not transform the same way a " +
+      "quantile does.",
+    rubric: {
+      elements: [
+        {
+          id: "extra-jacobian-factor",
+          description:
+            "Applies change-of-variables to show the density of θ is the density of log θ times |d(log θ)/dθ| = 1/θ, an extra factor absent from the log-space density.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "assumes-mode-invariant-under-transform",
+            description: "Assumes the location of a density's peak transforms the same simple way a quantile does under a monotone reparameterization.",
+            blameConceptId: "pdf",
+          },
+        },
+        {
+          id: "mode-shifts",
+          description:
+            "Concludes the extra, non-constant Jacobian factor shifts where the maximum sits, so the mode of θ's density is generally not the exponential of the mode of log θ's density — unlike the median, which is invariant under any monotone transform.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.8,
+    expectedSeconds: 210,
+    prereqClosure: ["pdf", "determinant"],
+    source: MML,
+    status: "live",
+  },
+
+  // --- Covariance Matrix (additional items) ---------------------------------
+  {
+    id: "covariance-matrix--recall-diagonal-is-variance",
+    conceptId: "covariance-matrix",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "Cov(X, X) equals:",
+    choices: [
+      { id: "a", text: "Var(X)", correct: true },
+      {
+        id: "b",
+        text: "0",
+        correct: false,
+        misconception: {
+          id: "self-covariance-as-zero",
+          description: "Treats covariance of a variable with itself as though it must vanish, like a cross term.",
+          blameConceptId: "variance",
+        },
+      },
+      {
+        id: "c",
+        text: "E[X]",
+        correct: false,
+        misconception: {
+          id: "self-covariance-as-mean",
+          description: "Confuses a second-moment quantity (covariance) with a first-moment one (the mean).",
+          blameConceptId: "covariance",
+        },
+      },
+      {
+        id: "d",
+        text: "1",
+        correct: false,
+        misconception: {
+          id: "self-covariance-as-one",
+          description: "Confuses covariance with a normalised quantity like correlation, which is 1 for a variable with itself.",
+          blameConceptId: "covariance",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.0,
+    expectedSeconds: 25,
+    prereqClosure: ["covariance", "variance"],
+    source: MML,
+    status: "live",
+  },
+  {
+    id: "covariance-matrix--recall-independence-implies-zero",
+    conceptId: "covariance-matrix",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "If X and Y are independent, what is Cov(X, Y)?",
+    choices: [
+      { id: "a", text: "0", correct: true },
+      {
+        id: "b",
+        text: "Var(X)·Var(Y)",
+        correct: false,
+        misconception: {
+          id: "covariance-as-variance-product",
+          description: "Confuses covariance with a product of variances rather than a measure of joint linear co-movement.",
+          blameConceptId: "covariance",
+        },
+      },
+      {
+        id: "c",
+        text: "Cannot be determined without more information",
+        correct: false,
+        misconception: {
+          id: "misses-independence-consequence",
+          description: "Independence is a strong enough condition on its own to pin down the covariance exactly.",
+          blameConceptId: "covariance",
+        },
+      },
+      {
+        id: "d",
+        text: "1",
+        correct: false,
+        misconception: {
+          id: "covariance-independence-as-one",
+          description: "Confuses independence, which forces zero covariance, with perfect correlation, which is the opposite case.",
+          blameConceptId: "covariance",
+        },
+      },
+    ],
+    difficulty: -1.5,
+    discrimination: 1.2,
+    expectedSeconds: 30,
+    prereqClosure: ["covariance"],
+    source: MML,
+    status: "live",
+  },
+  {
+    id: "covariance-matrix--apply-variance-of-linear-combination",
+    conceptId: "covariance-matrix",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Var(X₁) = 9, Var(X₂) = 4, Cov(X₁, X₂) = −2. Using Var(aX₁ + bX₂) = a²Var(X₁) + b²Var(X₂) + " +
+      "2ab·Cov(X₁, X₂), compute Var(2X₁ − X₂).",
+    answerKey: 48,
+    tolerance: 0.01,
+    difficulty: 0.6,
+    discrimination: 1.4,
+    expectedSeconds: 120,
+    prereqClosure: ["covariance", "variance", "matrix-multiplication"],
+    source: STRANG_18_06,
+    status: "live",
+  },
+  {
+    id: "covariance-matrix--apply-correlation-from-sigma",
+    conceptId: "covariance-matrix",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "Σ = [[4, 2], [2, 4]]. Compute the correlation ρ = Cov(X₁, X₂) / √(Var(X₁)·Var(X₂)).",
+    answerKey: 0.5,
+    tolerance: 0.01,
+    difficulty: 0.7,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["covariance", "variance"],
+    source: STRANG_18_06,
+    status: "live",
+  },
+  {
+    id: "covariance-matrix--explain-diagonal-iff-uncorrelated",
+    conceptId: "covariance-matrix",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why Σ being diagonal is equivalent to the components of X being pairwise uncorrelated, " +
+      "directly from the definition of Σ.",
+    rubric: {
+      elements: [
+        {
+          id: "off-diagonal-is-covariance",
+          description: "States that the off-diagonal entries of Σ are exactly the pairwise covariances Cov(Xᵢ, Xⱼ).",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "zero-means-uncorrelated",
+          description: "Concludes Σ diagonal ⟺ all these off-diagonal covariances are zero ⟺ pairwise uncorrelated, by definition.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "diagonal-assumed-independent",
+            description: "Concludes a diagonal Σ implies independence, when it only guarantees the weaker property of being uncorrelated.",
+            blameConceptId: "covariance",
+          },
+        },
+      ],
+    },
+    difficulty: 1.1,
+    discrimination: 1.5,
+    expectedSeconds: 120,
+    prereqClosure: ["covariance", "variance"],
+    source: MML,
+    status: "live",
+  },
+  {
+    id: "covariance-matrix--explain-correlation-matrix-is-not-covariance",
+    conceptId: "covariance-matrix",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "A data scientist standardises every feature to unit variance and then computes the covariance " +
+      "matrix of the standardised features, calling the result 'the covariance matrix.' Explain what " +
+      "object they have actually computed, and why calling it that is misleading.",
+    rubric: {
+      elements: [
+        {
+          id: "it-is-the-correlation-matrix",
+          description:
+            "Identifies that standardising to unit variance turns Σ into the correlation matrix: diagonal entries become 1 and off-diagonal entries become the pairwise correlations.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "correlation-and-covariance-conflated",
+            description: "Treats the correlation matrix and the covariance matrix of the original variables as the same object.",
+            blameConceptId: "covariance-matrix",
+          },
+        },
+        {
+          id: "discards-scale",
+          description: "Explains that it is a valid positive semi-definite matrix in its own right, but discards the original variables' scales, so it is not the covariance of the data as collected.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.3,
+    discrimination: 1.7,
+    expectedSeconds: 180,
+    prereqClosure: ["covariance", "variance"],
+    source: STRANG_18_06,
+    status: "live",
+  },
+  {
+    id: "covariance-matrix--transfer-frequency-mismatch",
+    conceptId: "covariance-matrix",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "An analyst estimates Σ for three assets from monthly returns, then uses that same Σ directly to " +
+      "justify a daily risk decision. What's wrong with this?",
+    rubric: {
+      elements: [
+        {
+          id: "frequency-specific",
+          description: "Explains that Σ estimated from monthly returns describes the covariation of monthly returns, not daily ones, so it cannot be plugged directly into a daily-horizon decision.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "sigma-treated-as-frequency-invariant",
+            description: "Treats a covariance matrix estimated at one time horizon as directly usable at another without rescaling assumptions.",
+            blameConceptId: "covariance-matrix",
+          },
+        },
+        {
+          id: "scaling-assumption",
+          description: "Notes that converting horizons is not a simple division by the number of days — it implicitly assumes iid returns across days, which volatility clustering typically violates.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["covariance", "variance"],
+    source: MML,
+    status: "live",
+  },
+  {
+    id: "covariance-matrix--transfer-factor-model-decomposition",
+    conceptId: "covariance-matrix",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "In a factor model, returns are X = Bf + ε, where f is a k-dimensional factor vector and ε is " +
+      "idiosyncratic noise, uncorrelated with f and across assets. Derive how Σ decomposes, and explain " +
+      "why this is useful when the number of assets p is much larger than the number of factors k.",
+    rubric: {
+      elements: [
+        {
+          id: "decomposition",
+          description: "Derives Σ = B·Cov(f)·Bᵀ + Cov(ε), with Cov(ε) diagonal because idiosyncratic noise is uncorrelated across assets.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "estimates-sigma-directly-ignoring-structure",
+            description: "Estimates the full unstructured Σ directly, ignoring a known factor structure that could regularise the estimate.",
+            blameConceptId: "rank",
+          },
+        },
+        {
+          id: "parameter-reduction",
+          description:
+            "Explains that this decomposition needs only about k(k+1)/2 + pk + p parameters instead of p(p+1)/2, dramatically reducing what must be estimated when p ≫ k — directly addressing the p ≫ n singularity problem raised elsewhere.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.8,
+    expectedSeconds: 210,
+    prereqClosure: ["covariance", "variance", "matrix-multiplication"],
+    source: MML,
+    status: "live",
+  },
+
+  // --- Bivariate Normal (additional items) ----------------------------------
+  {
+    id: "bivariate-normal--recall-marginal-is-normal",
+    conceptId: "bivariate-normal",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "For a bivariate normal pair (X, Y) with correlation ρ, the marginal distribution of X alone is:",
+    choices: [
+      { id: "a", text: "Normal with mean μ_X and variance σ_X²", correct: true },
+      {
+        id: "b",
+        text: "Not necessarily Normal, since it depends on ρ",
+        correct: false,
+        misconception: {
+          id: "marginal-depends-on-rho",
+          description: "Assumes the marginal shape depends on the correlation, when marginalising a bivariate normal always yields a Normal marginal regardless of ρ.",
+          blameConceptId: "bivariate-normal",
+        },
+      },
+      {
+        id: "c",
+        text: "Standard Normal, regardless of σ_X",
+        correct: false,
+        misconception: {
+          id: "marginal-forced-standard",
+          description: "Drops the marginal's own mean and variance parameters, replacing them with the standard Normal's.",
+          blameConceptId: "normal-distribution",
+        },
+      },
+      {
+        id: "d",
+        text: "Normal only if ρ = 0",
+        correct: false,
+        misconception: {
+          id: "marginal-normality-tied-to-rho-zero",
+          description: "Confuses when the *joint* factors into a product of independent Normals (ρ = 0) with the (always true) Normality of each marginal on its own.",
+          blameConceptId: "bivariate-normal",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.2,
+    expectedSeconds: 40,
+    prereqClosure: ["normal-distribution", "covariance"],
+    source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "bivariate-normal--recall-five-parameters",
+    conceptId: "bivariate-normal",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "Write the five numbers that parameterise a bivariate normal distribution, and give the constraint ρ " +
+      "must satisfy.",
+    rubric: {
+      elements: [
+        {
+          id: "five-parameters",
+          description: "Lists μ_X, μ_Y, σ_X², σ_Y², and ρ.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "constraint",
+          description: "States that ρ must lie strictly between −1 and 1 for a genuine (non-degenerate) density.",
+          weight: 2,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.6,
+    discrimination: 1.1,
+    expectedSeconds: 60,
+    prereqClosure: ["normal-distribution", "covariance"],
+    source: OCW_18_05,
+    status: "live",
+  },
+  {
+    id: "bivariate-normal--apply-conditional-mean-general",
+    conceptId: "bivariate-normal",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "(X, Y) is bivariate normal with μ_X = 5, μ_Y = 10, σ_X = 2, σ_Y = 3, ρ = 0.6. Compute E[Y | X = 7].",
+    answerKey: 11.8,
+    tolerance: 0.02,
+    difficulty: 0.5,
+    discrimination: 1.5,
+    expectedSeconds: 120,
+    prereqClosure: ["normal-distribution", "covariance", "joint-distribution", "expectation"],
+    source: CASELLA_BERGER,
+    status: "live",
+  },
+  {
+    id: "bivariate-normal--apply-conditional-variance-general",
+    conceptId: "bivariate-normal",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "For the same bivariate normal (μ_X = 5, μ_Y = 10, σ_X = 2, σ_Y = 3, ρ = 0.6), compute Var(Y | X = 7).",
+    answerKey: 5.76,
+    tolerance: 0.02,
+    difficulty: 1.2,
+    discrimination: 1.6,
+    expectedSeconds: 120,
+    prereqClosure: ["normal-distribution", "covariance", "variance", "joint-distribution"],
+    source: CASELLA_BERGER,
+    status: "live",
+  },
+  {
+    id: "bivariate-normal--explain-conditional-variance-constant",
+    conceptId: "bivariate-normal",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain, without computing anything, why Var(Y | X = x) for a bivariate normal does not depend on " +
+      "the specific value x.",
+    rubric: {
+      elements: [
+        {
+          id: "formula-has-no-x",
+          description: "Notes that the formula σ_Y²(1 − ρ²) has no x in it at all — the conditional mean shifts linearly with x, but the spread around it does not.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "expects-heteroskedasticity",
+            description: "Assumes conditional uncertainty must shrink or grow for extreme x, importing intuition from families where it does.",
+            blameConceptId: "bivariate-normal",
+          },
+        },
+        {
+          id: "contrast",
+          description: "Notes this is a special property of joint normality — most joint distributions have a conditional spread that genuinely does depend on x.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.7,
+    discrimination: 1.5,
+    expectedSeconds: 120,
+    prereqClosure: ["normal-distribution", "covariance", "variance", "joint-distribution"],
+    source: BISHOP,
+    status: "live",
+  },
+  {
+    id: "bivariate-normal--explain-rho-one-degenerate",
+    conceptId: "bivariate-normal",
+    format: "derivation",
+    cognitive: "explain",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Show algebraically why ρ = ±1 makes the bivariate normal density degenerate (undefined via the " +
+      "usual formula), and say what this means geometrically.",
+    rubric: {
+      elements: [
+        {
+          id: "denominator-vanishes",
+          description: "Identifies that the factor 1 − ρ² appears in the denominator of the normalising constant and in the exponent, and becomes zero at |ρ| = 1.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "geometric-reading",
+          description: "Explains that |ρ| = 1 means Y is an exact linear function of X, so the pair collapses onto a line — a 1-dimensional object with no 2-dimensional density with respect to area on the plane.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "rho-one-treated-as-strong-correlation",
+            description: "Treats |ρ| = 1 as merely 'very strong correlation' rather than as the degenerate boundary case where no genuine joint density exists.",
+            blameConceptId: "bivariate-normal",
+          },
+        },
+      ],
+    },
+    difficulty: 1.3,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["normal-distribution", "covariance", "joint-distribution"],
+    source: CASELLA_BERGER,
+    status: "live",
+  },
+  {
+    id: "bivariate-normal--transfer-tail-dependence",
+    conceptId: "bivariate-normal",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A financial model assumes two stocks' returns are bivariate normal with ρ = 0.3. During a market " +
+      "crash, both stocks are observed to crash together far more often than this model would predict, " +
+      "even though the linear correlation over the whole period is still about 0.3. Explain what's " +
+      "happening, and why relying on ρ alone understates the joint tail risk.",
+    rubric: {
+      elements: [
+        {
+          id: "no-tail-dependence-in-model",
+          description: "Explains that the bivariate normal has exactly zero tail dependence regardless of ρ — its joint tails thin out independently — while real returns often show genuine comovement concentrated in the tails.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "correlation-assumed-to-capture-tail-behavior",
+            description: "Treats a single correlation coefficient as capturing all forms of joint dependence, including how the variables behave together in extreme scenarios.",
+            blameConceptId: "bivariate-normal",
+          },
+        },
+        {
+          id: "consequence",
+          description: "Concludes that a model assuming bivariate normality will systematically underestimate the probability of simultaneous extreme losses.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.3,
+    discrimination: 1.9,
+    expectedSeconds: 210,
+    prereqClosure: ["covariance", "joint-distribution", "normal-distribution"],
+    source: BISHOP,
+    status: "live",
+  },
+  {
+    id: "bivariate-normal--transfer-exact-linearity-justifies-regression",
+    conceptId: "bivariate-normal",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Simple linear regression of Y on X assumes E[Y | X = x] is exactly linear in x. Explain the precise " +
+      "sense in which the bivariate normal model justifies that assumption, and give a joint distribution " +
+      "where it would be wrong to assume linearity.",
+    rubric: {
+      elements: [
+        {
+          id: "exact-not-approximate",
+          description: "States that under bivariate normality, E[Y | X = x] = μ_Y + ρ(σ_Y/σ_X)(x − μ_X) is the exact conditional mean, not merely a convenient approximation.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "assumes-linearity-always-approximate",
+            description: "Treats linear regression's straight-line assumption as always just a convenient approximation, missing that under joint normality it is exact.",
+            blameConceptId: "bivariate-normal",
+          },
+        },
+        {
+          id: "counterexample",
+          description: "Gives a joint distribution where the true regression function is curved — for example (X, X²), which is not bivariate normal — so assuming linearity there would be wrong.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.5,
+    discrimination: 1.8,
+    expectedSeconds: 210,
+    prereqClosure: ["covariance", "joint-distribution", "normal-distribution"],
+    source: BISHOP,
+    status: "live",
+  },
+
+  // --- Multivariate Normal (additional items) -------------------------------
+  {
+    id: "multivariate-normal--recall-parameter-count",
+    conceptId: "multivariate-normal",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "How many free parameters does a k-dimensional multivariate normal N_k(μ, Σ) have?",
+    choices: [
+      { id: "a", text: "k for the mean, plus k(k + 1)/2 for the symmetric Σ", correct: true },
+      {
+        id: "b",
+        text: "k for the mean and k for the variance only, assuming independent components",
+        correct: false,
+        misconception: {
+          id: "assumes-diagonal-sigma",
+          description: "Silently assumes a diagonal Σ rather than allowing the general symmetric positive definite case.",
+          blameConceptId: "covariance-matrix",
+        },
+      },
+      {
+        id: "c",
+        text: "k² for Σ, since it has k rows and k columns",
+        correct: false,
+        misconception: {
+          id: "double-counts-symmetric-entries",
+          description: "Counts every entry of Σ separately, double-counting the symmetric off-diagonal pairs.",
+          blameConceptId: "covariance-matrix",
+        },
+      },
+      {
+        id: "d",
+        text: "2k — one mean and one variance per dimension",
+        correct: false,
+        misconception: {
+          id: "ignores-covariances",
+          description: "Omits the off-diagonal covariance parameters entirely.",
+          blameConceptId: "covariance-matrix",
+        },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["covariance-matrix"],
+    source: BISHOP,
+    status: "live",
+  },
+  {
+    id: "multivariate-normal--recall-linear-combination-distribution",
+    conceptId: "multivariate-normal",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "If X ~ N_k(μ, Σ), what is the distribution of a linear combination aᵀX for a fixed vector a? Give " +
+      "its mean and variance.",
+    rubric: {
+      elements: [
+        {
+          id: "univariate-normal",
+          description: "States that aᵀX is univariate Normal.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "mean-and-variance",
+          description: "Gives mean aᵀμ and variance aᵀΣa.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.3,
+    discrimination: 1.2,
+    expectedSeconds: 60,
+    prereqClosure: ["covariance-matrix", "matrix-multiplication"],
+    source: MML,
+    status: "live",
+  },
+  {
+    id: "multivariate-normal--apply-determinant-2x2",
+    conceptId: "multivariate-normal",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "X ~ N₂(0, Σ) with Σ = [[6, 1], [1, 2]]. Compute |Σ|.",
+    answerKey: 11,
+    tolerance: 0.001,
+    difficulty: 0.5,
+    discrimination: 1.3,
+    expectedSeconds: 60,
+    prereqClosure: ["determinant", "covariance-matrix"],
+    source: STRANG_18_06,
+    status: "live",
+  },
+  {
+    id: "multivariate-normal--apply-variance-of-combination",
+    conceptId: "multivariate-normal",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "X ~ N₂(0, Σ) with Σ = [[6, 1], [1, 2]]. Compute Var(X₁ + 2X₂).",
+    answerKey: 18,
+    tolerance: 0.001,
+    difficulty: 1.3,
+    discrimination: 1.5,
+    expectedSeconds: 120,
+    prereqClosure: ["covariance-matrix", "variance", "matrix-multiplication"],
+    source: MML,
+    status: "live",
+  },
+  {
+    id: "multivariate-normal--explain-marginalisation-is-free",
+    conceptId: "multivariate-normal",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why any subset of components of a multivariate normal vector is itself multivariate normal, " +
+      "and why finding its parameters needs no integration.",
+    rubric: {
+      elements: [
+        {
+          id: "subblock-extraction",
+          description: "Explains that the marginal for a subset S is obtained by simply taking the corresponding rows/columns of μ and Σ.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "no-integration-needed",
+          description: "Contrasts this with a generic joint distribution, where obtaining a marginal requires integrating out the other variables.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "assumes-marginals-always-need-integration",
+            description: "Assumes every marginal distribution must be obtained by integrating out the remaining variables, missing the multivariate normal's closure property.",
+            blameConceptId: "multivariate-normal",
+          },
+        },
+      ],
+    },
+    difficulty: 0.9,
+    discrimination: 1.5,
+    expectedSeconds: 150,
+    prereqClosure: ["covariance-matrix", "joint-distribution"],
+    source: BISHOP,
+    status: "live",
+  },
+  {
+    id: "multivariate-normal--explain-spherical-special-case",
+    conceptId: "multivariate-normal",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why the multivariate normal's contours of constant density are always ellipsoids centred at " +
+      "μ, and why the special case Σ = σ²I gives spheres.",
+    rubric: {
+      elements: [
+        {
+          id: "quadratic-form-is-ellipsoid",
+          description: "States that (x − μ)ᵀΣ⁻¹(x − μ) = c traces an ellipsoid whose shape is set by Σ's eigenstructure.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "isotropic-case",
+          description: "Explains that when Σ = σ²I every eigenvalue equals σ², so the ellipsoid degenerates to a sphere of radius σ√c.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.4,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["eigendecomposition", "covariance-matrix", "determinant"],
+    source: STRANG_18_06,
+    status: "live",
+  },
+  {
+    id: "multivariate-normal--transfer-p-greater-than-n-mahalanobis",
+    conceptId: "multivariate-normal",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A dataset has 50 features and only 40 observations. Someone wants to fit a full multivariate " +
+      "normal model (unrestricted Σ) to it for anomaly detection via Mahalanobis distance. Explain " +
+      "concretely what goes wrong, and name one remedy.",
+    rubric: {
+      elements: [
+        {
+          id: "sigma-singular",
+          description: "Explains that with p = 50 > n = 40, the sample covariance matrix is singular (rank at most n − 1), so Σ⁻¹, which Mahalanobis distance needs, does not exist.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "assumes-mle-sigma-always-usable",
+            description: "Assumes the maximum-likelihood covariance estimate is always invertible and usable, regardless of the relationship between p and n.",
+            blameConceptId: "covariance-matrix",
+          },
+        },
+        {
+          id: "remedy",
+          description: "Names a remedy: shrinkage/ridge regularisation of Σ, an assumed factor structure, or dimension reduction (e.g. PCA) before fitting.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.5,
+    discrimination: 1.8,
+    expectedSeconds: 210,
+    prereqClosure: ["covariance-matrix", "determinant"],
+    source: MML,
+    status: "live",
+  },
+  {
+    id: "multivariate-normal--transfer-maximum-entropy",
+    conceptId: "multivariate-normal",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why the multivariate normal is the maximum-entropy distribution among all continuous " +
+      "distributions on ℝᵏ with a given mean and covariance, and what this property is used for.",
+    rubric: {
+      elements: [
+        {
+          id: "least-additional-assumption",
+          description: "States that among all distributions sharing the specified first and second moments, the Gaussian has the highest differential entropy — the 'least additional assumption' choice given only mean and covariance are known.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "gaussian-always-needs-empirical-justification",
+            description: "Assumes a Gaussian model always needs direct empirical justification, missing that it is the natural default under a moment constraint alone.",
+            blameConceptId: "multivariate-normal",
+          },
+        },
+        {
+          id: "uses",
+          description: "Names a use: justifying Gaussian noise models, or Gaussian priors, when only the moments of a quantity are known or specified.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.8,
+    expectedSeconds: 210,
+    prereqClosure: ["covariance-matrix", "normal-distribution"],
+    source: BISHOP,
+    status: "live",
+  },
+
+  // --- Pearson Correlation (additional items) -------------------------------
+  {
+    id: "pearson-correlation--recall-zero-r-not-independence",
+    conceptId: "pearson-correlation",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "If r = 0 for a dataset, what can you conclude?",
+    choices: [
+      { id: "a", text: "There is no linear association in the sample; a nonlinear relationship may still exist", correct: true },
+      {
+        id: "b",
+        text: "The variables are independent",
+        correct: false,
+        misconception: {
+          id: "zero-r-as-independence",
+          description: "Reads a sample statistic about linear association as a much stronger claim about full statistical independence.",
+          blameConceptId: "correlation",
+        },
+      },
+      {
+        id: "c",
+        text: "The variables are completely unrelated",
+        correct: false,
+        misconception: {
+          id: "zero-r-as-unrelated",
+          description: "Overstates the scope of r, which measures only linear co-movement, not any form of relationship.",
+          blameConceptId: "pearson-correlation",
+        },
+      },
+      {
+        id: "d",
+        text: "y does not depend on x at all",
+        correct: false,
+        misconception: {
+          id: "zero-r-as-no-dependence",
+          description: "Misses that a strong nonlinear (e.g. quadratic) dependence can still give r = 0.",
+          blameConceptId: "pearson-correlation",
+        },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.3,
+    expectedSeconds: 35,
+    prereqClosure: ["correlation"],
+    source: OCW_18_650,
+    status: "live",
+  },
+  {
+    id: "pearson-correlation--recall-symmetry",
+    conceptId: "pearson-correlation",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "What happens to r if you swap the roles of X and Y — that is, compute the correlation of Y with X " +
+      "instead of X with Y?",
+    rubric: {
+      elements: [
+        {
+          id: "symmetric",
+          description: "States that r is symmetric: r(X, Y) = r(Y, X), because the formula treats the two centred variables identically.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.4,
+    discrimination: 1.1,
+    expectedSeconds: 40,
+    prereqClosure: ["correlation"],
+    source: OCW_18_650,
+    status: "live",
+  },
+  {
+    id: "pearson-correlation--apply-perfect-line",
+    conceptId: "pearson-correlation",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "For the three points (1, 1), (2, 2), (3, 3), compute the sample Pearson correlation r.",
+    answerKey: 1,
+    tolerance: 0.001,
+    difficulty: -0.9,
+    discrimination: 1.2,
+    expectedSeconds: 60,
+    prereqClosure: ["sample-mean", "sample-variance", "correlation"],
+    source: OCW_18_650,
+    status: "live",
+  },
+  {
+    id: "pearson-correlation--apply-compute-mixed",
+    conceptId: "pearson-correlation",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "For the five points (1, 5), (2, 3), (3, 6), (4, 2), (5, 4), compute r. Give a decimal to two " +
+      "places, including the sign.",
+    answerKey: -0.3,
+    tolerance: 0.02,
+    difficulty: 1.1,
+    discrimination: 1.5,
+    expectedSeconds: 210,
+    prereqClosure: ["sample-mean", "sample-variance", "correlation"],
+    source: OCW_18_650,
+    status: "live",
+  },
+  {
+    id: "pearson-correlation--explain-standardised-covariance",
+    conceptId: "pearson-correlation",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why standardising both variables to z-scores before computing their covariance yields r " +
+      "directly.",
+    rubric: {
+      elements: [
+        {
+          id: "dividing-by-sds",
+          description: "Explains that standardising divides each deviation by its own standard deviation — exactly what the correlation formula does term by term in its denominator.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "cov-of-z-is-r",
+          description: "Concludes Cov(z_X, z_Y) equals r(X, Y) exactly.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.8,
+    discrimination: 1.4,
+    expectedSeconds: 120,
+    prereqClosure: ["correlation", "covariance", "sample-variance"],
+    source: OCW_18_650,
+    status: "live",
+  },
+  {
+    id: "pearson-correlation--explain-cosine-orthogonality",
+    conceptId: "pearson-correlation",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "r can be read as the cosine of the angle between the centred data vectors u and v. Explain why " +
+      "r = 0 exactly when u and v are orthogonal, and connect this to 'zero linear association.'",
+    rubric: {
+      elements: [
+        {
+          id: "orthogonality-iff-zero-inner-product",
+          description: "States that cos(θ) = 0 exactly when the vectors are perpendicular, i.e. when their inner product Σ(xᵢ − x̄)(yᵢ − ȳ) is zero.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "geometric-reading",
+          description: "Concludes that zero sample covariance — and hence r = 0 — is a literal geometric statement about the two centred vectors, not just a name for 'no linear association.'",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.7,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["correlation", "covariance", "sample-variance"],
+    source: CASELLA_BERGER,
+    status: "live",
+  },
+  {
+    id: "pearson-correlation--transfer-restriction-of-range",
+    conceptId: "pearson-correlation",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A study reports r = 0.4 between hours studied and exam score, computed only among students who " +
+      "chose to take an optional retake exam. Explain what selection does to this correlation, " +
+      "referencing restriction of range.",
+    rubric: {
+      elements: [
+        {
+          id: "non-random-subgroup",
+          description: "Explains that retake-takers are a non-random, often narrower-scoring subgroup of all students.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "r-treated-as-invariant-to-subsample",
+            description: "Treats r as a fixed property of the relationship that would look the same computed on any subgroup, ignoring how restricting the range changes it.",
+            blameConceptId: "pearson-correlation",
+          },
+        },
+        {
+          id: "restriction-shrinks-r",
+          description: "States that restricting the range of one or both variables systematically shrinks the magnitude of the observed correlation relative to the full population's.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.2,
+    discrimination: 1.7,
+    expectedSeconds: 180,
+    prereqClosure: ["correlation", "sample-variance"],
+    source: WASSERMAN,
+    status: "live",
+  },
+  {
+    id: "pearson-correlation--transfer-deterministic-but-uncorrelated",
+    conceptId: "pearson-correlation",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Describe a pair of variables that are deterministically related but have r ≈ 0, and explain why " +
+      "this does not contradict the Cauchy–Schwarz bound |r| ≤ 1.",
+    rubric: {
+      elements: [
+        {
+          id: "example",
+          description: "Gives an example such as X uniform on (−1, 1) and Y = X²: deterministic, but r ≈ 0 because the symmetric, nonlinear relationship cancels out in the linear covariance term.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "no-contradiction",
+          description: "Explains that Cauchy–Schwarz bounds r for the specific linear inner product it measures; it says nothing about nonlinear dependence, so there is no contradiction — the bound concerns what r is measuring, not dependence in general.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.7,
+    expectedSeconds: 180,
+    prereqClosure: ["correlation", "covariance", "sample-variance"],
+    source: WASSERMAN,
+    status: "live",
+  },
+
+  // --- Kullback-Leibler Divergence (additional items) -----------------------
+  {
+    id: "kl-divergence--recall-self-divergence",
+    conceptId: "kl-divergence",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What is D_KL(P ‖ P), the divergence of a distribution from itself?",
+    choices: [
+      { id: "a", text: "0", correct: true },
+      {
+        id: "b",
+        text: "1",
+        correct: false,
+        misconception: {
+          id: "self-divergence-as-one",
+          description: "Confuses KL divergence with a normalised similarity score that equals 1 for identical distributions.",
+          blameConceptId: "kl-divergence",
+        },
+      },
+      {
+        id: "c",
+        text: "Undefined",
+        correct: false,
+        misconception: {
+          id: "self-divergence-undefined",
+          description: "Worries the log(P/P) ratio is problematic, missing that log(1) = 0 is perfectly well defined wherever P(x) > 0.",
+          blameConceptId: "kl-divergence",
+        },
+      },
+      {
+        id: "d",
+        text: "Depends on the distribution",
+        correct: false,
+        misconception: {
+          id: "self-divergence-not-constant",
+          description: "Misses that D_KL(P‖P) = 0 identically, for every distribution P, as a direct consequence of the formula.",
+          blameConceptId: "kl-divergence",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.2,
+    expectedSeconds: 30,
+    prereqClosure: ["expectation"],
+    source: COVER_THOMAS,
+    status: "live",
+  },
+  {
+    id: "kl-divergence--recall-units",
+    conceptId: "kl-divergence",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "In what units is KL divergence reported, and what determines which unit is used?",
+    rubric: {
+      elements: [
+        {
+          id: "units",
+          description: "States nats when using the natural logarithm, and bits when using log base 2.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "conversion",
+          description: "Notes the conversion factor between them is ln(2) ≈ 0.693.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: -1.5,
+    discrimination: 1.0,
+    expectedSeconds: 40,
+    prereqClosure: ["expectation"],
+    source: COVER_THOMAS,
+    status: "live",
+  },
+  {
+    id: "kl-divergence--apply-bernoulli-moderate",
+    conceptId: "kl-divergence",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "P = Bernoulli(0.3) and Q = Bernoulli(0.5). Compute D_KL(P ‖ Q) in nats. Give a decimal to three " +
+      "places.",
+    answerKey: 0.082,
+    tolerance: 0.003,
+    difficulty: 0.2,
+    discrimination: 1.3,
+    expectedSeconds: 120,
+    prereqClosure: ["expectation", "pmf"],
+    source: COVER_THOMAS,
+    status: "live",
+  },
+  {
+    id: "kl-divergence--apply-nats-to-bits",
+    conceptId: "kl-divergence",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "D_KL(P ‖ Q) = 0.511 nats. Convert this to bits. Give a decimal to three places.",
+    answerKey: 0.737,
+    tolerance: 0.005,
+    difficulty: 0.8,
+    discrimination: 1.2,
+    expectedSeconds: 60,
+    prereqClosure: ["expectation"],
+    source: COVER_THOMAS,
+    status: "live",
+  },
+  {
+    id: "kl-divergence--explain-infinite-when-support-mismatched",
+    conceptId: "kl-divergence",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why D_KL(P ‖ Q) can be infinite even when D_KL(Q ‖ P) is finite, using a case where Q " +
+      "assigns zero probability somewhere P does not.",
+    rubric: {
+      elements: [
+        {
+          id: "division-by-zero-inside-log",
+          description: "Explains that the term P(x)log(P(x)/Q(x)) blows up to +∞ whenever Q(x) = 0 but P(x) > 0.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "kl-assumed-always-finite",
+            description: "Treats KL divergence as always finite, without checking whether the reference distribution's support covers the other's.",
+            blameConceptId: "kl-divergence",
+          },
+        },
+        {
+          id: "reverse-direction-condition",
+          description: "Notes that the reverse direction D_KL(Q‖P) only requires Q(x) = 0 ⟹ P(x) = 0, a different and here satisfied condition.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.5,
+    discrimination: 1.5,
+    expectedSeconds: 120,
+    prereqClosure: ["expectation", "pmf"],
+    source: COVER_THOMAS,
+    status: "live",
+  },
+  {
+    id: "kl-divergence--explain-mode-seeking-vs-mass-covering",
+    conceptId: "kl-divergence",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain the mode-seeking versus mass-covering distinction between minimising D_KL(Q ‖ P) and " +
+      "D_KL(P ‖ Q) when Q is a simple family (e.g. a single Gaussian) approximating a complex multimodal P.",
+    rubric: {
+      elements: [
+        {
+          id: "reverse-kl-mode-seeking",
+          description: "Explains that minimising D_KL(Q‖P) (reverse KL) penalises Q for putting mass where P has none, so Q tends to lock onto a single mode of P.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "forward-kl-mass-covering",
+          description: "Explains that minimising D_KL(P‖Q) (forward KL, as in maximum likelihood) penalises Q for missing mass where P has some, forcing Q to spread out and cover all of P's modes.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.4,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["expectation", "pmf"],
+    source: BISHOP,
+    status: "live",
+  },
+  {
+    id: "kl-divergence--transfer-elbo-nonnegativity",
+    conceptId: "kl-divergence",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "The evidence lower bound (ELBO) used in variational inference satisfies log p(x) = ELBO + " +
+      "D_KL(q ‖ p_posterior). Explain, using only the non-negativity property of KL divergence, why " +
+      "maximising the ELBO is equivalent to minimising that KL term.",
+    rubric: {
+      elements: [
+        {
+          id: "lower-bound-from-nonnegativity",
+          description: "Explains that D_KL ≥ 0 makes ELBO ≤ log p(x) automatically — a genuine lower bound.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "elbo-and-kl-treated-as-unrelated",
+            description: "Treats maximising the ELBO and minimising the KL term as two separate, unrelated procedures rather than as the same optimisation.",
+            blameConceptId: "kl-divergence",
+          },
+        },
+        {
+          id: "fixed-log-evidence",
+          description: "Notes that log p(x) does not depend on q, so for fixed data, maximising ELBO is exactly equivalent to minimising the gap D_KL(q‖p_posterior).",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.0,
+    discrimination: 1.8,
+    expectedSeconds: 180,
+    prereqClosure: ["jensen-inequality", "expectation"],
+    source: BISHOP,
+    status: "live",
+  },
+  {
+    id: "kl-divergence--transfer-symmetrised-still-not-a-metric",
+    conceptId: "kl-divergence",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "An A/B test summarises how different two arms' outcome distributions are using the symmetrised " +
+      "Jeffreys divergence ½[D_KL(P‖Q) + D_KL(Q‖P)]. Explain what this symmetrisation buys, and what " +
+      "property it still lacks that a true distance would need.",
+    rubric: {
+      elements: [
+        {
+          id: "buys-symmetry",
+          description: "States that symmetrising removes the order-dependence — which arm is called P versus Q no longer matters.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "still-not-metric",
+          description: "Notes it still fails the triangle inequality in general, so it cannot support metric-based reasoning (like ranking by 'distance' across many pairs) without further justification.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.2,
+    discrimination: 1.7,
+    expectedSeconds: 180,
     prereqClosure: ["jensen-inequality", "expectation"],
     source: BISHOP,
     status: "live",

@@ -2964,4 +2964,2571 @@ export const pythonItems: Item[] = [
     source: AUTHORED,
     status: "live",
   },
+
+  // =========================================================================
+  // Doubling batch (see doubling-spec): new items appended below, grouped by
+  // concept, without touching anything above.
+  // =========================================================================
+
+  // -- python-indexing --------------------------------------------------
+  {
+    id: "python-indexing--transfer-index-error-guard",
+    conceptId: "python-indexing",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A function reads the most recent value as a[-1], and is later called on user input that may be an empty list. Explain exactly what error results and why, then give a guard that fixes it without swallowing a genuinely empty-input bug elsewhere.",
+    rubric: {
+      elements: [
+        {
+          id: "error",
+          description:
+            "States that a[-1] on an empty list raises IndexError: list index out of range — there is no element to count backwards from.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "why-not-none",
+          description:
+            "Explains that list indexing is strict: it either returns the element or raises, with no built-in default the way dict.get has one.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "expects-lenient-indexing",
+            description:
+              "Expects a[-1] on an empty list to return None or some sentinel. Indexing never falls back to a default; that behaviour belongs to dict.get, not to list indexing.",
+            blameConceptId: "python-indexing",
+          },
+        },
+        {
+          id: "fix",
+          description:
+            "Gives a guard that checks first, e.g. `last = a[-1] if a else default`, rather than catching IndexError broadly and hiding an unrelated bug.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.8,
+    discrimination: 1.5,
+    expectedSeconds: 150,
+    prereqClosure: ["python-indexing"],
+    source: AUTHORED,
+    status: "live",
+  },
+
+  // -- python-slicing -----------------------------------------------------
+  {
+    id: "python-slicing--recall-slice-returns-new-list",
+    conceptId: "python-slicing",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "For a list a, what does a[1:3] return?",
+    choices: [
+      { id: "a", text: "A new list containing the selected elements", correct: true },
+      {
+        id: "b",
+        text: "A view sharing memory with a",
+        correct: false,
+        misconception: {
+          id: "slice-is-view",
+          description:
+            "Carries NumPy's view semantics over to plain lists. A list slice always builds a new list; there is no shared-buffer view for the built-in list type.",
+          blameConceptId: "python-slicing",
+        },
+      },
+      {
+        id: "c",
+        text: "A tuple of the selected elements",
+        correct: false,
+        misconception: {
+          id: "slice-changes-type",
+          description: "Slicing preserves the container type. Slicing a list gives a list; slicing a tuple gives a tuple.",
+          blameConceptId: "python-slicing",
+        },
+      },
+      {
+        id: "d",
+        text: "The original list a, mutated to drop the excluded elements",
+        correct: false,
+        misconception: {
+          id: "slice-mutates",
+          description: "Slicing reads; it never mutates a. Only slice assignment (a[1:3] = ...) changes a in place.",
+          blameConceptId: "python-slicing",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.0,
+    expectedSeconds: 20,
+    prereqClosure: ["python-slicing"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-slicing--explain-slice-defensive-copy",
+    conceptId: "python-slicing",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "Explain why `b = a[:]` is a common way to avoid two names sharing one list, and why this technique stops helping once a's own elements are themselves mutable.",
+    rubric: {
+      elements: [
+        {
+          id: "copy",
+          description:
+            "Says a[:] constructs a genuinely new list object holding the same elements, so b and a no longer share identity and mutating b's own structure (append, sort, etc.) never touches a.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "shallow",
+          description:
+            "Explains it is a shallow copy: the elements inside are the same objects as before, so if a holds mutable elements (e.g. a list of lists), mutating one of those inner elements through b is still visible through a.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "slice-copies-deeply",
+            description:
+              "Assumes a[:] recursively copies everything a contains. It copies one level; nested mutable structure is still shared.",
+            blameConceptId: "python-slicing",
+          },
+        },
+        {
+          id: "when-enough",
+          description: "Bonus: notes a shallow copy is sufficient whenever the elements themselves are immutable.",
+          weight: 1,
+        },
+      ],
+    },
+    difficulty: 0.9,
+    discrimination: 1.6,
+    expectedSeconds: 140,
+    prereqClosure: ["python-slicing"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "python-slicing--transfer-slice-assignment-resize",
+    conceptId: "python-slicing",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "a = `[1, 2, 3, 4, 5]`. Predict the value and length of a after `a[1:3] = [9, 9, 9, 9]`, and explain why slice assignment can change a list's length while ordinary index assignment (a[i] = x) never can.",
+    rubric: {
+      elements: [
+        {
+          id: "result",
+          description: "States a becomes [1, 9, 9, 9, 9, 4, 5], length 7.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "mechanism",
+          description:
+            "Explains that slice assignment splices: it removes the whole span a[1:3] and inserts the entire right-hand sequence in its place, regardless of whether the lengths match — the effective result is a[:1] + [9,9,9,9] + a[3:].",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "expects-element-by-element",
+            description:
+              "Assumes slice assignment pairs elements one-to-one like zip, so a length mismatch would error. It splices the spans together instead, which is exactly what lets the list grow or shrink.",
+            blameConceptId: "python-slicing",
+          },
+        },
+        {
+          id: "contrast",
+          description: "Contrasts with a[i] = x, which only ever overwrites one existing slot and so can never change length.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.6,
+    expectedSeconds: 170,
+    prereqClosure: ["python-slicing"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+
+  // -- python-list-operations ----------------------------------------------
+  {
+    id: "python-list-operations--recall-append-vs-extend",
+    conceptId: "python-list-operations",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "a = `[1, 2]`. Compare `a.append([3, 4])` with `a.extend([3, 4])`.",
+    choices: [
+      { id: "a", text: "append leaves `[1, 2, [3, 4]]`; extend leaves `[1, 2, 3, 4]`", correct: true },
+      {
+        id: "b",
+        text: "Both leave `[1, 2, 3, 4]`",
+        correct: false,
+        misconception: {
+          id: "append-flattens",
+          description:
+            "Assumes append flattens its argument. append always adds exactly one element, whatever it is; extend is the one that unpacks an iterable's items.",
+          blameConceptId: "python-list-operations",
+        },
+      },
+      {
+        id: "c",
+        text: "Both leave `[1, 2, [3, 4]]`",
+        correct: false,
+        misconception: {
+          id: "extend-nests",
+          description: "extend iterates its argument and adds each item individually, so it never nests a sub-list the way append does.",
+          blameConceptId: "python-list-operations",
+        },
+      },
+      {
+        id: "d",
+        text: "extend raises `TypeError` because its argument is not a single value",
+        correct: false,
+        misconception: {
+          id: "extend-needs-scalar",
+          description: "extend specifically requires an iterable; a list argument is the ordinary case, not an error.",
+          blameConceptId: "python-list-operations",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.1,
+    expectedSeconds: 25,
+    prereqClosure: ["python-list-operations"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-list-operations--explain-mutable-default-argument",
+    conceptId: "python-list-operations",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "`def f(x, acc=[]): acc.append(x); return acc`. Calling `f(1)` then `f(2)`, both with no second argument, returns `[1]` then `[1, 2]` — not `[2]`. Explain why, in terms of when default argument values are created.",
+    rubric: {
+      elements: [
+        {
+          id: "timing",
+          description:
+            "States that a default argument's value is evaluated once, at function-definition time, not freshly at each call — so every call that omits it shares the same object.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "expects-fresh-default",
+            description:
+              "Assumes a default argument is recreated on every call, the way a body-local variable would be. It is evaluated once at def time; mutable defaults therefore persist and accumulate.",
+            blameConceptId: "python-list-operations",
+          },
+        },
+        {
+          id: "consequence",
+          description:
+            "Explains that because lists are mutable, each call's append mutates that one shared object in place, so state silently accumulates across unrelated calls.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "fix",
+          description: "Bonus: gives the standard fix — default to None, and create a fresh list inside the body when it is None.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 0.5,
+    discrimination: 1.7,
+    expectedSeconds: 160,
+    prereqClosure: ["python-list-operations"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-list-operations--explain-pop-front-cost",
+    conceptId: "python-list-operations",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "Explain why repeatedly calling `a.pop(0)` in a loop is much slower than repeatedly calling `a.pop()` on a large list, and name the data structure that fixes it.",
+    rubric: {
+      elements: [
+        {
+          id: "cost",
+          description:
+            "Explains that pop(0) removes the first element, so every remaining element must shift down one slot to keep the list contiguous — O(n) per call, O(n^2) over n calls — while pop() removes the last element with no shifting, O(1).",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "all-pops-are-o1",
+            description:
+              "Assumes every removal from a list costs the same. Only removing from the end is O(1); removing from the front or middle shifts every following element.",
+            blameConceptId: "python-list-operations",
+          },
+        },
+        {
+          id: "fix",
+          description: "Names collections.deque, which supports O(1) pops (and appends) from both ends.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "when-fine",
+          description: "Bonus: notes a plain list is fine when only ever popping from the end.",
+          weight: 1,
+        },
+      ],
+    },
+    difficulty: 1.0,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["python-list-operations"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "python-list-operations--transfer-shallow-copy-nested-list",
+    conceptId: "python-list-operations",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A function defensively copies a caller's matrix (a list of row-lists) with `safe = list(matrix)` before sorting each row in place, intending not to affect the caller's data. The caller's rows come back sorted anyway. Diagnose the bug and give a fix.",
+    rubric: {
+      elements: [
+        {
+          id: "diagnosis",
+          description:
+            "Explains that list(matrix) makes a new outer list but copies references to the same inner row lists, so safe and matrix share every row object — sorting a row in place mutates the object both names see.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "list-constructor-deep-copies",
+            description:
+              "Assumes list(x) recursively copies everything x contains. It copies exactly one level: a new outer list of the same inner references.",
+            blameConceptId: "python-list-operations",
+          },
+        },
+        {
+          id: "fix",
+          description:
+            "Gives a fix: copy.deepcopy(matrix), or `[row[:] for row in matrix]`, or building a new sorted row with sorted(row) rather than mutating in place.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "generalization",
+          description: "Bonus: ties this to a[:] being shallow for the same reason — copying goes exactly as deep as one explicit copy call.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.8,
+    expectedSeconds: 190,
+    prereqClosure: ["python-list-operations"],
+    source: AUTHORED,
+    status: "live",
+  },
+
+  // -- python-dictionaries --------------------------------------------------
+  {
+    id: "python-dictionaries--recall-insertion-order",
+    conceptId: "python-dictionaries",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "In current Python, does iterating a dict's keys() follow insertion order, sorted order, or an unspecified order?",
+    choices: [
+      { id: "a", text: "Insertion order — guaranteed since Python 3.7", correct: true },
+      {
+        id: "b",
+        text: "Sorted by key",
+        correct: false,
+        misconception: {
+          id: "dict-sorts-keys",
+          description:
+            "Confuses dict with a sorted structure. Iteration order tracks insertion, not any ordering of the keys' values.",
+          blameConceptId: "python-dictionaries",
+        },
+      },
+      {
+        id: "c",
+        text: "Unspecified, exactly as in older Python versions",
+        correct: false,
+        misconception: {
+          id: "still-unordered",
+          description: "Was true before 3.7. Insertion-order iteration has been a language guarantee, not an implementation accident, since then.",
+          blameConceptId: "python-dictionaries",
+        },
+      },
+      {
+        id: "d",
+        text: "Sorted by each key's hash value",
+        correct: false,
+        misconception: {
+          id: "sorted-by-hash",
+          description: "Hash values determine bucket placement internally, not the order iteration reports to the caller.",
+          blameConceptId: "python-dictionaries",
+        },
+      },
+    ],
+    difficulty: -2.1,
+    discrimination: 1.0,
+    expectedSeconds: 20,
+    prereqClosure: ["python-dictionaries"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-dictionaries--apply-update-key-count",
+    conceptId: "python-dictionaries",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "d = `{'a': 1, 'b': 2}`; d.update(`{'b': 3, 'c': 4}`). How many keys does d have afterward?",
+    answerKey: 3,
+    tolerance: 0,
+    difficulty: -0.3,
+    discrimination: 1.3,
+    expectedSeconds: 30,
+    prereqClosure: ["python-dictionaries"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "python-dictionaries--explain-why-hash-table",
+    conceptId: "python-dictionaries",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "Explain why dict lookup, insertion and deletion are all O(1) on average, and name the property a key must have for this to hold.",
+    rubric: {
+      elements: [
+        {
+          id: "mechanism",
+          description:
+            "Explains that a dict is backed by a hash table: a key's hash locates its bucket directly, so lookup does not scan the existing entries — cost does not grow with how many keys are stored.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "expects-scan",
+            description:
+              "Assumes lookup compares against every stored key, as a list membership test would. A hash table computes one hash and jumps to the corresponding bucket.",
+            blameConceptId: "python-dictionaries",
+          },
+        },
+        {
+          id: "requirement",
+          description:
+            "States the key must be hashable, with a hash that stays constant for as long as it is stored — exactly why a list cannot be a key while a tuple can.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "average-not-worst",
+          description: "Bonus: notes 'average' matters — pathological hash collisions degrade lookup to O(n) worst case.",
+          weight: 1,
+        },
+      ],
+    },
+    difficulty: 0.3,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["python-dictionaries"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-dictionaries--explain-get-vs-try-except",
+    conceptId: "python-dictionaries",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "For a lookup that is often missing, compare `d.get(k, default)` with a try/except `KeyError` around `d[k]`. Explain what should actually decide between them.",
+    rubric: {
+      elements: [
+        {
+          id: "get-uniform",
+          description: ".get() always does one lookup and returns a default with no exception machinery, so its cost is uniform whether the key is present or not.",
+          weight: 2,
+        },
+        {
+          id: "readability",
+          description:
+            "Argues the deciding factor is normally intent, not speed: .get() reads as 'this default is expected', while try/except reads as 'this failure is exceptional and I have real recovery logic for it'.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "perf-always-decides",
+            description:
+              "Assumes the faster option is always the right one. For a single dict lookup the constant-factor difference rarely matters; what should decide is which form communicates the caller's actual intent.",
+            blameConceptId: "python-dictionaries",
+          },
+        },
+        {
+          id: "cost-nuance",
+          description:
+            "Bonus: notes try/except is cheap while the key is present and only pays overhead when the exception actually fires, so it is not simply 'the slow option'.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 0.7,
+    discrimination: 1.5,
+    expectedSeconds: 150,
+    prereqClosure: ["python-dictionaries"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-dictionaries--transfer-unhashable-cache-key",
+    conceptId: "python-dictionaries",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A memoization cache keys results by a list of arguments built at call time: `cache[args] = result`. This raises `TypeError`. Explain why, and give two fixes with a note on when each applies.",
+    rubric: {
+      elements: [
+        {
+          id: "why",
+          description:
+            "Explains that a list is unhashable (mutable, with no stable hash), and a dict key must be hashable, so using one directly as a key raises TypeError: unhashable type: 'list'.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "assumes-any-collection-is-key",
+            description: "Treats any way of grouping arguments together as fair game for a dict key. Only hashable, effectively-immutable objects qualify.",
+            blameConceptId: "python-dictionaries",
+          },
+        },
+        {
+          id: "fix-tuple",
+          description: "Gives tuple(args) as a fix, when the arguments are themselves hashable and their order carries meaning.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "fix-kwargs",
+          description:
+            "Gives a second fix for keyword arguments: a tuple of the sorted (key, value) pairs, so equal argument sets hash equally regardless of the order they were supplied in — noting this still requires every value to be hashable.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.0,
+    discrimination: 1.8,
+    expectedSeconds: 190,
+    prereqClosure: ["python-dictionaries"],
+    source: AUTHORED,
+    status: "live",
+  },
+
+  // -- python-sets -----------------------------------------------------
+  {
+    id: "python-sets--recall-empty-braces-is-dict",
+    conceptId: "python-sets",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What does `{}` evaluate to?",
+    choices: [
+      { id: "a", text: "An empty dict — `set()` is required for an empty set", correct: true },
+      {
+        id: "b",
+        text: "An empty set",
+        correct: false,
+        misconception: {
+          id: "braces-default-to-set",
+          description: "The bare `{}` literal is reserved for dict; an empty set has no literal form and must be written set().",
+          blameConceptId: "python-sets",
+        },
+      },
+      {
+        id: "c",
+        text: "A `TypeError` — an empty container needs an explicit type",
+        correct: false,
+        misconception: {
+          id: "empty-braces-error",
+          description: "`{}` is perfectly legal Python; it is simply the dict literal, not an error.",
+          blameConceptId: "python-sets",
+        },
+      },
+      {
+        id: "d",
+        text: "Both a dict and a set share the `{}` literal, and Python infers which from later use",
+        correct: false,
+        misconception: {
+          id: "literal-inferred-later",
+          description: "The type of a literal is fixed the moment it is evaluated; nothing later in the program changes what `{}` already produced.",
+          blameConceptId: "python-sets",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.0,
+    expectedSeconds: 20,
+    prereqClosure: ["python-sets"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-sets--apply-symmetric-difference-count",
+    conceptId: "python-sets",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "a = `{1, 2, 3, 4}`; b = `{3, 4, 5, 6}`. How many elements are in `a ^ b`?",
+    answerKey: 4,
+    tolerance: 0,
+    difficulty: -0.2,
+    discrimination: 1.3,
+    expectedSeconds: 35,
+    prereqClosure: ["python-sets"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-sets--transfer-set-order-nondeterminism",
+    conceptId: "python-sets",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A test asserts `list(some_set) == [3, 1, 2]` and fails intermittently across runs, even though the set's contents never change. Explain why, and give a fix that keeps the test meaningful.",
+    rubric: {
+      elements: [
+        {
+          id: "no-order",
+          description:
+            "States that a set makes no ordering guarantee at all; its iteration order depends on hash values and history, not on anything the caller controls.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "sets-are-ordered",
+            description:
+              "Assumes a set remembers something like insertion order, the way a dict now does. A set makes no ordering promise whatsoever.",
+            blameConceptId: "python-sets",
+          },
+        },
+        {
+          id: "why-intermittent",
+          description:
+            "Explains the observable order can differ across runs, interpreter versions, or with hash randomization, even though membership never changes — so an order-dependent assertion is testing an accident, not a guarantee.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "fix",
+          description: "Gives a fix: compare as sets directly, or sort before comparing, so the test checks values rather than incidental order.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.7,
+    expectedSeconds: 170,
+    prereqClosure: ["python-sets"],
+    source: AUTHORED,
+    status: "live",
+  },
+
+  // -- python-loops ------------------------------------------------------
+  {
+    id: "python-loops--recall-while-vs-for-stop-condition",
+    conceptId: "python-loops",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What decides when a while loop stops, compared with a for loop over a sequence?",
+    choices: [
+      { id: "a", text: "while stops when its condition, re-checked each iteration, becomes false; for stops when the iterator is exhausted", correct: true },
+      {
+        id: "b",
+        text: "They stop the same way; the choice between them is purely style",
+        correct: false,
+        misconception: {
+          id: "loops-are-interchangeable",
+          description: "A for loop's stopping point is fixed by the iterable up front; a while loop's condition can depend on anything and change unpredictably.",
+          blameConceptId: "python-loops",
+        },
+      },
+      {
+        id: "c",
+        text: "A while loop always requires an explicit counter variable",
+        correct: false,
+        misconception: {
+          id: "while-needs-counter",
+          description: "A while loop's condition can test anything at all — a flag, a queue's emptiness, user input — with no counter required.",
+          blameConceptId: "python-loops",
+        },
+      },
+      {
+        id: "d",
+        text: "A for loop's iteration count must be decided before the loop starts",
+        correct: false,
+        misconception: {
+          id: "for-count-fixed-upfront",
+          description: "A for loop over a lazily-produced iterable (a generator, a file) does not know its count in advance either — it just keeps going until exhaustion.",
+          blameConceptId: "python-loops",
+        },
+      },
+    ],
+    difficulty: -2.2,
+    discrimination: 1.0,
+    expectedSeconds: 20,
+    prereqClosure: ["python-loops"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-loops--recall-break-vs-continue",
+    conceptId: "python-loops",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "Inside a loop body, what is the difference between break and continue?",
+    choices: [
+      { id: "a", text: "break exits the loop entirely; continue skips ahead to the next iteration", correct: true },
+      {
+        id: "b",
+        text: "break skips to the next iteration; continue exits the loop",
+        correct: false,
+        misconception: {
+          id: "break-continue-reversed",
+          description: "Has the two backwards. break terminates the loop; continue only ends the current pass through the body.",
+          blameConceptId: "python-loops",
+        },
+      },
+      {
+        id: "c",
+        text: "Both exit the loop; break does so immediately, continue after running the loop's else clause",
+        correct: false,
+        misconception: {
+          id: "continue-runs-else",
+          description: "continue does not touch the else clause at all; it only affects whether the *current* iteration continues.",
+          blameConceptId: "python-loops",
+        },
+      },
+      {
+        id: "d",
+        text: "continue exits only the innermost loop; break exits every enclosing loop",
+        correct: false,
+        misconception: {
+          id: "break-exits-all-enclosing",
+          description: "break, like continue, affects only the loop whose body it appears directly in — neither one unwinds an enclosing loop.",
+          blameConceptId: "python-loops",
+        },
+      },
+    ],
+    difficulty: -1.9,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["python-loops"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-loops--apply-for-else-no-break",
+    conceptId: "python-loops",
+    format: "mcq",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "`for x in a: if x == target: break else: print('not found')`. Under what condition does 'not found' print?",
+    choices: [
+      { id: "a", text: "Whenever the loop completes without ever hitting break — including when a is empty", correct: true },
+      {
+        id: "b",
+        text: "Only when a is empty",
+        correct: false,
+        misconception: {
+          id: "for-else-only-empty",
+          description: "The else also runs on a non-empty a that simply never matches target — emptiness is one way to reach it, not the only way.",
+          blameConceptId: "python-loops",
+        },
+      },
+      {
+        id: "c",
+        text: "Whenever break does execute",
+        correct: false,
+        misconception: {
+          id: "for-else-fires-on-break",
+          description: "A for loop's else is the opposite: it is skipped whenever break runs, and executes only when the loop finishes normally.",
+          blameConceptId: "python-loops",
+        },
+      },
+      {
+        id: "d",
+        text: "Never — else after a for loop is a syntax error",
+        correct: false,
+        misconception: {
+          id: "for-else-invalid",
+          description: "for...else is valid Python syntax; its else clause runs exactly when the loop exits without breaking.",
+          blameConceptId: "python-loops",
+        },
+      },
+    ],
+    difficulty: -0.4,
+    discrimination: 1.4,
+    expectedSeconds: 35,
+    prereqClosure: ["python-loops"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-loops--apply-nested-loop-break-count",
+    conceptId: "python-loops",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem:
+      "`for i in range(3): for j in range(3): if j == 1: break`. Across all values of i, how many times does the inner loop's body execute in total?",
+    answerKey: 6,
+    tolerance: 0,
+    difficulty: 0.5,
+    discrimination: 1.5,
+    expectedSeconds: 45,
+    prereqClosure: ["python-loops"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "python-loops--explain-break-only-innermost",
+    conceptId: "python-loops",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem: "Explain why break only exits the innermost enclosing loop, and what pattern is needed to exit two nested loops at once.",
+    rubric: {
+      elements: [
+        {
+          id: "scope",
+          description:
+            "Explains that break terminates exactly the loop whose body it appears in; control resumes with the code after that loop, not any loop enclosing it.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "break-exits-all",
+            description: "Assumes break unwinds every enclosing loop. It affects only the loop whose body it appears directly in.",
+            blameConceptId: "python-loops",
+          },
+        },
+        {
+          id: "pattern",
+          description:
+            "Gives a pattern to exit both: a flag the outer loop also checks, wrapping the loops in a function and returning, or raising and catching a sentinel exception.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "no-labeled-break",
+          description: "Bonus: notes Python has no labeled break/goto, unlike some languages, which is why these workarounds exist.",
+          weight: 1,
+        },
+      ],
+    },
+    difficulty: 0.8,
+    discrimination: 1.6,
+    expectedSeconds: 140,
+    prereqClosure: ["python-loops"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-loops--explain-generator-laziness-in-loop",
+    conceptId: "python-loops",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "A for loop over a generator expression processes one element at a time, rather than building a full list first. Explain what this buys when a is very large, and one thing it costs.",
+    rubric: {
+      elements: [
+        {
+          id: "memory",
+          description:
+            "Explains that a generator produces values on demand, so the loop never holds more than one element (plus whatever state it needs) in memory, unlike a list comprehension that materializes everything up front.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "tradeoff",
+          description:
+            "Names what is given up: no indexing, no len(), and no second pass — a generator is exhausted after one loop over it.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "generator-is-reusable",
+            description:
+              "Assumes a generator can be iterated a second time like a list. It is a one-pass iterator; a second for loop over an exhausted one runs zero times, silently.",
+            blameConceptId: "python-loops",
+          },
+        },
+      ],
+    },
+    difficulty: 1.0,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["python-loops"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "python-loops--transfer-mutating-shared-list-in-loop",
+    conceptId: "python-loops",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A function keeps a running window and appends it after each step: `window = []; results = []`, then per x in rows: `window.append(x)`; if `len(window) > 3`: `window.pop(0)`; `results.append(window)`. After the loop, every entry of results is identical, equal to the final window. Diagnose the bug and give a fix.",
+    rubric: {
+      elements: [
+        {
+          id: "diagnosis",
+          description:
+            "Explains that results.append(window) stores a reference to the same window object each time rather than a snapshot of its current contents, so later mutations (append, pop) to window are visible through every previously stored reference.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "append-stores-snapshot",
+            description:
+              "Assumes appending a mutable object captures its value at that moment, the way appending an int or string would. Appending a list stores a reference; later mutation is visible everywhere that reference was stored.",
+            blameConceptId: "python-list-operations",
+          },
+        },
+        {
+          id: "fix",
+          description: "Gives a fix: results.append(window[:]) or results.append(list(window)), storing a copy at that point rather than a live reference.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "contrast",
+          description:
+            "Bonus: notes that if window were rebuilt fresh each iteration instead of mutated in place, no object would ever be shared across appends and the bug could not occur.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.8,
+    discrimination: 1.8,
+    expectedSeconds: 190,
+    prereqClosure: ["python-loops", "python-list-operations"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "python-loops--transfer-mutate-dict-while-iterating",
+    conceptId: "python-loops",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A cache-eviction routine does `for k in cache: if is_stale(k): del cache[k]`, and it raises `RuntimeError: dictionary changed size during iteration`. Explain why this differs from the silent skipped-element bug that mutating a list during iteration causes, and give a correct rewrite.",
+    rubric: {
+      elements: [
+        {
+          id: "why-differs",
+          description:
+            "Explains that a dict's iterator detects a size change during iteration and raises immediately, rather than silently desynchronizing the way a list's position-based iteration does.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "dict-mutation-silent-too",
+            description:
+              "Assumes mutating any container during iteration fails the same way. Lists desynchronize silently; dicts detect the size change and raise loudly.",
+            blameConceptId: "python-loops",
+          },
+        },
+        {
+          id: "rewrite",
+          description: "Gives a fix: iterate over a snapshot of the keys, e.g. `for k in list(cache): if is_stale(k): del cache[k]`.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "generalization",
+          description: "Bonus: names the general pattern — collect what to remove first, then remove it in a second pass.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.5,
+    discrimination: 1.7,
+    expectedSeconds: 170,
+    prereqClosure: ["python-loops", "python-dictionaries"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+
+  // -- python-comprehensions ------------------------------------------------
+  {
+    id: "python-comprehensions--recall-dict-comprehension-syntax",
+    conceptId: "python-comprehensions",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "pairs is a list of two-tuples. What does `{k: v for k, v in pairs}` produce?",
+    choices: [
+      { id: "a", text: "A dict mapping each k to its v", correct: true },
+      {
+        id: "b",
+        text: "A set of the tuples",
+        correct: false,
+        misconception: {
+          id: "colon-form-is-set",
+          description: "The colon inside the braces is what marks this as a dict comprehension, not a set comprehension.",
+          blameConceptId: "python-comprehensions",
+        },
+      },
+      {
+        id: "c",
+        text: "A list of one-entry dicts, one per pair",
+        correct: false,
+        misconception: {
+          id: "dict-comp-produces-list-of-dicts",
+          description: "A dict comprehension builds a single dict by evaluating k: v once per iteration and inserting each into the same result.",
+          blameConceptId: "python-comprehensions",
+        },
+      },
+      {
+        id: "d",
+        text: "A generator of (k, v) tuples",
+        correct: false,
+        misconception: {
+          id: "braces-are-generator",
+          description: "Parentheses give a generator; braces with a colon give a dict, built eagerly.",
+          blameConceptId: "python-comprehensions",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.0,
+    expectedSeconds: 20,
+    prereqClosure: ["python-comprehensions"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-comprehensions--recall-set-comprehension-braces",
+    conceptId: "python-comprehensions",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What is the type of `{x % 3 for x in range(10)}`?",
+    choices: [
+      { id: "a", text: "A set", correct: true },
+      {
+        id: "b",
+        text: "A dict — braces always build key-value pairs",
+        correct: false,
+        misconception: {
+          id: "braces-always-dict",
+          description: "Braces build a dict only when the body has a colon (key: value). With no colon, braces build a set.",
+          blameConceptId: "python-comprehensions",
+        },
+      },
+      {
+        id: "c",
+        text: "A list",
+        correct: false,
+        misconception: {
+          id: "expects-brackets",
+          description: "Square brackets give a list; braces with no colon give a set.",
+          blameConceptId: "python-comprehensions",
+        },
+      },
+      {
+        id: "d",
+        text: "A generator",
+        correct: false,
+        misconception: {
+          id: "braces-are-lazy",
+          description: "A set comprehension is built eagerly, like a list comprehension; only parentheses give a lazy generator.",
+          blameConceptId: "python-comprehensions",
+        },
+      },
+    ],
+    difficulty: -1.7,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["python-comprehensions"],
+    source: PYTHON_DOCS,
+    status: "live",
+  },
+  {
+    id: "python-comprehensions--apply-two-filter-clauses",
+    conceptId: "python-comprehensions",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "a = `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`. How many elements are in `[x for x in a if x % 2 == 0 if x % 3 == 0]`?",
+    answerKey: 1,
+    tolerance: 0,
+    difficulty: -0.1,
+    discrimination: 1.3,
+    expectedSeconds: 35,
+    prereqClosure: ["python-comprehensions"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "python-comprehensions--apply-dict-comprehension-transform",
+    conceptId: "python-comprehensions",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "prices = `{'a': 10, 'b': 20, 'c': 5}`. discounted = `{k: v * 0.9 for k, v in prices.items()}`. What is discounted['b']?",
+    answerKey: 18,
+    tolerance: 0.01,
+    difficulty: 0.0,
+    discrimination: 1.3,
+    expectedSeconds: 30,
+    prereqClosure: ["python-comprehensions", "python-dictionaries"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "python-comprehensions--explain-side-effect-antipattern",
+    conceptId: "python-comprehensions",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "A colleague writes `[print(x) for x in a]` purely to print each element, discarding the resulting list. Explain what is wrong with this beyond wasted memory, and rewrite it appropriately.",
+    rubric: {
+      elements: [
+        {
+          id: "misleads",
+          description:
+            "Explains that a comprehension signals 'this builds and keeps a value from the iteration'; using it purely for a side effect fights that meaning and misleads a reader looking for what the value is used for.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "comprehension-just-terser-loop",
+            description:
+              "Treats a comprehension as simply a shorter for loop, appropriate wherever a loop would do. Its idiomatic meaning is 'this produces a value I keep' — using it for a pure side effect fights that.",
+            blameConceptId: "python-comprehensions",
+          },
+        },
+        {
+          id: "rewrite",
+          description: "Gives the plain loop `for x in a: print(x)` as the correct form.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "memory",
+          description: "Bonus: notes it also builds a full list of Nones (print's return value) for no reason.",
+          weight: 1,
+        },
+      ],
+    },
+    difficulty: 0.4,
+    discrimination: 1.5,
+    expectedSeconds: 120,
+    prereqClosure: ["python-comprehensions", "python-loops"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "python-comprehensions--explain-readability-limit",
+    conceptId: "python-comprehensions",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "A triple-nested comprehension with two filter clauses replaces a 15-line loop and technically works. Explain the case against using it, appealing to something other than personal taste.",
+    rubric: {
+      elements: [
+        {
+          id: "cognitive-load",
+          description:
+            "Explains that stacking several for and if clauses in one expression forces a reader to hold several loop variables and conditions in mind at once, with no intermediate names to anchor on, unlike the equivalent nested loop.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "debuggability",
+          description:
+            "Notes a comprehension is one expression, so there is no natural place to set a breakpoint or print an intermediate state, while the loop form gives one at every nesting level.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "shorter-is-always-clearer",
+            description:
+              "Equates fewer lines with more readable code. Past some nesting depth, compressing a loop into one expression removes exactly the structure a reader would use to follow it.",
+            blameConceptId: "python-comprehensions",
+          },
+        },
+      ],
+    },
+    difficulty: 0.6,
+    discrimination: 1.5,
+    expectedSeconds: 130,
+    prereqClosure: ["python-comprehensions", "python-loops"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "python-comprehensions--transfer-none-sentinel-collision",
+    conceptId: "python-comprehensions",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A pipeline replaces `for x in a: if valid(x): results.append(transform(x))` with `results = [transform(x) if valid(x) else None for x in a]`, then filters out the Nones afterward. Explain the one case where this is not equivalent to the original, and give a fix.",
+    rubric: {
+      elements: [
+        {
+          id: "placeholder",
+          description:
+            "Explains that the rewritten form produces an explicit None placeholder for every invalid x (instead of nothing at all), which must be filtered out in a separate pass.",
+          weight: 2,
+        },
+        {
+          id: "collision",
+          description:
+            "Explains that if transform can itself legitimately return None for a valid input, the post-hoc filter cannot distinguish that genuine result from an invalid-input placeholder — a real result silently disappears the same way a skipped invalid one does.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "none-is-a-safe-sentinel",
+            description:
+              "Uses None as a filter sentinel without checking whether the wrapped function can itself produce None. When it can, the sentinel and a genuine result become indistinguishable.",
+            blameConceptId: "python-comprehensions",
+          },
+        },
+        {
+          id: "fix",
+          description:
+            "Gives a fix: use a private sentinel object instead of None, or keep the original filter-then-transform form, which never manufactures placeholders at all.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.8,
+    discrimination: 1.8,
+    expectedSeconds: 190,
+    prereqClosure: ["python-comprehensions"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "python-comprehensions--transfer-genexpr-vs-list-error-timing",
+    conceptId: "python-comprehensions",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "`sum(1 / x for x in values)` raises `ZeroDivisionError` partway through a 10,000-entry values list where only the 9,000th entry is zero. A colleague expects `sum([1 / x for x in values])` to behave identically. Explain the one real difference between the two, and whether it changes correctness.",
+    rubric: {
+      elements: [
+        {
+          id: "same-element",
+          description: "States both forms fail at the same offending element — laziness does not change which value causes the error.",
+          weight: 2,
+        },
+        {
+          id: "memory-difference",
+          description:
+            "Explains the eager list form must first build a 9,000-element list before sum is even invoked, briefly holding that whole list in memory, while the generator form consumes and discards one value at a time.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "raises-earlier-for-genexpr",
+            description:
+              "Assumes laziness changes when an error occurs relative to which element caused it. Both forms fail at the same offending element; laziness changes how much has been materialized, not which element is reached first.",
+            blameConceptId: "python-comprehensions",
+          },
+        },
+        {
+          id: "no-partial-result",
+          description: "States neither form returns a partial sum on failure — the exception propagates out of sum() with no value either way.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.5,
+    discrimination: 1.6,
+    expectedSeconds: 170,
+    prereqClosure: ["python-comprehensions"],
+    source: AUTHORED,
+    status: "live",
+  },
+
+  // -- numpy-arrays -------------------------------------------------------
+  {
+    id: "numpy-arrays--recall-shape-attribute",
+    conceptId: "numpy-arrays",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "a = `np.array([[1, 2, 3], [4, 5, 6]])`. What does a.shape return?",
+    choices: [
+      { id: "a", text: "(2, 3)", correct: true },
+      {
+        id: "b",
+        text: "(3, 2)",
+        correct: false,
+        misconception: {
+          id: "shape-order-reversed",
+          description: "Shape lists axes outer-to-inner: 2 rows, then 3 columns — not columns first.",
+          blameConceptId: "numpy-arrays",
+        },
+      },
+      {
+        id: "c",
+        text: "6",
+        correct: false,
+        misconception: {
+          id: "shape-is-size",
+          description: "Confuses shape with the total element count. a.size is 6; a.shape describes the axis lengths.",
+          blameConceptId: "numpy-arrays",
+        },
+      },
+      {
+        id: "d",
+        text: "[2, 3], a list",
+        correct: false,
+        misconception: {
+          id: "shape-is-list",
+          description: "shape is a tuple, not a list — a small distinction that matters because tuples are immutable and hashable.",
+          blameConceptId: "numpy-arrays",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.0,
+    expectedSeconds: 20,
+    prereqClosure: ["numpy-arrays"],
+    source: NUMPY_DOCS,
+    status: "live",
+  },
+  {
+    id: "numpy-arrays--recall-arange-vs-linspace-length",
+    conceptId: "numpy-arrays",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What is the length of `np.arange(0, 10, 2)`, and of `np.linspace(0, 10, 2)`?",
+    choices: [
+      { id: "a", text: "5, and 2", correct: true },
+      {
+        id: "b",
+        text: "5, and 5",
+        correct: false,
+        misconception: {
+          id: "linspace-uses-step",
+          description: "linspace's second numeric argument after the count is the *number of points*, not a step size — with num=2 it returns exactly [0, 10].",
+          blameConceptId: "numpy-arrays",
+        },
+      },
+      {
+        id: "c",
+        text: "2, and 5",
+        correct: false,
+        misconception: {
+          id: "arange-linspace-swapped",
+          description: "Has the two functions' behavior swapped. arange steps by the given increment; linspace returns exactly the given count of points.",
+          blameConceptId: "numpy-arrays",
+        },
+      },
+      {
+        id: "d",
+        text: "5, and 11",
+        correct: false,
+        misconception: {
+          id: "linspace-default-num",
+          description: "linspace's count is whatever is explicitly passed — here 2 — not its default of 50 or any other fixed value.",
+          blameConceptId: "numpy-arrays",
+        },
+      },
+    ],
+    difficulty: -1.6,
+    discrimination: 1.2,
+    expectedSeconds: 30,
+    prereqClosure: ["numpy-arrays"],
+    source: NUMPY_DOCS,
+    status: "live",
+  },
+  {
+    id: "numpy-arrays--apply-fancy-index-repeats",
+    conceptId: "numpy-arrays",
+    format: "mcq",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "a = `np.array([10, 20, 30, 40, 50])`. What does `a[[3, 0, 3]]` return?",
+    choices: [
+      { id: "a", text: "`array([40, 10, 40])`", correct: true },
+      {
+        id: "b",
+        text: "`array([10, 30, 40])`",
+        correct: false,
+        misconception: {
+          id: "fancy-index-sorts",
+          description: "Fancy indexing returns elements in exactly the order the index array names them, not sorted by position.",
+          blameConceptId: "numpy-arrays",
+        },
+      },
+      {
+        id: "c",
+        text: "`array([40, 10])`",
+        correct: false,
+        misconception: {
+          id: "fancy-index-dedups",
+          description: "Fancy indexing has no set-like deduplication; a repeated index simply produces a repeated output element.",
+          blameConceptId: "numpy-arrays",
+        },
+      },
+      {
+        id: "d",
+        text: "`IndexError` — an index cannot repeat",
+        correct: false,
+        misconception: {
+          id: "fancy-index-no-repeats",
+          description: "Repeating an index is legal and common — it is exactly how fancy indexing builds a resampled or reordered array.",
+          blameConceptId: "numpy-arrays",
+        },
+      },
+    ],
+    difficulty: -0.3,
+    discrimination: 1.4,
+    expectedSeconds: 35,
+    prereqClosure: ["numpy-arrays"],
+    source: NUMPY_DOCS,
+    status: "live",
+  },
+  {
+    id: "numpy-arrays--apply-combined-boolean-mask-count",
+    conceptId: "numpy-arrays",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "a = `np.array([1, 5, 3, 8, 2, 9, 4])`. How many elements satisfy `(a > 3) & (a < 9)`?",
+    answerKey: 3,
+    tolerance: 0,
+    difficulty: 0.2,
+    discrimination: 1.4,
+    expectedSeconds: 40,
+    prereqClosure: ["numpy-arrays"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "numpy-arrays--explain-boolean-vs-fancy-index-length",
+    conceptId: "numpy-arrays",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "Both `a[mask]` (a boolean array) and `a[idx]` (an integer array) select a subset of a. Explain what determines the result's length in each case, and why boolean indexing can never produce an array longer than a while fancy indexing can.",
+    rubric: {
+      elements: [
+        {
+          id: "boolean",
+          description:
+            "Explains a boolean mask must be exactly the same length as a, one flag per element, and its True count fixes the output length — so it can only ever select, never exceed, a's length.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "bool-mask-any-length",
+            description: "Assumes a boolean mask can be any length or repeat entries the way an index array can. It must exactly match a's length, one flag per element.",
+            blameConceptId: "numpy-arrays",
+          },
+        },
+        {
+          id: "fancy",
+          description:
+            "Explains an integer index array has no length constraint relative to a and can repeat any index any number of times, so the output length equals the index array's own length — including longer than a.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.9,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["numpy-arrays"],
+    source: NUMPY_DOCS,
+    status: "live",
+  },
+  {
+    id: "numpy-arrays--explain-nan-comparison",
+    conceptId: "numpy-arrays",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem: "a contains a NaN. Explain why `a == a` is False at that position, and what the correct way to test for NaN is.",
+    rubric: {
+      elements: [
+        {
+          id: "ieee",
+          description:
+            "Explains that IEEE 754 defines NaN to compare unequal to everything, including itself, so no ordinary comparison ever returns True at a NaN position.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "nan-equals-itself",
+            description: "Assumes NaN behaves like an ordinary value under ==. By definition it compares unequal to every value, itself included.",
+            blameConceptId: "numpy-arrays",
+          },
+        },
+        {
+          id: "fix",
+          description: "Gives the fix: np.isnan(a), rather than `a == np.nan` or `a == a`, both of which are silently always False.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.7,
+    discrimination: 1.5,
+    expectedSeconds: 130,
+    prereqClosure: ["numpy-arrays"],
+    source: NUMPY_DOCS,
+    status: "live",
+  },
+  {
+    id: "numpy-arrays--transfer-narrow-accumulator-overflow",
+    conceptId: "numpy-arrays",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A per-bucket histogram is stored as an int8 array (no bucket's true count exceeds 100). A colleague sums it manually with a running scalar: `total = np.int8(0)`, then `for c in counts: total += c`. Across 500 buckets this reports a small or negative total, not the true sum. Diagnose the bug and give a fix.",
+    rubric: {
+      elements: [
+        {
+          id: "overflow",
+          description:
+            "Explains that total is an actual np.int8 scalar whose arithmetic wraps within its signed 8-bit range rather than growing; accumulating hundreds of positive counts into it overflows and wraps repeatedly, so the final value bears no relation to the true sum.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "numpy-ints-check-overflow",
+            description: "Assumes fixed-width NumPy integer arithmetic is checked and would raise on overflow. It wraps silently — a sum exceeding the dtype's range comes back wrong with no warning.",
+            blameConceptId: "numpy-arrays",
+          },
+        },
+        {
+          id: "fix",
+          description: "Gives a fix: start the accumulator at a wide dtype (np.int64 or a plain Python int), or vectorize with counts.sum().",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "generalization",
+          description:
+            "Bonus: notes NumPy's own sum() upcasts small integer dtypes to at least the platform integer by default for exactly this reason — the array can stay int8 for storage, but a manual accumulator does not get that protection.",
+          weight: 1,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.7,
+    expectedSeconds: 180,
+    prereqClosure: ["numpy-arrays"],
+    source: NUMPY_DOCS,
+    status: "live",
+  },
+  {
+    id: "numpy-arrays--transfer-view-belief-from-lists",
+    conceptId: "numpy-arrays",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A function takes `sub = arr[2:5]`, computes statistics on sub, and — believing slicing always copies as it does for Python lists — later does `sub[0] = 0` to zero out a value for a separate, supposedly local computation. The caller's original array changes too. Diagnose the bug, and give the one-line fix that keeps the zeroing local.",
+    rubric: {
+      elements: [
+        {
+          id: "diagnosis",
+          description:
+            "Explains that a basic (non-fancy) NumPy slice is a view sharing the same underlying buffer as arr, unlike a Python list slice which copies; writing to sub therefore writes into arr at the corresponding positions.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "array-slice-copies-like-list",
+            description: "Carries the Python list rule — slicing copies — over to NumPy arrays. A basic array slice is a view; only fancy (integer-array or boolean) indexing copies.",
+            blameConceptId: "numpy-arrays",
+          },
+        },
+        {
+          id: "fix",
+          description: "Gives the fix: take an explicit copy before mutating locally, `sub = arr[2:5].copy()`.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.7,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["numpy-arrays", "python-list-operations"],
+    source: NUMPY_DOCS,
+    status: "live",
+  },
+
+  // -- numpy-broadcasting --------------------------------------------------
+  {
+    id: "numpy-broadcasting--recall-scalar-broadcast-shape",
+    conceptId: "numpy-broadcasting",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "A has shape `(3, 4)`. What is the shape of `A + 5`?",
+    choices: [
+      { id: "a", text: "(3, 4) — a scalar broadcasts against every element", correct: true },
+      {
+        id: "b",
+        text: "(1,) — the scalar dominates",
+        correct: false,
+        misconception: {
+          id: "scalar-dominates-shape",
+          description: "A scalar has no shape of its own to impose; it stretches to match whatever it is combined with.",
+          blameConceptId: "numpy-broadcasting",
+        },
+      },
+      {
+        id: "c",
+        text: "An error — shapes must match exactly",
+        correct: false,
+        misconception: {
+          id: "scalar-shape-mismatch",
+          description: "A scalar broadcasts against any shape; exact shape matching is only required when neither operand is a scalar or length-1 axis.",
+          blameConceptId: "numpy-broadcasting",
+        },
+      },
+      {
+        id: "d",
+        text: "(4, 3) — broadcasting also transposes",
+        correct: false,
+        misconception: {
+          id: "broadcast-transposes",
+          description: "Broadcasting never reorders axes; it only stretches length-1 axes. A's shape is unaffected.",
+          blameConceptId: "numpy-broadcasting",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.0,
+    expectedSeconds: 20,
+    prereqClosure: ["numpy-broadcasting"],
+    source: NUMPY_DOCS,
+    status: "live",
+  },
+  {
+    id: "numpy-broadcasting--recall-equal-shapes-need-no-broadcast",
+    conceptId: "numpy-broadcasting",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "If two arrays already have identical shapes, does any broadcasting occur when they are combined elementwise?",
+    choices: [
+      { id: "a", text: "No — broadcasting only matters when shapes differ", correct: true },
+      {
+        id: "b",
+        text: "Yes, broadcasting always applies to any elementwise operation",
+        correct: false,
+        misconception: {
+          id: "broadcast-always-applies",
+          description: "Broadcasting is the rule for reconciling *different* shapes. Identical shapes combine directly, element for element.",
+          blameConceptId: "numpy-broadcasting",
+        },
+      },
+      {
+        id: "c",
+        text: "Only if the shape has more than one dimension",
+        correct: false,
+        misconception: {
+          id: "broadcast-needs-2d",
+          description: "Dimensionality is irrelevant; what matters is whether the two shapes already agree, at any number of axes.",
+          blameConceptId: "numpy-broadcasting",
+        },
+      },
+      {
+        id: "d",
+        text: "Only for addition and subtraction, not multiplication",
+        correct: false,
+        misconception: {
+          id: "broadcast-op-specific",
+          description: "Broadcasting is a shape rule applied uniformly across every elementwise operation, not a special case of certain operators.",
+          blameConceptId: "numpy-broadcasting",
+        },
+      },
+    ],
+    difficulty: -1.7,
+    discrimination: 1.0,
+    expectedSeconds: 20,
+    prereqClosure: ["numpy-broadcasting"],
+    source: NUMPY_DOCS,
+    status: "live",
+  },
+  {
+    id: "numpy-broadcasting--apply-column-vector-shape",
+    conceptId: "numpy-broadcasting",
+    format: "mcq",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "v has shape `(5, 1)` and M has shape `(5, 3)`. What is the shape of `v * M`?",
+    choices: [
+      { id: "a", text: "(5, 3)", correct: true },
+      {
+        id: "b",
+        text: "(5, 1)",
+        correct: false,
+        misconception: {
+          id: "keeps-smaller-shape",
+          description: "The result takes the larger, broadcast-compatible size at each axis, not the smaller operand's shape.",
+          blameConceptId: "numpy-broadcasting",
+        },
+      },
+      {
+        id: "c",
+        text: "An error — the second axes don't match",
+        correct: false,
+        misconception: {
+          id: "one-fails-compatibility",
+          description: "An axis of length 1 is exactly the case broadcasting stretches; it is compatible with any length on that axis, not a mismatch.",
+          blameConceptId: "numpy-broadcasting",
+        },
+      },
+      {
+        id: "d",
+        text: "(1, 3)",
+        correct: false,
+        misconception: {
+          id: "drops-first-axis",
+          description: "Both axes of length 5 are equal and simply kept; no axis is dropped by broadcasting.",
+          blameConceptId: "numpy-broadcasting",
+        },
+      },
+    ],
+    difficulty: -0.2,
+    discrimination: 1.3,
+    expectedSeconds: 35,
+    prereqClosure: ["numpy-broadcasting", "numpy-arrays"],
+    source: NUMPY_DOCS,
+    status: "live",
+  },
+  {
+    id: "numpy-broadcasting--apply-mean-axis0-length",
+    conceptId: "numpy-broadcasting",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "A has shape `(100, 20)`. How many elements does `A.mean(axis=0)` have?",
+    answerKey: 20,
+    tolerance: 0,
+    difficulty: -0.4,
+    discrimination: 1.3,
+    expectedSeconds: 30,
+    prereqClosure: ["numpy-broadcasting", "numpy-arrays"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "numpy-broadcasting--explain-outer-product-via-broadcasting",
+    conceptId: "numpy-broadcasting",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "Explain how `a[:, None] * b[None, :]` computes an outer product for 1-D a and b, connecting the shapes produced to the definition of broadcasting.",
+    rubric: {
+      elements: [
+        {
+          id: "shapes",
+          description:
+            "Explains that a[:, None] reshapes a to (n, 1) and b[None, :] reshapes b to (1, m); broadcasting then stretches each operand's length-1 axis against the other's real axis, giving an (n, m) result.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "meaning",
+          description:
+            "Explains that element (i, j) of the result equals a[i] * b[j] — exactly the outer product's definition, computed without an explicit double loop.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "outer-needs-explicit-loop",
+            description: "Assumes an outer product needs np.outer or a nested loop. Reshaping to expose a length-1 axis and letting broadcasting stretch it computes the same thing.",
+            blameConceptId: "numpy-broadcasting",
+          },
+        },
+      ],
+    },
+    difficulty: 0.9,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["numpy-broadcasting", "numpy-arrays"],
+    source: NUMPY_DOCS,
+    status: "live",
+  },
+  {
+    id: "numpy-broadcasting--explain-error-message-axis-check",
+    conceptId: "numpy-broadcasting",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "NumPy raises `ValueError: operands could not be broadcast together with shapes (3,4) (5,)` for `A + v`. Explain exactly which comparison failed, without just restating that the shapes 'don't match'.",
+    rubric: {
+      elements: [
+        {
+          id: "alignment",
+          description: "Explains that right-aligning (3,4) with (5,) pads the shorter shape to (1, 5), then compares trailing axes first: 4 vs 5.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "why-fails",
+          description:
+            "Explains that neither 4 nor 5 is 1 and they are unequal, so the compatibility rule (equal, or one of them 1) fails at that axis — the comparison never even reaches the leading 3 vs the padded 1.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "shapes-compared-by-total-size",
+            description:
+              "Treats the error as 'total sizes disagree' rather than a per-axis check. The comparison runs axis by axis from the right and stops at the first axis that fails.",
+            blameConceptId: "numpy-broadcasting",
+          },
+        },
+      ],
+    },
+    difficulty: 0.6,
+    discrimination: 1.5,
+    expectedSeconds: 130,
+    prereqClosure: ["numpy-broadcasting"],
+    source: NUMPY_DOCS,
+    status: "live",
+  },
+  {
+    id: "numpy-broadcasting--transfer-1d-input-breaks-batched-code",
+    conceptId: "numpy-broadcasting",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A softmax implementation computes `exp(x) / exp(x).sum(axis=1, keepdims=True)` for x of shape (batch, classes), but a colleague passes a single 1-D example of shape (classes,) for a quick check and gets `IndexError: axis 1 is out of bounds`. Explain why the 2-D-only code fails loudly rather than silently doing something wrong, and what that tells you about testing shape-sensitive code.",
+    rubric: {
+      elements: [
+        {
+          id: "why-raises",
+          description: "Explains a 1-D array has only axis 0, so axis=1 does not exist and NumPy raises immediately rather than guessing a fallback axis.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "lesson",
+          description:
+            "Draws the lesson that shape bugs are caught loudly when the requested axis does not exist at all, but can be caught silently, or not at all, when it exists and simply means something different — the more dangerous case, and the one worth testing for deliberately.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "any-shape-error-is-a-bug-in-code",
+            description:
+              "Treats any shape-related exception as proof the implementation is wrong. Here the implementation is fine; it was written for batched (2-D) input and called outside its contract.",
+            blameConceptId: "numpy-broadcasting",
+          },
+        },
+        {
+          id: "fix",
+          description: "Bonus: names the actual fix — reshape the 1-D input to (1, classes) before calling, or have the function branch on x.ndim.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.8,
+    discrimination: 1.8,
+    expectedSeconds: 180,
+    prereqClosure: ["numpy-broadcasting", "numpy-arrays"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "numpy-broadcasting--transfer-batch-mean-needs-keepdims",
+    conceptId: "numpy-broadcasting",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "X holds 10,000 images, each `(64, 64)`, as a `(10000, 64, 64)` array. Per-image centering is attempted with `X - X.mean(axis=(1, 2))`, which raises a broadcasting error instead of centering each image. Diagnose the shape mismatch, and give the fix using keepdims.",
+    rubric: {
+      elements: [
+        {
+          id: "diagnosis",
+          description:
+            "Explains that X.mean(axis=(1,2)) has shape (10000,), which right-aligns against the *last* axis of X (also length 64, not 10000) — so 64 is compared against 10000, which fails (or, worse, silently succeeds against the wrong axis if the sizes happened to coincide).",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "reduced-axis-stays-aligned-to-original-position",
+            description:
+              "Assumes the result of reducing axis k stays associated with axis k when combined with the original array. Broadcasting only ever looks at position from the right, with no memory of which axis was reduced.",
+            blameConceptId: "numpy-broadcasting",
+          },
+        },
+        {
+          id: "fix",
+          description: "Gives the fix: `X - X.mean(axis=(1, 2), keepdims=True)`, giving the mean shape (10000, 1, 1), which aligns correctly against (10000, 64, 64).",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.7,
+    expectedSeconds: 170,
+    prereqClosure: ["numpy-broadcasting", "numpy-arrays"],
+    source: NUMPY_DOCS,
+    status: "live",
+  },
+
+  // -- pandas-dataframes ---------------------------------------------------
+  {
+    id: "pandas-dataframes--recall-head-default-count",
+    conceptId: "pandas-dataframes",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "By default, how many rows does `df.head()` return?",
+    choices: [
+      { id: "a", text: "5", correct: true },
+      {
+        id: "b",
+        text: "10",
+        correct: false,
+        misconception: {
+          id: "head-default-ten",
+          description: "head()'s default n is 5; 10 is a common but wrong guess by analogy with other tools.",
+          blameConceptId: "pandas-dataframes",
+        },
+      },
+      {
+        id: "c",
+        text: "All rows",
+        correct: false,
+        misconception: {
+          id: "head-shows-all",
+          description: "head() exists specifically to show a small preview, not the whole frame; that is what printing df itself (or df.to_string()) would do.",
+          blameConceptId: "pandas-dataframes",
+        },
+      },
+      {
+        id: "d",
+        text: "1",
+        correct: false,
+        misconception: {
+          id: "head-default-one",
+          description: "A single row is what df.iloc[0] or df.head(1) gives; the bare default is 5.",
+          blameConceptId: "pandas-dataframes",
+        },
+      },
+    ],
+    difficulty: -2.1,
+    discrimination: 0.9,
+    expectedSeconds: 15,
+    prereqClosure: ["pandas-dataframes"],
+    source: PANDAS_DOCS,
+    status: "live",
+  },
+  {
+    id: "pandas-dataframes--recall-one-dtype-per-column",
+    conceptId: "pandas-dataframes",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "Within one DataFrame column (a Series), can different rows hold different dtypes the way a Python list can hold mixed types?",
+    choices: [
+      { id: "a", text: "No — a Series has one dtype for the whole column; mixed types get stored as generic 'object'", correct: true },
+      {
+        id: "b",
+        text: "Yes, each cell tracks its own type independently",
+        correct: false,
+        misconception: {
+          id: "per-cell-dtype",
+          description: "A Series is backed by one homogeneous (or object) array, not a per-cell tagged type the way a Python list of mixed objects is.",
+          blameConceptId: "pandas-dataframes",
+        },
+      },
+      {
+        id: "c",
+        text: "Only for string columns",
+        correct: false,
+        misconception: {
+          id: "mixed-types-string-only",
+          description: "The single-dtype-per-column rule applies to every column, not just string-typed ones.",
+          blameConceptId: "pandas-dataframes",
+        },
+      },
+      {
+        id: "d",
+        text: "Only if the DataFrame has a MultiIndex",
+        correct: false,
+        misconception: {
+          id: "mixed-types-needs-multiindex",
+          description: "The dtype of a column has nothing to do with what kind of index the DataFrame has.",
+          blameConceptId: "pandas-dataframes",
+        },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.1,
+    expectedSeconds: 25,
+    prereqClosure: ["pandas-dataframes"],
+    source: PANDAS_DOCS,
+    status: "live",
+  },
+  {
+    id: "pandas-dataframes--apply-combined-boolean-mask-rows",
+    conceptId: "pandas-dataframes",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem:
+      "df has 200 rows. `df.x > 0` is True for 60 of them, `df.y < 5` is True for 90 of them, and 30 rows satisfy both. How many rows does `df[(df.x > 0) & (df.y < 5)]` return?",
+    answerKey: 30,
+    tolerance: 0,
+    difficulty: -0.3,
+    discrimination: 1.3,
+    expectedSeconds: 35,
+    prereqClosure: ["pandas-dataframes"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "pandas-dataframes--apply-bitwise-vs-python-and",
+    conceptId: "pandas-dataframes",
+    format: "mcq",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "Why does `df[df.x > 0 and df.y < 5]` raise an error, while `df[(df.x > 0) & (df.y < 5)]` works?",
+    choices: [
+      {
+        id: "a",
+        text: "`and` calls bool() on each full Series to combine them, and a Series with more than one element has an ambiguous truth value; `&` is the elementwise operator pandas overloads for this",
+        correct: true,
+      },
+      {
+        id: "b",
+        text: "`and` is reserved and cannot appear inside square brackets at all",
+        correct: false,
+        misconception: {
+          id: "and-forbidden-in-brackets",
+          description: "`and` is ordinary Python and legal inside brackets; the failure is about what it does to a multi-element Series, not where it appears.",
+          blameConceptId: "pandas-dataframes",
+        },
+      },
+      {
+        id: "c",
+        text: "`and` only combines exactly two conditions, while `&` supports any number",
+        correct: false,
+        misconception: {
+          id: "and-arity-limited",
+          description: "Both operators are binary. The failure is about ambiguous truth value on a multi-element Series, not arity.",
+          blameConceptId: "pandas-dataframes",
+        },
+      },
+      {
+        id: "d",
+        text: "`and` short-circuits so it never evaluates `df.y < 5`, while `&` evaluates both",
+        correct: false,
+        misconception: {
+          id: "and-short-circuit-explains-error",
+          description: "Short-circuiting is real but not why this raises — the error fires while trying to interpret df.x > 0 itself as a single boolean.",
+          blameConceptId: "pandas-dataframes",
+        },
+      },
+    ],
+    difficulty: 0.3,
+    discrimination: 1.5,
+    expectedSeconds: 60,
+    prereqClosure: ["pandas-dataframes"],
+    source: PANDAS_DOCS,
+    status: "live",
+  },
+  {
+    id: "pandas-dataframes--explain-copy-vs-view-not-guaranteed",
+    conceptId: "pandas-dataframes",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "Explain why pandas says whether `df[...]` returns a view or a copy is 'not guaranteed' and can depend on the DataFrame's internal memory layout, unlike NumPy's clear rule for basic array slices.",
+    rubric: {
+      elements: [
+        {
+          id: "internal-layout",
+          description:
+            "Explains that a DataFrame can consolidate same-dtype columns into shared internal blocks, so whether a given selection can be expressed as a view depends on how it lines up with that block structure — something the caller's code does not control or see.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "pandas-follows-numpy-slice-rule",
+            description: "Assumes pandas selection follows NumPy's clean view-for-basic-slice rule. Pandas' block-based storage means the same-looking selection can be a view in one frame and a copy in another.",
+            blameConceptId: "pandas-dataframes",
+          },
+        },
+        {
+          id: "practical",
+          description: "Explains this is why relying on the result being a view is fragile, and why single-operation .loc assignment on the original frame is the recommended pattern.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.1,
+    discrimination: 1.5,
+    expectedSeconds: 150,
+    prereqClosure: ["pandas-dataframes"],
+    source: PANDAS_DOCS,
+    status: "live",
+  },
+  {
+    id: "pandas-dataframes--explain-object-dtype-cost",
+    conceptId: "pandas-dataframes",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "A column of strings has dtype 'object'. Explain what pandas actually stores in that case, and why operations on it are slower than on a numeric column of the same length.",
+    rubric: {
+      elements: [
+        {
+          id: "storage",
+          description:
+            "Explains that an object-dtype column stores an array of pointers to ordinary Python objects scattered in memory, like a Python list, rather than packed contiguous values of one fixed width the way int64 or float64 columns are.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "object-dtype-is-still-vectorized",
+            description: "Assumes an object column gets the same vectorized, contiguous-buffer treatment as a numeric column simply for being in a DataFrame. Object dtype behaves like a Python list of pointers under the hood.",
+            blameConceptId: "pandas-dataframes",
+          },
+        },
+        {
+          id: "cost",
+          description:
+            "Explains that operations on it fall back to iterating in Python, dereferencing each pointer and calling Python-level methods, paying the same per-element overhead a Python loop would rather than running as one compiled pass.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.9,
+    discrimination: 1.5,
+    expectedSeconds: 150,
+    prereqClosure: ["pandas-dataframes", "numpy-arrays"],
+    source: PANDAS_DOCS,
+    status: "live",
+  },
+  {
+    id: "pandas-dataframes--transfer-nan-forces-float-dtype",
+    conceptId: "pandas-dataframes",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Two DataFrames each have an int64 'id' column. After `pd.concat` with a third source where some 'id' values are missing, the merged column's dtype silently becomes float64, and equality checks against integers start behaving oddly. Diagnose why, and give a fix.",
+    rubric: {
+      elements: [
+        {
+          id: "why",
+          description:
+            "Explains that a plain int64 column has no way to represent a missing value (NaN is a float), so the moment one is needed the whole column is upcast to float64 to make room for it — every existing integer is now stored as, e.g., 3.0.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "missing-value-doesnt-affect-dtype",
+            description: "Assumes adding rows with a missing id only affects those rows. Because int64 cannot represent NaN at all, its presence forces the entire column to a float dtype.",
+            blameConceptId: "pandas-dataframes",
+          },
+        },
+        {
+          id: "fix",
+          description:
+            "Gives a fix: use pandas' nullable integer dtype (Int64, capital I), which supports pd.NA without falling back to float; or resolve the missing ids explicitly before concatenation.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.8,
+    discrimination: 1.7,
+    expectedSeconds: 190,
+    prereqClosure: ["pandas-dataframes", "numpy-arrays"],
+    source: PANDAS_DOCS,
+    status: "live",
+  },
+  {
+    id: "pandas-dataframes--transfer-positional-array-assignment-after-filter",
+    conceptId: "pandas-dataframes",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A function computes `adjustments = compute_stuff(df)` over the full df, then later filters `filtered = df[df.flag]` and assigns `filtered['adj'] = adjustments`. It looks correct when tested on the whole DataFrame, but silently lands on the wrong rows once an upstream filter is applied first. Diagnose the bug and give a fix.",
+    rubric: {
+      elements: [
+        {
+          id: "diagnosis",
+          description:
+            "Explains that assigning a bare NumPy array or list to a column is positional, aligning with filtered's own row order — it happened to look right only because, unfiltered, filtered's row order equals df's from position 0; once filtered has fewer or reordered rows, adjustments (computed against df's original rows) lines up with the wrong ones.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "array-assignment-preserves-source-alignment",
+            description: "Assumes assigning a plain array remembers which original rows its values were computed for. Positional assignment carries no label information; only a pandas Series, matched by index, does.",
+            blameConceptId: "pandas-dataframes",
+          },
+        },
+        {
+          id: "fix",
+          description:
+            "Gives the fix: compute adjustments as a pd.Series carrying the same index as its source (e.g. `pd.Series(values, index=df.index)`), then assign it — pandas aligns by label rather than position, landing on the correct rows regardless of filtering.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "general-rule",
+          description: "Bonus: states the general habit — compute any per-row derived value with the same index as its source, not as a bare array.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.7,
+    discrimination: 1.8,
+    expectedSeconds: 200,
+    prereqClosure: ["pandas-dataframes"],
+    source: AUTHORED,
+    status: "live",
+  },
+
+  // -- pandas-groupby -------------------------------------------------------
+  {
+    id: "pandas-groupby--recall-groupby-is-lazy",
+    conceptId: "pandas-groupby",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What does `df.groupby('k')` return by itself, before any aggregation is applied?",
+    choices: [
+      { id: "a", text: "A GroupBy object — grouping metadata, computed lazily until an aggregation is requested", correct: true },
+      {
+        id: "b",
+        text: "A dict mapping each key to its subset DataFrame, already computed",
+        correct: false,
+        misconception: {
+          id: "groupby-returns-dict",
+          description: "groupby returns a lazy GroupBy object; the per-group split is not materialized until an aggregation, iteration, or .get_group() forces it.",
+          blameConceptId: "pandas-groupby",
+        },
+      },
+      {
+        id: "c",
+        text: "A new DataFrame sorted by k",
+        correct: false,
+        misconception: {
+          id: "groupby-returns-sorted-df",
+          description: "Sorting by k happens inside the eventual aggregation's grouping logic, not as a visible standalone DataFrame returned by groupby() itself.",
+          blameConceptId: "pandas-groupby",
+        },
+      },
+      {
+        id: "d",
+        text: "A list of the distinct values of k",
+        correct: false,
+        misconception: {
+          id: "groupby-returns-keys-list",
+          description: "That is closer to df['k'].unique(); groupby() returns an object that knows how to split and later combine, not just the key list.",
+          blameConceptId: "pandas-groupby",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.0,
+    expectedSeconds: 20,
+    prereqClosure: ["pandas-groupby", "pandas-dataframes"],
+    source: PANDAS_DOCS,
+    status: "live",
+  },
+  {
+    id: "pandas-groupby--recall-merge-on-requires-shared-column",
+    conceptId: "pandas-groupby",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "`pd.merge(left, right, on='id')` requires what of 'id'?",
+    choices: [
+      { id: "a", text: "That both left and right have a column named 'id' to join on", correct: true },
+      {
+        id: "b",
+        text: "That 'id' is set as the index of both frames first",
+        correct: false,
+        misconception: {
+          id: "on-requires-index",
+          description: "on= names an ordinary column in each frame; joining on the index instead uses left_index/right_index=True.",
+          blameConceptId: "pandas-groupby",
+        },
+      },
+      {
+        id: "c",
+        text: "That 'id' contains only unique values in both frames",
+        correct: false,
+        misconception: {
+          id: "on-requires-uniqueness",
+          description: "merge does not require uniqueness on the join key; duplicated keys are legal and produce a many-to-many cross product within the key.",
+          blameConceptId: "pandas-groupby",
+        },
+      },
+      {
+        id: "d",
+        text: "Nothing — on= is optional documentation and merge always joins on the index",
+        correct: false,
+        misconception: {
+          id: "on-is-cosmetic",
+          description: "on= determines which columns are actually used to match rows; without it merge falls back to matching on columns common to both frames, not the index.",
+          blameConceptId: "pandas-groupby",
+        },
+      },
+    ],
+    difficulty: -1.7,
+    discrimination: 1.0,
+    expectedSeconds: 20,
+    prereqClosure: ["pandas-groupby", "pandas-dataframes"],
+    source: PANDAS_DOCS,
+    status: "live",
+  },
+  {
+    id: "pandas-groupby--apply-multi-agg-shape",
+    conceptId: "pandas-groupby",
+    format: "mcq",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "df has 500 rows and 12 distinct values of k. `df.groupby('k')['v'].agg(['mean', 'max'])` produces a result with how many rows and how many columns?",
+    choices: [
+      { id: "a", text: "12 rows and 2 columns — one row per group, one column per aggregation function", correct: true },
+      {
+        id: "b",
+        text: "500 rows and 2 columns",
+        correct: false,
+        misconception: {
+          id: "agg-keeps-all-rows",
+          description: "An aggregation always collapses to one row per group, regardless of how many named functions are applied.",
+          blameConceptId: "pandas-groupby",
+        },
+      },
+      {
+        id: "c",
+        text: "12 rows and 12 columns",
+        correct: false,
+        misconception: {
+          id: "agg-columns-match-groups",
+          description: "The column count comes from the number of aggregation functions requested, not from the number of groups.",
+          blameConceptId: "pandas-groupby",
+        },
+      },
+      {
+        id: "d",
+        text: "1 row and 2 columns",
+        correct: false,
+        misconception: {
+          id: "agg-ignores-groups",
+          description: "Grouping is what makes the aggregation per-key; ignoring it would only make sense with no groupby at all.",
+          blameConceptId: "pandas-groupby",
+        },
+      },
+    ],
+    difficulty: 0.0,
+    discrimination: 1.3,
+    expectedSeconds: 35,
+    prereqClosure: ["pandas-groupby", "pandas-dataframes"],
+    source: PANDAS_DOCS,
+    status: "live",
+  },
+  {
+    id: "pandas-groupby--apply-left-merge-row-count",
+    conceptId: "pandas-groupby",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem:
+      "left has 100 rows with a key column; right has a matching row for 80 of those keys and no duplicate keys on either side. How many rows does `pd.merge(left, right, how='left')` produce?",
+    answerKey: 100,
+    tolerance: 0,
+    difficulty: 0.1,
+    discrimination: 1.3,
+    expectedSeconds: 40,
+    prereqClosure: ["pandas-groupby", "pandas-dataframes"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "pandas-groupby--explain-groupby-sort-default",
+    conceptId: "pandas-groupby",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "By default, `df.groupby('k')` sorts its result by the group key. Explain why this default can be surprising for a categorical column, and how to preserve the original category order instead.",
+    rubric: {
+      elements: [
+        {
+          id: "default",
+          description:
+            "Explains that groupby sorts group keys by default (sort=True), so the output order need not match first-appearance order or any meaningful domain order — 'low', 'medium', 'high' would sort alphabetically as 'high', 'low', 'medium'.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "groupby-preserves-appearance-order",
+            description: "Assumes group order in the output matches first-appearance order in the data. The default sorts by key value; appearance order requires sort=False or an ordered Categorical.",
+            blameConceptId: "pandas-groupby",
+          },
+        },
+        {
+          id: "fix",
+          description: "Gives the fix: pass sort=False for first-appearance order, or make the column an ordered Categorical with the domain-meaningful category list.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.7,
+    discrimination: 1.5,
+    expectedSeconds: 140,
+    prereqClosure: ["pandas-groupby", "pandas-dataframes"],
+    source: PANDAS_DOCS,
+    status: "live",
+  },
+  {
+    id: "pandas-groupby--explain-merge-suffixes",
+    conceptId: "pandas-groupby",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken", "handwritten"],
+    stem:
+      "Left and right both have a non-key column named 'value'. Explain what pd.merge does about the collision by default, and why silently picking one side's column would be worse.",
+    rubric: {
+      elements: [
+        {
+          id: "default",
+          description: "Explains pandas renames both to value_x and value_y (configurable via suffixes=) rather than dropping either.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "merge-drops-duplicate-columns",
+            description: "Assumes a merge keeps only one side's column when names collide, silently discarding the other. Both are kept, renamed with suffixes, specifically so nothing is silently lost.",
+            blameConceptId: "pandas-groupby",
+          },
+        },
+        {
+          id: "why-worse",
+          description: "Explains that silently keeping only one side would give a caller who wanted the other side's 'value' wrong numbers with no warning, whereas the suffix forces an explicit choice.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.4,
+    discrimination: 1.4,
+    expectedSeconds: 130,
+    prereqClosure: ["pandas-groupby", "pandas-dataframes"],
+    source: PANDAS_DOCS,
+    status: "live",
+  },
+  {
+    id: "pandas-groupby--transfer-apply-inconsistent-return-shape",
+    conceptId: "pandas-groupby",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "`df.groupby('k').apply(f)` works fine when f returns a scalar per group. A colleague changes f to sometimes return a whole DataFrame (for groups meeting some condition) and a scalar otherwise, and the result becomes an inconsistent, hard-to-use object. Explain why apply's output shape depends on what f returns, and the right way to make behavior deterministic per group.",
+    rubric: {
+      elements: [
+        {
+          id: "apply-is-polymorphic",
+          description:
+            "Explains that unlike agg/transform/filter, whose output shape is fixed by contract, apply infers its output shape from what f actually returns per group — consistent scalars stitch into a Series, consistent same-shaped frames stitch into a bigger frame, but mixed return shapes give pandas no consistent way to combine them.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "apply-output-shape-is-fixed",
+            description: "Treats groupby.apply like agg or transform, with one guaranteed output shape. apply's output shape is inferred from f's actual return values and can vary if f is inconsistent across groups.",
+            blameConceptId: "pandas-groupby",
+          },
+        },
+        {
+          id: "fix",
+          description:
+            "Gives a fix: make f return the same shape for every group (e.g. always a Series with the same keys, filled with NaN where a branch doesn't apply), or split into two separate groupby calls, one per case, each with a uniform return type.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.8,
+    expectedSeconds: 190,
+    prereqClosure: ["pandas-groupby", "pandas-dataframes"],
+    source: PANDAS_DOCS,
+    status: "live",
+  },
+  {
+    id: "pandas-groupby--transfer-merge-dtype-mismatch-empty-result",
+    conceptId: "pandas-groupby",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Two tables are merged on a customer id stored as the string '00123' in one table and the integer 123 in the other. The merge returns zero matching rows and no error. Diagnose why, and give the fix.",
+    rubric: {
+      elements: [
+        {
+          id: "diagnosis",
+          description:
+            "Explains that merge matches keys by equality, and the string '00123' never compares equal to the integer 123 — every row fails to match, so an inner merge on a total type mismatch produces an empty, well-formed result with no error, which is easy to misread as 'no overlap in the data'.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "merge-coerces-types-to-match",
+            description: "Assumes pandas coerces '00123' and 123 to compare equal because they represent the same id conceptually. Merge compares as-is; type differences are the caller's to reconcile first.",
+            blameConceptId: "pandas-groupby",
+          },
+        },
+        {
+          id: "checks",
+          description: "Names a concrete check that would catch it before merging: comparing left['id'].dtype and right['id'].dtype, or checking the key sets intersect at all.",
+          weight: 2,
+        },
+        {
+          id: "fix",
+          description:
+            "Gives the fix: cast both key columns to the same explicit type before merging (e.g. both to string, preserving any leading zeros — never a bare int cast if leading zeros carry meaning).",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.8,
+    discrimination: 1.7,
+    expectedSeconds: 190,
+    prereqClosure: ["pandas-groupby", "pandas-dataframes"],
+    source: PANDAS_DOCS,
+    status: "live",
+  },
 ];
