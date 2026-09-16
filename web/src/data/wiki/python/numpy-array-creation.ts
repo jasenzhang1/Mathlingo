@@ -3,10 +3,10 @@ import type { WikiArticle } from "../types";
 export const numpyArrayCreationWiki: WikiArticle = {
   conceptId: "numpy-array-creation",
   summary:
-    "np.array() wraps data you already have; the rest of NumPy's creation functions build data from a " +
-    "description instead — a range, a count, a shape, a fill value. arange and linspace are the two " +
+    "`np.array()` wraps data you already have; the rest of NumPy's creation functions build data from a " +
+    "description instead — a range, a count, a shape, a fill value. `arange` and `linspace` are the two " +
     "everyone reaches for first, and they answer two different questions: 'step by this amount' versus " +
-    "'give me exactly this many points.' zeros, ones, full, and eye build a shape with no data at all yet, " +
+    "'give me exactly this many points.' `zeros`, `ones`, `full`, and `eye` build a shape with no data at all yet, " +
     "which is exactly what a placeholder or an identity matrix needs.",
 
   sections: [
@@ -28,16 +28,16 @@ export const numpyArrayCreationWiki: WikiArticle = {
           tone: "warning",
           title: "arange with a float step accumulates rounding error",
           text:
-            "np.arange(0, 1, 0.1) can produce 10 or 11 elements depending on floating-point rounding, " +
-            "because it's built by repeated addition of the step. linspace(0, 1, 11) asks for a count " +
+            "`np.arange(0, 1, 0.1)` can produce 10 or 11 elements depending on floating-point rounding, " +
+            "because it's built by repeated addition of the step. `linspace(0, 1, 11)` asks for a count " +
             "instead of a step, sidestepping the problem entirely — prefer it whenever you know how many " +
             "points you want rather than how far apart they should be.",
         },
         {
           kind: "prose",
           text:
-            "The rule of thumb: reach for arange when you're thinking in terms of a step size (every 2nd " +
-            "integer, every 0.5 units), and linspace when you're thinking in terms of a count (100 points " +
+            "The rule of thumb: reach for `arange` when you're thinking in terms of a step size (every 2nd " +
+            "integer, every 0.5 units), and `linspace` when you're thinking in terms of a count (100 points " +
             "between 0 and 1 for a plot).",
         },
       ],
@@ -59,18 +59,18 @@ export const numpyArrayCreationWiki: WikiArticle = {
         {
           kind: "prose",
           text:
-            "Every one of these takes a shape (a tuple of dimension sizes) rather than data — np.zeros(5) " +
-            "and np.zeros((5,)) are the same 1-D array of five zeros, while np.zeros((5, 1)) is a 5x1 " +
+            "Every one of these takes a shape (a tuple of dimension sizes) rather than data — `np.zeros(5)` " +
+            "and `np.zeros((5,))` are the same 1-D array of five zeros, while `np.zeros((5, 1))` is a 5x1 " +
             "column instead. Getting the shape argument right here is what most often determines whether " +
             "a later broadcast succeeds or fails.",
         },
         {
           kind: "callout",
           tone: "insight",
-          title: "dtype defaults to float64 for these — and to int for arange on integers",
+          title: "`dtype` defaults to `float64` for these — and to `int` for `arange` on integers",
           text:
-            "np.zeros(3) is dtype float64 by default; np.arange(3) is int64 because its arguments are " +
-            "integers. Pass dtype=int or dtype=float explicitly when the default doesn't match what the " +
+            "`np.zeros(3)` is dtype `float64` by default; `np.arange(3)` is `int64` because its arguments are " +
+            "integers. Pass `dtype=int` or `dtype=float` explicitly when the default doesn't match what the " +
             "rest of your computation expects — the fix from numpy-arrays applies here too.",
         },
       ],
@@ -88,11 +88,11 @@ export const numpyArrayCreationWiki: WikiArticle = {
           title: "Building a 3x3 matrix of the numbers 1 through 9",
           problem: "Construct a 3x3 array containing 1 through 9, row by row, in one line.",
           steps: [
-            "Generate the flat sequence first: np.arange(1, 10) gives [1, 2, ..., 9].",
-            "reshape(3, 3) reinterprets that same flat data as three rows of three.",
-            "reshape requires the total element count to match: 9 elements into a 3x3 shape (9 slots) works exactly.",
+            "Generate the flat sequence first: `np.arange(1, 10)` gives `[1, 2, ..., 9]`.",
+            "`reshape(3, 3)` reinterprets that same flat data as three rows of three.",
+            "`reshape` requires the total element count to match: 9 elements into a 3x3 shape (9 slots) works exactly.",
           ],
-          answer: "np.arange(1, 10).reshape(3, 3)",
+          answer: "`np.arange(1, 10).reshape(3, 3)`",
         },
       ],
     },
