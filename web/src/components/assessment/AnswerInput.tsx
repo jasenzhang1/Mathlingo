@@ -126,7 +126,9 @@ export function AnswerInput({
               {(item.codeTests ?? [])
                 .filter((t) => !t.hidden)
                 .map((t) => (
-                  <li key={t.id}>{t.description}</li>
+                  <li key={t.id}>
+                    <CodeText text={t.description} />
+                  </li>
                 ))}
             </ul>
           </div>

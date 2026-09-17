@@ -17,10 +17,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "X~Poisson(λ) has E[X]=λ. Write the method-of-moments estimator λ̂ in terms of the sample mean X̄.",
+      "$X \\sim \\text{Poisson}(\\lambda)$ has $E[X]=\\lambda$. Write the method-of-moments estimator $\\hat{\\lambda}$ in terms of the sample mean $\\bar{X}$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "λ̂ = X̄, obtained by setting the theoretical mean λ equal to the sample mean", weight: 1, required: false },
+        { id: "element-1", description: "$\\hat{\\lambda} = \\bar{X}$, obtained by setting the theoretical mean $\\lambda$ equal to the sample mean", weight: 1, required: false },
       ],
     },
     difficulty: -0.4,
@@ -37,7 +37,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten"],
     stem:
-      "X~Cauchy has an undefined population mean (the integral defining E[X] doesn't converge). What happens if you try to apply method of moments to estimate its location parameter this way?",
+      "$X \\sim \\text{Cauchy}$ has an undefined population mean (the integral defining $E[X]$ doesn't converge). What happens if you try to apply method of moments to estimate its location parameter this way?",
     choices: [
       { id: "c1", text: "It works fine — you just set the sample mean equal to the location parameter.", correct: false, misconception: { id: "method-of-moments--r4--m1", description: "assumes a finite sample mean can always stand in for a population mean, even when the population mean doesn't exist", blameConceptId: "method-of-moments" } },
       { id: "c2", text: "The method breaks down: there's no finite theoretical moment to set the sample moment equal to.", correct: true },
@@ -58,10 +58,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For a Geometric(p) distribution counting trials up to and including the first success (support 1,2,3,...), E[X]=1/p. Write the method-of-moments estimator p̂ in terms of X̄.",
+      "For a $\\text{Geometric}(p)$ distribution counting trials up to and including the first success (support $1,2,3,\\ldots$), $E[X]=1/p$. Write the method-of-moments estimator $\\hat{p}$ in terms of $\\bar{X}$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "p̂ = 1/X̄, from setting 1/p = X̄ and solving for p", weight: 1, required: false },
+        { id: "element-1", description: "$\\hat{p} = 1/\\bar{X}$, from setting $1/p = \\bar{X}$ and solving for $p$", weight: 1, required: false },
       ],
     },
     difficulty: -0.25,
@@ -77,7 +77,7 @@ export const probabilityExpansion5Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "X~Poisson(λ). Given a sample mean X̄=3.2, find λ̂ by method of moments.",
+    stem: "$X \\sim \\text{Poisson}(\\lambda)$. Given a sample mean $\\bar{X}=3.2$, find $\\hat{\\lambda}$ by method of moments.",
     answerKey: 3.2,
     tolerance: 0.01,
     difficulty: -0.2,
@@ -94,7 +94,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "X~Geometric(p) (support 1,2,3,...). Given a sample mean X̄=4, find p̂ by method of moments.",
+      "$X \\sim \\text{Geometric}(p)$ (support $1,2,3,\\ldots$). Given a sample mean $\\bar{X}=4$, find $\\hat{p}$ by method of moments.",
     answerKey: 0.25,
     tolerance: 0.005,
     difficulty: -0.1,
@@ -111,11 +111,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "X~Normal(μ,σ²), both parameters unknown, with E[X]=μ and E[X²]=μ²+σ². Given a sample with X̄=10 and sample second moment m₂=125, find μ̂ and σ̂² by method of moments.",
+      "$X \\sim \\text{Normal}(\\mu,\\sigma^2)$, both parameters unknown, with $E[X]=\\mu$ and $E[X^2]=\\mu^2+\\sigma^2$. Given a sample with $\\bar{X}=10$ and sample second moment $m_2=125$, find $\\hat{\\mu}$ and $\\hat{\\sigma}^2$ by method of moments.",
     rubric: {
       elements: [
-        { id: "element-1", description: "μ̂ = X̄ = 10 (first moment equation)", weight: 1, required: true },
-        { id: "element-2", description: "σ̂² = m₂ − μ̂² = 125 − 100 = 25 (from the second moment equation μ²+σ² = m₂)", weight: 1, required: true },
+        { id: "element-1", description: "$\\hat{\\mu} = \\bar{X} = 10$ (first moment equation)", weight: 1, required: true },
+        { id: "element-2", description: "$\\hat{\\sigma}^2 = m_2 - \\hat{\\mu}^2 = 125 - 100 = 25$ (from the second moment equation $\\mu^2+\\sigma^2 = m_2$)", weight: 1, required: true },
       ],
     },
     difficulty: 0.1,
@@ -132,7 +132,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "X~Beta(α,1), so f(x)=αx^(α−1) on (0,1) and E[X]=α/(α+1). Given X̄=0.6, find α̂ by method of moments.",
+      "$X \\sim \\text{Beta}(\\alpha,1)$, so $f(x)=\\alpha x^{\\alpha-1}$ on $(0,1)$ and $E[X]=\\alpha/(\\alpha+1)$. Given $\\bar{X}=0.6$, find $\\hat{\\alpha}$ by method of moments.",
     answerKey: 1.5,
     tolerance: 0.02,
     difficulty: 0.2,
@@ -149,11 +149,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "X~Uniform(a,b), both endpoints unknown, with E[X]=(a+b)/2 and Var(X)=(b−a)²/12. Derive method-of-moments estimators â, b̂ in terms of the sample mean X̄ and sample variance s².",
+      "$X \\sim \\text{Uniform}(a,b)$, both endpoints unknown, with $E[X]=(a+b)/2$ and $\\operatorname{Var}(X)=(b-a)^2/12$. Derive method-of-moments estimators $\\hat{a}$, $\\hat{b}$ in terms of the sample mean $\\bar{X}$ and sample variance $s^2$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "setting (a+b)/2 = X̄ and (b−a)²/12 = s² gives b−a = √(12s²) = 2√(3s²)", weight: 1, required: true },
-        { id: "element-2", description: "solving the two equations simultaneously: â = X̄ − √(3s²), b̂ = X̄ + √(3s²)", weight: 1, required: true },
+        { id: "element-1", description: "setting $(a+b)/2 = \\bar{X}$ and $(b-a)^2/12 = s^2$ gives $b-a = \\sqrt{12s^2} = 2\\sqrt{3s^2}$", weight: 1, required: true },
+        { id: "element-2", description: "solving the two equations simultaneously: $\\hat{a} = \\bar{X} - \\sqrt{3s^2}$, $\\hat{b} = \\bar{X} + \\sqrt{3s^2}$", weight: 1, required: true },
       ],
     },
     difficulty: 0.35,
@@ -191,11 +191,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For Binomial(n,p) with n *unknown*, method of moments gives n̂ = X̄²/(X̄−s²) (from matching E[X]=np and Var(X)=np(1−p)). Explain why this formula can produce a negative or undefined n̂ when the sample variance s² exceeds the sample mean X̄, and what that signals.",
+      "For $\\text{Binomial}(n,p)$ with $n$ *unknown*, method of moments gives $\\hat{n} = \\bar{X}^2/(\\bar{X}-s^2)$ (from matching $E[X]=np$ and $\\operatorname{Var}(X)=np(1-p)$). Explain why this formula can produce a negative or undefined $\\hat{n}$ when the sample variance $s^2$ exceeds the sample mean $\\bar{X}$, and what that signals.",
     rubric: {
       elements: [
-        { id: "element-1", description: "if s² > X̄, the denominator (X̄−s²) is negative, making n̂ negative — an impossible value for a sample size", weight: 1, required: true },
-        { id: "element-2", description: "this signals overdispersion: real Binomial data must have Var ≤ E[X] (since Var=np(1−p)≤np=E[X]), so s²>X̄ is evidence the Binomial model itself is likely misspecified for this data, not just a computational quirk", weight: 1, required: false },
+        { id: "element-1", description: "if $s^2 > \\bar{X}$, the denominator $(\\bar{X}-s^2)$ is negative, making $\\hat{n}$ negative — an impossible value for a sample size", weight: 1, required: true },
+        { id: "element-2", description: "this signals overdispersion: real Binomial data must have $\\operatorname{Var} \\le E[X]$ (since $\\operatorname{Var}=np(1-p)\\le np=E[X]$), so $s^2>\\bar{X}$ is evidence the Binomial model itself is likely misspecified for this data, not just a computational quirk", weight: 1, required: false },
       ],
     },
     difficulty: 0.55,
@@ -212,7 +212,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "Overdispersed count data is modeled as Binomial(n,p) with n unknown, using n̂ = X̄²/(X̄−s²). A sample gives X̄=4, s²=6. Compute n̂ and explain in one sentence what this nonsensical value reveals about the Binomial assumption here.",
+      "Overdispersed count data is modeled as $\\text{Binomial}(n,p)$ with $n$ unknown, using $\\hat{n} = \\bar{X}^2/(\\bar{X}-s^2)$. A sample gives $\\bar{X}=4$, $s^2=6$. Compute $\\hat{n}$ and explain in one sentence what this nonsensical value reveals about the Binomial assumption here.",
     answerKey: -8,
     tolerance: 0.5,
     difficulty: 0.65,
@@ -232,7 +232,7 @@ export const probabilityExpansion5Items: Item[] = [
       "A colleague argues MLE should simply be replaced by method of moments everywhere, since MoM is algebraically simpler. Using one of this concept's own examples where MoM is genuinely easier, and one general reason MLE remains preferable despite the extra work, push back on the colleague's claim.",
     rubric: {
       elements: [
-        { id: "element-1", description: "cites a concrete case where MoM is easier (e.g. Exponential's λ̂=1/X̄ or Uniform's θ̂=2X̄ solved in closed form with no calculus)", weight: 1, required: true },
+        { id: "element-1", description: "cites a concrete case where MoM is easier (e.g. Exponential's $\\hat{\\lambda}=1/\\bar{X}$ or Uniform's $\\hat{\\theta}=2\\bar{X}$ solved in closed form with no calculus)", weight: 1, required: true },
         { id: "element-2", description: "notes a general MLE advantage MoM lacks: MLE uses the full likelihood (efficient use of the model's information, often lower variance, and comes with theory like the Cramér–Rao bound and invariance) rather than only a few moments", weight: 1, required: false },
       ],
     },
@@ -250,11 +250,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For Gamma(α,β), a sample gives X̄=4 and second sample moment m₂=20. Using E[X]=α/β and E[X²]=α/β²+(α/β)², solve the two method-of-moments equations simultaneously for α̂ and β̂.",
+      "For $\\text{Gamma}(\\alpha,\\beta)$, a sample gives $\\bar{X}=4$ and second sample moment $m_2=20$. Using $E[X]=\\alpha/\\beta$ and $E[X^2]=\\alpha/\\beta^2+(\\alpha/\\beta)^2$, solve the two method-of-moments equations simultaneously for $\\hat{\\alpha}$ and $\\hat{\\beta}$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "α/β=4 ⟹ α=4β; substituting into α/β²+16=20 gives 4β/β²=4 ⟹ 4/β=4 ⟹ β̂=1", weight: 1, required: true },
-        { id: "element-2", description: "then α̂=4β̂=4", weight: 1, required: true },
+        { id: "element-1", description: "$\\alpha/\\beta=4 \\implies \\alpha=4\\beta$; substituting into $\\alpha/\\beta^2+16=20$ gives $4\\beta/\\beta^2=4 \\implies 4/\\beta=4 \\implies \\hat{\\beta}=1$", weight: 1, required: true },
+        { id: "element-2", description: "then $\\hat{\\alpha}=4\\hat{\\beta}=4$", weight: 1, required: true },
       ],
     },
     difficulty: 0.9,
@@ -275,10 +275,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "When log L(θ) is twice differentiable, what second-derivative condition at a critical point θ̂ confirms it is a local maximum rather than a local minimum?",
+      "When $\\log L(\\theta)$ is twice differentiable, what second-derivative condition at a critical point $\\hat{\\theta}$ confirms it is a local maximum rather than a local minimum?",
     rubric: {
       elements: [
-        { id: "element-1", description: "the second derivative of log L is negative at θ̂ (the log-likelihood is concave there)", weight: 1, required: false },
+        { id: "element-1", description: "the second derivative of $\\log L$ is negative at $\\hat{\\theta}$ (the log-likelihood is concave there)", weight: 1, required: false },
       ],
     },
     difficulty: -0.4,
@@ -295,12 +295,12 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten"],
     stem:
-      "For n iid Normal(μ,σ²) observations with σ² known, the MLE of μ is:",
+      "For $n$ iid $\\text{Normal}(\\mu,\\sigma^2)$ observations with $\\sigma^2$ known, the MLE of $\\mu$ is:",
     choices: [
-      { id: "c1", text: "X̄, the sample mean", correct: true },
+      { id: "c1", text: "$\\bar{X}$, the sample mean", correct: true },
       { id: "c2", text: "the sample median", correct: false, misconception: { id: "mle--r4--m1", description: "confuses MLE with a robust-estimator heuristic (the median), rather than deriving it from maximizing the Normal likelihood", blameConceptId: "mle" } },
-      { id: "c3", text: "max(x₁,…,xₙ)", correct: false, misconception: { id: "mle--r4--m2", description: "imports the Uniform(0,θ) boundary-solution pattern into a smooth, unbounded-support Normal likelihood where it doesn't apply", blameConceptId: "mle" } },
-      { id: "c4", text: "min(x₁,…,xₙ)", correct: false, misconception: { id: "mle--r4--m3", description: "imports the Uniform(0,θ) boundary-solution pattern into a smooth, unbounded-support Normal likelihood where it doesn't apply", blameConceptId: "mle" } },
+      { id: "c3", text: "$\\max(x_1,\\ldots,x_n)$", correct: false, misconception: { id: "mle--r4--m2", description: "imports the Uniform(0,θ) boundary-solution pattern into a smooth, unbounded-support Normal likelihood where it doesn't apply", blameConceptId: "mle" } },
+      { id: "c4", text: "$\\min(x_1,\\ldots,x_n)$", correct: false, misconception: { id: "mle--r4--m3", description: "imports the Uniform(0,θ) boundary-solution pattern into a smooth, unbounded-support Normal likelihood where it doesn't apply", blameConceptId: "mle" } },
     ],
     difficulty: -0.2,
     discrimination: 1.1,
@@ -336,10 +336,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For n iid Poisson(λ) observations, derive the MLE λ̂ by maximizing L(λ)=Πe^(−λ)λ^(xᵢ)/xᵢ!.",
+      "For $n$ iid $\\text{Poisson}(\\lambda)$ observations, derive the MLE $\\hat{\\lambda}$ by maximizing $L(\\lambda)=\\prod e^{-\\lambda}\\lambda^{x_i}/x_i!$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "log L = −nλ + (Σxᵢ)ln λ − Σln(xᵢ!); derivative −n + Σxᵢ/λ = 0 ⟹ λ̂ = Σxᵢ/n = X̄", weight: 1, required: true },
+        { id: "element-1", description: "$\\log L = -n\\lambda + (\\sum x_i)\\ln \\lambda - \\sum\\ln(x_i!)$; derivative $-n + \\sum x_i/\\lambda = 0 \\implies \\hat{\\lambda} = \\sum x_i/n = \\bar{X}$", weight: 1, required: true },
       ],
     },
     difficulty: 0.0,
@@ -355,7 +355,7 @@ export const probabilityExpansion5Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Using A3's formula λ̂=X̄, find λ̂ for n=5 iid Poisson observations with Σxᵢ=20.",
+    stem: "Using A3's formula $\\hat{\\lambda}=\\bar{X}$, find $\\hat{\\lambda}$ for $n=5$ iid Poisson observations with $\\sum x_i=20$.",
     answerKey: 4,
     tolerance: 0.01,
     difficulty: -0.05,
@@ -372,11 +372,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For n iid Normal(μ,σ²) observations with *both* parameters unknown, derive the MLE σ̂² (you may use μ̂=X̄ from the μ-equation without re-deriving it).",
+      "For $n$ iid $\\text{Normal}(\\mu,\\sigma^2)$ observations with *both* parameters unknown, derive the MLE $\\hat{\\sigma}^2$ (you may use $\\hat{\\mu}=\\bar{X}$ from the $\\mu$-equation without re-deriving it).",
     rubric: {
       elements: [
-        { id: "element-1", description: "log L = −(n/2)ln(2πσ²) − Σ(xᵢ−μ)²/(2σ²); differentiating with respect to σ² and setting to 0 gives −n/(2σ²) + Σ(xᵢ−μ)²/(2σ⁴) = 0", weight: 1, required: true },
-        { id: "element-2", description: "solving with μ replaced by μ̂=X̄ gives σ̂² = (1/n)Σ(xᵢ−X̄)²", weight: 1, required: true },
+        { id: "element-1", description: "$\\log L = -(n/2)\\ln(2\\pi\\sigma^2) - \\sum(x_i-\\mu)^2/(2\\sigma^2)$; differentiating with respect to $\\sigma^2$ and setting to 0 gives $-n/(2\\sigma^2) + \\sum(x_i-\\mu)^2/(2\\sigma^4) = 0$", weight: 1, required: true },
+        { id: "element-2", description: "solving with $\\mu$ replaced by $\\hat{\\mu}=\\bar{X}$ gives $\\hat{\\sigma}^2 = (1/n)\\sum(x_i-\\bar{X})^2$", weight: 1, required: true },
       ],
     },
     difficulty: 0.15,
@@ -393,11 +393,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For n iid Geometric(p) observations (support 1,2,3,...), derive the MLE p̂ by maximizing L(p)=Πp(1−p)^(xᵢ−1).",
+      "For $n$ iid $\\text{Geometric}(p)$ observations (support $1,2,3,\\ldots$), derive the MLE $\\hat{p}$ by maximizing $L(p)=\\prod p(1-p)^{x_i-1}$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "log L = n ln p + (Σxᵢ−n)ln(1−p); derivative n/p − (Σxᵢ−n)/(1−p) = 0 ⟹ n(1−p) = p(Σxᵢ−n) ⟹ n = pΣxᵢ", weight: 1, required: true },
-        { id: "element-2", description: "so p̂ = n/Σxᵢ = 1/X̄", weight: 1, required: false },
+        { id: "element-1", description: "$\\log L = n \\ln p + (\\sum x_i-n)\\ln(1-p)$; derivative $n/p - (\\sum x_i-n)/(1-p) = 0 \\implies n(1-p) = p(\\sum x_i-n) \\implies n = p\\sum x_i$", weight: 1, required: true },
+        { id: "element-2", description: "so $\\hat{p} = n/\\sum x_i = 1/\\bar{X}$", weight: 1, required: false },
       ],
     },
     difficulty: 0.2,
@@ -414,10 +414,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A5 found σ̂²=(1/n)Σ(xᵢ−X̄)² as the MLE of σ². Explain why this estimator is generally biased downward, connecting explicitly to `unbiased-estimator`'s finding about the same formula.",
+      "A5 found $\\hat{\\sigma}^2=(1/n)\\sum(x_i-\\bar{X})^2$ as the MLE of $\\sigma^2$. Explain why this estimator is generally biased downward, connecting explicitly to `unbiased-estimator`'s finding about the same formula.",
     rubric: {
       elements: [
-        { id: "element-1", description: "this is exactly the 'naive' variance estimator `unbiased-estimator` showed has E[·] = ((n−1)/n)σ² < σ² — dividing by n instead of n−1 systematically underestimates spread because X̄ is the data's own best-fit center", weight: 1, required: true },
+        { id: "element-1", description: "this is exactly the 'naive' variance estimator `unbiased-estimator` showed has $E[\\cdot] = ((n-1)/n)\\sigma^2 < \\sigma^2$ — dividing by $n$ instead of $n-1$ systematically underestimates spread because $\\bar{X}$ is the data's own best-fit center", weight: 1, required: true },
       ],
     },
     difficulty: 0.3,
@@ -455,10 +455,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For A6's Geometric MLE, method of moments (matching E[X]=1/p) gives the exact same estimator p̂=1/X̄. Contrast this with `mle`'s existing T1 finding for Uniform(0,θ). What does having both an agreement case and a disagreement case tell you about the general relationship between the two methods?",
+      "For A6's Geometric MLE, method of moments (matching $E[X]=1/p$) gives the exact same estimator $\\hat{p}=1/\\bar{X}$. Contrast this with `mle`'s existing T1 finding for Uniform(0,θ). What does having both an agreement case and a disagreement case tell you about the general relationship between the two methods?",
     rubric: {
       elements: [
-        { id: "element-1", description: "the two methods sometimes coincide exactly (Exponential's rate, and now Geometric's p) and sometimes diverge sharply (Uniform's θ, where MLE is a boundary max(xᵢ) rather than 2X̄)", weight: 1, required: true },
+        { id: "element-1", description: "the two methods sometimes coincide exactly (Exponential's rate, and now Geometric's $p$) and sometimes diverge sharply (Uniform's $\\theta$, where MLE is a boundary $\\max(x_i)$ rather than $2\\bar{X}$)", weight: 1, required: true },
         { id: "element-2", description: "so agreement is not a general theorem — it happens for specific distributions where the likelihood's maximizer coincides algebraically with the moment-matching solution, not as a universal guarantee", weight: 1, required: false },
       ],
     },
@@ -497,11 +497,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Using A5's MLE σ̂², apply invariance (not a fresh derivation) to state the MLE of σ (the standard deviation), and explain why this shortcut is valid.",
+      "Using A5's MLE $\\hat{\\sigma}^2$, apply invariance (not a fresh derivation) to state the MLE of $\\sigma$ (the standard deviation), and explain why this shortcut is valid.",
     rubric: {
       elements: [
-        { id: "element-1", description: "MLE of σ is √σ̂² = √((1/n)Σ(xᵢ−X̄)²)", weight: 1, required: true },
-        { id: "element-2", description: "valid by invariance: g(t)=√t is a monotonic function of σ², so the MLE of g(σ²) is exactly g(σ̂²), with no fresh optimization needed", weight: 1, required: false },
+        { id: "element-1", description: "MLE of $\\sigma$ is $\\sqrt{\\hat{\\sigma}^2} = \\sqrt{(1/n)\\sum(x_i-\\bar{X})^2}$", weight: 1, required: true },
+        { id: "element-2", description: "valid by invariance: $g(t)=\\sqrt{t}$ is a monotonic function of $\\sigma^2$, so the MLE of $g(\\sigma^2)$ is exactly $g(\\hat{\\sigma}^2)$, with no fresh optimization needed", weight: 1, required: false },
       ],
     },
     difficulty: 0.7,
@@ -518,7 +518,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A6 and method of moments give the identical Geometric estimator p̂=1/X̄, echoing the earlier Exponential agreement from `mle`'s own E1. Propose a general property shared by Exponential and Geometric (hint: think about their moment structure) that might explain why MLE and method of moments so often coincide for these two, and why that same property fails for Uniform(0,θ).",
+      "A6 and method of moments give the identical Geometric estimator $\\hat{p}=1/\\bar{X}$, echoing the earlier Exponential agreement from `mle`'s own E1. Propose a general property shared by Exponential and Geometric (hint: think about their moment structure) that might explain why MLE and method of moments so often coincide for these two, and why that same property fails for Uniform(0,θ).",
     rubric: {
       elements: [
         { id: "element-1", description: "both Exponential and Geometric are single-parameter exponential-family distributions whose log-likelihood is smooth and concave in the natural parameter, so the calculus-based MLE solution and the moment-matching solution both end up solving essentially the same equation in the mean", weight: 1, required: true },
@@ -542,10 +542,10 @@ export const probabilityExpansion5Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "State the bias formula for an estimator θ̂ of θ.",
+    stem: "State the bias formula for an estimator $\\hat{\\theta}$ of $\\theta$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "Bias(θ̂) = E[θ̂] − θ", weight: 1, required: false },
+        { id: "element-1", description: "$\\operatorname{Bias}(\\hat{\\theta}) = E[\\hat{\\theta}] - \\theta$", weight: 1, required: false },
       ],
     },
     difficulty: -0.45,
@@ -562,12 +562,12 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten"],
     stem:
-      "If θ̂ is unbiased for θ, and c is a constant with c≠1, is c·θ̂ generally unbiased for θ?",
+      "If $\\hat{\\theta}$ is unbiased for $\\theta$, and $c$ is a constant with $c\\neq 1$, is $c\\hat{\\theta}$ generally unbiased for $\\theta$?",
     choices: [
-      { id: "c1", text: "No — E[cθ̂]=cθ≠θ unless c=1, so scaling by any other constant introduces bias", correct: true },
+      { id: "c1", text: "No — $E[c\\hat{\\theta}]=c\\theta\\neq\\theta$ unless $c=1$, so scaling by any other constant introduces bias", correct: true },
       { id: "c2", text: "Yes — unbiasedness is preserved under any constant rescaling", correct: false, misconception: { id: "unbiased-estimator--r4--m1", description: "assumes unbiasedness is preserved under arbitrary rescaling, not just c=1", blameConceptId: "unbiased-estimator" } },
-      { id: "c3", text: "Yes, but only if θ>0", correct: false, misconception: { id: "unbiased-estimator--r4--m2", description: "invents a sign-based exception that has nothing to do with why rescaling introduces bias", blameConceptId: "unbiased-estimator" } },
-      { id: "c4", text: "It depends on the sample size n", correct: false, misconception: { id: "unbiased-estimator--r4--m3", description: "confuses this purely algebraic fact (E[cθ̂]=cE[θ̂]) with something that could depend on n", blameConceptId: "unbiased-estimator" } },
+      { id: "c3", text: "Yes, but only if $\\theta>0$", correct: false, misconception: { id: "unbiased-estimator--r4--m2", description: "invents a sign-based exception that has nothing to do with why rescaling introduces bias", blameConceptId: "unbiased-estimator" } },
+      { id: "c4", text: "It depends on the sample size n", correct: false, misconception: { id: "unbiased-estimator--r4--m3", description: "confuses this purely algebraic fact ($E[c\\hat{\\theta}]=cE[\\hat{\\theta}]$) with something that could depend on n", blameConceptId: "unbiased-estimator" } },
     ],
     difficulty: -0.3,
     discrimination: 1.15,
@@ -586,8 +586,8 @@ export const probabilityExpansion5Items: Item[] = [
       "Give an example of a biased-but-consistent estimator, and explain in one sentence how 'biased' and 'consistent' differ as properties.",
     rubric: {
       elements: [
-        { id: "element-1", description: "example: `mle`'s Uniform(0,θ) MLE θ̂=max(xᵢ) is biased downward (E[max]<θ) but consistent (converges to θ as n→∞)", weight: 1, required: false },
-        { id: "element-2", description: "bias is about E[θ̂] at a fixed n; consistency is about the limiting behavior as n→∞ — an estimator can have one property without the other", weight: 1, required: false },
+        { id: "element-1", description: "example: `mle`'s Uniform(0,θ) MLE $\\hat{\\theta}=\\max(x_i)$ is biased downward ($E[\\max]<\\theta$) but consistent (converges to $\\theta$ as $n\\to\\infty$)", weight: 1, required: false },
+        { id: "element-2", description: "bias is about $E[\\hat{\\theta}]$ at a fixed $n$; consistency is about the limiting behavior as $n\\to\\infty$ — an estimator can have one property without the other", weight: 1, required: false },
       ],
     },
     difficulty: -0.15,
@@ -604,7 +604,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For n iid Uniform(0,θ), E[max(x₁,…,xₙ)] = nθ/(n+1). For n=4 and true θ=10, find the bias of max(xᵢ) as an estimator of θ.",
+      "For $n$ iid Uniform$(0,\\theta)$, $E[\\max(x_1,\\ldots,x_n)] = n\\theta/(n+1)$. For $n=4$ and true $\\theta=10$, find the bias of $\\max(x_i)$ as an estimator of $\\theta$.",
     answerKey: -2,
     tolerance: 0.05,
     difficulty: 0.25,
@@ -621,10 +621,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Using A3's fact that E[max(xᵢ)]=nθ/(n+1), show that the corrected estimator θ̂=((n+1)/n)·max(xᵢ) is unbiased for θ.",
+      "Using A3's fact that $E[\\max(x_i)]=n\\theta/(n+1)$, show that the corrected estimator $\\hat{\\theta}=((n+1)/n)\\max(x_i)$ is unbiased for $\\theta$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "E[θ̂] = ((n+1)/n)·E[max(xᵢ)] = ((n+1)/n)·(nθ/(n+1)) = θ, for every n", weight: 1, required: true },
+        { id: "element-1", description: "$E[\\hat{\\theta}] = ((n+1)/n)\\cdot E[\\max(x_i)] = ((n+1)/n)\\cdot(n\\theta/(n+1)) = \\theta$, for every $n$", weight: 1, required: true },
       ],
     },
     difficulty: 0.35,
@@ -641,7 +641,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For X~Poisson(λ), E[X̄²]=Var(X̄)+(E[X̄])²=λ/n+λ². Is X̄² unbiased for λ²? Find its bias for n=10, λ=5.",
+      "For $X \\sim \\text{Poisson}(\\lambda)$, $E[\\bar{X}^2]=\\operatorname{Var}(\\bar{X})+(E[\\bar{X}])^2=\\lambda/n+\\lambda^2$. Is $\\bar{X}^2$ unbiased for $\\lambda^2$? Find its bias for $n=10$, $\\lambda=5$.",
     answerKey: 0.5,
     tolerance: 0.02,
     difficulty: 0.45,
@@ -658,10 +658,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "The corrected sample variance S²=(1/(n−1))Σ(xᵢ−X̄)² is unbiased for σ² for *any* n≥2. For a sample of n=8 draws with true σ²=16, what is E[S²]? Does this depend on n?",
+      "The corrected sample variance $S^2=(1/(n-1))\\sum(x_i-\\bar{X})^2$ is unbiased for $\\sigma^2$ for *any* $n\\ge 2$. For a sample of $n=8$ draws with true $\\sigma^2=16$, what is $E[S^2]$? Does this depend on $n$?",
     rubric: {
       elements: [
-        { id: "element-1", description: "E[S²]=16 exactly, regardless of n≥2 — unlike the naive (÷n) estimator, S² is unbiased at every sample size, not just approximately for large n", weight: 1, required: true },
+        { id: "element-1", description: "$E[S^2]=16$ exactly, regardless of $n\\ge 2$ — unlike the naive (÷n) estimator, $S^2$ is unbiased at every sample size, not just approximately for large $n$", weight: 1, required: true },
       ],
     },
     difficulty: 0.3,
@@ -678,10 +678,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Prove that any weighted average θ̂=w·θ̂₁+(1−w)·θ̂₂ of two unbiased estimators θ̂₁, θ̂₂ of the same θ is itself unbiased for θ, for any fixed weight w∈[0,1].",
+      "Prove that any weighted average $\\hat{\\theta}=w\\hat{\\theta}_1+(1-w)\\hat{\\theta}_2$ of two unbiased estimators $\\hat{\\theta}_1$, $\\hat{\\theta}_2$ of the same $\\theta$ is itself unbiased for $\\theta$, for any fixed weight $w\\in[0,1]$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "E[θ̂] = w·E[θ̂₁] + (1−w)·E[θ̂₂] = wθ + (1−w)θ = θ, using linearity of expectation directly", weight: 1, required: true },
+        { id: "element-1", description: "$E[\\hat{\\theta}] = w\\cdot E[\\hat{\\theta}_1] + (1-w)\\cdot E[\\hat{\\theta}_2] = w\\theta + (1-w)\\theta = \\theta$, using linearity of expectation directly", weight: 1, required: true },
       ],
     },
     difficulty: 0.4,
@@ -719,10 +719,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Using A5's fact that E[X̄²]=Var(X̄)+(E[X̄])², explain why X̄² is generally biased for μ² even though X̄ is unbiased for μ — i.e. why unbiasedness does not carry over to nonlinear transformations.",
+      "Using A5's fact that $E[\\bar{X}^2]=\\operatorname{Var}(\\bar{X})+(E[\\bar{X}])^2$, explain why $\\bar{X}^2$ is generally biased for $\\mu^2$ even though $\\bar{X}$ is unbiased for $\\mu$ — i.e. why unbiasedness does not carry over to nonlinear transformations.",
     rubric: {
       elements: [
-        { id: "element-1", description: "E[X̄²] = Var(X̄) + (E[X̄])² = Var(X̄) + μ², which exceeds μ² by exactly Var(X̄) whenever Var(X̄)>0 — a strictly positive bias from the nonlinearity of squaring", weight: 1, required: true },
+        { id: "element-1", description: "$E[\\bar{X}^2] = \\operatorname{Var}(\\bar{X}) + (E[\\bar{X}])^2 = \\operatorname{Var}(\\bar{X}) + \\mu^2$, which exceeds $\\mu^2$ by exactly $\\operatorname{Var}(\\bar{X})$ whenever $\\operatorname{Var}(\\bar{X})>0$ — a strictly positive bias from the nonlinearity of squaring", weight: 1, required: true },
         { id: "element-2", description: "this contrasts sharply with `mle`'s invariance property, which *does* carry MLEs through any function g — unbiasedness has no analogous invariance", weight: 1, required: false },
       ],
     },
@@ -740,10 +740,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A scientist proposes 'always prefer the unbiased estimator' as an absolute rule. Using A3/A4's Uniform(0,θ) example, give a reason a practitioner might still sometimes prefer the biased max(xᵢ) over the unbiased corrected version.",
+      "A scientist proposes 'always prefer the unbiased estimator' as an absolute rule. Using A3/A4's Uniform$(0,\\theta)$ example, give a reason a practitioner might still sometimes prefer the biased $\\max(x_i)$ over the unbiased corrected version.",
     rubric: {
       elements: [
-        { id: "element-1", description: "bias alone doesn't capture overall estimation error — a biased estimator can have smaller variance, so its typical squared error (bias² + variance, i.e. MSE) can be lower than an unbiased alternative's, even though this trade-off isn't formally derived here", weight: 1, required: true },
+        { id: "element-1", description: "bias alone doesn't capture overall estimation error — a biased estimator can have smaller variance, so its typical squared error ($\\text{bias}^2$ + variance, i.e. MSE) can be lower than an unbiased alternative's, even though this trade-off isn't formally derived here", weight: 1, required: true },
       ],
     },
     difficulty: 0.7,
@@ -763,8 +763,8 @@ export const probabilityExpansion5Items: Item[] = [
       "Using E5's finding that nonlinear transformations of unbiased estimators are generally biased, explain why 'MLE is invariant under reparametrization' (`mle`'s R2) and 'unbiasedness is invariant under reparametrization' cannot both be true in general — contrasting the two estimation properties directly.",
     rubric: {
       elements: [
-        { id: "element-1", description: "MLE's invariance property (g(θ̂) is the MLE of g(θ)) holds for *any* function g, by construction of maximum likelihood, but unbiasedness has no such guarantee: E5 showed E[g(θ̂)] ≠ g(E[θ̂]) = g(θ) in general for nonlinear g", weight: 1, required: true },
-        { id: "element-2", description: "so an unbiased θ̂ can produce a biased g(θ̂), while an MLE θ̂ always produces the exact MLE g(θ̂) for g(θ) — these are genuinely different, non-interchangeable properties", weight: 1, required: false },
+        { id: "element-1", description: "MLE's invariance property ($g(\\hat{\\theta})$ is the MLE of $g(\\theta)$) holds for *any* function $g$, by construction of maximum likelihood, but unbiasedness has no such guarantee: E5 showed $E[g(\\hat{\\theta})] \\neq g(E[\\hat{\\theta}]) = g(\\theta)$ in general for nonlinear $g$", weight: 1, required: true },
+        { id: "element-2", description: "so an unbiased $\\hat{\\theta}$ can produce a biased $g(\\hat{\\theta})$, while an MLE $\\hat{\\theta}$ always produces the exact MLE $g(\\hat{\\theta})$ for $g(\\theta)$ — these are genuinely different, non-interchangeable properties", weight: 1, required: false },
       ],
     },
     difficulty: 0.85,
@@ -781,10 +781,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A pollster claims 'our sample proportion overestimates the true proportion because our sample was small.' Given that the sample proportion p̂=X̄ for Bernoulli data is exactly unbiased regardless of n, is this claim correct? Explain the actual role small n plays here.",
+      "A pollster claims 'our sample proportion overestimates the true proportion because our sample was small.' Given that the sample proportion $\\hat{p}=\\bar{X}$ for Bernoulli data is exactly unbiased regardless of $n$, is this claim correct? Explain the actual role small $n$ plays here.",
     rubric: {
       elements: [
-        { id: "element-1", description: "the claim is incorrect as a statement about bias — p̂ is exactly unbiased at every n, so small n does not introduce a systematic overestimate", weight: 1, required: true },
+        { id: "element-1", description: "the claim is incorrect as a statement about bias — $\\hat{p}$ is exactly unbiased at every $n$, so small $n$ does not introduce a systematic overestimate", weight: 1, required: true },
         { id: "element-2", description: "small n instead increases *variance* (sampling noise around the true value), which can make any one realized estimate land far from the truth in either direction — a variability problem, not a bias problem", weight: 1, required: false },
       ],
     },
@@ -805,10 +805,10 @@ export const probabilityExpansion5Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For the linear transformation Y=aX+b (a≠0), state f_Y(y) directly in terms of f_X.",
+    stem: "For the linear transformation $Y=aX+b$ ($a\\neq 0$), state $f_Y(y)$ directly in terms of $f_X$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "f_Y(y) = (1/|a|)·f_X((y−b)/a)", weight: 1, required: false },
+        { id: "element-1", description: "$f_Y(y) = (1/|a|)\\cdot f_X((y-b)/a)$", weight: 1, required: false },
       ],
     },
     difficulty: -0.5,
@@ -825,12 +825,12 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten"],
     stem:
-      "The 1-D formula's |d/dy g⁻¹(y)| term generalizes, for a multivariate transformation Y=g(X), to:",
+      "The 1-D formula's $|d/dy\\, g^{-1}(y)|$ term generalizes, for a multivariate transformation $Y=g(X)$, to:",
     choices: [
-      { id: "c1", text: "the absolute value of the determinant of the Jacobian matrix of g⁻¹", correct: true },
-      { id: "c2", text: "the trace of the Jacobian matrix of g⁻¹", correct: false, misconception: { id: "distribution-transformations--r4--m1", description: "confuses the determinant (which correctly scales volume) with the trace, an unrelated matrix summary", blameConceptId: "distribution-transformations" } },
-      { id: "c3", text: "the sum of all partial derivatives of g⁻¹", correct: false, misconception: { id: "distribution-transformations--r4--m2", description: "invents an ad hoc generalization instead of the determinant, which is what correctly accounts for volume scaling under a multivariate change of variables", blameConceptId: "distribution-transformations" } },
-      { id: "c4", text: "the largest eigenvalue of the Jacobian matrix of g⁻¹", correct: false, misconception: { id: "distribution-transformations--r4--m3", description: "substitutes a matrix norm-like quantity for the determinant, which is the quantity that actually appears in the multivariate change-of-variables theorem", blameConceptId: "distribution-transformations" } },
+      { id: "c1", text: "the absolute value of the determinant of the Jacobian matrix of $g^{-1}$", correct: true },
+      { id: "c2", text: "the trace of the Jacobian matrix of $g^{-1}$", correct: false, misconception: { id: "distribution-transformations--r4--m1", description: "confuses the determinant (which correctly scales volume) with the trace, an unrelated matrix summary", blameConceptId: "distribution-transformations" } },
+      { id: "c3", text: "the sum of all partial derivatives of $g^{-1}$", correct: false, misconception: { id: "distribution-transformations--r4--m2", description: "invents an ad hoc generalization instead of the determinant, which is what correctly accounts for volume scaling under a multivariate change of variables", blameConceptId: "distribution-transformations" } },
+      { id: "c4", text: "the largest eigenvalue of the Jacobian matrix of $g^{-1}$", correct: false, misconception: { id: "distribution-transformations--r4--m3", description: "substitutes a matrix norm-like quantity for the determinant, which is the quantity that actually appears in the multivariate change-of-variables theorem", blameConceptId: "distribution-transformations" } },
     ],
     difficulty: -0.1,
     discrimination: 1.2,
@@ -846,10 +846,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For Y=g(X) with g strictly monotonic, how does the support of Y relate to the support of X?",
+      "For $Y=g(X)$ with $g$ strictly monotonic, how does the support of $Y$ relate to the support of $X$?",
     rubric: {
       elements: [
-        { id: "element-1", description: "the support of Y is exactly g applied to the support of X (the image of X's support under g) — f_Y must be restricted to this transformed support", weight: 1, required: false },
+        { id: "element-1", description: "the support of $Y$ is exactly $g$ applied to the support of $X$ (the image of $X$'s support under $g$) — $f_Y$ must be restricted to this transformed support", weight: 1, required: false },
       ],
     },
     difficulty: -0.3,
@@ -865,11 +865,11 @@ export const probabilityExpansion5Items: Item[] = [
     format: "derivation",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "X~N(0,1), Y=3X+5. Using R3's linear-transform formula, find f_Y(y) and identify the resulting distribution.",
+    stem: "$X \\sim N(0,1)$, $Y=3X+5$. Using R3's linear-transform formula, find $f_Y(y)$ and identify the resulting distribution.",
     rubric: {
       elements: [
-        { id: "element-1", description: "f_Y(y) = (1/3)·φ((y−5)/3), i.e. f_Y(y) = (1/(3√(2π)))exp(−(y−5)²/18)", weight: 1, required: true },
-        { id: "element-2", description: "this is exactly the N(5,9) density — matching the known fact that a linear transform of a Normal is Normal with mean 5 and variance 9", weight: 1, required: false },
+        { id: "element-1", description: "$f_Y(y) = (1/3)\\varphi((y-5)/3)$, i.e. $f_Y(y) = (1/(3\\sqrt{2\\pi}))\\exp(-(y-5)^2/18)$", weight: 1, required: true },
+        { id: "element-2", description: "this is exactly the $N(5,9)$ density — matching the known fact that a linear transform of a Normal is Normal with mean 5 and variance 9", weight: 1, required: false },
       ],
     },
     difficulty: 0.0,
@@ -885,11 +885,11 @@ export const probabilityExpansion5Items: Item[] = [
     format: "derivation",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "X~Exponential(1), Y=1/X. Find f_Y(y) for y>0.",
+    stem: "$X \\sim \\text{Exponential}(1)$, $Y=1/X$. Find $f_Y(y)$ for $y>0$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "g(x)=1/x is decreasing; g⁻¹(y)=1/y, with |d/dy(1/y)| = 1/y²", weight: 1, required: true },
-        { id: "element-2", description: "f_Y(y) = f_X(1/y)·(1/y²) = e^(−1/y)·(1/y²), for y>0", weight: 1, required: false },
+        { id: "element-1", description: "$g(x)=1/x$ is decreasing; $g^{-1}(y)=1/y$, with $|d/dy(1/y)| = 1/y^2$", weight: 1, required: true },
+        { id: "element-2", description: "$f_Y(y) = f_X(1/y)\\cdot(1/y^2) = e^{-1/y}\\cdot(1/y^2)$, for $y>0$", weight: 1, required: false },
       ],
     },
     difficulty: 0.2,
@@ -905,11 +905,11 @@ export const probabilityExpansion5Items: Item[] = [
     format: "derivation",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "X~Uniform(−1,1), Y=X². Using the two-branch rule, find f_Y(y) for 0<y<1, and verify it integrates to 1.",
+    stem: "$X \\sim \\text{Uniform}(-1,1)$, $Y=X^2$. Using the two-branch rule, find $f_Y(y)$ for $0<y<1$, and verify it integrates to 1.",
     rubric: {
       elements: [
-        { id: "element-1", description: "branches x=√y and x=−√y, each with f_X=1/2 and |dx/dy|=1/(2√y); f_Y(y) = 2·(1/2)·(1/(2√y)) = 1/(2√y) for 0<y<1", weight: 1, required: true },
-        { id: "element-2", description: "∫₀¹ 1/(2√y) dy = [√y]₀¹ = 1 ✓, confirming a valid density", weight: 1, required: false },
+        { id: "element-1", description: "branches $x=\\sqrt{y}$ and $x=-\\sqrt{y}$, each with $f_X=1/2$ and $|dx/dy|=1/(2\\sqrt{y})$; $f_Y(y) = 2\\cdot(1/2)\\cdot(1/(2\\sqrt{y})) = 1/(2\\sqrt{y})$ for $0<y<1$", weight: 1, required: true },
+        { id: "element-2", description: "$\\int_0^1 1/(2\\sqrt{y})\\, dy = [\\sqrt{y}]_0^1 = 1$ ✓, confirming a valid density", weight: 1, required: false },
       ],
     },
     difficulty: 0.15,
@@ -926,11 +926,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "X₁,X₂ iid Uniform(0,1). Let Y₁=X₁+X₂, Y₂=X₁−X₂. Find the Jacobian determinant |det J| of the inverse map (y₁,y₂)→(x₁,x₂), and hence the constant joint density f_{Y₁,Y₂} on its support.",
+      "$X_1,X_2$ iid Uniform(0,1). Let $Y_1=X_1+X_2$, $Y_2=X_1-X_2$. Find the Jacobian determinant $|\\det J|$ of the inverse map $(y_1,y_2)\\to(x_1,x_2)$, and hence the constant joint density $f_{Y_1,Y_2}$ on its support.",
     rubric: {
       elements: [
-        { id: "element-1", description: "x₁=(y₁+y₂)/2, x₂=(y₁−y₂)/2; the Jacobian matrix ∂(x₁,x₂)/∂(y₁,y₂) = [[1/2,1/2],[1/2,−1/2]], with determinant −1/2, so |det J| = 1/2", weight: 1, required: true },
-        { id: "element-2", description: "f_{Y₁,Y₂}(y₁,y₂) = f_{X₁,X₂}(x₁,x₂)·|det J| = 1·(1/2) = 1/2 on the transformed (parallelogram) support", weight: 1, required: false },
+        { id: "element-1", description: "$x_1=(y_1+y_2)/2$, $x_2=(y_1-y_2)/2$; the Jacobian matrix $\\partial(x_1,x_2)/\\partial(y_1,y_2) = \\begin{bmatrix}1/2&1/2\\\\1/2&-1/2\\end{bmatrix}$, with determinant $-1/2$, so $|\\det J| = 1/2$", weight: 1, required: true },
+        { id: "element-2", description: "$f_{Y_1,Y_2}(y_1,y_2) = f_{X_1,X_2}(x_1,x_2)\\cdot|\\det J| = 1\\cdot(1/2) = 1/2$ on the transformed (parallelogram) support", weight: 1, required: false },
       ],
     },
     difficulty: 0.5,
@@ -947,11 +947,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Sketch why, for a multivariate transformation Y=g(X), a small region of x-space with volume dV maps to a region of y-space with volume |det J_{g⁻¹}(y)|·dV — and explain how this directly gives the multivariate change-of-variables formula f_Y(y)=f_X(g⁻¹(y))·|det J_{g⁻¹}(y)|, confirming A6's factor of 1/2.",
+      "Sketch why, for a multivariate transformation $Y=g(X)$, a small region of $x$-space with volume $dV$ maps to a region of $y$-space with volume $|\\det J_{g^{-1}}(y)|\\cdot dV$ — and explain how this directly gives the multivariate change-of-variables formula $f_Y(y)=f_X(g^{-1}(y))\\cdot|\\det J_{g^{-1}}(y)|$, confirming A6's factor of 1/2.",
     rubric: {
       elements: [
-        { id: "element-1", description: "the Jacobian determinant is the local linear-approximation scale factor by which g⁻¹ stretches or shrinks volume near a point; probability mass in a small x-region equals f_X(x)dV, and must equal the probability mass in the corresponding y-region, f_Y(y)·(scaled volume)", weight: 1, required: true },
-        { id: "element-2", description: "equating the two and solving for f_Y(y) gives f_Y(y)=f_X(g⁻¹(y))·|det J|; applied to A6's linear map this constant determinant (1/2) reproduces the constant joint density 1/2 found there", weight: 1, required: false },
+        { id: "element-1", description: "the Jacobian determinant is the local linear-approximation scale factor by which $g^{-1}$ stretches or shrinks volume near a point; probability mass in a small $x$-region equals $f_X(x)dV$, and must equal the probability mass in the corresponding $y$-region, $f_Y(y)\\cdot(\\text{scaled volume})$", weight: 1, required: true },
+        { id: "element-2", description: "equating the two and solving for $f_Y(y)$ gives $f_Y(y)=f_X(g^{-1}(y))\\cdot|\\det J|$; applied to A6's linear map this constant determinant (1/2) reproduces the constant joint density 1/2 found there", weight: 1, required: false },
       ],
     },
     difficulty: 0.55,
@@ -968,11 +968,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Let f_X(x)=0.3 on (−1,0) and f_X(x)=0.7 on (0,1) (a valid two-piece density). For Y=X², show the correct two-branch density at y∈(0,1) and contrast it with the wrong answer obtained by naively doubling only the positive branch's contribution.",
+      "Let $f_X(x)=0.3$ on $(-1,0)$ and $f_X(x)=0.7$ on $(0,1)$ (a valid two-piece density). For $Y=X^2$, show the correct two-branch density at $y\\in(0,1)$ and contrast it with the wrong answer obtained by naively doubling only the positive branch's contribution.",
     rubric: {
       elements: [
-        { id: "element-1", description: "correct: branches x=√y (density 0.7) and x=−√y (density 0.3) each contribute (density)·(1/(2√y)); summing gives f_Y(y) = (0.7+0.3)/(2√y) = 1/(2√y)", weight: 1, required: true },
-        { id: "element-2", description: "naive doubling of only the positive branch gives 2·0.7·(1/(2√y)) = 0.7/√y = 1.4/(2√y), which is 40% too large — showing why both branches' actual densities must be summed, not one branch doubled", weight: 1, required: false },
+        { id: "element-1", description: "correct: branches $x=\\sqrt{y}$ (density 0.7) and $x=-\\sqrt{y}$ (density 0.3) each contribute $(\\text{density})\\cdot(1/(2\\sqrt{y}))$; summing gives $f_Y(y) = (0.7+0.3)/(2\\sqrt{y}) = 1/(2\\sqrt{y})$", weight: 1, required: true },
+        { id: "element-2", description: "naive doubling of only the positive branch gives $2\\cdot 0.7\\cdot(1/(2\\sqrt{y})) = 0.7/\\sqrt{y} = 1.4/(2\\sqrt{y})$, which is 40% too large — showing why both branches' actual densities must be summed, not one branch doubled", weight: 1, required: false },
       ],
     },
     difficulty: 0.65,
@@ -989,7 +989,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "The change-of-variables formula requires g to be differentiable. Explain why a single non-differentiable point (e.g. g(x)=|x| at x=0) doesn't invalidate the formula elsewhere.",
+      "The change-of-variables formula requires $g$ to be differentiable. Explain why a single non-differentiable point (e.g. $g(x)=|x|$ at $x=0$) doesn't invalidate the formula elsewhere.",
     rubric: {
       elements: [
         { id: "element-1", description: "a single point has (Lebesgue) measure zero, so it contributes nothing to any probability computed by integrating the density — the formula only needs to hold almost everywhere (everywhere except a measure-zero set)", weight: 1, required: true },
@@ -1009,11 +1009,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A financial analyst models a stock's log-return X as N(μ,σ²) and needs the distribution of the price ratio Y=e^X (Y must stay positive). Using the 1-D formula, derive f_Y(y) for y>0, and explain why exponentiating a Normal is used pervasively for modeling quantities that must be positive.",
+      "A financial analyst models a stock's log-return $X$ as $N(\\mu,\\sigma^2)$ and needs the distribution of the price ratio $Y=e^X$ ($Y$ must stay positive). Using the 1-D formula, derive $f_Y(y)$ for $y>0$, and explain why exponentiating a Normal is used pervasively for modeling quantities that must be positive.",
     rubric: {
       elements: [
-        { id: "element-1", description: "g⁻¹(y)=ln y, |d/dy ln y|=1/y; f_Y(y) = φ((ln y − μ)/σ)·(1/(yσ)) = 1/(yσ√(2π))·exp(−(ln y−μ)²/(2σ²)) for y>0 — the lognormal density", weight: 1, required: true },
-        { id: "element-2", description: "by R5's support rule, transforming a support of all reals through g(x)=e^x forces the output support to (0,∞), automatically enforcing positivity, which is exactly why this transform is favored for prices/ratios that can never be negative", weight: 1, required: false },
+        { id: "element-1", description: "$g^{-1}(y)=\\ln y$, $|d/dy\\, \\ln y|=1/y$; $f_Y(y) = \\varphi((\\ln y - \\mu)/\\sigma)\\cdot(1/(y\\sigma)) = 1/(y\\sigma\\sqrt{2\\pi})\\cdot\\exp(-(\\ln y-\\mu)^2/(2\\sigma^2))$ for $y>0$ — the lognormal density", weight: 1, required: true },
+        { id: "element-2", description: "by R5's support rule, transforming a support of all reals through $g(x)=e^x$ forces the output support to $(0,\\infty)$, automatically enforcing positivity, which is exactly why this transform is favored for prices/ratios that can never be negative", weight: 1, required: false },
       ],
     },
     difficulty: 0.75,
@@ -1030,11 +1030,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Using A6's result that f_{Y₁,Y₂}=1/2 is constant on its support for Y₁=X₁+X₂, Y₂=X₁−X₂ with X₁,X₂ iid Uniform(0,1), find the marginal density f_{Y₁}(y₁) for 0<y₁≤1 by integrating out y₂ over its valid range, and confirm it matches the known triangular ('Irwin–Hall n=2') density f_{Y₁}(y₁)=y₁ there.",
+      "Using A6's result that $f_{Y_1,Y_2}=1/2$ is constant on its support for $Y_1=X_1+X_2$, $Y_2=X_1-X_2$ with $X_1,X_2$ iid Uniform(0,1), find the marginal density $f_{Y_1}(y_1)$ for $0<y_1\\le 1$ by integrating out $y_2$ over its valid range, and confirm it matches the known triangular ('Irwin–Hall n=2') density $f_{Y_1}(y_1)=y_1$ there.",
     rubric: {
       elements: [
-        { id: "element-1", description: "for 0<y₁≤1, requiring x₁=(y₁+y₂)/2 and x₂=(y₁−y₂)/2 to both lie in (0,1) restricts y₂ to an interval of length 2y₁", weight: 1, required: true },
-        { id: "element-2", description: "f_{Y₁}(y₁) = ∫ f_{Y₁,Y₂} dy₂ = (1/2)·(2y₁) = y₁, matching the known triangular density on (0,1]", weight: 1, required: false },
+        { id: "element-1", description: "for $0<y_1\\le 1$, requiring $x_1=(y_1+y_2)/2$ and $x_2=(y_1-y_2)/2$ to both lie in $(0,1)$ restricts $y_2$ to an interval of length $2y_1$", weight: 1, required: true },
+        { id: "element-2", description: "$f_{Y_1}(y_1) = \\int f_{Y_1,Y_2}\\, dy_2 = (1/2)\\cdot(2y_1) = y_1$, matching the known triangular density on $(0,1]$", weight: 1, required: false },
       ],
     },
     difficulty: 0.8,
@@ -1051,10 +1051,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A physicist wants the distribution of the speed R=√(X²+Y²) where X,Y are iid N(0,1). Without carrying out the full derivation, explain why this problem genuinely requires a 2-D (Jacobian-based) change of variables rather than the 1-D formula from R1, and name the resulting named distribution.",
+      "A physicist wants the distribution of the speed $R=\\sqrt{X^2+Y^2}$ where $X,Y$ are iid $N(0,1)$. Without carrying out the full derivation, explain why this problem genuinely requires a 2-D (Jacobian-based) change of variables rather than the 1-D formula from R1, and name the resulting named distribution.",
     rubric: {
       elements: [
-        { id: "element-1", description: "R is a function of *two* random variables jointly (via a polar-coordinate-style transformation), so the relevant object is the multivariate Jacobian determinant (R4) of the map from (X,Y) to (R,angle), not a single-variable derivative", weight: 1, required: true },
+        { id: "element-1", description: "$R$ is a function of *two* random variables jointly (via a polar-coordinate-style transformation), so the relevant object is the multivariate Jacobian determinant (R4) of the map from $(X,Y)$ to $(R,\\text{angle})$, not a single-variable derivative", weight: 1, required: true },
         { id: "element-2", description: "the resulting distribution of R is the Rayleigh distribution", weight: 1, required: false },
       ],
     },
@@ -1076,10 +1076,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Generalize the one-parameter canonical form to a vector of k natural parameters η=(η₁,…,η_k) and sufficient statistics T(x)=(T₁(x),…,T_k(x)).",
+      "Generalize the one-parameter canonical form to a vector of $k$ natural parameters $\\eta=(\\eta_1,\\ldots,\\eta_k)$ and sufficient statistics $T(x)=(T_1(x),\\ldots,T_k(x))$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "f(x;θ) = h(x)·exp(Σⱼ ηⱼ(θ)Tⱼ(x) − A(θ))", weight: 1, required: false },
+        { id: "element-1", description: "$f(x;\\theta) = h(x)\\cdot\\exp(\\sum_j \\eta_j(\\theta)T_j(x) - A(\\theta))$", weight: 1, required: false },
       ],
     },
     difficulty: -0.45,
@@ -1095,12 +1095,12 @@ export const probabilityExpansion5Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "In f(x;θ)=h(x)·exp(η(θ)T(x)−A(θ)), which piece is called the natural parameter?",
+    stem: "In $f(x;\\theta)=h(x)\\cdot\\exp(\\eta(\\theta)T(x)-A(\\theta))$, which piece is called the natural parameter?",
     choices: [
-      { id: "c1", text: "η(θ)", correct: true },
-      { id: "c2", text: "T(x)", correct: false, misconception: { id: "exponential-family--r4--m1", description: "confuses the sufficient statistic T(x) with the natural parameter η(θ)", blameConceptId: "exponential-family" } },
-      { id: "c3", text: "h(x)", correct: false, misconception: { id: "exponential-family--r4--m2", description: "confuses the base-measure term h(x) with the natural parameter η(θ)", blameConceptId: "exponential-family" } },
-      { id: "c4", text: "A(θ)", correct: false, misconception: { id: "exponential-family--r4--m3", description: "confuses the log-partition function A(θ) with the natural parameter η(θ)", blameConceptId: "exponential-family" } },
+      { id: "c1", text: "$\\eta(\\theta)$", correct: true },
+      { id: "c2", text: "$T(x)$", correct: false, misconception: { id: "exponential-family--r4--m1", description: "confuses the sufficient statistic T(x) with the natural parameter η(θ)", blameConceptId: "exponential-family" } },
+      { id: "c3", text: "$h(x)$", correct: false, misconception: { id: "exponential-family--r4--m2", description: "confuses the base-measure term h(x) with the natural parameter η(θ)", blameConceptId: "exponential-family" } },
+      { id: "c4", text: "$A(\\theta)$", correct: false, misconception: { id: "exponential-family--r4--m3", description: "confuses the log-partition function A(θ) with the natural parameter η(θ)", blameConceptId: "exponential-family" } },
     ],
     difficulty: -0.2,
     discrimination: 1.15,
@@ -1115,10 +1115,10 @@ export const probabilityExpansion5Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "What role does A(θ) play, and how is it determined given h(x), η(θ), and T(x)?",
+    stem: "What role does $A(\\theta)$ play, and how is it determined given $h(x)$, $\\eta(\\theta)$, and $T(x)$?",
     rubric: {
       elements: [
-        { id: "element-1", description: "A(θ) is the log-normalizing (log-partition) function, forced to be exactly A(θ) = ln∫h(x)exp(η(θ)T(x))dx so that the density integrates to 1", weight: 1, required: false },
+        { id: "element-1", description: "$A(\\theta)$ is the log-normalizing (log-partition) function, forced to be exactly $A(\\theta) = \\ln\\int h(x)\\exp(\\eta(\\theta)T(x))dx$ so that the density integrates to 1", weight: 1, required: false },
       ],
     },
     difficulty: -0.1,
@@ -1134,11 +1134,11 @@ export const probabilityExpansion5Items: Item[] = [
     format: "derivation",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Write Exponential(λ) in exponential family form, identifying h(x), η(λ), T(x), A(λ).",
+    stem: "Write $\\text{Exponential}(\\lambda)$ in exponential family form, identifying $h(x)$, $\\eta(\\lambda)$, $T(x)$, $A(\\lambda)$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "λe^(−λx) = exp(−λx + ln λ)", weight: 1, required: true },
-        { id: "element-2", description: "h(x)=1 (for x>0), η(λ)=−λ, T(x)=x, A(λ)=−ln λ", weight: 1, required: false },
+        { id: "element-1", description: "$\\lambda e^{-\\lambda x} = \\exp(-\\lambda x + \\ln \\lambda)$", weight: 1, required: true },
+        { id: "element-2", description: "$h(x)=1$ (for $x>0$), $\\eta(\\lambda)=-\\lambda$, $T(x)=x$, $A(\\lambda)=-\\ln \\lambda$", weight: 1, required: false },
       ],
     },
     difficulty: 0.0,
@@ -1155,11 +1155,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Write Normal(μ,σ²) with σ² *known* as a one-parameter (θ=μ) exponential family, identifying h(x), η(μ), T(x), A(μ).",
+      "Write $\\text{Normal}(\\mu,\\sigma^2)$ with $\\sigma^2$ *known* as a one-parameter ($\\theta=\\mu$) exponential family, identifying $h(x)$, $\\eta(\\mu)$, $T(x)$, $A(\\mu)$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "expand −(x−μ)²/(2σ²) = −x²/(2σ²) + μx/σ² − μ²/(2σ²), so f(x;μ) = [(1/√(2πσ²))e^(−x²/(2σ²))]·exp(μx/σ² − μ²/(2σ²))", weight: 1, required: true },
-        { id: "element-2", description: "h(x)=(1/√(2πσ²))e^(−x²/(2σ²)), η(μ)=μ/σ², T(x)=x, A(μ)=μ²/(2σ²)", weight: 1, required: false },
+        { id: "element-1", description: "expand $-(x-\\mu)^2/(2\\sigma^2) = -x^2/(2\\sigma^2) + \\mu x/\\sigma^2 - \\mu^2/(2\\sigma^2)$, so $f(x;\\mu) = [(1/\\sqrt{2\\pi\\sigma^2})e^{-x^2/(2\\sigma^2)}]\\cdot\\exp(\\mu x/\\sigma^2 - \\mu^2/(2\\sigma^2))$", weight: 1, required: true },
+        { id: "element-2", description: "$h(x)=(1/\\sqrt{2\\pi\\sigma^2})e^{-x^2/(2\\sigma^2)}$, $\\eta(\\mu)=\\mu/\\sigma^2$, $T(x)=x$, $A(\\mu)=\\mu^2/(2\\sigma^2)$", weight: 1, required: false },
       ],
     },
     difficulty: 0.25,
@@ -1176,11 +1176,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Write Normal(μ,σ²) with *both* parameters unknown as a two-parameter exponential family, identifying η₁, η₂ and T₁(x), T₂(x).",
+      "Write $\\text{Normal}(\\mu,\\sigma^2)$ with *both* parameters unknown as a two-parameter exponential family, identifying $\\eta_1$, $\\eta_2$ and $T_1(x)$, $T_2(x)$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "the exponent is μx/σ² − x²/(2σ²) − μ²/(2σ²) − (1/2)ln(2πσ²), which separates into two natural-parameter/statistic products", weight: 1, required: true },
-        { id: "element-2", description: "η₁=μ/σ², T₁(x)=x; η₂=−1/(2σ²), T₂(x)=x²", weight: 1, required: false },
+        { id: "element-1", description: "the exponent is $\\mu x/\\sigma^2 - x^2/(2\\sigma^2) - \\mu^2/(2\\sigma^2) - (1/2)\\ln(2\\pi\\sigma^2)$, which separates into two natural-parameter/statistic products", weight: 1, required: true },
+        { id: "element-2", description: "$\\eta_1=\\mu/\\sigma^2$, $T_1(x)=x$; $\\eta_2=-1/(2\\sigma^2)$, $T_2(x)=x^2$", weight: 1, required: false },
       ],
     },
     difficulty: 0.5,
@@ -1196,7 +1196,7 @@ export const probabilityExpansion5Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Using A4's form for Normal(μ,σ²known) with σ²=4, compute the natural parameter η(μ) at μ=6.",
+    stem: "Using A4's form for Normal($\\mu,\\sigma^2$ known) with $\\sigma^2=4$, compute the natural parameter $\\eta(\\mu)$ at $\\mu=6$.",
     answerKey: 1.5,
     tolerance: 0.01,
     difficulty: 0.15,
@@ -1213,11 +1213,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Starting from ∫h(x)exp(ηT(x)−A(η))dx=1, differentiate both sides with respect to η (differentiating under the integral sign) to derive that A'(η)=E[T(X)].",
+      "Starting from $\\int h(x)\\exp(\\eta T(x)-A(\\eta))dx=1$, differentiate both sides with respect to $\\eta$ (differentiating under the integral sign) to derive that $A'(\\eta)=E[T(X)]$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "differentiating ∫h(x)exp(ηT(x)−A(η))dx=1 with respect to η gives ∫h(x)exp(ηT(x)−A(η))·(T(x)−A'(η))dx = 0", weight: 1, required: true },
-        { id: "element-2", description: "the integrand is f(x;η)·(T(x)−A'(η)), so this says E[T(X)] − A'(η) = 0, i.e. A'(η) = E[T(X)]", weight: 1, required: false },
+        { id: "element-1", description: "differentiating $\\int h(x)\\exp(\\eta T(x)-A(\\eta))dx=1$ with respect to $\\eta$ gives $\\int h(x)\\exp(\\eta T(x)-A(\\eta))\\cdot(T(x)-A'(\\eta))dx = 0$", weight: 1, required: true },
+        { id: "element-2", description: "the integrand is $f(x;\\eta)\\cdot(T(x)-A'(\\eta))$, so this says $E[T(X)] - A'(\\eta) = 0$, i.e. $A'(\\eta) = E[T(X)]$", weight: 1, required: false },
       ],
     },
     difficulty: 0.6,
@@ -1234,10 +1234,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Connect E3's fact (A'(η)=E[T(X)]) to `mgf`'s cluster: explain why A(η) behaves like a 'log-MGF' (cumulant generating function) for the statistic T(X).",
+      "Connect E3's fact ($A'(\\eta)=E[T(X)]$) to `mgf`'s cluster: explain why $A(\\eta)$ behaves like a 'log-MGF' (cumulant generating function) for the statistic $T(X)$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "just as differentiating an MGF at 0 recovers moments of X, differentiating A(η) recovers moments (starting with the mean) of T(X); A(η) plays the exact same generating-function role for T(X) that the log-MGF plays for a random variable in general", weight: 1, required: true },
+        { id: "element-1", description: "just as differentiating an MGF at 0 recovers moments of $X$, differentiating $A(\\eta)$ recovers moments (starting with the mean) of $T(X)$; $A(\\eta)$ plays the exact same generating-function role for $T(X)$ that the log-MGF plays for a random variable in general", weight: 1, required: true },
       ],
     },
     difficulty: 0.55,
@@ -1254,11 +1254,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Explain why the natural parameter space (the set of η for which A(η) is finite) can be a strict subset of all real numbers, using Gamma(α,β) (η related to −β) as motivation.",
+      "Explain why the natural parameter space (the set of $\\eta$ for which $A(\\eta)$ is finite) can be a strict subset of all real numbers, using Gamma($\\alpha,\\beta$) ($\\eta$ related to $-\\beta$) as motivation.",
     rubric: {
       elements: [
-        { id: "element-1", description: "A(η) is defined via an integral (or sum) that must converge; for some values of η the integrand no longer decays (e.g. for Gamma-type densities, η values that would make the exponential term grow rather than decay), so the integral diverges and A(η) is undefined there", weight: 1, required: true },
-        { id: "element-2", description: "those disallowed η values are excluded from the natural parameter space by definition, even though they are otherwise ordinary real numbers", weight: 1, required: false },
+        { id: "element-1", description: "$A(\\eta)$ is defined via an integral (or sum) that must converge; for some values of $\\eta$ the integrand no longer decays (e.g. for Gamma-type densities, $\\eta$ values that would make the exponential term grow rather than decay), so the integral diverges and $A(\\eta)$ is undefined there", weight: 1, required: true },
+        { id: "element-2", description: "those disallowed $\\eta$ values are excluded from the natural parameter space by definition, even though they are otherwise ordinary real numbers", weight: 1, required: false },
       ],
     },
     difficulty: 0.7,
@@ -1275,10 +1275,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A machine learning engineer building a generalized linear model (GLM) needs the response distribution to be exponential family, because that's exactly what lets a single generic fitting algorithm work. Using A4's form (η(μ)=μ/σ²), explain informally what the GLM 'link function' idea corresponds to here.",
+      "A machine learning engineer building a generalized linear model (GLM) needs the response distribution to be exponential family, because that's exactly what lets a single generic fitting algorithm work. Using A4's form ($\\eta(\\mu)=\\mu/\\sigma^2$), explain informally what the GLM 'link function' idea corresponds to here.",
     rubric: {
       elements: [
-        { id: "element-1", description: "the link function is essentially the relationship between the natural parameter η and the mean-related parameter θ (here μ) — GLM fitting works generically precisely because η is always some known function of θ across the whole exponential family, not something that needs re-deriving per distribution", weight: 1, required: true },
+        { id: "element-1", description: "the link function is essentially the relationship between the natural parameter $\\eta$ and the mean-related parameter $\\theta$ (here $\\mu$) — GLM fitting works generically precisely because $\\eta$ is always some known function of $\\theta$ across the whole exponential family, not something that needs re-deriving per distribution", weight: 1, required: true },
       ],
     },
     difficulty: 0.8,
@@ -1295,10 +1295,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A student claims: 'Since Normal(μ,σ²) with σ² unknown is 2-parameter exponential family (A5), fixing σ² and varying only μ (A4) must give exactly the same natural parameter η.' Explain why this is false.",
+      "A student claims: 'Since Normal($\\mu,\\sigma^2$) with $\\sigma^2$ unknown is 2-parameter exponential family (A5), fixing $\\sigma^2$ and varying only $\\mu$ (A4) must give exactly the same natural parameter $\\eta$.' Explain why this is false.",
     rubric: {
       elements: [
-        { id: "element-1", description: "in A4, η is computed treating σ² as a fixed known constant, so η=μ/σ² depends on that specific σ²; in A5's joint form, η₁=μ/σ² still depends on σ² as well — changing σ² changes η even when μ is held fixed, so 'only μ' doesn't fully determine η in either version", weight: 1, required: true },
+        { id: "element-1", description: "in A4, $\\eta$ is computed treating $\\sigma^2$ as a fixed known constant, so $\\eta=\\mu/\\sigma^2$ depends on that specific $\\sigma^2$; in A5's joint form, $\\eta_1=\\mu/\\sigma^2$ still depends on $\\sigma^2$ as well — changing $\\sigma^2$ changes $\\eta$ even when $\\mu$ is held fixed, so 'only $\\mu$' doesn't fully determine $\\eta$ in either version", weight: 1, required: true },
       ],
     },
     difficulty: 0.85,
@@ -1315,11 +1315,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Using A3 (Exponential's form, η=−λ so A(λ)=−ln λ becomes A(η)=−ln(−η)) and E3's fact that A'(η)=E[T(X)], differentiate A(η)=−ln(−η) with respect to η and confirm the result equals the known E[X]=1/λ.",
+      "Using A3 (Exponential's form, $\\eta=-\\lambda$ so $A(\\lambda)=-\\ln \\lambda$ becomes $A(\\eta)=-\\ln(-\\eta)$) and E3's fact that $A'(\\eta)=E[T(X)]$, differentiate $A(\\eta)=-\\ln(-\\eta)$ with respect to $\\eta$ and confirm the result equals the known $E[X]=1/\\lambda$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "A'(η) = d/dη[−ln(−η)] = −1/η", weight: 1, required: true },
-        { id: "element-2", description: "substituting η=−λ gives A'(η) = −1/(−λ) = 1/λ, exactly matching the known E[X]=1/λ for Exponential(λ)", weight: 1, required: false },
+        { id: "element-1", description: "$A'(\\eta) = d/d\\eta[-\\ln(-\\eta)] = -1/\\eta$", weight: 1, required: true },
+        { id: "element-2", description: "substituting $\\eta=-\\lambda$ gives $A'(\\eta) = -1/(-\\lambda) = 1/\\lambda$, exactly matching the known $E[X]=1/\\lambda$ for Exponential($\\lambda$)", weight: 1, required: false },
       ],
     },
     difficulty: 0.95,
@@ -1342,7 +1342,7 @@ export const probabilityExpansion5Items: Item[] = [
     stem: "List the four factors that jointly determine the power of a hypothesis test.",
     rubric: {
       elements: [
-        { id: "element-1", description: "sample size n, significance level α, the true effect size (distance between the true parameter and the null value), and the population variability (σ)", weight: 1, required: false },
+        { id: "element-1", description: "sample size $n$, significance level $\\alpha$, the true effect size (distance between the true parameter and the null value), and the population variability ($\\sigma$)", weight: 1, required: false },
       ],
     },
     difficulty: -0.15,
@@ -1358,7 +1358,7 @@ export const probabilityExpansion5Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "All else equal, a higher population variance σ² generally:",
+    stem: "All else equal, a higher population variance $\\sigma^2$ generally:",
     choices: [
       { id: "c1", text: "decreases power — more noise makes a real effect harder to detect", correct: true },
       { id: "c2", text: "increases power — more variance gives the test more information to work with", correct: false, misconception: { id: "power--r4--m1", description: "confuses variability with information, treating noisier data as if it were more informative rather than harder to distinguish from chance", blameConceptId: "power" } },
@@ -1381,7 +1381,7 @@ export const probabilityExpansion5Items: Item[] = [
     stem: "Define 'effect size' informally, in the context of a power calculation.",
     rubric: {
       elements: [
-        { id: "element-1", description: "the standardized magnitude of the difference between the null value and the true parameter value (e.g. (μ₁−μ₀)/σ) — how far the true state of the world is from H₀", weight: 1, required: false },
+        { id: "element-1", description: "the standardized magnitude of the difference between the null value and the true parameter value (e.g. $(\\mu_1-\\mu_0)/\\sigma$) — how far the true state of the world is from $H_0$", weight: 1, required: false },
       ],
     },
     difficulty: 0.05,
@@ -1398,7 +1398,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "One-sided z-test, H₀: μ=0 vs H₁: μ>0, known σ=10, n=25, α=0.05 (reject if X̄ > 1.645·σ/√n ≈ 3.29). If the true mean is μ=5, find the power.",
+      "One-sided z-test, $H_0: \\mu=0$ vs $H_1: \\mu>0$, known $\\sigma=10$, $n=25$, $\\alpha=0.05$ (reject if $\\bar{X} > 1.645\\cdot\\sigma/\\sqrt{n} \\approx 3.29$). If the true mean is $\\mu=5$, find the power.",
     answerKey: 0.804,
     tolerance: 0.01,
     difficulty: 0.35,
@@ -1415,7 +1415,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Same setup as A3 (H₀: μ=0, σ=10, α=0.05, true μ=5), but with n=100 instead of 25 (reject if X̄ > 1.645·σ/√n = 1.645). Find the power, and confirm it's higher than A3's.",
+      "Same setup as A3 ($H_0: \\mu=0$, $\\sigma=10$, $\\alpha=0.05$, true $\\mu=5$), but with $n=100$ instead of 25 (reject if $\\bar{X} > 1.645\\cdot\\sigma/\\sqrt{n} = 1.645$). Find the power, and confirm it's higher than A3's.",
     answerKey: 0.9996,
     tolerance: 0.002,
     difficulty: 0.4,
@@ -1432,7 +1432,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Same setup as A3 (n=25, σ=10, α=0.05, threshold ≈3.29), but with a smaller true effect μ=2 instead of 5. Find the power, and confirm it's lower than A3's.",
+      "Same setup as A3 ($n=25$, $\\sigma=10$, $\\alpha=0.05$, threshold $\\approx 3.29$), but with a smaller true effect $\\mu=2$ instead of 5. Find the power, and confirm it's lower than A3's.",
     answerKey: 0.26,
     tolerance: 0.01,
     difficulty: 0.45,
@@ -1449,7 +1449,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Same setup as A3 (n=25, σ=10, true μ=5), but a researcher doubles α from 0.05 to 0.10 (new threshold = 1.2816·σ/√n ≈ 2.56). Find the new power, and confirm it exceeds A3's 0.804.",
+      "Same setup as A3 ($n=25$, $\\sigma=10$, true $\\mu=5$), but a researcher doubles $\\alpha$ from 0.05 to 0.10 (new threshold $= 1.2816\\cdot\\sigma/\\sqrt{n} \\approx 2.56$). Find the new power, and confirm it exceeds A3's 0.804.",
     answerKey: 0.888,
     tolerance: 0.01,
     difficulty: 0.5,
@@ -1466,11 +1466,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Derive the general one-sided z-test power formula Power = Φ(δ√n/σ − z_(1−α)), where δ is the true effect (true mean minus null mean), showing how n, σ, δ, and α each enter.",
+      "Derive the general one-sided z-test power formula $\\text{Power} = \\Phi(\\delta\\sqrt{n}/\\sigma - z_{1-\\alpha})$, where $\\delta$ is the true effect (true mean minus null mean), showing how $n$, $\\sigma$, $\\delta$, and $\\alpha$ each enter.",
     rubric: {
       elements: [
-        { id: "element-1", description: "the rejection threshold is z_(1−α)·σ/√n; under the true mean δ, X̄~N(δ, σ²/n), so power = P(X̄ > threshold) = P(Z > (z_(1−α)σ/√n − δ)/(σ/√n))", weight: 1, required: true },
-        { id: "element-2", description: "simplifying the standardized value gives z_(1−α) − δ√n/σ, so Power = P(Z > z_(1−α) − δ√n/σ) = Φ(δ√n/σ − z_(1−α)), by symmetry of the standard normal", weight: 1, required: false },
+        { id: "element-1", description: "the rejection threshold is $z_{1-\\alpha}\\cdot\\sigma/\\sqrt{n}$; under the true mean $\\delta$, $\\bar{X}\\sim N(\\delta, \\sigma^2/n)$, so power $= P(\\bar{X} > \\text{threshold}) = P(Z > (z_{1-\\alpha}\\sigma/\\sqrt{n} - \\delta)/(\\sigma/\\sqrt{n}))$", weight: 1, required: true },
+        { id: "element-2", description: "simplifying the standardized value gives $z_{1-\\alpha} - \\delta\\sqrt{n}/\\sigma$, so $\\text{Power} = P(Z > z_{1-\\alpha} - \\delta\\sqrt{n}/\\sigma) = \\Phi(\\delta\\sqrt{n}/\\sigma - z_{1-\\alpha})$, by symmetry of the standard normal", weight: 1, required: false },
       ],
     },
     difficulty: 0.65,
@@ -1487,10 +1487,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Explain why, at the same α and for the same true effect (in the expected direction), a two-sided test generally has lower power than a one-sided test.",
+      "Explain why, at the same $\\alpha$ and for the same true effect (in the expected direction), a two-sided test generally has lower power than a one-sided test.",
     rubric: {
       elements: [
-        { id: "element-1", description: "a two-sided test splits α across both tails (α/2 each), shrinking the rejection region on the side that actually matters for detecting the true effect, compared to a one-sided test that puts the full α on that one side", weight: 1, required: true },
+        { id: "element-1", description: "a two-sided test splits $\\alpha$ across both tails ($\\alpha/2$ each), shrinking the rejection region on the side that actually matters for detecting the true effect, compared to a one-sided test that puts the full $\\alpha$ on that one side", weight: 1, required: true },
       ],
     },
     difficulty: 0.55,
@@ -1507,10 +1507,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Using E3's power formula, explain why solving it for δ (given fixed n, α, and a target power) yields the smallest true effect the study is well-powered to detect — the 'minimum detectable effect' (MDE).",
+      "Using E3's power formula, explain why solving it for $\\delta$ (given fixed $n$, $\\alpha$, and a target power) yields the smallest true effect the study is well-powered to detect — the 'minimum detectable effect' (MDE).",
     rubric: {
       elements: [
-        { id: "element-1", description: "E3's formula shows power increasing monotonically in δ for fixed n, α, σ; setting Power equal to the target and solving for δ finds the exact effect size at which that target power is just barely achieved — any smaller true effect would give lower-than-target power", weight: 1, required: true },
+        { id: "element-1", description: "E3's formula shows power increasing monotonically in $\\delta$ for fixed $n$, $\\alpha$, $\\sigma$; setting Power equal to the target and solving for $\\delta$ finds the exact effect size at which that target power is just barely achieved — any smaller true effect would give lower-than-target power", weight: 1, required: true },
       ],
     },
     difficulty: 0.7,
@@ -1527,7 +1527,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "Using E3's formula solved for n (n = ((z_(1−α)+z_power)·σ/δ)²), find the sample size needed for 80% power (z_0.80≈0.8416) with α=0.05 (z_0.95≈1.645), σ=10, δ=5. Round up to the nearest whole number, and note how it compares to A3's n=25.",
+      "Using E3's formula solved for $n$ ($n = ((z_{1-\\alpha}+z_{\\text{power}})\\cdot\\sigma/\\delta)^2$), find the sample size needed for 80% power ($z_{0.80}\\approx 0.8416$) with $\\alpha=0.05$ ($z_{0.95}\\approx 1.645$), $\\sigma=10$, $\\delta=5$. Round up to the nearest whole number, and note how it compares to A3's $n=25$.",
     answerKey: 25,
     tolerance: 1,
     difficulty: 0.75,
@@ -1565,10 +1565,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A company under a hard sample-size cap can't increase n to boost power, so instead considers raising α (per E1's mirror-image logic). Explain the real cost of choosing this lever instead of increasing n, tying back to `type-i-ii-error`'s tradeoff.",
+      "A company under a hard sample-size cap can't increase $n$ to boost power, so instead considers raising $\\alpha$ (per E1's mirror-image logic). Explain the real cost of choosing this lever instead of increasing $n$, tying back to `type-i-ii-error`'s tradeoff.",
     rubric: {
       elements: [
-        { id: "element-1", description: "raising α does mechanically increase power (E1), but it does so by directly increasing the Type I error rate — more false positives — rather than by genuinely reducing noise or gathering more evidence the way a larger n would", weight: 1, required: true },
+        { id: "element-1", description: "raising $\\alpha$ does mechanically increase power (E1), but it does so by directly increasing the Type I error rate — more false positives — rather than by genuinely reducing noise or gathering more evidence the way a larger $n$ would", weight: 1, required: true },
         { id: "element-2", description: "this is a real tradeoff, not a free power boost: the company is explicitly accepting more false alarms in exchange for higher power, a choice that should depend on the relative real-world costs of the two error types", weight: 1, required: false },
       ],
     },
@@ -1593,7 +1593,7 @@ export const probabilityExpansion5Items: Item[] = [
       "Give an example of a trivially sufficient statistic (one that's sufficient for *any* distribution), and explain why it's sufficient but practically useless.",
     rubric: {
       elements: [
-        { id: "element-1", description: "the entire dataset itself (X₁,…,Xₙ), or equivalently the vector of order statistics, is always trivially sufficient", weight: 1, required: false },
+        { id: "element-1", description: "the entire dataset itself $(X_1,\\ldots,X_n)$, or equivalently the vector of order statistics, is always trivially sufficient", weight: 1, required: false },
         { id: "element-2", description: "it's useless because it doesn't summarize or reduce the data at all — sufficiency alone doesn't guarantee a *useful* reduction", weight: 1, required: false },
       ],
     },
@@ -1611,7 +1611,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten"],
     stem:
-      "A sufficient statistic that additionally has the smallest possible dimension capturing all information about θ is called:",
+      "A sufficient statistic that additionally has the smallest possible dimension capturing all information about $\\theta$ is called:",
     choices: [
       { id: "c1", text: "minimally sufficient", correct: true },
       { id: "c2", text: "unbiased", correct: false, misconception: { id: "sufficient-statistic--r4--m1", description: "confuses sufficiency-related terminology (minimal sufficiency) with the unrelated property of unbiasedness", blameConceptId: "sufficient-statistic" } },
@@ -1632,10 +1632,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For n iid Normal(μ,σ²) with *both* parameters unknown, what two-dimensional statistic is jointly sufficient for (μ,σ²)?",
+      "For $n$ iid $\\text{Normal}(\\mu,\\sigma^2)$ with *both* parameters unknown, what two-dimensional statistic is jointly sufficient for $(\\mu,\\sigma^2)$?",
     rubric: {
       elements: [
-        { id: "element-1", description: "(Σxᵢ, Σxᵢ²) — equivalently (X̄, Σ(xᵢ−X̄)²)", weight: 1, required: false },
+        { id: "element-1", description: "$(\\sum x_i, \\sum x_i^2)$ — equivalently $(\\bar{X}, \\sum(x_i-\\bar{X})^2)$", weight: 1, required: false },
       ],
     },
     difficulty: 0.0,
@@ -1651,10 +1651,10 @@ export const probabilityExpansion5Items: Item[] = [
     format: "derivation",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For iid Poisson(λ), use factorization to show T(X)=Σxᵢ is sufficient for λ.",
+    stem: "For iid $\\text{Poisson}(\\lambda)$, use factorization to show $T(X)=\\sum x_i$ is sufficient for $\\lambda$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "f(x;λ) = Πe^(−λ)λ^(xᵢ)/xᵢ! = e^(−nλ)λ^(Σxᵢ) / Πxᵢ! = g(Σxᵢ,λ)·h(x), with g(Σxᵢ,λ)=e^(−nλ)λ^(Σxᵢ) and h(x)=1/Πxᵢ!", weight: 1, required: true },
+        { id: "element-1", description: "$f(x;\\lambda) = \\prod e^{-\\lambda}\\lambda^{x_i}/x_i! = e^{-n\\lambda}\\lambda^{\\sum x_i} / \\prod x_i! = g(\\sum x_i,\\lambda)\\cdot h(x)$, with $g(\\sum x_i,\\lambda)=e^{-n\\lambda}\\lambda^{\\sum x_i}$ and $h(x)=1/\\prod x_i!$", weight: 1, required: true },
       ],
     },
     difficulty: 0.0,
@@ -1671,10 +1671,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For iid Uniform(0,θ), use factorization to show T(X)=max(xᵢ) is sufficient for θ, even though Uniform(0,θ) is *not* exponential family (its support depends on θ).",
+      "For iid Uniform$(0,\\theta)$, use factorization to show $T(X)=\\max(x_i)$ is sufficient for $\\theta$, even though Uniform$(0,\\theta)$ is *not* exponential family (its support depends on $\\theta$).",
     rubric: {
       elements: [
-        { id: "element-1", description: "f(x;θ) = Π(1/θ)·1{0≤xᵢ≤θ} = (1/θ)ⁿ·1{max(xᵢ)≤θ}·1{min(xᵢ)≥0} = g(max(xᵢ),θ)·h(x), with h(x)=1{min(xᵢ)≥0}", weight: 1, required: true },
+        { id: "element-1", description: "$f(x;\\theta) = \\prod (1/\\theta)\\cdot 1\\{0\\le x_i\\le\\theta\\} = (1/\\theta)^n\\cdot 1\\{\\max(x_i)\\le\\theta\\}\\cdot 1\\{\\min(x_i)\\ge 0\\} = g(\\max(x_i),\\theta)\\cdot h(x)$, with $h(x)=1\\{\\min(x_i)\\ge 0\\}$", weight: 1, required: true },
         { id: "element-2", description: "this shows sufficiency (via factorization) does not require exponential-family membership — it's a strictly weaker, more general condition", weight: 1, required: false },
       ],
     },
@@ -1692,10 +1692,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For n=5 iid Bernoulli(θ) observations with sufficient statistic T=Σxᵢ=3, a second sample of size 5 has a completely different sequence of individual outcomes but the same T=3. Compare their likelihood functions θ^T(1−θ)^(n−T) as functions of θ.",
+      "For $n=5$ iid Bernoulli($\\theta$) observations with sufficient statistic $T=\\sum x_i=3$, a second sample of size 5 has a completely different sequence of individual outcomes but the same $T=3$. Compare their likelihood functions $\\theta^T(1-\\theta)^{n-T}$ as functions of $\\theta$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "the two likelihood functions are identical for every θ, since both depend on the data only through (n,T) — this is exactly what sufficiency of T means: distinct datasets with the same T carry the same evidence about θ", weight: 1, required: true },
+        { id: "element-1", description: "the two likelihood functions are identical for every $\\theta$, since both depend on the data only through $(n,T)$ — this is exactly what sufficiency of $T$ means: distinct datasets with the same $T$ carry the same evidence about $\\theta$", weight: 1, required: true },
       ],
     },
     difficulty: 0.25,
@@ -1711,10 +1711,10 @@ export const probabilityExpansion5Items: Item[] = [
     format: "derivation",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For iid Exponential(λ), use factorization to show T(X)=Σxᵢ is sufficient for λ.",
+    stem: "For iid $\\text{Exponential}(\\lambda)$, use factorization to show $T(X)=\\sum x_i$ is sufficient for $\\lambda$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "f(x;λ) = Πλe^(−λxᵢ) = λⁿ·exp(−λΣxᵢ) = g(Σxᵢ,λ)·h(x), with h(x)=1", weight: 1, required: true },
+        { id: "element-1", description: "$f(x;\\lambda) = \\prod \\lambda e^{-\\lambda x_i} = \\lambda^n\\cdot\\exp(-\\lambda\\sum x_i) = g(\\sum x_i,\\lambda)\\cdot h(x)$, with $h(x)=1$", weight: 1, required: true },
       ],
     },
     difficulty: 0.05,
@@ -1731,11 +1731,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Contrast a *sufficient* statistic with an *ancillary* statistic (one whose distribution doesn't depend on θ at all), using Normal(μ,σ²known) as an example: X̄ is sufficient for μ, while X₁−X₂ is ancillary. What does each communicate about θ?",
+      "Contrast a *sufficient* statistic with an *ancillary* statistic (one whose distribution doesn't depend on $\\theta$ at all), using Normal($\\mu,\\sigma^2$ known) as an example: $\\bar{X}$ is sufficient for $\\mu$, while $X_1-X_2$ is ancillary. What does each communicate about $\\theta$?",
     rubric: {
       elements: [
-        { id: "element-1", description: "the sufficient statistic (X̄) carries all the sample's information about θ; the ancillary statistic (X₁−X₂, whose distribution involves only σ² which is known here) carries none — its distribution is the same no matter what μ is", weight: 1, required: true },
-        { id: "element-2", description: "the two together illustrate opposite ends of a spectrum: all the θ-relevant information versus none of it", weight: 1, required: false },
+        { id: "element-1", description: "the sufficient statistic ($\\bar{X}$) carries all the sample's information about $\\theta$; the ancillary statistic ($X_1-X_2$, whose distribution involves only $\\sigma^2$ which is known here) carries none — its distribution is the same no matter what $\\mu$ is", weight: 1, required: true },
+        { id: "element-2", description: "the two together illustrate opposite ends of a spectrum: all the $\\theta$-relevant information versus none of it", weight: 1, required: false },
       ],
     },
     difficulty: 0.5,
@@ -1755,7 +1755,7 @@ export const probabilityExpansion5Items: Item[] = [
       "Explain why the Factorization theorem gives a *constructive* way to find sufficient statistics — just algebraically regroup the likelihood — rather than needing to verify the conditional-independence definition (R1) directly.",
     rubric: {
       elements: [
-        { id: "element-1", description: "checking the conditional distribution of the data given T doesn't depend on θ (the definition) is often hard to compute directly; factorization only requires recognizing an algebraic split of the density into a θ-and-T part and a θ-free part, which is a much more mechanical, checkable task", weight: 1, required: true },
+        { id: "element-1", description: "checking the conditional distribution of the data given $T$ doesn't depend on $\\theta$ (the definition) is often hard to compute directly; factorization only requires recognizing an algebraic split of the density into a $\\theta$-and-$T$ part and a $\\theta$-free part, which is a much more mechanical, checkable task", weight: 1, required: true },
       ],
     },
     difficulty: 0.45,
@@ -1772,10 +1772,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Using this concept's existing E1 intuition ('nothing left for the rest of the data to reveal'), argue informally why 'improving' an estimator by conditioning on a sufficient statistic T (replacing it with E[estimator | T]) cannot make its variance worse.",
+      "Using this concept's existing E1 intuition ('nothing left for the rest of the data to reveal'), argue informally why 'improving' an estimator by conditioning on a sufficient statistic $T$ (replacing it with $E[\\text{estimator} \\mid T]$) cannot make its variance worse.",
     rubric: {
       elements: [
-        { id: "element-1", description: "whatever randomness remains in the data beyond T is, by sufficiency, unrelated to θ — pure noise from θ's perspective — so averaging it away by conditioning on T removes noise variance without discarding any θ-relevant signal, which can only reduce or maintain (never increase) the estimator's variance", weight: 1, required: true },
+        { id: "element-1", description: "whatever randomness remains in the data beyond $T$ is, by sufficiency, unrelated to $\\theta$ — pure noise from $\\theta$'s perspective — so averaging it away by conditioning on $T$ removes noise variance without discarding any $\\theta$-relevant signal, which can only reduce or maintain (never increase) the estimator's variance", weight: 1, required: true },
       ],
     },
     difficulty: 0.65,
@@ -1792,10 +1792,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A quality-control engineer at a factory only records, for each shipment, T=Σxᵢ (total defective count) and n from a Bernoulli(θ) defect model. A colleague proposes building an alternate θ-estimator from individual defect timestamps instead, ignoring T. Explain why this alternate estimator can never systematically outperform one based on T alone, for estimating θ specifically.",
+      "A quality-control engineer at a factory only records, for each shipment, $T=\\sum x_i$ (total defective count) and $n$ from a Bernoulli($\\theta$) defect model. A colleague proposes building an alternate $\\theta$-estimator from individual defect timestamps instead, ignoring $T$. Explain why this alternate estimator can never systematically outperform one based on $T$ alone, for estimating $\\theta$ specifically.",
     rubric: {
       elements: [
-        { id: "element-1", description: "since T is sufficient, the timestamps carry no information about θ beyond what T already provides; any estimator built purely from the timestamps is, from θ's perspective, working with noise relative to T, so it cannot systematically beat a well-constructed T-based estimator for estimating θ", weight: 1, required: true },
+        { id: "element-1", description: "since $T$ is sufficient, the timestamps carry no information about $\\theta$ beyond what $T$ already provides; any estimator built purely from the timestamps is, from $\\theta$'s perspective, working with noise relative to $T$, so it cannot systematically beat a well-constructed $T$-based estimator for estimating $\\theta$", weight: 1, required: true },
       ],
     },
     difficulty: 0.75,
@@ -1812,10 +1812,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A finance analyst has iid Normal(μ,σ²known) daily returns and insists on reporting the full return sequence rather than just X̄, worried about 'losing information.' Using A4's Uniform example (where the sufficient statistic is a max, not a mean), explain what would happen to X̄'s sufficiency if the true return distribution were actually Uniform instead of Normal.",
+      "A finance analyst has iid Normal($\\mu,\\sigma^2$ known) daily returns and insists on reporting the full return sequence rather than just $\\bar{X}$, worried about 'losing information.' Using A4's Uniform example (where the sufficient statistic is a max, not a mean), explain what would happen to $\\bar{X}$'s sufficiency if the true return distribution were actually Uniform instead of Normal.",
     rubric: {
       elements: [
-        { id: "element-1", description: "the *form* of a sufficient statistic depends entirely on the assumed model — X̄ is sufficient specifically because the data is assumed Normal; if the true distribution were Uniform, X̄ would generally no longer be sufficient, and max(xᵢ) (per A4) would be the sufficient statistic instead", weight: 1, required: true },
+        { id: "element-1", description: "the *form* of a sufficient statistic depends entirely on the assumed model — $\\bar{X}$ is sufficient specifically because the data is assumed Normal; if the true distribution were Uniform, $\\bar{X}$ would generally no longer be sufficient, and $\\max(x_i)$ (per A4) would be the sufficient statistic instead", weight: 1, required: true },
         { id: "element-2", description: "so 'losing information' isn't really the analyst's risk if the Normal model is correct — the risk is instead using the wrong model, which changes what statistic is even sufficient", weight: 1, required: false },
       ],
     },
@@ -1833,10 +1833,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "`exponential-family`'s A2 wrote Poisson(λ) in canonical form with T(x)=x, and this concept's existing E2 states that any exponential family's T(x) is automatically sufficient. Using A3's direct factorization for n iid Poisson observations, confirm that both routes agree on the sufficient statistic for the full sample.",
+      "`exponential-family`'s A2 wrote Poisson($\\lambda$) in canonical form with $T(x)=x$, and this concept's existing E2 states that any exponential family's $T(x)$ is automatically sufficient. Using A3's direct factorization for $n$ iid Poisson observations, confirm that both routes agree on the sufficient statistic for the full sample.",
     rubric: {
       elements: [
-        { id: "element-1", description: "A3's direct factorization identifies Σxᵢ as sufficient for the n-observation sample; the automatic exponential-family route (extending the single-observation T(x)=x to a sum over n iid observations) also gives Σxᵢ — both approaches land on exactly the same statistic", weight: 1, required: true },
+        { id: "element-1", description: "A3's direct factorization identifies $\\sum x_i$ as sufficient for the $n$-observation sample; the automatic exponential-family route (extending the single-observation $T(x)=x$ to a sum over $n$ iid observations) also gives $\\sum x_i$ — both approaches land on exactly the same statistic", weight: 1, required: true },
       ],
     },
     difficulty: 0.7,
@@ -1856,10 +1856,10 @@ export const probabilityExpansion5Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "If Y=aX+b for constants a≠0, b, state ρ(X,Y) in terms of the sign of a.",
+    stem: "If $Y=aX+b$ for constants $a\\neq 0$, $b$, state $\\rho(X,Y)$ in terms of the sign of $a$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "ρ(X,Y) = +1 if a>0, and −1 if a<0 — a perfect linear relationship either way", weight: 1, required: false },
+        { id: "element-1", description: "$\\rho(X,Y) = +1$ if $a>0$, and $-1$ if $a<0$ — a perfect linear relationship either way", weight: 1, required: false },
       ],
     },
     difficulty: -0.45,
@@ -1875,12 +1875,12 @@ export const probabilityExpansion5Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "Correlation ρ(X,Y) is unchanged under which operation?",
+    stem: "Correlation $\\rho(X,Y)$ is unchanged under which operation?",
     choices: [
-      { id: "c1", text: "separately rescaling and shifting each variable by positive constants: X→cX+d, Y→eY+f with c,e>0", correct: true },
+      { id: "c1", text: "separately rescaling and shifting each variable by positive constants: $X\\to cX+d$, $Y\\to eY+f$ with $c,e>0$", correct: true },
       { id: "c2", text: "adding a nonzero constant amount of noise to just X", correct: false, misconception: { id: "correlation--r4--m1", description: "assumes correlation is robust to adding independent noise, when in fact independent noise added to one variable strictly reduces |ρ|", blameConceptId: "correlation" } },
       { id: "c3", text: "replacing Y with any nonlinear monotonic function of Y", correct: false, misconception: { id: "correlation--r4--m2", description: "assumes correlation is invariant under arbitrary monotonic transforms, when it is only guaranteed invariant under positive linear rescaling", blameConceptId: "correlation" } },
-      { id: "c4", text: "swapping which variable is called X and which is called Y, but only if ρ>0", correct: false, misconception: { id: "correlation--r4--m3", description: "invents a sign-dependent exception to symmetry that doesn't exist — ρ(X,Y)=ρ(Y,X) always, regardless of sign", blameConceptId: "correlation" } },
+      { id: "c4", text: "swapping which variable is called X and which is called Y, but only if $\\rho>0$", correct: false, misconception: { id: "correlation--r4--m3", description: "invents a sign-dependent exception to symmetry that doesn't exist — ρ(X,Y)=ρ(Y,X) always, regardless of sign", blameConceptId: "correlation" } },
     ],
     difficulty: -0.1,
     discrimination: 1.2,
@@ -1895,10 +1895,10 @@ export const probabilityExpansion5Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Is correlation symmetric — does ρ(X,Y)=ρ(Y,X) always hold? Justify briefly.",
+    stem: "Is correlation symmetric — does $\\rho(X,Y)=\\rho(Y,X)$ always hold? Justify briefly.",
     rubric: {
       elements: [
-        { id: "element-1", description: "yes — Cov(X,Y)=Cov(Y,X) by definition, and the denominator σ_Xσ_Y is the same either way, so the ratio is identical", weight: 1, required: false },
+        { id: "element-1", description: "yes — $\\operatorname{Cov}(X,Y)=\\operatorname{Cov}(Y,X)$ by definition, and the denominator $\\sigma_X\\sigma_Y$ is the same either way, so the ratio is identical", weight: 1, required: false },
       ],
     },
     difficulty: -0.3,
@@ -1914,7 +1914,7 @@ export const probabilityExpansion5Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Using R3, find ρ(X,−X) for any random variable X with positive finite variance.",
+    stem: "Using R3, find $\\rho(X,-X)$ for any random variable $X$ with positive finite variance.",
     answerKey: -1,
     tolerance: 0.001,
     difficulty: 0.05,
@@ -1931,7 +1931,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "X,Y∈{0,1} with joint pmf p(0,0)=0.05, p(0,1)=0.35, p(1,0)=0.25, p(1,1)=0.35. Find ρ(X,Y).",
+      "$X,Y\\in\\{0,1\\}$ with joint pmf $p(0,0)=0.05$, $p(0,1)=0.35$, $p(1,0)=0.25$, $p(1,1)=0.35$. Find $\\rho(X,Y)$.",
     answerKey: -0.312,
     tolerance: 0.01,
     difficulty: 0.55,
@@ -1948,11 +1948,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Let Z_X=(X−μ_X)/σ_X and Z_Y=(Y−μ_Y)/σ_Y be the standardized ('Z-score') versions of X, Y. Show ρ(Z_X,Z_Y)=ρ(X,Y), and that in fact Cov(Z_X,Z_Y)=ρ(X,Y) directly.",
+      "Let $Z_X=(X-\\mu_X)/\\sigma_X$ and $Z_Y=(Y-\\mu_Y)/\\sigma_Y$ be the standardized ('Z-score') versions of $X, Y$. Show $\\rho(Z_X,Z_Y)=\\rho(X,Y)$, and that in fact $\\operatorname{Cov}(Z_X,Z_Y)=\\rho(X,Y)$ directly.",
     rubric: {
       elements: [
-        { id: "element-1", description: "standardizing is exactly a linear rescaling by positive constants (dividing by σ_X, σ_Y, which are positive), so by R3/R4 correlation is unchanged: ρ(Z_X,Z_Y)=ρ(X,Y)", weight: 1, required: true },
-        { id: "element-2", description: "since Z_X,Z_Y have variance 1, Cov(Z_X,Z_Y) = ρ(Z_X,Z_Y)·√(1·1) = ρ(Z_X,Z_Y) = ρ(X,Y) — the covariance of standardized variables literally equals the original correlation", weight: 1, required: false },
+        { id: "element-1", description: "standardizing is exactly a linear rescaling by positive constants (dividing by $\\sigma_X$, $\\sigma_Y$, which are positive), so by R3/R4 correlation is unchanged: $\\rho(Z_X,Z_Y)=\\rho(X,Y)$", weight: 1, required: true },
+        { id: "element-2", description: "since $Z_X,Z_Y$ have variance 1, $\\operatorname{Cov}(Z_X,Z_Y) = \\rho(Z_X,Z_Y)\\cdot\\sqrt{1\\cdot 1} = \\rho(Z_X,Z_Y) = \\rho(X,Y)$ — the covariance of standardized variables literally equals the original correlation", weight: 1, required: false },
       ],
     },
     difficulty: 0.45,
@@ -1968,7 +1968,7 @@ export const probabilityExpansion5Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Given Var(X)=5, Var(Y)=5 (equal variances), and any value of Cov(X,Y), find Cov(X+Y, X−Y).",
+    stem: "Given $\\operatorname{Var}(X)=5$, $\\operatorname{Var}(Y)=5$ (equal variances), and any value of $\\operatorname{Cov}(X,Y)$, find $\\operatorname{Cov}(X+Y, X-Y)$.",
     answerKey: 0,
     tolerance: 0.001,
     difficulty: 0.35,
@@ -1985,11 +1985,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Derive the general identity ρ(aX+b, cY+d) = sign(ac)·ρ(X,Y) for a,c≠0, generalizing R3 to arbitrary rescaling of both variables.",
+      "Derive the general identity $\\rho(aX+b, cY+d) = \\operatorname{sign}(ac)\\cdot\\rho(X,Y)$ for $a,c\\neq 0$, generalizing R3 to arbitrary rescaling of both variables.",
     rubric: {
       elements: [
-        { id: "element-1", description: "Cov(aX+b,cY+d) = ac·Cov(X,Y), and σ_(aX+b)=|a|σ_X, σ_(cY+d)=|c|σ_Y", weight: 1, required: true },
-        { id: "element-2", description: "so ρ(aX+b,cY+d) = ac·Cov(X,Y) / (|a||c|σ_Xσ_Y) = (ac/|ac|)·ρ(X,Y) = sign(ac)·ρ(X,Y)", weight: 1, required: false },
+        { id: "element-1", description: "$\\operatorname{Cov}(aX+b,cY+d) = ac\\cdot\\operatorname{Cov}(X,Y)$, and $\\sigma_{aX+b}=|a|\\sigma_X$, $\\sigma_{cY+d}=|c|\\sigma_Y$", weight: 1, required: true },
+        { id: "element-2", description: "so $\\rho(aX+b,cY+d) = ac\\cdot\\operatorname{Cov}(X,Y) / (|a||c|\\sigma_X\\sigma_Y) = (ac/|ac|)\\cdot\\rho(X,Y) = \\operatorname{sign}(ac)\\cdot\\rho(X,Y)$", weight: 1, required: false },
       ],
     },
     difficulty: 0.6,
@@ -2006,10 +2006,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "This concept's existing E1 proves |ρ|≤1 via the discriminant of Var(aX−Y)≥0. Explain why that argument is really the Cauchy–Schwarz inequality in disguise, applied to the 'vectors' X−E[X] and Y−E[Y] under the inner product ⟨U,V⟩=E[UV].",
+      "This concept's existing E1 proves $|\\rho|\\le 1$ via the discriminant of $\\operatorname{Var}(aX-Y)\\ge 0$. Explain why that argument is really the Cauchy–Schwarz inequality in disguise, applied to the 'vectors' $X-E[X]$ and $Y-E[Y]$ under the inner product $\\langle U,V\\rangle=E[UV]$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "treating mean-zero random variables as vectors with inner product E[UV], Cauchy–Schwarz states ⟨U,V⟩² ≤ ⟨U,U⟩⟨V,V⟩, i.e. Cov(X,Y)² ≤ Var(X)Var(Y) — exactly E1's conclusion, and E1's discriminant argument is one standard way to *prove* Cauchy–Schwarz itself", weight: 1, required: true },
+        { id: "element-1", description: "treating mean-zero random variables as vectors with inner product $E[UV]$, Cauchy–Schwarz states $\\langle U,V\\rangle^2 \\le \\langle U,U\\rangle\\langle V,V\\rangle$, i.e. $\\operatorname{Cov}(X,Y)^2 \\le \\operatorname{Var}(X)\\operatorname{Var}(Y)$ — exactly E1's conclusion, and E1's discriminant argument is one standard way to *prove* Cauchy–Schwarz itself", weight: 1, required: true },
       ],
     },
     difficulty: 0.65,
@@ -2026,10 +2026,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A dataset shows ρ(X,Y)=0.95, close to but not exactly 1. Using this concept's existing E2 (ρ=±1 means an exact linear relationship), explain precisely what ρ close to but below 1 tells you about how close Y is to being a linear function of X.",
+      "A dataset shows $\\rho(X,Y)=0.95$, close to but not exactly 1. Using this concept's existing E2 ($\\rho=\\pm 1$ means an exact linear relationship), explain precisely what $\\rho$ close to but below 1 tells you about how close $Y$ is to being a linear function of $X$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "by E1's discriminant argument, Var(aX−Y) for the optimal a is small but strictly positive when |ρ|<1 — Y is *close to* an exact linear function of X, with the remaining variance (however small) representing genuine leftover noise/deviation from perfect linearity", weight: 1, required: true },
+        { id: "element-1", description: "by E1's discriminant argument, $\\operatorname{Var}(aX-Y)$ for the optimal $a$ is small but strictly positive when $|\\rho|<1$ — $Y$ is *close to* an exact linear function of $X$, with the remaining variance (however small) representing genuine leftover noise/deviation from perfect linearity", weight: 1, required: true },
       ],
     },
     difficulty: 0.7,
@@ -2046,11 +2046,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For (X,Y) jointly Bivariate Normal, is it true that ρ(X,Y)=0 implies X and Y are independent? Contrast your answer with this concept's existing A2 (Uniform/quadratic example), where ρ=0 clearly did *not* imply independence.",
+      "For $(X,Y)$ jointly Bivariate Normal, is it true that $\\rho(X,Y)=0$ implies $X$ and $Y$ are independent? Contrast your answer with this concept's existing A2 (Uniform/quadratic example), where $\\rho=0$ clearly did *not* imply independence.",
     rubric: {
       elements: [
-        { id: "element-1", description: "yes — for jointly (Bivariate) Normal random variables specifically, ρ=0 does imply independence, because the bivariate Normal density factors into the product of the marginals exactly when the correlation term vanishes", weight: 1, required: true },
-        { id: "element-2", description: "this is a special-case exception; it does not contradict A2's general lesson that ρ=0 doesn't imply independence for arbitrary distributions — jointly Normal is one of the few families where the implication happens to hold", weight: 1, required: false },
+        { id: "element-1", description: "yes — for jointly (Bivariate) Normal random variables specifically, $\\rho=0$ does imply independence, because the bivariate Normal density factors into the product of the marginals exactly when the correlation term vanishes", weight: 1, required: true },
+        { id: "element-2", description: "this is a special-case exception; it does not contradict A2's general lesson that $\\rho=0$ doesn't imply independence for arbitrary distributions — jointly Normal is one of the few families where the implication happens to hold", weight: 1, required: false },
       ],
     },
     difficulty: 0.8,
@@ -2067,10 +2067,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "An analyst finds ρ(temperature, ice cream sales)=0.8 and ρ(ice cream sales, shark attacks)=0.75, and assumes ρ(temperature, shark attacks) must be roughly 0.8×0.75=0.6. Explain why correlations don't 'multiply through' a shared variable like this in general.",
+      "An analyst finds $\\rho(\\text{temperature}, \\text{ice cream sales})=0.8$ and $\\rho(\\text{ice cream sales}, \\text{shark attacks})=0.75$, and assumes $\\rho(\\text{temperature}, \\text{shark attacks})$ must be roughly $0.8\\times 0.75=0.6$. Explain why correlations don't 'multiply through' a shared variable like this in general.",
     rubric: {
       elements: [
-        { id: "element-1", description: "there is no algebraic identity that lets you compute ρ13 exactly from ρ12 and ρ23 alone — correlation is not transitive/multiplicative in that way; only a range of possible values for ρ13 is constrained (via a Cauchy–Schwarz-type inequality on the three pairwise correlations), not a single determined value", weight: 1, required: true },
+        { id: "element-1", description: "there is no algebraic identity that lets you compute $\\rho_{13}$ exactly from $\\rho_{12}$ and $\\rho_{23}$ alone — correlation is not transitive/multiplicative in that way; only a range of possible values for $\\rho_{13}$ is constrained (via a Cauchy–Schwarz-type inequality on the three pairwise correlations), not a single determined value", weight: 1, required: true },
       ],
     },
     difficulty: 0.85,
@@ -2087,10 +2087,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "An analyst pools n=100 iid pairs (Xᵢ,Yᵢ), each drawn from a distribution with the same true ρ=0.5, and computes a sample correlation r from the pooled data using sample covariance and sample variances in place of the population versions. Explain informally why r is a reasonable *estimator* of the true ρ.",
+      "An analyst pools $n=100$ iid pairs $(X_i,Y_i)$, each drawn from a distribution with the same true $\\rho=0.5$, and computes a sample correlation $r$ from the pooled data using sample covariance and sample variances in place of the population versions. Explain informally why $r$ is a reasonable *estimator* of the true $\\rho$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "sample covariance and sample variances are natural plug-in analogues of Cov(X,Y), Var(X), Var(Y) built from the data, and as n grows they converge to the true population quantities — so their ratio r converges to Cov(X,Y)/(σ_Xσ_Y) = ρ, making r a sensible empirical stand-in for the unobservable population correlation", weight: 1, required: true },
+        { id: "element-1", description: "sample covariance and sample variances are natural plug-in analogues of $\\operatorname{Cov}(X,Y), \\operatorname{Var}(X), \\operatorname{Var}(Y)$ built from the data, and as $n$ grows they converge to the true population quantities — so their ratio $r$ converges to $\\operatorname{Cov}(X,Y)/(\\sigma_X\\sigma_Y) = \\rho$, making $r$ a sensible empirical stand-in for the unobservable population correlation", weight: 1, required: true },
       ],
     },
     difficulty: 0.75,
@@ -2111,10 +2111,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For the special case where Y is a Bernoulli(p) group indicator (two groups with means μ₀, μ₁ and *equal* within-group variance σ²), simplify Var(E[X|Y]) to a compact formula in terms of p, μ₀, μ₁.",
+      "For the special case where $Y$ is a Bernoulli($p$) group indicator (two groups with means $\\mu_0, \\mu_1$ and *equal* within-group variance $\\sigma^2$), simplify $\\operatorname{Var}(E[X|Y])$ to a compact formula in terms of $p, \\mu_0, \\mu_1$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "Var(E[X|Y]) = p(1−p)(μ₁−μ₀)²", weight: 1, required: false },
+        { id: "element-1", description: "$\\operatorname{Var}(E[X|Y]) = p(1-p)(\\mu_1-\\mu_0)^2$", weight: 1, required: false },
       ],
     },
     difficulty: -0.35,
@@ -2130,12 +2130,12 @@ export const probabilityExpansion5Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "If the within-group variance E[Var(X|Y)] is exactly 0 for every group, the law of total variance reduces to:",
+    stem: "If the within-group variance $E[\\operatorname{Var}(X|Y)]$ is exactly 0 for every group, the law of total variance reduces to:",
     choices: [
-      { id: "c1", text: "Var(X) = Var(E[X|Y]) — all the variability is between-group, since X is a deterministic function of the group", correct: true },
-      { id: "c2", text: "Var(X) = 0, since one of the two terms vanished", correct: false, misconception: { id: "law-of-total-variance--r4--m1", description: "wrongly assumes the whole sum vanishes when only one of the two additive terms is zero", blameConceptId: "law-of-total-variance" } },
+      { id: "c1", text: "$\\operatorname{Var}(X) = \\operatorname{Var}(E[X|Y])$ — all the variability is between-group, since X is a deterministic function of the group", correct: true },
+      { id: "c2", text: "$\\operatorname{Var}(X) = 0$, since one of the two terms vanished", correct: false, misconception: { id: "law-of-total-variance--r4--m1", description: "wrongly assumes the whole sum vanishes when only one of the two additive terms is zero", blameConceptId: "law-of-total-variance" } },
       { id: "c3", text: "Var(X) is undefined in this case", correct: false, misconception: { id: "law-of-total-variance--r4--m2", description: "treats a zero within-group variance as a degenerate/undefined case rather than a perfectly valid special case of the decomposition", blameConceptId: "law-of-total-variance" } },
-      { id: "c4", text: "Var(X) = E[Var(X|Y)], since that term always dominates", correct: false, misconception: { id: "law-of-total-variance--r4--m3", description: "assumes the within-group term always dominates the total, rather than correctly dropping the zero term and keeping the nonzero between-group term", blameConceptId: "law-of-total-variance" } },
+      { id: "c4", text: "$\\operatorname{Var}(X) = E[\\operatorname{Var}(X|Y)]$, since that term always dominates", correct: false, misconception: { id: "law-of-total-variance--r4--m3", description: "assumes the within-group term always dominates the total, rather than correctly dropping the zero term and keeping the nonzero between-group term", blameConceptId: "law-of-total-variance" } },
     ],
     difficulty: -0.05,
     discrimination: 1.15,
@@ -2150,10 +2150,10 @@ export const probabilityExpansion5Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Can the between-group term Var(E[X|Y]) ever be negative? Justify briefly.",
+    stem: "Can the between-group term $\\operatorname{Var}(E[X|Y])$ ever be negative? Justify briefly.",
     rubric: {
       elements: [
-        { id: "element-1", description: "no — it is itself a variance (of the random variable E[X|Y]), and variances are always ≥0; likewise E[Var(X|Y)] is an expectation of a nonnegative quantity, so it too is always ≥0", weight: 1, required: false },
+        { id: "element-1", description: "no — it is itself a variance (of the random variable $E[X|Y]$), and variances are always $\\ge 0$; likewise $E[\\operatorname{Var}(X|Y)]$ is an expectation of a nonnegative quantity, so it too is always $\\ge 0$", weight: 1, required: false },
       ],
     },
     difficulty: -0.2,
@@ -2170,7 +2170,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Using R3's formula with p=0.5, μ₀=75, μ₁=85 (the exam-method example), verify Var(E[X|Y])=p(1−p)(μ₁−μ₀)².",
+      "Using R3's formula with $p=0.5$, $\\mu_0=75$, $\\mu_1=85$ (the exam-method example), verify $\\operatorname{Var}(E[X|Y])=p(1-p)(\\mu_1-\\mu_0)^2$.",
     answerKey: 25,
     tolerance: 0.5,
     difficulty: 0.1,
@@ -2224,7 +2224,7 @@ export const probabilityExpansion5Items: Item[] = [
       "Given total Var(X)=20 and within-group term E[Var(X|Y)]=15, find the between-group term Var(E[X|Y]), and interpret what it tells you about the source of the variability.",
     rubric: {
       elements: [
-        { id: "element-1", description: "Var(E[X|Y]) = 20−15 = 5", weight: 1, required: true },
+        { id: "element-1", description: "$\\operatorname{Var}(E[X|Y]) = 20-15 = 5$", weight: 1, required: true },
         { id: "element-2", description: "most of the variability (15 of 20) is within groups, not between them — the groups have relatively similar means, and the spread is mostly individual-level noise inside each group", weight: 1, required: false },
       ],
     },
@@ -2242,11 +2242,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Derive R3's compact formula Var(E[X|Y]) = p(1−p)(μ₁−μ₀)² from scratch, treating E[X|Y] as a two-point random variable taking value μ₀ with probability (1−p) and μ₁ with probability p.",
+      "Derive R3's compact formula $\\operatorname{Var}(E[X|Y]) = p(1-p)(\\mu_1-\\mu_0)^2$ from scratch, treating $E[X|Y]$ as a two-point random variable taking value $\\mu_0$ with probability $(1-p)$ and $\\mu_1$ with probability $p$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "E[E[X|Y]] = (1−p)μ₀ + pμ₁; E[(E[X|Y])²] = (1−p)μ₀² + pμ₁²", weight: 1, required: true },
-        { id: "element-2", description: "Var(E[X|Y]) = E[(E[X|Y])²] − (E[E[X|Y]])² simplifies algebraically to p(1−p)(μ₁−μ₀)² — exactly the variance formula for a two-point (Bernoulli-like) random variable", weight: 1, required: false },
+        { id: "element-1", description: "$E[E[X|Y]] = (1-p)\\mu_0 + p\\mu_1$; $E[(E[X|Y])^2] = (1-p)\\mu_0^2 + p\\mu_1^2$", weight: 1, required: true },
+        { id: "element-2", description: "$\\operatorname{Var}(E[X|Y]) = E[(E[X|Y])^2] - (E[E[X|Y]])^2$ simplifies algebraically to $p(1-p)(\\mu_1-\\mu_0)^2$ — exactly the variance formula for a two-point (Bernoulli-like) random variable", weight: 1, required: false },
       ],
     },
     difficulty: 0.5,
@@ -2283,11 +2283,11 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Show that when Y is completely independent of X, the law of total variance decomposition degenerates sensibly: E[Var(X|Y)]=Var(X) and Var(E[X|Y])=0.",
+      "Show that when $Y$ is completely independent of $X$, the law of total variance decomposition degenerates sensibly: $E[\\operatorname{Var}(X|Y)]=\\operatorname{Var}(X)$ and $\\operatorname{Var}(E[X|Y])=0$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "if X,Y independent, Var(X|Y=y)=Var(X) for every y, so E[Var(X|Y)]=Var(X) directly", weight: 1, required: true },
-        { id: "element-2", description: "likewise E[X|Y=y]=E[X] (a constant, not varying with y), so Var(E[X|Y])=Var(constant)=0 — the decomposition correctly collapses to 'all variance is within, none is between' when there's no grouping structure at all", weight: 1, required: false },
+        { id: "element-1", description: "if $X,Y$ independent, $\\operatorname{Var}(X|Y=y)=\\operatorname{Var}(X)$ for every $y$, so $E[\\operatorname{Var}(X|Y)]=\\operatorname{Var}(X)$ directly", weight: 1, required: true },
+        { id: "element-2", description: "likewise $E[X|Y=y]=E[X]$ (a constant, not varying with $y$), so $\\operatorname{Var}(E[X|Y])=\\operatorname{Var}(\\text{constant})=0$ — the decomposition correctly collapses to 'all variance is within, none is between' when there's no grouping structure at all", weight: 1, required: false },
       ],
     },
     difficulty: 0.55,
@@ -2325,7 +2325,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "A5's call center has a 70/30 normal/escalated split (total variance 9.46). A new routing policy changes the split to 50/50, keeping the same conditional means and variances (2min/var1 normal, 8min/var4 escalated). Recompute the total variance under the new split, and state whether it increased or decreased.",
+      "A5's call center has a 70/30 normal/escalated split (total variance 9.46). A new routing policy changes the split to 50/50, keeping the same conditional means and variances (2 min / variance 1 normal, 8 min / variance 4 escalated). Recompute the total variance under the new split, and state whether it increased or decreased.",
     answerKey: 11.5,
     tolerance: 0.05,
     difficulty: 0.85,
@@ -2342,10 +2342,10 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "T3 found that moving from a 70/30 split to a 50/50 split *increased* total variance (9.46 to 11.5), even though a 50/50 split can feel more 'balanced.' Using R3's formula p(1−p)(μ₁−μ₀)², explain why moving the mixing proportion toward p=0.5 increases the between-group term, and why this outweighed any change to the within-group term here.",
+      "T3 found that moving from a 70/30 split to a 50/50 split *increased* total variance (9.46 to 11.5), even though a 50/50 split can feel more 'balanced.' Using R3's formula $p(1-p)(\\mu_1-\\mu_0)^2$, explain why moving the mixing proportion toward $p=0.5$ increases the between-group term, and why this outweighed any change to the within-group term here.",
     rubric: {
       elements: [
-        { id: "element-1", description: "p(1−p) is maximized at p=0.5 (it equals 0.25 there, versus 0.21 at p=0.3/0.7), so for a fixed gap between the two group means, the between-group variance term is largest exactly when the split is most balanced", weight: 1, required: true },
+        { id: "element-1", description: "$p(1-p)$ is maximized at $p=0.5$ (it equals 0.25 there, versus 0.21 at $p=0.3/0.7$), so for a fixed gap between the two group means, the between-group variance term is largest exactly when the split is most balanced", weight: 1, required: true },
         { id: "element-2", description: "the within-group term barely changed (a simple reweighting of the same two variances), so the increase in the between-term dominated, raising the total — a genuine case where more 'balance' does not mean less overall variability", weight: 1, required: false },
       ],
     },
