@@ -16,12 +16,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For any two finite sets A, B, |A ∪ B| equals:",
+    stem: "For any two finite sets A, B, |A $\\cup$ B| equals:",
     choices: [
-      { id: "a", text: "|A| + |B| − |A ∩ B|", correct: true },
+      { id: "a", text: "$|A| + |B| - |A \\cap B|$", correct: true },
       {
         id: "b",
-        text: "|A| + |B|",
+        text: "$|A| + |B|$",
         correct: false,
         misconception: {
           id: "pie-boole--two-set-union-formula--b",
@@ -31,7 +31,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "c",
-        text: "|A| + |B| + |A ∩ B|",
+        text: "$|A| + |B| +$ |A $\\cap$ B|",
         correct: false,
         misconception: {
           id: "pie-boole--two-set-union-formula--c",
@@ -63,12 +63,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Under what condition on the events A₁,…,Aₙ does Boole's inequality P(⋃Aᵢ) ≤ ΣP(Aᵢ) become an equality?",
+    stem: "Under what condition on the events $A_{1},\\ldots,A_{n}$ does Boole's inequality $P(\\bigcup A_{i}) \\leq \\sum P(A_{i})$ become an equality?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "equality holds exactly when the Aᵢ are pairwise disjoint",
+          description: "equality holds exactly when the $A_{i}$ are pairwise disjoint",
           weight: 1,
           required: true,
         },
@@ -99,7 +99,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Boole's inequality P(⋃Aᵢ) ≤ ΣP(Aᵢ) is proved using which two more basic facts about probability?",
+    stem: "Boole's inequality $P(\\bigcup A_{i}) \\leq \\sum P(A_{i})$ is proved using which two more basic facts about probability?",
     choices: [
       { id: "a", text: "Additivity (on a disjoint decomposition) plus monotonicity", correct: true },
       {
@@ -128,7 +128,7 @@ export const probabilityExpansion1Items: Item[] = [
         correct: false,
         misconception: {
           id: "pie-boole--monotonicity-link--d",
-          description: "Misses that monotonicity (P(B∖A) ≤ P(B)) is exactly the step that turns an equality into the ≤ bound.",
+          description: "Misses that monotonicity ($P(B\\setminus A) \\leq P(B)$) is exactly the step that turns an equality into the $\\leq$ bound.",
           blameConceptId: "pie-boole",
         },
       },
@@ -183,12 +183,12 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "Boole bound: 5 × 0.1 = 0.5",
+          description: "Boole bound: $5 \\times 0.1 = 0.5$",
           weight: 1,
         },
         {
           id: "element-2",
-          description: "exact value: 1 − 0.9⁵ = 1 − 0.59049 = 0.40951 — the bound overshoots but isn't vacuous here",
+          description: "exact value: $1 - 0.9^{5} = 1 - 0.59049 = 0.40951$ — the bound overshoots but isn't vacuous here",
           weight: 1,
         },
       ],
@@ -250,7 +250,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain, via a double-counting argument (not algebra on the formula), why |A∪B∪C| needs +|A∩B∩C| added back after subtracting the three pairwise intersections.",
+    stem: "Explain, via a double-counting argument (not algebra on the formula), why $|A\\cup B\\cup C|$ needs $+|A\\cap B\\cap C|$ added back after subtracting the three pairwise intersections.",
     rubric: {
       elements: [
         {
@@ -274,18 +274,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove |A∪B| = |A| + |B| − |A∩B| for finite sets by partitioning A∪B into three disjoint pieces and counting each exactly once.",
+    stem: "Prove $|A\\cup B| = |A| + |B| - |A\\cap B|$ for finite sets by partitioning $A\\cup B$ into three disjoint pieces and counting each exactly once.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "A∪B = (A∖B) ⊔ (A∩B) ⊔ (B∖A), all pairwise disjoint",
+          description: "$A\\cup B = (A\\setminus B) \\sqcup (A\\cap B) \\sqcup (B\\setminus A)$, all pairwise disjoint",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "|A| = |A∖B| + |A∩B| and |B| = |B∖A| + |A∩B|; summing and subtracting one copy of |A∩B| gives the formula",
+          description: "$|A| = |A\\setminus B| + |A\\cap B|$ and $|B| = |B\\setminus A| + |A\\cap B|$; summing and subtracting one copy of $|A\\cap B|$ gives the formula",
           weight: 1,
         },
       ],
@@ -308,7 +308,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "when the pairwise intersection probabilities are small relative to the individual P(Aᵢ) (near-disjointness), the correction terms that would otherwise be subtracted are small, so ΣP(Aᵢ) stays close to P(⋃Aᵢ)",
+          description: "when the pairwise intersection probabilities are small relative to the individual $P(A_{i})$ (near-disjointness), the correction terms that would otherwise be subtracted are small, so $\\sum P(A_{i})$ stays close to $P(\\bigcup A_{i})$",
           weight: 1,
           required: true,
         },
@@ -327,17 +327,17 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A study runs m = 20 independent statistical tests, each at significance level α = 0.05. Someone claims 'each test's false-positive rate is 5%, so the whole study's false-positive rate is 5%.' Use Boole's inequality to correct this, giving the numeric Boole bound, and note whether it's informative.",
+    stem: "A study runs m = 20 independent statistical tests, each at significance level $\\alpha = 0.05$. Someone claims 'each test's false-positive rate is 5%, so the whole study's false-positive rate is 5%.' Use Boole's inequality to correct this, giving the numeric Boole bound, and note whether it's informative.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "Boole bound on P(at least one false positive) ≤ 20 × 0.05 = 1.0 — vacuous",
+          description: "Boole bound on P(at least one false positive) $\\leq 20 \\times 0.05 = 1.0$ — vacuous",
           weight: 1,
         },
         {
           id: "element-2",
-          description: "true value under independence is 1 − 0.95²⁰ ≈ 0.642, far above 5% — the real risk is much higher than the per-test rate, which is exactly the multiple-comparisons problem",
+          description: "true value under independence is $1 - 0.95^{20} \\approx 0.642$, far above 5% — the real risk is much higher than the per-test rate, which is exactly the multiple-comparisons problem",
           weight: 1,
         },
       ],
@@ -355,7 +355,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "A researcher wants the Boole/Bonferroni bound on the familywise false-positive rate to stay at or below 0.05 while running m = 10 independent tests. What per-test significance level α should each test use?",
+    stem: "A researcher wants the Boole/Bonferroni bound on the familywise false-positive rate to stay at or below 0.05 while running m = 10 independent tests. What per-test significance level $\\alpha$ should each test use?",
     answerKey: 0.005,
     tolerance: 0.01,
     difficulty: 0.95,
@@ -375,16 +375,16 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which of the following is NOT required for ℱ to be a σ-algebra on Ω?",
+    stem: "Which of the following is NOT required for $\\mathcal{F}$ to be a $\\sigma$-algebra on $\\Omega$?",
     choices: [
       { id: "a", text: "Closed under arbitrary (uncountable) intersection", correct: true },
       {
         id: "b",
-        text: "Ω ∈ ℱ",
+        text: "$\\Omega \\in \\mathcal{F}$",
         correct: false,
         misconception: {
           id: "sigma-algebra--not-required-property--b",
-          description: "Picks an axiom that actually is required (Ω ∈ ℱ) as the one that isn't.",
+          description: "Picks an axiom that actually is required $(\\Omega \\in \\mathcal{F})$ as the one that isn't.",
           blameConceptId: "sigma-algebra",
         },
       },
@@ -422,12 +422,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Is the trivial collection {∅, Ω} a σ-algebra on any Ω? Justify briefly.",
+    stem: "Is the trivial collection {∅, Ω} a $\\sigma$-algebra on any $\\Omega$? Justify briefly.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "yes — it trivially satisfies all three closure properties (Ω is present, ∅ᶜ=Ω and Ωᶜ=∅ are present, and every countable union of its members is ∅ or Ω, both present)",
+          description: "yes — it trivially satisfies all three closure properties ($\\Omega$ is present, $\\emptyset^{c}=\\Omega$ and $\\Omega^{c}=\\emptyset$ are present, and every countable union of its members is $\\emptyset$ or $\\Omega$, both present)",
           weight: 1,
           required: true,
         },
@@ -446,36 +446,36 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Is the power set 2^Ω (all subsets of Ω) always a σ-algebra on Ω, for any Ω including uncountable ones?",
+    stem: "Is the power set $2^{\\Omega}$ (all subsets of $\\Omega$) always a $\\sigma$-algebra on $\\Omega$, for any $\\Omega$ including uncountable ones?",
     choices: [
-      { id: "a", text: "Yes — it trivially satisfies all three closure axioms for any Ω", correct: true },
+      { id: "a", text: "Yes — it trivially satisfies all three closure axioms for any $\\Omega$", correct: true },
       {
         id: "b",
-        text: "No, because non-measurable sets exist for continuous Ω",
+        text: "No, because non-measurable sets exist for continuous $\\Omega$",
         correct: false,
         misconception: {
           id: "sigma-algebra--powerset-always-valid--b",
-          description: "Confuses the (separate) question of whether a specific measure can be *extended* consistently to every subset with the purely combinatorial fact that 2^Ω always satisfies the σ-algebra closure axioms.",
+          description: "Confuses the (separate) question of whether a specific measure can be *extended* consistently to every subset with the purely combinatorial fact that $2^{\\Omega}$ always satisfies the $\\sigma$-algebra closure axioms.",
           blameConceptId: "sigma-algebra",
         },
       },
       {
         id: "c",
-        text: "No, because 2^Ω is uncountable when Ω is infinite, and σ-algebras must be countable",
+        text: "No, because $2^{\\Omega}$ is uncountable when $\\Omega$ is infinite, and $\\sigma$-algebras must be countable",
         correct: false,
         misconception: {
           id: "sigma-algebra--powerset-always-valid--c",
-          description: "Invents a cardinality restriction on σ-algebras that doesn't exist — 'countable' in the axioms refers to unions of *members*, not the size of ℱ itself.",
+          description: "Invents a cardinality restriction on $\\sigma$-algebras that doesn't exist — 'countable' in the axioms refers to unions of *members*, not the size of $\\mathcal{F}$ itself.",
           blameConceptId: "sigma-algebra",
         },
       },
       {
         id: "d",
-        text: "No, because complements of some subsets aren't themselves subsets of Ω",
+        text: "No, because complements of some subsets aren't themselves subsets of $\\Omega$",
         correct: false,
         misconception: {
           id: "sigma-algebra--powerset-always-valid--d",
-          description: "Asserts something false about complements of subsets, which are always subsets of the same Ω.",
+          description: "Asserts something false about complements of subsets, which are always subsets of the same $\\Omega$.",
           blameConceptId: "sigma-algebra",
         },
       },
@@ -493,12 +493,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Let Ω = {1,2,3}. List every σ-algebra on Ω that contains the set {1}.",
+    stem: "Let $\\Omega =$ {1,2,3}. List every $\\sigma$-algebra on $\\Omega$ that contains the set {1}.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "exactly two: {∅, {1}, {2,3}, Ω} (4 sets) and the full power set 2^Ω (8 sets) — every finite σ-algebra is generated by a partition, and {2,3} either stays whole or splits into {2},{3}",
+          description: "exactly two: {∅, {1}, {2,3}, Ω} (4 sets) and the full power set $2^{\\Omega}$ (8 sets) — every finite $\\sigma$-algebra is generated by a partition, and {2,3} either stays whole or splits into {2},{3}",
           weight: 1,
           required: true,
         },
@@ -510,7 +510,7 @@ export const probabilityExpansion1Items: Item[] = [
           weight: 0,
           misconception: {
             id: "sigma-algebra--enumerate-containing-set--misconception",
-            description: "Misses that a finite σ-algebra is always generated by a partition, so undercounts or lists a non-closed collection.",
+            description: "Misses that a finite $\\sigma$-algebra is always generated by a partition, so undercounts or lists a non-closed collection.",
             blameConceptId: "sigma-algebra",
           },
         },
@@ -529,18 +529,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "On Ω = ℝ, let ℱ be the collection of all subsets that are either countable or have a countable complement. Verify ℱ is closed under complement and countable union (i.e., that it really is a σ-algebra).",
+    stem: "On $\\Omega = \\mathbb{R}$, let $\\mathcal{F}$ be the collection of all subsets that are either countable or have a countable complement. Verify $\\mathcal{F}$ is closed under complement and countable union (i.e., that it really is a $\\sigma$-algebra).",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "complement: if A is countable, Aᶜ has countable complement (namely A), so Aᶜ ∈ ℱ; symmetric argument if A has countable complement",
+          description: "complement: if A is countable, $A^{c}$ has countable complement (namely A), so $A^{c} \\in \\mathcal{F}$; symmetric argument if A has countable complement",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "countable union: if all Aᵢ are countable, ⋃Aᵢ is countable; if some Aⱼ has countable complement, then (⋃Aᵢ)ᶜ = ⋂Aᵢᶜ ⊆ Aⱼᶜ is countable, so the union has countable complement",
+          description: "countable union: if all $A_{i}$ are countable, $\\bigcup A_{i}$ is countable; if some $A_{j}$ has countable complement, then $(\\bigcup A_{i})^{c} = \\bigcap A_{i}^{c} \\subseteq A_{j}^{c}$ is countable, so the union has countable complement",
           weight: 1,
         },
       ],
@@ -558,12 +558,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Ω = {a,b,c,d}. Which of these collections IS a σ-algebra on Ω?",
+    stem: "$\\Omega =$ {a,b,c,d}. Which of these collections IS a $\\sigma$-algebra on $\\Omega$?",
     choices: [
-      { id: "a", text: "{∅, Ω, {a,b}, {c,d}}", correct: true },
+      { id: "a", text: "{∅, $\\Omega$, {a,b}, {c,d}}", correct: true },
       {
         id: "b",
-        text: "{∅, Ω, {a}, {b,c,d}, {a,b}}",
+        text: "{∅, $\\Omega$, {a}, {b,c,d}, {a,b}}",
         correct: false,
         misconception: {
           id: "sigma-algebra--which-is-sigma-algebra--b",
@@ -573,7 +573,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "c",
-        text: "{∅, Ω, {a}, {b}, {c}, {d}}",
+        text: "{∅, $\\Omega$, {a}, {b}, {c}, {d}}",
         correct: false,
         misconception: {
           id: "sigma-algebra--which-is-sigma-algebra--c",
@@ -587,7 +587,7 @@ export const probabilityExpansion1Items: Item[] = [
         correct: false,
         misconception: {
           id: "sigma-algebra--which-is-sigma-algebra--d",
-          description: "Omits Ω itself, even though {a,b}∪{c,d}=Ω is forced by union-closure — treats Ω as optional rather than derivable/required.",
+          description: "Omits $\\Omega$ itself, even though {a,b}∪{c,d}=Ω is forced by union-closure — treats $\\Omega$ as optional rather than derivable/required.",
           blameConceptId: "sigma-algebra",
         },
       },
@@ -605,7 +605,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Ω = {1,2,3,4,5,6}. How many elements does the σ-algebra generated by the single set A = {1,2,3} (together with Ω) have?",
+    stem: "$\\Omega =$ {1,2,3,4,5,6}. How many elements does the $\\sigma$-algebra generated by the single set A = {1,2,3} (together with $\\Omega$) have?",
     answerKey: 4,
     tolerance: 0.01,
     difficulty: -0.2,
@@ -621,18 +621,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A σ-algebra is closed under countable union and complement. Explain why these two properties alone force closure under countable intersection and under set difference.",
+    stem: "A $\\sigma$-algebra is closed under countable union and complement. Explain why these two properties alone force closure under countable intersection and under set difference.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "De Morgan's law converts intersection to union-and-complement: ⋂Aᵢ = (⋃Aᵢᶜ)ᶜ, and both operations on the right are already axioms",
+          description: "De Morgan's law converts intersection to union-and-complement: $\\bigcap A_{i} = (\\bigcup A_{i}^{c})^{c}$, and both operations on the right are already axioms",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "set difference A∖B = A∩Bᶜ, which is now available since both intersection and complement are derivable",
+          description: "set difference $A\\setminus B = A\\cap B^{c}$, which is now available since both intersection and complement are derivable",
           weight: 1,
         },
       ],
@@ -650,23 +650,23 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove that the intersection of any collection of σ-algebras on the same Ω (even an uncountable collection of σ-algebras) is again a σ-algebra.",
+    stem: "Prove that the intersection of any collection of $\\sigma$-algebras on the same $\\Omega$ (even an uncountable collection of $\\sigma$-algebras) is again a $\\sigma$-algebra.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "Ω lies in every ℱᵢ, hence in the intersection",
+          description: "$\\Omega$ lies in every $\\mathcal{F}_{i}$, hence in the intersection",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "if A is in every ℱᵢ, so is Aᶜ (each ℱᵢ is closed under complement), so Aᶜ is in the intersection",
+          description: "if A is in every $\\mathcal{F}_{i}$, so is $A^{c}$ (each $\\mathcal{F}_{i}$ is closed under complement), so $A^{c}$ is in the intersection",
           weight: 1,
         },
         {
           id: "element-3",
-          description: "if A₁,A₂,… are each in every ℱᵢ, their countable union is in every ℱᵢ (each is closed under countable union), hence in the intersection",
+          description: "if $A_{1},A_{2},\\ldots$ are each in every $\\mathcal{F}_{i}$, their countable union is in every $\\mathcal{F}_{i}$ (each is closed under countable union), hence in the intersection",
           weight: 1,
         },
       ],
@@ -684,12 +684,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why the union of two σ-algebras on the same Ω is not, in general, itself a σ-algebra.",
+    stem: "Explain why the union of two $\\sigma$-algebras on the same $\\Omega$ is not, in general, itself a $\\sigma$-algebra.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the union need not be closed under further set operations mixing sets from the two algebras — e.g. Ω={1,2,3}, ℱ₁ generated by {1}, ℱ₂ generated by {2}; {1}∈ℱ₁ and {2}∈ℱ₂, but {1,2} ∉ ℱ₁∪ℱ₂",
+          description: "the union need not be closed under further set operations mixing sets from the two algebras — e.g. Ω={1,2,3}, $\\mathcal{F}_{1}$ generated by {1}, $\\mathcal{F}_{2}$ generated by {2}; {1}∈ℱ₁ and {2}∈ℱ₂, but {1,2} $\\notin \\mathcal{F}_{1}\\cup \\mathcal{F}_{2}$",
           weight: 1,
           required: true,
         },
@@ -708,12 +708,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "The σ-algebra generated by a random variable X, σ(X), consists of all events of the form {X ∈ B}. Explain why σ(X) being 'small' (few sets) corresponds to X carrying 'little information,' connecting the algebraic closure properties to this intuitive idea.",
+    stem: "The $\\sigma$-algebra generated by a random variable X, $\\sigma(X)$, consists of all events of the form {X $\\in$ B}. Explain why $\\sigma(X)$ being 'small' (few sets) corresponds to X carrying 'little information,' connecting the algebraic closure properties to this intuitive idea.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "a coarser σ-algebra (fewer distinguishable sets) can distinguish fewer possible outcomes — if σ(X) contains only ∅, a few coarse blocks, and Ω, then knowing X's value doesn't narrow ω down beyond those blocks",
+          description: "a coarser $\\sigma$-algebra (fewer distinguishable sets) can distinguish fewer possible outcomes — if $\\sigma(X)$ contains only $\\emptyset$, a few coarse blocks, and $\\Omega$, then knowing X's value doesn't narrow $\\omega$ down beyond those blocks",
           weight: 1,
           required: true,
         },
@@ -737,8 +737,8 @@ export const probabilityExpansion1Items: Item[] = [
     format: "symbolic",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "A σ-algebra on a finite Ω that is generated by a partition of Ω into k blocks (atoms) has exactly how many elements, as a function of k?",
-    answerKey: "2^k",
+    stem: "A $\\sigma$-algebra on a finite $\\Omega$ that is generated by a partition of $\\Omega$ into k blocks (atoms) has exactly how many elements, as a function of k?",
+    answerKey: "$2^{k}$",
     difficulty: 0.9,
     discrimination: 1.2,
     expectedSeconds: 100,
@@ -752,12 +752,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A 'filtration' in stochastic processes is an increasing sequence of σ-algebras ℱ₀⊆ℱ₁⊆ℱ₂⊆⋯, modeling information accumulating over time. Using only the closure properties of a σ-algebra, explain why 'increasing' must mean literal set-containment ℱₜ ⊆ ℱₜ₊₁ (not merely a growing count of sets) for the 'more information over time' interpretation to make sense.",
+    stem: "A 'filtration' in stochastic processes is an increasing sequence of $\\sigma$-algebras $\\mathcal{F}_{0}\\subseteq \\mathcal{F}_{1}\\subseteq \\mathcal{F}_{2}\\subseteq\\cdots$, modeling information accumulating over time. Using only the closure properties of a $\\sigma$-algebra, explain why 'increasing' must mean literal set-containment $\\mathcal{F}_{t} \\subseteq \\mathcal{F}_{t+1}$ (not merely a growing count of sets) for the 'more information over time' interpretation to make sense.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "if some event in ℱₜ were not in ℱₜ₊₁, that would mean 'forgetting' information already available — literal subset containment guarantees every question answerable at time t stays answerable later",
+          description: "if some event in $\\mathcal{F}_{t}$ were not in $\\mathcal{F}_{t+1}$, that would mean 'forgetting' information already available — literal subset containment guarantees every question answerable at time t stays answerable later",
           weight: 1,
           required: true,
         },
@@ -782,10 +782,10 @@ export const probabilityExpansion1Items: Item[] = [
     channels: ["typed"],
     stem: "Which of these is a CONSEQUENCE of Kolmogorov's axioms rather than one of the axioms itself?",
     choices: [
-      { id: "a", text: "P(A) ≤ 1 for every event A", correct: true },
+      { id: "a", text: "$P(A) \\leq 1$ for every event A", correct: true },
       {
         id: "b",
-        text: "P(Ω) = 1",
+        text: "$P(\\Omega) = 1$",
         correct: false,
         misconception: {
           id: "axioms-of-probability--derived-vs-axiom--b",
@@ -795,7 +795,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "c",
-        text: "P(A) ≥ 0 for every event A",
+        text: "$P(A) \\geq 0$ for every event A",
         correct: false,
         misconception: {
           id: "axioms-of-probability--derived-vs-axiom--c",
@@ -832,7 +832,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "it follows: apply countable additivity to the sequence A₁,…,Aₙ,∅,∅,… (pairwise disjoint), giving P(A₁∪⋯∪Aₙ) = ΣP(Aᵢ) + 0 + 0 + ⋯, the finite sum",
+          description: "it follows: apply countable additivity to the sequence $A_{1},\\ldots,A_{n},\\emptyset,\\emptyset,\\ldots$ (pairwise disjoint), giving $P(A_{1}\\cup\\cdots\\cup A_{n}) = \\sum P(A_{i}) + 0 + 0 + \\cdots$, the finite sum",
           weight: 1,
           required: true,
         },
@@ -851,9 +851,9 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "If A and B are NOT disjoint, does additivity directly give P(A∪B) = P(A) + P(B)?",
+    stem: "If A and B are NOT disjoint, does additivity directly give $P(A\\cup B) = P(A) + P(B)$?",
     choices: [
-      { id: "a", text: "No — additivity requires disjointness; the general two-event formula needs the separate P(A)+P(B)−P(A∩B) result", correct: true },
+      { id: "a", text: "No — additivity requires disjointness; the general two-event formula needs the separate $P(A)$+$P(B)$$-$$P(A\\cap B)$ result", correct: true },
       {
         id: "b",
         text: "Yes, additivity applies to any two events regardless of overlap",
@@ -866,7 +866,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "c",
-        text: "Yes, but only if P(A∩B) happens to equal 0.5",
+        text: "Yes, but only if $P(A\\cap B)$ happens to equal 0.5",
         correct: false,
         misconception: {
           id: "axioms-of-probability--nondisjoint-additivity--c",
@@ -898,12 +898,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove that P(A) ≤ 1 for every event A, using only the three axioms plus monotonicity (which itself follows from them).",
+    stem: "Prove that $P(A) \\leq 1$ for every event A, using only the three axioms plus monotonicity (which itself follows from them).",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "A ⊆ Ω always, so monotonicity gives P(A) ≤ P(Ω) = 1 by axiom 2",
+          description: "A $\\subseteq \\Omega$ always, so monotonicity gives $P(A) \\leq P(\\Omega) = 1$ by axiom 2",
           weight: 1,
           required: true,
         },
@@ -922,18 +922,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For any two events A, B (not necessarily disjoint), prove P(A∪B) ≤ P(A) + P(B) directly from the three axioms, without first deriving the exact addition formula.",
+    stem: "For any two events A, B (not necessarily disjoint), prove $P(A\\cup B) \\leq P(A) + P(B)$ directly from the three axioms, without first deriving the exact addition formula.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "write A∪B = A ⊔ (B∖A); additivity gives P(A∪B) = P(A) + P(B∖A)",
+          description: "write $A\\cup B =$ A $\\sqcup (B\\setminus A)$; additivity gives $P(A\\cup B) = P(A) + P(B\\setminus A)$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "B∖A ⊆ B, so by monotonicity P(B∖A) ≤ P(B); combine to get P(A∪B) ≤ P(A) + P(B)",
+          description: "$B\\setminus A \\subseteq$ B, so by monotonicity $P(B\\setminus A) \\leq P(B)$; combine to get $P(A\\cup B) \\leq P(A) + P(B)$",
           weight: 1,
         },
       ],
@@ -951,12 +951,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using only the axioms (and monotonicity, which follows from them), show that if A₁⊆A₂⊆A₃⊆⋯ is an increasing sequence of events, then P(Aₙ) is a non-decreasing sequence of real numbers.",
+    stem: "Using only the axioms (and monotonicity, which follows from them), show that if $A_{1}\\subseteq A_{2}\\subseteq A_{3}\\subseteq\\cdots$ is an increasing sequence of events, then $P(A_{n})$ is a non-decreasing sequence of real numbers.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "apply monotonicity to each consecutive pair: Aₙ ⊆ Aₙ₊₁ gives P(Aₙ) ≤ P(Aₙ₊₁), for every n",
+          description: "apply monotonicity to each consecutive pair: $A_{n} \\subseteq A_{n+1}$ gives $P(A_{n}) \\leq P(A_{n+1})$, for every n",
           weight: 1,
           required: true,
         },
@@ -975,7 +975,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Events A and B are disjoint with P(A) = 0.3 and P(A∪B) = 0.9. Using additivity, find P(B).",
+    stem: "Events A and B are disjoint with $P(A) = 0.3$ and $P(A\\cup B) = 0.9$. Using additivity, find $P(B)$.",
     answerKey: 0.6,
     tolerance: 0.01,
     difficulty: 0.05,
@@ -991,7 +991,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Ω = {1,2,3} with P({1}) = 0.2, P({2}) = 0.3, and P({2,3}) = 0.8. Using additivity, find P({3}), and confirm P(Ω) = 1.",
+    stem: "$\\Omega =$ {1,2,3} with P({1}) = 0.2, P({2}) = 0.3, and P({2,3}) = 0.8. Using additivity, find P({3}), and confirm $P(\\Omega) = 1$.",
     answerKey: 0.5,
     tolerance: 0.01,
     difficulty: 0.15,
@@ -1007,12 +1007,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "The axioms only pin down P as a function on events (the σ-algebra), not on individual outcomes ω. Explain why this matters when Ω is uncountable, using the Uniform(0,1) example.",
+    stem: "The axioms only pin down P as a function on events (the $\\sigma$-algebra), not on individual outcomes $\\omega$. Explain why this matters when $\\Omega$ is uncountable, using the $\\text{Uniform}(0,1)$ example.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "for Uniform(0,1), every single point has probability 0 — otherwise uncountably many positive numbers would have to sum past 1, which is impossible for any real-valued sum",
+          description: "for $\\text{Uniform}(0,1)$, every single point has probability 0 — otherwise uncountably many positive numbers would have to sum past 1, which is impossible for any real-valued sum",
           weight: 1,
           required: true,
         },
@@ -1060,18 +1060,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Show that continuity from below — if A₁⊆A₂⊆⋯ then P(⋃ₙAₙ) = limₙ P(Aₙ) — follows from countable additivity, by writing the increasing sequence as a union of disjoint 'rings' Bₙ = Aₙ∖Aₙ₋₁.",
+    stem: "Show that continuity from below — if $A_{1}\\subseteq A_{2}\\subseteq\\cdots$ then $P(\\bigcup_{n}A_{n}) = lim_{n} P(A_{n})$ — follows from countable additivity, by writing the increasing sequence as a union of disjoint 'rings' $B_{n} = A_{n}\\setminus A_{n-1}$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "define B₁=A₁ and Bₙ=Aₙ∖Aₙ₋₁ for n≥2; the Bᵢ are pairwise disjoint, ⋃ᵢ₌₁ⁿBᵢ=Aₙ, and ⋃ᵢBᵢ=⋃ₙAₙ",
+          description: "define $B_{1}=A_{1}$ and $B_{n}=A_{n}\\setminus A_{n-1}$ for $n\\geq 2$; the $B_{i}$ are pairwise disjoint, $\\bigcup_{i=1}^{n}B_{i}=A_{n}$, and $\\bigcup_{i}B_{i}=\\bigcup_{n}A_{n}$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "countable additivity gives P(⋃ₙAₙ) = ΣᵢP(Bᵢ) = limₙ Σᵢ₌₁ⁿP(Bᵢ) = limₙ P(Aₙ)",
+          description: "countable additivity gives $P(\\bigcup_{n}A_{n}) = \\sum_{i}P(B_{i}) = lim_{n} \\sum_{i=1}^{n}P(B_{i}) = lim_{n} P(A_{n})$",
           weight: 1,
         },
       ],
@@ -1089,12 +1089,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A proposed assignment µ satisfies µ(A) ≥ 0 and finite additivity, but for some increasing sequence A₁⊆A₂⊆⋯, µ(⋃ₙAₙ) exceeds limₙ µ(Aₙ). Is µ consistent with Kolmogorov's axioms? What specifically fails?",
+    stem: "A proposed assignment $\\mu$ satisfies $\\mu(A) \\geq 0$ and finite additivity, but for some increasing sequence $A_{1}\\subseteq A_{2}\\subseteq\\cdots, \\mu(\\bigcup_{n}A_{n})$ exceeds $lim_{n} \\mu(A_{n})$. Is $\\mu$ consistent with Kolmogorov's axioms? What specifically fails?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "no — countable additivity (not just finite additivity) forces continuity from below, P(⋃ₙAₙ)=limₙP(Aₙ); µ violates this, so it fails axiom 3 even though it may satisfy analogues of axioms 1–2",
+          description: "no — countable additivity (not just finite additivity) forces continuity from below, $P(\\bigcup_{n}A_{n})$$=lim_{n}P(A_{n}); \\mu$ violates this, so it fails axiom 3 even though it may satisfy analogues of axioms 1–2",
           weight: 1,
           required: true,
         },
@@ -1148,10 +1148,10 @@ export const probabilityExpansion1Items: Item[] = [
     channels: ["typed"],
     stem: "For any two events A, B, which inequality always holds?",
     choices: [
-      { id: "a", text: "P(A∩B) ≤ min(P(A), P(B))", correct: true },
+      { id: "a", text: "$P(A\\cap B) \\leq$ min($P(A)$, $P(B)$)", correct: true },
       {
         id: "b",
-        text: "P(A∩B) ≥ P(A) + P(B)",
+        text: "$P(A\\cap B) \\geq P(A) + P(B)$",
         correct: false,
         misconception: {
           id: "probability-function--min-bound-mcq--b",
@@ -1161,7 +1161,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "c",
-        text: "P(A∩B) = P(A)·P(B) always",
+        text: "$P(A\\cap B) = P(A)$$\\cdot$$P(B)$ always",
         correct: false,
         misconception: {
           id: "probability-function--min-bound-mcq--c",
@@ -1171,7 +1171,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "d",
-        text: "P(A∩B) ≥ 1",
+        text: "$P(A\\cap B) \\geq 1$",
         correct: false,
         misconception: {
           id: "probability-function--min-bound-mcq--d",
@@ -1193,12 +1193,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "State the Bonferroni-type lower bound: for two events A, B, what is the smallest P(A∩B) can possibly be, in terms of P(A) and P(B)?",
+    stem: "State the Bonferroni-type lower bound: for two events A, B, what is the smallest $P(A\\cap B)$ can possibly be, in terms of $P(A)$ and $P(B)$?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "max(0, P(A) + P(B) − 1)",
+          description: "max(0, $P(A) + P(B) -$ 1)",
           weight: 1,
           required: true,
         },
@@ -1217,9 +1217,9 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "P(A) = P(B) = P(C) = 0.5, and the events are claimed to be pairwise disjoint. Is this scenario possible?",
+    stem: "$P(A) = P(B) = P(C) = 0.5$, and the events are claimed to be pairwise disjoint. Is this scenario possible?",
     choices: [
-      { id: "a", text: "No — additivity would force P(A∪B∪C) = 1.5, which exceeds 1", correct: true },
+      { id: "a", text: "No — additivity would force $P(A\\cup B\\cup C) = 1.5$, which exceeds 1", correct: true },
       {
         id: "b",
         text: "Yes, as long as A, B, C are independent",
@@ -1242,7 +1242,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "d",
-        text: "Cannot be determined without knowing Ω explicitly",
+        text: "Cannot be determined without knowing $\\Omega$ explicitly",
         correct: false,
         misconception: {
           id: "probability-function--impossible-disjoint-sum--d",
@@ -1264,7 +1264,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "P(A) = 0.45, P(B) = 0.55, P(A∪B) = 0.75. Find P(A∩B).",
+    stem: "$P(A) = 0.45, P(B) = 0.55, P(A\\cup B) = 0.75$. Find $P(A\\cap B)$.",
     answerKey: 0.25,
     tolerance: 0.01,
     difficulty: -0.4,
@@ -1280,7 +1280,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "P(A) = 0.7, P(B) = 0.6, P(A∩B) = 0.5. Find P(A∩Bᶜ) — the part of A outside B.",
+    stem: "$P(A) = 0.7, P(B) = 0.6, P(A\\cap B) = 0.5$. Find $P(A\\cap B^{c})$ — the part of A outside B.",
     answerKey: 0.2,
     tolerance: 0.01,
     difficulty: -0.25,
@@ -1296,7 +1296,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "P(A) = 0.2, P(B) = 0.3, P(C) = 0.4, and A, B, C are pairwise disjoint. Find P((A∪B∪C)ᶜ).",
+    stem: "$P(A) = 0.2, P(B) = 0.3, P(C) = 0.4$, and A, B, C are pairwise disjoint. Find $P((A\\cup B\\cup C)^{c})$.",
     answerKey: 0.1,
     tolerance: 0.01,
     difficulty: -0.1,
@@ -1328,7 +1328,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "P(A) = 0.65, P(B) = 0.5. What is the maximum possible value of P(A∩B)?",
+    stem: "$P(A) = 0.65, P(B) = 0.5$. What is the maximum possible value of $P(A\\cap B)$?",
     answerKey: 0.5,
     tolerance: 0.01,
     difficulty: 0.15,
@@ -1344,12 +1344,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why P(A∩B) ≤ min(P(A), P(B)) for any two events, using monotonicity rather than a Venn-diagram appeal.",
+    stem: "Explain why $P(A\\cap B) \\leq$ min($P(A)$, $P(B)$) for any two events, using monotonicity rather than a Venn-diagram appeal.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "A∩B ⊆ A and A∩B ⊆ B, so by monotonicity (itself derived from the axioms) P(A∩B) ≤ P(A) and P(A∩B) ≤ P(B), hence P(A∩B) ≤ min of the two",
+          description: "$A\\cap B \\subseteq$ A and $A\\cap B \\subseteq$ B, so by monotonicity (itself derived from the axioms) $P(A\\cap B) \\leq P(A)$ and $P(A\\cap B) \\leq P(B)$, hence $P(A\\cap B) \\leq$ min of the two",
           weight: 1,
           required: true,
         },
@@ -1368,12 +1368,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Derive the Bonferroni-type lower bound P(A∩B) ≥ P(A) + P(B) − 1 from the addition rule and the fact P(A∪B) ≤ 1.",
+    stem: "Derive the Bonferroni-type lower bound $P(A\\cap B) \\geq P(A) + P(B) - 1$ from the addition rule and the fact $P(A\\cup B) \\leq 1$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "start from P(A∪B) = P(A) + P(B) − P(A∩B) ≤ 1, then rearrange to P(A∩B) ≥ P(A) + P(B) − 1",
+          description: "start from $P(A\\cup B) = P(A) + P(B) - P(A\\cap B) \\leq 1$, then rearrange to $P(A\\cap B) \\geq P(A) + P(B) - 1$",
           weight: 1,
           required: true,
         },
@@ -1392,18 +1392,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Extend the Bonferroni bound to three events: derive P(A∩B∩C) ≥ P(A) + P(B) + P(C) − 2 by applying the two-event bound (P(X∩Y) ≥ P(X)+P(Y)−1) twice, once with X=A∩B, Y=C.",
+    stem: "Extend the Bonferroni bound to three events: derive $P(A\\cap B\\cap C) \\geq P(A) + P(B) + P(C) - 2$ by applying the two-event bound ($P(X\\cap Y) \\geq P(X)$+$P(Y)$$-1$) twice, once with $X=A\\cap B$, Y=C.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "first application: P(A∩B) ≥ P(A) + P(B) − 1",
+          description: "first application: $P(A\\cap B) \\geq P(A) + P(B) - 1$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "second application to (A∩B) and C: P((A∩B)∩C) ≥ P(A∩B) + P(C) − 1 ≥ (P(A)+P(B)−1) + P(C) − 1 = P(A)+P(B)+P(C)−2",
+          description: "second application to $(A\\cap B)$ and C: $P((A\\cap B)\\cap C) \\geq P(A\\cap B) + P(C) - 1 \\geq$ ($P(A)$+$P(B)$$-1) + P(C) - 1 = P(A$)+$P(B)$+$P(C)$$-2$",
           weight: 1,
         },
       ],
@@ -1426,7 +1426,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "P(A∩B) must be ≤ min(P(A),P(B)) = min(0.99, 0.98) = 0.98 for ANY joint distribution; the reported 0.995 exceeds this, so the report is impossible regardless of any dependence structure",
+          description: "$P(A\\cap B)$ must be $\\leq$ min($P(A)$,$P(B)$) = min(0.99, 0.98) = 0.98 for ANY joint distribution; the reported 0.995 exceeds this, so the report is impossible regardless of any dependence structure",
           weight: 1,
           required: true,
         },
@@ -1445,7 +1445,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "A marketer reports: P(clicked ad) = 0.12, P(purchased) = 0.03, P(clicked and purchased) = 0.05. Using the constraint P(A∩B) ≤ min(P(A), P(B)), by how much does the reported joint probability exceed the maximum it could possibly be?",
+    stem: "A marketer reports: P(clicked ad) = 0.12, P(purchased) = 0.03, P(clicked and purchased) = 0.05. Using the constraint $P(A\\cap B) \\leq$ min($P(A)$, $P(B)$), by how much does the reported joint probability exceed the maximum it could possibly be?",
     answerKey: 0.02,
     tolerance: 0.02,
     difficulty: 0.95,
@@ -1465,12 +1465,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "P(A|B) is defined only when:",
+    stem: "$P(A|B)$ is defined only when:",
     choices: [
-      { id: "a", text: "P(B) > 0", correct: true },
+      { id: "a", text: "$P(B)$ > 0", correct: true },
       {
         id: "b",
-        text: "P(A) > 0",
+        text: "$P(A)$ > 0",
         correct: false,
         misconception: {
           id: "conditional-probability--defined-condition--b",
@@ -1480,11 +1480,11 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "c",
-        text: "P(A∩B) > 0",
+        text: "$P(A\\cap B)$ > 0",
         correct: false,
         misconception: {
           id: "conditional-probability--defined-condition--c",
-          description: "States a stronger condition than necessary — P(A|B) is well-defined (and can be 0) whenever P(B)>0, even if A∩B is empty.",
+          description: "States a stronger condition than necessary — $P(A|B)$ is well-defined (and can be 0) whenever $P(B)$>0, even if $A\\cap B$ is empty.",
           blameConceptId: "conditional-probability",
         },
       },
@@ -1494,7 +1494,7 @@ export const probabilityExpansion1Items: Item[] = [
         correct: false,
         misconception: {
           id: "conditional-probability--defined-condition--d",
-          description: "Confuses a property that makes P(A|B)=P(A) with the condition required for P(A|B) to be defined at all.",
+          description: "Confuses a property that makes $P(A|B)$=$P(A)$ with the condition required for $P(A|B)$ to be defined at all.",
           blameConceptId: "conditional-probability",
         },
       },
@@ -1512,12 +1512,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Is it true that P(A|B) + P(Aᶜ|B) = 1 whenever P(B) > 0? Justify briefly.",
+    stem: "Is it true that $P(A|B) + P(A^{c}|B) = 1$ whenever $P(B)$ > 0? Justify briefly.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "yes: P(A|B) + P(Aᶜ|B) = [P(A∩B) + P(Aᶜ∩B)] / P(B) = P(B)/P(B) = 1, since A∩B and Aᶜ∩B partition B",
+          description: "yes: $P(A|B) + P(A^{c}|B) =$ [$P(A\\cap B) + P(A^{c}\\cap B)$] / $P(B) = P(B)$/$P(B) = 1$, since $A\\cap B$ and $A^{c}\\cap B$ partition B",
           weight: 1,
           required: true,
         },
@@ -1536,12 +1536,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "If P(A|B) = P(A) (with P(A), P(B) > 0), which statement is also definitely true?",
+    stem: "If $P(A|B) = P(A)$ (with $P(A)$, $P(B)$ > 0), which statement is also definitely true?",
     choices: [
-      { id: "a", text: "P(B|A) = P(B)", correct: true },
+      { id: "a", text: "$P(B|A) = P(B)$", correct: true },
       {
         id: "b",
-        text: "P(A|Bᶜ) = 1",
+        text: "$P(A|B^{c}) = 1$",
         correct: false,
         misconception: {
           id: "conditional-probability--symmetric-independence-mcq--b",
@@ -1551,17 +1551,17 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "c",
-        text: "P(A∩B) = 0",
+        text: "$P(A\\cap B) = 0$",
         correct: false,
         misconception: {
           id: "conditional-probability--symmetric-independence-mcq--c",
-          description: "Confuses P(A|B)=P(A) (independence) with disjointness, which would instead force P(A|B)=0.",
+          description: "Confuses $P(A|B)$=$P(A)$ (independence) with disjointness, which would instead force $P(A|B)$=0.",
           blameConceptId: "mutual-independence",
         },
       },
       {
         id: "d",
-        text: "P(A) = P(B)",
+        text: "$P(A) = P(B)$",
         correct: false,
         misconception: {
           id: "conditional-probability--symmetric-independence-mcq--d",
@@ -1636,7 +1636,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "P(defective∩A) = 0.6×0.02 = 0.012; P(defective∩B) = 0.4×0.05 = 0.02; since 0.02 > 0.012, a defective item is more likely to have come from B",
+          description: "P(defective∩A) $= 0.6\\times 0.02 = 0.012$; P(defective∩B) $= 0.4\\times 0.05 = 0.02$; since 0.02 > 0.012, a defective item is more likely to have come from B",
           weight: 1,
           required: true,
         },
@@ -1667,18 +1667,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why P(A|B) can be larger than, smaller than, or equal to P(A) — i.e., why conditioning has no built-in direction — using one example of each case with a simple die roll.",
+    stem: "Explain why $P(A|B)$ can be larger than, smaller than, or equal to $P(A)$ — i.e., why conditioning has no built-in direction — using one example of each case with a simple die roll.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "increases: e.g. P(even) = 1/2, but P(even | roll > 3) = P({4,6})/P({4,5,6}) = 2/3 > 1/2",
+          description: "increases: e.g. P(even) $= 1/2$, but P(even | roll > 3) = P({4,6})/P({4,5,6}) $= 2/3$ > $1/2$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "decreases: e.g. P(even) = 1/2, but P(even | roll ≤ 1) = P(∅ within {1})/P({1}) = 0 < 1/2 (or any similar example where conditioning excludes even outcomes)",
+          description: "decreases: e.g. P(even) $= 1/2$, but P(even | roll ≤ 1) = P(∅ within {1})/P({1}) = 0 < $1/2$ (or any similar example where conditioning excludes even outcomes)",
           weight: 1,
         },
         {
@@ -1701,18 +1701,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove that P(·|B), as a function of its first argument, is monotone: if A₁ ⊆ A₂ then P(A₁|B) ≤ P(A₂|B), for P(B) > 0.",
+    stem: "Prove that $P(\\cdot|B)$, as a function of its first argument, is monotone: if $A_{1} \\subseteq A_{2}$ then $P(A_{1}|B) \\leq P(A_{2}|B)$, for $P(B)$ > 0.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "A₁∩B ⊆ A₂∩B, so by monotonicity of P, P(A₁∩B) ≤ P(A₂∩B)",
+          description: "$A_{1}\\cap B \\subseteq A_{2}\\cap B$, so by monotonicity of P, $P(A_{1}\\cap B) \\leq P(A_{2}\\cap B)$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "dividing both sides by the positive constant P(B) preserves the inequality: P(A₁|B) ≤ P(A₂|B)",
+          description: "dividing both sides by the positive constant $P(B)$ preserves the inequality: $P(A_{1}|B) \\leq P(A_{2}|B)$",
           weight: 1,
         },
       ],
@@ -1735,13 +1735,13 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "outcomes outside B get probability 0 under P(·|B) — they're zeroed out",
+          description: "outcomes outside B get probability 0 under $P(\\cdot|B)$ — they're zeroed out",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "outcomes inside B keep their relative proportions to each other but are all uniformly rescaled by the factor 1/P(B) so the total over B becomes 1",
+          description: "outcomes inside B keep their relative proportions to each other but are all uniformly rescaled by the factor 1/$P(B)$ so the total over B becomes 1",
           weight: 1,
         },
       ],
@@ -1804,18 +1804,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Building on the two-child problem: explain why conditioning on 'at least one child is a girl' gives P(both girls) = 1/3, while conditioning instead on 'the older child is a girl' gives P(both girls) = 1/2 — even though both facts seem to say 'one specific child is a girl.'",
+    stem: "Building on the two-child problem: explain why conditioning on 'at least one child is a girl' gives P(both girls) $= 1/3$, while conditioning instead on 'the older child is a girl' gives P(both girls) $= 1/2$ — even though both facts seem to say 'one specific child is a girl.'",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "'at least one girl' = {BG, GB, GG}, 3 equally likely outcomes, only 1 of which (GG) has both girls, giving 1/3",
+          description: "'at least one girl' = {BG, GB, GG}, 3 equally likely outcomes, only 1 of which (GG) has both girls, giving $1/3$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "'older child is a girl' = {GB, GG} (using an older/younger ordering), only 2 outcomes, 1 of which has both girls, giving 1/2",
+          description: "'older child is a girl' = {GB, GG} (using an older/younger ordering), only 2 outcomes, 1 of which has both girls, giving $1/2$",
           weight: 1,
         },
         {
@@ -1842,7 +1842,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "In P(A|B) = P(B|A)P(A)/P(B), the denominator P(B) plays the role of the:",
+    stem: "In $P(A|B) = P(B|A)$$P(A)$/$P(B)$, the denominator $P(B)$ plays the role of the:",
     choices: [
       { id: "a", text: "normalizing constant (the marginal probability of the evidence)", correct: true },
       {
@@ -1851,7 +1851,7 @@ export const probabilityExpansion1Items: Item[] = [
         correct: false,
         misconception: {
           id: "bayes-rule--denominator-role--b",
-          description: "Confuses the denominator P(B) with the prior P(A).",
+          description: "Confuses the denominator $P(B)$ with the prior $P(A)$.",
           blameConceptId: "bayes-rule",
         },
       },
@@ -1861,7 +1861,7 @@ export const probabilityExpansion1Items: Item[] = [
         correct: false,
         misconception: {
           id: "bayes-rule--denominator-role--c",
-          description: "Confuses the denominator P(B) with the posterior P(A|B).",
+          description: "Confuses the denominator $P(B)$ with the posterior $P(A|B)$.",
           blameConceptId: "bayes-rule",
         },
       },
@@ -1871,7 +1871,7 @@ export const probabilityExpansion1Items: Item[] = [
         correct: false,
         misconception: {
           id: "bayes-rule--denominator-role--d",
-          description: "Confuses the denominator P(B) with the likelihood P(B|A) in the numerator.",
+          description: "Confuses the denominator $P(B)$ with the likelihood $P(B|A)$ in the numerator.",
           blameConceptId: "bayes-rule",
         },
       },
@@ -1889,12 +1889,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Write the law-of-total-probability expansion of the denominator P(B) in Bayes' rule, when A can take values A₁,…,Aₙ partitioning the sample space.",
+    stem: "Write the law-of-total-probability expansion of the denominator $P(B)$ in Bayes' rule, when A can take values $A_{1},\\ldots,A_{n}$ partitioning the sample space.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(B) = Σᵢ P(B|Aᵢ)P(Aᵢ)",
+          description: "$P(B) = \\sum_{i} P(B|A_{i})$$P(A_{i})$",
           weight: 1,
           required: true,
         },
@@ -1913,12 +1913,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The posterior odds P(A|B)/P(Aᶜ|B) equal the prior odds P(A)/P(Aᶜ) multiplied by which quantity (the Bayes factor)?",
+    stem: "The posterior odds $P(A|B)$/$P(A^{c}|B)$ equal the prior odds $P(A)$/$P(A^{c})$ multiplied by which quantity (the Bayes factor)?",
     choices: [
-      { id: "a", text: "P(B|A) / P(B|Aᶜ)", correct: true },
+      { id: "a", text: "$P(B|A)$ / $P(B|A^{c})$", correct: true },
       {
         id: "b",
-        text: "P(B|A) · P(B|Aᶜ)",
+        text: "$P(B|A) \\cdot P(B|A^{c})$",
         correct: false,
         misconception: {
           id: "bayes-rule--odds-form-mcq--b",
@@ -1928,7 +1928,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "c",
-        text: "P(A) / P(B)",
+        text: "$P(A)$ / $P(B)$",
         correct: false,
         misconception: {
           id: "bayes-rule--odds-form-mcq--c",
@@ -1938,7 +1938,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "d",
-        text: "P(B|A) + P(B|Aᶜ)",
+        text: "$P(B|A) + P(B|A^{c})$",
         correct: false,
         misconception: {
           id: "bayes-rule--odds-form-mcq--d",
@@ -1997,13 +1997,13 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "P(white) = (1/3)(2/5) + (1/3)(4/5) + (1/3)(1/5) = (1/3)(7/5) = 7/15",
+          description: "P(white) = (1/3)(2/5) + (1/3)(4/5) + (1/3)(1/5) = (1/3)(7/5) $= 7/15$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "P(B|white) = (1/3)(4/5) / (7/15) = (4/15)/(7/15) = 4/7 ≈ 0.571",
+          description: "P(B|white) = (1/3)(4/5) / (7/15) = (4/15)/(7/15) $= 4/7 \\approx 0.571$",
           weight: 1,
         },
       ],
@@ -2066,18 +2066,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Derive the odds form of Bayes' rule — posterior odds = likelihood ratio × prior odds — starting from the standard ratio form of Bayes' rule applied to A and Aᶜ.",
+    stem: "Derive the odds form of Bayes' rule — posterior odds = likelihood ratio $\\times$ prior odds — starting from the standard ratio form of Bayes' rule applied to A and $A^{c}$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "write P(A|B) = P(B|A)P(A)/P(B) and P(Aᶜ|B) = P(B|Aᶜ)P(Aᶜ)/P(B)",
+          description: "write $P(A|B) = P(B|A)$$P(A)$/$P(B)$ and $P(A^{c}|B) = P(B|A^{c})$$P(A^{c})$/$P(B)$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "divide the two equations; P(B) cancels, giving P(A|B)/P(Aᶜ|B) = [P(B|A)/P(B|Aᶜ)] · [P(A)/P(Aᶜ)]",
+          description: "divide the two equations; $P(B)$ cancels, giving $P(A|B)$/$P(A^{c}|B) =$ [$P(B|A)$/$P(B|A^{c})$] $\\cdot$ [$P(A)$/$P(A^{c})$]",
           weight: 1,
         },
       ],
@@ -2095,18 +2095,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why applying Bayes' rule twice in sequence, with evidence B₁ then B₂, gives the same final posterior as applying it once with the joint evidence B₁∩B₂ — provided you're careful about what 'likelihood' means at the second step.",
+    stem: "Explain why applying Bayes' rule twice in sequence, with evidence $B_{1}$ then $B_{2}$, gives the same final posterior as applying it once with the joint evidence $B_{1}\\cap B_{2}$ — provided you're careful about what 'likelihood' means at the second step.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the second update must use P(B₂|A,B₁) — the likelihood of B₂ conditional on BOTH A and the first evidence — not the unconditional P(B₂|A)",
+          description: "the second update must use $P(B_{2}|A,B_{1})$ — the likelihood of $B_{2}$ conditional on BOTH A and the first evidence — not the unconditional $P(B_{2}|A)$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "done this way, the two-step chain telescopes algebraically to the one-step joint-evidence version of Bayes' rule; using P(B₂|A) instead (assuming it equals P(B₂|A,B₁)) is the 'naive Bayes' independence trap",
+          description: "done this way, the two-step chain telescopes algebraically to the one-step joint-evidence version of Bayes' rule; using $P(B_{2}|A)$ instead (assuming it equals $P(B_{2}|A,B_{1})$) is the 'naive Bayes' independence trap",
           weight: 1,
         },
       ],
@@ -2173,12 +2173,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Two events A, B with P(A) > 0, P(B) > 0 are independent. Which of these must be true?",
+    stem: "Two events A, B with $P(A)$ > $0, P(B)$ > 0 are independent. Which of these must be true?",
     choices: [
-      { id: "a", text: "P(A|B) = P(A)", correct: true },
+      { id: "a", text: "$P(A|B) = P(A)$", correct: true },
       {
         id: "b",
-        text: "P(A∩B) = 0",
+        text: "$P(A\\cap B) = 0$",
         correct: false,
         misconception: {
           id: "independence-set-theory--conditional-equivalent-mcq--b",
@@ -2188,7 +2188,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "c",
-        text: "P(A∪B) = P(A) + P(B)",
+        text: "$P(A\\cup B) = P(A) + P(B)$",
         correct: false,
         misconception: {
           id: "independence-set-theory--conditional-equivalent-mcq--c",
@@ -2198,7 +2198,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "d",
-        text: "P(A) = P(B)",
+        text: "$P(A) = P(B)$",
         correct: false,
         misconception: {
           id: "independence-set-theory--conditional-equivalent-mcq--d",
@@ -2220,12 +2220,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "State the general 'at least one' formula for P(at least one of A₁,…,Aₙ) when the Aᵢ are MUTUALLY independent (not a sum).",
+    stem: "State the general 'at least one' formula for P(at least one of A₁,…,Aₙ) when the $A_{i}$ are MUTUALLY independent (not a sum).",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "1 − Πᵢ(1 − P(Aᵢ))",
+          description: "$1 - \\prod_{i}(1 - P(A_{i}))$",
           weight: 1,
           required: true,
         },
@@ -2246,7 +2246,7 @@ export const probabilityExpansion1Items: Item[] = [
     channels: ["typed"],
     stem: "Draw one card from a full 52-card deck. Are 'card is a heart' and 'card is a face card (J,Q,K)' independent?",
     choices: [
-      { id: "a", text: "Yes — P(heart)·P(face) = 0.25 × (12/52) = 3/52, exactly equal to P(heart∩face) = 3/52", correct: true },
+      { id: "a", text: "Yes — $P(\\text{heart}) \\cdot P(\\text{face}) = 0.25 \\times (12/52) = 3/52$, exactly equal to $P(\\text{heart} \\cap \\text{face}) = 3/52$", correct: true },
       {
         id: "b",
         text: "No — since hearts and face cards share some cards, they must be dependent",
@@ -2296,7 +2296,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "P(ace) = 4/52 = 1/13, P(red) = 26/52 = 1/2, P(ace∩red) = 2/52 = 1/26; since (1/13)(1/2) = 1/26 exactly, the events are independent",
+          description: "P(ace) $= 4/52 = 1/13$, P(red) $= 26/52 = 1/2$, P(ace∩red) $= 2/52 = 1/26$; since (1/13)(1/2) $= 1/26$ exactly, the events are independent",
           weight: 1,
           required: true,
         },
@@ -2336,7 +2336,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "P(red) = 0.5, P(striped) = 6/12 = 0.5, P(red∩striped) = 3/12 = 0.25; since 0.5×0.5 = 0.25, independent",
+          description: "P(red) = 0.5, P(striped) $= 6/12 = 0.5$, P(red∩striped) $= 3/12 = 0.25$; since $0.5\\times 0.5 = 0.25$, independent",
           weight: 1,
           required: true,
         },
@@ -2360,7 +2360,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "P(red) = 0.5, P(striped) = 6/12 = 0.5, but P(red∩striped) = 4/12 ≈ 0.333; since 0.5×0.5 = 0.25 ≠ 0.333, the events are now dependent (striped balls skew red)",
+          description: "P(red) = 0.5, P(striped) $= 6/12 = 0.5$, but P(red∩striped) $= 4/12 \\approx 0.333$; since $0.5\\times 0.5 = 0.25 \\neq 0.333$, the events are now dependent (striped balls skew red)",
           weight: 1,
           required: true,
         },
@@ -2379,7 +2379,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "You verify P(A∩B) = P(A)P(B) for specific numbers, and it happens to hold. Explain why this is a coincidence of the probability values, rather than a structural fact about how A and B overlap as sets.",
+    stem: "You verify $P(A\\cap B) = P(A)$$P(B)$ for specific numbers, and it happens to hold. Explain why this is a coincidence of the probability values, rather than a structural fact about how A and B overlap as sets.",
     rubric: {
       elements: [
         {
@@ -2390,7 +2390,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "reweighting the same underlying outcomes' probabilities can break or create the identity P(A∩B)=P(A)P(B) without changing which outcomes belong to A, B, or A∩B at all",
+          description: "reweighting the same underlying outcomes' probabilities can break or create the identity $P(A\\cap B)$=$P(A)$$P(B)$ without changing which outcomes belong to A, B, or $A\\cap B$ at all",
           weight: 1,
         },
       ],
@@ -2408,18 +2408,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove: if A and B are independent, then Aᶜ and Bᶜ are also independent.",
+    stem: "Prove: if A and B are independent, then $A^{c}$ and $B^{c}$ are also independent.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(Aᶜ∩Bᶜ) = P((A∪B)ᶜ) = 1 − P(A∪B) = 1 − [P(A) + P(B) − P(A)P(B)]",
+          description: "$P(A^{c}\\cap B^{c}) = P((A\\cup B)^{c}) = 1 - P(A\\cup B) = 1 -$ [$P(A) + P(B) - P(A)$$P(B)$]",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "algebraically, 1 − P(A) − P(B) + P(A)P(B) factors as (1−P(A))(1−P(B)) = P(Aᶜ)P(Bᶜ)",
+          description: "algebraically, $1 - P(A) - P(B) + P(A)$$P(B)$ factors as ($1-$$P(A)$$)(1-$$P(B)$) $= P(A^{c})$$P(B^{c})$",
           weight: 1,
         },
       ],
@@ -2437,7 +2437,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Conditional independence (A⊥B | C) does not imply unconditional independence (A⊥B), and vice versa. Give a brief reason why two variables can be dependent overall but become independent once you condition on a shared cause.",
+    stem: "Conditional independence ($A\\perp B$ | C) does not imply unconditional independence $(A\\perp B)$, and vice versa. Give a brief reason why two variables can be dependent overall but become independent once you condition on a shared cause.",
     rubric: {
       elements: [
         {
@@ -2461,18 +2461,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Two independent fair coins are flipped; A = {first coin heads}, B = {second coin heads}. Let C = A∪B = {at least one head}. Are A and B still independent GIVEN C — i.e., does P(A∩B|C) = P(A|C)P(B|C)?",
+    stem: "Two independent fair coins are flipped; A = {first coin heads}, B = {second coin heads}. Let C $= A\\cup B =$ {at least one head}. Are A and B still independent GIVEN C — i.e., does $P(A\\cap B|C) = P(A|C)$$P(B|C)$?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(C)=3/4; P(A∩B|C) = P(A∩B)/P(C) = (1/4)/(3/4) = 1/3, since A∩B ⊆ C",
+          description: "$P(C)$=3/4; $P(A\\cap B|C) = P(A\\cap B)$/$P(C) =$ (1/4)/(3/4) $= 1/3$, since $A\\cap B \\subseteq$ C",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "P(A|C) = P(A)/P(C) = (1/2)/(3/4) = 2/3 (since A⊆C), and likewise P(B|C)=2/3; their product is 4/9 ≠ 1/3, so A and B become DEPENDENT once you condition on C",
+          description: "$P(A|C) = P(A)$/$P(C) =$ (1/2)/(3/4) $= 2/3$ (since $A\\subseteq C$), and likewise $P(B|C)$=2/3; their product is $4/9 \\neq 1/3$, so A and B become DEPENDENT once you condition on C",
           weight: 1,
         },
       ],
@@ -2495,7 +2495,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "conditioning on the union ('at least one passed') is structurally the same as conditioning on C=A∪B in the two-coins example — it induces dependence between two originally independent events, and specifically a negative one here (knowing one test was passed makes the other test less likely to also have been passed, among the selected group)",
+          description: "conditioning on the union ('at least one passed') is structurally the same as conditioning on $C=A\\cup B$ in the two-coins example — it induces dependence between two originally independent events, and specifically a negative one here (knowing one test was passed makes the other test less likely to also have been passed, among the selected group)",
           weight: 1,
           required: true,
         },
@@ -2519,13 +2519,13 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "P(missed by both) = 0.2×0.2 = 0.04, so P(at least one) = 0.96",
+          description: "P(missed by both) $= 0.2\\times 0.2 = 0.04$, so P(at least one) = 0.96",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "P(exactly one) = 2×0.8×0.2 = 0.32; P(both) = 0.8×0.8 = 0.64; and 0.32+0.64=0.96, matching P(at least one) exactly, confirming consistency",
+          description: "P(exactly one) $= 2\\times 0.8\\times 0.2 = 0.32$; P(both) $= 0.8\\times 0.8 = 0.64$; and 0.32+0.64=0.96, matching P(at least one) exactly, confirming consistency",
           weight: 1,
         },
       ],
@@ -2546,7 +2546,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For four events A, B, C, D to be fully mutually independent, how many independence equations (product-rule constraints on subsets of size ≥ 2) must hold, using the count 2ⁿ − n − 1?",
+    stem: "For four events A, B, C, D to be fully mutually independent, how many independence equations (product-rule constraints on subsets of size $\\geq$ 2) must hold, using the count $2^{n} -$ n $-$ 1?",
     choices: [
       { id: "a", text: "11", correct: true },
       {
@@ -2565,7 +2565,7 @@ export const probabilityExpansion1Items: Item[] = [
         correct: false,
         misconception: {
           id: "mutual-independence--n4-condition-count--c",
-          description: "Computes 2⁴−1=15, incorrectly including the four trivial single-event conditions, which hold automatically and add no real constraint.",
+          description: "Computes $2^{4}-1=15$, incorrectly including the four trivial single-event conditions, which hold automatically and add no real constraint.",
           blameConceptId: "mutual-independence",
         },
       },
@@ -2575,7 +2575,7 @@ export const probabilityExpansion1Items: Item[] = [
         correct: false,
         misconception: {
           id: "mutual-independence--n4-condition-count--d",
-          description: "Assumes one independence condition per event rather than one per subset of size ≥ 2.",
+          description: "Assumes one independence condition per event rather than one per subset of size $\\geq 2$.",
           blameConceptId: "mutual-independence",
         },
       },
@@ -2593,12 +2593,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "State the condition for random variables X₁,…,Xₙ to be mutually independent in terms of their joint CDF, and explain in one sentence why checking this only for each pair (Xᵢ, Xⱼ) is not sufficient.",
+    stem: "State the condition for random variables $X_{1},\\ldots,X_{n}$ to be mutually independent in terms of their joint CDF, and explain in one sentence why checking this only for each pair $(X_{i}, X_{j})$ is not sufficient.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "F_{X₁,…,Xₙ}(x₁,…,xₙ) = Π F_{Xᵢ}(xᵢ) for ALL real x₁,…,xₙ simultaneously",
+          description: "$F_{X_{1},\\ldots,X_{n}}(x_{1},\\ldots,x_{n}) = \\prod F_{X_{i}}(x_{i})$ for ALL real $x_{1},\\ldots,x_{n}$ simultaneously",
           weight: 1,
           required: true,
         },
@@ -2622,7 +2622,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For n ≥ 3 events, which statement about pairwise independence and mutual independence is correct?",
+    stem: "For n $\\geq 3$ events, which statement about pairwise independence and mutual independence is correct?",
     choices: [
       { id: "a", text: "Mutual independence implies pairwise independence, but not conversely.", correct: true },
       {
@@ -2671,13 +2671,13 @@ export const probabilityExpansion1Items: Item[] = [
     channels: ["typed"],
     stem: "For events A, B, C to be mutually independent, which of the following equations are actually required? Select all that must hold.",
     choices: [
-      { id: "a", text: "P(A∩B) = P(A)P(B)", correct: true },
-      { id: "b", text: "P(A∩C) = P(A)P(C)", correct: true },
-      { id: "c", text: "P(B∩C) = P(B)P(C)", correct: true },
-      { id: "d", text: "P(A∩B∩C) = P(A)P(B)P(C)", correct: true },
+      { id: "a", text: "$P(A\\cap B) = P(A)$$P(B)$", correct: true },
+      { id: "b", text: "$P(A\\cap C) = P(A)$$P(C)$", correct: true },
+      { id: "c", text: "$P(B\\cap C) = P(B)$$P(C)$", correct: true },
+      { id: "d", text: "$P(A\\cap B\\cap C) = P(A)$$P(B)$$P(C)$", correct: true },
       {
         id: "e",
-        text: "P(A∪B∪C) = P(A) + P(B) + P(C)",
+        text: "$P(A\\cup B\\cup C) = P(A) + P(B) + P(C)$",
         correct: false,
         misconception: {
           id: "mutual-independence--subset-equations-n3-multiselect--e",
@@ -2699,18 +2699,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Two independent fair six-sided dice show values X and Y. Let A = {X is even}, B = {Y is even}, and C = {X+Y is even}. Compute P(A), P(C), and P(A∩C), and check whether A and C are pairwise independent.",
+    stem: "Two independent fair six-sided dice show values X and Y. Let A = {X is even}, B = {Y is even}, and C = {X+Y is even}. Compute $P(A)$, $P(C)$, and $P(A\\cap C)$, and check whether A and C are pairwise independent.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(A)=1/2, and P(C)=1/2 since X+Y is even exactly when X and Y have the same parity: P(both even)+P(both odd) = 1/4+1/4 = 1/2",
+          description: "$P(A)$=1/2, and $P(C)$=1/2 since X+Y is even exactly when X and Y have the same parity: P(both even)+P(both odd) = 1/4+1/4 $= 1/2$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "A∩C requires X even and (X+Y even, which given X even forces Y even), so A∩C = {X even, Y even}, giving P(A∩C)=1/4 = P(A)P(C) — so yes, A and C are pairwise independent",
+          description: "$A\\cap C$ requires X even and (X+Y even, which given X even forces Y even), so $A\\cap C =$ {X even, Y even}, giving $P(A\\cap C)$=1/4 $= P(A)$$P(C)$ — so yes, A and C are pairwise independent",
           weight: 1,
           required: true,
         },
@@ -2745,11 +2745,11 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Events A, B, C each have probability 1/2, and all three pairwise products check out: P(A∩B)=P(A∩C)=P(B∩C)=1/4. You're additionally told P(A∩B∩C)=1/4. Are A, B, C mutually independent?",
+    stem: "Events A, B, C each have probability $1/2$, and all three pairwise products check out: $P(A\\cap B)$=$P(A\\cap C)$=$P(B\\cap C)$=1/4. You're additionally told $P(A\\cap B\\cap C)$=1/4. Are A, B, C mutually independent?",
     choices: [
       {
         id: "a",
-        text: "No — P(A∩B∩C)=1/4 ≠ P(A)P(B)P(C)=1/8, so mutual independence fails despite all pairwise checks passing.",
+        text: "No — $P(A\\cap B\\cap C)$=1/4 $\\neq P(A)$$P(B)$$P(C)$=1/8, so mutual independence fails despite all pairwise checks passing.",
         correct: true,
       },
       {
@@ -2764,7 +2764,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "c",
-        text: "Yes — since P(A∩B∩C) is nonzero, they must be independent.",
+        text: "Yes — since $P(A\\cap B\\cap C)$ is nonzero, they must be independent.",
         correct: false,
         misconception: {
           id: "mutual-independence--triple-product-numeric-check--c",
@@ -2796,18 +2796,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove directly from the definition that mutual independence of A₁,…,Aₙ implies pairwise independence of every pair Aᵢ, Aⱼ (i≠j).",
+    stem: "Prove directly from the definition that mutual independence of $A_{1},\\ldots,A_{n}$ implies pairwise independence of every pair $A_{i}, A_{j} (i\\neq j)$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "mutual independence requires P(⋂_{k∈S} Aₖ) = Π_{k∈S} P(Aₖ) for EVERY subset S ⊆ {1,…,n}; taking S={i,j} (a valid, if small, subset) gives exactly P(Aᵢ∩Aⱼ)=P(Aᵢ)P(Aⱼ), i.e. pairwise independence for that pair",
+          description: "mutual independence requires P(⋂_{k∈S} Aₖ) = Π_{k∈S} $P(A_{k})$ for EVERY subset S $\\subseteq$ {1,…,n}; taking S={i,j} (a valid, if small, subset) gives exactly $P(A_{i}\\cap A_{j})$=$P(A_{i})$$P(A_{j})$, i.e. pairwise independence for that pair",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "since i,j were arbitrary, this holds for every pair, so mutual independence forces all C(n,2) pairwise conditions as a special case — the converse fails only because there are strictly more subsets (of size ≥ 3) that the pairwise conditions never test",
+          description: "since i,j were arbitrary, this holds for every pair, so mutual independence forces all C(n,2) pairwise conditions as a special case — the converse fails only because there are strictly more subsets (of size $\\geq$ 3) that the pairwise conditions never test",
           weight: 1,
         },
       ],
@@ -2830,13 +2830,13 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "A∩B∩C = {X even and Y even}, since X even and Y even already force X+Y even, so P(A∩B∩C)=P(A∩B)=1/4",
+          description: "$A\\cap B\\cap C =$ {X even and Y even}, since X even and Y even already force X+Y even, so $P(A\\cap B\\cap C)$=$P(A\\cap B)$=1/4",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "P(A)P(B)P(C) = (1/2)(1/2)(1/2) = 1/8, and 1/4 ≠ 1/8, so the triple product-rule condition fails even though all three pairwise conditions hold — mutual independence fails",
+          description: "$P(A)$$P(B)$$P(C) =$ (1/2)(1/2)(1/2) $= 1/8$, and $1/4 \\neq 1/8$, so the triple product-rule condition fails even though all three pairwise conditions hold — mutual independence fails",
           weight: 1,
           required: true,
         },
@@ -2860,7 +2860,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "each indicator 1_A is a two-valued (Bernoulli) random variable built entirely from A or its complement, so any joint probability statement about the indicators — like P(1_A=1,1_B=1,1_C=1)=P(A∩B∩C) — is just a relabeling of the corresponding event probability",
+          description: "each indicator 1_A is a two-valued (Bernoulli) random variable built entirely from A or its complement, so any joint probability statement about the indicators — like $P(1_A=1,1_B=1,1_C=1)$=$P(A\\cap B\\cap C)$ — is just a relabeling of the corresponding event probability",
           weight: 1,
           required: true,
         },
@@ -2913,18 +2913,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using the dice example (A={X even}, B={Y even}, C={X+Y even}, each with probability 1/2, pairwise independent but not mutually independent), let 1_A, 1_B, 1_C be the corresponding indicator random variables. Explain why Var(1_A+1_B+1_C) = Var(1_A)+Var(1_B)+Var(1_C) STILL holds despite mutual independence failing, and identify one stronger claim about 1_A+1_B+1_C that would NOT be justified.",
+    stem: "Using the dice example (A={X even}, B={Y even}, C={X+Y even}, each with probability $1/2$, pairwise independent but not mutually independent), let 1_A, 1_B, 1_C be the corresponding indicator random variables. Explain why $\\operatorname{Var}(1_A+1_B+1_C) = \\operatorname{Var}(1_A) + \\operatorname{Var}(1_B) + \\operatorname{Var}(1_C)$ STILL holds despite mutual independence failing, and identify one stronger claim about 1_A+1_B+1_C that would NOT be justified.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "Var(sum) = ΣVar + 2Σ_{i<j}Cov(i,j), and pairwise independence makes every covariance term zero (each pair is independent, hence uncorrelated), so variance-additivity holds using only the pairwise condition this example does satisfy",
+          description: "$\\operatorname{Var}(\\text{sum}) = \\sum \\operatorname{Var} + 2\\sum_{i<j} \\operatorname{Cov}(i,j)$, and pairwise independence makes every covariance term zero (each pair is independent, hence uncorrelated), so variance-additivity holds using only the pairwise condition this example does satisfy",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "what is NOT justified is treating 1_A+1_B+1_C as if it had the distribution of a sum of mutually independent Bernoullis (e.g. computing P(1_A+1_B+1_C=3) as the product P(A)P(B)P(C)=1/8) — the joint distribution of the triple is distorted by the higher-order dependence, so only the second-moment (variance) fact survives, not a full distributional one",
+          description: "what is NOT justified is treating 1_A+1_B+1_C as if it had the distribution of a sum of mutually independent Bernoullis (e.g. computing $P(1_A+1_B+1_C=3)$ as the product $P(A)$$P(B)$$P(C)$=1/8) — the joint distribution of the triple is distorted by the higher-order dependence, so only the second-moment (variance) fact survives, not a full distributional one",
           weight: 1,
           required: true,
         },
@@ -2943,18 +2943,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A monitoring system has three sensors that are mutually independent, each correctly detecting an intrusion with probability 0.7 (independently of whether the others detect it). Compute P(at least 2 of the 3 sensors detect it), explicitly using mutual independence to justify treating the number of detections as Binomial(3, 0.7).",
+    stem: "A monitoring system has three sensors that are mutually independent, each correctly detecting an intrusion with probability 0.7 (independently of whether the others detect it). Compute P(at least 2 of the 3 sensors detect it), explicitly using mutual independence to justify treating the number of detections as $\\text{Binomial}(3, 0.7)$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "mutual independence of the three sensors is exactly what licenses modeling the number of detections as Binomial(3, 0.7) — without it, the count's distribution can't be built from the marginal detection probability alone",
+          description: "mutual independence of the three sensors is exactly what licenses modeling the number of detections as $\\text{Binomial}(3, 0.7)$ — without it, the count's distribution can't be built from the marginal detection probability alone",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "P(at least 2 of 3) = C(3,2)(0.7)²(0.3) + (0.7)³ = 3(0.49)(0.3) + 0.343 = 0.441 + 0.343 = 0.784 [verified]",
+          description: "$P(\\text{at least 2 of 3}) = \\binom{3}{2}(0.7)^{2}(0.3) + (0.7)^{3} = 3(0.49)(0.3) + 0.343 = 0.441 + 0.343 = 0.784$ [verified]",
           weight: 1,
           required: true,
         },
@@ -2976,16 +2976,16 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Given a probability space (Ω, F, P), which condition is required for a function X: Ω → ℝ to qualify as a random variable?",
+    stem: "Given a probability space ($\\Omega$, F, P), which condition is required for a function X: $\\Omega \\to \\mathbb{R}$ to qualify as a random variable?",
     choices: [
-      { id: "a", text: "{ω : X(ω) ≤ x} ∈ F for every real x", correct: true },
+      { id: "a", text: "{ω : $X(\\omega) \\leq$ x} $\\in$ F for every real x", correct: true },
       {
         id: "b",
-        text: "X must be a continuous function of ω.",
+        text: "X must be a continuous function of $\\omega$.",
         correct: false,
         misconception: {
           id: "random-variables--measurable-function-mcq--b",
-          description: "Confuses measurability (preimages landing back in the σ-algebra) with topological continuity, which is neither required nor generally meaningful on an abstract Ω.",
+          description: "Confuses measurability (preimages landing back in the $\\sigma$-algebra) with topological continuity, which is neither required nor generally meaningful on an abstract $\\Omega$.",
           blameConceptId: "random-variables",
         },
       },
@@ -3028,7 +3028,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "the support is the set of values that X can actually take with positive probability nearby — for a discrete X, {x : P(X=x) > 0}; more generally, the smallest closed set that X falls into with probability 1",
+          description: "the support is the set of values that X can actually take with positive probability nearby — for a discrete X, {x : $P(X=x)$ > 0}; more generally, the smallest closed set that X falls into with probability 1",
           weight: 1,
           required: true,
         },
@@ -3047,36 +3047,36 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Let Ω = {1,2,3,4} with the coarser σ-algebra F = {∅, {1,2}, {3,4}, Ω}. Which function X: Ω → ℝ IS a valid random variable with respect to F?",
+    stem: "Let $\\Omega =$ {1,2,3,4} with the coarser $\\sigma$-algebra F = {∅, {1,2}, {3,4}, Ω}. Which function X: $\\Omega \\to \\mathbb{R}$ IS a valid random variable with respect to F?",
     choices: [
-      { id: "a", text: "X(ω) = 1 if ω ∈ {1,2}, and X(ω) = 0 if ω ∈ {3,4}", correct: true },
+      { id: "a", text: "$X(\\omega) = 1$ if $\\omega \\in$ {1,2}, and $X(\\omega) = 0$ if $\\omega \\in$ {3,4}", correct: true },
       {
         id: "b",
-        text: "X(ω) = ω (the identity function)",
+        text: "$X(\\omega) = \\omega$ (the identity function)",
         correct: false,
         misconception: {
           id: "random-variables--coarse-sigma-algebra-measurability--b",
-          description: "Assumes any function to the reals is automatically a random variable without checking preimages against the given σ-algebra; {X≤1}={1} is not in F, so this fails measurability.",
+          description: "Assumes any function to the reals is automatically a random variable without checking preimages against the given $\\sigma$-algebra; {X≤1}={1} is not in F, so this fails measurability.",
           blameConceptId: "random-variables",
         },
       },
       {
         id: "c",
-        text: "X(ω) = 1 if ω = 1, and X(ω) = 0 otherwise",
+        text: "$X(\\omega) = 1$ if $\\omega = 1$, and $X(\\omega) = 0$ otherwise",
         correct: false,
         misconception: {
           id: "random-variables--coarse-sigma-algebra-measurability--c",
-          description: "{X=1}={1} is not in F, so this function is not measurable with respect to the given (coarser) σ-algebra, even though it looks like an ordinary indicator function.",
+          description: "{X=1}={1} is not in F, so this function is not measurable with respect to the given (coarser) $\\sigma$-algebra, even though it looks like an ordinary indicator function.",
           blameConceptId: "random-variables",
         },
       },
       {
         id: "d",
-        text: "X(ω) = ω mod 2",
+        text: "$X(\\omega) = \\omega$ mod 2",
         correct: false,
         misconception: {
           id: "random-variables--coarse-sigma-algebra-measurability--d",
-          description: "{X=1} = {1,3} is not a member of F = {∅, {1,2}, {3,4}, Ω}, so this function's preimages don't respect the given σ-algebra.",
+          description: "{X=1} = {1,3} is not a member of F = {∅, {1,2}, {3,4}, Ω}, so this function's preimages don't respect the given $\\sigma$-algebra.",
           blameConceptId: "random-variables",
         },
       },
@@ -3094,12 +3094,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Two fair dice are rolled. X = |die1 − die2| (the absolute difference). What is the support of X, and is 0 included?",
+    stem: "Two fair dice are rolled. X = |die1 $-$ die2| (the absolute difference). What is the support of X, and is 0 included?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "support = {0,1,2,3,4,5}; the maximum possible difference is 6−1=5, and 0 IS included since the two dice can show equal values",
+          description: "support = {0,1,2,3,4,5}; the maximum possible difference is $6-1=5$, and 0 IS included since the two dice can show equal values",
           weight: 1,
           required: true,
         },
@@ -3118,12 +3118,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Let X be uniform on {1,2,3,4,5,6} (a fair die), and let Y = X mod 3 (the remainder when X is divided by 3, so Y ∈ {0,1,2}). Find the distribution of Y.",
+    stem: "Let X be uniform on {1,2,3,4,5,6} (a fair die), and let Y = X mod 3 (the remainder when X is divided by 3, so Y $\\in$ {0,1,2}). Find the distribution of Y.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "Y=0 when X∈{3,6}: P(Y=0)=2/6=1/3; Y=1 when X∈{1,4}: P(Y=1)=1/3; Y=2 when X∈{2,5}: P(Y=2)=1/3 — so Y is ALSO uniform on {0,1,2}, even though it was built by a many-to-one function of X",
+          description: "Y=0 when X∈{3,6}: $P(Y=0)$=2/6=1/3; Y=1 when X∈{1,4}: $P(Y=1)$=1/3; Y=2 when X∈{2,5}: $P(Y=2)$=1/3 — so Y is ALSO uniform on {0,1,2}, even though it was built by a many-to-one function of X",
           weight: 1,
           required: true,
         },
@@ -3142,7 +3142,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A coin is flipped 3 times; X = number of heads. In a completely different experiment, three independent lightbulbs each work with probability 1/2; Y = number of working bulbs. What can you say about X and Y?",
+    stem: "A coin is flipped 3 times; X = number of heads. In a completely different experiment, three independent lightbulbs each work with probability $1/2$; Y = number of working bulbs. What can you say about X and Y?",
     choices: [
       { id: "a", text: "X and Y have identical distributions, even though they're defined on entirely different sample spaces.", correct: true },
       {
@@ -3151,7 +3151,7 @@ export const probabilityExpansion1Items: Item[] = [
         correct: false,
         misconception: {
           id: "random-variables--coin-vs-bulbs-same-distribution--b",
-          description: "Confuses two random variables having the same distribution with them being the same function on the same sample space — they live on different Ω's entirely, so they can't literally be 'the same' random variable.",
+          description: "Confuses two random variables having the same distribution with them being the same function on the same sample space — they live on different $\\Omega's$ entirely, so they can't literally be 'the same' random variable.",
           blameConceptId: "random-variables",
         },
       },
@@ -3189,18 +3189,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain what it means to say a random variable 'induces' a distribution on the reals, and use X = number of heads in 3 fair coin flips together with X' = number of TAILS in the same 3 flips (X' = 3 − X) to illustrate how two different functions on the same Ω can induce the same distribution.",
+    stem: "Explain what it means to say a random variable 'induces' a distribution on the reals, and use X = number of heads in 3 fair coin flips together with X' = number of TAILS in the same 3 flips (X' $= 3 -$ X) to illustrate how two different functions on the same $\\Omega$ can induce the same distribution.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the induced distribution is the pushforward measure P_X(B) = P({ω : X(ω) ∈ B}) — it summarizes how probability is spread across X's values, discarding the rest of the description of ω",
+          description: "the induced distribution is the pushforward measure P_X(B) = P({ω : X(ω) ∈ B}) — it summarizes how probability is spread across X's values, discarding the rest of the description of $\\omega$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "X and X'=3−X are different functions (X(ω)=X'(ω) only when both equal 1.5, which is impossible), yet by the symmetry of a fair coin both are Binomial(3, 1/2) — same induced distribution despite disagreeing pointwise everywhere",
+          description: "X and $X'=3-X$ are different functions ($X(\\omega)=X'(\\omega)$ only when both equal 1.5, which is impossible), yet by the symmetry of a fair coin both are $\\text{Binomial}(3, 1/2)$ — same induced distribution despite disagreeing pointwise everywhere",
           weight: 1,
           required: true,
         },
@@ -3219,18 +3219,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Given that {X ≤ x} ∈ F for every real x, prove that {X < x} ∈ F as well, using only the closure properties of a σ-algebra.",
+    stem: "Given that {X $\\leq$ x} $\\in$ F for every real x, prove that {X < x} $\\in$ F as well, using only the closure properties of a $\\sigma$-algebra.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "{X < x} = ⋃_{n=1}^∞ {X ≤ x − 1/n} — the explicit countable-union construction that reaches every value strictly below x",
+          description: "{X < x} = ⋃_{n=1}^∞ {X $\\leq$ x $-$ 1/n} — the explicit countable-union construction that reaches every value strictly below x",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "each set {X ≤ x−1/n} is in F by the measurability hypothesis, and F is closed under countable unions (a σ-algebra axiom), so the union — and hence {X<x} — is in F",
+          description: "each set {X $\\leq$ x−1/n} is in F by the measurability hypothesis, and F is closed under countable unions (a $\\sigma$-algebra axiom), so the union — and hence {X<x} — is in F",
           weight: 1,
           required: true,
         },
@@ -3254,13 +3254,13 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "as described, Y is a single fixed number (a probability, e.g. 0.8) — it does not vary with ω, so it isn't a function Ω→ℝ at all; it's a parameter, not a random variable",
+          description: "as described, Y is a single fixed number (a probability, e.g. 0.8) — it does not vary with $\\omega$, so it isn't a function $\\Omega\\to \\mathbb{R}$ at all; it's a parameter, not a random variable",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "a valid fix is to let Y be the INDICATOR of passing, Y(ω)=1 if student ω passes and 0 otherwise — that genuinely varies with ω, and 'the probability that a randomly selected student passes' is then just E[Y] or P(Y=1), a number computed FROM the random variable, not the random variable itself",
+          description: "a valid fix is to let Y be the INDICATOR of passing, $Y(\\omega)=1$ if student $\\omega$ passes and 0 otherwise — that genuinely varies with $\\omega$, and 'the probability that a randomly selected student passes' is then just $\\mathbb{E}[Y]$ or $P(Y=1)$, a number computed FROM the random variable, not the random variable itself",
           weight: 1,
         },
       ],
@@ -3278,18 +3278,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A trader describes her position's payoff as 'X(ω) = the price the market settles at, adjusted for decisions I'll make after observing the market open' — but the sample space Ω is defined only as market outcomes at close. Explain why this description fails to define a valid random variable on that Ω, and how it could be fixed.",
+    stem: "A trader describes her position's payoff as $'X(\\omega) =$ the price the market settles at, adjusted for decisions I'll make after observing the market open' — but the sample space $\\Omega$ is defined only as market outcomes at close. Explain why this description fails to define a valid random variable on that $\\Omega$, and how it could be fixed.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "a valid random variable must be a well-defined, single-valued function of ω alone; here the payoff also depends on the trader's own future decisions, which are not part of the specified Ω, so X(ω) isn't actually determined by ω",
+          description: "a valid random variable must be a well-defined, single-valued function of $\\omega$ alone; here the payoff also depends on the trader's own future decisions, which are not part of the specified $\\Omega$, so $X(\\omega)$ isn't actually determined by $\\omega$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "fix: either restrict X to depend only on the realized market path already in Ω (e.g. define X purely as a function of the closing price), or enlarge Ω to also encode the randomness in her decisions so that X becomes a genuine function of the enlarged outcome",
+          description: "fix: either restrict X to depend only on the realized market path already in $\\Omega$ (e.g. define X purely as a function of the closing price), or enlarge $\\Omega$ to also encode the randomness in her decisions so that X becomes a genuine function of the enlarged outcome",
           weight: 1,
         },
       ],
@@ -3312,7 +3312,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "P(X=1)=26/52=1/2=P(Y=1) (and correspondingly P(X=0)=P(Y=0)=1/2), so X and Y both have the Bernoulli(1/2) distribution — the same induced (pushforward) measure on {0,1}",
+          description: "$P(X=1)$=26/52=1/2=$P(Y=1)$ (and correspondingly $P(X=0)$=$P(Y=0)$=1/2), so X and Y both have the $\\text{Bernoulli}(1/2)$ distribution — the same induced (pushforward) measure on {0,1}",
           weight: 1,
           required: true,
         },
@@ -3337,18 +3337,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A component's lifetime T (in years) physically must satisfy T ≥ 0, so its support should be a subset of [0,∞). A model proposes T = X − 2, where X is an Exponential random variable with support [0,∞). What's wrong with this proposed model, and how does checking the support pinpoint the problem?",
+    stem: "A component's lifetime T (in years) physically must satisfy T $\\geq 0$, so its support should be a subset of [$0,\\infty$). A model proposes T = X $- 2$, where X is an Exponential random variable with support [$0,\\infty$). What's wrong with this proposed model, and how does checking the support pinpoint the problem?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "T=X−2 has support [−2,∞), since X ranges over [0,∞); in particular X=0 gives T=−2, a negative lifetime",
+          description: "$T=X-2$ has support [$-2,\\infty$), since X ranges over [$0,\\infty$); in particular X=0 gives $T=-2$, a negative lifetime",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "a negative lifetime is physically impossible, so this transformed random variable's support contradicts the domain constraint T≥0 — checking a proposed model's support against the physical constraints of the quantity it represents is a basic sanity check before using it",
+          description: "a negative lifetime is physically impossible, so this transformed random variable's support contradicts the domain constraint $T\\geq 0$ — checking a proposed model's support against the physical constraints of the quantity it represents is a basic sanity check before using it",
           weight: 1,
           required: true,
         },
@@ -3382,7 +3382,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "c",
-        text: "ℝ (all real numbers)",
+        text: "$\\mathbb{R}$ (all real numbers)",
         correct: false,
         misconception: {
           id: "random-variables--fair-die-support-mcq--c",
