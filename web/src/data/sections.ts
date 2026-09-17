@@ -764,6 +764,41 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
     },
   ],
 
+  "financial-instruments": [
+    {
+      id: "fixed-income",
+      label: "Fixed Income and the Term Structure",
+      conceptIds: [
+        "time-value-of-money",
+        "bonds-and-fixed-income",
+        "yield-to-maturity",
+        "yield-curve-and-term-structure",
+        "bond-duration-and-convexity",
+      ],
+    },
+    {
+      id: "equities-and-funds",
+      label: "Equities and Pooled Vehicles",
+      conceptIds: ["equities-and-stock-markets", "etfs-and-index-funds", "mutual-funds-and-nav"],
+    },
+    {
+      id: "forwards-futures-options",
+      label: "Forwards, Futures, and Options",
+      conceptIds: [
+        "derivatives-overview",
+        "forwards-and-futures",
+        "options-calls-and-puts",
+        "option-payoff-and-put-call-parity",
+        "option-pricing-and-greeks",
+      ],
+    },
+    {
+      id: "swaps-and-credit",
+      label: "Swaps and Credit Derivatives",
+      conceptIds: ["interest-rate-and-currency-swaps", "credit-default-swaps"],
+    },
+  ],
+
   python: [
     {
       id: "fundamentals",
