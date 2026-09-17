@@ -33,6 +33,9 @@ import { statisticsExpansion4Items } from "./items.statistics-expansion-4";
 import { multivariateExpansion1Items } from "./items.multivariate-expansion-1";
 import { multivariateExpansion2Items } from "./items.multivariate-expansion-2";
 import { timeSeriesItems } from "./items/time-series";
+import { discreteMathLogicItems } from "./items/discrete-math-logic";
+import { discreteMathSetsItems } from "./items/discrete-math-sets";
+import { discreteMathCountingItems } from "./items/discrete-math-counting";
 import { stochasticProcessesBuffupItems } from "./items/stochastic-processes-buffup";
 import { computationalStatisticsItems } from "./items/computational-statistics";
 import { robustRegressionItems } from "./items/robust-regression";
@@ -5181,6 +5184,16 @@ export const items: Item[] = [
   // free text. See src/lib/assessment/pythonSandbox.ts and codeTests.ts.
   // -------------------------------------------------------------------------
   ...pythonCodeExerciseItems,
+
+  // -------------------------------------------------------------------------
+  // Discrete Math Fundamentals — Logic & Proof, Sets & Functions, Counting &
+  // Combinatorics. Authored from assessments/dm-01..03-*.md (plus the
+  // set-theory/counting-methods/binomial-theorem sections of
+  // foundations-of-probability.md, for the three concepts that moved domains).
+  // -------------------------------------------------------------------------
+  ...discreteMathLogicItems,
+  ...discreteMathSetsItems,
+  ...discreteMathCountingItems,
 ];
 
 /**
