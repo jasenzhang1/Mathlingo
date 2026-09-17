@@ -926,6 +926,13 @@ export const concepts: Concept[] = [
     prerequisites: ["positive-definite-matrices"],
   },
   {
+    id: "idempotent-matrices",
+    title: "Idempotent Matrices",
+    domain: "linear-algebra",
+    blurb: "Matrices that do nothing the second time — P² = P — and why every linear model's hat matrix is one.",
+    prerequisites: ["symmetric-matrices", "eigenvalues-eigenvectors", "trace", "vector-projection"],
+  },
+  {
     id: "schur-complement",
     title: "Schur Complement",
     domain: "linear-algebra",

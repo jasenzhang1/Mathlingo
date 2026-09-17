@@ -266,6 +266,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "orthogonal-matrices",
         "positive-definite-matrices",
         "cholesky-decomposition",
+        "idempotent-matrices",
         "schur-complement",
         "rayleigh-quotient",
         "matrix-stability",

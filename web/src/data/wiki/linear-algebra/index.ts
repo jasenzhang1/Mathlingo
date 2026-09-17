@@ -19,6 +19,7 @@ import { eigendecomposition } from "./eigendecomposition";
 import { eigenvaluesEigenvectors } from "./eigenvalues-eigenvectors";
 import { fourFundamentalSubspaces } from "./four-fundamental-subspaces";
 import { gramSchmidt } from "./gram-schmidt";
+import { idempotentMatrices } from "./idempotent-matrices";
 import { invertibleMatrices } from "./invertible-matrices";
 import { leftNullSpace } from "./left-null-space";
 import { linearDependence } from "./linear-dependence";
@@ -65,6 +66,7 @@ const articles: WikiArticle[] = [
   eigenvaluesEigenvectors,
   fourFundamentalSubspaces,
   gramSchmidt,
+  idempotentMatrices,
   invertibleMatrices,
   leftNullSpace,
   linearDependence,
