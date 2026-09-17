@@ -87,7 +87,12 @@ export const GRACE_PERIOD_MS = DAY_MS;
 export const UNLOCK_THRESHOLD = 65;
 
 export function expFor(state: ConceptState, now: number): ExpSnapshot {
-  const ceiling = 100 * masteryLevel(state.ability);
+  // A learner who has never been assessed on this concept reads as 0, not the
+  // prior's conservative-end mastery (~14) — the prior exists to shape how
+  // fast the *first* few answers move the estimate, not to hand out a
+  // starting balance nobody earned.
+  const ceiling =
+    state.ability.observations === 0 ? 0 : 100 * masteryLevel(state.ability);
 
   if (!state.memory) {
     return {
