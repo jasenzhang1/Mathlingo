@@ -13,6 +13,7 @@ import { choleskyDecomposition } from "./cholesky-decomposition";
 import { columnSpace } from "./column-space";
 import { determinant } from "./determinant";
 import { diagonalization } from "./diagonalization";
+import { disjointnessFourFundamentalSubspaces } from "./disjointness-four-fundamental-subspaces";
 import { dotProduct } from "./dot-product";
 import { eckartYoung } from "./eckart-young";
 import { eigendecomposition } from "./eigendecomposition";
@@ -25,6 +26,7 @@ import { leftNullSpace } from "./left-null-space";
 import { linearDependence } from "./linear-dependence";
 import { linearTransformations } from "./linear-transformations";
 import { luDecomposition } from "./lu-decomposition";
+import { matmulFourFundamentalSubspaces } from "./matmul-four-fundamental-subspaces";
 import { matrices } from "./matrices";
 import { matrixCalculus } from "./matrix-calculus";
 import { matrixMultiplication } from "./matrix-multiplication";
@@ -43,7 +45,9 @@ import { rayleighQuotient } from "./rayleigh-quotient";
 import { rowSpace } from "./row-space";
 import { span } from "./span";
 import { spectralTheorem } from "./spectral-theorem";
+import { subspaceOperations } from "./subspace-operations";
 import { svd } from "./svd";
+import { svdFourFundamentalSubspaces } from "./svd-four-fundamental-subspaces";
 import { symmetricMatrices } from "./symmetric-matrices";
 import { trace } from "./trace";
 import { uniquenessOfSvd } from "./uniqueness-of-svd";
@@ -62,6 +66,7 @@ const articles: WikiArticle[] = [
   columnSpace,
   determinant,
   diagonalization,
+  disjointnessFourFundamentalSubspaces,
   dotProduct,
   eckartYoung,
   eigendecomposition,
@@ -74,6 +79,7 @@ const articles: WikiArticle[] = [
   linearDependence,
   linearTransformations,
   luDecomposition,
+  matmulFourFundamentalSubspaces,
   matrices,
   matrixCalculus,
   matrixMultiplication,
@@ -92,7 +98,9 @@ const articles: WikiArticle[] = [
   rowSpace,
   span,
   spectralTheorem,
+  subspaceOperations,
   svd,
+  svdFourFundamentalSubspaces,
   symmetricMatrices,
   trace,
   uniquenessOfSvd,
