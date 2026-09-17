@@ -111,6 +111,72 @@ function UserMenu() {
   );
 }
 
+function ChevronIcon() {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      className="h-3.5 w-3.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      aria-hidden="true"
+    >
+      <path d="m5 7.5 5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function SubmitMenu() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        className="flex items-center gap-1 hover:text-[var(--ink)]"
+      >
+        Submit
+        <ChevronIcon />
+      </button>
+      {open && (
+        <>
+          <button
+            type="button"
+            aria-hidden="true"
+            tabIndex={-1}
+            className="fixed inset-0 z-40 cursor-default"
+            onClick={() => setOpen(false)}
+          />
+          <div
+            role="menu"
+            className="font-body absolute left-0 z-50 mt-2 w-44 rounded-xl border border-[var(--line)] bg-[var(--panel)] p-1.5 shadow-lg"
+          >
+            <Link
+              to="/submit/questions"
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className="block rounded-lg px-3 py-2 text-left text-sm text-[var(--ink)] hover:bg-[var(--paper)]"
+            >
+              Questions
+            </Link>
+            <Link
+              to="/submit/analogies"
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className="block rounded-lg px-3 py-2 text-left text-sm text-[var(--ink)] hover:bg-[var(--paper)]"
+            >
+              Analogies
+            </Link>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 function SearchToggleIcon() {
   return (
     <svg
@@ -154,6 +220,7 @@ export function Nav() {
           <Link to="/pricing" className="hover:text-[var(--ink)]">
             Pricing
           </Link>
+          <SubmitMenu />
         </nav>
 
         <GlobalSearch className="hidden flex-1 sm:block sm:max-w-xs" />
