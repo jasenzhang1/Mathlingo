@@ -1521,6 +1521,20 @@ export const concepts: Concept[] = [
     prerequisites: ["homoskedasticity"],
   },
   {
+    id: "sandwich-estimator",
+    title: "Sandwich Estimator",
+    domain: "regression",
+    blurb: "A heteroskedasticity-consistent covariance estimator that gets standard errors right without ever specifying how the variance depends on x.",
+    prerequisites: ["homoskedasticity", "ols-properties"],
+  },
+  {
+    id: "generalized-estimating-equations",
+    title: "Generalized Estimating Equations (GEE)",
+    domain: "regression",
+    blurb: "Fitting a GLM mean structure to clustered or repeated-measures data with only a working guess at the within-cluster correlation, then correcting the standard errors with a sandwich.",
+    prerequisites: ["glm", "sandwich-estimator"],
+  },
+  {
     id: "ols-properties",
     title: "OLS Properties",
     domain: "regression",
@@ -2790,6 +2804,48 @@ export const concepts: Concept[] = [
     prerequisites: ["mle", "multivariate-normal"],
   },
   {
+    id: "conjugate-priors",
+    title: "Conjugate Priors",
+    domain: "graphical-models",
+    blurb: "Priors chosen so the posterior stays in the same family, turning Bayesian updating into closed-form arithmetic on the parameters.",
+    prerequisites: ["bayes-rule", "mle"],
+  },
+  {
+    id: "importance-sampling",
+    title: "Importance Sampling",
+    domain: "graphical-models",
+    blurb: "Estimating an expectation under a distribution you can't sample from by sampling a different one and reweighting.",
+    prerequisites: ["expectation", "joint-distribution"],
+  },
+  {
+    id: "markov-chain-monte-carlo",
+    title: "Markov Chain Monte Carlo (MCMC)",
+    domain: "graphical-models",
+    blurb: "Building a Markov chain whose stationary distribution is the posterior you want, then sampling it by just running the chain.",
+    prerequisites: ["markov-chains", "importance-sampling"],
+  },
+  {
+    id: "gibbs-sampling",
+    title: "Gibbs Sampling",
+    domain: "graphical-models",
+    blurb: "The Metropolis-Hastings special case that always accepts: cycle through each variable and resample it from its full conditional.",
+    prerequisites: ["markov-chain-monte-carlo", "conditional-probability"],
+  },
+  {
+    id: "dirichlet-process",
+    title: "Dirichlet Process",
+    domain: "graphical-models",
+    blurb: "A distribution over distributions: the nonparametric-Bayes prior that lets a mixture model discover its own number of clusters from the data.",
+    prerequisites: ["conjugate-priors", "gibbs-sampling"],
+  },
+  {
+    id: "stick-breaking-construction",
+    title: "Stick-Breaking Construction",
+    domain: "graphical-models",
+    blurb: "Building a Dirichlet process draw by hand: repeatedly break off a random fraction of what's left of a unit-length stick to get infinitely many cluster weights that sum to one.",
+    prerequisites: ["dirichlet-process"],
+  },
+  {
     id: "variational-inference-vaes",
     title: "Variational Inference: VAEs",
     domain: "deep-learning",
@@ -2802,6 +2858,20 @@ export const concepts: Concept[] = [
     domain: "graphical-models",
     blurb: "A distribution over functions, defined by a mean and a kernel.",
     prerequisites: ["multivariate-normal", "kernel"],
+  },
+  {
+    id: "hilbert-space",
+    title: "Hilbert Space",
+    domain: "graphical-models",
+    blurb: "A vector space with an inner product, complete enough that limits of Cauchy sequences stay inside it — the setting that lets 'vector' mean a function instead of a finite list of numbers.",
+    prerequisites: ["dot-product", "vector-norm"],
+  },
+  {
+    id: "functional-data-analysis",
+    title: "Functional Data Analysis",
+    domain: "graphical-models",
+    blurb: "Treating each observation as a whole curve rather than a finite vector of features — a data point living in a Hilbert space of functions.",
+    prerequisites: ["hilbert-space"],
   },
   {
     id: "rkhs",
@@ -2821,13 +2891,15 @@ export const concepts: Concept[] = [
   // ---------------------------------------------------------------------
   // Stochastic Processes
   //
-  // Deliberately small: just the two building blocks the Stochastic Calculus
-  // chapter borrows as prerequisites. Simple Random Walk is the discrete
-  // process with independent ±1 steps; Brownian Motion is its continuous-time
-  // limit (Shreve, Stochastic Calculus for Finance II, ch. 3). A full
-  // stochastic-processes curriculum (Poisson processes, general Markov
-  // processes, renewal theory, ...) would grow this chapter, but nothing here
-  // needs more than these two to reach stochastic calculus.
+  // Simple Random Walk is the discrete process with independent ±1 steps;
+  // Brownian Motion is its continuous-time limit (Shreve, Stochastic Calculus
+  // for Finance II, ch. 3) — together the two building blocks the Stochastic
+  // Calculus chapter borrows as prerequisites. Poisson Process and
+  // Continuous-Time Markov Chains round out the other classical building
+  // block (jump processes rather than diffusions); Kalman Filter is the
+  // linear-Gaussian state-space model, a continuous-state sibling of `hmm`
+  // (graphical-models) that leans on `conditional-multivariate-normal` for
+  // its update step.
   // ---------------------------------------------------------------------
   {
     id: "simple-random-walk",
@@ -2844,6 +2916,38 @@ export const concepts: Concept[] = [
     blurb:
       "The continuous-time, continuous-path limit of the simple random walk: independent Gaussian increments, and a path so jagged it has no derivative anywhere.",
     prerequisites: ["simple-random-walk", "normal-distribution", "central-limit-theorem"],
+  },
+  {
+    id: "poisson-process",
+    title: "Poisson Process",
+    domain: "stochastic-processes",
+    blurb:
+      "The counting process built from independent Exponential waiting times — events land one at a time at a constant rate, and the count in any window is Poisson.",
+    prerequisites: ["poisson-distribution", "exponential-distribution"],
+  },
+  {
+    id: "continuous-time-markov-chains",
+    title: "Continuous-Time Markov Chains",
+    domain: "stochastic-processes",
+    blurb:
+      "A Markov chain that jumps at random times instead of fixed steps: an Exponential holding time in each state, a generator matrix instead of a transition matrix.",
+    prerequisites: ["markov-chains", "poisson-process"],
+  },
+  {
+    id: "kalman-filter",
+    title: "Kalman Filter",
+    domain: "stochastic-processes",
+    blurb:
+      "The linear-Gaussian state-space model: a hidden state that evolves and emits noisy observations, tracked exactly by alternating a predict step and a conditional-Gaussian update.",
+    prerequisites: ["hmm", "conditional-multivariate-normal"],
+  },
+  {
+    id: "karhunen-loeve-expansion",
+    title: "Karhunen-Loève Expansion",
+    domain: "stochastic-processes",
+    blurb:
+      "Writing a random process as an infinite sum of fixed orthogonal functions times uncorrelated random coefficients — Mercer's theorem applied to a covariance function, and the reason Brownian motion has a closed-form series representation at all.",
+    prerequisites: ["functional-data-analysis", "mercers-theorem", "brownian-motion"],
   },
 
   // ---------------------------------------------------------------------

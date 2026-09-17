@@ -30,6 +30,8 @@ import { regressToTheMeanWiki } from "./regress-to-the-mean";
 import { regressionWiki } from "./regression";
 import { regularizationWiki } from "./regularization";
 import { ridgeRegressionWiki } from "./ridge-regression";
+import { sandwichEstimatorWiki } from "./sandwich-estimator";
+import { generalizedEstimatingEquationsWiki } from "./generalized-estimating-equations";
 import { simpleLinearRegressionWiki } from "./simple-linear-regression";
 import { ssrSseSstWiki } from "./ssr-sse-sst";
 import { vifWiki } from "./vif";
@@ -84,6 +86,7 @@ export const regressionWikis: WikiArticle[] = [
   effectOfAddingAnotherVariableWiki,
   vifWiki,
   outliersLeverageInfluenceWiki,
+  sandwichEstimatorWiki,
 
   // reg-04 — model selection and regularization
   aicBicWiki,
@@ -103,4 +106,5 @@ export const regressionWikis: WikiArticle[] = [
   glmWiki,
   poissonRegressionWiki,
   coxProportionalHazardsModelWiki,
+  generalizedEstimatingEquationsWiki,
 ];
