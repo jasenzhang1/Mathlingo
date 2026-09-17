@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../lib/auth/useAuth";
+import { useIsDeveloper } from "../lib/dev/devAuth";
 import { useOwnProfile } from "../lib/profiles";
 import { GlobalSearch } from "./GlobalSearch";
 
@@ -28,6 +29,7 @@ function initialsFor(email: string): string {
 function UserMenu() {
   const { user, signOut } = useAuth();
   const profile = useOwnProfile();
+  const isDeveloper = useIsDeveloper();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -96,6 +98,16 @@ function UserMenu() {
             >
               Account &amp; billing
             </Link>
+            {isDeveloper && (
+              <Link
+                to="/dev/questions"
+                role="menuitem"
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-3 py-2 text-left text-sm text-[var(--ink)] hover:bg-[var(--paper)]"
+              >
+                Question bank (dev)
+              </Link>
+            )}
             <button
               type="button"
               role="menuitem"
