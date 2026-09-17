@@ -3,9 +3,9 @@ import type { WikiArticle } from "../types";
 export const pythonOperatorsWiki: WikiArticle = {
   conceptId: "python-operators",
   summary:
-    "Arithmetic operators compute values; comparison operators compare them and always produce a bool; " +
-    "and and/or/not combine booleans, short-circuiting so the right side is only evaluated when it can " +
-    "still change the answer. Two arithmetic operators — // and % — and one string-building idiom, the " +
+    "Arithmetic operators compute values; comparison operators compare them and always produce a `bool`; " +
+    "and `and`/`or`/`not` combine booleans, short-circuiting so the right side is only evaluated when it can " +
+    "still change the answer. Two arithmetic operators — `//` and `%` — and one string-building idiom, the " +
     "f-string, are worth knowing cold, because loops, conditionals, and formatted output all lean on them " +
     "constantly.",
 
@@ -27,9 +27,9 @@ export const pythonOperatorsWiki: WikiArticle = {
         {
           kind: "callout",
           tone: "insight",
-          title: "% is the standard evenness check",
+          title: "`%` is the standard evenness check",
           text:
-            "n % 2 == 0 is idiomatic for 'n is even'. More generally, x % k == 0 tests divisibility by k, " +
+            "`n % 2 == 0` is idiomatic for 'n is even'. More generally, `x % k == 0` tests divisibility by `k`, " +
             "and is the basis of most cyclic logic (wrapping an index, alternating rows, and so on).",
         },
       ],
@@ -40,11 +40,11 @@ export const pythonOperatorsWiki: WikiArticle = {
         {
           kind: "prose",
           text:
-            "== compares values; = assigns one. Mixing them up is the single most common typo among " +
+            "`==` compares values; `=` assigns one. Mixing them up is the single most common typo among " +
             "people new to the language, and Python won't catch it for you inside an expression context " +
-            "where both would be syntactically odd but not always invalid. Ordering operators (<, >, <=, " +
-            "  >=) work on numbers as expected and on strings alphabetically. Comparing across types, like " +
-            "5 == \"5\", is legal and simply evaluates to False.",
+            "where both would be syntactically odd but not always invalid. Ordering operators (`<`, `>`, `<=`, " +
+            "  `>=`) work on numbers as expected and on strings alphabetically. Comparing across types, like " +
+            "`5 == \"5\"`, is legal and simply evaluates to `False`.",
         },
         {
           kind: "code",
@@ -53,10 +53,10 @@ export const pythonOperatorsWiki: WikiArticle = {
         {
           kind: "callout",
           tone: "warning",
-          title: "and / or short-circuit — the right side may never run",
+          title: "`and` / `or` short-circuit — the right side may never run",
           text:
-            "In `a and b`, if a is already False the result is False and b is never evaluated. In `a or " +
-            "b`, if a is already True, b is never evaluated. This matters the moment b has a side effect " +
+            "In `a and b`, if `a` is already `False` the result is `False` and `b` is never evaluated. In `a or " +
+            "b`, if `a` is already `True`, `b` is never evaluated. This matters the moment `b` has a side effect " +
             "or is expensive: `cache.get(key) or compute_and_store(key)` relies on exactly this behaviour.",
         },
       ],
@@ -67,9 +67,9 @@ export const pythonOperatorsWiki: WikiArticle = {
         {
           kind: "prose",
           text:
-            "Prefixing a string literal with f lets you embed {expression} directly inside the text — " +
+            "Prefixing a string literal with `f` lets you embed `{expression}` directly inside the text — " +
             "Python evaluates the expression and converts it to text automatically, with no explicit " +
-            "str() call needed. Anything valid in Python can go inside the braces, including arithmetic " +
+            "`str()` call needed. Anything valid in Python can go inside the braces, including arithmetic " +
             "and a format spec after a colon for controlling decimal places.",
         },
         {

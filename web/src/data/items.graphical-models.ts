@@ -4949,4 +4949,3361 @@ export const graphicalModelsItems: Item[] = [
     source: MURPHY,
     status: "live",
   },
+  // =========================================================================
+  // Doubling sweep — additional items appended per concept, widening
+  // cognitive-level and difficulty coverage beyond the original 8-per-concept
+  // seed. See doubling-spec.md for the authoring rules this batch follows.
+  // =========================================================================
+
+  // --- Graphs (additional) ---------------------------------------------------
+  {
+    id: "graphs--recall-model-vs-flowchart",
+    conceptId: "graphs",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What is the common name for a graph used to encode the dependence structure of a probability distribution?",
+    choices: [
+      { id: "a", text: "A graphical model", correct: true },
+      {
+        id: "b",
+        text: "A flowchart",
+        correct: false,
+        misconception: {
+          id: "graph-as-flowchart",
+          description: "Confuses a static dependence structure with a diagram of procedural steps.",
+          blameConceptId: "graphs",
+        },
+      },
+      {
+        id: "c",
+        text: "A decision tree",
+        correct: false,
+        misconception: {
+          id: "graph-as-decision-tree",
+          description: "Confuses a graphical model with a supervised-learning predictor built from splits.",
+          blameConceptId: "graphs",
+        },
+      },
+      {
+        id: "d",
+        text: "A computation graph",
+        correct: false,
+        misconception: {
+          id: "graph-as-computation-graph",
+          description: "Confuses a probabilistic dependence structure with a graph of arithmetic operations for autodiff.",
+          blameConceptId: "graphs",
+        },
+      },
+    ],
+    difficulty: -2.2,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "graphs--recall-edge-vs-node-roles",
+    conceptId: "graphs",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "In one sentence each, say what a node is and what an edge is in a graphical model.",
+    rubric: {
+      elements: [
+        { id: "node", description: "A node is a random variable.", weight: 2, required: true },
+        { id: "edge", description: "An edge represents a direct dependence between the two variables it joins.", weight: 2, required: true },
+      ],
+    },
+    difficulty: -1.9,
+    discrimination: 1.1,
+    expectedSeconds: 40,
+    prereqClosure: ["graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "graphs--apply-full-joint-five-binary",
+    conceptId: "graphs",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "Five binary random variables, with no independence assumed at all. How many free parameters does the full joint distribution have?",
+    answerKey: 31,
+    tolerance: 0.001,
+    difficulty: -0.05,
+    discrimination: 1.3,
+    expectedSeconds: 60,
+    prereqClosure: ["graphs", "set-theory"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "graphs--apply-chain-twenty",
+    conceptId: "graphs",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "Twenty binary variables arranged in a chain, each depending directly only on the one before it. How many free parameters does the joint have?",
+    answerKey: 39,
+    tolerance: 0.001,
+    difficulty: 1.6,
+    discrimination: 1.5,
+    expectedSeconds: 140,
+    prereqClosure: ["graphs", "set-theory"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "graphs--explain-graph-not-unique",
+    conceptId: "graphs",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Two different graphs can represent the same set of conditional independences. Explain why this means " +
+      "'the graph' for a distribution is not always unique, and what is preserved across such graphs.",
+    rubric: {
+      elements: [
+        {
+          id: "multiple-graphs",
+          description: "States that more than one graph can encode the same independence structure (Markov equivalence).",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "independence-preserved",
+          description: "States that the set of conditional independences implied is what stays the same across the equivalent graphs.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "caution",
+          description: "Notes that edges present or their directions may differ even though the independence statements coincide.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 0.9,
+    discrimination: 1.5,
+    expectedSeconds: 160,
+    prereqClosure: ["graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "graphs--explain-parameter-savings-tradeoff",
+    conceptId: "graphs",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Sparser graphs need fewer parameters to fit, but a graph that is too sparse fits the data poorly. " +
+      "Explain this tradeoff and what determines the right amount of sparsity for a given problem.",
+    rubric: {
+      elements: [
+        {
+          id: "fewer-params",
+          description: "States that sparser graphs need fewer parameters, which are cheaper to estimate from data.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "underfit-risk",
+          description: "States that omitting real dependencies leaves the model unable to represent the true distribution well.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "domain-knowledge",
+          description: "Notes the right sparsity reflects genuine independences in the domain, not a bare preference for simplicity.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.3,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "graphs--transfer-scaling-with-n",
+    conceptId: "graphs",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "As the number of variables n grows, the full joint's parameter count grows as 2^n − 1, while a sparse " +
+      "graph's can grow only linearly in n. Explain why this difference in growth RATE, not the raw count at " +
+      "one particular n, is what makes graphical models necessary for large systems.",
+    rubric: {
+      elements: [
+        {
+          id: "exponential-vs-linear",
+          description: "Identifies the qualitative difference in growth rate: exponential versus linear/polynomial in n.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "data-requirement",
+          description: "States that more parameters require proportionally more data to estimate reliably, so an exponential count becomes infeasible to fit long before it becomes infeasible merely to store.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "why-sparsity-scales",
+          description: "Notes that if each variable's number of direct dependencies stays bounded as n grows, the per-node cost stays bounded and the total stays linear.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.8,
+    expectedSeconds: 220,
+    prereqClosure: ["graphs", "set-theory"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "graphs--transfer-graph-does-not-imply-causality",
+    conceptId: "graphs",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A graphical model licenses conditional-independence claims. Explain why it does not, by itself, license " +
+      "causal claims, and what extra assumption would be needed to read edges causally.",
+    rubric: {
+      elements: [
+        {
+          id: "independence-only",
+          description: "States that the graph as introduced encodes statistical (in)dependence, symmetric information, with nothing privileging a causal direction.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "extra-assumption",
+          description: "States that a causal reading requires additional assumptions, such as no unmeasured confounding and a genuine mechanistic or temporal ordering, that the pure probabilistic model does not supply.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "example",
+          description: "Gives an example where a correlation induced by a common unmeasured cause produces the same graph a genuine causal edge would.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.2,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  // --- Directed vs Undirected Graphs (additional) ----------------------------
+  {
+    id: "dvug--recall-mrf-vs-bn-names",
+    conceptId: "directed-vs-undirected-graphs",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "Which pairing is correct: does a Bayesian network use directed or undirected edges, and a Markov random field?",
+    choices: [
+      { id: "a", text: "Bayesian network: directed; Markov random field: undirected", correct: true },
+      {
+        id: "b",
+        text: "Bayesian network: undirected; Markov random field: directed",
+        correct: false,
+        misconception: {
+          id: "bn-mrf-swapped",
+          description: "Swaps the two standard names for the two edge types.",
+          blameConceptId: "directed-vs-undirected-graphs",
+        },
+      },
+      {
+        id: "c",
+        text: "Both use directed edges",
+        correct: false,
+        misconception: {
+          id: "both-assumed-directed",
+          description: "Misses that an MRF is defined by symmetric, undirected edges.",
+          blameConceptId: "directed-vs-undirected-graphs",
+        },
+      },
+      {
+        id: "d",
+        text: "Both use undirected edges",
+        correct: false,
+        misconception: {
+          id: "both-assumed-undirected",
+          description: "Misses that a Bayesian network is defined by directed, parent-to-child edges.",
+          blameConceptId: "directed-vs-undirected-graphs",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["directed-vs-undirected-graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dvug--recall-clique-potential-term",
+    conceptId: "directed-vs-undirected-graphs",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "Name the object each undirected-graph factor is called, and name the object each directed-graph factor is called.",
+    rubric: {
+      elements: [
+        { id: "undirected-term", description: "A clique potential (or compatibility function).", weight: 2, required: true },
+        { id: "directed-term", description: "A conditional probability distribution.", weight: 2, required: true },
+      ],
+    },
+    difficulty: -1.7,
+    discrimination: 1.1,
+    expectedSeconds: 40,
+    prereqClosure: ["directed-vs-undirected-graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dvug--apply-three-chain-factorization",
+    conceptId: "directed-vs-undirected-graphs",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A directed chain A → B → C. Write its factorization, then write the factorization for the same three " +
+      "nodes joined in an undirected chain A–B–C.",
+    rubric: {
+      elements: [
+        { id: "directed-form", description: "Gives p(A)·p(B|A)·p(C|B).", weight: 3, required: true },
+        { id: "undirected-form", description: "Gives (1/Z)·psi(A,B)·psi(B,C).", weight: 3, required: true },
+        {
+          id: "z-needed",
+          description: "Notes the undirected version needs a normalising constant Z while the directed one does not.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 0.05,
+    discrimination: 1.4,
+    expectedSeconds: 150,
+    prereqClosure: ["directed-vs-undirected-graphs", "graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dvug--apply-count-mrf-parameters",
+    conceptId: "directed-vs-undirected-graphs",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Three binary variables A–B–C joined in an undirected chain (edges A–B and B–C), each edge given by an " +
+      "unconstrained table of 4 potential values. Counting the table entries across both edge potentials, how " +
+      "many free parameters are there in total?",
+    answerKey: 8,
+    tolerance: 0.001,
+    difficulty: 1.0,
+    discrimination: 1.5,
+    expectedSeconds: 130,
+    prereqClosure: ["directed-vs-undirected-graphs", "graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dvug--explain-choosing-representation",
+    conceptId: "directed-vs-undirected-graphs",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Given a genuinely symmetric, non-causal relationship among three variables with no natural generative " +
+      "order, explain why forcing a directed representation is worse than using an undirected one, referring " +
+      "to what the modeller would have to invent.",
+    rubric: {
+      elements: [
+        {
+          id: "arbitrary-order",
+          description: "States the modeller must invent an arbitrary ordering or direction that the problem does not supply.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "artefact-risk",
+          description: "States that this arbitrary choice can introduce spurious asymmetric structure not present in the phenomenon.",
+          weight: 3,
+          required: true,
+        },
+        { id: "undirected-natural", description: "Notes an undirected graph matches the symmetric structure directly.", weight: 2 },
+      ],
+    },
+    difficulty: 0.75,
+    discrimination: 1.5,
+    expectedSeconds: 160,
+    prereqClosure: ["directed-vs-undirected-graphs", "graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dvug--explain-moralization",
+    conceptId: "directed-vs-undirected-graphs",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Converting a directed graph to an undirected one for inference sometimes requires adding edges between " +
+      "a node's parents ('moralization') even when those parents had no edge in the original graph. Explain " +
+      "why this step is necessary.",
+    rubric: {
+      elements: [
+        {
+          id: "joint-parent-factor",
+          description:
+            "Explains a node's conditional given several parents is a single factor over all of them jointly, and an undirected graph must place a factor over a fully connected (clique) set, so those parents must become mutually connected.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "otherwise-lost",
+          description: "States that without the added edge the undirected graph could not represent that the parents interact jointly within one factor.",
+          weight: 3,
+          required: true,
+        },
+        { id: "name", description: "Optionally names moralization or the moral graph.", weight: 2 },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.7,
+    expectedSeconds: 190,
+    prereqClosure: ["directed-vs-undirected-graphs", "graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dvug--transfer-chain-graphs",
+    conceptId: "directed-vs-undirected-graphs",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A 'chain graph' mixes directed and undirected edges in one model. At a high level, explain what kind of " +
+      "dependence structure this hybrid is meant to capture that neither a purely directed nor a purely " +
+      "undirected graph captures cleanly.",
+    rubric: {
+      elements: [
+        {
+          id: "mixed-structure",
+          description: "States some groups of variables are jointly and symmetrically dependent (undirected within group), while other dependence has a genuine direction between groups (directed between groups).",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-neither-alone",
+          description: "Explains a purely directed graph would force an arbitrary order within the symmetric group, while a purely undirected graph would erase the genuine directionality between groups.",
+          weight: 3,
+          required: true,
+        },
+        { id: "example", description: "Gives an example, e.g. equilibrium among prices within one period, followed by a directed effect on the next.", weight: 2 },
+      ],
+    },
+    difficulty: 1.85,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["directed-vs-undirected-graphs", "graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dvug--transfer-representable-independences-differ",
+    conceptId: "directed-vs-undirected-graphs",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Some conditional-independence structures representable by a directed graph cannot be represented exactly " +
+      "by any undirected graph, and vice versa. Using the v-structure as your example, explain concretely why " +
+      "undirected graphs cannot capture what a v-structure captures.",
+    rubric: {
+      elements: [
+        {
+          id: "undirected-single-rule",
+          description: "States undirected graphs obey one uniform rule — a node is independent of the rest given its neighbours, with no exception — so conditioning on a neighbour can only remove dependence, never create it.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "v-structure-needs-exception",
+          description: "States the v-structure requires the opposite behaviour for its collider — conditioning creates dependence — which the uniform undirected rule cannot express with any fixed neighbourhood structure.",
+          weight: 4,
+          required: true,
+        },
+        { id: "conclusion", description: "Concludes the two graph families have genuinely different expressive power, so translating between them is lossy in general.", weight: 2 },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.9,
+    expectedSeconds: 240,
+    prereqClosure: ["directed-vs-undirected-graphs", "graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  // --- Conditional Independence and D-Separation (additional) ---------------
+  {
+    id: "dsep--recall-name-of-blocking-rule",
+    conceptId: "conditional-independence-d-separation",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem:
+      "The graphical rule that decides whether two variables are conditionally independent given a set Z, by " +
+      "checking whether every path between them is blocked, is called:",
+    choices: [
+      { id: "a", text: "d-separation", correct: true },
+      {
+        id: "b",
+        text: "Bayes' rule",
+        correct: false,
+        misconception: { id: "confuses-with-bayes-rule", description: "Confuses a graphical criterion with the rule for inverting a conditional probability.", blameConceptId: "conditional-independence-d-separation" },
+      },
+      {
+        id: "c",
+        text: "The law of total probability",
+        correct: false,
+        misconception: { id: "confuses-with-total-probability", description: "Confuses d-separation with the rule for computing a marginal from conditionals.", blameConceptId: "conditional-independence-d-separation" },
+      },
+      {
+        id: "d",
+        text: "Marginalization",
+        correct: false,
+        misconception: { id: "confuses-with-marginalization", description: "Confuses a graphical independence test with the operation of summing out a variable.", blameConceptId: "conditional-independence-d-separation" },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["conditional-independence-d-separation"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dsep--recall-name-three-structures",
+    conceptId: "conditional-independence-d-separation",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "Name the three basic three-node structures that d-separation analyses — the ones formed by two edges meeting at a middle node.",
+    rubric: {
+      elements: [
+        { id: "chain", description: "Chain.", weight: 2, required: true },
+        { id: "fork", description: "Fork.", weight: 2, required: true },
+        { id: "collider", description: "Collider.", weight: 2, required: true },
+      ],
+    },
+    difficulty: -1.6,
+    discrimination: 1.1,
+    expectedSeconds: 40,
+    prereqClosure: ["conditional-independence-d-separation"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dsep--apply-two-cause-common-effect",
+    conceptId: "conditional-independence-d-separation",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Two independent risk factors A and B, with P(A) = 0.02 and P(B) = 0.05, each independently can trigger " +
+      "an event E; E occurs iff at least one of A, B occurs. Given only that E occurred, what is P(A)? Give a " +
+      "decimal to three places.",
+    answerKey: 0.29,
+    tolerance: 0.01,
+    difficulty: -0.1,
+    discrimination: 1.5,
+    expectedSeconds: 150,
+    prereqClosure: ["conditional-independence-d-separation", "conditional-probability", "probability-function"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dsep--apply-identify-structure",
+    conceptId: "conditional-independence-d-separation",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem:
+      "In the graph Rain → WetGrass ← Sprinkler, classify the structure at WetGrass, and say whether Rain and " +
+      "Sprinkler are dependent when WetGrass is unobserved.",
+    rubric: {
+      elements: [
+        { id: "collider", description: "Identifies WetGrass as a collider.", weight: 3, required: true },
+        { id: "independent-unobserved", description: "States Rain and Sprinkler are marginally independent, since with WetGrass unobserved the path is blocked.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 0.55,
+    discrimination: 1.4,
+    expectedSeconds: 120,
+    prereqClosure: ["conditional-independence-d-separation", "conditional-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dsep--explain-why-chains-and-forks-alike",
+    conceptId: "conditional-independence-d-separation",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Chains (A → C → B) and forks (A ← C → B) behave identically under conditioning on C, despite looking " +
+      "structurally different. Explain why, in terms of what conditioning on C does to the flow of dependence " +
+      "in each.",
+    rubric: {
+      elements: [
+        { id: "same-blocking", description: "States both are blocked by conditioning on the middle node C.", weight: 3, required: true },
+        {
+          id: "mechanism",
+          description: "Explains knowing C screens off the association that ran through it, whichever direction the arrows point, since C is the sole conduit between A and B in both cases.",
+          weight: 3,
+          required: true,
+        },
+        { id: "contrast-with-collider", description: "Contrasts this with a collider, where the conduit only opens once you condition.", weight: 2 },
+      ],
+    },
+    difficulty: 1.0,
+    discrimination: 1.6,
+    expectedSeconds: 170,
+    prereqClosure: ["conditional-independence-d-separation", "conditional-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dsep--explain-descendant-rule",
+    conceptId: "conditional-independence-d-separation",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Why does conditioning on a descendant of a collider (rather than the collider itself) also open the " +
+      "path, even though the descendant is further away in the graph?",
+    rubric: {
+      elements: [
+        {
+          id: "partial-information",
+          description: "Explains a descendant carries partial information about its collider ancestor, so conditioning on it partially conditions on the collider too.",
+          weight: 4,
+          required: true,
+        },
+        { id: "degree-matters", description: "Notes the effect can be weaker the further downstream, but is present in principle whenever the descendant is informative about the collider.", weight: 3, required: true },
+        { id: "contrast", description: "Contrasts with chain/fork blocking, which a descendant does not restore.", weight: 2 },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["conditional-independence-d-separation", "conditional-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dsep--transfer-instrumental-variable",
+    conceptId: "conditional-independence-d-separation",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "An instrumental variable Z affects treatment T, which affects outcome Y, and Z has no path to Y except " +
+      "through T. Using d-separation reasoning, explain why Z's being d-separated from unmeasured confounders " +
+      "of T and Y is the graphical property that makes it useful for causal identification.",
+    rubric: {
+      elements: [
+        {
+          id: "graph-structure",
+          description: "Describes the graph: Z → T → Y with an unmeasured confounder U affecting both T and Y, and no edge from Z to U or Z to Y other than through T.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "no-backdoor",
+          description: "Explains that because Z is d-separated from U (and from Y except via T), Z carries no confounded signal, so the association between Z and Y running only through T can be exploited despite U being unobserved.",
+          weight: 4,
+          required: true,
+        },
+        { id: "why-useful", description: "Notes this is what allows estimating the causal effect of T on Y without observing U.", weight: 2 },
+      ],
+    },
+    difficulty: 2.05,
+    discrimination: 1.9,
+    expectedSeconds: 250,
+    prereqClosure: ["conditional-independence-d-separation", "conditional-probability", "independence-set-theory"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "dsep--transfer-markov-blanket-link",
+    conceptId: "conditional-independence-d-separation",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Show how d-separation implies that a node's Markov blanket in a directed graph consists of its parents, " +
+      "its children, and its children's other parents (co-parents) — not merely its parents and children.",
+    rubric: {
+      elements: [
+        { id: "parents-children-block", description: "Notes parents and children alone would seem to block ordinary chains and forks through the node.", weight: 3, required: true },
+        {
+          id: "coparent-needed",
+          description: "Explains a child creates a collider structure at itself with its other parents, so conditioning on the child alone opens a path to its co-parents; including the co-parents in the conditioning set re-blocks that opened path.",
+          weight: 4,
+          required: true,
+        },
+        { id: "conclusion", description: "Concludes the full blanket — parents, children, co-parents — is exactly the minimal set that d-separates the node from everything else.", weight: 2 },
+      ],
+    },
+    difficulty: 2.3,
+    discrimination: 1.9,
+    expectedSeconds: 250,
+    prereqClosure: ["conditional-independence-d-separation", "conditional-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  // --- Markov Random Fields (additional) -------------------------------------
+  {
+    id: "mrf--recall-name-of-object",
+    conceptId: "markov-random-fields",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What is the object attached to each clique in a Markov random field's factorization called?",
+    choices: [
+      { id: "a", text: "A potential function (clique potential)", correct: true },
+      {
+        id: "b",
+        text: "A conditional probability",
+        correct: false,
+        misconception: { id: "potential-called-conditional", description: "Confuses an undirected potential with a directed model's conditional distribution.", blameConceptId: "markov-random-fields" },
+      },
+      {
+        id: "c",
+        text: "A prior",
+        correct: false,
+        misconception: { id: "potential-called-prior", description: "Confuses a local compatibility function with a Bayesian prior over parameters.", blameConceptId: "markov-random-fields" },
+      },
+      {
+        id: "d",
+        text: "A likelihood",
+        correct: false,
+        misconception: { id: "potential-called-likelihood", description: "Confuses a clique potential with the model's overall likelihood of the data.", blameConceptId: "markov-random-fields" },
+      },
+    ],
+    difficulty: -1.9,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["markov-random-fields"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mrf--recall-clique-definition",
+    conceptId: "markov-random-fields",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "Define a clique in a graph, and say why cliques are the right domain for an MRF's factors.",
+    rubric: {
+      elements: [
+        { id: "clique-def", description: "A fully-connected subset of nodes.", weight: 2, required: true },
+        { id: "factor-domain", description: "Hammersley–Clifford requires factors over sets whose members are all mutually connected, i.e. cliques.", weight: 3, required: true },
+      ],
+    },
+    difficulty: -1.5,
+    discrimination: 1.2,
+    expectedSeconds: 50,
+    prereqClosure: ["markov-random-fields", "graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mrf--apply-three-node-normalisation",
+    conceptId: "markov-random-fields",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Three binary spins on a chain X–Y–Z, each in {−1, +1}, with each edge potential psi(a, b) = " +
+      "exp(0.5·a·b). Compute the partition function Z, summing the unnormalised weight over all 8 " +
+      "configurations. Give a decimal to three places.",
+    answerKey: 10.172,
+    tolerance: 0.01,
+    difficulty: 0.5,
+    discrimination: 1.5,
+    expectedSeconds: 180,
+    prereqClosure: ["markov-random-fields", "probability-function"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mrf--apply-identify-cliques",
+    conceptId: "markov-random-fields",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A graph has edges A–B, B–C, and A–C (a triangle), plus a separate edge C–D. List the maximal cliques, " +
+      "and say how many factors the MRF's factorization therefore has.",
+    rubric: {
+      elements: [
+        { id: "triangle-clique", description: "Identifies {A, B, C} as one maximal clique, since all three edges are present.", weight: 3, required: true },
+        { id: "cd-clique", description: "Identifies {C, D} as the other maximal clique.", weight: 2, required: true },
+        { id: "count", description: "Two factors total, not one per edge.", weight: 2, required: true },
+      ],
+    },
+    difficulty: 0.85,
+    discrimination: 1.5,
+    expectedSeconds: 150,
+    prereqClosure: ["markov-random-fields", "graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mrf--explain-conditional-vs-joint-blanket",
+    conceptId: "markov-random-fields",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "For a node in an MRF, its Markov blanket is exactly its neighbours — simpler than the directed case " +
+      "(parents, children, co-parents). Explain why the undirected case does not need the extra co-parent-style " +
+      "correction.",
+    rubric: {
+      elements: [
+        {
+          id: "symmetric-rule",
+          description: "Explains conditioning on a neighbour in an undirected graph can only block, never open, a path — there is no collider-style exception — so no extra nodes counteract an opened path.",
+          weight: 4,
+          required: true,
+        },
+        { id: "contrast", description: "Contrasts explicitly with the directed case, where conditioning on a child can open a path to its co-parents.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.05,
+    discrimination: 1.6,
+    expectedSeconds: 170,
+    prereqClosure: ["markov-random-fields", "conditional-independence-d-separation"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mrf--explain-log-linear-form",
+    conceptId: "markov-random-fields",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "handwritten"],
+    stem:
+      "MRF potentials are often written as psi_c(x_c) = exp(w_c · f_c(x_c)) — a 'log-linear' form. Explain what " +
+      "this buys over an arbitrary non-negative table of values.",
+    rubric: {
+      elements: [
+        { id: "guarantees-positivity", description: "The exponential guarantees positivity automatically, with no constraint needed on the weights w_c.", weight: 3, required: true },
+        {
+          id: "easy-gradients",
+          description: "The log of the joint becomes linear in the weights up to the log partition function, making maximum-likelihood training tractable by gradient methods (a clean observed-minus-expected-feature gradient).",
+          weight: 4,
+          required: true,
+        },
+        { id: "generalizes", description: "Notes this is the exponential-family form applied to structured factors.", weight: 2 },
+      ],
+    },
+    difficulty: 1.7,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["markov-random-fields", "probability-function"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mrf--transfer-conditional-random-fields",
+    conceptId: "markov-random-fields",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A conditional random field (CRF) models p(Y|X) with an MRF structure over Y only, with X entering as " +
+      "fixed evidence in the potentials. Explain what problem this solves relative to modelling the full joint " +
+      "p(X, Y) as one big MRF, and what is given up.",
+    rubric: {
+      elements: [
+        {
+          id: "no-model-of-x",
+          description: "Explains the CRF avoids having to model the (often high-dimensional, hard to characterise) distribution of X itself, since only conditional dependence on Y given X is needed for the prediction task.",
+          weight: 4,
+          required: true,
+        },
+        { id: "discriminative-vs-generative", description: "Frames this as the discriminative versus generative distinction: a CRF spends its capacity entirely on getting p(Y|X) right.", weight: 3, required: true },
+        { id: "giveup", description: "Notes it cannot generate new X, or answer queries about the marginal distribution of X, the way a joint model could.", weight: 2 },
+      ],
+    },
+    difficulty: 2.0,
+    discrimination: 1.8,
+    expectedSeconds: 220,
+    prereqClosure: ["markov-random-fields", "conditional-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mrf--transfer-ising-phase-transition",
+    conceptId: "markov-random-fields",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "The Ising model (a pairwise binary MRF) exhibits a phase transition as its coupling strength crosses a " +
+      "critical value: correlations that were short-range abruptly become long-range. Explain, at the level of " +
+      "the graphical model, why increasing pairwise coupling strength alone — with no change to the graph — can " +
+      "qualitatively change how information propagates across the whole grid.",
+    rubric: {
+      elements: [
+        {
+          id: "local-vs-global",
+          description: "Explains that although each factor is still local (pairwise), the cumulative effect of many local couplings compounding across a large connected graph can produce global, long-range correlated behaviour once coupling exceeds a threshold.",
+          weight: 4,
+          required: true,
+        },
+        { id: "why-not-obvious", description: "Notes this is why exact pairwise correlations require solving the whole model rather than reading them off single edges.", weight: 3, required: true },
+        { id: "real-world-analogue", description: "Offers an example, e.g. ferromagnetism, or consensus emergence in an opinion-dynamics model on a similar structure.", weight: 2 },
+      ],
+    },
+    difficulty: 2.35,
+    discrimination: 1.9,
+    expectedSeconds: 250,
+    prereqClosure: ["markov-random-fields", "graphs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  // --- Markov Chains (additional) ---------------------------------------------
+  {
+    id: "markov-chains--recall-name-of-property",
+    conceptId: "markov-chains",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What is the property called that says the future depends on the past only through the present state?",
+    choices: [
+      { id: "a", text: "The Markov property", correct: true },
+      {
+        id: "b",
+        text: "Stationarity",
+        correct: false,
+        misconception: { id: "confuses-markov-with-stationarity", description: "Confuses memorylessness with the chain having settled to an unchanging distribution.", blameConceptId: "markov-chains" },
+      },
+      {
+        id: "c",
+        text: "Ergodicity",
+        correct: false,
+        misconception: { id: "confuses-markov-with-ergodicity", description: "Confuses memorylessness with the long-run mixing/uniqueness property.", blameConceptId: "markov-chains" },
+      },
+      {
+        id: "d",
+        text: "Independence",
+        correct: false,
+        misconception: { id: "confuses-markov-with-independence", description: "The Markov property allows dependence on the present state; it only rules out dependence on more distant history.", blameConceptId: "markov-chains" },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["markov-chains"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "markov-chains--recall-transition-matrix",
+    conceptId: "markov-chains",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "What is a transition matrix, and what must each of its rows satisfy?",
+    rubric: {
+      elements: [
+        { id: "entries", description: "Entry (i, j) is P(state j at the next step | state i now).", weight: 2, required: true },
+        { id: "rows-sum-to-one", description: "Each row sums to 1, since it is a distribution over next states given the current one.", weight: 3, required: true },
+      ],
+    },
+    difficulty: -1.5,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["markov-chains", "conditional-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "markov-chains--apply-three-step",
+    conceptId: "markov-chains",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Same weather chain: from Sunny, tomorrow is Sunny with probability 0.8; from Rainy, tomorrow is Sunny " +
+      "with probability 0.4. Today is Rainy. What is the probability that in three days it is Sunny? Give a " +
+      "decimal to three places.",
+    answerKey: 0.624,
+    tolerance: 0.01,
+    difficulty: 0.45,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["markov-chains", "conditional-probability", "probability-function"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "markov-chains--apply-balance-equation-setup",
+    conceptId: "markov-chains",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Write the balance equation a stationary distribution pi must satisfy for the weather chain (Sunny→Sunny " +
+      "0.8, Rainy→Sunny 0.4), and say what makes it a linear system rather than requiring simulation.",
+    rubric: {
+      elements: [
+        { id: "equation", description: "Gives pi(S) = pi(S)·0.8 + pi(R)·0.4, with pi(S) + pi(R) = 1.", weight: 3, required: true },
+        { id: "linear", description: "Explains stationarity is defined by a fixed set of linear equations (pi·P = pi plus normalization), solvable by linear algebra without ever running the chain forward.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 0.75,
+    discrimination: 1.4,
+    expectedSeconds: 150,
+    prereqClosure: ["markov-chains", "conditional-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "markov-chains--explain-memorylessness-vs-determinism",
+    conceptId: "markov-chains",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "The Markov property is sometimes mistaken for saying the process is deterministic given the current " +
+      "state. Explain the difference between 'memoryless' and 'deterministic', and why a Markov chain can be " +
+      "genuinely random at every step.",
+    rubric: {
+      elements: [
+        {
+          id: "distinguishes",
+          description: "Explains memoryless means the DISTRIBUTION of the next state depends only on the current state, not that the next state is a fixed function of it.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "markov-as-deterministic",
+            description: "Reads the Markov property as removing randomness rather than removing dependence on history.",
+            blameConceptId: "markov-chains",
+          },
+        },
+        { id: "still-random", description: "States transition probabilities typically put positive probability on several next states, so the outcome remains genuinely random.", weight: 3, required: true },
+        { id: "misconception-source", description: "Notes the confusion likely comes from deterministic dynamical systems, a Markov chain's degenerate special case.", weight: 2 },
+      ],
+    },
+    difficulty: 1.15,
+    discrimination: 1.6,
+    expectedSeconds: 170,
+    prereqClosure: ["markov-chains", "conditional-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "markov-chains--explain-detailed-balance-sufficiency",
+    conceptId: "markov-chains",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Detailed balance (pi(i)·P(i→j) = pi(j)·P(j→i) for every pair) is a sufficient but not necessary " +
+      "condition for pi to be stationary. Explain why it implies stationarity, and give an intuition for why it " +
+      "is stronger than necessary.",
+    rubric: {
+      elements: [
+        { id: "implies", description: "Explains summing the detailed balance equation over i recovers the ordinary stationarity balance equation, so detailed balance implies stationarity.", weight: 4, required: true },
+        {
+          id: "stronger",
+          description: "Notes detailed balance requires the flow between every individual pair of states to balance, while stationarity only requires the total flow into and out of each state to balance in aggregate — a chain with net circulating flow can still be stationary.",
+          weight: 3,
+          required: true,
+        },
+        { id: "example", description: "Optionally names a chain with a cyclic, non-reversible structure as such an example.", weight: 2 },
+      ],
+    },
+    difficulty: 1.8,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["markov-chains", "conditional-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "markov-chains--transfer-pagerank",
+    conceptId: "markov-chains",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain how PageRank can be understood as finding the stationary distribution of a Markov chain, being " +
+      "specific about what the states and transition probabilities represent.",
+    rubric: {
+      elements: [
+        { id: "states-are-pages", description: "States: states are web pages; transitions follow a random outgoing link (with a damping or random-jump term).", weight: 3, required: true },
+        {
+          id: "stationary-as-importance",
+          description: "Explains the stationary probability of a page is interpreted as its long-run importance, since pages linked to by many high-rank pages accumulate more stationary mass.",
+          weight: 4,
+          required: true,
+        },
+        { id: "why-it-works", description: "Notes this only requires the chain to be irreducible and aperiodic, which the damping factor is added to guarantee.", weight: 2 },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.8,
+    expectedSeconds: 220,
+    prereqClosure: ["markov-chains", "conditional-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "markov-chains--transfer-mixing-time",
+    conceptId: "markov-chains",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Two chains share the same stationary distribution but one 'mixes' much faster than the other. Explain " +
+      "what mixing time measures, why two chains with identical stationary distributions can differ in it, and " +
+      "one practical consequence for someone using MCMC.",
+    rubric: {
+      elements: [
+        { id: "definition", description: "Mixing time measures how long it takes the chain's distribution, from a given start, to get close to the stationary distribution.", weight: 3, required: true },
+        {
+          id: "depends-on-transitions",
+          description: "Explains mixing time depends on the transition structure — how quickly probability mass can move between distant states — not just on the destination distribution; two chains can share a stationary distribution while one has much weaker connectivity.",
+          weight: 4,
+          required: true,
+        },
+        { id: "consequence", description: "Draws the MCMC consequence: a slow-mixing chain needs a much longer burn-in and more samples between draws for near-independent samples, even though both are eventually valid samplers.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.8,
+    expectedSeconds: 240,
+    prereqClosure: ["markov-chains", "conditional-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  // --- Hidden Markov Models (additional) --------------------------------------
+  {
+    id: "hmm--recall-name-forward-algorithm",
+    conceptId: "hmm",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem:
+      "The algorithm that efficiently computes P(observation sequence) by summing over all hidden state paths " +
+      "using dynamic programming is called:",
+    choices: [
+      { id: "a", text: "The forward algorithm", correct: true },
+      {
+        id: "b",
+        text: "The Viterbi algorithm",
+        correct: false,
+        misconception: { id: "confuses-forward-with-viterbi", description: "Viterbi finds the single most likely state sequence (a max), while the forward algorithm sums over all sequences.", blameConceptId: "hmm" },
+      },
+      {
+        id: "c",
+        text: "Baum–Welch",
+        correct: false,
+        misconception: { id: "confuses-forward-with-baumwelch", description: "Baum–Welch is the parameter-learning procedure, not the evaluation computation.", blameConceptId: "hmm" },
+      },
+      {
+        id: "d",
+        text: "Gradient descent",
+        correct: false,
+        misconception: { id: "confuses-forward-with-gradient-descent", description: "The evaluation problem has an exact dynamic-programming solution; it needs no iterative optimisation.", blameConceptId: "hmm" },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["hmm"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "hmm--recall-three-problems",
+    conceptId: "hmm",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "Name the three canonical problems associated with HMMs — evaluation, decoding, and learning — and the " +
+      "algorithm usually used for each.",
+    rubric: {
+      elements: [
+        { id: "evaluation", description: "Evaluation: the forward algorithm.", weight: 2, required: true },
+        { id: "decoding", description: "Decoding: the Viterbi algorithm.", weight: 2, required: true },
+        { id: "learning", description: "Learning: Baum–Welch.", weight: 2, required: true },
+      ],
+    },
+    difficulty: -1.4,
+    discrimination: 1.2,
+    expectedSeconds: 60,
+    prereqClosure: ["hmm", "markov-chains"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "hmm--apply-two-step-posterior",
+    conceptId: "hmm",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Mood is Happy or Sad, equally likely on day 1. P(Walk | Happy) = 0.6, P(Walk | Sad) = 0.1. Transitions: " +
+      "from Happy, stays Happy with probability 0.7; from Sad, stays Sad with probability 0.6. You observe a " +
+      "walk on day 1 only (no observation on day 2). What is P(Happy on day 2)? Give a decimal to three places.",
+    answerKey: 0.657,
+    tolerance: 0.01,
+    difficulty: 0.35,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["hmm", "conditional-probability", "joint-distribution", "markov-chains"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "hmm--apply-forward-recursion-setup",
+    conceptId: "hmm",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Write the recursive step of the forward algorithm: given alpha_t(i) for every state i at time t, express " +
+      "alpha_{t+1}(j) in terms of it.",
+    rubric: {
+      elements: [
+        {
+          id: "recursion",
+          description: "Gives alpha_{t+1}(j) = [sum over i of alpha_t(i)·transition(i→j)] · emission(observation_{t+1} | j).",
+          weight: 4,
+          required: true,
+        },
+        { id: "explains-terms", description: "Explains the bracket sums over all ways to have reached j through any prior state, and the emission term multiplies in the new evidence.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 0.95,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["hmm", "markov-chains", "conditional-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "hmm--explain-why-not-brute-force-forward",
+    conceptId: "hmm",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why computing P(observations) by summing the joint probability over every possible hidden state " +
+      "sequence directly is infeasible, and how the forward algorithm avoids that cost.",
+    rubric: {
+      elements: [
+        { id: "exponential-paths", description: "States with N states over T steps there are N^T sequences, exponential in T.", weight: 4, required: true },
+        {
+          id: "dp-reuse",
+          description: "Explains the forward algorithm reuses partial sums (alpha values) computed once per state per time step, collapsing exponentially many shared-prefix paths into O(N^2·T) work via the Markov property.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.35,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["hmm", "markov-chains"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "hmm--explain-viterbi-vs-forward-difference",
+    conceptId: "hmm",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "The forward algorithm and Viterbi have almost identical recursions, except sum replaces max. Explain " +
+      "precisely what each is computing and why that single operator swap changes the answer's meaning so much.",
+    rubric: {
+      elements: [
+        { id: "forward-sums", description: "Forward sums over all paths to get the total probability of the observations (a marginal).", weight: 3, required: true },
+        { id: "viterbi-maxes", description: "Viterbi takes the max over paths to find the single most probable path (and its probability).", weight: 3, required: true },
+        {
+          id: "why-different",
+          description: "Explains summing aggregates evidence across all explanations while maxing picks out one, so forward answers 'how likely is this data overall' and Viterbi answers 'what is the most likely explanation' — a class of many somewhat-likely paths can outweigh one single most-likely path.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.8,
+    expectedSeconds: 210,
+    prereqClosure: ["hmm", "markov-chains"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "hmm--transfer-baum-welch-alternation",
+    conceptId: "hmm",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "HMM parameter learning alternates between inferring, for the current parameters, a distribution over " +
+      "which hidden state sequence generated the data, and then re-estimating the transition and emission " +
+      "probabilities as if those inferred quantities were observed counts. Explain why this alternation, rather " +
+      "than direct maximization, is necessary, and what in principle guarantees each round does not make the " +
+      "fit worse.",
+    rubric: {
+      elements: [
+        {
+          id: "why-necessary",
+          description: "Explains the state sequence is never observed, so maximizing the likelihood directly requires marginalizing over an exponential number of hidden paths at every step, making direct optimization intractable in closed form.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "guarantee",
+          description: "Explains each round replaces an intractable direct maximization with a tractable surrogate built from the current best guess about the hidden sequence, and because the surrogate touches the true likelihood at the current parameters and is then improved, the true likelihood cannot decrease.",
+          weight: 4,
+          required: true,
+        },
+        { id: "name", description: "Optionally names this the Baum–Welch algorithm.", weight: 1 },
+      ],
+    },
+    difficulty: 2.15,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["hmm", "markov-chains"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "hmm--transfer-semi-markov-extension",
+    conceptId: "hmm",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A standard HMM implicitly assumes state durations are geometrically distributed. Explain where that " +
+      "assumption is hiding in the model, and why a hidden semi-Markov model relaxes it.",
+    rubric: {
+      elements: [
+        {
+          id: "where-hiding",
+          description: "Explains the transition matrix gives a constant self-transition probability at every step regardless of how long the chain has already stayed in the state, and that memoryless-per-step behaviour is exactly what produces a geometric duration distribution.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "relaxation",
+          description: "Explains a hidden semi-Markov model explicitly models the duration distribution for each state (allowing any shape, not just geometric), at the cost of extra bookkeeping since the pure Markov transition structure no longer suffices.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.9,
+    expectedSeconds: 250,
+    prereqClosure: ["hmm", "markov-chains"],
+    source: AUTHORED,
+    status: "live",
+  },
+  // --- Mixture Models and Latent Variables (additional) -----------------------
+  {
+    id: "mixtures--recall-name-of-weights",
+    conceptId: "mixture-models-and-latent-variables",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "In a K-component mixture, the mixing weights pi_1, ..., pi_K must satisfy:",
+    choices: [
+      { id: "a", text: "They are non-negative and sum to 1", correct: true },
+      {
+        id: "b",
+        text: "They must all be equal",
+        correct: false,
+        misconception: { id: "weights-assumed-equal", description: "The weights are estimated; nothing forces components to be equally common.", blameConceptId: "mixture-models-and-latent-variables" },
+      },
+      {
+        id: "c",
+        text: "They must sum to K",
+        correct: false,
+        misconception: { id: "weights-sum-wrong", description: "Confuses a normalized probability distribution over components with an unnormalized count.", blameConceptId: "mixture-models-and-latent-variables" },
+      },
+      {
+        id: "d",
+        text: "They can be negative as long as the resulting density stays positive",
+        correct: false,
+        misconception: { id: "weights-assumed-signed", description: "Mixing weights are themselves a probability distribution over Z, so each must be non-negative on its own.", blameConceptId: "mixture-models-and-latent-variables" },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["mixture-models-and-latent-variables"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mixtures--recall-generative-story",
+    conceptId: "mixture-models-and-latent-variables",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "Describe the two-step generative story a mixture model tells for producing one observation.",
+    rubric: {
+      elements: [
+        { id: "step1", description: "First draw a component label Z from the categorical mixing distribution.", weight: 2, required: true },
+        { id: "step2", description: "Then draw the observation X from the component distribution indexed by Z.", weight: 3, required: true },
+      ],
+    },
+    difficulty: -1.5,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["mixture-models-and-latent-variables"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mixtures--apply-three-component-marginal",
+    conceptId: "mixture-models-and-latent-variables",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A box has coins of three types in proportions 0.2, 0.3, 0.5, with heads probabilities 0.1, 0.5, 0.9 " +
+      "respectively. Draw a coin at random and flip it once. What is P(heads)? Give a decimal to three places.",
+    answerKey: 0.62,
+    tolerance: 0.005,
+    difficulty: 0.05,
+    discrimination: 1.4,
+    expectedSeconds: 100,
+    prereqClosure: ["mixture-models-and-latent-variables", "marginal-distribution", "joint-distribution"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mixtures--apply-three-component-responsibility",
+    conceptId: "mixture-models-and-latent-variables",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Same box (proportions 0.2, 0.3, 0.5; heads probabilities 0.1, 0.5, 0.9). Given heads was observed, what " +
+      "is the probability the coin was type 1? Give a decimal to three places.",
+    answerKey: 0.032,
+    tolerance: 0.005,
+    difficulty: 0.85,
+    discrimination: 1.6,
+    expectedSeconds: 160,
+    prereqClosure: ["mixture-models-and-latent-variables", "joint-distribution", "marginal-distribution"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mixtures--explain-identifiability-label-switching",
+    conceptId: "mixture-models-and-latent-variables",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Fitting a mixture by maximum likelihood gives parameters only up to a relabelling of the components " +
+      "('label switching'). Explain why this happens and what it does and does not mean for the fit's quality.",
+    rubric: {
+      elements: [
+        {
+          id: "why",
+          description: "Explains the likelihood is invariant to permuting the K component labels together with their parameters, since the mixture density (a sum) does not care about the order of its terms.",
+          weight: 4,
+          required: true,
+        },
+        { id: "not-a-flaw", description: "States this is a genuine symmetry of the model, not a defect of the fitting procedure.", weight: 3, required: true },
+        { id: "consequence", description: "Notes that comparing components across independent fits (or across MCMC samples) requires resolving the labelling first.", weight: 2 },
+      ],
+    },
+    difficulty: 1.2,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["mixture-models-and-latent-variables"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mixtures--explain-choosing-k",
+    conceptId: "mixture-models-and-latent-variables",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why maximizing likelihood alone cannot be used to choose the number of components K, and name " +
+      "one method that can.",
+    rubric: {
+      elements: [
+        {
+          id: "monotone-in-k",
+          description: "Explains a K-component mixture nests a K+1-component one (by duplicating or zero-weighting a component), so adding components can only weakly increase the maximized likelihood, always favouring more components up to overfitting.",
+          weight: 4,
+          required: true,
+        },
+        { id: "remedy", description: "Names a penalized or held-out criterion such as BIC, AIC, or cross-validated likelihood that trades off fit against complexity.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.75,
+    discrimination: 1.7,
+    expectedSeconds: 190,
+    prereqClosure: ["mixture-models-and-latent-variables"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mixtures--transfer-universal-approximation",
+    conceptId: "mixture-models-and-latent-variables",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain the sense in which a mixture with enough components can approximate essentially any smooth " +
+      "density arbitrarily well, and why this flexibility is also a practical danger.",
+    rubric: {
+      elements: [
+        { id: "approximation-claim", description: "States that increasing K and placing components appropriately lets the mixture approximate a wide class of densities to arbitrary accuracy, analogous to a basis expansion.", weight: 3, required: true },
+        {
+          id: "danger",
+          description: "Explains that with enough components a mixture can fit noise in a finite sample (memorizing rather than generalizing), so flexibility must be paired with a complexity control such as the K-selection criteria discussed elsewhere.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.05,
+    discrimination: 1.8,
+    expectedSeconds: 220,
+    prereqClosure: ["mixture-models-and-latent-variables"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "mixtures--transfer-nonparametric-mixture",
+    conceptId: "mixture-models-and-latent-variables",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A Dirichlet process mixture lets the effective number of components grow with the data rather than being " +
+      "fixed in advance. Explain, at a conceptual level, what problem this solves relative to a finite mixture " +
+      "with a fixed K.",
+    rubric: {
+      elements: [
+        { id: "fixed-k-problem", description: "States a finite mixture must commit to K before seeing how much structure the data actually supports, so getting K wrong either under- or over-fits.", weight: 4, required: true },
+        {
+          id: "dp-solution",
+          description: "Explains a Dirichlet process places a prior over an unbounded number of components, letting the posterior effectively determine how many components are supported by the observed data, so K is inferred rather than fixed.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.3,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["mixture-models-and-latent-variables"],
+    source: AUTHORED,
+    status: "live",
+  },
+  // --- EM Algorithm (additional) -----------------------------------------------
+  {
+    id: "em--recall-full-name",
+    conceptId: "em-algorithm",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What does 'EM' stand for?",
+    choices: [
+      { id: "a", text: "Expectation-Maximization", correct: true },
+      {
+        id: "b",
+        text: "Estimation-Marginalization",
+        correct: false,
+        misconception: { id: "wrong-expansion", description: "Misremembers the acronym's two words.", blameConceptId: "em-algorithm" },
+      },
+      {
+        id: "c",
+        text: "Exact Minimization",
+        correct: false,
+        misconception: { id: "wrong-expansion-2", description: "EM maximizes a likelihood-related bound; it is not framed as minimization, and it is not exact.", blameConceptId: "em-algorithm" },
+      },
+      {
+        id: "d",
+        text: "Empirical Maximization",
+        correct: false,
+        misconception: { id: "wrong-expansion-3", description: "Misremembers the first word of the acronym.", blameConceptId: "em-algorithm" },
+      },
+    ],
+    difficulty: -1.7,
+    discrimination: 1.1,
+    expectedSeconds: 15,
+    prereqClosure: ["em-algorithm"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "em--recall-when-used",
+    conceptId: "em-algorithm",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "In one sentence, describe the situation that calls for EM rather than direct maximum likelihood.",
+    rubric: {
+      elements: [
+        {
+          id: "setting",
+          description: "States EM is used when the model has latent/unobserved variables such that maximizing the observed-data likelihood directly is intractable, but maximizing the complete-data likelihood would be easy.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.3,
+    discrimination: 1.2,
+    expectedSeconds: 50,
+    prereqClosure: ["em-algorithm", "mle"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "em--apply-e-step-three-component",
+    conceptId: "em-algorithm",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "An E-step for a three-component mixture with equal weights (1/3 each) has component likelihoods 0.1, " +
+      "0.4, and 0.9 for one observation. What responsibility does the E-step assign to component 2? Give a " +
+      "decimal to three places.",
+    answerKey: 0.286,
+    tolerance: 0.01,
+    difficulty: 0.55,
+    discrimination: 1.5,
+    expectedSeconds: 130,
+    prereqClosure: ["em-algorithm", "mixture-models-and-latent-variables", "joint-distribution"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "em--apply-convergence-check",
+    conceptId: "em-algorithm",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem:
+      "Describe a practical stopping criterion for EM iterations, and explain why monitoring the parameters " +
+      "themselves is not by itself sufficient.",
+    rubric: {
+      elements: [
+        { id: "criterion", description: "States the standard criterion: stop when the observed-data log-likelihood's increase between iterations falls below a small threshold.", weight: 3, required: true },
+        {
+          id: "why-params-insufficient",
+          description: "Explains parameters can move slowly near a flat region while still improving meaningfully, or can be reparameterized (e.g. under label switching) without the likelihood changing, so tracking the likelihood is the more reliable signal.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.05,
+    discrimination: 1.5,
+    expectedSeconds: 160,
+    prereqClosure: ["em-algorithm", "mle"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "em--explain-jensen-connection",
+    conceptId: "em-algorithm",
+    format: "derivation",
+    cognitive: "explain",
+    channels: ["typed", "handwritten"],
+    stem:
+      "The EM lower bound can be derived by applying Jensen's inequality to the observed-data log-likelihood. " +
+      "Sketch how, and say which direction of Jensen's inequality is used.",
+    rubric: {
+      elements: [
+        {
+          id: "setup",
+          description: "Writes the log-likelihood as the log of an expectation, under some distribution q over the latent, of the complete-data likelihood divided by q.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "jensen",
+          description: "Applies concavity of log — Jensen's inequality for concave functions says the log of an expectation is at least the expectation of the log — to pull the log inside and produce the ELBO-style lower bound.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.35,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["em-algorithm", "mle", "mixture-models-and-latent-variables"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "em--explain-generalises-beyond-mixtures",
+    conceptId: "em-algorithm",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "EM is presented via mixture models, but it applies to any latent-variable model. Explain what property " +
+      "of a model is actually required for EM to be applicable, independent of what the latent variable " +
+      "represents.",
+    rubric: {
+      elements: [
+        {
+          id: "general-requirement",
+          description: "States the requirement: the complete-data log-likelihood (data and latents together) must be tractable to maximize (or take expectation of and maximize), even though the observed-data likelihood alone is not.",
+          weight: 4,
+          required: true,
+        },
+        { id: "examples", description: "Names at least one non-mixture example, e.g. HMMs, factor analysis, or missing-data problems generally.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["em-algorithm", "mle"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "em--transfer-hard-em-vs-soft-em",
+    conceptId: "em-algorithm",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "'Hard EM' replaces the E-step's soft responsibilities with a hard, winner-take-all assignment, turning " +
+      "the algorithm into something like K-means. Explain what guarantee this loses relative to standard (soft) " +
+      "EM.",
+    rubric: {
+      elements: [
+        {
+          id: "loses-monotonicity",
+          description: "Explains hard EM no longer performs the exact E-step maximization over the true expected complete-data log-likelihood, so the sandwich argument for the lower bound's tightness — and hence monotone improvement of the true likelihood — breaks.",
+          weight: 4,
+          required: true,
+        },
+        { id: "practical-note", description: "Notes hard EM can still be useful and faster, but without the same guarantee, and typically converges to a worse local optimum of the actual observed-data likelihood.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 2.0,
+    discrimination: 1.8,
+    expectedSeconds: 220,
+    prereqClosure: ["em-algorithm", "mle", "mixture-models-and-latent-variables"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "em--transfer-generalized-em",
+    conceptId: "em-algorithm",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Generalized EM (GEM) only requires the M-step to improve the lower bound, not maximize it exactly. " +
+      "Explain why the monotonicity guarantee survives this weakening, and when this variant is useful.",
+    rubric: {
+      elements: [
+        {
+          id: "guarantee-survives",
+          description: "Explains the sandwich argument only needs the M-step to raise the bound above its value at the E-step's tight point, not to find its maximum, so any improving M-step preserves the non-decrease of the true likelihood.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "when-useful",
+          description: "States GEM is useful when the exact M-step has no closed form and must itself be solved by an iterative method (e.g. one gradient step), letting EM's overall guarantee be kept even when each M-step is only partially optimized.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.3,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["em-algorithm", "mle"],
+    source: AUTHORED,
+    status: "live",
+  },
+  // --- Gaussian Mixture Models (additional) -----------------------------------
+  {
+    id: "gmm--recall-component-distribution",
+    conceptId: "gaussian-mixture-models",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "In a Gaussian mixture model, what distribution does each component use?",
+    choices: [
+      { id: "a", text: "A (multivariate) Normal distribution", correct: true },
+      {
+        id: "b",
+        text: "A uniform distribution",
+        correct: false,
+        misconception: { id: "wrong-component-dist", description: "Misidentifies the family of the component distribution.", blameConceptId: "gaussian-mixture-models" },
+      },
+      {
+        id: "c",
+        text: "A Bernoulli distribution",
+        correct: false,
+        misconception: { id: "wrong-component-dist-2", description: "Confuses a continuous GMM component with a distribution over binary outcomes.", blameConceptId: "gaussian-mixture-models" },
+      },
+      {
+        id: "d",
+        text: "A Poisson distribution",
+        correct: false,
+        misconception: { id: "wrong-component-dist-3", description: "Confuses a continuous GMM component with a distribution over counts.", blameConceptId: "gaussian-mixture-models" },
+      },
+    ],
+    difficulty: -1.5,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["gaussian-mixture-models"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "gmm--recall-fitting-method",
+    conceptId: "gaussian-mixture-models",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "Name the standard algorithm used to fit a GMM's parameters by maximum likelihood, and say which two " +
+      "quantities it alternates between updating.",
+    rubric: {
+      elements: [
+        { id: "names-em", description: "Names EM.", weight: 2, required: true },
+        { id: "alternates", description: "Alternates between the responsibilities (E-step) and the mixing weights, means, and covariances (M-step).", weight: 3, required: true },
+      ],
+    },
+    difficulty: -0.9,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["gaussian-mixture-models", "em-algorithm"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "gmm--apply-two-component-different-variance",
+    conceptId: "gaussian-mixture-models",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A one-dimensional GMM has equal mixing weights; component 1 has mean 0 and variance 1, component 2 has " +
+      "mean 4 and variance 4. For x = 2, what responsibility does component 1 receive? Give a decimal to three " +
+      "places.",
+    answerKey: 0.309,
+    tolerance: 0.01,
+    difficulty: 0.55,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["gaussian-mixture-models", "em-algorithm", "normal-distribution", "mixture-models-and-latent-variables"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "gmm--apply-covariance-types",
+    conceptId: "gaussian-mixture-models",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "GMM implementations offer covariance options such as 'spherical', 'diagonal', and 'full'. Rank these " +
+      "from fewest to most free parameters per component, and explain the modelling tradeoff choosing between " +
+      "them involves.",
+    rubric: {
+      elements: [
+        { id: "ranking", description: "Ranks spherical (1 parameter) below diagonal (d parameters) below full (d(d+1)/2 parameters).", weight: 3, required: true },
+        {
+          id: "tradeoff",
+          description: "Explains more flexible covariance fits more varied cluster shapes but needs more data per component to estimate reliably and risks overfitting or singularity, especially with few points per cluster.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.0,
+    discrimination: 1.5,
+    expectedSeconds: 160,
+    prereqClosure: ["gaussian-mixture-models", "covariance-matrix", "multivariate-normal"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "gmm--explain-initialization-sensitivity",
+    conceptId: "gaussian-mixture-models",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "handwritten"],
+    stem:
+      "GMM fits are known to be sensitive to initialization even more than plain K-means. Explain a mechanism " +
+      "specific to GMMs, beyond ordinary EM local optima, that makes bad initializations especially costly.",
+    rubric: {
+      elements: [
+        {
+          id: "variance-collapse-risk",
+          description: "Explains a poorly initialized component can end up owning very few or tightly clustered points, driving its estimated covariance toward singularity and its likelihood contribution toward the unbounded blow-up, effectively trapping the fit.",
+          weight: 4,
+          required: true,
+        },
+        { id: "remedy", description: "Names a mitigation, e.g. initializing means with K-means output, multiple restarts, or a variance floor/prior.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.5,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["gaussian-mixture-models", "em-algorithm", "mle"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "gmm--explain-bic-for-k",
+    conceptId: "gaussian-mixture-models",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain how BIC is used to choose the number of components K for a GMM, and why it penalizes K more " +
+      "heavily as the number of free parameters per additional component grows (e.g. full covariance versus " +
+      "spherical).",
+    rubric: {
+      elements: [
+        { id: "bic-formula-idea", description: "States BIC trades off maximized log-likelihood against a penalty proportional to the number of free parameters times log(n).", weight: 3, required: true },
+        {
+          id: "full-covariance-effect",
+          description: "Explains a full-covariance component contributes far more parameters than a spherical one, so the same increase in K adds a much larger penalty under full covariance, making BIC favor smaller K when covariances are unrestricted.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.9,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["gaussian-mixture-models", "covariance-matrix", "multivariate-normal"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "gmm--transfer-density-estimation-vs-clustering",
+    conceptId: "gaussian-mixture-models",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A GMM can be used either as a general-purpose density estimator or as a clustering method. Explain how " +
+      "the same fitted model supports both uses, and give a scenario where a GMM fits the density well but the " +
+      "components do not correspond to any meaningful 'clusters'.",
+    rubric: {
+      elements: [
+        { id: "shared-fit", description: "States the same fitted mixture supplies both a density (evaluating the fitted p(x)) and a clustering (taking the most probable component, or the responsibilities, per point).", weight: 3, required: true },
+        {
+          id: "counterexample",
+          description: "Gives a scenario where a single skewed or heavy-tailed true distribution is well-approximated by several overlapping components whose regions do not correspond to genuinely separate subpopulations — a basis-expansion device, not evidence of distinct groups.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.9,
+    expectedSeconds: 240,
+    prereqClosure: ["gaussian-mixture-models", "mixture-models-and-latent-variables"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "gmm--transfer-em-as-coordinate-ascent",
+    conceptId: "gaussian-mixture-models",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Show that GMM fitting by EM can be viewed as coordinate ascent on the ELBO of variational inference, " +
+      "alternating between optimizing over q (the responsibilities) and over the model parameters. Be specific " +
+      "about what plays the role of q.",
+    rubric: {
+      elements: [
+        {
+          id: "q-role",
+          description: "Identifies the E-step's responsibilities as exactly the optimal q — a per-observation categorical distribution over which component generated it — obtained by maximizing the ELBO over q with parameters fixed.",
+          weight: 4,
+          required: true,
+        },
+        { id: "m-step-role", description: "Identifies the M-step as maximizing the same ELBO over the model parameters with q fixed, which reduces to a weighted MLE.", weight: 4, required: true },
+        {
+          id: "conclusion",
+          description: "Concludes EM is exactly coordinate ascent on the ELBO with the latent-posterior family left completely unconstrained, so no variational approximation gap arises, unlike mean-field VI.",
+          weight: 2,
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.9,
+    expectedSeconds: 260,
+    prereqClosure: ["gaussian-mixture-models", "em-algorithm", "mixture-models-and-latent-variables"],
+    source: AUTHORED,
+    status: "live",
+  },
+  // --- Laplace Approximation (additional) --------------------------------------
+  {
+    id: "laplace--recall-what-it-approximates",
+    conceptId: "laplace-approximation",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The Laplace approximation is used to approximate:",
+    choices: [
+      { id: "a", text: "A complicated (often posterior) distribution, by a Normal centred at its mode", correct: true },
+      {
+        id: "b",
+        text: "A complicated function's integral by Monte Carlo sampling",
+        correct: false,
+        misconception: { id: "confuses-with-monte-carlo", description: "Confuses Laplace's deterministic quadratic-expansion approach with a sampling-based method.", blameConceptId: "laplace-approximation" },
+      },
+      {
+        id: "c",
+        text: "A dataset by its sample mean and variance",
+        correct: false,
+        misconception: { id: "confuses-with-summary-stats", description: "Confuses approximating a distribution's shape with summarizing raw data.", blameConceptId: "laplace-approximation" },
+      },
+      {
+        id: "d",
+        text: "A kernel by its Fourier transform",
+        correct: false,
+        misconception: { id: "confuses-with-fourier", description: "Confuses a local quadratic approximation with an unrelated spectral technique.", blameConceptId: "laplace-approximation" },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["laplace-approximation"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "laplace--recall-when-used",
+    conceptId: "laplace-approximation",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "In one sentence, describe the situation that calls for a Laplace approximation.",
+    rubric: {
+      elements: [
+        {
+          id: "setting",
+          description: "States it is used when a target distribution has no closed-form normalizing constant or summary but its mode is findable by optimization, and a quick Gaussian summary is wanted.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.4,
+    discrimination: 1.2,
+    expectedSeconds: 50,
+    prereqClosure: ["laplace-approximation", "mle"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "laplace--apply-exponential-posterior-mode",
+    conceptId: "laplace-approximation",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A posterior for lambda has log-density proportional to 4·log(lambda) − 3·lambda on lambda > 0. Where " +
+      "does the Laplace approximation place its centre? Give a decimal to three places.",
+    answerKey: 1.333,
+    tolerance: 0.01,
+    difficulty: 0.6,
+    discrimination: 1.5,
+    expectedSeconds: 160,
+    prereqClosure: ["laplace-approximation", "mle"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "laplace--apply-exponential-posterior-variance",
+    conceptId: "laplace-approximation",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Same posterior: log-density proportional to 4·log(lambda) − 3·lambda, with its mode at lambda = 4/3. " +
+      "What variance does the Laplace approximation assign? Give a decimal to three places.",
+    answerKey: 0.444,
+    tolerance: 0.01,
+    difficulty: 0.95,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["laplace-approximation", "mle", "variance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "laplace--explain-cost-relative-to-mcmc",
+    conceptId: "laplace-approximation",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why the Laplace approximation is far cheaper computationally than MCMC, and what specific step " +
+      "of Bayesian inference it substitutes an optimization for.",
+    rubric: {
+      elements: [
+        {
+          id: "substitutes-optimization",
+          description: "Explains it replaces characterising the posterior by sampling with a single optimization (finding the mode) plus one Hessian evaluation.",
+          weight: 4,
+          required: true,
+        },
+        { id: "cost-comparison", description: "Notes optimizing to a local mode is typically far cheaper than running a Markov chain long enough to mix and produce enough effective samples.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.3,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["laplace-approximation", "mle"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "laplace--explain-transform-then-approximate",
+    conceptId: "laplace-approximation",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A Laplace approximation applied directly to a variance parameter (which must be positive) can assign " +
+      "nontrivial probability to negative values. Explain why this happens and how reparameterizing (e.g. " +
+      "working with the log of the variance) fixes it.",
+    rubric: {
+      elements: [
+        {
+          id: "why",
+          description: "Explains a Normal approximation has support on the whole real line by construction, so approximating a constrained positive quantity directly with one necessarily puts some mass outside the constraint.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "fix",
+          description: "Explains applying the Laplace approximation to an unconstrained reparameterization (e.g. log variance) respects the constraint automatically, since exponentiating a Normal is always positive.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.85,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["laplace-approximation", "mle", "normal-distribution"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "laplace--transfer-model-evidence-approximation",
+    conceptId: "laplace-approximation",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "handwritten"],
+    stem:
+      "The Laplace approximation can also approximate the marginal likelihood (model evidence) itself, not " +
+      "just the posterior over parameters. Sketch how, and name the resulting well-known model-comparison " +
+      "criterion it underlies.",
+    rubric: {
+      elements: [
+        {
+          id: "idea",
+          description: "Explains that integrating a Laplace-approximated (Gaussian) unnormalized posterior in closed form gives an explicit approximation to the evidence, involving the maximized likelihood, the prior at the mode, and a term from the Hessian's determinant penalizing model complexity.",
+          weight: 4,
+          required: true,
+        },
+        { id: "names-criterion", description: "Names the Bayesian Information Criterion (BIC) as the crude large-sample limit of this approximation.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 2.35,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["laplace-approximation", "mle", "multivariate-normal"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "laplace--transfer-vs-full-bayes",
+    conceptId: "laplace-approximation",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain what information a full Bayesian treatment (integrating over the posterior exactly, e.g. by " +
+      "MCMC) preserves that the Laplace approximation, even when it captures the mode and local curvature " +
+      "correctly, cannot — and when that lost information actually matters for downstream decisions.",
+    rubric: {
+      elements: [
+        {
+          id: "loses-global-shape",
+          description: "Explains a single local Gaussian summary cannot represent global features such as multiple modes, heavy tails, or strong nonlinear correlation structure that a full posterior may have even when locally well-approximated near its main mode.",
+          weight: 4,
+          required: true,
+        },
+        { id: "when-matters", description: "Gives a case where this matters, e.g. decisions sensitive to tail risk, or downstream computations that integrate over regions the Gaussian systematically mis-weights.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.9,
+    expectedSeconds: 250,
+    prereqClosure: ["laplace-approximation", "multivariate-normal", "mle"],
+    source: AUTHORED,
+    status: "live",
+  },
+  // --- Variational Inference: ELBO (additional) --------------------------------
+  {
+    id: "elbo--recall-full-name",
+    conceptId: "variational-inference-elbo",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What does 'ELBO' stand for?",
+    choices: [
+      { id: "a", text: "Evidence Lower BOund", correct: true },
+      {
+        id: "b",
+        text: "Estimated Likelihood Bayes Objective",
+        correct: false,
+        misconception: { id: "wrong-acronym", description: "Misremembers the acronym's words.", blameConceptId: "variational-inference-elbo" },
+      },
+      {
+        id: "c",
+        text: "Expected Log-Bayes Objective",
+        correct: false,
+        misconception: { id: "wrong-acronym-2", description: "Misremembers the acronym's words.", blameConceptId: "variational-inference-elbo" },
+      },
+      {
+        id: "d",
+        text: "Exact Lower Bound Optimum",
+        correct: false,
+        misconception: { id: "wrong-acronym-3", description: "The ELBO is a lower bound, not the optimum of one, and 'exact' is wrong — it is an approximation device.", blameConceptId: "variational-inference-elbo" },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.1,
+    expectedSeconds: 15,
+    prereqClosure: ["variational-inference-elbo"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "elbo--recall-what-is-optimised",
+    conceptId: "variational-inference-elbo",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "In one sentence, say what the ELBO is a function of, and over what it is maximised.",
+    rubric: {
+      elements: [
+        { id: "arguments", description: "States it is a functional of the approximate distribution q, depending also on the model and observed data.", weight: 2, required: true },
+        { id: "maximised-over", description: "States it is maximised over q, ranging over some tractable family.", weight: 3, required: true },
+      ],
+    },
+    difficulty: -1.4,
+    discrimination: 1.2,
+    expectedSeconds: 40,
+    prereqClosure: ["variational-inference-elbo", "kl-divergence"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "elbo--apply-gap-arithmetic-two",
+    conceptId: "variational-inference-elbo",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "For a fitted q, the ELBO evaluates to −220 and the KL divergence from q to the true posterior is 3.2. " +
+      "What is the log evidence? Give a decimal to one place.",
+    answerKey: -216.8,
+    tolerance: 0.1,
+    difficulty: 0.15,
+    discrimination: 1.4,
+    expectedSeconds: 100,
+    prereqClosure: ["variational-inference-elbo", "kl-divergence"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "elbo--apply-monte-carlo-elbo",
+    conceptId: "variational-inference-elbo",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "The expected-log-likelihood term in the ELBO usually has no closed form. Describe how it is estimated " +
+      "in practice, and what randomness that estimate introduces into training.",
+    rubric: {
+      elements: [
+        {
+          id: "mc-estimate",
+          description: "States it is estimated by drawing one or more samples of the latent from q and averaging the log-joint (or log-likelihood) at those samples — a Monte Carlo estimate.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "noisy-gradient",
+          description: "Notes this makes the resulting gradient noisy or stochastic, requiring stochastic-optimization techniques and, for continuous latents, often the reparameterization trick to get a usable gradient through the sampling step.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.85,
+    discrimination: 1.6,
+    expectedSeconds: 170,
+    prereqClosure: ["variational-inference-elbo", "kl-divergence", "expectation"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "elbo--explain-family-choice-tradeoff",
+    conceptId: "variational-inference-elbo",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain the tradeoff involved in choosing the variational family for q — say, a fully factorized " +
+      "(mean-field) family versus a richer family with correlations.",
+    rubric: {
+      elements: [
+        { id: "tractability", description: "States a simpler family (e.g. mean-field) makes the ELBO and its optimization more tractable, often with closed-form updates.", weight: 3, required: true },
+        {
+          id: "approximation-quality",
+          description: "Explains a richer family can represent the true posterior's dependence structure more faithfully, closing the KL gap further, at the cost of a harder optimization and possibly no closed form.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.5,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["variational-inference-elbo", "kl-divergence"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "elbo--explain-coordinate-ascent-mean-field",
+    conceptId: "variational-inference-elbo",
+    format: "derivation",
+    cognitive: "explain",
+    channels: ["typed", "handwritten"],
+    stem:
+      "For a mean-field family, coordinate ascent variational inference (CAVI) updates one factor of q at a " +
+      "time holding the others fixed, and each update has a known closed form. Explain, at a high level, why " +
+      "fixing all-but-one factor turns the ELBO into something with a tractable optimum for that factor.",
+    rubric: {
+      elements: [
+        {
+          id: "conditional-form",
+          description: "Explains that with the other factors of q fixed, the ELBO as a function of the remaining factor reduces (up to a constant) to minus the KL divergence from that factor to a specific unnormalized density built from the expected log-joint under the other fixed factors, and KL is minimized by matching that density exactly.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "closed-form-result",
+          description: "Concludes the optimal update for that factor is proportional to the exponentiated expected log-joint (holding the rest of q fixed), which is often a recognizable, easy-to-normalize distribution for common model families.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.0,
+    discrimination: 1.8,
+    expectedSeconds: 220,
+    prereqClosure: ["variational-inference-elbo", "kl-divergence", "expectation"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "elbo--transfer-stochastic-vi",
+    conceptId: "variational-inference-elbo",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Stochastic variational inference applies the ELBO framework to datasets too large to process in one " +
+      "batch, using noisy gradients from mini-batches. Explain why the ELBO's structure — a sum over data " +
+      "points of per-point terms, plus one global regularization term — makes this possible.",
+    rubric: {
+      elements: [
+        {
+          id: "sum-structure",
+          description: "Explains the expected log-likelihood term decomposes as a sum over independent data points, so an unbiased estimate of the whole sum can be built from a mini-batch by rescaling the mini-batch average by the total dataset size.",
+          weight: 4,
+          required: true,
+        },
+        { id: "rest-is-global", description: "Notes the KL-to-prior term is typically over global parameters and can be included exactly or subsampled consistently, keeping the overall gradient estimate unbiased.", weight: 3, required: true },
+        { id: "consequence", description: "Draws the consequence: stochastic gradient ascent on this noisy but unbiased objective scales VI to datasets a batch method could never fit into memory or wall-clock budget.", weight: 2 },
+      ],
+    },
+    difficulty: 2.25,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["variational-inference-elbo", "kl-divergence", "expectation"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "elbo--transfer-alpha-divergence-generalisation",
+    conceptId: "variational-inference-elbo",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "KL divergence is one member of a broader family of divergences (e.g. alpha-divergences) that could in " +
+      "principle define a generalized ELBO-like objective. Explain, conceptually, what changes about the " +
+      "resulting approximation's behaviour as the divergence is varied between mode-seeking and mass-covering " +
+      "extremes.",
+    rubric: {
+      elements: [
+        {
+          id: "spectrum",
+          description: "Explains different divergences weight the mismatch between q and the true posterior differently across the space, producing a spectrum from strongly mode-seeking (concentrating on one high-density region) to strongly mass-covering (spreading q to avoid missing any region where the posterior has mass).",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "consequence",
+          description: "Draws the consequence for uncertainty quantification: a mode-seeking choice tends to underestimate variance and ignore secondary modes, while a mass-covering choice tends to inflate variance, so the choice of divergence is itself a modeling decision with real downstream effects on calibration.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.45,
+    discrimination: 1.9,
+    expectedSeconds: 250,
+    prereqClosure: ["variational-inference-elbo", "kl-divergence"],
+    source: AUTHORED,
+    status: "live",
+  },
+  // --- Variational Inference: VAEs (additional) --------------------------------
+  {
+    id: "vae--recall-full-name",
+    conceptId: "variational-inference-vaes",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What does 'VAE' stand for?",
+    choices: [
+      { id: "a", text: "Variational Autoencoder", correct: true },
+      {
+        id: "b",
+        text: "Vector Autoregressive Encoder",
+        correct: false,
+        misconception: { id: "wrong-acronym", description: "Misremembers the acronym's words.", blameConceptId: "variational-inference-vaes" },
+      },
+      {
+        id: "c",
+        text: "Value-Aligned Estimator",
+        correct: false,
+        misconception: { id: "wrong-acronym-2", description: "Misremembers the acronym's words.", blameConceptId: "variational-inference-vaes" },
+      },
+      {
+        id: "d",
+        text: "Variance-Adjusted Estimator",
+        correct: false,
+        misconception: { id: "wrong-acronym-3", description: "Misremembers the acronym's words.", blameConceptId: "variational-inference-vaes" },
+      },
+    ],
+    difficulty: -1.5,
+    discrimination: 1.1,
+    expectedSeconds: 15,
+    prereqClosure: ["variational-inference-vaes"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "vae--recall-prior-choice",
+    conceptId: "variational-inference-vaes",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "What prior is standardly placed on the latent code in a VAE, and why is that choice convenient?",
+    rubric: {
+      elements: [
+        { id: "names-prior", description: "A standard multivariate Normal (mean 0, identity covariance).", weight: 2, required: true },
+        { id: "convenience", description: "It is easy to sample from, and its KL divergence to a Normal encoder output has a simple closed form.", weight: 3, required: true },
+      ],
+    },
+    difficulty: -1.0,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["variational-inference-vaes", "variational-inference-elbo"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "vae--apply-kl-nonzero-mean-and-scale",
+    conceptId: "variational-inference-vaes",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "For a one-dimensional latent with a standard Normal prior, the KL term is 0.5·(mu² + sigma² − " +
+      "log(sigma²) − 1). The encoder outputs mu = 0.5 and sigma = 2 for some input. What is the KL term? Give " +
+      "a decimal to three places.",
+    answerKey: 0.932,
+    tolerance: 0.01,
+    difficulty: 1.5,
+    discrimination: 1.5,
+    expectedSeconds: 140,
+    prereqClosure: ["variational-inference-vaes", "kl-divergence"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "vae--apply-latent-dim-choice",
+    conceptId: "variational-inference-vaes",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain the tradeoff involved in choosing the dimensionality of a VAE's latent space, in terms of the " +
+      "reconstruction and KL terms of the ELBO.",
+    rubric: {
+      elements: [
+        { id: "too-small", description: "Too few dimensions bottleneck the information the decoder can use, hurting reconstruction quality.", weight: 3, required: true },
+        {
+          id: "too-large",
+          description: "Too many dimensions give the encoder room to help reconstruction, but also more room for the KL term to be satisfied cheaply in unused dimensions without truly using the latent space efficiently, and risks overfitting.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.1,
+    discrimination: 1.5,
+    expectedSeconds: 160,
+    prereqClosure: ["variational-inference-vaes", "variational-inference-elbo"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "vae--explain-beta-vae",
+    conceptId: "variational-inference-vaes",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "A beta-VAE multiplies the KL term in the ELBO by a factor beta > 1. Explain what effect this has on the " +
+      "latent representation, and what is sacrificed to get it.",
+    rubric: {
+      elements: [
+        {
+          id: "effect",
+          description: "Explains upweighting the KL term pushes the encoder's outputs harder toward the (typically factorized) prior, tending to encourage a more disentangled, compressed latent representation where dimensions align more with independent factors of variation.",
+          weight: 4,
+          required: true,
+        },
+        { id: "cost", description: "Explains this trades away reconstruction quality, since the objective no longer optimizes the true ELBO or log-likelihood bound.", weight: 4, required: true },
+      ],
+    },
+    difficulty: 1.85,
+    discrimination: 1.7,
+    expectedSeconds: 190,
+    prereqClosure: ["variational-inference-vaes", "variational-inference-elbo", "kl-divergence"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "vae--explain-decoder-variance-role",
+    conceptId: "variational-inference-vaes",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "A Gaussian decoder's output variance is often fixed rather than learned. Explain what role that fixed " +
+      "variance plays in the ELBO's reconstruction term, and what happens to training if it is set too small.",
+    rubric: {
+      elements: [
+        {
+          id: "role",
+          description: "Explains the fixed decoder variance sets the relative weight of the reconstruction term versus the KL term (a Gaussian log-likelihood scales inversely with variance), effectively playing the same role as a manually chosen beta.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "too-small",
+          description: "Explains too small a fixed variance makes the reconstruction term dominate overwhelmingly, so the optimizer chases near-perfect reconstruction and is barely penalized for a poorly regularized, uninformative-to-the-prior latent space.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.05,
+    discrimination: 1.8,
+    expectedSeconds: 210,
+    prereqClosure: ["variational-inference-vaes", "variational-inference-elbo"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "vae--transfer-vs-normalizing-flows",
+    conceptId: "variational-inference-vaes",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Normalizing flows model a density by an invertible, differentiable transformation of a simple base " +
+      "distribution, with an exact (not lower-bounded) log-likelihood. Explain what a VAE gives up relative to " +
+      "a flow, and what it gains in exchange.",
+    rubric: {
+      elements: [
+        { id: "gives-up", description: "Explains a VAE only ever optimizes a lower bound on the log-likelihood, never the exact log-likelihood, because its encoder-decoder structure is not invertible or dimension-preserving.", weight: 4, required: true },
+        {
+          id: "gains",
+          description: "Explains the VAE buys a genuinely lower-dimensional latent space enabling a meaningful bottleneck representation, and no architectural requirement that every layer be invertible with a tractable Jacobian, freeing decoder architecture choices a flow could not easily accommodate.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.9,
+    expectedSeconds: 240,
+    prereqClosure: ["variational-inference-vaes", "variational-inference-elbo"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "vae--transfer-hierarchical-latents",
+    conceptId: "variational-inference-vaes",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A hierarchical VAE stacks several layers of latent variables (a latent generating another latent, " +
+      "generating the data). Explain what limitation of a single-layer VAE this addresses, and what new " +
+      "difficulty it introduces for the ELBO's KL term.",
+    rubric: {
+      elements: [
+        {
+          id: "limitation-addressed",
+          description: "Explains a single Gaussian layer may be too limited to capture genuinely multi-scale structure in the data, so stacking layers gives the approximate posterior more expressive power overall.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "new-difficulty",
+          description: "Explains the KL term must now be computed or estimated across the whole chain of latents, and posterior collapse can occur independently at each layer, especially higher, more abstract layers, compounding the free-bits/annealing issues from posterior collapse.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.55,
+    discrimination: 1.9,
+    expectedSeconds: 250,
+    prereqClosure: ["variational-inference-vaes", "variational-inference-elbo", "kl-divergence"],
+    source: AUTHORED,
+    status: "live",
+  },
+  // --- Gaussian Process (additional) -------------------------------------------
+  {
+    id: "gp--recall-what-it-is",
+    conceptId: "gaussian-process",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "A Gaussian process is best described as:",
+    choices: [
+      { id: "a", text: "A distribution over functions, such that any finite set of function values is jointly Normal", correct: true },
+      {
+        id: "b",
+        text: "A single random variable that is Normally distributed",
+        correct: false,
+        misconception: { id: "confuses-with-single-normal", description: "Confuses a distribution over an entire function with a distribution over one number.", blameConceptId: "gaussian-process" },
+      },
+      {
+        id: "c",
+        text: "A neural network with Gaussian-initialized weights",
+        correct: false,
+        misconception: { id: "confuses-with-nn-init", description: "Confuses a nonparametric prior over functions with a weight-initialization scheme.", blameConceptId: "gaussian-process" },
+      },
+      {
+        id: "d",
+        text: "A method for generating Gaussian random numbers",
+        correct: false,
+        misconception: { id: "confuses-with-rng", description: "Confuses a probabilistic model over functions with a random-number generator.", blameConceptId: "gaussian-process" },
+      },
+    ],
+    difficulty: -1.7,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["gaussian-process"],
+    source: GPML,
+    status: "live",
+  },
+  {
+    id: "gp--recall-hyperparameters",
+    conceptId: "gaussian-process",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "Name two hyperparameters a typical kernel (e.g. the squared-exponential kernel) has, and briefly say " +
+      "what each controls.",
+    rubric: {
+      elements: [
+        { id: "lengthscale", description: "A length-scale, controlling how quickly correlation decays with distance.", weight: 2, required: true },
+        { id: "variance", description: "A signal variance (amplitude), controlling the overall scale of function values.", weight: 2, required: true },
+      ],
+    },
+    difficulty: -1.1,
+    discrimination: 1.2,
+    expectedSeconds: 50,
+    prereqClosure: ["gaussian-process", "kernel"],
+    source: GPML,
+    status: "live",
+  },
+  {
+    id: "gp--apply-posterior-mean-with-noise",
+    conceptId: "gaussian-process",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A zero-mean GP has kernel k(x, x') = exp(−(x − x')²/2). You observe a noisy value y(0) = 2 with " +
+      "observation noise variance 1. What is the posterior mean at x = 1? Give a decimal to three places.",
+    answerKey: 0.607,
+    tolerance: 0.01,
+    difficulty: 0.75,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["gaussian-process", "multivariate-normal", "kernel", "covariance-matrix"],
+    source: GPML,
+    status: "live",
+  },
+  {
+    id: "gp--apply-effect-of-lengthscale",
+    conceptId: "gaussian-process",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain, without computing anything, how increasing the kernel's length-scale changes GP predictions " +
+      "away from the observed data points.",
+    rubric: {
+      elements: [
+        { id: "smoother", description: "States larger length-scale means the kernel treats farther-apart points as more correlated, producing smoother functions.", weight: 3, required: true },
+        { id: "slower-reversion", description: "Predictions revert to the prior mean more slowly moving away from observed points, and the posterior variance grows more slowly with distance.", weight: 3, required: true },
+        { id: "underfit-risk", description: "Notes an overly large length-scale can miss genuine local structure, just as an overly small one overfits to noise.", weight: 2 },
+      ],
+    },
+    difficulty: 1.4,
+    discrimination: 1.5,
+    expectedSeconds: 160,
+    prereqClosure: ["gaussian-process", "kernel"],
+    source: GPML,
+    status: "live",
+  },
+  {
+    id: "gp--explain-marginal-likelihood-for-hyperparameters",
+    conceptId: "gaussian-process",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "GP hyperparameters (like length-scale) are typically chosen by maximizing the marginal likelihood " +
+      "rather than by cross-validation. Explain what the marginal likelihood automatically trades off, without " +
+      "needing a held-out set.",
+    rubric: {
+      elements: [
+        {
+          id: "tradeoff",
+          description: "Explains the log marginal likelihood decomposes into a data-fit term and a complexity-penalty term (from the covariance matrix's determinant, penalizing overly flexible or overconfident kernels), balancing fit against complexity automatically using only the training data.",
+          weight: 4,
+          required: true,
+        },
+        { id: "why-no-cv-needed", description: "Notes this Occam's-razor-like penalty is built into the marginal likelihood itself, unlike a plain likelihood, which is why no separate held-out set is required.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.85,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["gaussian-process", "multivariate-normal", "kernel"],
+    source: GPML,
+    status: "live",
+  },
+  {
+    id: "gp--explain-kernel-encodes-assumptions",
+    conceptId: "gaussian-process",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Two different kernels (say, squared-exponential vs. Matérn) fit to the same data can produce visibly " +
+      "different extrapolations far from the observed points, even if they fit the observed points equally " +
+      "well. Explain why, tying your answer to what a kernel actually specifies.",
+    rubric: {
+      elements: [
+        {
+          id: "kernel-specifies-smoothness",
+          description: "Explains the kernel encodes prior assumptions about function smoothness or regularity, which constrains behavior everywhere, including regions with no data to constrain it empirically.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "extrapolation-driven-by-prior",
+          description: "Explains that far from observed points predictions revert toward the prior, so it is the kernel's structural assumptions, not the data, that determine extrapolation behavior there.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.8,
+    expectedSeconds: 220,
+    prereqClosure: ["gaussian-process", "kernel"],
+    source: GPML,
+    status: "live",
+  },
+  {
+    id: "gp--transfer-bayesian-optimization",
+    conceptId: "gaussian-process",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain how a GP's posterior mean and variance are combined into an acquisition function for Bayesian " +
+      "optimization, and why having both quantities, not just the mean, is essential to the method working " +
+      "well.",
+    rubric: {
+      elements: [
+        {
+          id: "acquisition-idea",
+          description: "Explains an acquisition function combines the predicted mean (exploitation) with the predicted uncertainty (exploration: where the model is unsure and evaluating would be informative).",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-both-needed",
+          description: "Explains optimizing on the mean alone would just repeatedly query near the current best-known point and might miss a better unexplored region, since the model can be confidently wrong where it has no data — the variance term drives exploration there.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.45,
+    discrimination: 1.8,
+    expectedSeconds: 240,
+    prereqClosure: ["gaussian-process", "multivariate-normal", "kernel"],
+    source: GPML,
+    status: "live",
+  },
+  {
+    id: "gp--transfer-sparse-approximation-tradeoff",
+    conceptId: "gaussian-process",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A sparse GP approximation summarizes the training data by a smaller set of 'inducing points', reducing " +
+      "the cubic-cost bottleneck. Explain what is being approximated relative to the exact GP posterior, and " +
+      "how the number of inducing points controls the accuracy-versus-cost tradeoff.",
+    rubric: {
+      elements: [
+        {
+          id: "what-approximated",
+          description: "Explains the exact posterior (which conditions on all n training points, at cubic cost) is replaced by a posterior conditioned through a smaller set of m << n inducing points chosen or optimized to summarize the full dataset, at lower cost.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "tradeoff",
+          description: "Explains increasing m brings the approximation closer to the exact GP posterior (recovering it exactly as m approaches n) at increasing computational cost, so m is chosen to balance fidelity against scalability.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.9,
+    expectedSeconds: 250,
+    prereqClosure: ["gaussian-process", "kernel", "invertible-matrices"],
+    source: GPML,
+    status: "live",
+  },
+  // --- Reproducing Kernel Hilbert Space (additional) ---------------------------
+  {
+    id: "rkhs--recall-full-name",
+    conceptId: "rkhs",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What does 'RKHS' stand for?",
+    choices: [
+      { id: "a", text: "Reproducing Kernel Hilbert Space", correct: true },
+      {
+        id: "b",
+        text: "Random Kernel Hypothesis Space",
+        correct: false,
+        misconception: { id: "wrong-expansion", description: "Misremembers the acronym's words.", blameConceptId: "rkhs" },
+      },
+      {
+        id: "c",
+        text: "Regularized Kernel Hyperplane Solver",
+        correct: false,
+        misconception: { id: "wrong-expansion-2", description: "Misremembers the acronym's words.", blameConceptId: "rkhs" },
+      },
+      {
+        id: "d",
+        text: "Restricted Kernel Hilbert Set",
+        correct: false,
+        misconception: { id: "wrong-expansion-3", description: "Misremembers the acronym's words.", blameConceptId: "rkhs" },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["rkhs"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "rkhs--recall-kernel-slice",
+    conceptId: "rkhs",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "What is meant by a 'kernel slice' at a point x, written k(x, ·)?",
+    rubric: {
+      elements: [
+        { id: "definition", description: "It is the function of one remaining argument obtained by fixing the first argument of the kernel to x — an element of the RKHS itself.", weight: 3, required: true },
+      ],
+    },
+    difficulty: -1.2,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["rkhs", "kernel"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "rkhs--apply-linear-kernel-space",
+    conceptId: "rkhs",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "For the linear kernel k(x, x') = x·x' on R^d, identify the RKHS explicitly — what space of functions it " +
+      "is and what its norm is — and verify the reproducing property in this simple case.",
+    rubric: {
+      elements: [
+        { id: "identifies-space", description: "States the RKHS is the space of linear functions f(x) = w·x for w in R^d, with the RKHS norm equal to the Euclidean norm of w.", weight: 3, required: true },
+        {
+          id: "verify",
+          description: "Verifies that the kernel slice at x is the function x' -> x·x', whose inner product with f(x') = w·x' equals w·x = f(x), matching the reproducing property directly.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.5,
+    discrimination: 1.4,
+    expectedSeconds: 150,
+    prereqClosure: ["rkhs", "kernel", "dot-product"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "rkhs--apply-valid-kernel-check",
+    conceptId: "rkhs",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "State Mercer's condition for k to be a valid kernel (one that admits an RKHS), and explain in one " +
+      "sentence why this condition is what the RKHS construction relies on.",
+    rubric: {
+      elements: [
+        { id: "condition", description: "States the kernel matrix formed by evaluating k at any finite set of points must be symmetric and positive semi-definite.", weight: 3, required: true },
+        { id: "why-relied-on", description: "Explains positive semi-definiteness is exactly what guarantees the resulting bilinear form behaves like a genuine inner product, which the whole Hilbert-space construction needs.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.1,
+    discrimination: 1.5,
+    expectedSeconds: 160,
+    prereqClosure: ["rkhs", "kernel", "mercers-theorem"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "rkhs--explain-why-not-every-function-space-works",
+    conceptId: "rkhs",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Not every space of functions can be given an inner product making it a valid RKHS for some kernel. " +
+      "Explain, using the point-evaluation requirement, what rules a space like L² out.",
+    rubric: {
+      elements: [
+        {
+          id: "l2-not-pointwise",
+          description: "Explains L² identifies functions that differ only on a measure-zero set, so 'the value at a point x' is not even a well-defined functional on L².",
+          weight: 4,
+          required: true,
+        },
+        { id: "rkhs-requirement", description: "Contrasts this with an RKHS, where by definition every point evaluation is a well-defined, continuous linear functional — a genuinely restrictive condition.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.7,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["rkhs", "kernel"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "rkhs--explain-kernel-trick-mechanism",
+    conceptId: "rkhs",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Explain precisely what the 'kernel trick' substitutes for what, and why that substitution is licensed " +
+      "by the RKHS construction rather than being a computational shortcut taken on faith.",
+    rubric: {
+      elements: [
+        { id: "substitution", description: "States the trick replaces an explicit inner product of feature-mapped inputs, phi(x)·phi(x'), with a direct kernel evaluation k(x, x'), often avoiding ever computing phi.", weight: 3, required: true },
+        {
+          id: "licensed-by-rkhs",
+          description: "Explains RKHS theory supplies an actual feature map (the canonical map x -> k(x, ·)) and an actual inner product space for which this equality is a theorem — the reproducing property applied to two slices — not merely a convenient assumption.",
+          weight: 4,
+          required: true,
+        },
+        { id: "practical-payoff", description: "Notes this lets algorithms expressed only via inner products run in implicit, possibly infinite-dimensional feature spaces at the cost of one kernel evaluation.", weight: 2 },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["rkhs", "kernel", "dot-product"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "rkhs--transfer-svm-margin",
+    conceptId: "rkhs",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "The SVM margin is defined as 2/||w|| in feature space. Explain, using the RKHS norm, why maximizing the " +
+      "margin is exactly a smoothness-penalizing regularizer, connecting this to the representer theorem.",
+    rubric: {
+      elements: [
+        {
+          id: "norm-as-smoothness",
+          description: "Explains that in the RKHS view, ||w|| measures the same kind of roughness/complexity discussed for kernel ridge regression, so maximizing margin (minimizing ||w||) minimizes that complexity measure.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "representer-connection",
+          description: "Connects this to the representer theorem: since the optimal decision function again lies in the span of kernel slices at the training points, the infinite-dimensional margin-maximization problem reduces to a finite quadratic program over the training points' coefficients.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.35,
+    discrimination: 1.9,
+    expectedSeconds: 240,
+    prereqClosure: ["rkhs", "kernel"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "rkhs--transfer-mmd",
+    conceptId: "rkhs",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Maximum Mean Discrepancy (MMD) measures the distance between two distributions by embedding each into " +
+      "an RKHS as a 'mean embedding' and comparing the embeddings' distance. Explain at a high level why the " +
+      "RKHS norm gives a meaningful way to compare distributions, and what property of the kernel is needed for " +
+      "MMD to be zero only when the distributions are identical.",
+    rubric: {
+      elements: [
+        {
+          id: "embedding-idea",
+          description: "Explains the mean embedding of a distribution is the RKHS-norm average of the kernel slices at points drawn from it, and MMD is the RKHS distance between two such embeddings, effectively comparing all the features the kernel implicitly represents rather than a fixed finite statistic.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "characteristic-kernel",
+          description: "States the kernel must be 'characteristic' — the embedding map must be injective on the space of distributions — for MMD to vanish exactly when the two distributions coincide.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.55,
+    discrimination: 1.9,
+    expectedSeconds: 250,
+    prereqClosure: ["rkhs", "kernel"],
+    source: AUTHORED,
+    status: "live",
+  },
+  // --- Wasserstein Distance (additional) ---------------------------------------
+  {
+    id: "wasserstein--recall-alt-name",
+    conceptId: "wasserstein-distance",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The Wasserstein distance is also commonly known as the:",
+    choices: [
+      { id: "a", text: "Earth mover's distance", correct: true },
+      {
+        id: "b",
+        text: "Total variation distance",
+        correct: false,
+        misconception: { id: "confuses-with-tv", description: "Confuses a transport-cost distance with the total variation metric.", blameConceptId: "wasserstein-distance" },
+      },
+      {
+        id: "c",
+        text: "Bhattacharyya distance",
+        correct: false,
+        misconception: { id: "confuses-with-bhattacharyya", description: "Confuses Wasserstein with an overlap-based similarity measure.", blameConceptId: "wasserstein-distance" },
+      },
+      {
+        id: "d",
+        text: "Hellinger distance",
+        correct: false,
+        misconception: { id: "confuses-with-hellinger", description: "Confuses Wasserstein with a different, non-transport-based divergence.", blameConceptId: "wasserstein-distance" },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["wasserstein-distance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "wasserstein--recall-ground-metric",
+    conceptId: "wasserstein-distance",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "What is a 'ground metric' in the definition of Wasserstein distance, and why is it needed?",
+    rubric: {
+      elements: [
+        { id: "definition", description: "It is the distance function on the underlying space that measures the cost of moving one unit of mass from one point to another.", weight: 3, required: true },
+        { id: "why-needed", description: "Without it there is no notion of how far mass travels, so the transport cost cannot be defined.", weight: 2, required: true },
+      ],
+    },
+    difficulty: -1.5,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["wasserstein-distance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "wasserstein--apply-two-point-masses-scaled",
+    conceptId: "wasserstein-distance",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "P places all its probability at the point −2; Q places all of its at the point 5. What is the 1-Wasserstein distance between them?",
+    answerKey: 7,
+    tolerance: 0.01,
+    difficulty: -0.05,
+    discrimination: 1.3,
+    expectedSeconds: 90,
+    prereqClosure: ["wasserstein-distance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "wasserstein--apply-three-point-transport",
+    conceptId: "wasserstein-distance",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "P places probability 1/3 at each of the points 0, 1, and 2. Q places all its probability at the point " +
+      "1. What is the 1-Wasserstein distance? Give a decimal to three places.",
+    answerKey: 0.667,
+    tolerance: 0.01,
+    difficulty: 1.15,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["wasserstein-distance", "expectation"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "wasserstein--explain-order-of-moment",
+    conceptId: "wasserstein-distance",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "handwritten"],
+    stem:
+      "The '1' in 1-Wasserstein distance refers to using the ground distance to the first power inside the " +
+      "optimization. Explain what changes conceptually — not the formula — if you instead used the squared " +
+      "ground distance and took a square root at the end (the 2-Wasserstein distance).",
+    rubric: {
+      elements: [
+        {
+          id: "more-sensitive-to-outliers",
+          description: "Explains squaring distance weights moving mass a long way much more heavily than a short way, so the 2-Wasserstein distance is more sensitive to a small amount of mass that must travel very far.",
+          weight: 4,
+          required: true,
+        },
+        { id: "still-a-metric", description: "Notes both are still valid metrics, just weighting large single moves differently.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 0.4,
+    discrimination: 1.5,
+    expectedSeconds: 170,
+    prereqClosure: ["wasserstein-distance", "expectation"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "wasserstein--explain-dual-formulation-teaser",
+    conceptId: "wasserstein-distance",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "The Wasserstein distance has a dual formulation as a supremum over 1-Lipschitz functions (Kantorovich " +
+      "duality), used directly in Wasserstein GAN training. Explain, without deriving it, why a Lipschitz " +
+      "constraint specifically — rather than any constraint — shows up in this dual.",
+    rubric: {
+      elements: [
+        {
+          id: "ties-to-primal",
+          description: "Explains the transport-cost primal problem bounds how much a function's value can change per unit of ground distance moved, and Lipschitz continuity is exactly the condition that a function's change is bounded by distance moved with constant 1 — the matching dual constraint.",
+          weight: 4,
+          required: true,
+        },
+        { id: "connects-to-training", description: "Connects it to WGAN practice: the critic network must be approximately enforced to be 1-Lipschitz (e.g. weight clipping or a gradient penalty) for the estimated distance to be meaningful.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.4,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["wasserstein-distance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "wasserstein--transfer-barycenters",
+    conceptId: "wasserstein-distance",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A Wasserstein barycenter is the distribution minimizing the weighted average of its Wasserstein " +
+      "distances to a set of given distributions — an analogue of the mean, but for distributions. Explain why " +
+      "averaging distributions this way behaves differently, and often more sensibly, than simply averaging " +
+      "their densities pointwise, using two well-separated unimodal distributions as your example.",
+    rubric: {
+      elements: [
+        { id: "pointwise-average-problem", description: "Explains pointwise-averaging the densities of two distributions with well-separated modes produces a bimodal density with a dip in between, rather than anything like an 'in-between' distribution.", weight: 4, required: true },
+        {
+          id: "barycenter-behavior",
+          description: "Explains the Wasserstein barycenter instead interpolates the mass geometrically, transporting each distribution's mass toward a shared middle location, producing a genuinely unimodal distribution located between the two.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.05,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["wasserstein-distance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "wasserstein--transfer-optimal-transport-in-domain-adaptation",
+    conceptId: "wasserstein-distance",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Domain adaptation methods sometimes minimize the Wasserstein distance between a source domain's feature " +
+      "distribution and a target domain's, to help a classifier trained on the source transfer to the target. " +
+      "Explain what assumption this approach makes about the relationship between the domains, and a scenario " +
+      "where minimizing this distance would not by itself guarantee good target performance.",
+    rubric: {
+      elements: [
+        {
+          id: "assumption",
+          description: "Explains the approach assumes that once the feature distributions are aligned, a classifier's decision boundary learned on the source will also be appropriate on the target — i.e. it assumes the label-conditional structure transfers, not just the marginal feature distribution.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "failure-scenario",
+          description: "Gives a scenario where the relationship between features and labels genuinely differs between domains, so aligning marginals perfectly can still leave the classifier making systematically wrong predictions on the target.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.9,
+    expectedSeconds: 250,
+    prereqClosure: ["wasserstein-distance"],
+    source: AUTHORED,
+    status: "live",
+  },
 ];

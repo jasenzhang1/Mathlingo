@@ -477,6 +477,29 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
     },
   ],
 
+  "time-series": [
+    {
+      id: "stochastic-processes",
+      label: "Stochastic Processes & Markov Chains",
+      conceptIds: ["stochastic-processes"],
+    },
+    {
+      id: "stationarity-autocorrelation",
+      label: "Stationarity & Autocorrelation",
+      conceptIds: ["stationarity-white-noise", "acf", "pacf"],
+    },
+    {
+      id: "linear-time-series-models",
+      label: "Linear Time Series Models",
+      conceptIds: ["ar-models", "ma-models", "wold-decomposition", "arma", "arima"],
+    },
+    {
+      id: "volatility-multivariate",
+      label: "Volatility & Multivariate Time Series",
+      conceptIds: ["garch", "cointegration"],
+    },
+  ],
+
   "machine-learning": [
     {
       id: "foundations",

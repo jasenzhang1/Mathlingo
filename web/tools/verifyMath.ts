@@ -26,22 +26,27 @@ function eq(name: string, actual: unknown, expected: unknown) {
 }
 
 console.log("inline maths splitting:");
-eq("plain prose", splitMath("no maths here"), [{ text: "no maths here", math: false }]);
+eq("plain prose", splitMath("no maths here"), [{ text: "no maths here", kind: "text" }]);
 eq("one formula", splitMath("the mean $np$ rises"), [
-  { text: "the mean ", math: false },
-  { text: "np", math: true },
-  { text: " rises", math: false },
+  { text: "the mean ", kind: "text" },
+  { text: "np", kind: "math" },
+  { text: " rises", kind: "text" },
 ]);
 eq("two formulas", splitMath("$a$ and $b$"), [
-  { text: "a", math: true },
-  { text: " and ", math: false },
-  { text: "b", math: true },
+  { text: "a", kind: "math" },
+  { text: " and ", kind: "text" },
+  { text: "b", kind: "math" },
 ]);
-eq("escaped dollar", splitMath("costs \\$5 today"), [{ text: "costs $5 today", math: false }]);
-eq("unclosed delimiter stays literal", splitMath("a $ b c"), [{ text: "a $ b c", math: false }]);
+eq("escaped dollar", splitMath("costs \\$5 today"), [{ text: "costs $5 today", kind: "text" }]);
+eq("unclosed delimiter stays literal", splitMath("a $ b c"), [{ text: "a $ b c", kind: "text" }]);
 eq("formula at the very start", splitMath("$X$ is a variable"), [
-  { text: "X", math: true },
-  { text: " is a variable", math: false },
+  { text: "X", kind: "math" },
+  { text: " is a variable", kind: "text" },
+]);
+eq("inline code", splitMath("call `f(x)` here"), [
+  { text: "call ", kind: "text" },
+  { text: "f(x)", kind: "code" },
+  { text: " here", kind: "text" },
 ]);
 
 /** Renders one expression, reporting where it came from if it fails. */
@@ -59,7 +64,7 @@ function checkLatex(latex: string, where: string) {
 /** Every inline `$...$` span in a piece of prose. */
 function checkProse(text: string, where: string) {
   for (const segment of splitMath(text)) {
-    if (segment.math) checkLatex(segment.text, where);
+    if (segment.kind === "math") checkLatex(segment.text, where);
   }
 }
 

@@ -2267,4 +2267,1751 @@ export const regressionSelectionItems: Item[] = [
     source: ESL,
     status: "live",
   },
+
+  // =========================================================================
+  // Second authoring pass — doubling the pool for every concept above,
+  // widening the difficulty spread and adding genuine recall/explain/transfer
+  // items where the original 8-item pools leaned toward apply.
+  // =========================================================================
+
+  // --- AIC, BIC (additional items) ------------------------------------------
+  {
+    id: "aic-bic--recall-bic-penalty-growth",
+    conceptId: "aic-bic",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "As sample size n grows with model size k fixed, BIC's penalty k·ln(n):",
+    choices: [
+      { id: "a", text: "Grows without bound", correct: true },
+      {
+        id: "b",
+        text: "Stays fixed at 2k",
+        correct: false,
+        misconception: {
+          id: "bic-penalty-confused-with-aic",
+          description: "Describes AIC's fixed penalty rather than BIC's growing one.",
+          blameConceptId: "aic-bic",
+        },
+      },
+      {
+        id: "c",
+        text: "Shrinks toward 0",
+        correct: false,
+        misconception: {
+          id: "bic-penalty-shrinks",
+          description: "Reverses the direction; ln(n) increases without bound as n grows.",
+          blameConceptId: "aic-bic",
+        },
+      },
+      {
+        id: "d",
+        text: "Equals AIC's penalty once n > 30",
+        correct: false,
+        misconception: {
+          id: "penalties-converge-at-30",
+          description: "Invents a crossover point; ln(n) keeps growing past 2 for every n beyond about 7, with no point where the two penalties become equal again.",
+          blameConceptId: "aic-bic",
+        },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.2,
+    expectedSeconds: 35,
+    prereqClosure: ["aic-bic", "mle"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "aic-bic--recall-formulas-written-out",
+    conceptId: "aic-bic",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "Write AIC and BIC in symbols, and state which one always penalises complexity at least as much " +
+      "once n ≥ 8.",
+    rubric: {
+      elements: [
+        {
+          id: "formulas",
+          description: "Gives AIC = 2k − 2ln L̂ and BIC = k·ln(n) − 2ln L̂.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "crossover",
+          description: "Notes ln(n) ≥ 2 once n ≥ e² ≈ 7.4, so from n = 8 onward BIC's penalty coefficient is at least as large as AIC's fixed 2.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.3,
+    discrimination: 1.2,
+    expectedSeconds: 60,
+    prereqClosure: ["aic-bic", "mle"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "aic-bic--apply-compute-aic",
+    conceptId: "aic-bic",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "With n = 50, k = 4, and −2ln L̂ = 180, compute AIC. Give a whole number.",
+    answerKey: 188,
+    tolerance: 0.01,
+    difficulty: 0.1,
+    discrimination: 1.4,
+    expectedSeconds: 60,
+    prereqClosure: ["aic-bic", "mle"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "aic-bic--apply-compute-bic",
+    conceptId: "aic-bic",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "With n = 50, k = 4, and −2ln L̂ = 180, compute BIC. Give a decimal to one place. (ln 50 ≈ 3.9120.)",
+    answerKey: 195.6,
+    tolerance: 0.2,
+    difficulty: 1.7,
+    discrimination: 1.5,
+    expectedSeconds: 90,
+    prereqClosure: ["aic-bic", "mle"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "aic-bic--explain-equal-k-comparison",
+    conceptId: "aic-bic",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Two models have the same k, fit by maximum likelihood on the same n, with model A's −2ln L̂ " +
+      "smaller than model B's. Which has the smaller AIC and BIC, and why is the comparison unambiguous " +
+      "here?",
+    rubric: {
+      elements: [
+        {
+          id: "identical-penalties",
+          description: "Notes that since k and n are equal for both models, the penalty terms are identical between A and B on both criteria.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "deviance-decides",
+          description: "Concludes the model with the smaller deviance (−2ln L̂), model A, wins on both AIC and BIC — the criteria only need to trade off fit against complexity when k differs.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.0,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["aic-bic", "mle"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "aic-bic--explain-bic-breaks-down-when-k-grows-with-n",
+    conceptId: "aic-bic",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why BIC's approximation to the Bayesian marginal likelihood becomes questionable when the " +
+      "number of parameters k grows proportionally with n (e.g. k ≈ n/2), rather than staying fixed.",
+    rubric: {
+      elements: [
+        {
+          id: "laplace-approximation-assumption",
+          description: "Explains that BIC's derivation relies on a Laplace approximation assuming the posterior concentrates sharply around the MLE as n → ∞ with k fixed.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "bic-applied-uncritically-as-k-grows",
+            description: "Applies BIC's k·ln(n) penalty without checking whether the asymptotic regime (n → ∞, k fixed) the derivation assumes actually holds.",
+            blameConceptId: "aic-bic",
+          },
+        },
+        {
+          id: "regime-violated",
+          description: "Concludes that when k grows with n this asymptotic argument no longer applies, so BIC's justification — and hence its penalty — is not guaranteed to rank models correctly in that regime.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.0,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["aic-bic", "mle"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "aic-bic--transfer-different-software-constants",
+    conceptId: "aic-bic",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A forecaster compares ARIMA models of different orders using AIC computed by two different " +
+      "packages, which use differing additive constants in their log-likelihoods. Explain why the raw " +
+      "AIC values are not comparable across packages, but a within-package comparison still is.",
+    rubric: {
+      elements: [
+        {
+          id: "constants-cancel-within-not-across",
+          description: "Explains that additive constants not depending on k cancel in differences of AIC computed under one consistent likelihood convention, but do not cancel across packages using different conventions.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "aic-treated-as-absolute",
+            description: "Treats the AIC value as an absolute score of a model, rather than as comparable only across models fitted with the same likelihood convention.",
+            blameConceptId: "aic-bic",
+          },
+        },
+        {
+          id: "fix",
+          description: "States the fix: only compare models fitted with the same software/likelihood convention, or explicitly recompute the constant.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["aic-bic", "mle", "likelihood-vs-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "aic-bic--transfer-selection-uncertainty",
+    conceptId: "aic-bic",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A grid search compares hundreds of candidate models by AIC and selects the single minimum. Explain " +
+      "why 'AIC selected model X' is a weaker claim than it sounds, referencing the model-selection " +
+      "uncertainty this ignores.",
+    rubric: {
+      elements: [
+        {
+          id: "aic-itself-an-estimate",
+          description: "Explains that each AIC value is itself computed from one sample and carries sampling variability, so close competitors (e.g. ΔAIC < 2) are not decisively ranked.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "argmin-treated-as-certain",
+            description: "Treats the model with the minimum AIC as certainly the best, rather than as an estimate that could rank differently in a fresh sample.",
+            blameConceptId: "aic-bic",
+          },
+        },
+        {
+          id: "remedy",
+          description: "Recommends AIC weights, or bootstrapping the whole selection procedure, to quantify how stable the 'winner' actually is.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.7,
+    discrimination: 1.8,
+    expectedSeconds: 210,
+    prereqClosure: ["aic-bic", "mle"],
+    source: ESL,
+    status: "live",
+  },
+
+  // --- Forward, Backward, Stepwise Selection (additional items) -------------
+  {
+    id: "forward-backward-stepwise-selection--recall-runs-when-p-greater-than-n",
+    conceptId: "forward-backward-stepwise-selection",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "Which stepwise procedure can be run even when p > n?",
+    choices: [
+      { id: "a", text: "Forward selection", correct: true },
+      {
+        id: "b",
+        text: "Backward elimination",
+        correct: false,
+        misconception: {
+          id: "backward-runs-when-p-greater-n",
+          description: "Backward elimination must fit the full model first, which is unidentifiable when p > n.",
+          blameConceptId: "forward-backward-stepwise-selection",
+        },
+      },
+      {
+        id: "c",
+        text: "Best subset selection",
+        correct: false,
+        misconception: {
+          id: "best-subset-runs-when-p-greater-n",
+          description: "Best subset selection also needs to fit models with more predictors than observations at some point in its search, and is separately infeasible on cost grounds.",
+          blameConceptId: "forward-backward-stepwise-selection",
+        },
+      },
+      {
+        id: "d",
+        text: "None of them",
+        correct: false,
+        misconception: {
+          id: "forward-selection-overlooked",
+          description: "Overlooks that forward selection never needs to fit a model with more predictors than observations.",
+          blameConceptId: "forward-backward-stepwise-selection",
+        },
+      },
+    ],
+    difficulty: -1.7,
+    discrimination: 1.3,
+    expectedSeconds: 40,
+    prereqClosure: ["forward-backward-stepwise-selection", "multiple-linear-regression"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "forward-backward-stepwise-selection--recall-how-a-variable-is-chosen",
+    conceptId: "forward-backward-stepwise-selection",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "At each step of forward selection, how is the next variable to add chosen?",
+    rubric: {
+      elements: [
+        {
+          id: "greedy-choice",
+          description: "States that among the variables not yet in the model, the one whose addition most improves the fit criterion (largest drop in RSS, AIC, etc.) is added, one at a time.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.2,
+    discrimination: 1.1,
+    expectedSeconds: 45,
+    prereqClosure: ["forward-backward-stepwise-selection", "multiple-linear-regression"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "forward-backward-stepwise-selection--apply-path-length",
+    conceptId: "forward-backward-stepwise-selection",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "With 10 candidate predictors, forward selection builds a path of models by adding one variable at " +
+      "a time. How many models are on the resulting path, including the null model and the full model?",
+    answerKey: 11,
+    tolerance: 0.1,
+    difficulty: -0.2,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["forward-backward-stepwise-selection", "multiple-linear-regression"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "forward-backward-stepwise-selection--apply-total-model-fits",
+    conceptId: "forward-backward-stepwise-selection",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "With 10 candidate predictors, forward selection compares p candidates at step 1, p − 1 at step 2, " +
+      "and so on. How many models does it fit in total across the whole search?",
+    answerKey: 55,
+    tolerance: 0.1,
+    difficulty: 0.6,
+    discrimination: 1.3,
+    expectedSeconds: 70,
+    prereqClosure: ["forward-backward-stepwise-selection", "multiple-linear-regression"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "forward-backward-stepwise-selection--explain-backward-needs-n-greater-than-p",
+    conceptId: "forward-backward-stepwise-selection",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Backward elimination requires fitting the full model with all p predictors before removing any. " +
+      "State the one structural requirement this places on the data, in terms of n and p.",
+    rubric: {
+      elements: [
+        {
+          id: "n-greater-than-p",
+          description: "States that n must exceed p (at least n ≥ p + 1) so the full design matrix has full column rank and a unique least-squares fit exists.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.9,
+    discrimination: 1.3,
+    expectedSeconds: 70,
+    prereqClosure: ["forward-backward-stepwise-selection", "multiple-linear-regression", "normal-equations"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "forward-backward-stepwise-selection--explain-aic-vs-bic-stopping",
+    conceptId: "forward-backward-stepwise-selection",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "AIC-based and BIC-based stepwise selection can give different final models on the same data. " +
+      "Explain the mechanism, referencing which criterion penalises more per added variable.",
+    rubric: {
+      elements: [
+        {
+          id: "bic-penalises-more",
+          description: "Explains that BIC's larger, n-growing penalty makes the search stop earlier (favouring smaller models) than AIC's fixed penalty in the same greedy search.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "divergence-mechanism",
+          description: "Notes the two criteria can diverge onto different paths exactly at the steps where a candidate variable's improvement falls between the two thresholds.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.5,
+    discrimination: 1.5,
+    expectedSeconds: 120,
+    prereqClosure: ["forward-backward-stepwise-selection", "aic-bic"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "forward-backward-stepwise-selection--transfer-split-half-instability",
+    conceptId: "forward-backward-stepwise-selection",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A team runs stepwise selection separately on two random halves of the same dataset and gets " +
+      "substantially different final variable sets. Explain what this does, and does not, tell you about " +
+      "which set is 'correct.'",
+    rubric: {
+      elements: [
+        {
+          id: "instability-is-diagnostic-not-decisive",
+          description: "Explains that instability across the two halves is itself diagnostic of a flat or noisy selection surface (many correlated or weak candidates), not evidence that either half's answer is wrong.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "single-run-treated-as-ground-truth",
+            description: "Treats the variable set from a single run as the definitively correct one, rather than as one draw from an unstable procedure.",
+            blameConceptId: "forward-backward-stepwise-selection",
+          },
+        },
+        {
+          id: "remedy",
+          description: "Recommends reporting the intersection, or a stability-selection frequency across many resamples, rather than trusting a single run.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.7,
+    expectedSeconds: 180,
+    prereqClosure: ["forward-backward-stepwise-selection", "multiple-linear-regression"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "forward-backward-stepwise-selection--transfer-discrete-vs-continuous-path",
+    conceptId: "forward-backward-stepwise-selection",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Contrast the guarantee LASSO's solution path offers (a continuous path in λ) with the guarantee " +
+      "forward stepwise selection's path offers (a discrete sequence of models). What structural property " +
+      "does one have that the other lacks?",
+    rubric: {
+      elements: [
+        {
+          id: "convexity-guarantee",
+          description: "Explains that LASSO's path arises from a convex optimisation, so any point along it inherits guarantees of uniqueness/stability that a greedy discrete search does not.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "greedy-has-no-such-guarantee",
+          description: "Explains that a variable added early in forward selection is a purely local, data-specific choice with no equivalent structural justification, since each step is a separate discrete decision.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.7,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["forward-backward-stepwise-selection", "multiple-linear-regression", "aic-bic"],
+    source: ESL,
+    status: "live",
+  },
+
+  // --- Regularization (additional items) ------------------------------------
+  {
+    id: "regularization--recall-changes-the-objective",
+    conceptId: "regularization",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "Regularization changes:",
+    choices: [
+      { id: "a", text: "The objective function being minimised, adding a term that penalises coefficient size", correct: true },
+      {
+        id: "b",
+        text: "The data used to fit the model",
+        correct: false,
+        misconception: {
+          id: "regularization-changes-data",
+          description: "Confuses a change to the objective function with a change to the observations.",
+          blameConceptId: "regularization",
+        },
+      },
+      {
+        id: "c",
+        text: "The functional form of the model, e.g. linear to nonlinear",
+        correct: false,
+        misconception: {
+          id: "regularization-changes-functional-form",
+          description: "Confuses regularization with a change of model family; the functional form (e.g. linear) is unchanged.",
+          blameConceptId: "regularization",
+        },
+      },
+      {
+        id: "d",
+        text: "Only the reported standard errors, not the point estimates",
+        correct: false,
+        misconception: {
+          id: "regularization-affects-inference-only",
+          description: "Misses that regularization directly changes the fitted point estimates, not just the uncertainty attached to them.",
+          blameConceptId: "regularization",
+        },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.3,
+    expectedSeconds: 35,
+    prereqClosure: ["regularization", "loss-functions"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "regularization--recall-lambda-extremes-in-words",
+    conceptId: "regularization",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "In the ridge objective ‖y − Xβ‖² + λΣβⱼ², what does λ = 0 recover, and what happens as λ → ∞?",
+    rubric: {
+      elements: [
+        {
+          id: "lambda-zero",
+          description: "States λ = 0 recovers ordinary least squares exactly.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "lambda-infinity",
+          description: "States as λ → ∞ every coefficient is driven toward 0, so predictions approach ȳ.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.3,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["regularization", "loss-functions"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "regularization--apply-mse-second-example",
+    conceptId: "regularization",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A biased estimator has bias −1 and standard deviation 3. What is its mean squared error? Give a " +
+      "whole number.",
+    answerKey: 10,
+    tolerance: 0.1,
+    difficulty: 0.0,
+    discrimination: 1.3,
+    expectedSeconds: 60,
+    prereqClosure: ["regularization", "bias-variance-tradeoff", "variance"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "regularization--apply-penalty-value",
+    conceptId: "regularization",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "In the objective with λ = 4 and P(β) = Σβⱼ², coefficients β = (2, −3). Evaluate the penalty term " +
+      "λΣβⱼ². Give a whole number.",
+    answerKey: 52,
+    tolerance: 0.1,
+    difficulty: 1.3,
+    discrimination: 1.5,
+    expectedSeconds: 90,
+    prereqClosure: ["regularization", "loss-functions"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "regularization--explain-tradeoff-not-free",
+    conceptId: "regularization",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain, in one line, why regularization is described as trading bias for variance rather than " +
+      "simply 'improving' the estimator unconditionally.",
+    rubric: {
+      elements: [
+        {
+          id: "bias-introduced",
+          description: "States that any λ > 0 makes β̂ biased in exchange for a reduction in variance, so it is a trade rather than an unconditional gain.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "depends-on-data",
+          description: "Notes whether the trade is a net improvement in MSE depends on the specific bias-variance tradeoff for the data at hand.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.9,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["regularization", "bias-variance-tradeoff", "variance"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "regularization--explain-collinearity-amplifies-noise",
+    conceptId: "regularization",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why an unregularised model can have arbitrarily large variance when predictors are nearly " +
+      "collinear, in terms of what (XᵀX)⁻¹ does to noise in y.",
+    rubric: {
+      elements: [
+        {
+          id: "near-singular-eigenvalues",
+          description: "Explains that near-collinearity makes XᵀX nearly singular, with some eigenvalues close to zero.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "inversion-amplifies-noise",
+          description: "States that inverting amplifies noise along those directions, since Var(β̂) scales with the reciprocal of the small eigenvalues — exactly the instability λI's addition controls.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.0,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["regularization", "bias-variance-tradeoff", "multiple-linear-regression"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "regularization--transfer-fairness-non-monotone",
+    conceptId: "regularization",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A team regularises a loan-approval logistic regression and finds demographic approval-rate gaps " +
+      "shrink as λ increases, up to a point, then widen again in the opposite direction at very large λ. " +
+      "Give a plausible mechanism for each direction.",
+    rubric: {
+      elements: [
+        {
+          id: "moderate-lambda-removes-noise",
+          description: "Explains that moderate regularization can reduce overfitting to spurious, group-correlated noise in a small or unbalanced training set that had inflated apparent group differences.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "more-regularization-always-fairer",
+            description: "Assumes stronger regularization always improves fairness, missing that very large λ can reintroduce disparity for a different reason.",
+            blameConceptId: "regularization",
+          },
+        },
+        {
+          id: "large-lambda-underfits-a-real-feature",
+          description: "Explains that at very large λ the model shrinks toward predicting the base rate, which can systematically underfit a genuinely predictive feature whose prevalence differs across groups.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.5,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["regularization", "bias-variance-tradeoff"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "regularization--transfer-kitchen-sink-strategy",
+    conceptId: "regularization",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A 'kitchen sink' regression includes every available predictor and relies entirely on ridge " +
+      "regularization to control overfitting, with no variable screening. Argue for and against this " +
+      "strategy relative to first doing feature selection.",
+    rubric: {
+      elements: [
+        {
+          id: "for",
+          description: "Argues for: avoids the instability and selection bias discrete stepwise procedures introduce, and cross-validated λ adapts to how much signal is present.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "against",
+          description: "Argues against: ridge never zeroes irrelevant coefficients, leaving an uninterpretable model with many nonzero weights, and truly irrelevant predictors still add some variance even after shrinkage.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["regularization", "bias-variance-tradeoff", "multiple-linear-regression"],
+    source: ESL,
+    status: "live",
+  },
+
+  // --- LASSO (additional items) ----------------------------------------------
+  {
+    id: "lasso--recall-nondifferentiable-at-zero",
+    conceptId: "lasso",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The LASSO penalty λΣ|βⱼ| is:",
+    choices: [
+      { id: "a", text: "Convex, but not differentiable at βⱼ = 0", correct: true },
+      {
+        id: "b",
+        text: "Differentiable everywhere",
+        correct: false,
+        misconception: {
+          id: "lasso-penalty-smooth",
+          description: "Misses the kink at zero that is precisely what gives LASSO its sparsity property.",
+          blameConceptId: "lasso",
+        },
+      },
+      {
+        id: "c",
+        text: "Non-convex",
+        correct: false,
+        misconception: {
+          id: "lasso-penalty-nonconvex",
+          description: "The L1 penalty is convex; non-convexity would be a property of an L0-style penalty instead.",
+          blameConceptId: "lasso",
+        },
+      },
+      {
+        id: "d",
+        text: "Concave",
+        correct: false,
+        misconception: {
+          id: "lasso-penalty-concave",
+          description: "The absolute value function is convex, not concave.",
+          blameConceptId: "lasso",
+        },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.3,
+    expectedSeconds: 35,
+    prereqClosure: ["lasso", "regularization"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "lasso--recall-alpha-in-elastic-net",
+    conceptId: "lasso",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "What value of α in the elastic-net family λ[α·Σ|βⱼ| + (1 − α)·Σβⱼ²] recovers pure LASSO?",
+    rubric: {
+      elements: [
+        {
+          id: "alpha-one",
+          description: "States α = 1, since (1 − α) = 0 removes the ridge term entirely, leaving only the L1 penalty.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.3,
+    discrimination: 1.1,
+    expectedSeconds: 40,
+    prereqClosure: ["lasso", "regularization"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "lasso--apply-soft-threshold-small",
+    conceptId: "lasso",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Using the soft-threshold rule β̂ⱼ = sign(b)·max(0, |b| − λ/2), what is β̂ⱼ when b = 0.9 and λ = 1.0? " +
+      "Give a decimal to one place.",
+    answerKey: 0.4,
+    tolerance: 0.01,
+    difficulty: -0.1,
+    discrimination: 1.3,
+    expectedSeconds: 60,
+    prereqClosure: ["lasso", "regularization"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "lasso--apply-soft-threshold-negative-large",
+    conceptId: "lasso",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Using the same rule, what is β̂ⱼ when b = −2.2 and λ = 1.0? Give a decimal to one place.",
+    answerKey: -1.7,
+    tolerance: 0.01,
+    difficulty: 1.6,
+    discrimination: 1.6,
+    expectedSeconds: 90,
+    prereqClosure: ["lasso", "regularization"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "lasso--explain-not-proportional-to-ols",
+    conceptId: "lasso",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why LASSO's solution is not, in general, a scalar multiple of the OLS solution — i.e. why " +
+      "'LASSO just shrinks OLS proportionally' is wrong even though ridge behaves that way in the " +
+      "orthonormal case.",
+    rubric: {
+      elements: [
+        {
+          id: "ridge-is-multiplicative",
+          description: "Notes that in the orthonormal case ridge shrinks every coefficient by the same multiplicative factor, so the whole vector is uniformly rescaled.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "lasso-is-additive",
+          description: "Explains that LASSO's soft threshold subtracts a constant λ/2 from |b|, an additive shift, not a multiplicative rescaling — small coefficients are killed while large ones are pulled down by the same absolute amount, changing the ratios between them.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.9,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["lasso", "regularization"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "lasso--explain-tightest-convex-relaxation",
+    conceptId: "lasso",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "The L1 penalty is sometimes justified as the 'tightest convex relaxation' of the L0 penalty (the " +
+      "number of nonzero coefficients). Explain what convexity buys practically, given that L0 is far " +
+      "more directly what sparsity means.",
+    rubric: {
+      elements: [
+        {
+          id: "l0-is-nphard",
+          description: "Explains that directly minimising an L0 penalty is a combinatorial, NP-hard problem in general — no efficient algorithm is known to solve it exactly at scale.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "convexity-buys-tractability",
+          description: "Explains that L1's convexity guarantees a unique global solution reachable by efficient algorithms, at the cost of being only a relaxation of what sparsity actually means.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.7,
+    expectedSeconds: 180,
+    prereqClosure: ["lasso", "regularization"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "lasso--transfer-scale-dependence-without-standardising",
+    conceptId: "lasso",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Two data scientists apply LASSO to the same problem, but one standardises predictors to unit " +
+      "variance first and the other does not. Explain why skipping this step effectively changes which " +
+      "variables the L1 penalty favours, independent of any actual predictive signal.",
+    rubric: {
+      elements: [
+        {
+          id: "penalty-ignores-scale",
+          description: "Explains that the penalty sums |βⱼ| directly with no correction for each predictor's numeric scale.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "lasso-assumed-scale-invariant",
+            description: "Assumes LASSO's variable selection is invariant to the units each predictor happens to be measured in.",
+            blameConceptId: "lasso",
+          },
+        },
+        {
+          id: "large-scale-predictors-favoured",
+          description: "Explains that a predictor on a large numeric scale needs only a small coefficient for a given real-world effect, so it is barely penalised, while a small-scale predictor needing a large coefficient for the same real effect is penalised heavily — favouring large-scale predictors for reasons unrelated to predictive value.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.8,
+    expectedSeconds: 210,
+    prereqClosure: ["lasso", "regularization", "multiple-linear-regression"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "lasso--transfer-stability-vs-accuracy",
+    conceptId: "lasso",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A LASSO model refit each year on fresh data changes its set of nonzero coefficients noticeably year " +
+      "to year, even though predictive accuracy stays roughly stable. Is this a sign the earlier model was " +
+      "wrong? Explain.",
+    rubric: {
+      elements: [
+        {
+          id: "not-necessarily-wrong",
+          description: "Explains that this is not necessarily a sign of error: selection can be unstable among correlated or weak predictors even while predictions stay accurate, since many different sparse subsets can achieve similar fit.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "judge-by-predictions-not-names",
+          description: "Recommends judging the procedure by predictive performance and stability of predictions, not by whether the same named variables reappear, and possibly reporting a stability-selection frequency instead of a single sparse set.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.7,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["lasso", "regularization", "multiple-linear-regression"],
+    source: ESL,
+    status: "live",
+  },
+
+  // --- Ridge Regression (additional items) ----------------------------------
+  {
+    id: "ridge-regression--recall-exists-for-every-lambda",
+    conceptId: "ridge-regression",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "Ridge regression's estimator β̂ = (XᵀX + λI)⁻¹Xᵀy exists:",
+    choices: [
+      { id: "a", text: "For every λ > 0, even if XᵀX is singular", correct: true },
+      {
+        id: "b",
+        text: "Only if XᵀX is already invertible",
+        correct: false,
+        misconception: {
+          id: "ridge-needs-invertible-xtx",
+          description: "Misses the whole point of the λI addition, which is exactly to guarantee invertibility when XᵀX itself is singular.",
+          blameConceptId: "ridge-regression",
+        },
+      },
+      {
+        id: "c",
+        text: "Only for λ < 1",
+        correct: false,
+        misconception: {
+          id: "ridge-restricted-to-lambda-under-one",
+          description: "Invents a bound on λ; any λ > 0 shifts every eigenvalue up and guarantees invertibility.",
+          blameConceptId: "ridge-regression",
+        },
+      },
+      {
+        id: "d",
+        text: "Only in the orthonormal-predictor case",
+        correct: false,
+        misconception: {
+          id: "ridge-restricted-to-orthonormal",
+          description: "The closed form and its invertibility hold for any design matrix, not only orthonormal ones.",
+          blameConceptId: "ridge-regression",
+        },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.3,
+    expectedSeconds: 40,
+    prereqClosure: ["ridge-regression", "regularization", "normal-equations"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "ridge-regression--recall-what-lambda-i-is-added-to",
+    conceptId: "ridge-regression",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "Name the two places λ appears: what is the ridge penalty added to in the objective function, and " +
+      "what is λI added to in the closed-form solution?",
+    rubric: {
+      elements: [
+        {
+          id: "objective",
+          description: "States the penalty λΣβⱼ² is added to the residual sum of squares ‖y − Xβ‖² in the objective.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "closed-form",
+          description: "States λI is added to XᵀX, the matrix being inverted in the closed-form solution.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.3,
+    discrimination: 1.1,
+    expectedSeconds: 45,
+    prereqClosure: ["ridge-regression", "regularization", "normal-equations"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "ridge-regression--apply-determinant-well-conditioned",
+    conceptId: "ridge-regression",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A design matrix has XᵀX = [[2, 0], [0, 2]]. With λ = 3, compute the determinant of XᵀX + λI. Give " +
+      "a whole number.",
+    answerKey: 25,
+    tolerance: 0.01,
+    difficulty: -0.1,
+    discrimination: 1.3,
+    expectedSeconds: 70,
+    prereqClosure: ["ridge-regression", "regularization", "matrix-multiplication"],
+    source: OCW_18_06,
+    status: "live",
+  },
+  {
+    id: "ridge-regression--apply-shrinkage-factor-second",
+    conceptId: "ridge-regression",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "Ridge scales the j-th principal direction of the fit by dⱼ²/(dⱼ² + λ). With dⱼ = 2 and λ = 12, " +
+      "what is the shrinkage factor? Give a decimal to two places.",
+    answerKey: 0.25,
+    tolerance: 0.01,
+    difficulty: 1.6,
+    discrimination: 1.6,
+    expectedSeconds: 90,
+    prereqClosure: ["ridge-regression", "regularization", "matrix-multiplication"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "ridge-regression--explain-as-a-prior",
+    conceptId: "ridge-regression",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Ridge regression is sometimes called 'Tikhonov regularisation.' Explain why adding λI can be " +
+      "understood as adding a small amount of synthetic information — a weak prior belief that β = 0 — " +
+      "rather than merely as a numerical trick to fix singularity.",
+    rubric: {
+      elements: [
+        {
+          id: "map-under-gaussian-prior",
+          description: "Explains that ridge's objective is equivalent to MAP estimation under a Gaussian prior N(0, τ²I) on β, with λ = σ²/τ².",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "prior-adds-information",
+          description: "Explains that adding λI is the algebraic footprint of that prior's precision being added to the data's information (XᵀX), reframing the 'trick' as literally incorporating a modest, deliberate assumption about β.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.9,
+    discrimination: 1.5,
+    expectedSeconds: 150,
+    prereqClosure: ["ridge-regression", "regularization", "normal-equations"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "ridge-regression--explain-smooth-bias-path",
+    conceptId: "ridge-regression",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why the bias introduced by ridge regression is a smooth, continuously increasing function " +
+      "of λ, in contrast to the discontinuous jumps in bias along a stepwise-selection path as variables " +
+      "are added or removed.",
+    rubric: {
+      elements: [
+        {
+          id: "ridge-continuous",
+          description: "Explains that β̂(λ) = (XᵀX + λI)⁻¹Xᵀy is a continuous, differentiable function of λ, since matrix inversion and multiplication vary continuously with the entries, so bias changes smoothly with λ.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "stepwise-discontinuous",
+          description: "Explains that a stepwise path's bias jumps discretely whenever a variable enters or leaves the model, since that changes which coefficients even exist in the fit.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.5,
+    discrimination: 1.7,
+    expectedSeconds: 180,
+    prereqClosure: ["ridge-regression", "regularization", "matrix-multiplication", "normal-equations"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "ridge-regression--transfer-genomic-blup",
+    conceptId: "ridge-regression",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "In genomic prediction, ridge regression is often preferred over LASSO even when the true effect is " +
+      "believed to be sparse (few causal variants), because prediction accuracy is what's measured, not " +
+      "variable identification. Explain the apparent paradox.",
+    rubric: {
+      elements: [
+        {
+          id: "correlated-markers-tag-same-signal",
+          description: "Explains that when many correlated markers each tag the same causal signal, a dense ridge solution spreading a small weight across all of them can predict as well as or better than a sparse LASSO solution that arbitrarily picks one representative per correlated block.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "prediction-not-identification",
+          description: "Concludes that prediction accuracy does not require correctly identifying the sparse truth, only capturing its predictive signal by any means.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.7,
+    expectedSeconds: 180,
+    prereqClosure: ["ridge-regression", "regularization", "multiple-linear-regression"],
+    source: ISLR,
+    status: "live",
+  },
+  {
+    id: "ridge-regression--transfer-stable-cv-curve",
+    conceptId: "ridge-regression",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why cross-validated λ for ridge regression tends to be more stable across resamples of the " +
+      "same dataset than cross-validated λ for LASSO, referencing the smoothness of each method's " +
+      "coefficient path.",
+    rubric: {
+      elements: [
+        {
+          id: "ridge-smooth-curve",
+          description: "Explains that ridge's smooth coefficient path tends to produce a smooth, roughly unimodal cross-validation error curve, so small perturbations from resampling move the argmin only slightly.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "lasso-kinked-curve",
+          description: "Explains that LASSO's path has kinks where variables enter or exit, which can produce a rougher CV-error curve, making the selected λ (and the active set) more sensitive to exactly which folds were drawn.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.7,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["ridge-regression", "regularization", "matrix-multiplication"],
+    source: ESL,
+    status: "live",
+  },
+
+  // --- Elastic Net (additional items) ---------------------------------------
+  {
+    id: "elastic-net--recall-alpha-zero-is-ridge",
+    conceptId: "elastic-net",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "In elastic net's penalty λ[α·Σ|βⱼ| + (1 − α)·Σβⱼ²], what does α = 0 recover?",
+    choices: [
+      { id: "a", text: "Pure ridge regression", correct: true },
+      {
+        id: "b",
+        text: "Pure LASSO",
+        correct: false,
+        misconception: {
+          id: "alpha-zero-called-lasso",
+          description: "Reverses the roles of the two extremes; α = 1 gives LASSO, and α = 0 gives ridge.",
+          blameConceptId: "elastic-net",
+        },
+      },
+      {
+        id: "c",
+        text: "Ordinary least squares with no penalty",
+        correct: false,
+        misconception: {
+          id: "alpha-zero-called-ols",
+          description: "Sets α = 0 but forgets λ still multiplies the remaining ridge term, so the penalty does not vanish.",
+          blameConceptId: "elastic-net",
+        },
+      },
+      {
+        id: "d",
+        text: "Best subset selection",
+        correct: false,
+        misconception: {
+          id: "alpha-zero-called-best-subset",
+          description: "Confuses a continuous L2 penalty with the discrete, combinatorial L0 method.",
+          blameConceptId: "elastic-net",
+        },
+      },
+    ],
+    difficulty: -1.7,
+    discrimination: 1.3,
+    expectedSeconds: 40,
+    prereqClosure: ["elastic-net", "lasso", "ridge-regression"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "elastic-net--recall-inherited-properties",
+    conceptId: "elastic-net",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "Name the one property elastic net inherits from LASSO and the one it inherits from ridge, in one " +
+      "phrase each.",
+    rubric: {
+      elements: [
+        {
+          id: "from-lasso",
+          description: "States that it inherits the ability to produce exact zeros (sparsity) from LASSO.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "from-ridge",
+          description: "States that it inherits stable, grouped shrinkage of correlated predictors from ridge.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.2,
+    discrimination: 1.1,
+    expectedSeconds: 45,
+    prereqClosure: ["elastic-net", "lasso", "ridge-regression"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "elastic-net--apply-penalty-value-second",
+    conceptId: "elastic-net",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "With λ = 1, α = 0.25, and coefficients β = (4, 0), evaluate λ[α·Σ|βⱼ| + (1 − α)·Σβⱼ²]. Give a " +
+      "whole number.",
+    answerKey: 13,
+    tolerance: 0.01,
+    difficulty: -0.1,
+    discrimination: 1.3,
+    expectedSeconds: 90,
+    prereqClosure: ["elastic-net", "lasso", "ridge-regression", "regularization"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "elastic-net--apply-splitting-is-cheaper-larger-total",
+    conceptId: "elastic-net",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Two identical predictors must together carry a total coefficient of 6. Under a pure ridge penalty " +
+      "Σβⱼ², what is the penalty value for the concentrated split (6, 0) minus the penalty for the even " +
+      "split (3, 3)? Give a whole number.",
+    answerKey: 18,
+    tolerance: 0.1,
+    difficulty: 1.8,
+    discrimination: 1.7,
+    expectedSeconds: 150,
+    prereqClosure: ["elastic-net", "ridge-regression", "regularization"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "elastic-net--explain-alpha-near-one-recommended",
+    conceptId: "elastic-net",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why setting α close to, but not exactly, 1 is often recommended in practice over pure " +
+      "LASSO (α = 1), even when sparsity is the primary goal.",
+    rubric: {
+      elements: [
+        {
+          id: "tiny-ridge-restores-convexity",
+          description: "Explains that a small ridge component restores strict convexity, stabilising the optimisation and the selection among correlated predictors without materially sacrificing sparsity.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "avoids-fragility",
+          description: "Notes this avoids LASSO's arbitrary pick among near-duplicate columns and numerical fragility in ill-conditioned designs.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.8,
+    discrimination: 1.5,
+    expectedSeconds: 120,
+    prereqClosure: ["elastic-net", "lasso", "ridge-regression", "regularization"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "elastic-net--explain-rounded-corners-geometry",
+    conceptId: "elastic-net",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain, in terms of the constraint region's geometry, why elastic net's penalty boundary has " +
+      "'rounded corners' compared to LASSO's sharp diamond, and what that shape change does to how often " +
+      "exact zeros occur relative to pure LASSO.",
+    rubric: {
+      elements: [
+        {
+          id: "corners-rounded-not-removed",
+          description: "Explains that adding a quadratic term smooths the diamond's vertices into rounded corners while keeping the axis-aligned singularities that produce sparsity.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "less-aggressive-sparsity",
+          description: "Concludes elastic net still zeroes some coefficients, but generally less aggressively among correlated groups than pure LASSO, trading a bit of sparsity for grouping stability.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.7,
+    expectedSeconds: 180,
+    prereqClosure: ["elastic-net", "lasso", "ridge-regression", "regularization"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "elastic-net--transfer-fixed-alpha-search-cost",
+    conceptId: "elastic-net",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A team tunes elastic net by fixing α = 0.5 arbitrarily and cross-validating only λ, to save " +
+      "compute. Explain what class of solutions this search can never reach, and when that omission would " +
+      "actually cost predictive accuracy.",
+    rubric: {
+      elements: [
+        {
+          id: "cannot-reach-extremes",
+          description: "Explains the search can never reach the pure-LASSO (α = 1) or pure-ridge (α = 0) endpoints, nor most other blends.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "cost-at-the-extremes",
+          description: "Explains that if the true best solution sits much closer to sparse or much closer to dense than α = 0.5, the restricted search may settle for a materially worse solution than a full grid over (α, λ) would find.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["elastic-net", "lasso", "ridge-regression", "regularization"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "elastic-net--transfer-dominance-argument-flaw",
+    conceptId: "elastic-net",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A colleague argues elastic net is strictly better than LASSO because LASSO is a special case " +
+      "(α = 1), so tuning can never do worse. Identify the flaw in this argument, given how α and λ are " +
+      "actually chosen in practice.",
+    rubric: {
+      elements: [
+        {
+          id: "true-only-for-exhaustive-search",
+          description: "Explains the argument holds only for an idealised, exhaustive, noiseless search over the full (α, λ) grid including α = 1.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "cv-adds-its-own-noise",
+          description: "Explains that in practice the extra dimension is tuned by cross-validation on finite data, which adds its own estimation noise, so the selected (α, λ)̂ can perform worse out-of-sample than a well-tuned pure LASSO, especially with a coarse grid.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.7,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["elastic-net", "lasso", "ridge-regression", "regularization"],
+    source: ESL,
+    status: "live",
+  },
+
+  // --- LOESS Smoothing (additional items) -----------------------------------
+  {
+    id: "loess-smoothing--recall-span-meaning",
+    conceptId: "loess-smoothing",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "In LOESS, the 'span' parameter controls:",
+    choices: [
+      { id: "a", text: "The fraction of the data included in each local neighbourhood", correct: true },
+      {
+        id: "b",
+        text: "The degree of the local polynomial fit",
+        correct: false,
+        misconception: {
+          id: "span-confused-with-degree",
+          description: "Confuses the neighbourhood-size parameter with the (separate) choice of local linear versus local quadratic fitting.",
+          blameConceptId: "loess-smoothing",
+        },
+      },
+      {
+        id: "c",
+        text: "The number of robustness iterations of the algorithm",
+        correct: false,
+        misconception: {
+          id: "span-confused-with-iterations",
+          description: "Confuses the neighbourhood-size parameter with the separate robustness-iteration count some implementations use.",
+          blameConceptId: "loess-smoothing",
+        },
+      },
+      {
+        id: "d",
+        text: "The confidence level of the fitted band",
+        correct: false,
+        misconception: {
+          id: "span-confused-with-confidence-level",
+          description: "Confuses a smoothing parameter with an unrelated inferential quantity.",
+          blameConceptId: "loess-smoothing",
+        },
+      },
+    ],
+    difficulty: -1.9,
+    discrimination: 1.3,
+    expectedSeconds: 35,
+    prereqClosure: ["loess-smoothing", "simple-linear-regression"],
+    source: NIST_HANDBOOK,
+    status: "live",
+  },
+  {
+    id: "loess-smoothing--recall-default-local-degree",
+    conceptId: "loess-smoothing",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem:
+      "What degree polynomial is fit within each local neighbourhood in the most common (local-linear) " +
+      "form of LOESS?",
+    rubric: {
+      elements: [
+        {
+          id: "degree-one",
+          description: "States degree 1 — a local weighted linear regression — noting local-quadratic variants also exist but linear is the default/most common choice.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.4,
+    discrimination: 1.1,
+    expectedSeconds: 40,
+    prereqClosure: ["loess-smoothing", "simple-linear-regression"],
+    source: NIST_HANDBOOK,
+    status: "live",
+  },
+  {
+    id: "loess-smoothing--apply-neighbourhood-size-second",
+    conceptId: "loess-smoothing",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "A LOESS fit on 150 observations uses a span of 0.2. How many observations enter each local " +
+      "regression? Give a whole number.",
+    answerKey: 30,
+    tolerance: 0.5,
+    difficulty: -0.3,
+    discrimination: 1.3,
+    expectedSeconds: 50,
+    prereqClosure: ["loess-smoothing", "simple-linear-regression"],
+    source: NIST_HANDBOOK,
+    status: "live",
+  },
+  {
+    id: "loess-smoothing--apply-tricube-weight-second",
+    conceptId: "loess-smoothing",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "The tricube weight is w(u) = (1 − |u|³)³ for |u| < 1. What weight does a point at u = 0.8 receive? " +
+      "Give a decimal to four places.",
+    answerKey: 0.1162,
+    tolerance: 0.001,
+    difficulty: 1.9,
+    discrimination: 1.6,
+    expectedSeconds: 120,
+    prereqClosure: ["loess-smoothing", "simple-linear-regression"],
+    source: NIST_HANDBOOK,
+    status: "live",
+  },
+  {
+    id: "loess-smoothing--explain-smooth-weights-vs-hard-edge",
+    conceptId: "loess-smoothing",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why LOESS uses a smoothly decaying weighting scheme (like the tricube function) within " +
+      "each neighbourhood rather than simply giving every point in the neighbourhood equal weight.",
+    rubric: {
+      elements: [
+        {
+          id: "hard-edge-causes-jumps",
+          description: "Explains that equal weighting within a hard-edged window would make the fitted curve jump discontinuously as points cross the window boundary while the target point moves.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "smooth-weights-give-smooth-curve",
+          description: "Explains that smoothly decaying weights (near 1 close to the target, tapering to 0 at the boundary) make the resulting curve continuous as the window slides.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 0.6,
+    discrimination: 1.4,
+    expectedSeconds: 120,
+    prereqClosure: ["loess-smoothing", "simple-linear-regression"],
+    source: NIST_HANDBOOK,
+    status: "live",
+  },
+  {
+    id: "loess-smoothing--explain-outlier-sensitivity",
+    conceptId: "loess-smoothing",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "LOESS weights points by distance to the target but not by how influential a point already is " +
+      "within that local window. Explain a scenario where this makes LOESS sensitive to a single outlier " +
+      "despite the local weighting.",
+    rubric: {
+      elements: [
+        {
+          id: "distance-weight-ignores-y-value",
+          description: "Explains that an outlier near the target point's window gets a high distance-based weight regardless of how extreme its y-value is, distorting the local fit near that region.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "robustness-iteration-fix",
+          description: "Names the remedy: robust LOESS reweights points with large residuals after an initial fit, which plain distance-weighting alone does not do.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.0,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["loess-smoothing", "simple-linear-regression"],
+    source: NIST_HANDBOOK,
+    status: "live",
+  },
+  {
+    id: "loess-smoothing--transfer-fixed-span-at-scale",
+    conceptId: "loess-smoothing",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A dashboard automatically overlays a LOESS trend line on every scatterplot using a fixed span of " +
+      "0.75, regardless of sample size. Explain what goes wrong as the dataset grows from 50 to 50,000 " +
+      "points, holding the span fixed.",
+    rubric: {
+      elements: [
+        {
+          id: "absolute-window-grows",
+          description: "Explains that with a fixed fraction span, the absolute number of points entering each local fit grows proportionally with n (37.5 at n = 50 versus 37,500 at n = 50,000).",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "fixed-span-treated-as-scale-invariant",
+            description: "Treats a fixed span fraction as scale-invariant good practice, missing that the effective window's absolute size grows with n.",
+            blameConceptId: "loess-smoothing",
+          },
+        },
+        {
+          id: "over-smoothing-at-scale",
+          description: "Concludes each 'local' window becomes a near-global neighbourhood at large n, over-smoothing the curve and potentially hiding genuine local structure the extra data could have revealed.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["loess-smoothing", "simple-linear-regression"],
+    source: ESL,
+    status: "live",
+  },
+  {
+    id: "loess-smoothing--transfer-fixed-span-vs-fixed-bandwidth",
+    conceptId: "loess-smoothing",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Contrast what happens to a LOESS fit's variance as n → ∞ at a fixed span (a fraction of the data) " +
+      "versus at a fixed absolute bandwidth (a fixed range of x-units). Which choice, on its own, would " +
+      "need to be adjusted with n for the fit to behave like a classical consistent nonparametric " +
+      "estimator, and why?",
+    rubric: {
+      elements: [
+        {
+          id: "fixed-bandwidth-needs-shrinking",
+          description: "Explains that a fixed absolute bandwidth left unchanged as n → ∞ has shrinking variance but fixed bias — for consistency in the classical sense the bandwidth itself must be shrunk toward zero as n grows.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "fixed-span-never-adapts-the-fraction",
+          description: "Explains that a fixed span keeps the same fraction of data local as n grows, so while variance still shrinks, the fraction of the range treated as 'local' never adapts on its own — a different asymptotic behaviour than a bandwidth explicitly shrunk toward zero.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.5,
+    discrimination: 1.6,
+    expectedSeconds: 210,
+    prereqClosure: ["loess-smoothing", "simple-linear-regression", "variance"],
+    source: ESL,
+    status: "live",
+  },
 ];

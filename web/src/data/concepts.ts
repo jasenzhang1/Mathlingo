@@ -11,6 +11,7 @@ export type Domain =
   | "stochastic-processes"
   | "stochastic-calculus"
   | "financial-instruments"
+  | "time-series"
   | "python";
 
 export interface DomainMeta {
@@ -34,6 +35,7 @@ export const domainMeta: Record<Domain, DomainMeta> = {
   "stochastic-processes": { label: "Stochastic Processes", color: "#c2410c" },
   "stochastic-calculus": { label: "Stochastic Calculus", color: "#0891b2" },
   "financial-instruments": { label: "Financial Instruments", color: "#7c3aed" },
+  "time-series": { label: "Stochastic Processes & Time Series", color: "#c2410c" },
   /**
    * Deliberately last. Chapter order is an editorial call (see
    * `lib/learningOrder.ts`), and the math spine is the book — Python is the
@@ -1692,6 +1694,98 @@ export const concepts: Concept[] = [
   },
 
   // ---------------------------------------------------------------------
+  // Stochastic Processes & Time Series
+  //
+  // A new domain rather than a section bolted onto `regression`: the object
+  // of study is a single realisation of a process indexed by time, not i.i.d.
+  // rows, and the tests, identities, and failure modes below (autocorrelated
+  // errors, unit roots, spurious regression) are specific to that setting.
+  // `stochastic-processes` reopens the general framework and reuses
+  // `markov-chains` (in `graphical-models`) for the fully-worked
+  // transition-matrix / stationary-distribution / ergodicity case rather than
+  // duplicating it; everything downstream specialises to *stationary* real-
+  // or vector-valued processes, which is the setting ACF, ARMA/ARIMA, GARCH
+  // and cointegration actually live in.
+  // ---------------------------------------------------------------------
+  {
+    id: "stochastic-processes",
+    title: "Stochastic Processes",
+    domain: "time-series",
+    blurb: "A family of random variables indexed by time — state spaces, sample paths, and the Markov case.",
+    prerequisites: ["random-variables", "markov-chains"],
+  },
+  {
+    id: "stationarity-white-noise",
+    title: "Stationarity & White Noise",
+    domain: "time-series",
+    blurb: "When a process's statistics don't depend on when you look — and the pure-noise process that anchors everything built on top of it.",
+    prerequisites: ["stochastic-processes", "covariance"],
+  },
+  {
+    id: "acf",
+    title: "Autocorrelation Function (ACF)",
+    domain: "time-series",
+    blurb: "How correlated a series is with lagged copies of itself, and what its decay shape reveals about the process.",
+    prerequisites: ["stationarity-white-noise", "correlation"],
+  },
+  {
+    id: "pacf",
+    title: "Partial Autocorrelation Function (PACF)",
+    domain: "time-series",
+    blurb: "Correlation with a lag after netting out every shorter lag in between — the tool that tells AR order from MA order.",
+    prerequisites: ["acf", "multiple-linear-regression"],
+  },
+  {
+    id: "ar-models",
+    title: "Autoregressive (AR) Models",
+    domain: "time-series",
+    blurb: "Predicting the present from a weighted sum of its own past values, plus noise.",
+    prerequisites: ["stationarity-white-noise", "acf"],
+  },
+  {
+    id: "ma-models",
+    title: "Moving Average (MA) Models",
+    domain: "time-series",
+    blurb: "Modeling the present as a weighted sum of current and past shocks, not past levels.",
+    prerequisites: ["stationarity-white-noise", "acf"],
+  },
+  {
+    id: "wold-decomposition",
+    title: "Wold Decomposition",
+    domain: "time-series",
+    blurb: "Why every stationary process can be written as an infinite MA — the theorem that justifies AR and ARMA as approximations.",
+    prerequisites: ["ar-models", "ma-models"],
+  },
+  {
+    id: "arma",
+    title: "ARMA Models",
+    domain: "time-series",
+    blurb: "Combining AR and MA terms for a more parsimonious fit, and using ACF/PACF shape to identify (p, q).",
+    prerequisites: ["ar-models", "ma-models", "pacf"],
+  },
+  {
+    id: "arima",
+    title: "ARIMA & Unit Roots",
+    domain: "time-series",
+    blurb: "Differencing away a trend or unit root before fitting ARMA to what's left.",
+    prerequisites: ["arma"],
+  },
+  {
+    id: "garch",
+    title: "ARCH & GARCH",
+    domain: "time-series",
+    blurb: "Modeling volatility itself as autoregressive, for series whose variance — not just its mean — clusters over time.",
+    prerequisites: ["arma", "variance"],
+  },
+  {
+    id: "cointegration",
+    title: "Cointegration",
+    domain: "time-series",
+    blurb: "When two non-stationary series share a stationary combination — and why regressing one on the other can look significant for no real reason.",
+    prerequisites: ["arima"],
+  },
+
+  // ---------------------------------------------------------------------
   // Machine Learning
   // ---------------------------------------------------------------------
   {
@@ -2819,6 +2913,14 @@ export const concepts: Concept[] = [
     domain: "stochastic-calculus",
     blurb:
       "The SDE dS = μS dt + σS dW, solved by applying Itô's lemma to log S — the default model for a stock price and the engine behind Black-Scholes.",
+    prerequisites: ["stochastic-differential-equations"],
+  },
+  {
+    id: "ornstein-uhlenbeck-process",
+    title: "Ornstein-Uhlenbeck Process",
+    domain: "stochastic-calculus",
+    blurb:
+      "The SDE dX = θ(μ − X) dt + σ dW — a mean-reverting sibling of geometric Brownian motion, solved by an integrating factor rather than Itô's lemma on a logarithm.",
     prerequisites: ["stochastic-differential-equations"],
   },
   {

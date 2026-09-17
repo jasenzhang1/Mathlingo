@@ -3,7 +3,7 @@ import type { WikiArticle } from "../types";
 export const pythonDictionariesWiki: WikiArticle = {
   conceptId: "python-dictionaries",
   summary:
-    "A dict maps keys to values with O(1) average lookup — checking or retrieving by key doesn't scan " +
+    "A `dict` maps keys to values with O(1) average lookup — checking or retrieving by key doesn't scan " +
     "the whole collection the way a list does. That single property is what turns counting, grouping, " +
     "and joining from quadratic loops into linear ones, and it costs one constraint: keys must be " +
     "hashable, which in practice means immutable.",
@@ -28,11 +28,11 @@ export const pythonDictionariesWiki: WikiArticle = {
         {
           kind: "callout",
           tone: "warning",
-          title: "d[k] raises, d.get(k) does not",
+          title: "`d[k]` raises, `d.get(k)` does not",
           text:
-            "d[k] on a missing key raises KeyError; d.get(k) returns None, and d.get(k, default) returns " +
-            "your default. Reach for .get() when absence is expected and has a sensible fallback, and " +
-            "for d[k] when a missing key is a bug you want to hear about immediately.",
+            "`d[k]` on a missing key raises `KeyError`; `d.get(k)` returns `None`, and `d.get(k, default)` returns " +
+            "your default. Reach for `.get()` when absence is expected and has a sensible fallback, and " +
+            "for `d[k]` when a missing key is a bug you want to hear about immediately.",
         },
       ],
     },
@@ -52,22 +52,22 @@ export const pythonDictionariesWiki: WikiArticle = {
           kind: "example",
           title: "Grouping words by their first letter",
           problem:
-            "Given words = ['apple', 'avocado', 'beet', 'cherry'], build " +
-            "{'a': ['apple', 'avocado'], 'b': ['beet'], 'c': ['cherry']} in one pass.",
+            "Given `words = ['apple', 'avocado', 'beet', 'cherry']`, build " +
+            "`{'a': ['apple', 'avocado'], 'b': ['beet'], 'c': ['cherry']}` in one pass.",
           steps: [
-            "Iterate the words once; the key is w[0].",
-            "groups.setdefault(w[0], []) returns the existing list, or inserts [] and returns that.",
-            "Append w to whichever list came back.",
+            "Iterate the words once; the key is `w[0]`.",
+            "`groups.setdefault(w[0], [])` returns the existing list, or inserts `[]` and returns that.",
+            "Append `w` to whichever list came back.",
           ],
           answer:
-            "groups = {}; for w in words: groups.setdefault(w[0], []).append(w) — one pass, O(n).",
+            "`groups = {}; for w in words: groups.setdefault(w[0], []).append(w)` — one pass, O(n).",
         },
         {
           kind: "callout",
           tone: "insight",
           title: "Iteration order is insertion order, and that's a promise",
           text:
-            "Since Python 3.7, iterating a dict yields keys in the order they were first inserted — a " +
+            "Since Python 3.7, iterating a `dict` yields keys in the order they were first inserted — a " +
             "language guarantee, not an implementation accident. (Sets carry no such promise — see the " +
             "next lesson.)",
         },
