@@ -46,6 +46,8 @@ import { spectralTheorem } from "./spectral-theorem";
 import { svd } from "./svd";
 import { symmetricMatrices } from "./symmetric-matrices";
 import { trace } from "./trace";
+import { uniquenessOfSvd } from "./uniqueness-of-svd";
+import { vectorAngles } from "./vector-angles";
 import { vectorNorm } from "./vector-norm";
 import { vectorOperations } from "./vector-operations";
 import { vectorProjection } from "./vector-projection";
@@ -93,6 +95,8 @@ const articles: WikiArticle[] = [
   svd,
   symmetricMatrices,
   trace,
+  uniquenessOfSvd,
+  vectorAngles,
   vectorNorm,
   vectorOperations,
   vectorProjection,
