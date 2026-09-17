@@ -7,6 +7,7 @@ import { AuthProvider } from "./lib/auth/AuthContext.tsx";
 import { AccountPage } from "./pages/AccountPage.tsx";
 import { ConceptMapPage } from "./pages/ConceptMapPage.tsx";
 import { ConceptPage } from "./pages/ConceptPage.tsx";
+import { DevQuestionsPage } from "./pages/DevQuestionsPage.tsx";
 import { ForgotPasswordPage } from "./pages/ForgotPasswordPage.tsx";
 import { LoginPage } from "./pages/LoginPage.tsx";
 import { PostPage } from "./pages/PostPage.tsx";
@@ -36,6 +37,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/school" element={<SchoolBoardPage />} />
           <Route path="/submit/questions" element={<SubmitQuestionPage />} />
           <Route path="/submit/analogies" element={<SubmitAnalogyPage />} />
+          <Route path="/dev/questions" element={<DevQuestionsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
