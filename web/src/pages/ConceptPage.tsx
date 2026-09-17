@@ -27,6 +27,11 @@ const DiscussionFeed = lazy(() =>
     default: m.DiscussionFeed,
   })),
 );
+const AnalogyFeed = lazy(() =>
+  import("../components/analogy/AnalogyFeed").then((m) => ({
+    default: m.AnalogyFeed,
+  })),
+);
 import { conceptById } from "../data/concepts";
 import { prereqsOf, unlocksOf } from "../lib/prerequisiteGraph";
 
@@ -35,6 +40,7 @@ const TABS = [
   { id: "wiki", label: "Wiki" },
   { id: "tutor", label: "Tutor" },
   { id: "assessment", label: "Assessment" },
+  { id: "analogy", label: "Analogy" },
   { id: "forum", label: "Forum" },
 ] as const;
 
@@ -191,6 +197,8 @@ export function ConceptPage() {
                 conceptTitle={concept.title}
               />
             )}
+
+            {activeTab === "analogy" && <AnalogyFeed conceptId={concept.id} />}
 
             {activeTab === "forum" && <DiscussionFeed conceptId={concept.id} />}
             </Suspense>

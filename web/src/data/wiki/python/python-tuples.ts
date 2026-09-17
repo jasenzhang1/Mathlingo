@@ -20,18 +20,18 @@ export const pythonTuplesWiki: WikiArticle = {
           kind: "prose",
           text:
             "Indexing, negative indexing, and slicing all work on a tuple exactly as they do on a list — " +
-            "point[-1], point[0:1], the whole vocabulary transfers unchanged. What doesn't transfer is any " +
-            "operation that would mutate: point[0] = 5 raises a TypeError, and there is no .append() or " +
-            "  .sort() method, because both would require changing the tuple after creation.",
+            "`point[-1]`, `point[0:1]`, the whole vocabulary transfers unchanged. What doesn't transfer is any " +
+            "operation that would mutate: `point[0] = 5` raises a `TypeError`, and there is no `.append()` or " +
+            "  `.sort()` method, because both would require changing the tuple after creation.",
         },
         {
           kind: "callout",
           tone: "warning",
           title: "A one-item tuple needs a trailing comma",
           text:
-            "(5) is just the number 5 in parentheses — grouping, not tuple syntax. (5,) is a one-element " +
+            "`(5)` is just the number 5 in parentheses — grouping, not tuple syntax. `(5,)` is a one-element " +
             "tuple. The comma is what actually builds the tuple; the parentheses are optional in most " +
-            "contexts and only there for readability (a, b = b, a is already tuple packing and unpacking).",
+            "contexts and only there for readability (`a, b = b, a` is already tuple packing and unpacking).",
         },
       ],
     },
@@ -43,7 +43,7 @@ export const pythonTuplesWiki: WikiArticle = {
           items: [
             {
               term: "Signals fixed structure",
-              description: "(x, y) or (name, age, job) tells a reader the shape and meaning of each position are fixed and won't drift.",
+              description: "`(x, y)` or `(name, age, job)` tells a reader the shape and meaning of each position are fixed and won't drift.",
             },
             {
               term: "Safe to share",
@@ -58,13 +58,13 @@ export const pythonTuplesWiki: WikiArticle = {
         {
           kind: "example",
           title: "Choosing list vs. tuple",
-          problem: "You're returning a fixed (row, column) pair from a function that will never need to grow, shrink, or be reordered. List or tuple?",
+          problem: "You're returning a fixed `(row, column)` pair from a function that will never need to grow, shrink, or be reordered. List or tuple?",
           steps: [
             "The pair has a fixed size (2) and each position has a specific meaning.",
             "Nothing about the pair should be mutated by the caller.",
             "A tuple communicates both the fixed size and the intent not to mutate; a list would (incorrectly) suggest either might change.",
           ],
-          answer: "A tuple — (row, column).",
+          answer: "A tuple — `(row, column)`.",
         },
       ],
     },

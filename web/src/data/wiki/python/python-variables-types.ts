@@ -16,9 +16,9 @@ export const pythonVariablesTypesWiki: WikiArticle = {
         {
           kind: "prose",
           text:
-            "score = 10 does not declare a box called score that only ever holds integers. It binds the " +
-            "name score to the integer object 10. A later score = \"ten\" is not a type error — it simply " +
-            "rebinds score to a different object, of a different type. Nothing checks that the new value " +
+            "`score = 10` does not declare a box called `score` that only ever holds integers. It binds the " +
+            "name `score` to the integer object `10`. A later `score = \"ten\"` is not a type error — it simply " +
+            "rebinds `score` to a different object, of a different type. Nothing checks that the new value " +
             "is compatible with the old one, because there is no per-name type to be compatible with.",
         },
         {
@@ -31,17 +31,17 @@ export const pythonVariablesTypesWiki: WikiArticle = {
             {
               term: "Naming rules",
               description:
-                "Letters, digits, and underscores; cannot start with a digit; case-sensitive (score and Score are different names).",
+                "Letters, digits, and underscores; cannot start with a digit; case-sensitive (`score` and `Score` are different names).",
             },
             {
               term: "Convention",
               description:
-                "snake_case for variables and functions — first_name, not firstName or FirstName.",
+                "`snake_case` for variables and functions — `first_name`, not `firstName` or `FirstName`.",
             },
             {
-              term: "type(value)",
+              term: "`type(value)`",
               description:
-                "Returns the type of any value or variable, e.g. type(10) is <class 'int'> — the fastest way to check what you're actually holding.",
+                "Returns the type of any value or variable, e.g. `type(10)` is `<class 'int'>` — the fastest way to check what you're actually holding.",
             },
           ],
         },
@@ -63,9 +63,9 @@ export const pythonVariablesTypesWiki: WikiArticle = {
         {
           kind: "prose",
           text:
-            "The type is decided entirely by how the literal is written: 4 is an int, 4.0 is a float, " +
-            "even though they're mathematically the same number. bool is technically a subtype of int — " +
-            "True behaves like 1 and False like 0 in arithmetic, so True + True evaluates to 2. This is " +
+            "The type is decided entirely by how the literal is written: `4` is an `int`, `4.0` is a `float`, " +
+            "even though they're mathematically the same number. `bool` is technically a subtype of `int` — " +
+            "`True` behaves like `1` and `False` like `0` in arithmetic, so `True + True` evaluates to `2`. This is " +
             "worth knowing so it doesn't surprise you, not something to lean on in real code.",
         },
         {
@@ -73,8 +73,8 @@ export const pythonVariablesTypesWiki: WikiArticle = {
           tone: "insight",
           title: "None is a fifth, special citizen",
           text:
-            "None represents the deliberate absence of a value — not 0, not \"\", not False. It has its " +
-            "own type, NoneType, and is what a function with no return statement produces. Check for it " +
+            "`None` represents the deliberate absence of a value — not `0`, not `\"\"`, not `False`. It has its " +
+            "own type, `NoneType`, and is what a function with no return statement produces. Check for it " +
             "with `is None` rather than `== None`.",
         },
         {
@@ -82,8 +82,8 @@ export const pythonVariablesTypesWiki: WikiArticle = {
           tone: "warning",
           title: "A quoted number is not a number",
           text:
-            "\"42\" is a str, full stop — it happens to look like a number, but 5 == \"5\" is False, and " +
-            "\"3\" + \"4\" concatenates to \"34\" rather than adding to 7. Whether something is text or a " +
+            "`\"42\"` is a `str`, full stop — it happens to look like a number, but `5 == \"5\"` is `False`, and " +
+            "`\"3\" + \"4\"` concatenates to `\"34\"` rather than adding to `7`. Whether something is text or a " +
             "number depends only on whether it was written inside quotes.",
         },
       ],

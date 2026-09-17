@@ -32,6 +32,7 @@ import { statisticsExpansion3Items } from "./items.statistics-expansion-3";
 import { statisticsExpansion4Items } from "./items.statistics-expansion-4";
 import { multivariateExpansion1Items } from "./items.multivariate-expansion-1";
 import { multivariateExpansion2Items } from "./items.multivariate-expansion-2";
+import { timeSeriesItems } from "./items/time-series";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -559,6 +560,7 @@ export const items: Item[] = [
   ...regressionSelectionItems,
   ...regressionGeneralizedItems,
   ...regressionExtensionsItems,
+  ...timeSeriesItems,
 
   // --- Probability / Statistics / Multivariate Probability: 20-per-concept
   // expansion. Brings every concept in these three domains up to 20 live

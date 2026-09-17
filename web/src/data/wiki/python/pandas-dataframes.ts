@@ -6,8 +6,8 @@ export const pandasDataframesWiki: WikiArticle = {
     "A Series is a NumPy array with labels; a DataFrame is a dict of Series sharing one index. The " +
     "index is not decoration — it is what makes alignment automatic, so adding two Series matches " +
     "them by label rather than by position. That single behaviour explains most of what surprises " +
-    "people about pandas, including why .loc and .iloc are separate methods and why an operation " +
-    "can produce NaNs out of two complete inputs.",
+    "people about pandas, including why `.loc` and `.iloc` are separate methods and why an operation " +
+    "can produce `NaN`s out of two complete inputs.",
 
   sections: [
     {
@@ -17,7 +17,7 @@ export const pandasDataframesWiki: WikiArticle = {
           kind: "prose",
           text:
             "When two Series are combined, pandas takes the union of their indexes, lines the values " +
-            "up by label, and fills anything unmatched with NaN. Nothing is matched by position. This " +
+            "up by label, and fills anything unmatched with `NaN`. Nothing is matched by position. This " +
             "is the feature — it means a reindexed, filtered, or reordered Series still adds " +
             "correctly — and it is the trap, because two Series of the same length can add to " +
             "something longer than either.",
@@ -26,25 +26,25 @@ export const pandasDataframesWiki: WikiArticle = {
           kind: "example",
           title: "Two complete Series, an answer full of NaN",
           problem:
-            "s1 has index ['a', 'b', 'c'] and s2 has index ['b', 'c', 'd']. Both have three values " +
-            "and no missing data. What is s1 + s2?",
+            "`s1` has index `['a', 'b', 'c']` and `s2` has index `['b', 'c', 'd']`. Both have three values " +
+            "and no missing data. What is `s1 + s2`?",
           steps: [
-            "The result index is the union: ['a', 'b', 'c', 'd'] — four labels.",
-            "'b' and 'c' appear in both, so those sum normally.",
-            "'a' is missing from s2 and 'd' from s1; each becomes NaN.",
-            "s1.add(s2, fill_value=0) treats a missing label as 0 instead.",
+            "The result index is the union: `['a', 'b', 'c', 'd']` — four labels.",
+            "`'b'` and `'c'` appear in both, so those sum normally.",
+            "`'a'` is missing from `s2` and `'d'` from `s1`; each becomes `NaN`.",
+            "`s1.add(s2, fill_value=0)` treats a missing label as `0` instead.",
           ],
           answer:
-            "A four-element Series with two real sums and two NaNs. Nothing was missing in the " +
-            "inputs — the NaNs come from alignment, not from the data.",
+            "A four-element Series with two real sums and two `NaN`s. Nothing was missing in the " +
+            "inputs — the `NaN`s come from alignment, not from the data.",
         },
         {
           kind: "callout",
           tone: "insight",
-          title: "df['col'] is a Series; df[['col']] is a DataFrame",
+          title: "`df['col']` is a Series; `df[['col']]` is a DataFrame",
           text:
             "One set of brackets selects a column and gives you a 1-D Series. Two sets pass a list " +
-            "of column names and give you a DataFrame with one column. Code that then calls .mean() " +
+            "of column names and give you a DataFrame with one column. Code that then calls `.mean()` " +
             "gets a scalar in the first case and a Series in the second.",
         },
       ],
@@ -68,8 +68,8 @@ export const pandasDataframesWiki: WikiArticle = {
           tone: "warning",
           title: "The inclusive .loc slice is deliberate, and it catches everyone",
           text:
-            "df.loc['2024-01':'2024-03'] includes March, because with labels there is no defined " +
-            "\"one past the end\" to stop before. .iloc keeps the ordinary half-open rule. Mixing the " +
+            "`df.loc['2024-01':'2024-03']` includes March, because with labels there is no defined " +
+            "\"one past the end\" to stop before. `.iloc` keeps the ordinary half-open rule. Mixing the " +
             "two conventions up shifts a range by exactly one row, which is precisely the error size " +
             "least likely to be noticed.",
         },
@@ -77,8 +77,8 @@ export const pandasDataframesWiki: WikiArticle = {
           kind: "prose",
           text:
             "After filtering, the index keeps the original labels: rows 0, 4 and 9 of the source stay " +
-            "labelled 0, 4 and 9. So .iloc[0] and .loc[0] now mean different rows, and .iloc[4] may " +
-            "not exist at all. reset_index(drop=True) renumbers when you genuinely want positions.",
+            "labelled 0, 4 and 9. So `.iloc[0]` and `.loc[0]` now mean different rows, and `.iloc[4]` may " +
+            "not exist at all. `reset_index(drop=True)` renumbers when you genuinely want positions.",
         },
       ],
     },
@@ -89,10 +89,10 @@ export const pandasDataframesWiki: WikiArticle = {
         {
           kind: "prose",
           text:
-            "Chained indexing — df[df.x > 0]['y'] = 1 — asks pandas for a subset and then writes to " +
+            "Chained indexing — `df[df.x > 0]['y'] = 1` — asks pandas for a subset and then writes to " +
             "it. Whether that write reaches the original frame depends on whether the subset was a " +
             "view or a copy, which pandas does not promise. The warning is telling you the assignment " +
-            "may have gone nowhere. Do the selection in one .loc call, where the target is unambiguous.",
+            "may have gone nowhere. Do the selection in one `.loc` call, where the target is unambiguous.",
         },
         {
           kind: "code",
@@ -102,10 +102,10 @@ export const pandasDataframesWiki: WikiArticle = {
         {
           kind: "definitions",
           items: [
-            { term: "NaN", description: "Missing, not zero. It propagates through arithmetic and compares unequal to everything, including itself." },
-            { term: "Skipped by default", description: "df.mean() and friends drop NaN, so a column's mean may be over fewer rows than len(df). Pass skipna=False to see it." },
-            { term: "dtype object", description: "Usually means a column of strings, or of mixed types. Arithmetic on it falls back to slow per-element Python." },
-            { term: "df.copy()", description: "An explicit deep copy. The cure for ambiguity about whether you hold a view." },
+            { term: "`NaN`", description: "Missing, not zero. It propagates through arithmetic and compares unequal to everything, including itself." },
+            { term: "Skipped by default", description: "`df.mean()` and friends drop `NaN`, so a column's mean may be over fewer rows than `len(df)`. Pass `skipna=False` to see it." },
+            { term: "`dtype object`", description: "Usually means a column of strings, or of mixed types. Arithmetic on it falls back to slow per-element Python." },
+            { term: "`df.copy()`", description: "An explicit deep copy. The cure for ambiguity about whether you hold a view." },
           ],
         },
       ],
