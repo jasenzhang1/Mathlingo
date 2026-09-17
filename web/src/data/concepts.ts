@@ -10,6 +10,7 @@ export type Domain =
   | "graphical-models"
   | "stochastic-processes"
   | "stochastic-calculus"
+  | "financial-instruments"
   | "python";
 
 export interface DomainMeta {
@@ -32,6 +33,7 @@ export const domainMeta: Record<Domain, DomainMeta> = {
   "graphical-models": { label: "Graphical Models & Bayesian ML", color: "#a855f7" },
   "stochastic-processes": { label: "Stochastic Processes", color: "#c2410c" },
   "stochastic-calculus": { label: "Stochastic Calculus", color: "#0891b2" },
+  "financial-instruments": { label: "Financial Instruments", color: "#7c3aed" },
   /**
    * Deliberately last. Chapter order is an editorial call (see
    * `lib/learningOrder.ts`), and the math spine is the book — Python is the
@@ -2866,6 +2868,143 @@ export const concepts: Concept[] = [
     blurb:
       "The bridge back to PDEs: a conditional expectation of a diffusion solves a parabolic PDE, and that PDE's solution recovers the expectation — Black-Scholes-Merton is the special case.",
     prerequisites: ["stochastic-differential-equations", "black-scholes-merton-equation"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Financial Instruments
+  //
+  // Every financial instrument, from a savings bond to a swap, is a
+  // contract for moving cash flows across time and across parties. This
+  // chapter starts with the discounting arithmetic that prices any cash
+  // flow, builds up fixed income and equity as the two basic claims on a
+  // firm, and ends with derivatives (forwards, options, swaps) as
+  // contracts *on* those instruments, priced by the same no-arbitrage
+  // logic Stochastic Calculus develops in full (Black-Scholes-Merton,
+  // risk-neutral pricing) for the continuous-time case.
+  // ---------------------------------------------------------------------
+  {
+    id: "time-value-of-money",
+    title: "Time Value of Money",
+    domain: "financial-instruments",
+    blurb:
+      "A dollar today is worth more than a dollar tomorrow — discounting and compounding are the arithmetic that makes cash flows at different dates comparable.",
+    prerequisites: [],
+  },
+  {
+    id: "bonds-and-fixed-income",
+    title: "Bonds and Fixed Income",
+    domain: "financial-instruments",
+    blurb:
+      "A bond is a promise to pay coupons and a face value on a schedule — pricing one is just discounting those promised cash flows back to today.",
+    prerequisites: ["time-value-of-money"],
+  },
+  {
+    id: "yield-to-maturity",
+    title: "Yield to Maturity",
+    domain: "financial-instruments",
+    blurb:
+      "The single discount rate that makes a bond's promised cash flows equal its market price — the market's summary number for a bond's return.",
+    prerequisites: ["bonds-and-fixed-income"],
+  },
+  {
+    id: "yield-curve-and-term-structure",
+    title: "Yield Curves and the Term Structure",
+    domain: "financial-instruments",
+    blurb:
+      "Plotting yield to maturity against time to maturity for otherwise-similar bonds — its shape (upward, flat, inverted) is read as a signal about growth and rate expectations.",
+    prerequisites: ["yield-to-maturity"],
+  },
+  {
+    id: "bond-duration-and-convexity",
+    title: "Duration and Convexity",
+    domain: "financial-instruments",
+    blurb:
+      "Duration is a bond price's first-order sensitivity to a shift in yield; convexity is the second-order correction — together a Taylor expansion of price in yield.",
+    prerequisites: ["yield-to-maturity"],
+  },
+  {
+    id: "equities-and-stock-markets",
+    title: "Equities and Stock Markets",
+    domain: "financial-instruments",
+    blurb:
+      "A share is a residual claim on a firm's assets and earnings after every other claim (including bondholders) is paid — the other basic building block alongside fixed income.",
+    prerequisites: ["time-value-of-money"],
+  },
+  {
+    id: "etfs-and-index-funds",
+    title: "ETFs and Index Funds",
+    domain: "financial-instruments",
+    blurb:
+      "Pooled vehicles that hold a basket of underlying securities and track an index — an ETF trades intraday like a stock, while a traditional index fund prices once a day at NAV.",
+    prerequisites: ["equities-and-stock-markets"],
+  },
+  {
+    id: "mutual-funds-and-nav",
+    title: "Mutual Funds and Net Asset Value",
+    domain: "financial-instruments",
+    blurb:
+      "A mutual fund's price is its net asset value: total portfolio value divided by shares outstanding, computed once per day rather than traded continuously.",
+    prerequisites: ["etfs-and-index-funds"],
+  },
+  {
+    id: "derivatives-overview",
+    title: "Derivatives: An Overview",
+    domain: "financial-instruments",
+    blurb:
+      "A derivative is a contract whose value is derived from an underlying asset's price — used to hedge risk, speculate, or gain leveraged exposure without owning the asset outright.",
+    prerequisites: ["bonds-and-fixed-income", "equities-and-stock-markets"],
+  },
+  {
+    id: "forwards-and-futures",
+    title: "Forwards and Futures",
+    domain: "financial-instruments",
+    blurb:
+      "Both lock in today a price for buying or selling an asset later; a forward is a private, customized contract, while a futures contract is standardized, exchange-traded, and marked to market daily.",
+    prerequisites: ["derivatives-overview", "time-value-of-money"],
+  },
+  {
+    id: "options-calls-and-puts",
+    title: "Options: Calls and Puts",
+    domain: "financial-instruments",
+    blurb:
+      "A call gives the right (not the obligation) to buy at a fixed strike price; a put gives the right to sell — that asymmetry, paid for upfront as a premium, is what separates options from forwards.",
+    prerequisites: ["derivatives-overview"],
+  },
+  {
+    id: "option-payoff-and-put-call-parity",
+    title: "Option Payoffs and Put-Call Parity",
+    domain: "financial-instruments",
+    blurb:
+      "Kinked payoff diagrams (max(S-K,0) for a call, max(K-S,0) for a put) combine into an exact no-arbitrage identity linking a call, a put, the stock, and a bond at the same strike and maturity.",
+    prerequisites: ["options-calls-and-puts", "bonds-and-fixed-income"],
+  },
+  {
+    id: "option-pricing-and-greeks",
+    title: "Option Pricing and the Greeks",
+    domain: "financial-instruments",
+    blurb:
+      "Black-Scholes-Merton prices a call or put in closed form under geometric Brownian motion; the Greeks (delta, gamma, vega, theta, rho) are the price's sensitivities to each input.",
+    prerequisites: [
+      "option-payoff-and-put-call-parity",
+      "black-scholes-merton-equation",
+      "geometric-brownian-motion",
+    ],
+  },
+  {
+    id: "interest-rate-and-currency-swaps",
+    title: "Interest Rate and Currency Swaps",
+    domain: "financial-instruments",
+    blurb:
+      "Two parties agree to exchange cash flows on a schedule — fixed for floating interest payments, or payments in one currency for another — without ever exchanging the underlying principal.",
+    prerequisites: ["derivatives-overview", "yield-curve-and-term-structure"],
+  },
+  {
+    id: "credit-default-swaps",
+    title: "Credit Default Swaps",
+    domain: "financial-instruments",
+    blurb:
+      "Insurance on a bond issuer's default: the protection buyer pays a periodic premium, and the seller pays out if a specified credit event occurs — pricing one means estimating a default probability.",
+    prerequisites: ["interest-rate-and-currency-swaps", "bonds-and-fixed-income"],
   },
 
   // ---------------------------------------------------------------------
