@@ -12,6 +12,7 @@ import { changeOfBasis } from "./change-of-basis";
 import { choleskyDecomposition } from "./cholesky-decomposition";
 import { columnSpace } from "./column-space";
 import { determinant } from "./determinant";
+import { determinantProperties } from "./determinant-properties";
 import { diagonalization } from "./diagonalization";
 import { disjointnessFourFundamentalSubspaces } from "./disjointness-four-fundamental-subspaces";
 import { dotProduct } from "./dot-product";
@@ -66,6 +67,7 @@ const articles: WikiArticle[] = [
   choleskyDecomposition,
   columnSpace,
   determinant,
+  determinantProperties,
   diagonalization,
   disjointnessFourFundamentalSubspaces,
   dotProduct,
