@@ -22,6 +22,7 @@ import { fourFundamentalSubspaces } from "./four-fundamental-subspaces";
 import { gramSchmidt } from "./gram-schmidt";
 import { idempotentMatrices } from "./idempotent-matrices";
 import { invertibleMatrices } from "./invertible-matrices";
+import { kroneckerProduct } from "./kronecker-product";
 import { leftNullSpace } from "./left-null-space";
 import { linearDependence } from "./linear-dependence";
 import { linearTransformations } from "./linear-transformations";
@@ -75,6 +76,7 @@ const articles: WikiArticle[] = [
   gramSchmidt,
   idempotentMatrices,
   invertibleMatrices,
+  kroneckerProduct,
   leftNullSpace,
   linearDependence,
   linearTransformations,
