@@ -396,7 +396,7 @@ export function ProfilePage() {
         {canSeeProficiency && (
           <div className="mt-10">
             <h2 className="font-display text-lg text-[var(--ink)]">
-              Topic mastery
+              Lesson mastery
             </h2>
             <div className="mt-4 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5 shadow-sm">
               <TopicMasteryGrid states={states} />

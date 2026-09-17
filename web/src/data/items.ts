@@ -36,6 +36,10 @@ import { timeSeriesItems } from "./items/time-series";
 import { discreteMathLogicItems } from "./items/discrete-math-logic";
 import { discreteMathSetsItems } from "./items/discrete-math-sets";
 import { discreteMathCountingItems } from "./items/discrete-math-counting";
+import { stochasticProcessesBuffupItems } from "./items/stochastic-processes-buffup";
+import { computationalStatisticsItems } from "./items/computational-statistics";
+import { robustRegressionItems } from "./items/robust-regression";
+import { functionalDataAnalysisItems } from "./items/functional-data-analysis";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -911,7 +915,9 @@ export const items: Item[] = [
   ...regressionSelectionItems,
   ...regressionGeneralizedItems,
   ...regressionExtensionsItems,
+  ...robustRegressionItems,
   ...timeSeriesItems,
+  ...stochasticProcessesBuffupItems,
 
   // --- Probability / Statistics / Multivariate Probability: 20-per-concept
   // expansion. Brings every concept in these three domains up to 20 live
@@ -5111,6 +5117,8 @@ export const items: Item[] = [
   // the authoring notes.
   // -------------------------------------------------------------------------
   ...graphicalModelsItems,
+  ...computationalStatisticsItems,
+  ...functionalDataAnalysisItems,
 
   // -------------------------------------------------------------------------
   // Machine Learning — all 50 concepts, 5 items each, ported from

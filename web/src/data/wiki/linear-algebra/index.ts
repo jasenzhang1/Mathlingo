@@ -12,22 +12,28 @@ import { changeOfBasis } from "./change-of-basis";
 import { choleskyDecomposition } from "./cholesky-decomposition";
 import { columnSpace } from "./column-space";
 import { determinant } from "./determinant";
+import { determinantProperties } from "./determinant-properties";
 import { diagonalization } from "./diagonalization";
+import { disjointnessFourFundamentalSubspaces } from "./disjointness-four-fundamental-subspaces";
 import { dotProduct } from "./dot-product";
 import { eckartYoung } from "./eckart-young";
 import { eigendecomposition } from "./eigendecomposition";
 import { eigenvaluesEigenvectors } from "./eigenvalues-eigenvectors";
 import { fourFundamentalSubspaces } from "./four-fundamental-subspaces";
 import { gramSchmidt } from "./gram-schmidt";
+import { idempotentMatrices } from "./idempotent-matrices";
 import { invertibleMatrices } from "./invertible-matrices";
+import { kroneckerProduct } from "./kronecker-product";
 import { leftNullSpace } from "./left-null-space";
 import { linearDependence } from "./linear-dependence";
 import { linearTransformations } from "./linear-transformations";
 import { luDecomposition } from "./lu-decomposition";
+import { matmulFourFundamentalSubspaces } from "./matmul-four-fundamental-subspaces";
 import { matrices } from "./matrices";
 import { matrixCalculus } from "./matrix-calculus";
 import { matrixMultiplication } from "./matrix-multiplication";
 import { matrixNorms } from "./matrix-norms";
+import { matrixStability } from "./matrix-stability";
 import { moorePenroseInverse } from "./moore-penrose-inverse";
 import { nullSpace } from "./null-space";
 import { orthogonalMatrices } from "./orthogonal-matrices";
@@ -40,11 +46,16 @@ import { rankNullityTheorem } from "./rank-nullity-theorem";
 import { rank } from "./rank";
 import { rayleighQuotient } from "./rayleigh-quotient";
 import { rowSpace } from "./row-space";
+import { schurComplement } from "./schur-complement";
 import { span } from "./span";
 import { spectralTheorem } from "./spectral-theorem";
+import { subspaceOperations } from "./subspace-operations";
 import { svd } from "./svd";
+import { svdFourFundamentalSubspaces } from "./svd-four-fundamental-subspaces";
 import { symmetricMatrices } from "./symmetric-matrices";
 import { trace } from "./trace";
+import { uniquenessOfSvd } from "./uniqueness-of-svd";
+import { vectorAngles } from "./vector-angles";
 import { vectorNorm } from "./vector-norm";
 import { vectorOperations } from "./vector-operations";
 import { vectorProjection } from "./vector-projection";
@@ -58,22 +69,28 @@ const articles: WikiArticle[] = [
   choleskyDecomposition,
   columnSpace,
   determinant,
+  determinantProperties,
   diagonalization,
+  disjointnessFourFundamentalSubspaces,
   dotProduct,
   eckartYoung,
   eigendecomposition,
   eigenvaluesEigenvectors,
   fourFundamentalSubspaces,
   gramSchmidt,
+  idempotentMatrices,
   invertibleMatrices,
+  kroneckerProduct,
   leftNullSpace,
   linearDependence,
   linearTransformations,
   luDecomposition,
+  matmulFourFundamentalSubspaces,
   matrices,
   matrixCalculus,
   matrixMultiplication,
   matrixNorms,
+  matrixStability,
   moorePenroseInverse,
   nullSpace,
   orthogonalMatrices,
@@ -86,11 +103,16 @@ const articles: WikiArticle[] = [
   rank,
   rayleighQuotient,
   rowSpace,
+  schurComplement,
   span,
   spectralTheorem,
+  subspaceOperations,
   svd,
+  svdFourFundamentalSubspaces,
   symmetricMatrices,
   trace,
+  uniquenessOfSvd,
+  vectorAngles,
   vectorNorm,
   vectorOperations,
   vectorProjection,

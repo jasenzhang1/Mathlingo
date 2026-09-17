@@ -266,6 +266,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "orthogonal-matrices",
         "positive-definite-matrices",
         "cholesky-decomposition",
+        "idempotent-matrices",
         "schur-complement",
         "rayleigh-quotient",
         "matrix-stability",
@@ -469,6 +470,8 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "Extensions",
       conceptIds: [
         "weighted-least-squares",
+        "sandwich-estimator",
+        "generalized-estimating-equations",
         "outliers-leverage-influence",
         "polynomial-regression",
         "quantile-regression",
@@ -707,6 +710,18 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "em-algorithm",
         "gaussian-mixture-models",
         "laplace-approximation",
+        "conjugate-priors",
+      ],
+    },
+    {
+      id: "sampling-inference",
+      label: "Sampling-Based Inference",
+      conceptIds: [
+        "importance-sampling",
+        "markov-chain-monte-carlo",
+        "gibbs-sampling",
+        "dirichlet-process",
+        "stick-breaking-construction",
       ],
     },
     {
@@ -719,6 +734,11 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "wasserstein-distance",
       ],
     },
+    {
+      id: "fda",
+      label: "Functional Data Analysis",
+      conceptIds: ["hilbert-space", "functional-data-analysis"],
+    },
   ],
 
   "stochastic-processes": [
@@ -726,6 +746,16 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       id: "foundations",
       label: "From Random Walk to Brownian Motion",
       conceptIds: ["simple-random-walk", "brownian-motion"],
+    },
+    {
+      id: "markov-and-filtering",
+      label: "Markov Processes & Filtering",
+      conceptIds: [
+        "poisson-process",
+        "continuous-time-markov-chains",
+        "kalman-filter",
+        "karhunen-loeve-expansion",
+      ],
     },
   ],
 

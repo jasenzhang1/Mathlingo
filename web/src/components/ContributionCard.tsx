@@ -4,10 +4,21 @@ import {
   PIN_VOTE_THRESHOLD,
   type Contribution,
 } from "../data/community";
+import { domainMeta, type Domain } from "../data/concepts";
 import { topics } from "../data/topics";
 import { reputationFor } from "../lib/reputation";
 
 const topicName = new Map(topics.map((topic) => [topic.id, topic.name]));
+
+/** Cards submitted from the expert-only flow are tagged by mastery domain
+ * rather than a homepage topic — fall back to that label before giving up. */
+function labelFor(topicId: string): string {
+  return (
+    topicName.get(topicId) ??
+    domainMeta[topicId as Domain]?.label ??
+    "General"
+  );
+}
 
 interface ContributionCardProps {
   contribution: Contribution;
@@ -36,7 +47,7 @@ export function ContributionCard({
     >
       <div className="flex flex-wrap items-center gap-2 text-xs">
         <span className="rounded-full border border-[var(--line)] bg-[var(--panel)] px-2.5 py-1 text-[var(--ink-soft)]">
-          {topicName.get(contribution.topicId) ?? "General"}
+          {labelFor(contribution.topicId)}
         </span>
         {pinned && (
           <span className="rounded-full px-2.5 py-1 font-medium text-[var(--accent-ink)] bg-[var(--accent)]">

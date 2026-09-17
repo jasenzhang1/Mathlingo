@@ -7,20 +7,28 @@ import { REP_PER_SUBMISSION } from "../lib/reputation";
 const MIN_QUESTION = 12;
 const MIN_ANSWER = 30;
 
+const DEFAULT_TOPIC_OPTIONS = topics.map((topic) => ({
+  id: topic.id,
+  name: topic.name,
+}));
+
 interface ContributionFormProps {
   handle: string;
   onHandleChange: (handle: string) => void;
   /** Publishes the card and reports back any badges it just unlocked. */
   onSubmit: (draft: NewContribution) => Badge[];
+  /** Subjects the "Subject" select offers. Defaults to the full homepage topic list. */
+  topicOptions?: { id: string; name: string }[];
 }
 
 export function ContributionForm({
   handle,
   onHandleChange,
   onSubmit,
+  topicOptions = DEFAULT_TOPIC_OPTIONS,
 }: ContributionFormProps) {
   const [author, setAuthor] = useState(handle);
-  const [topicId, setTopicId] = useState(topics[0].id);
+  const [topicId, setTopicId] = useState(topicOptions[0]?.id ?? "");
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -89,7 +97,7 @@ export function ContributionForm({
             onChange={(e) => setTopicId(e.target.value)}
             className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] px-4 py-2.5 text-sm text-[var(--ink)] outline-none focus:border-[var(--accent)]"
           >
-            {topics.map((topic) => (
+            {topicOptions.map((topic) => (
               <option key={topic.id} value={topic.id}>
                 {topic.name}
               </option>

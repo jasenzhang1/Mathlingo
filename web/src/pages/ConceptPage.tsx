@@ -116,9 +116,17 @@ export function ConceptPage() {
             ← Back
           </Link>
 
-          <h1 className="font-display mt-5 text-3xl text-[var(--ink)] md:text-4xl">
-            {concept.title}
-          </h1>
+          <div className="mt-5 flex flex-wrap items-start justify-between gap-4">
+            <h1 className="font-display text-3xl text-[var(--ink)] md:text-4xl">
+              {concept.title}
+            </h1>
+            <Link
+              to={`/submit/questions?domain=${concept.domain}`}
+              className="font-body shrink-0 rounded-full border border-[var(--line)] px-4 py-2 text-sm font-medium text-[var(--ink)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            >
+              Submit question
+            </Link>
+          </div>
           <p className="font-body mt-2 max-w-2xl text-[var(--ink-soft)]">
             {concept.blurb}
           </p>
