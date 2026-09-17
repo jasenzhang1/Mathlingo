@@ -1681,4 +1681,1343 @@ export const regressionGeometryItems: Item[] = [
     source: AUTHORED,
     status: "live",
   },
+
+  // --- Additional items (doubling pass) -------------------------------------
+
+  // --- Geometric Interpretation of OLS (cont.) ------------------------------
+  {
+    id: "geometric-interpretation-of-ols--recall-column-space-def",
+    conceptId: "geometric-interpretation-of-ols",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The column space of X, written C(X), is:",
+    choices: [
+      { id: "a", text: "The set of all vectors of the form Xb for some coefficient vector b", correct: true },
+      {
+        id: "b",
+        text: "The set of rows of X",
+        correct: false,
+        misconception: {
+          id: "column-space-confused-with-rows",
+          description: "Confuses columns with rows. The column space is spanned by X's columns, not its rows.",
+          blameConceptId: "column-space",
+        },
+      },
+      {
+        id: "c",
+        text: "The set of vectors orthogonal to every column of X",
+        correct: false,
+        misconception: {
+          id: "column-space-confused-with-orthogonal-complement",
+          description: "Describes the orthogonal complement of C(X), a different subspace entirely — the one the residual lives in.",
+          blameConceptId: "column-space",
+        },
+      },
+      {
+        id: "d",
+        text: "The set of eigenvectors of X",
+        correct: false,
+        misconception: {
+          id: "column-space-confused-with-eigenvectors",
+          description: "X need not even be square, so it has no eigenvectors in general. The column space is a span, not a spectral notion.",
+          blameConceptId: "column-space",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.0,
+    expectedSeconds: 30,
+    prereqClosure: ["geometric-interpretation-of-ols", "column-space"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "geometric-interpretation-of-ols--recall-residual-orthogonality",
+    conceptId: "geometric-interpretation-of-ols",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "State, without derivation, the geometric relationship between the residual vector e and the column space of X.",
+    rubric: {
+      elements: [
+        {
+          id: "orthogonal",
+          description: "e is orthogonal to every vector in C(X) — equivalently, e is orthogonal to ŷ and to every column of X.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "residual-thought-parallel",
+            description: "Believes the residual lies inside C(X) alongside the fit, rather than in its orthogonal complement.",
+            blameConceptId: "geometric-interpretation-of-ols",
+          },
+        },
+      ],
+    },
+    difficulty: -1.6,
+    discrimination: 1.0,
+    expectedSeconds: 35,
+    prereqClosure: ["geometric-interpretation-of-ols", "column-space", "vector-projection"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "geometric-interpretation-of-ols--apply-trace-h-small-model",
+    conceptId: "geometric-interpretation-of-ols",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "A simple regression uses an intercept and 1 predictor, fit on 10 observations, with X of full column rank. " +
+      "What is trace(H) for this fit? Give a whole number.",
+    answerKey: 2,
+    tolerance: 0.001,
+    difficulty: 0.45,
+    discrimination: 1.3,
+    expectedSeconds: 60,
+    prereqClosure: ["geometric-interpretation-of-ols", "column-space", "matrix-multiplication"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "geometric-interpretation-of-ols--apply-two-step-residual-variance",
+    conceptId: "geometric-interpretation-of-ols",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A regression with an intercept and 5 predictors is fit on 50 observations, giving SSE = 176. Using " +
+      "σ̂² = SSE/(n − p − 1), then Var(eᵢ) = σ̂²(1 − hᵢᵢ) for an observation with leverage hᵢᵢ = 0.9, compute " +
+      "Var(eᵢ). Give a decimal to two places.",
+    answerKey: 0.4,
+    tolerance: 0.01,
+    difficulty: 1.6,
+    discrimination: 1.6,
+    expectedSeconds: 130,
+    prereqClosure: ["geometric-interpretation-of-ols", "variance", "matrix-multiplication"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "geometric-interpretation-of-ols--explain-normal-equations-orthogonality",
+    conceptId: "geometric-interpretation-of-ols",
+    format: "derivation",
+    cognitive: "explain",
+    channels: ["typed", "handwritten"],
+    stem:
+      "Starting from the normal equations XᵀXβ̂ = Xᵀy, show algebraically that Xᵀe = 0, where e = y − Xβ̂, and " +
+      "state in words what this identity means geometrically.",
+    rubric: {
+      elements: [
+        {
+          id: "algebra",
+          description: "Rewrites Xᵀe = Xᵀ(y − Xβ̂) = Xᵀy − XᵀXβ̂, then substitutes the normal equations to get Xᵀy − Xᵀy = 0.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "asserts-orthogonality-without-algebra",
+            description: "States Xᵀe = 0 without deriving it from the normal equations.",
+            blameConceptId: "matrix-multiplication",
+          },
+        },
+        {
+          id: "geometric-meaning",
+          description: "States that this says e is orthogonal to every column of X, i.e. to C(X) as a whole.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.2,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["geometric-interpretation-of-ols", "matrix-multiplication", "column-space"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "geometric-interpretation-of-ols--explain-pythagorean-decomposition",
+    conceptId: "geometric-interpretation-of-ols",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "y decomposes as ŷ + e, with ŷ ∈ C(X) and e orthogonal to C(X). Explain why this licenses ‖y‖² = ‖ŷ‖² + ‖e‖², " +
+      "and name the regression-output identity that this is.",
+    rubric: {
+      elements: [
+        {
+          id: "pythagoras-from-orthogonality",
+          description: "Explains that for orthogonal vectors a and b, ‖a + b‖² = ‖a‖² + ‖b‖² because the cross term 2aᵀb vanishes, and applies this to ŷ and e.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "sum-of-squares-asserted",
+            description: "States the sum-of-squares identity without connecting it to the orthogonality of ŷ and e.",
+            blameConceptId: "geometric-interpretation-of-ols",
+          },
+        },
+        {
+          id: "names-anova-identity",
+          description: "Identifies this as the ANOVA decomposition SST = SSR + SSE (with y centred appropriately for the total sum of squares).",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.75,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["geometric-interpretation-of-ols", "column-space", "vector-projection"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "geometric-interpretation-of-ols--transfer-collinearity-breaks-picture",
+    conceptId: "geometric-interpretation-of-ols",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain what happens to the geometric picture of OLS when two columns of X are exactly collinear, and why " +
+      "(XᵀX)⁻¹ failing to exist is not a numerical inconvenience but a statement about the geometry itself.",
+    rubric: {
+      elements: [
+        {
+          id: "projection-still-exists",
+          description: "Notes that C(X) still has a well-defined orthogonal projection onto it — ŷ is still uniquely determined.",
+          weight: 3,
+          required: true,
+        },
+        {
+          id: "coefficients-not-unique",
+          description: "Explains that infinitely many coefficient vectors b map to the same point in C(X), so β̂ is not identified even though ŷ is — the projection is unique but its coordinates in a redundant basis are not.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "singularity-treated-as-numerical-glitch",
+            description: "Treats non-invertibility as a computational rounding issue rather than as the correct statement that the coefficients are not identifiable.",
+            blameConceptId: "geometric-interpretation-of-ols",
+          },
+        },
+      ],
+    },
+    difficulty: 2.2,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["geometric-interpretation-of-ols", "column-space", "matrix-multiplication"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "geometric-interpretation-of-ols--transfer-ridge-not-a-projection",
+    conceptId: "geometric-interpretation-of-ols",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Ridge regression's fitted values are ŷ_ridge = X(XᵀX + λI)⁻¹Xᵀy for λ > 0, applying a different matrix in " +
+      "place of H. Explain why this matrix is no longer an orthogonal projection, and what that costs and buys.",
+    rubric: {
+      elements: [
+        {
+          id: "not-idempotent",
+          description: "Shows or states that the ridge operator is not idempotent and its eigenvalues lie strictly inside [0, 1) rather than being exactly 0 or 1, so it is a shrinkage operator, not a projection.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "ridge-hat-matrix-assumed-a-projection",
+            description: "Treats the ridge smoother matrix as if it still had the hat matrix's projection properties (idempotence, eigenvalues in {0,1}).",
+            blameConceptId: "geometric-interpretation-of-ols",
+          },
+        },
+        {
+          id: "cost-and-benefit",
+          description: "States the cost — ŷ_ridge no longer lies exactly in C(X) as the closest point to y, so it is biased — and the benefit — every fitted value is shrunk toward zero, which trades bias for reduced variance.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.65,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["geometric-interpretation-of-ols", "matrix-multiplication", "column-space"],
+    source: AUTHORED,
+    status: "live",
+  },
+
+  // --- Multiple Linear Regression (cont.) -----------------------------------
+  {
+    id: "multiple-linear-regression--recall-normal-equations-form",
+    conceptId: "multiple-linear-regression",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The normal equations that determine β̂ in multiple linear regression are:",
+    choices: [
+      { id: "a", text: "XᵀXβ̂ = Xᵀy", correct: true },
+      {
+        id: "b",
+        text: "Xβ̂ = y",
+        correct: false,
+        misconception: {
+          id: "normal-equations-omit-transpose",
+          description: "Drops the XᵀX / Xᵀy structure entirely. Xβ = y generally has no exact solution when n > p + 1, which is exactly why the normal equations are needed.",
+          blameConceptId: "normal-equations",
+        },
+      },
+      {
+        id: "c",
+        text: "β̂ = Xy",
+        correct: false,
+        misconception: {
+          id: "normal-equations-dimension-mismatch",
+          description: "The dimensions cannot even conform in general — β̂ has one entry per column of X, not per row.",
+          blameConceptId: "normal-equations",
+        },
+      },
+      {
+        id: "d",
+        text: "XᵀXβ̂ = y",
+        correct: false,
+        misconception: {
+          id: "normal-equations-missing-xty",
+          description: "Drops the Xᵀ on the right-hand side, so the dimensions no longer match unless X is square.",
+          blameConceptId: "normal-equations",
+        },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.0,
+    expectedSeconds: 35,
+    prereqClosure: ["multiple-linear-regression", "normal-equations", "ordinary-least-squares"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "multiple-linear-regression--recall-residual-df-formula",
+    conceptId: "multiple-linear-regression",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "State the formula for the residual degrees of freedom of a multiple regression with p predictors and an intercept, fit on n observations.",
+    rubric: {
+      elements: [
+        { id: "formula", description: "n − p − 1.", weight: 4, required: true },
+      ],
+    },
+    difficulty: -1.3,
+    discrimination: 1.0,
+    expectedSeconds: 30,
+    prereqClosure: ["multiple-linear-regression", "ordinary-least-squares"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "multiple-linear-regression--apply-effect-without-interaction",
+    conceptId: "multiple-linear-regression",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "A fitted model is Ŷ = 10 + 2·X₁ − 3·X₂. What is the effect on Ŷ of a one-unit increase in X₁, holding X₂ fixed? Give a whole number.",
+    answerKey: 2,
+    tolerance: 0.001,
+    difficulty: -0.2,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["multiple-linear-regression", "ordinary-least-squares"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "multiple-linear-regression--apply-interaction-with-negative-sign",
+    conceptId: "multiple-linear-regression",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A fitted model is Ŷ = 4 + 1.2·X₁ + 0.8·X₂ − 0.5·(X₁·X₂). What is ∂Ŷ/∂X₁ evaluated at X₂ = 6? Give a decimal to one place.",
+    answerKey: -1.8,
+    tolerance: 0.01,
+    difficulty: 1.5,
+    discrimination: 1.6,
+    expectedSeconds: 140,
+    prereqClosure: ["multiple-linear-regression", "ordinary-least-squares"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "multiple-linear-regression--explain-r-squared-never-decreases",
+    conceptId: "multiple-linear-regression",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Explain why R² cannot decrease when a predictor is added to a model — even a predictor with no real relationship to Y — and why adjusted R² can.",
+    rubric: {
+      elements: [
+        {
+          id: "r-squared-weakly-increases",
+          description: "Explains that OLS minimises SSE, and adding a column can only enlarge the space searched over (setting the new coefficient to zero recovers the old fit exactly), so the minimised SSE cannot rise and R² cannot fall.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "r-squared-thought-to-penalise-noise",
+            description: "Believes R² automatically detects and penalises a useless added predictor, which it structurally cannot do.",
+            blameConceptId: "multiple-linear-regression",
+          },
+        },
+        {
+          id: "adjusted-r-squared-penalises",
+          description: "Explains that adjusted R² divides by residual degrees of freedom, which falls with every added predictor, so a predictor that does not reduce SSE proportionally more than it costs a degree of freedom lowers it.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.4,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["multiple-linear-regression", "ordinary-least-squares"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "multiple-linear-regression--explain-perfect-collinearity-undefined",
+    conceptId: "multiple-linear-regression",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Explain why adding a predictor that is an exact linear combination of existing predictors makes β̂ undefined, rather than merely making the estimates large or unstable.",
+    rubric: {
+      elements: [
+        {
+          id: "not-a-degree-question",
+          description: "Distinguishes this sharply from near-collinearity: an exact linear dependence means XᵀX is singular, so the normal equations have infinitely many solutions rather than one large one.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "exact-collinearity-treated-as-extreme-near-collinearity",
+            description: "Treats perfect collinearity as merely a severe case of the instability near-collinearity causes, missing that it is a qualitatively different, non-identified situation.",
+            blameConceptId: "multiple-linear-regression",
+          },
+        },
+        {
+          id: "fit-still-unique",
+          description: "Notes that despite this, the fitted values ŷ remain unique — only the decomposition of credit among the collinear predictors is unidentified.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.7,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["multiple-linear-regression", "normal-equations", "ordinary-least-squares"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "multiple-linear-regression--transfer-standardised-coefficients",
+    conceptId: "multiple-linear-regression",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Standardising every predictor and the response to zero mean and unit variance before fitting lets you compare coefficients across predictors measured in different units. Explain what the resulting 'beta coefficients' mean, " +
+      "and what assumption that comparison silently relies on.",
+    rubric: {
+      elements: [
+        {
+          id: "beta-meaning",
+          description: "States that each standardised coefficient is the effect, in standard deviations of Y, of a one-standard-deviation change in that predictor, holding the others fixed — a partial effect in comparable units.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "silent-assumption",
+          description:
+            "Names the assumption: that a one-SD change is a comparably meaningful or achievable move for every predictor. A one-SD move in a nearly-constant predictor may be tiny in practice while a one-SD move in a highly variable one is large, so 'bigger standardised coefficient' does not automatically mean 'more important lever'.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "standardised-coefficients-read-as-importance",
+            description: "Reads the largest standardised coefficient as automatically identifying the most important or most actionable predictor, ignoring that the comparison is relative to each predictor's own variability, not to any real-world unit of control.",
+            blameConceptId: "multiple-linear-regression",
+          },
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["multiple-linear-regression", "covariance", "ordinary-least-squares"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "multiple-linear-regression--transfer-saturated-model",
+    conceptId: "multiple-linear-regression",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A model has p = n − 1 predictors plus an intercept, so it is fit on exactly as many parameters as observations. " +
+      "Explain, geometrically, why R² = 1 always in this case, and why this makes in-sample fit statistics worthless here.",
+    rubric: {
+      elements: [
+        {
+          id: "geometric-reason",
+          description: "Explains that C(X) is then all of ℝⁿ (dimension n), so the projection of y onto it is y itself — the residual vector is forced to be zero regardless of any real relationship.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "perfect-fit-mistaken-for-strong-relationship",
+            description: "Reads R² = 1 here as evidence the predictors explain Y well, rather than as a mechanical consequence of running out of residual degrees of freedom.",
+            blameConceptId: "multiple-linear-regression",
+          },
+        },
+        {
+          id: "consequence",
+          description: "Concludes that no in-sample statistic can distinguish a genuine fit from this degenerate one, so only performance on held-out data (or cross-validation) is informative once p approaches n.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.8,
+    discrimination: 1.8,
+    expectedSeconds: 220,
+    prereqClosure: ["multiple-linear-regression", "column-space", "ordinary-least-squares"],
+    source: AUTHORED,
+    status: "live",
+  },
+
+  // --- Linear Regression, Probabilistic Version (cont.) ---------------------
+  {
+    id: "linear-regression-probabilistic-version--recall-sigma-squared-meaning",
+    conceptId: "linear-regression-probabilistic-version",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "In Y | X ~ Normal(Xβ, σ²), what does σ² represent?",
+    choices: [
+      { id: "a", text: "The constant variance of the error term, the same for every observation", correct: true },
+      {
+        id: "b",
+        text: "The variance of the response Y marginally, before conditioning on X",
+        correct: false,
+        misconception: {
+          id: "sigma-squared-confused-with-marginal-variance",
+          description: "Confuses the conditional error variance with Var(Y), which also includes the variation Xβ explains and is generally larger.",
+          blameConceptId: "linear-regression-probabilistic-version",
+        },
+      },
+      {
+        id: "c",
+        text: "The variance of the predictors X",
+        correct: false,
+        misconception: {
+          id: "sigma-squared-attributed-to-x",
+          description: "The model conditions on X and says nothing about its distribution or variance.",
+          blameConceptId: "linear-regression-probabilistic-version",
+        },
+      },
+      {
+        id: "d",
+        text: "The sampling variance of β̂",
+        correct: false,
+        misconception: {
+          id: "sigma-squared-confused-with-beta-hat-variance",
+          description: "Var(β̂) = σ²(XᵀX)⁻¹ is built from σ², but σ² itself is the error variance, not the coefficient's sampling variance.",
+          blameConceptId: "linear-regression-probabilistic-version",
+        },
+      },
+    ],
+    difficulty: -1.7,
+    discrimination: 1.1,
+    expectedSeconds: 40,
+    prereqClosure: ["linear-regression-probabilistic-version", "normal-distribution"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "linear-regression-probabilistic-version--recall-mle-in-words",
+    conceptId: "linear-regression-probabilistic-version",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "In one sentence, state what quantity maximum likelihood estimation chooses β to maximise.",
+    rubric: {
+      elements: [
+        { id: "definition", description: "The likelihood (or log-likelihood) of the observed data as a function of β — the probability density of the data actually seen, evaluated at candidate parameter values.", weight: 4, required: true },
+      ],
+    },
+    difficulty: -1.2,
+    discrimination: 1.0,
+    expectedSeconds: 35,
+    prereqClosure: ["linear-regression-probabilistic-version", "mle"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "linear-regression-probabilistic-version--apply-easy-sigma-hat",
+    conceptId: "linear-regression-probabilistic-version",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem: "A regression with an intercept and 2 predictors is fitted on 20 observations, giving SSE = 51. What is the unbiased estimate σ̂² of the error variance? Give a whole number.",
+    answerKey: 3,
+    tolerance: 0.01,
+    difficulty: 0.2,
+    discrimination: 1.3,
+    expectedSeconds: 70,
+    prereqClosure: ["linear-regression-probabilistic-version", "variance", "multiple-linear-regression"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "linear-regression-probabilistic-version--apply-from-mle-back-to-unbiased",
+    conceptId: "linear-regression-probabilistic-version",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A regression with an intercept and 4 predictors is fitted on 15 observations. The maximum-likelihood estimate " +
+      "of σ² (which divides by n) is 2.4. What is the unbiased estimate σ̂² (which divides by the residual degrees " +
+      "of freedom)? Give a decimal to one place.",
+    answerKey: 3.6,
+    tolerance: 0.02,
+    difficulty: 1.6,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["linear-regression-probabilistic-version", "mle", "variance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "linear-regression-probabilistic-version--explain-gauss-markov-vs-normal",
+    conceptId: "linear-regression-probabilistic-version",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "The Gauss–Markov theorem shows OLS is BLUE without assuming normal errors. Explain what the normality assumption adds on top of that, and what it does not add.",
+    rubric: {
+      elements: [
+        {
+          id: "what-normality-adds",
+          description: "Explains that normality upgrades 'best among linear unbiased estimators' to 'best among all unbiased estimators' (via the Cramér–Rao bound being attained), and licenses exact finite-sample inference.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "what-it-does-not-add",
+          description: "Notes that normality does not change the point estimate β̂ itself, and does not improve unbiasedness or efficiency within the linear class beyond what Gauss–Markov already guarantees.",
+          weight: 3,
+          required: true,
+          misconception: {
+            id: "normality-thought-to-improve-blue-estimator",
+            description: "Believes normal errors make β̂ 'more BLUE' or change its value, rather than only strengthening the optimality and inference claims that can be made about the same estimator.",
+            blameConceptId: "linear-regression-probabilistic-version",
+          },
+        },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["linear-regression-probabilistic-version", "normal-distribution", "mle", "variance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "linear-regression-probabilistic-version--explain-exact-vs-asymptotic-normality",
+    conceptId: "linear-regression-probabilistic-version",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "β̂'s sampling distribution is exactly Normal(β, σ²(XᵀX)⁻¹) in this model, for any sample size. Explain why " +
+      "this is stronger than the usual guarantee for a maximum-likelihood estimator, which is normal only " +
+      "asymptotically.",
+    rubric: {
+      elements: [
+        {
+          id: "linear-functional-form",
+          description: "Identifies that β̂ = (XᵀX)⁻¹Xᵀy is an exact linear function of y, and under the model's assumption that y is exactly normal, a linear transformation of a normal vector is exactly normal at any n — no limit is invoked.",
+          weight: 5,
+          required: true,
+          misconception: {
+            id: "exact-normality-attributed-to-clt",
+            description: "Attributes β̂'s normality to the central limit theorem, which only delivers an approximation that improves with n — missing that here the result is exact because of the model's own distributional assumption plus linearity.",
+            blameConceptId: "normal-distribution",
+          },
+        },
+        {
+          id: "general-mle-is-asymptotic",
+          description: "Contrasts this with a general MLE, whose asymptotic normality is a large-sample approximation with no exact finite-sample counterpart in general.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.05,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["linear-regression-probabilistic-version", "mle", "normal-distribution"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "linear-regression-probabilistic-version--transfer-likelihood-ratio-test",
+    conceptId: "linear-regression-probabilistic-version",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain how the probabilistic view licenses a formal test comparing two nested models (e.g. dropping several " +
+      "predictors at once), and why the purely geometric projection view offers no such test on its own.",
+    rubric: {
+      elements: [
+        {
+          id: "likelihood-gives-a-test-statistic",
+          description: "Explains that with a likelihood in hand, twice the difference in maximised log-likelihoods between the nested models has a known (chi-squared, or F in the normal-error case) reference distribution, which is what turns a comparison of fits into a hypothesis test with a p-value.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "geometry-has-no-distribution",
+          description: "Notes that the geometric view supplies SSE for each model — a number describing how far y sits from each subspace — but says nothing on its own about how much SSE should be expected to shrink by chance alone; that requires a probabilistic model to attach a sampling distribution to the shrinkage.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "smaller-sse-treated-as-automatically-significant",
+            description: "Treats any reduction in SSE from adding predictors as evidence they matter, without a reference distribution to say how large a reduction would occur by chance.",
+            blameConceptId: "linear-regression-probabilistic-version",
+          },
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["linear-regression-probabilistic-version", "mle", "likelihood-vs-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "linear-regression-probabilistic-version--transfer-mle-equals-ols-scope",
+    conceptId: "linear-regression-probabilistic-version",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A colleague argues that because β̂_OLS = β̂_MLE under normal errors, any general property of maximum " +
+      "likelihood estimators — consistency, asymptotic efficiency — automatically transfers to the OLS estimator " +
+      "even when the errors are not normal. Assess this claim.",
+    rubric: {
+      elements: [
+        {
+          id: "ols-consistency-does-not-need-mle",
+          description: "Notes that OLS's consistency and unbiasedness hold under much weaker conditions (E[ε | X] = 0) and do not rely on the normal-errors likelihood being correct — so that part of the claim is fine, but for reasons that have nothing to do with MLE theory.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "efficiency-claim-fails",
+          description: "Explains that once the errors are not normal, maximising the normal likelihood is a misspecified (quasi-)likelihood, and the strong optimality results for MLEs assume the likelihood is correctly specified — so 'asymptotically efficient' does not carry over automatically; OLS is efficient among linear estimators (Gauss–Markov) but not necessarily among all estimators.",
+          weight: 5,
+          required: true,
+          misconception: {
+            id: "mle-optimality-assumed-transferable-under-misspecification",
+            description: "Assumes that because an estimator happens to coincide with an MLE under one distributional assumption, all of that MLE's asymptotic optimality properties survive when that assumption is dropped.",
+            blameConceptId: "mle",
+          },
+        },
+      ],
+    },
+    difficulty: 2.9,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["linear-regression-probabilistic-version", "mle", "normal-distribution", "likelihood-vs-probability"],
+    source: AUTHORED,
+    status: "live",
+  },
+
+  // --- OLS Assumptions (cont.) -----------------------------------------------
+  {
+    id: "ols-assumptions--recall-exogeneity-name",
+    conceptId: "ols-assumptions",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The assumption E[ε | X] = 0 is usually referred to as:",
+    choices: [
+      { id: "a", text: "Exogeneity", correct: true },
+      {
+        id: "b",
+        text: "Homoskedasticity",
+        correct: false,
+        misconception: {
+          id: "exogeneity-confused-with-homoskedasticity",
+          description: "Homoskedasticity concerns the variance of the errors, Var(ε | X); E[ε | X] = 0 concerns their mean.",
+          blameConceptId: "ols-assumptions",
+        },
+      },
+      {
+        id: "c",
+        text: "Linearity",
+        correct: false,
+        misconception: {
+          id: "exogeneity-confused-with-linearity",
+          description: "Linearity concerns the functional form E[Y | X] = Xβ; exogeneity is a separate assumption about the error term given that form.",
+          blameConceptId: "ols-assumptions",
+        },
+      },
+      {
+        id: "d",
+        text: "Normality",
+        correct: false,
+        misconception: {
+          id: "exogeneity-confused-with-normality",
+          description: "Normality concerns the shape of the error distribution; exogeneity concerns its conditional mean, which is a much weaker and more load-bearing condition.",
+          blameConceptId: "ols-assumptions",
+        },
+      },
+    ],
+    difficulty: -2.1,
+    discrimination: 1.0,
+    expectedSeconds: 30,
+    prereqClosure: ["ols-assumptions", "multiple-linear-regression"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "ols-assumptions--recall-unbiasedness-assumption",
+    conceptId: "ols-assumptions",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "Name the single assumption that alone guarantees OLS coefficient estimates are unbiased, and state it.",
+    rubric: {
+      elements: [
+        { id: "names-it", description: "Exogeneity: E[ε | X] = 0, that the errors have conditional mean zero given the predictors.", weight: 4, required: true },
+      ],
+    },
+    difficulty: -1.5,
+    discrimination: 1.0,
+    expectedSeconds: 35,
+    prereqClosure: ["ols-assumptions", "multiple-linear-regression"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "ols-assumptions--apply-measurement-error-attenuation",
+    conceptId: "ols-assumptions",
+    format: "mcq",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem:
+      "A predictor is measured with classical random error (the recorded value is the true value plus independent " +
+      "noise). Which assumption breaks, and what happens to the coefficient?",
+    choices: [
+      {
+        id: "a",
+        text: "Exogeneity breaks, and the coefficient is biased toward zero (attenuated)",
+        correct: true,
+      },
+      {
+        id: "b",
+        text: "Homoskedasticity breaks, but the coefficient stays unbiased",
+        correct: false,
+        misconception: {
+          id: "measurement-error-misfiled-as-heteroskedasticity",
+          description: "Measurement error in a predictor correlates the recorded X with the error term, which is an exogeneity failure, not a variance-of-errors issue.",
+          blameConceptId: "ols-assumptions",
+        },
+      },
+      {
+        id: "c",
+        text: "No assumption breaks, since the noise is independent of the true value",
+        correct: false,
+        misconception: {
+          id: "measurement-error-assumed-harmless",
+          description: "Independence of the noise from the true value does not stop the noise from correlating the recorded (mismeasured) predictor with the composite error term — that correlation is exactly what breaks exogeneity.",
+          blameConceptId: "ols-assumptions",
+        },
+      },
+      {
+        id: "d",
+        text: "Exogeneity breaks, and the coefficient is biased away from zero (exaggerated)",
+        correct: false,
+        misconception: {
+          id: "attenuation-direction-reversed",
+          description: "Classical measurement error in a predictor biases its coefficient toward zero, not away from it — the noise dilutes the apparent relationship rather than inflating it.",
+          blameConceptId: "ols-assumptions",
+        },
+      },
+    ],
+    difficulty: 0.3,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["ols-assumptions", "multiple-linear-regression", "covariance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "ols-assumptions--apply-simultaneity-sign-undetermined",
+    conceptId: "ols-assumptions",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem:
+      "Advertising spend and sales are jointly determined: bigger budgets tend to follow stronger recent sales, and " +
+      "advertising also boosts sales. Explain why the OLS coefficient on advertising is biased, and why — unlike " +
+      "the omitted-ability wage example — the sign of the bias cannot be pinned down by reasoning alone.",
+    rubric: {
+      elements: [
+        {
+          id: "why-biased",
+          description: "Explains that reverse causation puts sales into the determination of advertising, which correlates advertising with the error term and breaks exogeneity — the same structural problem as an omitted confounder, arrived at differently.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "simultaneity-not-recognised-as-exogeneity-failure",
+            description: "Treats simultaneity as a separate, unrelated issue from omitted-variable bias, rather than recognising both as breaking the same E[ε | X] = 0 condition.",
+            blameConceptId: "ols-assumptions",
+          },
+        },
+        {
+          id: "why-sign-unclear",
+          description: "Explains that two feedback effects run in opposite conceptual directions here (advertising raising sales; sales raising future advertising through a budgeting rule), and without knowing their relative strengths and the exact timing structure, the net sign of the correlation between advertising and the error cannot be signed from subject-matter reasoning the way a single omitted confounder's effect can be.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.75,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["ols-assumptions", "multiple-linear-regression", "covariance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "ols-assumptions--explain-exact-vs-near-collinearity",
+    conceptId: "ols-assumptions",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Explain why 'no exact linear dependence among predictors' is a strict requirement for the normal equations to have a unique solution, while near-collinearity is a matter of degree rather than a modelling error.",
+    rubric: {
+      elements: [
+        {
+          id: "exact-case-is-binary",
+          description: "States that exact collinearity makes XᵀX exactly singular, so the normal equations have either no unique solution or infinitely many — a discrete failure of identification, not a matter of degree.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "near-case-is-continuous",
+          description: "Explains that near-collinearity leaves XᵀX invertible but ill-conditioned, so β̂ remains uniquely defined and unbiased but its variance grows continuously as the predictors approach exact dependence — a precision problem, not an identification failure.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "near-collinearity-treated-as-assumption-violation",
+            description: "Treats near-collinearity as if it violated the no-perfect-collinearity assumption itself, rather than as a separate, continuous precision problem that exists even when the assumption technically holds.",
+            blameConceptId: "ols-assumptions",
+          },
+        },
+      ],
+    },
+    difficulty: 1.4,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["ols-assumptions", "multiple-linear-regression"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "ols-assumptions--explain-normality-priority-by-sample-size",
+    conceptId: "ols-assumptions",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Explain why checking residual normality is usually a low priority with a large sample, but remains essential for a small-sample prediction interval.",
+    rubric: {
+      elements: [
+        {
+          id: "large-sample-case",
+          description: "Explains that coefficient tests and confidence intervals rely on β̂'s sampling distribution, which the central limit theorem makes approximately normal for large n regardless of the error shape — so departures from normality wash out.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "small-sample-prediction-case",
+          description: "Explains that a prediction interval for one new observation depends directly on the shape of a single error draw, not on an average of many — no averaging protects it, so the error distribution's actual shape (not just its variance) matters at any sample size.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "clt-applied-to-single-future-observation",
+            description: "Assumes the central limit theorem's protection extends to a prediction interval for an individual future observation, where no averaging over observations takes place.",
+            blameConceptId: "ols-assumptions",
+          },
+        },
+      ],
+    },
+    difficulty: 2.0,
+    discrimination: 1.6,
+    expectedSeconds: 200,
+    prereqClosure: ["ols-assumptions", "multiple-linear-regression", "variance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "ols-assumptions--transfer-population-level-endogeneity",
+    conceptId: "ols-assumptions",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A researcher fits the model on the entire population rather than a sample, and finds a nonzero correlation " +
+      "between X and ε. Explain why this cannot be attributed to sampling variability, and what it says about the " +
+      "model rather than about statistical inference.",
+    rubric: {
+      elements: [
+        {
+          id: "not-sampling-noise",
+          description: "Explains that with no sampling involved, any correlation observed is a fact about the population's joint distribution, not an estimation artefact that would vanish with more data.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "population-level-correlation-blamed-on-sampling",
+            description: "Attributes a nonzero X–ε correlation at the population level to sampling noise, when there is no sample to have noise in — the correlation is a structural feature of how the model relates to the true data-generating process.",
+            blameConceptId: "ols-assumptions",
+          },
+        },
+        {
+          id: "what-it-says",
+          description: "Concludes that the linear model itself is misspecified for this population — some relevant variable or nonlinearity is missing from Xβ — rather than that inference on a correctly specified model happened to go wrong.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.6,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["ols-assumptions", "multiple-linear-regression"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "ols-assumptions--transfer-robust-se-does-not-fix-endogeneity",
+    conceptId: "ols-assumptions",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A model has both heteroskedastic errors and an omitted confounder. Explain why switching to robust standard " +
+      "errors does nothing about the more serious problem, and why practitioners sometimes wrongly believe it does.",
+    rubric: {
+      elements: [
+        {
+          id: "robust-se-only-fixes-variance",
+          description: "Explains that robust standard errors correct the formula used to quantify uncertainty around β̂; they do not touch β̂ itself, so they cannot repair a coefficient that is biased because E[ε | X] ≠ 0.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-the-confusion-arises",
+          description: "Explains the likely source of the confusion: both heteroskedasticity and endogeneity produce 'untrustworthy' regression output, and 'robust' sounds like a general-purpose safeguard, which invites treating it as a fix for any problem with the fit rather than specifically for the standard-error formula.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "robust-se-treated-as-general-purpose-fix",
+            description: "Believes reporting robust standard errors addresses bias in the coefficient estimates, when robust standard errors only correct the variance formula around an estimate that heteroskedasticity leaves unbiased — they say nothing about a separately biased coefficient.",
+            blameConceptId: "homoskedasticity",
+          },
+        },
+      ],
+    },
+    difficulty: 2.9,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["ols-assumptions", "multiple-linear-regression", "variance"],
+    source: AUTHORED,
+    status: "live",
+  },
+
+  // --- Homoskedasticity (cont.) -----------------------------------------------
+  {
+    id: "homoskedasticity--recall-conditional-on-x",
+    conceptId: "homoskedasticity",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "Homoskedasticity concerns the variance of:",
+    choices: [
+      { id: "a", text: "The errors, conditional on X", correct: true },
+      {
+        id: "b",
+        text: "The response Y, marginally",
+        correct: false,
+        misconception: {
+          id: "homoskedasticity-attributed-to-marginal-y",
+          description: "Conflates Var(Y) with Var(ε | X). Y's marginal variance also contains the variation the model explains, and is not what homoskedasticity constrains.",
+          blameConceptId: "homoskedasticity",
+        },
+      },
+      {
+        id: "c",
+        text: "The fitted values ŷ",
+        correct: false,
+        misconception: {
+          id: "homoskedasticity-attributed-to-fitted-values",
+          description: "The fitted values are deterministic functions of X in a given sample; homoskedasticity is a statement about the random error term's spread.",
+          blameConceptId: "homoskedasticity",
+        },
+      },
+      {
+        id: "d",
+        text: "The coefficient estimates β̂",
+        correct: false,
+        misconception: {
+          id: "homoskedasticity-attributed-to-coefficients",
+          description: "Confuses the assumption about the errors with a statement about the sampling variance of β̂, which follows from it but is not what the assumption itself asserts.",
+          blameConceptId: "homoskedasticity",
+        },
+      },
+    ],
+    difficulty: -2.0,
+    discrimination: 1.0,
+    expectedSeconds: 30,
+    prereqClosure: ["homoskedasticity", "variance", "ols-assumptions"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "homoskedasticity--recall-symbolic-statement",
+    conceptId: "homoskedasticity",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "Write the homoskedasticity condition in symbols.",
+    rubric: {
+      elements: [
+        { id: "symbols", description: "Var(εᵢ | X) = σ² for every observation i — a single constant, not depending on i or on X.", weight: 4, required: true },
+      ],
+    },
+    difficulty: -1.4,
+    discrimination: 1.0,
+    expectedSeconds: 35,
+    prereqClosure: ["homoskedasticity", "variance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "homoskedasticity--apply-variance-ratio",
+    conceptId: "homoskedasticity",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed"],
+    stem:
+      "Individual observations have variance σ² = 100. Group A averages 4 of them and Group B averages 25. What is " +
+      "the ratio of Group A's average's variance to Group B's? Give a decimal to two places.",
+    answerKey: 6.25,
+    tolerance: 0.02,
+    difficulty: 0.1,
+    discrimination: 1.3,
+    expectedSeconds: 90,
+    prereqClosure: ["homoskedasticity", "variance", "sample-mean"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "homoskedasticity--apply-time-varying-violation",
+    conceptId: "homoskedasticity",
+    format: "mcq",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem:
+      "A residual-versus-fitted plot shows constant spread across all fitted values, but a residual-versus-time plot " +
+      "of the same residuals shows the spread growing steadily over calendar time. What does this indicate?",
+    choices: [
+      {
+        id: "a",
+        text: "Heteroskedasticity with respect to time, even though the fitted-value plot alone looked homoskedastic",
+        correct: true,
+      },
+      {
+        id: "b",
+        text: "The model is homoskedastic, since the fitted-value plot is the only one that matters",
+        correct: false,
+        misconception: {
+          id: "only-fitted-value-plot-checked",
+          description: "Homoskedasticity is a claim about variance conditional on every relevant variable, not only the fitted value — a variable driving the variance can be invisible in one plot and obvious in another.",
+          blameConceptId: "homoskedasticity",
+        },
+      },
+      {
+        id: "c",
+        text: "This must be a coding error, since the two plots use the same residuals and should always agree",
+        correct: false,
+        misconception: {
+          id: "plots-assumed-to-always-agree",
+          description: "Two residual plots against different x-axes can show genuinely different patterns; each reveals whatever structure exists along that particular axis.",
+          blameConceptId: "homoskedasticity",
+        },
+      },
+      {
+        id: "d",
+        text: "It indicates a linearity violation, not a variance violation",
+        correct: false,
+        misconception: {
+          id: "spread-pattern-read-as-linearity-issue",
+          description: "A growing spread is a variance (second-moment) pattern; a linearity violation would show up as a trend in the residuals' mean, not their spread.",
+          blameConceptId: "homoskedasticity",
+        },
+      },
+    ],
+    difficulty: 1.55,
+    discrimination: 1.6,
+    expectedSeconds: 150,
+    prereqClosure: ["homoskedasticity", "variance", "ols-assumptions"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "homoskedasticity--explain-conditional-not-marginal",
+    conceptId: "homoskedasticity",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Explain why homoskedasticity is defined as a condition on Var(ε | X), conditional on the predictors, rather than as a statement about the errors' marginal (unconditional) variance.",
+    rubric: {
+      elements: [
+        {
+          id: "marginal-variance-is-a-single-number",
+          description: "Notes that the marginal variance of ε is a single fixed number regardless of any relationship to X, so stating a condition on it would say nothing about whether the spread differs across values of X — the thing that actually matters for inference.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "conditional-is-the-load-bearing-quantity",
+          description: "Explains that what the standard-error formula and BLUE property need is that the spread does not systematically vary with the predictors, which is exactly a statement about the conditional variance.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.2,
+    discrimination: 1.5,
+    expectedSeconds: 180,
+    prereqClosure: ["homoskedasticity", "variance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "homoskedasticity--explain-weighted-least-squares-mechanism",
+    conceptId: "homoskedasticity",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "In one sentence, identify what the weights in weighted least squares do that restores efficiency under known heteroskedasticity.",
+    rubric: {
+      elements: [
+        {
+          id: "the-mechanism",
+          description: "The weights are chosen inversely proportional to each observation's error variance, so noisier observations are down-weighted and more precise ones up-weighted, converting the problem back into one with homoskedastic (unit-variance) errors.",
+          weight: 5,
+          required: true,
+          misconception: {
+            id: "wls-weights-thought-arbitrary",
+            description: "Treats the weights as a generic tuning knob rather than as specifically the inverse of each observation's variance, which is what makes the transformed problem homoskedastic.",
+            blameConceptId: "homoskedasticity",
+          },
+        },
+      ],
+    },
+    difficulty: 2.05,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["homoskedasticity", "variance"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "homoskedasticity--transfer-wls-restores-homoskedasticity",
+    conceptId: "homoskedasticity",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A model has heteroskedastic errors with Var(εᵢ | Xᵢ) = σ²Xᵢ² exactly (Xᵢ > 0). Show why dividing every term of " +
+      "the regression equation by Xᵢ (a weighted least squares fit with weight 1/Xᵢ) produces a transformed equation " +
+      "with homoskedastic errors.",
+    rubric: {
+      elements: [
+        {
+          id: "transform-the-equation",
+          description: "Divides both sides of Yᵢ = β₀ + β₁Xᵢ + εᵢ by Xᵢ to get Yᵢ/Xᵢ = β₀(1/Xᵢ) + β₁ + εᵢ/Xᵢ, so the new error term is εᵢ/Xᵢ.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "verify-constant-variance",
+          description: "Computes Var(εᵢ/Xᵢ | X) = Var(εᵢ | X)/Xᵢ² = σ²Xᵢ²/Xᵢ² = σ², a constant not depending on i, confirming the transformed errors are homoskedastic.",
+          weight: 5,
+          required: true,
+          misconception: {
+            id: "transform-asserted-without-verifying-variance",
+            description: "Performs the algebraic division but never checks that the resulting error term's variance is actually constant, which is the entire point of the transformation.",
+            blameConceptId: "homoskedasticity",
+          },
+        },
+      ],
+    },
+    difficulty: 2.65,
+    discrimination: 1.7,
+    expectedSeconds: 220,
+    prereqClosure: ["homoskedasticity", "variance", "ols-assumptions"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "homoskedasticity--transfer-random-x-asymptotics",
+    conceptId: "homoskedasticity",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Robust standard errors are usually justified using asymptotics where X is treated as random and drawn " +
+      "jointly with Y, even in studies where X is nominally fixed by the experimental design. Explain why this " +
+      "framing is used regardless.",
+    rubric: {
+      elements: [
+        {
+          id: "heteroskedasticity-needs-a-model-free-target",
+          description: "Explains that under fixed-X asymptotics with unknown heteroskedasticity of unspecified form, there is no single well-defined limiting variance to estimate without further structure; treating (X, Y) as jointly random observations from a population gives a sandwich-type asymptotic variance that is well-defined without specifying the heteroskedasticity's functional form.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "practical-equivalence",
+          description: "Notes that in practice this framing is a technical device to justify the same estimator that would be used regardless of whether X was actually fixed by design — the formula does not change, only the story used to derive its large-sample properties.",
+          weight: 4,
+          required: true,
+          misconception: {
+            id: "random-x-framing-mistaken-for-a-different-estimator",
+            description: "Believes random-X asymptotics implies a genuinely different standard-error formula is being used than in the fixed-X case, rather than the same robust formula being justified by a different, more convenient asymptotic argument.",
+            blameConceptId: "homoskedasticity",
+          },
+        },
+      ],
+    },
+    difficulty: 2.9,
+    discrimination: 1.7,
+    expectedSeconds: 230,
+    prereqClosure: ["homoskedasticity", "variance", "ols-assumptions"],
+    source: AUTHORED,
+    status: "live",
+  },
 ];
