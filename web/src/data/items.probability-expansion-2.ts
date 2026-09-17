@@ -68,7 +68,7 @@ export const probabilityExpansion2Items: Item[] = [
       elements: [
         {
           id: "definition",
-          description: "A set is countable if it is finite, or if its elements can be put in a one-to-one correspondence with the positive integers (countably infinite) — i.e., listed as a sequence x1, x2, x3, ...",
+          description: "A set is countable if it is finite, or if its elements can be put in a one-to-one correspondence with the positive integers (countably infinite) — i.e., listed as a sequence $x_1, x_2, x_3, \\ldots$",
           weight: 1,
           required: true,
         },
@@ -87,9 +87,9 @@ export const probabilityExpansion2Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "X = the number of radioactive atoms that have decayed in a sample by time t. X can be 0, 1, 2, 3, ... with no fixed upper bound. Is X discrete, continuous, or neither?",
+    stem: "X = the number of radioactive atoms that have decayed in a sample by time t. X can be $0, 1, 2, 3, \\ldots$ with no fixed upper bound. Is X discrete, continuous, or neither?",
     choices: [
-      { id: "a", text: "Discrete — {0, 1, 2, 3, ...} is countably infinite", correct: true },
+      { id: "a", text: "Discrete — $\\{0, 1, 2, 3, \\ldots\\}$ is countably infinite", correct: true },
       {
         id: "b",
         text: "Continuous — there is no upper bound on how many atoms can decay",
@@ -248,7 +248,7 @@ export const probabilityExpansion2Items: Item[] = [
     channels: ["typed"],
     stem: "X = the number of coin flips needed to see the first heads. X can be arbitrarily large (there's no cap). What type is X, and why?",
     choices: [
-      { id: "a", text: "Discrete — its range {1, 2, 3, ...} is countably infinite, even though it's unbounded", correct: true },
+      { id: "a", text: "Discrete — its range $\\{1, 2, 3, \\ldots\\}$ is countably infinite, even though it's unbounded", correct: true },
       {
         id: "b",
         text: "Continuous — since there's no upper limit on the number of flips, the range behaves like an interval",
@@ -293,7 +293,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A discrete random variable can have infinitely many possible values, but they must be 'listable' in a sequence x1, x2, x3, .... Explain, in your own words, why this listability is exactly what breaks down for a continuous random variable's range.",
+    stem: "A discrete random variable can have infinitely many possible values, but they must be 'listable' in a sequence $x_1, x_2, x_3, \\ldots$. Explain, in your own words, why this listability is exactly what breaks down for a continuous random variable's range.",
     rubric: {
       elements: [
         {
@@ -323,18 +323,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain how you would compute E[X] for a *mixed* random variable — one that has some point masses (atoms) plus a continuous spread elsewhere. What role does each part play?",
+    stem: "Explain how you would compute $\\mathbb{E}[X]$ for a *mixed* random variable — one that has some point masses (atoms) plus a continuous spread elsewhere. What role does each part play?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "sum x·P(X=x) over every atom x, exactly as for a discrete random variable",
+          description: "sum $x \\cdot P(X=x)$ over every atom x, exactly as for a discrete random variable",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "add ∫ x·f(x) dx over the continuous part of the range, exactly as for a continuous random variable, then add the two pieces together",
+          description: "add $\\int x f(x)\\, dx$ over the continuous part of the range, exactly as for a continuous random variable, then add the two pieces together",
           weight: 1,
           required: false,
         },
@@ -353,12 +353,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For a continuous random variable X with a well-defined mean μ, explain why the question 'what is P(X = μ) exactly?' has a trivial, almost uninteresting answer — even though μ itself is a perfectly meaningful single number.",
+    stem: "For a continuous random variable X with a well-defined mean $\\mu$, explain why the question 'what is $P(X = \\mu)$ exactly?' has a trivial, almost uninteresting answer — even though $\\mu$ itself is a perfectly meaningful single number.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "for any continuous X, P(X = x) = 0 for every individual value x, including x = μ, so the answer is always exactly 0",
+          description: "for any continuous X, $P(X = x) = 0$ for every individual value x, including $x = \\mu$, so the answer is always exactly 0",
           weight: 1,
           required: true,
         },
@@ -383,7 +383,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A parking garage charges based on T = time parked (in hours, a continuous quantity), but the actual bill only depends on ⌈T⌉, the number of whole hours rounded up. Is T discrete or continuous? Is the billed amount discrete or continuous? What general principle does this illustrate about applying a 'staircase' function to a continuous input?",
+    stem: "A parking garage charges based on T = time parked (in hours, a continuous quantity), but the actual bill only depends on $\\lceil T \\rceil$, the number of whole hours rounded up. Is T discrete or continuous? Is the billed amount discrete or continuous? What general principle does this illustrate about applying a 'staircase' function to a continuous input?",
     rubric: {
       elements: [
         {
@@ -394,7 +394,7 @@ export const probabilityExpansion2Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "the billed amount ⌈T⌉ is discrete — it only ever takes values in {0, 1, 2, ...} (a countable set), because the ceiling function collapses whole intervals of T onto single output values",
+          description: "the billed amount $\\lceil T \\rceil$ is discrete — it only ever takes values in $\\{0, 1, 2, \\ldots\\}$ (a countable set), because the ceiling function collapses whole intervals of T onto single output values",
           weight: 1,
           required: true,
         },
@@ -419,7 +419,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Daily rainfall R is exactly 0 on dry days (which happen with probability 0.7) and is spread continuously over (0, ∞) on wet days. Is R discrete, continuous, or neither? What is this kind of distribution called, and how would you set up the computation of E[R]?",
+    stem: "Daily rainfall R is exactly 0 on dry days (which happen with probability 0.7) and is spread continuously over $(0, \\infty)$ on wet days. Is R discrete, continuous, or neither? What is this kind of distribution called, and how would you set up the computation of $\\mathbb{E}[R]$?",
     rubric: {
       elements: [
         {
@@ -430,7 +430,7 @@ export const probabilityExpansion2Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "E[R] = 0 · P(R=0) + ∫₀^∞ r · f(r) dr, where f is the continuous density describing rainfall amounts *given* it rained (weighted appropriately), i.e. the discrete atom and continuous part are combined exactly as in the atoms-plus-density calculation",
+          description: "$\\mathbb{E}[R] = 0 \\cdot P(R=0) + \\int_0^\\infty r f(r)\\, dr$, where f is the continuous density describing rainfall amounts *given* it rained (weighted appropriately), i.e. the discrete atom and continuous part are combined exactly as in the atoms-plus-density calculation",
           weight: 1,
           required: false,
         },
@@ -507,12 +507,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "X is a purely continuous random variable with CDF F. What is P(X = x) for a specific value x, expressed in terms of F?",
+    stem: "X is a purely continuous random variable with CDF F. What is $P(X = x)$ for a specific value x, expressed in terms of F?",
     choices: [
       { id: "a", text: "0, for every x, because F is continuous there (no jump)", correct: true },
       {
         id: "b",
-        text: "F(x)",
+        text: "$F(x)$",
         correct: false,
         misconception: {
           id: "confuses-f-with-point-probability",
@@ -522,7 +522,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "c",
-        text: "1 − F(x)",
+        text: "$1 - F(x)$",
         correct: false,
         misconception: {
           id: "confuses-with-survival-function",
@@ -554,10 +554,10 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "In terms of the CDF F, what is P(a < X ≤ b) for a < b?",
+    stem: "In terms of the CDF F, what is $P(a < X \\le b)$ for $a < b$?",
     rubric: {
       elements: [
-        { id: "element-1", description: "P(a < X ≤ b) = F(b) − F(a)", weight: 1, required: true },
+        { id: "element-1", description: "$P(a < X \\le b) = F(b) - F(a)$", weight: 1, required: true },
       ],
     },
     difficulty: -0.5,
@@ -602,18 +602,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "X is Uniform(0, 10). Write F(x) explicitly for all real x, then evaluate F(3), F(12), and F(−1).",
+    stem: "X is Uniform(0, 10). Write $F(x)$ explicitly for all real x, then evaluate $F(3)$, $F(12)$, and $F(-1)$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "F(x) = 0 for x<0; F(x) = x/10 for 0≤x≤10; F(x) = 1 for x>10",
+          description: "$F(x) = 0$ for $x<0$; $F(x) = x/10$ for $0\\le x\\le10$; $F(x) = 1$ for $x>10$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "F(3) = 0.3; F(12) = 1; F(−1) = 0",
+          description: "$F(3) = 0.3$; $F(12) = 1$; $F(-1) = 0$",
           weight: 1,
           required: true,
         },
@@ -632,7 +632,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "X has CDF F(x) = 1 − e^(−2x) for x ≥ 0 (and F(x)=0 for x<0). Find P(0.5 < X ≤ 1.5). Give a decimal to three places.",
+    stem: "X has CDF $F(x) = 1 - e^{-2x}$ for $x \\ge 0$ (and $F(x)=0$ for $x<0$). Find $P(0.5 < X \\le 1.5)$. Give a decimal to three places.",
     answerKey: 0.318,
     tolerance: 0.01,
     difficulty: 0.3,
@@ -648,18 +648,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A random variable has F(x) = 0 for x<0; F(x) = 0.5 + 0.5x for 0 ≤ x ≤ 1; F(x) = 1 for x>1. Find P(X = 0), P(X > 0.5), and describe what the jump at x=0 means.",
+    stem: "A random variable has $F(x) = 0$ for $x<0$; $F(x) = 0.5 + 0.5x$ for $0 \\le x \\le 1$; $F(x) = 1$ for $x>1$. Find $P(X = 0)$, $P(X > 0.5)$, and describe what the jump at $x=0$ means.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(X=0) = F(0) − F(0⁻) = 0.5 − 0 = 0.5, a genuine point mass at 0",
+          description: "$P(X=0) = F(0) - F(0^-) = 0.5 - 0 = 0.5$, a genuine point mass at 0",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "P(X > 0.5) = 1 − F(0.5) = 1 − 0.75 = 0.25",
+          description: "$P(X > 0.5) = 1 - F(0.5) = 1 - 0.75 = 0.25$",
           weight: 1,
           required: true,
         },
@@ -678,12 +678,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "X has a jump at x=2 (a genuine point mass there). Which expression correctly gives P(X ≥ 2)?",
+    stem: "X has a jump at $x=2$ (a genuine point mass there). Which expression correctly gives $P(X \\ge 2)$?",
     choices: [
-      { id: "a", text: "1 − F(2⁻), where F(2⁻) is the limit of F approaching 2 from below", correct: true },
+      { id: "a", text: "$1 - F(2^-)$, where $F(2^-)$ is the limit of F approaching 2 from below", correct: true },
       {
         id: "b",
-        text: "1 − F(2)",
+        text: "$1 - F(2)$",
         correct: false,
         misconception: {
           id: "excludes-point-mass-from-at-least",
@@ -693,7 +693,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "c",
-        text: "F(2) − F(2⁻)",
+        text: "$F(2) - F(2^-)$",
         correct: false,
         misconception: {
           id: "gives-point-mass-not-tail",
@@ -703,7 +703,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "d",
-        text: "F(2)",
+        text: "$F(2)$",
         correct: false,
         misconception: {
           id: "confuses-at-least-with-at-most",
@@ -725,18 +725,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove that F is right-continuous — that is, F(x) = lim_(y→x⁺) F(y) — using continuity of probability from above.",
+    stem: "Prove that F is right-continuous — that is, $F(x) = \\lim_{y \\to x^+} F(y)$ — using continuity of probability from above.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "as y decreases to x from above, the events {X ≤ y} decrease (shrink) to the event {X ≤ x}, i.e. ⋂_(y>x) {X≤y} = {X≤x}",
+          description: "as y decreases to x from above, the events $\\{X \\le y\\}$ decrease (shrink) to the event $\\{X \\le x\\}$, i.e. $\\bigcap_{y>x} \\{X\\le y\\} = \\{X\\le x\\}$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "continuity of probability from above then gives lim_(y→x⁺) P(X≤y) = P(X≤x), i.e. lim_(y→x⁺) F(y) = F(x)",
+          description: "continuity of probability from above then gives $\\lim_{y \\to x^+} P(X\\le y) = P(X\\le x)$, i.e. $\\lim_{y \\to x^+} F(y) = F(x)$",
           weight: 1,
           required: true,
         },
@@ -760,7 +760,7 @@ export const probabilityExpansion2Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "every probability statement about X — P(X≤x), P(X<x), P(a<X≤b), P(X=x) — can be recovered purely from F, via limits and differences of F, so knowing F is equivalent to knowing every such probability",
+          description: "every probability statement about X — $P(X\\le x)$, $P(X<x)$, $P(a<X\\le b)$, $P(X=x)$ — can be recovered purely from F, via limits and differences of F, so knowing F is equivalent to knowing every such probability",
           weight: 1,
           required: true,
         },
@@ -785,12 +785,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using {X ≥ x} = {X > x} ∪ {X = x} (a disjoint union) and the jump formula P(X=x) = F(x) − F(x⁻), derive that P(X ≥ x) = 1 − F(x⁻).",
+    stem: "Using $\\{X \\ge x\\} = \\{X > x\\} \\cup \\{X = x\\}$ (a disjoint union) and the jump formula $P(X=x) = F(x) - F(x^-)$, derive that $P(X \\ge x) = 1 - F(x^-)$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(X≥x) = P(X>x) + P(X=x) = [1−F(x)] + [F(x)−F(x⁻)] = 1 − F(x⁻), where the two F(x) terms cancel",
+          description: "$P(X\\ge x) = P(X>x) + P(X=x) = [1-F(x)] + [F(x)-F(x^-)] = 1 - F(x^-)$, where the two F(x) terms cancel",
           weight: 1,
           required: true,
         },
@@ -809,18 +809,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A vending machine's price CDF is completely flat between $2 and $3 (F(2) = F(3) = 0.4, with no jump anywhere in between). What does this flat region tell you about P(2 < X < 3), the probability the price lands strictly between $2 and $3?",
+    stem: "A vending machine's price CDF is completely flat between \\$2 and \\$3 ($F(2) = F(3) = 0.4$, with no jump anywhere in between). What does this flat region tell you about $P(2 < X < 3)$, the probability the price lands strictly between \\$2 and \\$3?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(2<X<3) = F(3⁻) − F(2) = 0.4 − 0.4 = 0, since F doesn't change anywhere in the open interval",
+          description: "$P(2<X<3) = F(3^-) - F(2) = 0.4 - 0.4 = 0$, since F doesn't change anywhere in the open interval",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "this doesn't rule out point masses exactly *at* $2 or $3 — only that no probability sits strictly between them",
+          description: "this doesn't rule out point masses exactly *at* \\$2 or \\$3 — only that no probability sits strictly between them",
           weight: 1,
           required: false,
         },
@@ -851,18 +851,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Two CDFs F and G cross once, at x₀, with F(x) < G(x) for x < x₀ and F(x) > G(x) for x > x₀. A colleague says 'wherever a CDF is higher at a point, that distribution puts more probability on large values there.' Is that right? Explain what a higher F(x) at a given x actually means.",
+    stem: "Two CDFs F and G cross once, at $x_0$, with $F(x) < G(x)$ for $x < x_0$ and $F(x) > G(x)$ for $x > x_0$. A colleague says 'wherever a CDF is higher at a point, that distribution puts more probability on large values there.' Is that right? Explain what a higher $F(x)$ at a given x actually means.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the colleague has it backwards: a higher F(x) means MORE probability has accumulated at or below x — i.e., LESS probability remains above x, not more",
+          description: "the colleague has it backwards: a higher $F(x)$ means MORE probability has accumulated at or below x — i.e., LESS probability remains above x, not more",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "so where F(x) > G(x), the F-distribution is actually the one putting *less* mass on values larger than x (in the sense of first-order stochastic dominance, G tends to produce larger values there)",
+          description: "so where $F(x) > G(x)$, the F-distribution is actually the one putting *less* mass on values larger than x (in the sense of first-order stochastic dominance, G tends to produce larger values there)",
           weight: 1,
           required: false,
         },
@@ -893,12 +893,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A reliability engineer says: 'the CDF of a component's failure time F(x) equals the fraction of components, in a huge batch, that have already failed by time x.' Is this a sound way to think about F in practice? What law justifies it, and what does it fail to capture about any *one specific* component?",
+    stem: "A reliability engineer says: 'the CDF of a component's failure time $F(x)$ equals the fraction of components, in a huge batch, that have already failed by time x.' Is this a sound way to think about F in practice? What law justifies it, and what does it fail to capture about any *one specific* component?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "yes, this is the (approximately correct) frequentist interpretation: the law of large numbers says the observed fraction failed by time x converges to F(x) as the batch size grows",
+          description: "yes, this is the (approximately correct) frequentist interpretation: the law of large numbers says the observed fraction failed by time x converges to $F(x)$ as the batch size grows",
           weight: 1,
           required: true,
         },
@@ -929,10 +929,10 @@ export const probabilityExpansion2Items: Item[] = [
     channels: ["typed"],
     stem: "Which is the correct statement of the two conditions a PMF p must satisfy?",
     choices: [
-      { id: "a", text: "p(x) ≥ 0 for all x, and Σₓ p(x) = 1 (sum over the countable support)", correct: true },
+      { id: "a", text: "$p(x) \\ge 0$ for all x, and $\\sum_x p(x) = 1$ (sum over the countable support)", correct: true },
       {
         id: "b",
-        text: "p(x) ≥ 0 for all x, and ∫ p(x) dx = 1",
+        text: "$p(x) \\ge 0$ for all x, and $\\int p(x)\\, dx = 1$",
         correct: false,
         misconception: {
           id: "sums-vs-integrals",
@@ -942,7 +942,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "c",
-        text: "p(x) ≤ 1 for all x, and Σₓ p(x) = 1",
+        text: "$p(x) \\le 1$ for all x, and $\\sum_x p(x) = 1$",
         correct: false,
         misconception: {
           id: "adds-spurious-upper-bound",
@@ -952,7 +952,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "d",
-        text: "p is non-decreasing, and p(x) → 1 as x → ∞",
+        text: "p is non-decreasing, and $p(x) \\to 1$ as $x \\to \\infty$",
         correct: false,
         misconception: {
           id: "confuses-pmf-with-cdf-properties",
@@ -974,10 +974,10 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For a discrete X with PMF p, and a set of values A, how do you compute P(X ∈ A) from p?",
+    stem: "For a discrete X with PMF p, and a set of values A, how do you compute $P(X \\in A)$ from p?",
     rubric: {
       elements: [
-        { id: "element-1", description: "P(X ∈ A) = Σ_(x ∈ A) p(x) — sum p over just the values in A", weight: 1, required: true },
+        { id: "element-1", description: "$P(X \\in A) = \\sum_{x \\in A} p(x)$ — sum p over just the values in A", weight: 1, required: true },
       ],
     },
     difficulty: -0.35,
@@ -995,9 +995,9 @@ export const probabilityExpansion2Items: Item[] = [
     channels: ["typed"],
     stem: "Which of these is NOT required of a valid PMF p on a discrete support?",
     choices: [
-      { id: "a", text: "p(x) must be non-increasing as x increases", correct: true },
-      { id: "b", text: "p(x) ≥ 0 for every x in the support", correct: false },
-      { id: "c", text: "Σₓ p(x) = 1, summed over the whole support", correct: false },
+      { id: "a", text: "$p(x)$ must be non-increasing as x increases", correct: true },
+      { id: "b", text: "$p(x) \\ge 0$ for every x in the support", correct: false },
+      { id: "c", text: "$\\sum_x p(x) = 1$, summed over the whole support", correct: false },
       { id: "d", text: "p must assign a value to every possible outcome of X", correct: false },
     ],
     difficulty: -0.2,
@@ -1013,11 +1013,11 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "p(0) = k, p(1) = 2k, p(2) = 2k, p(3) = k is a valid PMF on {0,1,2,3}. Find k, then find P(1 ≤ X ≤ 2).",
+    stem: "$p(0) = k$, $p(1) = 2k$, $p(2) = 2k$, $p(3) = k$ is a valid PMF on $\\{0,1,2,3\\}$. Find k, then find $P(1 \\le X \\le 2)$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "k + 2k + 2k + k = 6k = 1, so k = 1/6", weight: 1, required: true },
-        { id: "element-2", description: "P(1≤X≤2) = 2k + 2k = 4k = 4/6 = 2/3 ≈ 0.667", weight: 1, required: true },
+        { id: "element-1", description: "$k + 2k + 2k + k = 6k = 1$, so $k = 1/6$", weight: 1, required: true },
+        { id: "element-2", description: "$P(1\\le X\\le 2) = 2k + 2k = 4k = 4/6 = 2/3 \\approx 0.667$", weight: 1, required: true },
       ],
     },
     difficulty: 0.3,
@@ -1038,11 +1038,11 @@ export const probabilityExpansion2Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "p(x) = (2x−1)/36: p(1)=1/36, p(2)=3/36, p(3)=5/36, p(4)=7/36, p(5)=9/36, p(6)=11/36",
+          description: "$p(x) = (2x-1)/36$: $p(1)=1/36$, $p(2)=3/36$, $p(3)=5/36$, $p(4)=7/36$, $p(5)=9/36$, $p(6)=11/36$",
           weight: 1,
           required: true,
         },
-        { id: "element-2", description: "sum = (1+3+5+7+9+11)/36 = 36/36 = 1", weight: 1, required: false },
+        { id: "element-2", description: "sum $= (1+3+5+7+9+11)/36 = 36/36 = 1$", weight: 1, required: false },
       ],
     },
     difficulty: 0.45,
@@ -1058,7 +1058,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "p(x) = c/x² for x = 1, 2, 3 (and 0 otherwise) is meant to be a valid PMF on this finite support. Find c. Give a decimal to three places.",
+    stem: "$p(x) = c/x^2$ for $x = 1, 2, 3$ (and 0 otherwise) is meant to be a valid PMF on this finite support. Find c. Give a decimal to three places.",
     answerKey: 0.735,
     tolerance: 0.01,
     difficulty: 0.4,
@@ -1074,12 +1074,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A vendor proposes p(x) = x/10 for x = 1, 2, 3, 4 as a PMF. What, if anything, is wrong with it?",
+    stem: "A vendor proposes $p(x) = x/10$ for $x = 1, 2, 3, 4$ as a PMF. What, if anything, is wrong with it?",
     choices: [
-      { id: "a", text: "Nothing — it's a perfectly valid PMF: all four values are non-negative and (1+2+3+4)/10 = 1", correct: true },
+      { id: "a", text: "Nothing — it's a perfectly valid PMF: all four values are non-negative and $(1+2+3+4)/10 = 1$", correct: true },
       {
         id: "b",
-        text: "It's invalid because p(4) = 0.4 is too large for a probability",
+        text: "It's invalid because $p(4) = 0.4$ is too large for a probability",
         correct: false,
         misconception: {
           id: "assumes-a-cap-below-one-per-value",
@@ -1121,18 +1121,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "If X is discrete with countable support S (the set of x where p(x) > 0), prove that P(X ∉ S) = 0.",
+    stem: "If X is discrete with countable support S (the set of x where $p(x) > 0$), prove that $P(X \\notin S) = 0$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(X ∈ S) = Σ_(x∈S) p(x) = 1, by the normalization condition on the PMF",
+          description: "$P(X \\in S) = \\sum_{x\\in S} p(x) = 1$, by the normalization condition on the PMF",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "since P(X ∈ S) = 1, the complement satisfies P(X ∉ S) = 1 − 1 = 0",
+          description: "since $P(X \\in S) = 1$, the complement satisfies $P(X \\notin S) = 1 - 1 = 0$",
           weight: 1,
           required: true,
         },
@@ -1151,18 +1151,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A PMF can be recovered from the CDF via p(x) = F(x) − F(x⁻), the size of the jump at x. Explain why this same 'jump size' trick does NOT recover the density of a continuous random variable from its CDF.",
+    stem: "A PMF can be recovered from the CDF via $p(x) = F(x) - F(x^-)$, the size of the jump at x. Explain why this same 'jump size' trick does NOT recover the density of a continuous random variable from its CDF.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "a purely continuous random variable's CDF has no jumps at all — F(x) − F(x⁻) = 0 everywhere — so the jump-size trick just returns 0, not the density",
+          description: "a purely continuous random variable's CDF has no jumps at all — $F(x) - F(x^-) = 0$ everywhere — so the jump-size trick just returns 0, not the density",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "the density is instead recovered by differentiating F (f(x) = F'(x)), a fundamentally different operation from reading off discontinuities",
+          description: "the density is instead recovered by differentiating F ($f(x) = F'(x)$), a fundamentally different operation from reading off discontinuities",
           weight: 1,
           required: false,
         },
@@ -1181,18 +1181,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why p(x) is always at most 1, while a continuous density f(x) can exceed 1 (even be arbitrarily large) — tying this back to what each function actually measures.",
+    stem: "Explain why $p(x)$ is always at most 1, while a continuous density $f(x)$ can exceed 1 (even be arbitrarily large) — tying this back to what each function actually measures.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "p(x) IS a probability — P(X=x) directly — and probabilities can never exceed 1",
+          description: "$p(x)$ IS a probability — $P(X=x)$ directly — and probabilities can never exceed 1",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "f(x) is not a probability at all; it's a rate of probability per unit length, so it can be large wherever probability is packed into a very short interval",
+          description: "$f(x)$ is not a probability at all; it's a rate of probability per unit length, so it can be large wherever probability is packed into a very short interval",
           weight: 1,
           required: true,
         },
@@ -1211,12 +1211,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Vending machine A dispenses items {1,...,5} with PMF p(1)=0.1, p(2)=0.15, p(3)=0.3, p(4)=0.25, p(5)=0.2. Vending machine B dispenses the same 5 items but with the *same set of probability values*, permuted onto different item labels (e.g. item 3 now has probability 0.1 instead of item 1). Are machines A and B 'the same' in any meaningful probabilistic sense? What does a PMF actually encode, and what does it not encode?",
+    stem: "Vending machine A dispenses items $\\{1,\\ldots,5\\}$ with PMF $p(1)=0.1$, $p(2)=0.15$, $p(3)=0.3$, $p(4)=0.25$, $p(5)=0.2$. Vending machine B dispenses the same 5 items but with the *same set of probability values*, permuted onto different item labels (e.g. item 3 now has probability 0.1 instead of item 1). Are machines A and B 'the same' in any meaningful probabilistic sense? What does a PMF actually encode, and what does it not encode?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "no, they are generally different distributions on the labeled outcomes — P(A dispenses item 3) ≠ P(B dispenses item 3) in general, even though the *multiset* of probability values {0.1,0.15,0.2,0.25,0.3} is identical",
+          description: "no, they are generally different distributions on the labeled outcomes — P(A dispenses item 3) ≠ P(B dispenses item 3) in general, even though the *multiset* of probability values $\\{0.1,0.15,0.2,0.25,0.3\\}$ is identical",
           weight: 1,
           required: true,
         },
@@ -1241,7 +1241,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why you can define a perfectly valid PMF for a random variable whose values are non-numeric, like {red, blue, green} (a spinner outcome) — and why, for such a variable, quantities like E[X] and Var(X) become meaningless even though P(X = x) is perfectly meaningful for each color x.",
+    stem: "Explain why you can define a perfectly valid PMF for a random variable whose values are non-numeric, like {red, blue, green} (a spinner outcome) — and why, for such a variable, quantities like $\\mathbb{E}[X]$ and $\\operatorname{Var}(X)$ become meaningless even though $P(X = x)$ is perfectly meaningful for each color x.",
     rubric: {
       elements: [
         {
@@ -1252,7 +1252,7 @@ export const probabilityExpansion2Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "E[X] = Σ x·p(x) and Var(X) require multiplying outcomes by numbers and by themselves — operations that are undefined for labels like 'red' — so those specific summaries break down even though probability itself does not",
+          description: "$\\mathbb{E}[X] = \\sum x \\cdot p(x)$ and $\\operatorname{Var}(X)$ require multiplying outcomes by numbers and by themselves — operations that are undefined for labels like 'red' — so those specific summaries break down even though probability itself does not",
           weight: 1,
           required: true,
         },
@@ -1307,10 +1307,10 @@ export const probabilityExpansion2Items: Item[] = [
     channels: ["typed"],
     stem: "Which is the correct statement of the two conditions a density f must satisfy?",
     choices: [
-      { id: "a", text: "f(x) ≥ 0 for all x, and ∫_(−∞)^∞ f(x) dx = 1", correct: true },
+      { id: "a", text: "$f(x) \\ge 0$ for all x, and $\\int_{-\\infty}^{\\infty} f(x)\\, dx = 1$", correct: true },
       {
         id: "b",
-        text: "f(x) ≤ 1 for all x, and ∫_(−∞)^∞ f(x) dx = 1",
+        text: "$f(x) \\le 1$ for all x, and $\\int_{-\\infty}^{\\infty} f(x)\\, dx = 1$",
         correct: false,
         misconception: {
           id: "invents-density-upper-bound",
@@ -1320,7 +1320,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "c",
-        text: "f(x) ≥ 0 for all x, and Σₓ f(x) = 1",
+        text: "$f(x) \\ge 0$ for all x, and $\\sum_x f(x) = 1$",
         correct: false,
         misconception: {
           id: "sums-instead-of-integrating",
@@ -1330,7 +1330,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "d",
-        text: "f is non-decreasing, and f(x) → 1 as x → ∞",
+        text: "f is non-decreasing, and $f(x) \\to 1$ as $x \\to \\infty$",
         correct: false,
         misconception: {
           id: "confuses-density-with-cdf",
@@ -1352,12 +1352,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For a continuous random variable X with density f, what is P(X = x) for a specific value x — even at a value where f(x) is large?",
+    stem: "For a continuous random variable X with density f, what is $P(X = x)$ for a specific value x — even at a value where $f(x)$ is large?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(X=x) = 0 for every x, no matter how large f(x) is, since f(x) is a density (rate), not a probability",
+          description: "$P(X=x) = 0$ for every x, no matter how large $f(x)$ is, since $f(x)$ is a density (rate), not a probability",
           weight: 1,
           required: true,
         },
@@ -1378,10 +1378,10 @@ export const probabilityExpansion2Items: Item[] = [
     channels: ["typed"],
     stem: "Where the CDF F of a continuous random variable is differentiable, how does its density f relate to F?",
     choices: [
-      { id: "a", text: "f(x) = F′(x)", correct: true },
+      { id: "a", text: "$f(x) = F'(x)$", correct: true },
       {
         id: "b",
-        text: "f(x) = F(x)",
+        text: "$f(x) = F(x)$",
         correct: false,
         misconception: {
           id: "confuses-density-with-cdf-value",
@@ -1391,7 +1391,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "c",
-        text: "f(x) = F(x) − F(x⁻)",
+        text: "$f(x) = F(x) - F(x^-)$",
         correct: false,
         misconception: {
           id: "imports-jump-formula-from-pmf",
@@ -1401,7 +1401,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "d",
-        text: "f(x) = 1/F(x)",
+        text: "$f(x) = 1/F(x)$",
         correct: false,
         misconception: {
           id: "invents-reciprocal-relation",
@@ -1423,7 +1423,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "f(x) = 3x² for 0 ≤ x ≤ 1 (and 0 elsewhere). Verify it's a valid density, then find P(X > 0.5). Give a decimal to three places.",
+    stem: "$f(x) = 3x^2$ for $0 \\le x \\le 1$ (and 0 elsewhere). Verify it's a valid density, then find $P(X > 0.5)$. Give a decimal to three places.",
     answerKey: 0.875,
     tolerance: 0.005,
     difficulty: 0.3,
@@ -1439,7 +1439,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "f(x) = 2e^(−2x) for x ≥ 0 (and 0 elsewhere). Find P(0.25 < X < 1). Give a decimal to three places.",
+    stem: "$f(x) = 2e^{-2x}$ for $x \\ge 0$ (and 0 elsewhere). Find $P(0.25 < X < 1)$. Give a decimal to three places.",
     answerKey: 0.471,
     tolerance: 0.01,
     difficulty: 0.45,
@@ -1455,7 +1455,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "f(x) = k(4 − x²) for −2 ≤ x ≤ 2 (and 0 elsewhere) is a valid density. Find k. Give a decimal to three places.",
+    stem: "$f(x) = k(4 - x^2)$ for $-2 \\le x \\le 2$ (and 0 elsewhere) is a valid density. Find k. Give a decimal to three places.",
     answerKey: 0.094,
     tolerance: 0.01,
     difficulty: 0.4,
@@ -1471,12 +1471,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A proposed density is f(x) = 2 for 0 ≤ x ≤ 1, f(x) = 3 for 1 < x ≤ 2, and f(x)=0 elsewhere. Is this a valid density?",
+    stem: "A proposed density is $f(x) = 2$ for $0 \\le x \\le 1$, $f(x) = 3$ for $1 < x \\le 2$, and $f(x)=0$ elsewhere. Is this a valid density?",
     choices: [
-      { id: "a", text: "No — it integrates to 2(1) + 3(1) = 5, not 1", correct: true },
+      { id: "a", text: "No — it integrates to $2(1) + 3(1) = 5$, not 1", correct: true },
       {
         id: "b",
-        text: "No — f(x) = 3 exceeds 1, which is not allowed for a density",
+        text: "No — $f(x) = 3$ exceeds 1, which is not allowed for a density",
         correct: false,
         misconception: {
           id: "invents-density-upper-bound-2",
@@ -1518,18 +1518,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove that for a continuous random variable and any a < b, P(a ≤ X ≤ b) = P(a < X < b) — i.e., including or excluding the endpoints never changes the probability.",
+    stem: "Prove that for a continuous random variable and any $a < b$, $P(a \\le X \\le b) = P(a < X < b)$ — i.e., including or excluding the endpoints never changes the probability.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(a≤X≤b) = P(a<X<b) + P(X=a) + P(X=b), by splitting the closed interval into the open interval plus its two endpoints",
+          description: "$P(a\\le X\\le b) = P(a<X<b) + P(X=a) + P(X=b)$, by splitting the closed interval into the open interval plus its two endpoints",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "since X is continuous, P(X=a) = P(X=b) = 0, so the two extra terms vanish and the two probabilities are equal",
+          description: "since X is continuous, $P(X=a) = P(X=b) = 0$, so the two extra terms vanish and the two probabilities are equal",
           weight: 1,
           required: true,
         },
@@ -1559,7 +1559,7 @@ export const probabilityExpansion2Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "'total mass' corresponds to total probability, which is always 1 — the analogue of ∫f(x)dx=1 is that the whole object has a fixed total mass",
+          description: "'total mass' corresponds to total probability, which is always 1 — the analogue of $\\int f(x)\\,dx=1$ is that the whole object has a fixed total mass",
           weight: 1,
           required: false,
         },
@@ -1578,7 +1578,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "If Y = 2X, the density of Y is generally NOT just f_X(y) — it gets scaled by a factor of 1/2 as well: f_Y(y) = (1/2)·f_X(y/2). Explain informally why stretching X out (doubling it) must make the density shorter, even though no probability is created or destroyed.",
+    stem: "If $Y = 2X$, the density of Y is generally NOT just $f_X(y)$ — it gets scaled by a factor of 1/2 as well: $f_Y(y) = \\frac{1}{2} f_X(y/2)$. Explain informally why stretching X out (doubling it) must make the density shorter, even though no probability is created or destroyed.",
     rubric: {
       elements: [
         {
@@ -1589,7 +1589,7 @@ export const probabilityExpansion2Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "to keep the total area under the density equal to 1 over a doubled width, the height must shrink by the same factor (by 1/2) — this is exactly the role of the |dy/dx| Jacobian factor in the change-of-variables formula",
+          description: "to keep the total area under the density equal to 1 over a doubled width, the height must shrink by the same factor (by 1/2) — this is exactly the role of the $|dy/dx|$ Jacobian factor in the change-of-variables formula",
           weight: 1,
           required: false,
         },
@@ -1608,12 +1608,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A physicist says: 'since f can be any non-negative function integrating to 1, I'll just make f a very tall, very narrow spike near a single value x₀, to represent an outcome that's 'basically certain'.' As the spike gets narrower and taller (keeping area 1), what happens to f(x₀) itself, and why can no ordinary function represent a variable that puts ALL of its probability at one exact point?",
+    stem: "A physicist says: 'since f can be any non-negative function integrating to 1, I'll just make f a very tall, very narrow spike near a single value $x_0$, to represent an outcome that's 'basically certain'.' As the spike gets narrower and taller (keeping area 1), what happens to $f(x_0)$ itself, and why can no ordinary function represent a variable that puts ALL of its probability at one exact point?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "as the spike narrows (width → 0) while keeping area 1, its height must grow without bound (height ≈ 1/width → ∞), so f(x₀) diverges rather than settling to a finite value",
+          description: "as the spike narrows (width $\\to 0$) while keeping area 1, its height must grow without bound (height $\\approx 1/\\text{width} \\to \\infty$), so $f(x_0)$ diverges rather than settling to a finite value",
           weight: 1,
           required: true,
         },
@@ -1638,18 +1638,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A dataset of reaction times is fit with a density f. A colleague says: 'f(2.3 seconds) = 1.8, so a reaction time of 2.3 seconds has probability 1.8 — which can't be right, since probabilities can't exceed 1.' Diagnose the two separate errors in this statement.",
+    stem: "A dataset of reaction times is fit with a density f. A colleague says: '$f(2.3) = 1.8$, so a reaction time of 2.3 seconds has probability 1.8 — which can't be right, since probabilities can't exceed 1.' Diagnose the two separate errors in this statement.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "error 1: densities are allowed to exceed 1 — there's no rule against it, so f(2.3)=1.8 is not by itself a contradiction",
+          description: "error 1: densities are allowed to exceed 1 — there's no rule against it, so $f(2.3)=1.8$ is not by itself a contradiction",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "error 2 (the deeper one): f(2.3) is not 'the probability of 2.3 seconds' at all — P(X=2.3)=0 regardless of f's value there; f(x) is a density (probability per unit time), not a probability",
+          description: "error 2 (the deeper one): $f(2.3)$ is not 'the probability of 2.3 seconds' at all — $P(X=2.3)=0$ regardless of f's value there; $f(x)$ is a density (probability per unit time), not a probability",
           weight: 1,
           required: true,
         },
@@ -1673,13 +1673,13 @@ export const probabilityExpansion2Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "a heavier right tail means f(x) decays to 0 much more slowly as x grows large, compared to the Normal density's very fast (exponential-of-a-square) decay",
+          description: "a heavier right tail means $f(x)$ decays to 0 much more slowly as x grows large, compared to the Normal density's very fast (exponential-of-a-square) decay",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "since P(X > x) for large x is (roughly) the area under that slowly-decaying tail, a heavy-tailed model assigns substantially larger probability to extreme claims than a Normal model would — the Normal badly underestimates the chance of catastrophic claims",
+          description: "since $P(X > x)$ for large x is (roughly) the area under that slowly-decaying tail, a heavy-tailed model assigns substantially larger probability to extreme claims than a Normal model would — the Normal badly underestimates the chance of catastrophic claims",
           weight: 1,
           required: false,
         },
@@ -1702,12 +1702,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "X ~ Bernoulli(p), a single trial. What is P(X = 1) and P(X = 0)?",
+    stem: "$X \\sim \\text{Bernoulli}(p)$, a single trial. What is $P(X = 1)$ and $P(X = 0)$?",
     choices: [
-      { id: "a", text: "P(X=1) = p, P(X=0) = 1 − p", correct: true },
+      { id: "a", text: "$P(X=1) = p$, $P(X=0) = 1 - p$", correct: true },
       {
         id: "b",
-        text: "P(X=1) = p, P(X=0) = p",
+        text: "$P(X=1) = p$, $P(X=0) = p$",
         correct: false,
         misconception: {
           id: "forgets-complement",
@@ -1717,7 +1717,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "c",
-        text: "P(X=1) = 1 − p, P(X=0) = p",
+        text: "$P(X=1) = 1 - p$, $P(X=0) = p$",
         correct: false,
         misconception: {
           id: "swaps-success-and-failure",
@@ -1727,7 +1727,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "d",
-        text: "P(X=1) = p², P(X=0) = (1−p)²",
+        text: "$P(X=1) = p^2$, $P(X=0) = (1-p)^2$",
         correct: false,
         misconception: {
           id: "squares-single-trial-probability",
@@ -1749,10 +1749,10 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "State E[X] and Var(X) for a single Bernoulli(p) trial.",
+    stem: "State $\\mathbb{E}[X]$ and $\\operatorname{Var}(X)$ for a single Bernoulli(p) trial.",
     rubric: {
       elements: [
-        { id: "element-1", description: "E[X] = p; Var(X) = p(1−p)", weight: 1, required: true },
+        { id: "element-1", description: "$\\mathbb{E}[X] = p$; $\\operatorname{Var}(X) = p(1-p)$", weight: 1, required: true },
       ],
     },
     difficulty: -0.5,
@@ -1784,7 +1784,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A website converts a visitor into a customer independently with probability 0.10. Out of 20 visitors, find P(at least 3 convert). Give a decimal to three places.",
+    stem: "A website converts a visitor into a customer independently with probability 0.10. Out of 20 visitors, find $P(\\text{at least 3 convert})$. Give a decimal to three places.",
     answerKey: 0.323,
     tolerance: 0.01,
     difficulty: 0.4,
@@ -1800,7 +1800,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A student randomly guesses on all 10 true/false questions of a quiz (each independently correct with probability 0.5). Find P(the student gets at least 6 correct). Give a decimal to three places.",
+    stem: "A student randomly guesses on all 10 true/false questions of a quiz (each independently correct with probability 0.5). Find $P(\\text{at least 6 correct})$. Give a decimal to three places.",
     answerKey: 0.377,
     tolerance: 0.01,
     difficulty: 0.5,
@@ -1816,11 +1816,11 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A binomial distribution has mean 8 and variance 6.4. Find both p and n. (Hint: 1 − Var/mean gives p directly.)",
+    stem: "A binomial distribution has mean 8 and variance 6.4. Find both p and n. (Hint: $1 - \\operatorname{Var}/\\text{mean}$ gives p directly.)",
     rubric: {
       elements: [
-        { id: "element-1", description: "p = 1 − Var/mean = 1 − 6.4/8 = 0.2", weight: 1, required: true },
-        { id: "element-2", description: "n = mean/p = 8/0.2 = 40", weight: 1, required: true },
+        { id: "element-1", description: "$p = 1 - \\operatorname{Var}/\\text{mean} = 1 - 6.4/8 = 0.2$", weight: 1, required: true },
+        { id: "element-2", description: "$n = \\text{mean}/p = 8/0.2 = 40$", weight: 1, required: true },
       ],
     },
     difficulty: 1.0,
@@ -1836,18 +1836,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why the Binomial(n, p) PMF is exactly symmetric (p(k) = p(n−k)) when p = 1/2, but generally not symmetric for other values of p.",
+    stem: "Explain why the Binomial(n, p) PMF is exactly symmetric ($p(k) = p(n-k)$) when $p = 1/2$, but generally not symmetric for other values of p.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "at p=1/2, swapping every success for a failure and vice versa leaves the trial-level model unchanged (P(success)=P(failure)=1/2), so k successes is exactly as likely as n−k successes",
+          description: "at $p=1/2$, swapping every success for a failure and vice versa leaves the trial-level model unchanged ($P(\\text{success})=P(\\text{failure})=1/2$), so k successes is exactly as likely as n−k successes",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "for p≠1/2, success and failure have different probabilities, so relabeling them changes the model — p(k) involves pᵏ(1−p)ⁿ⁻ᵏ while p(n−k) involves pⁿ⁻ᵏ(1−p)ᵏ, which differ unless p=1−p",
+          description: "for $p\\ne1/2$, success and failure have different probabilities, so relabeling them changes the model — $p(k)$ involves $p^k(1-p)^{n-k}$ while $p(n-k)$ involves $p^{n-k}(1-p)^k$, which differ unless $p=1-p$",
           weight: 1,
           required: false,
         },
@@ -1866,18 +1866,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Derive E[X] = np for X ~ Binomial(n,p) by writing X as a sum of n Bernoulli indicator variables and using linearity of expectation — without ever writing down the Binomial PMF.",
+    stem: "Derive $\\mathbb{E}[X] = np$ for $X \\sim \\text{Binomial}(n,p)$ by writing X as a sum of n Bernoulli indicator variables and using linearity of expectation — without ever writing down the Binomial PMF.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "write X = I₁ + I₂ + ... + Iₙ, where Iⱼ = 1 if trial j succeeds and 0 otherwise, so each Iⱼ ~ Bernoulli(p)",
+          description: "write $X = I_1 + I_2 + \\ldots + I_n$, where $I_j = 1$ if trial j succeeds and 0 otherwise, so each $I_j \\sim \\text{Bernoulli}(p)$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "linearity of expectation gives E[X] = E[I₁]+...+E[Iₙ] = p+p+...+p = np, and crucially this step needs no independence assumption at all",
+          description: "linearity of expectation gives $\\mathbb{E}[X] = \\mathbb{E}[I_1]+\\ldots+\\mathbb{E}[I_n] = p+p+\\ldots+p = np$, and crucially this step needs no independence assumption at all",
           weight: 1,
           required: true,
         },
@@ -1896,18 +1896,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using the indicator-sum decomposition X = I₁+...+Iₙ, explain why Cov(Iᵢ, Iⱼ) = 0 for i≠j, and why this is exactly what lets Var(X) = np(1−p) with no cross terms.",
+    stem: "Using the indicator-sum decomposition $X = I_1+\\ldots+I_n$, explain why $\\operatorname{Cov}(I_i, I_j) = 0$ for $i\\ne j$, and why this is exactly what lets $\\operatorname{Var}(X) = np(1-p)$ with no cross terms.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the trials are mutually independent, and independent random variables always have zero covariance, so Cov(Iᵢ,Iⱼ)=0 for every pair i≠j",
+          description: "the trials are mutually independent, and independent random variables always have zero covariance, so $\\operatorname{Cov}(I_i,I_j)=0$ for every pair $i\\ne j$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "Var(ΣIⱼ) = ΣVar(Iⱼ) + Σ_(i≠j) Cov(Iᵢ,Iⱼ); since every cross term vanishes, only the n individual variances p(1−p) survive, giving Var(X) = np(1−p)",
+          description: "$\\operatorname{Var}(\\sum I_j) = \\sum \\operatorname{Var}(I_j) + \\sum_{i\\ne j} \\operatorname{Cov}(I_i,I_j)$; since every cross term vanishes, only the n individual variances $p(1-p)$ survive, giving $\\operatorname{Var}(X) = np(1-p)$",
           weight: 1,
           required: true,
         },
@@ -1926,7 +1926,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A factory ships parts from two production lots: half its parts have true defect rate 0.02, the other half have true defect rate 0.10, but an inspector who doesn't know which lot a part came from just assumes a single overall defect rate p = 0.06 and models the defect count in a batch of n parts as Binomial(n, 0.06). Explain why the *true* variance of the defect count in a mixed batch like this exceeds np(1−p) — what has the Binomial model left out?",
+    stem: "A factory ships parts from two production lots: half its parts have true defect rate 0.02, the other half have true defect rate 0.10, but an inspector who doesn't know which lot a part came from just assumes a single overall defect rate $p = 0.06$ and models the defect count in a batch of n parts as Binomial(n, 0.06). Explain why the *true* variance of the defect count in a mixed batch like this exceeds $np(1-p)$ — what has the Binomial model left out?",
     rubric: {
       elements: [
         {
@@ -1937,7 +1937,7 @@ export const probabilityExpansion2Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "this heterogeneity adds extra variability on top of the ordinary binomial variance: uncertainty about *which lot's rate applies* contributes additional variance beyond np(1−p), producing overdispersion relative to the naive single-p Binomial model",
+          description: "this heterogeneity adds extra variability on top of the ordinary binomial variance: uncertainty about *which lot's rate applies* contributes additional variance beyond $np(1-p)$, producing overdispersion relative to the naive single-p Binomial model",
           weight: 1,
           required: false,
         },
@@ -1956,12 +1956,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain, in terms of what a single Bernoulli trial is doing, why a Binomial(1000, 0.003) count is well-approximated by a Poisson(3) distribution, but a Binomial(10, 0.3) count (same mean np=3) is not.",
+    stem: "Explain, in terms of what a single Bernoulli trial is doing, why a Binomial(1000, 0.003) count is well-approximated by a Poisson(3) distribution, but a Binomial(10, 0.3) count (same mean $np=3$) is not.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the Poisson limit needs each individual trial's success probability to be tiny (p→0) while the number of trials grows (n→∞) with np held roughly fixed — with n=1000, p=0.003 that's exactly the regime",
+          description: "the Poisson limit needs each individual trial's success probability to be tiny ($p\\to 0$) while the number of trials grows ($n\\to\\infty$) with np held roughly fixed — with n=1000, p=0.003 that's exactly the regime",
           weight: 1,
           required: true,
         },
@@ -1986,12 +1986,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Line A produces X₁ ~ Binomial(10, 0.3) defects and independent Line B produces X₂ ~ Binomial(15, 0.3) defects, with the *same* defect rate p=0.3 on both lines. Explain, using the trial-sequence interpretation (not a formula lookup), why X₁+X₂ ~ Binomial(25, 0.3) — and why this reasoning would break if the two lines had different defect rates.",
+    stem: "Line A produces $X_1 \\sim \\text{Binomial}(10, 0.3)$ defects and independent Line B produces $X_2 \\sim \\text{Binomial}(15, 0.3)$ defects, with the *same* defect rate $p=0.3$ on both lines. Explain, using the trial-sequence interpretation (not a formula lookup), why $X_1+X_2 \\sim \\text{Binomial}(25, 0.3)$ — and why this reasoning would break if the two lines had different defect rates.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "X₁+X₂ just counts total successes across 10+15=25 independent Bernoulli(0.3) trials pooled together — which is exactly the definition of Binomial(25, 0.3), since all 25 trials share the same success probability and are mutually independent",
+          description: "$X_1+X_2$ just counts total successes across 10+15=25 independent Bernoulli(0.3) trials pooled together — which is exactly the definition of Binomial(25, 0.3), since all 25 trials share the same success probability and are mutually independent",
           weight: 1,
           required: true,
         },
@@ -2020,10 +2020,10 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "If event counts follow Poisson(λ) per unit time, what is the parameter for the count over a window of length t units?",
+    stem: "If event counts follow Poisson($\\lambda$) per unit time, what is the parameter for the count over a window of length t units?",
     rubric: {
       elements: [
-        { id: "element-1", description: "λt — the rate scales linearly with the length of the window", weight: 1, required: true },
+        { id: "element-1", description: "$\\lambda t$ — the rate scales linearly with the length of the window", weight: 1, required: true },
       ],
     },
     difficulty: -0.15,
@@ -2064,7 +2064,7 @@ export const probabilityExpansion2Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "n is large and p is small (each individual trial is a rare event), with np held to a moderate, fixed value",
+          description: "n is large and p is small (each individual trial is a rare event), with $np$ held to a moderate, fixed value",
           weight: 1,
           required: true,
         },
@@ -2115,7 +2115,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A website gets 10 hits/hour on average (Poisson). Find P(at least 12 hits in an hour). Give a decimal to three places.",
+    stem: "A website gets 10 hits/hour on average (Poisson). Find $P(\\text{at least 12 hits in an hour})$. Give a decimal to three places.",
     answerKey: 0.303,
     tolerance: 0.01,
     difficulty: 0.9,
@@ -2131,13 +2131,13 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For Poisson(λ=5), compute P(X=4) and P(X=5) and compare them. What does this tell you about the mode of a Poisson distribution when λ is a whole number?",
+    stem: "For Poisson($\\lambda=5$), compute $P(X=4)$ and $P(X=5)$ and compare them. What does this tell you about the mode of a Poisson distribution when $\\lambda$ is a whole number?",
     rubric: {
       elements: [
-        { id: "element-1", description: "P(X=4) = P(X=5) ≈ 0.1755 — they are exactly equal", weight: 1, required: true },
+        { id: "element-1", description: "$P(X=4) = P(X=5) \\approx 0.1755$ — they are exactly equal", weight: 1, required: true },
         {
           id: "element-2",
-          description: "when λ is an integer, the Poisson distribution has two modes, at λ−1 and λ, rather than a single most-likely value",
+          description: "when $\\lambda$ is an integer, the Poisson distribution has two modes, at $\\lambda-1$ and $\\lambda$, rather than a single most-likely value",
           weight: 1,
           required: false,
         },
@@ -2156,18 +2156,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "If event counts in disjoint time intervals follow independent Poisson(λ·length) distributions, explain why the time until the very first event must be Exponential(λ).",
+    stem: "If event counts in disjoint time intervals follow independent Poisson($\\lambda\\cdot\\text{length}$) distributions, explain why the time until the very first event must be Exponential($\\lambda$).",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "'the first event hasn't happened by time t' is exactly the same event as 'zero events occurred in [0,t]', and by the Poisson process axioms that count is Poisson(λt)",
+          description: "'the first event hasn't happened by time t' is exactly the same event as 'zero events occurred in $[0,t]$', and by the Poisson process axioms that count is Poisson($\\lambda t$)",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "so P(wait time > t) = P(Poisson(λt) = 0) = e^(−λt), which is exactly the survival function of an Exponential(λ) random variable — matching this survival function for every t forces the wait time itself to be Exponential(λ)",
+          description: "so $P(\\text{wait time} > t) = P(\\text{Poisson}(\\lambda t) = 0) = e^{-\\lambda t}$, which is exactly the survival function of an Exponential($\\lambda$) random variable — matching this survival function for every t forces the wait time itself to be Exponential($\\lambda$)",
           weight: 1,
           required: false,
         },
@@ -2186,18 +2186,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Show that P(X=k+1)/P(X=k) = λ/(k+1) for Poisson(λ), and use this ratio to explain why the PMF first increases and then decreases as k grows (i.e. is unimodal).",
+    stem: "Show that $P(X=k+1)/P(X=k) = \\lambda/(k+1)$ for Poisson($\\lambda$), and use this ratio to explain why the PMF first increases and then decreases as k grows (i.e. is unimodal).",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(X=k+1)/P(X=k) = [e^(−λ)λ^(k+1)/(k+1)!] / [e^(−λ)λᵏ/k!] = λ/(k+1)",
+          description: "$P(X=k+1)/P(X=k) = [e^{-\\lambda}\\lambda^{k+1}/(k+1)!] / [e^{-\\lambda}\\lambda^k/k!] = \\lambda/(k+1)$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "this ratio exceeds 1 (PMF still rising) whenever k+1<λ, and drops below 1 (PMF now falling) once k+1>λ — so the PMF rises up to roughly k≈λ and falls after, giving a single rise-then-fall shape",
+          description: "this ratio exceeds 1 (PMF still rising) whenever $k+1<\\lambda$, and drops below 1 (PMF now falling) once $k+1>\\lambda$ — so the PMF rises up to roughly $k\\approx\\lambda$ and falls after, giving a single rise-then-fall shape",
           weight: 1,
           required: true,
         },
@@ -2216,18 +2216,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why doubling λ does NOT double the standard deviation of a Poisson(λ) random variable.",
+    stem: "Explain why doubling $\\lambda$ does NOT double the standard deviation of a Poisson($\\lambda$) random variable.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "Var(X) = λ, so SD(X) = √λ; doubling λ makes the new SD √(2λ) = √2·√λ ≈ 1.41 times the original, not 2 times",
+          description: "$\\operatorname{Var}(X) = \\lambda$, so $\\operatorname{SD}(X) = \\sqrt{\\lambda}$; doubling $\\lambda$ makes the new SD $\\sqrt{2\\lambda} = \\sqrt{2}\\cdot\\sqrt{\\lambda} \\approx 1.41$ times the original, not 2 times",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "the square root means the spread grows more slowly than the mean, so relative variability (SD/mean = 1/√λ) actually shrinks as λ grows — larger-rate Poisson counts look proportionally *more* concentrated around their mean",
+          description: "the square root means the spread grows more slowly than the mean, so relative variability ($\\text{SD}/\\text{mean} = 1/\\sqrt{\\lambda}$) actually shrinks as $\\lambda$ grows — larger-rate Poisson counts look proportionally *more* concentrated around their mean",
           weight: 1,
           required: false,
         },
@@ -2251,13 +2251,13 @@ export const probabilityExpansion2Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "the SD of Poisson(2) is √2≈1.41, comparable in size to the mean itself, so day-to-day counts genuinely swing well above and below 2",
+          description: "the SD of Poisson(2) is $\\sqrt{2}\\approx1.41$, comparable in size to the mean itself, so day-to-day counts genuinely swing well above and below 2",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "concretely, P(X=0)≈0.135 (over 13% of days have zero births) and P(X≥5)≈0.053 (over 5% of days have 5 or more) — neither is negligible, so staffing for exactly the mean will be wrong on a large fraction of days in both directions",
+          description: "concretely, $P(X=0)\\approx0.135$ (over 13% of days have zero births) and $P(X\\ge5)\\approx0.053$ (over 5% of days have 5 or more) — neither is negligible, so staffing for exactly the mean will be wrong on a large fraction of days in both directions",
           weight: 1,
           required: false,
         },
@@ -2276,7 +2276,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A count with n=20 trials and p=0.3 has the same mean (np=6) as a count with n=1000 trials and p=0.006. Explain why a Poisson(6) approximation is good for the second case but poor for the first, even though both have identical means.",
+    stem: "A count with n=20 trials and p=0.3 has the same mean ($np=6$) as a count with n=1000 trials and p=0.006. Explain why a Poisson(6) approximation is good for the second case but poor for the first, even though both have identical means.",
     rubric: {
       elements: [
         {
@@ -2287,7 +2287,7 @@ export const probabilityExpansion2Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "n=20, p=0.3 fails both conditions — p is not small and n is not large — so the Binomial(20,0.3) shape (noticeably bounded and less spread, Var=np(1−p)=4.2) doesn't match Poisson(6)'s shape (unbounded, Var=6); matching the mean alone is not enough",
+          description: "n=20, p=0.3 fails both conditions — p is not small and n is not large — so the Binomial(20,0.3) shape (noticeably bounded and less spread, $\\operatorname{Var}=np(1-p)=4.2$) doesn't match Poisson(6)'s shape (unbounded, $\\operatorname{Var}=6$); matching the mean alone is not enough",
           weight: 1,
           required: false,
         },
@@ -2312,7 +2312,7 @@ export const probabilityExpansion2Items: Item[] = [
     channels: ["typed"],
     stem: "For Hypergeometric(N, K, n), what are the possible values of X (the number of successes drawn)?",
     choices: [
-      { id: "a", text: "max(0, n−(N−K)) through min(n, K)", correct: true },
+      { id: "a", text: "$\\max(0, n-(N-K))$ through $\\min(n, K)$", correct: true },
       {
         id: "b",
         text: "0 through n, always",
@@ -2357,11 +2357,11 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "State E[X] and Var(X) for X ~ Hypergeometric(N, K, n).",
+    stem: "State $\\mathbb{E}[X]$ and $\\operatorname{Var}(X)$ for $X \\sim \\text{Hypergeometric}(N, K, n)$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "E[X] = nK/N", weight: 1, required: true },
-        { id: "element-2", description: "Var(X) = n·(K/N)·(1−K/N)·(N−n)/(N−1)", weight: 1, required: true },
+        { id: "element-1", description: "$\\mathbb{E}[X] = nK/N$", weight: 1, required: true },
+        { id: "element-2", description: "$\\operatorname{Var}(X) = n\\cdot(K/N)\\cdot(1-K/N)\\cdot(N-n)/(N-1)$", weight: 1, required: true },
       ],
     },
     difficulty: -0.1,
@@ -2377,7 +2377,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "An urn has 20 balls, 8 of them red. Draw 6 without replacement. Find P(exactly 3 are red). Give a decimal to three places.",
+    stem: "An urn has 20 balls, 8 of them red. Draw 6 without replacement. Find $P(\\text{exactly 3 are red})$. Give a decimal to three places.",
     answerKey: 0.318,
     tolerance: 0.01,
     difficulty: 0.5,
@@ -2393,7 +2393,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A pool of 30 candidates includes 12 women. A panel of 5 is chosen at random without replacement. Find P(exactly 2 women are chosen). Give a decimal to three places.",
+    stem: "A pool of 30 candidates includes 12 women. A panel of 5 is chosen at random without replacement. Find $P(\\text{exactly 2 women are chosen})$. Give a decimal to three places.",
     answerKey: 0.378,
     tolerance: 0.01,
     difficulty: 0.55,
@@ -2409,7 +2409,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A shipment of 200 items contains 15 defective. Inspect 20 without replacement. Find P(zero defective items are found). Give a decimal to three places.",
+    stem: "A shipment of 200 items contains 15 defective. Inspect 20 without replacement. Find $P(\\text{zero defective items are found})$. Give a decimal to three places.",
     answerKey: 0.194,
     tolerance: 0.01,
     difficulty: 0.65,
@@ -2425,10 +2425,10 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Compute the finite population correction factor (N−n)/(N−1) for (a) N=50, n=10 and (b) N=5000, n=10. What trend does this illustrate as N grows relative to n?",
+    stem: "Compute the finite population correction factor $(N-n)/(N-1)$ for (a) N=50, n=10 and (b) N=5000, n=10. What trend does this illustrate as N grows relative to n?",
     rubric: {
       elements: [
-        { id: "element-1", description: "(a) (50−10)/(50−1) = 40/49 ≈ 0.816; (b) (5000−10)/(5000−1) ≈ 0.998", weight: 1, required: true },
+        { id: "element-1", description: "(a) $(50-10)/(50-1) = 40/49 \\approx 0.816$; (b) $(5000-10)/(5000-1) \\approx 0.998$", weight: 1, required: true },
         {
           id: "element-2",
           description: "as N grows much larger than n, the correction factor approaches 1, meaning the Hypergeometric variance approaches the corresponding Binomial variance",
@@ -2450,7 +2450,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using indicator variables Iⱼ for each draw, explain why Cov(Iᵢ, Iⱼ) < 0 for i≠j in sampling without replacement, and why this pulls Var(X) below what it would be if the draws were independent.",
+    stem: "Using indicator variables $I_j$ for each draw, explain why $\\operatorname{Cov}(I_i, I_j) < 0$ for $i\\ne j$ in sampling without replacement, and why this pulls $\\operatorname{Var}(X)$ below what it would be if the draws were independent.",
     rubric: {
       elements: [
         {
@@ -2461,7 +2461,7 @@ export const probabilityExpansion2Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "Var(ΣIⱼ) = ΣVar(Iⱼ) + Σ_(i≠j) Cov(Iᵢ,Iⱼ); since the cross terms are negative here (unlike the independent Binomial case, where they're exactly 0), the total variance is pulled below n·Var(single draw)",
+          description: "$\\operatorname{Var}(\\sum I_j) = \\sum \\operatorname{Var}(I_j) + \\sum_{i\\ne j} \\operatorname{Cov}(I_i,I_j)$; since the cross terms are negative here (unlike the independent Binomial case, where they're exactly 0), the total variance is pulled below $n\\cdot\\operatorname{Var}(\\text{single draw})$",
           weight: 1,
           required: false,
         },
@@ -2485,7 +2485,7 @@ export const probabilityExpansion2Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "algebraically, C(K,k)C(N−K,n−k)/C(N,n) = C(n,k)C(N−n,K−k)/C(N,K) — both equal the number of ways to choose the same k-element overlap between a size-K subset and a size-n subset of an N-element population, divided by the appropriate normalizer",
+          description: "algebraically, $\\binom{K}{k}\\binom{N-K}{n-k}/\\binom{N}{n} = \\binom{n}{k}\\binom{N-n}{K-k}/\\binom{N}{K}$ — both equal the number of ways to choose the same k-element overlap between a size-K subset and a size-n subset of an N-element population, divided by the appropriate normalizer",
           weight: 1,
           required: true,
         },
@@ -2515,13 +2515,13 @@ export const probabilityExpansion2Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "the Hypergeometric formula explicitly divides out a fixed total number of ways to choose n items from N — if N is infinite, C(N,n) and the shrinking-pool bookkeeping (K successes out of a shrinking N) no longer make sense",
+          description: "the Hypergeometric formula explicitly divides out a fixed total number of ways to choose n items from N — if N is infinite, $\\binom{N}{n}$ and the shrinking-pool bookkeeping (K successes out of a shrinking N) no longer make sense",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "more fundamentally, removing one item from an infinite population doesn't meaningfully change the remaining proportion of successes, so 'without replacement' becomes indistinguishable from 'with replacement' — which is exactly the Binomial model, the limiting case as N→∞",
+          description: "more fundamentally, removing one item from an infinite population doesn't meaningfully change the remaining proportion of successes, so 'without replacement' becomes indistinguishable from 'with replacement' — which is exactly the Binomial model, the limiting case as $N\\to\\infty$",
           weight: 1,
           required: false,
         },
@@ -2545,13 +2545,13 @@ export const probabilityExpansion2Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "the number of tagged fish in the second catch is Hypergeometric(N, K, n) with K=50 (tagged fish, known), n=40 (size of second catch, known), and N = the lake's total fish population (unknown — the quantity being estimated)",
+          description: "the number of tagged fish in the second catch is Hypergeometric(N, K, n) with $K=50$ (tagged fish, known), $n=40$ (size of second catch, known), and N = the lake's total fish population (unknown — the quantity being estimated)",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "since E[X] = nK/N, observing the actual count of tagged fish in the second catch lets you solve for (estimate) N, using the Hypergeometric's expectation as the working model",
+          description: "since $\\mathbb{E}[X] = nK/N$, observing the actual count of tagged fish in the second catch lets you solve for (estimate) N, using the Hypergeometric's expectation as the working model",
           weight: 1,
           required: false,
         },
@@ -2600,7 +2600,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "In poker, your 5-card hand and your opponent's 5-card hand (dealt after yours, from the same deck) are each individually Hypergeometric(52, 4, 5) for the number of aces. A friend claims 'so the number of aces in each hand must be independent, since they're both draws from the same fixed deck setup.' Explain what's wrong with this claim.",
+    stem: "In poker, your 5-card hand and your opponent's 5-card hand (dealt after yours, from the same deck) are each individually Hypergeometric($52, 4, 5$) for the number of aces. A friend claims 'so the number of aces in each hand must be independent, since they're both draws from the same fixed deck setup.' Explain what's wrong with this claim.",
     rubric: {
       elements: [
         {
@@ -2611,7 +2611,7 @@ export const probabilityExpansion2Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "both counts being marginally Hypergeometric(52,4,5) says nothing about their joint behavior; the two draws are actually negatively dependent (more aces in your hand leaves fewer for your opponent), not independent",
+          description: "both counts being marginally Hypergeometric($52,4,5$) says nothing about their joint behavior; the two draws are actually negatively dependent (more aces in your hand leaves fewer for your opponent), not independent",
           weight: 1,
           required: false,
         },
@@ -2646,12 +2646,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Under the 'number of FAILURES before the first success' convention (call this Y), what is P(Y = k)?",
+    stem: "Under the 'number of FAILURES before the first success' convention (call this Y), what is $P(Y = k)$?",
     choices: [
-      { id: "a", text: "P(Y=k) = (1−p)ᵏ·p, for k = 0, 1, 2, ...", correct: true },
+      { id: "a", text: "$P(Y=k) = (1-p)^k p$, for $k = 0, 1, 2, \\ldots$", correct: true },
       {
         id: "b",
-        text: "P(Y=k) = (1−p)^(k−1)·p, for k = 0, 1, 2, ...",
+        text: "$P(Y=k) = (1-p)^{k-1} p$, for $k = 0, 1, 2, \\ldots$",
         correct: false,
         misconception: {
           id: "mixes-up-the-two-conventions",
@@ -2661,7 +2661,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "c",
-        text: "P(Y=k) = p^k·(1−p), for k = 0, 1, 2, ...",
+        text: "$P(Y=k) = p^k(1-p)$, for $k = 0, 1, 2, \\ldots$",
         correct: false,
         misconception: {
           id: "swaps-p-and-one-minus-p",
@@ -2671,7 +2671,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "d",
-        text: "P(Y=k) = (1−p)ᵏ·p, for k = 1, 2, 3, ...",
+        text: "$P(Y=k) = (1-p)^k p$, for $k = 1, 2, 3, \\ldots$",
         correct: false,
         misconception: {
           id: "wrong-starting-value",
@@ -2693,10 +2693,10 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Under the 'trials until first success' convention, state E[X] and Var(X) for Geometric(p).",
+    stem: "Under the 'trials until first success' convention, state $\\mathbb{E}[X]$ and $\\operatorname{Var}(X)$ for Geometric(p).",
     rubric: {
       elements: [
-        { id: "element-1", description: "E[X] = 1/p; Var(X) = (1−p)/p²", weight: 1, required: true },
+        { id: "element-1", description: "$\\mathbb{E}[X] = 1/p$; $\\operatorname{Var}(X) = (1-p)/p^2$", weight: 1, required: true },
       ],
     },
     difficulty: 0.0,
@@ -2736,7 +2736,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A machine part passes inspection independently with probability 0.4 each attempt. Find P(it first passes within the first 3 attempts). Give a decimal to three places.",
+    stem: "A machine part passes inspection independently with probability 0.4 each attempt. Find $P(\\text{it first passes within the first 3 attempts})$. Give a decimal to three places.",
     answerKey: 0.784,
     tolerance: 0.01,
     difficulty: 0.6,
@@ -2768,7 +2768,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A slot machine pays out independently with probability 0.25 on each pull. Find P(the first payout happens on exactly the 7th pull). Give a decimal to three places.",
+    stem: "A slot machine pays out independently with probability 0.25 on each pull. Find $P(\\text{the first payout happens on exactly the 7th pull})$. Give a decimal to three places.",
     answerKey: 0.0445,
     tolerance: 0.01,
     difficulty: 0.7,
@@ -2784,7 +2784,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A fisherman catches a fish on any given cast independently with probability 0.2. Using the 'number of failures before the first catch' convention, find P(exactly 4 failed casts occur before the first catch). Give a decimal to three places.",
+    stem: "A fisherman catches a fish on any given cast independently with probability 0.2. Using the 'number of failures before the first catch' convention, find $P(\\text{exactly 4 failed casts occur before the first catch})$. Give a decimal to three places.",
     answerKey: 0.0819,
     tolerance: 0.01,
     difficulty: 0.75,
@@ -2800,18 +2800,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Derive E[X] = 1/p for Geometric(p) using a recursive (memoryless) argument — that is, by writing an equation for E[X] in terms of E[X] itself, rather than summing the infinite series directly.",
+    stem: "Derive $\\mathbb{E}[X] = 1/p$ for Geometric(p) using a recursive (memoryless) argument — that is, by writing an equation for $\\mathbb{E}[X]$ in terms of $\\mathbb{E}[X]$ itself, rather than summing the infinite series directly.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "with probability p, the first trial succeeds and X=1; with probability 1−p, the first trial fails and — by memorylessness — the process restarts completely fresh, so the further wait is another independent copy of X, contributing 1 (for the failed trial) + E[X] more",
+          description: "with probability p, the first trial succeeds and X=1; with probability 1−p, the first trial fails and — by memorylessness — the process restarts completely fresh, so the further wait is another independent copy of X, contributing 1 (for the failed trial) + $\\mathbb{E}[X]$ more",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "this gives E[X] = p·1 + (1−p)·(1+E[X]); expanding and solving: E[X] = 1 + (1−p)E[X], so p·E[X] = 1, and E[X] = 1/p",
+          description: "this gives $\\mathbb{E}[X] = p\\cdot1 + (1-p)\\cdot(1+\\mathbb{E}[X])$; expanding and solving: $\\mathbb{E}[X] = 1 + (1-p)\\mathbb{E}[X]$, so $p\\cdot\\mathbb{E}[X] = 1$, and $\\mathbb{E}[X] = 1/p$",
           weight: 1,
           required: true,
         },
@@ -2830,18 +2830,18 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why p=0 cannot give a valid Geometric distribution — what goes wrong with the PMF, and what does it mean physically about the process?",
+    stem: "Explain why $p=0$ cannot give a valid Geometric distribution — what goes wrong with the PMF, and what does it mean physically about the process?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "with p=0, P(X=k) = (1−0)^(k−1)·0 = 0 for every single k, so the PMF sums to 0, not 1 — it fails to be a valid probability distribution at all",
+          description: "with $p=0$, $P(X=k) = (1-0)^{k-1}\\cdot0 = 0$ for every single k, so the PMF sums to 0, not 1 — it fails to be a valid probability distribution at all",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "physically, p=0 means success never happens, so there is no finite waiting time at all — the process is 'improper' (X would have to be infinite with probability 1, which isn't a valid value for a real-valued random variable)",
+          description: "physically, $p=0$ means success never happens, so there is no finite waiting time at all — the process is 'improper' (X would have to be infinite with probability 1, which isn't a valid value for a real-valued random variable)",
           weight: 1,
           required: false,
         },
@@ -2890,12 +2890,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "You need to roll a specific number on a fair die (probability 1/6 each roll). Someone says: 'the expected number of rolls is 6, so it's basically impossible to still be waiting after 12 rolls.' Compute P(X > 12) and use it to evaluate this claim.",
+    stem: "You need to roll a specific number on a fair die (probability 1/6 each roll). Someone says: 'the expected number of rolls is 6, so it's basically impossible to still be waiting after 12 rolls.' Compute $P(X > 12)$ and use it to evaluate this claim.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(X>12) = (5/6)^12 ≈ 0.112 — over an 11% chance",
+          description: "$P(X>12) = (5/6)^{12} \\approx 0.112$ — over an 11% chance",
           weight: 1,
           required: true,
         },
@@ -2950,7 +2950,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A factory inspector checks parts one at a time off a line where 4% are defective, stopping at the first defective part found (trials independent, p=0.04 constant). What is the expected number of parts inspected?",
+    stem: "A factory inspector checks parts one at a time off a line where 4% are defective, stopping at the first defective part found (trials independent, $p=0.04$ constant). What is the expected number of parts inspected?",
     answerKey: 25,
     tolerance: 0.02,
     difficulty: -0.1,
@@ -2966,7 +2966,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A factory inspector checks parts one at a time off a line where 4% are defective, stopping at the first defective part found (trials independent, p=0.04 constant). What is the probability the inspector needs to check more than 30 parts before finding one?",
+    stem: "A factory inspector checks parts one at a time off a line where 4% are defective, stopping at the first defective part found (trials independent, $p=0.04$ constant). What is the probability the inspector needs to check more than 30 parts before finding one?",
     answerKey: 0.2939,
     tolerance: 0.02,
     difficulty: -0.1,
@@ -2986,12 +2986,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Under the 'number of FAILURES before the r-th success' convention (call this Y), what is P(Y = k)?",
+    stem: "Under the 'number of FAILURES before the r-th success' convention (call this Y), what is $P(Y = k)$?",
     choices: [
-      { id: "a", text: "C(k+r−1, k)·pʳ·(1−p)ᵏ, for k = 0, 1, 2, ...", correct: true },
+      { id: "a", text: "$\\binom{k+r-1}{k} p^r (1-p)^k$, for $k = 0, 1, 2, \\ldots$", correct: true },
       {
         id: "b",
-        text: "C(k−1, r−1)·pʳ·(1−p)ᵏ, for k = 0, 1, 2, ...",
+        text: "$\\binom{k-1}{r-1} p^r (1-p)^k$, for $k = 0, 1, 2, \\ldots$",
         correct: false,
         misconception: {
           id: "mixes-conventions-combinatorial-term",
@@ -3001,7 +3001,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "c",
-        text: "C(k+r−1, k)·(1−p)ʳ·pᵏ",
+        text: "$\\binom{k+r-1}{k} (1-p)^r p^k$",
         correct: false,
         misconception: {
           id: "swaps-p-and-one-minus-p-nb",
@@ -3011,7 +3011,7 @@ export const probabilityExpansion2Items: Item[] = [
       },
       {
         id: "d",
-        text: "C(k+r, k)·pʳ·(1−p)ᵏ",
+        text: "$\\binom{k+r}{k} p^r (1-p)^k$",
         correct: false,
         misconception: {
           id: "off-by-one-in-binomial-coefficient",
@@ -3033,10 +3033,10 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Under the 'trials until r-th success' convention, state E[X] and Var(X) for NegativeBinomial(r, p).",
+    stem: "Under the 'trials until r-th success' convention, state $\\mathbb{E}[X]$ and $\\operatorname{Var}(X)$ for NegativeBinomial(r, p).",
     rubric: {
       elements: [
-        { id: "element-1", description: "E[X] = r/p; Var(X) = r(1−p)/p²", weight: 1, required: true },
+        { id: "element-1", description: "$\\mathbb{E}[X] = r/p$; $\\operatorname{Var}(X) = r(1-p)/p^2$", weight: 1, required: true },
       ],
     },
     difficulty: 0.05,
@@ -3099,7 +3099,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A quality tester needs 4 defective parts to stop testing. Each part is defective independently with probability 0.1. Find P(the 4th defective part is found on exactly the 25th part tested). Give a decimal to three places.",
+    stem: "A quality tester needs 4 defective parts to stop testing. Each part is defective independently with probability 0.1. Find $P(\\text{the 4th defective part is found on exactly the 25th part tested})$. Give a decimal to three places.",
     answerKey: 0.0221,
     tolerance: 0.01,
     difficulty: 0.7,
@@ -3115,7 +3115,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A basketball player attempts three-pointers, each independently successful with probability 0.35, until she makes 5. Find P(the 5th successful three happens on exactly the 12th attempt). Give a decimal to three places.",
+    stem: "A basketball player attempts three-pointers, each independently successful with probability 0.35, until she makes 5. Find $P(\\text{the 5th successful three happens on exactly the 12th attempt})$. Give a decimal to three places.",
     answerKey: 0.085,
     tolerance: 0.01,
     difficulty: 0.8,
@@ -3131,7 +3131,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A gambler needs 3 wins; each independent bet wins with probability 0.4. Using the 'number of losses before the 3rd win' convention, find P(exactly 5 losses occur before the 3rd win). Give a decimal to three places.",
+    stem: "A gambler needs 3 wins; each independent bet wins with probability 0.4. Using the 'number of losses before the 3rd win' convention, find $P(\\text{exactly 5 losses occur before the 3rd win})$. Give a decimal to three places.",
     answerKey: 0.1045,
     tolerance: 0.01,
     difficulty: 0.75,
@@ -3147,11 +3147,11 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A recruiter interviews candidates one at a time, each independently a good fit with probability 0.3, until 6 good fits are found. Find E[number of interviews] and Var(number of interviews).",
+    stem: "A recruiter interviews candidates one at a time, each independently a good fit with probability 0.3, until 6 good fits are found. Find $\\mathbb{E}[\\text{number of interviews}]$ and $\\operatorname{Var}(\\text{number of interviews})$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "E[X] = r/p = 6/0.3 = 20", weight: 1, required: true },
-        { id: "element-2", description: "Var(X) = r(1−p)/p² = 6(0.7)/0.09 ≈ 46.67", weight: 1, required: true },
+        { id: "element-1", description: "$\\mathbb{E}[X] = r/p = 6/0.3 = 20$", weight: 1, required: true },
+        { id: "element-2", description: "$\\operatorname{Var}(X) = r(1-p)/p^2 = 6(0.7)/0.09 \\approx 46.67$", weight: 1, required: true },
       ],
     },
     difficulty: 0.85,
@@ -3167,7 +3167,7 @@ export const probabilityExpansion2Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using the fact that NegativeBinomial(r,p) is the sum of r i.i.d. Geometric(p) gap lengths, derive Var(X) = r(1−p)/p².",
+    stem: "Using the fact that NegativeBinomial(r,p) is the sum of r i.i.d. Geometric(p) gap lengths, derive $\\operatorname{Var}(X) = r(1-p)/p^2$.",
     rubric: {
       elements: [
         {
@@ -3178,7 +3178,7 @@ export const probabilityExpansion2Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "each gap has Var = (1−p)/p² (the Geometric variance), so summing r of them gives Var(X) = r·(1−p)/p²",
+          description: "each gap has $\\operatorname{Var} = (1-p)/p^2$ (the Geometric variance), so summing r of them gives $\\operatorname{Var}(X) = r\\cdot(1-p)/p^2$",
           weight: 1,
           required: true,
         },
@@ -3227,12 +3227,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For r=5, p=0.3, compute the mean and variance of NegativeBinomial(r,p) as a count-data model, and compare the ratio Var/mean to what it would be for a Poisson distribution with the same mean. What does the difference suggest about the source of the 'extra' variance?",
+    stem: "For $r=5$, $p=0.3$, compute the mean and variance of NegativeBinomial(r,p) as a count-data model, and compare the ratio $\\operatorname{Var}/\\text{mean}$ to what it would be for a Poisson distribution with the same mean. What does the difference suggest about the source of the 'extra' variance?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "mean = r/p = 5/0.3 ≈ 16.67; variance = r(1−p)/p² ≈ 38.89; ratio Var/mean ≈ 2.33 — a Poisson with the same mean would instead have Var/mean = 1 exactly",
+          description: "mean $= r/p = 5/0.3 \\approx 16.67$; variance $= r(1-p)/p^2 \\approx 38.89$; ratio $\\operatorname{Var}/\\text{mean} \\approx 2.33$ — a Poisson with the same mean would instead have $\\operatorname{Var}/\\text{mean} = 1$ exactly",
           weight: 1,
           required: true,
         },
@@ -3257,12 +3257,12 @@ export const probabilityExpansion2Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "An insurer models each individual customer's yearly claim count as Poisson with the customer's own personal rate λ. Different customers have genuinely different λ's (some are riskier than others), but the insurer only observes the pooled claim counts across all customers, without knowing each one's λ. Explain why the pooled data ends up looking like it came from a Negative Binomial distribution, even though every individual customer really is Poisson.",
+    stem: "An insurer models each individual customer's yearly claim count as Poisson with the customer's own personal rate $\\lambda$. Different customers have genuinely different $\\lambda$'s (some are riskier than others), but the insurer only observes the pooled claim counts across all customers, without knowing each one's $\\lambda$. Explain why the pooled data ends up looking like it came from a Negative Binomial distribution, even though every individual customer really is Poisson.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "when you mix together Poisson counts whose rates vary randomly across the population (rather than being fixed and identical for everyone), the pooled distribution is no longer Poisson — the extra between-customer variability in λ adds variance beyond what any single fixed-rate Poisson would show",
+          description: "when you mix together Poisson counts whose rates vary randomly across the population (rather than being fixed and identical for everyone), the pooled distribution is no longer Poisson — the extra between-customer variability in $\\lambda$ adds variance beyond what any single fixed-rate Poisson would show",
           weight: 1,
           required: true,
         },
@@ -3312,13 +3312,29 @@ export const probabilityExpansion2Items: Item[] = [
     status: "live",
   },
   {
-    id: "negative-binomial-distribution--apply-sales-calls-until-fifth-sale",
+    id: "negative-binomial-distribution--apply-sales-calls-until-fifth-sale-mean",
     conceptId: "negative-binomial-distribution",
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A salesperson closes a sale on any given call with probability p=0.25, independently across calls, and stops calling once they have closed r=5 sales. Let X be the number of calls made. Find E[X] and Var(X).",
-    answerKey: "E[X]=20; Var(X)=60",
+    stem: "A salesperson closes a sale on any given call with probability $p=0.25$, independently across calls, and stops calling once they have closed $r=5$ sales. Let X be the number of calls made. Find $\\mathbb{E}[X]$.",
+    answerKey: 20,
+    tolerance: 0.02,
+    difficulty: -0.05,
+    discrimination: 1.15,
+    expectedSeconds: 45,
+    prereqClosure: ["negative-binomial-distribution"],
+    source: AUTHORED,
+    status: "live",
+  },
+  {
+    id: "negative-binomial-distribution--apply-sales-calls-until-fifth-sale-variance",
+    conceptId: "negative-binomial-distribution",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A salesperson closes a sale on any given call with probability $p=0.25$, independently across calls, and stops calling once they have closed $r=5$ sales. Let X be the number of calls made. Find $\\operatorname{Var}(X)$.",
+    answerKey: 60,
     tolerance: 0.02,
     difficulty: -0.05,
     discrimination: 1.15,
