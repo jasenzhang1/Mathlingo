@@ -20,7 +20,7 @@ export const pythonForLoopsWiki: WikiArticle = {
         {
           kind: "prose",
           text:
-            "for reads almost like English: 'for [each] fruit in fruits.' The loop variable (fruit here) " +
+            "`for` reads almost like English: 'for [each] fruit in fruits.' The loop variable (`fruit` here) " +
             "is just a regular variable, freely named, that gets reassigned to the next item automatically " +
             "— there's no manual index tracking or bounds checking to get wrong.",
         },
@@ -58,10 +58,10 @@ export const pythonForLoopsWiki: WikiArticle = {
           tone: "insight",
           title: "Iterate the items, not the indices, when you can",
           text:
-            "for fruit in fruits: is preferred over for i in range(len(fruits)): print(fruits[i]) — it " +
+            "`for fruit in fruits:` is preferred over `for i in range(len(fruits)): print(fruits[i])` — it " +
             "says directly what you're doing (walking the items) instead of what you're doing it with " +
-            "(an index). Reach for range(len(...)) only when you genuinely need the position too, and " +
-            "prefer enumerate() for that case once you've met it.",
+            "(an index). Reach for `range(len(...))` only when you genuinely need the position too, and " +
+            "prefer `enumerate()` for that case once you've met it.",
         },
       ],
     },

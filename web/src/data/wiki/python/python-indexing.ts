@@ -4,7 +4,7 @@ export const pythonIndexingWiki: WikiArticle = {
   conceptId: "python-indexing",
   summary:
     "Indexing reaches into a sequence and pulls out one item by its position. Python counts positions " +
-    "from 0, and also lets you count backward from the end with negative numbers — so a[-1] is always " +
+    "from `0`, and also lets you count backward from the end with negative numbers — so `a[-1]` is always " +
     "the last item, with no need to know the sequence's length first.",
 
   sections: [
@@ -24,16 +24,16 @@ export const pythonIndexingWiki: WikiArticle = {
         {
           kind: "prose",
           text:
-            "For a list of length n, positive indices run 0 through n-1 and negative indices run -1 " +
-            "through -n — the same n positions, described from opposite ends. Index -k is always " +
-            "equivalent to positive index n - k.",
+            "For a list of length `n`, positive indices run `0` through `n-1` and negative indices run `-1` " +
+            "through `-n` — the same `n` positions, described from opposite ends. Index `-k` is always " +
+            "equivalent to positive index `n - k`.",
         },
         {
           kind: "callout",
           tone: "warning",
           title: "Indexing is strict",
           text:
-            "a[10] on a five-element list raises IndexError immediately — there is no wraparound and no " +
+            "`a[10]` on a five-element list raises `IndexError` immediately — there is no wraparound and no " +
             "silent fallback. This is different from slicing, which clamps out-of-range bounds instead " +
             "of raising (covered next).",
         },

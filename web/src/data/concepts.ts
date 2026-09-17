@@ -2914,6 +2914,14 @@ export const concepts: Concept[] = [
     prerequisites: ["stochastic-differential-equations"],
   },
   {
+    id: "ornstein-uhlenbeck-process",
+    title: "Ornstein-Uhlenbeck Process",
+    domain: "stochastic-calculus",
+    blurb:
+      "The SDE dX = θ(μ − X) dt + σ dW — a mean-reverting sibling of geometric Brownian motion, solved by an integrating factor rather than Itô's lemma on a logarithm.",
+    prerequisites: ["stochastic-differential-equations"],
+  },
+  {
     id: "multidimensional-ito-calculus",
     title: "Multidimensional Itô Calculus",
     domain: "stochastic-calculus",
