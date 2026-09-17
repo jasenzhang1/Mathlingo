@@ -33,6 +33,7 @@ import { matrices } from "./matrices";
 import { matrixCalculus } from "./matrix-calculus";
 import { matrixMultiplication } from "./matrix-multiplication";
 import { matrixNorms } from "./matrix-norms";
+import { matrixStability } from "./matrix-stability";
 import { moorePenroseInverse } from "./moore-penrose-inverse";
 import { nullSpace } from "./null-space";
 import { orthogonalMatrices } from "./orthogonal-matrices";
@@ -45,6 +46,7 @@ import { rankNullityTheorem } from "./rank-nullity-theorem";
 import { rank } from "./rank";
 import { rayleighQuotient } from "./rayleigh-quotient";
 import { rowSpace } from "./row-space";
+import { schurComplement } from "./schur-complement";
 import { span } from "./span";
 import { spectralTheorem } from "./spectral-theorem";
 import { subspaceOperations } from "./subspace-operations";
@@ -88,6 +90,7 @@ const articles: WikiArticle[] = [
   matrixCalculus,
   matrixMultiplication,
   matrixNorms,
+  matrixStability,
   moorePenroseInverse,
   nullSpace,
   orthogonalMatrices,
@@ -100,6 +103,7 @@ const articles: WikiArticle[] = [
   rank,
   rayleighQuotient,
   rowSpace,
+  schurComplement,
   span,
   spectralTheorem,
   subspaceOperations,
