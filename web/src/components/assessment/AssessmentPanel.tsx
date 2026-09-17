@@ -506,7 +506,7 @@ function RubricList({ item }: { item: Item }) {
         <li key={element.id} className="flex gap-2">
           <span aria-hidden="true">·</span>
           <span>
-            {element.description}
+            <CodeText text={element.description} />
             {element.required && (
               <span className="ml-1 text-xs font-medium text-[var(--ink-soft)]">
                 (required)
