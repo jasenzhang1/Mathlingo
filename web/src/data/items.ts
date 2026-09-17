@@ -20,6 +20,18 @@ import { regressionFoundationsItems } from "./items/regression-foundations";
 import { regressionGeneralizedItems } from "./items/regression-generalized";
 import { regressionGeometryItems } from "./items/regression-geometry";
 import { regressionSelectionItems } from "./items/regression-selection";
+import { probabilityExpansion1Items } from "./items.probability-expansion-1";
+import { probabilityExpansion2Items } from "./items.probability-expansion-2";
+import { probabilityExpansion3Items } from "./items.probability-expansion-3";
+import { probabilityExpansion4Items } from "./items.probability-expansion-4";
+import { probabilityExpansion5Items } from "./items.probability-expansion-5";
+import { probabilityExpansion6Items } from "./items.probability-expansion-6";
+import { statisticsExpansion1Items } from "./items.statistics-expansion-1";
+import { statisticsExpansion2Items } from "./items.statistics-expansion-2";
+import { statisticsExpansion3Items } from "./items.statistics-expansion-3";
+import { statisticsExpansion4Items } from "./items.statistics-expansion-4";
+import { multivariateExpansion1Items } from "./items.multivariate-expansion-1";
+import { multivariateExpansion2Items } from "./items.multivariate-expansion-2";
 import { timeSeriesItems } from "./items/time-series";
 
 /**
@@ -897,6 +909,22 @@ export const items: Item[] = [
   ...regressionGeneralizedItems,
   ...regressionExtensionsItems,
   ...timeSeriesItems,
+
+  // --- Probability / Statistics / Multivariate Probability: 20-per-concept
+  // expansion. Brings every concept in these three domains up to 20 live
+  // items; see the individual files for per-concept counts and sourcing.
+  ...probabilityExpansion1Items,
+  ...probabilityExpansion2Items,
+  ...probabilityExpansion3Items,
+  ...probabilityExpansion4Items,
+  ...probabilityExpansion5Items,
+  ...probabilityExpansion6Items,
+  ...statisticsExpansion1Items,
+  ...statisticsExpansion2Items,
+  ...statisticsExpansion3Items,
+  ...statisticsExpansion4Items,
+  ...multivariateExpansion1Items,
+  ...multivariateExpansion2Items,
 
   // =========================================================================
   // Multivariate Probability & Asymptotics — the whole domain, 7 concepts.
