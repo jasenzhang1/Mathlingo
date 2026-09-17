@@ -14,6 +14,22 @@
   color-scheme: light;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #f1f0f7;
+    --ink-soft: #a7a3bf;
+    --paper: #121118;
+    --panel: #1b1a26;
+    --line: #2e2c3d;
+    --accent: #8471ff;
+    --accent-soft: #241f3d;
+    --accent-ink: #ffffff;
+    --teal: #2dd4bf;
+
+    color-scheme: dark;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
