@@ -26,6 +26,7 @@ import type { WikiArticle } from "./types";
  * now wired below.
  */
 const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
+  "discrete-math": () => import("./discrete-math").then((m) => m.default),
   statistics: () => import("./core").then((m) => m.coreWikiArticles),
   "multivariate-probability": () => import("./core").then((m) => m.coreWikiArticles),
   "graphical-models": () => import("./core").then((m) => m.coreWikiArticles),
