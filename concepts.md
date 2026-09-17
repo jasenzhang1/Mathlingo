@@ -5,7 +5,7 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 331 concepts.**
+**Total: 366 concepts.**
 
 ## Discrete Math Fundamentals (24)
 
@@ -390,6 +390,41 @@ each read as their own arc.
 | Gaussian Process | Multivariate Normal, Kernel | — |
 | Reproducing Kernel Hilbert Space (RKHS) | Kernel, Mercer's Theorem | — |
 | Wasserstein Distance | Kullback-Leibler Divergence | — |
+
+## Stochastic Processes (2)
+
+Deliberately small — just the two building blocks the Stochastic Calculus chapter borrows as
+prerequisites. A full stochastic-processes curriculum (Poisson processes, general Markov
+processes, renewal theory, ...) would grow this chapter later.
+
+| Concept | Prerequisites | Lesson |
+|---|---|---|
+| Simple Random Walk | Bernoulli and Binomial Distributions, Independence (Set Theory) | — |
+| Brownian Motion | Simple Random Walk, Normal Distribution, Central Limit Theorem | — |
+
+## Stochastic Calculus (13)
+
+Follows the spine of Shreve's *Stochastic Calculus for Finance II: Continuous-Time Models* —
+ch. 2 (information and martingales), ch. 4 (the Itô integral, Itô-Doeblin formula, and
+Black-Scholes-Merton equation), ch. 5 (Girsanov's theorem and risk-neutral pricing), and ch. 6
+(the Feynman-Kac link back to PDEs). Brownian Motion and Simple Random Walk are borrowed from
+the Stochastic Processes chapter above rather than redefined here.
+
+| Concept | Prerequisites | Lesson |
+|---|---|---|
+| Filtrations and Adapted Processes | Sigma Algebra, Brownian Motion | — |
+| Martingales in Continuous Time | Filtrations and Adapted Processes, Expectation, Simple Random Walk | — |
+| Quadratic Variation | Brownian Motion | — |
+| Itô Integral | Quadratic Variation, Martingales in Continuous Time | — |
+| Itô's Lemma (Itô-Doeblin Formula) | Itô Integral | — |
+| Stochastic Differential Equations (SDEs) | Itô's Lemma (Itô-Doeblin Formula) | — |
+| Geometric Brownian Motion | Stochastic Differential Equations (SDEs) | — |
+| Multidimensional Itô Calculus | Itô's Lemma (Itô-Doeblin Formula) | — |
+| Black-Scholes-Merton Equation | Geometric Brownian Motion | — |
+| Girsanov's Theorem | Martingales in Continuous Time, Stochastic Differential Equations (SDEs) | — |
+| Risk-Neutral Pricing | Girsanov's Theorem | — |
+| Martingale Representation Theorem | Itô Integral, Girsanov's Theorem | — |
+| Feynman-Kac Theorem | Stochastic Differential Equations (SDEs), Black-Scholes-Merton Equation | — |
 
 ## Python for Data Work (8)
 
