@@ -5221,12 +5221,23 @@ for (const item of items) {
 let fullBank: Promise<Map<string, Item[]>> | null = null;
 
 export function loadItemBank(): Promise<Map<string, Item[]>> {
-  fullBank ??= import("./items.generated").then(({ generatedItems }) => {
+  fullBank ??= Promise.all([
+    import("./items.generated"),
+    import("./devOverrides.json"),
+  ]).then(([{ generatedItems }, devOverridesModule]) => {
+    const devOverrides = devOverridesModule.default as {
+      overrides?: Record<string, Item>;
+      newItems?: Record<string, Item>;
+    };
     const index = new Map<string, Item[]>();
     // Hand-authored items are indexed first, so where both exist for a concept
     // the reviewed ones lead — they carry real multiple-choice distractors that
-    // the imported bank could not supply.
-    for (const item of [...items, ...generatedItems]) {
+    // the imported bank could not supply. `devOverrides.json` is merged in
+    // last: it's what the `/dev/questions` "Publish" flow lands in the repo
+    // via PR, so an edit or new question shipped that way takes effect for
+    // every visitor once merged and deployed, not just the browser that made it.
+    const overridden = items.map((item) => devOverrides.overrides?.[item.id] ?? item);
+    for (const item of [...overridden, ...generatedItems, ...Object.values(devOverrides.newItems ?? {})]) {
       const bucket = index.get(item.conceptId);
       if (bucket) bucket.push(item);
       else index.set(item.conceptId, [item]);

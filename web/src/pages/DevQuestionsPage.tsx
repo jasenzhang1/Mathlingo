@@ -17,6 +17,7 @@ import {
   saveOverride,
   type ItemOverrideStore,
 } from "../lib/dev/itemOverrides";
+import { publishOverrides } from "../lib/dev/publishOverrides";
 
 const conceptById = new Map<string, Concept>(concepts.map((c) => [c.id, c]));
 
@@ -37,6 +38,10 @@ export function DevQuestionsPage() {
   const [search, setSearch] = useState("");
   // undefined = editor closed, null = creating a new item, Item = editing that item.
   const [editing, setEditing] = useState<Item | null | undefined>(undefined);
+  const [publishing, setPublishing] = useState(false);
+  const [publishResult, setPublishResult] = useState<
+    { ok: true; prUrl: string } | { ok: false; message: string } | null
+  >(null);
 
   useEffect(() => {
     if (!isDeveloper) return;
@@ -100,6 +105,23 @@ export function DevQuestionsPage() {
     refresh(deleteNewItem(item.id));
   }
 
+  async function handlePublish() {
+    const pendingCount = Object.keys(store.overrides).length + Object.keys(store.newItems).length;
+    if (pendingCount === 0) return;
+    if (
+      !confirm(
+        `Open a pull request with ${pendingCount} edited/new question(s)? A maintainer will still need to review and merge it.`,
+      )
+    ) {
+      return;
+    }
+    setPublishing(true);
+    setPublishResult(null);
+    const result = await publishOverrides(store);
+    setPublishing(false);
+    setPublishResult(result.ok ? { ok: true, prUrl: result.prUrl } : { ok: false, message: result.message });
+  }
+
   function handleExport() {
     const blob = new Blob([JSON.stringify(store, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
@@ -147,17 +169,51 @@ export function DevQuestionsPage() {
               Browse assessment items by topic, edit difficulty and wording, or author new
               questions. Edits are saved locally in this browser (
               {Object.keys(store.overrides).length} edited, {Object.keys(store.newItems).length}{" "}
-              new) — export them to hand off for a real merge into the source files.
+              new) — publish them to open a GitHub pull request, or export the raw JSON.
             </p>
           </div>
-          <button
-            type="button"
-            onClick={handleExport}
-            className="font-body shrink-0 rounded-lg border border-[var(--line)] px-4 py-2 text-sm text-[var(--ink)] hover:bg-[var(--panel)]"
-          >
-            Export overrides
-          </button>
+          <div className="flex shrink-0 gap-2">
+            <button
+              type="button"
+              onClick={handleExport}
+              className="font-body rounded-lg border border-[var(--line)] px-4 py-2 text-sm text-[var(--ink)] hover:bg-[var(--panel)]"
+            >
+              Export overrides
+            </button>
+            <button
+              type="button"
+              onClick={handlePublish}
+              disabled={
+                publishing || Object.keys(store.overrides).length + Object.keys(store.newItems).length === 0
+              }
+              className="font-body rounded-lg px-4 py-2 text-sm font-medium text-[var(--accent-ink)] disabled:opacity-50"
+              style={{ background: "var(--accent)" }}
+            >
+              {publishing ? "Opening PR…" : "Publish to GitHub"}
+            </button>
+          </div>
         </div>
+
+        {publishResult && (
+          <div
+            className={`font-body mt-3 rounded-lg border px-4 py-2 text-sm ${
+              publishResult.ok
+                ? "border-green-600/30 bg-green-600/10 text-green-800"
+                : "border-red-600/30 bg-red-600/10 text-red-700"
+            }`}
+          >
+            {publishResult.ok ? (
+              <>
+                Pull request opened:{" "}
+                <a href={publishResult.prUrl} target="_blank" rel="noreferrer" className="underline">
+                  {publishResult.prUrl}
+                </a>
+              </>
+            ) : (
+              `Publish failed: ${publishResult.message}`
+            )}
+          </div>
+        )}
 
         {!bank ? (
           <div className="mt-8 h-64 animate-pulse rounded-2xl border border-[var(--line)] bg-[var(--panel)]" />

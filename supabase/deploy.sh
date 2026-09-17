@@ -22,6 +22,7 @@ if [ -z "$PROJECT_REF" ]; then
   echo >&2
   echo "Secrets are kept unless you supply them:" >&2
   echo "  ANTHROPIC_API_KEY=sk-ant-... $0 abcdefgh" >&2
+  echo "  GITHUB_TOKEN=ghp_... GITHUB_OWNER=you GITHUB_REPO=your-repo $0 abcdefgh" >&2
   exit 1
 fi
 
@@ -53,6 +54,16 @@ if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
     exit 1
   fi
   SET_ANTHROPIC=1
+fi
+
+SET_GITHUB=0
+if [ -n "${GITHUB_TOKEN:-}" ]; then
+  if [ -z "${GITHUB_OWNER:-}" ] || [ -z "${GITHUB_REPO:-}" ]; then
+    echo "error: GITHUB_TOKEN is set, but GITHUB_OWNER and GITHUB_REPO are also required." >&2
+    echo "       Set all three, or none (to keep the values already stored)." >&2
+    exit 1
+  fi
+  SET_GITHUB=1
 fi
 
 SET_STRIPE=0
@@ -98,12 +109,23 @@ if [ "$SET_STRIPE" = "1" ]; then
     "STRIPE_PRICE_TUTORED=$STRIPE_PRICE_TUTORED"
 fi
 
+if [ "$SET_GITHUB" = "1" ]; then
+  echo "==> Setting GitHub publish secrets"
+  $SUPABASE secrets set \
+    "GITHUB_TOKEN=$GITHUB_TOKEN" \
+    "GITHUB_OWNER=$GITHUB_OWNER" \
+    "GITHUB_REPO=$GITHUB_REPO"
+  if [ -n "${DEV_EMAILS:-}" ]; then
+    $SUPABASE secrets set "DEV_EMAILS=$DEV_EMAILS"
+  fi
+fi
+
 # Deploy every function, or just the ones named as extra arguments:
 #   ./supabase/deploy.sh <ref>              -> all
 #   ./supabase/deploy.sh <ref> grade        -> only the grader
 # Note stripe-webhook relies on config.toml to disable JWT verification; it
 # authenticates by verifying Stripe's signature instead.
-ALL_FUNCTIONS="tutor grade transcribe stripe-checkout stripe-portal stripe-sync stripe-webhook"
+ALL_FUNCTIONS="tutor grade transcribe stripe-checkout stripe-portal stripe-sync stripe-webhook publish-item-edits"
 
 shift || true
 FUNCTIONS="${*:-$ALL_FUNCTIONS}"
