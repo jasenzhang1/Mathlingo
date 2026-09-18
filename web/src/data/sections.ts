@@ -423,6 +423,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "OLS Geometry & Multiple Regression",
       conceptIds: [
         "geometric-interpretation-of-ols",
+        "hat-matrix",
         "multiple-linear-regression",
         "linear-regression-probabilistic-version",
         "ols-assumptions",

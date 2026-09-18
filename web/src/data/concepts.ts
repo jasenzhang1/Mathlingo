@@ -1495,6 +1495,13 @@ export const concepts: Concept[] = [
     prerequisites: ["normal-equations", "column-space", "vector-projection"],
   },
   {
+    id: "hat-matrix",
+    title: "The Hat Matrix",
+    domain: "regression",
+    blurb: "Why H = X(XᵀX)⁻¹Xᵀ being idempotent is the one fact behind n − p degrees of freedom and every t-statistic a regression prints.",
+    prerequisites: ["idempotent-matrices", "geometric-interpretation-of-ols"],
+  },
+  {
     id: "multiple-linear-regression",
     title: "Multiple Linear Regression",
     domain: "regression",
