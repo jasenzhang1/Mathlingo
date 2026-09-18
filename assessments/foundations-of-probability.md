@@ -20,8 +20,31 @@ the correct behavior of the blame model at the root of the graph, not a gap in i
 | E1 | explain | derivation | 0.1 | Prove (A∪B)ᶜ = Aᶜ∩Bᶜ directly from the definition of complement — not by citing the law. | element-wise iff chain: x∈(A∪B)ᶜ ⟺ x∉A∪B ⟺ x∉A ∧ x∉B ⟺ x∈Aᶜ∩Bᶜ *(required)* | asserts the law without the iff argument → `set-theory` |
 | E2 | explain | short-answer | 0.3 | Why is ∅ a subset of *every* set? | vacuous truth: "∀x∈∅, x∈A" has no counterexample to find *(required)* | "∅ has nothing, so it can't be a subset of anything" → `set-theory` — a genuinely common gap in the underlying logic, not the set theory |
 | T1 | transfer | short-answer | 0.6 | On a social network, A = Alice's friends, B = Bob's friends. Write set expressions for: people friends with both; friends with exactly one of the two; friends with neither. | A∩B; A△B = (A∪B)∖(A∩B); (A∪B)ᶜ *(all three required)* | confuses "exactly one" with A∪B → `set-theory` |
+| R3 | recall | mcq | −1.45 | Which is the other De Morgan's law (the ∩ version)? | (A∩B)ᶜ = Aᶜ∪Bᶜ | picks (A∩B)ᶜ=Aᶜ∩Bᶜ → `set-theory` |
+| R4 | recall | short-answer | −1.4 | Define A∪B, the union of A and B. | {x : x∈A or x∈B} | — |
+| R5 | recall | short-answer | −1.35 | Define A∩B, the intersection of A and B. | {x : x∈A and x∈B} | — |
+| R6 | recall | mcq | −1.3 | What is A∩Aᶜ, for any set A? | ∅ | picks Ω, confusing A∩Aᶜ with A∪Aᶜ → `set-theory` |
+| R7 | recall | short-answer | −1.25 | True or false: A∪Aᶜ = Ω for any A ⊆ Ω. | true | — |
+| R8 | recall | short-answer | −1.2 | Define the empty set ∅. | the unique set containing no elements | — |
+| R9 | recall | short-answer | −1.15 | Define A ⊆ B, "A is a subset of B." | every element of A is also an element of B | — |
+| R10 | recall | mcq | −1.1 | If \|A\| = n, how many elements does the power set P(A) have? | 2ⁿ | picks n² or n! → `set-theory` |
+| R11 | recall | short-answer | −1.05 | What does it mean for A and B to be disjoint? | A∩B = ∅ | — |
+| R12 | recall | mcq | −1.0 | Which is a correct distributive law? | A∩(B∪C) = (A∩B)∪(A∩C) | picks A∩(B∪C) = (A∩B)∪C, dropping the second intersection → `set-theory` |
+| R13 | recall | short-answer | −0.95 | Fill in the blank: A∪(B∪C) = ___ (associativity of union). | (A∪B)∪C | — |
+| R14 | recall | short-answer | −0.9 | True or false: A∩B = B∩A for all sets A, B. | true | — |
+| R15 | recall | short-answer | −0.85 | Define the symmetric difference A△B. | (A∪B)∖(A∩B), i.e. elements in exactly one of A, B | — |
+| R16 | recall | mcq | −0.8 | What is the cardinality of the empty set? | 0 | picks "undefined" — ∅ is still a well-defined set, just with 0 elements → `set-theory` |
+| A3 | apply | numeric | −0.65 | \|A\|=8, \|B\|=5, \|A∩B\|=3. Find \|A∪B\|. `[verified: 10]` | 8+5−3=10 | adds without subtracting the overlap, answering 13 → `set-theory` |
+| A4 | apply | short-answer | −0.5 | Simplify (A∩B)∪(A∩Bᶜ). | A — the two pieces partition A by whether elements are in B or not | leaves the expression unsimplified or answers Ω → `set-theory` |
+| A5 | apply | short-answer | −0.4 | Ω={1,…,6}, A={1,2,3}, B={2,3,4}. Find A∖B and B∖A, and confirm they differ. | A∖B={1}; B∖A={4}; they differ | claims A∖B=B∖A since both "remove the shared elements" {2,3} → `set-theory` |
+| A6 | apply | short-answer | −0.3 | Ω={1,…,10}, A={2,4,6,8,10}. Find Aᶜ. | {1,3,5,7,9} | takes the complement relative to A's own elements instead of Ω → `set-theory` |
+| E3 | explain | derivation | 0.2 | Prove the distributive law A∩(B∪C) = (A∩B)∪(A∩C) by an element-wise iff argument. | x∈A∩(B∪C) ⟺ x∈A ∧ (x∈B∨x∈C) ⟺ (x∈A∧x∈B)∨(x∈A∧x∈C) ⟺ x∈(A∩B)∪(A∩C) *(required)* | asserts the law via a Venn picture instead of the iff chain → `set-theory` |
+| E4 | explain | short-answer | 0.4 | Explain, from the definition of ∖, why A∖B ≠ B∖A in general. | A∖B=A∩Bᶜ keeps elements of A not in B; B∖A=B∩Aᶜ keeps elements of B not in A — generally different unless A=B *(required)* | — |
+| E5 | explain | short-answer | 0.45 | Explain why associativity of union, A∪(B∪C)=(A∪B)∪C, licenses writing A∪B∪C with no parentheses. | both groupings pick out exactly the elements in at least one of the three sets, so the grouping never changes the result *(required)* | — |
+| T2 | transfer | short-answer | 0.7 | A company's employees: A = "knows Python," B = "knows SQL." Express "knows exactly one of the two" and "knows neither" in set notation. | A△B; (A∪B)ᶜ | writes "exactly one" as A∪B → `set-theory` |
+| T3 | transfer | short-answer | 0.75 | In a three-set Venn diagram (A, B, C), give the set expression for "in A and B but not C." | (A∩B)∩Cᶜ, equivalently A∩B∖C | forgets to exclude C, answering A∩B → `set-theory` |
 
-*Coverage: 2 recall, 2 apply, 2 explain, 1 transfer — 7 items, spread −1.5…0.6 (2.1 logits).*
+*Coverage: 16 recall, 6 apply, 5 explain, 3 transfer — 30 items, spread −1.50…0.75 (2.25 logits).*
 
 ---
 
@@ -37,8 +60,31 @@ the correct behavior of the blame model at the root of the graph, not a gap in i
 | E1 | explain | derivation | 0.35 | Prove Boole's inequality from the axioms of probability for two events, then argue the general case by induction. | writes A∪B = A ⊔ (B∖A), applies countable additivity, uses monotonicity P(B∖A) ≤ P(B) *(required)* | assumes independence to split the union → `mutual-independence` |
 | E2 | explain | short-answer | 0.5 | Why does Boole's inequality never need the events to be independent or disjoint? | it is proved from additivity plus monotonicity alone, both of which hold regardless of dependence *(required)* | — |
 | T1 | transfer | short-answer | 0.85 | A spell-checker flags a document if *any* of its 500 words is misspelled, each independently mis-flagged (false positive) with probability 0.002. Use Boole to bound the false-positive rate on the whole document, and say whether the bound is close to the truth here. | bound: 500×0.002 = 1.0 (vacuous, same failure mode as A2); true rate 1−0.998⁵⁰⁰ ≈ 0.632 `[verified]`. Required: notice the bound is only useful when the per-event probabilities are small relative to 1/n | reports the Boole bound as the actual false-positive rate → `pie-boole` |
+| R3 | recall | mcq | −1.6 | For two sets, \|A∪B\| equals: | \|A\|+\|B\|−\|A∩B\| | picks \|A\|+\|B\|, forgetting the overlap → `pie-boole` |
+| R4 | recall | short-answer | −1.55 | State Boole's inequality symbolically for events A₁,…,Aₙ. | P(⋃Aᵢ) ≤ ΣP(Aᵢ) | — |
+| R5 | recall | short-answer | −1.5 | True or false: Boole's inequality only holds when the events are disjoint. | false — it holds for any events, disjoint or not | — |
+| R6 | recall | short-answer | −1.45 | What is Boole's inequality also commonly called? | the union bound | — |
+| R7 | recall | mcq | −1.4 | Equality holds in Boole's inequality P(⋃Aᵢ) ≤ ΣP(Aᵢ) exactly when: | the events are pairwise disjoint | picks "the events are independent" → `pie-boole` |
+| R8 | recall | short-answer | −1.35 | What sign pattern does inclusion-exclusion (PIE) follow as more sets are added? | alternating: add singles, subtract pairs, add triples, subtract quadruples, … | — |
+| R9 | recall | short-answer | −1.3 | Fill in the blank: for two events, \|A∪B\| = \|A\|+\|B\| − ___. | \|A∩B\| | — |
+| R10 | recall | mcq | −1.25 | The "first Bonferroni inequality" is another name for: | Boole's inequality (the union bound) | picks the full PIE formula → `pie-boole` |
+| R11 | recall | short-answer | −1.2 | Does applying PIE require the events to be independent? | no — PIE follows from additivity and holds regardless of dependence | — |
+| R12 | recall | short-answer | −1.15 | True or false: Boole's inequality is what you get from PIE by keeping only the first (singles) term and dropping the rest. | true | — |
+| R13 | recall | mcq | −1.1 | Full inclusion-exclusion for 3 sets \|A∪B∪C\| has how many terms on the right-hand side? | 7 (3 singles, 3 pairs, 1 triple) | picks 3, counting only the singles → `pie-boole` |
+| R14 | recall | short-answer | −1.05 | State Boole's inequality for exactly two events A, B. | P(A∪B) ≤ P(A)+P(B) | — |
+| R15 | recall | mcq | −1.0 | Which of these is NOT required for Boole's inequality P(⋃Aᵢ) ≤ ΣP(Aᵢ) to hold? | that the events be independent | picks "that each P(Aᵢ) be a valid probability," which *is* required → `pie-boole` |
+| R16 | recall | short-answer | −0.9 | In plain words, what does Boole's inequality bound? | the probability that *at least one* of several events happens, using only the individual event probabilities | — |
+| A3 | apply | numeric | −0.3 | Of 100 readers, 40 read fiction, 25 read nonfiction, 10 read both. How many read at least one? `[verified: 55]` | 40+25−10 = 55 | adds without subtracting the overlap, answering 65 → `pie-boole` |
+| A4 | apply | numeric | −0.15 | 8 independent alarms each false-trigger with probability 0.1. Bound P(at least one false trigger) using Boole. `[verified: 0.8]` | Σ = 8×0.1 = 0.8 | multiplies the probabilities instead of summing → `pie-boole` |
+| A5 | apply | short-answer | 0.0 | \|A\|=50, \|B\|=40, \|C\|=30, \|A∩B\|=20, \|A∩C\|=15, \|B∩C\|=10, \|A∩B∩C\|=5. Find \|A∪B∪C\| by PIE. `[verified: 80]` | 50+40+30−20−15−10+5 = 80 | omits the +\|A∩B∩C\| correction term, stopping after the pairs → `pie-boole` |
+| A6 | apply | numeric | 0.15 | Three independent events each with P=0.3. Compare the Boole bound on P(at least one) to the true value. `[verified: bound 0.9, true 0.657]` | bound: 3×0.3=0.9; true: 1−0.7³=0.657 — the bound is loose but not vacuous here | reports the Boole bound itself as the true probability → `pie-boole` |
+| E3 | explain | derivation | 0.4 | Derive the 3-set inclusion-exclusion formula \|A∪B∪C\| from the 2-set addition rule applied twice. | write A∪B∪C = (A∪B)∪C; apply the 2-set rule to get \|A∪B\|+\|C\|−\|(A∪B)∩C\|; expand \|A∪B\|=\|A\|+\|B\|−\|A∩B\| and \|(A∪B)∩C\|=\|A∩C\|+\|B∩C\|−\|A∩B∩C\| via distributivity, then combine *(required, full chain)* | stops after applying the 2-set rule once, missing the nested expansion → `pie-boole` |
+| E4 | explain | short-answer | 0.55 | The Bonferroni inequalities say truncating PIE after the singles gives an upper bound, after the singles-minus-pairs gives a lower bound, and so on. Explain why the bounds alternate direction like this. | each additional alternating term you include corrects for over- or under-counting introduced by the previous truncation, and since PIE alternates sign, each partial sum alternately overshoots and undershoots the true value *(required)* | — |
+| E5 | explain | short-answer | 0.65 | Explain how Boole's inequality is the special case of the Bonferroni inequalities that uses the *fewest* terms. | it truncates PIE after just the first (singles) sum, giving the loosest possible upper bound; including the pairwise term next would tighten it into the second Bonferroni inequality *(required)* | — |
+| T2 | transfer | short-answer | 0.95 | A researcher runs 20 independent hypothesis tests, each with a 5% chance of a false positive under the null. Use Boole's inequality to bound the family-wise error rate (probability of at least one false positive), and explain why this is the logic behind the Bonferroni correction. | bound: 20×0.05 = 1.0 (vacuous here) `[verified]`; in general Boole gives P(≥1 false positive) ≤ Σ(per-test α), which is exactly why Bonferroni correction sets each test's α to (target FWER)/20 — to keep the *sum*, and hence the bound, at the desired level | treats the 5% per-test rate as also the rate for the whole study → `pie-boole` |
+| T3 | transfer | short-answer | 1.0 | A network has 6 independent links, each failing with probability 0.02. Use Boole's inequality to bound P(at least one link fails), and say whether that bound would still be useful if there were 100 links instead. `[verified: bound 0.12; with 100 links bound would be 2.0, vacuous]` | 6×0.02=0.12, a useful bound; with 100 links the bound is 100×0.02=2.0, which exceeds 1 and is vacuous | assumes the bound stays informative regardless of how many links are summed → `pie-boole` |
 
-*Coverage: 2/2/2/1 — 7 items, −1.15…0.85 (2.0 logits). Note: A2/T1 deliberately teach the bound's limits, not just its statement.*
+*Coverage: 16 recall, 6 apply, 5 explain, 3 transfer — 30 items, spread −1.60…1.0 (2.6 logits). Note: A2/A6/T1/T3 deliberately teach the bound's limits, not just its statement.*
 
 ---
 
