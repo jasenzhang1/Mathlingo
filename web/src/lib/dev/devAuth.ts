@@ -7,7 +7,7 @@ import { useAuth } from "../auth/useAuth";
  * content authors, not a substitute for real RLS-backed roles if this ever
  * needs to scale past that.
  */
-const DEV_EMAILS = new Set(["jasenzhang@g.ucla.edu"]);
+const DEV_EMAILS = new Set(["jasenzhang@g.ucla.edu", "jasen.zhang.2008@gmail.com"]);
 
 export function useIsDeveloper(): boolean {
   const { user } = useAuth();
