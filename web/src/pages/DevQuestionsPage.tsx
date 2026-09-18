@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
+import { CodeText } from "../components/assessment/CodeText";
 import { ItemEditorForm } from "../components/dev/ItemEditorForm";
+import { ItemPreviewPanel } from "../components/dev/ItemPreviewPanel";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
 import { domainMeta, concepts, type Concept } from "../data/concepts";
@@ -38,6 +40,7 @@ export function DevQuestionsPage() {
   const [search, setSearch] = useState("");
   // undefined = editor closed, null = creating a new item, Item = editing that item.
   const [editing, setEditing] = useState<Item | null | undefined>(undefined);
+  const [previewing, setPreviewing] = useState<Item | null>(null);
   const [publishing, setPublishing] = useState(false);
   const [publishResult, setPublishResult] = useState<
     { ok: true; prUrl: string } | { ok: false; message: string } | null
@@ -319,10 +322,17 @@ export function DevQuestionsPage() {
                                 )}
                               </div>
                               <p className="font-body mt-2 line-clamp-2 text-sm text-[var(--ink)]">
-                                {item.stem}
+                                <CodeText text={item.stem} />
                               </p>
                             </div>
                             <div className="flex shrink-0 flex-col gap-1">
+                              <button
+                                type="button"
+                                onClick={() => setPreviewing(item)}
+                                className="font-body rounded-lg border border-[var(--line)] px-3 py-1 text-xs text-[var(--ink)] hover:bg-[var(--paper)]"
+                              >
+                                View
+                              </button>
                               <button
                                 type="button"
                                 onClick={() => setEditing(item)}
@@ -388,6 +398,12 @@ export function DevQuestionsPage() {
               onCancel={() => setEditing(undefined)}
             />
           </div>
+        </div>
+      )}
+
+      {previewing && (
+        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 p-6">
+          <ItemPreviewPanel item={previewing} onClose={() => setPreviewing(null)} />
         </div>
       )}
     </div>
