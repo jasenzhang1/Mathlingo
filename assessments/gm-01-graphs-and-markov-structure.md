@@ -246,7 +246,7 @@ distribution as an eigenvector) directly, and its E1 connects long-run mixing sp
 | T2 | transfer | short-answer | 1.75 | Why does an HMM's assumption that observations depend only on the current hidden state sometimes fail in real speech recognition, and what does this motivate? | in real speech, an acoustic observation can be influenced by coarticulation with neighboring phonemes, not just the current phoneme's hidden state, violating the strict per-timestep emission independence; this motivates richer sequence models (e.g. those using attention or explicit context windows) that relax the single-timestep dependence assumption *(required: names a concrete violation of the emission-independence assumption and what it motivates)* | — |
 | T3 | transfer | short-answer | 1.8 | Contrast an HMM's hidden-state inference with a Kalman filter's, as two members of the same general state-space-model family. | both assume a Markov hidden state generating noisy observations, differing mainly in whether the state space is discrete (HMM, solved by Viterbi/forward-backward) or continuous with Gaussian noise (Kalman filter, solved by an analytic recursive update) — the same generative structure, specialized to different state-space assumptions *(required: names the discrete-vs-continuous-Gaussian distinction within the shared state-space-model structure)* | — |
 
-*Coverage: 5 items, −0.3…1.7.*
+*Coverage: 16/6/5/3 — 30 items, −0.3…1.8.*
 
 ---
 
