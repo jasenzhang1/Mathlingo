@@ -345,7 +345,15 @@ product space where ⟨X,Y⟩=Cov(X,Y). Several items below make this connection
 | zero dot product read as parallel rather than perpendicular | `vector-angles` |
 | projection assumed to preserve length | `vector-projection` |
 | orthogonality assumed to imply dependence | `orthogonal-vectors` |
+| distributive law over scalar addition dropped, i.e. (c+d)u treated as cdu | `vector-operations` |
+| dot product treated as vector-valued rather than scalar | `dot-product` |
+| L1 and L2 norms conflated as always equal | `vector-norm` |
+| Cauchy-Schwarz's logical dependency reversed (treated as a consequence of the triangle inequality) | `cauchy-schwarz` |
+| "same direction" and "perpendicular" angle conditions swapped | `vector-angles` |
+| scalar projection confused with vector projection | `vector-projection` |
+| orthogonal set required to have unit norm, conflating it with orthonormal | `orthogonal-vectors` |
 
-**Cluster total: 40 items across 8 concepts.** All numeric claims verified by script. The
-Cauchy-Schwarz / correlation connection, threaded through `cauchy-schwarz` and `vector-angles`, is the
-standout cross-domain result in this cluster.
+**Cluster total: 240 items across 8 concepts, 30 per concept.** All numeric claims verified by
+script (Cauchy-Schwarz equality cases, projection formulas, ANOVA-style Pythagorean checks included).
+The Cauchy-Schwarz / correlation connection, threaded through `cauchy-schwarz` and `vector-angles`, is
+the standout cross-domain result in this cluster.
