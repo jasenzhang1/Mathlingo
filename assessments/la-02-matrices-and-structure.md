@@ -299,7 +299,16 @@ previously had nothing defining a gradient, despite `gradient-descent` being nam
 | gradient direction (ascent vs descent) reversed | `matrix-calculus` |
 | Kronecker product dimensions computed by addition, not multiplication | `kronecker-product` |
 | Frobenius and operator norms conflated | `matrix-norms` |
+| transpose-of-a-product order reversed, i.e. (AB)ᵀ treated as AᵀBᵀ | `matrix-multiplication` |
+| squareness alone assumed sufficient for symmetry | `matrices` |
+| trace(cA) scaled by c² instead of c | `trace` |
+| T(0)=0 dropped as a required consequence of homogeneity | `linear-transformations` |
+| Hessian sign-definiteness conclusions (min vs max) swapped | `matrix-calculus` |
+| Kronecker product assumed commutative | `kronecker-product` |
+| condition number's worst-case-stretch reading applied to the wrong norm | `matrix-norms` |
 
-**Cluster total: 36 items across 7 concepts.** All numeric claims verified by script, including the
-non-trivial trace(AB)=trace(BA)=69 identity holding despite AB≠BA as matrices, and the gradient of a
-quadratic form checked by direct partial differentiation against the general 2Ax formula.
+**Cluster total: 210 items across 7 concepts, 30 per concept.** All numeric claims verified by
+script, including the non-trivial trace(AB)=trace(BA)=69 identity holding despite AB≠BA as matrices,
+the gradient of a quadratic form checked by direct partial differentiation against the general 2Ax
+formula, the Kronecker determinant/trace identities, and the Frobenius-vs-operator-norm inequality
+confirmed on both a rank-1 and a scaled-identity example.
