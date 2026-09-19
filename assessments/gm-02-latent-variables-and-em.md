@@ -101,7 +101,7 @@ rather than a resemblance.
 | E1 | explain | short-answer | 1.86 | Why can GMMs capture cluster shapes K-means cannot? | using `multivariate-normal`'s eigendecomposition-based visualization (Σ=QΛQᵀ), each GMM component's covariance can have arbitrary eigenvectors/eigenvalues, allowing ellipsoidal clusters oriented and shaped in any direction — unlike K-means' implicit assumption of spherical clusters *(required: the explicit eigendecomposition connection, not just "GMMs are more flexible")* | — |
 | T1 | transfer | short-answer | 2.36 | GMMs face the same challenge as K-means in choosing K, but have one genuine advantage there — what is it? | GMMs provide an explicit likelihood, so AIC/BIC (from the regression domain) can principledly compare different values of K — something ordinary K-means, having no explicit likelihood, cannot do as directly *(required: names the explicit-likelihood-enables-AIC/BIC advantage specifically)* | — |
 
-*Coverage: 5 items, 0.36…2.36.*
+*Coverage: 16/6/5/3 — 30 items, 0.36…2.46.*
 
 ---
 
