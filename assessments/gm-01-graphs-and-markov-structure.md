@@ -261,7 +261,29 @@ distribution as an eigenvector) directly, and its E1 connects long-run mixing sp
 | MRF's motivation reduced to "fewer parameters" rather than the lack of natural direction | `markov-random-fields` |
 | stationary distribution assumed uniform | `markov-chains` |
 | HMM's "hidden" label misapplied to emissions rather than states | `hmm` |
+| node/edge semantics confused (node as data point, edge as unconditional causation) | `graphs` |
+| subgraph or connectivity terms defined incorrectly | `graphs` |
+| sparsity's parameter-saving motivation missed | `graphs` |
+| parent/child conflated with the more general ancestor/descendant | `directed-vs-undirected-graphs` |
+| moralization confused with generic factorization | `directed-vs-undirected-graphs` |
+| MRF potentials wrongly assumed to need local normalization like DAG conditionals | `directed-vs-undirected-graphs` |
+| chain/fork blocking behavior reversed | `conditional-independence-d-separation` |
+| d-separation's "every path" requirement weakened to "some path" | `conditional-independence-d-separation` |
+| faithfulness treated as automatic rather than an assumption | `conditional-independence-d-separation` |
+| Markov blanket in an MRF confused with multi-hop reachability | `markov-random-fields` |
+| clique-size restriction confused with graph-size restriction | `markov-random-fields` |
+| Ising model's physics origin confused with a later application | `markov-random-fields` |
+| transition matrix row/column normalization convention reversed | `markov-chains` |
+| absorbing and transient states confused | `markov-chains` |
+| Chapman-Kolmogorov confused with the stationary-distribution equation | `markov-chains` |
+| first-step analysis confused with stationary-distribution computation | `markov-chains` |
+| HMM's three canonical problems conflated with unrelated tasks (e.g. clustering) | `hmm` |
+| Viterbi and Baum-Welch's roles (decoding vs. learning) swapped | `hmm` |
+| emission probability's conditioning direction reversed | `hmm` |
 
-**Cluster total: 30 items across 6 concepts.** This cluster is conceptually dense (structural graph
-reasoning) rather than numerically heavy; the classic burglar-alarm "explaining away" example is
-Pearl's standard illustration, reused verbatim as it's the clearest concrete instance of the phenomenon.
+**Cluster total: 180 items across 6 concepts (30 each), expanded from the original 30-item design-doc
+skeleton.** This cluster is conceptually dense (structural graph reasoning) rather than numerically
+heavy, though the added apply items verify small counting/matrix-power computations (parameter counts,
+Markov-blanket sizes, n-step transition probabilities, Gibbs-distribution energy ratios) by hand. The
+classic burglar-alarm "explaining away" example is Pearl's standard illustration, reused verbatim as
+it's the clearest concrete instance of the phenomenon.
