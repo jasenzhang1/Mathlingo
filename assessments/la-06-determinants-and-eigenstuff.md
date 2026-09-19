@@ -114,11 +114,10 @@ cliffhanger for `symmetric-matrices`' T1 to resolve — the two items are meant 
 | R14 | recall | short-answer | −0.33 | Fill in the blank: eigenvectors are only defined up to a nonzero scalar ___. | multiple | — |
 | R15 | recall | mcq | 0.32 | If A has eigenvalue λ with eigenvector v, then cA (for scalar c) has: | eigenvalue cλ, same eigenvector v | picks "eigenvalue λ, same eigenvector cv," incorrectly scaling the eigenvector instead of the eigenvalue → `eigenvalues-eigenvectors` |
 | R16 | recall | short-answer | 0.37 | Why is the zero vector explicitly excluded from being an eigenvector, even though A·0=λ·0 holds for every λ? | allowing v=0 would make the equation trivially true for every possible λ, making "eigenvalue" a meaningless (vacuous) concept — the nonzero requirement is what makes λ an actual, discoverable property of A | — |
-| A2 | apply | numeric | 0.63 | A=[[5,4],[1,2]]. Find its eigenvalues via det(A−λI)=0. `[verified: λ=6,1]` | (5−λ)(2−λ)−4=λ²−7λ+6=0 ⟹ (λ−6)(λ−1)=0 ⟹ λ=6 or λ=1 | — |
-| A3 | apply | numeric | 0.68 | A=[[2,1],[1,2]]. Find its eigenvalues. `[verified: λ=3,1]` | (2−λ)²−1=0 ⟹ (2−λ)=±1 ⟹ λ=3 or λ=1 | — |
-| A4 | apply | numeric | 0.73 | A=[[6,−1],[2,3]]. Find its eigenvalues. `[verified: λ=5,4]` | (6−λ)(3−λ)+2=λ²−9λ+20=0 ⟹ (λ−5)(λ−4)=0 ⟹ λ=5 or λ=4 | — |
-| A5 | apply | short-answer | 0.78 | For A=[[2,1],[1,2]] (eigenvalues 3, 1 from A3), verify trace and determinant against the eigenvalue sum/product. `[verified: trace=4=3+1, det=3=3*1]` | trace(A)=2+2=4=3+1 ✓; det(A)=4−1=3=3·1 ✓ | — |
-| A6 | apply | short-answer | 0.83 | A=[[0,2],[2,0]]. Find its eigenvalues by inspection or via the characteristic equation. `[verified: λ=2,-2]` | det(A−λI)=λ²−4=0 ⟹ λ=2 or λ=−2 | — |
+| A3 | apply | numeric | 0.63 | A=[[5,4],[1,2]]. Find its eigenvalues via det(A−λI)=0. `[verified: λ=6,1]` | (5−λ)(2−λ)−4=λ²−7λ+6=0 ⟹ (λ−6)(λ−1)=0 ⟹ λ=6 or λ=1 | — |
+| A4 | apply | numeric | 0.68 | A=[[2,1],[1,2]]. Find its eigenvalues. `[verified: λ=3,1]` | (2−λ)²−1=0 ⟹ (2−λ)=±1 ⟹ λ=3 or λ=1 | — |
+| A5 | apply | numeric | 0.73 | A=[[6,−1],[2,3]]. Find its eigenvalues. `[verified: λ=5,4]` | (6−λ)(3−λ)+2=λ²−9λ+20=0 ⟹ (λ−5)(λ−4)=0 ⟹ λ=5 or λ=4 | — |
+| A6 | apply | short-answer | 0.78 | For A=[[2,1],[1,2]] (eigenvalues 3, 1 from A4), verify trace and determinant against the eigenvalue sum/product. `[verified: trace=4=3+1, det=3=3*1]` | trace(A)=2+2=4=3+1 ✓; det(A)=4−1=3=3·1 ✓ | — |
 | E2 | explain | short-answer | 1.08 | Why does an eigenvalue of 0 mean A is not invertible? | Av=0 for some nonzero v is exactly the statement that N(A)≠{0}, which by `invertible-matrices`' equivalence directly means A is singular — a zero eigenvalue is just another way of expressing a nontrivial null space *(required: the direct link to N(A)≠{0})* | — |
 | E3 | explain | short-answer | 1.13 | Why does the sum of a matrix's eigenvalues always equal its trace, even without computing any eigenvalue explicitly? | this follows from the characteristic polynomial: expanding det(A−λI) as a polynomial in λ, the coefficient of λ^(n−1) is (up to sign) both the sum of the roots (eigenvalues, by Vieta's formulas) and directly computable as −trace(A) from the expansion — the two must match *(required: names Vieta's-formula-style reasoning, not just states the fact)* | — |
 | E4 | explain | short-answer | 1.18 | Why does scaling a matrix by a constant c scale all its eigenvalues by c, while leaving the eigenvectors themselves unchanged? | if Av=λv, then (cA)v=c(Av)=c(λv)=(cλ)v — the same eigenvector v now satisfies the eigenvalue equation for cA with eigenvalue cλ, since scaling the matrix scales the equation's right-hand side proportionally *(required: the explicit substitution)* | — |
@@ -260,8 +259,33 @@ cliffhanger for `symmetric-matrices`' T1 to resolve — the two items are meant 
 | A1 | apply | short-answer | 0.1 | Is A=[[1,2],[2,3]] symmetric? Is B=[[1,2],[3,4]]? `[verified]` | A: yes (a₁₂=a₂₁=2); B: no (a₁₂=2≠3=a₂₁) | — |
 | E1 | explain | short-answer | 0.8 | Why is a covariance matrix always symmetric? | Cov(Xᵢ,Xⱼ)=Cov(Xⱼ,Xᵢ) directly from the definition of covariance — the (i,j) and (j,i) entries are always equal by construction *(required: the direct algebraic reason, not just "covariance matrices happen to be symmetric")* — a genuine cross-domain link to the probability sweep's `covariance` | — |
 | T1 | transfer | short-answer | 1.3 | Why is the fact that symmetric matrices always have real eigenvalues essential for covariance matrices to make sense as "measuring spread in various directions" — resolving `eigendecomposition`'s rotation cliffhanger? | a covariance matrix's eigenvalues are variances along its principal directions; a complex eigenvalue would have no meaning as a variance (variances are real, nonnegative quantities); symmetry is exactly what rules out the rotation-like behavior that produced complex eigenvalues in `eigendecomposition`'s counterexample, guaranteeing every covariance matrix's "spread" is measurable along real, orthogonal directions *(required: explicitly resolves the earlier cliffhanger)* | — |
+| R3 | recall | mcq | −0.65 | Which is a guaranteed property of a symmetric matrix's eigenvectors (for distinct eigenvalues)? | they are orthogonal to each other | picks "they are all identical," an incoherent and false claim → `symmetric-matrices` |
+| R4 | recall | short-answer | −0.6 | Fill in the blank: Aᵢⱼ=Aⱼᵢ for all i,j is the entrywise statement of A being ___. | symmetric | — |
+| R5 | recall | mcq | −0.55 | True or false: every diagonal matrix is symmetric. | True — off-diagonal entries are all 0, so Aᵢⱼ=0=Aⱼᵢ trivially for i≠j | answers "False," missing that a diagonal matrix trivially satisfies the symmetry condition → `symmetric-matrices` |
+| R6 | recall | short-answer | −0.5 | Is the zero matrix symmetric? | yes — every entry is 0, so Aᵢⱼ=Aⱼᵢ=0 trivially for all i,j | — |
+| R7 | recall | mcq | −0.45 | If A is symmetric, then A+Aᵀ equals: | 2A | picks "0," confusing the symmetric case with the antisymmetric case (where A+Aᵀ would need A=−Aᵀ) → `symmetric-matrices` |
+| R8 | recall | short-answer | −0.4 | For any square matrix M (not necessarily symmetric), is M+Mᵀ always symmetric? | yes — (M+Mᵀ)ᵀ=Mᵀ+M=M+Mᵀ, so it equals its own transpose | — |
+| R9 | recall | mcq | −0.35 | Which matrix operation, applied to any square matrix M, always produces a symmetric result? | MᵀM (or MMᵀ) | picks "M² (M times itself)," which is not generally symmetric unless M itself is symmetric → `symmetric-matrices` |
+| R10 | recall | short-answer | −0.3 | Fill in the blank: the Spectral Theorem guarantees a symmetric matrix can always be written as A=QDQᵀ, where Q is ___. | orthonormal (Q⁻¹=Qᵀ) | — |
+| R11 | recall | mcq | −0.25 | How does A=QDQᵀ (for symmetric A) differ from the general A=PDP⁻¹ (for any diagonalizable A)? | Q is guaranteed orthonormal, so Qᵀ replaces the need to compute a general P⁻¹ | picks "D is guaranteed to be the identity matrix," which would make every symmetric matrix trivially a multiple of I — false in general → `symmetric-matrices` |
+| R12 | recall | short-answer | −0.2 | Why is Aᵀ=A itself sometimes called being "self-adjoint" (in the real case)? | it means the matrix, viewed as a linear operator, equals its own transpose/adjoint — the operator that appears on either side of an inner product is interchangeable, ⟨Ax,y⟩=⟨x,Ay⟩ | — |
+| R13 | recall | mcq | −0.15 | For a symmetric matrix, eigenvectors corresponding to DIFFERENT eigenvalues are: | automatically orthogonal, with no extra work needed | picks "automatically parallel," the opposite of the actual guaranteed relationship → `symmetric-matrices` |
+| R14 | recall | short-answer | −0.75 | Fill in the blank: a matrix A is symmetric when A=___. | Aᵀ | — |
+| R15 | recall | mcq | −0.1 | Correlation matrices (like covariance matrices) are: | always symmetric, since Corr(Xᵢ,Xⱼ)=Corr(Xⱼ,Xᵢ) by definition | picks "symmetric only for uncorrelated variables," an incorrect restriction — symmetry holds regardless of the actual correlation values → `symmetric-matrices` |
+| R16 | recall | short-answer | −0.05 | Is a symmetric matrix necessarily square? Why? | yes — the condition Aᵢⱼ=Aⱼᵢ only makes sense (both indices ranging over the same set) if the matrix has the same number of rows and columns | — |
+| A2 | apply | short-answer | 0.15 | Is A=[[0,5],[5,0]] symmetric? Is B=[[1,0,0],[0,2,0],[0,0,3]]? `[verified]` | A: yes (a₁₂=a₂₁=5); B: yes — every diagonal matrix is symmetric | — |
+| A3 | apply | short-answer | 0.2 | For M=[[1,2],[3,4]] (not symmetric), compute M+Mᵀ and verify it's symmetric. `[verified: [[2,5],[5,8]]]` | Mᵀ=[[1,3],[2,4]]; M+Mᵀ=[[2,5],[5,8]] — symmetric, since its (1,2) and (2,1) entries both equal 5 | — |
+| A4 | apply | short-answer | 0.25 | For M=[[1,2],[3,4]], compute MᵀM and verify it's symmetric. `[verified: MtM=[[10,14],[14,20]]]` | Mᵀ=[[1,3],[2,4]]; MᵀM=[[1·1+3·3, 1·2+3·4],[2·1+4·3, 2·2+4·4]]=[[10,14],[14,20]] — symmetric | — |
+| A5 | apply | short-answer | 0.3 | Is A=[[2,−1],[−1,2]] symmetric? What are its eigenvalues? `[verified: symmetric; eigenvalues 1,3]` | yes, symmetric (a₁₂=a₂₁=−1); eigenvalues: (2−λ)²−1=0 ⟹ λ=1 or λ=3, both real as guaranteed | — |
+| A6 | apply | short-answer | 0.35 | Is A=[[0,1],[−1,0]] (the 90° rotation from `eigendecomposition`) symmetric? Does this match the fact that it has no real eigenvalues? | no, not symmetric (a₁₂=1≠−1=a₂₁); this is consistent — only symmetric matrices are *guaranteed* real eigenvalues, and this non-symmetric example indeed has complex ones | — |
+| E2 | explain | short-answer | 0.55 | Why does M+Mᵀ always produce a symmetric matrix, for any square M? | (M+Mᵀ)ᵀ=Mᵀ+(Mᵀ)ᵀ=Mᵀ+M=M+Mᵀ — the result equals its own transpose, which is exactly the definition of symmetric *(required: the explicit transpose computation)* | — |
+| E3 | explain | short-answer | 0.6 | Why does MᵀM always produce a symmetric (and additionally, positive-semidefinite) matrix, for any matrix M (not necessarily square)? | (MᵀM)ᵀ=Mᵀ(Mᵀ)ᵀ=MᵀM, confirming symmetry; and for any vector x, xᵀ(MᵀM)x=(Mx)ᵀ(Mx)=‖Mx‖²≥0, confirming positive-semidefiniteness — both properties fall out of the same construction *(required: at least the symmetry derivation)* | — |
+| E4 | explain | short-answer | 0.65 | Why does A=QDQᵀ (rather than the general A=PDP⁻¹) being available specifically for symmetric matrices make computations like A⁻¹ especially convenient? | Q⁻¹=Qᵀ is essentially free to compute (just transpose, no general matrix inversion), so A⁻¹=QD⁻¹Qᵀ avoids ever computing a genuine matrix inverse for the eigenvector matrix — only D⁻¹ (trivial, since D is diagonal) requires any real work *(required)* | — |
+| E5 | explain | short-answer | 0.5 | Why is it not a coincidence that covariance matrices are symmetric, but rather a direct consequence of how covariance is defined? | Cov(Xᵢ,Xⱼ)=E[(Xᵢ−μᵢ)(Xⱼ−μⱼ)]=E[(Xⱼ−μⱼ)(Xᵢ−μᵢ)]=Cov(Xⱼ,Xᵢ), since ordinary multiplication of real numbers commutes — the (i,j) and (j,i) entries are forced equal by the commutativity of multiplication inside the expectation, not by any special property of the data *(required: the explicit commutativity argument)* | — |
+| T2 | transfer | short-answer | 1.05 | A structural engineer models a system's stiffness with a symmetric matrix K. Why does the Spectral Theorem's guarantee of real eigenvalues and orthogonal eigenvectors matter physically for interpreting K's eigenvalues as "stiffness along independent directions"? | real eigenvalues are necessary for "stiffness" (a physically real quantity) to make sense at all, and orthogonal eigenvectors mean these independent stiffness directions don't interfere with each other — a non-symmetric stiffness matrix could produce complex or non-orthogonal "directions," which wouldn't correspond to any physically decomposable independent modes *(required)* | — |
+| T3 | transfer | short-answer | 1.35 | A machine learning practitioner is surprised that the Hessian matrix of a smooth loss function is always symmetric (by Clairaut's / Schwarz's theorem on mixed partial derivatives), regardless of the model. Why does this guarantee, combined with the Spectral Theorem, let optimization algorithms always meaningfully classify a critical point using real eigenvalues (positive definite = minimum, etc.), without worrying about complex curvature values? | the Hessian's symmetry (from equality of mixed partials, a calculus fact unrelated to the model's specifics) guarantees real eigenvalues via the Spectral Theorem — so "curvature along a direction" is always a well-defined real number, letting the sign pattern of the eigenvalues classify the critical point unambiguously, with no risk of an uninterpretable complex curvature value *(required: connects the calculus fact for symmetry to the Spectral Theorem's real-eigenvalue guarantee)* | — |
 
-*Coverage: 5 items, −0.7…1.3.*
+*Coverage: 16/6/5/3 — 30 items, −0.75…1.35.*
 
 ---
 
@@ -270,13 +294,20 @@ cliffhanger for `symmetric-matrices`' T1 to resolve — the two items are meant 
 | Tag | Blame |
 |---|---|
 | det(A)=0 read as "invertible" rather than "singular" | `determinant` |
+| row-swap sign flip of the determinant forgotten | `determinant` |
 | cⁿ scaling of det(cA) computed as c | `determinant-properties` |
+| determinant wrongly assumed additive across matrix sums | `determinant-properties` |
 | eigenvector definition reversed (rotates vs. stays on its line) | `eigenvalues-eigenvectors` |
+| eigenvalue count assumed always real, ignoring complex roots | `eigenvalues-eigenvectors` |
 | diagonalizability conflated with invertibility | `diagonalization` |
+| repeated eigenvalue assumed to always block diagonalizability | `diagonalization` |
 | every real matrix assumed to have real eigenvalues | `eigendecomposition` |
+| complex-eigenvalue conjugate pairing for real matrices overlooked | `eigendecomposition` |
 | LU decomposition assumed always pivot-free | `lu-decomposition` |
+| LU decomposition assumed to apply directly to rectangular matrices | `lu-decomposition` |
 | symmetric matrices assumed always invertible | `symmetric-matrices` |
+| symmetric-matrix eigenvector orthogonality direction reversed | `symmetric-matrices` |
 
-**Cluster total: 36 items across 7 concepts.** All numeric claims verified, including the complex
-eigenvalues of the rotation-matrix counterexample (confirmed via a negative discriminant), which
-`symmetric-matrices`' T1 is built to resolve.
+**Cluster total: 210 items across 7 concepts (30 each).** All numeric claims verified, including the
+complex eigenvalues of the rotation-matrix counterexample (confirmed via a negative discriminant),
+which `symmetric-matrices`' T1 is built to resolve.

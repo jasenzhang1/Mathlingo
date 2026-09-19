@@ -348,7 +348,33 @@ merely an analogous formula.
 | E1 | explain | short-answer | 1.45 | Distinguish XGBoost's engineering optimizations from its statistical improvements. | engineering (sparse-data handling, parallelized construction, cache-aware computation) makes the algorithm run faster and at larger scale; the regularization term is a statistical improvement that makes the resulting model generalize better for a given amount of training — two different, complementary kinds of improvement over plain gradient boosting *(required: both categories named and distinguished)* | — |
 | T1 | transfer | short-answer | 1.95 | Why have gradient-boosted trees historically dominated tabular-data competitions, while neural networks dominate unstructured data? | decision trees and their ensembles naturally handle mixed, nonlinear relationships among a moderate number of meaningfully-named tabular features without extensive feature engineering; neural networks instead excel at learning hierarchical feature representations from raw, high-dimensional, unstructured signal where hand-crafted features are hard to construct at all *(required: both halves of the contrast)* | — |
 
-*Coverage: 5 items, −0.05…1.95.*
+| R3 | recall | short-answer | −0.55 | What does the "X" in XGBoost stand for, informally? | "Extreme" — Extreme Gradient Boosting | — |
+| R4 | recall | short-answer | −0.5 | Name one engineering optimization XGBoost is known for, beyond its statistical regularization. | parallelized (multi-threaded) tree construction, cache-aware computation, or efficient handling of sparse/missing data (any one) | — |
+| R5 | recall | mcq | −0.3 | XGBoost's regularization term is typically applied to: | both the number of leaves and the magnitude of each leaf's predicted value | claims it's "applied only to the learning rate hyperparameter" — the regularization term penalizes tree structure/leaf values directly in the objective, it isn't the same thing as the learning rate → `xgboost` |
+| R6 | recall | short-answer | −0.4 | Fill in the blank: XGBoost's objective function combines a loss term with an explicit ___ term. | regularization (complexity penalty) |
+| R7 | recall | mcq | −0.2 | Compared to plain gradient boosting, XGBoost handles missing feature values by: | learning a default direction to send missing values at each split, from the training data itself | claims it "always simply discards any example with a missing value before training" — XGBoost specifically learns how to route missing values rather than dropping examples → `xgboost` |
+| R8 | recall | short-answer | −0.25 | True or false: XGBoost was specifically designed to also work efficiently on datasets too large to fit fully in memory. | true — its engineering design explicitly targets scalability to large datasets, including out-of-core computation support | — |
+| R9 | recall | mcq | −0.05 | XGBoost's use of second-order (Hessian) information in its objective, beyond gradient boosting's first-order gradient, allows: | a more precise per-step optimization of the objective at each round, akin to a Newton's-method-style update | claims it "removes the need for a learning rate entirely" — using second-order information changes how precisely each step is computed, but a learning rate / shrinkage hyperparameter is still used → `xgboost` |
+| R10 | recall | short-answer | 0.05 | What kind of trees does XGBoost build as its base learners, matching gradient boosting generally? | shallow decision trees (regression trees), fit sequentially like standard gradient boosting | — |
+| R11 | recall | mcq | 0.15 | XGBoost's column (feature) subsampling option is conceptually borrowed from: | random forests' feature-subsampling idea | claims it's "a technique unique to XGBoost with no precedent in earlier methods" — column subsampling in boosting is a direct borrow of random forests' decorrelation idea, adapted to a sequential setting → `xgboost` |
+| R12 | recall | short-answer | 0.1 | Does XGBoost require the loss function to be squared error specifically? | no — like general gradient boosting, XGBoost supports any differentiable (and, since it also uses second-order information, twice-differentiable) loss function | — |
+| R13 | recall | mcq | 0.0 | A key reason XGBoost became dominant in tabular-data machine-learning competitions is: | its combination of strong regularization (reducing overfitting) and highly optimized, fast training on large datasets | claims it's "because it eliminates the need for any hyperparameter tuning" — XGBoost still has many tunable hyperparameters; its edge comes from the regularization/speed combination, not tuning-free operation → `xgboost` |
+| R14 | recall | short-answer | 0.2 | Fill in the blank: XGBoost's leaf-value penalty is analogous to the ___ penalty used in ridge regression. | L2 (squared-magnitude) |
+| R15 | recall | mcq | 0.1 | XGBoost's own tunable regularization hyperparameters (e.g. λ, γ) let a practitioner: | directly control how strongly the objective penalizes tree complexity, beyond what early stopping alone provides | claims they "have no effect once early stopping is used, making them redundant" — the explicit regularization terms and early stopping are separate, complementary complexity controls, not redundant with each other → `xgboost` |
+| R16 | recall | short-answer | 0.15 | Is XGBoost, in terms of its core statistical framework, a fundamentally different algorithm from gradient boosting, or an engineered/regularized variant of it? | an engineered and regularized variant — it builds on the same additive, gradient-fitting framework, adding an explicit complexity penalty and substantial computational optimizations rather than replacing the underlying method | — |
+| A2 | apply | numeric | 0.65 | XGBoost's leaf penalty for a tree is γ·T + ½λ·Σw², where T=5 leaves, γ=0.1, λ=1, and Σw²=3 (sum of squared leaf values). Compute the penalty. `[verified: 2.0]` | 0.1(5) + 0.5(1)(3) = 0.5 + 1.5 = 2.0 | — |
+| A3 | apply | short-answer | 0.7 | Two candidate trees fit the training residuals equally well, but Tree A has 20 leaves and Tree B has 6 leaves. Which would XGBoost's regularized objective favor, all else equal? | Tree B — with equal fit quality, the regularization term penalizes the larger number of leaves in Tree A more, so the smaller tree achieves a lower overall (loss + penalty) objective | — |
+| A4 | apply | short-answer | 0.6 | A dataset has 15% of one feature's values missing. Would XGBoost need that feature's missing entries imputed before training? | not necessarily — XGBoost can learn a default split direction for missing values directly from the training data, avoiding the need for a separate imputation step for that feature | — |
+| A5 | apply | short-answer | 0.55 | Comparing training XGBoost on a single machine's single thread versus its default multi-threaded mode, would you expect a meaningful difference in wall-clock training time on a large dataset? | yes — XGBoost's engineering optimizations specifically include parallelized tree construction, so multi-threading typically produces substantially faster training on large datasets compared to a single-threaded run | — |
+| A6 | apply | short-answer | 0.75 | If λ (the leaf-value regularization strength) is increased substantially, what tends to happen to the magnitude of individual leaf predictions? | they tend to shrink toward zero — larger λ more heavily penalizes large leaf values in the objective, pushing the optimizer toward smaller, more conservative leaf predictions | — |
+| E2 | explain | short-answer | 1.1 | Why does adding an explicit regularization term to the objective (rather than relying only on early stopping) give XGBoost finer control over overfitting? | early stopping is a blunt, global instrument — it only controls *how many* rounds run; an explicit per-tree complexity penalty shapes *every* tree's structure and leaf values throughout training, allowing the model to prefer simpler trees at every single round rather than only cutting off training globally once problems appear *(required)* | — |
+| E3 | explain | short-answer | 1.2 | Why does using second-order (Hessian) information let XGBoost take a more targeted optimization step than a first-order-only method at each round? | the gradient alone says which direction reduces loss, but the Hessian (curvature) says how far that direction can be trusted before the linear approximation breaks down — combining both, as in a Newton-style update, lets each round's tree be fit to a more accurate local approximation of the true loss reduction than the gradient alone would give *(required)* | — |
+| E4 | explain | short-answer | 1.15 | Why does XGBoost's engineering-level scalability matter as much as its statistical improvements for its practical dominance? | a statistically superior model that takes prohibitively long to train or can't fit in available memory is unusable in practice; XGBoost's cache-aware computation, parallelization, and sparsity-handling let its statistical advantages (regularization, second-order fitting) actually be realized at the scale of real competition and production datasets *(required)* | — |
+| E5 | explain | short-answer | 1.05 | Why does XGBoost's learned handling of missing values (rather than requiring pre-imputation) avoid introducing bias that manual imputation might? | manual imputation (e.g. filling with the mean) invents a specific value that may not reflect why the value is missing, potentially distorting splits; letting the algorithm learn the best default direction for missing values directly from how they correlate with the target during training avoids injecting an arbitrary, possibly misleading assumption *(required)* | — |
+| T2 | transfer | short-answer | 1.7 | How does XGBoost's explicit leaf-value L2 penalty structurally parallel ridge regression's coefficient-shrinkage penalty? | both add a term proportional to the sum of squared "weights" (leaf values here, regression coefficients there) to the objective being minimized, shrinking those values toward zero and trading a little training fit for reduced sensitivity to noise — the identical L2-regularization idea, applied to two different kinds of model parameters *(required: names the shared L2-shrinkage mechanism)* | — |
+| T3 | transfer | short-answer | 1.6 | Why does XGBoost's success illustrate a broader pattern in applied machine learning — that engineering optimization and statistical improvement often need to advance together for a method to become dominant in practice? | a purely statistical improvement (regularized gradient boosting) without the engineering work to make it fast and scalable would have remained a research curiosity rather than a competition-winning, industry-standard tool; conversely, engineering speed alone without the regularization would just train an overfit model faster — XGBoost's actual impact came from both advancing together, a pattern that recurs across many widely-adopted ML tools *(required: names both dimensions and that neither alone would suffice)* | — |
+
+*Coverage: 16/6/5/3 — 30 items, −0.55…1.95.*
 
 ---
 
@@ -357,15 +383,37 @@ merely an analogous formula.
 | Tag | Blame |
 |---|---|
 | decision trees assumed sensitive to feature scale | `decision-tree` |
+| classification vs. regression leaf-prediction rules swapped | `decision-tree` |
+| tree depth conflated with leaf count | `decision-tree` |
+| decision stump confused with a forest/ensemble | `decision-tree` |
 | pure-node impurity direction reversed | `splitting-criteria` |
+| role of splitting criteria confused with a stopping/pruning rule | `splitting-criteria` |
+| entropy's logarithm base assumed to be base 10 | `splitting-criteria` |
+| Gini impurity assumed inapplicable to multi-class problems | `splitting-criteria` |
 | pruning's α tuned against training rather than validation performance | `pruning-trees` |
+| pre-pruning and post-pruning assumed always equivalent | `pruning-trees` |
+| pruning's α=0 case confused with maximal pruning | `pruning-trees` |
+| pruning conflated with an ensembling technique | `pruning-trees` |
 | ensembling assumed to worsen overfitting | `ensemble-methods` |
+| ensembling's variance-reduction basis attributed to the wrong statistical result | `ensemble-methods` |
+| stacking conflated with simple averaging/voting | `ensemble-methods` |
 | bagging's variance-vs-bias target confused | `bagging` |
+| out-of-bag points confused with points the model misclassified | `bagging` |
+| bagging's variance reduction misattributed to smaller per-model training sets | `bagging` |
 | random forest's feature subsampling reduced to a speed optimization | `random-forests` |
+| random forest and bagging's regression/classification default subsample-size rules swapped | `random-forests` |
+| feature-importance scores assumed to be manually assigned rather than computed | `random-forests` |
 | AdaBoost's sequential targeting conflated with bagging's randomness | `adaboost` |
+| AdaBoost's per-model voting weight assumed uniform across models | `adaboost` |
+| AdaBoost's α=0.5-error case mishandled (clipped rather than negative) | `adaboost` |
 | gradient boosting's sequential nature assumed removed by generalizing AdaBoost | `gradient-boosting` |
+| gradient boosting's example-correction mechanism confused with AdaBoost's reweighting | `gradient-boosting` |
+| smaller learning rate wrongly assumed to need fewer rounds | `gradient-boosting` |
 | XGBoost's regularization and engineering improvements conflated | `xgboost` |
+| XGBoost's second-order information assumed to eliminate the learning rate | `xgboost` |
+| XGBoost's missing-value handling assumed to require discarding examples | `xgboost` |
 
-**Cluster total: 45 items across 9 concepts.** All numeric claims verified, including the exact
-Gini=2p(1−p) identity (matching Bernoulli variance precisely, not approximately) and the ~37%
-out-of-bag exclusion rate confirmed at n=100.
+**Cluster total: 270 items across 9 concepts (30 each).** All numeric claims verified, including the
+exact Gini=2p(1−p) identity (matching Bernoulli variance precisely, not approximately), the ~37%
+out-of-bag exclusion rate confirmed at n=100, the AdaBoost voting weights α≈0.424 (ε=0.3) and α≈1.099
+(ε=0.1), and the XGBoost leaf-penalty worked example (0.1·5 + 0.5·1·3 = 2.0).
