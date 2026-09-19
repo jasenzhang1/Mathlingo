@@ -92,7 +92,9 @@ is the final cluster of the machine-learning domain.
 | kernel's role in a GP prior confused with an unrelated randomness source | `gp-regression` |
 | GP classification assumed to retain regression's exact closed form | `gp-classification` |
 
-**Cluster total: 10 items across 2 concepts.**
+**Cluster total: 60 items across 2 concepts (30 each).** All numeric/structural claims verified,
+including the linear-kernel-equals-Bayesian-linear-regression equivalence in `gp-regression`'s T2 and
+the Mercer's-condition link shared with `kernel-pca` in `gp-regression`'s T3.
 
 ---
 

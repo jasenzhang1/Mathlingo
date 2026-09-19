@@ -223,7 +223,33 @@ mechanism — no item here rests on an unverified arithmetic claim.
 | E1 | explain | short-answer | 1.15 | What is the conceptual parallel between SVR's ε-tube and ordinary SVM's margin? | both define a buffer zone incurring no penalty; only points outside the zone (the "support vectors" in each case) actually influence or determine the final fitted function *(required: the direct margin/tube parallel)* | — |
 | T1 | transfer | short-answer | 1.65 | Why might SVR be preferred over ordinary least-squares regression for data with occasional large outliers? | SVR's loss depends only on how far *outside* the ε-tube a point falls, giving it a degree of robustness to outliers; ordinary least-squares' squared-error loss penalizes large errors quadratically (per `loss-functions`), making it highly sensitive to even a single large outlier *(required: the explicit callback to squared error's quadratic penalty)* | — |
 
-*Coverage: 5 items, −0.35…1.65.*
+| R3 | recall | short-answer | −0.85 | What does the ε (epsilon) tube represent in SVR? | a band of tolerance around the fitted function within which prediction errors incur no penalty at all | — |
+| R4 | recall | short-answer | −0.8 | Which points become support vectors in SVR? | only the points that fall outside the ε-tube — those inside are ignored, contributing nothing to the fit | — |
+| R5 | recall | mcq | −0.6 | SVR generalizes ordinary linear regression by: | ignoring small errors (within ε) entirely, rather than penalizing every deviation from the fitted line | claims it "penalizes every deviation more heavily than OLS" — SVR is specifically more tolerant of small errors, not less → `svms-for-regression` |
+| R6 | recall | short-answer | −0.7 | Fill in the blank: SVR uses an ___-insensitive loss function, which is zero within the tube and grows linearly outside it. | ε (epsilon) |
+| R7 | recall | mcq | −0.5 | If ε is set to 0, SVR's tube: | shrinks to zero width, so essentially every nonzero-error point becomes a potential support vector | claims "SVR becomes undefined at ε=0" — ε=0 is a valid (if extreme) special case, just with the widest possible support vector set → `svms-for-regression` |
+| R8 | recall | short-answer | −0.55 | True or false: SVR's core margin/hinge-style machinery is a direct extension of the classification SVM's margin idea to regression. | true — both center on a tolerance region with only "violating" points influencing the final result | — |
+| R9 | recall | mcq | −0.4 | Like classification SVM, SVR can use: | kernels to fit a nonlinear function while still only needing dot-product-like computations | claims it "cannot use kernels since it's a regression, not classification, method" — SVR inherits the kernel trick from SVM exactly as classification SVM does → `svms-for-regression` |
+| R10 | recall | short-answer | −0.3 | What geometric shape does the ε-tube form around a linear SVR fit in 2D? | two parallel lines, offset by ε above and below the central fitted line, forming a band | — |
+| R11 | recall | mcq | −0.2 | SVR's C hyperparameter plays a role analogous to: | classification SVM's C — controlling the tradeoff between model complexity/flatness and tolerating errors beyond the tube | claims C in SVR "controls the width of the ε-tube directly" — the tube's width is controlled by ε, not C; C controls the penalty weight on violations → `svms-for-regression` |
+| R12 | recall | short-answer | −0.1 | What does it mean for a fitted function to be "flat" in the SVR optimization objective (the thing being minimized alongside violation penalties)? | the function has small coefficients/low complexity — SVR explicitly favors simpler, smoother fits alongside satisfying the ε-tolerance | — |
+| R13 | recall | mcq | 0.0 | SVR is best suited to: | continuous target prediction (regression tasks) | selects "binary classification tasks" — that is what ordinary SVM, not SVR, is designed for → `svms-for-regression` |
+| R14 | recall | short-answer | 0.05 | Fill in the blank: points strictly inside the ε-tube incur ___ penalty. | zero (no) |
+| R15 | recall | mcq | −0.05 | Compared to ordinary least-squares regression, SVR's loss for points within the tolerance: | is exactly zero, rather than the (small but nonzero) squared penalty OLS would still apply | claims SVR's in-tolerance loss "is small but always nonzero, just like OLS" — the entire point of the ε-tube is that in-tolerance points get exactly zero loss → `svms-for-regression` |
+| R16 | recall | short-answer | 0.1 | Does SVR's fitted function need to pass through every training point exactly, given a nonzero ε? | no — SVR explicitly does not need to pass exactly through points within ε of the fitted function, prioritizing a flat/simple fit over interpolating all data | — |
+| A2 | apply | short-answer | 0.5 | With ε set to a very small value close to 0, does SVR's fit tend to behave more like ordinary least-squares regression or stay clearly different? | more like OLS — as ε→0, essentially every deviation from the fit incurs some penalty, closely resembling how OLS penalizes any nonzero residual | — |
+| A3 | apply | short-answer | 0.55 | A dataset has 1,000 points, and after fitting SVR, only 40 are outside the ε-tube. How many points influence the final fitted function? | only those 40 — points inside the tube (the other 960) incur zero loss and have no effect on where the function is fit | — |
+| A4 | apply | short-answer | 0.6 | Comparing SVR with a very wide ε to SVR with a very narrow ε on the same data, which is likely to have fewer support vectors? | the very wide ε — a wider tolerance band lets more points fall comfortably inside it, leaving fewer points as violators (support vectors) | — |
+| A5 | apply | short-answer | 0.4 | If a training point lies exactly on the boundary of the ε-tube (zero violation, zero margin), is it typically treated as a support vector? | it's a borderline case — points exactly on the tube boundary are the threshold case between "inside" (no influence) and "outside" (influences the fit); implementations vary in the exact boundary handling, but points strictly outside always count | — |
+| A6 | apply | short-answer | 0.45 | For a target variable measured with roughly ±0.5 units of sensor noise, is setting ε≈0.5 a reasonable heuristic starting point? | yes, reasonably — setting ε near the expected noise level lets SVR ignore variation that's likely just noise rather than genuine signal, avoiding penalizing the model for the sensor's inherent imprecision | — |
+| E2 | explain | short-answer | 1.05 | Why does a wider ε-tube tend to produce a simpler, less flexible fitted function? | with more room for error tolerated freely, the optimizer has less pressure to bend the function to chase every data point's exact value, so it settles for a flatter/simpler function consistent with the (more forgiving) constraint *(required)* | — |
+| E3 | explain | short-answer | 1.1 | Why might SVR be a poor choice when even small deviations from the target are meaningful (e.g. high-precision measurement prediction)? | SVR's ε-insensitive loss explicitly treats any error within ε as equally acceptable (zero loss), discarding exactly the fine-grained distinctions that matter in such a setting; a loss function penalizing every deviation (like squared error) would be more appropriate *(required)* | — |
+| E4 | explain | short-answer | 1.15 | Why does SVR's use of kernels let it fit nonlinear regression functions using the same underlying machinery as linear SVR? | as in classification SVM, if the algorithm only ever uses dot products between data points, those dot products can be replaced by kernel evaluations, implicitly mapping into a higher-dimensional space where a "linear" fit in that space corresponds to a nonlinear fit in the original space *(required: the dot-product-only condition)* | — |
+| E5 | explain | short-answer | 0.95 | Why does the flatness term in SVR's objective (alongside the ε-tolerance) matter, rather than optimizing tolerance alone? | without a preference for simpler/flatter functions, infinitely many functions could satisfy "stay within ε of every point," including wildly oscillating ones; the flatness term breaks the tie in favor of the simplest such function, analogous to a regularization term *(required)* | — |
+| T2 | transfer | short-answer | 1.45 | How does SVR's ε-insensitive loss compare structurally to Huber loss from robust regression? | both are designed to reduce sensitivity to certain residuals — Huber loss transitions from quadratic (near zero) to linear (far from zero) to reduce outlier sensitivity, while SVR's loss is exactly zero near zero and linear beyond ε; both depart from pure squared-error loss specifically to avoid over-penalizing either small (SVR) or large (Huber) residuals in ways ordinary least squares would *(required: names both loss shapes and the shared motivation of departing from pure squared error)* | — |
+| T3 | transfer | short-answer | 1.4 | Why does SVR's connection to `svm` mean that everything learned about the C hyperparameter and kernels there transfers almost unchanged to regression? | SVR is built on the identical optimization machinery as classification SVM — a convex objective trading margin/flatness against violation penalties, solved via the same dual formulation that only needs dot products (hence kernelizable); the target being continuous rather than categorical changes what "violation" means (outside the ε-tube vs. wrong side of the margin) but not the underlying mathematical structure, so C and kernel intuitions carry over directly *(required: names the shared underlying optimization structure)* | — |
+
+*Coverage: 16/6/5/3 — 30 items, −0.85…1.65.*
 
 ---
 
@@ -232,12 +258,25 @@ mechanism — no item here rests on an unverified arithmetic claim.
 | Tag | Blame |
 |---|---|
 | generative model advantage misattributed to accuracy rather than data generation | `generative-vs-discriminative-models` |
+| generative/discriminative examples (naive Bayes vs. logistic regression, LDA) swapped | `generative-vs-discriminative-models` |
+| discriminative models wrongly credited with recovering P(X) or generating data | `generative-vs-discriminative-models` |
 | "naive" mistaken for a comment on sophistication rather than the independence assumption | `naive-bayes` |
+| naive Bayes misclassified as discriminative | `naive-bayes` |
+| Laplace smoothing confused with feature scaling | `naive-bayes` |
+| Gaussian vs. multinomial naive Bayes likelihood forms confused | `naive-bayes` |
 | LDA and QDA conflated | `lda` |
+| LDA misclassified as discriminative | `lda` |
+| LDA and QDA parameter counts (shared vs. per-class covariance) swapped | `lda` |
 | KNN's lazy-learning timing (training vs. prediction cost) reversed | `knn` |
+| KNN regression and classification aggregation rules (averaging vs. voting) swapped | `knn` |
+| KNN's non-parametric nature confused with "parametric because K is fixed" | `knn` |
 | all training points assumed to be support vectors | `svm` |
+| soft-margin SVM's C direction (large C → narrower vs. wider margin) reversed | `svm` |
+| hinge loss assumed to penalize every point equally regardless of position | `svm` |
 | SVR's ε confused with an optimization learning rate | `svms-for-regression` |
+| SVR's C and ε roles (violation penalty vs. tube width) swapped | `svms-for-regression` |
+| SVR assumed unable to use the kernel trick | `svms-for-regression` |
 
-**Cluster total: 30 items across 6 concepts.** No item in this cluster rests on an unverified numeric
-claim — the content here is entirely mechanism and geometry, checked for correctness by construction
+**Cluster total: 180 items across 6 concepts (30 each).** No item in this cluster rests on an
+unverified numeric claim — the content here is entirely mechanism and geometry, checked for correctness by construction
 rather than by script.

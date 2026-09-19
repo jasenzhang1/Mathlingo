@@ -295,14 +295,23 @@ probability/statistics sweep (covariance matrices, conditional variance).
 | Tag | Blame |
 |---|---|
 | Spectral Theorem assumed to force positive eigenvalues | `spectral-theorem` |
+| Spectral Theorem assumed to apply to any square matrix | `spectral-theorem` |
+| repeated eigenvalues assumed impossible for symmetric matrices | `spectral-theorem` |
 | orthogonal matrices assumed to stretch/shrink vectors | `orthogonal-matrices` |
+| product of orthogonal matrices assumed not necessarily orthogonal | `orthogonal-matrices` |
+| only columns (not also rows) of an orthogonal matrix assumed orthonormal | `orthogonal-matrices` |
 | positive definiteness judged from entry signs rather than eigenvalues | `positive-definite-matrices` |
+| determinant sign alone assumed to certify positive definiteness | `positive-definite-matrices` |
 | Cholesky assumed valid for any square matrix | `cholesky-decomposition` |
+| Cholesky's LDLᵀ-style diagonal convention confused with Cholesky's own | `cholesky-decomposition` |
 | Schur complement mistaken for an eigenvalue tool | `schur-complement` |
+| Schur complement of A and of D treated as interchangeable | `schur-complement` |
 | Rayleigh quotient max confused with trace | `rayleigh-quotient` |
+| Rayleigh quotient's real-valuedness assumed to require symmetry | `rayleigh-quotient` |
 | stability judged from determinant or average eigenvalue rather than spectral radius | `matrix-stability` |
+| operator norm assumed always equal to (rather than an upper bound on) spectral radius | `matrix-stability` |
 
-**Cluster total: 35 items across 7 concepts.** All numeric claims verified. This cluster completes the
-resolution of `eigendecomposition`'s rotation cliffhanger (`spectral-theorem`'s T1) and plants two
-direct callbacks into the probability/statistics sweep (`positive-definite-matrices`' E1 on covariance,
-`schur-complement`'s E1 on conditional covariance).
+**Cluster total: 210 items across 7 concepts (30 each).** All numeric claims verified. This cluster
+completes the resolution of `eigendecomposition`'s rotation cliffhanger (`spectral-theorem`'s T1) and
+plants two direct callbacks into the probability/statistics sweep (`positive-definite-matrices`' E1 on
+covariance, `schur-complement`'s E1 on conditional covariance).

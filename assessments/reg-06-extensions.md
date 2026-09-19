@@ -136,7 +136,7 @@ the tables below are the 5-item design skeleton, same convention as every other 
 | T2 | transfer | short-answer | 3.07 | Contrast polynomial regression with regression splines as tools for capturing nonlinearity. | a single global polynomial must use the same functional form everywhere, so fitting one region's curvature well can distort distant regions; splines fit local piecewise polynomials joined smoothly at knots, capturing local shape without one region's curvature contaminating another's fit *(required: the global-vs-local mechanism, not just "splines are more flexible")* | treats splines as simply a higher-degree polynomial rather than a fundamentally local, piecewise fit → `polynomial-regression` |
 | T3 | transfer | short-answer | 3.17 | A model with an X⁴ term shows statistically significant coefficients but much worse test-set RMSE than a quadratic model. What does this reveal? | statistical significance reflects whether a coefficient reliably differs from zero in-sample, not whether including it improves generalization; the quartic is overfitting noise that happens to look systematic within this sample, which only a held-out comparison exposes *(required: separates in-sample significance from out-of-sample generalization)* | treats significant coefficients as sufficient evidence the higher-degree model generalizes better → `polynomial-regression` |
 
-*Coverage: 4 items, 1.22…3.02.*
+*Coverage: 16/6/5/3 — 30 items, 0.88…3.17.*
 
 ---
 
@@ -149,8 +149,34 @@ the tables below are the 5-item design skeleton, same convention as every other 
 | A1 | apply | numeric | 1.55 | ρ_τ(u)=u(τ−𝟙[u<0]), τ=0.3, u=−5. Loss? `[verified: 3.5]` | −5(0.3−1)=3.5 | — |
 | E1 | explain | derivation | 2.25 | Show the minimiser of E[ρ_τ(Y−c)] over c is the τ-th quantile of Y. | split the expectation by Y above/below c, differentiate w.r.t. c, set to zero; the stationarity condition reduces to τ=P(Y≤c), the definition of the τ-th quantile *(required: the actual differentiation, not an assertion)* | — |
 | T1 | transfer | short-answer | 2.85 | An OLS wage-education coefficient is $2,000/yr; τ=0.1 and τ=0.9 fits give $800 and $3,600. What does this reveal that OLS alone can't? | the OLS number is a single average effect that can't distinguish a uniform wage shift from a widening spread; the pattern here shows education widens the conditional wage distribution rather than shifting it uniformly *(required: the widening-spread reading, not just "different quantiles differ")* | assumes the OLS coefficient applies uniformly across the conditional distribution → `quantile-regression` |
+| R2 | recall | mcq | 0.75 | Quantile regression models: | the conditional quantile function Q_τ(Y\|X) for a chosen τ∈(0,1), not just the conditional mean | claims quantile regression still targets the conditional mean, only with a different loss function → `quantile-regression` |
+| R3 | recall | short-answer | 0.8 | Fill in the blank: the τ-th conditional quantile function is denoted ___. | Q_τ(Y\|X) | — |
+| R4 | recall | short-answer | 0.85 | True or false: quantile regression requires no distributional assumption on the errors. | True — the pinball-loss minimizer is the conditional quantile regardless of the error distribution's shape | — |
+| R5 | recall | short-answer | 0.9 | What does τ=0.5 correspond to in quantile regression? | median regression (least absolute deviations) | — |
+| R6 | recall | mcq | 0.95 | The "pinball loss" used in quantile regression is also known as the: | check loss (or check function) | calls it the "hinge loss," which is SVM terminology, not quantile regression's → `quantile-regression` |
+| R7 | recall | short-answer | 1.0 | Fill in the blank: for τ close to 0, the pinball loss penalizes ___ more heavily than ___. | overprediction (predicting too high) more heavily than underprediction | — |
+| R8 | recall | mcq | 1.1 | "Quantile crossing" refers to: | fitted quantile curves at different τ crossing each other, so a higher τ nonsensically predicts a lower value than a lower τ | describes it as "residuals crossing zero," an unrelated phenomenon → `quantile-regression` |
+| R9 | recall | short-answer | 1.15 | Contrast the loss function OLS minimizes with the one quantile regression minimizes. | OLS minimizes symmetric squared error; quantile regression minimizes the asymmetric, piecewise-linear pinball loss | — |
+| R10 | recall | short-answer | 1.2 | True or false: quantile regression coefficients can differ across different values of τ. | True — this is a defining feature, since a predictor's effect can differ across the conditional distribution | — |
+| R11 | recall | mcq | 1.25 | The stated prerequisite concept for Quantile Regression is: | Ordinary Least Squares | names an unrelated concept such as Ridge Regression, not this concept's stated prerequisite → `quantile-regression` |
+| R12 | recall | short-answer | 1.3 | Fill in the blank: the pinball loss ρ_τ(u) is piecewise ___ in u. | linear | — |
+| R13 | recall | mcq | 1.35 | Compared to OLS, quantile regression at any τ is more robust to: | outliers in Y, since it uses an absolute rather than squared loss | claims quantile regression is more sensitive to outliers than OLS, backwards from its actual robustness advantage → `quantile-regression` |
+| R14 | recall | short-answer | 1.4 | Define "check function" as used in quantile regression. | another name for the pinball loss ρ_τ(u)=u(τ−𝟙[u<0]), the asymmetric loss whose minimizer is the τ-th quantile | — |
+| R15 | recall | short-answer | 1.45 | True or false: at τ=0.5, minimizing the pinball loss is equivalent to minimizing absolute deviations (LAD regression). | True | — |
+| R16 | recall | mcq | 1.5 | Fitting quantile regressions at τ=0.1, 0.3, 0.5, 0.7, 0.9 simultaneously gives: | an estimate of the shape of the entire conditional distribution of Y, not just its center | claims fitting several τ's is redundant once the median (τ=0.5) fit is known → `quantile-regression` |
+| A2 | apply | numeric | 1.6 | ρ_τ(u)=u(τ−𝟙[u<0]), τ=0.7, u=4. Loss? `[verified: 2.8]` | 4(0.7−0)=2.8 | — |
+| A3 | apply | numeric | 1.65 | ρ_τ(u)=u(τ−𝟙[u<0]), τ=0.2, u=−10. Loss? `[verified: 8]` | −10(0.2−1)=8 | — |
+| A4 | apply | numeric | 1.7 | ρ_τ(u)=u(τ−𝟙[u<0]), τ=0.9, u=2. Loss? `[verified: 1.8]` | 2(0.9−0)=1.8 | — |
+| A5 | apply | numeric | 1.75 | ρ_τ(u)=u(τ−𝟙[u<0]), τ=0.5, u=−6. Loss? `[verified: 3]` | −6(0.5−1)=3 | — |
+| A6 | apply | numeric | 1.8 | A median (τ=0.5) prediction is 50; the actual value is 42. Pinball loss? `[verified: 4]` | u=42−50=−8; −8(0.5−1)=4 | — |
+| E2 | explain | short-answer | 2.3 | Why is the τ-th quantile, rather than the mean, the natural target when a distribution is highly skewed? | skew pulls the mean toward the tail, so it can lie far from where most of the probability mass sits; a chosen quantile (e.g. the median) tracks the typical value directly and is far less sensitive to that tail *(required: connects skew to mean displacement, contrasts with quantile robustness)* | treats the mean and any quantile as equally representative of a skewed distribution → `quantile-regression` |
+| E3 | explain | short-answer | 2.4 | Why does fitting separate quantile regressions at each τ independently risk "quantile crossing"? | each τ's fit is optimized on its own pinball loss with no constraint linking it to neighboring τ's fits, so with finite samples and model misspecification the fitted curves can cross, implying a higher quantile predicts a lower value than a lower one *(required: names the independence of separate fits as the cause)* | assumes fitting each τ separately automatically preserves the correct quantile ordering → `quantile-regression` |
+| E4 | explain | short-answer | 2.5 | Explain why quantile regression coefficients can have different signs at different τ, even for the same predictor. | a predictor can widen or shift different parts of a conditional distribution differently — e.g. increasing variance rather than shifting the whole distribution uniformly — so its effect on the lower tail can be negative while its effect on the upper tail is positive *(required: the widening-vs-shifting distinction)* | assumes a predictor's effect must have the same sign at every quantile → `quantile-regression` |
+| E5 | explain | short-answer | 2.6 | Why is quantile regression not simply "linear regression on ranked data"? | it still models a linear relationship between the covariates and a conditional quantile of the original-scale response, using the asymmetric pinball loss — it neither ranks nor transforms the data, unlike a rank-based nonparametric method *(required: distinguishes the linear-in-original-units target from a rank transform)* | assumes quantile regression first converts Y to ranks before fitting → `quantile-regression` |
+| T2 | transfer | short-answer | 2.9 | Why is quantile regression particularly useful for constructing prediction intervals without assuming Normal errors? | fitting Q_0.05(Y\|X) and Q_0.95(Y\|X) directly gives a 90% interval that adapts to the actual conditional spread and skew of Y, without assuming a Normal or any other parametric error distribution the way OLS-based intervals do *(required: names the direct-interval-from-two-quantiles construction)* | assumes any prediction interval, quantile-regression-based or not, requires a Normality assumption → `quantile-regression` |
+| T3 | transfer | short-answer | 3.0 | How does fitting a large panel of closely-spaced quantiles relate to the bias-variance trade-off `regularization` formalizes? | fitting many closely-spaced quantiles increases the risk of quantile crossing and overfitting each τ's own noise, so practitioners often apply smoothness penalties across τ or monotonic-constraint enforcement — the same bias-variance trade-off `regularization` formalizes across predictors, here applied along the τ axis *(required: connects τ-axis smoothing to the general regularization trade-off)* | treats fitting more quantiles as a purely beneficial increase in information with no accompanying variance cost → `quantile-regression` |
 
-*Coverage: 4 items, 1.05…2.85.*
+*Coverage: 16/6/5/3 — 30 items, 0.75…3.0.*
 
 ---
 
@@ -163,8 +189,34 @@ the tables below are the 5-item design skeleton, same convention as every other 
 | A1 | apply | numeric | 1.83 | Coefficient 0.25 on a promotion indicator. Multiplicative effect on expected count? `[verified: 1.284]` | e^0.25≈1.284 | — |
 | E1 | explain | short-answer | 2.53 | Residual deviance 340 on 110 df. Diagnose, and distinguish the effect on β̂ from the effect on inference. | 340/110≈3.1 ≫1 signals overdispersion; β̂ stays consistent (mean structure unaffected) but standard errors computed under Var=μ are too small, so intervals are too narrow and results look spuriously significant *(required: the explicit bias/variance-of-inference distinction)* | reports the ratio without connecting it to what it implies about the variance assumption → `poisson-regression` |
 | T1 | transfer | short-answer | 3.13 | Compare quasi-Poisson and negative binomial as overdispersion remedies — when would you reach for each? | quasi-Poisson keeps μ as the mean, allows Var=φμ, inflates SEs by √φ, leaves β̂ unchanged; negative binomial is a genuinely different distribution, Var=μ+αμ², enabling likelihood-based comparisons (AIC, deviance tests) the quasi version can't support *(required: distinguishes an SE-only correction from a model change)* | treats the two remedies as interchangeable → `poisson-regression` |
+| R2 | recall | mcq | 0.83 | The canonical (default) link function for Poisson regression is: | the log link | claims the identity link is canonical for Poisson regression, which can predict a negative expected count → `poisson-regression` |
+| R3 | recall | short-answer | 0.88 | Fill in the blank: Poisson regression assumes Var(Y\|X) = ___. | μ — the variance equals the mean ("equidispersion") | — |
+| R4 | recall | short-answer | 0.93 | True or false: Poisson regression can predict a negative expected count. | False — the log link guarantees μ=e^(xᵀβ)>0 for any β and x | — |
+| R5 | recall | short-answer | 0.98 | What is Poisson regression an example of, per its relationship to the broader model family? | a specific case of the Generalized Linear Model (GLM) family, using a Poisson response distribution and log link | — |
+| R6 | recall | mcq | 1.03 | An "offset" term (e.g. the log of exposure time) in Poisson regression is used to: | model a rate rather than a raw count, by accounting for varying exposure, time, or area across observations | treats the offset as just another predictor with a coefficient to estimate, rather than a fixed term with coefficient forced to 1 → `poisson-regression` |
+| R7 | recall | short-answer | 1.08 | Fill in the blank: a coefficient β in Poisson regression lives on the ___ scale, so exp(β) is interpreted as a ___. | log scale; multiplicative rate ratio | — |
+| R8 | recall | short-answer | 1.13 | True or false: Poisson regression coefficients are typically interpreted as additive changes in the count. | False — they are interpreted as multiplicative (percentage) changes via exp(β), not additive changes | — |
+| R9 | recall | mcq | 1.18 | Overdispersion in Poisson regression means: | the observed variance exceeds the mean (Var>μ), violating the equidispersion assumption | describes overdispersion as "the mean exceeding the variance," which is backwards → `poisson-regression` |
+| R10 | recall | short-answer | 1.23 | What diagnostic statistic is commonly used to detect overdispersion? | the ratio of residual deviance to residual degrees of freedom (should be ≈1 under a correctly specified Poisson model) | — |
+| R11 | recall | mcq | 1.28 | Poisson regression is designed for which type of outcome data? | non-negative integer count data | claims it's designed for continuous, unbounded outcome data, which is OLS's domain, not Poisson regression's → `poisson-regression` |
+| R12 | recall | short-answer | 1.38 | Fill in the blank: the Poisson regression model states Y\|X ~ Poisson(μ), where ln(μ) = ___. | xᵀβ, a linear predictor | — |
+| R13 | recall | short-answer | 1.43 | True or false: zero-inflated Poisson models exist because plain Poisson regression sometimes under-predicts the number of observed zero counts. | True | — |
+| R14 | recall | mcq | 1.48 | The stated prerequisites for Poisson Regression are: | Generalized Linear Model (GLM) and Poisson Distribution | names Linear Regression and Normal Distribution instead, which are not this concept's stated prerequisites → `poisson-regression` |
+| R15 | recall | short-answer | 1.53 | How does Poisson regression's target outcome differ from plain linear regression's? | Poisson regression is built for non-negative integer counts, while linear regression assumes a continuous outcome that can, in principle, take any real value including negative ones | — |
+| R16 | recall | mcq | 1.58 | Multiplying a baseline expected count by exp(β) for a one-unit increase in a predictor gives: | the expected count for that new predictor value, holding all other predictors fixed | treats exp(β) itself as the new expected count, rather than as the multiplicative factor applied to the baseline → `poisson-regression` |
+| A2 | apply | numeric | 1.63 | Coefficient −0.4 on a risk-factor indicator. Multiplicative effect on expected count? `[verified: 0.670]` | e^−0.4≈0.6703 | — |
+| A3 | apply | numeric | 1.68 | Coefficient 0.1 on a continuous predictor. Multiplicative effect for a 5-unit increase? `[verified: 1.649]` | e^(0.1·5)=e^0.5≈1.6487 | — |
+| A4 | apply | numeric | 2.03 | Baseline expected count μ₀=10; treatment coefficient 0.2 (treatment=1). Expected count for the treated group? `[verified: 12.21]` | 10·e^0.2≈10·1.2214=12.214 | — |
+| A5 | apply | numeric | 2.08 | Residual deviance 220 on 100 df. Dispersion ratio? `[verified: 2.2]` | 220/100=2.2 | — |
+| A6 | apply | numeric | 2.13 | Coefficient 0.05 on a continuous predictor. Percent change in expected count per unit increase? `[verified: 5.13%]` | (e^0.05−1)·100%≈5.13% | — |
+| E2 | explain | short-answer | 2.58 | Why can't Poisson regression coefficients be interpreted the same way as OLS coefficients? | the log link means β represents an additive change on the log-rate scale, which translates to a multiplicative (percentage) change on the original count scale via exp(β), not a constant additive change like an OLS slope *(required: names the log-link-induced multiplicative interpretation)* | interprets a Poisson regression coefficient as a constant additive change in the count, the same way an OLS slope would be read → `poisson-regression` |
+| E3 | explain | short-answer | 2.68 | Why does an offset term use the log of exposure rather than exposure itself? | the model states ln(μ)=xᵀβ+ln(exposure), which after exponentiating gives μ=exposure·exp(xᵀβ) — exposure enters multiplicatively as intended only if its log is added on the linear-predictor (log) scale *(required: the algebraic reason the offset must be logged)* | adds raw exposure directly into the linear predictor instead of its log, which would not produce the intended multiplicative effect → `poisson-regression` |
+| E4 | explain | short-answer | 2.78 | Why does overdispersion inflate the risk of false positives in Poisson regression inference, even though β̂ stays consistent? | the Poisson model's variance formula Var=μ is baked into the standard errors it reports; if the true variance is larger (Var>μ), those SEs are systematically too small, so z-statistics look larger and p-values smaller than they should be *(required: the SE-too-small mechanism, distinct from bias in β̂)* | assumes overdispersion must also bias β̂ itself, not just its reported standard errors → `poisson-regression` |
+| E5 | explain | short-answer | 2.88 | Why is a zero-inflated Poisson model sometimes needed instead of plain Poisson regression? | some processes produce far more exact zeros than a Poisson distribution with the fitted mean would predict — a structural excess of zeros from a distinct "always zero" subpopulation — which zero-inflated models capture with a separate mixture component that plain Poisson regression cannot represent *(required: names the structural-versus-sampling-zero distinction)* | treats all observed zeros as ordinary sampling zeros from the fitted Poisson, missing the structural-zero explanation → `poisson-regression` |
+| T2 | transfer | short-answer | 3.18 | Contrast Poisson regression with logistic regression as two members of the GLM family. | both use a link function to map a linear predictor to a constrained mean (log for a non-negative rate, logit for a probability in [0,1]), and both interpret coefficients multiplicatively after exponentiating (rate ratio vs. odds ratio) — the shared GLM machinery differs only in the response distribution and link, not the underlying estimation framework *(required: names the shared link-function/GLM structure across both)* | treats Poisson and logistic regression as unrelated techniques rather than instances of the same GLM framework → `poisson-regression` |
+| T3 | transfer | short-answer | 3.28 | A Poisson regression predicts daily hospital admissions, but recent months show a sudden structural change (e.g. a new policy). How should model diagnostics be adapted? | the residual-deviance-over-df check for overdispersion assumes the mean structure itself is roughly correct; a structural break means the linear predictor no longer describes the process at all, so diagnostics should first check for a shift over time, e.g. residuals plotted against date, before attributing any poor fit to overdispersion alone *(required: separates a mean-structure break from a variance-structure problem)* | attributes any poor fit automatically to overdispersion without first checking whether the mean structure itself has broken down → `poisson-regression` |
 
-*Coverage: 4 items, 1.33…3.13.*
+*Coverage: 16/6/5/3 — 30 items, 0.83…3.28.*
 
 ---
 
@@ -183,8 +235,36 @@ the tables below are the 5-item design skeleton, same convention as every other 
 | a single mean coefficient assumed to describe the whole conditional distribution | `quantile-regression` |
 | Poisson regression given an identity rather than log link | `poisson-regression` |
 | quasi-Poisson and negative binomial treated as interchangeable | `poisson-regression` |
+| WLS mistaken for a special case of ridge regression | `weighted-least-squares` |
+| FGLS weights assumed known in advance rather than estimated | `weighted-least-squares` |
+| WLS weight matrix confused with the full error covariance matrix | `weighted-least-squares` |
+| FGLS assumed exactly as efficient as WLS with true weights, in any sample size | `weighted-least-squares` |
+| heteroskedasticity diagnostic plot treated as only confirming, not informing, the weight function | `weighted-least-squares` |
+| leverage assumed to depend on the response y, not X alone | `outliers-leverage-influence` |
+| leverage threshold treated as a fixed cutoff independent of n and p | `outliers-leverage-influence` |
+| Cook's distance threshold assumed to have no dependence on sample size | `outliers-leverage-influence` |
+| DFBETAS confused with Cook's distance's aggregate summary | `outliers-leverage-influence` |
+| influence assumed readable from X alone, without the response | `outliers-leverage-influence` |
+| single-point deletion assumed to always reveal joint influence among several points | `outliers-leverage-influence` |
+| large residual assumed sufficient for high influence regardless of leverage | `outliers-leverage-influence` |
+| orthogonal polynomials' purpose confused with smoothing rather than numerical stability | `polynomial-regression` |
+| polynomial regression confused with a local smoothing method like LOESS | `polynomial-regression` |
+| Runge's phenomenon confused with heteroskedasticity | `polynomial-regression` |
+| training RSS assumed to select the same degree as cross-validated error | `polynomial-regression` |
+| high-degree coefficient instability attributed only to the already-fixed X,X² collinearity | `polynomial-regression` |
+| statistical significance of a high-degree term assumed to imply better generalization | `polynomial-regression` |
+| quantile regression assumed to still target the conditional mean | `quantile-regression` |
+| quantile crossing assumed impossible when quantiles are fit independently | `quantile-regression` |
+| quantile regression assumed to require ranking or transforming the response | `quantile-regression` |
+| prediction intervals assumed to always require a Normality assumption | `quantile-regression` |
+| Poisson coefficients read as additive rather than multiplicative changes in the count | `poisson-regression` |
+| offset term added without logging, breaking its intended multiplicative role | `poisson-regression` |
+| overdispersion assumed to bias β̂ itself, not just its standard errors | `poisson-regression` |
+| all observed zeros treated as ordinary Poisson sampling zeros, missing structural zero-inflation | `poisson-regression` |
+| Poisson and logistic regression treated as unrelated rather than both GLM instances | `poisson-regression` |
+| a structural break in the mean process misdiagnosed purely as overdispersion | `poisson-regression` |
 
-**Cluster total: 20 design-doc items across 5 concepts, expanded to 40 items (8 each) in
-[`regression-extensions.ts`](../web/src/data/items/regression-extensions.ts).** Every numeric claim
-verified independently before being written, including Cook's distance (2.667), the pinball-loss value
-(3.5), and both Poisson multiplicative-effect computations.
+**Cluster total: 150 items across 5 concepts (30 each), expanded from the original 20-item design-doc
+skeleton.** Every numeric claim verified independently before being written, including Cook's distance
+(2.667 and 1.406), the pinball-loss values (3.5, 2.8, 8, 1.8, 3, 4), the Poisson multiplicative-effect
+computations (1.284, 0.670, 1.649, 12.214, 5.13%), and the polynomial vertex/fitted-value pairs.
