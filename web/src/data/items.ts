@@ -37,6 +37,7 @@ import { discreteMathLogicItems } from "./items/discrete-math-logic";
 import { discreteMathSetsItems } from "./items/discrete-math-sets";
 import { discreteMathCountingItems } from "./items/discrete-math-counting";
 import { stochasticProcessesBuffupItems } from "./items/stochastic-processes-buffup";
+import { stochasticProcessesRandomWalkBrownianItems } from "./items/stochastic-processes-random-walk-brownian";
 import { computationalStatisticsItems } from "./items/computational-statistics";
 import { robustRegressionItems } from "./items/robust-regression";
 import { functionalDataAnalysisItems } from "./items/functional-data-analysis";
@@ -918,6 +919,7 @@ export const items: Item[] = [
   ...robustRegressionItems,
   ...timeSeriesItems,
   ...stochasticProcessesBuffupItems,
+  ...stochasticProcessesRandomWalkBrownianItems,
 
   // --- Probability / Statistics / Multivariate Probability: 20-per-concept
   // expansion. Brings every concept in these three domains up to 20 live
