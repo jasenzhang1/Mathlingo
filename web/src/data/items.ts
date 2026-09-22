@@ -41,6 +41,11 @@ import { stochasticProcessesRandomWalkBrownianItems } from "./items/stochastic-p
 import { computationalStatisticsItems } from "./items/computational-statistics";
 import { robustRegressionItems } from "./items/robust-regression";
 import { functionalDataAnalysisItems } from "./items/functional-data-analysis";
+import { financialFixedIncome1Items } from "./items/financial-fixed-income-1";
+import { financialFixedIncome2Items } from "./items/financial-fixed-income-2";
+import { financialEquitiesFundsItems } from "./items/financial-equities-funds";
+import { financialDerivativesItems } from "./items/financial-derivatives";
+import { financialSwapsCreditItems } from "./items/financial-swaps-credit";
 import { stochasticCalculusFiltrationsMartingalesItems } from "./items/stochastic-calculus-filtrations-martingales";
 import { stochasticCalculusItoItems } from "./items/stochastic-calculus-ito";
 import { stochasticCalculusSdesItems } from "./items/stochastic-calculus-sdes";
@@ -934,6 +939,14 @@ export const items: Item[] = [
   ...stochasticCalculusItoItems,
   ...stochasticCalculusSdesItems,
   ...stochasticCalculusPricingItems,
+
+  // --- Financial Instruments: 20-per-concept item bank for all 15 concepts,
+  // authored to bring the domain up from zero items to a fully servable pool.
+  ...financialFixedIncome1Items,
+  ...financialFixedIncome2Items,
+  ...financialEquitiesFundsItems,
+  ...financialDerivativesItems,
+  ...financialSwapsCreditItems,
 
   // --- Probability / Statistics / Multivariate Probability: 20-per-concept
   // expansion. Brings every concept in these three domains up to 20 live
