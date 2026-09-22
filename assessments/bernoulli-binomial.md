@@ -49,6 +49,36 @@ Write the CDF of Binomial(n, p) and say why it's a step function. Bonus element:
 elementary closed form for the partial sum — it's the regularised incomplete beta function — which is
 why tables and software exist for it.
 
+**R5. The meaning of p.** `mcq` · b ≈ −0.86
+For a Bernoulli(p) random variable, what does p represent?
+Correct: the probability the trial results in success (X = 1). Distractors: *"the expected number of
+successes out of n trials"* (confuses the parameter with a moment computed from many trials → tag
+`parameter-as-mean`, blame `expectation`); *"the number of trials needed"* (confuses p with n → tag
+`p-vs-n-confusion`, blame `bernoulli-binomial`); *"the variance of X"* (confuses the parameter with a
+different moment → tag `parameter-as-variance`, blame `variance`).
+
+**R6. Support of a Bernoulli variable.** `mcq` · b ≈ −0.75
+How many values can a Bernoulli(p) random variable take, and what are they?
+Correct: exactly two, 0 and 1. Distractors: *"any integer from 0 to n"* (this is the Binomial's
+support, not the Bernoulli's → tag `bernoulli-binomial-conflation`, blame `bernoulli-binomial`);
+*"infinitely many values between 0 and 1"* (mistakes the continuous parameter p for the discrete
+outcome → tag `discrete-support-confusion`, blame `pmf`); *"exactly n values"* (again substitutes n
+for the actual count of outcomes, which is fixed at two regardless of n → tag `p-vs-n-confusion`,
+blame `bernoulli-binomial`).
+
+**R7. Which formula is Var(X)?** `mcq` · b ≈ −0.2
+For X ~ Binomial(n, p), which expression gives Var(X)?
+Correct: np(1−p). Distractors: *"np"* (that's E[X], not Var(X) → tag `mean-variance-confusion`, blame
+`variance`); *"n²p²(1−p)²"* (an invented formula with no basis → tag `variance-formula-error`, blame
+`variance`); *"p(1−p)"* (this is the Bernoulli's variance, missing the factor of n → tag
+`count-vs-proportion`, blame `variance`).
+
+**R8. True or false: the support of Binomial(n, p).** `mcq` · b ≈ 0.64
+True or False: X ~ Binomial(n, p) can take any real value between 0 and n.
+Correct: **False** — X takes only the integer values 0, 1, …, n; it's discrete, not continuous, and
+p being a real number in [0, 1] does not make the outcome continuous. Distractor: *"True"* → tag
+`discrete-support-confusion`, blame `pmf`.
+
 ---
 
 ## 2. Apply — computation
@@ -81,6 +111,13 @@ For Bin(10, 0.35), find the most likely value of X, and compare it to E[X].
 > Mode = ⌊(n+1)p⌋ = 3, mean = 3.5. The mean of a discrete distribution need not be attainable — a
 > small point that repeatedly confuses learners.
 
+**A2.6 Zero successes.** `numeric`, templated · b ≈ 0.6
+X ~ Binomial(n, p). Write a general formula for P(X = 0), then evaluate it for n = {n}, p = {p}.
+> P(X = 0) = (1−p)ⁿ — the binomial coefficient C(n, 0) = 1 and p⁰ = 1 drop out, so this is the one
+> case a learner can sanity-check by pure reasoning ("every trial has to fail") without touching the
+> general formula. For n = 10, p = 0.3: (0.7)¹⁰ ≈ **0.0282**. Distractor to watch for in grading:
+> answering 1 − p rather than (1−p)ⁿ — treating "zero successes" as a single-trial statement.
+
 ---
 
 ## 3. Explain — why the method works
@@ -111,6 +148,17 @@ experiment. Explain why there's no contradiction, and which one the law of large
 Show Bernoulli(p) is the n = 1 case, and explain why that observation is more than bookkeeping.
 > It licenses the decomposition X = ΣXᵢ, which is what makes E and Var one-liners via linearity and
 > independence — and it's the same move that later yields the CLT.
+
+**E3.6 Why independence is load-bearing in Var(X) = np(1−p).** `derivation` · b ≈ 1.8
+For X = ΣXᵢ with each Xᵢ ~ Bernoulli(p), expand Var(X) using Var(ΣXᵢ) = ΣVar(Xᵢ) + 2Σᵢ<ⱼCov(Xᵢ,Xⱼ),
+and show what independence buys you. Then say what happens to Var(X) if the trials are positively
+correlated instead.
+> Required: the cross-term expansion, and the observation that independence (or even just pairwise
+> zero covariance) is exactly what makes every Cov(Xᵢ,Xⱼ) term vanish, leaving np(1−p). If the trials
+> are positively correlated, the covariance terms are positive, so Var(X) **exceeds** np(1−p) — the
+> same overdispersion argument as T4.1, but derived here rather than argued informally. Forbidden
+> move: writing Var(ΣXᵢ) = ΣVar(Xᵢ) without ever addressing the covariance terms, which quietly
+> assumes the very independence the question asks you to examine.
 
 ---
 
@@ -229,14 +277,28 @@ answer debits the concept that actually failed (§3.4 of `assessment.md`).
 | `count-vs-proportion` | says variance shrinks with n | `variance` |
 | `mean-must-be-attainable` | expects E[X] to be a possible value | `expectation` |
 | `sum-of-binomials` | assumes X+Y binomial when p ≠ q | `mutual-independence` |
+| `parameter-as-mean` | reports p as an expected count rather than a probability | `expectation` |
+| `p-vs-n-confusion` | substitutes n where p belongs, or vice versa | `bernoulli-binomial` |
+| `parameter-as-variance` | reports p as Var(X) | `variance` |
+| `bernoulli-binomial-conflation` | attributes Binomial's support or formula to a Bernoulli | `bernoulli-binomial` |
+| `discrete-support-confusion` | treats a discrete count as continuous, or vice versa | `pmf` |
+| `mean-variance-confusion` | gives np when asked for Var(X), or the reverse | `variance` |
+| `variance-formula-error` | invents a variance expression with no derivation behind it | `variance` |
 
 ## 6. Coverage check
 
-Filing the questions marked ⚠ under their proper concepts leaves **19 items here**: 4 recall,
-5 apply, 5 explain, 5 transfer. That clears `auditCoverage`'s bar of 8 live items with all three
-required levels present, and spans roughly −0.6 to 1.7 logits — a spread of 2.3, comfortably above
-the 1.5 the adaptive selector needs.
+The bank now totals **30 items**: 8 recall, 6 apply, 6 explain, 10 transfer, spanning −0.86 (R5) to
+2.3 (T4.8) — a spread of 3.16 logits.
+
+Three transfer items (T4.4, T4.8, T4.10) are marked **⚠ downstream** and would properly be filed
+under Hypergeometric, Poisson, and MLE respectively. Filing those under their proper concepts leaves
+**27 items here**: 8 recall, 6 apply, 6 explain, 7 transfer, spanning −0.86 to 1.8 (E3.6) — a spread
+of 2.66. Either way this clears `auditCoverage`'s bar of 8 live items with all three required levels
+present, and comfortably clears the 1.5-logit spread the adaptive selector needs.
+
+The recall section now has real coverage at the easy end — R5 at −0.86 replaces R1's −0.6 as the
+floor, and R5–R8 give four one-line, definition-level items (parameter meaning, support, the Var(X)
+formula, discrete vs. continuous) below anything that existed before this pass.
 
 Still missing, and worth a second pass: a `symbolic` item (everything here is numeric, MCQ, or
-open-response), and something at the easy end for a learner who has just watched the slides — R1 at
-−0.6 is currently the floor.
+open-response).
