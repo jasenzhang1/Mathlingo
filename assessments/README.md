@@ -362,6 +362,16 @@ Cov(X,X²)=0 counterexample; and `pca`'s closing item ties directly back to `eck
 end of the linear-algebra sweep. These threads are listed as they occur in each cluster file's own
 introduction and misconception index.
 
+## Quant Finance Interview Questions
+
+[`quant-finance-interview-questions.md`](quant-finance-interview-questions.md) is a bank outside this
+structure on purpose. Every file above is authored against one concept in `concepts.ts`; a quant
+interview question is instead organized by **scenario** (flipping a fixed number of coins, flipping a
+coin until something happens, counting lattice paths), because one scenario is answered by whichever
+of several methods applies, and the interview explicitly rewards finding more than one. It is not
+wired into the concept graph, `sections.ts`, or the servable `Item` system — see the file's own header
+for why, and `assessment.md`'s Open Questions §3 for where this population was first flagged as not
+fitting the per-concept model.
 ## The discrete-math sweep
 
 `discrete-math` was added to `concepts.ts` as its own domain — 24 concepts covering logic and proof
