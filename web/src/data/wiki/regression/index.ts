@@ -8,6 +8,7 @@ import { elasticNetWiki } from "./elastic-net";
 import { forwardBackwardStepwiseSelectionWiki } from "./forward-backward-stepwise-selection";
 import { geometricInterpretationOfOlsWiki } from "./geometric-interpretation-of-ols";
 import { glmWiki } from "./glm";
+import { hatMatrixWiki } from "./hat-matrix";
 import { homoskedasticityWiki } from "./homoskedasticity";
 import { lassoWiki } from "./lasso";
 import { linearRegressionProbabilisticVersionWiki } from "./linear-regression-probabilistic-version";
@@ -72,6 +73,7 @@ export const regressionWikis: WikiArticle[] = [
 
   // reg-02 — OLS geometry and multiple regression
   geometricInterpretationOfOlsWiki,
+  hatMatrixWiki,
   multipleLinearRegressionWiki,
   linearRegressionProbabilisticVersionWiki,
   olsAssumptionsWiki,
