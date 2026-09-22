@@ -27,43 +27,13 @@ function shreve(locator: string): SourceRef {
   return { ...SHREVE, locator };
 }
 
-const ITO_INTEGRAL_ANCESTORS = [
-  "quadratic-variation",
-  "brownian-motion",
-  "simple-random-walk",
-  "bernoulli-binomial",
-  "pmf",
-  "discrete-vs-continuous-random-variables",
-  "random-variables",
-  "probability-function",
-  "axioms-of-probability",
-  "sigma-algebra",
-  "set-theory",
-  "cdf",
-  "binomial-theorem",
-  "combinations",
-  "permutations",
-  "factorials",
-  "counting-methods",
-  "mutual-independence",
-  "independence-set-theory",
-  "expectation",
-  "pdf",
-  "variance",
-  "normal-distribution",
-  "central-limit-theorem",
-  "modes-of-convergence",
-  "mgf",
-  "law-of-large-numbers",
-  "chebyshev-inequality",
-  "markov-inequality",
-  "martingales-continuous-time",
-  "filtrations-and-adapted-processes",
-];
-
-const ITO_DOEBLIN_ANCESTORS = [...ITO_INTEGRAL_ANCESTORS, "ito-integral"];
-
-const MULTIDIM_ITO_ANCESTORS = [...ITO_DOEBLIN_ANCESTORS, "ito-doeblin-formula"];
+// Three ANCESTORS constants stood here — ITO_INTEGRAL_ANCESTORS, and two
+// derived from it — intended as the prereqClosure for the items below. None
+// was ever referenced: every item still declares a narrow closure such as
+// prereqClosure: ["multidimensional-ito-calculus"]. Being unused they failed
+// noUnusedLocals and broke `tsc -b` for the whole repo, so they are removed
+// here rather than wired in; wiring them would change these items' blame
+// propagation, which is an editorial call for whoever authored them.
 
 export const stochasticCalculusItoItems: Item[] = [
   // ================= ito-integral =================
