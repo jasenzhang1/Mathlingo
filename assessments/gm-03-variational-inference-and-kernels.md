@@ -181,9 +181,34 @@ cluster by showing EM is a special case of variational inference, not merely sim
 | A1 | apply | short-answer | 0.54 | Why is D_KL(P‖Q) infinite when P puts positive probability where Q has zero probability, and how does Wasserstein avoid this? | D_KL(P‖Q)=E_P[log(P(X)/Q(X))]; if Q(x)=0 where P(x)>0, the log term blows up to +∞ at that point; Wasserstein distance instead stays finite, reflecting the physical distance the mass would need to travel, regardless of overlap *(required: the explicit log-blowup mechanism from `kl-divergence`'s own definition)* | — |
 | E1 | explain | short-answer | 1.24 | State the "earth mover's" intuition precisely. | imagining P as a pile of dirt shaped according to its density and Q as a target shape, Wasserstein distance is the minimum total (mass × distance) work needed to reshape the P-pile into the Q-shape *(required: the explicit mass-times-distance "work" framing)* | — |
 | T1 | transfer | short-answer | 1.74 | Why did Wasserstein distance become important for training GANs (WGANs) more stably? | Wasserstein distance stays meaningful when a generative model's early, poorly-trained output distribution shares almost no support with the true data distribution — exactly R2's advantage — while KL-divergence-like objectives can vanish or explode in that non-overlapping regime, a genuine source of earlier GANs' training instability *(required: connects the non-overlapping-support scenario explicitly to training instability)* | — |
+| R3 | recall | mcq | −0.21 | A "coupling" (or transport plan) γ(x,y) between distributions P and Q is: | a joint distribution with marginals P and Q, describing how much mass is moved from each x to each y | claims a coupling is simply the product distribution P(x)Q(y), missing that it must be a joint distribution with the two specified marginals, not necessarily their product → `wasserstein-distance` |
+| R4 | recall | short-answer | −0.16 | Fill in the blank: the Wasserstein distance is defined as the ___ over all valid couplings of the expected transport cost. | infimum (minimum) | — |
+| R5 | recall | short-answer | −0.11 | True or false: the Wasserstein distance satisfies the triangle inequality, unlike KL divergence. | True | — |
+| R6 | recall | mcq | −0.06 | "Optimal transport" refers to: | the mathematical problem of finding the coupling that minimizes total transport cost, which the Wasserstein distance solves | describes optimal transport as a special case of gradient descent, rather than as the underlying minimization problem the Wasserstein distance itself is defined by → `wasserstein-distance` |
+| R7 | recall | short-answer | −0.01 | What does the "Kantorovich-Rubinstein duality" express the Wasserstein-1 distance as? | a supremum over 1-Lipschitz functions f of the difference in their expectations under P and Q: sup_{‖f‖_L≤1}(E_P[f]−E_Q[f]) | — |
+| R8 | recall | short-answer | 0.09 | Fill in the blank: computing the exact Wasserstein distance for large-scale problems is often too expensive, so a common approximation is ___. | the Sinkhorn algorithm (entropy-regularized optimal transport) | — |
+| R9 | recall | short-answer | 0.14 | True or false: the Wasserstein distance, unlike KL divergence, is symmetric: W(P,Q)=W(Q,P). | True | — |
+| R10 | recall | mcq | 0.19 | Compared to KL divergence, the Wasserstein distance is generally: | more computationally expensive to compute exactly | claims the Wasserstein distance is always cheaper to compute than KL divergence, the opposite of its actual computational cost trade-off → `wasserstein-distance` |
+| R11 | recall | short-answer | 0.24 | State the prerequisite concept for Wasserstein Distance. | KL Divergence | — |
+| R12 | recall | short-answer | 0.29 | Fill in the blank: in WGAN, the discriminator, called a "critic," is trained to approximate the ___ used in the Kantorovich-Rubinstein dual formulation. | 1-Lipschitz function f | — |
+| R13 | recall | short-answer | 0.34 | True or false: the Wasserstein distance is also known as the "earth mover's distance." | True | — |
+| R14 | recall | mcq | 0.39 | The "cost function" in an optimal transport problem typically represents: | the cost of moving one unit of mass from location x to location y, e.g. the distance ‖x−y‖ | claims the cost function represents the probability of moving mass between locations, confusing a transport cost with a transport probability → `wasserstein-distance` |
+| R15 | recall | short-answer | 0.44 | Name one application domain for Wasserstein distance besides GAN training. | e.g. domain adaptation, generative model evaluation, or image retrieval/registration | — |
+| R16 | recall | short-answer | 0.49 | True or false: Wasserstein-1 and Wasserstein-2 distance use the same underlying cost, raised to different powers (order 1 vs order 2 of the underlying distance). | True | — |
+| A2 | apply | numeric | 0.59 | P puts all mass at x=0, Q puts all mass at y=5, cost=\|x−y\|. Wasserstein-1 distance? `[verified: 5]` | all the mass must move from 0 to 5: cost=5 | — |
+| A3 | apply | numeric | 0.64 | P: 0.5 mass at x=0, 0.5 mass at x=10; Q: all mass at y=5. Minimum transport cost? `[verified: 5]` | 0.5·5+0.5·5=5 | — |
+| A4 | apply | numeric | 0.69 | P: mass 1 at x=2; Q: mass 1 at x=2 (identical). Wasserstein-1 distance? `[verified: 0]` | no mass needs to move: cost=0 | — |
+| A5 | apply | numeric | 0.74 | P: 0.3 at x=0, 0.7 at x=1; Q: 0.7 at x=0, 0.3 at x=1. Minimum transport cost to turn P into Q? `[verified: 0.4]` | 0.4 units of mass must move the distance 1 to shift the imbalance: 0.4·1=0.4 | — |
+| A6 | apply | numeric | 0.79 | P: uniform on {0,1,2}, each mass 1/3; Q: mass 1 at x=1. Minimum transport cost? `[verified: 0.667]` | 1/3 moves from 0 to 1 (cost 1/3) and 1/3 moves from 2 to 1 (cost 1/3); the mass already at 1 stays: total=2/3≈0.667 | — |
+| E2 | explain | short-answer | 1.29 | Why is the Wasserstein distance well-defined even when two distributions have completely disjoint support, unlike KL divergence? | it is fundamentally about the cost of physically moving probability mass from one distribution's support to the other's, a finite, meaningful quantity regardless of whether the supports overlap; KL divergence instead compares density ratios pointwise, which blows up to infinity wherever the reference distribution assigns zero density to a point the other assigns positive density *(required: contrasts the transport-based definition to the density-ratio definition and why only the former stays finite)* | — |
+| E3 | explain | short-answer | 1.39 | Why does the Kantorovich-Rubinstein duality make the Wasserstein-1 distance tractable to estimate with a neural network, as in WGAN? | instead of solving the potentially very high-dimensional optimal-transport coupling problem directly, the dual formulation reduces the computation to finding a single 1-Lipschitz function maximizing a simple expectation difference — a much more familiar optimization problem a neural network, constrained to be approximately 1-Lipschitz, can be trained to approximate *(required: names that the dual reformulation is what makes neural-network estimation practical)* | — |
+| E4 | explain | short-answer | 1.49 | Why is the Lipschitz constraint on the critic function in Kantorovich-Rubinstein duality not an arbitrary technical restriction? | the supremum in the dual formulation only equals the true Wasserstein-1 distance when restricted to exactly the 1-Lipschitz functions; without that constraint the supremum over all functions would be unbounded, since scaling any suitable f up without limit could always increase E_P[f]−E_Q[f], so the constraint is precisely what keeps the dual formulation equal to a finite, meaningful distance *(required: names that removing the constraint makes the supremum unbounded, not just "less accurate")* | — |
+| E5 | explain | short-answer | 1.59 | Why does exact optimal transport computation become intractable for large datasets, motivating approximations like the Sinkhorn algorithm? | exact optimal transport is a linear program whose complexity grows at least cubically with the number of points being matched, quickly becoming infeasible for large datasets; the Sinkhorn algorithm adds an entropy regularization term that makes the problem strictly convex and solvable via a much faster iterative matrix-scaling procedure, at the cost of only approximating the true, unregularized, Wasserstein distance *(required: names the cubic-or-worse exact cost and the entropy-regularization trade-off)* | — |
+| T2 | transfer | short-answer | 1.79 | Why might a practitioner use the Wasserstein distance rather than KL divergence to evaluate how similar a generative model's output distribution is to real data? | generative models, especially early in training, often produce a distribution with little or no support overlap with the real data, exactly the regime where KL divergence becomes infinite or uninformative, while the Wasserstein distance remains finite and meaningfully graded, providing a genuinely useful evaluation signal throughout training, not just once the distributions start to overlap *(required: connects the non-overlapping-support advantage specifically to the evaluation use case)* | — |
+| T3 | transfer | short-answer | 1.84 | Could a "Wasserstein autoencoder" replace a VAE's KL term with a Wasserstein term, and what would change? | yes — a Wasserstein autoencoder (WAE) replaces the VAE's per-example KL-to-prior regularization with a Wasserstein-distance penalty between the aggregated posterior over the whole dataset and the prior, avoiding KL's aggressive per-example matching in favor of matching the overall population of encodings to the prior in aggregate, often producing sharper reconstructions *(required: names the aggregated-posterior-vs-per-example distinction between the two regularization approaches)* | — |
 
-*Coverage: 5 items, −0.26…1.74. This is the final concept of the entire graphical-models domain and
-of the full expanded sweep.*
+*Coverage: 16/6/5/3 — 30 items, −0.26…1.84. This is the final concept of the entire graphical-models
+domain and of the full expanded sweep.*
 
 ---
 
@@ -196,11 +221,33 @@ of the full expanded sweep.*
 | GP's "nonparametric" label misread as "zero parameters" | `gaussian-process` |
 | RKHS theory conflated with an unrelated statistical tool | `rkhs` |
 | Wasserstein distance treated as mathematically identical to KL divergence | `wasserstein-distance` |
+| ELBO sign/formula written with the entropy term's sign flipped | `variational-inference-elbo` |
+| CAVI assumed to update all mean-field factors jointly rather than one at a time | `variational-inference-elbo` |
+| mean-field's cost misattributed to speed rather than lost posterior correlations | `variational-inference-elbo` |
+| ELBO acronym expanded incorrectly | `variational-inference-elbo` |
+| VAE encoder assumed to output Z directly rather than q's distribution parameters | `variational-inference-vaes` |
+| VAE decoder likelihood mismatched to the data type (e.g. Gaussian for binary pixels) | `variational-inference-vaes` |
+| reparameterization noise ε treated as a learned parameter | `variational-inference-vaes` |
+| GP's kernel/covariance function omitted from what specifies a GP | `gaussian-process` |
+| RBF length-scale's smoothing effect reversed | `gaussian-process` |
+| GP noise variance and signal variance conflated | `gaussian-process` |
+| RBF kernel treated as implying constant correlation regardless of distance | `gaussian-process` |
+| RKHS feature map assumed to map back into the original input space | `rkhs` |
+| RBF kernel's infinite-dimensional feature space confused with a finite one | `rkhs` |
+| Mercer's theorem assumed to guarantee only finite-dimensional feature spaces | `rkhs` |
+| RKHS norm penalty confused with an L1 rather than L2-generalizing penalty | `rkhs` |
+| optimal transport/coupling confused with the product distribution P(x)Q(y) | `wasserstein-distance` |
+| Wasserstein distance assumed cheaper to compute exactly than KL divergence | `wasserstein-distance` |
+| transport cost function confused with a transport probability | `wasserstein-distance` |
 
-**Cluster total: 25 items across 5 concepts.**
+**Cluster total: 150 items across 5 concepts (30 each), expanded from the original 25-item design-doc
+skeleton.** Every new numeric claim was verified independently, including the RBF kernel evaluations
+(0.607, 1, 2.426), the Gram-matrix eigenvalue checks (1.5/0.5 valid, 3/−1 invalid), the KL-to-prior
+divergences for the VAE (1.307, 0, 2.318), and the optimal-transport costs for the Wasserstein examples
+(5, 5, 0, 0.4, 0.667).
 
 ---
 
 # Graphical Models: complete
 
-**15 / 15 concepts done.** Total items across all 3 clusters: **~75**.
+**15 / 15 concepts done.** Total items across all 3 clusters: **450** (30 per concept).
