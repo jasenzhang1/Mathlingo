@@ -230,6 +230,82 @@ export const concepts: Concept[] = [
     prerequisites: ["combinations"],
   },
   // ---------------------------------------------------------------------
+  // Graph Theory
+  // ---------------------------------------------------------------------
+  {
+    id: "graph-basics",
+    title: "Graphs: Vertices, Edges & Degree",
+    domain: "discrete-math",
+    blurb: "Vertices, edges, degree, and the handshake lemma that ties them together.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "graph-paths-connectivity",
+    title: "Walks, Paths & Connectivity",
+    domain: "discrete-math",
+    blurb: "Walks, paths, and cycles, and what it means for a graph to be connected.",
+    prerequisites: ["graph-basics"],
+  },
+  {
+    id: "trees",
+    title: "Trees & Spanning Trees",
+    domain: "discrete-math",
+    blurb: "Connected, acyclic graphs — exactly n − 1 edges for n vertices, and never a cycle.",
+    prerequisites: ["graph-paths-connectivity"],
+  },
+  {
+    id: "eulerian-hamiltonian-paths",
+    title: "Eulerian & Hamiltonian Paths",
+    domain: "discrete-math",
+    blurb: "Traversing every edge exactly once versus every vertex exactly once — and why only one has a clean test.",
+    prerequisites: ["graph-paths-connectivity"],
+  },
+  {
+    id: "graph-coloring",
+    title: "Graph Coloring",
+    domain: "discrete-math",
+    blurb: "Assigning colors to vertices so no edge joins two of the same color, and the chromatic number that counts the minimum.",
+    prerequisites: ["graph-paths-connectivity"],
+  },
+  // ---------------------------------------------------------------------
+  // Modular Arithmetic
+  // ---------------------------------------------------------------------
+  {
+    id: "modular-arithmetic",
+    title: "Modular Arithmetic",
+    domain: "discrete-math",
+    blurb: "Congruence mod n — arithmetic that wraps around, like a clock.",
+    prerequisites: [],
+  },
+  {
+    id: "gcd-euclidean-algorithm",
+    title: "GCD & the Euclidean Algorithm",
+    domain: "discrete-math",
+    blurb: "The greatest common divisor, computed fast by repeated remainders instead of factoring.",
+    prerequisites: ["modular-arithmetic"],
+  },
+  {
+    id: "modular-inverses",
+    title: "Modular Inverses",
+    domain: "discrete-math",
+    blurb: "When you can 'divide' mod n, and how the extended Euclidean algorithm finds the inverse.",
+    prerequisites: ["gcd-euclidean-algorithm"],
+  },
+  {
+    id: "fermat-euler-theorems",
+    title: "Fermat's Little Theorem & Euler's Theorem",
+    domain: "discrete-math",
+    blurb: "a^(p−1) ≡ 1 mod p, and its generalization to any modulus via Euler's totient function.",
+    prerequisites: ["modular-inverses"],
+  },
+  {
+    id: "chinese-remainder-theorem",
+    title: "Chinese Remainder Theorem",
+    domain: "discrete-math",
+    blurb: "Solving several congruences with coprime moduli at once, and why the combined solution is unique mod their product.",
+    prerequisites: ["modular-inverses"],
+  },
+  // ---------------------------------------------------------------------
   // Probability
   // ---------------------------------------------------------------------
   {
@@ -1493,6 +1569,13 @@ export const concepts: Concept[] = [
     domain: "regression",
     blurb: "OLS as projecting the response vector onto the predictors' column space.",
     prerequisites: ["normal-equations", "column-space", "vector-projection"],
+  },
+  {
+    id: "hat-matrix",
+    title: "The Hat Matrix",
+    domain: "regression",
+    blurb: "Why H = X(XᵀX)⁻¹Xᵀ being idempotent is the one fact behind n − p degrees of freedom and every t-statistic a regression prints.",
+    prerequisites: ["idempotent-matrices", "geometric-interpretation-of-ols"],
   },
   {
     id: "multiple-linear-regression",
