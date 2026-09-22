@@ -852,7 +852,15 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
     {
       id: "functions",
       label: "Functions",
-      conceptIds: ["python-functions"],
+      conceptIds: [
+        "python-functions",
+        "python-arguments",
+        "python-args-kwargs",
+        "python-scope",
+        "python-lambda",
+        "python-higher-order",
+        "python-sorting-key",
+      ],
     },
     {
       id: "containers-and-iteration",
@@ -883,7 +891,59 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
     {
       id: "pandas",
       label: "pandas",
-      conceptIds: ["pandas-dataframes", "pandas-groupby"],
+      conceptIds: [
+        "pandas-dataframes",
+        "pandas-groupby",
+        "pandas-io",
+        "pandas-selection",
+        "pandas-filtering",
+        "pandas-missing",
+        "pandas-dtypes",
+        "pandas-sorting",
+        "pandas-apply",
+        "pandas-strings",
+        "pandas-datetime",
+        "pandas-pivot",
+        "pandas-concat",
+        "pandas-window",
+      ],
+    },
+    {
+      id: "strings-text",
+      label: "Strings & Text",
+      conceptIds: [
+        "python-strings",
+        "python-string-methods",
+        "python-fstrings",
+        "python-regex",
+      ],
+    },
+    {
+      id: "errors",
+      label: "Errors & Robustness",
+      conceptIds: [
+        "python-exceptions",
+        "python-raising",
+      ],
+    },
+    {
+      id: "iteration",
+      label: "Iterators & Generators",
+      conceptIds: [
+        "python-iterators",
+        "python-generators",
+        "python-itertools",
+      ],
+    },
+    {
+      id: "classes",
+      label: "Classes & Objects",
+      conceptIds: [
+        "python-classes",
+        "python-methods",
+        "python-dunder",
+        "python-inheritance",
+      ],
     },
   ],
 };

@@ -50,6 +50,14 @@ import { stochasticCalculusFiltrationsMartingalesItems } from "./items/stochasti
 import { stochasticCalculusItoItems } from "./items/stochastic-calculus-ito";
 import { stochasticCalculusSdesItems } from "./items/stochastic-calculus-sdes";
 import { stochasticCalculusPricingItems } from "./items/stochastic-calculus-pricing";
+import { pythonFunctionsChapterItems } from "./items/python-functions-chapter";
+import { pythonCodeFunctionsItems } from "./items/python-code-functions";
+import { pandasChapterItems } from "./items/python-pandas";
+import { pandasChapterCodeItems } from "./items/python-code-pandas";
+import { pythonStringsErrorsItems } from "./items/python-strings-errors";
+import { pythonCodeStringsErrorsItems } from "./items/python-code-strings-errors";
+import { pythonIterationClassesItems } from "./items/python-iteration-classes";
+import { pythonCodeIterationClassesItems } from "./items/python-code-iteration-classes";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -5223,6 +5231,30 @@ export const items: Item[] = [
   ...discreteMathLogicItems,
   ...discreteMathSetsItems,
   ...discreteMathCountingItems,
+  // Functions chapter beyond def/return — arguments through sorting keys.
+  ...pythonFunctionsChapterItems,
+
+  // `code` items for the Functions chapter, 3 per concept.
+  ...pythonCodeFunctionsItems,
+
+  // pandas chapter — IO through window operations, 8 items per concept.
+  ...pandasChapterItems,
+
+  // `code` items for the pandas chapter, 3 per concept.
+  ...pandasChapterCodeItems,
+
+  // Strings & Text and Errors chapters, 8 items per concept.
+  ...pythonStringsErrorsItems,
+
+  // `code` items for the Strings and Errors chapters, 3 per concept.
+  ...pythonCodeStringsErrorsItems,
+
+  // Iterators/Generators and Classes chapters, 8 items per concept.
+  ...pythonIterationClassesItems,
+
+  // `code` items for the Iterators and Classes chapters, 3 per concept.
+  ...pythonCodeIterationClassesItems,
+
 ];
 
 /**

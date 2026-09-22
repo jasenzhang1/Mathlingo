@@ -3498,6 +3498,236 @@ export const concepts: Concept[] = [
       "Split-apply-combine, joins that silently change row counts, and the long/wide pivot.",
     prerequisites: ["pandas-dataframes", "python-comprehensions"],
   },
+
+  // Python — Functions, beyond the def/return lesson already here: the argument
+  // forms, *args/**kwargs, scope, lambda, higher-order functions, sorting keys.
+  {
+    id: "python-arguments",
+    title: "Positional, Keyword, and Default Arguments",
+    domain: "python",
+    blurb: "Four ways to pass the same argument — and the mutable-default trap.",
+    prerequisites: ["python-functions"],
+  },
+  {
+    id: "python-args-kwargs",
+    title: "*args and **kwargs",
+    domain: "python",
+    blurb: "Accepting any number of arguments, and unpacking a list or dict into a call.",
+    prerequisites: ["python-arguments", "python-dictionaries"],
+  },
+  {
+    id: "python-scope",
+    title: "Scope and the LEGB Rule",
+    domain: "python",
+    blurb: "Where a name is looked up, why assignment creates a local, and what global and nonlocal do.",
+    prerequisites: ["python-functions"],
+  },
+  {
+    id: "python-lambda",
+    title: "Lambda Expressions",
+    domain: "python",
+    blurb: "A function as an expression — one line, no name, and the places that actually want one.",
+    prerequisites: ["python-functions"],
+  },
+  {
+    id: "python-higher-order",
+    title: "map, filter, and Functions as Values",
+    domain: "python",
+    blurb: "Passing a function as an argument, and when a comprehension reads better.",
+    prerequisites: ["python-lambda", "python-comprehensions"],
+  },
+  {
+    id: "python-sorting-key",
+    title: "Sorting with key",
+    domain: "python",
+    blurb: "sorted, .sort, reverse, and the key function that decides what 'in order' means.",
+    prerequisites: ["python-lambda", "python-list-operations"],
+  },
+
+  // Python — pandas, beyond the two concepts the domain started with. Reading
+  // data, selecting it, cleaning it, reshaping it, and looking backwards along it.
+  {
+    id: "pandas-io",
+    title: "Reading and Writing Data",
+    domain: "python",
+    blurb: "read_csv and its arguments — where most real analyses actually begin, and go wrong.",
+    prerequisites: ["pandas-dataframes"],
+  },
+  {
+    id: "pandas-selection",
+    title: "Selecting with loc and iloc",
+    domain: "python",
+    blurb: "Label-based and position-based selection, and why chained [][] is the wrong habit.",
+    prerequisites: ["pandas-dataframes"],
+  },
+  {
+    id: "pandas-filtering",
+    title: "Boolean Filtering and query",
+    domain: "python",
+    blurb: "Masks, & and | with their brackets, isin, and when query reads better.",
+    prerequisites: ["pandas-selection"],
+  },
+  {
+    id: "pandas-missing",
+    title: "Missing Data: NaN, dropna, fillna",
+    domain: "python",
+    blurb: "What NaN does to comparisons and arithmetic, and how to drop or fill it deliberately.",
+    prerequisites: ["pandas-selection"],
+  },
+  {
+    id: "pandas-dtypes",
+    title: "dtypes, astype, and Categoricals",
+    domain: "python",
+    blurb: "Why a column of numbers can be object dtype, and what category buys you.",
+    prerequisites: ["pandas-missing"],
+  },
+  {
+    id: "pandas-sorting",
+    title: "Sorting and Ranking",
+    domain: "python",
+    blurb: "sort_values, nlargest, rank, and where NaN ends up.",
+    prerequisites: ["pandas-selection"],
+  },
+  {
+    id: "pandas-apply",
+    title: "apply, map, and Vectorisation",
+    domain: "python",
+    blurb: "Three ways to transform a column, and why the vectorised one is usually right.",
+    prerequisites: ["pandas-selection", "python-lambda"],
+  },
+  {
+    id: "pandas-strings",
+    title: "The .str Accessor",
+    domain: "python",
+    blurb: "Vectorised string methods on a Series, and the NaN-handling they come with.",
+    prerequisites: ["pandas-apply"],
+  },
+  {
+    id: "pandas-datetime",
+    title: "Time Series and datetime",
+    domain: "python",
+    blurb: "to_datetime, the .dt accessor, resampling, and the DatetimeIndex.",
+    prerequisites: ["pandas-dtypes"],
+  },
+  {
+    id: "pandas-pivot",
+    title: "Pivot Tables and crosstab",
+    domain: "python",
+    blurb: "Long to wide, aggregation in one step, and how pivot differs from pivot_table.",
+    prerequisites: ["pandas-groupby"],
+  },
+  {
+    id: "pandas-concat",
+    title: "concat and Assembling Frames",
+    domain: "python",
+    blurb: "Stacking frames by row or column, and why the index usually needs resetting.",
+    prerequisites: ["pandas-groupby"],
+  },
+  {
+    id: "pandas-window",
+    title: "Rolling and Cumulative Windows",
+    domain: "python",
+    blurb: "rolling, expanding, cumsum, shift — the operations that look backwards along a series.",
+    prerequisites: ["pandas-datetime"],
+  },
+
+  // Python — Strings & Text, and Errors. Text handling was assumed throughout the
+  // domain without ever being taught; so was the try/except that survives bad input.
+  {
+    id: "python-strings",
+    title: "Strings, Indexing, and Immutability",
+    domain: "python",
+    blurb: "Text as a sequence — and why you build a new string rather than changing one.",
+    prerequisites: ["python-variables-types"],
+  },
+  {
+    id: "python-string-methods",
+    title: "String Methods: split, join, strip, replace",
+    domain: "python",
+    blurb: "The handful of methods that do most text work, and which ones return rather than mutate.",
+    prerequisites: ["python-strings", "python-lists-intro"],
+  },
+  {
+    id: "python-fstrings",
+    title: "f-strings and Format Specs",
+    domain: "python",
+    blurb: "Interpolation, alignment, precision, and the =-suffix that debugs for you.",
+    prerequisites: ["python-strings"],
+  },
+  {
+    id: "python-regex",
+    title: "Regular Expressions with re",
+    domain: "python",
+    blurb: "search, match, findall, groups — and knowing when a regex is the wrong tool.",
+    prerequisites: ["python-string-methods"],
+  },
+  {
+    id: "python-exceptions",
+    title: "try, except, else, finally",
+    domain: "python",
+    blurb: "Catching what you can handle, and why a bare except hides the bugs you needed to see.",
+    prerequisites: ["python-functions"],
+  },
+  {
+    id: "python-raising",
+    title: "Raising Exceptions and Custom Types",
+    domain: "python",
+    blurb: "raise, exception chaining, and designing an error a caller can act on.",
+    prerequisites: ["python-exceptions"],
+  },
+
+  // Python — Iterators & Generators, and Classes & Objects. The domain used for
+  // loops and comprehensions throughout without explaining the protocol under them,
+  // and had no object model at all.
+  {
+    id: "python-iterators",
+    title: "The Iterator Protocol",
+    domain: "python",
+    blurb: "What a for loop actually does — iter, next, and why an iterator is spent after one pass.",
+    prerequisites: ["python-for-loops"],
+  },
+  {
+    id: "python-generators",
+    title: "Generators and yield",
+    domain: "python",
+    blurb: "A function that pauses and resumes, producing values one at a time without a list.",
+    prerequisites: ["python-iterators", "python-functions"],
+  },
+  {
+    id: "python-itertools",
+    title: "itertools Essentials",
+    domain: "python",
+    blurb: "chain, islice, groupby, combinations — the loops you no longer have to write.",
+    prerequisites: ["python-generators"],
+  },
+  {
+    id: "python-classes",
+    title: "Classes, __init__, and Instances",
+    domain: "python",
+    blurb: "Bundling data with the operations on it, and what self actually is.",
+    prerequisites: ["python-functions", "python-dictionaries"],
+  },
+  {
+    id: "python-methods",
+    title: "Methods, self, and Class Attributes",
+    domain: "python",
+    blurb: "Instance versus class state, and the mutable class attribute that everyone shares.",
+    prerequisites: ["python-classes"],
+  },
+  {
+    id: "python-dunder",
+    title: "Dunder Methods",
+    domain: "python",
+    blurb: "__repr__, __eq__, __len__ — teaching your object to work with Python's own syntax.",
+    prerequisites: ["python-methods"],
+  },
+  {
+    id: "python-inheritance",
+    title: "Inheritance and super()",
+    domain: "python",
+    blurb: "Reusing a base class, overriding it, and why composition is often the better answer.",
+    prerequisites: ["python-methods"],
+  },
 ];
 
 export const conceptById: Map<string, Concept> = new Map(
