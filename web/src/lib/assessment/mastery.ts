@@ -267,6 +267,50 @@ export function applyIndirectEvidence(
 }
 
 /**
+ * How many EXP points a single graded response is guaranteed to move the bar,
+ * in the direction the response earned. The Bayesian step shrinks with
+ * observations by design — that is the point of uncertainty-scaled learning —
+ * but taken to its logical end a well-established learner can answer
+ * correctly and watch the bar sit still, which reads as "nothing happened"
+ * rather than "you are already strong here." A visible floor keeps every
+ * graded response feeling like it counted, without touching the underlying
+ * ability belief (only its *display* is nudged to satisfy the floor).
+ */
+export const MIN_EXP_DELTA = 2;
+
+/**
+ * If the ordinary IRT update would move mastery (in EXP points) by less than
+ * `MIN_EXP_DELTA` in the direction the response earned, push the ability mean
+ * just far enough to hit the floor. `masteryLevel` is a monotonic sigmoid of
+ * the conservative mean, so the floor is met by inverting it directly rather
+ * than by iterating the update.
+ */
+export function enforceMinExpFloor(
+  ability: Ability,
+  priorCeiling: number,
+  passed: boolean,
+): Ability {
+  const desiredCeiling = clamp(
+    passed ? priorCeiling + MIN_EXP_DELTA : priorCeiling - MIN_EXP_DELTA,
+    0,
+    100,
+  );
+  const currentCeiling = 100 * masteryLevel(ability);
+  const floorMet = passed ? currentCeiling >= desiredCeiling : currentCeiling <= desiredCeiling;
+  if (floorMet) return ability;
+
+  const p = clamp(desiredCeiling / 100, 1e-6, 1 - 1e-6);
+  const conservativeMean = Math.log(p / (1 - p)) / REFERENCE_DISCRIMINATION + REFERENCE_DIFFICULTY;
+  const mean = clamp(
+    conservativeMean + CONSERVATISM_Z * Math.sqrt(ability.variance),
+    -ABILITY_BOUND,
+    ABILITY_BOUND,
+  );
+
+  return { ...ability, mean };
+}
+
+/**
  * Down-weight the evidence when the grader was unsure — a shaky transcription
  * of handwriting, or a model judge that abstained. We still record the attempt,
  * but a low-confidence grade should not swing the ability estimate as hard as a

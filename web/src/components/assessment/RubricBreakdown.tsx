@@ -1,5 +1,6 @@
 import { explainScore } from "../../lib/assessment/rubric";
 import type { RubricVerdict } from "../../lib/assessment/types";
+import { CodeText } from "./CodeText";
 
 /**
  * The element-by-element account of a written answer's score.
@@ -55,7 +56,7 @@ export function RubricBreakdown({ breakdown }: { breakdown: RubricVerdict[] }) {
           >
             <div className="flex items-start justify-between gap-3">
               <p className="font-body text-sm font-medium text-[var(--ink)]">
-                {element.description}
+                <CodeText text={element.description} />
                 {element.required && (
                   <span className="font-body ml-1.5 text-xs font-normal text-[var(--ink-soft)]">
                     (required)
@@ -141,7 +142,7 @@ export function RubricBreakdown({ breakdown }: { breakdown: RubricVerdict[] }) {
                 className="rounded-xl border border-[#c0392b]/30 bg-[#c0392b]/5 p-3"
               >
                 <p className="font-body text-sm font-medium text-[var(--ink)]">
-                  {violation.description}
+                  <CodeText text={violation.description} />
                 </p>
                 {violation.justification && (
                   <p className="font-body mt-1 text-sm text-[var(--ink-soft)]">

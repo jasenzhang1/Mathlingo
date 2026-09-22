@@ -1,10 +1,10 @@
 /**
  * Splits item text into prose and inline-code segments, `` `like this` ``.
  *
- * Mirrors `splitMath` (`lib/wiki/inlineMath.ts`) but for backtick-delimited
- * code rather than dollar-delimited LaTeX — the two live in separate modules
- * because assessment stems need code spans and wiki prose needs maths, and
- * neither domain currently needs the other's delimiter.
+ * Mirrors the code-segment half of `splitMath` (`lib/wiki/inlineMath.ts`),
+ * which handles both `$math$` and `` `code` `` for wiki prose. This module
+ * stays separate because assessment stems never need maths, so a single
+ * backtick-only splitter is simpler for that call site.
  */
 
 export interface CodeSegment {

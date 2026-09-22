@@ -8,6 +8,7 @@ import { elasticNetWiki } from "./elastic-net";
 import { forwardBackwardStepwiseSelectionWiki } from "./forward-backward-stepwise-selection";
 import { geometricInterpretationOfOlsWiki } from "./geometric-interpretation-of-ols";
 import { glmWiki } from "./glm";
+import { hatMatrixWiki } from "./hat-matrix";
 import { homoskedasticityWiki } from "./homoskedasticity";
 import { lassoWiki } from "./lasso";
 import { linearRegressionProbabilisticVersionWiki } from "./linear-regression-probabilistic-version";
@@ -30,6 +31,8 @@ import { regressToTheMeanWiki } from "./regress-to-the-mean";
 import { regressionWiki } from "./regression";
 import { regularizationWiki } from "./regularization";
 import { ridgeRegressionWiki } from "./ridge-regression";
+import { sandwichEstimatorWiki } from "./sandwich-estimator";
+import { generalizedEstimatingEquationsWiki } from "./generalized-estimating-equations";
 import { simpleLinearRegressionWiki } from "./simple-linear-regression";
 import { ssrSseSstWiki } from "./ssr-sse-sst";
 import { vifWiki } from "./vif";
@@ -70,6 +73,7 @@ export const regressionWikis: WikiArticle[] = [
 
   // reg-02 — OLS geometry and multiple regression
   geometricInterpretationOfOlsWiki,
+  hatMatrixWiki,
   multipleLinearRegressionWiki,
   linearRegressionProbabilisticVersionWiki,
   olsAssumptionsWiki,
@@ -84,6 +88,7 @@ export const regressionWikis: WikiArticle[] = [
   effectOfAddingAnotherVariableWiki,
   vifWiki,
   outliersLeverageInfluenceWiki,
+  sandwichEstimatorWiki,
 
   // reg-04 — model selection and regularization
   aicBicWiki,
@@ -103,4 +108,5 @@ export const regressionWikis: WikiArticle[] = [
   glmWiki,
   poissonRegressionWiki,
   coxProportionalHazardsModelWiki,
+  generalizedEstimatingEquationsWiki,
 ];

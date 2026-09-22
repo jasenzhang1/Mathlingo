@@ -7,6 +7,7 @@ import { AuthProvider } from "./lib/auth/AuthContext.tsx";
 import { AccountPage } from "./pages/AccountPage.tsx";
 import { ConceptMapPage } from "./pages/ConceptMapPage.tsx";
 import { ConceptPage } from "./pages/ConceptPage.tsx";
+import { DevQuestionsPage } from "./pages/DevQuestionsPage.tsx";
 import { ForgotPasswordPage } from "./pages/ForgotPasswordPage.tsx";
 import { LoginPage } from "./pages/LoginPage.tsx";
 import { PostPage } from "./pages/PostPage.tsx";
@@ -15,6 +16,8 @@ import { ProfilePage } from "./pages/ProfilePage.tsx";
 import { ResetPasswordPage } from "./pages/ResetPasswordPage.tsx";
 import { SchoolBoardPage } from "./pages/SchoolBoardPage.tsx";
 import { SignUpPage } from "./pages/SignUpPage.tsx";
+import { SubmitAnalogyPage } from "./pages/SubmitAnalogyPage.tsx";
+import { SubmitQuestionPage } from "./pages/SubmitQuestionPage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -32,6 +35,9 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/account" element={<AccountPage />} />
           <Route path="/u/:username" element={<ProfilePage />} />
           <Route path="/school" element={<SchoolBoardPage />} />
+          <Route path="/submit/questions" element={<SubmitQuestionPage />} />
+          <Route path="/submit/analogies" element={<SubmitAnalogyPage />} />
+          <Route path="/dev/questions" element={<DevQuestionsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />

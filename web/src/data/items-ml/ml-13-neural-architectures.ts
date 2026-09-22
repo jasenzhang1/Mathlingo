@@ -2498,4 +2498,1976 @@ export const ml13Items: Item[] = [
     source: ML_13,
     status: "live",
   },
+
+  // =========================================================================
+  // Doubling sweep — additional items appended per concept. See
+  // doubling-spec.md for the authoring rules this batch follows.
+  // =========================================================================
+
+  // --- Architecture Families (additional) ------------------------------------
+  {
+    id: "architecture-families--recall-what-architecture-means",
+    conceptId: "architecture-families",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What is a neural network 'architecture'?",
+    choices: [
+      {
+        id: "a",
+        text: "The specific arrangement of layers, connections, and weight-sharing that defines which functions the network can represent",
+        correct: true,
+      },
+      {
+        id: "b",
+        text: "The optimizer and learning rate schedule used to train it",
+        correct: false,
+        misconception: { id: "architecture-confused-with-optimizer", description: "Confuses the structure of the model with the training procedure applied to it.", blameConceptId: "architecture-families" },
+      },
+      {
+        id: "c",
+        text: "The dataset it is trained on",
+        correct: false,
+        misconception: { id: "architecture-confused-with-data", description: "Confuses the model's structure with the data used to fit it.", blameConceptId: "architecture-families" },
+      },
+      {
+        id: "d",
+        text: "The final trained weight values",
+        correct: false,
+        misconception: { id: "architecture-confused-with-weights", description: "Confuses the fixed structure with the learned numbers that fill it.", blameConceptId: "architecture-families" },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["architecture-families"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "architecture-families--recall-inductive-bias-term",
+    conceptId: "architecture-families",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "What is the standard term for an assumption an architecture builds in about the data, before any training happens?",
+    rubric: {
+      elements: [{ id: "term", description: "Names it an inductive bias.", weight: 3, required: true }],
+    },
+    difficulty: -1.4,
+    discrimination: 1.1,
+    expectedSeconds: 25,
+    prereqClosure: ["architecture-families"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "architecture-families--apply-conv-weight-count-small",
+    conceptId: "architecture-families",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A convolutional layer uses 3 x 3 kernels, takes 8 input channels and produces 16 output channels. How many weights does it hold, excluding biases?",
+    answerKey: 1152,
+    tolerance: 0.000001,
+    difficulty: 0.05,
+    discrimination: 1.3,
+    expectedSeconds: 70,
+    prereqClosure: ["architecture-families", "convolutional-neural-networks"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "architecture-families--apply-parameter-sharing-example",
+    conceptId: "architecture-families",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "For a 1-D convolution applied to an audio waveform, what specific assumption about the signal justifies sharing the same kernel weights across every time position?",
+    rubric: {
+      elements: [
+        {
+          id: "assumption",
+          description: "States a sound pattern (e.g. a phoneme's acoustic shape) means the same thing regardless of when it occurs, so the same detector is useful everywhere in time.",
+          weight: 4,
+          required: true,
+        },
+        { id: "contrast", description: "Contrasts this with a setting where position carries meaning (e.g. tabular columns), where the same sharing would be wrong.", weight: 3 },
+      ],
+    },
+    difficulty: 1.3,
+    discrimination: 1.4,
+    expectedSeconds: 150,
+    prereqClosure: ["architecture-families", "convolutional-neural-networks"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "architecture-families--explain-why-not-most-general",
+    conceptId: "architecture-families",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "A fully general architecture (a dense network with enough units) can in principle represent any function a " +
+      "convolution or a recurrence can. Explain why practitioners still choose the more restrictive architecture.",
+    rubric: {
+      elements: [
+        {
+          id: "sample-efficiency",
+          description: "Explains a correct restriction reduces the space of functions the model must search, so it needs far less data and compute to find the right one among restricted candidates than among all possible functions.",
+          weight: 4,
+          required: true,
+        },
+        { id: "generalization", description: "Notes the restriction also constrains what the model does off the training distribution, often improving generalization when the restriction matches reality.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.5,
+    expectedSeconds: 170,
+    prereqClosure: ["architecture-families"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "architecture-families--explain-locality-vs-global-mixing",
+    conceptId: "architecture-families",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Both convolutions and self-attention layers can be stacked to eventually mix information from the whole " +
+      "input. Explain the difference in how quickly each family achieves global mixing, and what it costs to " +
+      "speed it up.",
+    rubric: {
+      elements: [
+        {
+          id: "conv-slow",
+          description: "Explains a single convolution mixes only a local neighbourhood, so global mixing requires enough stacked layers for the receptive field to cover the whole input, growing with depth.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "attention-immediate",
+          description: "Explains a single self-attention layer already lets every position attend to every other, so global mixing happens in one layer, at the cost of quadratic compute in sequence length.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["architecture-families", "convolutional-neural-networks", "attention-mechanism"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "architecture-families--transfer-prior-mismatch-diagnosis",
+    conceptId: "architecture-families",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed"],
+    stem:
+      "A convolutional model trained to classify satellite images performs far worse than expected on images " +
+      "rotated 90 degrees from the training orientation, even though nothing else changed. Diagnose what " +
+      "architectural assumption was violated and why standard convolution does not protect against it.",
+    rubric: {
+      elements: [
+        {
+          id: "diagnosis",
+          description: "Explains standard 2-D convolution is built to be translation-equivariant but has no such guarantee for rotation, so a feature learned in one orientation is not automatically recognized after rotation.",
+          weight: 4,
+          required: true,
+        },
+        { id: "remedy", description: "Names a remedy, e.g. rotation-augmented training data, or an architecture explicitly built to be rotation-equivariant.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 2.3,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["architecture-families", "convolutional-neural-networks"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "architecture-families--transfer-scaling-law-interaction",
+    conceptId: "architecture-families",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "At small scale a strongly-biased architecture (e.g. a CNN) often outperforms a weakly-biased one (e.g. a " +
+      "plain transformer) on a given task, but as both are scaled up with more data and compute, the gap shrinks " +
+      "or reverses. Explain this pattern, tying it to the bias-variance idea applied at the level of architecture " +
+      "choice rather than model size.",
+    rubric: {
+      elements: [
+        {
+          id: "bias-variance-framing",
+          description: "Frames the strongly-biased architecture as lower-variance (needs less data within its restricted hypothesis space) but higher-bias if its assumption is imperfect, while the weakly-biased one is higher-variance but can eventually represent whatever the data needs.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-scale-matters",
+          description: "Explains more data reduces the variance cost of the weakly-biased choice, so the bias advantage of the strongly-biased architecture becomes the dominant remaining disadvantage once enough data is available.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.5,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["architecture-families", "bias-variance-tradeoff"],
+    source: ML_13,
+    status: "live",
+  },
+
+  // --- Residual Networks (additional) -----------------------------------------
+  {
+    id: "residual-networks--recall-name-of-connection",
+    conceptId: "residual-networks",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The connection that adds a block's input to its output is usually called a:",
+    choices: [
+      { id: "a", text: "Skip connection (or residual connection)", correct: true },
+      {
+        id: "b",
+        text: "Gate",
+        correct: false,
+        misconception: { id: "confuses-with-gate", description: "Confuses an unconditional addition of the input with a learned, data-dependent gating mechanism.", blameConceptId: "residual-networks" },
+      },
+      {
+        id: "c",
+        text: "Attention head",
+        correct: false,
+        misconception: { id: "confuses-with-attention", description: "Confuses a fixed identity path with a content-based weighting mechanism.", blameConceptId: "residual-networks" },
+      },
+      {
+        id: "d",
+        text: "Pooling layer",
+        correct: false,
+        misconception: { id: "confuses-with-pooling", description: "Confuses adding the input back with a downsampling operation.", blameConceptId: "residual-networks" },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["residual-networks"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "residual-networks--recall-what-problem-motivated-it",
+    conceptId: "residual-networks",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "In one sentence, what training problem with very deep plain networks motivated the residual connection?",
+    rubric: {
+      elements: [
+        { id: "problem", description: "Deep plain networks were harder to optimize (higher training error, not overfitting) as depth increased past a point, and residual connections were introduced to fix that.", weight: 3, required: true },
+      ],
+    },
+    difficulty: -1.3,
+    discrimination: 1.2,
+    expectedSeconds: 40,
+    prereqClosure: ["residual-networks", "overfitting-underfitting"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "residual-networks--apply-gradient-product-alt",
+    conceptId: "residual-networks",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "In a plain 30-layer stack each layer's Jacobian has norm about 0.8. By what factor is the gradient scaled by the time it reaches the first layer? Give the value of 0.8^30 to four significant figures.",
+    answerKey: 0.001238,
+    tolerance: 0.00001,
+    difficulty: 0.5,
+    discrimination: 1.3,
+    expectedSeconds: 100,
+    prereqClosure: ["residual-networks", "backpropagation"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "residual-networks--apply-init-near-zero",
+    conceptId: "residual-networks",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem:
+      "Some residual architectures initialize the last layer of F (the residual branch) to output exactly zero. " +
+      "Explain what this guarantees about the network's function at initialization, and why that is a useful " +
+      "starting point.",
+    rubric: {
+      elements: [
+        {
+          id: "guarantee",
+          description: "Explains the whole network computes the identity function at every block at initialization (since F = 0 everywhere), so training starts from a network equivalent to doing nothing.",
+          weight: 4,
+          required: true,
+        },
+        { id: "useful-because", description: "Explains a known, well-behaved starting point avoids the poor conditioning of a deep random composition, letting gradients flow cleanly from the first step.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.0,
+    discrimination: 1.4,
+    expectedSeconds: 150,
+    prereqClosure: ["residual-networks", "backpropagation"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "residual-networks--explain-batchnorm-interaction",
+    conceptId: "residual-networks",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Residual networks are usually paired with normalization layers (e.g. batch norm) inside each block. " +
+      "Explain what problem normalization solves that the skip connection alone does not.",
+    rubric: {
+      elements: [
+        { id: "skip-fixes-gradient-path", description: "Notes the skip connection protects the gradient's path across depth (the identity term), but says nothing about the scale of activations flowing through F itself.", weight: 3, required: true },
+        {
+          id: "normalization-fixes-activation-scale",
+          description: "Explains normalization keeps each layer's inputs in a consistent, well-behaved range as parameters change during training, stabilizing optimization independently of the gradient-path issue.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.7,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["residual-networks", "backpropagation"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "residual-networks--explain-effective-depth",
+    conceptId: "residual-networks",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain why the 'effective depth' of a trained residual network — the typical length of paths that " +
+      "actually matter to its output — can be much shorter than its nominal depth, and why this does not mean " +
+      "the extra blocks are wasted.",
+    rubric: {
+      elements: [
+        {
+          id: "path-length-distribution",
+          description: "Explains the network is a sum over exponentially many paths of different lengths, and the gradient signal is empirically dominated by a distribution of shorter paths, so the network behaves shallower than its layer count suggests.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "not-wasted",
+          description: "Explains the additional blocks still add more paths of many different lengths to the ensemble-like sum, which is exactly the source of depth's benefit and the network's robustness to deleting a single block.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.15,
+    discrimination: 1.8,
+    expectedSeconds: 220,
+    prereqClosure: ["residual-networks", "backpropagation"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "residual-networks--transfer-to-transformers",
+    conceptId: "residual-networks",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Transformer blocks also wrap each sublayer (attention, feed-forward) in a residual connection. Explain " +
+      "why this design choice is arguably even more important for a transformer than for a CNN, given how many " +
+      "sublayers a large transformer stacks.",
+    rubric: {
+      elements: [
+        {
+          id: "same-depth-argument",
+          description: "Explains transformers reach comparable or greater depth in sublayers to the CNNs residual connections were introduced for, so without a skip path the same multiplicative-shrinkage argument would apply.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "additional-reason",
+          description: "Notes each sublayer computes something quite different from its input, so the identity path lets each sublayer learn a targeted refinement rather than reconstruct the running representation from scratch every layer.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.35,
+    discrimination: 1.9,
+    expectedSeconds: 230,
+    prereqClosure: ["residual-networks", "backpropagation"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "residual-networks--transfer-densenet-comparison",
+    conceptId: "residual-networks",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed"],
+    stem:
+      "DenseNet connects every layer to every later layer (concatenating rather than adding), instead of a " +
+      "single residual skip per block. Explain what this buys relative to a single skip per block, and what it " +
+      "costs in resources.",
+    rubric: {
+      elements: [
+        {
+          id: "buys",
+          description: "Explains every layer receives direct access to all preceding layers' feature maps, giving shorter gradient and feature-reuse paths from every layer to every later one, encouraging heavy feature reuse.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "costs",
+          description: "Explains channel counts (and therefore memory) grow with the number of preceding layers being concatenated, so DenseNets can require much more memory for feature maps than an equivalent residual network.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.5,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["residual-networks", "convolutional-neural-networks"],
+    source: ML_13,
+    status: "live",
+  },
+
+  // --- LSTM and GRU (additional) -----------------------------------------------
+  {
+    id: "lstm-and-gru--recall-full-names",
+    conceptId: "lstm-and-gru",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What do 'LSTM' and 'GRU' stand for?",
+    choices: [
+      { id: "a", text: "Long Short-Term Memory; Gated Recurrent Unit", correct: true },
+      {
+        id: "b",
+        text: "Linear State Transition Model; Gradient Recurrent Update",
+        correct: false,
+        misconception: { id: "wrong-expansion", description: "Misremembers both acronyms.", blameConceptId: "lstm-and-gru" },
+      },
+      {
+        id: "c",
+        text: "Layered Sequential Training Method; General Recurrent Unit",
+        correct: false,
+        misconception: { id: "wrong-expansion-2", description: "Misremembers both acronyms.", blameConceptId: "lstm-and-gru" },
+      },
+      {
+        id: "d",
+        text: "Long Sequence Training Mechanism; Gated Regression Unit",
+        correct: false,
+        misconception: { id: "wrong-expansion-3", description: "Misremembers both acronyms.", blameConceptId: "lstm-and-gru" },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["lstm-and-gru"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "lstm-and-gru--recall-cell-vs-hidden-state",
+    conceptId: "lstm-and-gru",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "An LSTM carries two state vectors forward: the cell state and the hidden state. In one sentence each, say what role each plays.",
+    rubric: {
+      elements: [
+        { id: "cell", description: "The cell state is the long-term memory, updated mostly additively and protected from repeated multiplicative shrinkage.", weight: 3, required: true },
+        { id: "hidden", description: "The hidden state is the filtered, exposed-to-the-outside-world view of the cell state at this step, via the output gate.", weight: 2, required: true },
+      ],
+    },
+    difficulty: -1.3,
+    discrimination: 1.2,
+    expectedSeconds: 50,
+    prereqClosure: ["lstm-and-gru"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "lstm-and-gru--apply-parameter-count-small",
+    conceptId: "lstm-and-gru",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "An LSTM layer has hidden size 64 and input size 32. Each of its four transformations takes the concatenated [hidden, input] vector and has its own bias. How many parameters does the layer hold in total?",
+    answerKey: 24832,
+    tolerance: 0.000001,
+    difficulty: 0.65,
+    discrimination: 1.4,
+    expectedSeconds: 140,
+    prereqClosure: ["lstm-and-gru", "matrix-multiplication"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "lstm-and-gru--apply-gru-parameter-savings",
+    conceptId: "lstm-and-gru",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem:
+      "A GRU has three gate/candidate transformations instead of an LSTM's four, and no separate cell state. " +
+      "For the same hidden and input sizes, explain (without computing exact numbers) why a GRU always has " +
+      "fewer parameters, and roughly by what fraction.",
+    rubric: {
+      elements: [
+        {
+          id: "fewer-transformations",
+          description: "Explains a GRU needs one fewer weight matrix (and bias) of the same [hidden+input]-by-hidden shape than an LSTM.",
+          weight: 4,
+          required: true,
+        },
+        { id: "rough-fraction", description: "Estimates roughly 25% fewer parameters — three transformations versus four of the same shape.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.1,
+    discrimination: 1.5,
+    expectedSeconds: 160,
+    prereqClosure: ["lstm-and-gru"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "lstm-and-gru--explain-why-not-just-bigger-hidden-size",
+    conceptId: "lstm-and-gru",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Given a fixed parameter budget, explain why simply enlarging a plain RNN's hidden state is not an " +
+      "adequate substitute for adding gates, when the goal is remembering things over long spans.",
+    rubric: {
+      elements: [
+        {
+          id: "plain-shrinkage-persists",
+          description: "Explains a bigger hidden state still updates through the same repeated matrix-multiplication-and-nonlinearity recurrence, so the vanishing/exploding gradient problem along the multiplicative path is unaffected by width.",
+          weight: 4,
+          required: true,
+        },
+        { id: "gates-change-the-path", description: "Explains gates change the qualitative structure of the update, adding an additive, near-identity path that no amount of width in the plain recurrence provides.", weight: 4, required: true },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.6,
+    expectedSeconds: 180,
+    prereqClosure: ["lstm-and-gru", "recurrent-neural-networks", "backpropagation"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "lstm-and-gru--explain-input-gate-role",
+    conceptId: "lstm-and-gru",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "The forget gate gets most of the attention in explanations of why LSTMs work, but the input gate also " +
+      "matters. Explain what specifically goes wrong if the input gate is removed (candidate values always " +
+      "written in fully).",
+    rubric: {
+      elements: [
+        {
+          id: "no-selective-writing",
+          description: "Explains without an input gate every new candidate is written into the cell state at full strength regardless of relevance, so the cell state accumulates noise and cannot selectively decide what is worth remembering.",
+          weight: 4,
+          required: true,
+        },
+        { id: "interacts-with-forget", description: "Notes this compounds with the forget gate's job, since a forget gate trying to preserve old content is fighting a constant stream of unfiltered new writes.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 2.05,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["lstm-and-gru"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "lstm-and-gru--transfer-peephole-connections",
+    conceptId: "lstm-and-gru",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed"],
+    stem:
+      "Some LSTM variants let the gates see the cell state directly ('peephole connections'), not just the " +
+      "hidden state and input. Explain what capability this restores relative to a standard LSTM, using precise " +
+      "timing of an event as your example.",
+    rubric: {
+      elements: [
+        {
+          id: "standard-limitation",
+          description: "Explains that in a standard LSTM the gates only see the previous hidden state, not the cell state itself, so a gate cannot directly condition on exactly how much has accumulated in a specific memory slot.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "peephole-fix",
+          description: "Explains letting gates read the cell state directly lets them condition on the current magnitude of stored memory, useful for tasks needing precise timing that the standard architecture handles only indirectly.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.3,
+    discrimination: 1.8,
+    expectedSeconds: 220,
+    prereqClosure: ["lstm-and-gru"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "lstm-and-gru--transfer-vanishing-vs-exploding-asymmetry",
+    conceptId: "lstm-and-gru",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Gating is specifically framed as a fix for the vanishing gradient problem. Explain why the exploding " +
+      "gradient problem in recurrent networks is comparatively easy to handle without any architectural change, " +
+      "using gradient clipping as your example, and why the same trick would not fix vanishing.",
+    rubric: {
+      elements: [
+        {
+          id: "exploding-is-easy",
+          description: "Explains an exploding gradient is a single large but well-defined number that can simply be rescaled downward after the fact without losing the direction of the update.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "vanishing-is-not-fixable-the-same-way",
+          description: "Explains a vanished gradient carries essentially no signal to rescale — clipping cannot restore information multiplied down to near zero — so the fix has to change the computation that produced the tiny value, which is what gating does.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.9,
+    expectedSeconds: 240,
+    prereqClosure: ["lstm-and-gru", "recurrent-neural-networks", "backpropagation"],
+    source: ML_13,
+    status: "live",
+  },
+
+  // --- Autoregressive Models (additional) --------------------------------------
+  {
+    id: "autoregressive-models--recall-chain-rule-identity",
+    conceptId: "autoregressive-models",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The autoregressive factorization p(x₁, ..., xₙ) = Πₜ p(xₜ | x<ₜ) is:",
+    choices: [
+      { id: "a", text: "An exact identity (the chain rule of probability), true for any joint distribution", correct: true },
+      {
+        id: "b",
+        text: "An approximation valid only for sequences with short-range dependence",
+        correct: false,
+        misconception: { id: "factorization-treated-as-approximation", description: "The chain rule is exact for any joint distribution; the modelling assumption enters only in how each conditional is parameterised.", blameConceptId: "autoregressive-models" },
+      },
+      {
+        id: "c",
+        text: "A modelling assumption specific to text",
+        correct: false,
+        misconception: { id: "factorization-treated-as-domain-specific", description: "The chain rule applies to any sequence of random variables, not only text.", blameConceptId: "autoregressive-models" },
+      },
+      {
+        id: "d",
+        text: "Valid only if the variables are independent",
+        correct: false,
+        misconception: { id: "factorization-treated-as-independence", description: "The factorization holds regardless of dependence; independence would instead let every conditional drop to a marginal.", blameConceptId: "autoregressive-models" },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["autoregressive-models", "conditional-probability"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "autoregressive-models--recall-what-is-teacher-forcing",
+    conceptId: "autoregressive-models",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "In one sentence, define 'teacher forcing'.",
+    rubric: {
+      elements: [{ id: "definition", description: "Feeding the true previous tokens, rather than the model's own generated ones, as the conditioning context during training.", weight: 3, required: true }],
+    },
+    difficulty: -1.3,
+    discrimination: 1.2,
+    expectedSeconds: 40,
+    prereqClosure: ["autoregressive-models"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "autoregressive-models--apply-perplexity-alt",
+    conceptId: "autoregressive-models",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A language model reaches a mean next-token cross-entropy of 1.5 nats per token on a held-out set. What is its perplexity, to three decimal places?",
+    answerKey: 4.482,
+    tolerance: 0.005,
+    difficulty: 0.5,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["autoregressive-models", "loss-functions"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "autoregressive-models--apply-nucleus-sampling-mechanics",
+    conceptId: "autoregressive-models",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "Describe precisely how top-p (nucleus) sampling selects the candidate set at each step, given the model's next-token probabilities.",
+    rubric: {
+      elements: [
+        {
+          id: "mechanics",
+          description: "Sorts tokens by probability descending, then includes tokens from the highest until their cumulative probability first reaches or exceeds p, then renormalizes and samples from that set.",
+          weight: 4,
+          required: true,
+        },
+        { id: "adaptive-size", description: "Notes the candidate set's size adapts to the model's confidence — few tokens when peaked, many when flat — unlike a fixed top-k cutoff.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.0,
+    discrimination: 1.4,
+    expectedSeconds: 150,
+    prereqClosure: ["autoregressive-models"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "autoregressive-models--explain-order-dependence",
+    conceptId: "autoregressive-models",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "An autoregressive model factorizes the joint left-to-right, but the chain rule is valid for any ordering " +
+      "of the variables. Explain why left-to-right is nonetheless the standard choice for natural language, and " +
+      "one setting where a different order is used instead.",
+    rubric: {
+      elements: [
+        { id: "matches-generation-process", description: "Explains left-to-right matches how humans actually produce and consume language, aligning the training distribution exactly with the deployment-time task of extending a prefix.", weight: 4, required: true },
+        { id: "counterexample", description: "Names a setting using a different order, e.g. masked language modelling (BERT-style) for representation learning, where the goal is not generation but prediction from full context.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.5,
+    expectedSeconds: 170,
+    prereqClosure: ["autoregressive-models", "conditional-probability"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "autoregressive-models--explain-scheduled-sampling",
+    conceptId: "autoregressive-models",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Scheduled sampling occasionally feeds the model's own previous prediction during training instead of " +
+      "the true token, with increasing frequency over training. Explain what problem it is trying to mitigate, " +
+      "and one difficulty it introduces.",
+    rubric: {
+      elements: [
+        { id: "mitigates-exposure-bias", description: "Explains it is meant to expose the model, during training, to the kind of imperfect context it will actually condition on at generation time, narrowing the training-generation mismatch of exposure bias.", weight: 4, required: true },
+        {
+          id: "difficulty",
+          description: "Notes it breaks the clean parallel-training property of teacher forcing and creates a mismatch with true maximum likelihood, so it is a heuristic fix rather than a principled one.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.0,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["autoregressive-models"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "autoregressive-models--transfer-speculative-decoding",
+    conceptId: "autoregressive-models",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed"],
+    stem:
+      "Speculative decoding uses a small, fast 'draft' model to propose several tokens ahead, which the large " +
+      "model then verifies in a single parallel pass, accepting the ones that match what the large model would " +
+      "have chosen. Explain why this can speed up generation from the large model without changing what it " +
+      "outputs, and identify the property of autoregressive verification, as opposed to generation, that makes " +
+      "this possible.",
+    rubric: {
+      elements: [
+        {
+          id: "verification-is-parallel",
+          description: "Explains scoring a whole proposed sequence requires one masked forward pass, since the causal mask lets every position's conditional be computed simultaneously — the same training-versus-generation asymmetry.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "no-change-to-output",
+          description: "Explains the large model's own distribution is what is ultimately sampled from, falling back to it whenever a draft token mismatches, so the output distribution matches ordinary sampling from the large model exactly.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.25,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["autoregressive-models", "transformers"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "autoregressive-models--transfer-long-context-degradation",
+    conceptId: "autoregressive-models",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed"],
+    stem:
+      "A model trained with contexts up to 4,096 tokens is evaluated on inputs of 16,000 tokens and its quality " +
+      "degrades sharply beyond roughly the training length, even though the architecture can technically accept " +
+      "longer inputs. Explain the most likely cause, distinguishing it from a hard architectural limit.",
+    rubric: {
+      elements: [
+        {
+          id: "distribution-mismatch",
+          description: "Explains the model has never seen positions or attention patterns corresponding to contexts that long during training, so it is being evaluated far outside its training distribution — a generalization failure, not a hard ceiling.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "contrast-with-hard-limit",
+          description: "Contrasts this with genuinely hard-limited architectures (e.g. a fixed positional embedding table with no entries beyond a maximum index), noting the diagnosis differs by whether the failure is graceful degradation or outright inability to run.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.4,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["autoregressive-models", "transformers"],
+    source: ML_13,
+    status: "live",
+  },
+
+  // --- State Space Models (additional) ------------------------------------------
+  {
+    id: "state-space-models--recall-what-is-a-and-b",
+    conceptId: "state-space-models",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "In the state-space recurrence hₖ = Āhₖ₋₁ + B̄uₖ, what does the matrix Ā govern?",
+    choices: [
+      { id: "a", text: "How the state evolves from one step to the next, independent of the new input", correct: true },
+      {
+        id: "b",
+        text: "How the raw input is transformed before entering the state",
+        correct: false,
+        misconception: { id: "confuses-a-with-b", description: "That role belongs to B̄; Ā governs how the previous state, not the input, carries forward.", blameConceptId: "state-space-models" },
+      },
+      {
+        id: "c",
+        text: "The nonlinearity applied to the state",
+        correct: false,
+        misconception: { id: "assumes-nonlinearity", description: "The recurrence is linear; there is no nonlinearity inside it for Ā to parameterize.", blameConceptId: "state-space-models" },
+      },
+      {
+        id: "d",
+        text: "The output projection from state to prediction",
+        correct: false,
+        misconception: { id: "confuses-a-with-output-matrix", description: "That role belongs to a separate output matrix (often called C), not Ā.", blameConceptId: "state-space-models" },
+      },
+    ],
+    difficulty: -1.7,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["state-space-models"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "state-space-models--recall-parallel-scan-purpose",
+    conceptId: "state-space-models",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "In one sentence, what problem does a parallel scan solve for training a state-space layer?",
+    rubric: {
+      elements: [
+        {
+          id: "purpose",
+          description: "It computes a long linear recurrence's outputs for all time steps in parallel, using the recurrence's associativity, instead of stepping through them one at a time.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.2,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["state-space-models"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "state-space-models--apply-memory-half-life-alt",
+    conceptId: "state-space-models",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A mode of the transition matrix Ā has eigenvalue modulus 0.95. After how many steps has that mode's contribution from a past input fallen to half? Give the answer to two decimal places.",
+    answerKey: 13.51,
+    tolerance: 0.02,
+    difficulty: 0.6,
+    discrimination: 1.4,
+    expectedSeconds: 120,
+    prereqClosure: ["state-space-models", "eigenvalues-eigenvectors"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "state-space-models--apply-cost-ratio-alt",
+    conceptId: "state-space-models",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "Self-attention costs work proportional to L² in the sequence length, while a state space layer's parallel scan costs work proportional to L. At L = 1024, how many times more work does the attention layer do, on those proportionalities alone?",
+    answerKey: 1024,
+    tolerance: 0.000001,
+    difficulty: 1.0,
+    discrimination: 1.3,
+    expectedSeconds: 90,
+    prereqClosure: ["state-space-models", "attention-mechanism"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "state-space-models--explain-diagonal-parameterization",
+    conceptId: "state-space-models",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Modern state-space layers (e.g. S4) constrain Ā to be diagonal (or diagonalizable in closed form) " +
+      "rather than a general matrix. Explain what this buys computationally.",
+    rubric: {
+      elements: [
+        {
+          id: "per-mode-independence",
+          description: "Explains a diagonal Ā means each dimension of the state evolves independently as a simple scalar recurrence, so the convolution kernel for each channel can be computed in closed form instead of requiring an expensive general matrix power at every time step.",
+          weight: 4,
+          required: true,
+        },
+        { id: "why-matters", description: "Notes this is what makes both the convolutional (FFT-based) and parallel-scan training paths tractable at the lengths these models are used for.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.65,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["state-space-models", "eigenvalues-eigenvectors"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "state-space-models--explain-discretization",
+    conceptId: "state-space-models",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "A state-space model is often derived from a continuous-time differential equation and then " +
+      "'discretized' with a step size Δ to get the Ā, B̄ used at inference. Explain, at a high level, what " +
+      "problem letting Δ be learned, rather than fixed, solves.",
+    rubric: {
+      elements: [
+        { id: "fixed-delta-limitation", description: "Explains a fixed step size assumes a single, uniform notion of how much 'time' one token represents, which may not suit sequences whose effective timescale differs by position or task.", weight: 4, required: true },
+        {
+          id: "learned-delta",
+          description: "Explains letting Δ be learned or input-dependent lets the discretized dynamics effectively speed up or slow down, controlling how quickly a given mode's memory decays relative to the token stream.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["state-space-models"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "state-space-models--transfer-huge-context-linear-scaling",
+    conceptId: "state-space-models",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A team wants to run inference over a million-token context. Explain quantitatively why a state-space " +
+      "model's cost profile is qualitatively better suited to this than an attention-based model's, and name " +
+      "the one resource that still grows with context length for the state-space model.",
+    rubric: {
+      elements: [
+        {
+          id: "quantitative-comparison",
+          description: "Explains attention's per-step generation cost and cache grow with the length of context already seen, while a state-space layer's per-step cost and state size are fixed regardless of context length, so a million-token context costs no more per step than a hundred-token one.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "still-grows",
+          description: "Identifies that processing the sequence once from scratch (training or an initial encode) still costs compute proportional to length L for the state-space model, just linear rather than quadratic.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.3,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["state-space-models", "attention-mechanism"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "state-space-models--transfer-copying-task-failure",
+    conceptId: "state-space-models",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed"],
+    stem:
+      "A plain (non-selective) linear state-space model performs poorly on a synthetic 'copy' task where it " +
+      "must reproduce an arbitrary sequence of tokens seen many steps earlier, verbatim, while a selective " +
+      "(input-dependent) variant does much better. Explain the mechanism behind this gap.",
+    rubric: {
+      elements: [
+        {
+          id: "fixed-dynamics-limitation",
+          description: "Explains a plain SSM's Ā, B̄ are the same for every input, applying the same fixed decay/mixing to every token regardless of content, a poor match for a task requiring some tokens to be held nearly perfectly while others are ignored.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "selective-fix",
+          description: "Explains a selective SSM lets its dynamics depend on the current input, so it can learn to essentially latch specific content-dependent tokens and ignore others — the content-based routing the copy task demands.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.5,
+    discrimination: 1.9,
+    expectedSeconds: 250,
+    prereqClosure: ["state-space-models", "attention-mechanism"],
+    source: ML_13,
+    status: "live",
+  },
+
+  // --- Graph Neural Networks (additional) ----------------------------------------
+  {
+    id: "graph-neural-networks--recall-what-gnn-generalizes",
+    conceptId: "graph-neural-networks",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "A graph neural network is best understood as a generalization of which more familiar architecture, to graphs with no regular grid structure?",
+    choices: [
+      { id: "a", text: "The convolutional neural network", correct: true },
+      {
+        id: "b",
+        text: "The recurrent neural network",
+        correct: false,
+        misconception: { id: "confuses-with-rnn", description: "Confuses message passing over a graph's neighbours with stepping through a temporal sequence.", blameConceptId: "graph-neural-networks" },
+      },
+      {
+        id: "c",
+        text: "The autoencoder",
+        correct: false,
+        misconception: { id: "confuses-with-autoencoder", description: "Confuses a neighbourhood-aggregation layer with an encode-decode compression architecture.", blameConceptId: "graph-neural-networks" },
+      },
+      {
+        id: "d",
+        text: "The generative adversarial network",
+        correct: false,
+        misconception: { id: "confuses-with-gan", description: "Confuses message passing with a two-player adversarial training scheme.", blameConceptId: "graph-neural-networks" },
+      },
+    ],
+    difficulty: -1.7,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["graph-neural-networks"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "graph-neural-networks--recall-node-vs-graph-level-tasks",
+    conceptId: "graph-neural-networks",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "Name two different levels at which a GNN's output can be read out (e.g. per-node vs. per-graph), and give one example task for each.",
+    rubric: {
+      elements: [
+        { id: "node-level", description: "Node-level, e.g. node classification (predicting a label for each node).", weight: 2, required: true },
+        { id: "graph-level", description: "Graph-level, e.g. graph classification (predicting a property of the whole graph via a pooling or readout over all node representations).", weight: 3, required: true },
+      ],
+    },
+    difficulty: -1.2,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["graph-neural-networks", "graphs"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "graph-neural-networks--apply-receptive-field-alt",
+    conceptId: "graph-neural-networks",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "In a graph where every node has exactly 6 neighbours and no short cycles, how many nodes can influence a given node's representation after 3 message-passing layers? Count the 3-hop neighbourhood as 6^3, ignoring the node itself and nearer shells.",
+    answerKey: 216,
+    tolerance: 0.000001,
+    difficulty: 0.5,
+    discrimination: 1.3,
+    expectedSeconds: 90,
+    prereqClosure: ["graph-neural-networks", "graphs"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "graph-neural-networks--apply-gcn-edge-weight-alt",
+    conceptId: "graph-neural-networks",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "In a GCN with self-loops, the coefficient on the message from node u to node v is 1/√(d̂ᵤ · d̂ᵥ), where d̂ is degree plus one for the self-loop. Node v has 4 neighbours and node u has 6. What is the coefficient, to four decimal places?",
+    answerKey: 0.1690,
+    tolerance: 0.0001,
+    difficulty: 1.0,
+    discrimination: 1.4,
+    expectedSeconds: 120,
+    prereqClosure: ["graph-neural-networks", "graphs"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "graph-neural-networks--explain-inductive-vs-transductive",
+    conceptId: "graph-neural-networks",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Some GNN training setups require the full graph, including test nodes with hidden labels, to be present " +
+      "during training; others can generalize to entirely new graphs never seen during training. Explain the " +
+      "architectural difference that makes the second kind ('inductive') possible.",
+    rubric: {
+      elements: [
+        {
+          id: "shared-local-function",
+          description: "Explains an inductive GNN learns a message/aggregate/update function defined purely in terms of local neighbourhood structure and features, applied identically regardless of which graph or node it runs on, so it can run on any new graph.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "transductive-contrast",
+          description: "Contrasts this with a transductive method that bakes in node-specific parameters, which have no defined value for a node never seen during training.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.55,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["graph-neural-networks", "graphs"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "graph-neural-networks--explain-heterophily-failure",
+    conceptId: "graph-neural-networks",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed"],
+    stem:
+      "Standard message passing assumes neighbouring nodes tend to be similar ('homophily') and averages their " +
+      "features together. Explain why this assumption can actively hurt performance on a graph where connected " +
+      "nodes are typically dissimilar ('heterophily'), rather than merely being unhelpful.",
+    rubric: {
+      elements: [
+        {
+          id: "averaging-blends-dissimilar-signal",
+          description: "Explains averaging together the features of dissimilar neighbours actively destroys the difference that would have been diagnostic, rather than simply failing to add useful information.",
+          weight: 4,
+          required: true,
+        },
+        { id: "remedy", description: "Names a remedy, e.g. retaining or up-weighting the node's own features separately from aggregated neighbour features, or a signed/difference-based aggregation for heterophilous graphs.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 2.05,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["graph-neural-networks", "graphs"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "graph-neural-networks--transfer-attention-in-gnn",
+    conceptId: "graph-neural-networks",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "A graph attention network (GAT) replaces a GCN's fixed degree-based edge coefficients with learned, " +
+      "input-dependent attention weights over each node's neighbours. Explain what flexibility this buys, and " +
+      "why it does not remove the need for permutation invariance.",
+    rubric: {
+      elements: [
+        {
+          id: "flexibility",
+          description: "Explains fixed coefficients weight contributions purely by graph structure, while learned attention lets the model decide, from the actual feature content, which neighbours matter more for this prediction.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "still-invariant",
+          description: "Explains the attention weights are still computed from the unordered set of neighbours and their features, typically via a softmax over that set, and the aggregation remains a permutation-invariant sum with no assumed neighbour ordering.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.35,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["graph-neural-networks", "graphs"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "graph-neural-networks--transfer-positional-encoding-choice",
+    conceptId: "graph-neural-networks",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed"],
+    stem:
+      "To break the 1-WL expressiveness ceiling, one fix is adding random node identifiers as extra input " +
+      "features, and another is adding Laplacian eigenvector positional encodings. Explain a downside specific " +
+      "to each choice.",
+    rubric: {
+      elements: [
+        {
+          id: "random-id-downside",
+          description: "Explains random identifiers make the model's output depend on an arbitrary random draw unrelated to the graph, so the model must learn to be insensitive to the specific values used, without generalizing across separately drawn randomizations without extra care.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "laplacian-downside",
+          description: "Explains Laplacian eigenvectors are only defined up to a sign (and, for repeated eigenvalues, up to rotation), so naive use is not itself invariant to these ambiguities and needs extra machinery to be used safely.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.5,
+    discrimination: 1.9,
+    expectedSeconds: 250,
+    prereqClosure: ["graph-neural-networks", "graphs"],
+    source: ML_13,
+    status: "live",
+  },
+
+  // --- Generative Adversarial Networks (additional) --------------------------------
+  {
+    id: "generative-adversarial-networks--recall-full-name",
+    conceptId: "generative-adversarial-networks",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What does 'GAN' stand for?",
+    choices: [
+      { id: "a", text: "Generative Adversarial Network", correct: true },
+      {
+        id: "b",
+        text: "Generalized Approximation Network",
+        correct: false,
+        misconception: { id: "wrong-expansion", description: "Misremembers the acronym.", blameConceptId: "generative-adversarial-networks" },
+      },
+      {
+        id: "c",
+        text: "Gradient Alignment Network",
+        correct: false,
+        misconception: { id: "wrong-expansion-2", description: "Misremembers the acronym.", blameConceptId: "generative-adversarial-networks" },
+      },
+      {
+        id: "d",
+        text: "Generative Attention Network",
+        correct: false,
+        misconception: { id: "wrong-expansion-3", description: "Misremembers the acronym.", blameConceptId: "generative-adversarial-networks" },
+      },
+    ],
+    difficulty: -1.8,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["generative-adversarial-networks"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "generative-adversarial-networks--recall-generator-input",
+    conceptId: "generative-adversarial-networks",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "What does the generator in a GAN take as its input, and what does it output?",
+    rubric: {
+      elements: [
+        { id: "input", description: "A vector of random noise, drawn from a simple fixed distribution (e.g. standard Normal).", weight: 2, required: true },
+        { id: "output", description: "A sample intended to resemble the training data (e.g. an image).", weight: 3, required: true },
+      ],
+    },
+    difficulty: -1.3,
+    discrimination: 1.2,
+    expectedSeconds: 40,
+    prereqClosure: ["generative-adversarial-networks"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "generative-adversarial-networks--apply-optimal-discriminator-alt",
+    conceptId: "generative-adversarial-networks",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "At a point x the data density is 0.4 and the generator's density is 0.2. What does the optimal discriminator output at x?",
+    answerKey: 0.6667,
+    tolerance: 0.001,
+    difficulty: 0.55,
+    discrimination: 1.4,
+    expectedSeconds: 90,
+    prereqClosure: ["generative-adversarial-networks", "pdf"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "generative-adversarial-networks--apply-conditional-gan",
+    conceptId: "generative-adversarial-networks",
+    format: "short-answer",
+    cognitive: "apply",
+    channels: ["typed", "spoken"],
+    stem: "A conditional GAN feeds a class label to both the generator and the discriminator. Explain what capability this adds relative to an unconditional GAN, and what the discriminator's task becomes.",
+    rubric: {
+      elements: [
+        { id: "capability", description: "Explains it lets a user specify which class of sample to generate at inference time, rather than sampling an unlabelled instance from the whole distribution.", weight: 3, required: true },
+        {
+          id: "discriminator-task",
+          description: "Explains the discriminator's job changes to judging whether the sample is a real example of the given class, supplying the generator with a gradient toward class-consistency as well as realism.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.15,
+    discrimination: 1.5,
+    expectedSeconds: 160,
+    prereqClosure: ["generative-adversarial-networks", "generative-vs-discriminative-models"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "generative-adversarial-networks--explain-why-generator-cannot-see-data",
+    conceptId: "generative-adversarial-networks",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "The generator never receives a real training example as input — only noise, and gradients " +
+      "backpropagated through the discriminator. Explain why this indirect signal is nonetheless sufficient for " +
+      "it to learn to produce realistic samples.",
+    rubric: {
+      elements: [
+        {
+          id: "gradient-carries-information",
+          description: "Explains the discriminator's gradient with respect to a generated sample indicates which direction in output space would have been more convincing, and backpropagating that further translates it into a direction in the generator's parameter space.",
+          weight: 4,
+          required: true,
+        },
+        { id: "iterative-refinement", description: "Notes this is applied repeatedly over training, iteratively pulling the generator toward the manifold of realistic samples without ever directly copying a training example.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.65,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["generative-adversarial-networks", "neural-networks"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "generative-adversarial-networks--explain-why-not-mle",
+    conceptId: "generative-adversarial-networks",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Explain why a GAN is not trained by maximum likelihood, in terms of what maximum likelihood would require here that the model structure does not provide.",
+    rubric: {
+      elements: [
+        {
+          id: "no-tractable-density",
+          description: "Explains maximum likelihood requires evaluating or differentiating the model's density at the training points, but a GAN's distribution is only defined implicitly as the pushforward of noise through the generator, with no way to compute a density value.",
+          weight: 4,
+          required: true,
+        },
+        { id: "alternative-signal", description: "Notes the discriminator instead supplies an implicit, learned signal about distinguishability, substituting for a likelihood without ever computing one.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 2.1,
+    discrimination: 1.8,
+    expectedSeconds: 210,
+    prereqClosure: ["generative-adversarial-networks", "generative-vs-discriminative-models"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "generative-adversarial-networks--transfer-fid-metric",
+    conceptId: "generative-adversarial-networks",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed"],
+    stem:
+      "Since a GAN offers no likelihood to evaluate on held-out data, practitioners commonly use the Fréchet " +
+      "Inception Distance (FID) instead, comparing statistics of real and generated images in a pretrained " +
+      "network's feature space. Explain, at a conceptual level, what FID is actually measuring, and one " +
+      "limitation of judging a generative model this way.",
+    rubric: {
+      elements: [
+        {
+          id: "what-it-measures",
+          description: "Explains FID compares the Gaussian-approximated mean and covariance of feature-space activations for real versus generated images, measuring how similar the two collections' feature statistics are, not a likelihood.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "limitation",
+          description: "Names a limitation, e.g. dependence on the choice of feature extractor, the Gaussian summary missing real distributional differences, or saying nothing about individual sample quality or memorization.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.3,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["generative-adversarial-networks"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "generative-adversarial-networks--transfer-vs-diffusion-tradeoff",
+    conceptId: "generative-adversarial-networks",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain the central tradeoff between GAN-style adversarial generation and a stable, regression-style " +
+      "generative training objective, in terms of training stability versus sampling cost, and why a " +
+      "practitioner might still prefer the adversarial approach today despite the alternative generally " +
+      "producing higher-fidelity samples.",
+    rubric: {
+      elements: [
+        {
+          id: "tradeoff",
+          description: "Explains GAN training is comparatively unstable (adversarial dynamics, mode collapse risk) but sampling is a single forward pass through the generator, while a stable alternative trades easier training for a sampling procedure requiring many sequential network evaluations.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "why-prefer-gan",
+          description: "Explains a practitioner needing fast or real-time generation may accept the harder training process in exchange for cheap inference, especially once a GAN has already been successfully trained and tuned for the task.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.45,
+    discrimination: 1.9,
+    expectedSeconds: 240,
+    prereqClosure: ["generative-adversarial-networks"],
+    source: ML_13,
+    status: "live",
+  },
+
+  // --- Diffusion Models (additional) ----------------------------------------------
+  {
+    id: "diffusion-models--recall-reverse-process-role",
+    conceptId: "diffusion-models",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "The reverse process in a diffusion model is:",
+    choices: [
+      { id: "a", text: "The learned process that removes noise step by step, run by the neural network, ultimately turning pure noise into a sample", correct: true },
+      {
+        id: "b",
+        text: "The forward noising process, run backwards in time",
+        correct: false,
+        misconception: { id: "confuses-with-forward", description: "The forward process is fixed and adds noise; the reverse process is a separately learned model that removes it.", blameConceptId: "diffusion-models" },
+      },
+      {
+        id: "c",
+        text: "A separate discriminator network that scores generated samples",
+        correct: false,
+        misconception: { id: "confuses-with-gan", description: "That is a GAN's discriminator; diffusion training has no adversary.", blameConceptId: "generative-adversarial-networks" },
+      },
+      {
+        id: "d",
+        text: "The gradient computation during backpropagation",
+        correct: false,
+        misconception: { id: "confuses-with-backprop", description: "Confuses the generative sampling procedure with the training-time gradient computation.", blameConceptId: "diffusion-models" },
+      },
+    ],
+    difficulty: -1.7,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["diffusion-models"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "diffusion-models--recall-why-many-steps",
+    conceptId: "diffusion-models",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "In one sentence, why does the forward process typically use many small noise steps rather than one large one?",
+    rubric: {
+      elements: [
+        {
+          id: "reason",
+          description: "Each small step keeps the true reverse transition close to Gaussian and therefore learnable by a simple network, whereas one large jump's true reverse would be a complex, highly non-Gaussian distribution.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.2,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["diffusion-models"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "diffusion-models--apply-alpha-bar-alt",
+    conceptId: "diffusion-models",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A schedule uses a constant βₜ = 0.01, so αₜ = 0.99 at every step. What is ᾱₜ — the product of the αs — at t = 50? Give the answer to four decimal places.",
+    answerKey: 0.605,
+    tolerance: 0.0005,
+    difficulty: 0.85,
+    discrimination: 1.4,
+    expectedSeconds: 110,
+    prereqClosure: ["diffusion-models"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "diffusion-models--apply-signal-coefficient-alt",
+    conceptId: "diffusion-models",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "With ᾱ₅₀ ≈ 0.6050 and xₜ = √ᾱₜ·x₀ + √(1 − ᾱₜ)·ε, what coefficient multiplies the clean image x₀ at t = 50? Give the answer to four decimal places.",
+    answerKey: 0.7778,
+    tolerance: 0.0005,
+    difficulty: 0.95,
+    discrimination: 1.4,
+    expectedSeconds: 110,
+    prereqClosure: ["diffusion-models", "normal-distribution"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "diffusion-models--explain-elbo-connection",
+    conceptId: "diffusion-models",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Explain, at a conceptual level, why diffusion models can be understood as optimizing a variational " +
+      "lower bound, given that the forward process defines a fixed 'approximate posterior' over the noising " +
+      "trajectory.",
+    rubric: {
+      elements: [
+        {
+          id: "latent-variable-framing",
+          description: "Explains the sequence of noisy intermediates can be viewed as a hierarchy of latent variables, with the fixed forward process playing the role of the approximate posterior and the learned reverse process playing the role of the generative model.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "elbo-parallel",
+          description: "Explains the log-likelihood of the data under the reverse generative process can be bounded below by an ELBO-like expression, and minimizing the standard noise-prediction training loss corresponds to (a simplified, reweighted version of) maximizing that bound.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 1.5,
+    discrimination: 1.7,
+    expectedSeconds: 200,
+    prereqClosure: ["diffusion-models", "normal-distribution"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "diffusion-models--explain-score-matching-connection",
+    conceptId: "diffusion-models",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem:
+      "Predicting the noise added to a sample is mathematically equivalent, up to a known scaling, to " +
+      "estimating the score — the gradient of the log-density — of the noised data distribution at that noise " +
+      "level. Explain, at a high level, why knowing the score at every noise level is enough to generate " +
+      "samples, without needing the density itself.",
+    rubric: {
+      elements: [
+        {
+          id: "score-defines-direction",
+          description: "Explains the score gives the direction in which the noised data density increases fastest, so following it, with appropriate added randomness, moves probability mass toward high-density regions, which is exactly what a sampling procedure needs.",
+          weight: 4,
+          required: true,
+        },
+        { id: "no-density-needed", description: "Notes generation only needs directions to move in, not the normalized density value, so the intractable normalizing constant of the true data density never has to be computed.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.95,
+    discrimination: 1.8,
+    expectedSeconds: 220,
+    prereqClosure: ["diffusion-models", "normal-distribution"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "diffusion-models--transfer-consistency-models",
+    conceptId: "diffusion-models",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed"],
+    stem:
+      "Consistency models are trained to map any noisy point on a diffusion trajectory directly to its " +
+      "estimated clean origin in one network evaluation, rather than one small denoising step at a time. " +
+      "Explain what property of the diffusion process this exploits, and the tradeoff involved relative to " +
+      "standard multi-step sampling.",
+    rubric: {
+      elements: [
+        {
+          id: "exploits-trajectory-structure",
+          description: "Explains all noisy points along the same forward trajectory should map to the same clean origin, so the network can be trained to be self-consistent along a trajectory, letting a single evaluation approximate what iterative denoising accomplishes over many steps.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "tradeoff",
+          description: "Explains the payoff is drastically faster sampling, typically at some cost in sample fidelity or diversity relative to full multi-step sampling.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.35,
+    discrimination: 1.9,
+    expectedSeconds: 240,
+    prereqClosure: ["diffusion-models"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "diffusion-models--transfer-editing-via-partial-noising",
+    conceptId: "diffusion-models",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Image editing with diffusion models often works by adding a moderate, partial amount of forward noise " +
+      "to a real image (not going all the way to pure noise) and then running the reverse process from there. " +
+      "Explain why this partial-noising approach lets the model make plausible, locally coherent edits while " +
+      "approximately preserving the image's overall structure.",
+    rubric: {
+      elements: [
+        {
+          id: "partial-noise-preserves-coarse-structure",
+          description: "Explains a moderate noise level destroys fine local detail while approximately preserving coarse, large-scale structure, so the reverse process is asked to regenerate plausible detail consistent with structure still recoverable from the partially-noised input.",
+          weight: 4,
+          required: true,
+        },
+        { id: "full-noise-contrast", description: "Contrasts this with starting from pure noise, where no information about the original image survives and the reverse process is free to generate anything consistent only with the prompt.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 2.5,
+    discrimination: 1.9,
+    expectedSeconds: 240,
+    prereqClosure: ["diffusion-models"],
+    source: ML_13,
+    status: "live",
+  },
+
+  // --- Mixture of Experts (additional) --------------------------------------------
+  {
+    id: "mixture-of-experts--recall-full-name",
+    conceptId: "mixture-of-experts",
+    format: "mcq",
+    cognitive: "recall",
+    channels: ["typed"],
+    stem: "What does 'MoE' commonly stand for in this context?",
+    choices: [
+      { id: "a", text: "Mixture of Experts", correct: true },
+      {
+        id: "b",
+        text: "Model of Ensembles",
+        correct: false,
+        misconception: { id: "wrong-expansion", description: "Misremembers the acronym.", blameConceptId: "mixture-of-experts" },
+      },
+      {
+        id: "c",
+        text: "Multi-output Encoder",
+        correct: false,
+        misconception: { id: "wrong-expansion-2", description: "Misremembers the acronym.", blameConceptId: "mixture-of-experts" },
+      },
+      {
+        id: "d",
+        text: "Modular Optimization Engine",
+        correct: false,
+        misconception: { id: "wrong-expansion-3", description: "Misremembers the acronym.", blameConceptId: "mixture-of-experts" },
+      },
+    ],
+    difficulty: -1.7,
+    discrimination: 1.1,
+    expectedSeconds: 20,
+    prereqClosure: ["mixture-of-experts"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "mixture-of-experts--recall-dense-vs-active-params",
+    conceptId: "mixture-of-experts",
+    format: "short-answer",
+    cognitive: "recall",
+    channels: ["typed", "spoken"],
+    stem: "In one sentence, distinguish a mixture-of-experts model's 'total parameter count' from its 'active parameter count per token'.",
+    rubric: {
+      elements: [
+        {
+          id: "distinction",
+          description: "Total parameters count every expert's weights, all of which must be stored; active parameters count only the weights of the experts actually evaluated for a given token, which sets the compute cost per token.",
+          weight: 3,
+          required: true,
+        },
+      ],
+    },
+    difficulty: -1.2,
+    discrimination: 1.2,
+    expectedSeconds: 45,
+    prereqClosure: ["mixture-of-experts"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "mixture-of-experts--apply-active-parameters-alt",
+    conceptId: "mixture-of-experts",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A layer holds 16 experts of 50 million parameters each and routes every token to its top 4. How many million parameters are evaluated per token?",
+    answerKey: 200,
+    tolerance: 0.000001,
+    difficulty: 0.5,
+    discrimination: 1.3,
+    expectedSeconds: 80,
+    prereqClosure: ["mixture-of-experts"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "mixture-of-experts--apply-capacity-alt",
+    conceptId: "mixture-of-experts",
+    format: "numeric",
+    cognitive: "apply",
+    channels: ["typed", "handwritten"],
+    stem: "A batch of 2,048 tokens is routed across 4 experts with a capacity factor of 1.5, where each expert's buffer is capacity_factor x tokens / experts. How many tokens can one expert accept before it starts dropping them?",
+    answerKey: 768,
+    tolerance: 0.000001,
+    difficulty: 0.9,
+    discrimination: 1.3,
+    expectedSeconds: 100,
+    prereqClosure: ["mixture-of-experts"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "mixture-of-experts--explain-noisy-gating",
+    conceptId: "mixture-of-experts",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed", "spoken"],
+    stem: "Some MoE routers add noise to the gate scores before selecting the top-k experts, especially during training. Explain what problem this addresses.",
+    rubric: {
+      elements: [
+        {
+          id: "exploration",
+          description: "Explains a deterministic top-k choice can lock in the same routing decisions repeatedly (compounding the rich-get-richer dynamic), so injected noise occasionally lets a lower-scoring expert be tried and receive gradient.",
+          weight: 4,
+          required: true,
+        },
+        { id: "tapering", description: "Notes the noise is typically reduced or removed over training, since routing should become more deterministic and specialized once experts have had a fair chance to differentiate.", weight: 3, required: true },
+      ],
+    },
+    difficulty: 1.6,
+    discrimination: 1.6,
+    expectedSeconds: 190,
+    prereqClosure: ["mixture-of-experts", "gradient-descent"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "mixture-of-experts--explain-communication-cost",
+    conceptId: "mixture-of-experts",
+    format: "short-answer",
+    cognitive: "explain",
+    channels: ["typed"],
+    stem:
+      "In a distributed MoE deployment, experts are typically placed on different devices, and tokens must be " +
+      "sent (an 'all-to-all' communication step) to whichever device holds their chosen expert. Explain why " +
+      "this communication step, rather than the expert computation itself, often becomes the bottleneck.",
+    rubric: {
+      elements: [
+        {
+          id: "communication-scales-with-batch",
+          description: "Explains the data that must move between devices scales with the number of tokens and their feature dimension, and essentially all tokens must be shipped somewhere, unlike the compute which is bounded by k experts per token.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "hardware-asymmetry",
+          description: "Explains interconnect bandwidth between devices is typically far more limited than each device's own compute throughput, so an operation cheap in FLOPs but requiring heavy cross-device data movement can dominate wall-clock time.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.0,
+    discrimination: 1.7,
+    expectedSeconds: 210,
+    prereqClosure: ["mixture-of-experts"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "mixture-of-experts--transfer-fine-tuning-difficulty",
+    conceptId: "mixture-of-experts",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Practitioners report that fine-tuning a pretrained mixture-of-experts model on a small downstream " +
+      "dataset is more prone to instability than fine-tuning a similarly-sized dense model. Explain a plausible " +
+      "mechanism specific to the sparse routing structure.",
+    rubric: {
+      elements: [
+        {
+          id: "routing-instability",
+          description: "Explains that with little fine-tuning data, gradient updates to the router or to individual, rarely-activated experts can be based on very few examples, disproportionately pushing routing decisions or a lightly-used expert's weights and destabilizing behaviour calibrated on the much larger pretraining distribution.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "narrow-expert-overfit",
+          description: "Explains an expert that specializes narrowly effectively sees only a small, unrepresentative slice of the already-small downstream dataset, making it more prone to overfitting than a dense model's parameters, all of which see every training example.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.3,
+    discrimination: 1.8,
+    expectedSeconds: 230,
+    prereqClosure: ["mixture-of-experts"],
+    source: ML_13,
+    status: "live",
+  },
+  {
+    id: "mixture-of-experts--transfer-shared-expert",
+    conceptId: "mixture-of-experts",
+    format: "short-answer",
+    cognitive: "transfer",
+    channels: ["typed", "spoken"],
+    stem:
+      "Some recent MoE designs include one or more 'shared experts' that process every token in addition to " +
+      "whichever experts the router selects. Explain what routing problem this addresses, and why it does not " +
+      "undermine the sparsity that makes MoE efficient.",
+    rubric: {
+      elements: [
+        {
+          id: "addresses-common-knowledge",
+          description: "Explains some computation is useful for essentially every token, and forcing that through the sparse, competitively-routed experts wastes router capacity and can cause redundant experts to duplicate the same shared function.",
+          weight: 4,
+          required: true,
+        },
+        {
+          id: "does-not-undermine-sparsity",
+          description: "Explains only a small, fixed number of shared experts run on every token, so overall compute per token stays set mostly by k plus a small constant, preserving the compute-scaling benefit of sparsity.",
+          weight: 4,
+          required: true,
+        },
+      ],
+    },
+    difficulty: 2.5,
+    discrimination: 1.9,
+    expectedSeconds: 240,
+    prereqClosure: ["mixture-of-experts"],
+    source: ML_13,
+    status: "live",
+  },
 ];

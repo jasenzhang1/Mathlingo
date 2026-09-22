@@ -4,7 +4,7 @@ export const pythonListsIntroWiki: WikiArticle = {
   conceptId: "python-lists-intro",
   summary:
     "A list holds an ordered, changeable collection of values in one variable, written with square " +
-    "brackets: [a, b, c]. It's the default container to reach for when you have several related values " +
+    "brackets: `[a, b, c]`. It's the default container to reach for when you have several related values " +
     "and don't yet know a more specific structure fits better — everything else about lists (indexing, " +
     "slicing, mutation) builds on this shape.",
 
@@ -21,16 +21,16 @@ export const pythonListsIntroWiki: WikiArticle = {
           kind: "prose",
           text:
             "Items are comma-separated inside square brackets, and order is preserved exactly as written " +
-            "— the first item stays first until something changes that. len() counts the items (the same " +
-            "function used on strings), and in checks whether a value is present anywhere in the list, " +
-            "returning a bool.",
+            "— the first item stays first until something changes that. `len()` counts the items (the same " +
+            "function used on strings), and `in` checks whether a value is present anywhere in the list, " +
+            "returning a `bool`.",
         },
         {
           kind: "callout",
           tone: "insight",
           title: "A list can mix types, but usually shouldn't",
           text:
-            "[1, \"two\", 3.0] is completely legal — a list places no restriction on the types of its " +
+            "`[1, \"two\", 3.0]` is completely legal — a list places no restriction on the types of its " +
             "items. In practice, most lists hold one consistent type, because code that processes the " +
             "list usually assumes it can treat every item the same way.",
         },
@@ -51,7 +51,7 @@ export const pythonListsIntroWiki: WikiArticle = {
           tone: "warning",
           title: "An empty list is falsy",
           text:
-            "bool([]) is False and bool([\"a\"]) is True — the same truthiness rule that applies to " +
+            "`bool([])` is `False` and `bool([\"a\"])` is `True` — the same truthiness rule that applies to " +
             "strings and dicts. `if cart:` is idiomatic for 'the cart has items.'",
         },
       ],

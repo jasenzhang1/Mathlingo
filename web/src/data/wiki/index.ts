@@ -26,13 +26,25 @@ import type { WikiArticle } from "./types";
  * now wired below.
  */
 const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
+  "discrete-math": () => import("./discrete-math").then((m) => m.default),
   statistics: () => import("./core").then((m) => m.coreWikiArticles),
   "multivariate-probability": () => import("./core").then((m) => m.coreWikiArticles),
   "graphical-models": () => import("./core").then((m) => m.coreWikiArticles),
   probability: () => import("./probability").then((m) => m.default),
   regression: () => import("./regression").then((m) => m.regressionWikis),
+  "time-series": () => import("./time-series").then((m) => m.timeSeriesWikis),
   "machine-learning": () => import("./ml").then((m) => m.mlWikiArticles),
+  // Deep learning concepts were split out of `machine-learning` (most articles
+  // live in `./ml`) and one, `variational-inference-vaes`, out of
+  // `graphical-models` (its article lives in `./core`). Load both chunks.
+  "deep-learning": () =>
+    Promise.all([import("./ml"), import("./core")]).then(([ml, core]) => [
+      ...ml.mlWikiArticles,
+      ...core.coreWikiArticles,
+    ]),
   python: () => import("./python").then((m) => m.pythonWikiArticles),
+  "stochastic-processes": () => import("./stochastic").then((m) => m.stochasticWikiArticles),
+  "stochastic-calculus": () => import("./stochastic").then((m) => m.stochasticWikiArticles),
 };
 
 /** Domain -> its articles, indexed by concept id. Cached, so each chunk is fetched once. */

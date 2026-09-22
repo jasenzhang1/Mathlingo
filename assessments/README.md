@@ -372,3 +372,46 @@ of several methods applies, and the interview explicitly rewards finding more th
 wired into the concept graph, `sections.ts`, or the servable `Item` system — see the file's own header
 for why, and `assessment.md`'s Open Questions §3 for where this population was first flagged as not
 fitting the per-concept model.
+## The discrete-math sweep
+
+`discrete-math` was added to `concepts.ts` as its own domain — 24 concepts covering logic and proof
+technique, sets and functions, and counting and combinatorics — as the foundational layer the rest of
+the graph assumes but never taught explicitly. Three concepts moved into it from `probability`
+(`set-theory`, `counting-methods`, `binomial-theorem`), each still cited cross-domain by
+`pie-boole`/`sigma-algebra` and `bernoulli-binomial` respectively; the other 21 are new.
+
+| # | File | Concepts | Status |
+|---|---|---|---|
+| DM-1 | [dm-01-logic-and-proof.md](dm-01-logic-and-proof.md) | Propositional Logic → Fibonacci Numbers (8, all new) | done (40 items) |
+| DM-2 | [dm-02-sets-and-functions.md](dm-02-sets-and-functions.md) | Power Set → Cardinality (7, all new; `set-theory` itself is indexed in [foundations-of-probability.md](foundations-of-probability.md)) | done (35 items) |
+| DM-3 | [dm-03-counting-and-combinatorics.md](dm-03-counting-and-combinatorics.md) | Pigeonhole Principle → Integer Partitions (6, all new; `counting-methods`/`binomial-theorem` are indexed in [foundations-of-probability.md](foundations-of-probability.md)) | done (30 items) |
+
+**Discrete Math Fundamentals: 24 / 24 concepts done — 105 authored items across the three new files,
+plus the 21 already living in `foundations-of-probability.md` for the three moved concepts (126
+total authored).**
+
+**Fully servable.** Every one of the 24 concepts carries 8 live `Item` entries — 192 items — in
+[`items/discrete-math-logic.ts`](../web/src/data/items/discrete-math-logic.ts),
+[`items/discrete-math-sets.ts`](../web/src/data/items/discrete-math-sets.ts), and
+[`items/discrete-math-counting.ts`](../web/src/data/items/discrete-math-counting.ts), spread over
+recall/apply/explain/transfer at a difficulty spread of 2.0+ logits per concept — `set-theory`,
+`counting-methods`, and `binomial-theorem` needed only the item pool, since their wiki articles
+carried over unchanged from `web/src/data/wiki/probability/` (moved to
+[`web/src/data/wiki/discrete-math/`](../web/src/data/wiki/discrete-math/)) and their markdown
+questions were already live in `foundations-of-probability.md`. `npm run audit:coverage` clears
+every pool at 8+ live items with all three required cognitive levels present; `npm run audit:tiers`
+reports the domain at 24/24 free-tier answerable. All 24 concepts also have a wiki article, wired
+into the domain loader in `web/src/data/wiki/index.ts`.
+
+Every numeric and combinatorial claim (factorials, binomial coefficients, integer-partition counts,
+inclusion-exclusion instances, power-set and Cartesian-product cardinalities) was verified by hand
+before being written down, the same discipline the rest of the bank uses. Two genuine proofs anchor
+the logic-and-proof cluster — the contradiction proof that √2 is irrational, and Euclid's proof of
+the infinitude of primes — and the sets-and-functions cluster's `proof-by-sets` item works a full
+double-inclusion argument for `A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)` in both directions, the technique
+the concept exists to teach.
+
+**Graph note.** `proof-by-sets` reaches across clusters into `direct-proof` (and transitively
+`logical-equivalences`, `propositional-logic`), exactly as `concepts.ts` already declares — a
+double-inclusion proof genuinely is a direct proof of two containments, so the prerequisite edge and
+the item pool that uses it agree.

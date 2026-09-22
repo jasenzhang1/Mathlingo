@@ -5,8 +5,8 @@ export const numpyIndexingWiki: WikiArticle = {
   summary:
     "A NumPy array generalizes list indexing to any number of dimensions, adds two entirely new ways to " +
     "select — a boolean mask and a list of positions — and changes which of those return a view versus a " +
-    "copy. Getting comfortable with a[i, j] instead of a[i][j], and with a[a > 0] instead of a loop and an " +
-    "if, is most of what 'thinking in NumPy' actually means day to day.",
+    "copy. Getting comfortable with `a[i, j]` instead of `a[i][j]`, and with `a[a > 0]` instead of a loop and an " +
+    "`if`, is most of what 'thinking in NumPy' actually means day to day.",
 
   sections: [
     {
@@ -19,17 +19,17 @@ export const numpyIndexingWiki: WikiArticle = {
         {
           kind: "prose",
           text:
-            "A[i, j] is the idiomatic NumPy form — one pair of brackets, comma-separated indices — rather " +
-            "than the nested A[i][j] a list of lists would need. Both can work on a 2-D array, but A[i, j] " +
+            "`A[i, j]` is the idiomatic NumPy form — one pair of brackets, comma-separated indices — rather " +
+            "than the nested `A[i][j]` a list of lists would need. Both can work on a 2-D array, but `A[i, j]` " +
             "is a single indexing operation rather than two, and it's the only form that extends cleanly " +
-            "to slices like A[0:2, 1:3].",
+            "to slices like `A[0:2, 1:3]`.",
         },
         {
           kind: "callout",
           tone: "insight",
           title: "A colon alone means 'every index along this axis'",
           text:
-            "A[:, 2] reads as 'every row, column 2' — the lone colon is shorthand for the full a[0:len] " +
+            "`A[:, 2]` reads as 'every row, column 2' — the lone colon is shorthand for the full `a[0:len]` " +
             "slice along that axis. This is how you select a whole row or column without spelling out its " +
             "length.",
         },
@@ -45,17 +45,17 @@ export const numpyIndexingWiki: WikiArticle = {
         {
           kind: "prose",
           text:
-            "a > 0 doesn't filter anything by itself — it produces a same-shaped array of booleans. " +
+            "`a > 0` doesn't filter anything by itself — it produces a same-shaped array of booleans. " +
             "Indexing with that boolean array is what actually selects, and assigning into a masked " +
-            "selection (a[a < 0] = 0) mutates exactly those positions and nowhere else, with no loop.",
+            "selection (`a[a < 0] = 0`) mutates exactly those positions and nowhere else, with no loop.",
         },
         {
           kind: "callout",
           tone: "insight",
-          title: "np.where(cond, x, y) is the vectorized ternary",
+          title: "`np.where(cond, x, y)` is the vectorized ternary",
           text:
-            "np.where(a > 0, a, 0) returns a new array that's a where the condition holds and 0 elsewhere " +
-            "— the same idea as a[a < 0] = 0, but non-mutating, and able to pick between two full arrays " +
+            "`np.where(a > 0, a, 0)` returns a new array that's a where the condition holds and 0 elsewhere " +
+            "— the same idea as `a[a < 0] = 0`, but non-mutating, and able to pick between two full arrays " +
             "rather than a single fill value.",
         },
       ],
@@ -71,7 +71,7 @@ export const numpyIndexingWiki: WikiArticle = {
           kind: "prose",
           text:
             "Fancy indexing — selecting with a list or array of integer positions — can reorder, repeat, or " +
-            "subset elements in any way, which a simple start:stop:step slice can't express. That extra " +
+            "subset elements in any way, which a simple `start:stop:step` slice can't express. That extra " +
             "flexibility is exactly why it must copy: there's no single stride that describes an arbitrary " +
             "reordering, so NumPy has to gather the values into new memory.",
         },
@@ -80,8 +80,8 @@ export const numpyIndexingWiki: WikiArticle = {
           tone: "warning",
           title: "Boolean masking copies too",
           text:
-            "Like fancy indexing, a[mask] returns a copy, not a view — the set of True positions isn't a " +
-            "regular stride either. Only a plain slice (start:stop:step, on one or more axes) is guaranteed " +
+            "Like fancy indexing, `a[mask]` returns a copy, not a view — the set of `True` positions isn't a " +
+            "regular stride either. Only a plain slice (`start:stop:step`, on one or more axes) is guaranteed " +
             "to be a view.",
         },
       ],

@@ -174,3 +174,50 @@ and `transcribe` before any paid work happens — the UI gate is only courtesy.
 Both functions bill per call to your Anthropic account. The grader runs once per
 written answer; the tutor once per message. Neither is called for numeric or
 multiple-choice questions.
+
+## Publishing question edits from `/dev/questions`
+
+The developer view at `/dev/questions` (restricted to the emails in
+`web/src/lib/dev/devAuth.ts`) lets you edit or author assessment items in the
+browser and open a pull request with those changes, without touching a
+terminal. It works by writing to `web/src/data/devOverrides.json`, which
+`loadItemBank` merges on top of the hand-authored item banks — so a merged PR
+takes effect for every visitor on the next deploy.
+
+It's a PR, not a direct push to `main`, on purpose: a bad edit here ships
+wrong questions to every learner, and a review click is cheap insurance.
+
+### One-time setup
+
+1. Create a **fine-grained GitHub personal access token**
+   (<https://github.com/settings/personal-access-tokens/new>) scoped to just
+   this repository, with **Contents: Read and write** and **Pull requests:
+   Read and write** permissions. Nothing else.
+2. Deploy the function with that token:
+
+   ```bash
+   GITHUB_TOKEN=github_pat_... GITHUB_OWNER=your-github-username GITHUB_REPO=Mathlingo \
+     ./supabase/deploy.sh YOUR_PROJECT_REF publish-item-edits
+   ```
+
+   Optionally set `DEV_EMAILS=alice@example.com,bob@example.com` in the same
+   command to allow more editors than the single address the client-side page
+   defaults to — add those same emails to `DEV_EMAILS` in
+   `web/src/lib/dev/devAuth.ts` too, or they'll be blocked by the page itself
+   before ever reaching the function.
+
+3. If your default branch isn't `main`, also set
+   `supabase secrets set GITHUB_BASE_BRANCH=your-branch`.
+
+### Using it
+
+Open `/dev/questions`, edit or add items as usual, then click **Publish to
+GitHub**. That opens a PR titled "Question bank: N item(s) from the dev
+editor" — review the diff on GitHub like any other PR, and merge it once it
+looks right. The edited items keep showing in your own browser immediately
+(from local storage) whether or not the PR has merged yet; everyone else sees
+the change once it's merged and the site is redeployed.
+
+The server re-checks the caller's email against `DEV_EMAILS` before touching
+GitHub — the page's own allowlist only hides the button, so this is the real
+gate.

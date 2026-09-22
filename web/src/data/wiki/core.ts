@@ -8,28 +8,36 @@ import { chiSquareGoodnessOfFitTestWiki } from "./chi-square-goodness-of-fit-tes
 import { chiSquareTestOfIndependenceWiki } from "./chi-square-test-of-independence";
 import { conditionalIndependenceDSeparationWiki } from "./conditional-independence-d-separation";
 import { confidenceIntervalWiki } from "./confidence-interval";
+import { conjugatePriorsWiki } from "./conjugate-priors";
 import { covarianceMatrixWiki } from "./covariance-matrix";
 import { dataTypesWiki } from "./data-types";
+import { dirichletProcessWiki } from "./dirichlet-process";
 import { directedVsUndirectedGraphsWiki } from "./directed-vs-undirected-graphs";
 import { distributionOfBetaHatWiki } from "./distribution-of-beta-hat";
 import { effectSizeWiki } from "./effect-size";
 import { emAlgorithmWiki } from "./em-algorithm";
 import { equivalenceTestingWiki } from "./equivalence-testing";
 import { fischersExactTestWiki } from "./fischers-exact-test";
+import { functionalDataAnalysisWiki } from "./functional-data-analysis";
 import { gaussianMixtureModelsWiki } from "./gaussian-mixture-models";
 import { gaussianProcessWiki } from "./gaussian-process";
 import { graphsWiki } from "./graphs";
+import { hilbertSpaceWiki } from "./hilbert-space";
 import { hmmWiki } from "./hmm";
 import { hypothesisTestWiki } from "./hypothesis-test";
+import { importanceSamplingWiki } from "./importance-sampling";
+import { gibbsSamplingWiki } from "./gibbs-sampling";
 import { klDivergenceWiki } from "./kl-divergence";
 import { kolmogorovSmirnovTestWiki } from "./kolmogorov-smirnov-test";
 import { kruskalWallisTestWiki } from "./kruskal-wallis-test";
 import { laplaceApproximationWiki } from "./laplace-approximation";
 import { markovChainsWiki } from "./markov-chains";
+import { markovChainMonteCarloWiki } from "./markov-chain-monte-carlo";
 import { markovRandomFieldsWiki } from "./markov-random-fields";
 import { mcnemarTestWiki } from "./mcnemar-test";
 import { mixtureModelsAndLatentVariablesWiki } from "./mixture-models-and-latent-variables";
 import { multipleTestingWiki } from "./multiple-testing";
+import { conditionalMultivariateNormalWiki } from "./conditional-multivariate-normal";
 import { multivariateMgfWiki } from "./multivariate-mgf";
 import { multivariateNormalWiki } from "./multivariate-normal";
 import { oneSampleProportionsZTestWiki } from "./one-sample-proportions-z-test";
@@ -51,6 +59,7 @@ import { samplingDistributionWiki } from "./sampling-distribution";
 import { samplingMethodsWiki } from "./sampling-methods";
 import { sequentialTestingWiki } from "./sequential-testing";
 import { standardErrorWiki } from "./standard-error";
+import { stickBreakingConstructionWiki } from "./stick-breaking-construction";
 import { testStatisticWiki } from "./test-statistic";
 import { twoSampleProportionsZTestWiki } from "./two-sample-proportions-z-test";
 import { twoSampleTTestWiki } from "./two-sample-t-test";
@@ -154,6 +163,9 @@ export const coreWikiArticles: WikiArticle[] = [
   bivariateNormalWiki,
   multivariateNormalWiki,
   multivariateMgfWiki,
+  // The payoff the previous two exist to reach: deriving the conditional
+  // formula multivariateNormalWiki's closure table only states.
+  conditionalMultivariateNormalWiki,
   pearsonCorrelationWiki,
   klDivergenceWiki,
 
@@ -177,6 +189,14 @@ export const coreWikiArticles: WikiArticle[] = [
   emAlgorithmWiki,
   gaussianMixtureModelsWiki,
   laplaceApproximationWiki,
+  conjugatePriorsWiki,
+
+  // Cluster 2b: sampling-based inference
+  importanceSamplingWiki,
+  markovChainMonteCarloWiki,
+  gibbsSamplingWiki,
+  dirichletProcessWiki,
+  stickBreakingConstructionWiki,
 
   // Cluster 3: variational inference and kernels
   variationalInferenceElboWiki,
@@ -184,4 +204,8 @@ export const coreWikiArticles: WikiArticle[] = [
   gaussianProcessWiki,
   rkhsWiki,
   wassersteinDistanceWiki,
+
+  // Cluster 4: functional data analysis
+  hilbertSpaceWiki,
+  functionalDataAnalysisWiki,
 ];

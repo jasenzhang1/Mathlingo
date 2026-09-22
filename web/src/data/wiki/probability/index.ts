@@ -11,7 +11,6 @@ import { axiomsOfProbability } from "./axioms-of-probability";
 import { bayesRule } from "./bayes-rule";
 import { cdf } from "./cdf";
 import { conditionalProbability } from "./conditional-probability";
-import { countingMethods } from "./counting-methods";
 import { covariance } from "./covariance";
 import { expectation } from "./expectation";
 import { exponentialDistribution } from "./exponential-distribution";
@@ -23,7 +22,6 @@ import { pdf } from "./pdf";
 import { pmf } from "./pmf";
 import { poissonDistribution } from "./poisson-distribution";
 import { randomVariables } from "./random-variables";
-import { setTheory } from "./set-theory";
 import { variance } from "./variance";
 import { chebyshevInequality } from "./chebyshev-inequality";
 import { correlation } from "./correlation";
@@ -52,7 +50,6 @@ import { mutualIndependence } from "./mutual-independence";
 import { pieBoole } from "./pie-boole";
 import { sigmaAlgebra } from "./sigma-algebra";
 import { betaDistribution } from "./beta-distribution";
-import { binomialTheorem } from "./binomial-theorem";
 import { discreteVsContinuous } from "./discrete-vs-continuous-random-variables";
 import { distributionTransformations } from "./distribution-transformations";
 import { exponentialFamily } from "./exponential-family";
@@ -69,7 +66,6 @@ const articles: WikiArticle[] = [
   bayesRule,
   cdf,
   conditionalProbability,
-  countingMethods,
   covariance,
   expectation,
   exponentialDistribution,
@@ -81,7 +77,6 @@ const articles: WikiArticle[] = [
   pmf,
   poissonDistribution,
   randomVariables,
-  setTheory,
   variance,
   chebyshevInequality,
   correlation,
@@ -110,7 +105,6 @@ const articles: WikiArticle[] = [
   pieBoole,
   sigmaAlgebra,
   betaDistribution,
-  binomialTheorem,
   discreteVsContinuous,
   distributionTransformations,
   exponentialFamily,

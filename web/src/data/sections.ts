@@ -28,18 +28,60 @@ export interface SectionSpec {
 }
 
 export const sectionSpecs: Record<Domain, SectionSpec[]> = {
+  "discrete-math": [
+    {
+      id: "logic-and-proof",
+      label: "Logic & Proof Techniques",
+      conceptIds: [
+        "propositional-logic",
+        "logical-equivalences",
+        "direct-proof",
+        "proof-by-contradiction",
+        "mathematical-induction",
+        "strong-induction",
+        "recursion",
+        "fibonacci-numbers",
+      ],
+    },
+    {
+      id: "sets-and-functions",
+      label: "Sets & Functions",
+      conceptIds: [
+        "set-theory",
+        "power-set",
+        "cartesian-product",
+        "proof-by-sets",
+        "functions-relations",
+        "equivalence-relations",
+        "injections-surjections-bijections",
+        "cardinality",
+      ],
+    },
+    {
+      id: "combinatorics",
+      label: "Combinatorics",
+      conceptIds: [
+        "counting-methods",
+        "pigeonhole-principle",
+        "factorials",
+        "permutations",
+        "combinations",
+        "stars-and-bars",
+        "integer-partitions",
+        "binomial-theorem",
+      ],
+    },
+  ],
+
   probability: [
     {
       id: "foundations",
       label: "Foundations of Probability",
       conceptIds: [
-        "set-theory",
         "pie-boole",
         "sigma-algebra",
         "axioms-of-probability",
         "probability-function",
-        "counting-methods",
-        "binomial-theorem",
         "conditional-probability",
         "bayes-rule",
         "independence-set-theory",
@@ -224,6 +266,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "orthogonal-matrices",
         "positive-definite-matrices",
         "cholesky-decomposition",
+        "idempotent-matrices",
         "schur-complement",
         "rayleigh-quotient",
         "matrix-stability",
@@ -272,6 +315,19 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "cochrans-theorem",
         "distribution-of-beta-hat",
       ],
+    },
+    {
+      /**
+       * Both halves of the section above feed this one concept: the MGF's
+       * independence-from-zero-covariance theorem and quadratic forms' Var(aᵀX)
+       * machinery are exactly what deriving X₁ | X₂ = x₂ needs. It is placed
+       * after `quadratic-forms` rather than immediately following
+       * `multivariate-distributions` so that both prerequisites are already
+       * behind a learner who reaches it.
+       */
+      id: "conditional-normals",
+      label: "Conditioning a Multivariate Normal",
+      conceptIds: ["conditional-multivariate-normal"],
     },
     {
       id: "asymptotics",
@@ -367,6 +423,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "OLS Geometry & Multiple Regression",
       conceptIds: [
         "geometric-interpretation-of-ols",
+        "hat-matrix",
         "multiple-linear-regression",
         "linear-regression-probabilistic-version",
         "ols-assumptions",
@@ -414,11 +471,36 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "Extensions",
       conceptIds: [
         "weighted-least-squares",
+        "sandwich-estimator",
+        "generalized-estimating-equations",
         "outliers-leverage-influence",
         "polynomial-regression",
         "quantile-regression",
         "poisson-regression",
       ],
+    },
+  ],
+
+  "time-series": [
+    {
+      id: "stochastic-processes",
+      label: "Stochastic Processes & Markov Chains",
+      conceptIds: ["stochastic-processes"],
+    },
+    {
+      id: "stationarity-autocorrelation",
+      label: "Stationarity & Autocorrelation",
+      conceptIds: ["stationarity-white-noise", "acf", "pacf"],
+    },
+    {
+      id: "linear-time-series-models",
+      label: "Linear Time Series Models",
+      conceptIds: ["ar-models", "ma-models", "wold-decomposition", "arma", "arima"],
+    },
+    {
+      id: "volatility-multivariate",
+      label: "Volatility & Multivariate Time Series",
+      conceptIds: ["garch", "cointegration"],
     },
   ],
 
@@ -507,11 +589,6 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
-      id: "neural-networks",
-      label: "Neural Networks",
-      conceptIds: ["perceptron", "neural-networks", "backpropagation"],
-    },
-    {
       id: "gaussian-processes",
       label: "Gaussian Processes",
       conceptIds: ["gp-regression", "gp-classification"],
@@ -533,8 +610,28 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
-      id: "deep-learning",
-      label: "Deep Learning",
+      id: "further-paradigms",
+      label: "Further Paradigms & Methods",
+      conceptIds: [
+        "reinforcement-learning",
+        "multi-armed-bandits",
+        "bayesian-optimization",
+        "stacking",
+        "hierarchical-clustering",
+        "density-based-clustering",
+      ],
+    },
+  ],
+
+  "deep-learning": [
+    {
+      id: "neural-networks",
+      label: "Neural Networks",
+      conceptIds: ["perceptron", "neural-networks", "backpropagation"],
+    },
+    {
+      id: "core-concepts",
+      label: "Core Concepts",
       conceptIds: [
         "activation-functions",
         "sgd-and-adaptive-optimizers",
@@ -558,6 +655,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "autoregressive-models",
         "state-space-models",
         "graph-neural-networks",
+        "variational-inference-vaes",
         "generative-adversarial-networks",
         "diffusion-models",
         "mixture-of-experts",
@@ -576,23 +674,11 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
-      id: "further-paradigms",
-      label: "Further Paradigms & Methods",
-      conceptIds: [
-        "transfer-learning",
-        "self-supervised-learning",
-        "reinforcement-learning",
-        "multi-armed-bandits",
-        "bayesian-optimization",
-        "stacking",
-        "hierarchical-clustering",
-        "density-based-clustering",
-      ],
-    },
-    {
       id: "adapting-and-serving",
       label: "Scaling, Adapting & Serving",
       conceptIds: [
+        "transfer-learning",
+        "self-supervised-learning",
         "scaling-laws",
         "tokenization",
         "contrastive-learning",
@@ -625,6 +711,18 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "em-algorithm",
         "gaussian-mixture-models",
         "laplace-approximation",
+        "conjugate-priors",
+      ],
+    },
+    {
+      id: "sampling-inference",
+      label: "Sampling-Based Inference",
+      conceptIds: [
+        "importance-sampling",
+        "markov-chain-monte-carlo",
+        "gibbs-sampling",
+        "dirichlet-process",
+        "stick-breaking-construction",
       ],
     },
     {
@@ -632,11 +730,103 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "Variational Inference & Kernels",
       conceptIds: [
         "variational-inference-elbo",
-        "variational-inference-vaes",
         "gaussian-process",
         "rkhs",
         "wasserstein-distance",
       ],
+    },
+    {
+      id: "fda",
+      label: "Functional Data Analysis",
+      conceptIds: ["hilbert-space", "functional-data-analysis"],
+    },
+  ],
+
+  "stochastic-processes": [
+    {
+      id: "foundations",
+      label: "From Random Walk to Brownian Motion",
+      conceptIds: ["simple-random-walk", "brownian-motion"],
+    },
+    {
+      id: "markov-and-filtering",
+      label: "Markov Processes & Filtering",
+      conceptIds: [
+        "poisson-process",
+        "continuous-time-markov-chains",
+        "kalman-filter",
+        "karhunen-loeve-expansion",
+      ],
+    },
+  ],
+
+  "stochastic-calculus": [
+    {
+      id: "information-and-martingales",
+      label: "Information and Martingales",
+      conceptIds: ["filtrations-and-adapted-processes", "martingales-continuous-time"],
+    },
+    {
+      id: "ito-calculus",
+      label: "Itô Calculus",
+      conceptIds: [
+        "quadratic-variation",
+        "ito-integral",
+        "ito-doeblin-formula",
+        "multidimensional-ito-calculus",
+      ],
+    },
+    {
+      id: "sdes-and-pricing",
+      label: "SDEs and Risk-Neutral Pricing",
+      conceptIds: [
+        "stochastic-differential-equations",
+        "geometric-brownian-motion",
+        "black-scholes-merton-equation",
+        "girsanov-theorem",
+        "risk-neutral-pricing",
+        "martingale-representation-theorem",
+      ],
+    },
+    {
+      id: "pde-connections",
+      label: "Connections with PDEs",
+      conceptIds: ["feynman-kac-theorem"],
+    },
+  ],
+
+  "financial-instruments": [
+    {
+      id: "fixed-income",
+      label: "Fixed Income and the Term Structure",
+      conceptIds: [
+        "time-value-of-money",
+        "bonds-and-fixed-income",
+        "yield-to-maturity",
+        "yield-curve-and-term-structure",
+        "bond-duration-and-convexity",
+      ],
+    },
+    {
+      id: "equities-and-funds",
+      label: "Equities and Pooled Vehicles",
+      conceptIds: ["equities-and-stock-markets", "etfs-and-index-funds", "mutual-funds-and-nav"],
+    },
+    {
+      id: "forwards-futures-options",
+      label: "Forwards, Futures, and Options",
+      conceptIds: [
+        "derivatives-overview",
+        "forwards-and-futures",
+        "options-calls-and-puts",
+        "option-payoff-and-put-call-parity",
+        "option-pricing-and-greeks",
+      ],
+    },
+    {
+      id: "swaps-and-credit",
+      label: "Swaps and Credit Derivatives",
+      conceptIds: ["interest-rate-and-currency-swaps", "credit-default-swaps"],
     },
   ],
 

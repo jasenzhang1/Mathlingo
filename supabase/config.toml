@@ -13,6 +13,9 @@ verify_jwt = true
 [functions.transcribe]
 verify_jwt = true
 
+[functions.publish-item-edits]
+verify_jwt = true
+
 [functions.stripe-checkout]
 verify_jwt = true
 

@@ -3,10 +3,10 @@ import type { WikiArticle } from "../types";
 export const pythonTypeConversionWiki: WikiArticle = {
   conceptId: "python-type-conversion",
   summary:
-    "Python converts explicitly, on request, via functions named after the target type: int(), float(), " +
-    "str(), bool(). Conversion can fail loudly (int(\"abc\") raises ValueError), truncate silently " +
-    "(int(3.9) is 3, not 4), or follow a truthiness rule that surprises people the first time they meet " +
-    "it (bool(\"0\") is True). Knowing exactly which of the three applies to a given conversion is what " +
+    "Python converts explicitly, on request, via functions named after the target type: `int()`, `float()`, " +
+    "`str()`, `bool()`. Conversion can fail loudly (`int(\"abc\")` raises `ValueError`), truncate silently " +
+    "(`int(3.9)` is `3`, not `4`), or follow a truthiness rule that surprises people the first time they meet " +
+    "it (`bool(\"0\")` is `True`). Knowing exactly which of the three applies to a given conversion is what " +
     "separates code that fails fast from code that produces a plausible wrong answer.",
 
   sections: [
@@ -33,10 +33,10 @@ export const pythonTypeConversionWiki: WikiArticle = {
         {
           kind: "callout",
           tone: "warning",
-          title: "int() on a float truncates — it is not round()",
+          title: "`int()` on a float truncates — it is not `round()`",
           text:
-            "int(3.9) is 3 and int(-3.9) is -3: the fractional part is simply discarded, chopping toward " +
-            "zero rather than down. If you actually want nearest-integer rounding, use round(), which " +
+            "`int(3.9)` is `3` and `int(-3.9)` is `-3`: the fractional part is simply discarded, chopping toward " +
+            "zero rather than down. If you actually want nearest-integer rounding, use `round()`, which " +
             "follows banker's rounding on exact .5 ties rather than always rounding up.",
         },
       ],
@@ -47,28 +47,28 @@ export const pythonTypeConversionWiki: WikiArticle = {
         {
           kind: "prose",
           text:
-            "bool() follows a specific rule rather than looking at what a value 'means': 0, 0.0, the " +
-            "empty string \"\", the empty list [], and None all convert to False. Every other value — " +
-            "including any non-empty string, even \"False\" or \"0\" — converts to True.",
+            "`bool()` follows a specific rule rather than looking at what a value 'means': `0`, `0.0`, the " +
+            "empty string `\"\"`, the empty list `[]`, and `None` all convert to `False`. Every other value — " +
+            "including any non-empty string, even `\"False\"` or `\"0\"` — converts to `True`.",
         },
         {
           kind: "example",
           title: "A string that looks false is still truthy",
-          problem: "What does bool(\"0\") evaluate to, and why?",
+          problem: "What does `bool(\"0\")` evaluate to, and why?",
           steps: [
-            "\"0\" is a string, not the number 0.",
+            "`\"0\"` is a string, not the number `0`.",
             "Truthiness for strings only checks whether the string is empty.",
-            "\"0\" has one character, so it is not empty.",
+            "`\"0\"` has one character, so it is not empty.",
           ],
           answer: "True — any non-empty string is truthy, regardless of what text it contains.",
         },
         {
           kind: "callout",
           tone: "insight",
-          title: "Truthiness is what if and while actually check",
+          title: "Truthiness is what `if` and `while` actually check",
           text:
-            "if some_value: implicitly calls bool(some_value). Knowing the truthiness rule (empty/zero-ish " +
-            "is False, everything else is True) explains why `if my_list:` is idiomatic for 'the list has " +
+            "`if some_value:` implicitly calls `bool(some_value)`. Knowing the truthiness rule (empty/zero-ish " +
+            "is `False`, everything else is `True`) explains why `if my_list:` is idiomatic for 'the list has " +
             "items' instead of the more verbose `if len(my_list) > 0:`.",
         },
       ],

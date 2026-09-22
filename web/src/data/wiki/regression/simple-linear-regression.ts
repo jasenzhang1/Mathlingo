@@ -169,6 +169,100 @@ export const simpleLinearRegressionWiki: WikiArticle = {
     },
 
     {
+      heading: "Properties of the estimators",
+      blocks: [
+        {
+          kind: "prose",
+          text:
+            "With only two parameters, the general results for β̂ = (XᵀX)⁻¹Xᵀy collapse to formulas " +
+            "simple enough to reason about directly — and simple enough that every design choice's " +
+            "effect on precision is visible by inspection rather than by inverting a matrix.",
+        },
+        {
+          kind: "formula",
+          latex: "E[β̂₁] = β₁,   E[β̂₀] = β₀",
+          caption: "Both estimators are unbiased, using only E[εᵢ | X] = 0 — no normality required.",
+        },
+        {
+          kind: "formula",
+          latex: "Var(β̂₁) = σ² / Σᵢ(xᵢ − x̄)²",
+          caption: "The slope's variance: noise over the total spread of X.",
+        },
+        {
+          kind: "formula",
+          latex: "Var(β̂₀) = σ² [ 1/n + x̄² / Σᵢ(xᵢ − x̄)² ]",
+          caption: "The intercept's variance — always at least σ²/n, and worse the farther x̄ sits from 0.",
+        },
+        {
+          kind: "formula",
+          latex: "Cov(β̂₀, β̂₁) = −σ² x̄ / Σᵢ(xᵢ − x̄)²",
+          caption: "Zero exactly when x̄ = 0 — the one design choice that decorrelates the two estimates.",
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Centre X and the two estimators become independent",
+          text:
+            "Replacing xᵢ with xᵢ − x̄ before fitting leaves β̂₁ unchanged but sends β̂₀ to ȳ and its " +
+            "covariance with β̂₁ to zero — Var(β̂₀) also drops to its minimum possible value, σ²/n. " +
+            "This is the two-parameter instance of the same centring trick that removes structural " +
+            "collinearity between x and x² in polynomial regression.",
+        },
+        {
+          kind: "prose",
+          text:
+            "Both variances and the covariance follow from the same fact used everywhere else in " +
+            "this derivation: β̂₁ = Σwᵢyᵢ with weights wᵢ = (xᵢ − x̄)/Σ(xⱼ − x̄)², so β̂₁ is a fixed " +
+            "linear combination of the yᵢ. Var(β̂₁) = Σwᵢ²σ² collapses to σ²/Σ(xᵢ − x̄)² because " +
+            "Σwᵢ² = 1/Σ(xᵢ − x̄)². The same weights, substituted into β̂₀ = ȳ − β̂₁x̄, give its " +
+            "variance and its covariance with β̂₁.",
+        },
+        {
+          kind: "definitions",
+          items: [
+            {
+              term: "Gauss–Markov (BLUE)",
+              description:
+                "Among all linear unbiased estimators of β₀ and β₁ — not just OLS — the least-" +
+                "squares estimators have the smallest variance. This needs only E[ε]=0, constant " +
+                "variance, and uncorrelated errors; normality is not required.",
+            },
+            {
+              term: "Distribution",
+              description:
+                "β̂₀ and β̂₁ are exact linear combinations of the yᵢ, so they are exactly bivariate " +
+                "normal if ε is normal, and approximately so for large n by the CLT — provided no " +
+                "single xᵢ dominates Σ(xⱼ − x̄)².",
+            },
+            {
+              term: "Estimating σ²",
+              description:
+                "σ̂² = SSE/(n − 2), unbiased because two degrees of freedom are spent fitting the " +
+                "intercept and slope. SE(β̂₁) = σ̂/√Σ(xᵢ − x̄)² and SE(β̂₀) = σ̂√[1/n + x̄²/Σ(xᵢ − x̄)²] " +
+                "are what software reports, and both shrink at the usual 1/√n rate.",
+            },
+          ],
+        },
+        {
+          kind: "example",
+          title: "Comparing intercept precision under two designs",
+          problem:
+            "n = 20, σ² = 4, Σ(xᵢ − x̄)² = 50 in both cases. Design A centres X at x̄ = 0; design B " +
+            "shifts every x by +10, so x̄ = 10. Compare Var(β̂₀) under the two designs.",
+          steps: [
+            "Var(β̂₀) = σ²[1/n + x̄²/Σ(xᵢ − x̄)²].",
+            "Design A: Var(β̂₀) = 4[1/20 + 0/50] = 4(0.05) = 0.2.",
+            "Design B: Var(β̂₀) = 4[1/20 + 100/50] = 4(0.05 + 2) = 8.2.",
+          ],
+          answer:
+            "Shifting X away from zero inflates Var(β̂₀) by a factor of 41, even though Σ(xᵢ − x̄)² — " +
+            "and hence Var(β̂₁) — is identical in both designs. The slope doesn't care where X is " +
+            "centred; the intercept cares a great deal, because it is extrapolating back to x = 0.",
+        },
+      ],
+    },
+
+    {
       heading: "What can go wrong",
       blocks: [
         {

@@ -5,8 +5,8 @@ export const pythonListOperationsWiki: WikiArticle = {
   summary:
     "A list is mutable: it can be changed after it's built, without creating a new list. That single fact " +
     "is what makes lists useful — and it's the source of a specific, recurring class of bug, because " +
-    "b = a shares the same list object rather than copying it, and a method that mutates in place " +
-    "(like .sort()) returns None rather than the list itself.",
+    "`b = a` shares the same list object rather than copying it, and a method that mutates in place " +
+    "(like `.sort()`) returns `None` rather than the list itself.",
 
   sections: [
     {
@@ -29,9 +29,9 @@ export const pythonListOperationsWiki: WikiArticle = {
           tone: "insight",
           title: "The methods that return None are the mutating ones",
           text:
-            "a.sort() sorts in place and returns None; sorted(a) leaves a alone and returns a new list " +
-            "(covered next). Writing a = a.sort() is the single most common way to lose a list, and it " +
-            "fails silently — you get None, not an error.",
+            "`a.sort()` sorts in place and returns `None`; `sorted(a)` leaves `a` alone and returns a new list " +
+            "(covered next). Writing `a = a.sort()` is the single most common way to lose a list, and it " +
+            "fails silently — you get `None`, not an error.",
         },
       ],
     },
@@ -41,22 +41,22 @@ export const pythonListOperationsWiki: WikiArticle = {
         {
           kind: "prose",
           text:
-            "b = a does not copy anything — it binds a second name to the exact same list object, so " +
-            "b.append(1) changes what a sees too. A slice, by contrast, builds a new list: b = a[:] gives " +
+            "`b = a` does not copy anything — it binds a second name to the exact same list object, so " +
+            "`b.append(1)` changes what `a` sees too. A slice, by contrast, builds a new list: `b = a[:]` gives " +
             "an independent copy. The distinction is invisible until something mutates, at which point " +
             "it's the whole story.",
         },
         {
           kind: "example",
           title: "The same list under two names",
-          problem: "a = [1, 2, 3]; b = a; c = a[:]; b.append(4); c.append(5). What are a, b, and c?",
+          problem: "`a = [1, 2, 3]; b = a; c = a[:]; b.append(4); c.append(5)`. What are `a`, `b`, and `c`?",
           steps: [
-            "b = a binds b to the same object as a — one list, two names.",
-            "c = a[:] slices, which constructs a new list holding the same elements.",
-            "b.append(4) mutates the shared object, so a sees it too.",
-            "c.append(5) mutates only c's own object.",
+            "`b = a` binds `b` to the same object as `a` — one list, two names.",
+            "`c = a[:]` slices, which constructs a new list holding the same elements.",
+            "`b.append(4)` mutates the shared object, so `a` sees it too.",
+            "`c.append(5)` mutates only `c`'s own object.",
           ],
-          answer: "a == [1, 2, 3, 4], b == [1, 2, 3, 4] (the same object as a), c == [1, 2, 3, 5].",
+          answer: "`a == [1, 2, 3, 4]`, `b == [1, 2, 3, 4]` (the same object as `a`), `c == [1, 2, 3, 5]`.",
         },
         {
           kind: "callout",
@@ -86,11 +86,11 @@ export const pythonListOperationsWiki: WikiArticle = {
         {
           kind: "callout",
           tone: "warning",
-          title: "[[0] * 3] * 2 is not a 2x3 grid",
+          title: "`[[0] * 3] * 2` is not a 2x3 grid",
           text:
-            "Multiplying a list repeats references, not values. grid = [[0] * 3] * 2 gives two names for " +
-            "one inner list, so grid[0][0] = 1 sets grid[1][0] too. Build it with a comprehension instead " +
-            "— [[0] * 3 for _ in range(2)] — which evaluates the inner expression once per row.",
+            "Multiplying a list repeats references, not values. `grid = [[0] * 3] * 2` gives two names for " +
+            "one inner list, so `grid[0][0] = 1` sets `grid[1][0]` too. Build it with a comprehension instead " +
+            "— `[[0] * 3 for _ in range(2)]` — which evaluates the inner expression once per row.",
         },
       ],
     },
