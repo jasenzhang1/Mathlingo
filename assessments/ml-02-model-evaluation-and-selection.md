@@ -254,11 +254,21 @@ that correspondence explicit rather than treating precision/recall as a fresh vo
 | Tag | Blame |
 |---|---|
 | OvR and native multiclass methods conflated | `multiclass-classification` |
+| OvR and OvO classifier counts swapped | `multiclass-classification` |
 | confusion-matrix cells treated as unrelated to Type I/II error | `confusion-matrices` |
+| precision and recall formulas swapped | `confusion-matrices` |
+| macro- and micro-averaging conflated | `confusion-matrices` |
 | ROC baseline (0.5) confused with the "always wrong" extreme (0.0) | `roc-curves` |
+| ROC axes (TPR/FPR) confused with precision-recall's axes | `roc-curves` |
+| AUC's ranking interpretation confused with plain accuracy | `roc-curves` |
 | CV believed to replace the need for a held-out test set | `k-fold-cross-validation` |
+| LOOCV and standard k-fold classifier counts swapped | `k-fold-cross-validation` |
+| time-series CV assumed safe to shuffle like ordinary k-fold | `k-fold-cross-validation` |
 | hyperparameters tuned directly against training loss | `hyperparameters` |
 | grid search assumed to scale linearly in hyperparameter count | `hyperparameters` |
+| tunable settings like k in KNN or early-stopping patience mistaken for learned parameters | `hyperparameters` |
 | sensitivity analysis conflated with ordinary tuning | `sensitivity-analysis` |
+| one-at-a-time sensitivity analysis assumed to capture interaction effects | `sensitivity-analysis` |
+| local and global sensitivity analysis scopes swapped | `sensitivity-analysis` |
 
-**Cluster total: 30 items across 6 concepts.** All numeric claims verified.
+**Cluster total: 180 items across 6 concepts (30 each).** All numeric claims verified.
