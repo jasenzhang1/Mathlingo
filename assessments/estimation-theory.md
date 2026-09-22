@@ -222,8 +222,13 @@ the T(x) term `exponential-family` flagged as a preview two clusters ago.
 | Fisher information assumed maximized at θ=0.5 by analogy with variance | `fisher-information` |
 | "efficient" and "sufficient" terminology confused | `sufficient-statistic` |
 | CRLB match noted but its "no estimator can do better" conclusion missed | `cramer-rao-lower-bound` |
+| sufficiency treated as an absolute property rather than relative to a specific model/parameter | `sufficient-statistic` |
+| correlation's invariance to linear rescaling over-extended to any (including nonlinear) transformation | `correlation` |
+| law-of-total-variance's within/between terms mislabeled or assumed one bounds the other incorrectly | `law-of-total-variance` |
+| Fisher information's reciprocal relationship to the CRLB inverted | `fisher-information` |
+| CRLB assumed to constrain biased estimators, or assumed attainable for every model | `cramer-rao-lower-bound` |
 
-**Cluster total: 35 items across 5 concepts.** All numeric claims verified, including the exact
+**Cluster total: 150 items across 5 concepts (30 each).** All numeric claims verified, including the exact
 equality between the Bernoulli CRLB and the sample mean's true variance — not an approximation, a
 genuine algebraic identity confirmed to machine precision. Two concepts in this cluster exist
 specifically to complete arcs opened earlier: `law-of-total-variance` answers `law-of-total-expectation`'s
