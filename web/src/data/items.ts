@@ -41,6 +41,10 @@ import { stochasticProcessesRandomWalkBrownianItems } from "./items/stochastic-p
 import { computationalStatisticsItems } from "./items/computational-statistics";
 import { robustRegressionItems } from "./items/robust-regression";
 import { functionalDataAnalysisItems } from "./items/functional-data-analysis";
+import { stochasticCalculusFiltrationsMartingalesItems } from "./items/stochastic-calculus-filtrations-martingales";
+import { stochasticCalculusItoItems } from "./items/stochastic-calculus-ito";
+import { stochasticCalculusSdesItems } from "./items/stochastic-calculus-sdes";
+import { stochasticCalculusPricingItems } from "./items/stochastic-calculus-pricing";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -920,6 +924,16 @@ export const items: Item[] = [
   ...timeSeriesItems,
   ...stochasticProcessesBuffupItems,
   ...stochasticProcessesRandomWalkBrownianItems,
+
+  // --- Stochastic Calculus: 20-per-concept expansion across all 12 concepts
+  // in the `stochastic-calculus` section — filtrations/martingales/quadratic
+  // variation, Itô calculus, SDEs & Black-Scholes-Merton, and the
+  // Girsanov/risk-neutral-pricing/martingale-representation/Feynman-Kac
+  // cluster. See the individual files for per-concept counts and sourcing.
+  ...stochasticCalculusFiltrationsMartingalesItems,
+  ...stochasticCalculusItoItems,
+  ...stochasticCalculusSdesItems,
+  ...stochasticCalculusPricingItems,
 
   // --- Probability / Statistics / Multivariate Probability: 20-per-concept
   // expansion. Brings every concept in these three domains up to 20 live
