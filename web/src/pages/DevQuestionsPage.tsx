@@ -7,6 +7,7 @@ import { Nav } from "../components/Nav";
 import { domainMeta, concepts, type Concept } from "../data/concepts";
 import { loadItemBank } from "../data/items";
 import type { Item } from "../lib/assessment/types";
+import { formatDifficultyLevel } from "../lib/assessment/difficultyLevel";
 import { useAuth } from "../lib/auth/useAuth";
 import { useIsDeveloper } from "../lib/dev/devAuth";
 import {
@@ -310,7 +311,7 @@ export function DevQuestionsPage() {
                                   {item.cognitive}
                                 </span>
                                 <span className="rounded-full border border-[var(--line)] px-2 py-0.5 text-xs text-[var(--ink-soft)]">
-                                  difficulty {item.difficulty}
+                                  difficulty {formatDifficultyLevel(item.difficulty)}
                                 </span>
                                 <span className="rounded-full border border-[var(--line)] px-2 py-0.5 text-xs text-[var(--ink-soft)]">
                                   {item.status}

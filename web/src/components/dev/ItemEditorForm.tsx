@@ -7,6 +7,13 @@ import type {
   ItemStatus,
   ResponseChannel,
 } from "../../lib/assessment/types";
+import {
+  DIFFICULTY_LEVEL_STEP,
+  MAX_DIFFICULTY_LEVEL,
+  MIN_DIFFICULTY_LEVEL,
+  formatDifficultyLevel,
+  levelToDifficulty,
+} from "../../lib/assessment/difficultyLevel";
 
 const FORMATS: ItemFormat[] = [
   "numeric",
@@ -101,7 +108,7 @@ export function ItemEditorForm({
   const [status, setStatus] = useState<ItemStatus>(base.status);
   const [channels, setChannels] = useState<ResponseChannel[]>(base.channels);
   const [stem, setStem] = useState(base.stem);
-  const [difficulty, setDifficulty] = useState(String(base.difficulty));
+  const [difficulty, setDifficulty] = useState(formatDifficultyLevel(base.difficulty));
   const [discrimination, setDiscrimination] = useState(String(base.discrimination));
   const [expectedSeconds, setExpectedSeconds] = useState(String(base.expectedSeconds));
   const [prereqClosure, setPrereqClosure] = useState(base.prereqClosure.join(", "));
@@ -177,7 +184,14 @@ export function ItemEditorForm({
       cognitive,
       channels,
       stem,
-      difficulty: Number(difficulty) || 0,
+      // Only convert when the level was changed, so saving an untouched item
+      // doesn't round its calibrated logit to the level's 0.1 grid.
+      difficulty:
+        difficulty === formatDifficultyLevel(base.difficulty) ||
+        difficulty.trim() === "" ||
+        !Number.isFinite(Number(difficulty))
+          ? base.difficulty
+          : levelToDifficulty(Number(difficulty)),
       discrimination: Number(discrimination) || 0,
       expectedSeconds: Number(expectedSeconds) || 0,
       prereqClosure: prereqClosure
@@ -303,10 +317,12 @@ export function ItemEditorForm({
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         <div>
-          <label className={labelClass}>Difficulty (IRT logit)</label>
+          <label className={labelClass}>Difficulty (1–10)</label>
           <input
             type="number"
-            step="0.1"
+            min={MIN_DIFFICULTY_LEVEL}
+            max={MAX_DIFFICULTY_LEVEL}
+            step={DIFFICULTY_LEVEL_STEP}
             className={inputClass}
             value={difficulty}
             onChange={(e) => setDifficulty(e.target.value)}
