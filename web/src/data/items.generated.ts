@@ -7759,7 +7759,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "P(A|B) = P(B|A)P(A) / P(B)",
+          "description": "$P(A \\mid B) = \\dfrac{P(B \\mid A)\\,P(A)}{P(B)}$",
           "weight": 1,
           "required": false
         }
@@ -7789,7 +7789,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "In P(A|B) = P(B|A)P(A)/P(B), P(A) is called the:",
+    "stem": "In $P(A \\mid B) = P(B \\mid A)\\,P(A)/P(B)$, $P(A)$ is called the:",
     "rubric": {
       "elements": [
         {
@@ -7802,11 +7802,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"posterior\" for P(A) instead of P(A|B)",
+          "description": "picks \"posterior\" for $P(A)$ instead of $P(A \\mid B)$",
           "weight": 0,
           "misconception": {
             "id": "bayes-rule--r2--misconception",
-            "description": "picks \"posterior\" for P(A) instead of P(A|B)",
+            "description": "picks \"posterior\" for $P(A)$ instead of $P(A \\mid B)$",
             "blameConceptId": "bayes-rule"
           }
         }
@@ -7836,18 +7836,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Two urns: Urn 1 has 3 red/2 blue, Urn 2 has 1 red/4 blue. Pick an urn at random (50/50), draw a ball, it's red. P(Urn 1 | red)?",
+    "stem": "Two urns: Urn 1 has 3 red/2 blue, Urn 2 has 1 red/4 blue. Pick an urn at random (50/50), draw a ball, it's red. $P(\\text{Urn 1} \\mid \\text{red})$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(red)=0.5·0.6+0.5·0.2=0.4",
+          "description": "$P(\\text{red}) = 0.5 \\cdot 0.6 + 0.5 \\cdot 0.2 = 0.4$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "P(Urn1|red)=0.5·0.6/0.4=0.75",
+          "description": "$P(\\text{Urn 1} \\mid \\text{red}) = 0.5 \\cdot 0.6 / 0.4 = 0.75$",
           "weight": 1,
           "required": false
         }
@@ -7855,11 +7855,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "forgets the law-of-total-probability denominator and reports P(red|Urn1)=0.6 as the answer",
+          "description": "forgets the law-of-total-probability denominator and reports $P(\\text{red} \\mid \\text{Urn 1}) = 0.6$ as the answer",
           "weight": 0,
           "misconception": {
             "id": "bayes-rule--a1--misconception",
-            "description": "forgets the law-of-total-probability denominator and reports P(red|Urn1)=0.6 as the answer",
+            "description": "forgets the law-of-total-probability denominator and reports $P(\\text{red} \\mid \\text{Urn 1}) = 0.6$ as the answer",
             "blameConceptId": "bayes-rule"
           }
         }
@@ -7889,18 +7889,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "*(the screening-test item already live as `bayes-rule--transfer-screening`; retained here as the canonical apply-level companion at a fresh set of numbers.)* Disease prevalence 0.5%, test sensitivity 98%, false-positive rate 3%. P(disease | positive)?",
+    "stem": "*(the screening-test item already live as `bayes-rule--transfer-screening`; retained here as the canonical apply-level companion at a fresh set of numbers.)* Disease prevalence 0.5%, test sensitivity 98%, false-positive rate 3%. $P(\\text{disease} \\mid \\text{positive})$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(pos)=0.005·0.98+0.995·0.03=0.0347",
+          "description": "$P(\\text{pos}) = 0.005 \\cdot 0.98 + 0.995 \\cdot 0.03 = 0.0347$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "P(disease|pos)=0.0049/0.0347≈0.141",
+          "description": "$P(\\text{disease} \\mid \\text{pos}) = 0.0049 / 0.0347 \\approx 0.141$",
           "weight": 1,
           "required": false
         }
@@ -7942,12 +7942,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive Bayes' rule from the definition of conditional probability alone (both P(A|B) and P(B|A) expand from the same joint).",
+    "stem": "Derive Bayes' rule from the definition of conditional probability alone (both $P(A \\mid B)$ and $P(B \\mid A)$ expand from the same joint).",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(A|B)=P(A∩B)/P(B), P(B|A)=P(A∩B)/P(A) ⟹ P(A∩B)=P(B|A)P(A); substitute",
+          "description": "$P(A \\mid B) = P(A \\cap B)/P(B)$, $P(B \\mid A) = P(A \\cap B)/P(A) \\implies P(A \\cap B) = P(B \\mid A)\\,P(A)$; substitute",
           "weight": 1,
           "required": true
         }
@@ -7977,7 +7977,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why a rare disease with an accurate test can still yield P(disease|positive) far below the test's sensitivity.",
+    "stem": "Explain why a rare disease with an accurate test can still yield $P(\\text{disease} \\mid \\text{positive})$ far below the test's sensitivity.",
     "rubric": {
       "elements": [
         {
@@ -8017,7 +8017,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "prosecutor's fallacy — confuses P(evidence|innocent) [≈1%] with P(guilty|evidence)",
+          "description": "prosecutor's fallacy — confuses $P(\\text{evidence} \\mid \\text{innocent})$ [≈1%] with $P(\\text{guilty} \\mid \\text{evidence})$",
           "weight": 1,
           "required": false
         },

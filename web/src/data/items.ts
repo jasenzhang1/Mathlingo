@@ -295,7 +295,7 @@ export const items: Item[] = [
         {
           id: "names-the-swap",
           description:
-            "Identifies that P(positive | condition) has been mistaken for P(condition | positive).",
+            "Identifies that $P(\\text{positive} \\mid \\text{condition})$ has been mistaken for $P(\\text{condition} \\mid \\text{positive})$.",
           weight: 3,
           required: true,
           misconception: {
@@ -331,19 +331,19 @@ export const items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "State Bayes' Rule for P(A | B) in terms of P(B | A), P(A), and P(B).",
+    stem: "State Bayes' Rule for $P(A \\mid B)$ in terms of $P(B \\mid A)$, $P(A)$, and $P(B)$.",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "Gives P(A | B) = P(B | A)·P(A) / P(B).",
+          description: "Gives $P(A \\mid B) = \\dfrac{P(B \\mid A)\\,P(A)}{P(B)}$.",
           weight: 3,
           required: true,
         },
         {
           id: "names-the-parts",
           description:
-            "Names P(A) as the prior, P(B | A) as the likelihood, and P(A | B) as the posterior.",
+            "Names $P(A)$ as the prior, $P(B \\mid A)$ as the likelihood, and $P(A \\mid B)$ as the posterior.",
           weight: 2,
         },
       ],
