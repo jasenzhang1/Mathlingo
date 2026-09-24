@@ -7,13 +7,12 @@ import dagre, {
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { concepts, domainMeta, type Domain } from "../data/concepts";
-import { ancestorCountOf, reducedEdges } from "../lib/prerequisiteGraph";
+import { reducedEdges } from "../lib/prerequisiteGraph";
 import {
   MAX_PROFICIENCY,
   fillSegmentPath,
   proficiencyRatio,
 } from "../lib/proficiencyFill";
-import { useAuth } from "../lib/auth/useAuth";
 import { useProficiency } from "../lib/useProficiency";
 import { ReviewSession } from "./assessment/ReviewSession";
 
@@ -21,7 +20,6 @@ interface PositionedNode {
   id: string;
   title: string;
   domain: Domain;
-  hasLesson: boolean;
   /** Centre of the circle. The label hangs directly below it. */
   x: number;
   y: number;
@@ -56,8 +54,10 @@ const CHAR_WIDTH = 3.45;
 const MAX_LABEL_WIDTH = 68;
 /** Circle bottom to the top of the first line of text. */
 const LABEL_GAP = 3;
-/** Slack around the circle so the "lesson available" ring stays inside the box. */
-const RING_PAD = 4.5;
+/** Every node is drawn at the same size. */
+const NODE_RADIUS = 7;
+/** Slack around the circle so neighbouring dots don't touch. */
+const RING_PAD = 1;
 
 function textWidth(text: string): number {
   return text.length * CHAR_WIDTH;
@@ -97,11 +97,6 @@ function wrapTitle(title: string): string[] {
   const balanced = Math.max(longestWord, textWidth(title) / lines.length);
   const evened = wrapAt(words, balanced);
   return evened.length === lines.length ? evened : lines;
-}
-
-function radiusFor(id: string): number {
-  const ancestors = ancestorCountOf.get(id) ?? 0;
-  return Math.min(4 + Math.sqrt(ancestors) * 1.6, 14);
 }
 
 /** The label block's own width, and the whole circle-plus-label footprint. */
@@ -144,7 +139,7 @@ function computeLayout(domainFilter: Domain | "all"): Layout {
   >();
   for (const c of nodeList) {
     const lines = wrapTitle(c.title);
-    const box = { lines, ...boxFor(radiusFor(c.id), lines) };
+    const box = { lines, ...boxFor(NODE_RADIUS, lines) };
     boxes.set(c.id, box);
     g.setNode(c.id, { width: box.boxW, height: box.boxH });
   }
@@ -164,12 +159,11 @@ function computeLayout(domainFilter: Domain | "all"): Layout {
   const nodes: PositionedNode[] = nodeList.map((c) => {
     const label = g.node(c.id);
     const box = boxes.get(c.id)!;
-    const radius = radiusFor(c.id);
+    const radius = NODE_RADIUS;
     return {
       id: c.id,
       title: c.title,
       domain: c.domain,
-      hasLesson: Boolean(c.embedUrl),
       // dagre centres the box; the circle sits at the top of it, label below.
       x: label.x!,
       y: label.y! - box.boxH / 2 + radius + RING_PAD,
@@ -319,7 +313,6 @@ let savedViewBox: ViewBox | null = null;
 
 export function ConceptMap() {
   const navigate = useNavigate();
-  const { user } = useAuth();
   const { proficiency, bleeding, refresh } = useProficiency();
   const [selectedDomain, setSelectedDomain] = useState<Domain | "all">(
     savedSelectedDomain,
@@ -595,14 +588,6 @@ export function ConceptMap() {
                 <title>{`${node.title} — proficiency ${Math.round(
                   proficiency.get(node.id) ?? 0,
                 )}/${MAX_PROFICIENCY}`}</title>
-                {node.hasLesson && (
-                  <circle
-                    r={node.radius + 3.5}
-                    fill="none"
-                    stroke="var(--accent)"
-                    strokeWidth={1.5}
-                  />
-                )}
                 <ProficiencyDot
                   radius={node.radius}
                   color={domainMeta[node.domain].color}
@@ -638,55 +623,6 @@ export function ConceptMap() {
             ))}
           </g>
         </svg>
-      </div>
-
-      <div className="font-body mt-3 flex shrink-0 gap-x-5 overflow-x-auto pb-1 text-xs text-[var(--ink-soft)]">
-        {(
-          Object.entries(domainMeta) as [Domain, (typeof domainMeta)[Domain]][]
-        ).map(([domain, meta]) => (
-          <span
-            key={domain}
-            className="flex shrink-0 items-center gap-1.5 whitespace-nowrap"
-          >
-            <span
-              className="inline-block h-2.5 w-2.5 rounded-full"
-              style={{ background: meta.color }}
-              aria-hidden="true"
-            />
-            {meta.label}
-          </span>
-        ))}
-        <span className="flex shrink-0 items-center gap-1.5 whitespace-nowrap">
-          <span
-            className="inline-block h-2.5 w-2.5 rounded-full border-[1.5px]"
-            style={{ borderColor: "var(--accent)" }}
-            aria-hidden="true"
-          />
-          Lesson available
-        </span>
-        <span className="flex shrink-0 items-center gap-1.5 whitespace-nowrap">
-          {[0, 50, MAX_PROFICIENCY].map((value) => (
-            <svg key={value} width={14} height={14} aria-hidden="true">
-              <g transform="translate(7, 7)">
-                <ProficiencyDot
-                  radius={5.5}
-                  color="var(--ink-soft)"
-                  value={value}
-                />
-              </g>
-            </svg>
-          ))}
-          How full = your proficiency, 0/100 to {MAX_PROFICIENCY}/
-          {MAX_PROFICIENCY}
-        </span>
-        <span className="shrink-0 whitespace-nowrap">
-          Bigger dot = more prerequisites lead into it
-        </span>
-        {!user && (
-          <span className="shrink-0 whitespace-nowrap">
-            Sign in to see your own progress on the map.
-          </span>
-        )}
       </div>
 
       {session && (
