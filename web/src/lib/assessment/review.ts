@@ -296,14 +296,23 @@ export function selectNextItem(
   );
   if (servable.length === 0) return undefined;
 
-  const band = difficultyBand(state.ability.mean);
-  const withinBand = servable.filter(
-    (item) => Math.abs(item.difficulty - state.ability.mean) <= band,
-  );
-  const pool = withinBand.length > 0 ? withinBand : servable;
-
   const recent = context.recentItemIds ?? [];
   const codeQuota = context.codeQuota ?? CODE_ITEM_QUOTA;
+  const codeStillOwed = (context.codeServed ?? 0) < codeQuota;
+
+  const band = difficultyBand(state.ability.mean);
+  const withinBand = servable.filter(
+    (item) =>
+      Math.abs(item.difficulty - state.ability.mean) <= band ||
+      // The band is a difficulty-fit filter, and the code quota exists
+      // precisely to serve code regardless of how the difficulty fit falls.
+      // Filtering here would drop every code item before scoring ever runs —
+      // a strong learner on a concept whose code items are all easy would be
+      // assessed entirely on multiple choice — so an unmet quota keeps them
+      // in the running and the bonus below decides between them.
+      (codeStillOwed && item.format === "code"),
+  );
+  const pool = withinBand.length > 0 ? withinBand : servable;
 
   let best: Item | undefined;
   let bestScore = -Infinity;

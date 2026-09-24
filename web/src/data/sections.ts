@@ -886,6 +886,10 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "numpy-indexing",
         "numpy-broadcasting",
         "numpy-matrices",
+        "numpy-dtypes",
+        "numpy-reshaping",
+        "numpy-aggregations",
+        "numpy-random",
       ],
     },
     {
@@ -943,6 +947,17 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "python-methods",
         "python-dunder",
         "python-inheritance",
+      ],
+    },
+    {
+      id: "stdlib-io",
+      label: "Modules, Files & the Standard Library",
+      conceptIds: [
+        "python-modules",
+        "python-collections",
+        "python-datetime",
+        "python-files",
+        "python-json",
       ],
     },
   ],

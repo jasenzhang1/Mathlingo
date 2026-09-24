@@ -1,3 +1,12 @@
+import { pythonModulesWiki } from "./python-modules";
+import { pythonCollectionsWiki } from "./python-collections";
+import { pythonDatetimeWiki } from "./python-datetime";
+import { pythonFilesWiki } from "./python-files";
+import { pythonJsonWiki } from "./python-json";
+import { numpyDtypesWiki } from "./numpy-dtypes";
+import { numpyReshapingWiki } from "./numpy-reshaping";
+import { numpyAggregationsWiki } from "./numpy-aggregations";
+import { numpyRandomWiki } from "./numpy-random";
 import { pythonIteratorsWiki } from "./python-iterators";
 import { pythonGeneratorsWiki } from "./python-generators";
 import { pythonItertoolsWiki } from "./python-itertools";
@@ -121,4 +130,13 @@ export const pythonWikiArticles: WikiArticle[] = [
   pythonMethodsWiki,
   pythonDunderWiki,
   pythonInheritanceWiki,
+  pythonModulesWiki,
+  pythonCollectionsWiki,
+  pythonDatetimeWiki,
+  pythonFilesWiki,
+  pythonJsonWiki,
+  numpyDtypesWiki,
+  numpyReshapingWiki,
+  numpyAggregationsWiki,
+  numpyRandomWiki,
 ];

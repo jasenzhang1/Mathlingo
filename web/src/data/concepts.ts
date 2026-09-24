@@ -3728,6 +3728,72 @@ export const concepts: Concept[] = [
     blurb: "Reusing a base class, overriding it, and why composition is often the better answer.",
     prerequisites: ["python-methods"],
   },
+
+  // Python — the standard library a data script actually reaches for, and the
+  // NumPy behaviour that surprises people: dtypes and views, reshaping, axis, seeding.
+  {
+    id: "python-modules",
+    title: "Modules, Imports, and __main__",
+    domain: "python",
+    blurb: "What import actually does, why it runs the file once, and the __main__ guard.",
+    prerequisites: ["python-functions"],
+  },
+  {
+    id: "python-collections",
+    title: "collections: Counter, defaultdict, namedtuple",
+    domain: "python",
+    blurb: "The four containers that replace the dict boilerplate you keep rewriting.",
+    prerequisites: ["python-dictionaries"],
+  },
+  {
+    id: "python-datetime",
+    title: "Dates, Times, and Durations",
+    domain: "python",
+    blurb: "date vs datetime, timedelta arithmetic, parsing, and why naive timestamps bite.",
+    prerequisites: ["python-strings"],
+  },
+  {
+    id: "python-files",
+    title: "Reading and Writing Files",
+    domain: "python",
+    blurb: "open, the with statement, text versus bytes, and why you iterate rather than read().",
+    prerequisites: ["python-strings", "python-exceptions"],
+  },
+  {
+    id: "python-json",
+    title: "JSON",
+    domain: "python",
+    blurb: "loads and dumps, what survives the round trip, and what quietly does not.",
+    prerequisites: ["python-files", "python-dictionaries"],
+  },
+  {
+    id: "numpy-dtypes",
+    title: "dtypes, Copies, and Views",
+    domain: "python",
+    blurb: "Fixed-width types, silent overflow, and the slice that is not a copy.",
+    prerequisites: ["numpy-arrays"],
+  },
+  {
+    id: "numpy-reshaping",
+    title: "Reshaping, Stacking, and Splitting",
+    domain: "python",
+    blurb: "reshape, ravel, the -1 placeholder, and joining arrays along an axis.",
+    prerequisites: ["numpy-arrays"],
+  },
+  {
+    id: "numpy-aggregations",
+    title: "Aggregations and the axis Argument",
+    domain: "python",
+    blurb: "sum, mean, argmax and friends — and what axis actually collapses.",
+    prerequisites: ["numpy-broadcasting"],
+  },
+  {
+    id: "numpy-random",
+    title: "Random Numbers and Seeding",
+    domain: "python",
+    blurb: "default_rng, reproducibility, sampling, and shuffling without surprises.",
+    prerequisites: ["numpy-array-creation"],
+  },
 ];
 
 export const conceptById: Map<string, Concept> = new Map(

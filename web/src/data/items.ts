@@ -58,6 +58,8 @@ import { pythonStringsErrorsItems } from "./items/python-strings-errors";
 import { pythonCodeStringsErrorsItems } from "./items/python-code-strings-errors";
 import { pythonIterationClassesItems } from "./items/python-iteration-classes";
 import { pythonCodeIterationClassesItems } from "./items/python-code-iteration-classes";
+import { pythonStdlibNumpyItems } from "./items/python-stdlib-numpy";
+import { pythonCodeStdlibNumpyItems } from "./items/python-code-stdlib-numpy";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -5254,6 +5256,12 @@ export const items: Item[] = [
 
   // `code` items for the Iterators and Classes chapters, 3 per concept.
   ...pythonCodeIterationClassesItems,
+
+  // Standard-library chapter and the last four NumPy concepts, 8 items per concept.
+  ...pythonStdlibNumpyItems,
+
+  // `code` items for the standard-library and final NumPy concepts, 3 per concept.
+  ...pythonCodeStdlibNumpyItems,
 
 ];
 
