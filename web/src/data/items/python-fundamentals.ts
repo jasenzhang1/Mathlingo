@@ -596,7 +596,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "`name = \"Ada\"`. What does `f\"Hi {name}\"` evaluate to?",
+    stem: "`name = \"Ada\"`. What does the f-string `f\"Hi {name!s}\"` evaluate to?",
     choices: [
       { id: "a", text: "`\"Hi Ada\"`", correct: true },
       {

@@ -6069,7 +6069,7 @@ export const pythonItems: Item[] = [
     status: "live",
   },
   {
-    id: "pandas-groupby--explain-split-apply-combine",
+    id: "pandas-groupby--explain-split-apply-combine-steps",
     conceptId: "pandas-groupby",
     format: "short-answer",
     cognitive: "explain",
