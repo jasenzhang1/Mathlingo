@@ -86,8 +86,23 @@ export const GRACE_PERIOD_MS = DAY_MS;
  */
 export const UNLOCK_THRESHOLD = 65;
 
+/**
+ * Display-only tier marks drawn on the proficiency bar. `SATISFACTION`
+ * mirrors `UNLOCK_THRESHOLD` — the same bar height that opens dependent
+ * concepts reads to the learner as "satisfactory". `PROFICIENCY` and
+ * `MASTERY` mark the two tiers above it; neither gates anything on its own.
+ */
+export const SATISFACTION_THRESHOLD = UNLOCK_THRESHOLD;
+export const PROFICIENCY_THRESHOLD = 80;
+export const MASTERY_THRESHOLD = 95;
+
 export function expFor(state: ConceptState, now: number): ExpSnapshot {
-  const ceiling = 100 * masteryLevel(state.ability);
+  // A learner who has never been assessed on this concept reads as 0, not the
+  // prior's conservative-end mastery (~14) — the prior exists to shape how
+  // fast the *first* few answers move the estimate, not to hand out a
+  // starting balance nobody earned.
+  const ceiling =
+    state.ability.observations === 0 ? 0 : 100 * masteryLevel(state.ability);
 
   if (!state.memory) {
     return {

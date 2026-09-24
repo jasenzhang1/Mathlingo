@@ -1,4 +1,15 @@
-import type { ExpSnapshot } from "../../lib/assessment/exp";
+import {
+  MASTERY_THRESHOLD,
+  PROFICIENCY_THRESHOLD,
+  SATISFACTION_THRESHOLD,
+  type ExpSnapshot,
+} from "../../lib/assessment/exp";
+
+const TIER_MARKS = [
+  { label: "Satisfactory", value: SATISFACTION_THRESHOLD },
+  { label: "Proficient", value: PROFICIENCY_THRESHOLD },
+  { label: "Mastered", value: MASTERY_THRESHOLD },
+];
 
 /**
  * The 0–100 proficiency bar. Two layers are drawn: the filled bar is current
@@ -39,9 +50,30 @@ export function ProficiencyBar({ exp }: { exp: ExpSnapshot }) {
             title={`Recoverable with one review: ${ceiling}`}
           />
         )}
+        {TIER_MARKS.map((mark) => (
+          <div
+            key={mark.label}
+            className="absolute top-0 h-full w-px bg-[var(--paper)]/70"
+            style={{ left: `${mark.value}%` }}
+            title={`${mark.label}: ${mark.value}+`}
+          />
+        ))}
       </div>
 
-      <p className="font-body mt-2 text-xs text-[var(--ink-soft)]">
+      <div className="relative mt-1 h-3 text-[10px] text-[var(--ink-soft)]">
+        {TIER_MARKS.map((mark) => (
+          <span
+            key={mark.label}
+            className="absolute -translate-x-1/2 whitespace-nowrap"
+            style={{ left: `${mark.value}%` }}
+            title={`${mark.label}: ${mark.value}+`}
+          >
+            {mark.value}
+          </span>
+        ))}
+      </div>
+
+      <p className="font-body mt-1 text-xs text-[var(--ink-soft)]">
         {exp.unlocked
           ? "Unlocked — you can move on to what this concept leads to."
           : `Reach 65 to unlock the concepts this one feeds into.`}

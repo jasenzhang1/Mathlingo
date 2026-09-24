@@ -1,11 +1,17 @@
 export type Domain =
+  | "discrete-math"
   | "probability"
   | "linear-algebra"
   | "multivariate-probability"
   | "statistics"
   | "regression"
   | "machine-learning"
+  | "deep-learning"
   | "graphical-models"
+  | "stochastic-processes"
+  | "stochastic-calculus"
+  | "financial-instruments"
+  | "time-series"
   | "python";
 
 export interface DomainMeta {
@@ -14,6 +20,7 @@ export interface DomainMeta {
 }
 
 export const domainMeta: Record<Domain, DomainMeta> = {
+  "discrete-math": { label: "Discrete Math Fundamentals", color: "#be185d" },
   probability: { label: "Probability", color: "#5b3df0" },
   "linear-algebra": { label: "Linear Algebra", color: "#0f9a8e" },
   "multivariate-probability": {
@@ -23,7 +30,12 @@ export const domainMeta: Record<Domain, DomainMeta> = {
   statistics: { label: "Statistical Inference", color: "#e0a72f" },
   regression: { label: "Regression", color: "#2f6fed" },
   "machine-learning": { label: "Machine Learning", color: "#16a34a" },
+  "deep-learning": { label: "Deep Learning", color: "#ec4899" },
   "graphical-models": { label: "Graphical Models & Bayesian ML", color: "#a855f7" },
+  "stochastic-processes": { label: "Stochastic Processes", color: "#c2410c" },
+  "stochastic-calculus": { label: "Stochastic Calculus", color: "#0891b2" },
+  "financial-instruments": { label: "Financial Instruments", color: "#7c3aed" },
+  "time-series": { label: "Stochastic Processes & Time Series", color: "#c2410c" },
   /**
    * Deliberately last. Chapter order is an editorial call (see
    * `lib/learningOrder.ts`), and the math spine is the book — Python is the
@@ -47,15 +59,255 @@ export interface Concept {
 
 export const concepts: Concept[] = [
   // ---------------------------------------------------------------------
-  // Probability
+  // Discrete Math Fundamentals
   // ---------------------------------------------------------------------
+  {
+    id: "propositional-logic",
+    title: "Propositional Logic",
+    domain: "discrete-math",
+    blurb: "If-then, iff, not, and, or — statements, connectives, and truth tables.",
+    prerequisites: [],
+  },
+  {
+    id: "logical-equivalences",
+    title: "Logical Equivalences & Quantifiers",
+    domain: "discrete-math",
+    blurb: "De Morgan's laws, contrapositives, and the ∀/∃ quantifiers that state theorems.",
+    prerequisites: ["propositional-logic"],
+  },
+  {
+    id: "direct-proof",
+    title: "Direct Proof",
+    domain: "discrete-math",
+    blurb: "Chaining if-then statements from hypothesis to conclusion.",
+    prerequisites: ["logical-equivalences"],
+  },
+  {
+    id: "proof-by-contradiction",
+    title: "Proof by Contradiction",
+    domain: "discrete-math",
+    blurb: "Assuming the negation of what you want and deriving an absurdity.",
+    prerequisites: ["logical-equivalences"],
+  },
+  {
+    id: "mathematical-induction",
+    title: "Mathematical Induction",
+    domain: "discrete-math",
+    blurb: "Proving a statement for every n from a base case and an inductive step.",
+    prerequisites: ["direct-proof"],
+  },
+  {
+    id: "strong-induction",
+    title: "Strong Induction",
+    domain: "discrete-math",
+    blurb: "Proving the inductive step from every smaller case, not just the one before it.",
+    prerequisites: ["mathematical-induction"],
+  },
+  {
+    id: "recursion",
+    title: "Recursion & Recurrence Relations",
+    domain: "discrete-math",
+    blurb: "Defining a sequence or structure in terms of smaller instances of itself.",
+    prerequisites: ["strong-induction"],
+  },
+  {
+    id: "fibonacci-numbers",
+    title: "Fibonacci Numbers",
+    domain: "discrete-math",
+    blurb: "The recurrence F(n) = F(n-1) + F(n-2), and the closed form hiding inside it.",
+    prerequisites: ["recursion"],
+  },
   {
     id: "set-theory",
     title: "Set Theory",
-    domain: "probability",
+    domain: "discrete-math",
     blurb: "Unions, intersections, complements — the language everything else is written in.",
     prerequisites: [],
   },
+  {
+    id: "power-set",
+    title: "Power Set",
+    domain: "discrete-math",
+    blurb: "The set of all subsets of a set, and why it has 2^n elements.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "cartesian-product",
+    title: "Cartesian Product",
+    domain: "discrete-math",
+    blurb: "Pairing every element of one set with every element of another.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "proof-by-sets",
+    title: "Proof by Sets (Double Inclusion)",
+    domain: "discrete-math",
+    blurb: "Proving two sets equal by showing each is a subset of the other, or by chasing a single element.",
+    prerequisites: ["set-theory", "direct-proof"],
+  },
+  {
+    id: "functions-relations",
+    title: "Functions & Relations",
+    domain: "discrete-math",
+    blurb: "Domains, codomains, and the correspondence rules that connect them.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "equivalence-relations",
+    title: "Equivalence Relations & Partitions",
+    domain: "discrete-math",
+    blurb: "Reflexive, symmetric, transitive relations, and the partition of a set they induce.",
+    prerequisites: ["functions-relations"],
+  },
+  {
+    id: "injections-surjections-bijections",
+    title: "Injections, Surjections, and Bijections",
+    domain: "discrete-math",
+    blurb: "One-to-one, onto, and both at once — and what each says about the sets involved.",
+    prerequisites: ["functions-relations"],
+  },
+  {
+    id: "cardinality",
+    title: "Cardinality & Countability",
+    domain: "discrete-math",
+    blurb: "Comparing the size of infinite sets with a bijection instead of a count.",
+    prerequisites: ["injections-surjections-bijections"],
+  },
+  {
+    id: "counting-methods",
+    title: "Counting Methods",
+    domain: "discrete-math",
+    blurb: "The rule of sum and rule of product — the two principles everything else in combinatorics builds from.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "pigeonhole-principle",
+    title: "Pigeonhole Principle",
+    domain: "discrete-math",
+    blurb: "If you stuff more pigeons than holes, some hole gets at least two.",
+    prerequisites: ["counting-methods"],
+  },
+  {
+    id: "factorials",
+    title: "Factorials",
+    domain: "discrete-math",
+    blurb: "n! — the number of ways to arrange n distinct objects in order.",
+    prerequisites: ["counting-methods"],
+  },
+  {
+    id: "permutations",
+    title: "Permutations",
+    domain: "discrete-math",
+    blurb: "Ordered selections of k objects from n, and where n!/(n-k)! comes from.",
+    prerequisites: ["factorials"],
+  },
+  {
+    id: "combinations",
+    title: "Combinations",
+    domain: "discrete-math",
+    blurb: "Unordered selections of k objects from n — permutations with the ordering divided back out.",
+    prerequisites: ["permutations"],
+  },
+  {
+    id: "stars-and-bars",
+    title: "Stars and Bars",
+    domain: "discrete-math",
+    blurb: "Counting the ways to split n identical items into k groups.",
+    prerequisites: ["combinations"],
+  },
+  {
+    id: "integer-partitions",
+    title: "Integer Partitions",
+    domain: "discrete-math",
+    blurb: "Splitting n into a sum of positive integers where order doesn't matter — unlike stars and bars, the groups aren't labeled.",
+    prerequisites: ["stars-and-bars"],
+  },
+  {
+    id: "binomial-theorem",
+    title: "Binomial Theorem",
+    domain: "discrete-math",
+    blurb: "Expanding (a + b)^n, and where those binomial coefficients come from.",
+    prerequisites: ["combinations"],
+  },
+  // ---------------------------------------------------------------------
+  // Graph Theory
+  // ---------------------------------------------------------------------
+  {
+    id: "graph-basics",
+    title: "Graphs: Vertices, Edges & Degree",
+    domain: "discrete-math",
+    blurb: "Vertices, edges, degree, and the handshake lemma that ties them together.",
+    prerequisites: ["set-theory"],
+  },
+  {
+    id: "graph-paths-connectivity",
+    title: "Walks, Paths & Connectivity",
+    domain: "discrete-math",
+    blurb: "Walks, paths, and cycles, and what it means for a graph to be connected.",
+    prerequisites: ["graph-basics"],
+  },
+  {
+    id: "trees",
+    title: "Trees & Spanning Trees",
+    domain: "discrete-math",
+    blurb: "Connected, acyclic graphs — exactly n − 1 edges for n vertices, and never a cycle.",
+    prerequisites: ["graph-paths-connectivity"],
+  },
+  {
+    id: "eulerian-hamiltonian-paths",
+    title: "Eulerian & Hamiltonian Paths",
+    domain: "discrete-math",
+    blurb: "Traversing every edge exactly once versus every vertex exactly once — and why only one has a clean test.",
+    prerequisites: ["graph-paths-connectivity"],
+  },
+  {
+    id: "graph-coloring",
+    title: "Graph Coloring",
+    domain: "discrete-math",
+    blurb: "Assigning colors to vertices so no edge joins two of the same color, and the chromatic number that counts the minimum.",
+    prerequisites: ["graph-paths-connectivity"],
+  },
+  // ---------------------------------------------------------------------
+  // Modular Arithmetic
+  // ---------------------------------------------------------------------
+  {
+    id: "modular-arithmetic",
+    title: "Modular Arithmetic",
+    domain: "discrete-math",
+    blurb: "Congruence mod n — arithmetic that wraps around, like a clock.",
+    prerequisites: [],
+  },
+  {
+    id: "gcd-euclidean-algorithm",
+    title: "GCD & the Euclidean Algorithm",
+    domain: "discrete-math",
+    blurb: "The greatest common divisor, computed fast by repeated remainders instead of factoring.",
+    prerequisites: ["modular-arithmetic"],
+  },
+  {
+    id: "modular-inverses",
+    title: "Modular Inverses",
+    domain: "discrete-math",
+    blurb: "When you can 'divide' mod n, and how the extended Euclidean algorithm finds the inverse.",
+    prerequisites: ["gcd-euclidean-algorithm"],
+  },
+  {
+    id: "fermat-euler-theorems",
+    title: "Fermat's Little Theorem & Euler's Theorem",
+    domain: "discrete-math",
+    blurb: "a^(p−1) ≡ 1 mod p, and its generalization to any modulus via Euler's totient function.",
+    prerequisites: ["modular-inverses"],
+  },
+  {
+    id: "chinese-remainder-theorem",
+    title: "Chinese Remainder Theorem",
+    domain: "discrete-math",
+    blurb: "Solving several congruences with coprime moduli at once, and why the combined solution is unique mod their product.",
+    prerequisites: ["modular-inverses"],
+  },
+  // ---------------------------------------------------------------------
+  // Probability
+  // ---------------------------------------------------------------------
   {
     id: "pie-boole",
     title: "PIE, Boole's Inequality",
@@ -83,20 +335,6 @@ export const concepts: Concept[] = [
     domain: "probability",
     blurb: "Assigning a number in [0,1] to every event, consistently.",
     prerequisites: ["axioms-of-probability"],
-  },
-  {
-    id: "counting-methods",
-    title: "Counting Methods",
-    domain: "probability",
-    blurb: "Permutations and combinations for counting outcomes without listing them.",
-    prerequisites: ["set-theory"],
-  },
-  {
-    id: "binomial-theorem",
-    title: "Binomial Theorem",
-    domain: "probability",
-    blurb: "Expanding (a + b)^n, and where those binomial coefficients come from.",
-    prerequisites: ["counting-methods"],
   },
   {
     id: "conditional-probability",
@@ -764,6 +1002,13 @@ export const concepts: Concept[] = [
     prerequisites: ["positive-definite-matrices"],
   },
   {
+    id: "idempotent-matrices",
+    title: "Idempotent Matrices",
+    domain: "linear-algebra",
+    blurb: "Matrices that do nothing the second time — P² = P — and why every linear model's hat matrix is one.",
+    prerequisites: ["symmetric-matrices", "eigenvalues-eigenvectors", "trace", "vector-projection"],
+  },
+  {
     id: "schur-complement",
     title: "Schur Complement",
     domain: "linear-algebra",
@@ -948,6 +1193,29 @@ export const concepts: Concept[] = [
       "trace",
       "rank",
       "chi-square-distribution",
+    ],
+  },
+  {
+    id: "conditional-multivariate-normal",
+    title: "Conditional Distributions of the Multivariate Normal",
+    domain: "multivariate-probability",
+    blurb: "Where X₁ | X₂ = x₂'s mean and covariance formulas actually come from, derived rather than quoted.",
+    /**
+     * The formula in `multivariate-normal`'s closure table is stated, not
+     * derived — this concept is the derivation, and it needs both of that
+     * article's siblings to do it. `multivariate-mgf` supplies the
+     * independence-from-zero-covariance argument the proof turns on;
+     * `quadratic-forms-random-vectors` supplies the Var(aᵀX) = aᵀΣa machinery
+     * used to compute the residual's covariance. `schur-complement` is upstream
+     * because the resulting covariance formula Σ₁₁ − Σ₁₂Σ₂₂⁻¹Σ₂₁ is exactly
+     * that complement, and the connection is the payoff, not a coincidence to
+     * gloss over.
+     */
+    prerequisites: [
+      "multivariate-normal",
+      "multivariate-mgf",
+      "quadratic-forms-random-vectors",
+      "schur-complement",
     ],
   },
   {
@@ -1303,6 +1571,13 @@ export const concepts: Concept[] = [
     prerequisites: ["normal-equations", "column-space", "vector-projection"],
   },
   {
+    id: "hat-matrix",
+    title: "The Hat Matrix",
+    domain: "regression",
+    blurb: "Why H = X(XᵀX)⁻¹Xᵀ being idempotent is the one fact behind n − p degrees of freedom and every t-statistic a regression prints.",
+    prerequisites: ["idempotent-matrices", "geometric-interpretation-of-ols"],
+  },
+  {
     id: "multiple-linear-regression",
     title: "Multiple Linear Regression",
     domain: "regression",
@@ -1336,6 +1611,20 @@ export const concepts: Concept[] = [
     domain: "regression",
     blurb: "Down-weighting noisier observations to restore efficiency under known heteroskedasticity.",
     prerequisites: ["homoskedasticity"],
+  },
+  {
+    id: "sandwich-estimator",
+    title: "Sandwich Estimator",
+    domain: "regression",
+    blurb: "A heteroskedasticity-consistent covariance estimator that gets standard errors right without ever specifying how the variance depends on x.",
+    prerequisites: ["homoskedasticity", "ols-properties"],
+  },
+  {
+    id: "generalized-estimating-equations",
+    title: "Generalized Estimating Equations (GEE)",
+    domain: "regression",
+    blurb: "Fitting a GLM mean structure to clustered or repeated-measures data with only a working guess at the within-cluster correlation, then correcting the standard errors with a sandwich.",
+    prerequisites: ["glm", "sandwich-estimator"],
   },
   {
     id: "ols-properties",
@@ -1509,6 +1798,98 @@ export const concepts: Concept[] = [
   },
 
   // ---------------------------------------------------------------------
+  // Stochastic Processes & Time Series
+  //
+  // A new domain rather than a section bolted onto `regression`: the object
+  // of study is a single realisation of a process indexed by time, not i.i.d.
+  // rows, and the tests, identities, and failure modes below (autocorrelated
+  // errors, unit roots, spurious regression) are specific to that setting.
+  // `stochastic-processes` reopens the general framework and reuses
+  // `markov-chains` (in `graphical-models`) for the fully-worked
+  // transition-matrix / stationary-distribution / ergodicity case rather than
+  // duplicating it; everything downstream specialises to *stationary* real-
+  // or vector-valued processes, which is the setting ACF, ARMA/ARIMA, GARCH
+  // and cointegration actually live in.
+  // ---------------------------------------------------------------------
+  {
+    id: "stochastic-processes",
+    title: "Stochastic Processes",
+    domain: "time-series",
+    blurb: "A family of random variables indexed by time — state spaces, sample paths, and the Markov case.",
+    prerequisites: ["random-variables", "markov-chains"],
+  },
+  {
+    id: "stationarity-white-noise",
+    title: "Stationarity & White Noise",
+    domain: "time-series",
+    blurb: "When a process's statistics don't depend on when you look — and the pure-noise process that anchors everything built on top of it.",
+    prerequisites: ["stochastic-processes", "covariance"],
+  },
+  {
+    id: "acf",
+    title: "Autocorrelation Function (ACF)",
+    domain: "time-series",
+    blurb: "How correlated a series is with lagged copies of itself, and what its decay shape reveals about the process.",
+    prerequisites: ["stationarity-white-noise", "correlation"],
+  },
+  {
+    id: "pacf",
+    title: "Partial Autocorrelation Function (PACF)",
+    domain: "time-series",
+    blurb: "Correlation with a lag after netting out every shorter lag in between — the tool that tells AR order from MA order.",
+    prerequisites: ["acf", "multiple-linear-regression"],
+  },
+  {
+    id: "ar-models",
+    title: "Autoregressive (AR) Models",
+    domain: "time-series",
+    blurb: "Predicting the present from a weighted sum of its own past values, plus noise.",
+    prerequisites: ["stationarity-white-noise", "acf"],
+  },
+  {
+    id: "ma-models",
+    title: "Moving Average (MA) Models",
+    domain: "time-series",
+    blurb: "Modeling the present as a weighted sum of current and past shocks, not past levels.",
+    prerequisites: ["stationarity-white-noise", "acf"],
+  },
+  {
+    id: "wold-decomposition",
+    title: "Wold Decomposition",
+    domain: "time-series",
+    blurb: "Why every stationary process can be written as an infinite MA — the theorem that justifies AR and ARMA as approximations.",
+    prerequisites: ["ar-models", "ma-models"],
+  },
+  {
+    id: "arma",
+    title: "ARMA Models",
+    domain: "time-series",
+    blurb: "Combining AR and MA terms for a more parsimonious fit, and using ACF/PACF shape to identify (p, q).",
+    prerequisites: ["ar-models", "ma-models", "pacf"],
+  },
+  {
+    id: "arima",
+    title: "ARIMA & Unit Roots",
+    domain: "time-series",
+    blurb: "Differencing away a trend or unit root before fitting ARMA to what's left.",
+    prerequisites: ["arma"],
+  },
+  {
+    id: "garch",
+    title: "ARCH & GARCH",
+    domain: "time-series",
+    blurb: "Modeling volatility itself as autoregressive, for series whose variance — not just its mean — clusters over time.",
+    prerequisites: ["arma", "variance"],
+  },
+  {
+    id: "cointegration",
+    title: "Cointegration",
+    domain: "time-series",
+    blurb: "When two non-stationary series share a stationary combination — and why regressing one on the other can look significant for no real reason.",
+    prerequisites: ["arima"],
+  },
+
+  // ---------------------------------------------------------------------
   // Machine Learning
   // ---------------------------------------------------------------------
   {
@@ -1547,21 +1928,21 @@ export const concepts: Concept[] = [
     // network" in its own blurb with nothing upstream to define one.
     id: "perceptron",
     title: "Perceptron",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb: "The simplest linear classifier: a weighted sum of inputs, thresholded.",
     prerequisites: ["classification-vs-regression"],
   },
   {
     id: "neural-networks",
     title: "Neural Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb: "Layers of perceptron-like units with nonlinear activations, composed together.",
     prerequisites: ["perceptron", "matrix-calculus"],
   },
   {
     id: "backpropagation",
     title: "Backpropagation",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb: "Computing a neural network's gradient efficiently with the chain rule.",
     prerequisites: ["neural-networks", "gradient-descent"],
   },
@@ -1989,7 +2370,7 @@ export const concepts: Concept[] = [
   {
     id: "activation-functions",
     title: "Activation Functions",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Sigmoid, tanh, ReLU and its successors — the nonlinearity that stops depth collapsing.",
     prerequisites: ["neural-networks"],
@@ -1997,7 +2378,7 @@ export const concepts: Concept[] = [
   {
     id: "sgd-and-adaptive-optimizers",
     title: "SGD and Adaptive Optimizers",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Momentum, RMSProp and Adam — why plain gradient descent is rarely what actually runs.",
     prerequisites: ["gradient-descent", "backpropagation"],
@@ -2005,7 +2386,7 @@ export const concepts: Concept[] = [
   {
     id: "dropout",
     title: "Dropout",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Randomly deleting units at training time, and why that regularises rather than breaks.",
     prerequisites: ["neural-networks", "overfitting-underfitting"],
@@ -2013,7 +2394,7 @@ export const concepts: Concept[] = [
   {
     id: "batch-normalization",
     title: "Batch Normalization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Normalising activations mid-network — what it fixes, and the train/inference asymmetry it creates.",
     prerequisites: ["backpropagation", "feature-scaling"],
@@ -2021,7 +2402,7 @@ export const concepts: Concept[] = [
   {
     id: "convolutional-neural-networks",
     title: "Convolutional Neural Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Weight sharing and locality — turning an image's structure into a prior on the architecture.",
     // The architecture *is* a regularisation choice — a prior expressed in which
@@ -2032,7 +2413,7 @@ export const concepts: Concept[] = [
   {
     id: "recurrent-neural-networks",
     title: "Recurrent Neural Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Sharing weights across time for sequences, and the gradient problem that follows.",
     prerequisites: ["backpropagation", "activation-functions"],
@@ -2040,7 +2421,7 @@ export const concepts: Concept[] = [
   {
     id: "attention-mechanism",
     title: "Attention Mechanism",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Queries, keys and values — letting every position look directly at every other.",
     // The √d scaling is derived from the variance of a sum of independent
@@ -2050,7 +2431,7 @@ export const concepts: Concept[] = [
   {
     id: "transformers",
     title: "Transformers",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Self-attention, multiple heads and positional encoding — attention as the whole architecture.",
     prerequisites: ["attention-mechanism", "batch-normalization"],
@@ -2058,7 +2439,7 @@ export const concepts: Concept[] = [
   {
     id: "embeddings",
     title: "Embeddings",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Learned dense vectors for discrete things, where geometry carries meaning.",
     prerequisites: ["neural-networks", "pca"],
@@ -2066,7 +2447,7 @@ export const concepts: Concept[] = [
   {
     id: "autoencoders",
     title: "Autoencoders",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Reconstructing the input through a bottleneck — nonlinear dimensionality reduction that learns.",
     prerequisites: ["neural-networks", "probabilistic-pca"],
@@ -2087,7 +2468,7 @@ export const concepts: Concept[] = [
   {
     id: "architecture-families",
     title: "Architecture Families",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Dense, convolutional, recurrent and attentional networks compared by the assumption each one builds into its wiring.",
     // Reads as a comparison of the three families cluster 11 introduces, so it
@@ -2101,7 +2482,7 @@ export const concepts: Concept[] = [
   {
     id: "residual-networks",
     title: "Residual Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Adding the input back to the output of a block, and why that one change made depth usable.",
     // The argument is a derivative computation: the skip contributes a +1 term
@@ -2112,7 +2493,7 @@ export const concepts: Concept[] = [
   {
     id: "lstm-and-gru",
     title: "LSTM and GRU",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Gated cells that carry a memory forward by addition, so gradients survive hundreds of steps.",
     prerequisites: ["recurrent-neural-networks", "activation-functions"],
@@ -2120,7 +2501,7 @@ export const concepts: Concept[] = [
   {
     id: "autoregressive-models",
     title: "Autoregressive Models",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Factorising a joint distribution into a product of next-step conditionals — the objective behind every language model.",
     // The factorisation is the chain rule of probability applied n − 1 times;
@@ -2130,7 +2511,7 @@ export const concepts: Concept[] = [
   {
     id: "state-space-models",
     title: "State Space Models",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "A linear recurrence that also runs as a convolution — S4 and Mamba, and why linear time matters again.",
     // Diagonalising the transition matrix is what turns the recurrence into a
@@ -2152,7 +2533,7 @@ export const concepts: Concept[] = [
   {
     id: "graph-neural-networks",
     title: "Graph Neural Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Message passing over edges — a convolution for data whose neighbourhoods are given rather than gridded.",
     prerequisites: ["graphs", "convolutional-neural-networks"],
@@ -2160,7 +2541,7 @@ export const concepts: Concept[] = [
   {
     id: "generative-adversarial-networks",
     title: "Generative Adversarial Networks",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "A generator and a discriminator trained against each other, and the equilibrium that is hard to reach.",
     // The optimal-discriminator substitution turns the game's value into a
@@ -2175,7 +2556,7 @@ export const concepts: Concept[] = [
   {
     id: "diffusion-models",
     title: "Diffusion Models",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Destroy the data with noise on a fixed schedule, then learn to undo one step at a time.",
     prerequisites: [
@@ -2187,7 +2568,7 @@ export const concepts: Concept[] = [
   {
     id: "mixture-of-experts",
     title: "Mixture of Experts",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Routing each token to a few of many sub-networks, so capacity grows without the compute growing with it.",
     prerequisites: ["transformers", "ensemble-methods"],
@@ -2206,7 +2587,7 @@ export const concepts: Concept[] = [
   {
     id: "weight-initialization",
     title: "Weight Initialization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Xavier and He scaling — choosing the starting variance so signal neither dies nor explodes with depth.",
     // Both schemes are derived by asking that the variance of the activations
@@ -2225,7 +2606,7 @@ export const concepts: Concept[] = [
   {
     id: "layer-normalization",
     title: "Layer Normalization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Normalising across features rather than across the batch — and why every transformer uses it.",
     // The content that matters here is pre-norm versus post-norm and the
@@ -2236,7 +2617,7 @@ export const concepts: Concept[] = [
   {
     id: "learning-rate-schedules",
     title: "Learning Rate Schedules",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Warmup, decay and cosine annealing — the hyperparameter that is a function of time, not a number.",
     prerequisites: ["sgd-and-adaptive-optimizers", "layer-normalization"],
@@ -2244,7 +2625,7 @@ export const concepts: Concept[] = [
   {
     id: "data-augmentation",
     title: "Data Augmentation",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Manufacturing training examples from invariances you already believe, and the ones you do not.",
     // Augmentation is defined as a training-split-only transform, and its worst
@@ -2259,7 +2640,7 @@ export const concepts: Concept[] = [
   {
     id: "mixed-precision-training",
     title: "Mixed Precision Training",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Half-precision arithmetic with a full-precision safety net — loss scaling, master weights, and what underflows.",
     prerequisites: ["sgd-and-adaptive-optimizers", "backpropagation"],
@@ -2267,7 +2648,7 @@ export const concepts: Concept[] = [
   {
     id: "distributed-training",
     title: "Distributed Training",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Data, model and pipeline parallelism — what is split, what is communicated, and what the batch size does to the schedule.",
     prerequisites: ["learning-rate-schedules", "mixed-precision-training"],
@@ -2284,7 +2665,7 @@ export const concepts: Concept[] = [
   {
     id: "transfer-learning",
     title: "Transfer Learning",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Reusing a model trained elsewhere — feature extraction, fine-tuning, and when it backfires.",
     // Matching the pretrained model's own input normalisation is not optional
@@ -2295,7 +2676,7 @@ export const concepts: Concept[] = [
   {
     id: "self-supervised-learning",
     title: "Self-Supervised Learning",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Manufacturing labels from the input itself — the engine behind modern pretraining.",
     prerequisites: ["transfer-learning", "autoencoders"],
@@ -2363,7 +2744,7 @@ export const concepts: Concept[] = [
   {
     id: "scaling-laws",
     title: "Scaling Laws",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Loss as a power law in parameters, data and compute — and the budget question that follows from it.",
     prerequisites: ["learning-curves", "autoregressive-models"],
@@ -2371,7 +2752,7 @@ export const concepts: Concept[] = [
   {
     id: "tokenization",
     title: "Tokenization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Byte-pair encoding and its relatives: the vocabulary decision made before any weight is trained.",
     prerequisites: ["embeddings", "autoregressive-models"],
@@ -2379,7 +2760,7 @@ export const concepts: Concept[] = [
   {
     id: "contrastive-learning",
     title: "Contrastive Learning",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Pulling matched pairs together and pushing everything else apart — InfoNCE, and where the negatives come from.",
     // The InfoNCE objective is literally a cross-entropy over similarity
@@ -2390,7 +2771,7 @@ export const concepts: Concept[] = [
   {
     id: "parameter-efficient-fine-tuning",
     title: "Parameter-Efficient Fine-Tuning",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "LoRA and adapters: training a low-rank correction instead of every weight, and why that is usually enough.",
     // LoRA is a rank constraint written as BA with an inner dimension r, and
@@ -2400,7 +2781,7 @@ export const concepts: Concept[] = [
   {
     id: "instruction-tuning-and-rlhf",
     title: "Instruction Tuning and RLHF",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Turning a next-token predictor into something that follows instructions, and the KL leash that keeps it there.",
     prerequisites: ["reinforcement-learning", "autoregressive-models", "kl-divergence"],
@@ -2408,7 +2789,7 @@ export const concepts: Concept[] = [
   {
     id: "knowledge-distillation",
     title: "Knowledge Distillation",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Training a small model on a large one's full output distribution rather than on the labels.",
     // The method was introduced to compress an ensemble into one model, and the
@@ -2424,7 +2805,7 @@ export const concepts: Concept[] = [
   {
     id: "quantization",
     title: "Quantization",
-    domain: "machine-learning",
+    domain: "deep-learning",
     blurb:
       "Storing and computing in 8 or 4 bits — where the error goes, and why serving is memory-bound anyway.",
     prerequisites: ["mixed-precision-training", "knowledge-distillation"],
@@ -2515,9 +2896,51 @@ export const concepts: Concept[] = [
     prerequisites: ["mle", "multivariate-normal"],
   },
   {
+    id: "conjugate-priors",
+    title: "Conjugate Priors",
+    domain: "graphical-models",
+    blurb: "Priors chosen so the posterior stays in the same family, turning Bayesian updating into closed-form arithmetic on the parameters.",
+    prerequisites: ["bayes-rule", "mle"],
+  },
+  {
+    id: "importance-sampling",
+    title: "Importance Sampling",
+    domain: "graphical-models",
+    blurb: "Estimating an expectation under a distribution you can't sample from by sampling a different one and reweighting.",
+    prerequisites: ["expectation", "joint-distribution"],
+  },
+  {
+    id: "markov-chain-monte-carlo",
+    title: "Markov Chain Monte Carlo (MCMC)",
+    domain: "graphical-models",
+    blurb: "Building a Markov chain whose stationary distribution is the posterior you want, then sampling it by just running the chain.",
+    prerequisites: ["markov-chains", "importance-sampling"],
+  },
+  {
+    id: "gibbs-sampling",
+    title: "Gibbs Sampling",
+    domain: "graphical-models",
+    blurb: "The Metropolis-Hastings special case that always accepts: cycle through each variable and resample it from its full conditional.",
+    prerequisites: ["markov-chain-monte-carlo", "conditional-probability"],
+  },
+  {
+    id: "dirichlet-process",
+    title: "Dirichlet Process",
+    domain: "graphical-models",
+    blurb: "A distribution over distributions: the nonparametric-Bayes prior that lets a mixture model discover its own number of clusters from the data.",
+    prerequisites: ["conjugate-priors", "gibbs-sampling"],
+  },
+  {
+    id: "stick-breaking-construction",
+    title: "Stick-Breaking Construction",
+    domain: "graphical-models",
+    blurb: "Building a Dirichlet process draw by hand: repeatedly break off a random fraction of what's left of a unit-length stick to get infinitely many cluster weights that sum to one.",
+    prerequisites: ["dirichlet-process"],
+  },
+  {
     id: "variational-inference-vaes",
     title: "Variational Inference: VAEs",
-    domain: "graphical-models",
+    domain: "deep-learning",
     blurb: "Learning a latent-variable generative model with a neural network and the ELBO.",
     prerequisites: ["variational-inference-elbo", "neural-networks", "backpropagation"],
   },
@@ -2527,6 +2950,20 @@ export const concepts: Concept[] = [
     domain: "graphical-models",
     blurb: "A distribution over functions, defined by a mean and a kernel.",
     prerequisites: ["multivariate-normal", "kernel"],
+  },
+  {
+    id: "hilbert-space",
+    title: "Hilbert Space",
+    domain: "graphical-models",
+    blurb: "A vector space with an inner product, complete enough that limits of Cauchy sequences stay inside it — the setting that lets 'vector' mean a function instead of a finite list of numbers.",
+    prerequisites: ["dot-product", "vector-norm"],
+  },
+  {
+    id: "functional-data-analysis",
+    title: "Functional Data Analysis",
+    domain: "graphical-models",
+    blurb: "Treating each observation as a whole curve rather than a finite vector of features — a data point living in a Hilbert space of functions.",
+    prerequisites: ["hilbert-space"],
   },
   {
     id: "rkhs",
@@ -2541,6 +2978,329 @@ export const concepts: Concept[] = [
     domain: "graphical-models",
     blurb: "Measuring the distance between distributions as the cost of moving mass.",
     prerequisites: ["kl-divergence"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Stochastic Processes
+  //
+  // Simple Random Walk is the discrete process with independent ±1 steps;
+  // Brownian Motion is its continuous-time limit (Shreve, Stochastic Calculus
+  // for Finance II, ch. 3) — together the two building blocks the Stochastic
+  // Calculus chapter borrows as prerequisites. Poisson Process and
+  // Continuous-Time Markov Chains round out the other classical building
+  // block (jump processes rather than diffusions); Kalman Filter is the
+  // linear-Gaussian state-space model, a continuous-state sibling of `hmm`
+  // (graphical-models) that leans on `conditional-multivariate-normal` for
+  // its update step.
+  // ---------------------------------------------------------------------
+  {
+    id: "simple-random-walk",
+    title: "Simple Random Walk",
+    domain: "stochastic-processes",
+    blurb:
+      "Sum up independent ±1 coin flips — the first process where 'independent increments' and 'fair game' become precise, and the discrete skeleton every continuous-time model below is a limit of.",
+    prerequisites: ["bernoulli-binomial", "independence-set-theory"],
+  },
+  {
+    id: "brownian-motion",
+    title: "Brownian Motion",
+    domain: "stochastic-processes",
+    blurb:
+      "The continuous-time, continuous-path limit of the simple random walk: independent Gaussian increments, and a path so jagged it has no derivative anywhere.",
+    prerequisites: ["simple-random-walk", "normal-distribution", "central-limit-theorem"],
+  },
+  {
+    id: "poisson-process",
+    title: "Poisson Process",
+    domain: "stochastic-processes",
+    blurb:
+      "The counting process built from independent Exponential waiting times — events land one at a time at a constant rate, and the count in any window is Poisson.",
+    prerequisites: ["poisson-distribution", "exponential-distribution"],
+  },
+  {
+    id: "continuous-time-markov-chains",
+    title: "Continuous-Time Markov Chains",
+    domain: "stochastic-processes",
+    blurb:
+      "A Markov chain that jumps at random times instead of fixed steps: an Exponential holding time in each state, a generator matrix instead of a transition matrix.",
+    prerequisites: ["markov-chains", "poisson-process"],
+  },
+  {
+    id: "kalman-filter",
+    title: "Kalman Filter",
+    domain: "stochastic-processes",
+    blurb:
+      "The linear-Gaussian state-space model: a hidden state that evolves and emits noisy observations, tracked exactly by alternating a predict step and a conditional-Gaussian update.",
+    prerequisites: ["hmm", "conditional-multivariate-normal"],
+  },
+  {
+    id: "karhunen-loeve-expansion",
+    title: "Karhunen-Loève Expansion",
+    domain: "stochastic-processes",
+    blurb:
+      "Writing a random process as an infinite sum of fixed orthogonal functions times uncorrelated random coefficients — Mercer's theorem applied to a covariance function, and the reason Brownian motion has a closed-form series representation at all.",
+    prerequisites: ["functional-data-analysis", "mercers-theorem", "brownian-motion"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Stochastic Calculus
+  //
+  // Follows the spine of Shreve's Stochastic Calculus for Finance II:
+  // Continuous-Time Models — ch. 2 (information/martingales), ch. 4 (the
+  // Itô integral, Itô-Doeblin formula, and Black-Scholes-Merton equation),
+  // ch. 5 (Girsanov's theorem and risk-neutral pricing), and ch. 6 (the
+  // Feynman-Kac link back to PDEs). Brownian Motion and Simple Random Walk
+  // are borrowed from the Stochastic Processes chapter above rather than
+  // redefined here.
+  // ---------------------------------------------------------------------
+  {
+    id: "filtrations-and-adapted-processes",
+    title: "Filtrations and Adapted Processes",
+    domain: "stochastic-calculus",
+    blurb:
+      "Formalizing 'everything observable by time t' as a growing sigma-algebra, and calling a process adapted when it only looks at the past.",
+    prerequisites: ["sigma-algebra", "brownian-motion"],
+  },
+  {
+    id: "martingales-continuous-time",
+    title: "Martingales in Continuous Time",
+    domain: "stochastic-calculus",
+    blurb:
+      "A process whose best forecast of tomorrow is today's value — Brownian motion is one, and it's the property every hedging and pricing argument ahead leans on.",
+    prerequisites: ["filtrations-and-adapted-processes", "expectation", "simple-random-walk"],
+  },
+  {
+    id: "quadratic-variation",
+    title: "Quadratic Variation",
+    domain: "stochastic-calculus",
+    blurb:
+      "Brownian motion accumulates (ΔW)² at rate dt even though it has no derivative — the single fact that makes dW·dW behave like dt in every Itô computation.",
+    prerequisites: ["brownian-motion"],
+  },
+  {
+    id: "ito-integral",
+    title: "Itô Integral",
+    domain: "stochastic-calculus",
+    blurb:
+      "Defining ∫ Δ dW against an integrator of unbounded variation by evaluating the integrand at the left endpoint of every partition — and why that choice is what keeps the integral a martingale.",
+    prerequisites: ["quadratic-variation", "martingales-continuous-time"],
+  },
+  {
+    id: "ito-doeblin-formula",
+    title: "Itô's Lemma (Itô-Doeblin Formula)",
+    domain: "stochastic-calculus",
+    blurb:
+      "The chain rule for stochastic processes: a second-order correction term survives differentiation because (dW)² = dt instead of vanishing.",
+    prerequisites: ["ito-integral"],
+  },
+  {
+    id: "stochastic-differential-equations",
+    title: "Stochastic Differential Equations (SDEs)",
+    domain: "stochastic-calculus",
+    blurb:
+      "Equations of the form dX = μ(X,t) dt + σ(X,t) dW — an ODE plus a noise term whose size can itself depend on where the process currently is.",
+    prerequisites: ["ito-doeblin-formula"],
+  },
+  {
+    id: "geometric-brownian-motion",
+    title: "Geometric Brownian Motion",
+    domain: "stochastic-calculus",
+    blurb:
+      "The SDE dS = μS dt + σS dW, solved by applying Itô's lemma to log S — the default model for a stock price and the engine behind Black-Scholes.",
+    prerequisites: ["stochastic-differential-equations"],
+  },
+  {
+    id: "ornstein-uhlenbeck-process",
+    title: "Ornstein-Uhlenbeck Process",
+    domain: "stochastic-calculus",
+    blurb:
+      "The SDE dX = θ(μ − X) dt + σ dW — a mean-reverting sibling of geometric Brownian motion, solved by an integrating factor rather than Itô's lemma on a logarithm.",
+    prerequisites: ["stochastic-differential-equations"],
+  },
+  {
+    id: "multidimensional-ito-calculus",
+    title: "Multidimensional Itô Calculus",
+    domain: "stochastic-calculus",
+    blurb:
+      "Itô's lemma and its cross-variation terms when several, possibly correlated, Brownian motions drive the same process.",
+    prerequisites: ["ito-doeblin-formula"],
+  },
+  {
+    id: "black-scholes-merton-equation",
+    title: "Black-Scholes-Merton Equation",
+    domain: "stochastic-calculus",
+    blurb:
+      "Hedging an option with a self-financing stock-and-bond portfolio and setting the resulting drift to zero turns option pricing into a backward parabolic PDE.",
+    prerequisites: ["geometric-brownian-motion"],
+  },
+  {
+    id: "girsanov-theorem",
+    title: "Girsanov's Theorem",
+    domain: "stochastic-calculus",
+    blurb:
+      "Changing probability measure can cancel a process's drift entirely — turning a Brownian motion with drift under one measure into a driftless one under another.",
+    prerequisites: ["martingales-continuous-time", "stochastic-differential-equations"],
+  },
+  {
+    id: "risk-neutral-pricing",
+    title: "Risk-Neutral Pricing",
+    domain: "stochastic-calculus",
+    blurb:
+      "Under the measure Girsanov's theorem supplies, every discounted asset price is a martingale — so a derivative's price is just a discounted expectation, no drift assumption required.",
+    prerequisites: ["girsanov-theorem"],
+  },
+  {
+    id: "martingale-representation-theorem",
+    title: "Martingale Representation Theorem",
+    domain: "stochastic-calculus",
+    blurb:
+      "Every martingale in a Brownian filtration is itself an Itô integral of some adapted process — the fact that guarantees a replicating hedge always exists.",
+    prerequisites: ["ito-integral", "girsanov-theorem"],
+  },
+  {
+    id: "feynman-kac-theorem",
+    title: "Feynman-Kac Theorem",
+    domain: "stochastic-calculus",
+    blurb:
+      "The bridge back to PDEs: a conditional expectation of a diffusion solves a parabolic PDE, and that PDE's solution recovers the expectation — Black-Scholes-Merton is the special case.",
+    prerequisites: ["stochastic-differential-equations", "black-scholes-merton-equation"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Financial Instruments
+  //
+  // Every financial instrument, from a savings bond to a swap, is a
+  // contract for moving cash flows across time and across parties. This
+  // chapter starts with the discounting arithmetic that prices any cash
+  // flow, builds up fixed income and equity as the two basic claims on a
+  // firm, and ends with derivatives (forwards, options, swaps) as
+  // contracts *on* those instruments, priced by the same no-arbitrage
+  // logic Stochastic Calculus develops in full (Black-Scholes-Merton,
+  // risk-neutral pricing) for the continuous-time case.
+  // ---------------------------------------------------------------------
+  {
+    id: "time-value-of-money",
+    title: "Time Value of Money",
+    domain: "financial-instruments",
+    blurb:
+      "A dollar today is worth more than a dollar tomorrow — discounting and compounding are the arithmetic that makes cash flows at different dates comparable.",
+    prerequisites: [],
+  },
+  {
+    id: "bonds-and-fixed-income",
+    title: "Bonds and Fixed Income",
+    domain: "financial-instruments",
+    blurb:
+      "A bond is a promise to pay coupons and a face value on a schedule — pricing one is just discounting those promised cash flows back to today.",
+    prerequisites: ["time-value-of-money"],
+  },
+  {
+    id: "yield-to-maturity",
+    title: "Yield to Maturity",
+    domain: "financial-instruments",
+    blurb:
+      "The single discount rate that makes a bond's promised cash flows equal its market price — the market's summary number for a bond's return.",
+    prerequisites: ["bonds-and-fixed-income"],
+  },
+  {
+    id: "yield-curve-and-term-structure",
+    title: "Yield Curves and the Term Structure",
+    domain: "financial-instruments",
+    blurb:
+      "Plotting yield to maturity against time to maturity for otherwise-similar bonds — its shape (upward, flat, inverted) is read as a signal about growth and rate expectations.",
+    prerequisites: ["yield-to-maturity"],
+  },
+  {
+    id: "bond-duration-and-convexity",
+    title: "Duration and Convexity",
+    domain: "financial-instruments",
+    blurb:
+      "Duration is a bond price's first-order sensitivity to a shift in yield; convexity is the second-order correction — together a Taylor expansion of price in yield.",
+    prerequisites: ["yield-to-maturity"],
+  },
+  {
+    id: "equities-and-stock-markets",
+    title: "Equities and Stock Markets",
+    domain: "financial-instruments",
+    blurb:
+      "A share is a residual claim on a firm's assets and earnings after every other claim (including bondholders) is paid — the other basic building block alongside fixed income.",
+    prerequisites: ["time-value-of-money"],
+  },
+  {
+    id: "etfs-and-index-funds",
+    title: "ETFs and Index Funds",
+    domain: "financial-instruments",
+    blurb:
+      "Pooled vehicles that hold a basket of underlying securities and track an index — an ETF trades intraday like a stock, while a traditional index fund prices once a day at NAV.",
+    prerequisites: ["equities-and-stock-markets"],
+  },
+  {
+    id: "mutual-funds-and-nav",
+    title: "Mutual Funds and Net Asset Value",
+    domain: "financial-instruments",
+    blurb:
+      "A mutual fund's price is its net asset value: total portfolio value divided by shares outstanding, computed once per day rather than traded continuously.",
+    prerequisites: ["etfs-and-index-funds"],
+  },
+  {
+    id: "derivatives-overview",
+    title: "Derivatives: An Overview",
+    domain: "financial-instruments",
+    blurb:
+      "A derivative is a contract whose value is derived from an underlying asset's price — used to hedge risk, speculate, or gain leveraged exposure without owning the asset outright.",
+    prerequisites: ["bonds-and-fixed-income", "equities-and-stock-markets"],
+  },
+  {
+    id: "forwards-and-futures",
+    title: "Forwards and Futures",
+    domain: "financial-instruments",
+    blurb:
+      "Both lock in today a price for buying or selling an asset later; a forward is a private, customized contract, while a futures contract is standardized, exchange-traded, and marked to market daily.",
+    prerequisites: ["derivatives-overview", "time-value-of-money"],
+  },
+  {
+    id: "options-calls-and-puts",
+    title: "Options: Calls and Puts",
+    domain: "financial-instruments",
+    blurb:
+      "A call gives the right (not the obligation) to buy at a fixed strike price; a put gives the right to sell — that asymmetry, paid for upfront as a premium, is what separates options from forwards.",
+    prerequisites: ["derivatives-overview"],
+  },
+  {
+    id: "option-payoff-and-put-call-parity",
+    title: "Option Payoffs and Put-Call Parity",
+    domain: "financial-instruments",
+    blurb:
+      "Kinked payoff diagrams (max(S-K,0) for a call, max(K-S,0) for a put) combine into an exact no-arbitrage identity linking a call, a put, the stock, and a bond at the same strike and maturity.",
+    prerequisites: ["options-calls-and-puts", "bonds-and-fixed-income"],
+  },
+  {
+    id: "option-pricing-and-greeks",
+    title: "Option Pricing and the Greeks",
+    domain: "financial-instruments",
+    blurb:
+      "Black-Scholes-Merton prices a call or put in closed form under geometric Brownian motion; the Greeks (delta, gamma, vega, theta, rho) are the price's sensitivities to each input.",
+    prerequisites: [
+      "option-payoff-and-put-call-parity",
+      "black-scholes-merton-equation",
+      "geometric-brownian-motion",
+    ],
+  },
+  {
+    id: "interest-rate-and-currency-swaps",
+    title: "Interest Rate and Currency Swaps",
+    domain: "financial-instruments",
+    blurb:
+      "Two parties agree to exchange cash flows on a schedule — fixed for floating interest payments, or payments in one currency for another — without ever exchanging the underlying principal.",
+    prerequisites: ["derivatives-overview", "yield-curve-and-term-structure"],
+  },
+  {
+    id: "credit-default-swaps",
+    title: "Credit Default Swaps",
+    domain: "financial-instruments",
+    blurb:
+      "Insurance on a bond issuer's default: the protection buyer pays a periodic premium, and the seller pays out if a specified credit event occurs — pricing one means estimating a default probability.",
+    prerequisites: ["interest-rate-and-currency-swaps", "bonds-and-fixed-income"],
   },
 
   // ---------------------------------------------------------------------
@@ -2737,6 +3497,302 @@ export const concepts: Concept[] = [
     blurb:
       "Split-apply-combine, joins that silently change row counts, and the long/wide pivot.",
     prerequisites: ["pandas-dataframes", "python-comprehensions"],
+  },
+
+  // Python — Functions, beyond the def/return lesson already here: the argument
+  // forms, *args/**kwargs, scope, lambda, higher-order functions, sorting keys.
+  {
+    id: "python-arguments",
+    title: "Positional, Keyword, and Default Arguments",
+    domain: "python",
+    blurb: "Four ways to pass the same argument — and the mutable-default trap.",
+    prerequisites: ["python-functions"],
+  },
+  {
+    id: "python-args-kwargs",
+    title: "*args and **kwargs",
+    domain: "python",
+    blurb: "Accepting any number of arguments, and unpacking a list or dict into a call.",
+    prerequisites: ["python-arguments", "python-dictionaries"],
+  },
+  {
+    id: "python-scope",
+    title: "Scope and the LEGB Rule",
+    domain: "python",
+    blurb: "Where a name is looked up, why assignment creates a local, and what global and nonlocal do.",
+    prerequisites: ["python-functions"],
+  },
+  {
+    id: "python-lambda",
+    title: "Lambda Expressions",
+    domain: "python",
+    blurb: "A function as an expression — one line, no name, and the places that actually want one.",
+    prerequisites: ["python-functions"],
+  },
+  {
+    id: "python-higher-order",
+    title: "map, filter, and Functions as Values",
+    domain: "python",
+    blurb: "Passing a function as an argument, and when a comprehension reads better.",
+    prerequisites: ["python-lambda", "python-comprehensions"],
+  },
+  {
+    id: "python-sorting-key",
+    title: "Sorting with key",
+    domain: "python",
+    blurb: "sorted, .sort, reverse, and the key function that decides what 'in order' means.",
+    prerequisites: ["python-lambda", "python-list-operations"],
+  },
+
+  // Python — pandas, beyond the two concepts the domain started with. Reading
+  // data, selecting it, cleaning it, reshaping it, and looking backwards along it.
+  {
+    id: "pandas-io",
+    title: "Reading and Writing Data",
+    domain: "python",
+    blurb: "read_csv and its arguments — where most real analyses actually begin, and go wrong.",
+    prerequisites: ["pandas-dataframes"],
+  },
+  {
+    id: "pandas-selection",
+    title: "Selecting with loc and iloc",
+    domain: "python",
+    blurb: "Label-based and position-based selection, and why chained [][] is the wrong habit.",
+    prerequisites: ["pandas-dataframes"],
+  },
+  {
+    id: "pandas-filtering",
+    title: "Boolean Filtering and query",
+    domain: "python",
+    blurb: "Masks, & and | with their brackets, isin, and when query reads better.",
+    prerequisites: ["pandas-selection"],
+  },
+  {
+    id: "pandas-missing",
+    title: "Missing Data: NaN, dropna, fillna",
+    domain: "python",
+    blurb: "What NaN does to comparisons and arithmetic, and how to drop or fill it deliberately.",
+    prerequisites: ["pandas-selection"],
+  },
+  {
+    id: "pandas-dtypes",
+    title: "dtypes, astype, and Categoricals",
+    domain: "python",
+    blurb: "Why a column of numbers can be object dtype, and what category buys you.",
+    prerequisites: ["pandas-missing"],
+  },
+  {
+    id: "pandas-sorting",
+    title: "Sorting and Ranking",
+    domain: "python",
+    blurb: "sort_values, nlargest, rank, and where NaN ends up.",
+    prerequisites: ["pandas-selection"],
+  },
+  {
+    id: "pandas-apply",
+    title: "apply, map, and Vectorisation",
+    domain: "python",
+    blurb: "Three ways to transform a column, and why the vectorised one is usually right.",
+    prerequisites: ["pandas-selection", "python-lambda"],
+  },
+  {
+    id: "pandas-strings",
+    title: "The .str Accessor",
+    domain: "python",
+    blurb: "Vectorised string methods on a Series, and the NaN-handling they come with.",
+    prerequisites: ["pandas-apply"],
+  },
+  {
+    id: "pandas-datetime",
+    title: "Time Series and datetime",
+    domain: "python",
+    blurb: "to_datetime, the .dt accessor, resampling, and the DatetimeIndex.",
+    prerequisites: ["pandas-dtypes"],
+  },
+  {
+    id: "pandas-pivot",
+    title: "Pivot Tables and crosstab",
+    domain: "python",
+    blurb: "Long to wide, aggregation in one step, and how pivot differs from pivot_table.",
+    prerequisites: ["pandas-groupby"],
+  },
+  {
+    id: "pandas-concat",
+    title: "concat and Assembling Frames",
+    domain: "python",
+    blurb: "Stacking frames by row or column, and why the index usually needs resetting.",
+    prerequisites: ["pandas-groupby"],
+  },
+  {
+    id: "pandas-window",
+    title: "Rolling and Cumulative Windows",
+    domain: "python",
+    blurb: "rolling, expanding, cumsum, shift — the operations that look backwards along a series.",
+    prerequisites: ["pandas-datetime"],
+  },
+
+  // Python — Strings & Text, and Errors. Text handling was assumed throughout the
+  // domain without ever being taught; so was the try/except that survives bad input.
+  {
+    id: "python-strings",
+    title: "Strings, Indexing, and Immutability",
+    domain: "python",
+    blurb: "Text as a sequence — and why you build a new string rather than changing one.",
+    prerequisites: ["python-variables-types"],
+  },
+  {
+    id: "python-string-methods",
+    title: "String Methods: split, join, strip, replace",
+    domain: "python",
+    blurb: "The handful of methods that do most text work, and which ones return rather than mutate.",
+    prerequisites: ["python-strings", "python-lists-intro"],
+  },
+  {
+    id: "python-fstrings",
+    title: "f-strings and Format Specs",
+    domain: "python",
+    blurb: "Interpolation, alignment, precision, and the =-suffix that debugs for you.",
+    prerequisites: ["python-strings"],
+  },
+  {
+    id: "python-regex",
+    title: "Regular Expressions with re",
+    domain: "python",
+    blurb: "search, match, findall, groups — and knowing when a regex is the wrong tool.",
+    prerequisites: ["python-string-methods"],
+  },
+  {
+    id: "python-exceptions",
+    title: "try, except, else, finally",
+    domain: "python",
+    blurb: "Catching what you can handle, and why a bare except hides the bugs you needed to see.",
+    prerequisites: ["python-functions"],
+  },
+  {
+    id: "python-raising",
+    title: "Raising Exceptions and Custom Types",
+    domain: "python",
+    blurb: "raise, exception chaining, and designing an error a caller can act on.",
+    prerequisites: ["python-exceptions"],
+  },
+
+  // Python — Iterators & Generators, and Classes & Objects. The domain used for
+  // loops and comprehensions throughout without explaining the protocol under them,
+  // and had no object model at all.
+  {
+    id: "python-iterators",
+    title: "The Iterator Protocol",
+    domain: "python",
+    blurb: "What a for loop actually does — iter, next, and why an iterator is spent after one pass.",
+    prerequisites: ["python-for-loops"],
+  },
+  {
+    id: "python-generators",
+    title: "Generators and yield",
+    domain: "python",
+    blurb: "A function that pauses and resumes, producing values one at a time without a list.",
+    prerequisites: ["python-iterators", "python-functions"],
+  },
+  {
+    id: "python-itertools",
+    title: "itertools Essentials",
+    domain: "python",
+    blurb: "chain, islice, groupby, combinations — the loops you no longer have to write.",
+    prerequisites: ["python-generators"],
+  },
+  {
+    id: "python-classes",
+    title: "Classes, __init__, and Instances",
+    domain: "python",
+    blurb: "Bundling data with the operations on it, and what self actually is.",
+    prerequisites: ["python-functions", "python-dictionaries"],
+  },
+  {
+    id: "python-methods",
+    title: "Methods, self, and Class Attributes",
+    domain: "python",
+    blurb: "Instance versus class state, and the mutable class attribute that everyone shares.",
+    prerequisites: ["python-classes"],
+  },
+  {
+    id: "python-dunder",
+    title: "Dunder Methods",
+    domain: "python",
+    blurb: "__repr__, __eq__, __len__ — teaching your object to work with Python's own syntax.",
+    prerequisites: ["python-methods"],
+  },
+  {
+    id: "python-inheritance",
+    title: "Inheritance and super()",
+    domain: "python",
+    blurb: "Reusing a base class, overriding it, and why composition is often the better answer.",
+    prerequisites: ["python-methods"],
+  },
+
+  // Python — the standard library a data script actually reaches for, and the
+  // NumPy behaviour that surprises people: dtypes and views, reshaping, axis, seeding.
+  {
+    id: "python-modules",
+    title: "Modules, Imports, and __main__",
+    domain: "python",
+    blurb: "What import actually does, why it runs the file once, and the __main__ guard.",
+    prerequisites: ["python-functions"],
+  },
+  {
+    id: "python-collections",
+    title: "collections: Counter, defaultdict, namedtuple",
+    domain: "python",
+    blurb: "The four containers that replace the dict boilerplate you keep rewriting.",
+    prerequisites: ["python-dictionaries"],
+  },
+  {
+    id: "python-datetime",
+    title: "Dates, Times, and Durations",
+    domain: "python",
+    blurb: "date vs datetime, timedelta arithmetic, parsing, and why naive timestamps bite.",
+    prerequisites: ["python-strings"],
+  },
+  {
+    id: "python-files",
+    title: "Reading and Writing Files",
+    domain: "python",
+    blurb: "open, the with statement, text versus bytes, and why you iterate rather than read().",
+    prerequisites: ["python-strings", "python-exceptions"],
+  },
+  {
+    id: "python-json",
+    title: "JSON",
+    domain: "python",
+    blurb: "loads and dumps, what survives the round trip, and what quietly does not.",
+    prerequisites: ["python-files", "python-dictionaries"],
+  },
+  {
+    id: "numpy-dtypes",
+    title: "dtypes, Copies, and Views",
+    domain: "python",
+    blurb: "Fixed-width types, silent overflow, and the slice that is not a copy.",
+    prerequisites: ["numpy-arrays"],
+  },
+  {
+    id: "numpy-reshaping",
+    title: "Reshaping, Stacking, and Splitting",
+    domain: "python",
+    blurb: "reshape, ravel, the -1 placeholder, and joining arrays along an axis.",
+    prerequisites: ["numpy-arrays"],
+  },
+  {
+    id: "numpy-aggregations",
+    title: "Aggregations and the axis Argument",
+    domain: "python",
+    blurb: "sum, mean, argmax and friends — and what axis actually collapses.",
+    prerequisites: ["numpy-broadcasting"],
+  },
+  {
+    id: "numpy-random",
+    title: "Random Numbers and Seeding",
+    domain: "python",
+    blurb: "default_rng, reproducibility, sampling, and shuffling without surprises.",
+    prerequisites: ["numpy-array-creation"],
   },
 ];
 

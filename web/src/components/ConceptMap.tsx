@@ -365,14 +365,35 @@ export function ConceptMap() {
     savedViewBox = viewBox;
   }, [viewBox]);
 
-  const zoom = (factor: number) => {
+  /** Zoom by `factor`, keeping the point (cx, cy) — in view coordinates — fixed. */
+  const zoomAt = (factor: number, cx: number, cy: number) => {
     const fit = fitViewOf(layout.bounds, aspect);
-    const cx = view.x + view.w / 2;
-    const cy = view.y + view.h / 2;
     const w = Math.min(Math.max(view.w * factor, fit.w * 0.05), fit.w * 2.5);
     const h = w * (view.h / view.w);
-    setViewBox({ x: cx - w / 2, y: cy - h / 2, w, h });
+    const fx = (cx - view.x) / view.w;
+    const fy = (cy - view.y) / view.h;
+    setViewBox({ x: cx - fx * w, y: cy - fy * h, w, h });
   };
+
+  // React attaches wheel listeners passively, so preventDefault there would
+  // be ignored and the page would scroll along with the zoom. A native
+  // listener lets us opt out of that.
+  useEffect(() => {
+    const el = svgRef.current;
+    if (!el) return;
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const rect = el.getBoundingClientRect();
+      const cx = view.x + ((e.clientX - rect.left) / rect.width) * view.w;
+      const cy = view.y + ((e.clientY - rect.top) / rect.height) * view.h;
+      zoomAt(e.deltaY > 0 ? 1.15 : 1 / 1.15, cx, cy);
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  });
+
+  const zoom = (factor: number) =>
+    zoomAt(factor, view.x + view.w / 2, view.y + view.h / 2);
 
   const resetView = () => setViewBox(null);
 

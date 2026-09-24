@@ -3,6 +3,7 @@ import { expFor, type ExpSnapshot } from "./exp";
 import {
   applyIndirectEvidence,
   confidenceWeightedScore,
+  enforceMinExpFloor,
   PASS_THRESHOLD,
   PRIOR_ABILITY,
   probabilityCorrect,
@@ -130,7 +131,11 @@ export function applyReview(
   const nextTarget: ConceptState = counts
     ? {
         conceptId: target.conceptId,
-        ability: updateAbility(target.ability, item, score),
+        ability: enforceMinExpFloor(
+          updateAbility(target.ability, item, score),
+          expBefore.ceiling,
+          score >= PASS_THRESHOLD,
+        ),
         memory,
       }
     : target;
@@ -222,6 +227,27 @@ function applyPropagation(
 const TARGET_SUCCESS = 0.75;
 
 /**
+ * How far (in difficulty logits) an item may sit from the learner's current
+ * ability before it is excluded from selection outright, rather than merely
+ * scored lower. This is the "temperature" the difficulty band is drawn at:
+ * wide for a learner near the middle of the scale, where we are still
+ * calibrating them and exploration is cheap, and narrow at the extremes,
+ * where a beginner should find a hard item essentially unreachable and a
+ * strong learner should stop being offered easy ones. Soft scoring alone
+ * (the `p` closeness term below) never fully excludes a mismatched item — if
+ * it is the least-bad candidate in the pool it still wins — so the band is a
+ * hard filter applied before scoring, with the full pool as a fallback so a
+ * thin pool never leaves the learner with nothing to answer.
+ */
+const MAX_DIFFICULTY_BAND = 3.0;
+const MIN_DIFFICULTY_BAND = 1.1;
+
+function difficultyBand(abilityMean: number): number {
+  const extremity = clamp(Math.abs(abilityMean) / 4, 0, 1);
+  return MAX_DIFFICULTY_BAND - (MAX_DIFFICULTY_BAND - MIN_DIFFICULTY_BAND) * extremity;
+}
+
+/**
  * How many `code` items a session should serve before they stop being
  * privileged, on a concept whose pool has them. Without a quota a code item is
  * just one more candidate competing on difficulty, so a pool of eight
@@ -272,11 +298,26 @@ export function selectNextItem(
 
   const recent = context.recentItemIds ?? [];
   const codeQuota = context.codeQuota ?? CODE_ITEM_QUOTA;
+  const codeStillOwed = (context.codeServed ?? 0) < codeQuota;
+
+  const band = difficultyBand(state.ability.mean);
+  const withinBand = servable.filter(
+    (item) =>
+      Math.abs(item.difficulty - state.ability.mean) <= band ||
+      // The band is a difficulty-fit filter, and the code quota exists
+      // precisely to serve code regardless of how the difficulty fit falls.
+      // Filtering here would drop every code item before scoring ever runs —
+      // a strong learner on a concept whose code items are all easy would be
+      // assessed entirely on multiple choice — so an unmet quota keeps them
+      // in the running and the bonus below decides between them.
+      (codeStillOwed && item.format === "code"),
+  );
+  const pool = withinBand.length > 0 ? withinBand : servable;
 
   let best: Item | undefined;
   let bestScore = -Infinity;
 
-  for (const item of servable) {
+  for (const item of pool) {
     const p = probabilityCorrect(state.ability.mean, item);
 
     // Closeness to the target success rate, on a smooth 0..1 scale.

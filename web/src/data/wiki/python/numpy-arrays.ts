@@ -3,7 +3,7 @@ import type { WikiArticle } from "../types";
 export const numpyArraysWiki: WikiArticle = {
   conceptId: "numpy-arrays",
   summary:
-    "A Python list holds pointers to arbitrary objects. A NumPy array holds raw values of one dtype " +
+    "A Python list holds pointers to arbitrary objects. A NumPy array holds raw values of one `dtype` " +
     "in one contiguous block of memory. Everything else about NumPy follows from that: elementwise " +
     "arithmetic can run as a single compiled loop over the block rather than a Python loop chasing " +
     "pointers, which is worth one to two orders of magnitude — and it is why the correct way to " +
@@ -28,20 +28,20 @@ export const numpyArraysWiki: WikiArticle = {
         {
           kind: "callout",
           tone: "warning",
-          title: "+ and * mean different things on the two types",
+          title: "`+` and `*` mean different things on the two types",
           text:
-            "[1, 2] + [3] is [1, 2, 3]; np.array([1, 2]) + np.array([3, 3]) is array([4, 5]). This " +
+            "`[1, 2] + [3]` is `[1, 2, 3]`; `np.array([1, 2]) + np.array([3, 3])` is `array([4, 5])`. This " +
             "is the most common porting bug when a list gets replaced by an array halfway through a " +
             "function — the code still runs, and every number is wrong.",
         },
         {
           kind: "callout",
           tone: "warning",
-          title: "The dtype is fixed at creation and will silently truncate",
+          title: "The `dtype` is fixed at creation and will silently truncate",
           text:
-            "np.array([1, 2, 3]) has dtype int64. Assigning a[0] = 2.7 stores 2, with no warning. " +
-            "Mixing a float into the constructor promotes the whole array to float64 instead. If a " +
-            "computation must be floating point, say so — np.array([1, 2, 3], dtype=float).",
+            "`np.array([1, 2, 3])` has dtype `int64`. Assigning `a[0] = 2.7` stores `2`, with no warning. " +
+            "Mixing a float into the constructor promotes the whole array to `float64` instead. If a " +
+            "computation must be floating point, say so — `np.array([1, 2, 3], dtype=float)`.",
         },
       ],
     },
@@ -62,22 +62,22 @@ export const numpyArraysWiki: WikiArticle = {
           title: "The same sum of squares, three ways",
           problem: "Compute the sum of squares of a million values.",
           steps: [
-            "Loop: total = 0; for x in a: total += x * x — a million interpreted iterations.",
-            "Comprehension: sum(x * x for x in a) — the same million, slightly tidier.",
-            "Vectorized: np.sum(a ** 2) — one call; the loop runs in compiled code over a contiguous block.",
-            "Better still: a @ a, which uses the BLAS dot product and never materialises the squares.",
+            "Loop: `total = 0; for x in a: total += x * x` — a million interpreted iterations.",
+            "Comprehension: `sum(x * x for x in a)` — the same million, slightly tidier.",
+            "Vectorized: `np.sum(a ** 2)` — one call; the loop runs in compiled code over a contiguous block.",
+            "Better still: `a @ a`, which uses the BLAS dot product and never materialises the squares.",
           ],
           answer:
-            "All three give the same number. The last two are typically 10-100x faster, and a @ a " +
+            "All three give the same number. The last two are typically 10-100x faster, and `a @ a` " +
             "also allocates nothing beyond the scalar result.",
         },
         {
           kind: "definitions",
           items: [
-            { term: "Universal function (ufunc)", description: "An elementwise operation compiled for every dtype — np.exp, np.sqrt, +, *, >." },
-            { term: "Boolean mask", description: "a[a > 0] selects with a boolean array. It is a filter with no loop and no if." },
-            { term: "np.where(cond, x, y)", description: "The elementwise conditional expression — the vectorized `x if cond else y`." },
-            { term: "Fancy indexing", description: "a[[3, 1, 4]] selects by an array of positions, in that order, and returns a copy." },
+            { term: "Universal function (ufunc)", description: "An elementwise operation compiled for every dtype — `np.exp`, `np.sqrt`, `+`, `*`, `>`." },
+            { term: "Boolean mask", description: "`a[a > 0]` selects with a boolean array. It is a filter with no loop and no `if`." },
+            { term: "`np.where(cond, x, y)`", description: "The elementwise conditional expression — the vectorized `x if cond else y`." },
+            { term: "Fancy indexing", description: "`a[[3, 1, 4]]` selects by an array of positions, in that order, and returns a copy." },
           ],
         },
       ],
@@ -105,7 +105,7 @@ export const numpyArraysWiki: WikiArticle = {
           tone: "insight",
           title: "Reshape is free; transpose is too",
           text:
-            "a.reshape(...) and a.T normally return views — they change how the same bytes are " +
+            "`a.reshape(...)` and `a.T` normally return views — they change how the same bytes are " +
             "interpreted, not the bytes. That is why reshaping a large array costs nothing, and also " +
             "why a write to the reshaped array is a write to the original.",
         },
