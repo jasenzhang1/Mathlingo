@@ -40,6 +40,13 @@ import { stochasticProcessesBuffupItems } from "./items/stochastic-processes-buf
 import { stochasticProcessesRandomWalkBrownianItems } from "./items/stochastic-processes-random-walk-brownian";
 import { computationalStatisticsItems } from "./items/computational-statistics";
 import { robustRegressionItems } from "./items/robust-regression";
+import { linearModelsEstimationItems } from "./items/linear-models-estimation";
+import { linearModelsInferenceItems } from "./items/linear-models-inference";
+import { linearModelsLinesAndCurvesItems } from "./items/linear-models-lines-and-curves";
+import { linearModelsAnovaItems } from "./items/linear-models-anova";
+import { linearModelsDiagnosticsItems } from "./items/linear-models-diagnostics";
+import { linearModelsRobustComputationItems } from "./items/linear-models-robust-computation";
+import { linearModelsSelectionItems } from "./items/linear-models-selection";
 import { functionalDataAnalysisItems } from "./items/functional-data-analysis";
 import { financialFixedIncome1Items } from "./items/financial-fixed-income-1";
 import { financialFixedIncome2Items } from "./items/financial-fixed-income-2";
@@ -295,7 +302,7 @@ export const items: Item[] = [
         {
           id: "names-the-swap",
           description:
-            "Identifies that P(positive | condition) has been mistaken for P(condition | positive).",
+            "Identifies that $P(\\text{positive} \\mid \\text{condition})$ has been mistaken for $P(\\text{condition} \\mid \\text{positive})$.",
           weight: 3,
           required: true,
           misconception: {
@@ -331,19 +338,19 @@ export const items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "State Bayes' Rule for P(A | B) in terms of P(B | A), P(A), and P(B).",
+    stem: "State Bayes' Rule for $P(A \\mid B)$ in terms of $P(B \\mid A)$, $P(A)$, and $P(B)$.",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "Gives P(A | B) = P(B | A)·P(A) / P(B).",
+          description: "Gives $P(A \\mid B) = \\dfrac{P(B \\mid A)\\,P(A)}{P(B)}$.",
           weight: 3,
           required: true,
         },
         {
           id: "names-the-parts",
           description:
-            "Names P(A) as the prior, P(B | A) as the likelihood, and P(A | B) as the posterior.",
+            "Names $P(A)$ as the prior, $P(B \\mid A)$ as the likelihood, and $P(A \\mid B)$ as the posterior.",
           weight: 2,
         },
       ],
@@ -936,6 +943,14 @@ export const items: Item[] = [
   ...regressionGeneralizedItems,
   ...regressionExtensionsItems,
   ...robustRegressionItems,
+  // Linear Models: the rest of Seber & Lee, one bank per group of chapters.
+  ...linearModelsEstimationItems,
+  ...linearModelsInferenceItems,
+  ...linearModelsLinesAndCurvesItems,
+  ...linearModelsAnovaItems,
+  ...linearModelsDiagnosticsItems,
+  ...linearModelsRobustComputationItems,
+  ...linearModelsSelectionItems,
   ...timeSeriesItems,
   ...stochasticProcessesBuffupItems,
   ...stochasticProcessesRandomWalkBrownianItems,

@@ -5,7 +5,7 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 366 concepts.**
+**Total: 420 concepts.**
 
 ## Discrete Math Fundamentals (24)
 
@@ -217,7 +217,9 @@ Graphical Models already did.
 | McNemar's Test | Chi Square Test of Independence, Paired T-Test | — |
 | Kolmogorov-Smirnov Test | Chi Square Goodness of Fit Test, CDF | — |
 
-## Regression (34)
+## Linear Models (88)
+
+The unit covers Seber & Lee, *Linear Regression Analysis* (2nd ed.) end to end; the rows after Cox Proportional Hazards were added for that. The domain id in `concepts.ts` is still `regression`.
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -255,6 +257,60 @@ Graphical Models already did.
 | Generalized Linear Model (GLM) | Logistic Regression, Exponential Family | — |
 | Poisson Regression | Generalized Linear Model (GLM), Poisson Distribution | — |
 | Cox Proportional Hazards Model | Generalized Linear Model (GLM), Maximum Likelihood Estimation | — |
+| Partitioned Regression & Frisch–Waugh–Lovell | The Hat Matrix, Effect of Adding Another Variable | — |
+| Least Squares under Linear Restrictions | Normal Equations, The Hat Matrix | — |
+| Design Matrices of Less Than Full Rank | Normal Equations, Rank, Moore-Penrose Inverse, Geometric Interpretation of OLS | — |
+| Estimable Functions | Design Matrices of Less Than Full Rank, OLS Properties | — |
+| Generalized Least Squares | Weighted Least Squares, Cholesky Decomposition, Covariance Matrix | — |
+| Centering & Scaling the Predictors | Multiple Linear Regression, Sample Variance, Pearson Correlation | — |
+| Bayesian Linear Regression | Linear Regression, Probabilistic Version, Conjugate Priors, Multivariate Normal | — |
+| M-Estimators for Regression | Ordinary Least Squares, Outliers, Leverage, and Influence, Weighted Least Squares | — |
+| Breakdown Point & Influence Function | M-Estimators for Regression | — |
+| High-Breakdown Regression: LMS, LTS & S-Estimators | Breakdown Point & Influence Function | — |
+| The General Linear Hypothesis F-Test | Distribution of β̂, Least Squares under Linear Restrictions, F-Distribution, Hypothesis Test | — |
+| Noncentral χ² and F: Power of the F-Test | The General Linear Hypothesis F-Test, Cochran's Theorem, Type I and Type II Error | — |
+| Pure Error & the Lack-of-Fit Test | The General Linear Hypothesis F-Test, ANOVA | — |
+| Simultaneous Intervals: Bonferroni, Scheffé & Maximum Modulus | The General Linear Hypothesis F-Test, Multiple Testing, Confidence Interval | — |
+| Confidence Ellipsoids for β | The General Linear Hypothesis F-Test, Positive Definite Matrices | — |
+| Confidence & Prediction Bands (Working–Hotelling) | Simultaneous Intervals: Bonferroni, Scheffé & Maximum Modulus, Prediction Interval | — |
+| Inverse Prediction & Calibration | Simple Linear Regression, Distribution of β̂, Prediction Interval | — |
+| Regression Through the Origin | Simple Linear Regression, R² | — |
+| Dummy Variables & Comparing Regression Lines | Multiple Linear Regression, The General Linear Hypothesis F-Test | — |
+| Two-Phase (Segmented) Regression | Dummy Variables & Comparing Regression Lines, Maximum Likelihood Estimation | — |
+| Orthogonal Polynomials | Polynomial Regression, Gram-Schmidt Algorithm | — |
+| Regression Splines | Polynomial Regression | — |
+| Smoothing Splines | Regression Splines | — |
+| Response Surfaces | Polynomial Regression, Eigendecomposition | — |
+| One-Way Classification as a Linear Model | ANOVA, Dummy Variables & Comparing Regression Lines, Estimable Functions | — |
+| Multiple Comparisons: Tukey & Scheffé | One-Way Classification as a Linear Model, Simultaneous Intervals: Bonferroni, Scheffé & Maximum Modulus | — |
+| Two-Way ANOVA & Interaction | One-Way Classification as a Linear Model | — |
+| Unbalanced Two-Way ANOVA: Type I, II & III Sums of Squares | Two-Way ANOVA & Interaction, Partitioned Regression & Frisch–Waugh–Lovell | — |
+| One Observation per Cell & Tukey's Test for Nonadditivity | Two-Way ANOVA & Interaction | — |
+| Higher-Way Classifications | Two-Way ANOVA & Interaction | — |
+| Designs with Simple Block Structure | Two-Way ANOVA & Interaction | — |
+| Analysis of Covariance (ANCOVA) | One-Way Classification as a Linear Model, Partitioned Regression & Frisch–Waugh–Lovell | — |
+| Underfitting & Overfitting: Bias from the Wrong Model | Partitioned Regression & Frisch–Waugh–Lovell, OLS Properties | — |
+| Robustness of the F-Test to Nonnormality | The General Linear Hypothesis F-Test, Central Limit Theorem | — |
+| Errors in the Explanatory Variables | OLS Properties, Simple Linear Regression | — |
+| Collinearity: Eigenvalues & Condition Numbers | Variance Inflation Factor (VIF), Eigendecomposition, Centering & Scaling the Predictors | — |
+| Standardized & Studentized Residuals | The Hat Matrix, Student's t-Distribution | — |
+| Added-Variable & Partial Residual Plots | Partitioned Regression & Frisch–Waugh–Lovell, Standardized & Studentized Residuals | — |
+| Detecting Nonconstant Variance | Homoskedasticity, Standardized & Studentized Residuals, Chi Square Distribution | — |
+| Serial Correlation & the Durbin–Watson Test | OLS Assumptions, Generalized Least Squares | — |
+| Normal Probability Plots of Residuals | Standardized & Studentized Residuals, Order Statistics | — |
+| Box–Cox Transformations | Linear Regression, Probabilistic Version, Homoskedasticity | — |
+| Leave-One-Out Diagnostics: DFBETAS, DFFITS & COVRATIO | Outliers, Leverage, and Influence, Standardized & Studentized Residuals | — |
+| Principal Components Regression | Collinearity: Eigenvalues & Condition Numbers, Principal Component Analysis (Matrix Edition) | — |
+| Solving the Normal Equations by Cholesky | Normal Equations, Cholesky Decomposition | — |
+| Least Squares via the QR Decomposition | Solving the Normal Equations by Cholesky, QR Decomposition, The Hat Matrix | — |
+| Least Squares via the SVD | Least Squares via the QR Decomposition, Singular Value Decomposition (SVD), Design Matrices of Less Than Full Rank | — |
+| Updating Formulas & the Sweep Operator | Solving the Normal Equations by Cholesky, Partitioned Regression & Frisch–Waugh–Lovell | — |
+| Conditioning & Numerical Accuracy of Least Squares | Least Squares via the QR Decomposition, Collinearity: Eigenvalues & Condition Numbers | — |
+| Subset Selection Criteria: Mallows' Cp & PRESS | Underfitting & Overfitting: Bias from the Wrong Model, AIC, BIC, R² | — |
+| All-Subsets Regression & Branch and Bound | Subset Selection Criteria: Mallows' Cp & PRESS, Updating Formulas & the Sweep Operator | — |
+| Stein Shrinkage & the Garrote | Ridge Regression, LASSO, Distribution of β̂ | — |
+| Bayesian Prediction & Model Averaging | Bayesian Linear Regression, AIC, BIC | — |
+| Inference after Model Selection | Forward, Backward, Stepwise Selection, Subset Selection Criteria: Mallows' Cp & PRESS | — |
 
 ## Machine Learning (63)
 

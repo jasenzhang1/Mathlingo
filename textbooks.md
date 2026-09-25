@@ -1,4 +1,4 @@
-## Probability and Statistics
+## Linear Algebra
 
 - Linear Algebra and Matrix Analysis for Statistics (Banerjee, Roy)
 - Linear Algebra and Its Applications (Strang)
@@ -9,6 +9,10 @@
 - Statistical Inference (Casella, Berger)
 - All of Statistics: A Concise Course in Statistical Inference (Wasserman)
 - Introduction to Probability by Joseph K. Blitzstein and Jessica Hwang
+
+## Multivaraite Statistics
+
+- Linear Regression Analysis (Seber, Lee)
 
 ## Machine Learning
 

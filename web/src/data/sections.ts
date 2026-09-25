@@ -405,10 +405,28 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
     },
   ],
 
+  /**
+   * "Linear Models" — the domain id stays `regression` so saved progress and
+   * links survive the rename. Sections follow the chapters of Seber & Lee,
+   * *Linear Regression Analysis* (2nd ed.), the unit's textbook; each concept
+   * sits in the chapter that develops it, including the ones that predate the
+   * book being adopted. The book's Ch. 1–2 (random vectors, quadratic forms,
+   * the multivariate normal) are taught in `multivariate-probability` and
+   * reached through prerequisites rather than repeated here. The last section
+   * holds the models this unit teaches that the book does not — GLMs, mixed
+   * models, survival — which build on everything above it.
+   *
+   * Three placements depart from the book so that no section opens on a
+   * concept whose prerequisites come later: `anova` (the book's Ch. 8 opener)
+   * sits in Ch. 4 because the lack-of-fit test needs it; `vif` sits with the
+   * other Ch. 3 partitioning results because polynomial regression needs it;
+   * and robust regression (the book's §3.13) follows Ch. 10, because
+   * M-estimation only makes sense once outliers and leverage have been met.
+   */
   regression: [
     {
       id: "foundations",
-      label: "Regression Foundations",
+      label: "Ch. 3 · Least Squares Estimation",
       conceptIds: [
         "regression",
         "regress-to-the-mean",
@@ -416,67 +434,163 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "simple-linear-regression",
         "ordinary-least-squares",
         "normal-equations",
-      ],
-    },
-    {
-      id: "ols-geometry",
-      label: "OLS Geometry & Multiple Regression",
-      conceptIds: [
         "geometric-interpretation-of-ols",
         "hat-matrix",
         "multiple-linear-regression",
         "linear-regression-probabilistic-version",
         "ols-assumptions",
-        "homoskedasticity",
+        "ols-properties",
       ],
     },
     {
-      id: "fit-diagnostics",
-      label: "Model Fit & Diagnostics",
+      id: "estimation-extensions",
+      label: "Ch. 3 · Partitioning, Restrictions & Generalized Least Squares",
       conceptIds: [
-        "ols-properties",
         "ssr-sse-sst",
         "r-squared",
-        "anova",
         "effect-of-adding-another-variable",
         "vif",
+        "partitioned-regression",
+        "restricted-least-squares",
+        "less-than-full-rank-models",
+        "estimable-functions",
+        "homoskedasticity",
+        "weighted-least-squares",
+        "generalized-least-squares",
+        "centering-and-scaling",
+        "bayesian-linear-regression",
       ],
     },
     {
-      id: "selection-regularization",
-      label: "Model Selection & Regularization",
+      id: "hypothesis-testing",
+      label: "Ch. 4 · Hypothesis Testing",
       conceptIds: [
-        "aic-bic",
-        "forward-backward-stepwise-selection",
-        "regularization",
-        "lasso",
-        "ridge-regression",
-        "elastic-net",
+        "anova",
+        "general-linear-hypothesis",
+        "noncentral-chi-square-and-f",
+        "lack-of-fit-test",
+      ],
+    },
+    {
+      id: "simultaneous-inference",
+      label: "Ch. 5 · Confidence Intervals & Regions",
+      conceptIds: [
+        "simultaneous-confidence-intervals",
+        "confidence-regions-for-beta",
+        "confidence-bands-regression-surface",
+      ],
+    },
+    {
+      id: "straight-line",
+      label: "Ch. 6 · Straight-Line Regression",
+      conceptIds: [
+        "inverse-prediction-calibration",
+        "regression-through-the-origin",
+        "dummy-variables-comparing-lines",
+        "two-phase-regression",
         "loess-smoothing",
       ],
     },
     {
-      id: "generalized",
-      label: "Generalized & Special Regression",
+      id: "polynomial",
+      label: "Ch. 7 · Polynomial Regression & Splines",
       conceptIds: [
-        "mixed-effect-models",
-        "logistic-regression",
-        "probit-regression",
-        "glm",
-        "cox-proportional-hazards-model",
+        "polynomial-regression",
+        "orthogonal-polynomials",
+        "regression-splines",
+        "smoothing-splines",
+        "response-surface-methodology",
       ],
     },
     {
-      id: "extensions",
-      label: "Extensions",
+      id: "analysis-of-variance",
+      label: "Ch. 8 · Analysis of Variance",
       conceptIds: [
-        "weighted-least-squares",
+        "one-way-anova-model",
+        "multiple-comparisons-tukey",
+        "two-way-anova-balanced",
+        "two-way-anova-unbalanced",
+        "tukey-nonadditivity-test",
+        "higher-way-anova",
+        "randomized-block-designs",
+        "analysis-of-covariance",
+      ],
+    },
+    {
+      id: "departures",
+      label: "Ch. 9 · Departures from Assumptions",
+      conceptIds: [
+        "misspecification-bias",
         "sandwich-estimator",
-        "generalized-estimating-equations",
+        "robustness-of-f-test",
+        "errors-in-variables",
+        "collinearity-eigenanalysis",
+      ],
+    },
+    {
+      id: "diagnostics",
+      label: "Ch. 10 · Diagnosis & Remedies",
+      conceptIds: [
+        "studentized-residuals",
         "outliers-leverage-influence",
-        "polynomial-regression",
+        "case-deletion-diagnostics",
+        "partial-residual-plots",
+        "heteroskedasticity-tests",
+        "durbin-watson-test",
+        "normal-probability-plots",
+        "box-cox-transformation",
+        "principal-components-regression",
+      ],
+    },
+    {
+      id: "robust-regression",
+      label: "Ch. 3.13 · Robust Regression",
+      conceptIds: [
+        "m-estimators-regression",
+        "breakdown-point-and-influence-function",
+        "high-breakdown-regression",
         "quantile-regression",
+      ],
+    },
+    {
+      id: "computation",
+      label: "Ch. 11 · Computing the Fit",
+      conceptIds: [
+        "least-squares-via-cholesky",
+        "least-squares-via-qr",
+        "least-squares-via-svd",
+        "updating-and-sweep-operator",
+        "numerical-accuracy-least-squares",
+      ],
+    },
+    {
+      id: "selection-regularization",
+      label: "Ch. 12 · Prediction & Model Selection",
+      conceptIds: [
+        "aic-bic",
+        "subset-selection-criteria",
+        "forward-backward-stepwise-selection",
+        "all-subsets-regression",
+        "regularization",
+        "ridge-regression",
+        "lasso",
+        "elastic-net",
+        "stein-shrinkage",
+        "bayesian-model-averaging",
+        "post-selection-inference",
+      ],
+    },
+    {
+      id: "generalized",
+      label: "Beyond the Linear Model",
+      conceptIds: [
+        "logistic-regression",
+        "probit-regression",
+        "glm",
         "poisson-regression",
+        "generalized-estimating-equations",
+        "mixed-effect-models",
+        "cox-proportional-hazards-model",
       ],
     },
   ],
