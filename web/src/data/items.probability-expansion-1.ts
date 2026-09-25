@@ -1842,7 +1842,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "In $P(A|B) = P(B|A)$$P(A)$/$P(B)$, the denominator $P(B)$ plays the role of the:",
+    stem: "In $P(A \\mid B) = \\dfrac{P(B \\mid A)\\,P(A)}{P(B)}$, the denominator $P(B)$ plays the role of the:",
     choices: [
       { id: "a", text: "normalizing constant (the marginal probability of the evidence)", correct: true },
       {
@@ -1894,7 +1894,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "$P(B) = \\sum_{i} P(B|A_{i})$$P(A_{i})$",
+          description: "$P(B) = \\sum_{i} P(B \\mid A_{i})\\,P(A_{i})$",
           weight: 1,
           required: true,
         },
@@ -1913,9 +1913,9 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The posterior odds $P(A|B)$/$P(A^{c}|B)$ equal the prior odds $P(A)$/$P(A^{c})$ multiplied by which quantity (the Bayes factor)?",
+    stem: "The posterior odds $P(A \\mid B)/P(A^{c} \\mid B)$ equal the prior odds $P(A)/P(A^{c})$ multiplied by which quantity (the Bayes factor)?",
     choices: [
-      { id: "a", text: "$P(B|A)$ / $P(B|A^{c})$", correct: true },
+      { id: "a", text: "$P(B \\mid A) / P(B \\mid A^{c})$", correct: true },
       {
         id: "b",
         text: "$P(B|A) \\cdot P(B|A^{c})$",
@@ -1928,7 +1928,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "c",
-        text: "$P(A)$ / $P(B)$",
+        text: "$P(A) / P(B)$",
         correct: false,
         misconception: {
           id: "bayes-rule--odds-form-mcq--c",
@@ -1960,7 +1960,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A factory has 3 machines producing 50%, 30%, 20% of total output, with defect rates 1%, 2%, 3% respectively. An item is defective. Find P(it came from machine 3).",
+    stem: "A factory has 3 machines producing 50%, 30%, 20% of total output, with defect rates 1%, 2%, 3% respectively. An item is defective. Find $P(\\text{machine 3} \\mid \\text{defective})$.",
     answerKey: 0.353,
     tolerance: 0.02,
     difficulty: -0.3,
@@ -1976,7 +1976,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A test for a trait is 90% accurate for both positives and negatives (sensitivity = specificity = 90%). The trait's base rate is 10%. Given a positive result, find P(has trait | positive).",
+    stem: "A test for a trait is 90% accurate for both positives and negatives (sensitivity = specificity = 90%). The trait's base rate is 10%. Given a positive result, find $P(\\text{trait} \\mid \\text{positive})$.",
     answerKey: 0.5,
     tolerance: 0.02,
     difficulty: -0.15,
@@ -1992,18 +1992,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Three bags: Bag A has 2 white/3 black, Bag B has 4 white/1 black, Bag C has 1 white/4 black. Choose a bag uniformly at random, draw a ball, it's white. Find P(Bag B | white).",
+    stem: "Three bags: Bag A has 2 white/3 black, Bag B has 4 white/1 black, Bag C has 1 white/4 black. Choose a bag uniformly at random, draw a ball, it's white. Find $P(\\text{Bag B} \\mid \\text{white})$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(white) = (1/3)(2/5) + (1/3)(4/5) + (1/3)(1/5) = (1/3)(7/5) $= 7/15$",
+          description: "$P(\\text{white}) = \\tfrac{1}{3}\\cdot\\tfrac{2}{5} + \\tfrac{1}{3}\\cdot\\tfrac{4}{5} + \\tfrac{1}{3}\\cdot\\tfrac{1}{5} = \\tfrac{1}{3}\\cdot\\tfrac{7}{5} = \\tfrac{7}{15}$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "P(B|white) = (1/3)(4/5) / (7/15) = (4/15)/(7/15) $= 4/7 \\approx 0.571$",
+          description: "$P(\\text{B} \\mid \\text{white}) = \\dfrac{\\tfrac{1}{3}\\cdot\\tfrac{4}{5}}{7/15} = \\dfrac{4/15}{7/15} = \\tfrac{4}{7} \\approx 0.571$",
           weight: 1,
         },
       ],
@@ -2021,7 +2021,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A spam filter flags 95% of actual spam and false-flags 2% of legitimate emails. If 30% of incoming email is spam, what is P(email is spam | flagged)?",
+    stem: "A spam filter flags 95% of actual spam and false-flags 2% of legitimate emails. If 30% of incoming email is spam, what is $P(\\text{spam} \\mid \\text{flagged})$?",
     answerKey: 0.953,
     tolerance: 0.01,
     difficulty: 0.15,
@@ -2071,13 +2071,13 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "write $P(A|B) = P(B|A)$$P(A)$/$P(B)$ and $P(A^{c}|B) = P(B|A^{c})$$P(A^{c})$/$P(B)$",
+          description: "write $P(A \\mid B) = P(B \\mid A)\\,P(A)/P(B)$ and $P(A^{c} \\mid B) = P(B \\mid A^{c})\\,P(A^{c})/P(B)$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "divide the two equations; $P(B)$ cancels, giving $P(A|B)$/$P(A^{c}|B) =$ [$P(B|A)$/$P(B|A^{c})$] $\\cdot$ [$P(A)$/$P(A^{c})$]",
+          description: "divide the two equations; $P(B)$ cancels, giving $\\dfrac{P(A \\mid B)}{P(A^{c} \\mid B)} = \\dfrac{P(B \\mid A)}{P(B \\mid A^{c})} \\cdot \\dfrac{P(A)}{P(A^{c})}$",
           weight: 1,
         },
       ],
@@ -2135,7 +2135,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "evaluating a positive prediction's trustworthiness needs P(actually positive | predicted positive), which via Bayes' rule depends on the prevalence of positives and the classifier's true/false positive rates — quantities overall accuracy doesn't isolate",
+          description: "evaluating a positive prediction's trustworthiness needs $P(\\text{actually positive} \\mid \\text{predicted positive})$, which via Bayes' rule depends on the prevalence of positives and the classifier's true/false positive rates — quantities overall accuracy doesn't isolate",
           weight: 1,
         },
       ],
@@ -2153,7 +2153,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "Two diagnostic tests for a rare disease (prevalence 1%) each have 95% sensitivity and 90% specificity. A patient tests positive on BOTH tests (assume, given true disease status, the two test results are independent). Find P(disease | both positive).",
+    stem: "Two diagnostic tests for a rare disease (prevalence 1%) each have 95% sensitivity and 90% specificity. A patient tests positive on BOTH tests (assume, given true disease status, the two test results are independent). Find $P(\\text{disease} \\mid \\text{both positive})$.",
     answerKey: 0.477,
     tolerance: 0.02,
     difficulty: 1.0,
