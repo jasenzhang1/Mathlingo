@@ -314,6 +314,11 @@ P(correct) = sigmoid(a · (θ − b))
 `θ` is the learner's ability on a concept, `b` the item's difficulty in the same logits, `a` the item's
 discrimination. A learner with θ = b has even odds.
 
+People never see `b` in logits. Anywhere difficulty is shown or authored it is a **level from 1 to 10 in
+steps of 0.1**, a linear relabelling where one level point is one logit and level 5.5 is `b = 0` (so the
+scale covers −4.5 to +4.5 logits). The conversion lives in `difficultyLevel.ts`; the engine itself keeps
+working in logits.
+
 Ability is carried as a **Gaussian belief**, not a point estimate, and updated with a one-step Laplace
 approximation. Posterior precision is prior precision plus the Fisher information the item carried,
 `a²·p·(1−p)`. Three useful things come free from that:

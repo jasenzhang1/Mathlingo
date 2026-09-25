@@ -20,4 +20,5 @@ export * from "./scheduling";
 export * from "./exp";
 export * from "./review";
 export * from "./calibration";
+export * from "./difficultyLevel";
 export { clamp, sigmoid, median, correlation, daysBetween, DAY_MS } from "./numeric";
