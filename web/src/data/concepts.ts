@@ -28,7 +28,7 @@ export const domainMeta: Record<Domain, DomainMeta> = {
     color: "#d1495b",
   },
   statistics: { label: "Statistical Inference", color: "#e0a72f" },
-  regression: { label: "Regression", color: "#2f6fed" },
+  regression: { label: "Linear Models", color: "#2f6fed" },
   "machine-learning": { label: "Machine Learning", color: "#16a34a" },
   "deep-learning": { label: "Deep Learning", color: "#ec4899" },
   "graphical-models": { label: "Graphical Models & Bayesian ML", color: "#a855f7" },
@@ -1519,7 +1519,7 @@ export const concepts: Concept[] = [
   },
 
   // ---------------------------------------------------------------------
-  // Regression
+  // Linear Models (domain id `regression`, kept so saved progress and URLs survive the rename)
   // ---------------------------------------------------------------------
   {
     id: "regression",
@@ -1795,6 +1795,417 @@ export const concepts: Concept[] = [
     domain: "regression",
     blurb: "Modeling how predictors affect the risk of an event over time.",
     prerequisites: ["glm", "mle"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Linear Models — the rest of Seber & Lee, *Linear Regression Analysis*
+  //
+  // The concepts above were the domain before it was renamed from
+  // "Regression" to "Linear Models". Everything below fills a section of
+  // Seber & Lee (2nd ed.) that none of them — nor the quadratic-form and
+  // multivariate-normal concepts in `multivariate-probability`, which cover
+  // the book's Ch. 1–2 — already taught. Each entry names the book section it
+  // comes from; `data/sections.ts` groups them into the book's chapters.
+  // ---------------------------------------------------------------------
+
+  // Ch. 3 — estimation beyond the full-rank, spherical-error case
+  {
+    id: "partitioned-regression",
+    title: "Partitioned Regression & Frisch–Waugh–Lovell",
+    domain: "regression",
+    blurb: "Why a coefficient in a multiple regression is the slope of one residual on another — and why orthogonal columns can be fitted one at a time. (§3.6–3.7)",
+    prerequisites: ["hat-matrix", "effect-of-adding-another-variable"],
+  },
+  {
+    id: "restricted-least-squares",
+    title: "Least Squares under Linear Restrictions",
+    domain: "regression",
+    blurb: "Minimising the residual sum of squares subject to Aβ = c, by Lagrange multipliers or by projection. (§3.8)",
+    prerequisites: ["normal-equations", "hat-matrix"],
+  },
+  {
+    id: "less-than-full-rank-models",
+    title: "Design Matrices of Less Than Full Rank",
+    domain: "regression",
+    blurb: "When XᵀX is singular: infinitely many least-squares solutions, one unique fitted vector, and generalized inverses. (§3.9.1)",
+    prerequisites: ["normal-equations", "rank", "moore-penrose-inverse", "geometric-interpretation-of-ols"],
+  },
+  {
+    id: "estimable-functions",
+    title: "Estimable Functions",
+    domain: "regression",
+    blurb: "Which linear combinations aᵀβ the data can actually pin down when β itself cannot be — and the Gauss–Markov theorem for them. (§3.9.2–3.9.4)",
+    prerequisites: ["less-than-full-rank-models", "ols-properties"],
+  },
+  {
+    id: "generalized-least-squares",
+    title: "Generalized Least Squares",
+    domain: "regression",
+    blurb: "Aitken's estimator for Var(ε) = σ²V: whiten with V^{-1/2}, then run OLS — and what goes wrong when V is guessed wrongly. (§3.10, §9.3)",
+    prerequisites: ["weighted-least-squares", "cholesky-decomposition", "covariance-matrix"],
+  },
+  {
+    id: "centering-and-scaling",
+    title: "Centering & Scaling the Predictors",
+    domain: "regression",
+    blurb: "Separating the intercept from the slopes by centering, and putting predictors on a common footing through the correlation matrix. (§3.11)",
+    prerequisites: ["multiple-linear-regression", "sample-variance", "pearson-correlation"],
+  },
+  {
+    id: "bayesian-linear-regression",
+    title: "Bayesian Linear Regression",
+    domain: "regression",
+    blurb: "Normal–inverse-gamma priors, the posterior for β as a precision-weighted compromise, and the ridge estimator hiding inside it. (§3.12)",
+    prerequisites: ["linear-regression-probabilistic-version", "conjugate-priors", "multivariate-normal"],
+  },
+
+  // Ch. 3.13 & 11.12 — robust regression
+  {
+    id: "m-estimators-regression",
+    title: "M-Estimators for Regression",
+    domain: "regression",
+    blurb: "Replacing squared error with a loss that grows more slowly — Huber, L1, bisquare — and fitting it by iteratively reweighted least squares. (§3.13.1, §11.12)",
+    prerequisites: ["ordinary-least-squares", "outliers-leverage-influence", "weighted-least-squares"],
+  },
+  {
+    id: "breakdown-point-and-influence-function",
+    title: "Breakdown Point & Influence Function",
+    domain: "regression",
+    blurb: "The two yardsticks of robustness: how much contamination an estimator survives, and how much one point can move it. (§3.13.3)",
+    prerequisites: ["m-estimators-regression"],
+  },
+  {
+    id: "high-breakdown-regression",
+    title: "High-Breakdown Regression: LMS, LTS & S-Estimators",
+    domain: "regression",
+    blurb: "Estimators that survive nearly 50% bad data, including bad leverage points that defeat every M-estimator. (§3.13.2, §3.13.4, §11.12.3)",
+    prerequisites: ["breakdown-point-and-influence-function"],
+  },
+
+  // Ch. 4 — hypothesis testing
+  {
+    id: "general-linear-hypothesis",
+    title: "The General Linear Hypothesis F-Test",
+    domain: "regression",
+    blurb: "Testing H: Aβ = c with one F statistic — derived as a likelihood ratio, read as a comparison of restricted and full residual sums of squares. (§4.1–4.3, §4.5, §4.7)",
+    prerequisites: ["distribution-of-beta-hat", "restricted-least-squares", "f-distribution", "hypothesis-test"],
+  },
+  {
+    id: "noncentral-chi-square-and-f",
+    title: "Noncentral χ² and F: Power of the F-Test",
+    domain: "regression",
+    blurb: "What the F statistic's distribution becomes when the hypothesis is false, and how the noncentrality parameter sets the test's power. (§2.4, §4.3)",
+    prerequisites: ["general-linear-hypothesis", "cochrans-theorem", "type-i-ii-error"],
+  },
+  {
+    id: "lack-of-fit-test",
+    title: "Pure Error & the Lack-of-Fit Test",
+    domain: "regression",
+    blurb: "With replicated x values the residual sum of squares splits into pure error and lack of fit — a test of the model's form rather than its coefficients. (§4.6)",
+    prerequisites: ["general-linear-hypothesis", "anova"],
+  },
+
+  // Ch. 5 — simultaneous inference
+  {
+    id: "simultaneous-confidence-intervals",
+    title: "Simultaneous Intervals: Bonferroni, Scheffé & Maximum Modulus",
+    domain: "regression",
+    blurb: "Keeping a family of intervals jointly at 95% — and choosing among the three methods by how many intervals you need. (§5.1.1–5.1.2)",
+    prerequisites: ["general-linear-hypothesis", "multiple-testing", "confidence-interval"],
+  },
+  {
+    id: "confidence-regions-for-beta",
+    title: "Confidence Ellipsoids for β",
+    domain: "regression",
+    blurb: "The joint confidence region for several coefficients is an ellipsoid shaped by XᵀX — and its duality with the F-test. (§5.1.3–5.1.4)",
+    prerequisites: ["general-linear-hypothesis", "positive-definite-matrices"],
+  },
+  {
+    id: "confidence-bands-regression-surface",
+    title: "Confidence & Prediction Bands (Working–Hotelling)",
+    domain: "regression",
+    blurb: "A band that covers the whole regression surface at once, and its widening into a simultaneous band for new responses. (§5.2–5.4)",
+    prerequisites: ["simultaneous-confidence-intervals", "prediction-interval"],
+  },
+
+  // Ch. 6 — straight-line regression
+  {
+    id: "inverse-prediction-calibration",
+    title: "Inverse Prediction & Calibration",
+    domain: "regression",
+    blurb: "Reading x back off a fitted line from an observed y, and Fieller's method for a confidence set on a ratio. (§6.1.2, §6.1.5, §7.1.3)",
+    prerequisites: ["simple-linear-regression", "distribution-of-beta-hat", "prediction-interval"],
+  },
+  {
+    id: "regression-through-the-origin",
+    title: "Regression Through the Origin",
+    domain: "regression",
+    blurb: "Dropping the intercept: a one-line estimator, n − 1 degrees of freedom, and an R² that no longer means what it used to. (§6.2)",
+    prerequisites: ["simple-linear-regression", "r-squared"],
+  },
+  {
+    id: "dummy-variables-comparing-lines",
+    title: "Dummy Variables & Comparing Regression Lines",
+    domain: "regression",
+    blurb: "Encoding groups with indicator columns, and testing whether several lines are parallel, concurrent, or identical. (§6.4)",
+    prerequisites: ["multiple-linear-regression", "general-linear-hypothesis"],
+  },
+  {
+    id: "two-phase-regression",
+    title: "Two-Phase (Segmented) Regression",
+    domain: "regression",
+    blurb: "Two lines joined at a change point — linear once the join is known, a profile-likelihood search when it is not. (§6.5)",
+    prerequisites: ["dummy-variables-comparing-lines", "mle"],
+  },
+
+  // Ch. 7 — polynomial and spline regression
+  {
+    id: "orthogonal-polynomials",
+    title: "Orthogonal Polynomials",
+    domain: "regression",
+    blurb: "Re-expressing 1, x, x², … as mutually orthogonal columns so each degree's coefficient and sum of squares stand alone. (§7.1.1–7.1.2)",
+    prerequisites: ["polynomial-regression", "gram-schmidt"],
+  },
+  {
+    id: "regression-splines",
+    title: "Regression Splines",
+    domain: "regression",
+    blurb: "Piecewise polynomials joined smoothly at knots, fitted by ordinary least squares on a truncated-power or B-spline basis. (§7.2.1–7.2.2)",
+    prerequisites: ["polynomial-regression"],
+  },
+  {
+    id: "smoothing-splines",
+    title: "Smoothing Splines",
+    domain: "regression",
+    blurb: "Penalising roughness instead of choosing knots: a knot at every point, a curvature penalty, and effective degrees of freedom. (§7.2.3, §7.3.2)",
+    prerequisites: ["regression-splines"],
+  },
+  {
+    id: "response-surface-methodology",
+    title: "Response Surfaces",
+    domain: "regression",
+    blurb: "Second-order polynomials in several variables, their stationary point, and canonical analysis of the fitted surface. (§7.3.1)",
+    prerequisites: ["polynomial-regression", "eigendecomposition"],
+  },
+
+  // Ch. 8 — analysis of variance
+  {
+    id: "one-way-anova-model",
+    title: "One-Way Classification as a Linear Model",
+    domain: "regression",
+    blurb: "The cell-means and effects parametrisations of one-way ANOVA, identifiability constraints, and contrasts as estimable functions. (§8.1–8.2)",
+    prerequisites: ["anova", "dummy-variables-comparing-lines", "estimable-functions"],
+  },
+  {
+    id: "multiple-comparisons-tukey",
+    title: "Multiple Comparisons: Tukey & Scheffé",
+    domain: "regression",
+    blurb: "Simultaneous intervals for all pairwise differences via the studentized range, and for all contrasts via Scheffé. (§8.2.2)",
+    prerequisites: ["one-way-anova-model", "simultaneous-confidence-intervals"],
+  },
+  {
+    id: "two-way-anova-balanced",
+    title: "Two-Way ANOVA & Interaction",
+    domain: "regression",
+    blurb: "Main effects, interaction, and why equal cell counts make the sums of squares orthogonal and the table unambiguous. (§8.4)",
+    prerequisites: ["one-way-anova-model"],
+  },
+  {
+    id: "two-way-anova-unbalanced",
+    title: "Unbalanced Two-Way ANOVA: Type I, II & III Sums of Squares",
+    domain: "regression",
+    blurb: "Once cell counts differ, the order of fitting matters — and each 'type' of sum of squares is a different hypothesis. (§8.3)",
+    prerequisites: ["two-way-anova-balanced", "partitioned-regression"],
+  },
+  {
+    id: "tukey-nonadditivity-test",
+    title: "One Observation per Cell & Tukey's Test for Nonadditivity",
+    domain: "regression",
+    blurb: "With no replication there is no pure error to test interaction against — unless you spend one degree of freedom on a specific form of it. (§8.5)",
+    prerequisites: ["two-way-anova-balanced"],
+  },
+  {
+    id: "higher-way-anova",
+    title: "Higher-Way Classifications",
+    domain: "regression",
+    blurb: "Three and more factors: higher-order interactions defined by contrasts, the hierarchy principle, and missing observations. (§8.6)",
+    prerequisites: ["two-way-anova-balanced"],
+  },
+  {
+    id: "randomized-block-designs",
+    title: "Designs with Simple Block Structure",
+    domain: "regression",
+    blurb: "Randomized blocks and Latin squares: removing a nuisance source of variation from the error term by design. (§8.7)",
+    prerequisites: ["two-way-anova-balanced"],
+  },
+  {
+    id: "analysis-of-covariance",
+    title: "Analysis of Covariance (ANCOVA)",
+    domain: "regression",
+    blurb: "Comparing group means after adjusting for a continuous covariate — one-way ANOVA and regression in one model. (§8.8)",
+    prerequisites: ["one-way-anova-model", "partitioned-regression"],
+  },
+
+  // Ch. 9 — departures from the assumptions: what they cost
+  {
+    id: "misspecification-bias",
+    title: "Underfitting & Overfitting: Bias from the Wrong Model",
+    domain: "regression",
+    blurb: "Omitting a relevant predictor biases every coefficient it is correlated with; including an irrelevant one only costs variance. (§9.2, §5.4)",
+    prerequisites: ["partitioned-regression", "ols-properties"],
+  },
+  {
+    id: "robustness-of-f-test",
+    title: "Robustness of the F-Test to Nonnormality",
+    domain: "regression",
+    blurb: "Why tests about β usually survive non-normal errors, why tests about σ² do not, and what the design's leverages have to do with it. (§9.5)",
+    prerequisites: ["general-linear-hypothesis", "central-limit-theorem"],
+  },
+  {
+    id: "errors-in-variables",
+    title: "Errors in the Explanatory Variables",
+    domain: "regression",
+    blurb: "Measurement error in x attenuates the slope toward zero — unless x was set to a target value, the Berkson case, where it does not. (§9.6)",
+    prerequisites: ["ols-properties", "simple-linear-regression"],
+  },
+  {
+    id: "collinearity-eigenanalysis",
+    title: "Collinearity: Eigenvalues & Condition Numbers",
+    domain: "regression",
+    blurb: "Reading collinearity off the small eigenvalues of the scaled XᵀX: condition indices, variance-decomposition proportions, and what they mean for prediction. (§9.7, §10.7.1–10.7.2)",
+    prerequisites: ["vif", "eigendecomposition", "centering-and-scaling"],
+  },
+
+  // Ch. 10 — diagnosis and remedies
+  {
+    id: "studentized-residuals",
+    title: "Standardized & Studentized Residuals",
+    domain: "regression",
+    blurb: "Rescaling residuals by their own standard errors, the leave-one-out version that follows an exact t, and the Bonferroni outlier test. (§10.2, §10.6.4)",
+    prerequisites: ["hat-matrix", "t-distribution"],
+  },
+  {
+    id: "partial-residual-plots",
+    title: "Added-Variable & Partial Residual Plots",
+    domain: "regression",
+    blurb: "Two-dimensional pictures of one predictor's role in a multiple regression — for spotting curvature, influence, and whether it belongs at all. (§10.3)",
+    prerequisites: ["partitioned-regression", "studentized-residuals"],
+  },
+  {
+    id: "heteroskedasticity-tests",
+    title: "Detecting Nonconstant Variance",
+    domain: "regression",
+    blurb: "Residual plots, the Breusch–Pagan score test, and estimating a variance function to weight by. (§10.4.1–10.4.3)",
+    prerequisites: ["homoskedasticity", "studentized-residuals", "chi-square-distribution"],
+  },
+  {
+    id: "durbin-watson-test",
+    title: "Serial Correlation & the Durbin–Watson Test",
+    domain: "regression",
+    blurb: "Detecting AR(1) errors from the residuals of an ordered fit, and what autocorrelation does to OLS standard errors. (§10.4.4)",
+    prerequisites: ["ols-assumptions", "generalized-least-squares"],
+  },
+  {
+    id: "normal-probability-plots",
+    title: "Normal Probability Plots of Residuals",
+    domain: "regression",
+    blurb: "Checking the normality assumption by plotting ordered residuals against normal quantiles — and reading the common shapes. (§10.5.1)",
+    prerequisites: ["studentized-residuals", "order-statistics"],
+  },
+  {
+    id: "box-cox-transformation",
+    title: "Box–Cox Transformations",
+    domain: "regression",
+    blurb: "Choosing a power transformation of y by maximum likelihood, and transforming both sides to keep the mean model intact. (§10.3.2, §10.5.2–10.5.3)",
+    prerequisites: ["linear-regression-probabilistic-version", "homoskedasticity"],
+  },
+  {
+    id: "case-deletion-diagnostics",
+    title: "Leave-One-Out Diagnostics: DFBETAS, DFFITS & COVRATIO",
+    domain: "regression",
+    blurb: "Closed-form effects of deleting one observation on the coefficients, the fitted values, and the precision — no refitting required. (§10.6.1–10.6.3, §10.6.5)",
+    prerequisites: ["outliers-leverage-influence", "studentized-residuals"],
+  },
+  {
+    id: "principal-components-regression",
+    title: "Principal Components Regression",
+    domain: "regression",
+    blurb: "A remedy for collinearity: regress on the leading principal components of the predictors and discard the near-null directions. (§10.7.3)",
+    prerequisites: ["collinearity-eigenanalysis", "pca-matrix-edition"],
+  },
+
+  // Ch. 11 — computing the fit
+  {
+    id: "least-squares-via-cholesky",
+    title: "Solving the Normal Equations by Cholesky",
+    domain: "regression",
+    blurb: "The fastest route to β̂: form XᵀX, factor it as RᵀR, and back-substitute — and why it loses accuracy. (§11.2)",
+    prerequisites: ["normal-equations", "cholesky-decomposition"],
+  },
+  {
+    id: "least-squares-via-qr",
+    title: "Least Squares via the QR Decomposition",
+    domain: "regression",
+    blurb: "Never forming XᵀX: X = QR turns least squares into a triangular solve, and Householder reflections compute it stably. (§11.3, §11.10)",
+    prerequisites: ["least-squares-via-cholesky", "qr-decomposition", "hat-matrix"],
+  },
+  {
+    id: "least-squares-via-svd",
+    title: "Least Squares via the SVD",
+    domain: "regression",
+    blurb: "The most expensive and most revealing factorisation: minimum-norm solutions, numerical rank, and rank-deficient fits. (§11.4, §11.9)",
+    prerequisites: ["least-squares-via-qr", "svd", "less-than-full-rank-models"],
+  },
+  {
+    id: "updating-and-sweep-operator",
+    title: "Updating Formulas & the Sweep Operator",
+    domain: "regression",
+    blurb: "Adding or deleting a case or a variable without refitting from scratch: Sherman–Morrison and the sweep. (§11.6)",
+    prerequisites: ["least-squares-via-cholesky", "partitioned-regression"],
+  },
+  {
+    id: "numerical-accuracy-least-squares",
+    title: "Conditioning & Numerical Accuracy of Least Squares",
+    domain: "regression",
+    blurb: "Why forming XᵀX squares the condition number, how many digits each method keeps, and when centering helps. (§11.7–11.8)",
+    prerequisites: ["least-squares-via-qr", "collinearity-eigenanalysis"],
+  },
+
+  // Ch. 12 — prediction and model selection
+  {
+    id: "subset-selection-criteria",
+    title: "Subset Selection Criteria: Mallows' Cp & PRESS",
+    domain: "regression",
+    blurb: "Scoring candidate subsets by estimated prediction error — Mallows' Cp, the PRESS statistic, and how they relate to adjusted R² and AIC. (§12.2–12.3)",
+    prerequisites: ["misspecification-bias", "aic-bic", "r-squared"],
+  },
+  {
+    id: "all-subsets-regression",
+    title: "All-Subsets Regression & Branch and Bound",
+    domain: "regression",
+    blurb: "Searching all 2ᵏ subsets without fitting them all: sweep-ordered enumeration and the leaps-and-bounds pruning argument. (§12.8)",
+    prerequisites: ["subset-selection-criteria", "updating-and-sweep-operator"],
+  },
+  {
+    id: "stein-shrinkage",
+    title: "Stein Shrinkage & the Garrote",
+    domain: "regression",
+    blurb: "The James–Stein result that least squares is inadmissible in three or more dimensions, and the non-negative garrote that shrinks OLS coefficients individually. (§12.5.1, §12.5.3)",
+    prerequisites: ["ridge-regression", "lasso", "distribution-of-beta-hat"],
+  },
+  {
+    id: "bayesian-model-averaging",
+    title: "Bayesian Prediction & Model Averaging",
+    domain: "regression",
+    blurb: "Predictive densities, posterior model probabilities, and averaging predictions over models instead of betting on one. (§12.3.4, §12.6)",
+    prerequisites: ["bayesian-linear-regression", "aic-bic"],
+  },
+  {
+    id: "post-selection-inference",
+    title: "Inference after Model Selection",
+    domain: "regression",
+    blurb: "Why coefficients and p-values from a selected model are biased and overconfident, and what sample splitting buys back. (§12.7, §12.9)",
+    prerequisites: ["forward-backward-stepwise-selection", "subset-selection-criteria"],
   },
 
   // ---------------------------------------------------------------------

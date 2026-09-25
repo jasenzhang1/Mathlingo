@@ -40,6 +40,13 @@ import { stochasticProcessesBuffupItems } from "./items/stochastic-processes-buf
 import { stochasticProcessesRandomWalkBrownianItems } from "./items/stochastic-processes-random-walk-brownian";
 import { computationalStatisticsItems } from "./items/computational-statistics";
 import { robustRegressionItems } from "./items/robust-regression";
+import { linearModelsEstimationItems } from "./items/linear-models-estimation";
+import { linearModelsInferenceItems } from "./items/linear-models-inference";
+import { linearModelsLinesAndCurvesItems } from "./items/linear-models-lines-and-curves";
+import { linearModelsAnovaItems } from "./items/linear-models-anova";
+import { linearModelsDiagnosticsItems } from "./items/linear-models-diagnostics";
+import { linearModelsRobustComputationItems } from "./items/linear-models-robust-computation";
+import { linearModelsSelectionItems } from "./items/linear-models-selection";
 import { functionalDataAnalysisItems } from "./items/functional-data-analysis";
 import { financialFixedIncome1Items } from "./items/financial-fixed-income-1";
 import { financialFixedIncome2Items } from "./items/financial-fixed-income-2";
@@ -936,6 +943,14 @@ export const items: Item[] = [
   ...regressionGeneralizedItems,
   ...regressionExtensionsItems,
   ...robustRegressionItems,
+  // Linear Models: the rest of Seber & Lee, one bank per group of chapters.
+  ...linearModelsEstimationItems,
+  ...linearModelsInferenceItems,
+  ...linearModelsLinesAndCurvesItems,
+  ...linearModelsAnovaItems,
+  ...linearModelsDiagnosticsItems,
+  ...linearModelsRobustComputationItems,
+  ...linearModelsSelectionItems,
   ...timeSeriesItems,
   ...stochasticProcessesBuffupItems,
   ...stochasticProcessesRandomWalkBrownianItems,

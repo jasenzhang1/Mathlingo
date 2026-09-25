@@ -93,3 +93,17 @@ export const AUTHORED: SourceRef = {
   tier: "generated",
   title: "Authored for Mathlingo from the concept and its prerequisites",
 };
+
+/**
+ * The Linear Models unit's textbook. In copyright, so — as with Casella &
+ * Berger above — only the task skeleton of an exercise may be reused; every
+ * stem, number and setting in the `linear-models-*` banks is ours. The
+ * per-bank constants carry a chapter locator so a reviewer can find the seed.
+ */
+export const seberLee = (locator: string): SourceRef => ({
+  id: "seber-lee",
+  tier: "restricted",
+  title: "Linear Regression Analysis (Seber & Lee, 2nd ed.)",
+  locator,
+  rewriteApprovedBy: "pending-review",
+});
