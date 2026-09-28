@@ -166,7 +166,7 @@ function writeIfChanged(path: string, text: string): boolean {
 
 /**
  * The repo copy of the bank. Rewritten from the sheet on every run, so hand
- * edits made directly in the "Problem bank" tab land in git the next day too.
+ * edits made directly in the "Question Bank" tab land in git the next day too.
  */
 function writeMirror(s: Snapshot): string[] {
   mkdirSync(MIRROR, { recursive: true });

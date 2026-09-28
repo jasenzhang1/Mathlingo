@@ -16,10 +16,12 @@ export type TabKey = "inbox" | "bank" | "concepts" | "scenarios";
 
 /** Default tab titles. Override with QUANT_TAB_INBOX etc. if the sheet uses others. */
 export const DEFAULT_TAB_TITLES: Record<TabKey, string> = {
-  inbox: "New problems",
-  bank: "Problem bank",
-  concepts: "Concept metadata",
-  scenarios: "Scenario metadata",
+  inbox: "New Questions",
+  bank: "Question Bank",
+  /** Mathematical concept metadata. */
+  concepts: "Classifications",
+  /** Scenario metadata. */
+  scenarios: "Category Classifications",
 };
 
 export function tabTitles(env: NodeJS.ProcessEnv = process.env): Record<TabKey, string> {

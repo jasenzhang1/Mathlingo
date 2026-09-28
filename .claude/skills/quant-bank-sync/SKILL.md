@@ -1,6 +1,6 @@
 ---
 name: quant-bank-sync
-description: Daily review of new quant-interview questions from the Google Sheet — verify each answer, assign scenario/variation/concepts, file accepted rows into the Problem bank, leave review notes on the rest, and commit the repo mirror. Use when asked to sync, review, or ingest the quant question sheet, or when a scheduled run says "run the quant bank sync".
+description: Daily review of new quant-interview questions from the Google Sheet — verify each answer, assign scenario/variation/concepts, file accepted rows into the Question Bank, leave review notes on the rest, and commit the repo mirror. Use when asked to sync, review, or ingest the quant question sheet, or when a scheduled run says "run the quant bank sync".
 ---
 
 # Quant bank sync

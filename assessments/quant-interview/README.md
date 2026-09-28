@@ -9,7 +9,7 @@ this bank is organized by **scenario** rather than by concept.
 - **The sheet is the source of truth.** Edit questions there, not here.
 - **This directory is a mirror.** `bank.json`, `concepts.json` and `scenarios.json` are rewritten
   from the sheet on every sync, so the git history records every change to the bank, including edits
-  made directly in the "Problem bank" tab.
+  made directly in the "Question Bank" tab.
 - **The code** is in [`web/tools/quantBank/`](../../web/tools/quantBank/). The daily review
   playbook is [`.claude/skills/quant-bank-sync/SKILL.md`](../../.claude/skills/quant-bank-sync/SKILL.md).
 
@@ -39,7 +39,7 @@ The sheet has four tabs. Header names are matched loosely: case, spacing and und
 matter, and the alternatives in parentheses are also recognized. Column order doesn't matter, and
 columns the sync doesn't know about are left alone.
 
-### 1. `New problems`: where you add questions
+### 1. `New Questions`: where you add questions
 
 | column | required | notes |
 |---|---|---|
@@ -58,13 +58,13 @@ When a row is accepted, it moves to the bank and is deleted from this tab. When 
 stays here with a dated review note, such as "answer should be 32, not 16: the runs can start with R
 or U". Held rows are reviewed again every day, so once you fix the row, the next run files it.
 
-### 2. `Problem bank`
+### 2. `Question Bank`
 
-This tab has the same columns as `New problems` plus `id` (`QI-0001`, …) and `added`. The sync
+This tab has the same columns as `New Questions` plus `id` (`QI-0001`, …) and `added`. The sync
 appends to it. You can edit rows by hand, and the next sync mirrors your edits. Concept and scenario
 cells in this tab hold **slugs** such as `lattice-paths`, not free text.
 
-### 3. `Concept metadata`
+### 3. `Classifications`: mathematical concepts
 
 | slug | name | description | aliases | graph concepts |
 |---|---|---|---|---|
@@ -74,7 +74,7 @@ The `graph concepts` column lists ids from [`web/src/data/concepts.ts`](../../we
 It connects each interview concept to the lesson graph, so a future course page can send a learner
 who misses a problem to the lesson that teaches the concept.
 
-### 4. `Scenario metadata`
+### 4. `Category Classifications`: scenarios
 
 | slug | name | setup | levers | aliases | parent |
 |---|---|---|---|---|---|
@@ -100,7 +100,7 @@ if you already have content.
    `.quant-sync/decisions.json`.
 3. `npm run quant:apply` validates the decisions against the sheet as it is at that moment. If any
    decision fails, it writes nothing. Otherwise it adds new metadata rows, appends to the bank,
-   leaves review notes on held rows, deletes the accepted rows from `New problems`, and refreshes
+   leaves review notes on held rows, deletes the accepted rows from `New Questions`, and refreshes
    the mirror.
 4. The mirror changes are committed and pushed.
 
