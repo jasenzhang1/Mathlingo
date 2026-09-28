@@ -36,3 +36,27 @@ export function tierForPrice(priceId: string): "graded" | "tutored" | null {
 export function priceForTier(tier: "graded" | "tutored"): string | undefined {
   return Deno.env.get(tier === "graded" ? "STRIPE_PRICE_GRADED" : "STRIPE_PRICE_TUTORED");
 }
+
+/**
+ * Interview prep is a separate product, not a tier — see migration 0008. Its
+ * subscriptions are written to `interview_subscriptions`, never to
+ * `subscriptions.tier`.
+ */
+export function isInterviewPrice(priceId: string): boolean {
+  const interview = Deno.env.get("STRIPE_PRICE_INTERVIEW");
+  return Boolean(interview) && priceId === interview;
+}
+
+export function interviewPrice(): string | undefined {
+  return Deno.env.get("STRIPE_PRICE_INTERVIEW");
+}
+
+/**
+ * `current_period_end` moved from the subscription onto its items in a 2025 API
+ * version, and which one is populated depends on the version the account is
+ * pinned to — so read both. The typed SDK only knows the older location.
+ */
+export function periodEndOf(subscription: Stripe.Subscription): number | undefined {
+  const item = subscription.items.data[0] as unknown as { current_period_end?: number } | undefined;
+  return item?.current_period_end ?? (subscription as unknown as { current_period_end?: number }).current_period_end;
+}

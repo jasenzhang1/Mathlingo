@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "../auth/useAuth";
-import { FREE_SUBSCRIPTION, loadSubscription, type Subscription } from "./api";
+import { FREE_SUBSCRIPTION, loadInterviewAccess, loadSubscription, type Subscription } from "./api";
 import { hasEntitlement, type Entitlement } from "./tiers";
 
 /**
@@ -14,15 +14,20 @@ import { hasEntitlement, type Entitlement } from "./tiers";
 export function useSubscription() {
   const { user, loading: authLoading } = useAuth();
   const [subscription, setSubscription] = useState<Subscription>(FREE_SUBSCRIPTION);
+  /** The separate interview-prep subscription — independent of `subscription.tier`. */
+  const [interview, setInterview] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const refresh = useCallback(async () => {
     if (!user) {
       setSubscription(FREE_SUBSCRIPTION);
+      setInterview(false);
       setLoading(false);
       return;
     }
-    setSubscription(await loadSubscription(user.id));
+    const [sub, interviewAccess] = await Promise.all([loadSubscription(user.id), loadInterviewAccess(user.id)]);
+    setSubscription(sub);
+    setInterview(interviewAccess);
     setLoading(false);
   }, [user]);
 
@@ -36,5 +41,5 @@ export function useSubscription() {
     [subscription.tier],
   );
 
-  return { subscription, loading: loading || authLoading, can, refresh };
+  return { subscription, interview, loading: loading || authLoading, can, refresh };
 }

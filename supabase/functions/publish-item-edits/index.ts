@@ -2,8 +2,10 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 import { json, preflight } from "../_shared/cors.ts";
 
 /**
- * Turns a developer's local edits from `/dev/questions` into a pull request
- * against the site's own repo, updating `web/src/data/devOverrides.json` —
+ * Turns a developer's local edits into a pull request against the site's own
+ * repo. Item edits from `/dev/questions` update `web/src/data/devOverrides.json`;
+ * interview bundle edits from `/dev/bundles` replace
+ * `web/src/data/interview/bundles.json`. For items, `devOverrides.json` is
  * the file `loadItemBank` merges on top of the hand-authored item banks (see
  * `web/src/data/items.ts`). A PR rather than a direct commit to main because
  * a bad edit here ships wrong questions to every learner; a review step
@@ -16,6 +18,8 @@ import { json, preflight } from "../_shared/cors.ts";
  */
 
 const OVERRIDES_PATH = "web/src/data/devOverrides.json";
+/** Interview mock-interview chains, edited as a whole list in `/dev/bundles`. */
+const BUNDLES_PATH = "web/src/data/interview/bundles.json";
 const GITHUB_API = "https://api.github.com";
 
 interface Item {
@@ -24,9 +28,19 @@ interface Item {
   [key: string]: unknown;
 }
 
+interface Bundle {
+  id: string;
+  title: string;
+  family: string | null;
+  questions: string[];
+  curated: boolean;
+}
+
 interface PublishRequest {
   overrides?: Record<string, Item>;
   newItems?: Record<string, Item>;
+  /** The complete bundle list; replaces bundles.json wholesale. */
+  interviewBundles?: Bundle[];
 }
 
 interface OverridesFile {
@@ -40,9 +54,32 @@ function isPlainItem(value: unknown): value is Item {
   return typeof item.id === "string" && item.id.length > 0 && typeof item.conceptId === "string";
 }
 
+function isBundle(value: unknown): value is Bundle {
+  if (!value || typeof value !== "object") return false;
+  const b = value as Record<string, unknown>;
+  return (
+    typeof b.id === "string" &&
+    /^[a-z0-9-]+$/.test(b.id) &&
+    typeof b.title === "string" &&
+    (b.family === null || typeof b.family === "string") &&
+    Array.isArray(b.questions) &&
+    b.questions.every((q) => typeof q === "string") &&
+    typeof b.curated === "boolean"
+  );
+}
+
 function validatePayload(body: unknown): PublishRequest | { error: string } {
   if (!body || typeof body !== "object") return { error: "Request body must be an object." };
-  const { overrides, newItems } = body as PublishRequest;
+  const { overrides, newItems, interviewBundles } = body as PublishRequest;
+  if (interviewBundles !== undefined) {
+    if (!Array.isArray(interviewBundles)) return { error: "interviewBundles must be an array." };
+    const ids = new Set<string>();
+    for (const b of interviewBundles) {
+      if (!isBundle(b)) return { error: `Bundle ${JSON.stringify((b as { id?: unknown })?.id)} is malformed.` };
+      if (ids.has(b.id)) return { error: `Bundle id "${b.id}" appears twice.` };
+      ids.add(b.id);
+    }
+  }
   for (const [key, value] of Object.entries({ ...overrides, ...newItems })) {
     if (!isPlainItem(value)) {
       return { error: `Item "${key}" is missing a valid id/conceptId.` };
@@ -51,7 +88,7 @@ function validatePayload(body: unknown): PublishRequest | { error: string } {
       return { error: `Item keyed "${key}" has id "${value.id}" — keys must match ids.` };
     }
   }
-  return { overrides: overrides ?? {}, newItems: newItems ?? {} };
+  return { overrides: overrides ?? {}, newItems: newItems ?? {}, interviewBundles };
 }
 
 function allowedEmails(): Set<string> {
@@ -122,11 +159,13 @@ Deno.serve(async (req) => {
 
   const validated = validatePayload(body);
   if ("error" in validated) return json({ error: validated.error }, 400);
-  const { overrides, newItems } = validated;
+  const overrides = validated.overrides ?? {};
+  const newItems = validated.newItems ?? {};
+  const bundles = validated.interviewBundles;
 
   const changedIds = [...Object.keys(overrides), ...Object.keys(newItems)];
-  if (changedIds.length === 0) {
-    return json({ error: "Nothing to publish — no edits or new items were sent." }, 400);
+  if (changedIds.length === 0 && !bundles) {
+    return json({ error: "Nothing to publish — no edits, new items or bundles were sent." }, 400);
   }
 
   const githubToken = Deno.env.get("GITHUB_TOKEN");
@@ -152,28 +191,7 @@ Deno.serve(async (req) => {
     const baseRef = await baseRefRes.json();
     const baseSha = baseRef.object.sha as string;
 
-    // 2. Current devOverrides.json on the base branch, so this PR is additive
-    // to anything an earlier, still-unmerged PR already carries in main.
-    let current: OverridesFile = { overrides: {}, newItems: {} };
-    let fileSha: string | undefined;
-    const fileRes = await githubFetch(
-      `/repos/${owner}/${repo}/contents/${OVERRIDES_PATH}?ref=${baseBranch}`,
-      githubToken,
-    );
-    if (fileRes.ok) {
-      const fileData = await fileRes.json();
-      fileSha = fileData.sha;
-      current = JSON.parse(b64decode(fileData.content.replace(/\n/g, "")));
-    } else if (fileRes.status !== 404) {
-      throw new Error(`Could not read ${OVERRIDES_PATH} (${fileRes.status}).`);
-    }
-
-    const merged: OverridesFile = {
-      overrides: { ...current.overrides, ...overrides },
-      newItems: { ...current.newItems, ...newItems },
-    };
-
-    // 3. A fresh branch off the base branch's current tip.
+    // 2. A fresh branch off the base branch's current tip.
     const branchName = `dev-questions/${Date.now()}`;
     const createBranchRes = await githubFetch(`/repos/${owner}/${repo}/git/refs`, githubToken, {
       method: "POST",
@@ -184,31 +202,86 @@ Deno.serve(async (req) => {
       throw new Error(`Could not create branch (${createBranchRes.status}): ${detail.slice(0, 200)}`);
     }
 
-    // 4. Write the merged overrides file to that branch.
-    const putRes = await githubFetch(`/repos/${owner}/${repo}/contents/${OVERRIDES_PATH}`, githubToken, {
-      method: "PUT",
-      body: JSON.stringify({
-        message: `Question bank: ${changedIds.length} item(s) via /dev/questions\n\n${changedIds.join(", ")}`,
-        content: b64encode(JSON.stringify(merged, null, 2) + "\n"),
-        branch: branchName,
-        ...(fileSha ? { sha: fileSha } : {}),
-      }),
-    });
-    if (!putRes.ok) {
-      const detail = await putRes.text();
-      throw new Error(`Could not write ${OVERRIDES_PATH} (${putRes.status}): ${detail.slice(0, 200)}`);
+    /** Reads a file on the base branch; null when it does not exist yet. */
+    async function readBase(path: string): Promise<{ sha: string; text: string } | null> {
+      const res = await githubFetch(`/repos/${owner}/${repo}/contents/${path}?ref=${baseBranch}`, githubToken!);
+      if (res.status === 404) return null;
+      if (!res.ok) throw new Error(`Could not read ${path} (${res.status}).`);
+      const data = await res.json();
+      return { sha: data.sha, text: b64decode(data.content.replace(/\n/g, "")) };
+    }
+
+    async function writeBranch(path: string, content: string, message: string, sha?: string) {
+      const putRes = await githubFetch(`/repos/${owner}/${repo}/contents/${path}`, githubToken!, {
+        method: "PUT",
+        body: JSON.stringify({ message, content: b64encode(content), branch: branchName, ...(sha ? { sha } : {}) }),
+      });
+      if (!putRes.ok) {
+        const detail = await putRes.text();
+        throw new Error(`Could not write ${path} (${putRes.status}): ${detail.slice(0, 200)}`);
+      }
+    }
+
+    // 3. Item edits: merged into devOverrides.json as it is on the base
+    // branch, so this PR is additive to anything an earlier PR already
+    // carries into main.
+    if (changedIds.length > 0) {
+      const base = await readBase(OVERRIDES_PATH);
+      const current: OverridesFile = base ? JSON.parse(base.text) : { overrides: {}, newItems: {} };
+      const merged: OverridesFile = {
+        overrides: { ...current.overrides, ...overrides },
+        newItems: { ...current.newItems, ...newItems },
+      };
+      await writeBranch(
+        OVERRIDES_PATH,
+        JSON.stringify(merged, null, 2) + "\n",
+        `Question bank: ${changedIds.length} item(s) via /dev/questions\n\n${changedIds.join(", ")}`,
+        base?.sha,
+      );
+    }
+
+    // 4. Interview bundles: the editor holds the whole list, so it replaces
+    // the file. Written in the same one-space JSON the importer produced, so
+    // the PR diff shows only real changes.
+    let bundleSummary = "";
+    if (bundles) {
+      const base = await readBase(BUNDLES_PATH);
+      const before: Bundle[] = base ? JSON.parse(base.text) : [];
+      const beforeById = new Map(before.map((b) => [b.id, JSON.stringify(b)]));
+      const added = bundles.filter((b) => !beforeById.has(b.id)).map((b) => b.id);
+      const changed = bundles.filter((b) => beforeById.has(b.id) && beforeById.get(b.id) !== JSON.stringify(b)).map((b) => b.id);
+      const removed = before.filter((b) => !bundles.some((n) => n.id === b.id)).map((b) => b.id);
+      bundleSummary =
+        [
+          added.length && `Added: ${added.map((id) => `\`${id}\``).join(", ")}`,
+          changed.length && `Changed: ${changed.map((id) => `\`${id}\``).join(", ")}`,
+          removed.length && `Removed: ${removed.map((id) => `\`${id}\``).join(", ")}`,
+        ]
+          .filter(Boolean)
+          .join("\n") || "No differences from the base branch.";
+      await writeBranch(
+        BUNDLES_PATH,
+        JSON.stringify(bundles, null, 1) + "\n",
+        `Interview bundles via /dev/bundles\n\n${bundleSummary}`,
+        base?.sha,
+      );
     }
 
     // 5. Open the PR.
+    const parts = [
+      changedIds.length > 0 && `${changedIds.length} item(s)`,
+      bundles && "interview bundles",
+    ].filter(Boolean);
     const prRes = await githubFetch(`/repos/${owner}/${repo}/pulls`, githubToken, {
       method: "POST",
       body: JSON.stringify({
-        title: `Question bank: ${changedIds.length} item(s) from the dev editor`,
+        title: `Question bank: ${parts.join(" and ")} from the dev editor`,
         head: branchName,
         base: baseBranch,
         body:
-          `Published from \`/dev/questions\` by ${userData.user.email}.\n\n` +
-          `**Items:**\n${changedIds.map((id) => `- \`${id}\``).join("\n")}`,
+          `Published from the dev editor by ${userData.user.email}.\n\n` +
+          (changedIds.length > 0 ? `**Items:**\n${changedIds.map((id) => `- \`${id}\``).join("\n")}\n\n` : "") +
+          (bundles ? `**Interview bundles:**\n${bundleSummary}\n` : ""),
       }),
     });
     if (!prRes.ok) {

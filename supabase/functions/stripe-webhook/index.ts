@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { stripeClient, tierForPrice } from "../_shared/stripe.ts";
+import type Stripe from "npm:stripe@17";
+import { isInterviewPrice, periodEndOf, stripeClient, tierForPrice } from "../_shared/stripe.ts";
 
 /**
  * Stripe -> our subscriptions table. The only writer of entitlement.
@@ -64,7 +65,7 @@ Deno.serve(async (req) => {
     const db = admin();
 
     if (event.type === "checkout.session.completed") {
-      const session = event.data.object;
+      const session = event.data.object as Stripe.Checkout.Session;
       // `client_reference_id` is set to the Supabase user id when the Checkout
       // session is created — it is how a Stripe customer is tied to our user.
       const userId = session.client_reference_id;
@@ -79,7 +80,8 @@ Deno.serve(async (req) => {
       // The tier itself is set by the subscription.created/updated event that
       // follows, so there is no need to duplicate that logic here.
     } else {
-      const subscription = event.data.object;
+      // RELEVANT narrows to subscription events here; the SDK's union type cannot know that.
+      const subscription = event.data.object as Stripe.Subscription;
       const customerId =
         typeof subscription.customer === "string" ? subscription.customer : null;
       if (!customerId) {
@@ -88,6 +90,40 @@ Deno.serve(async (req) => {
 
       const deleted = event.type === "customer.subscription.deleted";
       const priceId = subscription.items.data[0]?.price?.id ?? "";
+
+      // Interview prep is a second, independent subscription (migration 0008).
+      // It must never reach the tier logic below: cancelling it would
+      // otherwise set the customer's *learning* tier to free.
+      if (isInterviewPrice(priceId)) {
+        const periodEnd = periodEndOf(subscription);
+        const { data: existing } = await db
+          .from("subscriptions")
+          .select("user_id")
+          .eq("stripe_customer_id", customerId)
+          .maybeSingle();
+        const userId = (existing?.user_id as string | undefined) ?? subscription.metadata?.supabase_user_id;
+        if (!userId) {
+          throw new Error(`No user for Stripe customer ${customerId} (interview subscription ${subscription.id}).`);
+        }
+        const { error } = await db.from("interview_subscriptions").upsert(
+          {
+            user_id: userId,
+            stripe_subscription_id: subscription.id,
+            status: deleted ? "canceled" : subscription.status,
+            current_period_end: periodEnd ? new Date(periodEnd * 1000).toISOString() : null,
+            cancel_at_period_end: subscription.cancel_at_period_end ?? false,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "user_id" },
+        );
+        if (error) throw new Error(error.message);
+        console.log(`interview subscription ${subscription.id}: user ${userId} (${deleted ? "canceled" : subscription.status})`);
+        return new Response(JSON.stringify({ received: true }), {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+
       const mapped = tierForPrice(priceId);
 
       /**
@@ -115,9 +151,7 @@ Deno.serve(async (req) => {
        * silently stores a null period end, and `effective_tier` would then
        * treat a paying customer as entitled forever.
        */
-      const withPeriod = subscription as unknown as { current_period_end?: number };
-      const periodEnd =
-        subscription.items.data[0]?.current_period_end ?? withPeriod.current_period_end;
+      const periodEnd = periodEndOf(subscription);
 
       const fields = {
         stripe_customer_id: customerId,

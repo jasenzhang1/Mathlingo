@@ -108,6 +108,16 @@ function UserMenu() {
                 Question bank (dev)
               </Link>
             )}
+            {isDeveloper && (
+              <Link
+                to="/dev/bundles"
+                role="menuitem"
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-3 py-2 text-left text-sm text-[var(--ink)] hover:bg-[var(--paper)]"
+              >
+                Interview bundles (dev)
+              </Link>
+            )}
             <button
               type="button"
               role="menuitem"
@@ -229,6 +239,9 @@ export function Nav() {
           <a href="/#bootcamp" className="hover:text-[var(--ink)]">
             Bootcamp
           </a>
+          <Link to="/interview" className="hover:text-[var(--ink)]">
+            Interview prep
+          </Link>
           <Link to="/pricing" className="hover:text-[var(--ink)]">
             Pricing
           </Link>

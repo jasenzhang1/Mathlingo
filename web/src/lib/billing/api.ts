@@ -55,6 +55,24 @@ export async function loadSubscription(userId: string): Promise<Subscription> {
   };
 }
 
+/**
+ * Whether the caller holds the separate interview-prep subscription
+ * (migration 0008). Same trust model as `loadSubscription`: read-only through
+ * RLS, written only by the Stripe webhook. A missing table reads as "no".
+ */
+export async function loadInterviewAccess(userId: string): Promise<boolean> {
+  const { data } = await supabase
+    .from("interview_subscriptions")
+    .select("status, current_period_end")
+    .eq("user_id", userId)
+    .maybeSingle();
+  if (!data) return false;
+  const row = data as { status: string; current_period_end: string | null };
+  // Mirrors public.has_interview_access, grace period included.
+  const graceEnd = row.current_period_end ? new Date(row.current_period_end).getTime() + 3 * 86_400_000 : Infinity;
+  return ["active", "trialing", "past_due"].includes(row.status) && graceEnd > Date.now();
+}
+
 type RedirectResult =
   | { ok: true; url: string }
   | { ok: false; message: string };
@@ -98,8 +116,11 @@ export async function syncSubscription(): Promise<{ ok: boolean; message?: strin
   return { ok: true };
 }
 
-/** Starts Checkout. The browser leaves this app for Stripe's hosted page. */
-export function startCheckout(tier: Exclude<Tier, "free">) {
+/**
+ * Starts Checkout. The browser leaves this app for Stripe's hosted page.
+ * "interview" buys the separate interview-prep subscription.
+ */
+export function startCheckout(tier: Exclude<Tier, "free"> | "interview") {
   return invokeForUrl("stripe-checkout", { tier });
 }
 

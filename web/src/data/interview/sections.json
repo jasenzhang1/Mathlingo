@@ -1,0 +1,1088 @@
+[
+ {
+  "id": "101-general",
+  "number": 101,
+  "topic": "Brainteaser",
+  "subtopic": "General"
+ },
+ {
+  "id": "104-bases",
+  "number": 104,
+  "topic": "Number Theory",
+  "subtopic": "Bases"
+ },
+ {
+  "id": "105-modular-arithmetic",
+  "number": 105,
+  "topic": "Number Theory",
+  "subtopic": "Modular Arithmetic"
+ },
+ {
+  "id": "106-bases",
+  "number": 106,
+  "topic": "Number Theory",
+  "subtopic": "Bases"
+ },
+ {
+  "id": "107-primes-and-factorization",
+  "number": 107,
+  "topic": "Number Theory",
+  "subtopic": "Primes and Factorization"
+ },
+ {
+  "id": "110-functions",
+  "number": 110,
+  "topic": "Algebra",
+  "subtopic": "Functions"
+ },
+ {
+  "id": "111-taylor-series",
+  "number": 111,
+  "topic": "Algebra",
+  "subtopic": "Taylor Series"
+ },
+ {
+  "id": "112-local-minima",
+  "number": 112,
+  "topic": "Algebra",
+  "subtopic": "Local Minima"
+ },
+ {
+  "id": "130-odd-even-parity",
+  "number": 130,
+  "topic": "Invariants",
+  "subtopic": "Odd even parity"
+ },
+ {
+  "id": "131-checkerboard-parity",
+  "number": 131,
+  "topic": "Invariants",
+  "subtopic": "Checkerboard parity"
+ },
+ {
+  "id": "132-coloring",
+  "number": 132,
+  "topic": "Invariants",
+  "subtopic": "Coloring"
+ },
+ {
+  "id": "132-order",
+  "number": 132,
+  "topic": "Invariants",
+  "subtopic": "Order"
+ },
+ {
+  "id": "133-black-and-white-coloring",
+  "number": 133,
+  "topic": "Coloring",
+  "subtopic": "Black and white coloring"
+ },
+ {
+  "id": "134-advanced-coloring",
+  "number": 134,
+  "topic": "Coloring",
+  "subtopic": "Advanced coloring"
+ },
+ {
+  "id": "135-increase-by-same-amount",
+  "number": 135,
+  "topic": "Monovariants",
+  "subtopic": "Increase by same amount"
+ },
+ {
+  "id": "136-a-quantity-that-can-only-stay-constant-or-decrease",
+  "number": 136,
+  "topic": "Monovariants",
+  "subtopic": "A quantity that can only stay constant or decrease"
+ },
+ {
+  "id": "140-teaching-examples",
+  "number": 140,
+  "topic": "Induction",
+  "subtopic": "Teaching examples"
+ },
+ {
+  "id": "141-simple-induction",
+  "number": 141,
+  "topic": "Induction",
+  "subtopic": "Simple induction"
+ },
+ {
+  "id": "142-strong-induction",
+  "number": 142,
+  "topic": "Induction",
+  "subtopic": "Strong Induction"
+ },
+ {
+  "id": "143-modified-induction",
+  "number": 143,
+  "topic": "Induction",
+  "subtopic": "Modified Induction"
+ },
+ {
+  "id": "150-regular",
+  "number": 150,
+  "topic": "Pigeonhole",
+  "subtopic": "Regular"
+ },
+ {
+  "id": "151-generalized",
+  "number": 151,
+  "topic": "Pigeonhole",
+  "subtopic": "Generalized"
+ },
+ {
+  "id": "152-infinite",
+  "number": 152,
+  "topic": "Pigeonhole",
+  "subtopic": "Infinite"
+ },
+ {
+  "id": "160-algebraic-inequalities",
+  "number": 160,
+  "topic": "Algebra",
+  "subtopic": "Algebraic Inequalities"
+ },
+ {
+  "id": "161-polynomials",
+  "number": 161,
+  "topic": "Algebra",
+  "subtopic": "Polynomials"
+ },
+ {
+  "id": "162-system-of-equations",
+  "number": 162,
+  "topic": "Algebra",
+  "subtopic": "System of Equations"
+ },
+ {
+  "id": "200-multiplication-rule",
+  "number": 200,
+  "topic": "Combinatorics",
+  "subtopic": "Multiplication Rule"
+ },
+ {
+  "id": "201-addition-rule",
+  "number": 201,
+  "topic": "Combinatorics",
+  "subtopic": "Addition Rule"
+ },
+ {
+  "id": "202-permutations",
+  "number": 202,
+  "topic": "Combinatorics",
+  "subtopic": "Permutations"
+ },
+ {
+  "id": "203-permutations-with-replacement",
+  "number": 203,
+  "topic": "Combinatorics",
+  "subtopic": "Permutations with replacement"
+ },
+ {
+  "id": "204-permutations-with-identical-objects",
+  "number": 204,
+  "topic": "Combinatorics",
+  "subtopic": "Permutations with identical objects"
+ },
+ {
+  "id": "205-circular",
+  "number": 205,
+  "topic": "Permutations",
+  "subtopic": "Circular"
+ },
+ {
+  "id": "206-definition",
+  "number": 206,
+  "topic": "Combinations",
+  "subtopic": "Definition"
+ },
+ {
+  "id": "207-hockeystick",
+  "number": 207,
+  "topic": "Combinatorial Identities",
+  "subtopic": "Hockeystick"
+ },
+ {
+  "id": "208-vandermonde",
+  "number": 208,
+  "topic": "Combinatorial Identities",
+  "subtopic": "Vandermonde"
+ },
+ {
+  "id": "209-binomial-theorem",
+  "number": 209,
+  "topic": "Combinatorial Identities",
+  "subtopic": "Binomial Theorem"
+ },
+ {
+  "id": "211-complementary-counting",
+  "number": 211,
+  "topic": "Combinatorics",
+  "subtopic": "Complementary Counting"
+ },
+ {
+  "id": "212-block-rule",
+  "number": 212,
+  "topic": "Counting Tricks",
+  "subtopic": "Block Rule"
+ },
+ {
+  "id": "213-gap-rule",
+  "number": 213,
+  "topic": "Counting Tricks",
+  "subtopic": "Gap Rule"
+ },
+ {
+  "id": "214-pie",
+  "number": 214,
+  "topic": "Counting Tricks",
+  "subtopic": "PIE"
+ },
+ {
+  "id": "215-pie-for-n-sets",
+  "number": 215,
+  "topic": "Counting Tricks",
+  "subtopic": "PIE for n sets"
+ },
+ {
+  "id": "216-stars-and-bars",
+  "number": 216,
+  "topic": "Counting Tricks",
+  "subtopic": "Stars and Bars"
+ },
+ {
+  "id": "217-counting-sums",
+  "number": 217,
+  "topic": "Counting Tricks",
+  "subtopic": "Counting Sums"
+ },
+ {
+  "id": "218-piecewise-total",
+  "number": 218,
+  "topic": "Counting Tricks",
+  "subtopic": "Piecewise Total"
+ },
+ {
+  "id": "219-simple-counting",
+  "number": 219,
+  "topic": "Combinatorics",
+  "subtopic": "Simple Counting"
+ },
+ {
+  "id": "220-casework",
+  "number": 220,
+  "topic": "Combinatorics",
+  "subtopic": "Casework"
+ },
+ {
+  "id": "221-derangements",
+  "number": 221,
+  "topic": "Combinatorics",
+  "subtopic": "Derangements"
+ },
+ {
+  "id": "230-recursion",
+  "number": 230,
+  "topic": "Combinatorics",
+  "subtopic": "Recursion"
+ },
+ {
+  "id": "230-recursion-fibonacci",
+  "number": 230,
+  "topic": "Combinatorics",
+  "subtopic": "Recursion (Fibonacci)"
+ },
+ {
+  "id": "231-recursion-characteristic-polynomial",
+  "number": 231,
+  "topic": "Combinatorics",
+  "subtopic": "Recursion (Characteristic Polynomial)"
+ },
+ {
+  "id": "232-bijection",
+  "number": 232,
+  "topic": "Combinatorics",
+  "subtopic": "Bijection"
+ },
+ {
+  "id": "233-recursion-geometric-series",
+  "number": 233,
+  "topic": "Combinatorics",
+  "subtopic": "Recursion (Geometric Series)"
+ },
+ {
+  "id": "234-reflection-principle",
+  "number": 234,
+  "topic": "Combinatorics",
+  "subtopic": "Reflection Principle"
+ },
+ {
+  "id": "300-multiplication-rule",
+  "number": 300,
+  "topic": "Probability",
+  "subtopic": "Multiplication Rule"
+ },
+ {
+  "id": "302-permutations",
+  "number": 302,
+  "topic": "Probability",
+  "subtopic": "Permutations"
+ },
+ {
+  "id": "310-bayes-rule",
+  "number": 310,
+  "topic": "Probability",
+  "subtopic": "Bayes Rule"
+ },
+ {
+  "id": "311-complementary-counting",
+  "number": 311,
+  "topic": "Probability",
+  "subtopic": "Complementary Counting"
+ },
+ {
+  "id": "316-stars-and-bars",
+  "number": 316,
+  "topic": "Probability",
+  "subtopic": "Stars and Bars"
+ },
+ {
+  "id": "320-reduced-sample-space",
+  "number": 320,
+  "topic": "Probability",
+  "subtopic": "Reduced Sample Space"
+ },
+ {
+  "id": "321-geometric-probability",
+  "number": 321,
+  "topic": "Probability",
+  "subtopic": "Geometric Probability"
+ },
+ {
+  "id": "322-casework",
+  "number": 322,
+  "topic": "Probability",
+  "subtopic": "Casework"
+ },
+ {
+  "id": "330-recursion-fibonacci",
+  "number": 330,
+  "topic": "Probability",
+  "subtopic": "Recursion (Fibonacci)"
+ },
+ {
+  "id": "331-recursion-square-1",
+  "number": 331,
+  "topic": "Probability",
+  "subtopic": "Recursion (Square 1)"
+ },
+ {
+  "id": "332-recursion",
+  "number": 332,
+  "topic": "Probability",
+  "subtopic": "Recursion"
+ },
+ {
+  "id": "333-recursion-geometric-series",
+  "number": 333,
+  "topic": "Probability",
+  "subtopic": "Recursion (Geometric Series)"
+ },
+ {
+  "id": "334-recursion-markov-chain",
+  "number": 334,
+  "topic": "Probability",
+  "subtopic": "Recursion (Markov Chain)"
+ },
+ {
+  "id": "336-random-walk",
+  "number": 336,
+  "topic": "Probability",
+  "subtopic": "Random Walk"
+ },
+ {
+  "id": "337-1-sided-absorption-random-walk",
+  "number": 337,
+  "topic": "Probability",
+  "subtopic": "1-sided Absorption Random Walk"
+ },
+ {
+  "id": "338-circular-random-walk",
+  "number": 338,
+  "topic": "Probability",
+  "subtopic": "Circular Random Walk"
+ },
+ {
+  "id": "340-symmetry",
+  "number": 340,
+  "topic": "Probability",
+  "subtopic": "Symmetry"
+ },
+ {
+  "id": "341-symmetry-last-state",
+  "number": 341,
+  "topic": "Probability",
+  "subtopic": "Symmetry (Last State)"
+ },
+ {
+  "id": "342-symmetry-stealing",
+  "number": 342,
+  "topic": "Probability",
+  "subtopic": "Symmetry (Stealing)"
+ },
+ {
+  "id": "343-symmetry-markov-chain",
+  "number": 343,
+  "topic": "Probability",
+  "subtopic": "Symmetry (Markov Chain)"
+ },
+ {
+  "id": "344-symmetry-continuous-rv",
+  "number": 344,
+  "topic": "Probability",
+  "subtopic": "Symmetry (continuous RV)"
+ },
+ {
+  "id": "345-conditional-symmetry",
+  "number": 345,
+  "topic": "Probability",
+  "subtopic": "Conditional Symmetry"
+ },
+ {
+  "id": "346-rotational-symmetry",
+  "number": 346,
+  "topic": "Probability",
+  "subtopic": "Rotational Symmetry"
+ },
+ {
+  "id": "347-reduction-in-states",
+  "number": 347,
+  "topic": "Probability",
+  "subtopic": "Reduction in States"
+ },
+ {
+  "id": "350-conditional-probability",
+  "number": 350,
+  "topic": "Probability",
+  "subtopic": "Conditional Probability"
+ },
+ {
+  "id": "351-law-of-total-probability",
+  "number": 351,
+  "topic": "Probability",
+  "subtopic": "Law of Total Probability"
+ },
+ {
+  "id": "362-integration",
+  "number": 362,
+  "topic": "Probability",
+  "subtopic": "Integration"
+ },
+ {
+  "id": "360-independent-rv",
+  "number": 360,
+  "topic": "Probability",
+  "subtopic": "Independent RV"
+ },
+ {
+  "id": "381-order-statistics",
+  "number": 381,
+  "topic": "Probability",
+  "subtopic": "Order Statistics"
+ },
+ {
+  "id": "390-recurrence-relation-bash",
+  "number": 390,
+  "topic": "Probability",
+  "subtopic": "Recurrence Relation (Bash)"
+ },
+ {
+  "id": "391-recurrence-relation-equation",
+  "number": 391,
+  "topic": "Probability",
+  "subtopic": "Recurrence Relation (Equation)"
+ },
+ {
+  "id": "392-recurrence-relation-closed-form",
+  "number": 392,
+  "topic": "Probability",
+  "subtopic": "Recurrence Relation (Closed Form)"
+ },
+ {
+  "id": "401-introduction-discrete",
+  "number": 401,
+  "topic": "Expected Values",
+  "subtopic": "Introduction (discrete)"
+ },
+ {
+  "id": "402-introduction-continuous",
+  "number": 402,
+  "topic": "Expected Values",
+  "subtopic": "Introduction (continuous)"
+ },
+ {
+  "id": "403-combinatorial-expectation",
+  "number": 403,
+  "topic": "Expected Values",
+  "subtopic": "Combinatorial Expectation"
+ },
+ {
+  "id": "411-complementary-counting",
+  "number": 411,
+  "topic": "Expected Values",
+  "subtopic": "Complementary Counting"
+ },
+ {
+  "id": "414-pie-for-ev",
+  "number": 414,
+  "topic": "Expected Values",
+  "subtopic": "PIE for EV"
+ },
+ {
+  "id": "417-summation-using-expectation",
+  "number": 417,
+  "topic": "Expected Values",
+  "subtopic": "Summation using Expectation"
+ },
+ {
+  "id": "422-casework",
+  "number": 422,
+  "topic": "Expected Values",
+  "subtopic": "Casework"
+ },
+ {
+  "id": "432-recursion",
+  "number": 432,
+  "topic": "Expected Values",
+  "subtopic": "Recursion"
+ },
+ {
+  "id": "433-recursion-geometric-series",
+  "number": 433,
+  "topic": "Expected Values",
+  "subtopic": "Recursion (Geometric Series)"
+ },
+ {
+  "id": "433-recursion-double-geometric-series",
+  "number": 433,
+  "topic": "Expected Values",
+  "subtopic": "Recursion (Double Geometric Series)"
+ },
+ {
+  "id": "434-recursion-markov-chain",
+  "number": 434,
+  "topic": "Expected Values",
+  "subtopic": "Recursion (Markov Chain)"
+ },
+ {
+  "id": "436-random-walk",
+  "number": 436,
+  "topic": "Expected Values",
+  "subtopic": "Random Walk"
+ },
+ {
+  "id": "437-1-sided-absorption-random-walk",
+  "number": 437,
+  "topic": "Expected Values",
+  "subtopic": "1-sided Absorption Random Walk"
+ },
+ {
+  "id": "438-renewal-process-hitting-times",
+  "number": 438,
+  "topic": "Expected Values",
+  "subtopic": "Renewal Process Hitting Times"
+ },
+ {
+  "id": "440-symmetry-ad-hoc",
+  "number": 440,
+  "topic": "Expected Values",
+  "subtopic": "Symmetry (Ad hoc)"
+ },
+ {
+  "id": "443-symmetry-reduction-in-states",
+  "number": 443,
+  "topic": "Expected Values",
+  "subtopic": "Symmetry (Reduction in states)"
+ },
+ {
+  "id": "445-conditional-symmetry",
+  "number": 445,
+  "topic": "Expected Values",
+  "subtopic": "Conditional Symmetry"
+ },
+ {
+  "id": "449-stationarity",
+  "number": 449,
+  "topic": "Expected Values",
+  "subtopic": "Stationarity"
+ },
+ {
+  "id": "450-conditional-expectation",
+  "number": 450,
+  "topic": "Expected Values",
+  "subtopic": "Conditional Expectation"
+ },
+ {
+  "id": "451-law-of-total-expectation-discrete",
+  "number": 451,
+  "topic": "Expected Values",
+  "subtopic": "Law of Total Expectation (Discrete)"
+ },
+ {
+  "id": "452-law-of-total-expectation-continuous",
+  "number": 452,
+  "topic": "Expected Values",
+  "subtopic": "Law of Total Expectation (Continuous)"
+ },
+ {
+  "id": "460-independent-rv",
+  "number": 460,
+  "topic": "Expected Values",
+  "subtopic": "Independent RV"
+ },
+ {
+  "id": "460-indep-dependent-rv",
+  "number": 460,
+  "topic": "Expected Values",
+  "subtopic": "Indep + Dependent RV"
+ },
+ {
+  "id": "461-lotus",
+  "number": 461,
+  "topic": "Expected Values",
+  "subtopic": "LOTUS"
+ },
+ {
+  "id": "462-tail-sum",
+  "number": 462,
+  "topic": "Expected Values",
+  "subtopic": "Tail Sum"
+ },
+ {
+  "id": "463-tail-integral",
+  "number": 463,
+  "topic": "Expected Values",
+  "subtopic": "Tail Integral"
+ },
+ {
+  "id": "470-linearity-of-expectation",
+  "number": 470,
+  "topic": "Expected Values",
+  "subtopic": "Linearity of Expectation"
+ },
+ {
+  "id": "471-linearity-of-expectation-coupon-collector",
+  "number": 471,
+  "topic": "Expected Values",
+  "subtopic": "Linearity of Expectation (Coupon Collector)"
+ },
+ {
+  "id": "472-linearity-of-expectation-harmonic-sum",
+  "number": 472,
+  "topic": "Expected Values",
+  "subtopic": "Linearity of Expectation (Harmonic Sum)"
+ },
+ {
+  "id": "473-linearity-of-expectation-indicators",
+  "number": 473,
+  "topic": "Expected Values",
+  "subtopic": "Linearity of Expectation (Indicators)"
+ },
+ {
+  "id": "474-linearity-of-expectation-permutations",
+  "number": 474,
+  "topic": "Expected Values",
+  "subtopic": "Linearity of Expectation (Permutations)"
+ },
+ {
+  "id": "480-random-points-on-a-segment",
+  "number": 480,
+  "topic": "Expected Values",
+  "subtopic": "Random Points on a Segment"
+ },
+ {
+  "id": "481-order-statistics",
+  "number": 481,
+  "topic": "Expected Values",
+  "subtopic": "Order Statistics"
+ },
+ {
+  "id": "490-recurrence-relation-bash",
+  "number": 490,
+  "topic": "Expected Values",
+  "subtopic": "Recurrence Relation (Bash)"
+ },
+ {
+  "id": "491-recurrence-relation-equation",
+  "number": 491,
+  "topic": "Expected Values",
+  "subtopic": "Recurrence Relation (Equation)"
+ },
+ {
+  "id": "501-definition-discrete",
+  "number": 501,
+  "topic": "Variance",
+  "subtopic": "Definition (Discrete)"
+ },
+ {
+  "id": "502-definition-continuous",
+  "number": 502,
+  "topic": "Variance",
+  "subtopic": "Definition (Continuous)"
+ },
+ {
+  "id": "502-second-moment-continuation",
+  "number": 502,
+  "topic": "Variance",
+  "subtopic": "Second Moment Continuation"
+ },
+ {
+  "id": "503-definition",
+  "number": 503,
+  "topic": "Covariance",
+  "subtopic": "Definition"
+ },
+ {
+  "id": "504-definition",
+  "number": 504,
+  "topic": "Correlation",
+  "subtopic": "Definition"
+ },
+ {
+  "id": "510-normal-distribution",
+  "number": 510,
+  "topic": "Random Variables",
+  "subtopic": "Normal Distribution"
+ },
+ {
+  "id": "511-truncated-normal-distribution",
+  "number": 511,
+  "topic": "Random Variables",
+  "subtopic": "Truncated Normal Distribution"
+ },
+ {
+  "id": "512-mixture-normal-distribution",
+  "number": 512,
+  "topic": "Random Variables",
+  "subtopic": "Mixture Normal Distribution"
+ },
+ {
+  "id": "513-bivariate-normal",
+  "number": 513,
+  "topic": "Random Variables",
+  "subtopic": "Bivariate Normal"
+ },
+ {
+  "id": "514-poisson-rv",
+  "number": 514,
+  "topic": "Random Variables",
+  "subtopic": "Poisson RV"
+ },
+ {
+  "id": "515-bernoulli-rv",
+  "number": 515,
+  "topic": "Random Variables",
+  "subtopic": "Bernoulli RV"
+ },
+ {
+  "id": "516-binomial-rv",
+  "number": 516,
+  "topic": "Random Variables",
+  "subtopic": "Binomial RV"
+ },
+ {
+  "id": "517-exponential-rv",
+  "number": 517,
+  "topic": "Random Variables",
+  "subtopic": "Exponential RV"
+ },
+ {
+  "id": "520-uniform-distribution",
+  "number": 520,
+  "topic": "Random Variables",
+  "subtopic": "Uniform Distribution"
+ },
+ {
+  "id": "528-change-of-variables",
+  "number": 528,
+  "topic": "Random Variables",
+  "subtopic": "Change of Variables"
+ },
+ {
+  "id": "534-recursion-markov-chain",
+  "number": 534,
+  "topic": "Variance",
+  "subtopic": "Recursion (Markov Chain)"
+ },
+ {
+  "id": "551-law-of-total-variance-discrete",
+  "number": 551,
+  "topic": "Variance",
+  "subtopic": "Law of Total Variance (Discrete)"
+ },
+ {
+  "id": "560-independent-rv",
+  "number": 560,
+  "topic": "Variance",
+  "subtopic": "Independent RV"
+ },
+ {
+  "id": "651-law-of-total-probability",
+  "number": 651,
+  "topic": "Random Variables",
+  "subtopic": "Law of Total Probability"
+ },
+ {
+  "id": "701-fair-value",
+  "number": 701,
+  "topic": "Betting Games",
+  "subtopic": "Fair Value"
+ },
+ {
+  "id": "702-stopping-rule-game-strategy-ev",
+  "number": 702,
+  "topic": "Betting Games",
+  "subtopic": "Stopping Rule Game + Strategy + EV"
+ },
+ {
+  "id": "703-optimal-parameters",
+  "number": 703,
+  "topic": "Betting Games",
+  "subtopic": "Optimal Parameters"
+ },
+ {
+  "id": "704-optimal-stopping",
+  "number": 704,
+  "topic": "Betting Games",
+  "subtopic": "Optimal Stopping"
+ },
+ {
+  "id": "707-inductive-betting",
+  "number": 707,
+  "topic": "Betting Games",
+  "subtopic": "Inductive Betting"
+ },
+ {
+  "id": "713-multiplayer-setups",
+  "number": 713,
+  "topic": "Game Theory",
+  "subtopic": "Multiplayer Setups"
+ },
+ {
+  "id": "714-probabilistic-game-theory",
+  "number": 714,
+  "topic": "Game Theory",
+  "subtopic": "Probabilistic Game Theory"
+ },
+ {
+  "id": "715-cooperation",
+  "number": 715,
+  "topic": "Game Theory",
+  "subtopic": "Cooperation"
+ },
+ {
+  "id": "716-nash-equilibrium",
+  "number": 716,
+  "topic": "Game Thoery",
+  "subtopic": "Nash Equilibrium"
+ },
+ {
+  "id": "720-minimax",
+  "number": 720,
+  "topic": "Optimization",
+  "subtopic": "Minimax"
+ },
+ {
+  "id": "721-maximizing-single-player",
+  "number": 721,
+  "topic": "Optimization",
+  "subtopic": "Maximizing (Single Player)"
+ },
+ {
+  "id": "722-qualitative-strategy",
+  "number": 722,
+  "topic": "Optimization",
+  "subtopic": "Qualitative Strategy"
+ },
+ {
+  "id": "723-bound",
+  "number": 723,
+  "topic": "Optimization",
+  "subtopic": "Bound"
+ },
+ {
+  "id": "730-parity",
+  "number": 730,
+  "topic": "Winning strategies",
+  "subtopic": "Parity"
+ },
+ {
+  "id": "731-mirror-strategies",
+  "number": 731,
+  "topic": "Winning strategies",
+  "subtopic": "Mirror strategies"
+ },
+ {
+  "id": "732-stealing-strategies",
+  "number": 732,
+  "topic": "Winning strategies",
+  "subtopic": "Stealing strategies"
+ },
+ {
+  "id": "733-winning-losing-states",
+  "number": 733,
+  "topic": "Winning strategies",
+  "subtopic": "Winning/losing states"
+ },
+ {
+  "id": "734-coloring-strategies",
+  "number": 734,
+  "topic": "Winning strategies",
+  "subtopic": "Coloring Strategies"
+ },
+ {
+  "id": "801-number-of-collisions",
+  "number": 801,
+  "topic": "Collision Problems",
+  "subtopic": "Number of Collisions"
+ },
+ {
+  "id": "802-last-to-exit",
+  "number": 802,
+  "topic": "Collision Problems",
+  "subtopic": "Last to exit"
+ },
+ {
+  "id": "803-infection",
+  "number": 803,
+  "topic": "Collision Problems",
+  "subtopic": "Infection"
+ },
+ {
+  "id": "804-circular-collisions",
+  "number": 804,
+  "topic": "Collision Problems",
+  "subtopic": "Circular collisions"
+ },
+ {
+  "id": "850-eulerian-tour",
+  "number": 850,
+  "topic": "Graph Theory",
+  "subtopic": "Eulerian Tour"
+ },
+ {
+  "id": "851-degrees",
+  "number": 851,
+  "topic": "Graph Theory",
+  "subtopic": "Degrees"
+ },
+ {
+  "id": "860-information-theory",
+  "number": 860,
+  "topic": "Information Theory",
+  "subtopic": "Information Theory"
+ },
+ {
+  "id": "222-symmetry",
+  "number": 222,
+  "topic": "Combinatorics",
+  "subtopic": "Symmetry"
+ },
+ {
+  "id": "103-binary-representation",
+  "number": 103,
+  "topic": "Brainteaser",
+  "subtopic": "Binary Representation"
+ },
+ {
+  "id": "999-law-of-total-expectation",
+  "number": 999,
+  "topic": "Unsorted",
+  "subtopic": "Law of Total Expectation"
+ },
+ {
+  "id": "250-complimentary-symmetry",
+  "number": 250,
+  "topic": "Symmetry",
+  "subtopic": "Complimentary Symmetry"
+ },
+ {
+  "id": "999-unsorted",
+  "number": 999,
+  "topic": "Unsorted",
+  "subtopic": "Unsorted"
+ },
+ {
+  "id": "499-symmetry-reduction-in-states",
+  "number": 499,
+  "topic": "Expected Values",
+  "subtopic": "Symmetry (Reduction in states)"
+ },
+ {
+  "id": "223-complimentary-symmetry",
+  "number": 223,
+  "topic": "Combinatorics",
+  "subtopic": "Complimentary Symmetry"
+ },
+ {
+  "id": "224-order-symmetry",
+  "number": 224,
+  "topic": "Combinatorics",
+  "subtopic": "Order Symmetry"
+ },
+ {
+  "id": "240-linearity-of-expectation",
+  "number": 240,
+  "topic": "Combinatorics",
+  "subtopic": "Linearity of Expectation"
+ },
+ {
+  "id": "705-fair-value-dynamic-programming",
+  "number": 705,
+  "topic": "Betting Games",
+  "subtopic": "Fair Value + Dynamic Programming"
+ },
+ {
+  "id": "222-symmetry-wlog",
+  "number": 222,
+  "topic": "Combinatorics",
+  "subtopic": "Symmetry (WLOG)"
+ },
+ {
+  "id": "570-covariance",
+  "number": 570,
+  "topic": "Covariance",
+  "subtopic": "Covariance"
+ },
+ {
+  "id": "102-date",
+  "number": 102,
+  "topic": "Brainteaser (Logical Deduction)",
+  "subtopic": "Date"
+ },
+ {
+  "id": "250-compliment",
+  "number": 250,
+  "topic": "Symmetry",
+  "subtopic": "Compliment"
+ },
+ {
+  "id": "706-probabilistic-betting",
+  "number": 706,
+  "topic": "Betting Games",
+  "subtopic": "Probabilistic Betting"
+ },
+ {
+  "id": "999-invariants",
+  "number": 999,
+  "topic": "Invariants",
+  "subtopic": "Invariants"
+ },
+ {
+  "id": "999-symmetry",
+  "number": 999,
+  "topic": "Unsorted",
+  "subtopic": "Symmetry"
+ }
+]

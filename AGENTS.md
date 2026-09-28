@@ -24,3 +24,9 @@ This final step checks for understanding. The student will be assessed in multip
 Depending on the speed and accuracy of their responses, the AI grader will give them a grade and grades from previous units may also be affected.
 
 See `assessment.md` for the full framework — where problems come from, how open-ended answers are adjudicated, how the EXP bar rises and decays, and how blame flows back to prerequisites. The engine is in `web/src/lib/assessment/`.
+
+## 2 Interview Prep
+
+A separate tab (`/interview`), sold as its own monthly subscription, and not part of the learning path. It is a databank of quant interview questions, labelled by **section** (technique) and **family** (scenario). Candidates take **mock interviews**: chains of questions on one scenario that get harder as they go, timed and graded. They can also **train** one technique. Speed and accuracy move per-technique interview skill bars, which are completely separate from lesson proficiency.
+
+The questions live in `web/src/data/interview/`, and developers curate the mock-interview chains at `/dev/bundles`. See `interview.md`.

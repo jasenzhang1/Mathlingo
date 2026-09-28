@@ -1,5 +1,0 @@
-Question,Answer,Notes,Difficulty,Tags,Family,Source
-"How many ways can we move from (0,0) to (5,5) using unit steps right and up?",252,"10 moves, choose which 5 are up: C(10,5) = 252.",1,Combinations,Lattice Walk,Original
-"How many R/U paths from (0,0) to (5,5) make exactly 3 direction changes?",16,"4 runs alternating R,U,R,U: split 5 R into 2 runs (4 ways) and 5 U into 2 (4 ways) = 16.",4,Stars and Bars,Lattice Walk,Original
-"How many R/U paths from (0,0) to (5,5) do not pass through (2,2)?",132,"252 minus paths through (2,2): C(4,2)·C(6,3) = 120. 252 - 120 = 132.",2,Complementary Counting,Lattice walks,Original
-A deck of 52 cards is shuffled. What is the expected number of cards that end up in their original position?,1,"Indicator per card, P = 1/52 each; sum is 1.",,Indicators,,Original

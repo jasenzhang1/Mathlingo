@@ -1,14 +1,17 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { json, preflight } from "../_shared/cors.ts";
-import { priceForTier, stripeClient } from "../_shared/stripe.ts";
+import { interviewPrice, priceForTier, stripeClient } from "../_shared/stripe.ts";
 
 /**
  * Creates a Stripe Checkout session and returns its URL for the browser to
  * redirect to.
  *
  * The price is resolved from the tier **on the server**. The client sends only
- * "graded" or "tutored" — never a price or an amount — because a client that
- * can name its own price can name a very low one.
+ * "graded", "tutored" or "interview" — never a price or an amount — because a
+ * client that can name its own price can name a very low one.
+ *
+ * "interview" is the separate interview-prep product (migration 0008): a
+ * second subscription on the same Stripe customer, not a tier.
  */
 
 Deno.serve(async (req) => {
@@ -30,14 +33,14 @@ Deno.serve(async (req) => {
     const user = userData.user;
 
     const body = await req.json();
-    const tier = body.tier === "tutored" ? "tutored" : "graded";
+    const product = body.tier === "interview" ? "interview" : body.tier === "tutored" ? "tutored" : "graded";
     const origin = String(body.origin ?? "").replace(/\/$/, "");
     if (!origin) return json({ error: "Missing origin." }, 400);
 
-    const price = priceForTier(tier);
+    const price = product === "interview" ? interviewPrice() : priceForTier(product);
     if (!price) {
       return json(
-        { error: `No Stripe price configured for the ${tier} tier.` },
+        { error: `No Stripe price configured for ${product === "interview" ? "interview prep" : `the ${product} tier`}.` },
         500,
       );
     }
@@ -85,8 +88,8 @@ Deno.serve(async (req) => {
       // How the webhook ties the resulting subscription back to our user.
       client_reference_id: user.id,
       line_items: [{ price, quantity: 1 }],
-      success_url: `${origin}/account?checkout=success`,
-      cancel_url: `${origin}/pricing?checkout=cancelled`,
+      success_url: product === "interview" ? `${origin}/interview?checkout=success` : `${origin}/account?checkout=success`,
+      cancel_url: product === "interview" ? `${origin}/interview?checkout=cancelled` : `${origin}/pricing?checkout=cancelled`,
       // Stripe rejects passing both `discounts` and `allow_promotion_codes`
       // on the same session, so an automatic student discount takes the
       // place of the manual promo-code field rather than sitting beside it.

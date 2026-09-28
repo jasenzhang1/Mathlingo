@@ -25,3 +25,20 @@ export async function publishOverrides(store: ItemOverrideStore): Promise<Publis
   if (!data?.prUrl) return { ok: false, message: "Publish succeeded but returned no PR link." };
   return { ok: true, prUrl: data.prUrl, prNumber: data.prNumber };
 }
+
+/**
+ * Sends the full interview bundle list from `/dev/bundles` to the same
+ * function, which opens a PR replacing `web/src/data/interview/bundles.json`.
+ */
+export async function publishBundles(bundles: unknown[]): Promise<PublishResult> {
+  const { data, error } = await supabase.functions.invoke<{ prUrl: string; prNumber: number }>(
+    "publish-item-edits",
+    { body: { interviewBundles: bundles } },
+  );
+  if (error) {
+    const failure = await describeFunctionError(error);
+    return { ok: false, message: failure.message };
+  }
+  if (!data?.prUrl) return { ok: false, message: "Publish succeeded but returned no PR link." };
+  return { ok: true, prUrl: data.prUrl, prNumber: data.prNumber };
+}
