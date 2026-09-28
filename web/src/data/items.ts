@@ -36,6 +36,8 @@ import { timeSeriesItems } from "./items/time-series";
 import { discreteMathLogicItems } from "./items/discrete-math-logic";
 import { discreteMathSetsItems } from "./items/discrete-math-sets";
 import { discreteMathCountingItems } from "./items/discrete-math-counting";
+import { discreteMathGraphItems } from "./items/discrete-math-graphs";
+import { discreteMathModularItems } from "./items/discrete-math-modular";
 import { stochasticProcessesBuffupItems } from "./items/stochastic-processes-buffup";
 import { stochasticProcessesRandomWalkBrownianItems } from "./items/stochastic-processes-random-walk-brownian";
 import { computationalStatisticsItems } from "./items/computational-statistics";
@@ -5248,6 +5250,8 @@ export const items: Item[] = [
   ...discreteMathLogicItems,
   ...discreteMathSetsItems,
   ...discreteMathCountingItems,
+  ...discreteMathGraphItems,
+  ...discreteMathModularItems,
   // Functions chapter beyond def/return — arguments through sorting keys.
   ...pythonFunctionsChapterItems,
 

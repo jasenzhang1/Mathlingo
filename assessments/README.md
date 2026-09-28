@@ -415,3 +415,14 @@ the concept exists to teach.
 `logical-equivalences`, `propositional-logic`), exactly as `concepts.ts` already declares — a
 double-inclusion proof genuinely is a direct proof of two containments, so the prerequisite edge and
 the item pool that uses it agree.
+
+**Graph Theory and Modular Arithmetic (DM-4, DM-5).** The ten later discrete-math concepts
+(`graph-basics` → `graph-coloring`, `modular-arithmetic` → `chinese-remainder-theorem`) had wiki
+articles but no items. Each now has 20 live `Item` entries (5 each at recall/apply/explain/transfer),
+authored directly in TypeScript in
+[`items/discrete-math-graphs.ts`](../web/src/data/items/discrete-math-graphs.ts) and
+[`items/discrete-math-modular.ts`](../web/src/data/items/discrete-math-modular.ts) rather than via a
+markdown bank. Every numeric key was brute-force checked (components, distances, and chromatic
+numbers by enumeration; inverses, powers, and CRT solutions by substitution). Graph theory hangs off
+`set-theory` alone, so those items avoid leaning on `combinations` or `mathematical-induction`;
+`fermat-euler-theorems` and `chinese-remainder-theorem` are siblings, so neither pool relies on the other.
