@@ -2,3 +2,6 @@
 # locally for reference; they must never be committed or redistributed. Only the
 # derived item bank — freshly authored per assessment.md §1.2 — belongs in git.
 textbooks/
+
+# Working files for the quant-interview sheet sync (web/tools/quantBank)
+.quant-sync/

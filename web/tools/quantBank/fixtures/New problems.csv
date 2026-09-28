@@ -1,0 +1,6 @@
+question,answer,how to get to the answer,difficulty,mathematical concept(s),scenario
+"How many ways can we move from (0,0) to (5,5) using unit steps right and up?",252,"10 moves, choose which 5 are up: C(10,5) = 252.",easy,n choose k,grid paths
+"How many R/U paths from (0,0) to (5,5) never go below the line y = x?",42,"Reflection principle: bad paths touch y = x-1; reflect to paths ending at (6,4): C(10,4) = 210. 252 - 210 = 42 = C_5.",3,"reflection principle, catalan",lattice paths
+"How many R/U paths from (0,0) to (5,5) make exactly 3 direction changes?",16,"3 changes means 4 runs alternating R,U,R,U: split 5 R into 2 positive runs (4 ways) and 5 U into 2 (4 ways) = 16.",4,compositions,lattice paths
+"How many R/U paths from (0,0) to (5,5) do not pass through (2,2)?",132,"Total 252 minus paths through (2,2): C(4,2)·C(6,3) = 6·20 = 120. 252 - 120 = 132.",2,"complementary counting, multiplication principle",lattice paths
+A deck of 52 cards is shuffled. What is the expected number of cards that end up in their original position?,1,Indicator for each card: P(card i stays) = 1/52. Sum of 52 indicators has expectation 52 · 1/52 = 1.,2/5,"linearity of expectation, indicator variables",shuffled deck
