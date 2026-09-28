@@ -1,0 +1,1164 @@
+[
+ {
+  "section": 101,
+  "topic": "Brainteaser",
+  "subtopic": "xxx",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 104,
+  "topic": "Number Theory",
+  "subtopic": "Bases",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 105,
+  "topic": "Number Theory",
+  "subtopic": "Modular Arithmetic",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 106,
+  "topic": "Number Theory",
+  "subtopic": "Bases",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 107,
+  "topic": "Number Theory",
+  "subtopic": "Primes and Factorization",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 110,
+  "topic": "Algebra",
+  "subtopic": "Functions",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 111,
+  "topic": "Algebra",
+  "subtopic": "Taylor Series",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 112,
+  "topic": "Algebra",
+  "subtopic": "Local Minima",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 130,
+  "topic": "Invariants",
+  "subtopic": "Odd even parity",
+  "example": "Consider a circle marked with six numbers arranged clockwise: 1, 0, 1, 0, 0, 0. In one operation, you can select any two neighboring numbers and increase them by 1. Can you make all the six numbers equal using this operation (any number of times)?",
+  "notes": ""
+ },
+ {
+  "section": 131,
+  "topic": "Invariants",
+  "subtopic": "Checkerboard parity",
+  "example": "Mario and a monster move on a 100 x 100 grid. Each minute, they move to an adjacent square. Mario starts at the bottom left, monster starts at the bottom right. What is the chance mario lives after 1000 mins?",
+  "notes": ""
+ },
+ {
+  "section": 132,
+  "topic": "Invariants",
+  "subtopic": "Coloring",
+  "example": "We have 3 marbles, red blue green, in that order. In each turn, we uniformly randomly swap two marbles. After 25 moves, what is the probability it's still red blue green?",
+  "notes": "Another form of parity that involves rotational invariance"
+ },
+ {
+  "section": 132,
+  "topic": "Invariants",
+  "subtopic": "Order",
+  "example": "Order doesn't matter",
+  "notes": ""
+ },
+ {
+  "section": 133,
+  "topic": "Coloring",
+  "subtopic": "Black and white coloring",
+  "example": "We have an 8 x 8 square, and we remove two diagonally opposite 1x1 corners. Is it possible to cover the remaining 62 1x1 squares using 31 1x2 dominoes?",
+  "notes": ""
+ },
+ {
+  "section": 134,
+  "topic": "Coloring",
+  "subtopic": "Advanced coloring",
+  "example": "Is it possible to cover a 6x6 chessboard using 4x1 tiles?",
+  "notes": ""
+ },
+ {
+  "section": 135,
+  "topic": "Monovariants",
+  "subtopic": "Increase by same amount",
+  "example": "A particle starts at the origin and moves one step left or right each second with equal probability. Let d_n be the distance from the origin after n seconds. Find the expected value of (d_10)^2",
+  "notes": ""
+ },
+ {
+  "section": 136,
+  "topic": "Monovariants",
+  "subtopic": "A quantity that can only stay constant or decrease",
+  "example": "An infection spreads on an n x n checkerboard as follows: a square becomes infected if it has at least two infected neighbors. Each square has up to four neighbors, as only horizontally or vertically adjacent squares are considered connected; diagonally connected squares are not. Prove that it is impossible to infect the entire board if the infection starts with fewer than n infected squares.",
+  "notes": ""
+ },
+ {
+  "section": 140,
+  "topic": "Induction",
+  "subtopic": "Teaching examples",
+  "example": "Prove that the sum of the first n natural numbers is (n)(n+1)/2",
+  "notes": ""
+ },
+ {
+  "section": 141,
+  "topic": "Induction",
+  "subtopic": "Simple induction",
+  "example": "N boys are seated around a circular table, with a total of N+1 candies distributed among them. Bob is seated at the table but currently possesses no candies. In a move, a boy who holds at least two candies gives one to the person seated to his left and one to the person on his right. The process continues until Bob acquires a candy. Is it certain that these moves will eventually conclude, resulting in Bob receiving a candy?",
+  "notes": ""
+ },
+ {
+  "section": 142,
+  "topic": "Induction",
+  "subtopic": "Strong Induction",
+  "example": "You split 1000 coins into two piles, with x coins in one pile and y coins in the other. Calculate the product x*y. Next, divide each pile further, compute the product of the sizes of the new piles, and add these results to the previous sum. For example, splitting x into x_1 and x_2, and y into y_1 and y_2, gives a total of xy + x1x2 + y1y2. This process continues until only 1 coin remaisn in each pile. What is the final sum? Prove that you always get the same answer no matter how the piles are divided.",
+  "notes": ""
+ },
+ {
+  "section": 143,
+  "topic": "Induction",
+  "subtopic": "Modified Induction",
+  "example": "In a large field, n people are standing so that for each person, the distances to all the other people are different. At a given signal, each person fires a water pistol and hits the person who is closest to them. When n is odd, prove that there is at least one person who is left dry.",
+  "notes": "Requires some other trick like pigeonhole to prove inductive step"
+ },
+ {
+  "section": 150,
+  "topic": "Pigeonhole",
+  "subtopic": "Regular",
+  "example": "Consider a room with n people. Prove that at leats two people in the room have the same number of friends. Assume that if person A is a friend of person B, then person B is also a friend of person A. Additionally, assume that a person cannot be friends with themselves.",
+  "notes": ""
+ },
+ {
+  "section": 151,
+  "topic": "Pigeonhole",
+  "subtopic": "Generalized",
+  "example": "There are 51 ants on a square table with a side length of 1. You have a square card with a side length of 1/5. Prove that you can always position the card on the table such that it covers at least 3 ants.",
+  "notes": ""
+ },
+ {
+  "section": 152,
+  "topic": "Pigeonhole",
+  "subtopic": "Infinite",
+  "example": "A 100 x 100 board is divided into unit squares. In every square, there is an arrow that points up, down, left, or right. The board is surrounded by a wall, except for the right side of the top-right corner square.\n\nAn insect is placed in one of the squares. Each second, the insect moves one unit in the direction of the arrow in its square. When the insect moves, the arrow of the square it was in moves 90 degrees clockwise. If the indicated movement cannot be done, the insect does not move that second, but the arrow in its square still moves 90 degrees clockwise. \n\nIs it possible that the insect never leaves the board for some initial configuration of arrows and some initial square of the insect?",
+  "notes": ""
+ },
+ {
+  "section": 160,
+  "topic": "Algebra",
+  "subtopic": "Algebraic Inequalities",
+  "example": "Alice is playing tennis and needs to win at least two consecutive games out of three to win a prize. She can either face Bob first, then Charlie, followed by Bob again (option 1), or play Charlie first, then Bob, and then Charlie again (option 2). Charlie is a stronger player than Bob. Which option should Alice choose to increase her chances of winning the prize?",
+  "notes": ""
+ },
+ {
+  "section": 161,
+  "topic": "Algebra",
+  "subtopic": "Polynomials",
+  "example": "Consider a 6-sided die with faces numbered 1 through 6, where the die is weighted such that the probability of rolling each value from 2 to 6 is the same as the probability of rolling these values when rolling the die twice and summing the results. Let p1 represent the probability of rolling a 1 on this die. p1 is a positive solution to the polynomial equation \\sum_{k=1}^6 c_k p_1^k = 1, where c_k are some real constants. Find the sum of these constants",
+  "notes": ""
+ },
+ {
+  "section": 162,
+  "topic": "Algebra",
+  "subtopic": "System of Equations",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 200,
+  "topic": "Combinatorics",
+  "subtopic": "Multiplication Rule",
+  "example": "We want to buy 1 math book and 1 physics book. There are 3 different math books and 4 different physics books. What is the total number of ways to buy 1 math book and 1 physics book?",
+  "notes": ""
+ },
+ {
+  "section": 201,
+  "topic": "Combinatorics",
+  "subtopic": "Addition Rule",
+  "example": "There are 3 math books and 4 physics books. How many ways can you buy one book?",
+  "notes": ""
+ },
+ {
+  "section": 202,
+  "topic": "Combinatorics",
+  "subtopic": "Permutations",
+  "example": "How many ways can 3 people be arraned in a line from a group of 3 individuals?",
+  "notes": ""
+ },
+ {
+  "section": 203,
+  "topic": "Combinatorics",
+  "subtopic": "Permutations with replacement",
+  "example": "How many 3-lettered words can be formed using the letters A, B, and C, where each letter can appear multiple times in the word?",
+  "notes": ""
+ },
+ {
+  "section": 204,
+  "topic": "Combinatorics",
+  "subtopic": "Permutations with identical objects",
+  "example": "How many 7-lettered words can be formed by re-arranging the letters of the word BALLOON?",
+  "notes": ""
+ },
+ {
+  "section": 205,
+  "topic": "Permutations",
+  "subtopic": "Circular",
+  "example": "How many distinct ways can 6 people be seated around a circular table?",
+  "notes": ""
+ },
+ {
+  "section": 206,
+  "topic": "Combinations",
+  "subtopic": "Definition",
+  "example": "Plusses (+) are inserted between the digits of 111111111111111 (15 1's) randomly. What is the probability that the result is a multiple of 30?",
+  "notes": ""
+ },
+ {
+  "section": 207,
+  "topic": "Combinatorial Identities",
+  "subtopic": "Hockeystick",
+  "example": "A number is interesting if it is a 6-digit integer that contains no zeros, its first 3 digits are strictly increasing, and its last 3 digits are non-increasing. What is the average of all interesting numbers?",
+  "notes": ""
+ },
+ {
+  "section": 208,
+  "topic": "Combinatorial Identities",
+  "subtopic": "Vandermonde",
+  "example": "2015 people are in a cafeteria. Each person orders a soup with probability 1/2. Independently, each person orders a salad with probability 1/2. What is the probability that the number of people who ordered a soup is exactly one more than the probability of people who ordered a salad?",
+  "notes": ""
+ },
+ {
+  "section": 209,
+  "topic": "Combinatorial Identities",
+  "subtopic": "Binomial Theorem",
+  "example": "Evaluate 18c0 / 1 + 18c2 / 3 + 18c4 / 5 + ... + 18c18 / 19",
+  "notes": ""
+ },
+ {
+  "section": 211,
+  "topic": "Combinatorics",
+  "subtopic": "Complementary Counting",
+  "example": "Roll a fair six-sided die 4 times. What is the probability we see 6 at least once?",
+  "notes": ""
+ },
+ {
+  "section": 212,
+  "topic": "Counting Tricks",
+  "subtopic": "Block Rule",
+  "example": "How many ways can 10 people be arranged in a line such that two specific people, A and B, are always next to each other?",
+  "notes": ""
+ },
+ {
+  "section": 213,
+  "topic": "Counting Tricks",
+  "subtopic": "Gap Rule",
+  "example": "How many ways are there to select 4 points from a row of 10 points such that no two selected points are consecutive?",
+  "notes": ""
+ },
+ {
+  "section": 214,
+  "topic": "Counting Tricks",
+  "subtopic": "PIE",
+  "example": "If 20 boys play soccer, 25 boys play hockey, and 11 boys play both sports, how many boys play soccor or hockey?",
+  "notes": ""
+ },
+ {
+  "section": 215,
+  "topic": "Counting Tricks",
+  "subtopic": "PIE for n sets",
+  "example": "How many ways are there to seat 5 pairs of twins in a row of 10 chairs, if we want at least one twin pair to be seated next to each other?",
+  "notes": ""
+ },
+ {
+  "section": 216,
+  "topic": "Counting Tricks",
+  "subtopic": "Stars and Bars",
+  "example": "How many 6-digit numbers are there such that the sum of their digits is 9?",
+  "notes": ""
+ },
+ {
+  "section": 217,
+  "topic": "Counting Tricks",
+  "subtopic": "Counting Sums",
+  "example": "What is the sum of all possible 5-digit numbers that can be formed using the digits 1,2, 3, 4, and 5, with each digit appearing exactly once?",
+  "notes": ""
+ },
+ {
+  "section": 218,
+  "topic": "Counting Tricks",
+  "subtopic": "Piecewise Total",
+  "example": "Pairwise sums are x, y. What is the total sum?",
+  "notes": ""
+ },
+ {
+  "section": 219,
+  "topic": "Combinatorics",
+  "subtopic": "Simple Counting",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 220,
+  "topic": "Combinatorics",
+  "subtopic": "Casework",
+  "example": "Four different positive integers less than 10 are chosen randomly. What is the probability that their sum is odd?",
+  "notes": ""
+ },
+ {
+  "section": 221,
+  "topic": "Combinatorics",
+  "subtopic": "Derangements",
+  "example": "Permutations where each value has changed",
+  "notes": ""
+ },
+ {
+  "section": 230,
+  "topic": "Combinatorics",
+  "subtopic": "Recursion",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 230,
+  "topic": "Combinatorics",
+  "subtopic": "Recursion (Fibonacci)",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 231,
+  "topic": "Combinatorics",
+  "subtopic": "Recursion (Characteristic Polynomial)",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 232,
+  "topic": "Combinatorics",
+  "subtopic": "Bijection",
+  "example": "How many paths are there from (0, 0) to (4, 3) if we can only move up and right?",
+  "notes": ""
+ },
+ {
+  "section": 233,
+  "topic": "Combinatorics",
+  "subtopic": "Recursion (Geometric Series)",
+  "example": "You and your friend take turns drinking half of what's left from a beer can. You start first. How much of the can do you drink?",
+  "notes": ""
+ },
+ {
+  "section": 234,
+  "topic": "Combinatorics",
+  "subtopic": "Reflection Principle",
+  "example": "How many ways can we go from (0, 0) to (5, 3) without crossing the y = x line? We are allowed to touch it.",
+  "notes": ""
+ },
+ {
+  "section": 300,
+  "topic": "Probability",
+  "subtopic": "Multiplication Rule",
+  "example": "An urn contains 8 balls, 5 of which are green and 3 of which are red. You randomly draw one ball, then draw another one without replacement. What is the probability that the first ball is red and the second ball is green?",
+  "notes": ""
+ },
+ {
+  "section": 302,
+  "topic": "Probability",
+  "subtopic": "Permutations",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 310,
+  "topic": "Probability",
+  "subtopic": "Bayes Rule",
+  "example": "There are 3 bags. The first bag has 3R4B, 2nd bag has 2R11B, and third bag has 8R1B. A bag is selected at random, and a random ball is drawn from the bag. If the ball turns out to be red, what is the probability that the ball was drawn from the third bag?",
+  "notes": ""
+ },
+ {
+  "section": 311,
+  "topic": "Probability",
+  "subtopic": "Complementary Counting",
+  "example": "Birthday problem",
+  "notes": ""
+ },
+ {
+  "section": 316,
+  "topic": "Probability",
+  "subtopic": "Stars and Bars",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 320,
+  "topic": "Probability",
+  "subtopic": "Reduced Sample Space",
+  "example": "Suppose we repeatedly roll a fair 6-sided die until we get at 6. What is the probability that we see exactly two 2's and two 3's before the first 6 apprears?",
+  "notes": ""
+ },
+ {
+  "section": 321,
+  "topic": "Probability",
+  "subtopic": "Geometric Probability",
+  "example": "Two variables x and y are chosen uniformly at random between 0 and 1. What is the probability that the ratio y/x lies between 1 and 2?",
+  "notes": ""
+ },
+ {
+  "section": 322,
+  "topic": "Probability",
+  "subtopic": "Casework",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 330,
+  "topic": "Probability",
+  "subtopic": "Recursion (Fibonacci)",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 331,
+  "topic": "Probability",
+  "subtopic": "Recursion (Square 1)",
+  "example": "A fair coin is repeatedly flipped until 2019 consecutive coin flips are the same. Compute the probability that the first and last flips of the coin come up differently.",
+  "notes": "Markov chain where \"home states\" are symmetric"
+ },
+ {
+  "section": 332,
+  "topic": "Probability",
+  "subtopic": "Recursion",
+  "example": "Alice, Bob, and Charlie each toss their own fair coin repeatedly until each of them obtains heads for the first time. What is the probability that Alice obtains her first heads in strictly fewer tosses than Bob, and Bob in strictly fewer tosses than Charlie?",
+  "notes": ""
+ },
+ {
+  "section": 333,
+  "topic": "Probability",
+  "subtopic": "Recursion (Geometric Series)",
+  "example": "A coin is tossed repeatedly until two heads occur (not necessarily consecutive). What is the probability that the number of tosses is even?",
+  "notes": "Use of geometric series to solve the probability question"
+ },
+ {
+  "section": 334,
+  "topic": "Probability",
+  "subtopic": "Recursion (Markov Chain)",
+  "example": "Flip a fair coin repeatedly. What is the probability we see HHT before HTT?",
+  "notes": "Markov chains to calculate probabilities"
+ },
+ {
+  "section": 336,
+  "topic": "Probability",
+  "subtopic": "Random Walk",
+  "example": "Player M has $1 and player N has $2. Each game gives the winner $1 from the other. As a better player, M wins 2/3 of the games. They play until one of them is bankrupt. What is the probability that M wins?",
+  "notes": ""
+ },
+ {
+  "section": 337,
+  "topic": "Probability",
+  "subtopic": "1-sided Absorption Random Walk",
+  "example": "Consider a particle that performs a random walk on the integers starting at position 0. At each step, the particle moves from position i to position i + 1 with probability p, while the probability it moves from i to i - 1 is 1 - p. If p = 1/3, find the probability that the particle ever reaches position 1. How about for general p?",
+  "notes": ""
+ },
+ {
+  "section": 338,
+  "topic": "Probability",
+  "subtopic": "Circular Random Walk",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 340,
+  "topic": "Probability",
+  "subtopic": "Symmetry",
+  "example": "A bag contains 100 marbles, each uniquely numbered from 1 to 100. In each move, we randomly draw two marbles, discard one, and return the other to the bag. This process continues until only one marble remains. What is the probability that marbles numbered 3 and 98 are drawn together on the 50th move?",
+  "notes": "Realizing all items are WLOG the same"
+ },
+ {
+  "section": 341,
+  "topic": "Probability",
+  "subtopic": "Symmetry (Last State)",
+  "example": "We roll 100 fair die, where each dice has 500 sides. What is the probability that the total sum of the faces is divisible by 500?",
+  "notes": "Only last state matters in calculating the probability"
+ },
+ {
+  "section": 342,
+  "topic": "Probability",
+  "subtopic": "Symmetry (Stealing)",
+  "example": "Flip a fair coin 150 times. What is the probability that the number of heads is odd?",
+  "notes": "Only last state matters, conditional on lumping the entire history"
+ },
+ {
+  "section": 343,
+  "topic": "Probability",
+  "subtopic": "Symmetry (Markov Chain)",
+  "example": "An ant starts on vertex A of a regular tetrahedron, with vertices ABCD. Each move it makes is uniformly and independently random to an adjacent vertex. What is the probability that after 6 moves, the ant is back at vertex A?",
+  "notes": "Due to symmetry, our markov chain setup is reduced to calculate probability"
+ },
+ {
+  "section": 344,
+  "topic": "Probability",
+  "subtopic": "Symmetry (continuous RV)",
+  "example": "We have a segment of length 1. We create 2 segments within it: first we select 2 uniformly distributed points to form the first segment, then we select another 2 uniformly distributed points to form the second segment. What is the probability that these 2 segments intersect?",
+  "notes": "Symmetry in a continuous setting"
+ },
+ {
+  "section": 345,
+  "topic": "Probability",
+  "subtopic": "Conditional Symmetry",
+  "example": "There are 32 players in a tournament. Each match happens sequentially, resulting in a winner and loser. The matchups are drawn sequentially and randomly so there are 31 matches. What is the probability that Alice faces Bob, given that the winner simply returns to the pool, and any two remaining players can be drawn for the next match.\nWhat if 32 = n?",
+  "notes": "Symmetry with sequential events"
+ },
+ {
+  "section": 346,
+  "topic": "Probability",
+  "subtopic": "Rotational Symmetry",
+  "example": "",
+  "notes": "Symmetry involving circular configurations"
+ },
+ {
+  "section": 347,
+  "topic": "Probability",
+  "subtopic": "Reduction in States",
+  "example": "",
+  "notes": "Conditional Probability, but we only care about a subset of states"
+ },
+ {
+  "section": 350,
+  "topic": "Probability",
+  "subtopic": "Conditional Probability",
+  "example": "We roll a fair 6-sided die. It is given that the outcome is an even number. What is the probability that the outcome is strictly greater than 3?",
+  "notes": ""
+ },
+ {
+  "section": 351,
+  "topic": "Probability",
+  "subtopic": "Law of Total Probability",
+  "example": "Let m be randomly chosen from the set {111, 133, 155, 177, 199} and let n be randomly chosen from the set {2004, 2005, ... , 2023}. Determine the probability that the units digit of m^n is 1.",
+  "notes": "Law of Total Probability"
+ },
+ {
+  "section": 362,
+  "topic": "Probability",
+  "subtopic": "Integration",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 360,
+  "topic": "Probability",
+  "subtopic": "Independent RV",
+  "example": "Two subsets X and Y are chosen independently and uniformly at random from all subsets of {1, 2, ..., 10}. What is the probability that X is a subset of Y?",
+  "notes": ""
+ },
+ {
+  "section": 381,
+  "topic": "Probability",
+  "subtopic": "Order Statistics",
+  "example": "Range, Min, Max",
+  "notes": ""
+ },
+ {
+  "section": 390,
+  "topic": "Probability",
+  "subtopic": "Recurrence Relation (Bash)",
+  "example": "If a fair coin is tossed 10 times, and no two heads are consecutive, what is the probability that the first toss resulted in heads?",
+  "notes": ""
+ },
+ {
+  "section": 391,
+  "topic": "Probability",
+  "subtopic": "Recurrence Relation (Equation)",
+  "example": "A frog starts at position 0 and jumps along the positive number line. At each jump, it moves forward by either 1 or 2 units with equal probability. Define p_k as the probability that the frog will reach position k where k > 0. What is the maximum value of p_k?",
+  "notes": "Gamblers Ruin, Bacteria"
+ },
+ {
+  "section": 392,
+  "topic": "Probability",
+  "subtopic": "Recurrence Relation (Closed Form)",
+  "example": "A frog starts at 0 and can jump 1 or 2 steps uniformly random to the right. Let p_m be the probability that the frog lands on m during the journey. Find p_20 - p_15",
+  "notes": ""
+ },
+ {
+  "section": 401,
+  "topic": "Expected Values",
+  "subtopic": "Introduction (discrete)",
+  "example": "What is the expected value of a dice roll?",
+  "notes": ""
+ },
+ {
+  "section": 402,
+  "topic": "Expected Values",
+  "subtopic": "Introduction (continuous)",
+  "example": "Uniformly randomly select a point in a unit circle with radius 1. What is its expected distance from the center?",
+  "notes": "Uses integration"
+ },
+ {
+  "section": 403,
+  "topic": "Expected Values",
+  "subtopic": "Combinatorial Expectation",
+  "example": "Tedious, summing all possibilties and dividing by the number of cases",
+  "notes": ""
+ },
+ {
+  "section": 411,
+  "topic": "Expected Values",
+  "subtopic": "Complementary Counting",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 414,
+  "topic": "Expected Values",
+  "subtopic": "PIE for EV",
+  "example": "What is the expected number of rolls of a fair six-sided die to see both 5 and 6?",
+  "notes": ""
+ },
+ {
+  "section": 417,
+  "topic": "Expected Values",
+  "subtopic": "Summation using Expectation",
+  "example": "An 8-digit number is generated by first selecting a random integer k uniformly from the set {0, 1, ..., 8}. Afterwards, an 8-digit number is chosen uniformly at random from the set of numbers with exactly k ones and 8-k nines. Find the sum of all possible numbers that can be created.",
+  "notes": ""
+ },
+ {
+  "section": 422,
+  "topic": "Expected Values",
+  "subtopic": "Casework",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 432,
+  "topic": "Expected Values",
+  "subtopic": "Recursion",
+  "example": "You roll a six-sided die repeatedly until you roll a 6. What is the expected sum of all the rolls you make?",
+  "notes": "EV question that uses recursion"
+ },
+ {
+  "section": 433,
+  "topic": "Expected Values",
+  "subtopic": "Recursion (Geometric Series)",
+  "example": "Alice flips a fair coin until she gets a head. She earns the smaller value between $64 and $2^n, where n is the number of flips. What is her expected reward?",
+  "notes": ""
+ },
+ {
+  "section": 433,
+  "topic": "Expected Values",
+  "subtopic": "Recursion (Double Geometric Series)",
+  "example": "",
+  "notes": "Use geometric series twice"
+ },
+ {
+  "section": 434,
+  "topic": "Expected Values",
+  "subtopic": "Recursion (Markov Chain)",
+  "example": "What is the expected number of tosses required to obtain the pattern THH when repeatedly tossing a fair coin?",
+  "notes": "Recursion question that's more involved and requires usage of Markov Chains\nE[win] = 1 + sum P(i) * E[i]"
+ },
+ {
+  "section": 436,
+  "topic": "Expected Values",
+  "subtopic": "Random Walk",
+  "example": "Consider a particle starting at position 0 on the integer line. Each step, it moves to a position i+1 with probability 2/3 and to position i-1 with probability 1/3. Determine the expected number of steps for the particle to reach position 1.",
+  "notes": ""
+ },
+ {
+  "section": 437,
+  "topic": "Expected Values",
+  "subtopic": "1-sided Absorption Random Walk",
+  "example": "A family stops having children when they have more girls than boys. Find expected # of children",
+  "notes": ""
+ },
+ {
+  "section": 438,
+  "topic": "Expected Values",
+  "subtopic": "Renewal Process Hitting Times",
+  "example": "How many iid Uniform(0,1) would you expect to draw until the total sum is >= 1?",
+  "notes": ""
+ },
+ {
+  "section": 440,
+  "topic": "Expected Values",
+  "subtopic": "Symmetry (Ad hoc)",
+  "example": "Five fair 100-sided dice are rolled. What is the expected value of the median of the five outcomes?",
+  "notes": "Using symmetry to solve EV questions"
+ },
+ {
+  "section": 443,
+  "topic": "Expected Values",
+  "subtopic": "Symmetry (Reduction in states)",
+  "example": "An ant is located at one vertex of a cube and wants to reach the diagonally opposite vertex. At every move, the ant randomly chooses one of the three vertices adjacent to its current vertex. What is the expected number of moves needed for the ant to reach the opposite vertex?",
+  "notes": "Due to symmetry, our markov chain setup is reduced to calculate probability"
+ },
+ {
+  "section": 445,
+  "topic": "Expected Values",
+  "subtopic": "Conditional Symmetry",
+  "example": "Expected value in drunk passenger problem",
+  "notes": ""
+ },
+ {
+  "section": 449,
+  "topic": "Expected Values",
+  "subtopic": "Stationarity",
+  "example": "There are 5 lightbulbs, and each turn, we flip a random lightbulb. If they are all turned off, what is the expected number of flips before they are all on?",
+  "notes": "Need to find stationary distribution, Kac's Lemma"
+ },
+ {
+  "section": 450,
+  "topic": "Expected Values",
+  "subtopic": "Conditional Expectation",
+  "example": "Roll a fair six-sided die repeatedly until a 6 appears. Given that the first 6 occurs before the first 5, find the expected number of rolls.",
+  "notes": ""
+ },
+ {
+  "section": 451,
+  "topic": "Expected Values",
+  "subtopic": "Law of Total Expectation (Discrete)",
+  "example": "We have 3 fair dice, one with 6 faces, one with 7 and one with 9 faces. We randomly select a die and roll it. What is the expected value of the roll?",
+  "notes": ""
+ },
+ {
+  "section": 452,
+  "topic": "Expected Values",
+  "subtopic": "Law of Total Expectation (Continuous)",
+  "example": "If Y ~ unif[0, 1], and X|Y ~ unif[0,y], find E[X]",
+  "notes": ""
+ },
+ {
+  "section": 460,
+  "topic": "Expected Values",
+  "subtopic": "Independent RV",
+  "example": "Martha writes down a random mathematical expression consisting of 3 single-digit positive integers with an addition or multiplication sign between each pair of adjacent digits. For example, her expression could be 4 + 3 x 3 = 13. Each positive digit is equally likely, and each arithmetic sign is equally likely, and all choices are independent. What is the expected value of her expression?",
+  "notes": ""
+ },
+ {
+  "section": 460,
+  "topic": "Expected Values",
+  "subtopic": "Indep + Dependent RV",
+  "example": "When some are independent and some are dependnet",
+  "notes": ""
+ },
+ {
+  "section": 461,
+  "topic": "Expected Values",
+  "subtopic": "LOTUS",
+  "example": "Fin E[X^2] where X ~ unif[0, 1]",
+  "notes": ""
+ },
+ {
+  "section": 462,
+  "topic": "Expected Values",
+  "subtopic": "Tail Sum",
+  "example": "You roll 3 independent 100-sided die. What is the expected value of the lowest roll?",
+  "notes": "For a discrete random variable, expectation can be sum of P(X > i)"
+ },
+ {
+  "section": 463,
+  "topic": "Expected Values",
+  "subtopic": "Tail Integral",
+  "example": "Let ABC be any triangle with base AB and height h. A point is selected uniformly at random inside the triangle. What is its expected perpendicular distance from the base AB in terms of h?",
+  "notes": "For a continuous RV, expectation can be integral of P(X > i)"
+ },
+ {
+  "section": 470,
+  "topic": "Expected Values",
+  "subtopic": "Linearity of Expectation",
+  "example": "What is the expected value of the sum of 3 rolls of fair 6-sided dice?",
+  "notes": "Classic linearity of expectation for independent RV"
+ },
+ {
+  "section": 471,
+  "topic": "Expected Values",
+  "subtopic": "Linearity of Expectation (Coupon Collector)",
+  "example": "A cereal box contains any one of five toys uniformly randomly. What is the expected number of boxes we need to open to get at least one of each toy?",
+  "notes": "Gacha math"
+ },
+ {
+  "section": 472,
+  "topic": "Expected Values",
+  "subtopic": "Linearity of Expectation (Harmonic Sum)",
+  "example": "There are N cars each traveling at a distinct, randomly assigned speed in the same direction. The cars start at different positions on a straight road with sufficient distance between them. When a faster car catches up to a slower car, it adopts the slower car's speed, effectively forming a cluster. Over time, all cars will settle into clusters, with each cluster moving at a distinct speed. Given that N = 10, determine the expected number of clusters.",
+  "notes": "Answer is of the form 1 + 1/2 + 1/3 + ..."
+ },
+ {
+  "section": 473,
+  "topic": "Expected Values",
+  "subtopic": "Linearity of Expectation (Indicators)",
+  "example": "5 boys and 5 girls are seated in a row randomly. What is the expected number of adjacent GB (girl followed by boy) pairs?",
+  "notes": ""
+ },
+ {
+  "section": 474,
+  "topic": "Expected Values",
+  "subtopic": "Linearity of Expectation (Permutations)",
+  "example": "Consider a random permutation of the set {1, 2, ..., 2015}. We map the indices 1, 2, ..., 2015 to a_i where a_i \\in {1, 2, ..., 2015\\}. What is the expected number of ordered pairs (a_i, a_j) with i - j > 155 and a_i - a_j > 266?",
+  "notes": ""
+ },
+ {
+  "section": 480,
+  "topic": "Expected Values",
+  "subtopic": "Random Points on a Segment",
+  "example": "If a meter stick is broken in two at random, what is the average length of the smaller piece?",
+  "notes": "Expectation of order statistics"
+ },
+ {
+  "section": 481,
+  "topic": "Expected Values",
+  "subtopic": "Order Statistics",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 490,
+  "topic": "Expected Values",
+  "subtopic": "Recurrence Relation (Bash)",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 491,
+  "topic": "Expected Values",
+  "subtopic": "Recurrence Relation (Equation)",
+  "example": "",
+  "notes": "Working backwards, f(n) = 0, we expect 0 additional points when we are at state n"
+ },
+ {
+  "section": 392,
+  "topic": "Probability",
+  "subtopic": "Recurrence Relation (Closed Form)",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 501,
+  "topic": "Variance",
+  "subtopic": "Definition (Discrete)",
+  "example": "Find the variance of a fair six-sided die roll.",
+  "notes": ""
+ },
+ {
+  "section": 502,
+  "topic": "Variance",
+  "subtopic": "Definition (Continuous)",
+  "example": "X is a continuous RV with support [-1, 1]. What is the maximum possible value of Var(X)?",
+  "notes": ""
+ },
+ {
+  "section": 502,
+  "topic": "Variance",
+  "subtopic": "Second Moment Continuation",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 503,
+  "topic": "Covariance",
+  "subtopic": "Definition",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 503,
+  "topic": "Covariance Matrices",
+  "subtopic": "Definition",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 504,
+  "topic": "Correlation",
+  "subtopic": "Definition",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 510,
+  "topic": "Random Variables",
+  "subtopic": "Normal Distribution",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 511,
+  "topic": "Random Variables",
+  "subtopic": "Truncated Normal Distribution",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 512,
+  "topic": "Random Variables",
+  "subtopic": "Mixture Normal Distribution",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 513,
+  "topic": "Random Variables",
+  "subtopic": "Bivariate Normal",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 514,
+  "topic": "Random Variables",
+  "subtopic": "Poisson RV",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 515,
+  "topic": "Random Variables",
+  "subtopic": "Bernoulli RV",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 516,
+  "topic": "Random Variables",
+  "subtopic": "Binomial RV",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 517,
+  "topic": "Random Variables",
+  "subtopic": "Exponential RV",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 520,
+  "topic": "Random Variables",
+  "subtopic": "Uniform Distribution",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 528,
+  "topic": "Random Variables",
+  "subtopic": "Change of Variables",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 534,
+  "topic": "Variance",
+  "subtopic": "Recursion (Markov Chain)",
+  "example": "Variance of number of rolls until we see HHHH, P(H) = 2/3?",
+  "notes": ""
+ },
+ {
+  "section": 551,
+  "topic": "Variance",
+  "subtopic": "Law of Total Variance (Discrete)",
+  "example": "A fair six-sided die is rolled. Let X be the number on the die. A coin is then tossed X times, each toss independently and with probability of heads 1/2. Let Y be the numebr of heads obtained. Compute Var(Y).",
+  "notes": ""
+ },
+ {
+  "section": 560,
+  "topic": "Variance",
+  "subtopic": "Independent RV",
+  "example": "Let S = {1, 2, ..., 25}. Two subsets A and B are chosen independently and uniformly at random from the power set of S. Define N = |A cup B|. Compute Var(N).",
+  "notes": ""
+ },
+ {
+  "section": 651,
+  "topic": "Random Variables",
+  "subtopic": "Law of Total Probability",
+  "example": "If humidity has a distribution of f(h) = 2h, for h in [0, 1], and the probability that it rains is P(rain | h) = h^2, find the probability that it rains",
+  "notes": ""
+ },
+ {
+  "section": 701,
+  "topic": "Betting Games",
+  "subtopic": "Fair Value",
+  "example": "An urn contains 10 black and 10 white balls. You declare \"black\" or \"white\", then one ball is drawn at random. If its color matches your choice you win $10. Otherwise you win nothing. What is the fair entry fee for this game?",
+  "notes": "Passive game + calculate the EV"
+ },
+ {
+  "section": 702,
+  "topic": "Betting Games",
+  "subtopic": "Stopping Rule Game + Strategy + EV",
+  "example": "You roll a fair six-sided die. After seeing the result you may either take that value as your payout and stop, or reject it and roll eactly once more. Then, you must accept whatever the second roll shows. What strategy maximizes your expected payout, and what is that expected value?",
+  "notes": "Game where you make binary decisions on whether to stop or continue + EV under optimal play"
+ },
+ {
+  "section": 703,
+  "topic": "Betting Games",
+  "subtopic": "Optimal Parameters",
+  "example": "You are interviewing 6 candidates for a position, each with a distinct and unknown rating. Higher ratings indicate better candidates. The candidates are interviewed one by one in a random order. After each interview, you learn the candidate's relvative ranking among all those interviewed so far. Immediately after each interview, you must decide whether to hire that candidate or reject them permanently. You cannot return to a previously rejected candidate. You are allowed to select only one candidate in this process. Your goal is to select the single best candidate out of all six. What is the optimal strategy to maximize the probability of choosing the best candidate, and what is this maximum probability?",
+  "notes": "Game where you make decisions based off of finding the optimal parameter that informs of your stopping rule"
+ },
+ {
+  "section": 704,
+  "topic": "Betting Games",
+  "subtopic": "Optimal Stopping",
+  "example": "",
+  "notes": "Optimal parameters where it is baked into the stopping rule"
+ },
+ {
+  "section": 707,
+  "topic": "Betting Games",
+  "subtopic": "Inductive Betting",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 713,
+  "topic": "Game Theory",
+  "subtopic": "Multiplayer Setups",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 714,
+  "topic": "Game Theory",
+  "subtopic": "Probabilistic Game Theory",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 715,
+  "topic": "Game Theory",
+  "subtopic": "Cooperation",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 716,
+  "topic": "Game Thoery",
+  "subtopic": "Nash Equilibrium",
+  "example": "Optimal payout assuming both players are playing optimally",
+  "notes": ""
+ },
+ {
+  "section": 720,
+  "topic": "Optimization",
+  "subtopic": "Minimax",
+  "example": "You are given two identical eggs and are situated in a building with 100 floors. An egg will break if dropped from any floor equal to or above a certain unknown threshold floor X. Otherwise, it will remain intact. What is the minimum number of drops needed to find the threshold floor X in the worst-case scenario?",
+  "notes": ""
+ },
+ {
+  "section": 721,
+  "topic": "Optimization",
+  "subtopic": "Maximizing (Single Player)",
+  "example": "You are given a coin for which you choose the probability p of flipping heads. You will flip the coin exactly four times. What value of p will maximize the likelihoood of getting exactly two consecutive heads within the four flips? Sequences like HHHT and HHHH are not permitted, but a sequence like HTHH is acceptable.",
+  "notes": ""
+ },
+ {
+  "section": 722,
+  "topic": "Optimization",
+  "subtopic": "Qualitative Strategy",
+  "example": "We begin with the number 1 through 10 displayed on a board. You take a number, and then the dealer takes all factors of that number. This process continues until no number remain. However, you can only select numbers that still have at least one factor that hasn't yet been taken. If any numbers are left unclaimed at the end, the dealer takes them. Your score i the sum of the numbers you collect. What is the highest possible score you can achieve?",
+  "notes": ""
+ },
+ {
+  "section": 723,
+  "topic": "Optimization",
+  "subtopic": "Bound",
+  "example": "Show that something is the lowest because any lower is impossible.",
+  "notes": ""
+ },
+ {
+  "section": 730,
+  "topic": "Winning strategies",
+  "subtopic": "Parity",
+  "example": "Alice and Bob are playing a game with a pile of 2014 stones. Alice and Bob alternate turns, with Alice going first. On each turn, Alice must take a number of stones that is a power of 2 (1, 2, 4, 8, ...), while Bob must take a number of stones that is a power of 4 (1, 4, 16, ...). The player who takes the last stone wins the game. Determine if either a player has a winning strategy.",
+  "notes": "Similar to the game of 21, where you always corner your opponent"
+ },
+ {
+  "section": 731,
+  "topic": "Winning strategies",
+  "subtopic": "Mirror strategies",
+  "example": "A flower has 11 petals. Alice and Bob take turns tearing off either a single petal or two petals right next to each other. The player who cannot do so loses. If Alice goesfirst, who has a winning strategy?",
+  "notes": ""
+ },
+ {
+  "section": 732,
+  "topic": "Winning strategies",
+  "subtopic": "Stealing strategies",
+  "example": "Alice and Bob take turns removing pieces from a 4 x 5 rectangular chocolate bar divided into unit squares. Each turn involves selecting a square and removing that square alon with all squares above and/or to its right. Each player aims to avoid being left the the poisonous lower-left square. Alice goes first. Which player, if any, has a winning strategy?",
+  "notes": "Alice has a \"waiting move\" that allows her to steal Bob's strategy"
+ },
+ {
+  "section": 733,
+  "topic": "Winning strategies",
+  "subtopic": "Winning/losing states",
+  "example": "Alice and bob are playing a game with a box containing 300 marbles. They take turns, and on each turn, a player can remove any number of marbles, but no more than half of the marbles currently in the box. So if there is only one marble remaining, we cannot remove anything. The player who cannot make a move loses the game. If Alice goes first, who has a winnign strategy?",
+  "notes": "Tougher problem that requires DP to identify winning states and work backwards"
+ },
+ {
+  "section": 734,
+  "topic": "Winning strategies",
+  "subtopic": "Coloring Strategies",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 801,
+  "topic": "Collision Problems",
+  "subtopic": "Number of Collisions",
+  "example": "40 ants start on one end, and 80 ants stand on the other end of a narrow wire. The ants begin crawling along the wire, and every time tow ants bump into each other, they reverse direction and continue moving forward. Determine how many total collisions occur between the ants.",
+  "notes": ""
+ },
+ {
+  "section": 802,
+  "topic": "Collision Problems",
+  "subtopic": "Last to exit",
+  "example": "25 ants are randomly placed on a meter-long rod, with random initial directions. Ant Alice is defined to be the middle starting ant. They all move at a speed of 1 cm/sec and upon colliding, they reverse directions. What is the probability that Alice is the last ant to fall off the rod?",
+  "notes": ""
+ },
+ {
+  "section": 803,
+  "topic": "Collision Problems",
+  "subtopic": "Infection",
+  "example": "Ants on a stick setup, with 25 ants. If the middle ant starts with an infection, and every bump spreads the infection if possible, what is the expected number of ants that are infected after they all fall off the stick?",
+  "notes": ""
+ },
+ {
+  "section": 804,
+  "topic": "Collision Problems",
+  "subtopic": "Circular collisions",
+  "example": "Ant Alice is one of 24 ants randomly placed on a circular track that is 1 meter long. Each ant faces either clockwise and moves at a speed of 1 cm/sec. When two ants collide they reverse directions. What is the probability that after 100 seconds, Alice is exactly back at her starting point rounded to 3 decimal points?",
+  "notes": ""
+ },
+ {
+  "section": 850,
+  "topic": "Graph Theory",
+  "subtopic": "Eulerian Tour",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 851,
+  "topic": "Graph Theory",
+  "subtopic": "Degrees",
+  "example": "",
+  "notes": ""
+ },
+ {
+  "section": 860,
+  "topic": "Information Theory",
+  "subtopic": "Information Theory",
+  "example": "",
+  "notes": ""
+ }
+]
