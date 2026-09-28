@@ -323,7 +323,7 @@ export function DevQuestionsPage() {
                                 )}
                               </div>
                               <p className="font-body mt-2 line-clamp-2 text-sm text-[var(--ink)]">
-                                <CodeText text={item.stem} />
+                                <CodeText text={item.stem} typeset />
                               </p>
                             </div>
                             <div className="flex shrink-0 flex-col gap-1">

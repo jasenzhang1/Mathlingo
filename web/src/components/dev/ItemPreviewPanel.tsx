@@ -140,7 +140,7 @@ export function ItemPreviewPanel({ item, onClose }: { item: Item; onClose: () =>
       ) : (
         <div className="mt-4 rounded-xl border border-[var(--line)] bg-[var(--panel)] p-5">
           <p className="font-body whitespace-pre-wrap text-[var(--ink)]">
-            <CodeText text={phase.item.stem} />
+            <CodeText text={phase.item.stem} typeset />
           </p>
 
           <div className="mt-5">
@@ -254,7 +254,7 @@ function PreviewFeedback({
 
       {grade.feedback && (
         <p className="font-body mt-3 text-sm text-[var(--ink)]">
-          <CodeText text={grade.feedback} />
+          <CodeText text={grade.feedback} typeset />
         </p>
       )}
 
