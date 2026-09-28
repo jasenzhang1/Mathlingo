@@ -1,3 +1,0 @@
-Section,Topic,Subtopic,Question,Answer,Notes,Difficulty,Instructional,Tags,Family,Family Num,Source
-206,Combinations,Definition,"How many paths of unit R/U steps go from (0,0) to (4,4)?",70,"Choose which 4 of the 8 steps are U: C(8,4) = 70.",1,,Combinations,Lattice Walk,2,Original
-,,,"How many R/U paths from (0,0) to (4,4) never rise above y = x?",14,"Reflect across y = x+1: bad paths ↔ paths to (3,5), C(8,3) = 56. 70 - 56 = 14.",3,,,,,Original

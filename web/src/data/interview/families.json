@@ -1,0 +1,866 @@
+[
+ {
+  "id": "russian-roulette",
+  "name": "Russian Roulette",
+  "group": 1,
+  "meaning": ""
+ },
+ {
+  "id": "lattice-walk",
+  "name": "Lattice Walk",
+  "group": 2,
+  "meaning": "Can only go U and R"
+ },
+ {
+  "id": "divisibility",
+  "name": "Divisibility",
+  "group": 3,
+  "meaning": ""
+ },
+ {
+  "id": "digits",
+  "name": "Digits",
+  "group": 3,
+  "meaning": ""
+ },
+ {
+  "id": "modular-arithmetic",
+  "name": "Modular Arithmetic",
+  "group": 3,
+  "meaning": ""
+ },
+ {
+  "id": "bases",
+  "name": "Bases",
+  "group": 3,
+  "meaning": "Binary"
+ },
+ {
+  "id": "adjacencies",
+  "name": "Adjacencies",
+  "group": 4,
+  "meaning": "Boys and Girls in a row type problems, seated at a table"
+ },
+ {
+  "id": "tournament",
+  "name": "Tournament",
+  "group": 5,
+  "meaning": ""
+ },
+ {
+  "id": "marble-swap",
+  "name": "Marble Swap",
+  "group": 6,
+  "meaning": ""
+ },
+ {
+  "id": "hypercube",
+  "name": "Hypercube",
+  "group": 7,
+  "meaning": ""
+ },
+ {
+  "id": "graphs",
+  "name": "Graphs",
+  "group": 7,
+  "meaning": "edges are randomly selected"
+ },
+ {
+  "id": "anagram",
+  "name": "Anagram",
+  "group": 8,
+  "meaning": "Rearranging of symbols (usually letters, words)"
+ },
+ {
+  "id": "circular-anagram",
+  "name": "Circular Anagram",
+  "group": 8,
+  "meaning": ""
+ },
+ {
+  "id": "arrangements",
+  "name": "Arrangements",
+  "group": 8,
+  "meaning": "Adjacencies, handshakes, sitting at a table"
+ },
+ {
+  "id": "random-walk",
+  "name": "Random Walk",
+  "group": 9,
+  "meaning": "Can go anywhere infinitely long"
+ },
+ {
+  "id": "functions",
+  "name": "Functions",
+  "group": 10,
+  "meaning": ""
+ },
+ {
+  "id": "clocks",
+  "name": "Clocks",
+  "group": 11,
+  "meaning": "hour, minute"
+ },
+ {
+  "id": "primes",
+  "name": "Primes",
+  "group": 12,
+  "meaning": ""
+ },
+ {
+  "id": "coin-toss-fixed-flips",
+  "name": "Coin Toss Fixed Flips",
+  "group": 13,
+  "meaning": ""
+ },
+ {
+  "id": "coin-toss-till-criteria",
+  "name": "Coin Toss Till Criteria",
+  "group": 14,
+  "meaning": ""
+ },
+ {
+  "id": "coin-toss-competing-interests",
+  "name": "Coin Toss Competing Interests",
+  "group": 15,
+  "meaning": "Stop after n rolls or until criteria"
+ },
+ {
+  "id": "coin-toss-competition",
+  "name": "Coin Toss Competition",
+  "group": 16,
+  "meaning": ""
+ },
+ {
+  "id": "biased-coin-toss",
+  "name": "Biased Coin Toss",
+  "group": 17,
+  "meaning": ""
+ },
+ {
+  "id": "dice-roll",
+  "name": "Dice Roll",
+  "group": 20,
+  "meaning": ""
+ },
+ {
+  "id": "tiling",
+  "name": "Tiling",
+  "group": 20,
+  "meaning": "sidewalk, dominos, grid"
+ },
+ {
+  "id": "chess",
+  "name": "Chess",
+  "group": 21,
+  "meaning": ""
+ },
+ {
+  "id": "dice-rolls-fixed-rolls",
+  "name": "Dice Rolls Fixed Rolls",
+  "group": 23,
+  "meaning": ""
+ },
+ {
+  "id": "dice-rolls-till-criteria",
+  "name": "Dice Rolls Till Criteria",
+  "group": 24,
+  "meaning": ""
+ },
+ {
+  "id": "dice-rolls-unique",
+  "name": "Dice Rolls Unique",
+  "group": 25,
+  "meaning": "n-sided die"
+ },
+ {
+  "id": "dice-value-game",
+  "name": "Dice Value Game",
+  "group": 27,
+  "meaning": ""
+ },
+ {
+  "id": "card-draw",
+  "name": "Card Draw",
+  "group": 30,
+  "meaning": "Drawing without replacement"
+ },
+ {
+  "id": "urn-draw",
+  "name": "Urn Draw",
+  "group": 31,
+  "meaning": "Drawing with replacement"
+ },
+ {
+  "id": "balls-in-boxes",
+  "name": "Balls in Boxes",
+  "group": 31,
+  "meaning": "N balls, K boxes"
+ },
+ {
+  "id": "sets",
+  "name": "Sets",
+  "group": 32,
+  "meaning": ""
+ },
+ {
+  "id": "permutations",
+  "name": "Permutations",
+  "group": 32,
+  "meaning": ""
+ },
+ {
+  "id": "intervals",
+  "name": "Intervals",
+  "group": 33,
+  "meaning": "Intersection"
+ },
+ {
+  "id": "sequences",
+  "name": "Sequences",
+  "group": 34,
+  "meaning": ""
+ },
+ {
+  "id": "inequalities",
+  "name": "Inequalities",
+  "group": 35,
+  "meaning": "prob x1 > x2"
+ },
+ {
+  "id": "vectors",
+  "name": "Vectors",
+  "group": 36,
+  "meaning": ""
+ },
+ {
+  "id": "coupon-collector",
+  "name": "Coupon Collector",
+  "group": 37,
+  "meaning": "How long until I get them all?"
+ },
+ {
+  "id": "matrix-attack",
+  "name": "Matrix Attack",
+  "group": 40,
+  "meaning": "Putting numbers into a 2d grid"
+ },
+ {
+  "id": "covariance-matrices",
+  "name": "Covariance Matrices",
+  "group": 40,
+  "meaning": ""
+ },
+ {
+  "id": "medians",
+  "name": "Medians",
+  "group": 41,
+  "meaning": ""
+ },
+ {
+  "id": "rv-exercises",
+  "name": "RV Exercises",
+  "group": 42,
+  "meaning": ""
+ },
+ {
+  "id": "rv-exercises-unif-inequalities",
+  "name": "RV Exercises - Unif Inequalities",
+  "group": 42,
+  "meaning": ""
+ },
+ {
+  "id": "truncations",
+  "name": "Truncations",
+  "group": 43,
+  "meaning": "Removing the number and anything to its right"
+ },
+ {
+  "id": "overflow",
+  "name": "Overflow",
+  "group": 44,
+  "meaning": "Adding iid items until we reach a limit (overflow)"
+ },
+ {
+  "id": "grid-adjacencies",
+  "name": "Grid Adjacencies",
+  "group": 45,
+  "meaning": "Coloring in a grid"
+ },
+ {
+  "id": "grid-walk",
+  "name": "Grid Walk",
+  "group": 46,
+  "meaning": "Rook move, grid"
+ },
+ {
+  "id": "lattice-points",
+  "name": "Lattice Points",
+  "group": 47,
+  "meaning": ""
+ },
+ {
+  "id": "particle-walk",
+  "name": "Particle Walk",
+  "group": 50,
+  "meaning": "1D or 2D random walk without absorption"
+ },
+ {
+  "id": "gamblers-ruin",
+  "name": "Gamblers Ruin",
+  "group": 51,
+  "meaning": "1D random walk with 2-sided absorption"
+ },
+ {
+  "id": "penguin-walk",
+  "name": "Penguin Walk",
+  "group": 51,
+  "meaning": "1D random walk with 1-sided absorption"
+ },
+ {
+  "id": "frog-jump",
+  "name": "Frog Jump",
+  "group": 52,
+  "meaning": "1D integer walk in one direction"
+ },
+ {
+  "id": "circular-walk",
+  "name": "Circular Walk",
+  "group": 52,
+  "meaning": "Walking on the circumference of a circle"
+ },
+ {
+  "id": "sequential-game",
+  "name": "Sequential Game",
+  "group": 53,
+  "meaning": "Process, Stochastic, Stock Price"
+ },
+ {
+  "id": "birth-death",
+  "name": "Birth Death",
+  "group": 54,
+  "meaning": "Bacteria, Gamblers Ruin"
+ },
+ {
+  "id": "integer-walk",
+  "name": "Integer Walk",
+  "group": 55,
+  "meaning": "1D integer walk in both directions"
+ },
+ {
+  "id": "reverse-frog-jump",
+  "name": "Reverse Frog Jump",
+  "group": 56,
+  "meaning": "1D integer walk from n to 0"
+ },
+ {
+  "id": "area",
+  "name": "Area",
+  "group": 57,
+  "meaning": "Area of shaded region, Geometric Probability"
+ },
+ {
+  "id": "egg-drop",
+  "name": "Egg Drop",
+  "group": 58,
+  "meaning": "Egg Drop, Strategy"
+ },
+ {
+  "id": "circles",
+  "name": "Circles",
+  "group": 60,
+  "meaning": ""
+ },
+ {
+  "id": "circles-tables",
+  "name": "Circles - Tables",
+  "group": 60,
+  "meaning": "Obtuse, Table"
+ },
+ {
+  "id": "circles-arc-length",
+  "name": "Circles - Arc Length",
+  "group": 60,
+  "meaning": ""
+ },
+ {
+  "id": "triangles",
+  "name": "Triangles",
+  "group": 61,
+  "meaning": ""
+ },
+ {
+  "id": "rectangles",
+  "name": "Rectangles",
+  "group": 61,
+  "meaning": "How many rectangles in a mxn grid"
+ },
+ {
+  "id": "polygon",
+  "name": "Polygon",
+  "group": 62,
+  "meaning": "Sphere"
+ },
+ {
+  "id": "polyhedra",
+  "name": "Polyhedra",
+  "group": 62,
+  "meaning": "Tetrahedron, Icosahedron"
+ },
+ {
+  "id": "chords",
+  "name": "Chords",
+  "group": 63,
+  "meaning": ""
+ },
+ {
+  "id": "stick-breaking",
+  "name": "Stick Breaking",
+  "group": 64,
+  "meaning": ""
+ },
+ {
+  "id": "painted-surface",
+  "name": "Painted Surface",
+  "group": 65,
+  "meaning": ""
+ },
+ {
+  "id": "rays-and-lines",
+  "name": "Rays and Lines",
+  "group": 66,
+  "meaning": ""
+ },
+ {
+  "id": "segments",
+  "name": "Segments",
+  "group": 67,
+  "meaning": "Selecting a segment on the number line"
+ },
+ {
+  "id": "coincidence",
+  "name": "Coincidence",
+  "group": 68,
+  "meaning": "Ships in a night, wait times"
+ },
+ {
+  "id": "tessellations",
+  "name": "Tessellations",
+  "group": 69,
+  "meaning": ""
+ },
+ {
+  "id": "regions",
+  "name": "Regions",
+  "group": 70,
+  "meaning": "How many states/regions"
+ },
+ {
+  "id": "hierarchical-setup",
+  "name": "Hierarchical Setup",
+  "group": 71,
+  "meaning": ""
+ },
+ {
+  "id": "birthday-problem",
+  "name": "Birthday Problem",
+  "group": 72,
+  "meaning": ""
+ },
+ {
+  "id": "weights",
+  "name": "Weights",
+  "group": 73,
+  "meaning": ""
+ },
+ {
+  "id": "rationality",
+  "name": "Rationality",
+  "group": 74,
+  "meaning": "Greedy Pirates"
+ },
+ {
+  "id": "arrivals",
+  "name": "Arrivals",
+  "group": 75,
+  "meaning": "Elevator, Ice Cream Truck"
+ },
+ {
+  "id": "drunk-passenger",
+  "name": "Drunk Passenger",
+  "group": 80,
+  "meaning": ""
+ },
+ {
+  "id": "polya-urn",
+  "name": "Polya Urn",
+  "group": 81,
+  "meaning": "Soccer, Archery"
+ },
+ {
+  "id": "recursion-tricks",
+  "name": "Recursion Tricks",
+  "group": 82,
+  "meaning": "Fibonacci"
+ },
+ {
+  "id": "bulb-toggle",
+  "name": "Bulb Toggle",
+  "group": 83,
+  "meaning": "Divisibility, Factors, Primes"
+ },
+ {
+  "id": "equations",
+  "name": "Equations",
+  "group": 84,
+  "meaning": "Algebraic Manipulation"
+ },
+ {
+  "id": "game-theory",
+  "name": "Game Theory",
+  "group": 90,
+  "meaning": "Perfectly Rational Behavior"
+ },
+ {
+  "id": "probabilistic-game-theory",
+  "name": "Probabilistic Game Theory",
+  "group": 90,
+  "meaning": ""
+ },
+ {
+  "id": "rough-comparisons",
+  "name": "Rough Comparisons",
+  "group": 91,
+  "meaning": "Which is higher or lower"
+ },
+ {
+  "id": "circular-ants",
+  "name": "Circular Ants",
+  "group": 92,
+  "meaning": "n ants moving along the circumference"
+ },
+ {
+  "id": "adjacency",
+  "name": "Adjacency",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "auction",
+  "name": "Auction",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "biased-coin",
+  "name": "Biased Coin",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "biased-coin-game-ii",
+  "name": "Biased Coin Game II",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "bivariate-normal",
+  "name": "Bivariate Normal",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "brainteaser",
+  "name": "Brainteaser",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "cards",
+  "name": "Cards",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "checkers",
+  "name": "Checkers",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "chess-knights",
+  "name": "Chess,\nKnights",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "circle-problem",
+  "name": "Circle problem",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "coin-toss",
+  "name": "Coin Toss",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "collision-problems",
+  "name": "Collision Problems",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "coloring",
+  "name": "Coloring",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "couples",
+  "name": "Couples",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "cubes",
+  "name": "Cubes",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "cycles",
+  "name": "Cycles",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "density",
+  "name": "Density",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "density-uniform-distribution",
+  "name": "Density,\nUniform Distribution",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "diagnostic-test",
+  "name": "Diagnostic Test",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "die-rolls",
+  "name": "Die Rolls",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "expected-time-to-fall-off",
+  "name": "Expected Time to Fall Off",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "factors",
+  "name": "Factors",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "fair-value",
+  "name": "Fair Value",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "famous-gambling-setups",
+  "name": "Famous Gambling Setups",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "fibonacci",
+  "name": "Fibonacci",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "finding-fastest",
+  "name": "Finding fastest",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "geometry",
+  "name": "Geometry",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "grid-walk-with-boundaries",
+  "name": "Grid Walk with Boundaries",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "infinite-rerolls",
+  "name": "Infinite Rerolls",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "local-maxima",
+  "name": "Local Maxima",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "mixture-distribution",
+  "name": "Mixture Distribution",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "nim-like",
+  "name": "Nim-like",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "normal-distribution",
+  "name": "Normal Distribution",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "number-line-jumps",
+  "name": "Number Line Jumps",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "number-of-coin-flips",
+  "name": "Number of Coin Flips",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "number-of-die-rolls",
+  "name": "Number of Die Rolls",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "number-theory",
+  "name": "Number Theory",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "overconsumption-problem",
+  "name": "Overconsumption Problem",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "painting",
+  "name": "Painting",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "piles",
+  "name": "Piles",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "prime-numbers",
+  "name": "Prime Numbers",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "probabilistic-strategies",
+  "name": "Probabilistic Strategies",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "random-variables",
+  "name": "Random Variables",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "random-walk-absorption",
+  "name": "Random Walk Absorption",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "secretary-problem",
+  "name": "Secretary Problem",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "set-permutation",
+  "name": "Set Permutation",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "spheres",
+  "name": "Spheres",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "sports-betting",
+  "name": "Sports Betting",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "total-number-of-evens-biased-coins",
+  "name": "Total Number of Evens,\nBiased Coins",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "tree",
+  "name": "Tree",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "unfair-die",
+  "name": "Unfair die",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "uniform-distribution",
+  "name": "Uniform Distribution",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "urn",
+  "name": "Urn",
+  "group": null,
+  "meaning": ""
+ },
+ {
+  "id": "waiting-times",
+  "name": "Waiting Times",
+  "group": null,
+  "meaning": ""
+ }
+]

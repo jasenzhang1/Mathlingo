@@ -1,6 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { json, preflight } from "../_shared/cors.ts";
-import { stripeClient, tierForPrice } from "../_shared/stripe.ts";
+import { isInterviewPrice, periodEndOf, stripeClient, tierForPrice } from "../_shared/stripe.ts";
 
 /**
  * Reconciles our subscription row against Stripe's live state.
@@ -75,9 +75,30 @@ Deno.serve(async (req) => {
             ? 1
             : 0;
 
-    const best = subscriptions.data.sort(
-      (a, b) => rank(b.status) - rank(a.status) || b.created - a.created,
-    )[0];
+    const priceOf = (s: (typeof subscriptions.data)[number]) => s.items.data[0]?.price?.id ?? "";
+    const byRank = (list: typeof subscriptions.data) =>
+      [...list].sort((a, b) => rank(b.status) - rank(a.status) || b.created - a.created)[0];
+
+    // Interview prep is its own product (migration 0008); reconcile it
+    // separately so it can neither stand in for a learning plan nor be
+    // rejected as "a price that maps to no tier".
+    const interview = byRank(subscriptions.data.filter((s) => isInterviewPrice(priceOf(s))));
+    if (interview) {
+      const periodEnd = periodEndOf(interview);
+      await db.from("interview_subscriptions").upsert(
+        {
+          user_id: user.id,
+          stripe_subscription_id: interview.id,
+          status: interview.status,
+          current_period_end: periodEnd ? new Date(periodEnd * 1000).toISOString() : null,
+          cancel_at_period_end: interview.cancel_at_period_end ?? false,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "user_id" },
+      );
+    }
+
+    const best = byRank(subscriptions.data.filter((s) => !isInterviewPrice(priceOf(s))));
 
     if (!best) {
       await db.from("subscriptions").upsert(
@@ -106,8 +127,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    const withPeriod = best as unknown as { current_period_end?: number };
-    const periodEnd = best.items.data[0]?.current_period_end ?? withPeriod.current_period_end;
+    const periodEnd = periodEndOf(best);
 
     const entitling = ["active", "trialing", "past_due"].includes(best.status);
 

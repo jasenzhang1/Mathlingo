@@ -24,9 +24,10 @@ to a spaced-repetition pool. `assessment.md`'s Open Questions §3 already flags 
 interviews" as a different population from the rest of the curriculum; this file is where that
 population's material lives until (if ever) a decision is made to integrate it.
 
-New questions are now collected in a Google Sheet and filed daily into a structured bank with the
-same scenario-first organization. See [`quant-interview/README.md`](quant-interview/README.md). This
-file remains the narrative write-up.
+The servable interview bank now lives in [`web/src/data/interview/`](../web/src/data/interview/) and
+powers the site's separate Interview Prep tab. It keeps the same scenario-first organization, where a
+scenario is called a *family*. See [`interview.md`](../interview.md). This file remains the narrative
+write-up.
 
 **Format.** Each scenario states the setup once, then lists problems as `Q` / `Solution` pairs. Where
 a problem has a genuinely distinct second method, it's given as `Alt.` — not as a superior method, but

@@ -53,7 +53,13 @@ const ABILITY_BOUND = 4;
  */
 const MAX_STEP = 1;
 
-export function probabilityCorrect(abilityMean: number, item: Item): number {
+/**
+ * The two IRT parameters the ability math reads. Anything carrying them can be
+ * scored — the interview bank uses this for its questions, which are not `Item`s.
+ */
+export type ItemParams = Pick<Item, "difficulty" | "discrimination">;
+
+export function probabilityCorrect(abilityMean: number, item: ItemParams): number {
   return sigmoid(item.discrimination * (abilityMean - item.difficulty));
 }
 
@@ -68,7 +74,7 @@ export function probabilityCorrect(abilityMean: number, item: Item): number {
  */
 export function updateAbility(
   ability: Ability,
-  item: Item,
+  item: ItemParams,
   score: number,
 ): Ability {
   const a = item.discrimination;

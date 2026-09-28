@@ -13,6 +13,7 @@ paste → Run. "Success. No rows returned" is what success looks like.
 | `migrations/0001_discussion.sql` | `profiles`, `posts`, `comments`, `post_votes` — the forum tab |
 | `migrations/0002_proficiency.sql` | `concept_states`, `assessment_responses` — the assessment tab |
 | `migrations/0003_response_detail.sql` | rubric breakdown, transcripts, and grader confidence on the review log |
+| `migrations/0008_interview.sql` | `interview_subscriptions`, `interview_skills`, `interview_attempts` — the interview prep tab (after `0004`) |
 
 `0002` depends on `0001` (it references `public.profiles`), so don't skip it.
 
@@ -125,9 +126,15 @@ card number.
 
 1. Create an account at <https://dashboard.stripe.com>. Stay in **Test mode**
    (toggle, top right) until you're ready to charge real money.
-2. **Products → Add product**, twice:
+2. **Products → Add product**, three times:
    - *Graded* — recurring, monthly, $8. Copy the **price id** (`price_...`).
    - *Tutored* — recurring, monthly, $15. Copy its price id.
+   - *Interview Prep* — recurring, monthly. Copy its price id. This is a
+     separate product, not a tier: a customer can hold it alongside a learning
+     plan, as a second subscription on the same Stripe customer. The webhook
+     routes it to `interview_subscriptions` by price id and never lets it touch
+     `subscriptions.tier`. The display price is `INTERVIEW_PLAN.priceLabel` in
+     `web/src/lib/billing/tiers.ts`; keep the two in step.
 3. **Developers → API keys** → copy the **Secret key** (`sk_test_...`).
 4. **Developers → Webhooks** (Stripe now labels this area *Event destinations*,
    and the button *Add destination* — same feature, renamed). Note the order:
@@ -148,8 +155,12 @@ STRIPE_SECRET_KEY=sk_test_... \
 STRIPE_WEBHOOK_SECRET=whsec_... \
 STRIPE_PRICE_GRADED=price_... \
 STRIPE_PRICE_TUTORED=price_... \
+STRIPE_PRICE_INTERVIEW=price_... \
 ./supabase/deploy.sh YOUR_PROJECT_REF
 ```
+
+`STRIPE_PRICE_INTERVIEW` is optional; without it the interview tab's subscribe
+button reports that no price is configured.
 
 Omit the Stripe variables and everything else still deploys; the pricing page
 then reports that billing isn't configured.

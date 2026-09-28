@@ -84,3 +84,21 @@ export const PLANS: TierPlan[] = [
 ];
 
 export const PAID_PLANS = PLANS.filter((p) => p.id !== "free");
+
+/**
+ * Interview prep: a separate monthly product, not a tier — holding it neither
+ * requires nor implies any learning plan. Display only; the amount is the
+ * STRIPE_PRICE_INTERVIEW price.
+ */
+export const INTERVIEW_PLAN = {
+  name: "Interview Prep",
+  priceLabel: "$20",
+  tagline: "Quant interview questions the way they're actually asked.",
+  features: [
+    "Over a thousand brainteaser and probability interview questions",
+    "Mock interviews: scenario chains that get harder as you go",
+    "Timed answers — speed counts, like it does on the day",
+    "Skill bars for every technique, from casework to the reflection principle",
+    "Targeted drills for whatever tripped you up",
+  ],
+};
