@@ -1,14 +1,7 @@
-slug,name,description,aliases,graph concepts
-binomial-coefficients,Binomial coefficients,"Count the ways to choose which k of n positions get a label; C(n,k).","n choose k, combinations, choose","combinations, binomial-theorem"
-complementary-counting,Complementary counting,Count what you do not want and subtract from the total.,"complement, count the bad",counting-methods
-multiplication-principle,Multiplication principle,Split a path or outcome at a forced waypoint and multiply the counts of the pieces.,"product rule, split at a point",counting-methods
-reflection-principle,Reflection principle,Paths that touch a barrier biject with unrestricted paths to the endpoint reflected across it.,"reflection, reflection trick",combinations
-catalan-numbers,Catalan numbers,"C_n = C(2n,n)/(n+1): Dyck paths, ballot sequences, balanced brackets, binary trees.","catalan, ballot problem, dyck paths","combinations, recursion"
-stars-and-bars,Stars and bars / compositions,"Split n identical items into k ordered positive (or non-negative) parts: C(n-1,k-1).","compositions, balls into boxes",stars-and-bars
-inclusion-exclusion,Inclusion-exclusion,Alternate-sign sum over intersections to count a union.,"PIE, inclusion exclusion",pie-boole
-symmetry-pairing,Symmetry and pairing,"Exhibit a bijection between two outcome sets to show they are equally likely, with no computation.","symmetry, pairing argument, bijection",injections-surjections-bijections
-recurrences,Recurrences,Condition on the first or last step to write a_n in terms of smaller cases.,"recursion, recursive counting, dp, dynamic programming","recursion, fibonacci-numbers"
-first-step-analysis,First-step analysis,Condition on the first move of a Markov chain and solve the resulting linear equations.,"markov chain, states, conditioning on the first flip",law-of-total-expectation
-linearity-of-expectation,Linearity of expectation,"E[sum] = sum of E, dependence or not; usually via indicator variables.","indicators, indicator variables",expectation
-geometric-waiting-time,Geometric waiting times,Trials until the first success: E = 1/p.,"geometric distribution, waiting time",geometric-distribution
-martingales-optional-stopping,Martingales and optional stopping,A fair game stopped at a bounded time has expected value equal to its start.,"martingale, optional stopping theorem",simple-random-walk
+Section,Topic,Subtopic,Example,Notes
+206,Combinations,Definition,,
+211,Combinatorics,Complementary Counting,,
+230,Combinatorics,Recursion,,
+230,Combinatorics,Recursion (Fibonacci),,
+234,Combinatorics,Reflection Principle,,
+473,Expected Values,Linearity of Expectation (Indicators),,

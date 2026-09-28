@@ -1,16 +1,16 @@
 ---
 name: quant-bank-sync
-description: Daily review of new quant-interview questions from the Google Sheet — verify each answer, assign scenario/variation/concepts, file accepted rows into the Question Bank, leave review notes on the rest, and commit the repo mirror. Use when asked to sync, review, or ingest the quant question sheet, or when a scheduled run says "run the quant bank sync".
+description: Daily review of new quant-interview questions from the Google Sheet — verify each answer, choose its Section and Family, file it into the Question Bank (or label unfiled bank rows in place), leave review notes on the rest, and commit the section/family mirror. Use when asked to sync, review, or ingest the quant question sheet, or when a scheduled run says "run the quant bank sync".
 ---
 
 # Quant bank sync
 
-The sheet layout, labels, and setup are in `assessments/quant-interview/README.md`. Read it
-first if this is your first run in the session. The code is in `web/tools/quantBank/`.
+Read `assessments/quant-interview/README.md` first if this is your first run in the session. It
+covers the sheet layout, what Section and Family mean, and the 0–10 difficulty scale. The code is
+in `web/tools/quantBank/`.
 
 The script handles the mechanical steps. Your job is the judgement: is the answer right, which
-scenario does the problem belong to, what changed relative to that scenario, and which concepts does
-the solution use.
+section does the solution rely on, and which family does the setup belong to.
 
 ## 1. Pull
 
@@ -19,89 +19,90 @@ cd web && npm ci --silent   # if node_modules is missing
 npm run quant:pull
 ```
 
-If this fails because `QUANT_SHEET_ID` or `GOOGLE_SERVICE_ACCOUNT_JSON` is unset, or because Google
-returns 403/404, stop and report the exact error. Don't try to reach the sheet another way.
+If `QUANT_SHEET_ID` or `GOOGLE_SERVICE_ACCOUNT_JSON` is unset, or Google returns 403/404, stop
+and report the exact error. Don't try to reach the sheet another way.
 
-Read `.quant-sync/inbox.json`. It has `warnings` (structural problems already in the sheet),
-`concepts`, `scenarios`, `families` (existing bank problems in every scenario the new rows might
-belong to) and `entries` (the new rows). If `entries` is empty, skip to step 5.
+Read `.quant-sync/inbox.json`. It contains:
+
+- `entries`: the rows to review. `location: "inbox"` is a New Questions row, and
+  `location: "bank"` is a Question Bank row with no Section.
+- `sections` and `families`: the two label catalogs.
+- `familyMembers`: the filed problems in each family an entry might join.
+- `warnings`: workbook problems. Report them and never try to fix them.
+
+If there are no entries, skip to step 5.
 
 ## 2. Review each entry
 
-Work through these checks in order. A row that fails a check gets **held** with a note. Don't
-guess to get past a check.
+Work through these checks in order. When a row fails a check, **hold** it with a note. Don't guess
+to get past a check.
 
-**a. Complete?** Anything in `issues` (no answer, no solution, unreadable difficulty) means hold.
-The exception is a blank difficulty: you may propose one in the decision, but only if the sheet
-has none.
+**a. Complete?** Anything listed in `issues` means hold: no answer, no Notes, or no difficulty.
+The one exception is a missing difficulty. You may propose one (0–10) in the decision, judged
+against filed problems of similar difficulty in the same section.
 
-**b. Correct?** Solve the problem yourself, independently, before reading the author's solution
-closely. When the problem is finite and small (counting paths, dice, small permutations, coin
-strings), brute-force it with a throwaway Python script in the scratchpad. That check is cheap and
-removes doubt. For expectations and probabilities that can't be enumerated, simulate with at least
-10⁶ trials and compare to the stated answer. Hold if:
-- your answer differs from the author's. The note gives your answer and the specific step where the
-  two derivations diverge, e.g. "the runs can start with R or U, so ×2".
-- the answer is right but the solution has a real gap or error. The note names the gap.
-- the question is ambiguous in a way that changes the answer ("between" inclusive or exclusive,
-  paths "through" a point vs. "touching" it). The note names both readings and both answers.
+**b. Correct?** Solve the problem yourself before reading the author's Notes closely. When the
+problem is finite and small (counting, dice, digits, subsets, small permutations), brute-force it
+with a throwaway Python script in the scratchpad. For probabilities and expectations that can't be
+enumerated, simulate with at least 10⁵–10⁶ trials. Check every part of a multi-part question.
+Hold the row if:
+- your answer differs from the author's. The note gives your answer and the step where the two
+  derivations diverge.
+- a part has no real answer, or the Notes contain a real error. The note says what to add or fix.
+- the question is ambiguous in a way that changes the answer. The note names both readings.
 
-Don't hold over typos or style. Never rewrite the author's text: the script can't change it, and
-it shouldn't.
+Don't hold over typos, and never rewrite the author's text. Mention typos in your summary instead.
+When a problem refers to a figure you can't see, file it if the answer is plausible, and say in
+the summary that you couldn't verify it.
 
-**c. Duplicate?** Check `alreadyInBank` and `similarBank`. An identical problem (same setup, same
-numbers, same ask) means hold with "duplicate of QI-xxxx — delete this row if you agree". The same
-setup with different numbers and the same method is also a duplicate in substance, unless the new
-numbers break the method, e.g. a grid large enough that brute force stops working. Hold those too
-and name the existing problem. A different ask on the same setup is **not** a duplicate. That is a
-variation, which is what the bank is for.
+**c. Duplicate?** Look at `similar` (score 1.0 means identical text) and `familyMembers`. Hold the
+row if it is the same setup with the same ask and the same numbers, even when the wording differs.
+The note names the existing row. The same setup with a *different* ask is not a duplicate: that is
+a new member of the family.
 
-**d. Scenario.** Choose it by the *setup the candidate must recognize*, not by the method used.
-"Paths from (0,0) to (5,5) avoiding (2,2)" belongs to `lattice-paths`, even though it's solved by
-complementary counting.
-- If the author's label resolved (`scenarioLabel.slug`), use it unless it is clearly wrong. If it
-  is wrong, hold and explain; don't override silently.
-- If it didn't resolve, look for an existing scenario whose `setup` covers the problem, possibly
-  after renaming the objects (a random walk on a grid is `lattice-paths`; a shuffled deck is
-  `random-permutations`). When one fits, use it, and add the author's label through
-  `scenarioUpdates[].addAliases` so the label resolves by itself next time. Don't create a
-  duplicate scenario.
-- Create a **new scenario** only when no existing setup covers the problem. Give it a short
-  kebab-case slug, a name, a one-sentence `setup` that states the base situation without any
-  variation, and initial `levers`. If it is a special case of an existing scenario, set `parent`.
+**d. Section.** Choose the technique a good solution actually hinges on, not everything the solution
+mentions. `sectionVotes` (how the nearest filed problems were labelled) is a starting point.
+Similar wording doesn't mean the same technique.
+- When a section number appears twice in `sections` (e.g. 230 is both "Recursion" and "Recursion
+  (Fibonacci)"), set `subtopic` to choose between them.
+- If the author already typed a Section, keep it unless it is clearly wrong. If it is wrong, hold
+  and explain.
+- Add a **new section** only for a technique no existing subtopic covers. Take an unused number in
+  the right hundred (1xx brainteasers and proofs, 2xx counting, 3xx probability, 4xx expectation,
+  5xx random variables and variance, 7xx games and strategy, 8xx collisions and graphs), next to its
+  closest relatives.
 
-**e. Variation and parent.** `variation` is the one thing this problem changes relative to the base
-setup, written as a **lever** name that can be reused: `diagonal barrier`, `forbidden point`,
-`number of direction changes`, `biased coin`. Use an existing lever from the scenario's `levers`
-list when one fits. When a new kind of change appears, add it through `scenarioUpdates`. Leave
-`variation` empty for the plain base problem. `parent` is the closest problem in `families` that
-this one modifies, usually the base problem. When the parent is being ingested in the same run, use
-`"fp:<its fingerprint>"`.
+**e. Family.** Choose the setup a candidate would pattern-match, regardless of technique. A random
+walk on a grid is `Grid Walk` or `Lattice Walk`, even when the problem is solved by reflection.
+- If the author typed a Family, `author.familyMatch` is its canonical Category name. Use that. If
+  the author's spelling is new ("Dice Rolls" for `Dice Rolls Till Criteria`), use the canonical
+  name. Don't create a variant.
+- Add a **new family** only when no existing Category's setup fits. Give it a Number that matches
+  its relatives if it belongs to a group, or the next unused number otherwise. When a family you
+  use has a blank Meaning, fill it through `familyMeanings`.
+- Leave `family` empty only when no scenario genuinely fits, such as a pure identity proof.
 
-**f. Concepts.** List the one to three tools that a *good* solution actually relies on. Leave out
-tools that are merely mentioned. Use the resolved slugs where they are correct. Map unresolved
-labels to existing concepts by meaning ("n choose k" → `binomial-coefficients`). Add a **new
-concept** only for a technique that is genuinely distinct, with a description and `graphConcepts`
-ids from `web/src/data/concepts.ts` (check that each one exists). A missing concept is not a
-reason to hold a problem, because you can add the concept.
+**f. Tags and difficulty.** `tags` replaces the author's list, so include their tags plus anything
+important they left out. On bank rows, Tags are only written when the cell is empty. Only include
+`difficulty` when the sheet's cell is blank.
 
 ## 3. Write `.quant-sync/decisions.json`
 
 ```json
 {
-  "newConcepts":   [{ "slug": "", "name": "", "description": "", "aliases": [], "graphConcepts": [] }],
-  "newScenarios":  [{ "slug": "", "name": "", "setup": "", "levers": [], "aliases": [], "parent": "" }],
-  "scenarioUpdates": [{ "slug": "lattice-paths", "addLevers": ["number of direction changes"], "addAliases": ["staircase walks"] }],
+  "newSections":    [{ "section": 235, "topic": "Combinatorics", "subtopic": "…", "example": "…" }],
+  "newFamilies":    [{ "category": "…", "number": 93, "meaning": "…" }],
+  "familyMeanings": [{ "category": "Triangles", "meaning": "…" }],
   "problems": [
-    { "fingerprint": "…", "action": "ingest", "concepts": ["…"], "scenario": "…",
-      "variation": "…", "parent": "QI-0004 or fp:… or empty", "difficulty": 3 },
+    { "fingerprint": "…", "action": "file", "section": 230, "subtopic": "Recursion (Fibonacci)",
+      "family": "Tiling", "tags": ["Fibonacci", "Recursion"], "difficulty": 3 },
     { "fingerprint": "…", "action": "hold", "note": "…" }
   ]
 }
 ```
 
-Every entry needs exactly one decision. Include `difficulty` only when the sheet's value is blank.
-Hold notes are addressed to the author, so keep them short and specific, and say what to change.
+Every entry needs exactly one decision. Hold notes are read by the author in the sheet, so keep
+them short and specific, and say what to change.
 
 ## 4. Apply
 
@@ -111,17 +112,23 @@ npm run quant:apply
 ```
 
 If validation fails, nothing was written. Fix `decisions.json` and run it again. If a row was
-edited between the pull and the apply, it is skipped and will come back tomorrow. That is expected.
+edited after the pull, it is skipped and comes back tomorrow. That is expected.
 
 ## 5. Commit
 
-Run `npm run quant:pull` once more to refresh the mirror, even when nothing new was filed, so any
-hand edits to the bank get recorded. Then commit only `assessments/quant-interview/*.json` with a
-message like `Quant bank: +3 problems (lattice-paths ×2, dice-sums), 1 held`, and push to the branch
-this session was told to use. Never commit `.quant-sync/`.
+Run `npm run quant:pull` once more so the mirror reflects any hand edits. Commit only
+`assessments/quant-interview/sections.json` and `families.json`, and only if they changed.
+**Never** commit `bank.json` or `.quant-sync/`: the question text includes copyrighted material,
+and the repository is public. Use a commit message like `Quant bank: new section 235, family
+"Card Shuffle"`. Push to the branch this session was told to use.
 
 ## 6. Report
 
-Finish with a short summary: what was filed (id, scenario / variation), what was held and why,
-any new scenarios or concepts, and any sheet `warnings`. When the inbox was empty and the mirror
-was unchanged, say so in one line.
+Finish with a short summary:
+- what was filed: sheet row, section, family.
+- what was held and why.
+- any new sections or families.
+- typos you noticed.
+- sheet `warnings` whose counts changed since the last run.
+
+When nothing was new, say so in one line.

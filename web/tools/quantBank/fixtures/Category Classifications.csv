@@ -1,10 +1,4 @@
-slug,name,setup,levers,aliases,parent
-coin-flips-fixed-n,Fixed number of coin flips,n fair coins are flipped; the question is about the joint outcome of a known number of flips.,"target count, tail event, parity, adjacency restriction, longest run, biased coin","n coins, flip 10 coins",
-coin-flips-until,Flip until something happens,A coin is flipped repeatedly until a stopping condition; the number of flips is random.,"target pattern, bias, two patterns racing, stop on lead of k","flip until, waiting for a pattern",
-lattice-paths,Lattice paths on a grid,"Unit steps right (R) and up (U) from (0,0) to (m,n).","endpoint, diagonal barrier, forbidden point, required point, number of direction changes, step set","grid paths, moving on a grid, monotone paths",
-dice-sums,Dice sums,"One or more fair dice are rolled; questions about sums, maxima, or distinctness.","number of dice, target sum, re-roll rule, stopping rule",dice,
-urn-draws,Urn draws without replacement,Balls of several colours are drawn from an urn without replacement.,"colours, stopping rule, what is being counted","urn, balls in a bag, deck of cards",
-gamblers-ruin,Gambler's ruin,A random walk on integers with absorbing barriers; a player bets until broke or at a target.,"bias p, barrier positions, ruin probability vs duration",random walk with barriers,
-random-permutations,Random permutations,A uniformly random permutation or shuffle; questions about its structure.,"fixed points, cycles, records, derangements","hat check, shuffled deck, secret santa",
-optimal-stopping,Optimal stopping,Observe values sequentially and decide when to stop; the decision rule is the answer.,"number of candidates, payoff, recall allowed","secretary problem, dice game with stopping",
-geometric-probability,Geometric probability,Points are chosen uniformly in a continuous region; probability is a ratio of areas or lengths.,"dimension, number of points, region shape","broken stick, meeting problem",
+Category,Number,Meaning
+Lattice Walk,2,Can only go U and R
+Permutations,32,
+Card Draw,30,

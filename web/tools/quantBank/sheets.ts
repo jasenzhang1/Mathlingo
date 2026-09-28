@@ -1,6 +1,7 @@
 import { createSign } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import type { CellValue } from "./schema.ts";
 
 /**
  * Two interchangeable stores for the four tabs: the real Google Sheet, and a
@@ -9,15 +10,21 @@ import { join } from "node:path";
  *
  * Rows are addressed by *data* index: 0 is the first row under the header.
  * All values are written RAW, never USER_ENTERED — an answer of "1/2" must not
- * become the 1st of February, and "=C(10,5)" must not become a formula.
+ * become the 2nd of January, and "=C(10,5)" must not become a formula. Numbers
+ * are sent as JSON numbers, so numeric columns stay numeric.
+ *
+ * Reads return what the sheet *displays* (FORMATTED_VALUE), which matters:
+ * Sheets has already turned many typed fractions into dates shown as "3/4",
+ * and the displayed text is the answer the author meant.
  */
 export interface SheetStore {
   /** Header row first. Missing tab reads as []. */
   read(tab: string): Promise<string[][]>;
   /** Write a header row into an empty tab. */
   writeHeader(tab: string, header: string[]): Promise<void>;
-  append(tab: string, rows: string[][]): Promise<void>;
-  setCell(tab: string, dataRow: number, col: number, value: string): Promise<void>;
+  append(tab: string, rows: CellValue[][]): Promise<void>;
+  /** dataRow -1 addresses the header row. */
+  setCell(tab: string, dataRow: number, col: number, value: CellValue): Promise<void>;
   /** Removes whole rows; indices may be in any order. */
   deleteRows(tab: string, dataRows: number[]): Promise<void>;
   describe(): string;
@@ -131,7 +138,7 @@ export class GoogleSheetStore implements SheetStore {
     });
   }
 
-  async append(tab: string, rows: string[][]): Promise<void> {
+  async append(tab: string, rows: CellValue[][]): Promise<void> {
     if (rows.length === 0) return;
     await this.api(`/values/${this.range(tab, "A1")}:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`, {
       method: "POST",
@@ -139,7 +146,7 @@ export class GoogleSheetStore implements SheetStore {
     });
   }
 
-  async setCell(tab: string, dataRow: number, col: number, value: string): Promise<void> {
+  async setCell(tab: string, dataRow: number, col: number, value: CellValue): Promise<void> {
     await this.api(`/values/${this.range(tab, `${columnLetter(col)}${dataRow + 2}`)}?valueInputOption=RAW`, {
       method: "PUT",
       body: JSON.stringify({ values: [[value]] }),
@@ -202,9 +209,9 @@ export function parseCsv(text: string): string[][] {
   return rows;
 }
 
-export function toCsv(rows: string[][]): string {
+export function toCsv(rows: CellValue[][]): string {
   const esc = (v: string) => (/[",\n\r]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v);
-  return rows.map((r) => r.map((v) => esc(v ?? "")).join(",")).join("\n") + (rows.length ? "\n" : "");
+  return rows.map((r) => r.map((v) => esc(String(v ?? ""))).join(",")).join("\n") + (rows.length ? "\n" : "");
 }
 
 export class CsvDirStore implements SheetStore {
@@ -223,28 +230,33 @@ export class CsvDirStore implements SheetStore {
   }
 
   async read(tab: string): Promise<string[][]> {
+    if (!existsSync(this.file(tab))) throw new Error(`No tab named "${tab}" in ${this.dir}`);
+    return this.readRaw(tab);
+  }
+
+  private readRaw(tab: string): string[][] {
     const f = this.file(tab);
     return existsSync(f) ? parseCsv(readFileSync(f, "utf8")) : [];
   }
 
-  private write(tab: string, rows: string[][]) {
+  private write(tab: string, rows: CellValue[][]) {
     mkdirSync(this.dir, { recursive: true });
     writeFileSync(this.file(tab), toCsv(rows));
   }
 
   async writeHeader(tab: string, header: string[]): Promise<void> {
-    const rows = await this.read(tab);
+    const rows = this.readRaw(tab);
     rows[0] = header;
     this.write(tab, rows);
   }
 
-  async append(tab: string, add: string[][]): Promise<void> {
-    this.write(tab, [...(await this.read(tab)), ...add]);
+  async append(tab: string, add: CellValue[][]): Promise<void> {
+    this.write(tab, [...(this.readRaw(tab)), ...add]);
   }
 
-  async setCell(tab: string, dataRow: number, col: number, value: string): Promise<void> {
-    const rows = await this.read(tab);
-    const row = rows[dataRow + 1];
+  async setCell(tab: string, dataRow: number, col: number, value: CellValue): Promise<void> {
+    const rows: CellValue[][] = this.readRaw(tab);
+    const row = (rows[dataRow + 1] ??= []);
     while (row.length <= col) row.push("");
     row[col] = value;
     this.write(tab, rows);
@@ -254,7 +266,7 @@ export class CsvDirStore implements SheetStore {
     const drop = new Set(dataRows.map((r) => r + 1));
     this.write(
       tab,
-      (await this.read(tab)).filter((_, i) => !drop.has(i)),
+      (this.readRaw(tab)).filter((_, i) => !drop.has(i)),
     );
   }
 }

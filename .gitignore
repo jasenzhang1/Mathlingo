@@ -3,5 +3,8 @@
 # derived item bank — freshly authored per assessment.md §1.2 — belongs in git.
 textbooks/
 
-# Working files for the quant-interview sheet sync (web/tools/quantBank)
+# Working files for the quant-interview sheet sync (web/tools/quantBank). bank.json holds
+# the full question text, much of it from copyrighted books and paid sites (assessment.md
+# §1.2), so only the Section and Family lists are committed.
 .quant-sync/
+assessments/quant-interview/bank.json

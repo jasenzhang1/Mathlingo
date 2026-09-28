@@ -1,27 +1,26 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
-import { concepts as graphConcepts } from "../../src/data/concepts.ts";
 import {
   CONCEPT_COLUMNS,
+  FAMILY_COLUMNS,
   PROBLEM_COLUMNS,
-  SCENARIO_COLUMNS,
-  type ConceptMeta,
+  type CellValue,
+  type Family,
   type HeaderMap,
   type Problem,
   type ProblemKey,
-  type ScenarioMeta,
+  type Section,
   cell,
   defaultHeaders,
   isBlankRow,
+  joinTags,
   mapHeaders,
-  nextProblemId,
-  parseConcept,
+  parseFamily,
   parseProblem,
-  parseScenario,
-  resolveLabel,
+  parseSection,
+  sameName,
   similarity,
-  slugify,
   tabTitles,
   toRow,
 } from "./schema.ts";
@@ -33,14 +32,18 @@ import { type SheetStore, storeFromEnv } from "./sheets.ts";
  *   npm run quant:pull                 read the sheet, write .quant-sync/inbox.json
  *   npm run quant:apply [-- --dry-run] carry out .quant-sync/decisions.json
  *
- * The split is deliberate. Deciding which scenario a new problem belongs to,
- * whether "can't pass through (2,2)" is a new scenario or a variation of an
- * existing one, and whether the author's answer is actually right, is
- * judgement — that is the reviewer's job (Claude, following
- * `.claude/skills/quant-bank-sync/SKILL.md`). Everything mechanical — reading,
- * resolving labels that already match, assigning ids, moving rows, keeping the
- * repo mirror in step — lives here, and refuses to write anything if the
- * decisions do not validate against the sheet as it is *now*.
+ * The split is deliberate. Choosing a problem's section and family, and
+ * deciding whether the author's answer is actually right, is judgement — the
+ * reviewer's job (Claude, following `.claude/skills/quant-bank-sync/SKILL.md`).
+ * Reading, matching, moving rows and keeping the repo mirror in step is
+ * mechanical and lives here, and nothing is written unless every decision
+ * validates against the sheet as it is *now*.
+ *
+ * Two kinds of row are up for review:
+ *   - every row of `New Questions`, which moves to the bank once filed;
+ *   - `Question Bank` rows with a question but no Section — problems added to
+ *     the bank directly. These are labelled in place; only blank cells are
+ *     ever filled.
  */
 
 const ROOT = join(import.meta.dirname, "..", "..", "..");
@@ -50,7 +53,7 @@ const WORK = join(ROOT, ".quant-sync");
 const INBOX_FILE = join(WORK, "inbox.json");
 const DECISIONS_FILE = join(WORK, "decisions.json");
 
-const SIMILAR_THRESHOLD = 0.3;
+const SIMILAR_MIN = 0.2;
 
 // ---------------------------------------------------------------------------
 // Reading the sheet
@@ -59,19 +62,29 @@ const SIMILAR_THRESHOLD = 0.3;
 interface Tab<K extends string> {
   title: string;
   map: HeaderMap<K>;
-  /** Data rows (header excluded), with their data index, blank rows skipped. */
+  /** Data rows (header excluded) with their data index; blank rows skipped. */
   rows: { index: number; row: string[] }[];
+  exists: boolean;
+}
+
+type Location = "inbox" | "bank";
+
+interface Candidate {
+  location: Location;
+  index: number;
+  problem: Problem;
+  reviewNote: string;
 }
 
 interface Snapshot {
   inbox: Tab<ProblemKey>;
   bank: Tab<ProblemKey>;
   conceptTab: Tab<keyof typeof CONCEPT_COLUMNS>;
-  scenarioTab: Tab<keyof typeof SCENARIO_COLUMNS>;
-  concepts: ConceptMeta[];
-  scenarios: ScenarioMeta[];
-  bankProblems: Problem[];
-  inboxProblems: { index: number; problem: Problem; reviewNote: string }[];
+  familyTab: Tab<keyof typeof FAMILY_COLUMNS>;
+  sections: Section[];
+  families: Family[];
+  bankProblems: { index: number; problem: Problem }[];
+  candidates: Candidate[];
 }
 
 async function readTab<K extends string>(
@@ -79,11 +92,19 @@ async function readTab<K extends string>(
   title: string,
   spec: Record<K, readonly string[]>,
 ): Promise<Tab<K>> {
-  const values = await store.read(title);
-  const header = values[0] ?? [];
+  let values: string[][];
+  let exists = true;
+  try {
+    values = await store.read(title);
+  } catch (e) {
+    if (!(e instanceof Error && e.message.startsWith("No tab named"))) throw e;
+    values = [];
+    exists = false;
+  }
   return {
     title,
-    map: mapHeaders(header, spec),
+    exists,
+    map: mapHeaders(values[0] ?? [], spec),
     rows: values
       .slice(1)
       .map((row, index) => ({ index, row }))
@@ -93,65 +114,110 @@ async function readTab<K extends string>(
 
 async function snapshot(store: SheetStore): Promise<Snapshot> {
   const titles = tabTitles();
-  const [inbox, bank, conceptTab, scenarioTab] = await Promise.all([
+  const [inbox, bank, conceptTab, familyTab] = await Promise.all([
     readTab(store, titles.inbox, PROBLEM_COLUMNS),
     readTab(store, titles.bank, PROBLEM_COLUMNS),
     readTab(store, titles.concepts, CONCEPT_COLUMNS),
-    readTab(store, titles.scenarios, SCENARIO_COLUMNS),
+    readTab(store, titles.families, FAMILY_COLUMNS),
   ]);
-  return {
-    inbox,
-    bank,
-    conceptTab,
-    scenarioTab,
-    concepts: conceptTab.rows.map(({ row }) => parseConcept(row, conceptTab.map)).filter((c) => c.slug),
-    scenarios: scenarioTab.rows.map(({ row }) => parseScenario(row, scenarioTab.map)).filter((s) => s.slug),
-    bankProblems: bank.rows.map(({ row }) => parseProblem(row, bank.map)),
-    inboxProblems: inbox.rows.map(({ index, row }) => ({
+  const bankProblems = bank.rows.map(({ index, row }) => ({ index, problem: parseProblem(row, bank.map) }));
+  const candidates: Candidate[] = [
+    ...inbox.rows.map(({ index, row }) => ({
+      location: "inbox" as const,
       index,
       problem: parseProblem(row, inbox.map),
       reviewNote: cell(row, inbox.map, "review_note"),
     })),
+    ...bank.rows
+      .filter(({ row }) => cell(row, bank.map, "question") && !cell(row, bank.map, "section"))
+      .map(({ index, row }) => ({
+        location: "bank" as const,
+        index,
+        problem: parseProblem(row, bank.map),
+        reviewNote: cell(row, bank.map, "review_note"),
+      })),
+  ];
+  return {
+    inbox,
+    bank,
+    conceptTab,
+    familyTab,
+    sections: conceptTab.rows.flatMap(({ row }) => parseSection(row, conceptTab.map) ?? []),
+    families: familyTab.rows.flatMap(({ row }) => parseFamily(row, familyTab.map) ?? []),
+    bankProblems,
+    candidates,
   };
 }
 
-/** Structural problems in the sheet itself, independent of today's inbox. */
-function lint(s: Snapshot): string[] {
-  const out: string[] = [];
-  const dupes = (xs: string[], what: string) => {
-    const seen = new Set<string>();
-    for (const x of xs) {
-      if (seen.has(x)) out.push(`duplicate ${what}: ${x}`);
-      seen.add(x);
-    }
+const sheetRow = (index: number) => index + 2;
+const label = (s: Section) => `${s.section} · ${s.topic} › ${s.subtopic}`;
+const short = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1)}…` : s);
+
+function findFamily(families: Family[], name: string): Family | undefined {
+  return families.find((f) => f.category === name) ?? families.find((f) => sameName(f.category, name));
+}
+
+/**
+ * Structural problems already in the sheet, grouped so a thousand-row bank
+ * yields a readable list rather than a wall. Reported, never auto-fixed:
+ * several of these are the author's call (is 231 "Recursion" or "Recursion
+ * (Characteristic Polynomial)"?).
+ */
+function lint(s: Snapshot): { check: string; count: number; examples: string[] }[] {
+  const groups = new Map<string, Map<string, number>>();
+  const add = (check: string, example: string) => {
+    const g = groups.get(check) ?? new Map<string, number>();
+    g.set(example, (g.get(example) ?? 0) + 1);
+    groups.set(check, g);
   };
-  dupes(s.concepts.map((c) => c.slug), "concept slug");
-  dupes(s.scenarios.map((c) => c.slug), "scenario slug");
-  dupes(s.bankProblems.map((p) => p.id).filter(Boolean), "problem id");
 
-  for (const key of ["question", "answer", "solution", "concepts", "scenario"] as const) {
-    if (s.inbox.map.headers.length && s.inbox.map.index[key] === undefined) {
-      out.push(`"${s.inbox.title}" has no "${key}" column (headers: ${s.inbox.map.headers.join(", ")})`);
+  for (const [tab, keys] of [
+    [s.inbox, ["question", "answer", "solution", "difficulty"]],
+    [s.bank, ["section", "topic", "subtopic", "question", "answer", "solution", "family", "family_num"]],
+  ] as const) {
+    if (!tab.exists) add("missing tab", tab.title);
+    else for (const k of keys) if (tab.map.index[k] === undefined) add(`"${tab.title}" has no column for`, k);
+  }
+
+  const bySection = new Map<number, Section[]>();
+  for (const sec of s.sections) bySection.set(sec.section, [...(bySection.get(sec.section) ?? []), sec]);
+  for (const [n, secs] of bySection) {
+    if (secs.length > 1) add("section number used twice in Classifications", `${n}: ${secs.map((x) => x.subtopic).join(" / ")}`);
+  }
+  for (const f of s.families) if (f.number === null) add("family with no Number", f.category);
+
+  const seen = new Map<string, number>();
+  for (const { index, problem: p } of s.bankProblems) {
+    if (!p.question) continue;
+    const dup = seen.get(p.fingerprint);
+    if (dup !== undefined) add("exact duplicate rows in bank", `rows ${sheetRow(dup)} and ${sheetRow(index)}`);
+    seen.set(p.fingerprint, index);
+
+    if (p.section !== null) {
+      const secs = bySection.get(p.section);
+      if (!secs) add("bank Section not in Classifications", String(p.section));
+      else if (!secs.some((x) => x.topic.trim() === p.topic.trim() && x.subtopic.trim() === p.subtopic.trim())) {
+        add(
+          "bank Topic/Subtopic differs from Classifications",
+          `${p.section}: "${p.topic.trim()} › ${p.subtopic}" vs "${secs.map((x) => `${x.topic.trim()} › ${x.subtopic}`).join(" / ")}"`,
+        );
+      }
+    }
+    if (p.family) {
+      const f = findFamily(s.families, p.family);
+      if (!f) add("bank Family not in Category Classifications", p.family);
+      else if (p.familyNum === null) add("bank Family with no Family Num", p.family);
+      else if (f.number !== null && f.number !== p.familyNum) add("bank Family Num differs from Category Classifications", `${p.family}: ${p.familyNum} vs ${f.number}`);
     }
   }
 
-  const conceptSlugs = new Set(s.concepts.map((c) => c.slug));
-  const scenarioSlugs = new Set(s.scenarios.map((c) => c.slug));
-  const ids = new Set(s.bankProblems.map((p) => p.id));
-  const graph = new Set(graphConcepts.map((c) => c.id));
-  for (const p of s.bankProblems) {
-    if (!p.id) out.push(`bank row with no id: "${p.question.slice(0, 60)}"`);
-    for (const c of p.concepts) if (!conceptSlugs.has(c)) out.push(`${p.id}: unknown concept "${c}"`);
-    if (p.scenario && !scenarioSlugs.has(p.scenario)) out.push(`${p.id}: unknown scenario "${p.scenario}"`);
-    if (p.parent && !ids.has(p.parent)) out.push(`${p.id}: parent ${p.parent} is not in the bank`);
-  }
-  for (const sc of s.scenarios) {
-    if (sc.parent && !scenarioSlugs.has(sc.parent)) out.push(`scenario ${sc.slug}: unknown parent "${sc.parent}"`);
-  }
-  for (const c of s.concepts) {
-    for (const g of c.graphConcepts) if (!graph.has(g)) out.push(`concept ${c.slug}: "${g}" is not a concepts.ts id`);
-  }
-  return out;
+  return [...groups].map(([check, g]) => ({
+    check,
+    count: [...g.values()].reduce((a, b) => a + b, 0),
+    examples: [...g]
+      .sort((a, b) => b[1] - a[1])
+      .map(([ex, n]) => (n > 1 ? `${ex} (×${n})` : ex)),
+  }));
 }
 
 // ---------------------------------------------------------------------------
@@ -165,18 +231,17 @@ function writeIfChanged(path: string, text: string): boolean {
 }
 
 /**
- * The repo copy of the bank. Rewritten from the sheet on every run, so hand
- * edits made directly in the "Question Bank" tab land in git the next day too.
+ * The repo copy. Rewritten from the sheet on every run, in sheet order, so
+ * hand edits anywhere in the workbook land in git the next day too.
  */
 function writeMirror(s: Snapshot): string[] {
   mkdirSync(MIRROR, { recursive: true });
-  const json = (x: unknown) => JSON.stringify(x, null, 2) + "\n";
-  const bank = [...s.bankProblems].sort((a, b) => a.id.localeCompare(b.id));
+  const json = (x: unknown) => JSON.stringify(x, null, 1) + "\n";
   const changed: string[] = [];
   const files: [string, unknown][] = [
-    ["bank.json", bank],
-    ["concepts.json", [...s.concepts].sort((a, b) => a.slug.localeCompare(b.slug))],
-    ["scenarios.json", [...s.scenarios].sort((a, b) => a.slug.localeCompare(b.slug))],
+    ["bank.json", s.bankProblems.filter(({ problem }) => problem.question).map(({ problem }) => problem)],
+    ["sections.json", s.sections],
+    ["families.json", s.families],
   ];
   for (const [name, data] of files) if (writeIfChanged(join(MIRROR, name), json(data))) changed.push(name);
   return changed;
@@ -186,95 +251,96 @@ function writeMirror(s: Snapshot): string[] {
 // pull
 // ---------------------------------------------------------------------------
 
-interface InboxEntry {
-  row: number;
-  fingerprint: string;
-  question: string;
-  answer: string;
-  solution: string;
-  difficultyRaw: string;
-  difficulty: number;
-  conceptLabels: { label: string; slug: string | null }[];
-  scenarioLabel: { label: string; slug: string | null };
-  variation: string;
-  parent: string;
-  source: string;
-  issues: string[];
-  existingReviewNote: string;
-  alreadyInBank: string | null;
-  similarBank: { id: string; score: number; scenario: string; variation: string; question: string }[];
-  scenarioSuggestions: { slug: string; score: number }[];
-}
-
 async function pull(store: SheetStore) {
   const s = await snapshot(store);
   const warnings = lint(s);
-  const byFingerprint = new Map(s.bankProblems.map((p) => [p.fingerprint, p.id]));
+  const byFingerprint = new Map(
+    s.bankProblems.filter(({ problem }) => problem.section !== null).map(({ index, problem }) => [problem.fingerprint, index]),
+  );
+  const filed = s.bankProblems.filter(({ problem }) => problem.question && problem.section !== null);
+  const sectionOf = (n: number | null) => s.sections.filter((x) => x.section === n);
 
-  const entries: InboxEntry[] = s.inboxProblems.map(({ index, problem: p, reviewNote }) => {
-    const raw = s.inbox.rows.find((r) => r.index === index)!.row;
+  const entries = s.candidates.map(({ location, index, problem: p, reviewNote }) => {
     const issues: string[] = [];
     if (!p.question) issues.push("no question");
     if (!p.answer) issues.push("no answer");
-    if (!p.solution) issues.push("no solution");
-    const difficultyRaw = cell(raw, s.inbox.map, "difficulty");
-    if (!p.difficulty) issues.push(difficultyRaw ? `unreadable difficulty "${difficultyRaw}"` : "no difficulty");
+    if (!p.solution) issues.push("no solution (Notes)");
+    if (p.difficulty === null) issues.push("no difficulty");
 
-    const scenarioSuggestions = s.scenarios
-      .map((sc) => ({ slug: sc.slug, score: similarity(p.question, `${sc.name} ${sc.setup} ${sc.aliases.join(" ")}`) }))
-      .filter((x) => x.score > 0)
+    const similar = filed
+      .map(({ index: i, problem: b }) => ({ i, b, score: similarity(p.question, b.question) }))
+      .filter((x) => x.score >= SIMILAR_MIN)
       .sort((a, b) => b.score - a.score)
-      .slice(0, 3)
-      .map((x) => ({ ...x, score: Number(x.score.toFixed(2)) }));
+      .slice(0, 8);
 
-    const similarBank = s.bankProblems
-      .map((b) => ({ b, score: similarity(p.question, b.question) }))
-      .filter((x) => x.score >= SIMILAR_THRESHOLD)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 5)
-      .map(({ b, score }) => ({
-        id: b.id,
-        score: Number(score.toFixed(2)),
-        scenario: b.scenario,
-        variation: b.variation,
-        question: b.question,
-      }));
+    // What the nearest filed problems were labelled — a starting point, not an answer.
+    const tally = (keyOf: (b: Problem) => string) => {
+      const votes = new Map<string, number>();
+      for (const { b, score } of similar) {
+        const k = keyOf(b);
+        if (k) votes.set(k, (votes.get(k) ?? 0) + score);
+      }
+      return [...votes]
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 4)
+        .map(([k, w]) => ({ label: k, weight: Number(w.toFixed(2)) }));
+    };
 
+    const authorFamily = p.family ? findFamily(s.families, p.family) : undefined;
     return {
-      row: index + 2,
+      location,
+      row: sheetRow(index),
       fingerprint: p.fingerprint,
       question: p.question,
       answer: p.answer,
       solution: p.solution,
-      difficultyRaw,
       difficulty: p.difficulty,
-      conceptLabels: p.concepts.map((label) => ({ label, slug: resolveLabel(label, s.concepts) })),
-      scenarioLabel: { label: p.scenario, slug: p.scenario ? resolveLabel(p.scenario, s.scenarios) : null },
-      variation: p.variation,
-      parent: p.parent,
+      instructional: p.instructional,
+      tags: p.tags,
       source: p.source,
+      author: {
+        section: p.section,
+        sectionKnown: p.section !== null ? sectionOf(p.section).map(label) : [],
+        topic: p.topic,
+        subtopic: p.subtopic,
+        family: p.family,
+        familyMatch: authorFamily?.category ?? null,
+        familyNum: p.familyNum,
+      },
       issues,
       existingReviewNote: reviewNote,
-      alreadyInBank: byFingerprint.get(p.fingerprint) ?? null,
-      similarBank,
-      scenarioSuggestions,
+      alreadyInBank: location === "inbox" && byFingerprint.has(p.fingerprint) ? sheetRow(byFingerprint.get(p.fingerprint)!) : null,
+      similar: similar.map(({ i, b, score }) => ({
+        row: sheetRow(i),
+        score: Number(score.toFixed(2)),
+        section: sectionOf(b.section).map(label)[0] ?? String(b.section),
+        family: b.family,
+        difficulty: b.difficulty,
+        question: short(b.question, 240),
+      })),
+      sectionVotes: tally((b) => (b.section === null ? "" : (sectionOf(b.section).map(label)[0] ?? String(b.section)))),
+      familyVotes: tally((b) => b.family),
     };
   });
 
-  // Every problem already filed under a scenario this inbox touches — the
-  // family a new variation has to be placed in, and checked against.
+  // Every filed problem in each family a candidate might join: the set a new
+  // problem has to be placed in, and checked against for duplicates.
   const touched = new Set<string>();
   for (const e of entries) {
-    if (e.scenarioLabel.slug) touched.add(e.scenarioLabel.slug);
-    for (const sug of e.scenarioSuggestions) touched.add(sug.slug);
-    for (const sim of e.similarBank) if (sim.scenario) touched.add(sim.scenario);
+    if (e.author.familyMatch) touched.add(e.author.familyMatch);
+    for (const v of e.familyVotes) touched.add(v.label);
   }
   const families = Object.fromEntries(
-    [...touched].sort().map((slug) => [
-      slug,
-      s.bankProblems
-        .filter((p) => p.scenario === slug)
-        .map((p) => ({ id: p.id, variation: p.variation, parent: p.parent, difficulty: p.difficulty, question: p.question })),
+    [...touched].sort().map((fam) => [
+      fam,
+      filed
+        .filter(({ problem }) => problem.family && sameName(problem.family, fam))
+        .map(({ index, problem }) => ({
+          row: sheetRow(index),
+          section: problem.section,
+          difficulty: problem.difficulty,
+          question: short(problem.question, 200),
+        })),
     ]),
   );
 
@@ -286,36 +352,38 @@ async function pull(store: SheetStore) {
         pulledAt: new Date().toISOString(),
         source: store.describe(),
         warnings,
-        concepts: s.concepts,
-        scenarios: s.scenarios,
-        families,
+        sections: s.sections.map((x) => ({ ...x, example: short(x.example, 200) })),
+        families: s.families,
+        familyMembers: families,
         entries,
-        bankSize: s.bankProblems.length,
-        nextId: nextProblemId(s.bankProblems.map((p) => p.id)),
+        bankSize: filed.length,
       },
       null,
-      2,
+      1,
     ) + "\n",
   );
   const mirrored = writeMirror(s);
 
+  const inboxCount = entries.filter((e) => e.location === "inbox").length;
   console.log(`Read ${store.describe()}`);
   console.log(
-    `  bank ${s.bankProblems.length} · concepts ${s.concepts.length} · scenarios ${s.scenarios.length} · new ${entries.length}`,
+    `  bank ${filed.length} filed · sections ${s.sections.length} · families ${s.families.length}` +
+      ` · to review: ${inboxCount} new + ${entries.length - inboxCount} unfiled in bank`,
   );
-  for (const w of warnings) console.log(`  ! ${w}`);
+  if (warnings.length) console.log("Sheet warnings (not fixed automatically):");
+  for (const w of warnings) {
+    console.log(`  ! ${w.check}: ${w.count}`);
+    for (const ex of w.examples.slice(0, 5)) console.log(`      ${ex}`);
+    if (w.examples.length > 5) console.log(`      … ${w.examples.length - 5} more in inbox.json`);
+  }
   for (const e of entries) {
-    const unresolved = [
-      ...e.conceptLabels.filter((c) => !c.slug).map((c) => `concept "${c.label}"`),
-      ...(e.scenarioLabel.slug ? [] : [`scenario "${e.scenarioLabel.label || "(blank)"}"`]),
-    ];
     const flags = [
-      e.alreadyInBank && `already in bank as ${e.alreadyInBank}`,
-      e.similarBank[0] && `closest ${e.similarBank[0].id} (${e.similarBank[0].score})`,
+      e.alreadyInBank && `already in bank at row ${e.alreadyInBank}`,
+      e.similar[0] && `closest row ${e.similar[0].row} (${e.similar[0].score})`,
       ...e.issues,
-      unresolved.length && `unresolved ${unresolved.join(", ")}`,
     ].filter(Boolean);
-    console.log(`  row ${e.row} [${e.fingerprint}] ${e.question.slice(0, 70)}${flags.length ? `\n      ${flags.join(" · ")}` : ""}`);
+    console.log(`  ${e.location} row ${e.row} [${e.fingerprint}] ${short(e.question.replace(/\s+/g, " "), 70)}`);
+    if (flags.length) console.log(`      ${flags.join(" · ")}`);
   }
   console.log(`Wrote ${INBOX_FILE}`);
   if (mirrored.length) console.log(`Mirror updated: ${mirrored.join(", ")}`);
@@ -326,43 +394,27 @@ async function pull(store: SheetStore) {
 // ---------------------------------------------------------------------------
 
 interface Decisions {
-  newConcepts?: {
-    slug: string;
-    name: string;
-    description?: string;
-    aliases?: string[];
-    graphConcepts?: string[];
-  }[];
-  newScenarios?: {
-    slug: string;
-    name: string;
-    setup: string;
-    levers?: string[];
-    aliases?: string[];
-    parent?: string;
-  }[];
-  /**
-   * Extend an existing scenario: a newly seen way of varying it, or another
-   * name the author used for it (so the label resolves by itself next time).
-   */
-  scenarioUpdates?: { slug: string; addLevers?: string[]; addAliases?: string[] }[];
+  newSections?: { section: number; topic: string; subtopic: string; example?: string; notes?: string }[];
+  newFamilies?: { category: string; number: number; meaning?: string }[];
+  /** Fill in a family's Meaning. Only ever applied when the cell is blank. */
+  familyMeanings?: { category: string; meaning: string }[];
   problems: (
     | {
         fingerprint: string;
-        action: "ingest";
-        concepts: string[];
-        scenario: string;
-        variation?: string;
-        /** A bank id, or "fp:<fingerprint>" for another problem ingested in this same run. */
-        parent?: string;
-        /** Only when the sheet's value is blank or unreadable. */
+        action: "file";
+        section: number;
+        /** Required only when the section number is shared by two Classifications rows. */
+        subtopic?: string;
+        /** Exact Category name; empty only when no family genuinely fits. */
+        family: string;
+        /** Final tag list. Omit to keep the author's tags. */
+        tags?: string[];
+        /** Only when the sheet's Difficulty is blank. */
         difficulty?: number;
       }
     | { fingerprint: string; action: "hold"; note: string }
   )[];
 }
-
-const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 async function ensureColumns<K extends string>(
   store: SheetStore,
@@ -370,11 +422,13 @@ async function ensureColumns<K extends string>(
   spec: Record<K, readonly string[]>,
   keys: K[],
   dryRun: boolean,
+  log: (msg: string) => void,
 ) {
   if (tab.map.headers.length === 0) {
     const header = defaultHeaders(spec);
     if (!dryRun) await store.writeHeader(tab.title, header);
     tab.map = mapHeaders(header, spec);
+    log(`write header row in "${tab.title}"`);
     return;
   }
   for (const key of keys) {
@@ -383,7 +437,13 @@ async function ensureColumns<K extends string>(
     if (!dryRun) await store.setCell(tab.title, -1, col, spec[key][0]);
     tab.map.headers.push(spec[key][0]);
     tab.map.index[key] = col;
+    log(`add column "${spec[key][0]}" to "${tab.title}"`);
   }
+}
+
+/** Plain numbers go in as numbers, like the rest of the Answer column; anything else stays text. */
+function answerCell(answer: string): CellValue {
+  return /^-?\d+(\.\d+)?$/.test(answer) ? Number(answer) : answer;
 }
 
 async function apply(store: SheetStore, decisionsPath: string, dryRun: boolean) {
@@ -391,104 +451,80 @@ async function apply(store: SheetStore, decisionsPath: string, dryRun: boolean) 
   const s = await snapshot(store);
   const errors: string[] = [];
   const today = new Date().toISOString().slice(0, 10);
+  const log = (msg: string) => console.log(dryRun ? `[dry run] would ${msg}` : msg);
 
   // --- metadata -----------------------------------------------------------
-  const conceptSlugs = new Set(s.concepts.map((c) => c.slug));
-  const scenarioSlugs = new Set(s.scenarios.map((c) => c.slug));
-  const graph = new Set(graphConcepts.map((c) => c.id));
-  for (const c of d.newConcepts ?? []) {
-    if (!SLUG.test(c.slug)) errors.push(`new concept slug "${c.slug}" is not kebab-case`);
-    if (conceptSlugs.has(c.slug)) errors.push(`new concept "${c.slug}" already exists`);
-    if (!c.name) errors.push(`new concept "${c.slug}" has no name`);
-    for (const g of c.graphConcepts ?? []) if (!graph.has(g)) errors.push(`new concept ${c.slug}: "${g}" is not a concepts.ts id`);
-    conceptSlugs.add(c.slug);
+  const sections = [...s.sections];
+  for (const n of d.newSections ?? []) {
+    if (!Number.isInteger(n.section) || n.section <= 0) errors.push(`new section ${n.section}: must be a positive integer`);
+    if (sections.some((x) => x.section === n.section)) errors.push(`new section ${n.section} is already used (${sections.filter((x) => x.section === n.section).map(label).join(" / ")})`);
+    if (!n.topic || !n.subtopic) errors.push(`new section ${n.section}: needs a topic and a subtopic`);
+    sections.push({ section: n.section, topic: n.topic, subtopic: n.subtopic, example: n.example ?? "", notes: n.notes ?? "" });
   }
-  for (const sc of d.newScenarios ?? []) {
-    if (!SLUG.test(sc.slug)) errors.push(`new scenario slug "${sc.slug}" is not kebab-case`);
-    if (scenarioSlugs.has(sc.slug)) errors.push(`new scenario "${sc.slug}" already exists`);
-    if (!sc.name || !sc.setup) errors.push(`new scenario "${sc.slug}" needs a name and a setup`);
-    scenarioSlugs.add(sc.slug);
+  const families = [...s.families];
+  for (const f of d.newFamilies ?? []) {
+    if (findFamily(families, f.category)) errors.push(`new family "${f.category}" already exists as "${findFamily(families, f.category)!.category}"`);
+    if (!Number.isInteger(f.number) || f.number <= 0) errors.push(`new family "${f.category}": number must be a positive integer`);
+    families.push({ category: f.category, number: f.number, meaning: f.meaning ?? "" });
   }
-  for (const sc of d.newScenarios ?? []) {
-    if (sc.parent && !scenarioSlugs.has(sc.parent)) errors.push(`new scenario ${sc.slug}: unknown parent "${sc.parent}"`);
-  }
-  for (const u of d.scenarioUpdates ?? []) {
-    if (!s.scenarios.some((sc) => sc.slug === u.slug)) errors.push(`scenarioUpdates: unknown scenario "${u.slug}"`);
+  for (const m of d.familyMeanings ?? []) {
+    const f = s.families.find((x) => x.category === m.category);
+    if (!f) errors.push(`familyMeanings: no family named exactly "${m.category}"`);
+    else if (f.meaning) errors.push(`familyMeanings: "${m.category}" already has a meaning; edit it in the sheet instead`);
   }
 
   // --- problems -----------------------------------------------------------
-  const inboxByFp = new Map(s.inboxProblems.map((x) => [x.problem.fingerprint, x]));
-  const bankByFp = new Map(s.bankProblems.map((p) => [p.fingerprint, p.id]));
-  const bankIds = new Set(s.bankProblems.map((p) => p.id));
-  const usedIds = s.bankProblems.map((p) => p.id);
-  const idForFp = new Map<string, string>();
+  const byFp = new Map<string, Candidate[]>();
+  for (const c of s.candidates) byFp.set(c.problem.fingerprint, [...(byFp.get(c.problem.fingerprint) ?? []), c]);
+  const bankFiled = new Set(s.bankProblems.filter(({ problem }) => problem.section !== null).map(({ problem }) => problem.fingerprint));
   const decided = new Set<string>();
 
-  type Ingest = Extract<Decisions["problems"][number], { action: "ingest" }>;
-  const ingests: { dec: Ingest; index: number; problem: Problem }[] = [];
-  const holds: { index: number; note: string }[] = [];
-  const alreadyBanked: { index: number; id: string }[] = [];
+  type File = Extract<Decisions["problems"][number], { action: "file" }>;
+  const files: { dec: File; c: Candidate; sec: Section; fam: Family | undefined; difficulty: number | null }[] = [];
+  const holds: { c: Candidate; note: string }[] = [];
+  const staleInbox: Candidate[] = [];
   const skipped: string[] = [];
 
   for (const dec of d.problems) {
     if (decided.has(dec.fingerprint)) errors.push(`${dec.fingerprint}: decided twice`);
     decided.add(dec.fingerprint);
-    const hit = inboxByFp.get(dec.fingerprint);
-    if (!hit) {
-      // Edited or removed since the pull. Leave it for tomorrow rather than guess.
+    const hits = byFp.get(dec.fingerprint) ?? [];
+    if (hits.length === 0) {
+      // Edited, filed or removed since the pull. Leave it for tomorrow rather than guess.
       skipped.push(dec.fingerprint);
       continue;
     }
+    if (hits.length > 1) {
+      errors.push(`${dec.fingerprint}: matches ${hits.length} identical rows (${hits.map((h) => `${h.location} ${sheetRow(h.index)}`).join(", ")}); delete the extra copies first`);
+      continue;
+    }
+    const c = hits[0];
+    const where = `${c.location} row ${sheetRow(c.index)} [${dec.fingerprint}]`;
     if (dec.action === "hold") {
-      if (!dec.note?.trim()) errors.push(`${dec.fingerprint}: hold needs a note`);
-      holds.push({ index: hit.index, note: dec.note });
+      if (!dec.note?.trim()) errors.push(`${where}: hold needs a note`);
+      holds.push({ c, note: dec.note });
       continue;
     }
-    const banked = bankByFp.get(dec.fingerprint);
-    if (banked) {
-      alreadyBanked.push({ index: hit.index, id: banked });
+    if (c.location === "inbox" && bankFiled.has(dec.fingerprint)) {
+      staleInbox.push(c);
       continue;
     }
-    const p = hit.problem;
-    const where = `row ${hit.index + 2} [${dec.fingerprint}]`;
-    if (!p.question || !p.answer || !p.solution) errors.push(`${where}: question, answer and solution are all required to ingest`);
-    if (!dec.concepts?.length) errors.push(`${where}: no concepts`);
-    for (const c of dec.concepts ?? []) if (!conceptSlugs.has(c)) errors.push(`${where}: unknown concept "${c}"`);
-    if (!scenarioSlugs.has(dec.scenario)) errors.push(`${where}: unknown scenario "${dec.scenario}"`);
-    const difficulty = p.difficulty || dec.difficulty || 0;
-    if (!(difficulty >= 1 && difficulty <= 5)) errors.push(`${where}: difficulty must be 1-5`);
-    if (dec.difficulty && p.difficulty && dec.difficulty !== p.difficulty) {
+    const p = c.problem;
+    if (!p.question || !p.answer || !p.solution) errors.push(`${where}: question, answer and notes are all required to file`);
+    const matches = sections.filter((x) => x.section === dec.section);
+    const sec = matches.length > 1 ? matches.find((x) => x.subtopic === dec.subtopic) : matches[0];
+    if (matches.length === 0) errors.push(`${where}: section ${dec.section} is not in Classifications (add it under newSections)`);
+    else if (!sec) errors.push(`${where}: section ${dec.section} is shared by ${matches.map((x) => `"${x.subtopic}"`).join(" and ")}; say which with "subtopic"`);
+    const fam = dec.family ? families.find((f) => f.category === dec.family) : undefined;
+    if (dec.family && !fam) errors.push(`${where}: family "${dec.family}" is not an exact Category name (or add it under newFamilies)`);
+    if (fam && fam.number === null) errors.push(`${where}: family "${fam.category}" has no Number in Category Classifications`);
+    if (p.difficulty !== null && dec.difficulty !== undefined && dec.difficulty !== p.difficulty) {
       errors.push(`${where}: the sheet already says difficulty ${p.difficulty}; hold with a note to propose a change`);
     }
-    const id = nextProblemId(usedIds);
-    usedIds.push(id);
-    idForFp.set(dec.fingerprint, id);
-    ingests.push({ dec, index: hit.index, problem: { ...p, difficulty } });
+    const difficulty = p.difficulty ?? dec.difficulty ?? null;
+    if (difficulty === null && c.location === "inbox") errors.push(`${where}: no difficulty in the sheet or the decision`);
+    if (sec) files.push({ dec, c, sec, fam, difficulty });
   }
-
-  const resolveParent = (parent: string | undefined, where: string): string => {
-    if (!parent) return "";
-    if (parent.startsWith("fp:")) {
-      const id = idForFp.get(parent.slice(3));
-      if (!id) errors.push(`${where}: parent ${parent} is not ingested in this run`);
-      return id ?? "";
-    }
-    if (!bankIds.has(parent)) errors.push(`${where}: parent ${parent} is not in the bank`);
-    return parent;
-  };
-  const bankRows = ingests.map(({ dec, problem, index }) => ({
-    id: idForFp.get(dec.fingerprint)!,
-    question: problem.question,
-    answer: problem.answer,
-    solution: problem.solution,
-    difficulty: String(problem.difficulty),
-    concepts: dec.concepts.join(", "),
-    scenario: dec.scenario,
-    variation: dec.variation ?? problem.variation,
-    parent: resolveParent(dec.parent ?? problem.parent, `row ${index + 2}`),
-    source: problem.source,
-    added: today,
-  }));
 
   if (errors.length) {
     console.error("Decisions do not validate; nothing was written:");
@@ -497,84 +533,98 @@ async function apply(store: SheetStore, decisionsPath: string, dryRun: boolean) 
   }
 
   // --- writes, safest order first ----------------------------------------
-  // Metadata before problems (so the bank never references a missing slug),
-  // and the bank append before the inbox delete (so a crash in between leaves
-  // a duplicate that tomorrow's pull recognises by fingerprint, never a loss).
-  const tag = dryRun ? "[dry run] would" : "";
-  const log = (msg: string) => console.log(`${tag ? `${tag} ` : ""}${msg}`);
-
-  if (d.newConcepts?.length) {
-    await ensureColumns(store, s.conceptTab, CONCEPT_COLUMNS, ["slug", "name", "description", "aliases", "graph_concepts"], dryRun);
-    const rows = d.newConcepts.map((c) =>
-      toRow(s.conceptTab.map, {
-        slug: c.slug,
-        name: c.name,
-        description: c.description ?? "",
-        aliases: (c.aliases ?? []).join(", "),
-        graph_concepts: (c.graphConcepts ?? []).join(", "),
-      }),
-    );
+  // Metadata before problems (so no row names a section or family that does
+  // not exist yet), and the bank append before the inbox delete (so a crash
+  // in between leaves a copy tomorrow's pull recognises, never a loss).
+  if (d.newSections?.length) {
+    await ensureColumns(store, s.conceptTab, CONCEPT_COLUMNS, ["section", "topic", "subtopic", "example", "notes"], dryRun, log);
+    const rows = d.newSections.map((n) => toRow(s.conceptTab.map, { section: n.section, topic: n.topic, subtopic: n.subtopic, example: n.example ?? "", notes: n.notes ?? "" }));
     if (!dryRun) await store.append(s.conceptTab.title, rows);
-    log(`add concepts: ${d.newConcepts.map((c) => c.slug).join(", ")}`);
+    log(`add sections: ${d.newSections.map((n) => `${n.section} ${n.topic} › ${n.subtopic}`).join("; ")}`);
   }
-  if (d.newScenarios?.length) {
-    await ensureColumns(store, s.scenarioTab, SCENARIO_COLUMNS, ["slug", "name", "setup", "levers", "aliases", "parent"], dryRun);
-    const rows = d.newScenarios.map((sc) =>
-      toRow(s.scenarioTab.map, {
-        slug: sc.slug,
-        name: sc.name,
-        setup: sc.setup,
-        levers: (sc.levers ?? []).join(", "),
-        aliases: (sc.aliases ?? []).join(", "),
-        parent: sc.parent ?? "",
+  if (d.newFamilies?.length) {
+    await ensureColumns(store, s.familyTab, FAMILY_COLUMNS, ["category", "number", "meaning"], dryRun, log);
+    const rows = d.newFamilies.map((f) => toRow(s.familyTab.map, { category: f.category, number: f.number, meaning: f.meaning ?? "" }));
+    if (!dryRun) await store.append(s.familyTab.title, rows);
+    log(`add families: ${d.newFamilies.map((f) => `${f.category} (${f.number})`).join("; ")}`);
+  }
+  if (d.familyMeanings?.length) {
+    await ensureColumns(store, s.familyTab, FAMILY_COLUMNS, ["meaning"], dryRun, log);
+    for (const m of d.familyMeanings) {
+      const at = s.familyTab.rows.find(({ row }) => cell(row, s.familyTab.map, "category") === m.category)!;
+      if (!dryRun) await store.setCell(s.familyTab.title, at.index, s.familyTab.map.index.meaning!, m.meaning);
+      log(`set meaning of family "${m.category}": ${m.meaning}`);
+    }
+  }
+
+  const labels = (x: (typeof files)[number]) => ({
+    section: x.sec.section,
+    topic: x.sec.topic,
+    subtopic: x.sec.subtopic,
+    tags: joinTags(x.dec.tags ?? x.c.problem.tags),
+    family: x.fam?.category ?? "",
+    family_num: x.fam?.number ?? "",
+    difficulty: x.difficulty ?? "",
+  });
+
+  const fromInbox = files.filter((x) => x.c.location === "inbox");
+  if (fromInbox.length) {
+    const needed = Object.keys(PROBLEM_COLUMNS).filter((k) => k !== "review_note" && k !== "instructional") as ProblemKey[];
+    await ensureColumns(store, s.bank, PROBLEM_COLUMNS, needed, dryRun, log);
+    const rows = fromInbox.map((x) =>
+      toRow(s.bank.map, {
+        ...labels(x),
+        question: x.c.problem.question,
+        answer: answerCell(x.c.problem.answer),
+        solution: x.c.problem.solution,
+        instructional: x.c.problem.instructional,
+        source: x.c.problem.source,
       }),
     );
-    if (!dryRun) await store.append(s.scenarioTab.title, rows);
-    log(`add scenarios: ${d.newScenarios.map((sc) => sc.slug).join(", ")}`);
+    if (!dryRun) await store.append(s.bank.title, rows);
+    for (const x of fromInbox) log(`file into bank: ${label(x.sec)} · ${x.fam?.category ?? "(no family)"} · ${short(x.c.problem.question, 60)}`);
   }
-  if (d.scenarioUpdates?.length) {
-    await ensureColumns(store, s.scenarioTab, SCENARIO_COLUMNS, ["levers", "aliases"], dryRun);
-    for (const u of d.scenarioUpdates) {
-      const at = s.scenarioTab.rows.find(({ row }) => parseScenario(row, s.scenarioTab.map).slug === u.slug)!;
-      const current = parseScenario(at.row, s.scenarioTab.map);
-      for (const [key, have, add] of [
-        ["levers", current.levers, u.addLevers ?? []],
-        ["aliases", current.aliases, u.addAliases ?? []],
-      ] as const) {
-        const fresh = add.filter((x, i) => !have.some((h) => slugify(h) === slugify(x)) && add.indexOf(x) === i);
-        if (fresh.length === 0) continue;
-        const merged = [...have, ...fresh].join(", ");
-        if (!dryRun) await store.setCell(s.scenarioTab.title, at.index, s.scenarioTab.map.index[key]!, merged);
-        log(`extend ${key} of ${u.slug}: ${fresh.join(", ")}`);
-      }
+
+  // Unfiled bank rows are labelled in place, and only where the author left a
+  // cell blank: a hand-typed Family or Tags is never overwritten.
+  for (const x of files.filter((f) => f.c.location === "bank")) {
+    const row = s.bank.rows.find((r) => r.index === x.c.index)!.row;
+    const filled: string[] = [];
+    for (const [key, value] of Object.entries(labels(x)) as [ProblemKey, CellValue][]) {
+      const col = s.bank.map.index[key];
+      if (col === undefined || value === "" || cell(row, s.bank.map, key)) continue;
+      if (!dryRun) await store.setCell(s.bank.title, x.c.index, col, value);
+      filled.push(key);
     }
+    log(`label bank row ${sheetRow(x.c.index)}: ${label(x.sec)} · ${x.fam?.category ?? "(no family)"} (filled ${filled.join(", ") || "nothing"})`);
   }
 
-  if (bankRows.length) {
-    await ensureColumns(store, s.bank, PROBLEM_COLUMNS, Object.keys(PROBLEM_COLUMNS).filter((k) => k !== "review_note") as ProblemKey[], dryRun);
-    if (!dryRun) await store.append(s.bank.title, bankRows.map((r) => toRow(s.bank.map, r)));
-    for (const r of bankRows) log(`bank ${r.id} · ${r.scenario}${r.variation ? ` / ${r.variation}` : ""} · ${r.question.slice(0, 60)}`);
-  }
-
-  if (holds.length) {
-    await ensureColumns(store, s.inbox, PROBLEM_COLUMNS, ["review_note"], dryRun);
-    const col = s.inbox.map.index.review_note!;
-    for (const h of holds) {
+  for (const loc of ["inbox", "bank"] as const) {
+    const these = holds.filter((h) => h.c.location === loc);
+    if (!these.length) continue;
+    const tab = loc === "inbox" ? s.inbox : s.bank;
+    await ensureColumns(store, tab, PROBLEM_COLUMNS, ["review_note"], dryRun, log);
+    for (const h of these) {
       const note = `[${today}] ${h.note.trim()}`;
-      if (!dryRun) await store.setCell(s.inbox.title, h.index, col, note);
-      log(`hold row ${h.index + 2}: ${note}`);
+      if (!dryRun) await store.setCell(tab.title, h.c.index, tab.map.index.review_note!, note);
+      log(`hold ${loc} row ${sheetRow(h.c.index)}: ${note}`);
     }
   }
+  // A filed bank row's earlier hold note is resolved; clear it.
+  for (const x of files.filter((f) => f.c.location === "bank" && f.c.reviewNote)) {
+    if (!dryRun) await store.setCell(s.bank.title, x.c.index, s.bank.map.index.review_note!, "");
+  }
 
-  const remove = [...ingests.map((x) => x.index), ...alreadyBanked.map((x) => x.index)];
+  const remove = [...fromInbox.map((x) => x.c.index), ...staleInbox.map((c) => c.index)];
   if (remove.length) {
     if (!dryRun) await store.deleteRows(s.inbox.title, remove);
-    log(`remove ${remove.length} row(s) from "${s.inbox.title}"`);
+    log(`remove ${remove.length} filed row(s) from "${s.inbox.title}"`);
   }
-  for (const a of alreadyBanked) console.log(`row ${a.index + 2} was already in the bank as ${a.id}; removed from inbox`);
-  for (const fp of skipped) console.log(`skipped ${fp}: not in the inbox any more (edited or removed since pull)`);
-  const undecided = s.inboxProblems.filter((x) => !decided.has(x.problem.fingerprint));
-  for (const u of undecided) console.log(`row ${u.index + 2} [${u.problem.fingerprint}] has no decision; left in place`);
+  for (const c of staleInbox) console.log(`inbox row ${sheetRow(c.index)} was already filed in the bank; removed from inbox`);
+  for (const fp of skipped) console.log(`skipped ${fp}: no longer in the sheet as pulled (edited, filed or removed since)`);
+  for (const c of s.candidates.filter((x) => !decided.has(x.problem.fingerprint))) {
+    console.log(`${c.location} row ${sheetRow(c.index)} [${c.problem.fingerprint}] has no decision; left as is`);
+  }
 
   if (!dryRun) {
     const changed = writeMirror(await snapshot(store));
@@ -595,7 +645,10 @@ async function main() {
   });
   const [command] = positionals;
   const store = storeFromEnv(process.env, values.csv);
-  if (values.csv) MIRROR = join(values.csv, "_mirror");
+  if (values.csv) {
+    MIRROR = join(values.csv, "_mirror");
+    rmSync(MIRROR, { recursive: true, force: true });
+  }
   if (command === "pull") return pull(store);
   if (command === "apply") return apply(store, values.decisions ?? DECISIONS_FILE, values["dry-run"]!);
   console.error("usage: sync.ts pull|apply [--csv <dir>] [--decisions <file>] [--dry-run]");
