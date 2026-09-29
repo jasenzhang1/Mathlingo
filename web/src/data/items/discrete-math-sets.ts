@@ -35,10 +35,10 @@ export const discreteMathSetsItems: Item[] = [
     channels: ["typed", "spoken"],
     stem: "Which of the following is a correct De Morgan's law for sets?",
     choices: [
-      { id: "a", text: "(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ", correct: true },
+      { id: "a", text: "$(A \\cup B)^c = A^c \\cap B^c$", correct: true },
       {
         id: "b",
-        text: "(A ∪ B)ᶜ = Aᶜ ∪ Bᶜ",
+        text: "$(A \\cup B)^c = A^c \\cup B^c$",
         correct: false,
         misconception: {
           id: "demorgan-swap-union",
@@ -48,7 +48,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "(A ∩ B)ᶜ = Aᶜ ∩ Bᶜ",
+        text: "$(A \\cap B)^c = A^c \\cap B^c$",
         correct: false,
         misconception: {
           id: "demorgan-swap-intersection",
@@ -58,7 +58,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "Aᶜ ∩ Bᶜ = A ∪ B",
+        text: "$A^c \\cap B^c = A \\cup B$",
         correct: false,
         misconception: {
           id: "double-negation-dropped",
@@ -80,14 +80,14 @@ export const discreteMathSetsItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which of the following hold for *every* pair of sets A, B? Select all that apply.",
+    stem: "Which of the following hold for *every* pair of sets $A, B$? Select all that apply.",
     choices: [
-      { id: "a", text: "A ∩ ∅ = ∅", correct: true },
-      { id: "b", text: "A ∪ A = A", correct: true },
-      { id: "c", text: "A ⊆ A ∪ B", correct: true },
+      { id: "a", text: "$A \\cap \\emptyset = \\emptyset$", correct: true },
+      { id: "b", text: "$A \\cup A = A$", correct: true },
+      { id: "c", text: "$A \\subseteq A \\cup B$", correct: true },
       {
         id: "d",
-        text: "A ∖ B = B ∖ A",
+        text: "$A \\setminus B = B \\setminus A$",
         correct: false,
         misconception: {
           id: "set-difference-symmetric",
@@ -97,7 +97,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "e",
-        text: "A ∩ B = A ∪ B",
+        text: "$A \\cap B = A \\cup B$",
         correct: false,
         misconception: {
           id: "intersection-union-identified",
@@ -119,7 +119,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "30 students take French, 20 take Spanish, and 8 take both. How many take at least one of the two? Give a whole number.",
+    stem: "$30$ students take French, $20$ take Spanish, and $8$ take both. How many take at least one of the two? Give a whole number.",
     answerKey: 42,
     tolerance: 0.01,
     difficulty: -1.0,
@@ -135,7 +135,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Express A ∖ B using only ∩ and complement, then simplify (A ∖ B) ∪ (A ∩ B).",
+    stem: "Express $A \\setminus B$ using only $\\cap$ and complement, then simplify $(A \\setminus B) \\cup (A \\cap B)$.",
     rubric: {
       elements: [
         {
@@ -170,7 +170,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ directly from the definition of complement, using an element-wise if-and-only-if chain — not by citing the law.",
+    stem: "Prove $(A \\cup B)^c = A^c \\cap B^c$ directly from the definition of complement, using an element-wise if-and-only-if chain — not by citing the law.",
     rubric: {
       elements: [
         {
@@ -205,7 +205,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Why is the empty set ∅ a subset of every set A?",
+    stem: "Why is the empty set $\\emptyset a$ subset of every set $A$?",
     rubric: {
       elements: [
         {
@@ -236,7 +236,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "On a social network, A = Alice's friends, B = Bob's friends. Write set expressions for: people friends with both; friends with exactly one of the two; friends with neither.",
+      "On a social network, $A =$ Alice's friends, $B =$ Bob's friends. Write set expressions for: people friends with both; friends with exactly one of the two; friends with neither.",
     rubric: {
       elements: [
         { id: "both", description: "A ∩ B for friends with both.", weight: 1, required: true },
@@ -268,7 +268,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "To find P(at least one of A, B occurs), it's often easier to compute 1 − P(neither occurs). Explain, using set complement, why \"at least one of A or B\" and \"neither A nor B\" are complementary, and why the trick is often the easier route.",
+      "To find $P(\\text{at least one of }A, B\\text{ occurs})$, it's often easier to compute $1 - P(\\text{neither occurs})$. Explain, using set complement, why “at least one of $A$ or $B$” and “neither $A$ nor $B$” are complementary, and why the trick is often the easier route.",
     rubric: {
       elements: [
         {
@@ -306,12 +306,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "A = {1, 2}. Which statement correctly distinguishes ⊆ from ⊊ for A and B = {1, 2, 3}?",
+    stem: "$A = \\{1, 2\\}$. Which statement correctly distinguishes $\\subseteq$ from $\\subsetneq$ for $A$ and $B = \\{1, 2, 3\\}$?",
     choices: [
-      { id: "a", text: "A ⊆ B and A ⊊ B are both true, since A is contained in B and A ≠ B", correct: true },
+      { id: "a", text: "$A \\subseteq B$ and $A \\subsetneq B$ are both true, since $A$ is contained in $B$ and $A \\neq B$", correct: true },
       {
         id: "b",
-        text: "A ⊆ B is true but A ⊊ B is false, since ⊊ requires A and B to be equal",
+        text: "$A \\subseteq B$ is true but $A \\subsetneq B$ is false, since $\\subsetneq$ requires $A$ and $B$ to be equal",
         correct: false,
         misconception: {
           id: "proper-subset-requires-equal",
@@ -321,7 +321,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "A ⊆ B is false, since A has fewer elements than B",
+        text: "$A \\subseteq B$ is false, since $A$ has fewer elements than $B$",
         correct: false,
         misconception: {
           id: "subset-requires-equal-size",
@@ -331,7 +331,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "A ⊊ B is false, since 3 is not an element of A",
+        text: "$A \\subsetneq B$ is false, since $3$ is not an element of $A$",
         correct: false,
         misconception: {
           id: "proper-subset-elementwise-confusion",
@@ -353,12 +353,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Which set does {x ∈ ℤ : x² < 10} describe?",
+    stem: "Which set does $\\{x \\in \\mathbb{Z} : x^2 < 10\\}$ describe?",
     choices: [
-      { id: "a", text: "{−3, −2, −1, 0, 1, 2, 3}", correct: true },
+      { id: "a", text: "$\\{-3, -2, -1, 0, 1, 2, 3\\}$", correct: true },
       {
         id: "b",
-        text: "{0, 1, 2, 3}",
+        text: "$\\{0, 1, 2, 3\\}$",
         correct: false,
         misconception: {
           id: "negative-integers-dropped",
@@ -368,7 +368,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "{1, 2, 3}",
+        text: "$\\{1, 2, 3\\}$",
         correct: false,
         misconception: {
           id: "zero-and-negatives-both-dropped",
@@ -378,7 +378,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "{x : x < 10}",
+        text: "$\\{x : x < 10\\}$",
         correct: false,
         misconception: {
           id: "condition-misread-linear",
@@ -400,14 +400,14 @@ export const discreteMathSetsItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which of the following hold for *every* sets A, B, C? Select all that apply.",
+    stem: "Which of the following hold for *every* sets $A, B, C$? Select all that apply.",
     choices: [
-      { id: "a", text: "(A ∪ B) ∪ C = A ∪ (B ∪ C)", correct: true },
-      { id: "b", text: "A ∩ A = A", correct: true },
-      { id: "c", text: "A ∪ ∅ = A", correct: true },
+      { id: "a", text: "$(A \\cup B) \\cup C = A \\cup (B \\cup C)$", correct: true },
+      { id: "b", text: "$A \\cap A = A$", correct: true },
+      { id: "c", text: "$A \\cup \\emptyset = A$", correct: true },
       {
         id: "d",
-        text: "A ∖ (B ∖ C) = (A ∖ B) ∖ C",
+        text: "$A \\setminus (B \\setminus C) = (A \\setminus B) \\setminus C$",
         correct: false,
         misconception: {
           id: "set-difference-assumed-associative",
@@ -417,7 +417,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "e",
-        text: "A ∪ Aᶜ = ∅",
+        text: "$A \\cup A^c = \\emptyset$",
         correct: false,
         misconception: {
           id: "complement-union-confused-with-intersection",
@@ -440,7 +440,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "In a survey of 100 people: 40 like coffee, 35 like tea, 30 like juice, 15 like coffee and tea, 12 like coffee and juice, 10 like tea and juice, and 5 like all three. How many like at least one of the three? Give a whole number.",
+      "In a survey of $100$ people: $40$ like coffee, $35$ like tea, $30$ like juice, $15$ like coffee and tea, $12$ like coffee and juice, $10$ like tea and juice, and $5$ like all three. How many like at least one of the three? Give a whole number.",
     answerKey: 73,
     tolerance: 0.01,
     difficulty: -0.3,
@@ -456,7 +456,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "A and B are disjoint sets with |A| = 17 and |B| = 9. Compute |A ∪ B|. Give a whole number.",
+    stem: "$A$ and $B$ are disjoint sets with $|A| = 17$ and $|B| = 9$. Compute $|A \\cup B|$. Give a whole number.",
     answerKey: 26,
     tolerance: 0.01,
     difficulty: -1.2,
@@ -472,7 +472,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Simplify A ∪ (A ∩ B) to a single set with no operations, and name the identity used.",
+    stem: "Simplify $A \\cup (A \\cap B)$ to a single set with no operations, and name the identity used.",
     rubric: {
       elements: [
         {
@@ -503,7 +503,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A student claims A ∪ (B ∩ C) = (A ∪ B) ∩ C in general. Give a counterexample that disproves this and explain what the correct distributive law says instead.",
+      "A student claims $A \\cup (B \\cap C) = (A \\cup B) \\cap C$ in general. Give a counterexample that disproves this and explain what the correct distributive law says instead.",
     rubric: {
       elements: [
         {
@@ -539,7 +539,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain, in terms of overcounting, why |A ∪ B| = |A| + |B| − |A ∩ B| rather than simply |A| + |B|.",
+    stem: "Explain, in terms of overcounting, why $|A \\cup B| = |A| + |B| - |A \\cap B|$ rather than simply $|A| + |B|$.",
     rubric: {
       elements: [
         {
@@ -575,7 +575,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "An access-control system grants a user permission if they belong to Group A or Group B, but revokes it if they're in a third, banned group C. Write a set expression for the set of users who end up with permission, in terms of A, B, C.",
+      "An access-control system grants a user permission if they belong to Group $A$ or Group $B$, but revokes it if they're in a third, banned group $C$. Write a set expression for the set of users who end up with permission, in terms of $A, B, C$.",
     rubric: {
       elements: [
         {
@@ -611,7 +611,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A database's UNION, INTERSECT, and EXCEPT (or MINUS) operators on two same-shaped tables mirror ∪, ∩, and ∖ on sets of rows. Explain why UNION in SQL removing duplicate rows by default is essential for the analogy to hold, and what would go wrong if it kept duplicates.",
+      "A database's UNION, INTERSECT, and EXCEPT (or MINUS) operators on two same-shaped tables mirror $\\cup$, $\\cap$, and $\\setminus$ on sets of rows. Explain why UNION in SQL removing duplicate rows by default is essential for the analogy to hold, and what would go wrong if it kept duplicates.",
     rubric: {
       elements: [
         {
@@ -646,7 +646,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove that (A ∖ B) ∖ C = A ∖ (B ∪ C) for any sets A, B, C, by chasing an arbitrary element x through both sides.",
+    stem: "Prove that $(A \\setminus B) \\setminus C = A \\setminus (B \\cup C)$ for any sets $A, B, C$, by chasing an arbitrary element $x$ through both sides.",
     rubric: {
       elements: [
         {
@@ -683,7 +683,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A document search UI lets a user exclude documents tagged \"draft\" and separately exclude documents tagged \"archived,\" applying the two exclusion filters one after the other. Using the identity (A ∖ B) ∖ C = A ∖ (B ∪ C), explain why the two filters can be applied in either order and still return the same results.",
+      "A document search UI lets a user exclude documents tagged “draft” and separately exclude documents tagged “archived,” applying the two exclusion filters one after the other. Using the identity $(A \\setminus B) \\setminus C = A \\setminus (B \\cup C)$, explain why the two filters can be applied in either order and still return the same results.",
     rubric: {
       elements: [
         {
@@ -722,12 +722,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "S = {a, b}. Which of the following is *not* a valid element of P(S)?",
+    stem: "$S = \\{a, b\\}$. Which of the following is *not* a valid element of $P(S)$?",
     choices: [
-      { id: "a", text: "a", correct: true },
+      { id: "a", text: "$a$", correct: true },
       {
         id: "b",
-        text: "∅",
+        text: "$\\emptyset$",
         correct: false,
         misconception: {
           id: "empty-set-not-a-subset",
@@ -737,7 +737,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "{a}",
+        text: "$\\{a\\}$",
         correct: false,
         misconception: {
           id: "singleton-doubted",
@@ -747,7 +747,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "{a, b}",
+        text: "$\\{a, b\\}$",
         correct: false,
         misconception: {
           id: "whole-set-excluded",
@@ -769,14 +769,14 @@ export const discreteMathSetsItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "S = {x, y, z}. Which statements about P(S) are true? Select all that apply.",
+    stem: "$S = \\{x, y, z\\}$. Which statements about $P(S)$ are true? Select all that apply.",
     choices: [
-      { id: "a", text: "|P(S)| = 8", correct: true },
-      { id: "b", text: "∅ ∈ P(S)", correct: true },
-      { id: "c", text: "S ∈ P(S)", correct: true },
+      { id: "a", text: "$|P(S)| = 8$", correct: true },
+      { id: "b", text: "$\\emptyset \\in P(S)$", correct: true },
+      { id: "c", text: "$S \\in P(S)$", correct: true },
       {
         id: "d",
-        text: "{x, y, z, w} ∈ P(S)",
+        text: "$\\{x, y, z, w\\} \\in P(S)$",
         correct: false,
         misconception: {
           id: "element-outside-s-allowed",
@@ -786,7 +786,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "e",
-        text: "|P(S)| = 3",
+        text: "$|P(S)| = 3$",
         correct: false,
         misconception: {
           id: "power-set-size-confused-with-set-size",
@@ -808,7 +808,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "S = {1, 2, 3, 4}. Compute |P(S)|. Give a whole number.",
+    stem: "$S = \\{1, 2, 3, 4\\}$. Compute $|P(S)|$. Give a whole number.",
     answerKey: 16,
     tolerance: 0.01,
     difficulty: -0.8,
@@ -824,7 +824,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "List every 2-element subset of {1, 2, 3}, and say how many there are.",
+    stem: "List every $2$-element subset of $\\{1, 2, 3\\}$, and say how many there are.",
     rubric: {
       elements: [
         {
@@ -854,7 +854,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove |P(S)| = 2ⁿ for |S| = n by exhibiting a bijection between P(S) and the set of length-n binary strings.",
+    stem: "Prove $|P(S)| = 2^n$ for $|S| = n$ by exhibiting a bijection between $P(S)$ and the set of length-$n$ binary strings.",
     rubric: {
       elements: [
         {
@@ -895,7 +895,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain, from the definition of subset, why ∅ and S must always both be listed among the elements of P(S).",
+    stem: "Explain, from the definition of subset, why $\\emptyset$ and $S$ must always both be listed among the elements of $P(S)$.",
     rubric: {
       elements: [
         {
@@ -931,7 +931,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A system has n independent boolean feature flags. Explain why the number of distinct configurations equals |P(S)| for S = the set of flags, and why this matches the count of n-bit binary numbers.",
+      "A system has $n$ independent boolean feature flags. Explain why the number of distinct configurations equals $|P(S)|$ for $S =$ the set of flags, and why this matches the count of $n$-bit binary numbers.",
     rubric: {
       elements: [
         {
@@ -962,7 +962,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A settings menu has n independent toggle switches. Explain, using the power set, why testing every possible configuration becomes impractical even for a modest n like 30. `[verified: 2^30 ≈ 1.07 billion]`",
+      "A settings menu has $n$ independent toggle switches. Explain, using the power set, why testing every possible configuration becomes impractical even for a modest $n$ like $30$.",
     rubric: {
       elements: [
         {
@@ -998,12 +998,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "What is P(∅), the power set of the empty set?",
+    stem: "What is $P(\\emptyset)$, the power set of the empty set?",
     choices: [
-      { id: "a", text: "{∅} — a set containing one element, the empty set", correct: true },
+      { id: "a", text: "$\\{\\emptyset\\}$ — a set containing one element, the empty set", correct: true },
       {
         id: "b",
-        text: "∅ — the empty set itself, with no elements",
+        text: "$\\emptyset$ — the empty set itself, with no elements",
         correct: false,
         misconception: {
           id: "power-set-of-empty-identified-with-empty",
@@ -1013,7 +1013,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "P(∅) is undefined, since ∅ has no elements to form subsets from",
+        text: "$P(\\emptyset)$ is undefined, since $\\emptyset$ has no elements to form subsets from",
         correct: false,
         misconception: {
           id: "power-set-undefined-for-empty",
@@ -1023,7 +1023,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "{{∅}} — a set containing the set containing the empty set",
+        text: "$\\{\\{\\emptyset\\}\\}$ — a set containing the set containing the empty set",
         correct: false,
         misconception: {
           id: "extra-nesting-added",
@@ -1045,12 +1045,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "S = {1, 2, 3}. Which statement is correct?",
+    stem: "$S = \\{1, 2, 3\\}$. Which statement is correct?",
     choices: [
-      { id: "a", text: "{1, 2} ∈ P(S), and also {1, 2} ⊆ S", correct: true },
+      { id: "a", text: "$\\{1, 2\\} \\in P(S)$, and also $\\{1, 2\\} \\subseteq S$", correct: true },
       {
         id: "b",
-        text: "{1, 2} ∈ S, since 1 and 2 are both elements of S",
+        text: "$\\{1, 2\\} \\in S$, since $1$ and $2$ are both elements of $S$",
         correct: false,
         misconception: {
           id: "subset-treated-as-element-of-original-set",
@@ -1060,7 +1060,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "1 ∈ P(S), since 1 ∈ S",
+        text: "$1 \\in P(S)$, since $1 \\in S$",
         correct: false,
         misconception: {
           id: "raw-element-treated-as-power-set-element",
@@ -1070,7 +1070,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "{1, 2} ⊆ P(S), since 1 and 2 are elements of S",
+        text: "$\\{1, 2\\} \\subseteq P(S)$, since $1$ and $2$ are elements of $S$",
         correct: false,
         misconception: {
           id: "elements-of-s-confused-with-subsets-of-s",
@@ -1092,7 +1092,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "S = {a, b}. Compute |P(P(S))|. Give a whole number.",
+    stem: "$S = \\{a, b\\}$. Compute $|P(P(S))|$. Give a whole number.",
     answerKey: 16,
     tolerance: 0.01,
     difficulty: -0.2,
@@ -1108,7 +1108,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "S = {1, 2, 3, 4, 5, 6}. Compute |P(S)|. Give a whole number.",
+    stem: "$S = \\{1, 2, 3, 4, 5, 6\\}$. Compute $|P(S)|$. Give a whole number.",
     answerKey: 64,
     tolerance: 0.01,
     difficulty: -0.6,
@@ -1124,7 +1124,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "List every element of P({1, 2, 3}).",
+    stem: "List every element of $P(\\{1, 2, 3\\})$.",
     rubric: {
       elements: [
         {
@@ -1153,7 +1153,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "S has |P(S)| = 32. If one new element is added to S to form S′, what is |P(S′)|, and why?",
+    stem: "$S$ has $|P(S)| = 32$. If one new element is added to $S$ to form $S'$, what is $|P(S')|$, and why?",
     rubric: {
       elements: [
         { id: "finds-n", description: "Recovers |S| = 5 from 2⁵ = 32.", weight: 2, required: true },
@@ -1183,7 +1183,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain, without appealing to the binary-string bijection, why |P(S)| doubles each time a single new element is added to S.",
+    stem: "Explain, without appealing to the binary-string bijection, why $|P(S)|$ doubles each time a single new element is added to $S$.",
     rubric: {
       elements: [
         {
@@ -1218,7 +1218,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "A student says P(S) is 'ordered from smallest to largest subset, like a number line.' Explain what's wrong with this picture using S = {1, 2, 3}.",
+    stem: "A student says $P(S)$ is ‘ordered from smallest to largest subset, like a number line.’ Explain what's wrong with this picture using $S = \\{1, 2, 3\\}$.",
     rubric: {
       elements: [
         {
@@ -1254,7 +1254,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A pizza place offers 5 possible toppings, and a customer can choose any combination of them (including none, or all five). Explain why the number of distinct pizzas equals |P(S)| for S = the topping set, and compute how many distinct pizzas are possible.",
+      "A pizza place offers $5$ possible toppings, and a customer can choose any combination of them (including none, or all five). Explain why the number of distinct pizzas equals $|P(S)|$ for $S =$ the topping set, and compute how many distinct pizzas are possible.",
     rubric: {
       elements: [
         {
@@ -1290,7 +1290,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "In a file system's permission model, each permission set is a subset of {read, write, execute}, and one permission set 'covers' another if it's a superset. Explain why this permission structure is exactly P({read, write, execute}) ordered by ⊆, and why 'no permissions' and 'full permissions' are the unique minimum and maximum.",
+      "In a file system's permission model, each permission set is a subset of $\\{\\text{read, write, execute}\\}$, and one permission set ‘covers’ another if it's a superset. Explain why this permission structure is exactly $P(\\{\\text{read, write, execute}\\})$ ordered by $\\subseteq$, and why ‘no permissions’ and ‘full permissions’ are the unique minimum and maximum.",
     rubric: {
       elements: [
         {
@@ -1325,7 +1325,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Is P(A ∪ B) always equal to P(A) ∪ P(B)? Prove your answer, using a counterexample if the claim is false.",
+    stem: "Is $P(A \\cup B)$ always equal to $P(A) \\cup P(B)$? Prove your answer, using a counterexample if the claim is false.",
     rubric: {
       elements: [
         {
@@ -1361,7 +1361,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A team tests all on/off combinations of 5 independent feature flags before a release. Using the power set, explain how many test configurations that is, and why for 20 flags the team switches to testing only pairwise combinations instead of every configuration.",
+      "A team tests all on/off combinations of $5$ independent feature flags before a release. Using the power set, explain how many test configurations that is, and why for $20$ flags the team switches to testing only pairwise combinations instead of every configuration.",
     rubric: {
       elements: [
         {
@@ -1401,12 +1401,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Which is a correct description of A × B?",
+    stem: "Which is a correct description of $A \\times B$?",
     choices: [
-      { id: "a", text: "The set of ordered pairs (a, b) with a ∈ A and b ∈ B", correct: true },
+      { id: "a", text: "The set of ordered pairs $(a, b)$ with $a \\in A$ and $b \\in B$", correct: true },
       {
         id: "b",
-        text: "The set of unordered pairs {a, b} with a ∈ A and b ∈ B",
+        text: "The set of unordered pairs $\\{a, b\\}$ with $a \\in A$ and $b \\in B$",
         correct: false,
         misconception: {
           id: "product-treated-as-unordered",
@@ -1416,7 +1416,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "The set of elements that are in both A and B",
+        text: "The set of elements that are in both $A$ and $B$",
         correct: false,
         misconception: {
           id: "product-confused-with-intersection",
@@ -1426,7 +1426,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "A × B is only defined when A = B",
+        text: "$A \\times B$ is only defined when $A = B$",
         correct: false,
         misconception: {
           id: "product-requires-equal-sets",
@@ -1448,14 +1448,14 @@ export const discreteMathSetsItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For finite sets A and B, which statements are true? Select all that apply.",
+    stem: "For finite sets $A$ and $B$, which statements are true? Select all that apply.",
     choices: [
-      { id: "a", text: "|A × B| = |A| · |B|", correct: true },
-      { id: "b", text: "If A or B is empty, A × B = ∅", correct: true },
-      { id: "c", text: "(a, b) ≠ (b, a) in general", correct: true },
+      { id: "a", text: "$|A \\times B| = |A| \\cdot |B|$", correct: true },
+      { id: "b", text: "If $A$ or $B$ is empty, $A \\times B = \\emptyset$", correct: true },
+      { id: "c", text: "$(a, b) \\neq (b, a)$ in general", correct: true },
       {
         id: "d",
-        text: "A × B = B × A whenever A and B are finite",
+        text: "$A \\times B = B \\times A$ whenever $A$ and $B$ are finite",
         correct: false,
         misconception: {
           id: "product-assumed-commutative",
@@ -1465,7 +1465,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "e",
-        text: "A × B ⊆ A ∪ B",
+        text: "$A \\times B \\subseteq A \\cup B$",
         correct: false,
         misconception: {
           id: "product-elements-confused-with-union-elements",
@@ -1487,7 +1487,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "A = {1, 2, 3}, B = {x, y}. Compute |A × B|. Give a whole number.",
+    stem: "$A = \\{1, 2, 3\\}$, $B = \\{x, y\\}$. Compute $|A \\times B|$. Give a whole number.",
     answerKey: 6,
     tolerance: 0.01,
     difficulty: -0.8,
@@ -1503,7 +1503,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "List A × A for A = {0, 1}.",
+    stem: "List $A \\times A$ for $A = \\{0, 1\\}$.",
     rubric: {
       elements: [
         {
@@ -1533,7 +1533,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove |A × B| = |A| · |B| for finite sets, using the rule of product.",
+    stem: "Prove $|A \\times B| = |A| \\cdot |B|$ for finite sets, using the rule of product.",
     rubric: {
       elements: [
         {
@@ -1568,7 +1568,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why A × B is generally *not* equal to B × A, and give a small example where they differ.",
+    stem: "Explain why $A \\times B$ is generally *not* equal to $B \\times A$, and give a small example where they differ.",
     rubric: {
       elements: [
         {
@@ -1604,7 +1604,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A chessboard square is addressed by a file (a–h) and a rank (1–8). Explain why the 64 squares are naturally A × B for A = {a,…,h}, B = {1,…,8}, and why one coordinate alone is not enough to name a square.",
+      "A chessboard square is addressed by a file ($a$–$h$) and a rank ($1$–$8$). Explain why the $64$ squares are naturally $A \\times B$ for $A = \\{a,\\ldots,h\\}$, $B = \\{1,\\ldots,8\\}$, and why one coordinate alone is not enough to name a square.",
     rubric: {
       elements: [
         {
@@ -1640,7 +1640,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A database uses a composite primary key of (customer_id, product_id) to identify each order line. Explain why the set of valid keys is naturally a subset of Customers × Products, and why customer_id alone wouldn't uniquely identify a row.",
+      "A database uses a composite primary key of (`customer_id`, `product_id`) to identify each order line. Explain why the set of valid keys is naturally a subset of $\\text{Customers} \\times \\text{Products}$, and why `customer_id` alone wouldn't uniquely identify a row.",
     rubric: {
       elements: [
         {
@@ -1676,12 +1676,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Which is a correct description of A × B × C?",
+    stem: "Which is a correct description of $A \\times B \\times C$?",
     choices: [
-      { id: "a", text: "The set of ordered triples (a, b, c) with a∈A, b∈B, c∈C", correct: true },
+      { id: "a", text: "The set of ordered triples $(a, b, c)$ with $a\\in A$, $b\\in B$, $c\\in C$", correct: true },
       {
         id: "b",
-        text: "(A × B) ∪ (B × C)",
+        text: "$(A \\times B) \\cup (B \\times C)$",
         correct: false,
         misconception: {
           id: "triple-product-confused-with-union-of-pairs",
@@ -1691,7 +1691,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "The set of unordered triples {a, b, c}",
+        text: "The set of unordered triples $\\{a, b, c\\}$",
         correct: false,
         misconception: {
           id: "triple-product-unordered",
@@ -1701,7 +1701,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "Only defined when A, B, C are all the same set",
+        text: "Only defined when $A, B, C$ are all the same set",
         correct: false,
         misconception: {
           id: "product-requires-equal-sets-triple",
@@ -1723,12 +1723,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "A = {1, 2, 3}. What is A × ∅?",
+    stem: "$A = \\{1, 2, 3\\}$. What is $A \\times \\emptyset$?",
     choices: [
-      { id: "a", text: "∅", correct: true },
+      { id: "a", text: "$\\emptyset$", correct: true },
       {
         id: "b",
-        text: "A",
+        text: "$A$",
         correct: false,
         misconception: {
           id: "empty-factor-treated-as-identity",
@@ -1738,7 +1738,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "{(1,∅), (2,∅), (3,∅)}",
+        text: "$\\{(1,\\emptyset), (2,\\emptyset), (3,\\emptyset)\\}$",
         correct: false,
         misconception: {
           id: "empty-set-treated-as-element",
@@ -1770,14 +1770,14 @@ export const discreteMathSetsItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "A = {1,2}, B = {x,y}. Which of the following are subsets of A × B? Select all that apply.",
+    stem: "$A = \\{1,2\\}$, $B = \\{x,y\\}$. Which of the following are subsets of $A \\times B$? Select all that apply.",
     choices: [
-      { id: "a", text: "{(1,x), (2,y)}", correct: true },
-      { id: "b", text: "∅", correct: true },
-      { id: "c", text: "{(1,x), (1,y), (2,x), (2,y)}", correct: true },
+      { id: "a", text: "$\\{(1,x), (2,y)\\}$", correct: true },
+      { id: "b", text: "$\\emptyset$", correct: true },
+      { id: "c", text: "$\\{(1,x), (1,y), (2,x), (2,y)\\}$", correct: true },
       {
         id: "d",
-        text: "{(x,1)}",
+        text: "$\\{(x,1)\\}$",
         correct: false,
         misconception: {
           id: "pair-coordinates-reversed",
@@ -1787,7 +1787,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "e",
-        text: "{(1,1)}",
+        text: "$\\{(1,1)\\}$",
         correct: false,
         misconception: {
           id: "second-coordinate-drawn-from-wrong-set",
@@ -1809,7 +1809,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "A = {1,2}, B = {x,y,z}, C = {p,q}. Compute |A × B × C|. Give a whole number.",
+    stem: "$A = \\{1,2\\}$, $B = \\{x,y,z\\}$, $C = \\{p,q\\}$. Compute $|A \\times B \\times C|$. Give a whole number.",
     answerKey: 12,
     tolerance: 0.01,
     difficulty: -0.4,
@@ -1825,7 +1825,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "|A × B| = 42 and |A| = 6. What is |B|? Give a whole number.",
+    stem: "$|A \\times B| = 42$ and $|A| = 6$. What is $|B|$? Give a whole number.",
     answerKey: 7,
     tolerance: 0.01,
     difficulty: -0.9,
@@ -1841,7 +1841,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "A = {1,2,3}, B = {2,3}, C = {1,2}. Is (A ∖ B) × C the same set as A × C ∖ B × C? Compute both and compare.",
+    stem: "$A = \\{1,2,3\\}$, $B = \\{2,3\\}$, $C = \\{1,2\\}$. Is $(A \\setminus B) \\times C$ the same set as $A \\times C \\setminus B \\times C$? Compute both and compare.",
     rubric: {
       elements: [
         {
@@ -1877,7 +1877,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Prove that A × ∅ = ∅ for any set A, directly from the definition of Cartesian product.",
+    stem: "Prove that $A \\times \\emptyset = \\emptyset$ for any set $A$, directly from the definition of Cartesian product.",
     rubric: {
       elements: [
         {
@@ -1908,7 +1908,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "For |S| = n, explain why |S × S| = n² grows quadratically while |P(S)| = 2ⁿ grows exponentially, and why the two counting arguments look different even though both involve 'independent choices.'",
+      "For $|S| = n$, explain why $|S \\times S| = n^2$ grows quadratically while $|P(S)| = 2^n$ grows exponentially, and why the two counting arguments look different even though both involve ‘independent choices.’",
     rubric: {
       elements: [
         {
@@ -1944,7 +1944,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "An 8-bit RGB color is specified by three independent values (red, green, blue), each from {0,...,255}. Explain why the set of all colors is naturally a Cartesian product, and compute how many distinct colors are possible.",
+      "An $8$-bit RGB color is specified by three independent values (red, green, blue), each from $\\{0,\\ldots,255\\}$. Explain why the set of all colors is naturally a Cartesian product, and compute how many distinct colors are possible.",
     rubric: {
       elements: [
         {
@@ -1980,7 +1980,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A SQL CROSS JOIN of two tables produces every combination of a row from the first table with a row from the second. Explain why this is exactly the Cartesian product of the two tables' row sets, and why the result has |rows₁| × |rows₂| rows rather than |rows₁| + |rows₂|.",
+      "A SQL CROSS JOIN of two tables produces every combination of a row from the first table with a row from the second. Explain why this is exactly the Cartesian product of the two tables' row sets, and why the result has $|\\text{rows}_1| \\times |\\text{rows}_2|$ rows rather than $|\\text{rows}_1| + |\\text{rows}_2|$.",
     rubric: {
       elements: [
         {
@@ -2015,7 +2015,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove that A × (B ∪ C) = (A × B) ∪ (A × C) for any sets A, B, C, by chasing an arbitrary pair (x, y) through both sides.",
+    stem: "Prove that $A \\times (B \\cup C) = (A \\times B) \\cup (A \\times C)$ for any sets $A, B, C$, by chasing an arbitrary pair $(x, y)$ through both sides.",
     rubric: {
       elements: [
         {
@@ -2052,7 +2052,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "In a typed language, a record combining a field of type A and a field of type B has values that are pairs (a, b) with a ∈ A, b ∈ B. Explain why the space of possible values is A × B, and why swapping the field order to get B × A gives a different type even though it has exactly the same number of possible values.",
+      "In a typed language, a record combining a field of type $A$ and a field of type $B$ has values that are pairs $(a, b)$ with $a \\in A$, $b \\in B$. Explain why the space of possible values is $A \\times B$, and why swapping the field order to get $B \\times A$ gives a different type even though it has exactly the same number of possible values.",
     rubric: {
       elements: [
         {
@@ -2091,12 +2091,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "A = {1,2,3}, B = {4,5}. Which of these relations is *not* a function from A to B?",
+    stem: "$A = \\{1,2,3\\}$, $B = \\{4,5\\}$. Which of these relations is *not* a function from $A$ to $B$?",
     choices: [
-      { id: "a", text: "{(1,4), (1,5), (2,4), (3,5)}", correct: true },
+      { id: "a", text: "$\\{(1,4), (1,5), (2,4), (3,5)\\}$", correct: true },
       {
         id: "b",
-        text: "{(1,4), (2,4), (3,5)}",
+        text: "$\\{(1,4), (2,4), (3,5)\\}$",
         correct: false,
         misconception: {
           id: "surjective-conflated-with-function",
@@ -2106,7 +2106,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "{(1,4), (2,5), (3,4)}",
+        text: "$\\{(1,4), (2,5), (3,4)\\}$",
         correct: false,
         misconception: {
           id: "repeated-output-flagged",
@@ -2116,7 +2116,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "{(1,5), (2,5), (3,5)}",
+        text: "$\\{(1,5), (2,5), (3,5)\\}$",
         correct: false,
         misconception: {
           id: "constant-function-doubted",
@@ -2177,7 +2177,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Let f: {−2,−1,0,1,2} → ℤ be f(x) = x². Compute the image (range) of f.",
+    stem: "Let $f: \\{-2,-1,0,1,2\\} \\to \\mathbb{Z}$ be $f(x) = x^2$. Compute the image (range) of $f$.",
     rubric: {
       elements: [
         {
@@ -2212,7 +2212,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "R = {(1,a), (2,a), (3,b)} is a relation from {1,2,3} to {a,b}. Is R a function? If so, state its domain, codomain, and image.",
+    stem: "$R = \\{(1,a), (2,a), (3,b)\\}$ is a relation from $\\{1,2,3\\}$ to $\\{a,b\\}$. Is $R$ a function? If so, state its domain, codomain, and image.",
     rubric: {
       elements: [
         {
@@ -2248,7 +2248,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "In an arrow diagram from A to B, state exactly what must be true for the diagram to represent a function, and explain why a relation drawing two arrows out of some a ∈ A fails to be one.",
+      "In an arrow diagram from $A$ to $B$, state exactly what must be true for the diagram to represent a function, and explain why a relation drawing two arrows out of some $a \\in A$ fails to be one.",
     rubric: {
       elements: [
         {
@@ -2355,7 +2355,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A 'pure' function in programming must return the same output for a given input every time it is called. Explain why this is exactly the mathematical function property, and what it would mean for code to violate it.",
+      "A ‘pure’ function in programming must return the same output for a given input every time it is called. Explain why this is exactly the mathematical function property, and what it would mean for code to violate it.",
     rubric: {
       elements: [
         {
@@ -2391,12 +2391,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "A = {1,2,3}, B = {4,5}. Which of these relations is *not* a function from A to B?",
+    stem: "$A = \\{1,2,3\\}$, $B = \\{4,5\\}$. Which of these relations is *not* a function from $A$ to $B$?",
     choices: [
-      { id: "a", text: "{(1,4), (2,5)}", correct: true },
+      { id: "a", text: "$\\{(1,4), (2,5)\\}$", correct: true },
       {
         id: "b",
-        text: "{(1,4), (2,4), (3,4)}",
+        text: "$\\{(1,4), (2,4), (3,4)\\}$",
         correct: false,
         misconception: {
           id: "constant-function-doubted-2",
@@ -2406,7 +2406,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "{(1,5), (2,4), (3,5)}",
+        text: "$\\{(1,5), (2,4), (3,5)\\}$",
         correct: false,
         misconception: {
           id: "repeated-output-flagged-2",
@@ -2416,7 +2416,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "{(1,4), (2,5), (3,4)}",
+        text: "$\\{(1,4), (2,5), (3,4)\\}$",
         correct: false,
         misconception: {
           id: "surjective-conflated-with-function-2",
@@ -2438,12 +2438,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Formally, a relation R from A to B is:",
+    stem: "Formally, a relation $R$ from $A$ to $B$ is:",
     choices: [
-      { id: "a", text: "Any subset of A × B", correct: true },
+      { id: "a", text: "Any subset of $A \\times B$", correct: true },
       {
         id: "b",
-        text: "Any function from A to B",
+        text: "Any function from $A$ to $B$",
         correct: false,
         misconception: {
           id: "relation-defined-as-function",
@@ -2453,7 +2453,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "Any subset of A ∪ B",
+        text: "Any subset of $A \\cup B$",
         correct: false,
         misconception: {
           id: "relation-based-on-union",
@@ -2463,7 +2463,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "A rule that must relate every a ∈ A to at least one b ∈ B",
+        text: "A rule that must relate every $a \\in A$ to at least one $b \\in B$",
         correct: false,
         misconception: {
           id: "relation-requires-total-coverage",
@@ -2485,12 +2485,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "For f: A → B and g: B → C, the composition (g ∘ f)(a) means:",
+    stem: "For $f: A \\to B$ and $g: B \\to C$, the composition $(g \\circ f)(a)$ means:",
     choices: [
-      { id: "a", text: "g(f(a)) — apply f first, then g", correct: true },
+      { id: "a", text: "$g(f(a))$ — apply $f$ first, then $g$", correct: true },
       {
         id: "b",
-        text: "f(g(a)) — apply g first, then f",
+        text: "$f(g(a))$ — apply $g$ first, then $f$",
         correct: false,
         misconception: {
           id: "composition-order-reversed",
@@ -2500,7 +2500,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "g(a) · f(a), the product of the two outputs",
+        text: "$g(a) \\cdot f(a)$, the product of the two outputs",
         correct: false,
         misconception: {
           id: "composition-confused-with-multiplication",
@@ -2510,7 +2510,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "Only defined when f and g have the same domain",
+        text: "Only defined when $f$ and $g$ have the same domain",
         correct: false,
         misconception: {
           id: "composition-domain-requirement-wrong",
@@ -2532,7 +2532,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "f: ℤ → ℤ, f(x) = 2x + 1. g: ℤ → ℤ, g(x) = x − 3. Compute (g ∘ f)(4).",
+    stem: "$f: \\mathbb{Z} \\to \\mathbb{Z}$, $f(x) = 2x + 1$. $g: \\mathbb{Z} \\to \\mathbb{Z}$, $g(x) = x - 3$. Compute $(g \\circ f)(4)$.",
     answerKey: 6,
     tolerance: 0.01,
     difficulty: -0.6,
@@ -2548,7 +2548,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "A = {1,2}, B = {x,y}. How many distinct relations R ⊆ A × B are there in total (functions or not)? Give a whole number.",
+    stem: "$A = \\{1,2\\}$, $B = \\{x,y\\}$. How many distinct relations $R \\subseteq A \\times B$ are there in total (functions or not)? Give a whole number.",
     answerKey: 16,
     tolerance: 0.01,
     difficulty: 0.0,
@@ -2564,7 +2564,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "R = {(1,1), (2,2), (3,3), (1,2), (2,1)} on {1,2,3}. Is R reflexive? Is R symmetric?",
+    stem: "$R = \\{(1,1), (2,2), (3,3), (1,2), (2,1)\\}$ on $\\{1,2,3\\}$. Is $R$ reflexive? Is $R$ symmetric?",
     rubric: {
       elements: [
         { id: "reflexive-check", description: "Confirms reflexive: (1,1), (2,2), (3,3) are all present.", weight: 2, required: true },
@@ -2594,7 +2594,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why function composition is associative — (h ∘ g) ∘ f = h ∘ (g ∘ f) — by tracing what each side does to an arbitrary input a.",
+    stem: "Explain why function composition is associative — $(h \\circ g) \\circ f = h \\circ (g \\circ f)$ — by tracing what each side does to an arbitrary input $a$.",
     rubric: {
       elements: [
         {
@@ -2628,7 +2628,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "For a relation R ⊆ A × B, its inverse R⁻¹ ⊆ B × A always exists (just swap coordinates). Explain why the inverse of a *function* f: A → B is not always a function, even though the inverse of the relation always is a relation.",
+    stem: "For a relation $R \\subseteq A \\times B$, its inverse $R^{-1} \\subseteq B \\times A$ always exists (just swap coordinates). Explain why the inverse of a *function* $f: A \\to B$ is not always a function, even though the inverse of the relation always is a relation.",
     rubric: {
       elements: [
         {
@@ -2664,7 +2664,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A UI framework lets a single button register *multiple* callback functions for one click event, all of which run. Explain why the framework's internal 'event to callbacks' mapping is naturally a relation rather than a function, even though each individual callback is itself a function.",
+      "A UI framework lets a single button register *multiple* callback functions for one click event, all of which run. Explain why the framework's internal ‘event to callbacks’ mapping is naturally a relation rather than a function, even though each individual callback is itself a function.",
     rubric: {
       elements: [
         {
@@ -2700,7 +2700,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Memoization caches a function's outputs so repeated calls with the same input skip recomputation and just look up the stored value. Explain why memoization is only safe to apply to something that is a genuine mathematical function, and why memoizing something like 'current system time' would be a bug.",
+      "Memoization caches a function's outputs so repeated calls with the same input skip recomputation and just look up the stored value. Explain why memoization is only safe to apply to something that is a genuine mathematical function, and why memoizing something like ‘current system time’ would be a bug.",
     rubric: {
       elements: [
         {
@@ -2735,7 +2735,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Given functions f: A → B and g: B → C, prove that g∘f: A → C, defined by (g∘f)(x) = g(f(x)), is itself a function — that is, every x ∈ A gets exactly one output.",
+    stem: "Given functions $f: A \\to B$ and $g: B \\to C$, prove that $g\\circ f: A \\to C$, defined by $(g\\circ f)(x) = g(f(x))$, is itself a function — that is, every $x \\in A$ gets exactly one output.",
     rubric: {
       elements: [
         {
@@ -2857,7 +2857,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Define the equivalence class [a] of an element a under a relation ~, and state how equivalence classes relate to partitions of the set.",
+    stem: "Define the equivalence class $[a]$ of an element $a$ under a relation $\\sim$, and state how equivalence classes relate to partitions of the set.",
     rubric: {
       elements: [
         { id: "class-def", description: "[a] = {x : x ~ a} — everything related to a.", weight: 2, required: true },
@@ -2882,7 +2882,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Partition {0,1,2,3,4,5,6,7} into equivalence classes under 'congruent mod 3.' List the classes and verify they're disjoint and cover the set.",
+    stem: "Partition $\\{0,1,2,3,4,5,6,7\\}$ into equivalence classes under ‘congruent $\\bmod 3$.’ List the classes and verify they're disjoint and cover the set.",
     rubric: {
       elements: [
         {
@@ -2917,7 +2917,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "How many distinct equivalence classes does 'congruent mod 5' produce on the integers? Give a whole number.",
+    stem: "How many distinct equivalence classes does ‘congruent $\\bmod 5$’ produce on the integers? Give a whole number.",
     answerKey: 5,
     tolerance: 0.01,
     difficulty: -0.3,
@@ -2933,7 +2933,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove that 'congruent mod n' (a ≡ b mod n iff n | (a − b)) is an equivalence relation.",
+    stem: "Prove that ‘congruent $\\bmod n$’ ($a \\equiv b \\bmod n$ iff $n \\mid (a - b)$) is an equivalence relation.",
     rubric: {
       elements: [
         { id: "reflexive", description: "Reflexive: n | (a−a) = 0, true for every a since n divides 0.", weight: 2, required: true },
@@ -2964,7 +2964,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain precisely which property fails for ≤ on the integers as a candidate equivalence relation, and why failing even one of the three properties disqualifies the whole relation.",
+    stem: "Explain precisely which property fails for $\\leq$ on the integers as a candidate equivalence relation, and why failing even one of the three properties disqualifies the whole relation.",
     rubric: {
       elements: [
         {
@@ -3000,7 +3000,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Rational numbers are formally pairs of integers (a,b), b≠0, under (a,b) ~ (c,d) iff ad = bc. Explain why this construction lets 1/2 and 2/4 count as the same rational number without privileging one representation.",
+      "Rational numbers are formally pairs of integers $(a,b)$, $b\\neq 0$, under $(a,b) \\sim (c,d)$ iff $ad = bc$. Explain why this construction lets $1/2$ and $2/4$ count as the same rational number without privileging one representation.",
     rubric: {
       elements: [
         {
@@ -3076,12 +3076,12 @@ export const discreteMathSetsItems: Item[] = [
     choices: [
       {
         id: "a",
-        text: "\"is taller than\"",
+        text: "“is taller than”",
         correct: true,
       },
       {
         id: "b",
-        text: "\"has the same birth year as\"",
+        text: "“has the same birth year as”",
         correct: false,
         misconception: {
           id: "same-birth-year-doubted",
@@ -3091,7 +3091,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "\"lives in the same country as\"",
+        text: "“lives in the same country as”",
         correct: false,
         misconception: {
           id: "same-country-doubted",
@@ -3101,7 +3101,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "\"is the same person as\" (equality)",
+        text: "“is the same person as” (equality)",
         correct: false,
         misconception: {
           id: "equality-doubted-as-equivalence",
@@ -3123,9 +3123,9 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "The relation ~ on S defined by a ~ b iff a = b (equality itself) is:",
+    stem: "The relation $\\sim$ on $S$ defined by $a \\sim b$ iff $a = b$ (equality itself) is:",
     choices: [
-      { id: "a", text: "An equivalence relation, whose classes are exactly the singletons {s} for each s ∈ S", correct: true },
+      { id: "a", text: "An equivalence relation, whose classes are exactly the singletons $\\{s\\}$ for each $s \\in S$", correct: true },
       {
         id: "b",
         text: "Not an equivalence relation, since it's too restrictive to be useful",
@@ -3138,7 +3138,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "An equivalence relation with exactly one equivalence class containing all of S",
+        text: "An equivalence relation with exactly one equivalence class containing all of $S$",
         correct: false,
         misconception: {
           id: "equality-classes-miscounted",
@@ -3170,7 +3170,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Given a partition of S into disjoint blocks, describe the equivalence relation ~ it defines, and confirm ~ is reflexive, symmetric, and transitive using only the block structure.",
+    stem: "Given a partition of $S$ into disjoint blocks, describe the equivalence relation $\\sim$ it defines, and confirm $\\sim$ is reflexive, symmetric, and transitive using only the block structure.",
     rubric: {
       elements: [
         {
@@ -3205,7 +3205,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Under 'congruent mod 4' on the integers, which equivalence class (represented by the remainder 0, 1, 2, or 3) does 47 belong to? Give a whole number.",
+    stem: "Under ‘congruent $\\bmod 4$’ on the integers, which equivalence class (represented by the remainder $0, 1, 2$, or $3$) does $47$ belong to? Give a whole number.",
     answerKey: 3,
     tolerance: 0.01,
     difficulty: -0.5,
@@ -3221,7 +3221,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Define a ~ b on the integers by 'a and b have the same parity' (both even or both odd). List the equivalence classes and describe them.",
+    stem: "Define $a \\sim b$ on the integers by ‘$a$ and $b$ have the same parity’ (both even or both odd). List the equivalence classes and describe them.",
     rubric: {
       elements: [
         {
@@ -3251,7 +3251,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain what the 'quotient set' S/~ (read 'S mod ~') means, in terms of equivalence classes, and why |S/~| can be much smaller than |S|.",
+    stem: "Explain what the ‘quotient set’ $S/{\\sim}$ (read ‘$S$ mod $\\sim$’) means, in terms of equivalence classes, and why $|S/{\\sim}|$ can be much smaller than $|S|$.",
     rubric: {
       elements: [
         {
@@ -3287,7 +3287,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "The relation 'is within 1 year of age of' on a group of people is reflexive and symmetric, but fails to be an equivalence relation. Explain which property fails, with a concrete 3-person example.",
+      "The relation ‘is within $1$ year of age of’ on a group of people is reflexive and symmetric, but fails to be an equivalence relation. Explain which property fails, with a concrete $3$-person example.",
     rubric: {
       elements: [
         {
@@ -3323,7 +3323,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "In an undirected graph, define u ~ v iff there is a path from u to v (with u ~ u always holding). Explain why ~ is an equivalence relation, and why its equivalence classes are exactly the graph's connected components.",
+      "In an undirected graph, define $u \\sim v$ iff there is a path from $u$ to $v$ (with $u \\sim u$ always holding). Explain why $\\sim$ is an equivalence relation, and why its equivalence classes are exactly the graph's connected components.",
     rubric: {
       elements: [
         {
@@ -3359,7 +3359,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A build system groups source files into 'compilation units' such that recompiling one file in a unit requires recompiling every file in that unit. Explain why 'belongs to the same compilation unit as' should be designed as an equivalence relation, and what would go wrong for the build system if it weren't transitive.",
+      "A build system groups source files into ‘compilation units’ such that recompiling one file in a unit requires recompiling every file in that unit. Explain why ‘belongs to the same compilation unit as’ should be designed as an equivalence relation, and what would go wrong for the build system if it weren't transitive.",
     rubric: {
       elements: [
         {
@@ -3395,7 +3395,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "Let U be the set of all bit strings of length 0, 1, 2, or 3 (so |U| = 1 + 2 + 4 + 8 = 15). Define x ~ y iff x and y have the same length. How many equivalence classes does ~ partition U into?",
+      "Let $U$ be the set of all bit strings of length $0, 1, 2$, or $3$ (so $|U| = 1 + 2 + 4 + 8 = 15$). Define $x \\sim y$ iff $x$ and $y$ have the same length. How many equivalence classes does $\\sim$ partition $U$ into?",
     answerKey: 4,
     tolerance: 0.001,
     difficulty: -0.35,
@@ -3411,7 +3411,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Let ~ be an equivalence relation on a set S. Prove that for any a, b ∈ S, either [a] = [b] or [a] ∩ [b] = ∅ — any two equivalence classes are either identical or disjoint.",
+    stem: "Let $\\sim$ be an equivalence relation on a set $S$. Prove that for any $a, b \\in S$, either $[a] = [b]$ or $[a] \\cap [b] = \\emptyset$ — any two equivalence classes are either identical or disjoint.",
     rubric: {
       elements: [
         {
@@ -3452,7 +3452,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A sorting algorithm's comparator defines x ≈ y when compare(x, y) == 0 (\"tied\"). Explain why ≈ needs to be an equivalence relation for the promise of a stable sort — \"tied elements keep their original relative order\" — to make sense, and what can go wrong if a floating-point comparator makes ≈ non-transitive.",
+      "A sorting algorithm's comparator defines $x \\approx y$ when $\\text{compare}(x, y) = 0$ (“tied”). Explain why $\\approx$ needs to be an equivalence relation for the promise of a stable sort — “tied elements keep their original relative order” — to make sense, and what can go wrong if a floating-point comparator makes $\\approx$ non-transitive.",
     rubric: {
       elements: [
         {
@@ -3491,7 +3491,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "f: ℝ → ℝ, f(x) = x². This function is:",
+    stem: "$f: \\mathbb{R} \\to \\mathbb{R}$, $f(x) = x^2$. This function is:",
     choices: [
       { id: "a", text: "Neither injective nor surjective", correct: true },
       {
@@ -3538,14 +3538,14 @@ export const discreteMathSetsItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For f: A → B with A and B finite and |A| = |B|, which statements are true? Select all that apply.",
+    stem: "For $f: A \\to B$ with $A$ and $B$ finite and $|A| = |B|$, which statements are true? Select all that apply.",
     choices: [
-      { id: "a", text: "If f is injective, f is automatically surjective", correct: true },
-      { id: "b", text: "If f is surjective, f is automatically injective", correct: true },
-      { id: "c", text: "f is bijective if and only if f is injective", correct: true },
+      { id: "a", text: "If $f$ is injective, $f$ is automatically surjective", correct: true },
+      { id: "b", text: "If $f$ is surjective, $f$ is automatically injective", correct: true },
+      { id: "c", text: "$f$ is bijective if and only if $f$ is injective", correct: true },
       {
         id: "d",
-        text: "f can be injective but not surjective, even though |A| = |B|",
+        text: "$f$ can be injective but not surjective, even though $|A| = |B|$",
         correct: false,
         misconception: {
           id: "equal-size-injective-not-surjective",
@@ -3555,7 +3555,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "e",
-        text: "f can fail to be injective and still be considered bijective",
+        text: "$f$ can fail to be injective and still be considered bijective",
         correct: false,
         misconception: {
           id: "bijective-without-injective",
@@ -3577,7 +3577,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "f: {1,2,3} → {a,b,c,d}, f(1)=a, f(2)=b, f(3)=c. Is f injective? Is f surjective?",
+    stem: "$f: \\{1,2,3\\} \\to \\{a,b,c,d\\}$, $f(1)=a$, $f(2)=b$, $f(3)=c$. Is $f$ injective? Is $f$ surjective?",
     rubric: {
       elements: [
         { id: "injective-check", description: "Confirms injective: 1,2,3 map to distinct values a,b,c.", weight: 2, required: true },
@@ -3607,7 +3607,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "g: {1,2,3,4} → {1,2,3,4}, g(1)=2, g(2)=3, g(3)=4, g(4)=1. Classify g as injective, surjective, and/or bijective.",
+    stem: "$g: \\{1,2,3,4\\} \\to \\{1,2,3,4\\}$, $g(1)=2$, $g(2)=3$, $g(3)=4$, $g(4)=1$. Classify $g$ as injective, surjective, and/or bijective.",
     rubric: {
       elements: [
         {
@@ -3636,7 +3636,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove that if f: A → B is a bijection between finite sets, then |A| = |B|.",
+    stem: "Prove that if $f: A \\to B$ is a bijection between finite sets, then $|A| = |B|$.",
     rubric: {
       elements: [
         {
@@ -3672,7 +3672,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "f(x) = x² fails to be injective or surjective as a function ℝ → ℝ. Explain why the same rule, restricted to domain and codomain [0, ∞), becomes a bijection.",
+    stem: "$f(x) = x^2$ fails to be injective or surjective as a function $\\mathbb{R} \\to \\mathbb{R}$. Explain why the same rule, restricted to domain and codomain $[0, \\infty)$, becomes a bijection.",
     rubric: {
       elements: [
         {
@@ -3708,7 +3708,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Explain how 'there exists a bijection A → B' generalizes '|A| = |B|' in a way that still works when A and B are infinite.",
+      "Explain how ‘there exists a bijection $A \\to B$’ generalizes ‘$|A| = |B|$’ in a way that still works when $A$ and $B$ are infinite.",
     rubric: {
       elements: [
         {
@@ -3780,7 +3780,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "f: ℝ → ℝ, f(x) = eˣ. This function is:",
+    stem: "$f: \\mathbb{R} \\to \\mathbb{R}$, $f(x) = e^x$. This function is:",
     choices: [
       { id: "a", text: "Injective only", correct: true },
       {
@@ -3827,12 +3827,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "f: A → B with A, B finite and |A| > |B|. Which statement must be true?",
+    stem: "$f: A \\to B$ with $A, B$ finite and $|A| > |B|$. Which statement must be true?",
     choices: [
-      { id: "a", text: "f cannot be injective", correct: true },
+      { id: "a", text: "$f$ cannot be injective", correct: true },
       {
         id: "b",
-        text: "f cannot be a function at all",
+        text: "$f$ cannot be a function at all",
         correct: false,
         misconception: {
           id: "size-mismatch-blocks-function-existence",
@@ -3842,7 +3842,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "f must be surjective",
+        text: "$f$ must be surjective",
         correct: false,
         misconception: {
           id: "size-mismatch-forces-surjective",
@@ -3852,7 +3852,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "f must be neither injective nor surjective",
+        text: "$f$ must be neither injective nor surjective",
         correct: false,
         misconception: {
           id: "size-mismatch-overclaimed",
@@ -3874,14 +3874,14 @@ export const discreteMathSetsItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For any set S, the identity function id: S → S, id(x) = x. Which statements are true? Select all that apply.",
+    stem: "For any set $S$, the identity function $\\text{id}: S \\to S$, $\\text{id}(x) = x$. Which statements are true? Select all that apply.",
     choices: [
-      { id: "a", text: "id is injective", correct: true },
-      { id: "b", text: "id is surjective", correct: true },
-      { id: "c", text: "id is bijective", correct: true },
+      { id: "a", text: "$\\text{id}$ is injective", correct: true },
+      { id: "b", text: "$\\text{id}$ is surjective", correct: true },
+      { id: "c", text: "$\\text{id}$ is bijective", correct: true },
       {
         id: "d",
-        text: "id is injective only when S is finite",
+        text: "id is injective only when $S$ is finite",
         correct: false,
         misconception: {
           id: "identity-injectivity-tied-to-finiteness",
@@ -3891,7 +3891,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "e",
-        text: "id is not surjective when S is infinite",
+        text: "$\\text{id}$ is not surjective when $S$ is infinite",
         correct: false,
         misconception: {
           id: "identity-surjectivity-doubted-infinite",
@@ -3913,7 +3913,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "How many injective functions f: {1,2,3} → {a,b,c,d,e} are there? Give a whole number.",
+    stem: "How many injective functions $f: \\{1,2,3\\} \\to \\{a,b,c,d,e\\}$ are there? Give a whole number.",
     answerKey: 60,
     tolerance: 0.01,
     difficulty: 0.3,
@@ -3929,7 +3929,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "f: ℤ → ℤ, f(x) = x + 5. Classify f as injective, surjective, and/or bijective, and justify each.",
+    stem: "$f: \\mathbb{Z} \\to \\mathbb{Z}$, $f(x) = x + 5$. Classify $f$ as injective, surjective, and/or bijective, and justify each.",
     rubric: {
       elements: [
         {
@@ -3965,7 +3965,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove that if f: A → B and g: B → C are both injective, then g ∘ f: A → C is injective.",
+    stem: "Prove that if $f: A \\to B$ and $g: B \\to C$ are both injective, then $g \\circ f$: $A \\to C$ is injective.",
     rubric: {
       elements: [
         {
@@ -4007,7 +4007,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain, in general terms (not a specific formula), how you would construct a function f: A → B that is surjective but not injective whenever |A| > |B| ≥ 1, and why |A| > |B| is exactly what makes injectivity impossible while surjectivity remains achievable.",
+      "Explain, in general terms (not a specific formula), how you would construct a function $f: A \\to B$ that is surjective but not injective whenever $|A| > |B| \\geq 1$, and why $|A| > |B|$ is exactly what makes injectivity impossible while surjectivity remains achievable.",
     rubric: {
       elements: [
         {
@@ -4043,7 +4043,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A hash function maps an unbounded set of possible inputs (e.g. all strings) to a fixed-size set of hash codes (e.g. 2⁶⁴ values). Explain why such a hash function can never be injective, and why 'collisions' are therefore an unavoidable fact rather than a design flaw.",
+      "A hash function maps an unbounded set of possible inputs (e.g. all strings) to a fixed-size set of hash codes (e.g. $2^{64}$ values). Explain why such a hash function can never be injective, and why ‘collisions’ are therefore an unavoidable fact rather than a design flaw.",
     rubric: {
       elements: [
         {
@@ -4114,7 +4114,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "How many surjective (onto) functions are there from a 3-element set to a 2-element set?",
+    stem: "How many surjective (onto) functions are there from a $3$-element set to a $2$-element set?",
     answerKey: 6,
     tolerance: 0.001,
     difficulty: -0.3,
@@ -4130,7 +4130,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Let f: A → B and g: B → C both be bijections. Prove that g∘f: A → C is also a bijection.",
+    stem: "Let $f: A \\to B$ and $g: B \\to C$ both be bijections. Prove that $g\\circ f: A \\to C$ is also a bijection.",
     rubric: {
       elements: [
         {
@@ -4208,10 +4208,10 @@ export const discreteMathSetsItems: Item[] = [
     channels: ["typed", "spoken"],
     stem: "Which of the following sets is *not* countable?",
     choices: [
-      { id: "a", text: "ℝ, the real numbers", correct: true },
+      { id: "a", text: "$\\mathbb{R}$, the real numbers", correct: true },
       {
         id: "b",
-        text: "ℚ, the rational numbers",
+        text: "$\\mathbb{Q}$, the rational numbers",
         correct: false,
         misconception: {
           id: "density-mistaken-for-uncountability",
@@ -4221,7 +4221,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "ℤ, the integers",
+        text: "$\\mathbb{Z}$, the integers",
         correct: false,
         misconception: {
           id: "negatives-assumed-uncountable",
@@ -4253,7 +4253,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Define what it means for A and B to have the same cardinality, and define countably infinite.",
+    stem: "Define what it means for $A$ and $B$ to have the same cardinality, and define countably infinite.",
     rubric: {
       elements: [
         { id: "same-cardinality", description: "A and B have the same cardinality iff there exists a bijection A → B.", weight: 2, required: true },
@@ -4278,7 +4278,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Exhibit an explicit bijection f: ℕ → ℤ (ℕ = {0,1,2,…}), and verify it on n = 0,1,2,3,4.",
+    stem: "Exhibit an explicit bijection $f: \\mathbb{N} \\to \\mathbb{Z} (\\mathbb{N} = \\{0,1,2,\\ldots\\})$, and verify it on $n = 0$,$1,2,3,4$.",
     rubric: {
       elements: [
         {
@@ -4313,7 +4313,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Is the set of even natural numbers countable? If so, exhibit the bijection with ℕ and its formula.",
+    stem: "Is the set of even natural numbers countable? If so, exhibit the bijection with $\\mathbb{N}$ and its formula.",
     rubric: {
       elements: [
         { id: "answers-yes", description: "States the even naturals are countable.", weight: 1, required: true },
@@ -4343,7 +4343,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove ℕ × ℕ is countable by describing an explicit enumeration, and explain why the construction guarantees every pair is eventually reached.",
+    stem: "Prove $\\mathbb{N} \\times \\mathbb{N}$ is countable by describing an explicit enumeration, and explain why the construction guarantees every pair is eventually reached.",
     rubric: {
       elements: [
         {
@@ -4378,7 +4378,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why 'ℝ has infinitely many elements just like ℕ' is not enough to conclude ℕ and ℝ have the same cardinality, and how the diagonal argument closes that logical gap.",
+    stem: "Explain why ‘$\\mathbb{R}$ has infinitely many elements just like $\\mathbb{N}$’ is not enough to conclude $\\mathbb{N}$ and $\\mathbb{R}$ have the same cardinality, and how the diagonal argument closes that logical gap.",
     rubric: {
       elements: [
         {
@@ -4414,7 +4414,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Give the informal Cantor diagonal argument for why the real numbers in [0,1] cannot be listed in a sequence, i.e. are uncountable. This is intuition-level, not a fully rigorous proof.",
+      "Give the informal Cantor diagonal argument for why the real numbers in $[0,1]$ cannot be listed in a sequence, i.e. are uncountable. This is intuition-level, not a fully rigorous proof.",
     rubric: {
       elements: [
         {
@@ -4497,7 +4497,7 @@ export const discreteMathSetsItems: Item[] = [
       { id: "a", text: "A finite set's elements can be listed and the listing terminates; a countably infinite set's listing goes on forever but still reaches every element", correct: true },
       {
         id: "b",
-        text: "Both finite and countably infinite sets can always be put in bijection with ℕ",
+        text: "Both finite and countably infinite sets can always be put in bijection with $\\mathbb{N}$",
         correct: false,
         misconception: {
           id: "finite-sets-bijected-with-n",
@@ -4507,7 +4507,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "Countably infinite means the set is 'smaller than' any finite set",
+        text: "Countably infinite means the set is ‘smaller than’ any finite set",
         correct: false,
         misconception: {
           id: "countably-infinite-thought-smaller",
@@ -4586,12 +4586,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Cantor's theorem states that for any set S:",
+    stem: "Cantor's theorem states that for any set $S$:",
     choices: [
-      { id: "a", text: "There is no surjection from S onto P(S), so |P(S)| is strictly greater than |S|", correct: true },
+      { id: "a", text: "There is no surjection from $S$ onto $P(S)$, so $|P(S)|$ is strictly greater than $|S|$", correct: true },
       {
         id: "b",
-        text: "|P(S)| = |S| for every set S, finite or infinite",
+        text: "$|P(S)| = |S|$ for every set $S$, finite or infinite",
         correct: false,
         misconception: {
           id: "cantor-theorem-negated",
@@ -4633,7 +4633,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Sketch, at the level of a strategy (not full rigor), how the positive rationals ℚ⁺ can be enumerated in a single sequence, reusing the ℕ×ℕ diagonal idea.",
+    stem: "Sketch, at the level of a strategy (not full rigor), how the positive rationals $\\mathbb{Q}^+$ can be enumerated in a single sequence, reusing the $\\mathbb{N} \\times \\mathbb{N}$ diagonal idea.",
     rubric: {
       elements: [
         {
@@ -4668,7 +4668,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Is ℕ ∪ {−1, −2, −3} countable? If so, describe (informally) a bijection with ℕ.",
+    stem: "Is $\\mathbb{N} \\cup \\{-1, -2, -3\\}$ countable? If so, describe (informally) a bijection with $\\mathbb{N}$.",
     rubric: {
       elements: [
         { id: "answers-yes", description: "States the set is countable (countably infinite).", weight: 1, required: true },
@@ -4699,7 +4699,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "'Hilbert's Hotel' has a room for every n ∈ ℕ, all occupied. A new guest arrives. Describe a reassignment of guests to rooms that fits the new guest in, and give the formula for where the guest currently in room n moves.",
+      "‘Hilbert's Hotel’ has a room for every $n \\in \\mathbb{N}$, all occupied. A new guest arrives. Describe a reassignment of guests to rooms that fits the new guest in, and give the formula for where the guest currently in room $n$ moves.",
     rubric: {
       elements: [
         {
@@ -4730,7 +4730,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Prove Cantor's theorem: for any set S, there is no surjection f: S → P(S). (Diagonal argument: consider D = {x ∈ S : x ∉ f(x)}.)",
+      "Prove Cantor's theorem: for any set $S$, there is no surjection $f: S \\to P(S)$. (Diagonal argument: consider $D = \\{x \\in S : x \\notin f(x)\\}$.)",
     rubric: {
       elements: [
         {
@@ -4771,7 +4771,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "For finite S with |S| = n, |P(S)| = 2ⁿ > n always. Explain why Cantor's theorem (proved for arbitrary, possibly infinite, S) is a genuine generalization of this finite fact, rather than a separate coincidence.",
+    stem: "For finite $S$ with $|S| = n$, $|P(S)| = 2^n > n$ always. Explain why Cantor's theorem (proved for arbitrary, possibly infinite, $S$) is a genuine generalization of this finite fact, rather than a separate coincidence.",
     rubric: {
       elements: [
         {
@@ -4807,7 +4807,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "The Cantor–Schröder–Bernstein theorem says: if there's an injection A → B and an injection B → A, then |A| = |B| (a bijection exists). Explain why this is a useful shortcut compared to constructing a single bijection directly, without proving the theorem itself.",
+      "The Cantor–Schröder–Bernstein theorem says: if there's an injection $A \\to B$ and an injection $B \\to A$, then $|A| = |B|$ (a bijection exists). Explain why this is a useful shortcut compared to constructing a single bijection directly, without proving the theorem itself.",
     rubric: {
       elements: [
         {
@@ -4843,7 +4843,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Using Cantor's theorem, explain why there is no 'largest infinity' — i.e. why, given any set S (however large), a strictly larger set can always be produced.",
+      "Using Cantor's theorem, explain why there is no ‘largest infinity’ — i.e. why, given any set $S$ (however large), a strictly larger set can always be produced.",
     rubric: {
       elements: [
         {
@@ -4879,7 +4879,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The set of all functions ℕ → ℕ is uncountable, but the set of all computer programs (finite strings) is countable. Explain what this cardinality mismatch implies about whether every function ℕ → ℕ can be computed by some program.",
+      "The set of all functions $\\mathbb{N} \\to \\mathbb{N}$ is uncountable, but the set of all computer programs (finite strings) is countable. Explain what this cardinality mismatch implies about whether every function $\\mathbb{N} \\to \\mathbb{N}$ can be computed by some program.",
     rubric: {
       elements: [
         {
@@ -4954,7 +4954,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "State the double-inclusion method for proving two sets A and B are equal.",
+    stem: "State the double-inclusion method for proving two sets $A$ and $B$ are equal.",
     rubric: {
       elements: [
         {
@@ -4979,12 +4979,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "To prove A ⊆ B by element-chasing, the proof must begin:",
+    stem: "To prove $A \\subseteq B$ by element-chasing, the proof must begin:",
     choices: [
-      { id: "a", text: "\"Let x be an arbitrary element of A\" — then show x ∈ B", correct: true },
+      { id: "a", text: "“Let $x$ be an arbitrary element of A” — then show $x \\in B$", correct: true },
       {
         id: "b",
-        text: "\"Let x ∈ A ∩ B\"",
+        text: "“Let $x \\in A \\cap B$”",
         correct: false,
         misconception: {
           id: "starts-from-conclusion",
@@ -4994,7 +4994,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "\"Assume A = B\"",
+        text: "“Assume $A = B$”",
         correct: false,
         misconception: {
           id: "circular-assumption",
@@ -5004,7 +5004,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "\"Pick the largest element of A\"",
+        text: "“Pick the largest element of A”",
         correct: false,
         misconception: {
           id: "sets-assumed-ordered",
@@ -5026,7 +5026,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "A={1,2,3}, B={2,3,4}, C={3,4,5}. Verify A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C) numerically for this instance.",
+    stem: "$A=\\{1,2,3\\}$, $B=\\{2,3,4\\}$, $C=\\{3,4,5\\}$. Verify $A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)$ numerically for this instance.",
     rubric: {
       elements: [
         {
@@ -5062,7 +5062,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Universe U = {1,...,6}, A = {1,2,3}, B = {3,4,5}. Verify (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ numerically for this instance.",
+    stem: "Universe $U = \\{1,\\ldots,6\\}$, $A = \\{1,2,3\\}$, $B = \\{3,4,5\\}$. Verify $(A \\cup B)^c = A^c \\cap B^c$ numerically for this instance.",
     rubric: {
       elements: [
         {
@@ -5098,7 +5098,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C) for all sets A, B, C, by double inclusion with element-chasing in both directions.",
+    stem: "Prove $A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)$ for all sets $A, B, C$, by double inclusion with element-chasing in both directions.",
     rubric: {
       elements: [
         {
@@ -5138,7 +5138,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ by an element-wise if-and-only-if chain, and note which logical law each step uses.",
+    stem: "Prove $(A \\cup B)^c = A^c \\cap B^c by$ an element-wise if-and-only-if chain, and note which logical law each step uses.",
     rubric: {
       elements: [
         {
@@ -5175,7 +5175,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why proving A ⊆ B by element-chasing is a direct proof in the 'hypothesis ⟹ conclusion' shape, and why double inclusion for A = B is exactly two such proofs chained together.",
+      "Explain why proving $A \\subseteq B$ by element-chasing is a direct proof in the ‘hypothesis $\\implies$ conclusion’ shape, and why double inclusion for $A = B$ is exactly two such proofs chained together.",
     rubric: {
       elements: [
         {
@@ -5211,7 +5211,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "Prove A ⊆ B if and only if A ∩ B = A, using double inclusion, and explain why restating a subset claim as a set-equality claim is often convenient in later proofs.",
+      "Prove $A \\subseteq B$ if and only if $A \\cap B = A$, using double inclusion, and explain why restating a subset claim as a set-equality claim is often convenient in later proofs.",
     rubric: {
       elements: [
         {
@@ -5253,10 +5253,10 @@ export const discreteMathSetsItems: Item[] = [
     channels: ["typed", "spoken"],
     stem: "Which claim is double inclusion the *right* tool to prove?",
     choices: [
-      { id: "a", text: "A ∩ B = A ∪ (A ∩ B) ∩ A, an equality between two set expressions", correct: true },
+      { id: "a", text: "$A \\cap B = A \\cup (A \\cap B) \\cap A$, an equality between two set expressions", correct: true },
       {
         id: "b",
-        text: "|A| = 5, a claim about a set's size",
+        text: "$|A| = 5$, a claim about a set's size",
         correct: false,
         misconception: {
           id: "double-inclusion-applied-to-size-claim",
@@ -5266,7 +5266,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "x ∈ A, a single membership claim about one element",
+        text: "$x \\in A$, a single membership claim about one element",
         correct: false,
         misconception: {
           id: "double-inclusion-applied-to-single-membership",
@@ -5276,7 +5276,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "A is finite",
+        text: "$A$ is finite",
         correct: false,
         misconception: {
           id: "double-inclusion-applied-to-finiteness",
@@ -5298,12 +5298,12 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "After proving A ⊆ B by element-chasing, the second half of a double-inclusion proof of A = B must show:",
+    stem: "After proving $A \\subseteq B$ by element-chasing, the second half of a double-inclusion proof of $A = B$ must show:",
     choices: [
-      { id: "a", text: "B ⊆ A, by letting x be an arbitrary element of B and showing x ∈ A", correct: true },
+      { id: "a", text: "$B \\subseteq A$, by letting $x$ be an arbitrary element of $B$ and showing $x \\in A$", correct: true },
       {
         id: "b",
-        text: "A ⊆ B again, using a different method, as a sanity check",
+        text: "$A \\subseteq B$ again, using a different method, as a sanity check",
         correct: false,
         misconception: {
           id: "second-direction-duplicates-first",
@@ -5313,7 +5313,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "c",
-        text: "That A and B have the same number of elements",
+        text: "That $A$ and $B$ have the same number of elements",
         correct: false,
         misconception: {
           id: "equality-reduced-to-counting",
@@ -5323,7 +5323,7 @@ export const discreteMathSetsItems: Item[] = [
       },
       {
         id: "d",
-        text: "That A ∩ B = ∅",
+        text: "That $A \\cap B = \\emptyset$",
         correct: false,
         misconception: {
           id: "equality-confused-with-disjointness",
@@ -5392,7 +5392,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "A={1,2}, B={2,3}, C={3,4}. Verify (A ∪ B) ∪ C = A ∪ (B ∪ C) numerically for this instance.",
+    stem: "$A=\\{1,2\\}$, $B=\\{2,3\\}$, $C=\\{3,4\\}$. Verify $(A \\cup B) \\cup C = A \\cup (B \\cup C)$ numerically for this instance.",
     rubric: {
       elements: [
         {
@@ -5428,7 +5428,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Find sets A, B, C where A ∖ (B ∖ C) ≠ (A ∖ B) ∖ C, showing set difference is not associative.",
+    stem: "Find sets $A, B, C$ where $A \\setminus (B \\setminus C) \\neq (A \\setminus B) \\setminus C$, showing set difference is not associative.",
     rubric: {
       elements: [
         {
@@ -5457,7 +5457,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ by double inclusion with element-chasing in both directions (do not just cite De Morgan's law).",
+    stem: "Prove $(A \\cap B)^c = A^c \\cup B^c by$ double inclusion with element-chasing in both directions (do not just cite De Morgan's law).",
     rubric: {
       elements: [
         {
@@ -5528,7 +5528,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A query optimizer wants to prove that filtering rows with (condition1 AND condition2) OR condition3 always selects the same rows as (condition1 OR condition3) AND (condition2 OR condition3), so it can safely rewrite one into the other. Explain how this is exactly a set-equality claim, provable by double inclusion on the row sets each condition selects.",
+      "A query optimizer wants to prove that filtering rows with `(condition1 AND condition2) OR condition3` always selects the same rows as `(condition1 OR condition3) AND (condition2 OR condition3)`, so it can safely rewrite one into the other. Explain how this is exactly a set-equality claim, provable by double inclusion on the row sets each condition selects.",
     rubric: {
       elements: [
         {
@@ -5564,7 +5564,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "In a type system, one might view a type T as the set of all values having that type, and subtyping S <: T as S ⊆ T. Explain, using this correspondence, why proving 'types S and T are equivalent' (S <: T and T <: S) is exactly a double-inclusion argument, and why proving subtyping only one way is not enough to conclude equivalence.",
+      "In a type system, one might view a type $T$ as the set of all values having that type, and subtyping $S <$: $T$ as $S \\subseteq T$. Explain, using this correspondence, why proving ‘types $S$ and $T$ are equivalent’ ($S <$: $T$ and $T <$: $S$) is exactly a double-inclusion argument, and why proving subtyping only one way is not enough to conclude equivalence.",
     rubric: {
       elements: [
         {
@@ -5599,7 +5599,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Let A = {1, 2, 3} and B = {2, 3, 4}. Verify the absorption law A ∪ (A ∩ B) = A by computing both sides directly.",
+    stem: "Let $A = \\{1, 2, 3\\}$ and $B = \\{2, 3, 4\\}$. Verify the absorption law $A \\cup (A \\cap B) = A$ by computing both sides directly.",
     rubric: {
       elements: [
         {
@@ -5634,7 +5634,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove, using double inclusion, that A ∪ (A ∩ B) = A for any sets A and B.",
+    stem: "Prove, using double inclusion, that $A \\cup (A \\cap B) = A$ for any sets $A$ and $B$.",
     rubric: {
       elements: [
         {
@@ -5670,7 +5670,7 @@ export const discreteMathSetsItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A security team replaces an old access-control ruleset with a new one and claims 'anyone allowed under the old rules is allowed under the new rules, and vice versa.' Explain why verifying this claim is a double-inclusion argument over the sets of users each ruleset allows, and why checking the claim against a handful of example users does not prove it.",
+      "A security team replaces an old access-control ruleset with a new one and claims ‘anyone allowed under the old rules is allowed under the new rules, and vice versa.’ Explain why verifying this claim is a double-inclusion argument over the sets of users each ruleset allows, and why checking the claim against a handful of example users does not prove it.",
     rubric: {
       elements: [
         {

@@ -71,6 +71,28 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "binomial-theorem",
       ],
     },
+    {
+      id: "graph-theory",
+      label: "Graph Theory",
+      conceptIds: [
+        "graph-basics",
+        "graph-paths-connectivity",
+        "trees",
+        "eulerian-hamiltonian-paths",
+        "graph-coloring",
+      ],
+    },
+    {
+      id: "number-theory",
+      label: "Number Theory",
+      conceptIds: [
+        "modular-arithmetic",
+        "gcd-euclidean-algorithm",
+        "modular-inverses",
+        "fermat-euler-theorems",
+        "chinese-remainder-theorem",
+      ],
+    },
   ],
 
   probability: [
@@ -327,7 +349,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
        */
       id: "conditional-normals",
       label: "Conditioning a Multivariate Normal",
-      conceptIds: ["conditional-multivariate-normal"],
+      conceptIds: ["conditional-multivariate-normal", "precision-matrix"],
     },
     {
       id: "asymptotics",
@@ -387,6 +409,8 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "two-sample-proportions-z-test",
         "effect-size",
         "multiple-testing",
+        "family-wise-error-rate",
+        "false-discovery-rate",
         "equivalence-testing",
         "sequential-testing",
         "prediction-interval",
@@ -751,12 +775,37 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "sgd-and-adaptive-optimizers",
         "dropout",
         "batch-normalization",
-        "convolutional-neural-networks",
-        "recurrent-neural-networks",
-        "attention-mechanism",
-        "transformers",
         "embeddings",
         "autoencoders",
+      ],
+    },
+    {
+      id: "convolutional-networks",
+      label: "Convolutional Neural Networks",
+      conceptIds: [
+        "convolutional-neural-networks",
+        "cnn-stride-and-padding",
+        "cnn-pooling",
+        "cnn-design-choices",
+      ],
+    },
+    {
+      /**
+       * Attention and transformers ride along with the recurrent models rather
+       * than sitting in Core Concepts: attention is taught as the fix for the
+       * RNN's fixed-size bottleneck, and `autoregressive-models` (next-token
+       * decoding, KV caches) rests on transformers — so the chain RNN → LSTM →
+       * attention → transformer → autoregressive decoding has to live in one
+       * chapter for no prerequisite to point forward across sections.
+       */
+      id: "autoregressive-models",
+      label: "Autoregressive Models",
+      conceptIds: [
+        "recurrent-neural-networks",
+        "lstm-and-gru",
+        "attention-mechanism",
+        "transformers",
+        "autoregressive-models",
       ],
     },
     {
@@ -765,14 +814,29 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       conceptIds: [
         "architecture-families",
         "residual-networks",
-        "lstm-and-gru",
-        "autoregressive-models",
-        "state-space-models",
-        "graph-neural-networks",
         "variational-inference-vaes",
         "generative-adversarial-networks",
-        "diffusion-models",
         "mixture-of-experts",
+      ],
+    },
+    {
+      id: "state-space-models",
+      label: "State Space Models",
+      conceptIds: ["state-space-models", "structured-state-spaces-s4", "mamba-selective-ssm"],
+    },
+    {
+      id: "graph-neural-networks",
+      label: "Graph Neural Networks",
+      conceptIds: ["graph-neural-networks", "message-passing-neural-networks", "gnn-pitfalls"],
+    },
+    {
+      id: "diffusion-models",
+      label: "Diffusion & Score-Based Models",
+      conceptIds: [
+        "normalizing-flows",
+        "score-matching",
+        "denoising-score-matching",
+        "diffusion-models",
       ],
     },
     {
@@ -818,6 +882,11 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
+      id: "gaussian-structure-learning",
+      label: "Gaussian Graphical Models & the Graphical Lasso",
+      conceptIds: ["gaussian-graphical-models", "graphical-lasso"],
+    },
+    {
       id: "latent-variables",
       label: "Latent Variables & EM",
       conceptIds: [
@@ -832,6 +901,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       id: "sampling-inference",
       label: "Sampling-Based Inference",
       conceptIds: [
+        "monte-carlo-integration",
         "importance-sampling",
         "markov-chain-monte-carlo",
         "gibbs-sampling",

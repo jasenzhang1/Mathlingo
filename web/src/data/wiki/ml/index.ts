@@ -14,6 +14,9 @@ import { ml12FurtherParadigms } from "./ml-12-further-paradigms";
 import { ml13NeuralArchitectures } from "./ml-13-neural-architectures";
 import { ml14TrainingAtScale } from "./ml-14-training-at-scale";
 import { ml15AdaptingAndServing } from "./ml-15-adapting-and-serving";
+import { ml16CnnPractice } from "./ml-16-cnn-practice";
+import { ml17SsmAndGnn } from "./ml-17-ssm-and-gnn";
+import { ml18ScoreBasedGenerative } from "./ml-18-score-based-generative";
 
 /**
  * All 100 `machine-learning` domain articles, grouped into the same fifteen
@@ -45,6 +48,9 @@ export const mlWikiArticles: WikiArticle[] = [
   ...ml10PracticalModelling,
   ...ml11DeepLearning,
   ...ml13NeuralArchitectures,
+  ...ml16CnnPractice,
+  ...ml17SsmAndGnn,
+  ...ml18ScoreBasedGenerative,
   ...ml14TrainingAtScale,
   ...ml12FurtherParadigms,
   ...ml15AdaptingAndServing,

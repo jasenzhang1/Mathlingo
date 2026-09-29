@@ -14114,7 +14114,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X̄=50, SE=2. Construct an approximate 95% CI using critical value 1.96. `]`",
+    "stem": "X̄=50, SE=2. Construct an approximate 95% CI using critical value 1.96.",
     "rubric": {
       "elements": [
         {
@@ -17497,7 +17497,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define a vector in Rⁿ, and state what n represents.",
+    "stem": "Define a vector in $\\mathcal{R}^n$, and state what n represents.",
     "rubric": {
       "elements": [
         {
@@ -17538,7 +17538,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which is *not* a valid way to think of a vector in R²?",
+    "stem": "Which is *not* a valid way to think of a vector in $\\mathcal{R}^2$?",
     "rubric": {
       "elements": [
         {
@@ -17743,7 +17743,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "In R³, let v=(1,−1,2). Find a vector w such that v+w=(0,0,0).",
+    "stem": "In $\\mathcal{R}^3$, let v=(1,−1,2). Find a vector w such that v+w=(0,0,0).",
     "rubric": {
       "elements": [
         {
@@ -17790,7 +17790,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A vector in R⁴ is given by its components (2,0,−3,7). What is its dimension n, and what is its 3rd component?",
+    "stem": "A vector in $\\mathcal{R}^4$ is given by its components (2,0,−3,7). What is its dimension n, and what is its 3rd component?",
     "rubric": {
       "elements": [
         {
@@ -18001,7 +18001,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is a vector in Rⁿ *not* the same thing as a point in Rⁿ, even though both are described by n numbers?",
+    "stem": "Why is a vector in $\\mathcal{R}^n$ *not* the same thing as a point in $\\mathcal{R}^n$, even though both are described by n numbers?",
     "rubric": {
       "elements": [
         {
@@ -18083,7 +18083,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show that the zero vector is unique — there cannot be two different additive identities in Rⁿ.",
+    "stem": "Show that the zero vector is unique — there cannot be two different additive identities in $\\mathcal{R}^n$.",
     "rubric": {
       "elements": [
         {
@@ -18124,7 +18124,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A student says \"a vector's direction only makes sense in 2D or 3D where I can draw an arrow — in R¹⁰ 'direction' is just a metaphor.\" Explain what direction concretely means for a vector in Rⁿ for any n.",
+    "stem": "A student says \"a vector's direction only makes sense in 2D or 3D where I can draw an arrow — in $\\mathcal{R}^{10}$ 'direction' is just a metaphor.\" Explain what direction concretely means for a vector in $\\mathcal{R}^n$ for any n.",
     "rubric": {
       "elements": [
         {
@@ -18783,7 +18783,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show Rⁿ is closed under addition and scalar multiplication — the two properties `vector-spaces` will name as axioms.",
+    "stem": "Show $\\mathcal{R}^n$ is closed under addition and scalar multiplication — the two properties `vector-spaces` will name as axioms.",
     "rubric": {
       "elements": [
         {
@@ -19719,7 +19719,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A student computes the dot product of two vectors from different spaces (R³ and R⁵) by padding the shorter one with zeros and dotting. Explain what goes wrong conceptually, even though this produces a number.",
+    "stem": "A student computes the dot product of two vectors from different spaces ($\\mathcal{R}^3$ and $\\mathcal{R}^5$) by padding the shorter one with zeros and dotting. Explain what goes wrong conceptually, even though this produces a number.",
     "rubric": {
       "elements": [
         {
@@ -21284,7 +21284,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why Cauchy-Schwarz must hold with the *same* proof structure in any inner product space (not just Rⁿ), and what property of the inner product the proof actually uses.",
+    "stem": "Explain why Cauchy-Schwarz must hold with the *same* proof structure in any inner product space (not just $\\mathcal{R}^n$), and what property of the inner product the proof actually uses.",
     "rubric": {
       "elements": [
         {
@@ -23273,7 +23273,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Find a nonzero vector in R² orthogonal to (3,4).",
+    "stem": "Find a nonzero vector in $\\mathcal{R}^2$ orthogonal to (3,4).",
     "rubric": {
       "elements": [
         {
@@ -23308,7 +23308,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Find a nonzero vector in R³ orthogonal to both (1,0,0) and (0,1,0).",
+    "stem": "Find a nonzero vector in $\\mathcal{R}^3$ orthogonal to both (1,0,0) and (0,1,0).",
     "rubric": {
       "elements": [
         {
@@ -23501,7 +23501,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why the maximum size of an orthogonal set of nonzero vectors in Rⁿ is exactly n.",
+    "stem": "Explain why the maximum size of an orthogonal set of nonzero vectors in $\\mathcal{R}^n$ is exactly n.",
     "rubric": {
       "elements": [
         {
@@ -23916,7 +23916,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]. Compute AB and BA; confirm they differ. `,[43,50]], BA=[[23,34],[31,46]]]`",
+    "stem": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]. Compute AB and BA; confirm they differ.",
     "rubric": {
       "elements": [
         {
@@ -23951,7 +23951,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A=[[1,0,2],[0,1,3]] (2×3), B=[[1,0],[0,1],[1,1]] (3×2). Compute AB. `,[3,4]]]`",
+    "stem": "A=[[1,0,2],[0,1,3]] (2×3), B=[[1,0],[0,1],[1,1]] (3×2). Compute AB.",
     "rubric": {
       "elements": [
         {
@@ -23986,7 +23986,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A=[[1,1],[0,1]], B=[[2,0],[1,2]], C=[[1,0],[0,3]]. Compute (AB)C and A(BC); confirm they're equal. `,[1,6]]]`",
+    "stem": "A=[[1,1],[0,1]], B=[[2,0],[1,2]], C=[[1,0],[0,3]]. Compute (AB)C and A(BC); confirm they're equal.",
     "rubric": {
       "elements": [
         {
@@ -24021,7 +24021,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A=[[1,2],[3,4]]. Compute AI where I is the 2×2 identity. `,[3,4]]]`",
+    "stem": "A=[[1,2],[3,4]]. Compute AI where I is the 2×2 identity.",
     "rubric": {
       "elements": [
         {
@@ -25003,7 +25003,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Two different m×n matrices A and B can agree on where they send every basis vector only if A=B. Why does this make \"a matrix\" and \"a linear transformation Rⁿ→Rᵐ\" essentially the same object?",
+    "stem": "Two different m×n matrices A and B can agree on where they send every basis vector only if A=B. Why does this make \"a matrix\" and \"a linear transformation $\\mathcal{R}^n \\to \\mathcal{R}^m$\" essentially the same object?",
     "rubric": {
       "elements": [
         {
@@ -26176,7 +26176,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "If T:Rⁿ→Rᵐ is linear and injective (one-to-one), then ker(T) is:",
+    "stem": "If $T: \\mathcal{R}^n \\to \\mathcal{R}^m$ is linear and injective (one-to-one), then ker(T) is:",
     "rubric": {
       "elements": [
         {
@@ -26492,7 +26492,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why can every linear transformation Rⁿ→Rᵐ be represented by some matrix A, with T(x)=Ax?",
+    "stem": "Why can every linear transformation $\\mathcal{R}^n \\to \\mathcal{R}^m$ be represented by some matrix A, with T(x)=Ax?",
     "rubric": {
       "elements": [
         {
@@ -26580,7 +26580,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why does a linear transformation T:Rⁿ→Rᵐ with n>m always have a nontrivial kernel?",
+    "stem": "Why does a linear transformation $T: \\mathcal{R}^n \\to \\mathcal{R}^m$ with n>m always have a nontrivial kernel?",
     "rubric": {
       "elements": [
         {
@@ -26615,7 +26615,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why the set of all linear transformations Rⁿ→Rᵐ is itself a vector space, closed under addition and scalar multiplication.",
+    "stem": "Explain why the set of all linear transformations $\\mathcal{R}^n \\to \\mathcal{R}^m$ is itself a vector space, closed under addition and scalar multiplication.",
     "rubric": {
       "elements": [
         {
@@ -26843,7 +26843,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define the gradient of a scalar function f:Rⁿ→R, and the Jacobian of a vector function g:Rⁿ→Rᵐ.",
+    "stem": "Define the gradient of a scalar function $f: \\mathcal{R}^n \\to \\mathcal{R}$, and the Jacobian of a vector function $g: \\mathcal{R}^n \\to \\mathcal{R}^m$.",
     "rubric": {
       "elements": [
         {
@@ -26931,7 +26931,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "What is the Hessian of a scalar function f:Rⁿ→R?",
+    "stem": "What is the Hessian of a scalar function $f: \\mathcal{R}^n \\to \\mathcal{R}$?",
     "rubric": {
       "elements": [
         {
@@ -27165,7 +27165,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "g(x,y)=(x+y, x−y, xy). Compute the Jacobian at (2,1). `,[1,-1],[1,2]]]`",
+    "stem": "g(x,y)=(x+y, x−y, xy). Compute the Jacobian at (2,1).",
     "rubric": {
       "elements": [
         {
@@ -27399,7 +27399,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using the chain rule for Jacobians, derive the gradient of the composition h(x)=f(g(x)) where g:Rⁿ→Rᵐ is linear (g(x)=Bx) and f:Rᵐ→R is scalar.",
+    "stem": "Using the chain rule for Jacobians, derive the gradient of the composition h(x)=f(g(x)) where $g: \\mathcal{R}^n \\to \\mathcal{R}^m$ is linear (g(x)=Bx) and $f: \\mathcal{R}^m \\to \\mathcal{R}$ is scalar.",
     "rubric": {
       "elements": [
         {
@@ -27833,7 +27833,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A=[1,2] (1×2), B=[[0,1],[1,0]] (2×2). Compute A⊗B. `,[1,0,2,0]]]`",
+    "stem": "A=[1,2] (1×2), B=[[0,1],[1,0]] (2×2). Compute A⊗B.",
     "rubric": {
       "elements": [
         {
@@ -27868,7 +27868,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A=[[1,2],[3,4]] (2×2), B=[[0,1]] (1×2). Compute A⊗B. `,[0,3,0,4]]]`",
+    "stem": "A=[[1,2],[3,4]] (2×2), B=[[0,1]] (1×2). Compute A⊗B.",
     "rubric": {
       "elements": [
         {
@@ -27938,7 +27938,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A=[[2],[3]] (2×1), B=[[1,4]] (1×2). Compute A⊗B. `,[3,12]]]`",
+    "stem": "A=[[2],[3]] (2×1), B=[[1,4]] (1×2). Compute A⊗B.",
     "rubric": {
       "elements": [
         {
@@ -27973,7 +27973,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A=[[1,2],[0,1]], B=[[2,0],[1,3]]. Verify (A⊗B)ᵀ=Aᵀ⊗Bᵀ by computing both sides. `,[0,3,0,0],[4,2,2,1],[0,6,0,3]]]`",
+    "stem": "A=[[1,2],[0,1]], B=[[2,0],[1,3]]. Verify (A⊗B)ᵀ=Aᵀ⊗Bᵀ by computing both sides.",
     "rubric": {
       "elements": [
         {
@@ -29494,7 +29494,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "In R⁴, are the vectors (1,0,0,0), (0,1,0,0), (0,0,1,0), (0,0,0,1), (1,1,1,1) linearly dependent?",
+    "stem": "In $\\mathcal{R}^4$, are the vectors (1,0,0,0), (0,1,0,0), (0,0,1,0), (0,0,0,1), (1,1,1,1) linearly dependent?",
     "rubric": {
       "elements": [
         {
@@ -29635,7 +29635,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Two vectors u and v in R³ are linearly dependent. What can you conclude about u×v?",
+    "stem": "Two vectors u and v in $\\mathcal{R}^3$ are linearly dependent. What can you conclude about u×v?",
     "rubric": {
       "elements": [
         {
@@ -29682,7 +29682,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why are any 4 vectors in R³ automatically linearly dependent?",
+    "stem": "Why are any 4 vectors in $\\mathcal{R}^3$ automatically linearly dependent?",
     "rubric": {
       "elements": [
         {
@@ -30204,7 +30204,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which of these *is* a vector space? (a) all of R² with positive first coordinate (b) all of R² (c) all of R² with first coordinate exactly 1",
+    "stem": "Which of these *is* a vector space? (a) all of $\\mathcal{R}^2$ with positive first coordinate (b) all of $\\mathcal{R}^2$ (c) all of $\\mathcal{R}^2$ with first coordinate exactly 1",
     "rubric": {
       "elements": [
         {
@@ -30298,7 +30298,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is the set of 3×3 upper-triangular matrices a vector space (subspace of R^{3×3})?",
+    "stem": "Is the set of 3×3 upper-triangular matrices a vector space (subspace of $\\mathcal{R}^{3\\times 3}$)?",
     "rubric": {
       "elements": [
         {
@@ -30708,7 +30708,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A student claims \"R² with the usual addition but scalar multiplication redefined as c·(x,y)=(cx,0) is still a vector space, since it's closed under both operations.\" What axiom does this redefinition violate?",
+    "stem": "A student claims \"$\\mathcal{R}^2$ with the usual addition but scalar multiplication redefined as c·(x,y)=(cx,0) is still a vector space, since it's closed under both operations.\" What axiom does this redefinition violate?",
     "rubric": {
       "elements": [
         {
@@ -30960,7 +30960,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The span of {(1,2,3), (2,4,6)} in R³ is best described as:",
+    "stem": "The span of {(1,2,3), (2,4,6)} in $\\mathcal{R}^3$ is best described as:",
     "rubric": {
       "elements": [
         {
@@ -31042,7 +31042,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The span of a single nonzero vector v in R² is:",
+    "stem": "The span of a single nonzero vector v in $\\mathcal{R}^2$ is:",
     "rubric": {
       "elements": [
         {
@@ -31089,7 +31089,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "What is the span of the single vector (0,0,0) in R³?",
+    "stem": "What is the span of the single vector (0,0,0) in $\\mathcal{R}^3$?",
     "rubric": {
       "elements": [
         {
@@ -31183,7 +31183,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "What is the span of (1,0) and (0,1) in R²? What about (1,1) and (2,2)?",
+    "stem": "What is the span of (1,0) and (0,1) in $\\mathcal{R}^2$? What about (1,1) and (2,2)?",
     "rubric": {
       "elements": [
         {
@@ -31318,7 +31318,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "In R⁴, does the span of (1,0,0,0), (0,1,0,0), (0,0,1,0) include the vector (1,1,1,1)?",
+    "stem": "In $\\mathcal{R}^4$, does the span of (1,0,0,0), (0,1,0,0), (0,0,1,0) include the vector (1,1,1,1)?",
     "rubric": {
       "elements": [
         {
@@ -31365,7 +31365,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Let A be a 4×3 matrix. If the span of A's columns is only 2-dimensional, what does that say about solving Ax=b for a generic b in R⁴?",
+    "stem": "Let A be a 4×3 matrix. If the span of A's columns is only 2-dimensional, what does that say about solving Ax=b for a generic b in $\\mathcal{R}^4$?",
     "rubric": {
       "elements": [
         {
@@ -31939,7 +31939,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is {(1,2)} a basis for R²?",
+    "stem": "Is {(1,2)} a basis for $\\mathcal{R}^2$?",
     "rubric": {
       "elements": [
         {
@@ -32021,7 +32021,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is {(1,0),(1,1)} a basis for R²? Is {(1,0),(2,0),(0,1)}?",
+    "stem": "Is {(1,0),(1,1)} a basis for $\\mathcal{R}^2$? Is {(1,0),(2,0),(0,1)}?",
     "rubric": {
       "elements": [
         {
@@ -32074,7 +32074,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is {(1,0,0),(0,1,0),(1,1,0)} a basis for R³?",
+    "stem": "Is {(1,0,0),(0,1,0),(1,1,0)} a basis for $\\mathcal{R}^3$?",
     "rubric": {
       "elements": [
         {
@@ -32121,7 +32121,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Find a basis for the solution space of x+2y−z=0 in R³.",
+    "stem": "Find a basis for the solution space of x+2y−z=0 in $\\mathcal{R}^3$.",
     "rubric": {
       "elements": [
         {
@@ -32156,7 +32156,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is {(1,0),(0,1),(1,1)} linearly independent? Could it still be a spanning set for R²? Is it a basis?",
+    "stem": "Is {(1,0),(0,1),(1,1)} linearly independent? Could it still be a spanning set for $\\mathcal{R}^2$? Is it a basis?",
     "rubric": {
       "elements": [
         {
@@ -32367,7 +32367,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A student finds two different bases for R³ and worries \"which one is the real coordinate system?\" How would you respond?",
+    "stem": "A student finds two different bases for $\\mathcal{R}^3$ and worries \"which one is the real coordinate system?\" How would you respond?",
     "rubric": {
       "elements": [
         {
@@ -32420,7 +32420,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why does a basis for a subspace W of Rⁿ generally have fewer vectors than a basis for Rⁿ itself, and what does that say about dim(W) vs n?",
+    "stem": "Why does a basis for a subspace W of $\\mathcal{R}^n$ generally have fewer vectors than a basis for $\\mathcal{R}^n$ itself, and what does that say about dim(W) vs n?",
     "rubric": {
       "elements": [
         {
@@ -32496,7 +32496,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Fourier series express periodic functions using the basis {1, sin(x), cos(x), sin(2x), cos(2x), ...} for an (infinite-dimensional) function space. Why is checking a proposed basis's independence much harder here than in Rⁿ, even though the underlying concept is the same?",
+    "stem": "Fourier series express periodic functions using the basis {1, sin(x), cos(x), sin(2x), cos(2x), ...} for an (infinite-dimensional) function space. Why is checking a proposed basis's independence much harder here than in $\\mathcal{R}^n$, even though the underlying concept is the same?",
     "rubric": {
       "elements": [
         {
@@ -32584,7 +32584,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove that if B is a basis for Rⁿ, the matrix P whose columns are the vectors of B is invertible.",
+    "stem": "Prove that if B is a basis for $\\mathcal{R}^n$, the matrix P whose columns are the vectors of B is invertible.",
     "rubric": {
       "elements": [
         {
@@ -32865,7 +32865,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "b₁=(1,1), b₂=(1,−1) form a basis for R². A vector v has B-coordinates (2,3) — i.e. v=2b₁+3b₂. Find v in standard coordinates.",
+    "stem": "b₁=(1,1), b₂=(1,−1) form a basis for $\\mathcal{R}^2$. A vector v has B-coordinates (2,3) — i.e. v=2b₁+3b₂. Find v in standard coordinates.",
     "rubric": {
       "elements": [
         {
@@ -32900,7 +32900,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "b1=(2,1), b2=(1,1) form a basis for R². Find the B-coordinates of the standard vector v=(5,3).",
+    "stem": "b1=(2,1), b2=(1,1) form a basis for $\\mathcal{R}^2$. Find the B-coordinates of the standard vector v=(5,3).",
     "rubric": {
       "elements": [
         {
@@ -33029,7 +33029,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "In basis B={(1,1,0),(0,1,1),(1,0,1)} for R³, find the standard coordinates of the vector with B-coordinates (1,1,1).",
+    "stem": "In basis B={(1,1,0),(0,1,1),(1,0,1)} for $\\mathcal{R}^3$, find the standard coordinates of the vector with B-coordinates (1,1,1).",
     "rubric": {
       "elements": [
         {
@@ -33609,7 +33609,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Let U = span{(1,0,0),(0,1,0)} (the xy-plane) and W = span{(0,0,1)} (the z-axis) in R³. Find U+W and U∩W.",
+    "stem": "Let U = span{(1,0,0),(0,1,0)} (the xy-plane) and W = span{(0,0,1)} (the z-axis) in $\\mathcal{R}^3$. Find U+W and U∩W.",
     "rubric": {
       "elements": [
         {
@@ -33650,7 +33650,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Let U be the xy-plane and W be the xz-plane in R³ (both subspaces of R³). Find U∩W.",
+    "stem": "Let U be the xy-plane and W be the xz-plane in $\\mathcal{R}^3$ (both subspaces of $\\mathcal{R}^3$). Find U∩W.",
     "rubric": {
       "elements": [
         {
@@ -33697,7 +33697,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Let U be the x-axis and W the y-axis in R². Is U∪W a subspace?",
+    "stem": "Let U be the x-axis and W the y-axis in $\\mathcal{R}^2$. Is U∪W a subspace?",
     "rubric": {
       "elements": [
         {
@@ -33797,7 +33797,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Compute dim(U+W) given dim(U)=2, dim(W)=3, dim(U∩W)=1, both subspaces of R⁴.",
+    "stem": "Compute dim(U+W) given dim(U)=2, dim(W)=3, dim(U∩W)=1, both subspaces of $\\mathcal{R}^4$.",
     "rubric": {
       "elements": [
         {
@@ -33832,7 +33832,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Let U be the solution space of x+y=0 and W be the solution space of x−y=0, both subspaces of R². Find U∩W.",
+    "stem": "Let U be the solution space of x+y=0 and W be the solution space of x−y=0, both subspaces of $\\mathcal{R}^2$. Find U∩W.",
     "rubric": {
       "elements": [
         {
@@ -33867,7 +33867,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Given two subspaces U and W of R⁵ with dim(U)=3 and dim(W)=3, what is the minimum possible dimension of U∩W?",
+    "stem": "Given two subspaces U and W of $\\mathcal{R}^5$ with dim(U)=3 and dim(W)=3, what is the minimum possible dimension of U∩W?",
     "rubric": {
       "elements": [
         {
@@ -34272,7 +34272,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The four fundamental subspaces of an m×n matrix A satisfy row space ⊕ null space = Rⁿ (orthogonal direct sum) and column space ⊕ left null space = Rᵐ. Using the rank-nullity theorem (dim(row space)=rank, dim(null space)=n−rank), verify that dim(row space)+dim(null space)=n exactly, consistent with the direct-sum dimension formula.",
+    "stem": "The four fundamental subspaces of an m×n matrix A satisfy row space ⊕ null space = $\\mathcal{R}^n$ (orthogonal direct sum) and column space ⊕ left null space = $\\mathcal{R}^m$. Using the rank-nullity theorem (dim(row space)=rank, dim(null space)=n−rank), verify that dim(row space)+dim(null space)=n exactly, consistent with the direct-sum dimension formula.",
     "rubric": {
       "elements": [
         {
@@ -34354,7 +34354,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which pair lives in Rⁿ (the \"input\" space)?",
+    "stem": "Which pair lives in $\\mathcal{R}^n$ (the \"input\" space)?",
     "rubric": {
       "elements": [
         {
@@ -34495,7 +34495,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For a 3×2 matrix A, which spaces live in R³ and which in R²?",
+    "stem": "For a 3×2 matrix A, which spaces live in $\\mathcal{R}^3$ and which in $\\mathcal{R}^2$?",
     "rubric": {
       "elements": [
         {
@@ -34653,7 +34653,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A 3×3 matrix has rank 1, so C(A) is a line in R³. What is dim N(A), and what kind of geometric object is it?",
+    "stem": "A 3×3 matrix has rank 1, so C(A) is a line in $\\mathcal{R}^3$. What is dim N(A), and what kind of geometric object is it?",
     "rubric": {
       "elements": [
         {
@@ -34858,7 +34858,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The row space and null space both live in Rⁿ. Why does this NOT mean they compete for the same directions?",
+    "stem": "The row space and null space both live in $\\mathcal{R}^n$. Why does this NOT mean they compete for the same directions?",
     "rubric": {
       "elements": [
         {
@@ -35233,7 +35233,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is C(A) always a subspace of Rᵐ, Rⁿ, or does it depend on whether A is square?",
+    "stem": "Is C(A) always a subspace of $\\mathcal{R}^m$, $\\mathcal{R}^n$, or does it depend on whether A is square?",
     "rubric": {
       "elements": [
         {
@@ -35280,7 +35280,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "If A has more columns than rows (m<n), can C(A) still be all of Rᵐ?",
+    "stem": "If A has more columns than rows (m<n), can C(A) still be all of $\\mathcal{R}^m$?",
     "rubric": {
       "elements": [
         {
@@ -35508,7 +35508,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For a 5×3 matrix A with rank 3 (full column rank), what fraction of R⁵ does C(A) \"fill,\" in dimension terms?",
+    "stem": "For a 5×3 matrix A with rank 3 (full column rank), what fraction of $\\mathcal{R}^5$ does C(A) \"fill,\" in dimension terms?",
     "rubric": {
       "elements": [
         {
@@ -35742,7 +35742,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove that C(A) is closed under addition and scalar multiplication directly from its definition as {Ax : x∈Rⁿ}.",
+    "stem": "Prove that C(A) is closed under addition and scalar multiplication directly from its definition as {Ax : $x \\in \\mathcal{R}^n$}.",
     "rubric": {
       "elements": [
         {
@@ -36041,7 +36041,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is N(A) a subspace of Rⁿ or Rᵐ?",
+    "stem": "Is N(A) a subspace of $\\mathcal{R}^n$ or $\\mathcal{R}^m$?",
     "rubric": {
       "elements": [
         {
@@ -37100,7 +37100,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A 6×2 matrix has 6 rows, all in R². What is the largest possible dimension of its row space, regardless of how the rows are chosen?",
+    "stem": "A 6×2 matrix has 6 rows, all in $\\mathcal{R}^2$. What is the largest possible dimension of its row space, regardless of how the rows are chosen?",
     "rubric": {
       "elements": [
         {
@@ -37182,7 +37182,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is it at all surprising that row rank equals column rank, given that rows and columns of a non-square matrix live in *completely different* spaces (Rⁿ vs Rᵐ)?",
+    "stem": "Why is it at all surprising that row rank equals column rank, given that rows and columns of a non-square matrix live in *completely different* spaces ($\\mathcal{R}^n$ vs $\\mathcal{R}^m$)?",
     "rubric": {
       "elements": [
         {
@@ -38364,7 +38364,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Every x∈Rⁿ decomposes uniquely as x=x_row+x_null. Then Ax equals:",
+    "stem": "Every $x \\in \\mathcal{R}^n$ decomposes uniquely as x=x_row+x_null. Then Ax equals:",
     "rubric": {
       "elements": [
         {
@@ -38411,7 +38411,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "If y is a vector in the left null space of A (living in Rᵐ), does \"Ay\" even make sense?",
+    "stem": "If y is a vector in the left null space of A (living in $\\mathcal{R}^m$), does \"Ay\" even make sense?",
     "rubric": {
       "elements": [
         {
@@ -38464,7 +38464,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For x in the column space of A (thought of as living in Rᵐ), is \"Ax\" generally meaningful?",
+    "stem": "For x in the column space of A (thought of as living in $\\mathcal{R}^m$), is \"Ax\" generally meaningful?",
     "rubric": {
       "elements": [
         {
@@ -38511,7 +38511,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain, without fully computing it, why A maps the row space *invertibly* onto the column space, even when A itself (on all of Rⁿ) is not invertible.",
+    "stem": "Explain, without fully computing it, why A maps the row space *invertibly* onto the column space, even when A itself (on all of $\\mathcal{R}^n$) is not invertible.",
     "rubric": {
       "elements": [
         {
@@ -38862,7 +38862,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why does decomposing x via the row space / null space split give a cleaner way to think about A's action than decomposing x via an arbitrary basis of Rⁿ?",
+    "stem": "Why does decomposing x via the row space / null space split give a cleaner way to think about A's action than decomposing x via an arbitrary basis of $\\mathcal{R}^n$?",
     "rubric": {
       "elements": [
         {
@@ -38903,7 +38903,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is it that even though A: Rⁿ→Rᵐ can be a \"many-to-one\" map overall, its restriction to the row space is always a clean one-to-one correspondence with C(A)?",
+    "stem": "Why is it that even though $A: \\mathcal{R}^n \\to \\mathcal{R}^m$ can be a \"many-to-one\" map overall, its restriction to the row space is always a clean one-to-one correspondence with C(A)?",
     "rubric": {
       "elements": [
         {
@@ -38979,7 +38979,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why does choosing a basis for Rⁿ built from a row-space basis plus a null-space basis give an especially clean picture of what A does to every vector?",
+    "stem": "Why does choosing a basis for $\\mathcal{R}^n$ built from a row-space basis plus a null-space basis give an especially clean picture of what A does to every vector?",
     "rubric": {
       "elements": [
         {
@@ -39494,7 +39494,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A 3×2 matrix A has rank 2 (full column rank), so N(A)={0} and dim(row space)=2=all of R². What does \"row space ⊥ null space\" reduce to in this case?",
+    "stem": "A 3×2 matrix A has rank 2 (full column rank), so N(A)={0} and dim(row space)=2=all of $\\mathcal{R}^2$. What does \"row space ⊥ null space\" reduce to in this case?",
     "rubric": {
       "elements": [
         {
@@ -39529,7 +39529,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For a matrix A with a 2-dimensional null space in R⁴ and hence a 2-dimensional row space, must a chosen basis vector of the row space be orthogonal to *every individual vector* in the null space, or just to the null space \"as a whole\"?",
+    "stem": "For a matrix A with a 2-dimensional null space in $\\mathcal{R}^4$ and hence a 2-dimensional row space, must a chosen basis vector of the row space be orthogonal to *every individual vector* in the null space, or just to the null space \"as a whole\"?",
     "rubric": {
       "elements": [
         {
@@ -39910,7 +39910,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Together, the four fundamental subspaces split Rⁿ into two orthogonal pieces and Rᵐ into two orthogonal pieces. Why does this \"two-orthogonal-decomposition\" picture, rather than just four separate subspaces, explain why every linear system Ax=b has a *uniquely determined* geometric answer (solvable or not, and how many solutions)?",
+    "stem": "Together, the four fundamental subspaces split $\\mathcal{R}^n$ into two orthogonal pieces and $\\mathcal{R}^m$ into two orthogonal pieces. Why does this \"two-orthogonal-decomposition\" picture, rather than just four separate subspaces, explain why every linear system Ax=b has a *uniquely determined* geometric answer (solvable or not, and how many solutions)?",
     "rubric": {
       "elements": [
         {
@@ -41132,7 +41132,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove Rank-Nullity using the fact that row space and null space are orthogonal complements in Rⁿ.",
+    "stem": "Prove Rank-Nullity using the fact that row space and null space are orthogonal complements in $\\mathcal{R}^n$.",
     "rubric": {
       "elements": [
         {
@@ -41226,7 +41226,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why Rank-Nullity implies a linear map from Rⁿ to Rᵐ with n>m can never be injective.",
+    "stem": "Explain why Rank-Nullity implies a linear map from $\\mathcal{R}^n$ to $\\mathcal{R}^m$ with n>m can never be injective.",
     "rubric": {
       "elements": [
         {
@@ -41747,7 +41747,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using the orthonormal basis {(1,0),(0,1)} of R², find the coordinates of v=(3,−4) via dot products.",
+    "stem": "Using the orthonormal basis {(1,0),(0,1)} of $\\mathcal{R}^2$, find the coordinates of v=(3,−4) via dot products.",
     "rubric": {
       "elements": [
         {
@@ -41823,7 +41823,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For orthonormal basis {q₁,q₂,q₃} of R³, and v with v·q₁=2, v·q₂=−1, v·q₃=3, reconstruct v.",
+    "stem": "For orthonormal basis {q₁,q₂,q₃} of $\\mathcal{R}^3$, and v with v·q₁=2, v·q₂=−1, v·q₃=3, reconstruct v.",
     "rubric": {
       "elements": [
         {
@@ -41899,7 +41899,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is {(1,1),(1,−1)} NOT an orthonormal basis of R², even though the two vectors are orthogonal?",
+    "stem": "Why is {(1,1),(1,−1)} NOT an orthonormal basis of $\\mathcal{R}^2$, even though the two vectors are orthogonal?",
     "rubric": {
       "elements": [
         {
@@ -42010,7 +42010,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why must the columns of an n×n matrix Q with orthonormal columns automatically form a basis for Rⁿ, not just an orthonormal set?",
+    "stem": "Why must the columns of an n×n matrix Q with orthonormal columns automatically form a basis for $\\mathcal{R}^n$, not just an orthonormal set?",
     "rubric": {
       "elements": [
         {
@@ -43332,7 +43332,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A=[[0,4],[3,0]]. Find its QR decomposition. `,[1,0]], R=diag(3,4)]`",
+    "stem": "A=[[0,4],[3,0]]. Find its QR decomposition.",
     "rubric": {
       "elements": [
         {
@@ -47214,7 +47214,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A=[[0,1],[−2,3]] has eigenvalues 1 and 2, with eigenvectors (1,1) for λ=1 and (1,2) for λ=2. Compute A² using diagonalization rather than direct matrix multiplication. `,[−6,7]]]`",
+    "stem": "A=[[0,1],[−2,3]] has eigenvalues 1 and 2, with eigenvectors (1,1) for λ=1 and (1,2) for λ=2. Compute A² using diagonalization rather than direct matrix multiplication.",
     "rubric": {
       "elements": [
         {
@@ -48663,7 +48663,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Find the LU decomposition of A=[[4,3],[6,3]]. `,[1.5,1]], U=[[4,3],[0,−1.5]]]`",
+    "stem": "Find the LU decomposition of A=[[4,3],[6,3]].",
     "rubric": {
       "elements": [
         {
@@ -49608,7 +49608,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is AᵀA symmetric for any matrix A? Compute for A=[[1,0],[1,1]] to check. `,[1,1]] is symmetric]`",
+    "stem": "Is AᵀA symmetric for any matrix A? Compute for A=[[1,0],[1,1]] to check.",
     "rubric": {
       "elements": [
         {
@@ -50252,7 +50252,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A=[[4,2],[2,4]] has eigenvalues 6,2 with unit eigenvectors q₁=(1,1)/√2, q₂=(1,−1)/√2. Verify A=6q₁q₁ᵀ+2q₂q₂ᵀ. `,[2,4]] exactly]`",
+    "stem": "A=[[4,2],[2,4]] has eigenvalues 6,2 with unit eigenvectors q₁=(1,1)/√2, q₂=(1,−1)/√2. Verify A=6q₁q₁ᵀ+2q₂q₂ᵀ.",
     "rubric": {
       "elements": [
         {
@@ -51293,7 +51293,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove that the columns of an orthogonal matrix Q form an orthonormal basis of ℝⁿ.",
+    "stem": "Prove that the columns of an orthogonal matrix Q form an orthonormal basis of $\\mathcal{R}^n$.",
     "rubric": {
       "elements": [
         {
@@ -52604,7 +52604,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Compute the Cholesky factor of A=[[4,2],[2,5]]. `,[1,2]], LLᵀ=[[4,2],[2,5]]]`",
+    "stem": "Compute the Cholesky factor of A=[[4,2],[2,5]].",
     "rubric": {
       "elements": [
         {
@@ -52639,7 +52639,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Compute the Cholesky factor of A=[[9,3],[3,2]]. `,[1,1]]]`",
+    "stem": "Compute the Cholesky factor of A=[[9,3],[3,2]].",
     "rubric": {
       "elements": [
         {
@@ -53499,7 +53499,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A symmetric idempotent P on ℝ⁷ has tr(P)=4. State rank(P), rank(I−P), and tr(I−P).",
+    "stem": "A symmetric idempotent P on $\\mathcal{R}^7$ has tr(P)=4. State rank(P), rank(I−P), and tr(I−P).",
     "rubric": {
       "elements": [
         {
@@ -59119,7 +59119,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A = [[2,0],[0,0]] (rank 1). Compute A⁺ and verify AA⁺A=A. `,[0,0]]; AA⁺A=A]`",
+    "stem": "A = [[2,0],[0,0]] (rank 1). Compute A⁺ and verify AA⁺A=A.",
     "rubric": {
       "elements": [
         {
@@ -62163,7 +62163,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Method-of-moments estimators aren't unique in *how* you match moments. For Uniform(0,θ), derive the estimator you'd get by matching the *second* moment instead of the first, and show it's a genuinely different formula. `=θ²/3]`",
+    "stem": "Method-of-moments estimators aren't unique in *how* you match moments. For Uniform(0,θ), derive the estimator you'd get by matching the *second* moment instead of the first, and show it's a genuinely different formula.",
     "rubric": {
       "elements": [
         {
@@ -62945,7 +62945,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X~Uniform(0,1), Y=−ln(X). Find f_Y(y) and identify the distribution. `≈1 by simulation, matching Exponential(1)]`",
+    "stem": "X~Uniform(0,1), Y=−ln(X). Find f_Y(y) and identify the distribution.",
     "rubric": {
       "elements": [
         {
@@ -73516,7 +73516,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Sketch an MGF-based proof of CLT. `^n → e^{t²/2} numerically, matching e^0.5 to 4 decimals at n=1000]`",
+    "stem": "Sketch an MGF-based proof of CLT.",
     "rubric": {
       "elements": [
         {
@@ -75720,7 +75720,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Four observations at x = 1,2,3,4 with an intercept, and σ² = 1. Compute Var(β̂₁). `,[−0.5,0.2]]]`",
+    "stem": "Four observations at x = 1,2,3,4 with an intercept, and σ² = 1. Compute Var(β̂₁).",
     "answerKey": 0.2,
     "tolerance": 0.01,
     "difficulty": 1.42,

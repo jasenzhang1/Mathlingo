@@ -1219,6 +1219,16 @@ export const concepts: Concept[] = [
     ],
   },
   {
+    id: "precision-matrix",
+    title: "Precision Matrices",
+    domain: "multivariate-probability",
+    blurb: "Θ = Σ⁻¹: for a Gaussian, Θᵢⱼ = 0 exactly when Xᵢ and Xⱼ are conditionally independent given everything else.",
+    // The conditional-normal derivation is where Θ's entries earn their
+    // meaning: the conditional variance of Xᵢ given the rest is 1/Θᵢᵢ, and the
+    // regression coefficients of Xᵢ on the rest are −Θᵢⱼ/Θᵢᵢ.
+    prerequisites: ["covariance-matrix", "conditional-multivariate-normal"],
+  },
+  {
     id: "cochrans-theorem",
     title: "Cochran's Theorem",
     domain: "multivariate-probability",
@@ -1460,6 +1470,20 @@ export const concepts: Concept[] = [
     domain: "statistics",
     blurb: "Run enough tests and something is significant by construction. Bonferroni, FWER, and FDR.",
     prerequisites: ["p-value", "type-i-ii-error"],
+  },
+  {
+    id: "family-wise-error-rate",
+    title: "Family-Wise Error Rate",
+    domain: "statistics",
+    blurb: "Controlling the chance of even one false rejection — Bonferroni, Šidák, Holm and Hochberg, and what each assumes.",
+    prerequisites: ["multiple-testing"],
+  },
+  {
+    id: "false-discovery-rate",
+    title: "False Discovery Rate",
+    domain: "statistics",
+    blurb: "Controlling the expected share of rejections that are false — Benjamini–Hochberg, q-values and dependence.",
+    prerequisites: ["family-wise-error-rate"],
   },
   {
     id: "equivalence-testing",
@@ -2821,6 +2845,34 @@ export const concepts: Concept[] = [
     // it works and why augmentation is not optional.
     prerequisites: ["neural-networks", "activation-functions", "overfitting-underfitting"],
   },
+  // The practical knobs of a convolutional layer, each its own lesson: the
+  // parent concept says *why* convolutions share weights; these say how the
+  // choices of stride, padding and pooling decide the shapes and receptive
+  // fields a real network ends up with.
+  {
+    id: "cnn-stride-and-padding",
+    title: "Stride & Padding",
+    domain: "deep-learning",
+    blurb:
+      "How far the kernel steps and what happens at the border — the two choices that set every output shape.",
+    prerequisites: ["convolutional-neural-networks"],
+  },
+  {
+    id: "cnn-pooling",
+    title: "Pooling Layers & Pool Size",
+    domain: "deep-learning",
+    blurb:
+      "Max, average and global pooling, and how pool size and stride trade resolution for invariance.",
+    prerequisites: ["cnn-stride-and-padding"],
+  },
+  {
+    id: "cnn-design-choices",
+    title: "Designing a CNN in Practice",
+    domain: "deep-learning",
+    blurb:
+      "Stacked 3×3 kernels, strided convolutions versus pooling, and doubling channels as resolution halves.",
+    prerequisites: ["cnn-pooling"],
+  },
   {
     id: "recurrent-neural-networks",
     title: "Recurrent Neural Networks",
@@ -2942,12 +2994,44 @@ export const concepts: Concept[] = [
     ],
   },
   {
+    id: "structured-state-spaces-s4",
+    title: "Structured State Spaces (S4)",
+    domain: "deep-learning",
+    blurb:
+      "HiPPO initialisation, discretisation, and the convolution kernel that lets a linear recurrence train in parallel.",
+    prerequisites: ["state-space-models"],
+  },
+  {
+    id: "mamba-selective-ssm",
+    title: "Mamba & Selective State Spaces",
+    domain: "deep-learning",
+    blurb:
+      "Making the step size and projections depend on the input, and the hardware-aware scan that keeps it fast.",
+    prerequisites: ["structured-state-spaces-s4"],
+  },
+  {
     id: "graph-neural-networks",
     title: "Graph Neural Networks",
     domain: "deep-learning",
     blurb:
       "Message passing over edges — a convolution for data whose neighbourhoods are given rather than gridded.",
     prerequisites: ["graphs", "convolutional-neural-networks"],
+  },
+  {
+    id: "message-passing-neural-networks",
+    title: "Message Passing Neural Networks",
+    domain: "deep-learning",
+    blurb:
+      "One framework for GCN, GraphSAGE, GAT and GIN — message, aggregate, update — and the WL test that bounds them all.",
+    prerequisites: ["graph-neural-networks"],
+  },
+  {
+    id: "gnn-pitfalls",
+    title: "GNN Pitfalls in Practice",
+    domain: "deep-learning",
+    blurb:
+      "Over-smoothing, over-squashing, heterophily, neighbourhood explosion and leaky benchmarks — why deeper GNNs often do worse.",
+    prerequisites: ["message-passing-neural-networks"],
   },
   {
     id: "generative-adversarial-networks",
@@ -2964,6 +3048,33 @@ export const concepts: Concept[] = [
       "kl-divergence",
     ],
   },
+  // The road into diffusion: exact likelihood through an invertible map, then
+  // learning the score instead of the density, then learning it by denoising —
+  // which is the training objective a diffusion model actually optimises.
+  {
+    id: "normalizing-flows",
+    title: "Normalizing Flows",
+    domain: "deep-learning",
+    blurb:
+      "Exact likelihoods from a chain of invertible maps, paid for with a Jacobian determinant at every layer.",
+    prerequisites: ["change-of-variables-jacobian", "neural-networks", "mle"],
+  },
+  {
+    id: "score-matching",
+    title: "Score Matching",
+    domain: "deep-learning",
+    blurb:
+      "Learning ∇ₓ log p(x) instead of p(x), so the normalising constant never has to be computed.",
+    prerequisites: ["normalizing-flows", "kl-divergence"],
+  },
+  {
+    id: "denoising-score-matching",
+    title: "Denoising Score Matching",
+    domain: "deep-learning",
+    blurb:
+      "Predicting the noise that was added is the same as learning the score of the noised data — Tweedie's formula.",
+    prerequisites: ["score-matching", "normal-distribution"],
+  },
   {
     id: "diffusion-models",
     title: "Diffusion Models",
@@ -2974,6 +3085,7 @@ export const concepts: Concept[] = [
       "autoencoders",
       "normal-distribution",
       "generative-adversarial-networks",
+      "denoising-score-matching",
     ],
   },
   {
@@ -3257,6 +3369,23 @@ export const concepts: Concept[] = [
     blurb: "Undirected graphical models where each node depends only on its neighbors.",
     prerequisites: ["directed-vs-undirected-graphs", "conditional-independence-d-separation"],
   },
+  // Structure learning for Gaussians: the graph is read straight off the
+  // zeros of the precision matrix, so estimating a sparse precision matrix
+  // (the graphical lasso) *is* estimating the graph.
+  {
+    id: "gaussian-graphical-models",
+    title: "Gaussian Graphical Models",
+    domain: "graphical-models",
+    blurb: "A Markov random field for a multivariate normal, whose missing edges are exactly the zeros of the precision matrix.",
+    prerequisites: ["markov-random-fields", "precision-matrix"],
+  },
+  {
+    id: "graphical-lasso",
+    title: "Graphical Lasso",
+    domain: "graphical-models",
+    blurb: "An ℓ₁-penalised likelihood for the precision matrix — sparse estimate, sparse graph, even when p > n.",
+    prerequisites: ["gaussian-graphical-models", "lasso", "mle"],
+  },
   {
     id: "markov-chains",
     title: "Markov Chains",
@@ -3314,11 +3443,18 @@ export const concepts: Concept[] = [
     prerequisites: ["bayes-rule", "mle"],
   },
   {
+    id: "monte-carlo-integration",
+    title: "Monte Carlo Sampling",
+    domain: "graphical-models",
+    blurb: "Replacing an integral with an average of random draws — unbiased, with error shrinking like 1/√n in any dimension.",
+    prerequisites: ["expectation", "law-of-large-numbers", "central-limit-theorem"],
+  },
+  {
     id: "importance-sampling",
     title: "Importance Sampling",
     domain: "graphical-models",
     blurb: "Estimating an expectation under a distribution you can't sample from by sampling a different one and reweighting.",
-    prerequisites: ["expectation", "joint-distribution"],
+    prerequisites: ["expectation", "joint-distribution", "monte-carlo-integration"],
   },
   {
     id: "markov-chain-monte-carlo",

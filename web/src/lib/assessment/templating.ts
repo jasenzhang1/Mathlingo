@@ -18,7 +18,11 @@ import type { Item, ParamSpec } from "./types";
 export type ParamValues = Record<string, number>;
 export type Solver = (params: ParamValues) => number;
 
-const PLACEHOLDER = /\{([A-Za-z_]\w*)\}/g;
+// A brace group directly after a letter, backslash, `^` or `_` is a LaTeX
+// argument (`\pmod{n}`, `\mathbb{Z}`, `x^{k}`), not a placeholder — without the
+// lookbehind every stem with typeset maths was flagged as an unfilled template
+// and dropped from its pool.
+const PLACEHOLDER = /(?<![\\A-Za-z^_])\{([A-Za-z_]\w*)\}/g;
 
 /** Exact binomial coefficient via the multiplicative formula. */
 function choose(n: number, k: number): number {

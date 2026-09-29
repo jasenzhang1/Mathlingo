@@ -148,15 +148,15 @@ together Rayleigh quotients, the Spectral Theorem, and Eckart-Young into one coh
 | R4 | recall | mcq | 0.02 | Which columns of V span the null space N(A)? | the last n−r columns of V | picks "the first r columns of V" — those span the row space, not the null space → `svd-four-fundamental-subspaces` |
 | R5 | recall | short-answer | −0.13 | State dim(N(A)) in terms of n and r=rank(A). | dim(N(A)) = n − r | — |
 | R6 | recall | mcq | 0.17 | Which columns of U span the left null space N(Aᵀ)? | the last m−r columns of U | picks "the first r columns of U" — those span the column space, not the left null space → `svd-four-fundamental-subspaces` |
-| R7 | recall | short-answer | 0.22 | True or false: C(A) and N(Aᵀ) are orthogonal complements of each other in ℝᵐ. | true | — |
+| R7 | recall | short-answer | 0.22 | True or false: C(A) and N(Aᵀ) are orthogonal complements of each other in $\mathcal{R}^m$. | true | — |
 | R8 | recall | mcq | −0.18 | The row space C(Aᵀ) and null space N(A) are orthogonal complements within: | ℝⁿ, the domain space | picks "ℝᵐ, the output space" — that's where the column space and left null space live → `svd-four-fundamental-subspaces` |
 | R9 | recall | short-answer | 0.32 | State dim(C(A)) in terms of r=rank(A). | dim(C(A)) = r | — |
-| R10 | recall | mcq | −0.08 | Together, which two SVD-derived subspaces span all of ℝⁿ, the domain? | the row space (first r columns of V) and the null space (last n−r columns of V) | picks "the column space and left null space" — those live in ℝᵐ, not ℝⁿ → `svd-four-fundamental-subspaces` |
+| R10 | recall | mcq | −0.08 | Together, which two SVD-derived subspaces span all of $\mathcal{R}^n$, the domain? | the row space (first r columns of V) and the null space (last n−r columns of V) | picks "the column space and left null space" — those live in ℝᵐ, not ℝⁿ → `svd-four-fundamental-subspaces` |
 | R11 | recall | short-answer | 0.27 | Fill in the blank: for A that is m×n with rank r, dim(N(Aᵀ)) = m − ___. | r | — |
 | R12 | recall | mcq | −0.23 | How many of the four fundamental subspaces does a single SVD of A reveal simultaneously? | all four | picks "only two — the column space and null space" → `svd-four-fundamental-subspaces` |
 | R13 | recall | short-answer | 0.37 | True or false: the split of U's and V's columns into subspace groups is determined by which singular values are zero versus nonzero. | true | — |
 | R14 | recall | mcq | 0.12 | If A is m×n with full row rank (r=m<n), which fundamental subspace is {0}? | the left null space N(Aᵀ), since m−r=0 | picks "the null space N(A)" — that one has dimension n−r>0, generally nontrivial → `svd-four-fundamental-subspaces` |
-| R15 | recall | short-answer | −0.33 | Which SVD component (U or V) is associated with the domain ℝⁿ, and which with the codomain ℝᵐ? | V's columns live in ℝⁿ (domain); U's columns live in ℝᵐ (codomain) | — |
+| R15 | recall | short-answer | −0.33 | Which SVD component (U or V) is associated with the domain $\mathcal{R}^n$, and which with the codomain $\mathcal{R}^m$? | V's columns live in ℝⁿ (domain); U's columns live in ℝᵐ (codomain) | — |
 | R16 | recall | mcq | 0.42 | The rank-nullity theorem, restated via SVD, says dim(row space)+dim(null space) equals: | n, the number of columns of A | picks "m, the number of rows of A" → `svd-four-fundamental-subspaces` |
 | A2 | apply | numeric | 0.50 | A is 6×4 with rank 3. What is dim(N(A))? `[verified: 1]` | n−r=4−3=1 | — |
 | A3 | apply | numeric | 0.60 | A is 6×4 with rank 3. What is dim(N(Aᵀ))? `[verified: 3]` | m−r=6−3=3 | — |
