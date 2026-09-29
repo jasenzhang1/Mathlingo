@@ -41,3 +41,22 @@ export const ML_12 = bank("12", "further paradigms and methods", "ml-12-further-
 export const ML_13 = bank("13", "neural network architectures", "ml-13-neural-architectures.md");
 export const ML_14 = bank("14", "training deep networks at scale", "ml-14-training-at-scale.md");
 export const ML_15 = bank("15", "scaling, adapting and serving", "ml-15-adapting-and-serving.md");
+
+/**
+ * Clusters 16-18 extend the deep-learning chapters (CNN practice, state space
+ * models and GNNs, score-based generative models). Like 10-15 they were
+ * authored directly in typed form; with no markdown design record, the locator
+ * points at the item file itself.
+ */
+function typedBank(n: string, cluster: string, file: string): SourceRef {
+  return {
+    id: `mathlingo-ml-${n}`,
+    tier: "generated",
+    title: `Mathlingo ML assessment bank — cluster ${n} (${cluster})`,
+    locator: `web/src/data/items-ml/${file}`,
+  };
+}
+
+export const ML_16 = typedBank("16", "convolutional networks in practice", "ml-16-cnn-practice.ts");
+export const ML_17 = typedBank("17", "state space models and graph neural networks", "ml-17-ssm-and-gnn.ts");
+export const ML_18 = typedBank("18", "score-based generative models", "ml-18-score-based-generative.ts");

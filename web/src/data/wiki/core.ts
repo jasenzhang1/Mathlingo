@@ -26,6 +26,12 @@ import { hilbertSpaceWiki } from "./hilbert-space";
 import { hmmWiki } from "./hmm";
 import { hypothesisTestWiki } from "./hypothesis-test";
 import { importanceSamplingWiki } from "./importance-sampling";
+import { monteCarloIntegrationWiki } from "./monte-carlo-integration";
+import { precisionMatrixWiki } from "./precision-matrix";
+import { gaussianGraphicalModelsWiki } from "./gaussian-graphical-models";
+import { graphicalLassoWiki } from "./graphical-lasso";
+import { familyWiseErrorRateWiki } from "./family-wise-error-rate";
+import { falseDiscoveryRateWiki } from "./false-discovery-rate";
 import { gibbsSamplingWiki } from "./gibbs-sampling";
 import { klDivergenceWiki } from "./kl-divergence";
 import { kolmogorovSmirnovTestWiki } from "./kolmogorov-smirnov-test";
@@ -145,6 +151,8 @@ export const coreWikiArticles: WikiArticle[] = [
   twoSampleProportionsZTestWiki,
   effectSizeWiki,
   multipleTestingWiki,
+  familyWiseErrorRateWiki,
+  falseDiscoveryRateWiki,
   equivalenceTestingWiki,
   sequentialTestingWiki,
   predictionIntervalWiki,
@@ -166,6 +174,7 @@ export const coreWikiArticles: WikiArticle[] = [
   // The payoff the previous two exist to reach: deriving the conditional
   // formula multivariateNormalWiki's closure table only states.
   conditionalMultivariateNormalWiki,
+  precisionMatrixWiki,
   pearsonCorrelationWiki,
   klDivergenceWiki,
 
@@ -181,6 +190,8 @@ export const coreWikiArticles: WikiArticle[] = [
   directedVsUndirectedGraphsWiki,
   conditionalIndependenceDSeparationWiki,
   markovRandomFieldsWiki,
+  gaussianGraphicalModelsWiki,
+  graphicalLassoWiki,
   markovChainsWiki,
   hmmWiki,
 
@@ -192,6 +203,7 @@ export const coreWikiArticles: WikiArticle[] = [
   conjugatePriorsWiki,
 
   // Cluster 2b: sampling-based inference
+  monteCarloIntegrationWiki,
   importanceSamplingWiki,
   markovChainMonteCarloWiki,
   gibbsSamplingWiki,

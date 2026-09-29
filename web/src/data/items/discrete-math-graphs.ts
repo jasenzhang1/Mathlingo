@@ -36,12 +36,12 @@ export const discreteMathGraphItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For any undirected graph G = (V, E), the handshake lemma says the sum of the degrees of all vertices equals:",
+    stem: "For any undirected graph $G = (V, E)$, the handshake lemma says the sum of the degrees of all vertices equals:",
     choices: [
-      { id: "a", text: "2|E|", correct: true },
+      { id: "a", text: "$2|E|$", correct: true },
       {
         id: "b",
-        text: "|E|",
+        text: "$|E|$",
         correct: false,
         misconception: {
           id: "edge-counted-once-in-degree-sum",
@@ -51,7 +51,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "2|V|",
+        text: "$2|V|$",
         correct: false,
         misconception: {
           id: "degree-sum-tied-to-vertex-count",
@@ -61,7 +61,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "d",
-        text: "|V| · |E|",
+        text: "$|V| \\cdot |E|$",
         correct: false,
         misconception: {
           id: "degree-sum-as-product",
@@ -83,9 +83,9 @@ export const discreteMathGraphItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "In a simple graph, the degree of a vertex v is:",
+    stem: "In a simple graph, the degree of a vertex $v$ is:",
     choices: [
-      { id: "a", text: "the number of edges incident to v, which equals the number of vertices adjacent to v", correct: true },
+      { id: "a", text: "the number of edges incident to $v$, which equals the number of vertices adjacent to $v$", correct: true },
       {
         id: "b",
         text: "the total number of edges in the graph",
@@ -98,7 +98,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "the number of vertices reachable from v by any route",
+        text: "the number of vertices reachable from $v$ by any route",
         correct: false,
         misconception: {
           id: "degree-as-reachability",
@@ -108,7 +108,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "d",
-        text: "the length of the longest route starting at v",
+        text: "the length of the longest route starting at $v$",
         correct: false,
         misconception: {
           id: "degree-as-path-length",
@@ -130,12 +130,12 @@ export const discreteMathGraphItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What is the maximum number of edges a simple graph on n vertices can have?",
+    stem: "What is the maximum number of edges a simple graph on $n$ vertices can have?",
     choices: [
-      { id: "a", text: "n(n − 1)/2", correct: true },
+      { id: "a", text: "$n(n - 1)/2$", correct: true },
       {
         id: "b",
-        text: "n(n − 1)",
+        text: "$n(n - 1)$",
         correct: false,
         misconception: {
           id: "unordered-pairs-counted-twice",
@@ -145,7 +145,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "n²",
+        text: "$n^2$",
         correct: false,
         misconception: {
           id: "loops-and-order-allowed",
@@ -155,7 +155,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "d",
-        text: "n − 1",
+        text: "$n - 1$",
         correct: false,
         misconception: {
           id: "max-edges-as-max-degree",
@@ -177,14 +177,14 @@ export const discreteMathGraphItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which statements are true for every simple graph with n ≥ 2 vertices? Select all that apply.",
+    stem: "Which statements are true for every simple graph with $n \\geq 2$ vertices? Select all that apply.",
     choices: [
       { id: "a", text: "The number of vertices of odd degree is even.", correct: true },
-      { id: "b", text: "Every vertex has degree at most n − 1.", correct: true },
+      { id: "b", text: "Every vertex has degree at most $n - 1$.", correct: true },
       { id: "c", text: "The sum of all degrees is even.", correct: true },
       {
         id: "d",
-        text: "Every vertex has degree at least 1.",
+        text: "Every vertex has degree at least $1$.",
         correct: false,
         misconception: {
           id: "isolated-vertices-forbidden",
@@ -194,7 +194,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "e",
-        text: "The number of edges is at most n.",
+        text: "The number of edges is at most $n$.",
         correct: false,
         misconception: {
           id: "edges-bounded-by-vertices",
@@ -220,7 +220,7 @@ export const discreteMathGraphItems: Item[] = [
     choices: [
       { id: "a", text: "No edge joins a vertex to itself (no loops).", correct: true },
       { id: "b", text: "At most one edge joins any pair of vertices (no multi-edges).", correct: true },
-      { id: "c", text: "Edges are unordered pairs {u, v} of distinct vertices.", correct: true },
+      { id: "c", text: "Edges are unordered pairs $\\{u, v\\}$ of distinct vertices.", correct: true },
       {
         id: "d",
         text: "Every vertex can reach every other vertex.",
@@ -255,7 +255,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A graph has degree sequence (3, 3, 2, 2, 2). How many edges does it have? Give a whole number.",
+    stem: "A graph has degree sequence $(3, 3, 2, 2, 2)$. How many edges does it have? Give a whole number.",
     answerKey: 6,
     tolerance: 0.001,
     difficulty: -0.8,
@@ -271,7 +271,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A simple graph has 10 vertices, and every vertex has degree 4. How many edges does it have? Give a whole number.",
+    stem: "A simple graph has $10$ vertices, and every vertex has degree $4$. How many edges does it have? Give a whole number.",
     answerKey: 20,
     tolerance: 0.001,
     difficulty: -0.6,
@@ -287,7 +287,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "How many edges does the complete graph K₇ (7 vertices, every pair adjacent) have? Give a whole number.",
+    stem: "How many edges does the complete graph $K_7$ ($7$ vertices, every pair adjacent) have? Give a whole number.",
     answerKey: 21,
     tolerance: 0.001,
     difficulty: -0.5,
@@ -305,10 +305,10 @@ export const discreteMathGraphItems: Item[] = [
     channels: ["typed"],
     stem: "Exactly one of these degree sequences cannot belong to any simple graph. Which one?",
     choices: [
-      { id: "a", text: "(3, 3, 2, 2, 1)", correct: true },
+      { id: "a", text: "$(3, 3, 2, 2, 1)$", correct: true },
       {
         id: "b",
-        text: "(3, 3, 3, 3)",
+        text: "$(3, 3, 3, 3)$",
         correct: false,
         misconception: {
           id: "complete-graph-not-recognised",
@@ -318,7 +318,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "(2, 2, 2, 2)",
+        text: "$(2, 2, 2, 2)$",
         correct: false,
         misconception: {
           id: "cycle-not-recognised",
@@ -328,7 +328,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "d",
-        text: "(1, 1, 1, 1)",
+        text: "$(1, 1, 1, 1)$",
         correct: false,
         misconception: {
           id: "disconnected-assumed-illegal",
@@ -351,8 +351,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A graph has 15 edges. Three of its vertices have degree 4 and every other vertex has degree 3. How many " +
-      "vertices does the graph have? Give a whole number.",
+      "A graph has $15$ edges. Three of its vertices have degree $4$ and every other vertex has degree $3$. " +
+      "How many vertices does the graph have? Give a whole number.",
     answerKey: 9,
     tolerance: 0.001,
     difficulty: 0.1,
@@ -439,8 +439,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Using degrees and the handshake lemma (not a combinations formula), derive that a simple graph on n " +
-      "vertices has at most n(n − 1)/2 edges, and say which graph attains the bound.",
+      "Using degrees and the handshake lemma (not a combinations formula), derive that a simple graph on " +
+      "$n$ vertices has at most $n(n - 1)/2$ edges, and say which graph attains the bound.",
     rubric: {
       elements: [
         {
@@ -518,8 +518,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "In a simple graph on n ≥ 2 vertices, explain why no vertex can have degree greater than n − 1, and why the " +
-      "graph cannot contain both a vertex of degree 0 and a vertex of degree n − 1.",
+      "In a simple graph on $n \\geq 2$ vertices, explain why no vertex can have degree greater than $n - " +
+      "1$, and why the graph cannot contain both a vertex of degree $0$ and a vertex of degree $n - 1$.",
     rubric: {
       elements: [
         {
@@ -555,9 +555,10 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "The complement Ḡ of a simple graph G has the same vertex set, and {u, v} is an edge of Ḡ exactly when it is " +
-      "not an edge of G — the set complement of E relative to all possible edges. If G has 6 vertices and 7 edges, " +
-      "how many edges does Ḡ have? Give a whole number.",
+      "The complement $\\overline{G}$ of a simple graph $G$ has the same vertex set, and $\\{u, v\\}$ is an " +
+      "edge of $\\overline{G}$ exactly when it is not an edge of $G$ — the set complement of $E$ relative to " +
+      "all possible edges. If $G$ has $6$ vertices and $7$ edges, how many edges does $\\overline{G}$ have? " +
+      "Give a whole number.",
     answerKey: 8,
     tolerance: 0.001,
     difficulty: 0.5,
@@ -573,12 +574,12 @@ export const discreteMathGraphItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "G is a simple graph on 9 vertices, and vertex v has degree 3 in G. What is the degree of v in the complement Ḡ?",
+    stem: "$G$ is a simple graph on $9$ vertices, and vertex $v$ has degree $3$ in $G$. What is the degree of $v$ in the complement $\\overline{G}$?",
     choices: [
-      { id: "a", text: "5", correct: true },
+      { id: "a", text: "$5$", correct: true },
       {
         id: "b",
-        text: "6",
+        text: "$6$",
         correct: false,
         misconception: {
           id: "complement-includes-self",
@@ -588,7 +589,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "3",
+        text: "$3$",
         correct: false,
         misconception: {
           id: "complement-preserves-degree",
@@ -598,7 +599,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "d",
-        text: "33",
+        text: "$33$",
         correct: false,
         misconception: {
           id: "complement-degree-from-edge-total",
@@ -621,8 +622,9 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "On a social network, 'friendship' is mutual but 'follows' is one-way. Explain how the handshake lemma " +
-      "changes when you model 'follows' as a directed graph, and what the correct degree-sum identity is.",
+      "On a social network, ‘friendship’ is mutual but ‘follows’ is one-way. Explain how the handshake " +
+      "lemma changes when you model ‘follows’ as a directed graph, and what the correct degree-sum identity " +
+      "is.",
     rubric: {
       elements: [
         {
@@ -658,16 +660,16 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "Let V = {a, b, c, d} and E = {{a, b}, {b, c}, {c, a}}. Write N(x) for the set of neighbours of x. Which " +
-      "statements are true? Select all that apply.",
+      "Let $V = \\{a, b, c, d\\}$ and $E = \\{\\{a, b\\}, \\{b, c\\}, \\{c, a\\}\\}$. Write $N(x)$ for the set of " +
+      "neighbours of $x$. Which statements are true? Select all that apply.",
     choices: [
-      { id: "a", text: "N(a) = {b, c}", correct: true },
-      { id: "b", text: "N(a) ∩ N(b) = {c}", correct: true },
-      { id: "c", text: "N(d) = ∅", correct: true },
-      { id: "d", text: "N(a) ∪ N(b) = {a, b, c}", correct: true },
+      { id: "a", text: "$N(a) = \\{b, c\\}$", correct: true },
+      { id: "b", text: "$N(a) \\cap N(b) = \\{c\\}$", correct: true },
+      { id: "c", text: "$N(d) = \\emptyset$", correct: true },
+      { id: "d", text: "$N(a) \\cup N(b) = \\{a, b, c\\}$", correct: true },
       {
         id: "e",
-        text: "a ∈ N(a)",
+        text: "$a \\in N(a)$",
         correct: false,
         misconception: {
           id: "vertex-own-neighbour",
@@ -677,7 +679,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "f",
-        text: "deg(b) = |N(a) ∪ N(b)| = 3",
+        text: "$\\deg(b) = |N(a) \\cup N(b)| = 3$",
         correct: false,
         misconception: {
           id: "degree-from-union",
@@ -700,9 +702,9 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "Build a graph whose vertices are the 10 two-element subsets of {1, 2, 3, 4, 5}, with two vertices adjacent " +
-      "when the subsets are disjoint (e.g. {1, 2} ~ {3, 4}). Every vertex has the same degree. How many edges does " +
-      "the graph have? Give a whole number.",
+      "Build a graph whose vertices are the $10$ two-element subsets of $\\{1, 2, 3, 4, 5\\}$, with two " +
+      "vertices adjacent when the subsets are disjoint (e.g. $\\{1, 2\\} \\sim \\{3, 4\\}$). Every vertex has " +
+      "the same degree. How many edges does the graph have? Give a whole number.",
     answerKey: 15,
     tolerance: 0.001,
     difficulty: 1.3,
@@ -816,12 +818,12 @@ export const discreteMathGraphItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The path v₀ – v₁ – v₂ – v₃ – v₄ has length:",
+    stem: "The path $v_0$ – $v_1$ – $v_2$ – $v_3$ – $v_4$ has length:",
     choices: [
-      { id: "a", text: "4 — length counts edges", correct: true },
+      { id: "a", text: "$4$ — length counts edges", correct: true },
       {
         id: "b",
-        text: "5 — length counts vertices",
+        text: "$5$ — length counts vertices",
         correct: false,
         misconception: {
           id: "length-counts-vertices",
@@ -831,7 +833,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "3 — the endpoints are not counted",
+        text: "$3$ — the endpoints are not counted",
         correct: false,
         misconception: {
           id: "length-counts-interior-vertices",
@@ -866,7 +868,7 @@ export const discreteMathGraphItems: Item[] = [
     stem: "Which statements are true? Select all that apply.",
     choices: [
       { id: "a", text: "Every path is a walk.", correct: true },
-      { id: "b", text: "In a simple graph, every cycle has length at least 3.", correct: true },
+      { id: "b", text: "In a simple graph, every cycle has length at least $3$.", correct: true },
       {
         id: "c",
         text: "If one vertex can reach every other vertex, the graph is connected.",
@@ -884,7 +886,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "e",
-        text: "A connected graph on n vertices has at least n edges.",
+        text: "A connected graph on $n$ vertices has at least $n$ edges.",
         correct: false,
         misconception: {
           id: "connected-needs-n-edges",
@@ -906,14 +908,14 @@ export const discreteMathGraphItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Suppose there is a walk from u to v in a graph G (u ≠ v). Which must be true? Select all that apply.",
+    stem: "Suppose there is a walk from $u$ to $v$ in a graph $G (u \\neq v)$. Which must be true? Select all that apply.",
     choices: [
-      { id: "a", text: "There is a path from u to v.", correct: true },
-      { id: "b", text: "u and v lie in the same connected component.", correct: true },
-      { id: "c", text: "A shortest walk from u to v is a path.", correct: true },
+      { id: "a", text: "There is a path from $u$ to $v$.", correct: true },
+      { id: "b", text: "$u$ and $v$ lie in the same connected component.", correct: true },
+      { id: "c", text: "A shortest walk from $u$ to $v$ is a path.", correct: true },
       {
         id: "d",
-        text: "Every walk from u to v is a path.",
+        text: "Every walk from $u$ to $v$ is a path.",
         correct: false,
         misconception: {
           id: "all-walks-are-paths",
@@ -923,7 +925,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "e",
-        text: "G is connected.",
+        text: "$G$ is connected.",
         correct: false,
         misconception: {
           id: "one-pair-implies-connected",
@@ -946,8 +948,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "G has vertices {1, 2, 3, 4, 5, 6, 7, 8} and edges {1,2}, {2,3}, {4,5}, {6,7}, {7,8}, {8,6}. How many " +
-      "connected components does G have? Give a whole number.",
+      "$G$ has vertices $\\{1, 2, 3, 4, 5, 6, 7, 8\\}$ and edges $\\{1,2\\}$, $\\{2,3\\}$, $\\{4,5\\}$, $\\{6,7\\}$, " +
+      "$\\{7,8\\}$, $\\{8,6\\}$. How many connected components does $G$ have? Give a whole number.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: -0.8,
@@ -964,8 +966,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "G is the path 1 – 2 – 3 – 4 – 5 – 6 – 7 with one extra edge {2, 6}. What is the length of a shortest path " +
-      "from vertex 1 to vertex 7? Give a whole number.",
+      "$G$ is the path $1$ – $2$ – $3$ – $4$ – $5$ – $6$ – $7$ with one extra edge $\\{2, 6\\}$. What is the " +
+      "length of a shortest path from vertex $1$ to vertex $7$? Give a whole number.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: -0.5,
@@ -982,8 +984,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A graph on 10 vertices has 4 connected components. What is the minimum number of edges you must add to make " +
-      "it connected? Give a whole number.",
+      "A graph on $10$ vertices has $4$ connected components. What is the minimum number of edges you must " +
+      "add to make it connected? Give a whole number.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: -0.3,
@@ -1000,7 +1002,7 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "G has edges {a,b}, {b,c}, {c,d}, {d,a}, {a,c}. Classify the vertex sequence a – b – c – a – d.",
+      "$G$ has edges $\\{a,b\\}$, $\\{b,c\\}$, $\\{c,d\\}$, $\\{d,a\\}$, $\\{a,c\\}$. Classify the vertex sequence $a$ – $b$ – $c$ – $a$ – $d$.",
     choices: [
       { id: "a", text: "A walk, but not a path", correct: true },
       {
@@ -1047,7 +1049,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "What is the largest number of edges a disconnected simple graph on 7 vertices can have? Give a whole number.",
+    stem: "What is the largest number of edges a disconnected simple graph on $7$ vertices can have? Give a whole number.",
     answerKey: 15,
     tolerance: 0.001,
     difficulty: 0.4,
@@ -1063,7 +1065,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove that if a graph contains a walk from u to v, then it contains a path from u to v.",
+    stem: "Prove that if a graph contains a walk from $u$ to $v$, then it contains a path from $u$ to $v$.",
     rubric: {
       elements: [
         {
@@ -1172,8 +1174,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why a connected graph on n vertices must have at least n − 1 edges. (Hint: start from n isolated " +
-      "vertices and add the edges one at a time.)",
+      "Explain why a connected graph on $n$ vertices must have at least $n - 1$ edges. (Hint: start from " +
+      "$n$ isolated vertices and add the edges one at a time.)",
     rubric: {
       elements: [
         {
@@ -1214,8 +1216,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Prove that if a simple graph G is disconnected, then its complement Ḡ (same vertices; {u, v} an edge exactly " +
-      "when it is not an edge of G) is connected.",
+      "Prove that if a simple graph $G$ is disconnected, then its complement $\\overline{G}$ (same vertices; " +
+      "$\\{u, v\\}$ an edge exactly when it is not an edge of $G$) is connected.",
     rubric: {
       elements: [
         {
@@ -1252,9 +1254,9 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A network engineer runs a search from one router and finds it can reach all 500 routers. Their colleague " +
-      "insists every pair of routers must be tested separately. Explain why the single search already proves the " +
-      "whole network is connected.",
+      "A network engineer runs a search from one router and finds it can reach all $500$ routers. Their " +
+      "colleague insists every pair of routers must be tested separately. Explain why the single search " +
+      "already proves the whole network is connected.",
     rubric: {
       elements: [
         {
@@ -1289,8 +1291,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "A graph has vertex set {1, 2, …, 20}, and i is adjacent to j whenever |i − j| = 5. How many connected " +
-      "components does it have? Give a whole number.",
+      "A graph has vertex set $\\{1, 2, \\ldots, 20\\}$, and $i$ is adjacent to $j$ whenever $|i - j| = 5$. " +
+      "How many connected components does it have? Give a whole number.",
     answerKey: 5,
     tolerance: 0.001,
     difficulty: 0.6,
@@ -1307,8 +1309,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "A graph has vertex set {2, 3, …, 12}, and two distinct vertices are adjacent when one divides the other. " +
-      "How many connected components does it have? Give a whole number.",
+      "A graph has vertex set $\\{2, 3, \\ldots, 12\\}$, and two distinct vertices are adjacent when one " +
+      "divides the other. How many connected components does it have? Give a whole number.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: 0.8,
@@ -1352,7 +1354,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "d",
-        text: "whether the graph has at least n − 1 edges",
+        text: "whether the graph has at least $n - 1$ edges",
         correct: false,
         misconception: {
           id: "edge-count-implies-connected",
@@ -1375,8 +1377,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "Let G be a simple graph on n vertices in which every vertex has degree at least (n − 1)/2. Prove that G is " +
-      "connected — in fact, that any two vertices are at distance at most 2.",
+      "Let $G$ be a simple graph on $n$ vertices in which every vertex has degree at least $(n - 1)/2$. " +
+      "Prove that $G$ is connected — in fact, that any two vertices are at distance at most $2$.",
     rubric: {
       elements: [
         {
@@ -1441,7 +1443,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "d",
-        text: "a graph in which every vertex has degree at most 2",
+        text: "a graph in which every vertex has degree at most $2$",
         correct: false,
         misconception: {
           id: "tree-as-path",
@@ -1463,12 +1465,12 @@ export const discreteMathGraphItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "A tree with n vertices has exactly how many edges?",
+    stem: "A tree with $n$ vertices has exactly how many edges?",
     choices: [
-      { id: "a", text: "n − 1", correct: true },
+      { id: "a", text: "$n - 1$", correct: true },
       {
         id: "b",
-        text: "n",
+        text: "$n$",
         correct: false,
         misconception: {
           id: "tree-edges-equal-vertices",
@@ -1478,7 +1480,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "n(n − 1)/2",
+        text: "$n(n - 1)/2$",
         correct: false,
         misconception: {
           id: "tree-edges-as-complete",
@@ -1510,15 +1512,15 @@ export const discreteMathGraphItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For a graph G on n vertices, which conditions are each, on their own, equivalent to 'G is a tree'? Select all that apply.",
+    stem: "For a graph $G$ on $n$ vertices, which conditions are each, on their own, equivalent to ‘$G$ is a tree’? Select all that apply.",
     choices: [
-      { id: "a", text: "G is connected and acyclic.", correct: true },
-      { id: "b", text: "G is connected and has n − 1 edges.", correct: true },
-      { id: "c", text: "G is acyclic and has n − 1 edges.", correct: true },
-      { id: "d", text: "Between any two vertices of G there is exactly one path.", correct: true },
+      { id: "a", text: "$G$ is connected and acyclic.", correct: true },
+      { id: "b", text: "$G$ is connected and has $n - 1$ edges.", correct: true },
+      { id: "c", text: "$G$ is acyclic and has $n - 1$ edges.", correct: true },
+      { id: "d", text: "Between any two vertices of $G$ there is exactly one path.", correct: true },
       {
         id: "e",
-        text: "G has n − 1 edges.",
+        text: "$G$ has $n - 1$ edges.",
         correct: false,
         misconception: {
           id: "edge-count-alone-tree",
@@ -1540,12 +1542,12 @@ export const discreteMathGraphItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "A spanning tree of a connected graph G is:",
+    stem: "A spanning tree of a connected graph $G$ is:",
     choices: [
-      { id: "a", text: "a subgraph of G that is a tree and contains every vertex of G", correct: true },
+      { id: "a", text: "a subgraph of $G$ that is a tree and contains every vertex of $G$", correct: true },
       {
         id: "b",
-        text: "any tree that is a subgraph of G",
+        text: "any tree that is a subgraph of $G$",
         correct: false,
         misconception: {
           id: "spanning-drops-all-vertices",
@@ -1555,7 +1557,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "a tree that contains every edge of G",
+        text: "a tree that contains every edge of $G$",
         correct: false,
         misconception: {
           id: "spanning-all-edges",
@@ -1565,7 +1567,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "d",
-        text: "the longest path in G",
+        text: "the longest path in $G$",
         correct: false,
         misconception: {
           id: "spanning-tree-as-path",
@@ -1589,13 +1591,13 @@ export const discreteMathGraphItems: Item[] = [
     channels: ["typed"],
     stem: "Which statements are true? Select all that apply.",
     choices: [
-      { id: "a", text: "Every tree with at least 2 vertices has at least 2 leaves.", correct: true },
+      { id: "a", text: "Every tree with at least $2$ vertices has at least $2$ leaves.", correct: true },
       { id: "b", text: "Removing any edge from a tree disconnects it.", correct: true },
       { id: "c", text: "Adding any new edge to a tree creates exactly one cycle.", correct: true },
-      { id: "d", text: "A forest with n vertices and c components has n − c edges.", correct: true },
+      { id: "d", text: "A forest with $n$ vertices and $c$ components has $n - c$ edges.", correct: true },
       {
         id: "e",
-        text: "Every tree with at least 3 vertices has a vertex of degree at least 3.",
+        text: "Every tree with at least $3$ vertices has a vertex of degree at least $3$.",
         correct: false,
         misconception: {
           id: "trees-must-branch",
@@ -1617,7 +1619,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A tree has 25 vertices. How many edges does it have? Give a whole number.",
+    stem: "A tree has $25$ vertices. How many edges does it have? Give a whole number.",
     answerKey: 24,
     tolerance: 0.001,
     difficulty: -1.2,
@@ -1633,7 +1635,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A forest (an acyclic graph) has 40 vertices and 34 edges. How many trees (components) does it have? Give a whole number.",
+    stem: "A forest (an acyclic graph) has $40$ vertices and $34$ edges. How many trees (components) does it have? Give a whole number.",
     answerKey: 6,
     tolerance: 0.001,
     difficulty: -0.4,
@@ -1650,8 +1652,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A tree has exactly three vertices of degree 3, exactly two vertices of degree 2, and every other vertex is a " +
-      "leaf (degree 1). How many leaves does it have? Give a whole number.",
+      "A tree has exactly three vertices of degree $3$, exactly two vertices of degree $2$, and every other " +
+      "vertex is a leaf (degree $1$). How many leaves does it have? Give a whole number.",
     answerKey: 5,
     tolerance: 0.001,
     difficulty: 0.3,
@@ -1668,8 +1670,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A connected graph has 12 vertices and 20 edges. How many edges must be deleted to leave a spanning tree? " +
-      "Give a whole number.",
+      "A connected graph has $12$ vertices and $20$ edges. How many edges must be deleted to leave a " +
+      "spanning tree? Give a whole number.",
     answerKey: 9,
     tolerance: 0.001,
     difficulty: -0.3,
@@ -1685,7 +1687,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "How many different spanning trees does the cycle graph C₆ (six vertices in a ring) have? Give a whole number.",
+    stem: "How many different spanning trees does the cycle graph $C_6$ (six vertices in a ring) have? Give a whole number.",
     answerKey: 6,
     tolerance: 0.001,
     difficulty: 0.0,
@@ -1743,8 +1745,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why deleting a leaf (and its one edge) from a tree leaves a smaller tree, and use that to explain " +
-      "why a tree on n vertices has n − 1 edges.",
+      "Explain why deleting a leaf (and its one edge) from a tree leaves a smaller tree, and use that to " +
+      "explain why a tree on $n$ vertices has $n - 1$ edges.",
     rubric: {
       elements: [
         {
@@ -1856,8 +1858,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A student says: 'My graph has 8 vertices and 7 edges, so it's a tree.' Explain what is missing from the " +
-      "argument and give a counterexample.",
+      "A student says: ‘My graph has $8$ vertices and $7$ edges, so it's a tree.’ Explain what is missing " +
+      "from the argument and give a counterexample.",
     rubric: {
       elements: [
         {
@@ -1893,8 +1895,9 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "A company must link 50 offices with private cables so that every office can reach every other, possibly " +
-      "through intermediate offices. What is the fewest number of cables that can do it? Give a whole number.",
+      "A company must link $50$ offices with private cables so that every office can reach every other, " +
+      "possibly through intermediate offices. What is the fewest number of cables that can do it? Give a " +
+      "whole number.",
     answerKey: 49,
     tolerance: 0.001,
     difficulty: -0.2,
@@ -1911,8 +1914,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "A single-elimination tournament starts with 64 teams; every game eliminates exactly one team and the " +
-      "tournament ends when one champion remains. How many games are played? Give a whole number.",
+      "A single-elimination tournament starts with $64$ teams; every game eliminates exactly one team and " +
+      "the tournament ends when one champion remains. How many games are played? Give a whole number.",
     answerKey: 63,
     tolerance: 0.001,
     difficulty: 0.2,
@@ -1928,7 +1931,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "A graph has 8 vertices and 7 edges, and it contains a cycle. What can you conclude?",
+    stem: "A graph has $8$ vertices and $7$ edges, and it contains a cycle. What can you conclude?",
     choices: [
       { id: "a", text: "It must be disconnected.", correct: true },
       {
@@ -1975,7 +1978,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "derivation",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "Prove that a connected graph with n vertices and exactly n edges contains exactly one cycle.",
+    stem: "Prove that a connected graph with $n$ vertices and exactly $n$ edges contains exactly one cycle.",
     rubric: {
       elements: [
         {
@@ -2019,9 +2022,9 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "In an alkane molecule, atoms are vertices and single bonds are edges; each carbon has degree 4, each " +
-      "hydrogen degree 1, and the molecule's graph is a tree. Show that an alkane with n carbons has exactly 2n + 2 " +
-      "hydrogens.",
+      "In an alkane molecule, atoms are vertices and single bonds are edges; each carbon has degree $4$, " +
+      "each hydrogen degree $1$, and the molecule's graph is a tree. Show that an alkane with $n$ carbons " +
+      "has exactly $2n + 2$ hydrogens.",
     rubric: {
       elements: [
         {
@@ -2137,7 +2140,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "d",
-        text: "every vertex has degree at least n/2",
+        text: "every vertex has degree at least $n/2$",
         correct: false,
         misconception: {
           id: "dirac-for-euler",
@@ -2212,8 +2215,8 @@ export const discreteMathGraphItems: Item[] = [
     choices: [
       { id: "a", text: "A Hamiltonian cycle visits every vertex exactly once before returning to its start.", correct: true },
       { id: "b", text: "No simple degree-parity test for Hamiltonicity, like Euler's theorem, is known.", correct: true },
-      { id: "c", text: "The complete graph Kₙ has a Hamiltonian cycle for every n ≥ 3.", correct: true },
-      { id: "d", text: "A graph on n ≥ 3 vertices with a vertex of degree 1 has no Hamiltonian cycle.", correct: true },
+      { id: "c", text: "The complete graph $K_n$ has a Hamiltonian cycle for every $n \\geq 3$.", correct: true },
+      { id: "d", text: "A graph on $n \\geq 3$ vertices with a vertex of degree $1$ has no Hamiltonian cycle.", correct: true },
       {
         id: "e",
         text: "Every graph with an Eulerian circuit also has a Hamiltonian cycle.",
@@ -2240,11 +2243,11 @@ export const discreteMathGraphItems: Item[] = [
     channels: ["typed"],
     stem: "Which of these graphs have an Eulerian circuit? Select all that apply.",
     choices: [
-      { id: "a", text: "The cycle C₇", correct: true },
-      { id: "b", text: "The complete graph K₅", correct: true },
+      { id: "a", text: "The cycle $C_7$", correct: true },
+      { id: "b", text: "The complete graph $K_5$", correct: true },
       {
         id: "c",
-        text: "The complete graph K₄",
+        text: "The complete graph $K_4$",
         correct: false,
         misconception: {
           id: "complete-always-eulerian",
@@ -2254,7 +2257,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "d",
-        text: "The path on 4 vertices",
+        text: "The path on $4$ vertices",
         correct: false,
         misconception: {
           id: "path-graph-eulerian-circuit",
@@ -2264,7 +2267,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "e",
-        text: "The cube graph (8 vertices, each of degree 3)",
+        text: "The cube graph ($8$ vertices, each of degree $3$)",
         correct: false,
         misconception: {
           id: "regular-means-eulerian",
@@ -2286,9 +2289,9 @@ export const discreteMathGraphItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A connected graph has degree sequence (4, 4, 3, 3, 2, 2). Which is true?",
+    stem: "A connected graph has degree sequence $(4, 4, 3, 3, 2, 2)$. Which is true?",
     choices: [
-      { id: "a", text: "It has an Eulerian path but no Eulerian circuit; the path must start at a degree-3 vertex.", correct: true },
+      { id: "a", text: "It has an Eulerian path but no Eulerian circuit; the path must start at a degree-$3$ vertex.", correct: true },
       {
         id: "b",
         text: "It has an Eulerian circuit.",
@@ -2301,7 +2304,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "It has an Eulerian path starting at a degree-4 vertex.",
+        text: "It has an Eulerian path starting at a degree-$4$ vertex.",
         correct: false,
         misconception: {
           id: "start-at-highest-degree",
@@ -2334,9 +2337,9 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "In the Königsberg bridges multigraph, the four land masses have degrees 5, 3, 3, 3. What is the minimum " +
-      "number of new bridges that must be built so that a walk can cross every bridge exactly once and return to " +
-      "its starting point? Give a whole number.",
+      "In the Königsberg bridges multigraph, the four land masses have degrees $5, 3, 3, 3$. What is the " +
+      "minimum number of new bridges that must be built so that a walk can cross every bridge exactly once " +
+      "and return to its starting point? Give a whole number.",
     answerKey: 2,
     tolerance: 0.001,
     difficulty: 0.2,
@@ -2353,8 +2356,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A connected graph has exactly 8 vertices of odd degree. What is the minimum number of edge-disjoint trails " +
-      "(pen strokes) needed to draw every edge exactly once? Give a whole number.",
+      "A connected graph has exactly $8$ vertices of odd degree. What is the minimum number of " +
+      "edge-disjoint trails (pen strokes) needed to draw every edge exactly once? Give a whole number.",
     answerKey: 4,
     tolerance: 0.001,
     difficulty: 0.5,
@@ -2370,12 +2373,12 @@ export const discreteMathGraphItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "For which n ≥ 3 does the complete graph Kₙ have an Eulerian circuit?",
+    stem: "For which $n \\geq 3$ does the complete graph $K_n$ have an Eulerian circuit?",
     choices: [
-      { id: "a", text: "Exactly when n is odd", correct: true },
+      { id: "a", text: "Exactly when $n$ is odd", correct: true },
       {
         id: "b",
-        text: "Exactly when n is even",
+        text: "Exactly when $n$ is even",
         correct: false,
         misconception: {
           id: "vertex-count-parity-not-degree",
@@ -2385,7 +2388,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "For every n ≥ 3",
+        text: "For every $n \\geq 3$",
         correct: false,
         misconception: {
           id: "complete-always-eulerian",
@@ -2395,7 +2398,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "d",
-        text: "Exactly when n is prime",
+        text: "Exactly when $n$ is prime",
         correct: false,
         misconception: {
           id: "irrelevant-number-property",
@@ -2417,7 +2420,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "An Eulerian circuit of K₇ uses how many edges in total? Give a whole number.",
+    stem: "An Eulerian circuit of $K_7$ uses how many edges in total? Give a whole number.",
     answerKey: 21,
     tolerance: 0.001,
     difficulty: -0.5,
@@ -2588,8 +2591,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why a graph on n ≥ 3 vertices with a vertex of degree 1 cannot have a Hamiltonian cycle, and " +
-      "whether it can still have a Hamiltonian path.",
+      "Explain why a graph on $n \\geq 3$ vertices with a vertex of degree $1$ cannot have a Hamiltonian " +
+      "cycle, and whether it can still have a Hamiltonian path.",
     rubric: {
       elements: [
         {
@@ -2662,8 +2665,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "A double-six domino set has one tile for every unordered pair of numbers from 0 to 6, including doubles " +
-      "(28 tiles). Can all 28 be laid in a single closed ring where touching ends match?",
+      "A double-six domino set has one tile for every unordered pair of numbers from $0$ to $6$, including " +
+      "doubles ($28$ tiles). Can all $28$ be laid in a single closed ring where touching ends match?",
     choices: [
       {
         id: "a",
@@ -2672,7 +2675,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "b",
-        text: "No — K₇ has odd-degree vertices",
+        text: "No — $K_7$ has odd-degree vertices",
         correct: false,
         misconception: {
           id: "k7-degree-miscounted",
@@ -2682,7 +2685,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "Yes — because 28 is even",
+        text: "Yes — because $28$ is even",
         correct: false,
         misconception: {
           id: "edge-count-parity",
@@ -2715,9 +2718,9 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "Draw a 3 × 3 grid of dots joined horizontally and vertically to their immediate neighbours (9 vertices, " +
-      "12 edges — a tic-tac-toe board with its border). What is the minimum number of pen strokes, without " +
-      "retracing any segment, needed to draw it? Give a whole number.",
+      "Draw a $3 \\times 3$ grid of dots joined horizontally and vertically to their immediate neighbours " +
+      "($9$ vertices, $12$ edges — a tic-tac-toe board with its border). What is the minimum number of pen " +
+      "strokes, without retracing any segment, needed to draw it? Give a whole number.",
     answerKey: 2,
     tolerance: 0.001,
     difficulty: 0.6,
@@ -2734,8 +2737,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "In the same 3 × 3 grid graph (9 vertices, neighbours horizontally and vertically), which is true? (Hint: " +
-      "shade the vertices like a chessboard.)",
+      "In the same $3 \\times 3$ grid graph ($9$ vertices, neighbours horizontally and vertically), which is " +
+      "true? (Hint: shade the vertices like a chessboard.)",
     choices: [
       { id: "a", text: "It has a Hamiltonian path but no Hamiltonian cycle.", correct: true },
       {
@@ -2783,8 +2786,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "Prove that if every vertex of a connected graph G has even degree, then G has no bridge — no edge whose " +
-      "removal disconnects the graph.",
+      "Prove that if every vertex of a connected graph $G$ has even degree, then $G$ has no bridge — no " +
+      "edge whose removal disconnects the graph.",
     rubric: {
       elements: [
         {
@@ -2876,12 +2879,12 @@ export const discreteMathGraphItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The chromatic number χ(G) is:",
+    stem: "The chromatic number $\\chi(G)$ is:",
     choices: [
-      { id: "a", text: "the minimum number of colors in a proper coloring of G", correct: true },
+      { id: "a", text: "the minimum number of colors in a proper coloring of $G$", correct: true },
       {
         id: "b",
-        text: "the maximum number of colors in a proper coloring of G",
+        text: "the maximum number of colors in a proper coloring of $G$",
         correct: false,
         misconception: {
           id: "chromatic-as-maximum",
@@ -2891,7 +2894,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "the maximum degree of G",
+        text: "the maximum degree of $G$",
         correct: false,
         misconception: {
           id: "chromatic-equals-max-degree",
@@ -2923,12 +2926,12 @@ export const discreteMathGraphItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What is the chromatic number of the complete graph Kₙ?",
+    stem: "What is the chromatic number of the complete graph $K_n$?",
     choices: [
-      { id: "a", text: "n", correct: true },
+      { id: "a", text: "$n$", correct: true },
       {
         id: "b",
-        text: "n − 1",
+        text: "$n - 1$",
         correct: false,
         misconception: {
           id: "complete-uses-max-degree",
@@ -2938,7 +2941,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "2",
+        text: "$2$",
         correct: false,
         misconception: {
           id: "two-colors-always",
@@ -2948,7 +2951,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "d",
-        text: "4, by the Four Color Theorem",
+        text: "$4$, by the Four Color Theorem",
         correct: false,
         misconception: {
           id: "four-color-overapplied",
@@ -2972,13 +2975,13 @@ export const discreteMathGraphItems: Item[] = [
     channels: ["typed"],
     stem: "Which statements are true? Select all that apply.",
     choices: [
-      { id: "a", text: "χ(Cₙ) = 2 when n is even.", correct: true },
-      { id: "b", text: "χ(Cₙ) = 3 when n is odd.", correct: true },
-      { id: "c", text: "χ(G) ≤ Δ(G) + 1, where Δ is the maximum degree.", correct: true },
-      { id: "d", text: "χ(G) is at least the size of the largest clique in G.", correct: true },
+      { id: "a", text: "$\\chi(C_n) = 2$ when $n$ is even.", correct: true },
+      { id: "b", text: "$\\chi(C_n) = 3$ when $n$ is odd.", correct: true },
+      { id: "c", text: "$\\chi(G) \\leq \\Delta(G) + 1$, where $\\Delta$ is the maximum degree.", correct: true },
+      { id: "d", text: "$\\chi(G)$ is at least the size of the largest clique in $G$.", correct: true },
       {
         id: "e",
-        text: "χ(G) ≤ 4 for every graph G.",
+        text: "$\\chi(G) \\leq 4$ for every graph $G$.",
         correct: false,
         misconception: {
           id: "four-color-overapplied",
@@ -3000,14 +3003,14 @@ export const discreteMathGraphItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which of these graphs have chromatic number exactly 2? Select all that apply.",
+    stem: "Which of these graphs have chromatic number exactly $2$? Select all that apply.",
     choices: [
-      { id: "a", text: "The cycle C₈", correct: true },
-      { id: "b", text: "The path on 5 vertices", correct: true },
-      { id: "c", text: "A star: one center joined to 6 leaves", correct: true },
+      { id: "a", text: "The cycle $C_8$", correct: true },
+      { id: "b", text: "The path on $5$ vertices", correct: true },
+      { id: "c", text: "A star: one center joined to $6$ leaves", correct: true },
       {
         id: "d",
-        text: "The triangle C₃",
+        text: "The triangle $C_3$",
         correct: false,
         misconception: {
           id: "odd-cycle-two-colorable",
@@ -3017,7 +3020,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "e",
-        text: "K₄",
+        text: "$K_4$",
         correct: false,
         misconception: {
           id: "complete-two-colorable",
@@ -3039,7 +3042,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "What is the chromatic number of the cycle C₇? Give a whole number.",
+    stem: "What is the chromatic number of the cycle $C_7$? Give a whole number.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: -0.8,
@@ -3056,8 +3059,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A wheel graph is a cycle C₅ plus one extra hub vertex joined to all five cycle vertices. What is its " +
-      "chromatic number? Give a whole number.",
+      "A wheel graph is a cycle $C_5$ plus one extra hub vertex joined to all five cycle vertices. What is " +
+      "its chromatic number? Give a whole number.",
     answerKey: 4,
     tolerance: 0.001,
     difficulty: 0.1,
@@ -3073,7 +3076,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "What is the chromatic number of K₄ with one edge removed? Give a whole number.",
+    stem: "What is the chromatic number of $K_4$ with one edge removed? Give a whole number.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: -0.4,
@@ -3090,7 +3093,7 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A graph has maximum degree 5. What is the smallest number of colors that the greedy algorithm is " +
+      "A graph has maximum degree $5$. What is the smallest number of colors that the greedy algorithm is " +
       "guaranteed never to exceed, whatever order it visits the vertices in? Give a whole number.",
     answerKey: 6,
     tolerance: 0.001,
@@ -3108,8 +3111,9 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "Five exams A–E must be scheduled so that no student has two exams at once. The conflicting pairs (sharing " +
-      "a student) are A–B, A–C, B–C, C–D, D–E. What is the minimum number of time slots needed? Give a whole number.",
+      "Five exams $A$–$E$ must be scheduled so that no student has two exams at once. The conflicting pairs " +
+      "(sharing a student) are $A$–$B$, $A$–$C$, $B$–$C$, $C$–$D$, $D$–$E$. What is the minimum number of " +
+      "time slots needed? Give a whole number.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: 0.0,
@@ -3125,7 +3129,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove that every graph with maximum degree Δ can be properly colored with at most Δ + 1 colors.",
+    stem: "Prove that every graph with maximum degree $\\Delta$ can be properly colored with at most $\\Delta + 1$ colors.",
     rubric: {
       elements: [
         {
@@ -3160,7 +3164,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why a graph containing a clique of size k (k mutually adjacent vertices) needs at least k colors.",
+    stem: "Explain why a graph containing a clique of size $k$ ($k$ mutually adjacent vertices) needs at least $k$ colors.",
     rubric: {
       elements: [
         {
@@ -3194,7 +3198,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why an odd cycle cannot be properly colored with 2 colors.",
+    stem: "Explain why an odd cycle cannot be properly colored with $2$ colors.",
     rubric: {
       elements: [
         {
@@ -3230,8 +3234,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "The path a – b – c – d has χ = 2. Show that greedy coloring in the order a, d, b, c uses 3 colors, and " +
-      "explain what this says about greedy coloring in general.",
+      "The path $a$ – $b$ – $c$ – $d$ has $\\chi = 2$. Show that greedy coloring in the order $a, d, b, c$ " +
+      "uses $3$ colors, and explain what this says about greedy coloring in general.",
     rubric: {
       elements: [
         {
@@ -3267,8 +3271,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "C₅ has no triangle, so its largest clique has size 2, yet χ(C₅) = 3. Explain what this shows about the " +
-      "clique lower bound.",
+      "$C_5$ has no triangle, so its largest clique has size $2$, yet $\\chi(C_5) = 3$. Explain what this " +
+      "shows about the clique lower bound.",
     rubric: {
       elements: [
         {
@@ -3304,9 +3308,10 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "A compiler assigns variables to CPU registers; two variables that are live at the same time cannot share " +
-      "a register. Variables a–f interfere in pairs a–b, b–c, c–a, c–d, d–e, e–f, f–d, a–f. What is the fewest " +
-      "registers that can hold all six variables? Give a whole number.",
+      "A compiler assigns variables to CPU registers; two variables that are live at the same time cannot " +
+      "share a register. Variables $a$–$f$ interfere in pairs $a$–$b$, $b$–$c$, $c$–$a$, $c$–$d$, $d$–$e$, " +
+      "$e$–$f$, $f$–$d$, $a$–$f$. What is the fewest registers that can hold all six variables? Give a " +
+      "whole number.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: 0.6,
@@ -3327,10 +3332,10 @@ export const discreteMathGraphItems: Item[] = [
       "connected region). With countries as vertices and shared borders as edges, the result is a planar graph. " +
       "How many colors always suffice?",
     choices: [
-      { id: "a", text: "4, by the Four Color Theorem", correct: true },
+      { id: "a", text: "$4$, by the Four Color Theorem", correct: true },
       {
         id: "b",
-        text: "3, since maps have no K₄",
+        text: "$3$, since maps have no $K_4$",
         correct: false,
         misconception: {
           id: "maps-avoid-k4",
@@ -3340,7 +3345,7 @@ export const discreteMathGraphItems: Item[] = [
       },
       {
         id: "c",
-        text: "Δ + 1, where Δ is the most borders any country has",
+        text: "$\\Delta + 1$, where $\\Delta$ is the most borders any country has",
         correct: false,
         misconception: {
           id: "greedy-bound-as-answer",
@@ -3373,9 +3378,9 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A proper k-coloring splits the vertex set of an n-vertex graph into k color classes. Explain why each " +
-      "class is an independent set (no edges inside it), and why some class must contain at least n/k vertices. " +
-      "What does this say about the largest independent set of G?",
+      "A proper $k$-coloring splits the vertex set of an $n$-vertex graph into $k$ color classes. Explain " +
+      "why each class is an independent set (no edges inside it), and why some class must contain at least " +
+      "$n/k$ vertices. What does this say about the largest independent set of $G$?",
     rubric: {
       elements: [
         {
@@ -3416,8 +3421,8 @@ export const discreteMathGraphItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "G is disconnected, with three components: a 5-cycle, a copy of K₄, and a path on 6 vertices. What is χ(G)? " +
-      "Give a whole number.",
+      "$G$ is disconnected, with three components: a $5$-cycle, a copy of $K_4$, and a path on $6$ " +
+      "vertices. What is $\\chi(G)$? Give a whole number.",
     answerKey: 4,
     tolerance: 0.001,
     difficulty: 0.3,
@@ -3433,7 +3438,7 @@ export const discreteMathGraphItems: Item[] = [
     format: "derivation",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "Prove that a graph with chromatic number k has at least k(k − 1)/2 edges.",
+    stem: "Prove that a graph with chromatic number $k$ has at least $k(k - 1)/2$ edges.",
     rubric: {
       elements: [
         {

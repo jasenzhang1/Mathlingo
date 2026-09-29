@@ -31,7 +31,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The multiplication principle says a k-stage process has a total outcome count of n1×n2×⋯×nk when:",
+    stem: "The multiplication principle says a $k$-stage process has a total outcome count of $n_1\\times n_2\\times \\cdots \\times n_k$ when:",
     choices: [
       {
         id: "a",
@@ -84,12 +84,12 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "Which pairings of (order matters?, repetition allowed?) with their counting formula are correct? Select all that apply.",
     choices: [
-      { id: "a", text: "order matters, no repetition → P(n,k)", correct: true },
-      { id: "b", text: "order doesn't matter, no repetition → C(n,k)", correct: true },
-      { id: "c", text: "order matters, repetition allowed → n^k", correct: true },
+      { id: "a", text: "order matters, no repetition $\\to P(n,k)$", correct: true },
+      { id: "b", text: "order doesn't matter, no repetition $\\to C(n,k)$", correct: true },
+      { id: "c", text: "order matters, repetition allowed $\\to n^k$", correct: true },
       {
         id: "d",
-        text: "order doesn't matter, repetition allowed → P(n,k)",
+        text: "order doesn't matter, repetition allowed $\\to P(n,k)$",
         correct: false,
         misconception: {
           id: "repetition-unordered-mismatched",
@@ -99,7 +99,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "order matters, no repetition → n^k",
+        text: "order matters, no repetition $\\to n^k$",
         correct: false,
         misconception: {
           id: "no-repetition-uses-power-formula",
@@ -122,8 +122,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A restaurant menu has 4 appetizers, 6 entrees, and 3 desserts. Assuming the choices at each course are " +
-      "independent, how many distinct 3-course meals are possible? Give a whole number.",
+      "A restaurant menu has $4$ appetizers, $6$ entrees, and $3$ desserts. Assuming the choices at each " +
+      "course are independent, how many distinct $3$-course meals are possible? Give a whole number.",
     answerKey: 72,
     tolerance: 0.001,
     difficulty: -0.55,
@@ -140,8 +140,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A password is 2 letters (A–Z) followed by 3 digits (0–9), with repetition allowed at every position. " +
-      "How many distinct passwords are possible? Give a whole number.",
+      "A password is $2$ letters (A–Z) followed by $3$ digits ($0$–$9$), with repetition allowed at every " +
+      "position. How many distinct passwords are possible? Give a whole number.",
     answerKey: 676000,
     tolerance: 0.001,
     difficulty: -0.15,
@@ -158,8 +158,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "The sum of two dice has only 11 possible values (2 through 12), but they are not equally likely. Explain " +
-      "why not, and describe the correct equally-likely sample space to count with instead.",
+      "The sum of two dice has only $11$ possible values ($2$ through $12$), but they are not equally " +
+      "likely. Explain why not, and describe the correct equally-likely sample space to count with instead.",
     rubric: {
       elements: [
         {
@@ -195,8 +195,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Using the multiplication principle, derive why a 3-stage process with n1, n2, n3 independent choices has " +
-      "n1×n2×n3 total outcomes, and explain explicitly why addition would be the wrong operation.",
+      "Using the multiplication principle, derive why a $3$-stage process with $n_1, n_2, n_3$ independent " +
+      "choices has $n_1\\times n_2\\times n_3$ total outcomes, and explain explicitly why addition would be " +
+      "the wrong operation.",
     rubric: {
       elements: [
         {
@@ -272,9 +273,10 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A diploid organism's genotype at one gene locus is an unordered pair of alleles (Aa is the same genotype " +
-      "as aA). If there are k possible alleles, explain why the number of distinct genotypes is C(k,2)+k rather " +
-      "than the naive k², and say which counting-methods assumption the naive guess violates.",
+      "A diploid organism's genotype at one gene locus is an unordered pair of alleles (Aa is the same " +
+      "genotype as aA). If there are $k$ possible alleles, explain why the number of distinct genotypes is " +
+      "$C(k,2)+k$ rather than the naive $k^2$, and say which counting-methods assumption the naive guess " +
+      "violates.",
     rubric: {
       elements: [
         {
@@ -316,13 +318,14 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "recall",
     channels: ["typed"],
     stem:
-      "The addition principle (rule of sum) says that if a task can be done in one of m mutually exclusive ways " +
-      "OR one of n mutually exclusive ways (not both), the total number of ways to do the task is:",
+      "The addition principle (rule of sum) says that if a task can be done in one of $m$ mutually " +
+      "exclusive ways OR one of $n$ mutually exclusive ways (not both), the total number of ways to do the " +
+      "task is:",
     choices: [
-      { id: "a", text: "m + n", correct: true },
+      { id: "a", text: "$m + n$", correct: true },
       {
         id: "b",
-        text: "m × n",
+        text: "$m \\times n$",
         correct: false,
         misconception: {
           id: "multiplication-instead-of-addition",
@@ -332,7 +335,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "the larger of m and n",
+        text: "the larger of $m$ and $n$",
         correct: false,
         misconception: {
           id: "max-instead-of-sum",
@@ -342,7 +345,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "m + n, but only when m = n",
+        text: "$m + n$, but only when $m = n$",
         correct: false,
         misconception: {
           id: "equal-size-requirement-invented",
@@ -366,7 +369,7 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "Which of these scenarios should use the addition principle (sum) rather than the multiplication principle (product)? Select all that apply.",
     choices: [
-      { id: "a", text: "choosing one dessert from either the 4 cakes or the 3 pies on the menu (not both)", correct: true },
+      { id: "a", text: "choosing one dessert from either the $4$ cakes or the $3$ pies on the menu (not both)", correct: true },
       {
         id: "b",
         text: "choosing a shirt AND separately a pair of pants to wear together",
@@ -377,10 +380,10 @@ export const discreteMathCountingItems: Item[] = [
           blameConceptId: "counting-methods",
         },
       },
-      { id: "c", text: "picking a single vacation destination from the 6 beach options or the 5 mountain options", correct: true },
+      { id: "c", text: "picking a single vacation destination from the $6$ beach options or the $5$ mountain options", correct: true },
       {
         id: "d",
-        text: "assigning each of 5 tasks to one of 3 workers",
+        text: "assigning each of $5$ tasks to one of $3$ workers",
         correct: false,
         misconception: {
           id: "sequential-assignment-treated-as-sum",
@@ -388,7 +391,7 @@ export const discreteMathCountingItems: Item[] = [
           blameConceptId: "counting-methods",
         },
       },
-      { id: "e", text: "selecting a single captain from the 4 seniors or the 6 juniors (no overlap between the groups)", correct: true },
+      { id: "e", text: "selecting a single captain from the $4$ seniors or the $6$ juniors (no overlap between the groups)", correct: true },
     ],
     difficulty: -1.35,
     discrimination: 1.2,
@@ -403,12 +406,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "To count outcomes that satisfy 'at least one' of a condition, the complement-counting trick computes the answer as:",
+    stem: "To count outcomes that satisfy ‘at least one’ of a condition, the complement-counting trick computes the answer as:",
     choices: [
-      { id: "a", text: "(total outcomes) − (outcomes satisfying none of the condition)", correct: true },
+      { id: "a", text: "(total outcomes) $-$ (outcomes satisfying none of the condition)", correct: true },
       {
         id: "b",
-        text: "(total outcomes) − (outcomes satisfying all of the condition)",
+        text: "(total outcomes) $-$ (outcomes satisfying all of the condition)",
         correct: false,
         misconception: {
           id: "complement-uses-all-instead-of-none",
@@ -418,7 +421,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "(outcomes satisfying the condition) × (total outcomes)",
+        text: "(outcomes satisfying the condition) $\\times$ (total outcomes)",
         correct: false,
         misconception: {
           id: "complement-multiplies-instead-of-subtracts",
@@ -428,7 +431,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "(total outcomes) + (outcomes satisfying none of the condition)",
+        text: "(total outcomes) $+$ (outcomes satisfying none of the condition)",
         correct: false,
         misconception: {
           id: "complement-adds-instead-of-subtracts",
@@ -451,8 +454,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A student picks exactly one after-school activity: one of 5 science clubs, or one of 3 art clubs (not " +
-      "both). How many choices does the student have? Give a whole number.",
+      "A student picks exactly one after-school activity: one of $5$ science clubs, or one of $3$ art clubs " +
+      "(not both). How many choices does the student have? Give a whole number.",
     answerKey: 8,
     tolerance: 0.001,
     difficulty: -0.85,
@@ -469,8 +472,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A license plate has 3 letters (A–Z) followed by 2 digits (0–9), with repetition allowed within each " +
-      "part. How many distinct plates are possible? Give a whole number.",
+      "A license plate has $3$ letters (A–Z) followed by $2$ digits ($0$–$9$), with repetition allowed " +
+      "within each part. How many distinct plates are possible? Give a whole number.",
     answerKey: 1757600,
     tolerance: 0.001,
     difficulty: -0.45,
@@ -487,8 +490,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "How many 3-digit codes (each digit 0–9, leading zeros allowed, repetition allowed) contain at least one " +
-      "digit that is a 7? Give a whole number.",
+      "How many $3$-digit codes (each digit $0$–$9$, leading zeros allowed, repetition allowed) contain at " +
+      "least one digit that is a $7$? Give a whole number.",
     answerKey: 271,
     tolerance: 0.001,
     difficulty: 0.15,
@@ -542,8 +545,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Using the fact that |A ∪ B| = |A| + |B| when A and B are disjoint sets, derive the addition principle " +
-      "for counting mutually exclusive ways to perform a task.",
+      "Using the fact that $|A \\cup B| = |A| + |B|$ when $A$ and $B$ are disjoint sets, derive the addition " +
+      "principle for counting mutually exclusive ways to perform a task.",
     rubric: {
       elements: [
         {
@@ -579,9 +582,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why naively adding 'numbers from 1–30 divisible by 3' (10 of them) and 'numbers from 1–30 " +
-      "divisible by 5' (6 of them) overcounts the numbers divisible by 3 or 5, and say what must be subtracted " +
-      "to fix it.",
+      "Explain why naively adding ‘numbers from $1$–$30$ divisible by $3$’ ($10$ of them) and ‘numbers from " +
+      "$1$–$30$ divisible by $5$’ ($6$ of them) overcounts the numbers divisible by $3$ or $5$, and say " +
+      "what must be subtracted to fix it.",
     rubric: {
       elements: [
         {
@@ -617,9 +620,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "An IPv4 address is 4 octets, each an independent integer from 0 to 255. Explain why the total address " +
-      "space is 256^4 by the multiplication principle, and why it would be wrong to instead add the 256 " +
-      "possibilities of each octet (4×256=1024).",
+      "An IPv4 address is $4$ octets, each an independent integer from $0$ to $255$. Explain why the total " +
+      "address space is $256^4$ by the multiplication principle, and why it would be wrong to instead add " +
+      "the $256$ possibilities of each octet $(4\\times 256=1024)$.",
     rubric: {
       elements: [
         {
@@ -692,10 +695,10 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A decision tree asks 3 questions in sequence; the first has 2 possible answers, the second has 4, and " +
-      "the third has 3, and every combination of answers is possible regardless of earlier answers. Explain " +
-      "why the number of leaves is the product 2×4×3=24 and not the sum 2+4+3=9, and describe what feature of " +
-      "the tree would make the sum the right count instead.",
+      "A decision tree asks $3$ questions in sequence; the first has $2$ possible answers, the second has " +
+      "$4$, and the third has $3$, and every combination of answers is possible regardless of earlier " +
+      "answers. Explain why the number of leaves is the product $2\\times 4\\times 3=24$ and not the sum " +
+      "$2+4+3=9$, and describe what feature of the tree would make the sum the right count instead.",
     rubric: {
       elements: [
         {
@@ -734,12 +737,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The (basic) pigeonhole principle states that if n items are placed into k containers with n > k, then:",
+    stem: "The (basic) pigeonhole principle states that if $n$ items are placed into $k$ containers with $n > k$, then:",
     choices: [
-      { id: "a", text: "at least one container holds 2 or more items", correct: true },
+      { id: "a", text: "at least one container holds $2$ or more items", correct: true },
       {
         id: "b",
-        text: "every container holds at least 1 item",
+        text: "every container holds at least $1$ item",
         correct: false,
         misconception: {
           id: "every-container-nonempty-claimed",
@@ -783,12 +786,12 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "Which of these are correct applications of the generalized pigeonhole principle? Select all that apply.",
     choices: [
-      { id: "a", text: "37 people, 12 months → some month has at least ⌈37/12⌉ = 4 people", correct: true },
-      { id: "b", text: "100 pigeons, 9 holes → some hole has at least ⌈100/9⌉ = 12 pigeons", correct: true },
-      { id: "c", text: "5 items, 3 containers → some container has at least ⌈5/3⌉ = 2 items", correct: true },
+      { id: "a", text: "$37$ people, $12$ months $\\to$ some month has at least $\\lceil 37/12\\rceil = 4$ people", correct: true },
+      { id: "b", text: "$100$ pigeons, $9$ holes $\\to$ some hole has at least $\\lceil 100/9\\rceil = 12$ pigeons", correct: true },
+      { id: "c", text: "$5$ items, $3$ containers $\\to$ some container has at least $\\lceil 5/3\\rceil = 2$ items", correct: true },
       {
         id: "d",
-        text: "10 items, 10 containers → guarantees some container has 2 items",
+        text: "$10$ items, $10$ containers $\\to$ guarantees some container has $2$ items",
         correct: false,
         misconception: {
           id: "n-equals-k-forces-collision",
@@ -798,7 +801,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "n items in k containers always forces exactly ⌈n/k⌉ items in the fullest container",
+        text: "$n$ items in $k$ containers always forces exactly $\\lceil n/k\\rceil$ items in the fullest container",
         correct: false,
         misconception: {
           id: "ceiling-treated-as-exact",
@@ -821,8 +824,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A drawer has socks in 5 colors. What is the minimum number of socks you must pull out to guarantee 3 of " +
-      "the same color? Give a whole number.",
+      "A drawer has socks in $5$ colors. What is the minimum number of socks you must pull out to guarantee " +
+      "$3$ of the same color? Give a whole number.",
     answerKey: 11,
     tolerance: 0.001,
     difficulty: -0.35,
@@ -839,8 +842,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A bag contains balls of 7 different colors. What is the minimum number of balls you must draw to " +
-      "guarantee at least 4 balls of the same color? Give a whole number.",
+      "A bag contains balls of $7$ different colors. What is the minimum number of balls you must draw to " +
+      "guarantee at least $4$ balls of the same color? Give a whole number.",
     answerKey: 22,
     tolerance: 0.001,
     difficulty: 0.05,
@@ -857,8 +860,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Prove the generalized pigeonhole principle: if n items are placed into k containers, some container " +
-      "holds at least ⌈n/k⌉ items.",
+      "Prove the generalized pigeonhole principle: if $n$ items are placed into $k$ containers, some " +
+      "container holds at least $\\lceil n/k\\rceil$ items.",
     rubric: {
       elements: [
         {
@@ -894,8 +897,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "An argument claims: 'If 27 words are chosen, two must start with the same letter — by pigeonhole with " +
-      "26 holes.' Identify what the pigeons and holes are, and flag the assumption the argument silently needs.",
+      "An argument claims: ‘If $27$ words are chosen, two must start with the same letter — by pigeonhole " +
+      "with $26$ holes.’ Identify what the pigeons and holes are, and flag the assumption the argument " +
+      "silently needs.",
     rubric: {
       elements: [
         {
@@ -926,8 +930,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "In a tournament with 6 teams, each team has played some (possibly zero) of the other 5 teams so far. " +
-      "Show, using pigeonhole, that at least two teams have played the same number of games.",
+      "In a tournament with $6$ teams, each team has played some (possibly zero) of the other $5$ teams so " +
+      "far. Show, using pigeonhole, that at least two teams have played the same number of games.",
     rubric: {
       elements: [
         {
@@ -964,8 +968,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Explain, using pigeonhole on the remainders produced by long division, why 1/7's decimal expansion must " +
-      "eventually repeat, and use it to bound the length of the repeating block.",
+      "Explain, using pigeonhole on the remainders produced by long division, why $1/7$'s decimal expansion " +
+      "must eventually repeat, and use it to bound the length of the repeating block.",
     rubric: {
       elements: [
         {
@@ -1001,12 +1005,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The (basic) pigeonhole principle requires n > k. If instead n = k, which of the following is guaranteed?",
+    stem: "The (basic) pigeonhole principle requires $n > k$. If instead $n = k$, which of the following is guaranteed?",
     choices: [
       { id: "a", text: "nothing — it's possible for every container to hold exactly one item", correct: true },
       {
         id: "b",
-        text: "some container still must hold at least 2 items",
+        text: "some container still must hold at least $2$ items",
         correct: false,
         misconception: {
           id: "n-equals-k-still-forces-collision",
@@ -1050,11 +1054,11 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "In each scenario, which correctly identifies the pigeons and holes for a pigeonhole argument? Select all that apply.",
     choices: [
-      { id: "a", text: "showing f:{1,...,10}→{1,...,7} cannot be injective — pigeons = the 10 domain elements, holes = the 7 codomain elements", correct: true },
-      { id: "b", text: "showing 2 of 15 gloves pulled from a bin holding only 2 colors must match — pigeons = the 15 gloves, holes = the 2 colors", correct: true },
+      { id: "a", text: "showing $f:\\{1,\\ldots,10\\}\\to \\{1,\\ldots,7\\}$ cannot be injective — pigeons $=$ the $10$ domain elements, holes $=$ the $7$ codomain elements", correct: true },
+      { id: "b", text: "showing $2$ of $15$ gloves pulled from a bin holding only $2$ colors must match — pigeons $=$ the $15$ gloves, holes $=$ the $2$ colors", correct: true },
       {
         id: "c",
-        text: "showing some weekday has at least 2 of a company's 10 employees born on it — pigeons = the 7 weekdays, holes = the 10 employees",
+        text: "showing some weekday has at least $2$ of a company's $10$ employees born on it — pigeons $=$ the $7$ weekdays, holes $=$ the $10$ employees",
         correct: false,
         misconception: {
           id: "pigeons-and-holes-swapped",
@@ -1062,10 +1066,10 @@ export const discreteMathCountingItems: Item[] = [
           blameConceptId: "pigeonhole-principle",
         },
       },
-      { id: "d", text: "showing 3 of any 5 integers share the same remainder mod 2 — pigeons = the 5 integers, holes = the 2 remainder classes", correct: true },
+      { id: "d", text: "showing $3$ of any $5$ integers share the same remainder $\\bmod 2$ — pigeons $=$ the $5$ integers, holes $=$ the $2$ remainder classes", correct: true },
       {
         id: "e",
-        text: "showing 10 items placed into 10 containers must produce a collision — pigeons = the 10 containers, holes = the 10 items",
+        text: "showing $10$ items placed into $10$ containers must produce a collision — pigeons $=$ the $10$ containers, holes $=$ the $10$ items",
         correct: false,
         misconception: {
           id: "no-collision-case-treated-as-pigeonhole",
@@ -1089,10 +1093,10 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "Which restatement correctly captures the proof idea behind the generalized pigeonhole principle?",
     choices: [
-      { id: "a", text: "if every container held fewer than ⌈n/k⌉ items, the total placed would be less than n — a contradiction", correct: true },
+      { id: "a", text: "if every container held fewer than $\\lceil n/k\\rceil$ items, the total placed would be less than $n$ — a contradiction", correct: true },
       {
         id: "b",
-        text: "if every container held fewer than ⌊n/k⌋ items, the total placed would be less than n — a contradiction",
+        text: "if every container held fewer than $\\lfloor n/k\\rfloor$ items, the total placed would be less than $n$ — a contradiction",
         correct: false,
         misconception: {
           id: "floor-substituted-for-ceiling",
@@ -1102,7 +1106,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "if some container held more than n items, that would already contradict there being only n items total",
+        text: "if some container held more than $n$ items, that would already contradict there being only $n$ items total",
         correct: false,
         misconception: {
           id: "wrong-quantity-in-restatement",
@@ -1112,7 +1116,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "if k containers each held exactly n/k items, they would need to round the count up to the nearest integer",
+        text: "if $k$ containers each held exactly $n/k$ items, they would need to round the count up to the nearest integer",
         correct: false,
         misconception: {
           id: "exact-average-treated-as-guarantee",
@@ -1135,8 +1139,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "41 students are enrolled in a class. Using the 12 birth months as containers, what is the minimum number " +
-      "of students the generalized pigeonhole principle guarantees share a birth month? Give a whole number.",
+      "$41$ students are enrolled in a class. Using the $12$ birth months as containers, what is the " +
+      "minimum number of students the generalized pigeonhole principle guarantees share a birth month? Give " +
+      "a whole number.",
     answerKey: 4,
     tolerance: 0.001,
     difficulty: -0.55,
@@ -1153,8 +1158,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A standard deck has 4 suits. What is the minimum number of cards you must be dealt to guarantee 3 cards " +
-      "of the same suit? Give a whole number.",
+      "A standard deck has $4$ suits. What is the minimum number of cards you must be dealt to guarantee " +
+      "$3$ cards of the same suit? Give a whole number.",
     answerKey: 9,
     tolerance: 0.001,
     difficulty: 0.15,
@@ -1171,8 +1176,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "How many integers must you pick from {1, 2, ..., 20} to guarantee two of them differ by exactly 10? " +
-      "(Hint: pair up i with i+10.) Give a whole number.",
+      "How many integers must you pick from $\\{1, 2, \\ldots, 20\\}$ to guarantee two of them differ by " +
+      "exactly $10$? (Hint: pair up $i$ with $i+10$.) Give a whole number.",
     answerKey: 11,
     tolerance: 0.001,
     difficulty: 0.35,
@@ -1189,8 +1194,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Prove, using pigeonhole, that any n+1 integers chosen from {1, 2, ..., 2n} must contain two that are " +
-      "consecutive (differ by 1).",
+      "Prove, using pigeonhole, that any $n+1$ integers chosen from $\\{1, 2, \\ldots, 2n\\}$ must contain two " +
+      "that are consecutive (differ by $1$).",
     rubric: {
       elements: [
         {
@@ -1226,8 +1231,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A claim states: '23 people are in a room, so by pigeonhole, someone shares a birthday (365 days).' " +
-      "Explain why this application of pigeonhole is invalid, and what pigeonhole would actually require here.",
+      "A claim states: ‘$23$ people are in a room, so by pigeonhole, someone shares a birthday ($365$ " +
+      "days).’ Explain why this application of pigeonhole is invalid, and what pigeonhole would actually " +
+      "require here.",
     rubric: {
       elements: [
         {
@@ -1299,9 +1305,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A hash table has 1000 buckets. Explain, using pigeonhole, why inserting 1001 distinct keys (with any " +
-      "fixed deterministic hash function) guarantees at least one collision, and why this says nothing about " +
-      "how likely a collision is with far fewer keys (e.g. 50).",
+      "A hash table has $1000$ buckets. Explain, using pigeonhole, why inserting $1001$ distinct keys (with " +
+      "any fixed deterministic hash function) guarantees at least one collision, and why this says nothing " +
+      "about how likely a collision is with far fewer keys (e.g. $50$).",
     rubric: {
       elements: [
         {
@@ -1336,7 +1342,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "Show, using pigeonhole, that among any 6 integers chosen from {1, 2, ..., 10}, some two of them sum to 11.",
+    stem: "Show, using pigeonhole, that among any $6$ integers chosen from $\\{1, 2, \\ldots, 10\\}$, some two of them sum to $11$.",
     rubric: {
       elements: [
         {
@@ -1372,8 +1378,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Among any 6 people, where every pair is either mutual friends or mutual strangers, sketch — using " +
-      "pigeonhole as the first step — why either 3 must be mutual friends or 3 must be mutual strangers.",
+      "Among any $6$ people, where every pair is either mutual friends or mutual strangers, sketch — using " +
+      "pigeonhole as the first step — why either $3$ must be mutual friends or $3$ must be mutual " +
+      "strangers.",
     rubric: {
       elements: [
         {
@@ -1412,12 +1419,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which recursive definition correctly defines n! for n ≥ 1, together with its base case?",
+    stem: "Which recursive definition correctly defines $n!$ for $n \\geq 1$, together with its base case?",
     choices: [
-      { id: "a", text: "n! = n · (n−1)!, with 0! = 1", correct: true },
+      { id: "a", text: "$n! = n \\cdot (n-1)!$, with $0! = 1$", correct: true },
       {
         id: "b",
-        text: "n! = n · (n−1)!, with 0! = 0",
+        text: "$n! = n \\cdot (n-1)!$, with $0! = 0$",
         correct: false,
         misconception: {
           id: "zero-factorial-set-to-zero",
@@ -1427,7 +1434,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "n! = n + (n−1)!, with 0! = 1",
+        text: "$n! = n + (n-1)!$, with $0! = 1$",
         correct: false,
         misconception: {
           id: "addition-instead-of-multiplication-factorial",
@@ -1437,7 +1444,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "n! = (n−1) · n!, with 1! = 1",
+        text: "$n! = (n-1) \\cdot n!$, with $1! = 1$",
         correct: false,
         misconception: {
           id: "self-referential-recursion",
@@ -1461,12 +1468,12 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "Which statements about factorials are true? Select all that apply.",
     choices: [
-      { id: "a", text: "0! = 1", correct: true },
-      { id: "b", text: "n! counts the number of ways to arrange n distinct objects in a row", correct: true },
-      { id: "c", text: "n! grows faster than any fixed exponential c^n as n → ∞", correct: true },
+      { id: "a", text: "$0! = 1$", correct: true },
+      { id: "b", text: "$n!$ counts the number of ways to arrange $n$ distinct objects in a row", correct: true },
+      { id: "c", text: "$n!$ grows faster than any fixed exponential $c^n$ as $n \\to \\infty$", correct: true },
       {
         id: "d",
-        text: "n! is defined for every real number n without any modification",
+        text: "$n!$ is defined for every real number $n$ without any modification",
         correct: false,
         misconception: {
           id: "factorial-assumed-defined-for-reals",
@@ -1476,7 +1483,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "(n+1)! = (n+1) + n!",
+        text: "$(n+1)! = (n+1) + n!$",
         correct: false,
         misconception: {
           id: "factorial-recursion-uses-addition",
@@ -1498,7 +1505,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute 8!. Give a whole number.",
+    stem: "Compute $8!$. Give a whole number.",
     answerKey: 40320,
     tolerance: 0.001,
     difficulty: -0.35,
@@ -1514,7 +1521,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Simplify 9!/6! to a single integer, without computing either factorial in full. Give a whole number.",
+    stem: "Simplify $9!/6!$ to a single integer, without computing either factorial in full. Give a whole number.",
     answerKey: 504,
     tolerance: 0.001,
     difficulty: 0.05,
@@ -1530,7 +1537,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove by induction that n! ≥ 2^(n−1) for all integers n ≥ 1.",
+    stem: "Prove by induction that $n! \\geq 2^{n-1}$ for all integers $n \\geq 1$.",
     rubric: {
       elements: [
         {
@@ -1566,8 +1573,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Try to extend the recursion n! = n·(n−1)! downward from 0! = 1 to define (−1)!. Explain why this fails, " +
-      "and what that failure implies about factorials of negative integers.",
+      "Try to extend the recursion $n! = n\\cdot (n-1)!$ downward from $0! = 1$ to define $(-1)!$. Explain " +
+      "why this fails, and what that failure implies about factorials of negative integers.",
     rubric: {
       elements: [
         {
@@ -1597,8 +1604,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Brute-force searching every ordering of the first n moves of a game requires examining roughly n! " +
-      "sequences. Using 15! ≈ 1.3×10^12, explain why even n = 15 makes this practically infeasible.",
+      "Brute-force searching every ordering of the first $n$ moves of a game requires examining roughly " +
+      "$n!$ sequences. Using $15! \\approx 1.3\\times 10^{12}$, explain why even $n = 15$ makes this " +
+      "practically infeasible.",
     rubric: {
       elements: [
         {
@@ -1634,9 +1642,10 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The number of distinct shuffles of a 52-card deck is 52! ≈ 8×10^67. Using orders of magnitude, explain " +
-      "why this vastly exceeds the number of seconds since the Big Bang (~4×10^17), while it does NOT exceed " +
-      "the number of atoms in the observable universe (~10^80).",
+      "The number of distinct shuffles of a $52$-card deck is $52! \\approx 8\\times 10^{67}$. Using orders " +
+      "of magnitude, explain why this vastly exceeds the number of seconds since the Big Bang $(\\sim " +
+      "4\\times 10^{17})$, while it does NOT exceed the number of atoms in the observable universe $(\\sim " +
+      "10^{80})$.",
     rubric: {
       elements: [
         {
@@ -1672,12 +1681,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For any positive integer n, (n+1)!/n! equals:",
+    stem: "For any positive integer $n$, $(n+1)!/n!$ equals:",
     choices: [
-      { id: "a", text: "n+1", correct: true },
+      { id: "a", text: "$n+1$", correct: true },
       {
         id: "b",
-        text: "n",
+        text: "$n$",
         correct: false,
         misconception: {
           id: "off-by-one-in-consecutive-ratio",
@@ -1687,7 +1696,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "(n+1)·n",
+        text: "$(n+1)\\cdot n$",
         correct: false,
         misconception: {
           id: "consecutive-ratio-includes-extra-factor",
@@ -1697,7 +1706,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "1",
+        text: "$1$",
         correct: false,
         misconception: {
           id: "factorial-ratio-assumed-trivial",
@@ -1719,12 +1728,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For n ≥ 1, n! can be written using product notation as:",
+    stem: "For $n \\geq 1$, $n!$ can be written using product notation as:",
     choices: [
-      { id: "a", text: "∏_{i=1}^{n} i", correct: true },
+      { id: "a", text: "$\\prod_{i=1}^{n} i$", correct: true },
       {
         id: "b",
-        text: "∏_{i=0}^{n} i",
+        text: "$\\prod_{i=0}^{n} i$",
         correct: false,
         misconception: {
           id: "product-notation-includes-zero",
@@ -1734,7 +1743,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "Σ_{i=1}^{n} i",
+        text: "$\\sum_{i=1}^{n} i$",
         correct: false,
         misconception: {
           id: "product-notation-uses-sum",
@@ -1744,7 +1753,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "∏_{i=n}^{n^2} i",
+        text: "$\\prod_{i=n}^{n^2} i$",
         correct: false,
         misconception: {
           id: "product-notation-wrong-bounds",
@@ -1766,14 +1775,14 @@ export const discreteMathCountingItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which statements about divisibility properties of n! are true? Select all that apply.",
+    stem: "Which statements about divisibility properties of $n!$ are true? Select all that apply.",
     choices: [
-      { id: "a", text: "n! is always divisible by n (for n ≥ 1)", correct: true },
-      { id: "b", text: "n! is divisible by every integer from 1 to n", correct: true },
-      { id: "c", text: "n! is always even for n ≥ 2", correct: true },
+      { id: "a", text: "$n!$ is always divisible by $n$ (for $n \\geq 1$)", correct: true },
+      { id: "b", text: "$n!$ is divisible by every integer from $1$ to $n$", correct: true },
+      { id: "c", text: "$n!$ is always even for $n \\geq 2$", correct: true },
       {
         id: "d",
-        text: "n! is a perfect square whenever n is even",
+        text: "$n!$ is a perfect square whenever $n$ is even",
         correct: false,
         misconception: {
           id: "even-n-factorial-assumed-perfect-square",
@@ -1783,7 +1792,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "the units digit of n! is never 0 for n < 10",
+        text: "the units digit of $n!$ is never $0$ for $n < 10$",
         correct: false,
         misconception: {
           id: "trailing-zero-onset-misjudged",
@@ -1805,7 +1814,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Simplify 10!/8! to a single integer, without computing either factorial in full. Give a whole number.",
+    stem: "Simplify $10!/8!$ to a single integer, without computing either factorial in full. Give a whole number.",
     answerKey: 90,
     tolerance: 0.001,
     difficulty: -0.55,
@@ -1821,7 +1830,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute 7!/(3!×4!). Give a whole number.",
+    stem: "Compute $7!/(3!\\times 4!)$. Give a whole number.",
     answerKey: 35,
     tolerance: 0.001,
     difficulty: -0.15,
@@ -1837,7 +1846,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "How many trailing zeros does 10! have? Give a whole number.",
+    stem: "How many trailing zeros does $10!$ have? Give a whole number.",
     answerKey: 2,
     tolerance: 0.001,
     difficulty: 0.25,
@@ -1854,8 +1863,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why n! is not the same as 1+2+⋯+n, and why confusing the two badly underestimates how fast " +
-      "factorials grow.",
+      "Explain why $n!$ is not the same as $1+2+\\cdots +n$, and why confusing the two badly underestimates " +
+      "how fast factorials grow.",
     rubric: {
       elements: [
         {
@@ -1890,8 +1899,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Derive why the number of trailing zeros in n! equals the number of times 5 divides into n! " +
-      "(i.e. ⌊n/5⌋+⌊n/25⌋+⋯), rather than the number of times 2 divides into it.",
+      "Derive why the number of trailing zeros in $n!$ equals the number of times $5$ divides into $n!$ " +
+      "(i.e. $\\lfloor n/5\\rfloor +\\lfloor n/25\\rfloor +\\cdots$), rather than the number of times $2$ " +
+      "divides into it.",
     rubric: {
       elements: [
         {
@@ -1927,8 +1937,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why computing n! directly overflows standard numeric types for even moderately large n, and how " +
-      "computing ln(n!) instead sidesteps the problem.",
+      "Explain why computing $n!$ directly overflows standard numeric types for even moderately large $n$, " +
+      "and how computing $\\ln(n!)$ instead sidesteps the problem.",
     rubric: {
       elements: [
         {
@@ -1964,9 +1974,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A compiler could, in principle, check all n! orderings of n independent statements to see whether any " +
-      "reordering changes behavior. Explain why exhaustive enumeration becomes infeasible well before n reaches " +
-      "even a few dozen, and what property of the code a compiler exploits instead.",
+      "A compiler could, in principle, check all $n!$ orderings of $n$ independent statements to see " +
+      "whether any reordering changes behavior. Explain why exhaustive enumeration becomes infeasible well " +
+      "before $n$ reaches even a few dozen, and what property of the code a compiler exploits instead.",
     rubric: {
       elements: [
         {
@@ -2002,9 +2012,10 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A brute-force traveling-salesman search over n cities considers (n−1)!/2 distinct routes, treating a " +
-      "route and its reverse as the same tour and fixing a start city. Explain where the −1 (fixing the start) " +
-      "and the /2 (reversal) each come from, starting from the naive n! count of orderings.",
+      "A brute-force traveling-salesman search over $n$ cities considers $(n-1)!/2$ distinct routes, " +
+      "treating a route and its reverse as the same tour and fixing a start city. Explain where the $-1$ " +
+      "(fixing the start) and the $/2$ (reversal) each come from, starting from the naive $n!$ count of " +
+      "orderings.",
     rubric: {
       elements: [
         {
@@ -2040,9 +2051,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why the number of distinct binary search tree shapes built from n distinct keys is NOT simply " +
-      "n!, even though there are n! possible insertion orders, and what this implies about using factorial " +
-      "growth alone to estimate the number of distinct structures.",
+      "Explain why the number of distinct binary search tree shapes built from $n$ distinct keys is NOT " +
+      "simply $n!$, even though there are $n!$ possible insertion orders, and what this implies about using " +
+      "factorial growth alone to estimate the number of distinct structures.",
     rubric: {
       elements: [
         {
@@ -2080,12 +2091,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "P(n,k) computes:",
+    stem: "$P(n,k)$ computes:",
     choices: [
-      { id: "a", text: "the number of ordered selections of k objects from n distinct objects, without repetition", correct: true },
+      { id: "a", text: "the number of ordered selections of $k$ objects from $n$ distinct objects, without repetition", correct: true },
       {
         id: "b",
-        text: "the number of unordered selections of k objects from n distinct objects",
+        text: "the number of unordered selections of $k$ objects from $n$ distinct objects",
         correct: false,
         misconception: {
           id: "permutation-confused-with-combination",
@@ -2095,7 +2106,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "the number of ordered selections of k objects from n, with repetition allowed",
+        text: "the number of ordered selections of $k$ objects from $n$, with repetition allowed",
         correct: false,
         misconception: {
           id: "permutation-allows-repetition",
@@ -2105,7 +2116,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "the same quantity as 'n choose k'",
+        text: "the same quantity as ‘$n$ choose $k$’",
         correct: false,
         misconception: {
           id: "permutation-mislabeled-as-choose",
@@ -2127,13 +2138,13 @@ export const discreteMathCountingItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which of the following equal n!? Select all that apply.",
+    stem: "Which of the following equal $n!$? Select all that apply.",
     choices: [
-      { id: "a", text: "P(n,n)", correct: true },
-      { id: "b", text: "P(n,n−1)", correct: true },
+      { id: "a", text: "$P(n,n)$", correct: true },
+      { id: "b", text: "$P(n,n-1)$", correct: true },
       {
         id: "c",
-        text: "P(n,2), for every n",
+        text: "$P(n,2)$, for every $n$",
         correct: false,
         misconception: {
           id: "p-n-2-assumed-equal-n-factorial",
@@ -2143,7 +2154,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "P(n,0)",
+        text: "$P(n,0)$",
         correct: false,
         misconception: {
           id: "p-n-0-assumed-n-factorial",
@@ -2153,7 +2164,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "(n−1)!, when computing P(n,n)",
+        text: "$(n-1)!$, when computing $P(n,n)$",
         correct: false,
         misconception: {
           id: "p-n-n-confused-with-circular",
@@ -2175,7 +2186,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute P(9,2). Give a whole number.",
+    stem: "Compute $P(9,2)$. Give a whole number.",
     answerKey: 72,
     tolerance: 0.001,
     difficulty: -0.15,
@@ -2192,8 +2203,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A president, vice-president, and secretary are chosen from 10 candidates, with no one holding two roles. " +
-      "How many ways can the three roles be filled? Give a whole number.",
+      "A president, vice-president, and secretary are chosen from $10$ candidates, with no one holding two " +
+      "roles. How many ways can the three roles be filled? Give a whole number.",
     answerKey: 720,
     tolerance: 0.001,
     difficulty: 0.25,
@@ -2210,8 +2221,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Starting from the multiplication-principle product n·(n−1)·⋯·(n−k+1), derive the formula " +
-      "P(n,k) = n!/(n−k)!.",
+      "Starting from the multiplication-principle product $n\\cdot (n-1)\\cdot \\cdots \\cdot (n-k+1)$, derive " +
+      "the formula $P(n,k) = n!/(n-k)!$.",
     rubric: {
       elements: [
         {
@@ -2247,8 +2258,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why P(n,k) should be treated as undefined (or 0) when k > n, using both the ordered-selection " +
-      "definition and what happens to the formula n!/(n−k)!.",
+      "Explain why $P(n,k)$ should be treated as undefined (or $0$) when $k > n$, using both the " +
+      "ordered-selection definition and what happens to the formula $n!/(n-k)!$.",
     rubric: {
       elements: [
         {
@@ -2279,9 +2290,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A relay race has 4 runners chosen from a team of 9, run in a specific leg order. Separately, a coach " +
-      "wants to know how many ways to choose which 4 of the 9 make the relay team at all, ignoring order. " +
-      "Compute both numbers and explain why one is exactly 4! times the other.",
+      "A relay race has $4$ runners chosen from a team of $9$, run in a specific leg order. Separately, a " +
+      "coach wants to know how many ways to choose which $4$ of the $9$ make the relay team at all, " +
+      "ignoring order. Compute both numbers and explain why one is exactly $4!$ times the other.",
     rubric: {
       elements: [
         {
@@ -2317,9 +2328,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A permutation cipher's key on an n-symbol block is one of the n! rearrangements of the block. Explain " +
-      "why choosing such a key is fundamentally a permutations problem rather than a combinations problem, and " +
-      "why this matters for the size of the key space.",
+      "A permutation cipher's key on an $n$-symbol block is one of the $n!$ rearrangements of the block. " +
+      "Explain why choosing such a key is fundamentally a permutations problem rather than a combinations " +
+      "problem, and why this matters for the size of the key space.",
     rubric: {
       elements: [
         {
@@ -2354,12 +2365,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "P(n,1) equals:",
+    stem: "$P(n,1)$ equals:",
     choices: [
-      { id: "a", text: "n", correct: true },
+      { id: "a", text: "$n$", correct: true },
       {
         id: "b",
-        text: "1",
+        text: "$1$",
         correct: false,
         misconception: {
           id: "p-n-1-assumed-one",
@@ -2369,7 +2380,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "n!",
+        text: "$n!$",
         correct: false,
         misconception: {
           id: "p-n-1-confused-with-n-factorial",
@@ -2379,7 +2390,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "n−1",
+        text: "$n-1$",
         correct: false,
         misconception: {
           id: "p-n-1-off-by-one",
@@ -2403,12 +2414,12 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "Which statements about permutation-related counts are true? Select all that apply.",
     choices: [
-      { id: "a", text: "the number of distinct orderings of a multiset with repeat counts n1, n2, ... is n!/(n1!n2!⋯)", correct: true },
-      { id: "b", text: "P(n,n) = n!", correct: true },
-      { id: "c", text: "the number of ways to seat n distinct people around a circular table (rotations equivalent) is (n−1)!", correct: true },
+      { id: "a", text: "the number of distinct orderings of a multiset with repeat counts $n_1, n_2, \\ldots$ is $n!/(n_1!n_2!\\cdots)$", correct: true },
+      { id: "b", text: "$P(n,n) = n!$", correct: true },
+      { id: "c", text: "the number of ways to seat $n$ distinct people around a circular table (rotations equivalent) is $(n-1)!$", correct: true },
       {
         id: "d",
-        text: "P(n,k) counts the number of ways to choose k objects from n without regard to order",
+        text: "$P(n,k)$ counts the number of ways to choose $k$ objects from $n$ without regard to order",
         correct: false,
         misconception: {
           id: "permutation-mislabeled-unordered",
@@ -2418,7 +2429,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "the number of distinct arrangements of a multiset equals n! regardless of how many repeats it has",
+        text: "the number of distinct arrangements of a multiset equals $n!$ regardless of how many repeats it has",
         correct: false,
         misconception: {
           id: "multiset-repeats-ignored",
@@ -2440,12 +2451,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "P(n,k) can also be written as the k-factor descending product:",
+    stem: "$P(n,k)$ can also be written as the $k$-factor descending product:",
     choices: [
-      { id: "a", text: "n·(n−1)·⋯·(n−k+1)", correct: true },
+      { id: "a", text: "$n\\cdot (n-1)\\cdot \\cdots \\cdot (n-k+1)$", correct: true },
       {
         id: "b",
-        text: "n·(n−1)·⋯·(n−k)",
+        text: "$n\\cdot (n-1)\\cdot \\cdots \\cdot (n-k)$",
         correct: false,
         misconception: {
           id: "permutation-product-includes-extra-factor",
@@ -2455,7 +2466,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "(n−k)!·k!",
+        text: "$(n-k)!\\cdot k!$",
         correct: false,
         misconception: {
           id: "permutation-formula-confused-with-combination-denominator",
@@ -2465,7 +2476,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "n^k/(n−k)",
+        text: "$n^k/(n-k)$",
         correct: false,
         misconception: {
           id: "permutation-product-form-invented",
@@ -2487,7 +2498,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute P(6,4). Give a whole number.",
+    stem: "Compute $P(6,4)$. Give a whole number.",
     answerKey: 360,
     tolerance: 0.001,
     difficulty: -0.45,
@@ -2504,8 +2515,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A code uses 4 distinct digits (0–9), where order matters and no digit may repeat. How many such codes " +
-      "are possible? Give a whole number.",
+      "A code uses $4$ distinct digits ($0$–$9$), where order matters and no digit may repeat. How many " +
+      "such codes are possible? Give a whole number.",
     answerKey: 5040,
     tolerance: 0.001,
     difficulty: 0.05,
@@ -2538,9 +2549,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Derive the multiset-permutation formula n!/(n1!n2!⋯nk!) for the number of distinct orderings of n objects " +
-      "with repeat counts n1, n2, ..., nk, starting from the n! orderings you'd get if every object were " +
-      "temporarily made distinguishable.",
+      "Derive the multiset-permutation formula $n!/(n_1!\\,n_2!\\cdots n_k!)$ for the number of distinct " +
+      "orderings of $n$ objects with repeat counts $n_1, n_2, \\ldots, n_k$, starting from the $n!$ " +
+      "orderings you'd get if every object were temporarily made distinguishable.",
     rubric: {
       elements: [
         {
@@ -2576,8 +2587,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Derive why the number of distinct circular arrangements of n distinct people around a round table " +
-      "(rotations considered identical) is (n−1)!, starting from the n! linear arrangements.",
+      "Derive why the number of distinct circular arrangements of $n$ distinct people around a round table " +
+      "(rotations considered identical) is $(n-1)!$, starting from the $n!$ linear arrangements.",
     rubric: {
       elements: [
         {
@@ -2613,9 +2624,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A student claims P(n,k) = C(n,k) × k, reasoning that you choose k objects (C(n,k) ways) and then 'order' " +
-      "them with one extra factor of k. Explain precisely what's wrong with the multiplier, and give the correct " +
-      "relationship.",
+      "A student claims $P(n,k) = C(n,k) \\times k$, reasoning that you choose $k$ objects ($C(n,k)$ ways) " +
+      "and then ‘order’ them with one extra factor of $k$. Explain precisely what's wrong with the " +
+      "multiplier, and give the correct relationship.",
     rubric: {
       elements: [
         {
@@ -2651,9 +2662,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A DNA sequence of length L uses an alphabet of 4 bases (A, C, G, T), with repetition allowed at every " +
-      "position. Explain why counting sequences is NOT a permutations problem (despite order mattering), and " +
-      "give the correct count.",
+      "A DNA sequence of length $L$ uses an alphabet of $4$ bases $(A, C, G, T)$, with repetition allowed " +
+      "at every position. Explain why counting sequences is NOT a permutations problem (despite order " +
+      "mattering), and give the correct count.",
     rubric: {
       elements: [
         {
@@ -2688,10 +2699,10 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A tournament seeding assigns n distinct players to n distinct seed positions (seed 1 through seed n), " +
-      "where the assignment fully determines who plays whom in each round. Explain why the number of possible " +
-      "seedings is P(n,n) = n!, and why this differs from merely selecting which players qualify for the " +
-      "tournament out of a larger pool.",
+      "A tournament seeding assigns $n$ distinct players to $n$ distinct seed positions (seed $1$ through " +
+      "seed $n$), where the assignment fully determines who plays whom in each round. Explain why the " +
+      "number of possible seedings is $P(n,n) = n!$, and why this differs from merely selecting which " +
+      "players qualify for the tournament out of a larger pool.",
     rubric: {
       elements: [
         {
@@ -2727,9 +2738,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "10 books sit on a shelf, but 3 of them are identical copies of the same novel. Explain why the number of " +
-      "visually distinct shelf arrangements is 10!/3! rather than plain 10!, connecting this back to why simple " +
-      "permutations overcount here.",
+      "$10$ books sit on a shelf, but $3$ of them are identical copies of the same novel. Explain why the " +
+      "number of visually distinct shelf arrangements is $10!/3!$ rather than plain $10!$, connecting this " +
+      "back to why simple permutations overcount here.",
     rubric: {
       elements: [
         {
@@ -2768,12 +2779,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "C(n,k) equals:",
+    stem: "$C(n,k)$ equals:",
     choices: [
-      { id: "a", text: "n! / (k!(n−k)!)", correct: true },
+      { id: "a", text: "$n! / (k!(n-k)!)$", correct: true },
       {
         id: "b",
-        text: "n! / (n−k)!",
+        text: "$n! / (n-k)!$",
         correct: false,
         misconception: {
           id: "combination-missing-k-factorial",
@@ -2783,7 +2794,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "n! / k!",
+        text: "$n! / k!$",
         correct: false,
         misconception: {
           id: "combination-missing-n-minus-k-factorial",
@@ -2793,7 +2804,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "k! / (n!(n−k)!)",
+        text: "$k! / (n!(n-k)!)$",
         correct: false,
         misconception: {
           id: "combination-inverted",
@@ -2817,12 +2828,12 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "Which identities are correct? Select all that apply.",
     choices: [
-      { id: "a", text: "C(n,k) = C(n,n−k)", correct: true },
-      { id: "b", text: "C(n,0) = 1", correct: true },
-      { id: "c", text: "C(n,k) = C(n−1,k−1) + C(n−1,k)", correct: true },
+      { id: "a", text: "$C(n,k) = C(n,n-k)$", correct: true },
+      { id: "b", text: "$C(n,0) = 1$", correct: true },
+      { id: "c", text: "$C(n,k) = C(n-1,k-1) + C(n-1,k)$", correct: true },
       {
         id: "d",
-        text: "C(n,k) = P(n,k) × k!",
+        text: "$C(n,k) = P(n,k) \\times k!$",
         correct: false,
         misconception: {
           id: "combination-multiplied-instead-of-divided",
@@ -2832,7 +2843,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "C(n,1) = 1 for all n",
+        text: "$C(n,1) = 1$ for all $n$",
         correct: false,
         misconception: {
           id: "c-n-1-assumed-one",
@@ -2854,7 +2865,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute C(11,3). Give a whole number.",
+    stem: "Compute $C(11,3)$. Give a whole number.",
     answerKey: 165,
     tolerance: 0.001,
     difficulty: 0.05,
@@ -2871,8 +2882,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A pizza shop offers 10 toppings. How many different 4-topping pizzas can be made, with each topping used " +
-      "at most once and order irrelevant? Give a whole number.",
+      "A pizza shop offers $10$ toppings. How many different $4$-topping pizzas can be made, with each " +
+      "topping used at most once and order irrelevant? Give a whole number.",
     answerKey: 210,
     tolerance: 0.001,
     difficulty: 0.45,
@@ -2888,7 +2899,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove C(n,k) = C(n,n−k) using a combinatorial (bijective) argument, not the factorial algebra.",
+    stem: "Prove $C(n,k) = C(n,n-k)$ using a combinatorial (bijective) argument, not the factorial algebra.",
     rubric: {
       elements: [
         {
@@ -2924,8 +2935,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A student computes the number of 5-card poker hands as P(52,5) instead of C(52,5) and gets an answer " +
-      "120 times too large. Explain precisely where the factor of 120 comes from.",
+      "A student computes the number of $5$-card poker hands as $P(52,5)$ instead of $C(52,5)$ and gets an " +
+      "answer $120$ times too large. Explain precisely where the factor of $120$ comes from.",
     rubric: {
       elements: [
         {
@@ -2961,8 +2972,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Row n of Pascal's triangle has entries C(n,0), C(n,1), ..., C(n,n). Explain why this row sums to 2^n, " +
-      "connecting the sum back to `counting-methods`'s idea of counting subsets.",
+      "Row $n$ of Pascal's triangle has entries $C(n,0)$, $C(n,1)$, $\\ldots$, $C(n,n)$. Explain why this " +
+      "row sums to $2^n$, connecting the sum back to the counting-methods idea of counting subsets.",
     rubric: {
       elements: [
         {
@@ -2998,9 +3009,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The birthday problem counts the complementary event ('all n birthdays distinct') using P(365,n), a " +
-      "permutation, rather than C(365,n), a combination. Explain why, even though we only care whether any two " +
-      "people share a birthday.",
+      "The birthday problem counts the complementary event (‘all $n$ birthdays distinct’) using $P(365,n)$, " +
+      "a permutation, rather than $C(365,n)$, a combination. Explain why, even though we only care whether " +
+      "any two people share a birthday.",
     rubric: {
       elements: [
         {
@@ -3035,12 +3046,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which best describes what C(n,k) counts?",
+    stem: "Which best describes what $C(n,k)$ counts?",
     choices: [
-      { id: "a", text: "The number of unordered k-element subsets of an n-element set", correct: true },
+      { id: "a", text: "The number of unordered $k$-element subsets of an $n$-element set", correct: true },
       {
         id: "b",
-        text: "The number of ordered arrangements of k elements chosen from n",
+        text: "The number of ordered arrangements of $k$ elements chosen from $n$",
         correct: false,
         misconception: {
           id: "combination-confused-with-permutation-count",
@@ -3050,7 +3061,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "The number of ways to arrange all n elements in a row",
+        text: "The number of ways to arrange all $n$ elements in a row",
         correct: false,
         misconception: {
           id: "combination-confused-with-full-arrangement",
@@ -3060,7 +3071,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "The number of subsets of size at most k",
+        text: "The number of subsets of size at most $k$",
         correct: false,
         misconception: {
           id: "combination-treated-as-cumulative-count",
@@ -3082,12 +3093,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "C(n,n) equals:",
+    stem: "$C(n,n)$ equals:",
     choices: [
-      { id: "a", text: "1", correct: true },
+      { id: "a", text: "$1$", correct: true },
       {
         id: "b",
-        text: "n",
+        text: "$n$",
         correct: false,
         misconception: {
           id: "c-n-n-confused-with-c-n-1",
@@ -3097,7 +3108,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "n!",
+        text: "$n!$",
         correct: false,
         misconception: {
           id: "c-n-n-confused-with-arrangements",
@@ -3107,7 +3118,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "0",
+        text: "$0$",
         correct: false,
         misconception: {
           id: "c-n-n-assumed-undefined",
@@ -3131,12 +3142,12 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "Which statements about combinations are true? Select all that apply.",
     choices: [
-      { id: "a", text: "C(n,0) = 1 for every n ≥ 0", correct: true },
-      { id: "b", text: "C(n,k) = 0 whenever k > n", correct: true },
-      { id: "c", text: "C(n,2) = n(n−1)/2", correct: true },
+      { id: "a", text: "$C(n,0) = 1$ for every $n \\geq 0$", correct: true },
+      { id: "b", text: "$C(n,k) = 0$ whenever $k > n$", correct: true },
+      { id: "c", text: "$C(n,2) = n(n-1)/2$", correct: true },
       {
         id: "d",
-        text: "C(n,k) counts ordered selections of k elements",
+        text: "$C(n,k)$ counts ordered selections of $k$ elements",
         correct: false,
         misconception: {
           id: "combinations-assumed-ordered",
@@ -3146,7 +3157,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "C(n,k) is always an even number for n > 1",
+        text: "$C(n,k)$ is always an even number for $n > 1$",
         correct: false,
         misconception: {
           id: "combination-value-assumed-always-even",
@@ -3168,7 +3179,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute C(8,5). Give a whole number.",
+    stem: "Compute $C(8,5)$. Give a whole number.",
     answerKey: 56,
     tolerance: 0.001,
     difficulty: -0.2,
@@ -3184,7 +3195,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A committee of 4 is chosen from 9 candidates, with no distinct roles. How many different committees are possible? Give a whole number.",
+    stem: "A committee of $4$ is chosen from $9$ candidates, with no distinct roles. How many different committees are possible? Give a whole number.",
     answerKey: 126,
     tolerance: 0.001,
     difficulty: 0.2,
@@ -3200,7 +3211,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A lottery ticket requires choosing 6 distinct numbers from 1 to 49, with order irrelevant. How many distinct tickets are possible? Give a whole number.",
+    stem: "A lottery ticket requires choosing $6$ distinct numbers from $1$ to $49$, with order irrelevant. How many distinct tickets are possible? Give a whole number.",
     answerKey: 13983816,
     tolerance: 0.001,
     difficulty: 0.7,
@@ -3216,7 +3227,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove Pascal's rule, C(n,k) = C(n−1,k−1) + C(n−1,k), using a combinatorial argument (not factorial algebra). Hint: fix one particular element x of the n-element set and split on whether x is chosen.",
+    stem: "Prove Pascal's rule, $C(n,k) = C(n-1,k-1) + C(n-1,k)$, using a combinatorial argument (not factorial algebra). Hint: fix one particular element $x$ of the $n$-element set and split on whether $x$ is chosen.",
     rubric: {
       elements: [
         {
@@ -3257,7 +3268,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "The formula C(n,k) = n!/(k!(n−k)!) involves division, yet C(n,k) is always a whole number. Explain why, without computing a specific example.",
+    stem: "The formula $C(n,k) = n!/(k!(n-k)!)$ involves division, yet $C(n,k)$ is always a whole number. Explain why, without computing a specific example.",
     rubric: {
       elements: [
         {
@@ -3292,7 +3303,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain, from the definition of C(n,k) as counting subsets, why C(n,0) = 1 and why this is not the same as saying there are \"zero ways to choose nothing.\"",
+    stem: "Explain, from the definition of $C(n,k)$ as counting subsets, why $C(n,0) = 1$ and why this is not the same as saying there are “zero ways to choose nothing.”",
     rubric: {
       elements: [
         {
@@ -3323,7 +3334,7 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A network protocol picks 3 of 8 available communication channels to use redundantly, with no channel treated as \"primary\" or given any assigned position. Explain why the number of possible selections is C(8,3) rather than P(8,3), and compute the count.",
+      "A network protocol picks $3$ of $8$ available communication channels to use redundantly, with no channel treated as “primary” or given any assigned position. Explain why the number of possible selections is $C(8,3)$ rather than $P(8,3)$, and compute the count.",
     rubric: {
       elements: [
         {
@@ -3354,7 +3365,7 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A card game deals a 5-card hand, where the same 5 cards dealt in any order count as the same hand for scoring. A word game arranges 5 tiles into a sequence, where different orders spell different words. Explain, in terms of combinations vs. permutations, why the hand count uses C(52,5) while the arrangement count uses P(n,5).",
+      "A card game deals a $5$-card hand, where the same $5$ cards dealt in any order count as the same hand for scoring. A word game arranges $5$ tiles into a sequence, where different orders spell different words. Explain, in terms of combinations vs. permutations, why the hand count uses $C(52,5)$ while the arrangement count uses $P(n,5)$.",
     rubric: {
       elements: [
         {
@@ -3390,7 +3401,7 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A team wants to select 3 of their 12 A/B test variants to run simultaneously, with no assigned order among the 3. Explain why the number of valid selections is C(12,3), and how the count changes if each of the 3 selected variants must additionally be assigned to one of 3 distinct, named test environments.",
+      "A team wants to select $3$ of their $12$ A/B test variants to run simultaneously, with no assigned order among the $3$. Explain why the number of valid selections is $C(12,3)$, and how the count changes if each of the $3$ selected variants must additionally be assigned to one of $3$ distinct, named test environments.",
     rubric: {
       elements: [
         {
@@ -3430,12 +3441,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The number of ways to distribute n identical items into k labeled groups, empty groups allowed, is:",
+    stem: "The number of ways to distribute $n$ identical items into $k$ labeled groups, empty groups allowed, is:",
     choices: [
-      { id: "a", text: "C(n+k−1, k−1)", correct: true },
+      { id: "a", text: "$C(n+k-1, k-1)$", correct: true },
       {
         id: "b",
-        text: "C(n,k)",
+        text: "$C(n,k)$",
         correct: false,
         misconception: {
           id: "distribution-treated-as-plain-combination",
@@ -3445,7 +3456,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "n^k",
+        text: "$n^k$",
         correct: false,
         misconception: {
           id: "distribution-treated-as-ordered-with-repetition",
@@ -3455,7 +3466,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "k^n",
+        text: "$k^n$",
         correct: false,
         misconception: {
           id: "n-and-k-roles-swapped",
@@ -3479,12 +3490,12 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "Which scenarios are correctly modeled by stars and bars (as opposed to permutations or combinations)? Select all that apply.",
     choices: [
-      { id: "a", text: "distributing 20 identical stickers among 5 kids, some kids may get none", correct: true },
-      { id: "b", text: "counting nonnegative integer solutions to x1+x2+x3 = 15", correct: true },
-      { id: "c", text: "counting positive integer solutions to x1+x2 = 8 (after a shift-by-one substitution)", correct: true },
+      { id: "a", text: "distributing $20$ identical stickers among $5$ kids, some kids may get none", correct: true },
+      { id: "b", text: "counting nonnegative integer solutions to $x_1+x_2+x_3 = 15$", correct: true },
+      { id: "c", text: "counting positive integer solutions to $x_1+x_2 = 8$ (after a shift-by-one substitution)", correct: true },
       {
         id: "d",
-        text: "choosing 5 distinct books from a shelf of 20 to take home",
+        text: "choosing $5$ distinct books from a shelf of $20$ to take home",
         correct: false,
         misconception: {
           id: "distinct-item-choice-treated-as-distribution",
@@ -3494,7 +3505,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "ranking 5 runners by finish order",
+        text: "ranking $5$ runners by finish order",
         correct: false,
         misconception: {
           id: "ranking-treated-as-distribution",
@@ -3516,7 +3527,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "How many nonnegative integer solutions are there to x1+x2+x3+x4 = 9? Give a whole number.",
+    stem: "How many nonnegative integer solutions are there to $x_1+x_2+x_3+x_4 = 9$? Give a whole number.",
     answerKey: 220,
     tolerance: 0.001,
     difficulty: 0.25,
@@ -3533,8 +3544,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "20 identical apples are distributed among 5 children, and each child must receive at least 1 apple. How " +
-      "many distributions are there? Give a whole number.",
+      "$20$ identical apples are distributed among $5$ children, and each child must receive at least $1$ " +
+      "apple. How many distributions are there? Give a whole number.",
     answerKey: 3876,
     tolerance: 0.001,
     difficulty: 0.65,
@@ -3551,8 +3562,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Derive the formula for distributing n identical items into k labeled groups with each group receiving " +
-      "at least 1, by reducing it to the standard (empty-allowed) stars-and-bars formula.",
+      "Derive the formula for distributing $n$ identical items into $k$ labeled groups with each group " +
+      "receiving at least $1$, by reducing it to the standard (empty-allowed) stars-and-bars formula.",
     rubric: {
       elements: [
         {
@@ -3588,8 +3599,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A student is unsure whether to write the stars-and-bars count as C(n+k−1,k−1) or C(n+k−1,n). Explain why " +
-      "these are the same number, and when each form is more natural to use.",
+      "A student is unsure whether to write the stars-and-bars count as $C(n+k-1,k-1)$ or $C(n+k-1,n)$. " +
+      "Explain why these are the same number, and when each form is more natural to use.",
     rubric: {
       elements: [
         {
@@ -3624,10 +3635,10 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The number of ways to distribute n indistinguishable bosons among k distinguishable energy levels (any " +
-      "number per level) uses the stars-and-bars formula. Explain what feature of bosons makes this the same " +
-      "counting problem as identical candies among children, and contrast briefly with fermions (at most 1 " +
-      "particle per level).",
+      "The number of ways to distribute $n$ indistinguishable bosons among $k$ distinguishable energy " +
+      "levels (any number per level) uses the stars-and-bars formula. Explain what feature of bosons makes " +
+      "this the same counting problem as identical candies among children, and contrast briefly with " +
+      "fermions (at most $1$ particle per level).",
     rubric: {
       elements: [
         {
@@ -3664,7 +3675,8 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed", "spoken"],
     stem:
       "Explain why stars and bars gives the labeled-groups count, and why this is generally larger than the " +
-      "corresponding unlabeled count (integer partitions). Illustrate with n = 6 items split into k = 2 groups.",
+      "corresponding unlabeled count (integer partitions). Illustrate with $n = 6$ items split into $k = 2$ " +
+      "groups.",
     rubric: {
       elements: [
         {
@@ -3701,10 +3713,10 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "In the stars-and-bars diagram, the bars are used to:",
     choices: [
-      { id: "a", text: "separate the sequence of stars into k groups", correct: true },
+      { id: "a", text: "separate the sequence of stars into $k$ groups", correct: true },
       {
         id: "b",
-        text: "represent the k identical items being distributed",
+        text: "represent the $k$ identical items being distributed",
         correct: false,
         misconception: {
           id: "bars-role-swapped-with-stars",
@@ -3746,12 +3758,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Distributing n identical items into k labeled groups (empty groups allowed) requires how many bar symbols?",
+    stem: "Distributing $n$ identical items into $k$ labeled groups (empty groups allowed) requires how many bar symbols?",
     choices: [
-      { id: "a", text: "k − 1", correct: true },
+      { id: "a", text: "$k - 1$", correct: true },
       {
         id: "b",
-        text: "k",
+        text: "$k$",
         correct: false,
         misconception: {
           id: "bar-count-off-by-one",
@@ -3761,7 +3773,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "n",
+        text: "$n$",
         correct: false,
         misconception: {
           id: "bar-count-confused-with-star-count",
@@ -3771,7 +3783,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "n + k",
+        text: "$n + k$",
         correct: false,
         misconception: {
           id: "bar-count-confused-with-total-symbols",
@@ -3793,14 +3805,14 @@ export const discreteMathCountingItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For distributing n identical items into k labeled groups (empty allowed), which statements are true? Select all that apply.",
+    stem: "For distributing $n$ identical items into $k$ labeled groups (empty allowed), which statements are true? Select all that apply.",
     choices: [
-      { id: "a", text: "The diagram has n + (k − 1) symbols total", correct: true },
-      { id: "b", text: "The number of arrangements is C(n+k−1, k−1)", correct: true },
-      { id: "c", text: "The number of stars in the diagram equals n", correct: true },
+      { id: "a", text: "The diagram has $n + (k - 1)$ symbols total", correct: true },
+      { id: "b", text: "The number of arrangements is $C(n+k-1, k-1)$", correct: true },
+      { id: "c", text: "The number of stars in the diagram equals $n$", correct: true },
       {
         id: "d",
-        text: "The number of bars in the diagram equals k",
+        text: "The number of bars in the diagram equals $k$",
         correct: false,
         misconception: {
           id: "bars-miscounted-as-k",
@@ -3810,7 +3822,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "The number of arrangements is P(n+k−1, k−1)",
+        text: "The number of arrangements is $P(n+k-1, k-1)$",
         correct: false,
         misconception: {
           id: "stars-and-bars-symbols-treated-as-distinguishable",
@@ -3832,7 +3844,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "How many nonnegative integer solutions are there to x1+x2+x3 = 10? Give a whole number.",
+    stem: "How many nonnegative integer solutions are there to $x_1+x_2+x_3 = 10$? Give a whole number.",
     answerKey: 66,
     tolerance: 0.001,
     difficulty: -0.05,
@@ -3849,8 +3861,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A candy shop decides how many of its 15 identical lollipops to stock in each of 3 flavor bins, and a bin " +
-      "may hold zero. How many stocking plans are there? Give a whole number.",
+      "A candy shop decides how many of its $15$ identical lollipops to stock in each of $3$ flavor bins, " +
+      "and a bin may hold zero. How many stocking plans are there? Give a whole number.",
     answerKey: 136,
     tolerance: 0.001,
     difficulty: 0.4,
@@ -3867,8 +3879,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "12 identical tasks are assigned among 4 workers, and every worker must receive at least 1 task. How many " +
-      "assignments are there? Give a whole number.",
+      "$12$ identical tasks are assigned among $4$ workers, and every worker must receive at least $1$ " +
+      "task. How many assignments are there? Give a whole number.",
     answerKey: 165,
     tolerance: 0.001,
     difficulty: 0.85,
@@ -3885,9 +3897,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Derive the standard stars-and-bars formula C(n+k−1, k−1) from scratch: explain why arranging n stars and " +
-      "k−1 bars in a row, and choosing which k−1 of the n+k−1 total positions hold bars, counts the nonnegative " +
-      "integer solutions to x1+...+xk = n.",
+      "Derive the standard stars-and-bars formula $C(n+k-1, k-1)$ from scratch: explain why arranging $n$ " +
+      "stars and $k-1$ bars in a row, and choosing which $k-1$ of the $n+k-1$ total positions hold bars, " +
+      "counts the nonnegative integer solutions to $x_1+\\cdots+x_k = n$.",
     rubric: {
       elements: [
         {
@@ -3923,8 +3935,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A student sets up x1+x2+x3 = 7 but allows the xi to be any integers (positive or negative), not just " +
-      "nonnegative. Explain why the formula C(n+k−1,k−1) no longer applies.",
+      "A student sets up $x_1+x_2+x_3 = 7$ but allows the $x_i$ to be any integers (positive or negative), " +
+      "not just nonnegative. Explain why the formula $C(n+k-1,k-1)$ no longer applies.",
     rubric: {
       elements: [
         {
@@ -3960,8 +3972,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Distributing n identical items into k labeled groups is equivalent to choosing a multiset of size n from " +
-      "k types (with repetition allowed). Explain this correspondence directly, without re-deriving the C(n+k−1,k−1) formula.",
+      "Distributing $n$ identical items into $k$ labeled groups is equivalent to choosing a multiset of " +
+      "size $n$ from $k$ types (with repetition allowed). Explain this correspondence directly, without " +
+      "re-deriving the $C(n+k-1,k-1)$ formula.",
     rubric: {
       elements: [
         {
@@ -3997,8 +4010,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A cloud scheduler allocates 10 identical compute credits among 4 distinctly named projects, and any " +
-      "project may receive 0 credits. Explain why the number of allocation plans is a stars-and-bars count, and compute it.",
+      "A cloud scheduler allocates $10$ identical compute credits among $4$ distinctly named projects, and " +
+      "any project may receive $0$ credits. Explain why the number of allocation plans is a stars-and-bars " +
+      "count, and compute it.",
     rubric: {
       elements: [
         {
@@ -4024,9 +4038,10 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The number of distinct monomials x1^a1 x2^a2 x3^a3 of total degree 5 in 3 variables (each ai a nonnegative " +
-      "integer, a1+a2+a3 = 5) is counted by stars and bars. Explain the correspondence between exponents and a " +
-      "stars-and-bars distribution, and compute the count.",
+      "The number of distinct monomials $x_1^{a_1} x_2^{a_2} x_3^{a_3}$ of total degree $5$ in $3$ " +
+      "variables (each $a_i$ a nonnegative integer, $a_1+a_2+a_3 = 5$) is counted by stars and bars. " +
+      "Explain the correspondence between exponents and a stars-and-bars distribution, and compute the " +
+      "count.",
     rubric: {
       elements: [
         {
@@ -4052,9 +4067,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A distributed database places 8 identical shard replicas across 5 named servers, and any server may " +
-      "receive any number, including 0. Explain why swapping which two servers receive equal replica counts " +
-      "still produces a different placement plan, and compute the total number of placement plans.",
+      "A distributed database places $8$ identical shard replicas across $5$ named servers, and any server " +
+      "may receive any number, including $0$. Explain why swapping which two servers receive equal replica " +
+      "counts still produces a different placement plan, and compute the total number of placement plans.",
     rubric: {
       elements: [
         {
@@ -4089,12 +4104,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "A partition of n is:",
+    stem: "A partition of $n$ is:",
     choices: [
-      { id: "a", text: "a way of writing n as a sum of positive integers where order does not matter", correct: true },
+      { id: "a", text: "a way of writing $n$ as a sum of positive integers where order does not matter", correct: true },
       {
         id: "b",
-        text: "a way of writing n as a sum of positive integers where order matters",
+        text: "a way of writing $n$ as a sum of positive integers where order matters",
         correct: false,
         misconception: {
           id: "partition-confused-with-composition",
@@ -4104,7 +4119,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "a way of splitting n identical items among k labeled groups",
+        text: "a way of splitting $n$ identical items among $k$ labeled groups",
         correct: false,
         misconception: {
           id: "partition-confused-with-stars-and-bars",
@@ -4114,7 +4129,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "a collection of subsets of an n-element set",
+        text: "a collection of subsets of an $n$-element set",
         correct: false,
         misconception: {
           id: "partition-confused-with-set-partition",
@@ -4146,12 +4161,12 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "Which statements about integer partitions are true? Select all that apply.",
     choices: [
-      { id: "a", text: "3+1+1 and 1+3+1 represent the same partition of 5", correct: true },
+      { id: "a", text: "$3+1+1$ and $1+3+1$ represent the same partition of $5$", correct: true },
       { id: "b", text: "By convention, a partition's parts are listed in nonincreasing order", correct: true },
-      { id: "c", text: "p(4) = 5", correct: true },
+      { id: "c", text: "$p(4) = 5$", correct: true },
       {
         id: "d",
-        text: "p(n) has a simple closed-form formula analogous to C(n+k−1,k−1)",
+        text: "$p(n)$ has a simple closed-form formula analogous to $C(n+k-1,k-1)$",
         correct: false,
         misconception: {
           id: "partition-count-assumed-closed-form",
@@ -4161,7 +4176,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "The number of partitions of n into exactly k parts is the same quantity as p(n) itself",
+        text: "The number of partitions of $n$ into exactly $k$ parts is the same quantity as $p(n)$ itself",
         correct: false,
         misconception: {
           id: "fixed-k-partition-count-confused-with-p-n",
@@ -4191,7 +4206,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "What is p(3), the number of partitions of 3? Give a whole number.",
+    stem: "What is $p(3)$, the number of partitions of $3$? Give a whole number.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: 0.45,
@@ -4215,7 +4230,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "How many partitions of 6 have exactly 3 parts? Give a whole number.",
+    stem: "How many partitions of $6$ have exactly $3$ parts? Give a whole number.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: 0.85,
@@ -4240,8 +4255,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Let p(n,k) denote the number of partitions of n into at most k parts. State the recurrence " +
-      "p(n,k) = p(n−1,k−1) + p(n−k,k), and verify it on the case n=5, k=2.",
+      "Let $p(n,k)$ denote the number of partitions of $n$ into at most $k$ parts. State the recurrence " +
+      "$p(n,k) = p(n-1,k-1) + p(n-k,k)$, and verify it on the case $n=5$, $k=2$.",
     rubric: {
       elements: [
         {
@@ -4290,8 +4305,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain, using the labeled-vs-unlabeled distinction, why p(n) is never larger than the stars-and-bars " +
-      "count of distributing n items into k labeled groups, and why the gap widens as n grows.",
+      "Explain, using the labeled-vs-unlabeled distinction, why $p(n)$ is never larger than the " +
+      "stars-and-bars count of distributing $n$ items into $k$ labeled groups, and why the gap widens as " +
+      "$n$ grows.",
     rubric: {
       elements: [
         {
@@ -4330,9 +4346,9 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed", "spoken"],
     stem:
       "A Young diagram represents a partition as left-justified rows of boxes, one row per part, in " +
-      "nonincreasing order. Explain how reading a diagram's columns instead of its rows shows that the number " +
-      "of partitions of n into at most k parts equals the number of partitions of n into parts of size at " +
-      "most k (conjugation).",
+      "nonincreasing order. Explain how reading a diagram's columns instead of its rows shows that the " +
+      "number of partitions of $n$ into at most $k$ parts equals the number of partitions of $n$ into parts " +
+      "of size at most $k$ (conjugation).",
     rubric: {
       elements: [
         {
@@ -4376,9 +4392,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The generating function ∏_{i≥1} 1/(1−x^i) encodes p(n) as the coefficient of x^n. Explain, connecting to " +
-      "how the geometric series 1+x^i+x^{2i}+⋯ represents 'use 0, 1, 2, ... copies of part i', why the product " +
-      "correctly counts partitions.",
+      "The generating function $\\prod_{i\\geq 1} 1/(1-x^i)$ encodes $p(n)$ as the coefficient of $x^n$. " +
+      "Explain, connecting to how the geometric series $1+x^i+x^{2i}+\\cdots$ represents ‘use $0, 1, 2, " +
+      "\\ldots$ copies of part $i$’, why the product correctly counts partitions.",
     rubric: {
       elements: [
         {
@@ -4421,12 +4437,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which of the following is the correct, complete list of all partitions of 4?",
+    stem: "Which of the following is the correct, complete list of all partitions of $4$?",
     choices: [
-      { id: "a", text: "4; 3+1; 2+2; 2+1+1; 1+1+1+1", correct: true },
+      { id: "a", text: "$4$; $3+1$; $2+2$; $2+1+1$; $1+1+1+1$", correct: true },
       {
         id: "b",
-        text: "4; 3+1; 2+2; 1+1+1+1",
+        text: "$4$; $3+1$; $2+2$; $1+1+1+1$",
         correct: false,
         misconception: {
           id: "partition-list-incomplete",
@@ -4436,7 +4452,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "4; 3+1; 1+3; 2+2; 2+1+1; 1+1+2; 1+1+1+1",
+        text: "$4$; $3+1$; $1+3$; $2+2$; $2+1+1$; $1+1+2$; $1+1+1+1$",
         correct: false,
         misconception: {
           id: "partitions-listed-with-order-duplicates",
@@ -4446,7 +4462,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "4; 2+2; 1+1+1+1",
+        text: "$4$; $2+2$; $1+1+1+1$",
         correct: false,
         misconception: {
           id: "partition-list-missing-multiple",
@@ -4476,12 +4492,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "p(1), the number of partitions of 1, equals:",
+    stem: "$p(1)$, the number of partitions of $1$, equals:",
     choices: [
-      { id: "a", text: "1", correct: true },
+      { id: "a", text: "$1$", correct: true },
       {
         id: "b",
-        text: "0",
+        text: "$0$",
         correct: false,
         misconception: {
           id: "p-one-assumed-zero",
@@ -4491,7 +4507,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "2",
+        text: "$2$",
         correct: false,
         misconception: {
           id: "p-one-overcounted",
@@ -4524,12 +4540,12 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "Which statements are true? Select all that apply.",
     choices: [
-      { id: "a", text: "p(5) = 7", correct: true },
-      { id: "b", text: "For any n, the partition 1+1+⋯+1 (n ones) has the most parts of any partition of n", correct: true },
-      { id: "c", text: "For any n, the partition consisting of the single part n has the fewest parts (just 1)", correct: true },
+      { id: "a", text: "$p(5) = 7$", correct: true },
+      { id: "b", text: "For any $n$, the partition $1+1+\\cdots +1$ ($n$ ones) has the most parts of any partition of $n$", correct: true },
+      { id: "c", text: "For any $n$, the partition consisting of the single part $n$ has the fewest parts (just $1$)", correct: true },
       {
         id: "d",
-        text: "Every partition of n has at most n/2 parts",
+        text: "Every partition of $n$ has at most $n/2$ parts",
         correct: false,
         misconception: {
           id: "part-count-assumed-bounded-by-half",
@@ -4539,7 +4555,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "The number of partitions of n into odd parts always equals p(n)",
+        text: "The number of partitions of $n$ into odd parts always equals $p(n)$",
         correct: false,
         misconception: {
           id: "odd-parts-count-confused-with-p-n",
@@ -4569,7 +4585,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "What is p(5), the number of partitions of 5? Give a whole number.",
+    stem: "What is $p(5)$, the number of partitions of $5$? Give a whole number.",
     answerKey: 7,
     tolerance: 0.001,
     difficulty: 0.15,
@@ -4593,7 +4609,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "How many partitions of 8 use only parts of size 1 and/or 2? Give a whole number.",
+    stem: "How many partitions of $8$ use only parts of size $1$ and/or $2$? Give a whole number.",
     answerKey: 5,
     tolerance: 0.001,
     difficulty: 0.6,
@@ -4617,7 +4633,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "How many partitions of 7 have largest part exactly equal to 4? Give a whole number.",
+    stem: "How many partitions of $7$ have largest part exactly equal to $4$? Give a whole number.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: 1.05,
@@ -4642,8 +4658,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Prove that the number of partitions of n into exactly k (positive) parts equals the number of partitions " +
-      "of n−k into at most k parts, using a subtract-one-from-each-part bijection.",
+      "Prove that the number of partitions of $n$ into exactly $k$ (positive) parts equals the number of " +
+      "partitions of $n-k$ into at most $k$ parts, using a subtract-one-from-each-part bijection.",
     rubric: {
       elements: [
         {
@@ -4687,8 +4703,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A partition of n into distinct parts uses no part value more than once. Explain why the number of " +
-      "partitions of n into distinct parts is never more than p(n), and why (for n ≥ 2) it is strictly less.",
+      "A partition of $n$ into distinct parts uses no part value more than once. Explain why the number of " +
+      "partitions of $n$ into distinct parts is never more than $p(n)$, and why (for $n \\geq 2$) it is " +
+      "strictly less.",
     rubric: {
       elements: [
         {
@@ -4732,8 +4749,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "By convention, p(0) = 1 (the empty sum is the one partition of 0). Explain why this base case is needed " +
-      "for a recurrence like p(n,k) = p(n−1,k−1) + p(n−k,k) to behave correctly, rather than setting p(0) = 0.",
+      "By convention, $p(0) = 1$ (the empty sum is the one partition of $0$). Explain why this base case is " +
+      "needed for a recurrence like $p(n,k) = p(n-1,k-1) + p(n-k,k)$ to behave correctly, rather than " +
+      "setting $p(0) = 0$.",
     rubric: {
       elements: [
         {
@@ -4777,10 +4795,10 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Distributing n indistinguishable energy quanta among indistinguishable identical oscillators (unlike the " +
-      "labeled-level case) is counted by integer partitions rather than stars and bars. Explain why " +
-      "'indistinguishable oscillators' is the key feature that changes the counting problem, contrasting with " +
-      "the labeled-level (stars-and-bars) case.",
+      "Distributing $n$ indistinguishable energy quanta among indistinguishable identical oscillators " +
+      "(unlike the labeled-level case) is counted by integer partitions rather than stars and bars. Explain " +
+      "why ‘indistinguishable oscillators’ is the key feature that changes the counting problem, " +
+      "contrasting with the labeled-level (stars-and-bars) case.",
     rubric: {
       elements: [
         {
@@ -4824,10 +4842,11 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The classic 'coin change' problem — how many ways can n cents be made using coins of denominations 1, 5, " +
-      "10, and 25, unlimited supply, order irrelevant — is a restricted partition-counting problem. Explain how " +
-      "it resembles integer-partition counting but with allowed part sizes restricted to {1,5,10,25}, and how " +
-      "the generating-function view (one geometric-series factor per allowed part) adapts to that restriction.",
+      "The classic ‘coin change’ problem — how many ways can $n$ cents be made using coins of denominations " +
+      "$1, 5, 10$, and $25$, unlimited supply, order irrelevant — is a restricted partition-counting " +
+      "problem. Explain how it resembles integer-partition counting but with allowed part sizes restricted " +
+      "to $\\{1,5,10,25\\}$, and how the generating-function view (one geometric-series factor per allowed " +
+      "part) adapts to that restriction.",
     rubric: {
       elements: [
         {
@@ -4871,10 +4890,10 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Unlike C(n,k), which has a single closed formula, computing p(n) for large n requires either a recurrence-driven " +
-      "table (like p(n,k) = p(n−1,k−1) + p(n−k,k)) or specialized asymptotic/number-theoretic techniques. Explain " +
-      "why this reflects a genuine structural difference, tying it back to why that recurrence needs two indices " +
-      "while the stars-and-bars formula needs none.",
+      "Unlike $C(n,k)$, which has a single closed formula, computing $p(n)$ for large $n$ requires either a " +
+      "recurrence-driven table (like $p(n,k) = p(n-1,k-1) + p(n-k,k)$) or specialized " +
+      "asymptotic/number-theoretic techniques. Explain why this reflects a genuine structural difference, " +
+      "tying it back to why that recurrence needs two indices while the stars-and-bars formula needs none.",
     rubric: {
       elements: [
         {
@@ -4922,12 +4941,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The binomial theorem expands (x+y)^n as:",
+    stem: "The binomial theorem expands $(x+y)^n$ as:",
     choices: [
-      { id: "a", text: "Σ_{k=0}^{n} C(n,k) x^k y^{n−k}", correct: true },
+      { id: "a", text: "$\\sum_{k=0}^{n} C(n,k) x^k y^{n-k}$", correct: true },
       {
         id: "b",
-        text: "Σ_{k=0}^{n} C(n,k) x^k y^k",
+        text: "$\\sum_{k=0}^{n} C(n,k) x^k y^k$",
         correct: false,
         misconception: {
           id: "y-exponent-wrong",
@@ -4937,7 +4956,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "Σ_{k=0}^{n} x^k y^{n−k}",
+        text: "$\\sum_{k=0}^{n} x^k y^{n-k}$",
         correct: false,
         misconception: {
           id: "coefficient-dropped",
@@ -4947,7 +4966,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "Σ_{k=0}^{n} k · x^k y^{n−k}",
+        text: "$\\sum_{k=0}^{n} k \\cdot x^k y^{n-k}$",
         correct: false,
         misconception: {
           id: "coefficient-replaced-with-k",
@@ -4971,12 +4990,12 @@ export const discreteMathCountingItems: Item[] = [
     channels: ["typed"],
     stem: "Which identities follow from the binomial theorem? Select all that apply.",
     choices: [
-      { id: "a", text: "Setting x=y=1 gives Σ_k C(n,k) = 2^n", correct: true },
-      { id: "b", text: "Setting x=1, y=−1 gives Σ_k (−1)^k C(n,k) = 0 for n ≥ 1", correct: true },
-      { id: "c", text: "(x+y)^n has exactly n+1 terms when fully expanded (x, y formal variables)", correct: true },
+      { id: "a", text: "Setting $x=y=1$ gives $\\sum_k C(n,k) = 2^n$", correct: true },
+      { id: "b", text: "Setting $x=1$, $y=-1$ gives $\\sum_k (-1)^k C(n,k) = 0$ for $n \\geq 1$", correct: true },
+      { id: "c", text: "$(x+y)^n$ has exactly $n+1$ terms when fully expanded ($x, y$ formal variables)", correct: true },
       {
         id: "d",
-        text: "The coefficient of x^k y^{n−k} in (x+y)^n is P(n,k), not C(n,k)",
+        text: "The coefficient of $x^k y^{n-k}$ in $(x+y)^n$ is $P(n,k)$, not $C(n,k)$",
         correct: false,
         misconception: {
           id: "binomial-coefficient-confused-with-permutation",
@@ -4986,7 +5005,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "Setting x=y=1 gives Σ_k C(n,k) = n!",
+        text: "Setting $x=y=1$ gives $\\sum_k C(n,k) = n!$",
         correct: false,
         misconception: {
           id: "row-sum-confused-with-n-factorial",
@@ -5008,7 +5027,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Find the coefficient of x^3y^4 in (x+y)^7. Give a whole number.",
+    stem: "Find the coefficient of $x^3y^4$ in $(x+y)^7$. Give a whole number.",
     answerKey: 35,
     tolerance: 0.001,
     difficulty: 0.05,
@@ -5024,7 +5043,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute Σ_{k=0}^{5} C(5,k) directly by adding the six coefficients. Give a whole number.",
+    stem: "Compute $\\sum_{k=0}^{5} C(5,k)$ directly by adding the six coefficients. Give a whole number.",
     answerKey: 32,
     tolerance: 0.001,
     difficulty: 0.45,
@@ -5041,8 +5060,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Prove the binomial theorem for a positive integer n by a combinatorial argument, expanding " +
-      "(x+y)^n = (x+y)(x+y)⋯(x+y) (n factors) directly.",
+      "Prove the binomial theorem for a positive integer $n$ by a combinatorial argument, expanding " +
+      "$(x+y)^n = (x+y)(x+y)\\cdots (x+y)$ ($n$ factors) directly.",
     rubric: {
       elements: [
         {
@@ -5078,8 +5097,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A binomial random variable's pmf is P(X=k) = C(n,k) p^k (1−p)^{n−k}. Explain, using the binomial " +
-      "theorem, why these probabilities are guaranteed to sum to 1 over k = 0, ..., n.",
+      "A binomial random variable's pmf is $P(X=k) = C(n,k) p^k (1-p)^{n-k}$. Explain, using the binomial " +
+      "theorem, why these probabilities are guaranteed to sum to $1$ over $k = 0$, $\\ldots, n$.",
     rubric: {
       elements: [
         {
@@ -5110,8 +5129,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why the alternating identity Σ_k (−1)^k C(n,k) = 0 (for n ≥ 1) implies a finite nonempty n-element " +
-      "set has exactly as many subsets of even size as of odd size.",
+      "Explain why the alternating identity $\\sum_k (-1)^k C(n,k) = 0$ (for $n \\geq 1$) implies a finite " +
+      "nonempty $n$-element set has exactly as many subsets of even size as of odd size.",
     rubric: {
       elements: [
         {
@@ -5147,9 +5166,10 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Vandermonde's identity Σ_j C(m,j) C(n,k−j) = C(m+n,k) generalizes the binomial theorem to two groups. " +
-      "Explain, with a combinatorial argument (not algebra), why choosing k people from a combined pool of m " +
-      "men and n women equals summing, over every possible split j, the ways to choose j men and k−j women.",
+      "Vandermonde's identity $\\sum_j C(m,j) C(n,k-j) = C(m+n,k)$ generalizes the binomial theorem to two " +
+      "groups. Explain, with a combinatorial argument (not algebra), why choosing $k$ people from a " +
+      "combined pool of $m$ men and $n$ women equals summing, over every possible split $j$, the ways to " +
+      "choose $j$ men and $k-j$ women.",
     rubric: {
       elements: [
         {
@@ -5184,12 +5204,12 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The coefficients C(n,0), C(n,1), ..., C(n,n) in the expansion of (x+y)^n form:",
+    stem: "The coefficients $C(n,0)$, $C(n,1)$, $\\ldots$, $C(n,n)$ in the expansion of $(x+y)^n$ form:",
     choices: [
-      { id: "a", text: "row n of Pascal's triangle", correct: true },
+      { id: "a", text: "row $n$ of Pascal's triangle", correct: true },
       {
         id: "b",
-        text: "row n+1 of Pascal's triangle",
+        text: "row $n+1$ of Pascal's triangle",
         correct: false,
         misconception: {
           id: "pascal-row-off-by-one",
@@ -5199,7 +5219,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "column n of Pascal's triangle",
+        text: "column $n$ of Pascal's triangle",
         correct: false,
         misconception: {
           id: "pascal-row-confused-with-column",
@@ -5231,9 +5251,9 @@ export const discreteMathCountingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "In every term C(n,k) x^k y^{n−k} of the expansion of (x+y)^n, the exponents of x and y:",
+    stem: "In every term $C(n,k) x^k y^{n-k}$ of the expansion of $(x+y)^n$, the exponents of $x$ and $y$:",
     choices: [
-      { id: "a", text: "always sum to n", correct: true },
+      { id: "a", text: "always sum to $n$", correct: true },
       {
         id: "b",
         text: "are always equal to each other",
@@ -5246,7 +5266,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "c",
-        text: "always sum to 2n",
+        text: "always sum to $2n$",
         correct: false,
         misconception: {
           id: "exponent-sum-doubled",
@@ -5256,7 +5276,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "d",
-        text: "always multiply to n",
+        text: "always multiply to $n$",
         correct: false,
         misconception: {
           id: "exponent-relation-assumed-multiplicative",
@@ -5278,11 +5298,11 @@ export const discreteMathCountingItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For (x−y)^n, which statements are true? Select all that apply.",
+    stem: "For $(x-y)^n$, which statements are true? Select all that apply.",
     choices: [
-      { id: "a", text: "The coefficient of x^k y^{n−k} is (−1)^{n−k} C(n,k)", correct: true },
-      { id: "b", text: "Setting x=1, y=1 evaluates the expansion to 0 for n ≥ 1", correct: true },
-      { id: "c", text: "The coefficient of the x^n term (k=n) is +1", correct: true },
+      { id: "a", text: "The coefficient of $x^k y^{n-k}$ is $(-1)^{n-k} C(n,k)$", correct: true },
+      { id: "b", text: "Setting $x=1$, $y=1$ evaluates the expansion to $0$ for $n \\geq 1$", correct: true },
+      { id: "c", text: "The coefficient of the $x^n$ term $(k=n)$ is $+1$", correct: true },
       {
         id: "d",
         text: "Every coefficient in the expansion is positive",
@@ -5295,7 +5315,7 @@ export const discreteMathCountingItems: Item[] = [
       },
       {
         id: "e",
-        text: "The coefficient of x^0 y^n (k=0) is +1 for every n",
+        text: "The coefficient of $x^0 y^n (k=0)$ is $+1$ for every $n$",
         correct: false,
         misconception: {
           id: "constant-term-sign-generalized-incorrectly",
@@ -5317,7 +5337,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Find the coefficient of x^2y^5 in (x+y)^7. Give a whole number.",
+    stem: "Find the coefficient of $x^2y^5$ in $(x+y)^7$. Give a whole number.",
     answerKey: 21,
     tolerance: 0.001,
     difficulty: -0.15,
@@ -5333,7 +5353,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Find the coefficient of x^4 in the expansion of (x+2)^6. Give a whole number.",
+    stem: "Find the coefficient of $x^4$ in the expansion of $(x+2)^6$. Give a whole number.",
     answerKey: 60,
     tolerance: 0.001,
     difficulty: 0.3,
@@ -5349,7 +5369,7 @@ export const discreteMathCountingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute Σ_{k=0}^{6} (−1)^k C(6,k) directly by adding the seven signed terms. Give a whole number.",
+    stem: "Compute $\\sum_{k=0}^{6} (-1)^k C(6,k)$ directly by adding the seven signed terms. Give a whole number.",
     answerKey: 0,
     tolerance: 0.001,
     difficulty: 0.75,
@@ -5366,8 +5386,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Prove that the sum, over k=0 to n, of k·C(n,k) equals n·2^(n−1), by first establishing the identity " +
-      "k·C(n,k) = n·C(n−1,k−1) with a 'committee and chair' combinatorial argument, then summing it over k.",
+      "Prove that the sum, over $k=0$ to $n$, of $k\\cdot C(n,k)$ equals $n\\cdot 2^{n-1}$, by first " +
+      "establishing the identity $k\\cdot C(n,k) = n\\cdot C(n-1,k-1)$ with a ‘committee and chair’ " +
+      "combinatorial argument, then summing it over $k$.",
     rubric: {
       elements: [
         {
@@ -5403,8 +5424,9 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A common error expands (x+y)^n as x^n + y^n, ignoring cross terms. Using n=2 or n=3 concretely, explain " +
-      "precisely which terms this omits, and why they can't be assumed to vanish in general.",
+      "A common error expands $(x+y)^n$ as $x^n + y^n$, ignoring cross terms. Using $n=2$ or $n=3$ " +
+      "concretely, explain precisely which terms this omits, and why they can't be assumed to vanish in " +
+      "general.",
     rubric: {
       elements: [
         {
@@ -5440,8 +5462,8 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Explain why the largest coefficient in row n of Pascal's triangle occurs at (or near) k = n/2, by deriving " +
-      "and analyzing the ratio C(n,k+1)/C(n,k).",
+      "Explain why the largest coefficient in row $n$ of Pascal's triangle occurs at (or near) $k = n/2$, " +
+      "by deriving and analyzing the ratio $C(n,k+1)/C(n,k)$.",
     rubric: {
       elements: [
         {
@@ -5477,9 +5499,10 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The number of length-n bit-strings at Hamming distance exactly d from a fixed string is C(n,d). Explain " +
-      "why summing C(n,d) over d = 0,...,r gives the size of a Hamming ball of radius r around that string, and " +
-      "why this partial sum doesn't collapse to a simple power of 2 the way the full binomial theorem row sum does.",
+      "The number of length-$n$ bit-strings at Hamming distance exactly $d$ from a fixed string is " +
+      "$C(n,d)$. Explain why summing $C(n,d)$ over $d = 0$,$\\ldots,r$ gives the size of a Hamming ball of " +
+      "radius $r$ around that string, and why this partial sum doesn't collapse to a simple power of $2$ " +
+      "the way the full binomial theorem row sum does.",
     rubric: {
       elements: [
         {
@@ -5515,9 +5538,10 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A lattice path from (0,0) to (n,k) uses only unit right-steps and up-steps. Explain why the number of such " +
-      "paths is C(n,k) (viewing it as choosing which steps are 'up'), and connect this to why the number of paths " +
-      "reaching (n,k) equals the number reaching (n−1,k−1) plus the number reaching (n−1,k) — matching Pascal's rule.",
+      "A lattice path from $(0,0)$ to $(n,k)$ uses only unit right-steps and up-steps. Explain why the " +
+      "number of such paths is $C(n,k)$ (viewing it as choosing which steps are ‘up’), and connect this to " +
+      "why the number of paths reaching $(n,k)$ equals the number reaching $(n-1,k-1)$ plus the number " +
+      "reaching $(n-1,k)$ — matching Pascal's rule.",
     rubric: {
       elements: [
         {
@@ -5553,9 +5577,10 @@ export const discreteMathCountingItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A monitoring dashboard for a system with n independent alerts shows, for each k = 0,...,n, the number of " +
-      "ways exactly k alerts can be simultaneously active, C(n,k). Explain why the total number of possible " +
-      "alert configurations (summed across every possible k) equals 2^n, giving the general reason, not just citing the identity.",
+      "A monitoring dashboard for a system with $n$ independent alerts shows, for each $k = 0$,$\\ldots,n$, " +
+      "the number of ways exactly $k$ alerts can be simultaneously active, $C(n,k)$. Explain why the total " +
+      "number of possible alert configurations (summed across every possible $k$) equals $2^n$, giving the " +
+      "general reason, not just citing the identity.",
     rubric: {
       elements: [
         {

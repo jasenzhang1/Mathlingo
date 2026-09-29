@@ -14,6 +14,9 @@ import { ml12Items } from "./ml-12-further-paradigms";
 import { ml13Items } from "./ml-13-neural-architectures";
 import { ml14Items } from "./ml-14-training-at-scale";
 import { ml15Items } from "./ml-15-adapting-and-serving";
+import { ml16Items } from "./ml-16-cnn-practice";
+import { ml17Items } from "./ml-17-ssm-and-gnn";
+import { ml18Items } from "./ml-18-score-based-generative";
 
 /**
  * The servable form of the machine-learning question bank: eight items per
@@ -49,6 +52,9 @@ export const mlItems: Item[] = [
   ...ml10Items,
   ...ml11Items,
   ...ml13Items,
+  ...ml16Items,
+  ...ml17Items,
+  ...ml18Items,
   ...ml14Items,
   ...ml12Items,
   ...ml15Items,

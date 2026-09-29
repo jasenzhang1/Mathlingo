@@ -28,12 +28,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "p → q (\"if p then q\") is false exactly when:",
+    stem: "$p \\to q$ (“if $p$ then $q$”) is false exactly when:",
     choices: [
-      { id: "a", text: "p is true and q is false", correct: true },
+      { id: "a", text: "$p$ is true and $q$ is false", correct: true },
       {
         id: "b",
-        text: "p is false and q is true",
+        text: "$p$ is false and $q$ is true",
         correct: false,
         misconception: {
           id: "vacuous-truth-inverted",
@@ -44,7 +44,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "c",
-        text: "p and q have different truth values",
+        text: "$p$ and $q$ have different truth values",
         correct: false,
         misconception: {
           id: "conditional-confused-with-xor",
@@ -54,7 +54,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "d",
-        text: "p and q are both false",
+        text: "$p$ and $q$ are both false",
         correct: false,
         misconception: {
           id: "conditional-false-at-both-false",
@@ -76,14 +76,14 @@ export const discreteMathLogicItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which statements about ∧, ∨, and ¬ are true? Select all that apply.",
+    stem: "Which statements about $\\land$, $\\lor$, and $\\neg$ are true? Select all that apply.",
     choices: [
-      { id: "a", text: "p∧q is true only when both p and q are true", correct: true },
-      { id: "b", text: "p∨q is the inclusive or: true when at least one of p, q is true", correct: true },
-      { id: "c", text: "¬p always has the opposite truth value of p", correct: true },
+      { id: "a", text: "$p\\land q$ is true only when both $p$ and $q$ are true", correct: true },
+      { id: "b", text: "$p\\lor q$ is the inclusive or: true when at least one of $p, q$ is true", correct: true },
+      { id: "c", text: "$\\neg p$ always has the opposite truth value of $p$", correct: true },
       {
         id: "d",
-        text: "p∨q is false whenever exactly one of p, q is true",
+        text: "$p\\lor q$ is false whenever exactly one of $p, q$ is true",
         correct: false,
         misconception: {
           id: "or-read-as-exclusive",
@@ -93,7 +93,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "e",
-        text: "p∧q is true whenever at least one of p, q is true",
+        text: "$p\\land q$ is true whenever at least one of $p, q$ is true",
         correct: false,
         misconception: {
           id: "and-or-swapped",
@@ -115,7 +115,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A compound proposition involves 4 distinct propositional variables. How many rows does its full truth table have?",
+    stem: "A compound proposition involves $4$ distinct propositional variables. How many rows does its full truth table have?",
     answerKey: 16,
     tolerance: 0.001,
     difficulty: -0.9,
@@ -132,7 +132,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "Let p = \"12 is even\" (true) and q = \"12 is prime\" (false). What is the truth value of ¬p ∨ (p ∧ q)?",
+      "Let $p =$ “$12$ is even” (true) and $q =$ “$12$ is prime” (false). What is the truth value of $\\neg p \\lor (p \\land q)$?",
     choices: [
       { id: "a", text: "False", correct: true },
       {
@@ -170,7 +170,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Show, using a truth table over every row of (p, q), that p→q is logically equivalent to ¬p∨q.",
+    stem: "Show, using a truth table over every row of $(p, q)$, that $p\\to q$ is logically equivalent to $\\neg p\\lor q$.",
     rubric: {
       elements: [
         {
@@ -206,7 +206,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why \"if it rains, the game is cancelled\" is not falsified on a day when it doesn't rain.",
+    stem: "Explain why “if it rains, the game is cancelled” is not falsified on a day when it doesn't rain.",
     rubric: {
       elements: [
         {
@@ -237,7 +237,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "In most programming languages, `p && q` skips evaluating `q` once `p` is found false (\"short-circuit evaluation\"). Explain the logical principle that makes this safe.",
+      "In most programming languages, `p && q` skips evaluating `q` once `p` is found false (“short-circuit evaluation”). Explain the logical principle that makes this safe.",
     rubric: {
       elements: [
         {
@@ -273,7 +273,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "In theorem statements, \"P only if Q\" means P→Q, while \"P if Q\" means Q→P. Explain why \"P if and only if Q\" is exactly the conjunction of these two directions, and connect this to the words \"necessary\" and \"sufficient.\"",
+      "In theorem statements, “$P$ only if $Q$” means $P\\to Q$, while “$P$ if $Q$” means $Q\\to P$. Explain why “$P$ if and only if $Q$” is exactly the conjunction of these two directions, and connect this to the words “necessary” and “sufficient.”",
     rubric: {
       elements: [
         { id: "only-if-direction", description: "States that \"P only if Q\" translates to P→Q, making Q necessary for P.", weight: 2, required: true },
@@ -304,12 +304,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "p ↔ q (\"p if and only if q\") is true exactly when:",
+    stem: "$p \\leftrightarrow q$ (“$p$ if and only if $q$”) is true exactly when:",
     choices: [
-      { id: "a", text: "p and q have the same truth value", correct: true },
-      { id: "b", text: "p and q have different truth values", correct: false, misconception: { id: "biconditional-confused-with-xor", description: "Describes exclusive or, the opposite pattern of the biconditional.", blameConceptId: "propositional-logic" } },
-      { id: "c", text: "p is true", correct: false, misconception: { id: "biconditional-reduced-to-p", description: "Ignores q entirely — the biconditional's truth depends on both p and q matching, not on p alone.", blameConceptId: "propositional-logic" } },
-      { id: "d", text: "p and q are both true", correct: false, misconception: { id: "biconditional-mistaken-for-conjunction", description: "Describes ∧, not ↔ — the biconditional is also true when p and q are both false.", blameConceptId: "propositional-logic" } },
+      { id: "a", text: "$p$ and $q$ have the same truth value", correct: true },
+      { id: "b", text: "$p$ and $q$ have different truth values", correct: false, misconception: { id: "biconditional-confused-with-xor", description: "Describes exclusive or, the opposite pattern of the biconditional.", blameConceptId: "propositional-logic" } },
+      { id: "c", text: "$p$ is true", correct: false, misconception: { id: "biconditional-reduced-to-p", description: "Ignores q entirely — the biconditional's truth depends on both p and q matching, not on p alone.", blameConceptId: "propositional-logic" } },
+      { id: "d", text: "$p$ and $q$ are both true", correct: false, misconception: { id: "biconditional-mistaken-for-conjunction", description: "Describes ∧, not ↔ — the biconditional is also true when p and q are both false.", blameConceptId: "propositional-logic" } },
     ],
     difficulty: -1.7,
     discrimination: 1.1,
@@ -326,10 +326,10 @@ export const discreteMathLogicItems: Item[] = [
     channels: ["typed"],
     stem: "Which of the following is a proposition (a declarative sentence with a definite truth value)?",
     choices: [
-      { id: "a", text: "\"7 is a prime number.\"", correct: true },
-      { id: "b", text: "\"Close the door.\"", correct: false, misconception: { id: "imperative-mistaken-for-proposition", description: "A command has no truth value at all, so it isn't a proposition.", blameConceptId: "propositional-logic" } },
-      { id: "c", text: "\"x + 2 = 5\" (with x unspecified)", correct: false, misconception: { id: "open-sentence-mistaken-for-proposition", description: "An open sentence with a free variable has no fixed truth value until x is specified, so it isn't a proposition on its own.", blameConceptId: "propositional-logic" } },
-      { id: "d", text: "\"Is it raining?\"", correct: false, misconception: { id: "question-mistaken-for-proposition", description: "A question has no truth value, so it isn't a proposition.", blameConceptId: "propositional-logic" } },
+      { id: "a", text: "“$7$ is a prime number.”", correct: true },
+      { id: "b", text: "“Close the door.”", correct: false, misconception: { id: "imperative-mistaken-for-proposition", description: "A command has no truth value at all, so it isn't a proposition.", blameConceptId: "propositional-logic" } },
+      { id: "c", text: "“$x + 2 = 5$” (with $x$ unspecified)", correct: false, misconception: { id: "open-sentence-mistaken-for-proposition", description: "An open sentence with a free variable has no fixed truth value until x is specified, so it isn't a proposition on its own.", blameConceptId: "propositional-logic" } },
+      { id: "d", text: "“Is it raining?”", correct: false, misconception: { id: "question-mistaken-for-proposition", description: "A question has no truth value, so it isn't a proposition.", blameConceptId: "propositional-logic" } },
     ],
     difficulty: -1.6,
     discrimination: 1.1,
@@ -344,11 +344,11 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "By standard precedence (¬ binds tightest, then ∧, then ∨), ¬p ∨ q ∧ r means:",
+    stem: "By standard precedence ($\\neg$ binds tightest, then $\\land$, then $\\lor$), $\\neg p \\lor q \\land r$ means:",
     choices: [
-      { id: "a", text: "(¬p) ∨ (q ∧ r)", correct: true },
-      { id: "b", text: "¬(p ∨ q) ∧ r", correct: false, misconception: { id: "negation-scope-overextended", description: "Applies ¬ to the whole disjunction, when ¬ binds only to the single proposition that follows it.", blameConceptId: "propositional-logic" } },
-      { id: "c", text: "(¬p ∨ q) ∧ r", correct: false, misconception: { id: "and-evaluated-before-or-ignored", description: "Treats ∨ as binding tighter than ∧, the reverse of standard precedence.", blameConceptId: "propositional-logic" } },
+      { id: "a", text: "$(\\neg p) \\lor (q \\land r)$", correct: true },
+      { id: "b", text: "$\\neg (p \\lor q) \\land r$", correct: false, misconception: { id: "negation-scope-overextended", description: "Applies ¬ to the whole disjunction, when ¬ binds only to the single proposition that follows it.", blameConceptId: "propositional-logic" } },
+      { id: "c", text: "$(\\neg p \\lor q) \\land r$", correct: false, misconception: { id: "and-evaluated-before-or-ignored", description: "Treats ∨ as binding tighter than ∧, the reverse of standard precedence.", blameConceptId: "propositional-logic" } },
     ],
     difficulty: -1.0,
     discrimination: 1.1,
@@ -363,7 +363,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A compound proposition involves 5 distinct propositional variables. How many rows does its full truth table have?",
+    stem: "A compound proposition involves $5$ distinct propositional variables. How many rows does its full truth table have?",
     answerKey: 32,
     tolerance: 0.001,
     difficulty: -0.75,
@@ -379,7 +379,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Let p, q, r be true, true, false respectively. What is the truth value of (p∨q)∧¬r?",
+    stem: "Let $p, q, r$ be true, true, false respectively. What is the truth value of $(p\\lor q)\\land \\neg r$?",
     choices: [
       { id: "a", text: "True", correct: true },
       { id: "b", text: "False", correct: false, misconception: { id: "negation-of-false-mishandled", description: "Computes ¬r as false when r is already false; ¬r should be true.", blameConceptId: "propositional-logic" } },
@@ -398,7 +398,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Let p = \"9 is odd\" (true) and q = \"9 is prime\" (false). What is the truth value of p ↔ q?",
+    stem: "Let $p =$ “$9$ is odd” (true) and $q =$ “$9$ is prime” (false). What is the truth value of $p \\leftrightarrow q$?",
     choices: [
       { id: "a", text: "False", correct: true },
       { id: "b", text: "True", correct: false, misconception: { id: "biconditional-truth-condition-misapplied", description: "Treats the biconditional as true whenever at least one side is true, rather than requiring matching truth values.", blameConceptId: "propositional-logic" } },
@@ -416,7 +416,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Show, via a truth table over both rows of p, that p∨¬p is a tautology (true in every row), and explain why this fact is called the \"law of excluded middle.\"",
+    stem: "Show, via a truth table over both rows of $p$, that $p\\lor \\neg p$ is a tautology (true in every row), and explain why this fact is called the “law of excluded middle.”",
     rubric: {
       elements: [
         { id: "table-both-rows", description: "Builds the table for p∨¬p over both rows of p (p=T gives T∨F=T, p=F gives F∨T=T).", weight: 3, required: true },
@@ -447,7 +447,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "In everyday English, \"or\" is sometimes inclusive (\"coffee or tea\" — you could have both) and sometimes exclusive (\"soup or salad\" — pick one). Explain which reading propositional logic's ∨ uses by default, and how to express the exclusive reading when it's needed.",
+      "In everyday English, “or” is sometimes inclusive (“coffee or tea” — you could have both) and sometimes exclusive (“soup or salad” — pick one). Explain which reading propositional logic's $\\lor$ uses by default, and how to express the exclusive reading when it's needed.",
     rubric: {
       elements: [
         { id: "default-is-inclusive", description: "States ∨ is inclusive or: true when at least one of p, q holds, including when both do.", weight: 2, required: true },
@@ -477,7 +477,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Show, using a truth table over all 4 rows of (p, q), that p↔q is logically equivalent to (p∧q)∨(¬p∧¬q).",
+    stem: "Show, using a truth table over all $4$ rows of $(p, q)$, that $p\\leftrightarrow q$ is logically equivalent to $(p\\land q)\\lor (\\neg p\\land \\neg q)$.",
     rubric: {
       elements: [
         { id: "full-table", description: "Builds the truth table for both p↔q and (p∧q)∨(¬p∧¬q) across all 4 rows of (p,q).", weight: 3, required: true, misconception: { id: "partial-table", description: "Checks only one or two rows and generalizes, rather than confirming all four.", blameConceptId: "propositional-logic" } },
@@ -499,7 +499,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A digital AND gate outputs 1 only when both its inputs are 1; an OR gate outputs 1 when at least one input is 1; a NOT gate (inverter) flips its single input. Explain the correspondence between these gates and ∧, ∨, ¬, and how a circuit built from them evaluates a compound proposition.",
+      "A digital AND gate outputs $1$ only when both its inputs are $1$; an OR gate outputs $1$ when at least one input is $1$; a NOT gate (inverter) flips its single input. Explain the correspondence between these gates and $\\land$, $\\lor$, $\\neg$, and how a circuit built from them evaluates a compound proposition.",
     rubric: {
       elements: [
         { id: "gate-connective-mapping", description: "Maps AND↔∧, OR↔∨, NOT(inverter)↔¬, with matching truth conditions for each.", weight: 3, required: true },
@@ -530,7 +530,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "\"P unless Q\" is standardly translated as ¬Q→P (if Q fails, P holds). Explain why this translation matches the everyday sense of \"unless,\" and give the exact truth condition under which \"P unless Q\" is false.",
+      "“$P$ unless $Q$” is standardly translated as $\\neg Q\\to P$ (if $Q$ fails, $P$ holds). Explain why this translation matches the everyday sense of “unless,” and give the exact truth condition under which “$P$ unless $Q$” is false.",
     rubric: {
       elements: [
         { id: "translation-justified", description: "Explains ¬Q→P says \"if Q doesn't happen, P must,\" matching the everyday sense of P holding whenever Q doesn't.", weight: 3, required: true },
@@ -561,7 +561,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A database query `WHERE price < 10 OR category = 'sale'` returns rows matching either condition, including rows matching both. Explain why this behavior matches propositional ∨ rather than the colloquial exclusive sense of \"or,\" and why a programmer who expected exclusive-or semantics here would wrongly conclude the query returns too many rows.",
+      "A database query `WHERE price < 10 OR category = 'sale'` returns rows matching either condition, including rows matching both. Explain why this behavior matches propositional $\\lor$ rather than the colloquial exclusive sense of “or,” and why a programmer who expected exclusive-or semantics here would wrongly conclude the query returns too many rows.",
     rubric: {
       elements: [
         { id: "sql-or-is-inclusive", description: "Identifies SQL's OR as the inclusive ∨, returning rows satisfying at least one condition, including both.", weight: 3, required: true },
@@ -595,12 +595,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "¬(p ∧ q) is logically equivalent to:",
+    stem: "$\\neg (p \\land q)$ is logically equivalent to:",
     choices: [
-      { id: "a", text: "¬p ∨ ¬q", correct: true },
+      { id: "a", text: "$\\neg p \\lor \\neg q$", correct: true },
       {
         id: "b",
-        text: "¬p ∧ ¬q",
+        text: "$\\neg p \\land \\neg q$",
         correct: false,
         misconception: {
           id: "de-morgan-connective-not-flipped",
@@ -610,7 +610,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "c",
-        text: "p ∨ q",
+        text: "$p \\lor q$",
         correct: false,
         misconception: {
           id: "de-morgan-negation-dropped",
@@ -618,7 +618,7 @@ export const discreteMathLogicItems: Item[] = [
           blameConceptId: "logical-equivalences",
         },
       },
-      { id: "d", text: "¬p ∨ q", correct: false, misconception: { id: "de-morgan-only-p-negated", description: "Only negates p, leaving q untouched.", blameConceptId: "logical-equivalences" } },
+      { id: "d", text: "$\\neg p \\lor q$", correct: false, misconception: { id: "de-morgan-only-p-negated", description: "Only negates p, leaving q untouched.", blameConceptId: "logical-equivalences" } },
     ],
     difficulty: -1.3,
     discrimination: 1.1,
@@ -635,12 +635,12 @@ export const discreteMathLogicItems: Item[] = [
     channels: ["typed"],
     stem: "Which statements are true? Select all that apply.",
     choices: [
-      { id: "a", text: "¬(∀x P(x)) ≡ ∃x ¬P(x)", correct: true },
-      { id: "b", text: "¬(∃x P(x)) ≡ ∀x ¬P(x)", correct: true },
-      { id: "c", text: "p→q is logically equivalent to its contrapositive ¬q→¬p", correct: true },
+      { id: "a", text: "$\\neg (\\forall x P(x)) \\equiv \\exists x \\neg P(x)$", correct: true },
+      { id: "b", text: "$\\neg (\\exists x P(x)) \\equiv \\forall x \\neg P(x)$", correct: true },
+      { id: "c", text: "$p\\to q$ is logically equivalent to its contrapositive $\\neg q\\to \\neg p$", correct: true },
       {
         id: "d",
-        text: "¬(∀x P(x)) ≡ ∀x ¬P(x)",
+        text: "$\\neg (\\forall x P(x)) \\equiv \\forall x \\neg P(x)$",
         correct: false,
         misconception: {
           id: "quantifier-negation-not-flipped",
@@ -650,7 +650,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "e",
-        text: "p→q is logically equivalent to its converse q→p",
+        text: "$p\\to q$ is logically equivalent to its converse $q\\to p$",
         correct: false,
         misconception: {
           id: "converse-assumed-equivalent",
@@ -672,7 +672,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Negate: \"Every student passed the exam, and no student cheated.\"",
+    stem: "Negate: “Every student passed the exam, and no student cheated.”",
     answerKey:
       "Some student did not pass, or some student cheated. (¬((∀x Passed(x)) ∧ (∀x ¬Cheated(x))) = (∃x ¬Passed(x)) ∨ (∃x Cheated(x)))",
     rubric: {
@@ -704,12 +704,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Which of the following is guaranteed logically equivalent to p→q?",
+    stem: "Which of the following is guaranteed logically equivalent to $p\\to q$?",
     choices: [
-      { id: "a", text: "¬q → ¬p", correct: true },
-      { id: "b", text: "q → p", correct: false, misconception: { id: "picks-converse", description: "Picks the converse, which is not guaranteed equivalent to p→q.", blameConceptId: "logical-equivalences" } },
-      { id: "c", text: "¬p → ¬q", correct: false, misconception: { id: "picks-inverse", description: "Picks the inverse, which is equivalent to the converse, not to p→q itself.", blameConceptId: "logical-equivalences" } },
-      { id: "d", text: "¬p ∧ q", correct: false, misconception: { id: "picks-unrelated-conjunction", description: "Names an unrelated conjunction with no equivalence to p→q at all.", blameConceptId: "logical-equivalences" } },
+      { id: "a", text: "$\\neg q \\to \\neg p$", correct: true },
+      { id: "b", text: "$q \\to p$", correct: false, misconception: { id: "picks-converse", description: "Picks the converse, which is not guaranteed equivalent to p→q.", blameConceptId: "logical-equivalences" } },
+      { id: "c", text: "$\\neg p \\to \\neg q$", correct: false, misconception: { id: "picks-inverse", description: "Picks the inverse, which is equivalent to the converse, not to p→q itself.", blameConceptId: "logical-equivalences" } },
+      { id: "d", text: "$\\neg p \\land q$", correct: false, misconception: { id: "picks-unrelated-conjunction", description: "Names an unrelated conjunction with no equivalence to p→q at all.", blameConceptId: "logical-equivalences" } },
     ],
     difficulty: -0.4,
     discrimination: 1.3,
@@ -725,7 +725,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Prove p→q ≡ ¬q→¬p by truth table, and show the converse q→p disagrees with p→q at a specific row.",
+      "Prove $p\\to q \\equiv \\neg q\\to \\neg p$ by truth table, and show the converse $q\\to p$ disagrees with $p\\to q$ at a specific row.",
     rubric: {
       elements: [
         { id: "contrapositive-table-match", description: "Builds both truth tables and shows p→q and ¬q→¬p agree in all 4 rows (T,F,T,T both).", weight: 3, required: true },
@@ -755,7 +755,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Prove ¬(p∨q) ≡ ¬p∧¬q using a truth table, and explain in words why 'not (p or q)' means 'neither happens.'",
+    stem: "Prove $\\neg (p\\lor q) \\equiv \\neg p\\land \\neg q$ using a truth table, and explain in words why ‘not ($p$ or $q$)’ means ‘neither happens.’",
     rubric: {
       elements: [{ id: "table-verification", description: "Confirms the two sides agree in all 4 rows of (p,q).", weight: 3, required: true }, { id: "neither-explanation", description: "Explains that ruling out 'p or q' means both p and q individually fail.", weight: 2, required: true }],
     },
@@ -773,7 +773,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Set-theoretic De Morgan's laws state (A∪B)ᶜ = Aᶜ∩Bᶜ. Explain the precise correspondence to ¬(p∨q) ≡ ¬p∧¬q.",
+      "Set-theoretic De Morgan's laws state $(A\\cup B)^c = A^c\\cap B^c$. Explain the precise correspondence to $\\neg (p\\lor q) \\equiv \\neg p\\land \\neg q$.",
     rubric: {
       elements: [
         {
@@ -803,7 +803,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "To disprove a claim of the form ∀x P(x), it suffices to exhibit one x for which P(x) fails. Explain why this follows directly from the quantifier negation rule.",
+      "To disprove a claim of the form $\\forall x P(x)$, it suffices to exhibit one $x$ for which $P(x)$ fails. Explain why this follows directly from the quantifier negation rule.",
     rubric: {
       elements: [
         { id: "negation-rule-cited", description: "Cites ¬(∀x P(x)) ≡ ∃x ¬P(x): disproving ∀x P(x) means establishing its negation.", weight: 3, required: true },
@@ -833,12 +833,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "¬(p → q) is logically equivalent to:",
+    stem: "$\\neg (p \\to q)$ is logically equivalent to:",
     choices: [
-      { id: "a", text: "p ∧ ¬q", correct: true },
+      { id: "a", text: "$p \\land \\neg q$", correct: true },
       {
         id: "b",
-        text: "¬p ∧ ¬q",
+        text: "$\\neg p \\land \\neg q$",
         correct: false,
         misconception: {
           id: "negation-of-conditional-both-negated",
@@ -848,7 +848,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "c",
-        text: "¬q → ¬p",
+        text: "$\\neg q \\to \\neg p$",
         correct: false,
         misconception: {
           id: "negation-confused-with-contrapositive",
@@ -858,7 +858,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "d",
-        text: "q ∧ ¬p",
+        text: "$q \\land \\neg p$",
         correct: false,
         misconception: {
           id: "negation-of-conditional-terms-swapped",
@@ -882,10 +882,10 @@ export const discreteMathLogicItems: Item[] = [
     channels: ["typed"],
     stem: "Which pair of statements is NOT guaranteed logically equivalent?",
     choices: [
-      { id: "a", text: "p→q and q→p", correct: true },
+      { id: "a", text: "$p\\to q$ and $q\\to p$", correct: true },
       {
         id: "b",
-        text: "p→q and ¬q→¬p",
+        text: "$p\\to q$ and $\\neg q\\to \\neg p$",
         correct: false,
         misconception: {
           id: "contrapositive-pair-mistaken-for-nonequivalent",
@@ -895,7 +895,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "c",
-        text: "p↔q and (p→q)∧(q→p)",
+        text: "$p\\leftrightarrow q$ and $(p\\to q)\\land (q\\to p)$",
         correct: false,
         misconception: {
           id: "biconditional-decomposition-mistaken-for-nonequivalent",
@@ -905,7 +905,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "d",
-        text: "¬(p∧q) and ¬p∨¬q",
+        text: "$\\neg (p\\land q)$ and $\\neg p\\lor \\neg q$",
         correct: false,
         misconception: {
           id: "de-morgan-pair-mistaken-for-nonequivalent",
@@ -929,12 +929,12 @@ export const discreteMathLogicItems: Item[] = [
     channels: ["typed"],
     stem: "Which are valid logical equivalences? Select all that apply.",
     choices: [
-      { id: "a", text: "p∨(q∧r) ≡ (p∨q)∧(p∨r)", correct: true },
-      { id: "b", text: "p∧T ≡ p", correct: true },
-      { id: "c", text: "p∨¬p ≡ T", correct: true },
+      { id: "a", text: "$p\\lor (q\\land r) \\equiv (p\\lor q)\\land (p\\lor r)$", correct: true },
+      { id: "b", text: "$p\\land T \\equiv p$", correct: true },
+      { id: "c", text: "$p\\lor \\neg p \\equiv T$", correct: true },
       {
         id: "d",
-        text: "p→q ≡ ¬p→¬q",
+        text: "$p\\to q \\equiv \\neg p\\to \\neg q$",
         correct: false,
         misconception: {
           id: "conditional-equated-with-inverse",
@@ -944,7 +944,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "e",
-        text: "∀x(P(x)∨Q(x)) ≡ (∀xP(x))∨(∀xQ(x))",
+        text: "$\\forall x(P(x)\\lor Q(x)) \\equiv (\\forall x\\, P(x))\\lor (\\forall x\\, Q(x))$",
         correct: false,
         misconception: {
           id: "universal-quantifier-assumed-to-distribute-over-or",
@@ -966,7 +966,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Negate: \"For every x, if x is prime then x is odd or x = 2.\"",
+    stem: "Negate: “For every $x$, if $x$ is prime then $x$ is odd or $x = 2$.”",
     answerKey: "There exists x such that x is prime, x is not odd, and x ≠ 2. (∃x(Prime(x) ∧ ¬Odd(x) ∧ x≠2))",
     rubric: {
       elements: [
@@ -998,12 +998,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Simplify ¬(p → (q ∧ r)) to an equivalent expression using only ∧, ∨, ¬:",
+    stem: "Simplify $\\neg (p \\to (q \\land r))$ to an equivalent expression using only $\\land$, $\\lor$, $\\neg$:",
     choices: [
-      { id: "a", text: "p ∧ (¬q ∨ ¬r)", correct: true },
+      { id: "a", text: "$p \\land (\\neg q \\lor \\neg r)$", correct: true },
       {
         id: "b",
-        text: "¬p ∧ (q ∨ r)",
+        text: "$\\neg p \\land (q \\lor r)$",
         correct: false,
         misconception: {
           id: "negated-conditional-conjunction-p-negated-instead",
@@ -1013,7 +1013,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "c",
-        text: "p ∧ ¬q ∧ ¬r",
+        text: "$p \\land \\neg q \\land \\neg r$",
         correct: false,
         misconception: {
           id: "de-morgan-connective-not-flipped-in-simplification",
@@ -1023,7 +1023,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "d",
-        text: "p ∨ (¬q ∧ ¬r)",
+        text: "$p \\lor (\\neg q \\land \\neg r)$",
         correct: false,
         misconception: {
           id: "outer-connective-flipped-incorrectly",
@@ -1045,7 +1045,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Simplify (p∨q)∧(p∨¬q) to remove q entirely, using the distributive law and the law of the excluded middle.",
+    stem: "Simplify $(p\\lor q)\\land (p\\lor \\neg q)$ to remove $q$ entirely, using the distributive law and the law of the excluded middle.",
     answerKey: "p",
     rubric: {
       elements: [
@@ -1076,7 +1076,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove the distributive law p∨(q∧r) ≡ (p∨q)∧(p∨r) using a full truth table over all 8 rows of (p,q,r).",
+    stem: "Prove the distributive law $p\\lor (q\\land r) \\equiv (p\\lor q)\\land (p\\lor r)$ using a full truth table over all $8$ rows of $(p,q,r)$.",
     rubric: {
       elements: [
         {
@@ -1112,8 +1112,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A student claims p→q and q→p are 'basically the same thing since both involve p and q.' Using the " +
-      "contrapositive law, explain precisely why p→q is NOT equivalent to q→p, but IS equivalent to ¬q→¬p, and how these two operations on p→q differ.",
+      "A student claims $p\\to q$ and $q\\to p$ are ‘basically the same thing since both involve $p$ and " +
+      "$q$.’ Using the contrapositive law, explain precisely why $p\\to q$ is NOT equivalent to $q\\to p$, " +
+      "but IS equivalent to $\\neg q\\to \\neg p$, and how these two operations on $p\\to q$ differ.",
     rubric: {
       elements: [
         {
@@ -1149,8 +1150,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Prove that ∀x(P(x)∧Q(x)) is logically equivalent to (∀xP(x))∧(∀xQ(x)), but explain why the analogous " +
-      "claim with ∨ in place of ∧ fails in general — give a counterexample with concrete predicates.",
+      "Prove that $\\forall x(P(x)\\land Q(x))$ is logically equivalent to $(\\forall x\\, P(x))\\land (\\forall " +
+      "x\\, Q(x))$, but explain why the analogous claim with $\\lor$ in place of $\\land$ fails in general — " +
+      "give a counterexample with concrete predicates.",
     rubric: {
       elements: [
         {
@@ -1186,8 +1188,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A NAND gate computes ¬(p∧q). Explain, using De Morgan's law, why a NAND gate alone can be wired to " +
-      "simulate a NOT gate, an AND gate, and an OR gate — the basis for 'NAND is functionally complete.'",
+      "A NAND gate computes $\\neg (p\\land q)$. Explain, using De Morgan's law, why a NAND gate alone can be " +
+      "wired to simulate a NOT gate, an AND gate, and an OR gate — the basis for ‘NAND is functionally " +
+      "complete.’",
     rubric: {
       elements: [
         { id: "not-gate", description: "Explains tying both NAND inputs to the same signal p gives ¬(p∧p) = ¬p, a NOT gate.", weight: 2, required: true },
@@ -1251,9 +1254,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A database query filters rows WHERE NOT (status = 'active' AND region = 'US'). Using De Morgan's law, " +
-      "rewrite this filter using OR instead of AND, and explain why an engineer who instead writes " +
-      "WHERE status != 'active' AND region != 'US' has introduced a bug.",
+      "A database query filters rows `WHERE NOT (status = 'active' AND region = 'US')`. Using De Morgan's " +
+      "law, rewrite this filter using OR instead of AND, and explain why an engineer who instead writes " +
+      "`WHERE status != 'active' AND region != 'US'` has introduced a bug.",
     rubric: {
       elements: [
         { id: "correct-rewrite", description: "Applies De Morgan to get WHERE status != 'active' OR region != 'US'.", weight: 3, required: true },
@@ -1287,12 +1290,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which best describes the structure of a direct proof of p→q?",
+    stem: "Which best describes the structure of a direct proof of $p\\to q$?",
     choices: [
-      { id: "a", text: "Assume p; chain forward through valid steps until q is reached", correct: true },
+      { id: "a", text: "Assume $p$; chain forward through valid steps until $q$ is reached", correct: true },
       {
         id: "b",
-        text: "Assume ¬q; derive a contradiction",
+        text: "Assume $\\neg q$; derive a contradiction",
         correct: false,
         misconception: {
           id: "contradiction-described-as-direct",
@@ -1302,7 +1305,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "c",
-        text: "Assume q; work backward until p is reached",
+        text: "Assume $q$; work backward until $p$ is reached",
         correct: false,
         misconception: {
           id: "proof-runs-backward",
@@ -1310,7 +1313,7 @@ export const discreteMathLogicItems: Item[] = [
           blameConceptId: "direct-proof",
         },
       },
-      { id: "d", text: "Check the statement for a handful of specific values of n", correct: false, misconception: { id: "examples-mistaken-for-proof", description: "Checking examples is not a proof for all n — a direct proof needs an arbitrary, unspecified case.", blameConceptId: "direct-proof" } },
+      { id: "d", text: "Check the statement for a handful of specific values of $n$", correct: false, misconception: { id: "examples-mistaken-for-proof", description: "Checking examples is not a proof for all n — a direct proof needs an arbitrary, unspecified case.", blameConceptId: "direct-proof" } },
     ],
     difficulty: -1.1,
     discrimination: 1.1,
@@ -1325,12 +1328,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "To directly prove \"if n is odd then n² is odd,\" the first line should be:",
+    stem: "To directly prove “if $n$ is odd then $n^2$ is odd,” the first line should be:",
     choices: [
-      { id: "a", text: "Assume n is odd, so n = 2k+1 for some integer k.", correct: true },
+      { id: "a", text: "Assume $n$ is odd, so $n = 2k+1$ for some integer $k$.", correct: true },
       {
         id: "b",
-        text: "Assume n² is odd, and show n is odd.",
+        text: "Assume $n^2$ is odd, and show $n$ is odd.",
         correct: false,
         misconception: {
           id: "proves-converse-instead",
@@ -1338,7 +1341,7 @@ export const discreteMathLogicItems: Item[] = [
           blameConceptId: "direct-proof",
         },
       },
-      { id: "c", text: "Assume n is even, so n = 2k for some integer k.", correct: false, misconception: { id: "wrong-hypothesis-assumed", description: "Assumes the negation of the hypothesis rather than the hypothesis itself.", blameConceptId: "direct-proof" } },
+      { id: "c", text: "Assume $n$ is even, so $n = 2k$ for some integer $k$.", correct: false, misconception: { id: "wrong-hypothesis-assumed", description: "Assumes the negation of the hypothesis rather than the hypothesis itself.", blameConceptId: "direct-proof" } },
     ],
     difficulty: -0.85,
     discrimination: 1.2,
@@ -1353,7 +1356,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Continue the proof after \"Assume n is odd, so n = 2k+1 for some integer k.\"",
+    stem: "Continue the proof after “Assume $n$ is odd, so $n = 2k+1$ for some integer $k$.”",
     answerKey:
       "n² = (2k+1)² = 4k²+4k+1 = 2(2k²+2k)+1, which has the form 2m+1 with m = 2k²+2k, so n² is odd.",
     rubric: {
@@ -1385,7 +1388,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Give a direct proof that if n is even, then n² is even.",
+    stem: "Give a direct proof that if $n$ is even, then $n^2$ is even.",
     answerKey:
       "Assume n is even, so n = 2k for some integer k. Then n² = (2k)² = 4k² = 2(2k²), which has the form 2m with m = 2k², so n² is even.",
     rubric: {
@@ -1418,7 +1421,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Give a direct proof, using the Gauss pairing trick (not induction), that 1+2+⋯+n = n(n+1)/2 for every positive integer n.",
+      "Give a direct proof, using the Gauss pairing trick (not induction), that $1+2+\\cdots +n = n(n+1)/2$ for every positive integer $n$.",
     rubric: {
       elements: [
         { id: "writes-forward-and-backward", description: "Writes S = 1+2+⋯+n and also S = n+(n-1)+⋯+1.", weight: 2, required: true },
@@ -1450,7 +1453,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A direct proof of \"if n is odd then n² is odd\" must treat n as an arbitrary odd integer, not a specific one like n=7. Explain why.",
+      "A direct proof of “if $n$ is odd then $n^2$ is odd” must treat $n$ as an arbitrary odd integer, not a specific one like $n=7$. Explain why.",
     rubric: {
       elements: [
         {
@@ -1480,7 +1483,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "Two-column geometry proofs and algebraic chains of equalities are both called \"direct.\" What structural feature makes both direct?",
+    stem: "Two-column geometry proofs and algebraic chains of equalities are both called “direct.” What structural feature makes both direct?",
     rubric: {
       elements: [
         {
@@ -1506,7 +1509,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The inductive step of a proof by induction proves P(k)→P(k+1). Explain why that single step is itself an ordinary direct proof, even though the overall induction argument is a distinct technique.",
+      "The inductive step of a proof by induction proves $P(k)\\to P(k+1)$. Explain why that single step is itself an ordinary direct proof, even though the overall induction argument is a distinct technique.",
     rubric: {
       elements: [
         {
@@ -1538,10 +1541,10 @@ export const discreteMathLogicItems: Item[] = [
     channels: ["typed"],
     stem: "Which claim is best suited to a straightforward direct proof (no cases, no contradiction needed)?",
     choices: [
-      { id: "a", text: "If a and b are both divisible by 4, then a+b is divisible by 4.", correct: true },
+      { id: "a", text: "If $a$ and $b$ are both divisible by $4$, then $a+b$ is divisible by $4$.", correct: true },
       {
         id: "b",
-        text: "√2 is irrational.",
+        text: "$\\sqrt{2}$ is irrational.",
         correct: false,
         misconception: {
           id: "irrationality-claim-mistaken-for-direct",
@@ -1551,7 +1554,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "c",
-        text: "n²−n is even for every integer n.",
+        text: "$n^2-n$ is even for every integer $n$.",
         correct: false,
         misconception: {
           id: "case-split-claim-mistaken-for-single-chain",
@@ -1583,12 +1586,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "To directly prove \"if a|b and b|c, then a|c,\" the correct first step is:",
+    stem: "To directly prove “if $a|b$ and $b|c$, then $a|c$,” the correct first step is:",
     choices: [
-      { id: "a", text: "Assume a|b and b|c, so b = am and c = bn for some integers m, n.", correct: true },
+      { id: "a", text: "Assume $a|b$ and $b|c$, so $b = am$ and $c = bn$ for some integers $m, n$.", correct: true },
       {
         id: "b",
-        text: "Assume a∤c and derive a contradiction.",
+        text: "Assume $a\\nmid c$ and derive a contradiction.",
         correct: false,
         misconception: {
           id: "divisibility-proof-started-as-contradiction",
@@ -1598,7 +1601,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "c",
-        text: "Assume a|c, and show a|b and b|c follow.",
+        text: "Assume $a|c$, and show $a|b$ and $b|c$ follow.",
         correct: false,
         misconception: {
           id: "divisibility-proof-runs-backward",
@@ -1608,7 +1611,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "d",
-        text: "Check the claim for a=2, b=4, c=8.",
+        text: "Check the claim for $a=2$, $b=4$, $c=8$.",
         correct: false,
         misconception: {
           id: "divisibility-example-mistaken-for-proof",
@@ -1647,7 +1650,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "e",
-        text: "A direct proof of p→q also automatically proves q→p.",
+        text: "A direct proof of $p\\to q$ also automatically proves $q\\to p$.",
         correct: false,
         misconception: {
           id: "direct-proof-assumed-to-prove-converse-too",
@@ -1702,13 +1705,13 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A direct proof begins: \"Assume x and y are both rational, so x=a/b and y=c/d for integers a,b,c,d with " +
-      "b,d≠0.\" Which is a valid next step toward showing x+y is rational?",
+      "A direct proof begins: “Assume $x$ and $y$ are both rational, so $x=a/b$ and $y=c/d$ for integers " +
+      "$a,b,c,d$ with $b$,$d\\neq 0$.” Which is a valid next step toward showing $x+y$ is rational?",
     choices: [
-      { id: "a", text: "x+y = (ad+bc)/(bd), a ratio of integers with bd≠0, so x+y is rational.", correct: true },
+      { id: "a", text: "$x+y = (ad+bc)/(bd)$, a ratio of integers with $bd\\neq 0$, so $x+y$ is rational.", correct: true },
       {
         id: "b",
-        text: "x+y = (a+c)/(b+d), a ratio of integers, so x+y is rational.",
+        text: "$x+y = (a+c)/(b+d)$, a ratio of integers, so $x+y$ is rational.",
         correct: false,
         misconception: {
           id: "fractions-added-by-adding-numerators-and-denominators",
@@ -1718,7 +1721,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "c",
-        text: "Since x+y is a sum of two numbers, it is rational by definition.",
+        text: "Since $x+y$ is a sum of two numbers, it is rational by definition.",
         correct: false,
         misconception: {
           id: "conclusion-asserted-without-justification",
@@ -1728,7 +1731,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "d",
-        text: "Introduce a new variable z = √2 and show x+y relates to z.",
+        text: "Introduce a new variable $z = \\sqrt{2}$ and show $x+y$ relates to $z$.",
         correct: false,
         misconception: {
           id: "irrelevant-quantity-introduced",
@@ -1750,7 +1753,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Give a direct proof that if n is a multiple of 6, then n is a multiple of 3.",
+    stem: "Give a direct proof that if $n$ is a multiple of $6$, then $n$ is a multiple of $3$.",
     answerKey: "Assume n is a multiple of 6, so n = 6k for some integer k. Then n = 3(2k), which has the form 3m with m = 2k, so n is a multiple of 3.",
     rubric: {
       elements: [
@@ -1819,8 +1822,8 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A student's proof that n²−n is even for every integer n starts by writing 'assume n=2k' (i.e. assuming n " +
-      "is even). Explain what's wrong with this as a complete proof, and how to fix it.",
+      "A student's proof that $n^2-n$ is even for every integer $n$ starts by writing ‘assume $n=2k$’ (i.e. " +
+      "assuming $n$ is even). Explain what's wrong with this as a complete proof, and how to fix it.",
     rubric: {
       elements: [
         {
@@ -1856,8 +1859,8 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Prove directly that for any integer n, n(n+1) is even, splitting into cases on the parity of n. Then " +
-      "explain why this is still considered a 'direct' proof despite having two cases.",
+      "Prove directly that for any integer $n$, $n(n+1)$ is even, splitting into cases on the parity of " +
+      "$n$. Then explain why this is still considered a ‘direct’ proof despite having two cases.",
     rubric: {
       elements: [
         {
@@ -1893,9 +1896,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A compiler's type-checker relies on a theorem of the form 'if this expression type-checks, then evaluating " +
-      "it never produces a type error.' Explain why this is conceptually a direct proof, and identify what plays " +
-      "the role of 'the hypothesis' and 'the chain of steps.'",
+      "A compiler's type-checker relies on a theorem of the form ‘if this expression type-checks, then " +
+      "evaluating it never produces a type error.’ Explain why this is conceptually a direct proof, and " +
+      "identify what plays the role of ‘the hypothesis’ and ‘the chain of steps.’",
     rubric: {
       elements: [
         {
@@ -1931,10 +1934,10 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A loan contract states 'if the borrower misses two consecutive payments, then the loan is in default.' A " +
-      "compliance officer checks default status by looking up the payment history, confirming two consecutive " +
-      "misses, and concluding default. Explain why this check has the same logical shape as a direct mathematical " +
-      "proof, and describe what a contradiction-style check would look like instead.",
+      "A loan contract states ‘if the borrower misses two consecutive payments, then the loan is in " +
+      "default.’ A compliance officer checks default status by looking up the payment history, confirming " +
+      "two consecutive misses, and concluding default. Explain why this check has the same logical shape as " +
+      "a direct mathematical proof, and describe what a contradiction-style check would look like instead.",
     rubric: {
       elements: [
         {
@@ -1970,8 +1973,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why the base case of a mathematical-induction proof (e.g. establishing P(1)) is, on its own, just " +
-      "an ordinary direct proof of a single statement, even though induction as a whole proves infinitely many statements.",
+      "Explain why the base case of a mathematical-induction proof (e.g. establishing $P(1)$) is, on its " +
+      "own, just an ordinary direct proof of a single statement, even though induction as a whole proves " +
+      "infinitely many statements.",
     rubric: {
       elements: [
         {
@@ -2010,11 +2014,11 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which best describes the structure of a proof by contradiction of a statement P?",
+    stem: "Which best describes the structure of a proof by contradiction of a statement $P$?",
     choices: [
-      { id: "a", text: "Assume ¬P; derive a statement of the form Q∧¬Q; conclude P is true", correct: true },
-      { id: "b", text: "Assume P; derive a statement of the form Q∧¬Q", correct: false, misconception: { id: "assumes-p-instead-of-negation", description: "Assumes the goal rather than its negation — that's not how the technique works.", blameConceptId: "proof-by-contradiction" } },
-      { id: "c", text: "Assume P; chain forward directly to a known true fact", correct: false, misconception: { id: "confused-with-direct-proof", description: "Describes a direct proof, not a proof by contradiction.", blameConceptId: "proof-by-contradiction" } },
+      { id: "a", text: "Assume $\\neg P$; derive a statement of the form $Q\\land \\neg Q$; conclude $P$ is true", correct: true },
+      { id: "b", text: "Assume $P$; derive a statement of the form $Q\\land \\neg Q$", correct: false, misconception: { id: "assumes-p-instead-of-negation", description: "Assumes the goal rather than its negation — that's not how the technique works.", blameConceptId: "proof-by-contradiction" } },
+      { id: "c", text: "Assume $P$; chain forward directly to a known true fact", correct: false, misconception: { id: "confused-with-direct-proof", description: "Describes a direct proof, not a proof by contradiction.", blameConceptId: "proof-by-contradiction" } },
       { id: "d", text: "Check finitely many cases and rule each one out", correct: false, misconception: { id: "confused-with-case-analysis", description: "Describes proof by exhaustive cases, a different technique.", blameConceptId: "proof-by-contradiction" } },
     ],
     difficulty: -1.08,
@@ -2034,7 +2038,7 @@ export const discreteMathLogicItems: Item[] = [
     choices: [
       {
         id: "a",
-        text: "Contradiction negates the entire target statement and derives any absurdity, while the contrapositive only applies to conditionals and derives ¬p specifically",
+        text: "Contradiction negates the entire target statement and derives any absurdity, while the contrapositive only applies to conditionals and derives $\\neg p$ specifically",
         correct: true,
       },
       {
@@ -2062,7 +2066,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "To prove \"there is no smallest positive rational number\" by contradiction, what should the first line assume?",
+    stem: "To prove “there is no smallest positive rational number” by contradiction, what should the first line assume?",
     answerKey: "Assume, for contradiction, that there IS a smallest positive rational number; call it r.",
     rubric: {
       elements: [
@@ -2092,7 +2096,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "To prove by contradiction that the equation x² = 2 has no rational solution, what should be assumed at the start?",
+    stem: "To prove by contradiction that the equation $x^2 = 2$ has no rational solution, what should be assumed at the start?",
     answerKey:
       "Assume, for contradiction, that x² = 2 has a rational solution: x = a/b for integers a, b with b≠0 and gcd(a,b)=1.",
     rubric: {
@@ -2124,7 +2128,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove by contradiction that √2 is irrational.",
+    stem: "Prove by contradiction that $\\sqrt{2}$ is irrational.",
     rubric: {
       elements: [
         { id: "assumes-lowest-terms", description: "Assumes √2 = a/b with gcd(a,b)=1 (lowest terms) — not just \"some fraction.\"", weight: 2, required: true, misconception: { id: "lowest-terms-omitted", description: "Assumes √2 = a/b without lowest terms, so the argument never reaches a contradiction since a, b could both be even from the start.", blameConceptId: "proof-by-contradiction" } },
@@ -2147,7 +2151,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why the \"contradiction\" reached at the end of a proof by contradiction must be a genuine logical absurdity (Q∧¬Q) that traces back to the assumption, not merely a surprising or ugly result.",
+      "Explain why the “contradiction” reached at the end of a proof by contradiction must be a genuine logical absurdity $(Q\\land \\neg Q)$ that traces back to the assumption, not merely a surprising or ugly result.",
     rubric: {
       elements: [
         {
@@ -2178,7 +2182,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Euclid's proof that there are infinitely many primes assumes a finite complete list p₁,...,pₙ of all primes, then considers N = p₁p₂⋯pₙ + 1. Explain how this reaches a contradiction.",
+      "Euclid's proof that there are infinitely many primes assumes a finite complete list $p_1$,$\\ldots$,$p_n$ of all primes, then considers $N = p_1p_2\\cdots p_n + 1$. Explain how this reaches a contradiction.",
     rubric: {
       elements: [
         { id: "no-pi-divides-n", description: "States that N leaves remainder 1 on division by every pᵢ, so no pᵢ divides N.", weight: 3, required: true },
@@ -2209,7 +2213,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A proof by contradiction that some object exists (e.g. \"there exist irrational a, b with aᵇ rational\") often proves existence without ever exhibiting the object. Explain why this counts as a valid proof despite not constructing an example.",
+      "A proof by contradiction that some object exists (e.g. “there exist irrational $a, b$ with $a^b$ rational”) often proves existence without ever exhibiting the object. Explain why this counts as a valid proof despite not constructing an example.",
     rubric: {
       elements: [
         {
@@ -2244,11 +2248,11 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The very first line of a proof by contradiction of a statement P should be:",
+    stem: "The very first line of a proof by contradiction of a statement $P$ should be:",
     choices: [
-      { id: "a", text: "Assume ¬P.", correct: true },
-      { id: "b", text: "Assume P.", correct: false, misconception: { id: "assumes-p-not-negation", description: "Assumes the target statement itself rather than its negation.", blameConceptId: "proof-by-contradiction" } },
-      { id: "c", text: "Assume ¬P and also assume some unrelated statement Q.", correct: false, misconception: { id: "extra-unmotivated-assumption-added", description: "Adds an extra, unjustified assumption beyond ¬P with no role in the argument.", blameConceptId: "proof-by-contradiction" } },
+      { id: "a", text: "Assume $\\neg P$.", correct: true },
+      { id: "b", text: "Assume $P$.", correct: false, misconception: { id: "assumes-p-not-negation", description: "Assumes the target statement itself rather than its negation.", blameConceptId: "proof-by-contradiction" } },
+      { id: "c", text: "Assume $\\neg P$ and also assume some unrelated statement $Q$.", correct: false, misconception: { id: "extra-unmotivated-assumption-added", description: "Adds an extra, unjustified assumption beyond ¬P with no role in the argument.", blameConceptId: "proof-by-contradiction" } },
       { id: "d", text: "Skip straight to citing a known theorem.", correct: false, misconception: { id: "setup-step-skipped-entirely", description: "Skips the assumption step that the whole technique is built on.", blameConceptId: "proof-by-contradiction" } },
     ],
     difficulty: -0.55,
@@ -2264,9 +2268,9 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which outcome signals a successful proof by contradiction, starting from ¬P?",
+    stem: "Which outcome signals a successful proof by contradiction, starting from $\\neg P$?",
     choices: [
-      { id: "a", text: "Validly deriving Q ∧ ¬Q for some statement Q (any Q, not necessarily related to P on its surface)", correct: true },
+      { id: "a", text: "Validly deriving $Q \\land \\neg Q$ for some statement $Q$ (any $Q$, not necessarily related to $P$ on its surface)", correct: true },
       {
         id: "b",
         text: "Deriving a true but unrelated fact",
@@ -2279,7 +2283,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "c",
-        text: "Simplifying ¬P to a shorter, logically equivalent statement",
+        text: "Simplifying $\\neg P$ to a shorter, logically equivalent statement",
         correct: false,
         misconception: {
           id: "simplification-mistaken-for-contradiction",
@@ -2289,7 +2293,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "d",
-        text: "Showing ¬P leads to a conclusion that seems merely unlikely",
+        text: "Showing $\\neg P$ leads to a conclusion that seems merely unlikely",
         correct: false,
         misconception: {
           id: "unlikely-mistaken-for-impossible",
@@ -2313,12 +2317,12 @@ export const discreteMathLogicItems: Item[] = [
     channels: ["typed"],
     stem: "Which statements about proof by contradiction are true? Select all that apply.",
     choices: [
-      { id: "a", text: "It can be used to prove any proposition P, not just conditional (if-then) statements.", correct: true },
-      { id: "b", text: "Reaching Q∧¬Q for any statement Q is sufficient, as long as it's validly derived from ¬P.", correct: true },
-      { id: "c", text: "It's especially natural for negative or nonexistence claims, like 'there is no largest prime.'", correct: true },
+      { id: "a", text: "It can be used to prove any proposition $P$, not just conditional (if-then) statements.", correct: true },
+      { id: "b", text: "Reaching $Q\\land \\neg Q$ for any statement $Q$ is sufficient, as long as it's validly derived from $\\neg P$.", correct: true },
+      { id: "c", text: "It's especially natural for negative or nonexistence claims, like ‘there is no largest prime.’", correct: true },
       {
         id: "d",
-        text: "It requires finding a specific numerical counterexample to P.",
+        text: "It requires finding a specific numerical counterexample to $P$.",
         correct: false,
         misconception: {
           id: "contradiction-confused-with-counterexample-search",
@@ -2328,7 +2332,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "e",
-        text: "Once a contradiction is reached, you must go back and also give a direct proof of P to complete the argument.",
+        text: "Once a contradiction is reached, you must go back and also give a direct proof of $P$ to complete the argument.",
         correct: false,
         misconception: {
           id: "direct-proof-assumed-also-required",
@@ -2350,7 +2354,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "To prove by contradiction that 'if n² is even, then n is even,' what should the first line assume?",
+    stem: "To prove by contradiction that ‘if $n^2$ is even, then $n$ is even,’ what should the first line assume?",
     answerKey: "Assume, for contradiction, that n² is even and n is odd.",
     rubric: {
       elements: [
@@ -2414,13 +2418,14 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A proof by contradiction that log₂3 is irrational assumes log₂3 = a/b for positive integers a, b. Which " +
-      "equation should 2^{a/b} = 3 be converted into to set up a parity-based contradiction?",
+      "A proof by contradiction that $\\log_2 3$ is irrational assumes $\\log_2 3 = a/b$ for positive " +
+      "integers $a, b$. Which equation should $2^{a/b} = 3$ be converted into to set up a parity-based " +
+      "contradiction?",
     choices: [
-      { id: "a", text: "2^a = 3^b", correct: true },
-      { id: "b", text: "a² = 3b", correct: false, misconception: { id: "exponent-manipulation-invalid", description: "Applies an algebraic move (squaring a alone) that doesn't follow from raising both sides of 2^{a/b}=3 to the power b.", blameConceptId: "proof-by-contradiction" } },
-      { id: "c", text: "2a = 3b", correct: false, misconception: { id: "exponential-equation-linearized-incorrectly", description: "Treats the exponential relationship as if it were linear, losing the structure needed for the parity argument.", blameConceptId: "proof-by-contradiction" } },
-      { id: "d", text: "a/b = log₃2", correct: false, misconception: { id: "equation-merely-restated", description: "Just restates the assumption in another logarithmic form instead of converting it into an integer equation usable for a parity argument.", blameConceptId: "proof-by-contradiction" } },
+      { id: "a", text: "$2^a = 3^b$", correct: true },
+      { id: "b", text: "$a^2 = 3b$", correct: false, misconception: { id: "exponent-manipulation-invalid", description: "Applies an algebraic move (squaring a alone) that doesn't follow from raising both sides of 2^{a/b}=3 to the power b.", blameConceptId: "proof-by-contradiction" } },
+      { id: "c", text: "$2a = 3b$", correct: false, misconception: { id: "exponential-equation-linearized-incorrectly", description: "Treats the exponential relationship as if it were linear, losing the structure needed for the parity argument.", blameConceptId: "proof-by-contradiction" } },
+      { id: "d", text: "$a/b = \\log_3 2$", correct: false, misconception: { id: "equation-merely-restated", description: "Just restates the assumption in another logarithmic form instead of converting it into an integer equation usable for a parity argument.", blameConceptId: "proof-by-contradiction" } },
     ],
     difficulty: 0.6,
     discrimination: 1.3,
@@ -2467,9 +2472,10 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A proof by contradiction that 'the sum of a rational and an irrational number is irrational' assumes, for " +
-      "contradiction, that rational r plus irrational x gives a rational sum s. Explain how to derive a " +
-      "contradiction from r+x=s, and identify exactly where the rationality of r and s (as opposed to x) is used.",
+      "A proof by contradiction that ‘the sum of a rational and an irrational number is irrational’ " +
+      "assumes, for contradiction, that rational $r$ plus irrational $x$ gives a rational sum $s$. Explain " +
+      "how to derive a contradiction from $r+x=s$, and identify exactly where the rationality of $r$ and " +
+      "$s$ (as opposed to $x$) is used.",
     rubric: {
       elements: [
         {
@@ -2505,9 +2511,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why proof by contradiction and proving the contrapositive give logically equivalent results when " +
-      "applied to a conditional statement p→q — i.e., why a successful contrapositive proof could always be " +
-      "repackaged as a contradiction proof, even though the mechanics differ.",
+      "Explain why proof by contradiction and proving the contrapositive give logically equivalent results " +
+      "when applied to a conditional statement $p\\to q$ — i.e., why a successful contrapositive proof could " +
+      "always be repackaged as a contradiction proof, even though the mechanics differ.",
     rubric: {
       elements: [
         {
@@ -2542,10 +2548,11 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A cryptographic security proof argues: assume, for contradiction, an efficient adversary breaking scheme " +
-      "X exists; use it to construct an efficient algorithm solving a problem Y believed to be hard; since Y is " +
-      "believed to have no efficient algorithm, this is a contradiction, so no such adversary exists (under that " +
-      "hardness assumption). Explain why this is genuinely a proof by contradiction, and identify precisely what plays the role of the Q∧¬Q absurdity.",
+      "A cryptographic security proof argues: assume, for contradiction, an efficient adversary breaking " +
+      "scheme $X$ exists; use it to construct an efficient algorithm solving a problem $Y$ believed to be " +
+      "hard; since $Y$ is believed to have no efficient algorithm, this is a contradiction, so no such " +
+      "adversary exists (under that hardness assumption). Explain why this is genuinely a proof by " +
+      "contradiction, and identify precisely what plays the role of the $Q\\land \\neg Q$ absurdity.",
     rubric: {
       elements: [
         {
@@ -2581,10 +2588,11 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "To show no program H can decide, for every program P and input I, whether P halts on I, one assumes such " +
-      "an H exists, then constructs a program D that uses H to do the opposite of what H predicts about D itself, " +
-      "and shows D both halts and doesn't halt on itself. Explain why this diagonal argument is a proof by " +
-      "contradiction, and state precisely what the two contradictory statements are.",
+      "To show no program $H$ can decide, for every program $P$ and input $I$, whether $P$ halts on $I$, " +
+      "one assumes such an $H$ exists, then constructs a program $D$ that uses $H$ to do the opposite of " +
+      "what $H$ predicts about $D$ itself, and shows $D$ both halts and doesn't halt on itself. Explain why " +
+      "this diagonal argument is a proof by contradiction, and state precisely what the two contradictory " +
+      "statements are.",
     rubric: {
       elements: [
         {
@@ -2662,12 +2670,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "A proof by induction that P(n) holds for all n≥n₀ requires:",
+    stem: "A proof by induction that $P(n)$ holds for all $n\\geq n_0$ requires:",
     choices: [
-      { id: "a", text: "A base case verifying P(n₀), and an inductive step proving P(k)→P(k+1) for arbitrary k≥n₀", correct: true },
+      { id: "a", text: "A base case verifying $P(n_0)$, and an inductive step proving $P(k)\\to P(k+1)$ for arbitrary $k\\geq n_0$", correct: true },
       {
         id: "b",
-        text: "Only an inductive step proving P(k)→P(k+1); the base case is optional",
+        text: "Only an inductive step proving $P(k)\\to P(k+1)$; the base case is optional",
         correct: false,
         misconception: {
           id: "base-case-treated-as-optional",
@@ -2675,7 +2683,7 @@ export const discreteMathLogicItems: Item[] = [
           blameConceptId: "mathematical-induction",
         },
       },
-      { id: "c", text: "Verifying P(n) directly for every value of n up to some large bound", correct: false, misconception: { id: "induction-confused-with-exhaustive-checking", description: "Describes checking finitely many cases, not the two-step induction principle covering all n.", blameConceptId: "mathematical-induction" } },
+      { id: "c", text: "Verifying $P(n)$ directly for every value of $n$ up to some large bound", correct: false, misconception: { id: "induction-confused-with-exhaustive-checking", description: "Describes checking finitely many cases, not the two-step induction principle covering all n.", blameConceptId: "mathematical-induction" } },
     ],
     difficulty: -0.9,
     discrimination: 1.1,
@@ -2694,7 +2702,7 @@ export const discreteMathLogicItems: Item[] = [
     choices: [
       {
         id: "a",
-        text: "Can make the whole argument vacuous — the inductive step alone can look valid even for a statement that's false for every n",
+        text: "Can make the whole argument vacuous — the inductive step alone can look valid even for a statement that's false for every $n$",
         correct: true,
       },
       {
@@ -2722,7 +2730,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Using S(n) = n(n+1)/2, what is S(10)?",
+    stem: "Using $S(n) = n(n+1)/2$, what is $S(10)$?",
     answerKey: 55,
     tolerance: 0.001,
     difficulty: -0.3,
@@ -2738,7 +2746,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Using S(n) = n(n+1)/2, what is S(20)?",
+    stem: "Using $S(n) = n(n+1)/2$, what is $S(20)$?",
     answerKey: 210,
     tolerance: 0.001,
     difficulty: 0.0,
@@ -2754,7 +2762,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove by induction that 1+2+⋯+n = n(n+1)/2 for every positive integer n.",
+    stem: "Prove by induction that $1+2+\\cdots +n = n(n+1)/2$ for every positive integer $n$.",
     rubric: {
       elements: [
         { id: "base-case", description: "Verifies the base case n=1: LHS=1, RHS=1·2/2=1.", weight: 2, required: true },
@@ -2786,7 +2794,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A student objects: \"assuming P(k) to prove P(k+1) is circular reasoning — you're assuming what you're trying to prove.\" Explain what's wrong with this objection.",
+      "A student objects: “assuming $P(k)$ to prove $P(k+1)$ is circular reasoning — you're assuming what you're trying to prove.” Explain what's wrong with this objection.",
     rubric: {
       elements: [
         {
@@ -2816,7 +2824,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "Explain the \"domino\" intuition for induction, and why removing either the base case or the inductive step breaks the chain.",
+    stem: "Explain the “domino” intuition for induction, and why removing either the base case or the inductive step breaks the chain.",
     rubric: {
       elements: [
         { id: "base-case-as-first-domino", description: "States the base case knocks over the first domino.", weight: 2, required: true },
@@ -2837,7 +2845,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "Explain why the inductive step P(k)→P(k+1) is, on its own, an ordinary direct proof.",
+    stem: "Explain why the inductive step $P(k)\\to P(k+1)$ is, on its own, an ordinary direct proof.",
     rubric: {
       elements: [
         {
@@ -2862,12 +2870,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "In a proof that P(n) holds for all n≥1, the inductive hypothesis is:",
+    stem: "In a proof that $P(n)$ holds for all $n\\geq 1$, the inductive hypothesis is:",
     choices: [
-      { id: "a", text: "The assumption that P(k) holds for some arbitrary but fixed k≥1, used to prove P(k+1)", correct: true },
+      { id: "a", text: "The assumption that $P(k)$ holds for some arbitrary but fixed $k\\geq 1$, used to prove $P(k+1)$", correct: true },
       {
         id: "b",
-        text: "The assumption that P(n) holds for all n",
+        text: "The assumption that $P(n)$ holds for all $n$",
         correct: false,
         misconception: {
           id: "inductive-hypothesis-confused-with-full-goal",
@@ -2875,8 +2883,8 @@ export const discreteMathLogicItems: Item[] = [
           blameConceptId: "mathematical-induction",
         },
       },
-      { id: "c", text: "The base case P(1)", correct: false, misconception: { id: "inductive-hypothesis-confused-with-base-case", description: "Names the base case instead of the assumption used inside the inductive step.", blameConceptId: "mathematical-induction" } },
-      { id: "d", text: "The claim P(k+1) itself", correct: false, misconception: { id: "inductive-hypothesis-confused-with-goal-of-step", description: "Names what the inductive step is trying to prove, not what it's allowed to assume.", blameConceptId: "mathematical-induction" } },
+      { id: "c", text: "The base case $P(1)$", correct: false, misconception: { id: "inductive-hypothesis-confused-with-base-case", description: "Names the base case instead of the assumption used inside the inductive step.", blameConceptId: "mathematical-induction" } },
+      { id: "d", text: "The claim $P(k+1)$ itself", correct: false, misconception: { id: "inductive-hypothesis-confused-with-goal-of-step", description: "Names what the inductive step is trying to prove, not what it's allowed to assume.", blameConceptId: "mathematical-induction" } },
     ],
     difficulty: -0.45,
     discrimination: 1.1,
@@ -2895,12 +2903,12 @@ export const discreteMathLogicItems: Item[] = [
     choices: [
       {
         id: "a",
-        text: "Induction proves P(n) is true for one single, specific large n only.",
+        text: "Induction proves $P(n)$ is true for one single, specific large $n$ only.",
         correct: true,
       },
-      { id: "b", text: "Induction can start at a base case other than n=1 (e.g. n=n₀ for some other n₀).", correct: false, misconception: { id: "true-statement-flagged-as-false-base", description: "This statement is actually true; the base case can start at any n₀, not just 1.", blameConceptId: "mathematical-induction" } },
-      { id: "c", text: "The inductive step must work for an arbitrary k, not just a few sample values.", correct: false, misconception: { id: "true-statement-flagged-as-false-arbitrary-k", description: "This statement is actually true; the whole method depends on k being arbitrary and unspecified.", blameConceptId: "mathematical-induction" } },
-      { id: "d", text: "Induction is often used to prove formulas or inequalities indexed by n.", correct: false, misconception: { id: "true-statement-flagged-as-false-formulas", description: "This statement is actually true and describes a very common use case for induction.", blameConceptId: "mathematical-induction" } },
+      { id: "b", text: "Induction can start at a base case other than $n=1$ (e.g. $n=n_0$ for some other $n_0$).", correct: false, misconception: { id: "true-statement-flagged-as-false-base", description: "This statement is actually true; the base case can start at any n₀, not just 1.", blameConceptId: "mathematical-induction" } },
+      { id: "c", text: "The inductive step must work for an arbitrary $k$, not just a few sample values.", correct: false, misconception: { id: "true-statement-flagged-as-false-arbitrary-k", description: "This statement is actually true; the whole method depends on k being arbitrary and unspecified.", blameConceptId: "mathematical-induction" } },
+      { id: "d", text: "Induction is often used to prove formulas or inequalities indexed by $n$.", correct: false, misconception: { id: "true-statement-flagged-as-false-formulas", description: "This statement is actually true and describes a very common use case for induction.", blameConceptId: "mathematical-induction" } },
     ],
     difficulty: -0.2,
     discrimination: 1.1,
@@ -2917,9 +2925,9 @@ export const discreteMathLogicItems: Item[] = [
     channels: ["typed"],
     stem: "Which are true requirements of a valid induction proof? Select all that apply.",
     choices: [
-      { id: "a", text: "P(k)→P(k+1) must be proved for an arbitrary, unspecified k, not just a few sample values.", correct: true },
-      { id: "b", text: "The base case can be any single starting value n₀, not necessarily 1.", correct: true },
-      { id: "c", text: "Once the inductive step is proved for arbitrary k, it applies to every k≥n₀ since k was never fixed.", correct: true },
+      { id: "a", text: "$P(k)\\to P(k+1)$ must be proved for an arbitrary, unspecified $k$, not just a few sample values.", correct: true },
+      { id: "b", text: "The base case can be any single starting value $n_0$, not necessarily $1$.", correct: true },
+      { id: "c", text: "Once the inductive step is proved for arbitrary $k$, it applies to every $k\\geq n_0$ since $k$ was never fixed.", correct: true },
       {
         id: "d",
         text: "You must verify infinitely many base cases before trusting the inductive step.",
@@ -2932,7 +2940,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "e",
-        text: "Induction requires directly checking P(n) for every n, making it equivalent to checking cases one by one.",
+        text: "Induction requires directly checking $P(n)$ for every $n$, making it equivalent to checking cases one by one.",
         correct: false,
         misconception: {
           id: "induction-equated-with-case-by-case-checking",
@@ -2954,7 +2962,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Using the formula 1+3+5+⋯+(2n−1) = n² (the sum of the first n odd numbers), what is the sum of the first 12 odd numbers?",
+    stem: "Using the formula $1+3+5+\\cdots +(2n-1) = n^2$ (the sum of the first $n$ odd numbers), what is the sum of the first $12$ odd numbers?",
     answerKey: 144,
     tolerance: 0.001,
     difficulty: 0.25,
@@ -2970,7 +2978,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Using 2⁰+2¹+⋯+2ⁿ = 2ⁿ⁺¹−1, what is 2⁰+2¹+⋯+2⁶?",
+    stem: "Using $2^0+2^1+\\cdots +2^n = 2^{n+1}-1$, what is $2^0+2^1+\\cdots +2^6$?",
     answerKey: 127,
     tolerance: 0.001,
     difficulty: 0.5,
@@ -2986,7 +2994,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "For a proof by induction that 2⁰+2¹+⋯+2ⁿ = 2ⁿ⁺¹−1 for all n≥0, state the inductive hypothesis and the exact statement to be proved in the inductive step.",
+    stem: "For a proof by induction that $2^0+2^1+\\cdots +2^n = 2^{n+1}-1$ for all $n\\geq 0$, state the inductive hypothesis and the exact statement to be proved in the inductive step.",
     answerKey:
       "Inductive hypothesis: assume 2⁰+2¹+⋯+2ᵏ = 2ᵏ⁺¹−1 for some k≥0. To prove: 2⁰+2¹+⋯+2ᵏ+2ᵏ⁺¹ = 2ᵏ⁺²−1.",
     rubric: {
@@ -3018,7 +3026,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove by induction that 2⁰+2¹+⋯+2ⁿ = 2ⁿ⁺¹−1 for every n≥0.",
+    stem: "Prove by induction that $2^0+2^1+\\cdots +2^n = 2^{n+1}-1$ for every $n\\geq 0$.",
     rubric: {
       elements: [
         { id: "base-case-geometric", description: "Verifies the base case n=0: LHS=2⁰=1, RHS=2¹−1=1.", weight: 2, required: true },
@@ -3050,8 +3058,8 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why induction is well-suited to proving formulas indexed by n (like sums up to n), but poorly " +
-      "suited to proving a claim about a single fixed number, like '17 is prime.'",
+      "Explain why induction is well-suited to proving formulas indexed by $n$ (like sums up to $n$), but " +
+      "poorly suited to proving a claim about a single fixed number, like ‘$17$ is prime.’",
     rubric: {
       elements: [
         {
@@ -3087,10 +3095,11 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "A flawed 'proof' claims all horses are the same color: base case, any 1 horse is trivially the same " +
-      "color as itself; inductive step, given any k horses are the same color, split any k+1 horses into two " +
-      "overlapping groups of k horses (all but the last, all but the first), apply the inductive hypothesis to " +
-      "each group, and conclude all k+1 share a color through the overlap. Identify exactly where this argument breaks down.",
+      "A flawed ‘proof’ claims all horses are the same color: base case, any $1$ horse is trivially the " +
+      "same color as itself; inductive step, given any $k$ horses are the same color, split any $k+1$ " +
+      "horses into two overlapping groups of $k$ horses (all but the last, all but the first), apply the " +
+      "inductive hypothesis to each group, and conclude all $k+1$ share a color through the overlap. " +
+      "Identify exactly where this argument breaks down.",
     rubric: {
       elements: [
         {
@@ -3126,8 +3135,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why induction is the standard technique for proving a recursive algorithm correct (e.g. proving a " +
-      "recursive factorial function returns n! for every n≥0), connecting the recursive call to the inductive hypothesis.",
+      "Explain why induction is the standard technique for proving a recursive algorithm correct (e.g. " +
+      "proving a recursive factorial function returns $n!$ for every $n\\geq 0$), connecting the recursive " +
+      "call to the inductive hypothesis.",
     rubric: {
       elements: [
         {
@@ -3163,8 +3173,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Explain how a proof that a loop invariant holds after every iteration of a for-loop (running from i=0 to " +
-      "n−1) is structurally an induction proof, identifying what plays the role of the base case and the inductive step.",
+      "Explain how a proof that a loop invariant holds after every iteration of a for-loop (running from " +
+      "$i=0$ to $n-1$) is structurally an induction proof, identifying what plays the role of the base case " +
+      "and the inductive step.",
     rubric: {
       elements: [
         {
@@ -3200,9 +3211,10 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Structural induction on binary trees proves a claim P(T) for every tree T by proving it for the empty " +
-      "tree (base case) and showing that if P holds for two subtrees, it holds for the tree formed by combining " +
-      "them under a new root. Explain why this counts as induction even though there's no single integer n being incremented by 1 each step.",
+      "Structural induction on binary trees proves a claim $P(T)$ for every tree $T$ by proving it for the " +
+      "empty tree (base case) and showing that if $P$ holds for two subtrees, it holds for the tree formed " +
+      "by combining them under a new root. Explain why this counts as induction even though there's no " +
+      "single integer $n$ being incremented by $1$ each step.",
     rubric: {
       elements: [
         {
@@ -3245,7 +3257,7 @@ export const discreteMathLogicItems: Item[] = [
     choices: [
       {
         id: "a",
-        text: "It may assume P(n₀), P(n₀+1), …, P(k) — every smaller case, not just P(k) — to prove P(k+1)",
+        text: "It may assume $P(n_0)$, $P(n_0+1)$, $\\ldots$, $P(k)$ — every smaller case, not just $P(k)$ — to prove $P(k+1)$",
         correct: true,
       },
       {
@@ -3306,7 +3318,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "Every integer n≥8 can be written as 3a+5b for nonnegative integers a, b. Give such a representation for n=8, 9, and 10 — the base cases a strong-induction proof of this fact would need.",
+      "Every integer $n\\geq 8$ can be written as $3a+5b$ for nonnegative integers $a, b$. Give such a representation for $n=8$, $9$, and $10$ — the base cases a strong-induction proof of this fact would need.",
     answerKey: "8 = 3+5; 9 = 3+3+3; 10 = 5+5.",
     rubric: {
       elements: [
@@ -3336,7 +3348,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "How many of the integers from 8 to 15 (inclusive) can be written as 3a+5b for nonnegative integers a, b?",
+    stem: "How many of the integers from $8$ to $15$ (inclusive) can be written as $3a+5b$ for nonnegative integers $a, b$?",
     answerKey: 8,
     tolerance: 0.001,
     difficulty: 0.2,
@@ -3352,7 +3364,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Use strong induction to prove: every integer n≥2 is either prime or a product of primes.",
+    stem: "Use strong induction to prove: every integer $n\\geq 2$ is either prime or a product of primes.",
     rubric: {
       elements: [
         { id: "base-case", description: "Verifies the base case n=2 is prime.", weight: 1, required: true },
@@ -3385,7 +3397,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "In the prime-factorization proof, n=ab splits into two smaller factors a and b, neither of which is necessarily n-1. Explain why ordinary induction's hypothesis (only P(n-1)) is insufficient here.",
+      "In the prime-factorization proof, $n=ab$ splits into two smaller factors $a$ and $b$, neither of which is necessarily $n-1$. Explain why ordinary induction's hypothesis (only $P(n-1)$) is insufficient here.",
     rubric: {
       elements: [
         {
@@ -3416,7 +3428,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A recursive function computing a(n) from both a(n-1) and a(n-2) needs strong induction, not ordinary induction, to prove facts about it. Explain why.",
+      "A recursive function computing $a(n)$ from both $a(n-1)$ and $a(n-2)$ needs strong induction, not ordinary induction, to prove facts about it. Explain why.",
     rubric: {
       elements: [
         {
@@ -3447,7 +3459,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The well-ordering principle states every nonempty set of positive integers has a least element. Sketch how it can be used to prove the same prime-factorization existence result, by considering the set of integers ≥2 with no prime factorization, and explain how this argument mirrors the strong-induction proof.",
+      "The well-ordering principle states every nonempty set of positive integers has a least element. Sketch how it can be used to prove the same prime-factorization existence result, by considering the set of integers $\\geq 2$ with no prime factorization, and explain how this argument mirrors the strong-induction proof.",
     rubric: {
       elements: [
         { id: "least-counterexample-setup", description: "Sets up the set S of integers ≥2 with no prime factorization, and supposes it's nonempty so it has a least element m by well-ordering.", weight: 3, required: true },
@@ -3478,12 +3490,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "In strong induction proving P(n) for n≥n₀, the inductive hypothesis (used to prove P(k)) is:",
+    stem: "In strong induction proving $P(n)$ for $n\\geq n_0$, the inductive hypothesis (used to prove $P(k)$) is:",
     choices: [
-      { id: "a", text: "P(i) holds for every i with n₀ ≤ i < k", correct: true },
-      { id: "b", text: "P(k−1) holds", correct: false, misconception: { id: "strong-hypothesis-reduced-to-ordinary", description: "States the ordinary-induction hypothesis (only the immediately preceding case), missing strong induction's broader assumption.", blameConceptId: "strong-induction" } },
-      { id: "c", text: "P(n₀) holds", correct: false, misconception: { id: "strong-hypothesis-confused-with-base-case", description: "Names only the base case rather than the full range of smaller cases strong induction assumes.", blameConceptId: "strong-induction" } },
-      { id: "d", text: "P(k) holds", correct: false, misconception: { id: "strong-hypothesis-assumes-goal", description: "Assumes the very statement being proved rather than the smaller cases used to establish it.", blameConceptId: "strong-induction" } },
+      { id: "a", text: "$P(i)$ holds for every $i$ with $n_0 \\leq i < k$", correct: true },
+      { id: "b", text: "$P(k-1)$ holds", correct: false, misconception: { id: "strong-hypothesis-reduced-to-ordinary", description: "States the ordinary-induction hypothesis (only the immediately preceding case), missing strong induction's broader assumption.", blameConceptId: "strong-induction" } },
+      { id: "c", text: "$P(n_0)$ holds", correct: false, misconception: { id: "strong-hypothesis-confused-with-base-case", description: "Names only the base case rather than the full range of smaller cases strong induction assumes.", blameConceptId: "strong-induction" } },
+      { id: "d", text: "$P(k)$ holds", correct: false, misconception: { id: "strong-hypothesis-assumes-goal", description: "Assumes the very statement being proved rather than the smaller cases used to establish it.", blameConceptId: "strong-induction" } },
     ],
     difficulty: -0.3,
     discrimination: 1.1,
@@ -3500,10 +3512,10 @@ export const discreteMathLogicItems: Item[] = [
     channels: ["typed"],
     stem: "Which claim is a natural candidate for strong induction rather than ordinary induction?",
     choices: [
-      { id: "a", text: "Every integer n≥2 has a prime factorization.", correct: true },
-      { id: "b", text: "1+2+⋯+n = n(n+1)/2 for every positive integer n.", correct: false, misconception: { id: "ordinary-induction-sufficient-claim-flagged-as-strong", description: "Flags a claim whose induction reduces cleanly to the immediately preceding case, which ordinary induction already handles.", blameConceptId: "strong-induction" } },
-      { id: "c", text: "n³−n is divisible by 6 for every integer n≥1.", correct: false, misconception: { id: "ordinary-induction-sufficient-divisibility-flagged-as-strong", description: "Flags a claim that reduces cleanly to P(n-1) via algebra, not needing arbitrary smaller cases.", blameConceptId: "strong-induction" } },
-      { id: "d", text: "A sequence with a(n) = a(n−1) + 1 satisfies a(n) = a(1) + (n−1).", correct: false, misconception: { id: "single-step-recursion-flagged-as-strong", description: "Flags a claim about a single-step recursion (only a(n-1) is referenced), which ordinary induction handles directly.", blameConceptId: "strong-induction" } },
+      { id: "a", text: "Every integer $n\\geq 2$ has a prime factorization.", correct: true },
+      { id: "b", text: "$1+2+\\cdots +n = n(n+1)/2$ for every positive integer $n$.", correct: false, misconception: { id: "ordinary-induction-sufficient-claim-flagged-as-strong", description: "Flags a claim whose induction reduces cleanly to the immediately preceding case, which ordinary induction already handles.", blameConceptId: "strong-induction" } },
+      { id: "c", text: "$n^3-n$ is divisible by $6$ for every integer $n\\geq 1$.", correct: false, misconception: { id: "ordinary-induction-sufficient-divisibility-flagged-as-strong", description: "Flags a claim that reduces cleanly to P(n-1) via algebra, not needing arbitrary smaller cases.", blameConceptId: "strong-induction" } },
+      { id: "d", text: "A sequence with $a(n) = a(n-1) + 1$ satisfies $a(n) = a(1) + (n-1)$.", correct: false, misconception: { id: "single-step-recursion-flagged-as-strong", description: "Flags a claim about a single-step recursion (only a(n-1) is referenced), which ordinary induction handles directly.", blameConceptId: "strong-induction" } },
     ],
     difficulty: -0.1,
     discrimination: 1.1,
@@ -3521,7 +3533,7 @@ export const discreteMathLogicItems: Item[] = [
     stem: "Which are true about strong induction? Select all that apply.",
     choices: [
       { id: "a", text: "The base cases needed may include more than one starting value if the recursive step reaches back multiple steps.", correct: true },
-      { id: "b", text: "Strong induction's hypothesis includes ordinary induction's P(k−1) as one special case among the smaller cases it assumes.", correct: true },
+      { id: "b", text: "Strong induction's hypothesis includes ordinary induction's $P(k-1)$ as one special case among the smaller cases it assumes.", correct: true },
       { id: "c", text: "Every valid strong-induction proof can, in principle, be reformulated as an ordinary induction proof of a suitably combined statement.", correct: true },
       {
         id: "d",
@@ -3558,8 +3570,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "Every integer n≥12 can be written as 4a+5b for nonnegative integers a, b. Give such a representation for " +
-      "n=12, 13, 14, and 15 — the base cases a strong-induction proof of this fact would need.",
+      "Every integer $n\\geq 12$ can be written as $4a+5b$ for nonnegative integers $a, b$. Give such a " +
+      "representation for $n=12$, $13$, $14$, and $15$ — the base cases a strong-induction proof of this " +
+      "fact would need.",
     answerKey: "12 = 4·3; 13 = 4·2+5; 14 = 4+5·2; 15 = 5·3.",
     rubric: {
       elements: [
@@ -3589,7 +3602,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "How many of the integers from 12 to 19 (inclusive) can be written as 4a+5b for nonnegative integers a, b?",
+    stem: "How many of the integers from $12$ to $19$ (inclusive) can be written as $4a+5b$ for nonnegative integers $a, b$?",
     answerKey: 8,
     tolerance: 0.001,
     difficulty: 0.55,
@@ -3606,8 +3619,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "A sequence is defined by a(1)=1, a(2)=1, a(n)=a(n−1)+a(n−2) for n≥3. State the strong-induction hypothesis " +
-      "needed to prove a claim P(n) about a(n) using this recursive rule, and state how many base cases the proof needs.",
+      "A sequence is defined by $a(1)=1$, $a(2)=1$, $a(n)=a(n-1)+a(n-2)$ for $n\\geq 3$. State the " +
+      "strong-induction hypothesis needed to prove a claim $P(n)$ about $a(n)$ using this recursive rule, " +
+      "and state how many base cases the proof needs.",
     answerKey:
       "Hypothesis: assume P(i) holds for every i with 1≤i<n (in particular for i=n−2 and i=n−1). The proof needs 2 base cases, n=1 and n=2, since the recursion reaches back two steps.",
     rubric: {
@@ -3640,8 +3654,8 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Use strong induction to prove that every integer n≥12 can be written as 4a+5b for nonnegative integers a, " +
-      "b, given the base cases n=12, 13, 14, 15 already established.",
+      "Use strong induction to prove that every integer $n\\geq 12$ can be written as $4a+5b$ for " +
+      "nonnegative integers $a, b$, given the base cases $n=12$, $13, 14, 15$ already established.",
     rubric: {
       elements: [
         { id: "base-cases-cited", description: "Cites the four given base cases (12 through 15) as already established directly.", weight: 1, required: true },
@@ -3673,8 +3687,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why the postage-representation proof (4a+5b, n≥12) needs 4 base cases while the prime-factorization " +
-      "proof needs only 1 base case (n=2). What determines how many base cases a strong-induction proof needs?",
+      "Explain why the postage-representation proof $(4a+5b, n\\geq 12)$ needs $4$ base cases while the " +
+      "prime-factorization proof needs only $1$ base case $(n=2)$. What determines how many base cases a " +
+      "strong-induction proof needs?",
     rubric: {
       elements: [
         {
@@ -3710,8 +3725,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Use strong induction to prove every integer n≥1 can be written as a sum of distinct powers of 2 (its " +
-      "binary representation), using the strong hypothesis on n minus its largest power-of-2 part.",
+      "Use strong induction to prove every integer $n\\geq 1$ can be written as a sum of distinct powers of " +
+      "$2$ (its binary representation), using the strong hypothesis on $n$ minus its largest power-of-$2$ " +
+      "part.",
     rubric: {
       elements: [
         { id: "base-case-n-one", description: "Verifies the base case n=1=2⁰.", weight: 1, required: true },
@@ -3748,8 +3764,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Merge sort's correctness proof recurses on two halves of size roughly n/2 each, not on n−1. Explain why " +
-      "this requires strong induction (assuming correctness for every smaller size) rather than ordinary induction on n.",
+      "Merge sort's correctness proof recurses on two halves of size roughly $n/2$ each, not on $n-1$. " +
+      "Explain why this requires strong induction (assuming correctness for every smaller size) rather than " +
+      "ordinary induction on $n$.",
     rubric: {
       elements: [
         {
@@ -3785,8 +3802,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A dynamic-programming algorithm computes table entries T[n] using previously computed entries T[i] for " +
-      "various i<n, not necessarily just T[n−1]. Explain why the correctness proof of such an algorithm is naturally a strong-induction argument.",
+      "A dynamic-programming algorithm computes table entries $T[n]$ using previously computed entries " +
+      "$T[i]$ for various $i<n$, not necessarily just $T[n-1]$. Explain why the correctness proof of such " +
+      "an algorithm is naturally a strong-induction argument.",
     rubric: {
       elements: [
         {
@@ -3822,10 +3840,10 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Proving 'every position in a finite two-player game has a determined outcome (win, lose, or draw)' by " +
-      "analyzing every position reachable in one move and applying the same claim to each is a strong-induction " +
-      "argument on the number of remaining moves until the game must end. Explain why this needs strong induction " +
-      "rather than ordinary induction, and identify the base case.",
+      "Proving ‘every position in a finite two-player game has a determined outcome (win, lose, or draw)’ " +
+      "by analyzing every position reachable in one move and applying the same claim to each is a " +
+      "strong-induction argument on the number of remaining moves until the game must end. Explain why this " +
+      "needs strong induction rather than ordinary induction, and identify the base case.",
     rubric: {
       elements: [
         {
@@ -3920,7 +3938,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A sequence is defined by a(1)=1 and a(n)=2a(n-1)+1 for n≥2. Compute a(4).",
+    stem: "A sequence is defined by $a(1)=1$ and $a(n)=2a(n-1)+1$ for $n\\geq 2$. Compute $a(4)$.",
     answerKey: 15,
     tolerance: 0.001,
     difficulty: 0.1,
@@ -3936,7 +3954,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "For the sequence a(1)=1, a(n)=2a(n-1)+1 (n≥2), compute a(5).",
+    stem: "For the sequence $a(1)=1$, $a(n)=2a(n-1)+1 (n\\geq 2)$, compute $a(5)$.",
     answerKey: 31,
     tolerance: 0.001,
     difficulty: 0.4,
@@ -3952,7 +3970,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove by induction that the recursively defined sequence a(1)=1, a(n)=2a(n-1)+1 satisfies a(n) = 2ⁿ-1 for every n≥1.",
+    stem: "Prove by induction that the recursively defined sequence $a(1)=1$, $a(n)=2a(n-1)+1$ satisfies $a(n) = 2^n-1$ for every $n\\geq 1$.",
     rubric: {
       elements: [
         { id: "base-case", description: "Verifies the base case n=1: 2¹-1=1=a(1).", weight: 2, required: true },
@@ -4014,7 +4032,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The factorial is defined by 0!=1 and n!=n·(n-1)! for n≥1. Explain what would go wrong if the base case 0!=1 were simply omitted, and why 0!=1 (not 0) is the correct choice.",
+      "The factorial is defined by $0!=1$ and $n!=n\\cdot (n-1)!$ for $n\\geq 1$. Explain what would go wrong if the base case $0!=1$ were simply omitted, and why $0!=1$ (not $0$) is the correct choice.",
     rubric: {
       elements: [
         { id: "no-floor-without-base-case", description: "Explains that omitting the base case leaves no floor to the recursion, so n! is never actually computed for any n.", weight: 3, required: true, misconception: { id: "base-case-thought-unnecessary-for-factorial", description: "Believes the recursive rule n!=n·(n-1)! defines the factorial on its own, with no base case needed.", blameConceptId: "recursion" } },
@@ -4035,7 +4053,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The Fibonacci sequence is defined by F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2). Explain why proving a closed-form formula for F(n) needs strong induction rather than ordinary induction.",
+      "The Fibonacci sequence is defined by $F(0)=0$, $F(1)=1$, $F(n)=F(n-1)+F(n-2)$. Explain why proving a closed-form formula for $F(n)$ needs strong induction rather than ordinary induction.",
     rubric: {
       elements: [
         {
@@ -4070,12 +4088,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "In the recursive rule a(n) = 2a(n−1) + 1, the recursive step:",
+    stem: "In the recursive rule $a(n) = 2a(n-1) + 1$, the recursive step:",
     choices: [
-      { id: "a", text: "Defines a(n) in terms of the immediately preceding term a(n−1)", correct: true },
-      { id: "b", text: "Defines a(n) in terms of the later term a(n+1)", correct: false, misconception: { id: "recursive-step-direction-reversed", description: "Reverses the direction of the dependency; a(n) is defined from an earlier term, not a later one.", blameConceptId: "recursion" } },
-      { id: "c", text: "Defines a(n) with no reference to any other term of the sequence", correct: false, misconception: { id: "recursive-step-treated-as-independent", description: "Misses that the defining feature of a recursive step is referencing an earlier term of the same sequence.", blameConceptId: "recursion" } },
-      { id: "d", text: "Requires already knowing a(n) in order to compute a(n−1)", correct: false, misconception: { id: "recursive-dependency-treated-as-circular", description: "Gets the dependency backward — a(n−1) is needed to compute a(n), not the reverse.", blameConceptId: "recursion" } },
+      { id: "a", text: "Defines $a(n)$ in terms of the immediately preceding term $a(n-1)$", correct: true },
+      { id: "b", text: "Defines $a(n)$ in terms of the later term $a(n+1)$", correct: false, misconception: { id: "recursive-step-direction-reversed", description: "Reverses the direction of the dependency; a(n) is defined from an earlier term, not a later one.", blameConceptId: "recursion" } },
+      { id: "c", text: "Defines $a(n)$ with no reference to any other term of the sequence", correct: false, misconception: { id: "recursive-step-treated-as-independent", description: "Misses that the defining feature of a recursive step is referencing an earlier term of the same sequence.", blameConceptId: "recursion" } },
+      { id: "d", text: "Requires already knowing $a(n)$ in order to compute $a(n-1)$", correct: false, misconception: { id: "recursive-dependency-treated-as-circular", description: "Gets the dependency backward — a(n−1) is needed to compute a(n), not the reverse.", blameConceptId: "recursion" } },
     ],
     difficulty: -0.35,
     discrimination: 1.1,
@@ -4092,10 +4110,10 @@ export const discreteMathLogicItems: Item[] = [
     channels: ["typed"],
     stem: "Which of these defines a sequence recursively?",
     choices: [
-      { id: "a", text: "b(1) = 3, b(n) = b(n−1) + 5 for n≥2", correct: true },
+      { id: "a", text: "$b(1) = 3$, $b(n) = b(n-1) + 5$ for $n\\geq 2$", correct: true },
       {
         id: "b",
-        text: "c(n) = 3 + 5(n−1)",
+        text: "$c(n) = 3 + 5(n-1)$",
         correct: false,
         misconception: {
           id: "closed-form-mistaken-for-recursive",
@@ -4105,7 +4123,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "c",
-        text: "d(n) = n²",
+        text: "$d(n) = n^2$",
         correct: false,
         misconception: {
           id: "closed-form-power-mistaken-for-recursive",
@@ -4115,7 +4133,7 @@ export const discreteMathLogicItems: Item[] = [
       },
       {
         id: "d",
-        text: "\"the sequence of prime numbers in increasing order\"",
+        text: "“the sequence of prime numbers in increasing order”",
         correct: false,
         misconception: {
           id: "property-based-definition-mistaken-for-recursive",
@@ -4144,7 +4162,7 @@ export const discreteMathLogicItems: Item[] = [
       { id: "c", text: "The recursive rule must, directly or indirectly, ground every index out at a base case.", correct: true },
       {
         id: "d",
-        text: "A rule referencing a(n+1) to define a(n) is just as valid as one referencing a(n−1).",
+        text: "A rule referencing $a(n+1)$ to define $a(n)$ is just as valid as one referencing $a(n-1)$.",
         correct: false,
         misconception: {
           id: "forward-referencing-rule-assumed-equally-valid",
@@ -4176,7 +4194,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A sequence is defined by a(1)=2, a(n)=3a(n−1)−1 for n≥2. Compute a(4).",
+    stem: "A sequence is defined by $a(1)=2$, $a(n)=3a(n-1)-1$ for $n\\geq 2$. Compute $a(4)$.",
     answerKey: 41,
     tolerance: 0.001,
     difficulty: 0.55,
@@ -4192,7 +4210,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "For the sequence a(1)=2, a(n)=3a(n−1)−1 (n≥2), compute a(5).",
+    stem: "For the sequence $a(1)=2$, $a(n)=3a(n-1)-1 (n\\geq 2)$, compute $a(5)$.",
     answerKey: 122,
     tolerance: 0.001,
     difficulty: 0.7,
@@ -4208,7 +4226,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "A sequence is defined by a(1)=1, a(2)=4, a(n)=a(n−1)+a(n−2)+1 for n≥3. Compute a(3), a(4), and a(5), showing each step.",
+    stem: "A sequence is defined by $a(1)=1$, $a(2)=4$, $a(n)=a(n-1)+a(n-2)+1$ for $n\\geq 3$. Compute $a(3)$, $a(4)$, and $a(5)$, showing each step.",
     answerKey: "a(3)=a(2)+a(1)+1=4+1+1=6. a(4)=a(3)+a(2)+1=6+4+1=11. a(5)=a(4)+a(3)+1=11+6+1=18.",
     rubric: {
       elements: [
@@ -4240,7 +4258,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove by induction that the recursively defined sequence a(1)=2, a(n)=3a(n−1)−1 satisfies a(n) = (3ⁿ+1)/2 for every n≥1.",
+    stem: "Prove by induction that the recursively defined sequence $a(1)=2$, $a(n)=3a(n-1)-1$ satisfies $a(n) = (3^n+1)/2$ for every $n\\geq 1$.",
     rubric: {
       elements: [
         { id: "base-case-three-a", description: "Verifies the base case n=1: (3¹+1)/2 = 2 = a(1).", weight: 2, required: true },
@@ -4271,8 +4289,10 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "The rule a(n)=a(n−1)+a(n−2) with base cases a(0)=0, a(1)=0 defines the sequence that is identically 0 for " +
-      "every n, even though the recursive rule looks exactly like Fibonacci's. Explain why the base cases, not just the recursive rule, determine which sequence is actually being defined.",
+      "The rule $a(n)=a(n-1)+a(n-2)$ with base cases $a(0)=0$, $a(1)=0$ defines the sequence that is " +
+      "identically $0$ for every $n$, even though the recursive rule looks exactly like Fibonacci's. " +
+      "Explain why the base cases, not just the recursive rule, determine which sequence is actually being " +
+      "defined.",
     rubric: {
       elements: [
         {
@@ -4308,8 +4328,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "A definition claims a(n)=a(n/2)+1 for even n≥2, with base case a(1)=0, but gives no rule for odd n>1. " +
-      "Explain why this definition is incomplete, and propose a minimal addition that would fix it.",
+      "A definition claims $a(n)=a(n/2)+1$ for even $n\\geq 2$, with base case $a(1)=0$, but gives no rule " +
+      "for odd $n>1$. Explain why this definition is incomplete, and propose a minimal addition that would " +
+      "fix it.",
     rubric: {
       elements: [
         {
@@ -4421,9 +4442,9 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why a spreadsheet 'circular reference' (cell A's formula depends on cell B, which depends back on " +
-      "cell A) is exactly the recursion-with-no-progress-toward-a-base-case problem, and why spreadsheet programs " +
-      "specifically detect and flag this rather than just computing forever.",
+      "Explain why a spreadsheet ‘circular reference’ (cell $A$'s formula depends on cell $B$, which " +
+      "depends back on cell $A$) is exactly the recursion-with-no-progress-toward-a-base-case problem, and " +
+      "why spreadsheet programs specifically detect and flag this rather than just computing forever.",
     rubric: {
       elements: [
         {
@@ -4464,10 +4485,10 @@ export const discreteMathLogicItems: Item[] = [
     channels: ["typed"],
     stem: "The Fibonacci recurrence, with its base cases, is:",
     choices: [
-      { id: "a", text: "F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2) for n≥2", correct: true },
+      { id: "a", text: "$F(0)=0$, $F(1)=1$, $F(n)=F(n-1)+F(n-2)$ for $n\\geq 2$", correct: true },
       {
         id: "b",
-        text: "F(0)=1, F(1)=1, F(n)=F(n-1)·F(n-2) for n≥2",
+        text: "$F(0)=1$, $F(1)=1$, $F(n)=F(n-1)\\cdot F(n-2)$ for $n\\geq 2$",
         correct: false,
         misconception: {
           id: "fibonacci-rule-multiplicative",
@@ -4475,7 +4496,7 @@ export const discreteMathLogicItems: Item[] = [
           blameConceptId: "fibonacci-numbers",
         },
       },
-      { id: "c", text: "F(1)=0, F(2)=1, F(n)=F(n-1)+F(n+1) for n≥3", correct: false, misconception: { id: "fibonacci-rule-looks-forward", description: "Defines a term using a later term instead of two earlier ones, which is not a valid recursive rule.", blameConceptId: "fibonacci-numbers" } },
+      { id: "c", text: "$F(1)=0$, $F(2)=1$, $F(n)=F(n-1)+F(n+1)$ for $n\\geq 3$", correct: false, misconception: { id: "fibonacci-rule-looks-forward", description: "Defines a term using a later term instead of two earlier ones, which is not a valid recursive rule.", blameConceptId: "fibonacci-numbers" } },
     ],
     difficulty: -0.32,
     discrimination: 1.1,
@@ -4490,12 +4511,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Using F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2): F(7) equals:",
+    stem: "Using $F(0)=0$, $F(1)=1$, $F(n)=F(n-1)+F(n-2): F(7)$ equals:",
     choices: [
-      { id: "a", text: "13", correct: true },
+      { id: "a", text: "$13$", correct: true },
       {
         id: "b",
-        text: "8",
+        text: "$8$",
         correct: false,
         misconception: {
           id: "fibonacci-off-by-one",
@@ -4503,7 +4524,7 @@ export const discreteMathLogicItems: Item[] = [
           blameConceptId: "fibonacci-numbers",
         },
       },
-      { id: "c", text: "21", correct: false, misconception: { id: "fibonacci-off-by-one-other-direction", description: "Reports F(8)=21 instead of F(7)=13.", blameConceptId: "fibonacci-numbers" } },
+      { id: "c", text: "$21$", correct: false, misconception: { id: "fibonacci-off-by-one-other-direction", description: "Reports F(8)=21 instead of F(7)=13.", blameConceptId: "fibonacci-numbers" } },
     ],
     difficulty: -0.07,
     discrimination: 1.2,
@@ -4518,7 +4539,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Given F(9)=34 and F(10)=55, use the recurrence to compute F(11).",
+    stem: "Given $F(9)=34$ and $F(10)=55$, use the recurrence to compute $F(11)$.",
     answerKey: 89,
     tolerance: 0.001,
     difficulty: 0.28,
@@ -4534,7 +4555,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Given F(10)=55 and F(11)=89, use the recurrence to compute F(12).",
+    stem: "Given $F(10)=55$ and $F(11)=89$, use the recurrence to compute $F(12)$.",
     answerKey: 144,
     tolerance: 0.001,
     difficulty: 0.58,
@@ -4550,7 +4571,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove by induction that F(1)+F(2)+⋯+F(n) = F(n+2)-1 for every n≥1.",
+    stem: "Prove by induction that $F(1)+F(2)+\\cdots +F(n) = F(n+2)-1$ for every $n\\geq 1$.",
     rubric: {
       elements: [
         { id: "base-case", description: "Verifies the base case n=1: LHS=F(1)=1, RHS=F(3)-1=2-1=1.", weight: 2, required: true },
@@ -4582,7 +4603,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Some sources start the Fibonacci sequence at F(1)=F(2)=1 instead of F(0)=0, F(1)=1. Explain what goes wrong if a problem silently mixes the two conventions.",
+      "Some sources start the Fibonacci sequence at $F(1)=F(2)=1$ instead of $F(0)=0$, $F(1)=1$. Explain what goes wrong if a problem silently mixes the two conventions.",
     rubric: {
       elements: [
         {
@@ -4613,7 +4634,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Binet's formula states F(n) = (φⁿ-ψⁿ)/√5 with φ=(1+√5)/2≈1.618, ψ=(1-√5)/2≈-0.618. Without proving the formula, explain why F(n) always comes out an integer despite φ and ψ being irrational, and why F(n)≈φⁿ/√5 for large n.",
+      "Binet's formula states $F(n) = (\\varphi^n-\\psi^n)/\\sqrt{5}$ with $\\varphi =(1+\\sqrt{5})/2\\approx 1.618$, $\\psi =(1-\\sqrt{5})/2\\approx -0.618$. Without proving the formula, explain why $F(n)$ always comes out an integer despite $\\varphi$ and $\\psi$ being irrational, and why $F(n)\\approx \\varphi^n/\\sqrt{5}$ for large $n$.",
     rubric: {
       elements: [
         {
@@ -4649,7 +4670,7 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Explain how the sum identity F(1)+⋯+F(n)=F(n+2)-1 illustrates the exact two-back proof machinery that `strong-induction` and `recursion` previewed, naming the specific role each base case and the recurrence play.",
+      "Explain how the sum identity $F(1)+\\cdots +F(n)=F(n+2)-1$ illustrates the exact two-back proof machinery that strong induction and recursion previewed, naming the specific role each base case and the recurrence play.",
     rubric: {
       elements: [
         {
@@ -4684,12 +4705,12 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Using F(0)=0, F(1)=1, F(n)=F(n−1)+F(n−2): F(0) through F(4) are:",
+    stem: "Using $F(0)=0$, $F(1)=1$, $F(n)=F(n-1)+F(n-2): F(0)$ through $F(4)$ are:",
     choices: [
-      { id: "a", text: "0, 1, 1, 2, 3", correct: true },
-      { id: "b", text: "1, 1, 2, 3, 5", correct: false, misconception: { id: "fibonacci-values-shifted-convention", description: "Lists the values under the F(1)=F(2)=1 convention instead of F(0)=0, F(1)=1 — a one-step indexing shift.", blameConceptId: "fibonacci-numbers" } },
-      { id: "c", text: "0, 1, 1, 2, 4", correct: false, misconception: { id: "fibonacci-arithmetic-error-at-f4", description: "Miscomputes F(4)=F(3)+F(2)=2+1=3 as 4.", blameConceptId: "fibonacci-numbers" } },
-      { id: "d", text: "1, 2, 3, 5, 8", correct: false, misconception: { id: "fibonacci-sequence-started-wrong", description: "Starts the sequence from the wrong values entirely, not F(0)=0, F(1)=1.", blameConceptId: "fibonacci-numbers" } },
+      { id: "a", text: "$0, 1, 1, 2, 3$", correct: true },
+      { id: "b", text: "$1, 1, 2, 3, 5$", correct: false, misconception: { id: "fibonacci-values-shifted-convention", description: "Lists the values under the F(1)=F(2)=1 convention instead of F(0)=0, F(1)=1 — a one-step indexing shift.", blameConceptId: "fibonacci-numbers" } },
+      { id: "c", text: "$0, 1, 1, 2, 4$", correct: false, misconception: { id: "fibonacci-arithmetic-error-at-f4", description: "Miscomputes F(4)=F(3)+F(2)=2+1=3 as 4.", blameConceptId: "fibonacci-numbers" } },
+      { id: "d", text: "$1, 2, 3, 5, 8$", correct: false, misconception: { id: "fibonacci-sequence-started-wrong", description: "Starts the sequence from the wrong values entirely, not F(0)=0, F(1)=1.", blameConceptId: "fibonacci-numbers" } },
     ],
     difficulty: -0.55,
     discrimination: 1.1,
@@ -4704,11 +4725,11 @@ export const discreteMathLogicItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which pattern do the Fibonacci numbers F(0), F(1), F(2), ... actually follow?",
+    stem: "Which pattern do the Fibonacci numbers $F(0)$, $F(1)$, $F(2)$, $\\ldots$ actually follow?",
     choices: [
-      { id: "a", text: "F(n) is even exactly when n is a multiple of 3.", correct: true },
+      { id: "a", text: "$F(n)$ is even exactly when $n$ is a multiple of $3$.", correct: true },
       { id: "b", text: "Every Fibonacci number is prime.", correct: false, misconception: { id: "fibonacci-assumed-always-prime", description: "Overgeneralizes from small primes like F(4)=3, F(5)=5; F(6)=8 is not prime.", blameConceptId: "fibonacci-numbers" } },
-      { id: "c", text: "F(n) is even exactly when n is even.", correct: false, misconception: { id: "fibonacci-parity-matched-to-n-parity", description: "Assumes F(n)'s parity matches n's parity directly; F(2)=1 is odd even though n=2 is even.", blameConceptId: "fibonacci-numbers" } },
+      { id: "c", text: "$F(n)$ is even exactly when $n$ is even.", correct: false, misconception: { id: "fibonacci-parity-matched-to-n-parity", description: "Assumes F(n)'s parity matches n's parity directly; F(2)=1 is odd even though n=2 is even.", blameConceptId: "fibonacci-numbers" } },
       { id: "d", text: "The Fibonacci sequence consists exactly of the even numbers.", correct: false, misconception: { id: "fibonacci-confused-with-evens", description: "Confuses the Fibonacci sequence itself with the even numbers, when most Fibonacci numbers are odd.", blameConceptId: "fibonacci-numbers" } },
     ],
     difficulty: -0.2,
@@ -4726,12 +4747,12 @@ export const discreteMathLogicItems: Item[] = [
     channels: ["typed"],
     stem: "Which statements about the Fibonacci sequence are true? Select all that apply.",
     choices: [
-      { id: "a", text: "F(n) grows exponentially, roughly like φⁿ for large n.", correct: true },
-      { id: "b", text: "Consecutive Fibonacci numbers are always coprime: gcd(F(n),F(n+1))=1.", correct: true },
-      { id: "c", text: "The ratio F(n+1)/F(n) converges to the golden ratio φ as n grows.", correct: true },
+      { id: "a", text: "$F(n)$ grows exponentially, roughly like $\\varphi^n$ for large $n$.", correct: true },
+      { id: "b", text: "Consecutive Fibonacci numbers are always coprime: $\\gcd(F(n),F(n+1))=1$.", correct: true },
+      { id: "c", text: "The ratio $F(n+1)/F(n)$ converges to the golden ratio $\\varphi$ as $n$ grows.", correct: true },
       {
         id: "d",
-        text: "F(n) is defined by F(n) = F(n−1)·F(n−2).",
+        text: "$F(n)$ is defined by $F(n) = F(n-1)\\cdot F(n-2)$.",
         correct: false,
         misconception: {
           id: "fibonacci-rule-mistaken-multiplicative-again",
@@ -4763,7 +4784,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Given F(11)=89 and F(12)=144, use the recurrence to compute F(13).",
+    stem: "Given $F(11)=89$ and $F(12)=144$, use the recurrence to compute $F(13)$.",
     answerKey: 233,
     tolerance: 0.001,
     difficulty: 0.4,
@@ -4779,7 +4800,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Starting from F(0)=0 and F(1)=1, apply the recurrence step by step to compute F(6).",
+    stem: "Starting from $F(0)=0$ and $F(1)=1$, apply the recurrence step by step to compute $F(6)$.",
     answerKey: 8,
     tolerance: 0.001,
     difficulty: 0.7,
@@ -4795,7 +4816,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Using F(9)=34, F(10)=55, F(11)=89, verify Cassini's identity F(n−1)F(n+1)−F(n)² = (−1)ⁿ for n=10.",
+    stem: "Using $F(9)=34$, $F(10)=55$, $F(11)=89$, verify Cassini's identity $F(n-1)F(n+1)-F(n)^2 = (-1)^n$ for $n=10$.",
     answerKey: "F(9)·F(11) − F(10)² = 34·89 − 55² = 3026 − 3025 = 1 = (−1)¹⁰. The identity holds.",
     rubric: {
       elements: [
@@ -4826,7 +4847,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove by strong induction that consecutive Fibonacci numbers are coprime: gcd(F(n), F(n+1)) = 1 for every n≥0.",
+    stem: "Prove by strong induction that consecutive Fibonacci numbers are coprime: $\\gcd(F(n), F(n+1)) = 1$ for every $n\\geq 0$.",
     rubric: {
       elements: [
         { id: "base-case-gcd", description: "Verifies the base case: gcd(F(0),F(1)) = gcd(0,1) = 1.", weight: 1, required: true },
@@ -4857,9 +4878,10 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "A student proves F(n) < 2ⁿ for all n≥1 using ordinary (one-back) induction: assuming F(k)<2^k, they show " +
-      "F(k+1)<2^{k+1}. Carry out this inductive step, and explain why this particular claim doesn't force you " +
-      "into strong induction, even though the Fibonacci recurrence itself reaches back two terms.",
+      "A student proves $F(n) < 2^n$ for all $n\\geq 1$ using ordinary (one-back) induction: assuming " +
+      "$F(k)<2^k$, they show $F(k+1)<2^{k+1}$. Carry out this inductive step, and explain why this " +
+      "particular claim doesn't force you into strong induction, even though the Fibonacci recurrence " +
+      "itself reaches back two terms.",
     rubric: {
       elements: [
         {
@@ -4894,7 +4916,7 @@ export const discreteMathLogicItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove that F(n) is even if and only if n is a multiple of 3, for n≥0.",
+    stem: "Prove that $F(n)$ is even if and only if $n$ is a multiple of $3$, for $n\\geq 0$.",
     rubric: {
       elements: [
         {
@@ -4930,10 +4952,10 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Fibonacci heaps are named for a structural property: the minimum size of a subtree of a given 'rank' " +
-      "grows like a Fibonacci number in that rank. Without needing the full data-structure details, explain why " +
-      "a measure that grows exponentially (like Fibonacci, ≈φⁿ) in rank is exactly the kind of bound that makes " +
-      "a structure holding N items provably shallow (logarithmic in N).",
+      "Fibonacci heaps are named for a structural property: the minimum size of a subtree of a given ‘rank’ " +
+      "grows like a Fibonacci number in that rank. Without needing the full data-structure details, explain " +
+      "why a measure that grows exponentially (like Fibonacci, $\\approx \\varphi^n$) in rank is exactly the " +
+      "kind of bound that makes a structure holding $N$ items provably shallow (logarithmic in $N$).",
     rubric: {
       elements: [
         {
@@ -4969,10 +4991,10 @@ export const discreteMathLogicItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Technical-analysis traders sometimes use 'Fibonacci retracement levels' (percentages like 61.8% and " +
-      "38.2%) derived from Fibonacci ratios. Using F(n+1)/F(n)→φ, explain why these specific percentages arise " +
-      "mathematically, and why this is a case where a mathematical pattern appearing in a field doesn't by " +
-      "itself validate that field's underlying claims.",
+      "Technical-analysis traders sometimes use ‘Fibonacci retracement levels’ (percentages like $61.8\\%$ " +
+      "and $38.2\\%$) derived from Fibonacci ratios. Using $F(n+1)/F(n)\\to \\varphi$, explain why these " +
+      "specific percentages arise mathematically, and why this is a case where a mathematical pattern " +
+      "appearing in a field doesn't by itself validate that field's underlying claims.",
     rubric: {
       elements: [
         {

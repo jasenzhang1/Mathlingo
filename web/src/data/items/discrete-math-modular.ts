@@ -37,12 +37,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For a positive integer n, a ≡ b (mod n) means:",
+    stem: "For a positive integer $n, a \\equiv b \\pmod{n}$ means:",
     choices: [
-      { id: "a", text: "n divides a − b", correct: true },
+      { id: "a", text: "$n$ divides $a - b$", correct: true },
       {
         id: "b",
-        text: "a divides b",
+        text: "$a$ divides $b$",
         correct: false,
         misconception: {
           id: "congruence-as-divisibility-between",
@@ -52,7 +52,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "a − b = n exactly",
+        text: "$a - b = n$ exactly",
         correct: false,
         misconception: {
           id: "difference-exactly-n",
@@ -62,7 +62,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "a and b are both less than n",
+        text: "$a$ and $b$ are both less than $n$",
         correct: false,
         misconception: {
           id: "congruence-as-range",
@@ -84,12 +84,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Congruence mod n splits the integers into how many residue classes?",
+    stem: "Congruence $\\bmod n$ splits the integers into how many residue classes?",
     choices: [
-      { id: "a", text: "n, represented by 0, 1, …, n − 1", correct: true },
+      { id: "a", text: "$n$, represented by $0, 1, \\ldots, n - 1$", correct: true },
       {
         id: "b",
-        text: "n − 1, represented by 1, …, n − 1",
+        text: "$n - 1$, represented by $1, \\ldots, n - 1$",
         correct: false,
         misconception: {
           id: "zero-class-forgotten",
@@ -99,7 +99,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "n + 1, represented by 0, 1, …, n",
+        text: "$n + 1$, represented by $0, 1, \\ldots, n$",
         correct: false,
         misconception: {
           id: "n-as-own-class",
@@ -131,14 +131,14 @@ export const discreteMathModularItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Suppose a ≡ b (mod n) and c ≡ d (mod n). Which conclusions are always valid? Select all that apply.",
+    stem: "Suppose $a \\equiv b \\pmod{n}$ and $c \\equiv d \\pmod{n}$. Which conclusions are always valid? Select all that apply.",
     choices: [
-      { id: "a", text: "a + c ≡ b + d (mod n)", correct: true },
-      { id: "b", text: "ac ≡ bd (mod n)", correct: true },
-      { id: "c", text: "aᵏ ≡ bᵏ (mod n) for every positive integer k", correct: true },
+      { id: "a", text: "$a + c \\equiv b + d \\pmod{n}$", correct: true },
+      { id: "b", text: "$ac \\equiv bd \\pmod{n}$", correct: true },
+      { id: "c", text: "$a^k \\equiv b^k \\pmod{n}$ for every positive integer $k$", correct: true },
       {
         id: "d",
-        text: "If ac ≡ bc (mod n) then a ≡ b (mod n)",
+        text: "If $ac \\equiv bc \\pmod{n}$ then $a \\equiv b \\pmod{n}$",
         correct: false,
         misconception: {
           id: "cancellation-always-allowed",
@@ -148,7 +148,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "e",
-        text: "a ≡ b (mod 2n)",
+        text: "$a \\equiv b \\pmod{2n}$",
         correct: false,
         misconception: {
           id: "modulus-can-grow",
@@ -172,12 +172,12 @@ export const discreteMathModularItems: Item[] = [
     channels: ["typed"],
     stem: "Which congruences are true? Select all that apply.",
     choices: [
-      { id: "a", text: "38 ≡ 3 (mod 7)", correct: true },
-      { id: "b", text: "−4 ≡ 10 (mod 7)", correct: true },
-      { id: "c", text: "100 ≡ 1 (mod 9)", correct: true },
+      { id: "a", text: "$38 \\equiv 3 \\pmod{7}$", correct: true },
+      { id: "b", text: "$-4 \\equiv 10 \\pmod{7}$", correct: true },
+      { id: "c", text: "$100 \\equiv 1 \\pmod{9}$", correct: true },
       {
         id: "d",
-        text: "25 ≡ 4 (mod 6)",
+        text: "$25 \\equiv 4 \\pmod{6}$",
         correct: false,
         misconception: {
           id: "difference-not-checked",
@@ -187,7 +187,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "e",
-        text: "−3 ≡ 3 (mod 5)",
+        text: "$-3 \\equiv 3 \\pmod{5}$",
         correct: false,
         misconception: {
           id: "negative-ignores-sign",
@@ -209,12 +209,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Using the convention that 'a mod n' is the remainder in {0, 1, …, n − 1}, what is −7 mod 3?",
+    stem: "Using the convention that ‘$a \\bmod n$’ is the remainder in $\\{0, 1, \\ldots, n - 1\\}$, what is $-7 \\bmod 3$?",
     choices: [
-      { id: "a", text: "2", correct: true },
+      { id: "a", text: "$2$", correct: true },
       {
         id: "b",
-        text: "1",
+        text: "$1$",
         correct: false,
         misconception: {
           id: "negative-reduced-as-positive",
@@ -224,7 +224,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "−1",
+        text: "$-1$",
         correct: false,
         misconception: {
           id: "negative-remainder-kept",
@@ -234,7 +234,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "0",
+        text: "$0$",
         correct: false,
         misconception: {
           id: "negative-reduces-to-zero",
@@ -256,7 +256,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute 2¹⁰ mod 7, as a remainder in {0, …, 6}.",
+    stem: "Compute $2^{10} \\bmod 7$, as a remainder in $\\{0, \\ldots, 6\\}$.",
     answerKey: 2,
     tolerance: 0.001,
     difficulty: -0.8,
@@ -272,7 +272,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute (123 × 456) mod 7 without multiplying the full numbers out. Give a remainder in {0, …, 6}.",
+    stem: "Compute $(123 \\times 456) \\bmod 7$ without multiplying the full numbers out. Give a remainder in $\\{0, \\ldots, 6\\}$.",
     answerKey: 4,
     tolerance: 0.001,
     difficulty: -0.5,
@@ -288,7 +288,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "What is the last digit of 7²⁰²⁶? Give a single digit.",
+    stem: "What is the last digit of $7^{2026}$? Give a single digit.",
     answerKey: 9,
     tolerance: 0.001,
     difficulty: 0.1,
@@ -304,7 +304,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute −23 mod 6, as a remainder in {0, …, 5}.",
+    stem: "Compute $-23 \\bmod 6$, as a remainder in $\\{0, \\ldots, 5\\}$.",
     answerKey: 1,
     tolerance: 0.001,
     difficulty: -0.6,
@@ -320,7 +320,7 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Today is Monday. What day of the week will it be 100 days from today?",
+    stem: "Today is Monday. What day of the week will it be $100$ days from today?",
     choices: [
       { id: "a", text: "Wednesday", correct: true },
       {
@@ -368,8 +368,9 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "To find (987654 × 123456) mod 10 you can just multiply the last digits, 4 × 6 = 24, and answer 4. Explain " +
-      "why reducing each factor first gives the same remainder as reducing the full product.",
+      "To find $(987654 \\times 123456) \\bmod 10$ you can just multiply the last digits, $4 \\times 6 = 24$, " +
+      "and answer $4$. Explain why reducing each factor first gives the same remainder as reducing the full " +
+      "product.",
     rubric: {
       elements: [
         {
@@ -405,8 +406,9 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "2 × 3 ≡ 2 × 0 (mod 6), yet 3 ≢ 0 (mod 6). Explain why 'dividing both sides by 2' fails here, and under what " +
-      "condition on c you *can* cancel c from ac ≡ bc (mod n).",
+      "$2 \\times 3 \\equiv 2 \\times 0 \\pmod{6}$, yet $3 \\not\\equiv 0 \\pmod{6}$. Explain why ‘dividing both " +
+      "sides by $2$’ fails here, and under what condition on $c$ you *can* cancel $c$ from $ac \\equiv bc " +
+      "\\pmod{n}$.",
     rubric: {
       elements: [
         {
@@ -441,7 +443,7 @@ export const discreteMathModularItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove that if a ≡ b (mod n) and c ≡ d (mod n), then ac ≡ bd (mod n).",
+    stem: "Prove that if $a \\equiv b \\pmod{n}$ and $c \\equiv d \\pmod{n}$, then $ac \\equiv bd \\pmod{n}$.",
     rubric: {
       elements: [
         {
@@ -476,7 +478,7 @@ export const discreteMathModularItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain, using congruences, why a number is divisible by 9 exactly when the sum of its digits is.",
+    stem: "Explain, using congruences, why a number is divisible by $9$ exactly when the sum of its digits is.",
     rubric: {
       elements: [
         {
@@ -511,7 +513,7 @@ export const discreteMathModularItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why every integer is congruent mod n to exactly one of 0, 1, …, n − 1.",
+    stem: "Explain why every integer is congruent $\\bmod n$ to exactly one of $0, 1, \\ldots, n - 1$.",
     rubric: {
       elements: [
         {
@@ -546,7 +548,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "It is 9 o'clock on a 12-hour clock. What hour will the clock show 50 hours from now? Give a number from 1 to 12.",
+    stem: "It is $9$ o'clock on a $12$-hour clock. What hour will the clock show $50$ hours from now? Give a number from $1$ to $12$.",
     answerKey: 11,
     tolerance: 0.001,
     difficulty: -0.6,
@@ -563,8 +565,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "Prove that no integer of the form 4k + 3 can be written as a sum of two perfect squares. (Hint: what can a " +
-      "square be mod 4?)",
+      "Prove that no integer of the form $4k + 3$ can be written as a sum of two perfect squares. (Hint: " +
+      "what can a square be $\\bmod 4$?)",
     rubric: {
       elements: [
         {
@@ -600,8 +602,9 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "An ISBN-10 d₁d₂…d₁₀ is valid when 10d₁ + 9d₂ + 8d₃ + … + 2d₉ + 1·d₁₀ ≡ 0 (mod 11). The first nine digits " +
-      "of a book's ISBN are 0-306-40615. What is the check digit d₁₀? Give a single digit.",
+      "An ISBN-$10$ code $d_1d_2\\ldots d_{10}$ is valid when $10d_1 + 9d_2 + 8d_3 + \\ldots + 2d_9 + 1\\cdot " +
+      "d_{10} \\equiv 0 \\pmod{11}$. The first nine digits of a book's ISBN are $0\\text{-}306\\text{-}40615$. " +
+      "What is the check digit $d_{10}$? Give a single digit.",
     answerKey: 2,
     tolerance: 0.001,
     difficulty: 0.5,
@@ -618,12 +621,12 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "A student checks the claim 3456 × 789 = 2,726,784 by 'casting out nines': both 3456 and 2,726,784 have " +
-      "digit sums divisible by 9. What can they conclude?",
+      "A student checks the claim $3456 \\times 789 = 2{,}726{,}784$ by ‘casting out nines’: both $3456$ and " +
+      "$2{,}726{,}784$ have digit sums divisible by $9$. What can they conclude?",
     choices: [
       {
         id: "a",
-        text: "The claim is consistent mod 9, but the check cannot prove it is correct",
+        text: "The claim is consistent $\\bmod 9$, but the check cannot prove it is correct",
         correct: true,
       },
       {
@@ -638,7 +641,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "The claim is definitely wrong, because 789 is not divisible by 9",
+        text: "The claim is definitely wrong, because $789$ is not divisible by $9$",
         correct: false,
         misconception: {
           id: "every-factor-must-match",
@@ -671,8 +674,9 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A hash table stores key k in bucket k mod m. With m = 10, a dataset whose keys are all multiples of 10 is " +
-      "disastrous, and switching to m = 11 fixes it. Explain both facts in terms of residue classes.",
+      "A hash table stores key $k$ in bucket $k \\bmod m$. With $m = 10$, a dataset whose keys are all " +
+      "multiples of $10$ is disastrous, and switching to $m = 11$ fixes it. Explain both facts in terms of " +
+      "residue classes.",
     rubric: {
       elements: [
         {
@@ -711,12 +715,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The Euclidean algorithm rests on which identity (for a, b positive integers)?",
+    stem: "The Euclidean algorithm rests on which identity (for $a, b$ positive integers)?",
     choices: [
-      { id: "a", text: "gcd(a, b) = gcd(b, a mod b)", correct: true },
+      { id: "a", text: "$\\gcd(a, b) = \\gcd(b, a \\bmod b)$", correct: true },
       {
         id: "b",
-        text: "gcd(a, b) = gcd(a − 1, b − 1)",
+        text: "$\\gcd(a, b) = \\gcd(a - 1, b - 1)$",
         correct: false,
         misconception: {
           id: "decrement-both",
@@ -726,7 +730,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "gcd(a, b) = a × b / (a + b)",
+        text: "$\\gcd(a, b) = a \\times b / (a + b)$",
         correct: false,
         misconception: {
           id: "gcd-formula-invented",
@@ -736,7 +740,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "gcd(a, b) = gcd(a mod b, b mod a)",
+        text: "$\\gcd(a, b) = \\gcd(a \\bmod b, b \\bmod a)$",
         correct: false,
         misconception: {
           id: "reduce-both-ways",
@@ -758,12 +762,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Bézout's identity says that for integers a, b, not both zero:",
+    stem: "Bézout's identity says that for integers $a, b$, not both zero:",
     choices: [
-      { id: "a", text: "there exist integers x, y with ax + by = gcd(a, b)", correct: true },
+      { id: "a", text: "there exist integers $x, y$ with $ax + by = \\gcd(a, b)$", correct: true },
       {
         id: "b",
-        text: "there exist positive integers x, y with ax + by = gcd(a, b)",
+        text: "there exist positive integers $x, y$ with $ax + by = \\gcd(a, b)$",
         correct: false,
         misconception: {
           id: "bezout-positive-coefficients",
@@ -773,7 +777,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "ab = gcd(a, b) · lcm(a, b) for any integers",
+        text: "$ab = \\gcd(a, b) \\cdot \\operatorname{lcm}(a, b)$ for any integers",
         correct: false,
         misconception: {
           id: "bezout-confused-with-lcm",
@@ -783,7 +787,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "gcd(a, b) = 1 whenever a ≠ b",
+        text: "$\\gcd(a, b) = 1$ whenever $a \\neq b$",
         correct: false,
         misconception: {
           id: "distinct-means-coprime",
@@ -805,15 +809,15 @@ export const discreteMathModularItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For positive integers a and b, which statements are true? Select all that apply.",
+    stem: "For positive integers $a$ and $b$, which statements are true? Select all that apply.",
     choices: [
-      { id: "a", text: "gcd(a, 0) = a", correct: true },
-      { id: "b", text: "gcd(a, b) = gcd(b, a)", correct: true },
-      { id: "c", text: "gcd(a, b) divides ax + by for all integers x, y", correct: true },
-      { id: "d", text: "gcd(a, b) · lcm(a, b) = ab", correct: true },
+      { id: "a", text: "$\\gcd(a, 0) = a$", correct: true },
+      { id: "b", text: "$\\gcd(a, b) = \\gcd(b, a)$", correct: true },
+      { id: "c", text: "$\\gcd(a, b)$ divides $ax + by$ for all integers $x, y$", correct: true },
+      { id: "d", text: "$\\gcd(a, b) \\cdot \\operatorname{lcm}(a, b) = ab$", correct: true },
       {
         id: "e",
-        text: "gcd(a, b) = 1 only if a and b are both prime",
+        text: "$\\gcd(a, b) = 1$ only if $a$ and $b$ are both prime",
         correct: false,
         misconception: {
           id: "coprime-means-prime",
@@ -835,9 +839,9 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Two integers a and b are called coprime (relatively prime) when:",
+    stem: "Two integers $a$ and $b$ are called coprime (relatively prime) when:",
     choices: [
-      { id: "a", text: "gcd(a, b) = 1", correct: true },
+      { id: "a", text: "$\\gcd(a, b) = 1$", correct: true },
       {
         id: "b",
         text: "both are prime",
@@ -860,7 +864,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "a ≡ b (mod 2)",
+        text: "$a \\equiv b \\pmod{2}$",
         correct: false,
         misconception: {
           id: "coprime-as-same-parity",
@@ -884,11 +888,11 @@ export const discreteMathModularItems: Item[] = [
     channels: ["typed"],
     stem: "Which pairs are coprime? Select all that apply.",
     choices: [
-      { id: "a", text: "(14, 15)", correct: true },
-      { id: "b", text: "(35, 64)", correct: true },
+      { id: "a", text: "$(14, 15)$", correct: true },
+      { id: "b", text: "$(35, 64)$", correct: true },
       {
         id: "c",
-        text: "(21, 28)",
+        text: "$(21, 28)$",
         correct: false,
         misconception: {
           id: "shared-factor-7-missed",
@@ -898,7 +902,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "(91, 39)",
+        text: "$(91, 39)$",
         correct: false,
         misconception: {
           id: "shared-factor-13-missed",
@@ -908,7 +912,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "e",
-        text: "(17, 51)",
+        text: "$(17, 51)$",
         correct: false,
         misconception: {
           id: "prime-assumed-coprime",
@@ -930,7 +934,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Use the Euclidean algorithm to compute gcd(252, 198). Give a whole number.",
+    stem: "Use the Euclidean algorithm to compute $\\gcd(252, 198)$. Give a whole number.",
     answerKey: 18,
     tolerance: 0.001,
     difficulty: -0.7,
@@ -946,7 +950,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Use the Euclidean algorithm to compute gcd(1071, 462). Give a whole number.",
+    stem: "Use the Euclidean algorithm to compute $\\gcd(1071, 462)$. Give a whole number.",
     answerKey: 21,
     tolerance: 0.001,
     difficulty: -0.4,
@@ -962,7 +966,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute gcd(1331, 1001). Give a whole number.",
+    stem: "Compute $\\gcd(1331, 1001)$. Give a whole number.",
     answerKey: 11,
     tolerance: 0.001,
     difficulty: -0.3,
@@ -978,7 +982,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute lcm(84, 120) using gcd(84, 120). Give a whole number.",
+    stem: "Compute $\\operatorname{lcm}(84, 120)$ using $\\gcd(84, 120)$. Give a whole number.",
     answerKey: 840,
     tolerance: 0.001,
     difficulty: -0.2,
@@ -994,12 +998,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "gcd(240, 46) = 2. Which pair (x, y) satisfies 240x + 46y = 2?",
+    stem: "$\\gcd(240, 46) = 2$. Which pair $(x, y)$ satisfies $240x + 46y = 2$?",
     choices: [
-      { id: "a", text: "(−9, 47)", correct: true },
+      { id: "a", text: "$(-9, 47)$", correct: true },
       {
         id: "b",
-        text: "(9, −47)",
+        text: "$(9, -47)$",
         correct: false,
         misconception: {
           id: "back-substitution-sign-flip",
@@ -1009,7 +1013,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "(47, −9)",
+        text: "$(47, -9)$",
         correct: false,
         misconception: {
           id: "coefficients-swapped",
@@ -1019,7 +1023,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "(−9, 46)",
+        text: "$(-9, 46)$",
         correct: false,
         misconception: {
           id: "back-substitution-arithmetic-slip",
@@ -1041,7 +1045,7 @@ export const discreteMathModularItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Prove that gcd(a, b) = gcd(b, r), where a = qb + r with 0 ≤ r < b.",
+    stem: "Prove that $\\gcd(a, b) = \\gcd(b, r)$, where $a = qb + r$ with $0 \\leq r < b$.",
     rubric: {
       elements: [
         {
@@ -1081,7 +1085,7 @@ export const discreteMathModularItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why the Euclidean algorithm always terminates, and why the last non-zero remainder is the gcd.",
+    stem: "Explain why the Euclidean algorithm always terminates, and why the last non-zero remainder is the $\\gcd$.",
     rubric: {
       elements: [
         {
@@ -1117,8 +1121,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "One way to find gcd(a, b) is to factor both numbers into primes. Explain why the Euclidean algorithm is " +
-      "vastly better for 300-digit numbers.",
+      "One way to find $\\gcd(a, b)$ is to factor both numbers into primes. Explain why the Euclidean " +
+      "algorithm is vastly better for $300$-digit numbers.",
     rubric: {
       elements: [
         {
@@ -1153,7 +1157,7 @@ export const discreteMathModularItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Using Bézout's identity, prove that every common divisor of a and b divides gcd(a, b).",
+    stem: "Using Bézout's identity, prove that every common divisor of $a$ and $b$ divides $\\gcd(a, b)$.",
     rubric: {
       elements: [
         {
@@ -1188,7 +1192,7 @@ export const discreteMathModularItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why ax + by = c has an integer solution exactly when gcd(a, b) divides c.",
+    stem: "Explain why $ax + by = c$ has an integer solution exactly when $\\gcd(a, b)$ divides $c$.",
     rubric: {
       elements: [
         {
@@ -1224,8 +1228,9 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "With a 21-litre jug and a 15-litre jug (no markings, unlimited water, pouring allowed between them and " +
-      "away), what is the smallest positive amount of water you can measure exactly? Give a whole number of litres.",
+      "With a $21$-litre jug and a $15$-litre jug (no markings, unlimited water, pouring allowed between " +
+      "them and away), what is the smallest positive amount of water you can measure exactly? Give a whole " +
+      "number of litres.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: 0.2,
@@ -1242,8 +1247,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "A 360 cm × 84 cm floor is to be tiled exactly with identical square tiles, as large as possible, with no " +
-      "cutting. How many tiles are needed? Give a whole number.",
+      "A $360\\text{ cm} \\times 84\\text{ cm}$ floor is to be tiled exactly with identical square tiles, as " +
+      "large as possible, with no cutting. How many tiles are needed? Give a whole number.",
     answerKey: 210,
     tolerance: 0.001,
     difficulty: 0.4,
@@ -1260,8 +1265,9 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "Two meshing gears have 48 and 18 teeth, and a mark is painted where they touch. How many full rotations " +
-      "of the 48-tooth gear pass before the marks touch again for the first time? Give a whole number.",
+      "Two meshing gears have $48$ and $18$ teeth, and a mark is painted where they touch. How many full " +
+      "rotations of the $48$-tooth gear pass before the marks touch again for the first time? Give a whole " +
+      "number.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: 0.5,
@@ -1277,7 +1283,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "Reduce the fraction 391/667 to lowest terms. What is the denominator of the reduced fraction? Give a whole number.",
+    stem: "Reduce the fraction $391/667$ to lowest terms. What is the denominator of the reduced fraction? Give a whole number.",
     answerKey: 29,
     tolerance: 0.001,
     difficulty: 0.6,
@@ -1294,7 +1300,7 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "Run the Euclidean algorithm symbolically to prove that gcd(3n + 1, 2n + 1) = 1 for every positive integer n.",
+      "Run the Euclidean algorithm symbolically to prove that $\\gcd(3n + 1, 2n + 1) = 1$ for every positive integer $n$.",
     rubric: {
       elements: [
         {
@@ -1333,12 +1339,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "An inverse of a modulo n is an integer x such that:",
+    stem: "An inverse of $a$ modulo $n$ is an integer $x$ such that:",
     choices: [
-      { id: "a", text: "ax ≡ 1 (mod n)", correct: true },
+      { id: "a", text: "$ax \\equiv 1 \\pmod{n}$", correct: true },
       {
         id: "b",
-        text: "a + x ≡ 0 (mod n)",
+        text: "$a + x \\equiv 0 \\pmod{n}$",
         correct: false,
         misconception: {
           id: "additive-for-multiplicative",
@@ -1348,7 +1354,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "x = 1/a, reduced mod n",
+        text: "$x = 1/a$, reduced $\\bmod n$",
         correct: false,
         misconception: {
           id: "fraction-as-inverse",
@@ -1358,7 +1364,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "ax ≡ 0 (mod n)",
+        text: "$ax \\equiv 0 \\pmod{n}$",
         correct: false,
         misconception: {
           id: "inverse-gives-zero",
@@ -1380,12 +1386,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "a has an inverse modulo n (n ≥ 2) if and only if:",
+    stem: "$a$ has an inverse modulo $n (n \\geq 2)$ if and only if:",
     choices: [
-      { id: "a", text: "gcd(a, n) = 1", correct: true },
+      { id: "a", text: "$\\gcd(a, n) = 1$", correct: true },
       {
         id: "b",
-        text: "n is prime",
+        text: "$n$ is prime",
         correct: false,
         misconception: {
           id: "inverse-requires-prime-modulus",
@@ -1395,7 +1401,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "a is prime",
+        text: "$a$ is prime",
         correct: false,
         misconception: {
           id: "inverse-requires-prime-a",
@@ -1405,7 +1411,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "a < n",
+        text: "$a < n$",
         correct: false,
         misconception: {
           id: "inverse-requires-small-a",
@@ -1427,14 +1433,14 @@ export const discreteMathModularItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which of these residues have an inverse modulo 12? Select all that apply.",
+    stem: "Which of these residues have an inverse modulo $12$? Select all that apply.",
     choices: [
-      { id: "a", text: "5", correct: true },
-      { id: "b", text: "7", correct: true },
-      { id: "c", text: "11", correct: true },
+      { id: "a", text: "$5$", correct: true },
+      { id: "b", text: "$7$", correct: true },
+      { id: "c", text: "$11$", correct: true },
       {
         id: "d",
-        text: "8",
+        text: "$8$",
         correct: false,
         misconception: {
           id: "shared-factor-ignored",
@@ -1444,7 +1450,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "e",
-        text: "9",
+        text: "$9$",
         correct: false,
         misconception: {
           id: "odd-means-invertible",
@@ -1466,12 +1472,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For a prime p, how many of the residues 0, 1, …, p − 1 have an inverse mod p?",
+    stem: "For a prime $p$, how many of the residues $0, 1, \\ldots, p - 1$ have an inverse $\\bmod p$?",
     choices: [
-      { id: "a", text: "p − 1 — every non-zero residue", correct: true },
+      { id: "a", text: "$p - 1$ — every non-zero residue", correct: true },
       {
         id: "b",
-        text: "p — every residue",
+        text: "$p$ — every residue",
         correct: false,
         misconception: {
           id: "zero-invertible",
@@ -1481,7 +1487,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "(p − 1)/2",
+        text: "$(p - 1)/2$",
         correct: false,
         misconception: {
           id: "half-invertible",
@@ -1491,7 +1497,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "Only 1 and p − 1",
+        text: "Only $1$ and $p - 1$",
         correct: false,
         misconception: {
           id: "self-inverse-confused",
@@ -1515,12 +1521,12 @@ export const discreteMathModularItems: Item[] = [
     channels: ["typed"],
     stem: "Which statements are true? Select all that apply.",
     choices: [
-      { id: "a", text: "When an inverse of a mod n exists, it is unique mod n.", correct: true },
-      { id: "b", text: "If a and b are both invertible mod n, so is ab, with (ab)⁻¹ ≡ a⁻¹b⁻¹.", correct: true },
-      { id: "c", text: "The inverse of a⁻¹ is a.", correct: true },
+      { id: "a", text: "When an inverse of $a \\bmod n$ exists, it is unique $\\bmod n$.", correct: true },
+      { id: "b", text: "If $a$ and $b$ are both invertible $\\bmod n$, so is $ab$, with $(ab)^{-1} \\equiv a^{-1}b^{-1}$.", correct: true },
+      { id: "c", text: "The inverse of $a^{-1}$ is $a$.", correct: true },
       {
         id: "d",
-        text: "If some a ≠ 0 has an inverse mod n, then n is prime.",
+        text: "If some $a \\neq 0$ has an inverse $\\bmod n$, then $n$ is prime.",
         correct: false,
         misconception: {
           id: "inverse-requires-prime-modulus",
@@ -1530,7 +1536,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "e",
-        text: "0 has an inverse mod p for any prime p.",
+        text: "$0$ has an inverse $\\bmod p$ for any prime $p$.",
         correct: false,
         misconception: {
           id: "zero-invertible",
@@ -1552,7 +1558,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Find the inverse of 3 modulo 7, as a residue in {1, …, 6}.",
+    stem: "Find the inverse of $3$ modulo $7$, as a residue in $\\{1, \\ldots, 6\\}$.",
     answerKey: 5,
     tolerance: 0.001,
     difficulty: -0.9,
@@ -1568,7 +1574,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Use the extended Euclidean algorithm to find the inverse of 17 modulo 43, as a residue in {1, …, 42}.",
+    stem: "Use the extended Euclidean algorithm to find the inverse of $17$ modulo $43$, as a residue in $\\{1, \\ldots, 42\\}$.",
     answerKey: 38,
     tolerance: 0.001,
     difficulty: 0.3,
@@ -1584,7 +1590,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Solve 7x ≡ 3 (mod 10). Give x as a residue in {0, …, 9}.",
+    stem: "Solve $7x \\equiv 3 \\pmod{10}$. Give $x$ as a residue in $\\{0, \\ldots, 9\\}$.",
     answerKey: 9,
     tolerance: 0.001,
     difficulty: -0.3,
@@ -1600,7 +1606,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Find the inverse of 11 modulo 26, as a residue in {1, …, 25}.",
+    stem: "Find the inverse of $11$ modulo $26$, as a residue in $\\{1, \\ldots, 25\\}$.",
     answerKey: 19,
     tolerance: 0.001,
     difficulty: 0.1,
@@ -1616,12 +1622,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Solve 6x ≡ 4 (mod 10).",
+    stem: "Solve $6x \\equiv 4 \\pmod{10}$.",
     choices: [
-      { id: "a", text: "Two solutions mod 10: x ≡ 4 or x ≡ 9", correct: true },
+      { id: "a", text: "Two solutions $\\bmod 10$: $x \\equiv 4$ or $x \\equiv 9$", correct: true },
       {
         id: "b",
-        text: "No solution, because 6 has no inverse mod 10",
+        text: "No solution, because $6$ has no inverse $\\bmod 10$",
         correct: false,
         misconception: {
           id: "no-inverse-means-no-solution",
@@ -1631,7 +1637,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "Exactly one solution: x ≡ 4",
+        text: "Exactly one solution: $x \\equiv 4$",
         correct: false,
         misconception: {
           id: "solutions-mod-reduced-lost",
@@ -1641,7 +1647,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "x ≡ 4/6 ≡ 2/3",
+        text: "$x \\equiv 4/6 \\equiv 2/3$",
         correct: false,
         misconception: {
           id: "fraction-as-inverse",
@@ -1663,7 +1669,7 @@ export const discreteMathModularItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Show that if gcd(a, n) = 1, then a has an inverse mod n, and explain how to compute it.",
+    stem: "Show that if $\\gcd(a, n) = 1$, then $a$ has an inverse $\\bmod n$, and explain how to compute it.",
     rubric: {
       elements: [
         {
@@ -1703,7 +1709,7 @@ export const discreteMathModularItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why a has no inverse mod n when gcd(a, n) = d > 1.",
+    stem: "Explain why $a$ has no inverse $\\bmod n$ when $\\gcd(a, n) = d > 1$.",
     rubric: {
       elements: [
         {
@@ -1738,7 +1744,7 @@ export const discreteMathModularItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why, if x and x' are both inverses of a mod n, then x ≡ x' (mod n).",
+    stem: "Explain why, if $x$ and $x'$ are both inverses of $a \\bmod n$, then $x \\equiv x' \\pmod{n}$.",
     rubric: {
       elements: [
         {
@@ -1773,8 +1779,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why ac ≡ bc (mod n) implies a ≡ b (mod n) when gcd(c, n) = 1, phrasing 'dividing by c' in terms " +
-      "of inverses.",
+      "Explain why $ac \\equiv bc \\pmod{n}$ implies $a \\equiv b \\pmod{n}$ when $\\gcd(c, n) = 1$, phrasing " +
+      "‘dividing by $c$’ in terms of inverses.",
     rubric: {
       elements: [
         {
@@ -1809,8 +1815,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "To find a⁻¹ mod n you could try x = 1, 2, 3, … until ax ≡ 1. Explain why that is hopeless for a " +
-      "600-digit modulus, while the extended Euclidean algorithm is fast.",
+      "To find $a^{-1} \\bmod n$ you could try $x = 1$, $2, 3, \\ldots$ until $ax \\equiv 1$. Explain why that " +
+      "is hopeless for a $600$-digit modulus, while the extended Euclidean algorithm is fast.",
     rubric: {
       elements: [
         {
@@ -1846,8 +1852,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "An affine cipher encrypts letter x ∈ {0, …, 25} as E(x) = 5x + 8 mod 26. A ciphertext letter has value 3. " +
-      "What was the plaintext value x? Give a whole number in {0, …, 25}.",
+      "An affine cipher encrypts letter $x \\in \\{0, \\ldots, 25\\}$ as $E(x) = 5x + 8 \\bmod 26$. A ciphertext " +
+      "letter has value $3$. What was the plaintext value $x$? Give a whole number in $\\{0, \\ldots, 25\\}$.",
     answerKey: 25,
     tolerance: 0.001,
     difficulty: 0.8,
@@ -1863,16 +1869,16 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "Why is E(x) = 13x + 5 mod 26 a useless affine cipher?",
+    stem: "Why is $E(x) = 13x + 5 \\bmod 26$ a useless affine cipher?",
     choices: [
       {
         id: "a",
-        text: "gcd(13, 26) ≠ 1, so 13 has no inverse mod 26 and different letters collide (e.g. 0 and 2 both encrypt to 5)",
+        text: "$\\gcd(13, 26) \\neq 1$, so $13$ has no inverse $\\bmod 26$ and different letters collide (e.g. $0$ and $2$ both encrypt to $5$)",
         correct: true,
       },
       {
         id: "b",
-        text: "13 is prime, and prime keys are insecure",
+        text: "$13$ is prime, and prime keys are insecure",
         correct: false,
         misconception: {
           id: "primality-of-key",
@@ -1882,7 +1888,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "13 is odd, so the cipher can't be decrypted",
+        text: "$13$ is odd, so the cipher can't be decrypted",
         correct: false,
         misconception: {
           id: "odd-key-issue",
@@ -1892,7 +1898,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "The shift 5 is too small",
+        text: "The shift $5$ is too small",
         correct: false,
         misconception: {
           id: "shift-blamed",
@@ -1915,8 +1921,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "Compute 1 × 2 × 3 × 4 × 5 × 6 mod 7. (Try pairing each factor with its inverse before multiplying.) Give a " +
-      "residue in {0, …, 6}.",
+      "Compute $1 \\times 2 \\times 3 \\times 4 \\times 5 \\times 6 \\bmod 7$. (Try pairing each factor with its " +
+      "inverse before multiplying.) Give a residue in $\\{0, \\ldots, 6\\}$.",
     answerKey: 6,
     tolerance: 0.001,
     difficulty: 0.4,
@@ -1932,7 +1938,7 @@ export const discreteMathModularItems: Item[] = [
     format: "derivation",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "Prove that for a prime p, the only residues mod p that are their own inverse are 1 and p − 1.",
+    stem: "Prove that for a prime $p$, the only residues $\\bmod p$ that are their own inverse are $1$ and $p - 1$.",
     rubric: {
       elements: [
         {
@@ -1968,8 +1974,9 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A simple scrambler maps each residue r ∈ {0, …, m − 1} to ar mod m. Explain why every residue is hit " +
-      "exactly once (nothing is lost) when gcd(a, m) = 1, and why collisions occur otherwise.",
+      "A simple scrambler maps each residue $r \\in \\{0, \\ldots, m - 1\\}$ to $ar \\bmod m$. Explain why every " +
+      "residue is hit exactly once (nothing is lost) when $\\gcd(a, m) = 1$, and why collisions occur " +
+      "otherwise.",
     rubric: {
       elements: [
         {
@@ -2008,12 +2015,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Fermat's little theorem says that if p is prime and p does not divide a, then:",
+    stem: "Fermat's little theorem says that if $p$ is prime and $p$ does not divide $a$, then:",
     choices: [
-      { id: "a", text: "aᵖ⁻¹ ≡ 1 (mod p)", correct: true },
+      { id: "a", text: "$a^{p-1} \\equiv 1 \\pmod{p}$", correct: true },
       {
         id: "b",
-        text: "aᵖ ≡ 1 (mod p)",
+        text: "$a^p \\equiv 1 \\pmod{p}$",
         correct: false,
         misconception: {
           id: "exponent-p-not-p-minus-1",
@@ -2023,7 +2030,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "aᵖ⁻¹ ≡ 0 (mod p)",
+        text: "$a^{p-1} \\equiv 0 \\pmod{p}$",
         correct: false,
         misconception: {
           id: "fermat-gives-zero",
@@ -2033,7 +2040,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "a ≡ 1 (mod p)",
+        text: "$a \\equiv 1 \\pmod{p}$",
         correct: false,
         misconception: {
           id: "exponent-dropped",
@@ -2055,12 +2062,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Euler's totient φ(n) counts:",
+    stem: "Euler's totient $\\varphi(n)$ counts:",
     choices: [
-      { id: "a", text: "the integers k with 1 ≤ k ≤ n and gcd(k, n) = 1", correct: true },
+      { id: "a", text: "the integers $k$ with $1 \\leq k \\leq n$ and $\\gcd(k, n) = 1$", correct: true },
       {
         id: "b",
-        text: "the primes less than or equal to n",
+        text: "the primes less than or equal to $n$",
         correct: false,
         misconception: {
           id: "totient-as-prime-count",
@@ -2070,7 +2077,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "the divisors of n",
+        text: "the divisors of $n$",
         correct: false,
         misconception: {
           id: "totient-as-divisor-count",
@@ -2080,7 +2087,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "the distinct prime factors of n",
+        text: "the distinct prime factors of $n$",
         correct: false,
         misconception: {
           id: "totient-as-prime-factor-count",
@@ -2102,12 +2109,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Euler's theorem says that if gcd(a, n) = 1, then:",
+    stem: "Euler's theorem says that if $\\gcd(a, n) = 1$, then:",
     choices: [
-      { id: "a", text: "a^φ(n) ≡ 1 (mod n)", correct: true },
+      { id: "a", text: "$a^{\\varphi(n)} \\equiv 1 \\pmod{n}$", correct: true },
       {
         id: "b",
-        text: "aⁿ⁻¹ ≡ 1 (mod n)",
+        text: "$a^{n-1} \\equiv 1 \\pmod{n}$",
         correct: false,
         misconception: {
           id: "fermat-exponent-for-composite",
@@ -2117,7 +2124,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "a^φ(n) ≡ 0 (mod n)",
+        text: "$a^{\\varphi(n)} \\equiv 0 \\pmod{n}$",
         correct: false,
         misconception: {
           id: "euler-gives-zero",
@@ -2127,7 +2134,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "φ(a) ≡ 1 (mod n)",
+        text: "$\\varphi(a) \\equiv 1 \\pmod{n}$",
         correct: false,
         misconception: {
           id: "totient-of-base",
@@ -2151,13 +2158,13 @@ export const discreteMathModularItems: Item[] = [
     channels: ["typed"],
     stem: "Which statements about Euler's totient are true? Select all that apply.",
     choices: [
-      { id: "a", text: "φ(p) = p − 1 for a prime p", correct: true },
-      { id: "b", text: "φ(pᵏ) = pᵏ − pᵏ⁻¹ for a prime p and k ≥ 1", correct: true },
-      { id: "c", text: "φ(mn) = φ(m)φ(n) when gcd(m, n) = 1", correct: true },
-      { id: "d", text: "φ(n) is even for every n ≥ 3", correct: true },
+      { id: "a", text: "$\\varphi(p) = p - 1$ for a prime $p$", correct: true },
+      { id: "b", text: "$\\varphi(p^k) = p^k - p^{k-1}$ for a prime $p$ and $k \\geq 1$", correct: true },
+      { id: "c", text: "$\\varphi(mn) = \\varphi(m)\\varphi(n)$ when $\\gcd(m, n) = 1$", correct: true },
+      { id: "d", text: "$\\varphi(n)$ is even for every $n \\geq 3$", correct: true },
       {
         id: "e",
-        text: "φ(mn) = φ(m)φ(n) for all positive m, n",
+        text: "$\\varphi(mn) = \\varphi(m)\\varphi(n)$ for all positive $m, n$",
         correct: false,
         misconception: {
           id: "totient-fully-multiplicative",
@@ -2179,13 +2186,13 @@ export const discreteMathModularItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which statements are valid for every prime p (or every n, as indicated)? Select all that apply.",
+    stem: "Which statements are valid for every prime $p$ (or every $n$, as indicated)? Select all that apply.",
     choices: [
-      { id: "a", text: "aᵖ ≡ a (mod p) for every integer a", correct: true },
-      { id: "b", text: "a^φ(n) ≡ 1 (mod n) whenever gcd(a, n) = 1", correct: true },
+      { id: "a", text: "$a^p \\equiv a \\pmod{p}$ for every integer $a$", correct: true },
+      { id: "b", text: "$a^{\\varphi(n)} \\equiv 1 \\pmod{n}$ whenever $\\gcd(a, n) = 1$", correct: true },
       {
         id: "c",
-        text: "aᵖ⁻¹ ≡ 1 (mod p) for every integer a",
+        text: "$a^{p-1} \\equiv 1 \\pmod{p}$ for every integer $a$",
         correct: false,
         misconception: {
           id: "fermat-hypothesis-dropped",
@@ -2195,7 +2202,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "If 2ⁿ⁻¹ ≡ 1 (mod n), then n is prime",
+        text: "If $2^{n-1} \\equiv 1 \\pmod{n}$, then $n$ is prime",
         correct: false,
         misconception: {
           id: "fermat-converse",
@@ -2217,7 +2224,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Use Fermat's little theorem to compute 3¹⁰⁰ mod 7. Give a residue in {0, …, 6}.",
+    stem: "Use Fermat's little theorem to compute $3^{100} \\bmod 7$. Give a residue in $\\{0, \\ldots, 6\\}$.",
     answerKey: 4,
     tolerance: 0.001,
     difficulty: -0.4,
@@ -2233,7 +2240,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute φ(36). Give a whole number.",
+    stem: "Compute $\\varphi(36)$. Give a whole number.",
     answerKey: 12,
     tolerance: 0.001,
     difficulty: -0.5,
@@ -2249,7 +2256,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Use Euler's theorem to compute 7²²² mod 10. Give a single digit.",
+    stem: "Use Euler's theorem to compute $7^{222} \\bmod 10$. Give a single digit.",
     answerKey: 9,
     tolerance: 0.001,
     difficulty: 0.0,
@@ -2265,7 +2272,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute φ(100). Give a whole number.",
+    stem: "Compute $\\varphi(100)$. Give a whole number.",
     answerKey: 40,
     tolerance: 0.001,
     difficulty: -0.3,
@@ -2281,7 +2288,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Compute 2¹⁰⁰⁰ mod 13. Give a residue in {0, …, 12}.",
+    stem: "Compute $2^{1000} \\bmod 13$. Give a residue in $\\{0, \\ldots, 12\\}$.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: 0.2,
@@ -2298,8 +2305,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Prove Fermat's little theorem: if p is prime and p ∤ a, then aᵖ⁻¹ ≡ 1 (mod p). (Hint: compare the " +
-      "residues a, 2a, …, (p − 1)a with 1, 2, …, p − 1.)",
+      "Prove Fermat's little theorem: if $p$ is prime and $p \\nmid a$, then $a^{p-1} \\equiv 1 \\pmod{p}$. " +
+      "(Hint: compare the residues $a$, $2a$, $\\ldots$, $(p - 1)a$ with $1, 2, \\ldots, p - 1$.)",
     rubric: {
       elements: [
         {
@@ -2335,8 +2342,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "φ(4) = 2, yet 2² = 4 ≡ 0 (mod 4), not 1. Explain why this does not contradict Euler's theorem and why the " +
-      "coprimality hypothesis is essential.",
+      "$\\varphi(4) = 2$, yet $2^2 = 4 \\equiv 0 \\pmod{4}$, not $1$. Explain why this does not contradict " +
+      "Euler's theorem and why the coprimality hypothesis is essential.",
     rubric: {
       elements: [
         {
@@ -2407,8 +2414,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "To compute 7²²² mod 10 you reduce the exponent mod 4, not mod 10. Explain why the exponent is reduced " +
-      "modulo φ(n) rather than modulo n.",
+      "To compute $7^{222} \\bmod 10$ you reduce the exponent $\\bmod 4$, not $\\bmod 10$. Explain why the " +
+      "exponent is reduced modulo $\\varphi(n)$ rather than modulo $n$.",
     rubric: {
       elements: [
         {
@@ -2443,7 +2450,7 @@ export const discreteMathModularItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Derive φ(pᵏ) = pᵏ − pᵏ⁻¹ for a prime p and k ≥ 1.",
+    stem: "Derive $\\varphi(p^k) = p^k - p^{k-1}$ for a prime $p$ and $k \\geq 1$.",
     rubric: {
       elements: [
         {
@@ -2479,8 +2486,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "Fermat's little theorem gives a⁻¹ ≡ aᵖ⁻² (mod p). Use it to find the inverse of 3 mod 11 by computing " +
-      "3⁹ mod 11. Give a residue in {1, …, 10}.",
+      "Fermat's little theorem gives $a^{-1} \\equiv a^{p-2} \\pmod{p}$. Use it to find the inverse of $3 " +
+      "\\bmod 11$ by computing $3^9 \\bmod 11$. Give a residue in $\\{1, \\ldots, 10\\}$.",
     answerKey: 4,
     tolerance: 0.001,
     difficulty: 0.4,
@@ -2497,8 +2504,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "A primality test checks whether 2ⁿ⁻¹ ≡ 1 (mod n). For n = 341 the check passes (2³⁴⁰ ≡ 1 mod 341), but " +
-      "341 = 11 × 31. What does this show?",
+      "A primality test checks whether $2^{n-1} \\equiv 1 \\pmod{n}$. For $n = 341$ the check passes " +
+      "$(2^{340} \\equiv 1 \\bmod 341)$, but $341 = 11 \\times 31$. What does this show?",
     choices: [
       {
         id: "a",
@@ -2517,7 +2524,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "341 must actually be prime",
+        text: "$341$ must actually be prime",
         correct: false,
         misconception: {
           id: "fermat-converse",
@@ -2527,7 +2534,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "The computation must be wrong, since φ(341) ≠ 340",
+        text: "The computation must be wrong, since $\\varphi(341) \\neq 340$",
         correct: false,
         misconception: {
           id: "euler-exponent-only",
@@ -2550,8 +2557,9 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "Toy RSA: n = 33 = 3 × 11, so φ(n) = 20, and the public exponent is e = 3. The private exponent d is the " +
-      "inverse of e mod φ(n). What is d? Give a residue in {1, …, 19}.",
+      "Toy RSA: $n = 33 = 3 \\times 11$, so $\\varphi(n) = 20$, and the public exponent is $e = 3$. The " +
+      "private exponent $d$ is the inverse of $e \\bmod \\varphi(n)$. What is $d$? Give a residue in $\\{1, " +
+      "\\ldots, 19\\}$.",
     answerKey: 7,
     tolerance: 0.001,
     difficulty: 0.7,
@@ -2567,7 +2575,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "What are the last two digits of 3²⁰²⁶? Give the two-digit number (e.g. 07 → 7).",
+    stem: "What are the last two digits of $3^{2026}$? Give the two-digit number (e.g. $07 \\to 7$).",
     answerKey: 29,
     tolerance: 0.001,
     difficulty: 1.1,
@@ -2583,7 +2591,7 @@ export const discreteMathModularItems: Item[] = [
     format: "derivation",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "Prove that n⁵ − n is divisible by 30 for every integer n.",
+    stem: "Prove that $n^5 - n$ is divisible by $30$ for every integer $n$.",
     rubric: {
       elements: [
         {
@@ -2629,13 +2637,13 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "recall",
     channels: ["typed"],
     stem:
-      "The Chinese Remainder Theorem says that if m₁, …, mₖ are pairwise coprime, the system x ≡ aᵢ (mod mᵢ) " +
-      "(i = 1, …, k):",
+      "The Chinese Remainder Theorem says that if $m_1$, $\\ldots$, $m_k$ are pairwise coprime, the system " +
+      "$x \\equiv a_i \\pmod{m_i} (i = 1, \\ldots, k)$:",
     choices: [
-      { id: "a", text: "has a solution, unique modulo m₁m₂⋯mₖ", correct: true },
+      { id: "a", text: "has a solution, unique modulo $m_1m_2\\cdots m_k$", correct: true },
       {
         id: "b",
-        text: "has a solution, unique modulo m₁ + m₂ + ⋯ + mₖ",
+        text: "has a solution, unique modulo $m_1 + m_2 + \\cdots + m_k$",
         correct: false,
         misconception: {
           id: "crt-sum-modulus",
@@ -2655,7 +2663,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "has a solution only if every mᵢ is prime",
+        text: "has a solution only if every $m_i$ is prime",
         correct: false,
         misconception: {
           id: "crt-requires-primes",
@@ -2677,12 +2685,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The moduli 6, 10, 15 have gcd(6, 10, 15) = 1. Are they pairwise coprime?",
+    stem: "The moduli $6, 10, 15$ have $\\gcd(6, 10, 15) = 1$. Are they pairwise coprime?",
     choices: [
-      { id: "a", text: "No — every pair shares a factor (6 and 10 share 2, 6 and 15 share 3, 10 and 15 share 5)", correct: true },
+      { id: "a", text: "No — every pair shares a factor ($6$ and $10$ share $2$; $6$ and $15$ share $3$; $10$ and $15$ share $5$)", correct: true },
       {
         id: "b",
-        text: "Yes — their overall gcd is 1",
+        text: "Yes — their overall $\\gcd$ is $1$",
         correct: false,
         misconception: {
           id: "overall-gcd-for-pairwise",
@@ -2726,12 +2734,12 @@ export const discreteMathModularItems: Item[] = [
     channels: ["typed"],
     stem: "Which sets of moduli are pairwise coprime (so the CRT applies directly)? Select all that apply.",
     choices: [
-      { id: "a", text: "{3, 5, 7}", correct: true },
-      { id: "b", text: "{4, 9, 25}", correct: true },
-      { id: "c", text: "{8, 15, 49}", correct: true },
+      { id: "a", text: "$\\{3, 5, 7\\}$", correct: true },
+      { id: "b", text: "$\\{4, 9, 25\\}$", correct: true },
+      { id: "c", text: "$\\{8, 15, 49\\}$", correct: true },
       {
         id: "d",
-        text: "{12, 35, 22}",
+        text: "$\\{12, 35, 22\\}$",
         correct: false,
         misconception: {
           id: "one-pair-missed",
@@ -2741,7 +2749,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "e",
-        text: "{6, 10, 15}",
+        text: "$\\{6, 10, 15\\}$",
         correct: false,
         misconception: {
           id: "overall-gcd-for-pairwise",
@@ -2763,7 +2771,7 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "How many integers x in {0, 1, …, 104} satisfy x ≡ a (mod 3), x ≡ b (mod 5), x ≡ c (mod 7), for fixed a, b, c?",
+    stem: "How many integers $x$ in $\\{0, 1, \\ldots, 104\\}$ satisfy $x \\equiv a \\pmod{3}$, $x \\equiv b \\pmod{5}$, $x \\equiv c \\pmod{7}$, for fixed $a, b, c$?",
     choices: [
       { id: "a", text: "Exactly one", correct: true },
       {
@@ -2778,7 +2786,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "It depends on a, b, c; there may be none",
+        text: "It depends on $a, b, c$; there may be none",
         correct: false,
         misconception: {
           id: "coprime-system-may-fail",
@@ -2788,7 +2796,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "15 — one for each residue mod 3 · 5",
+        text: "$15$ — one for each residue $\\bmod 3 \\cdot 5$",
         correct: false,
         misconception: {
           id: "modulus-partially-multiplied",
@@ -2814,17 +2822,17 @@ export const discreteMathModularItems: Item[] = [
     choices: [
       {
         id: "a",
-        text: "For coprime m, n, each pair (r mod m, s mod n) corresponds to exactly one residue mod mn.",
+        text: "For coprime $m, n$, each pair $(r \\bmod m, s \\bmod n)$ corresponds to exactly one residue $\\bmod mn$.",
         correct: true,
       },
       {
         id: "b",
-        text: "x ≡ a (mod m), x ≡ b (mod n) with d = gcd(m, n) is solvable exactly when a ≡ b (mod d).",
+        text: "$x \\equiv a \\pmod{m}$, $x \\equiv b \\pmod{n}$ with $d = \\gcd(m, n)$ is solvable exactly when $a \\equiv b \\pmod{d}$.",
         correct: true,
       },
       {
         id: "c",
-        text: "If x ≡ a (mod m) and x ≡ a (mod n) with m, n coprime, then x ≡ a (mod mn).",
+        text: "If $x \\equiv a \\pmod{m}$ and $x \\equiv a \\pmod{n}$ with $m, n$ coprime, then $x \\equiv a \\pmod{mn}$.",
         correct: true,
       },
       {
@@ -2862,7 +2870,7 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "Find the smallest positive x with x ≡ 2 (mod 3), x ≡ 3 (mod 5), x ≡ 2 (mod 7). Give a whole number.",
+      "Find the smallest positive $x$ with $x \\equiv 2 \\pmod{3}$, $x \\equiv 3 \\pmod{5}$, $x \\equiv 2 \\pmod{7}$. Give a whole number.",
     answerKey: 23,
     tolerance: 0.001,
     difficulty: -0.2,
@@ -2878,7 +2886,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Solve x ≡ 1 (mod 4), x ≡ 2 (mod 9). Give the solution as a residue in {0, …, 35}.",
+    stem: "Solve $x \\equiv 1 \\pmod{4}$, $x \\equiv 2 \\pmod{9}$. Give the solution as a residue in $\\{0, \\ldots, 35\\}$.",
     answerKey: 29,
     tolerance: 0.001,
     difficulty: -0.4,
@@ -2894,7 +2902,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Solve x ≡ 1 (mod 2), x ≡ 1 (mod 3), x ≡ 4 (mod 5). Give the solution as a residue in {0, …, 29}.",
+    stem: "Solve $x \\equiv 1 \\pmod{2}$, $x \\equiv 1 \\pmod{3}$, $x \\equiv 4 \\pmod{5}$. Give the solution as a residue in $\\{0, \\ldots, 29\\}$.",
     answerKey: 19,
     tolerance: 0.001,
     difficulty: -0.3,
@@ -2910,7 +2918,7 @@ export const discreteMathModularItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Solve x ≡ 3 (mod 7), x ≡ 5 (mod 11). Give the solution as a residue in {0, …, 76}.",
+    stem: "Solve $x \\equiv 3 \\pmod{7}$, $x \\equiv 5 \\pmod{11}$. Give the solution as a residue in $\\{0, \\ldots, 76\\}$.",
     answerKey: 38,
     tolerance: 0.001,
     difficulty: 0.0,
@@ -2926,12 +2934,12 @@ export const discreteMathModularItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Solve the system x ≡ 3 (mod 6), x ≡ 5 (mod 8).",
+    stem: "Solve the system $x \\equiv 3 \\pmod{6}$, $x \\equiv 5 \\pmod{8}$.",
     choices: [
-      { id: "a", text: "x ≡ 21 (mod 24)", correct: true },
+      { id: "a", text: "$x \\equiv 21 \\pmod{24}$", correct: true },
       {
         id: "b",
-        text: "No solution, because 6 and 8 are not coprime",
+        text: "No solution, because $6$ and $8$ are not coprime",
         correct: false,
         misconception: {
           id: "non-coprime-never-solvable",
@@ -2941,7 +2949,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "x ≡ 21 (mod 48)",
+        text: "$x \\equiv 21 \\pmod{48}$",
         correct: false,
         misconception: {
           id: "product-instead-of-lcm",
@@ -2951,7 +2959,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "x ≡ 13 (mod 24)",
+        text: "$x \\equiv 13 \\pmod{24}$",
         correct: false,
         misconception: {
           id: "one-congruence-checked",
@@ -2974,8 +2982,9 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "For pairwise coprime m₁, …, mₖ with M = m₁⋯mₖ, set Mᵢ = M/mᵢ and let yᵢ be the inverse of Mᵢ mod mᵢ. " +
-      "Show that x = Σ aᵢMᵢyᵢ solves every congruence x ≡ aᵢ (mod mᵢ), and explain why each yᵢ exists.",
+      "For pairwise coprime $m_1$, $\\ldots$, $m_k$ with $M = m_1\\cdots m_k$, set $M_i = M/m_i$ and let " +
+      "$y_i$ be the inverse of $M_i \\bmod m_i$. Show that $x = \\sum a_iM_iy_i$ solves every congruence $x " +
+      "\\equiv a_i \\pmod{m_i}$, and explain why each $y_i$ exists.",
     rubric: {
       elements: [
         {
@@ -3016,7 +3025,7 @@ export const discreteMathModularItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why, with pairwise coprime moduli, any two solutions x and x' of a CRT system agree modulo the product M.",
+    stem: "Explain why, with pairwise coprime moduli, any two solutions $x$ and $x'$ of a CRT system agree modulo the product $M$.",
     rubric: {
       elements: [
         {
@@ -3051,7 +3060,7 @@ export const discreteMathModularItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why the system x ≡ 0 (mod 2), x ≡ 1 (mod 4) has no solution, and what general check it fails.",
+    stem: "Explain why the system $x \\equiv 0 \\pmod{2}$, $x \\equiv 1 \\pmod{4}$ has no solution, and what general check it fails.",
     rubric: {
       elements: [
         {
@@ -3087,8 +3096,9 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "For coprime m and n, consider sending each x ∈ {0, …, mn − 1} to the pair (x mod m, x mod n). Explain why " +
-      "no two x give the same pair, and why that alone proves every pair is hit — i.e. existence in the CRT.",
+      "For coprime $m$ and $n$, consider sending each $x \\in \\{0, \\ldots, mn - 1\\}$ to the pair $(x \\bmod " +
+      "m, x \\bmod n)$. Explain why no two $x$ give the same pair, and why that alone proves every pair is " +
+      "hit — i.e. existence in the CRT.",
     rubric: {
       elements: [
         {
@@ -3124,8 +3134,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Solve x ≡ 2 (mod 3), x ≡ 3 (mod 5) by substitution: write x = 3k + 2, substitute into the second " +
-      "congruence, and solve for k. Show every step and give x mod 15.",
+      "Solve $x \\equiv 2 \\pmod{3}$, $x \\equiv 3 \\pmod{5}$ by substitution: write $x = 3k + 2$, substitute " +
+      "into the second congruence, and solve for $k$. Show every step and give $x \\bmod 15$.",
     rubric: {
       elements: [
         {
@@ -3167,8 +3177,9 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "A basket of eggs leaves 1 egg over when the eggs are removed 2, 3, 4, 5, or 6 at a time, but none over " +
-      "when removed 7 at a time. What is the smallest possible number of eggs? Give a whole number.",
+      "A basket of eggs leaves $1$ egg over when the eggs are removed $2, 3, 4, 5$, or $6$ at a time, but " +
+      "none over when removed $7$ at a time. What is the smallest possible number of eggs? Give a whole " +
+      "number.",
     answerKey: 301,
     tolerance: 0.001,
     difficulty: 0.8,
@@ -3185,8 +3196,8 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "How many x in {0, 1, …, 14} satisfy x² ≡ 1 (mod 15)? (Hint: solve mod 3 and mod 5 separately, then " +
-      "combine.) Give a whole number.",
+      "How many $x$ in $\\{0, 1, \\ldots, 14\\}$ satisfy $x^2 \\equiv 1 \\pmod{15}$? (Hint: solve $\\bmod 3$ and " +
+      "$\\bmod 5$ separately, then combine.) Give a whole number.",
     answerKey: 4,
     tolerance: 0.001,
     difficulty: 1.0,
@@ -3203,13 +3214,13 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "Bus A leaves at minute 5 and then every 12 minutes; bus B leaves at minute 11 and then every 18 minutes. " +
-      "Do they ever leave at the same minute?",
+      "Bus $A$ leaves at minute $5$ and then every $12$ minutes; bus $B$ leaves at minute $11$ and then " +
+      "every $18$ minutes. Do they ever leave at the same minute?",
     choices: [
-      { id: "a", text: "Yes — first at minute 29, then every 36 minutes", correct: true },
+      { id: "a", text: "Yes — first at minute $29$, then every $36$ minutes", correct: true },
       {
         id: "b",
-        text: "No — 12 and 18 are not coprime",
+        text: "No — $12$ and $18$ are not coprime",
         correct: false,
         misconception: {
           id: "non-coprime-never-solvable",
@@ -3219,7 +3230,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "c",
-        text: "Yes — first at minute 29, then every 216 minutes",
+        text: "Yes — first at minute $29$, then every $216$ minutes",
         correct: false,
         misconception: {
           id: "product-instead-of-lcm",
@@ -3229,7 +3240,7 @@ export const discreteMathModularItems: Item[] = [
       },
       {
         id: "d",
-        text: "Yes — first at minute 41",
+        text: "Yes — first at minute $41$",
         correct: false,
         misconception: {
           id: "one-schedule-checked",
@@ -3252,9 +3263,9 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Some hardware stores a number x < 105 only as the triple (x mod 3, x mod 5, x mod 7) and multiplies two " +
-      "numbers by multiplying the triples component-wise. Explain why this correctly represents the product mod " +
-      "105, and what role the CRT plays.",
+      "Some hardware stores a number $x < 105$ only as the triple $(x \\bmod 3, x \\bmod 5, x \\bmod 7)$ and " +
+      "multiplies two numbers by multiplying the triples component-wise. Explain why this correctly " +
+      "represents the product $\\bmod 105$, and what role the CRT plays.",
     rubric: {
       elements: [
         {
@@ -3290,8 +3301,9 @@ export const discreteMathModularItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "x is invertible mod 105 exactly when it is invertible mod 3, mod 5, and mod 7. Using the CRT, count how " +
-      "many residues in {0, …, 104} are invertible mod 105. Give a whole number.",
+      "$x$ is invertible $\\bmod 105$ exactly when it is invertible $\\bmod 3$, $\\bmod 5$, and $\\bmod 7$. " +
+      "Using the CRT, count how many residues in $\\{0, \\ldots, 104\\}$ are invertible $\\bmod 105$. Give a " +
+      "whole number.",
     answerKey: 48,
     tolerance: 0.001,
     difficulty: 1.2,

@@ -41,6 +41,9 @@ import { discreteMathModularItems } from "./items/discrete-math-modular";
 import { stochasticProcessesBuffupItems } from "./items/stochastic-processes-buffup";
 import { stochasticProcessesRandomWalkBrownianItems } from "./items/stochastic-processes-random-walk-brownian";
 import { computationalStatisticsItems } from "./items/computational-statistics";
+import { monteCarloIntegrationItems } from "./items/monte-carlo-integration";
+import { gaussianStructureLearningItems } from "./items/gaussian-structure-learning";
+import { multipleTestingErrorRateItems } from "./items/multiple-testing-error-rates";
 import { robustRegressionItems } from "./items/robust-regression";
 import { linearModelsEstimationItems } from "./items/linear-models-estimation";
 import { linearModelsInferenceItems } from "./items/linear-models-inference";
@@ -60,6 +63,7 @@ import { stochasticCalculusItoItems } from "./items/stochastic-calculus-ito";
 import { stochasticCalculusSdesItems } from "./items/stochastic-calculus-sdes";
 import { stochasticCalculusPricingItems } from "./items/stochastic-calculus-pricing";
 import { pythonFunctionsChapterItems } from "./items/python-functions-chapter";
+import { pythonFunctionsChapterExpansionItems } from "./items/python-functions-chapter-expansion";
 import { pythonCodeFunctionsItems } from "./items/python-code-functions";
 import { pandasChapterItems } from "./items/python-pandas";
 import { pandasChapterCodeItems } from "./items/python-code-pandas";
@@ -5174,6 +5178,9 @@ export const items: Item[] = [
   // -------------------------------------------------------------------------
   ...graphicalModelsItems,
   ...computationalStatisticsItems,
+  ...monteCarloIntegrationItems,
+  ...gaussianStructureLearningItems,
+  ...multipleTestingErrorRateItems,
   ...functionalDataAnalysisItems,
 
   // -------------------------------------------------------------------------
@@ -5254,6 +5261,7 @@ export const items: Item[] = [
   ...discreteMathModularItems,
   // Functions chapter beyond def/return — arguments through sorting keys.
   ...pythonFunctionsChapterItems,
+  ...pythonFunctionsChapterExpansionItems,
 
   // `code` items for the Functions chapter, 3 per concept.
   ...pythonCodeFunctionsItems,
