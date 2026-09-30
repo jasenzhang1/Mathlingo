@@ -99,6 +99,34 @@ import { dlFortyCItems } from "./dl-forty-c";
 import { dlFortyDItems } from "./dl-forty-d";
 import { gmFortyAItems } from "./gm-forty-a";
 import { gmFortyBItems } from "./gm-forty-b";
+import { gmFortyCItems } from "./gm-forty-c";
+import { gmFortyDItems } from "./gm-forty-d";
+import { stFortyAItems } from "./st-forty-a";
+import { bayesFoundationsItems } from "./bayes-foundations";
+import { bayesModelsItems } from "./bayes-models";
+import { mlFocusedAItems } from "./ml-focused-a";
+import { mlFocusedBItems } from "./ml-focused-b";
+import { spChainsItems } from "./sp-chains";
+import { spStoppingItems } from "./sp-stopping";
+import { spRenewalItems } from "./sp-renewal";
+import { stFortyBItems } from "./st-forty-b";
+import { stFortyCItems } from "./st-forty-c";
+import { stFortyDItems } from "./st-forty-d";
+import { prFortyAItems } from "./pr-forty-a";
+import { prFortyBItems } from "./pr-forty-b";
+import { prFortyCItems } from "./pr-forty-c";
+import { prFortyDItems } from "./pr-forty-d";
+import { prFortyEItems } from "./pr-forty-e";
+import { laFortyAItems } from "./la-forty-a";
+import { laFortyBItems } from "./la-forty-b";
+import { laFortyCItems } from "./la-forty-c";
+import { laFortyDItems } from "./la-forty-d";
+import { laFortyEItems } from "./la-forty-e";
+import { rgFortyAItems } from "./rg-forty-a";
+import { rgFortyBItems } from "./rg-forty-b";
+import { rgFortyCItems } from "./rg-forty-c";
+import { rgFortyDItems } from "./rg-forty-d";
+import { rgFortyEItems } from "./rg-forty-e";
 
 /** Every expansion module, in curriculum order. */
 export const expansionItems: Item[] = [
@@ -202,4 +230,32 @@ export const expansionItems: Item[] = [
   ...dlFortyDItems,
   ...gmFortyAItems,
   ...gmFortyBItems,
+  ...gmFortyCItems,
+  ...gmFortyDItems,
+  ...stFortyAItems,
+  ...bayesFoundationsItems,
+  ...bayesModelsItems,
+  ...mlFocusedAItems,
+  ...mlFocusedBItems,
+  ...spChainsItems,
+  ...spStoppingItems,
+  ...spRenewalItems,
+  ...stFortyBItems,
+  ...stFortyCItems,
+  ...stFortyDItems,
+  ...prFortyAItems,
+  ...prFortyBItems,
+  ...prFortyCItems,
+  ...prFortyDItems,
+  ...prFortyEItems,
+  ...laFortyAItems,
+  ...laFortyBItems,
+  ...laFortyCItems,
+  ...laFortyDItems,
+  ...laFortyEItems,
+  ...rgFortyAItems,
+  ...rgFortyBItems,
+  ...rgFortyCItems,
+  ...rgFortyDItems,
+  ...rgFortyEItems,
 ];

@@ -6,6 +6,7 @@ export type Domain =
   | "information-theory"
   | "statistics"
   | "regression"
+  | "bayesian-statistics"
   | "machine-learning"
   | "deep-learning"
   | "graphical-models"
@@ -31,9 +32,10 @@ export const domainMeta: Record<Domain, DomainMeta> = {
   "information-theory": { label: "Information Theory", color: "#65a30d" },
   statistics: { label: "Statistical Inference", color: "#e0a72f" },
   regression: { label: "Linear Models", color: "#2f6fed" },
+  "bayesian-statistics": { label: "Bayesian Statistics", color: "#0d9488" },
   "machine-learning": { label: "Machine Learning", color: "#16a34a" },
   "deep-learning": { label: "Deep Learning", color: "#ec4899" },
-  "graphical-models": { label: "Graphical Models & Bayesian ML", color: "#a855f7" },
+  "graphical-models": { label: "Graphical Models & Computation", color: "#a855f7" },
   "stochastic-processes": { label: "Stochastic Processes", color: "#c2410c" },
   "stochastic-calculus": { label: "Stochastic Calculus", color: "#0891b2" },
   "financial-instruments": { label: "Financial Instruments", color: "#7c3aed" },
@@ -1992,7 +1994,7 @@ export const concepts: Concept[] = [
   {
     id: "bayesian-linear-regression",
     title: "Bayesian Linear Regression",
-    domain: "regression",
+    domain: "bayesian-statistics",
     blurb: "Normal–inverse-gamma priors, the posterior for β as a precision-weighted compromise, and the ridge estimator hiding inside it. (§3.12)",
     prerequisites: ["linear-regression-probabilistic-version", "conjugate-priors", "multivariate-normal"],
   },
@@ -2334,9 +2336,9 @@ export const concepts: Concept[] = [
   {
     id: "bayesian-model-averaging",
     title: "Bayesian Prediction & Model Averaging",
-    domain: "regression",
+    domain: "bayesian-statistics",
     blurb: "Predictive densities, posterior model probabilities, and averaging predictions over models instead of betting on one. (§12.3.4, §12.6)",
-    prerequisites: ["bayesian-linear-regression", "aic-bic"],
+    prerequisites: ["bayesian-linear-regression", "aic-bic", "bayes-factors"],
   },
   {
     id: "post-selection-inference",
@@ -2859,14 +2861,14 @@ export const concepts: Concept[] = [
   {
     id: "gp-regression",
     title: "GP Regression",
-    domain: "machine-learning",
+    domain: "bayesian-statistics",
     blurb: "Regression that returns a full distribution over functions, not just a point estimate.",
     prerequisites: ["multivariate-normal", "kernel"],
   },
   {
     id: "gp-classification",
     title: "GP Classification",
-    domain: "machine-learning",
+    domain: "bayesian-statistics",
     blurb: "Squashing a Gaussian process through a logistic link for classification.",
     prerequisites: ["gp-regression", "logistic-regression"],
   },
@@ -3407,7 +3409,7 @@ export const concepts: Concept[] = [
   {
     id: "bayesian-optimization",
     title: "Bayesian Optimization",
-    domain: "machine-learning",
+    domain: "bayesian-statistics",
     blurb:
       "Tuning something expensive by modelling the score surface and its uncertainty.",
     prerequisites: ["gp-regression", "hyperparameters"],
@@ -3435,6 +3437,100 @@ export const concepts: Concept[] = [
     blurb:
       "DBSCAN: clusters as connected dense regions, with noise as a first-class outcome.",
     prerequisites: ["clustering-methods", "k-means-clustering"],
+  },
+  // Focused lessons split out of broad ones (loss functions, kNN/clustering,
+  // hyperparameters, interpretability, anomaly detection, reinforcement
+  // learning) so each idea gets its own page, practice and assessment.
+  {
+    id: "regression-losses",
+    title: "Regression Losses: MSE, MAE & Huber",
+    domain: "machine-learning",
+    blurb: "Squared, absolute, Huber and quantile losses — what each one's minimiser is, and how it treats outliers.",
+    prerequisites: ["loss-functions"],
+  },
+  {
+    id: "hinge-loss",
+    title: "Hinge Loss",
+    domain: "machine-learning",
+    blurb: "The margin-based loss behind SVMs: zero for confident correct answers, linear penalty otherwise.",
+    prerequisites: ["loss-functions", "cross-entropy-loss"],
+  },
+  {
+    id: "distance-metrics",
+    title: "Distance Metrics",
+    domain: "machine-learning",
+    blurb: "Euclidean, Manhattan, Minkowski, Mahalanobis and Hamming distances — the metric decides what “near” means.",
+    prerequisites: ["vector-norm", "covariance-matrix"],
+  },
+  {
+    id: "cosine-similarity",
+    title: "Cosine Similarity",
+    domain: "machine-learning",
+    blurb: "Comparing directions rather than lengths: the angle-based similarity behind text retrieval and embeddings.",
+    prerequisites: ["dot-product", "vector-angles"],
+  },
+  {
+    id: "hyperparameter-search",
+    title: "Hyperparameter Search",
+    domain: "machine-learning",
+    blurb: "Grid, random and successive-halving search — spending a tuning budget where it matters.",
+    prerequisites: ["hyperparameters", "k-fold-cross-validation"],
+  },
+  {
+    id: "permutation-importance",
+    title: "Permutation Importance",
+    domain: "machine-learning",
+    blurb: "How much worse does the model get when one feature is scrambled? A model-agnostic importance score and its pitfalls.",
+    prerequisites: ["model-interpretability"],
+  },
+  {
+    id: "partial-dependence",
+    title: "Partial Dependence & ICE Plots",
+    domain: "machine-learning",
+    blurb: "Averaging predictions over the data while one feature varies — and the individual curves that averaging hides.",
+    prerequisites: ["model-interpretability"],
+  },
+  {
+    id: "shapley-values",
+    title: "Shapley Values & SHAP",
+    domain: "machine-learning",
+    blurb: "Fairly dividing a prediction among features with cooperative game theory, and the approximations that make it tractable.",
+    prerequisites: ["model-interpretability"],
+  },
+  {
+    id: "isolation-forest",
+    title: "Isolation Forest",
+    domain: "machine-learning",
+    blurb: "Anomalies are easy to isolate: scoring points by how few random splits it takes to separate them.",
+    prerequisites: ["anomaly-detection", "decision-tree"],
+  },
+  {
+    id: "markov-decision-processes",
+    title: "Markov Decision Processes",
+    domain: "machine-learning",
+    blurb: "States, actions, transitions, rewards and discounting — the formal problem reinforcement learning solves.",
+    prerequisites: ["reinforcement-learning", "markov-chains"],
+  },
+  {
+    id: "bellman-equations",
+    title: "Value Functions & Bellman Equations",
+    domain: "machine-learning",
+    blurb: "Value and action-value functions, the Bellman equations, and solving them by value and policy iteration.",
+    prerequisites: ["markov-decision-processes"],
+  },
+  {
+    id: "q-learning",
+    title: "Q-Learning & Temporal Difference Learning",
+    domain: "machine-learning",
+    blurb: "Learning action values from experience without a model: TD updates, SARSA vs Q-learning, and ε-greedy exploration.",
+    prerequisites: ["bellman-equations"],
+  },
+  {
+    id: "policy-gradients",
+    title: "Policy Gradient Methods",
+    domain: "machine-learning",
+    blurb: "Optimising a parameterised policy directly: REINFORCE, baselines, and actor–critic methods.",
+    prerequisites: ["bellman-equations", "gradient-descent"],
   },
 
   // ---------------------------------------------------------------------
@@ -3636,23 +3732,112 @@ export const concepts: Concept[] = [
   {
     id: "variational-inference-elbo",
     title: "Variational Inference: ELBO",
-    domain: "graphical-models",
+    domain: "bayesian-statistics",
     blurb: "Approximating an intractable posterior by maximizing a tractable lower bound.",
     prerequisites: ["mixture-models-and-latent-variables", "kl-divergence"],
   },
   {
     id: "laplace-approximation",
     title: "Laplace Approximation",
-    domain: "graphical-models",
+    domain: "bayesian-statistics",
     blurb: "Approximating a posterior with a Gaussian centered at its mode.",
     prerequisites: ["mle", "multivariate-normal"],
+  },
+  // Bayesian Statistics — foundations. The chapter's computational and
+  // nonparametric lessons moved here from Graphical Models, Linear Models and
+  // Machine Learning; these six are the inferential core they build on.
+  {
+    id: "bayesian-inference",
+    title: "Bayesian Inference: Prior to Posterior",
+    domain: "bayesian-statistics",
+    blurb: "Parameters as random quantities: prior × likelihood ∝ posterior, and what the posterior lets you say that a p-value cannot.",
+    prerequisites: ["bayes-rule", "mle"],
+  },
+  {
+    id: "prior-selection",
+    title: "Choosing Priors",
+    domain: "bayesian-statistics",
+    blurb: "Informative, weakly informative and “non-informative” priors — Jeffreys, reference priors, and checking what a prior actually implies.",
+    prerequisites: ["bayesian-inference"],
   },
   {
     id: "conjugate-priors",
     title: "Conjugate Priors",
-    domain: "graphical-models",
+    domain: "bayesian-statistics",
     blurb: "Priors chosen so the posterior stays in the same family, turning Bayesian updating into closed-form arithmetic on the parameters.",
-    prerequisites: ["bayes-rule", "mle"],
+    prerequisites: ["bayesian-inference"],
+  },
+  {
+    id: "credible-intervals",
+    title: "Credible Intervals & Posterior Summaries",
+    domain: "bayesian-statistics",
+    blurb: "Posterior means, medians and MAP estimates, equal-tailed and highest-density intervals — and how they differ from confidence intervals.",
+    prerequisites: ["bayesian-inference", "confidence-interval"],
+  },
+  {
+    id: "posterior-predictive-checks",
+    title: "Posterior Predictive Checks",
+    domain: "bayesian-statistics",
+    blurb: "Using replicated datasets simulated from the posterior predictive to see where a model fails.",
+    prerequisites: ["posterior-predictive-distribution"],
+  },
+  {
+    id: "hierarchical-bayesian-models",
+    title: "Hierarchical Models & Partial Pooling",
+    domain: "bayesian-statistics",
+    blurb: "Priors with their own priors: borrowing strength across groups, shrinkage towards the group mean, and exchangeability.",
+    prerequisites: ["conjugate-priors", "credible-intervals"],
+  },
+  {
+    id: "bayes-factors",
+    title: "Bayes Factors & Model Comparison",
+    domain: "bayesian-statistics",
+    blurb: "Comparing models by marginal likelihood — the automatic Occam's razor, Lindley's paradox, and predictive alternatives like LOO and WAIC.",
+    prerequisites: ["bayesian-inference", "hypothesis-test"],
+  },
+  // The conjugate families worked one at a time, prediction intervals, and the
+  // applied lessons (empirical Bayes, A/B testing, MCMC diagnostics).
+  {
+    id: "beta-binomial-model",
+    title: "The Beta–Binomial Model",
+    domain: "bayesian-statistics",
+    blurb: "A Beta prior on a success probability: pseudo-counts, the posterior as a weighted average of prior mean and sample proportion, and the beta-binomial predictive.",
+    prerequisites: ["conjugate-priors", "beta-distribution"],
+  },
+  {
+    id: "gamma-poisson-model",
+    title: "The Gamma–Poisson Model",
+    domain: "bayesian-statistics",
+    blurb: "A Gamma prior on a rate: updating by total count and total exposure, and the negative-binomial predictive that captures overdispersion.",
+    prerequisites: ["conjugate-priors", "gamma-distribution"],
+  },
+  {
+    id: "normal-normal-model",
+    title: "The Normal–Normal Model",
+    domain: "bayesian-statistics",
+    blurb: "A normal prior on a normal mean: precisions add, the posterior mean is a precision-weighted average, and what changes when the variance is unknown too.",
+    prerequisites: ["conjugate-priors", "normal-distribution"],
+  },
+  {
+    id: "posterior-predictive-distribution",
+    title: "Posterior Predictive Distribution & Prediction Intervals",
+    domain: "bayesian-statistics",
+    blurb: "Forecasting the next observation by integrating over the posterior, and Bayesian prediction intervals that carry both parameter uncertainty and observation noise.",
+    prerequisites: ["credible-intervals", "normal-normal-model"],
+  },
+  {
+    id: "empirical-bayes",
+    title: "Empirical Bayes & James–Stein Shrinkage",
+    domain: "bayesian-statistics",
+    blurb: "Estimating the prior from the data themselves: marginal-likelihood hyperparameters, shrinkage of many noisy estimates, and the James–Stein estimator.",
+    prerequisites: ["hierarchical-bayesian-models", "normal-normal-model"],
+  },
+  {
+    id: "bayesian-ab-testing",
+    title: "Bayesian A/B Testing",
+    domain: "bayesian-statistics",
+    blurb: "Comparing two conversion rates with Beta posteriors: the probability B beats A, expected loss, and why peeking is less fraught than with p-values.",
+    prerequisites: ["beta-binomial-model", "posterior-predictive-distribution"],
   },
   {
     id: "quadrature-rules",
@@ -3699,42 +3884,49 @@ export const concepts: Concept[] = [
   {
     id: "markov-chain-monte-carlo",
     title: "Markov Chain Monte Carlo (MCMC)",
-    domain: "graphical-models",
+    domain: "bayesian-statistics",
     blurb: "Building a Markov chain whose stationary distribution is the posterior you want, then sampling it by just running the chain.",
     prerequisites: ["markov-chains", "importance-sampling"],
   },
   {
     id: "gibbs-sampling",
     title: "Gibbs Sampling",
-    domain: "graphical-models",
+    domain: "bayesian-statistics",
     blurb: "The Metropolis-Hastings special case that always accepts: cycle through each variable and resample it from its full conditional.",
     prerequisites: ["markov-chain-monte-carlo", "conditional-probability"],
   },
   {
     id: "hamiltonian-monte-carlo",
     title: "Hamiltonian Monte Carlo",
-    domain: "graphical-models",
+    domain: "bayesian-statistics",
     blurb: "Proposals that follow the posterior's gradient: auxiliary momentum, leapfrog steps, and a Metropolis correction — plus NUTS.",
     prerequisites: ["markov-chain-monte-carlo", "gradient-descent"],
   },
   {
+    id: "mcmc-diagnostics",
+    title: "MCMC Diagnostics",
+    domain: "bayesian-statistics",
+    blurb: "Is the chain done? Trace plots, warm-up, split-R̂, autocorrelation and effective sample size, Monte Carlo standard error, and divergences.",
+    prerequisites: ["markov-chain-monte-carlo", "acf"],
+  },
+  {
     id: "reversible-jump-mcmc",
     title: "Reversible Jump MCMC",
-    domain: "graphical-models",
+    domain: "bayesian-statistics",
     blurb: "MCMC across models of different dimension: dimension-matching moves and the Jacobian in the acceptance ratio.",
     prerequisites: ["markov-chain-monte-carlo", "change-of-variables-jacobian", "bayesian-model-averaging"],
   },
   {
     id: "dirichlet-process",
     title: "Dirichlet Process",
-    domain: "graphical-models",
+    domain: "bayesian-statistics",
     blurb: "A distribution over distributions: the nonparametric-Bayes prior that lets a mixture model discover its own number of clusters from the data.",
     prerequisites: ["conjugate-priors", "gibbs-sampling"],
   },
   {
     id: "stick-breaking-construction",
     title: "Stick-Breaking Construction",
-    domain: "graphical-models",
+    domain: "bayesian-statistics",
     blurb: "Building a Dirichlet process draw by hand: repeatedly break off a random fraction of what's left of a unit-length stick to get infinitely many cluster weights that sum to one.",
     prerequisites: ["dirichlet-process"],
   },
@@ -3748,7 +3940,7 @@ export const concepts: Concept[] = [
   {
     id: "gaussian-process",
     title: "Gaussian Process",
-    domain: "graphical-models",
+    domain: "bayesian-statistics",
     blurb: "A distribution over functions, defined by a mean and a kernel.",
     prerequisites: ["multivariate-normal", "kernel"],
   },
@@ -3918,6 +4110,128 @@ export const concepts: Concept[] = [
     blurb:
       "Writing a random process as an infinite sum of fixed orthogonal functions times uncorrelated random coefficients — Mercer's theorem applied to a covariance function, and the reason Brownian motion has a closed-form series representation at all.",
     prerequisites: ["functional-data-analysis", "mercers-theorem", "brownian-motion"],
+  },
+  // Discrete-time Markov chain theory, random walks and stopping, renewal
+  // theory, birth–death chains and Ogata's thinning. `markov-chains` itself
+  // lives in graphical-models; these lessons develop its theory.
+  {
+    id: "chapman-kolmogorov",
+    title: "Chapman–Kolmogorov Equations",
+    domain: "stochastic-processes",
+    blurb: "n-step transition probabilities as matrix powers: to go from i to j in m + n steps, pass through some state at time m.",
+    prerequisites: ["markov-chains", "matrix-multiplication"],
+  },
+  {
+    id: "state-classification",
+    title: "Classification of States",
+    domain: "stochastic-processes",
+    blurb: "Accessibility, communicating classes, irreducibility, and the recurrent/transient split — which states a chain keeps coming back to.",
+    prerequisites: ["chapman-kolmogorov"],
+  },
+  {
+    id: "periodicity",
+    title: "Periodicity",
+    domain: "stochastic-processes",
+    blurb: "The gcd of possible return times. Why a periodic chain oscillates instead of converging, and how a self-loop (laziness) fixes it.",
+    prerequisites: ["state-classification"],
+  },
+  {
+    id: "absorbing-markov-chains",
+    title: "Absorbing States",
+    domain: "stochastic-processes",
+    blurb: "States a chain never leaves: canonical form, the fundamental matrix N = (I − Q)⁻¹, expected steps to absorption and absorption probabilities.",
+    prerequisites: ["state-classification"],
+  },
+  {
+    id: "first-passage-hitting-times",
+    title: "First Passage & Hitting Times",
+    domain: "stochastic-processes",
+    blurb: "Hitting probabilities and expected hitting times from first-step analysis, and mean return times 1/π.",
+    prerequisites: ["absorbing-markov-chains", "law-of-total-expectation"],
+  },
+  {
+    id: "ergodicity",
+    title: "Ergodicity & Convergence",
+    domain: "stochastic-processes",
+    blurb: "Irreducible, aperiodic, positive-recurrent chains forget their start: Pⁿ converges to the stationary distribution and time averages equal space averages.",
+    prerequisites: ["periodicity", "first-passage-hitting-times"],
+  },
+  {
+    id: "detailed-balance-reversibility",
+    title: "Detailed Balance & Reversibility",
+    domain: "stochastic-processes",
+    blurb: "πᵢPᵢⱼ = πⱼPⱼᵢ: the local balance condition that makes a chain look the same run backwards — and the easy way to find stationary distributions.",
+    prerequisites: ["ergodicity"],
+  },
+  {
+    id: "stopping-times-strong-markov",
+    title: "Filtrations, Stopping Times & the Strong Markov Property",
+    domain: "stochastic-processes",
+    blurb: "Information revealed over time, random times decided without peeking ahead, and why a Markov chain restarts afresh at such times.",
+    prerequisites: ["markov-chains", "simple-random-walk"],
+  },
+  {
+    id: "gamblers-ruin",
+    title: "Gambler's Ruin",
+    domain: "stochastic-processes",
+    blurb: "A random walk absorbed at 0 and N: ruin probabilities, expected duration k(N − k), and what a small edge does over many bets.",
+    prerequisites: ["simple-random-walk", "first-passage-hitting-times"],
+  },
+  {
+    id: "ballot-theorem",
+    title: "Ballot Theorem & Reflection Principle",
+    domain: "stochastic-processes",
+    blurb: "If A gets a votes and B gets b < a, A leads throughout with probability (a − b)/(a + b) — proved by reflecting paths.",
+    prerequisites: ["simple-random-walk", "counting-methods"],
+  },
+  {
+    id: "optional-stopping-theorem",
+    title: "Martingales & Doob's Optional Stopping",
+    domain: "stochastic-processes",
+    blurb: "Discrete-time martingales, and when a fair game stopped at a random time is still fair: E[M_τ] = E[M₀] under boundedness conditions.",
+    prerequisites: ["stopping-times-strong-markov", "law-of-total-expectation"],
+  },
+  {
+    id: "optimal-stopping",
+    title: "Optimal Stopping",
+    domain: "stochastic-processes",
+    blurb: "When to stop to maximise expected reward: backward induction, the Snell envelope, and the secretary problem's 1/e rule.",
+    prerequisites: ["optional-stopping-theorem"],
+  },
+  {
+    id: "counting-processes",
+    title: "Counting Processes",
+    domain: "stochastic-processes",
+    blurb: "N(t) counts events up to time t: non-decreasing, integer-valued, right-continuous — and the properties (independent, stationary increments) that single out the Poisson process.",
+    prerequisites: ["poisson-process"],
+  },
+  {
+    id: "interarrival-times",
+    title: "Interarrival Times",
+    domain: "stochastic-processes",
+    blurb: "The gaps between events. Exponential gaps give a Poisson process; arrival times are Gamma; memorylessness and the waiting-time paradox.",
+    prerequisites: ["counting-processes", "exponential-distribution"],
+  },
+  {
+    id: "renewal-processes",
+    title: "Renewal Processes",
+    domain: "stochastic-processes",
+    blurb: "Counting processes with i.i.d. general interarrival times: the elementary renewal theorem N(t)/t → 1/μ, renewal–reward, and the inspection paradox.",
+    prerequisites: ["interarrival-times", "law-of-total-expectation"],
+  },
+  {
+    id: "birth-death-processes",
+    title: "Birth–Death Processes",
+    domain: "stochastic-processes",
+    blurb: "Continuous-time chains that move one step up or down: balance equations, stationary distributions, and the M/M/1 queue.",
+    prerequisites: ["continuous-time-markov-chains", "detailed-balance-reversibility"],
+  },
+  {
+    id: "ogata-thinning",
+    title: "Ogata's Thinning Algorithm",
+    domain: "stochastic-processes",
+    blurb: "Simulating a point process from its conditional intensity: propose from a dominating rate, accept with probability λ(t)/λ*.",
+    prerequisites: ["hawkes-process", "nonhomogeneous-poisson-process"],
   },
 
   // ---------------------------------------------------------------------

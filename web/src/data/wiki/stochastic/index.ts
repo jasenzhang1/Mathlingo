@@ -26,6 +26,8 @@ import { girsanovTheoremWiki } from "./girsanov-theorem";
 import { riskNeutralPricingWiki } from "./risk-neutral-pricing";
 import { martingaleRepresentationTheoremWiki } from "./martingale-representation-theorem";
 import { feynmanKacTheoremWiki } from "./feynman-kac-theorem";
+import { markovChainTheoryWikis } from "./markov-chain-theory";
+import { stoppingAndRenewalWikis } from "./stopping-and-renewal";
 import type { WikiArticle } from "../types";
 
 /**
@@ -58,6 +60,8 @@ export const stochasticWikiArticles: WikiArticle[] = [
   continuousTimeMarkovChainsWiki,
   kalmanFilterWiki,
   karhunenLoeveExpansionWiki,
+  ...markovChainTheoryWikis,
+  ...stoppingAndRenewalWikis,
   filtrationsAndAdaptedProcessesWiki,
   martingalesContinuousTimeWiki,
   quadraticVariationWiki,
