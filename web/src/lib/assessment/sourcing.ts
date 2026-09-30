@@ -1,5 +1,5 @@
 import { conceptById } from "../../data/concepts";
-import { ancestorCountOf, prereqsOf } from "../prerequisiteGraph";
+import { prereqsOf } from "../prerequisiteGraph";
 import type { Item, SourceTier } from "./types";
 
 /**
@@ -96,23 +96,26 @@ export function checkPrereqClosure(item: Item): CheckResult {
 }
 
 /**
- * Difficulty sanity: an item's seeded difficulty should bear some relation to
- * where the concept sits in the graph. A concept with fifty ancestors is not
- * usually home to a −3 logit item, and when it looks like one it is normally a
- * mis-tag rather than a genuinely gentle question about a deep topic.
+ * Difficulty sanity: the seeded difficulty must land on the 1–10 level scale
+ * learners see (logits −4.5 to +4.5; see difficultyLevel.ts).
+ *
+ * This used to also flag items far from a difficulty predicted by the
+ * concept's depth in the graph, on the theory that a deep concept is not home
+ * to a very easy item. The authoring rubric now says the opposite: restating a
+ * definition is level 1 however advanced the topic, and each pool should span
+ * the scale from 1 to 9 or 10. A per-item depth check would flag exactly the
+ * items the rubric asks for, so only the range is checked.
  */
 export function checkDifficultyPlausibility(item: Item): CheckResult {
-  const depth = ancestorCountOf.get(item.conceptId) ?? 0;
-  const expected = Math.log1p(depth) / 2 - 0.5;
-  const deviation = Math.abs(item.difficulty - expected);
+  const level = item.difficulty + 5.5;
+  const inRange = level >= 1 - 1e-9 && level <= 10 + 1e-9;
   return {
     check: "difficulty-plausibility",
-    passed: deviation <= 2.5,
+    passed: inRange,
     severity: "warn",
-    detail:
-      deviation <= 2.5
-        ? undefined
-        : `Seeded difficulty ${item.difficulty.toFixed(2)} is far from the ~${expected.toFixed(2)} implied by the concept's depth (${depth} ancestors). Worth a human look before it goes to shadow.`,
+    detail: inRange
+      ? undefined
+      : `Seeded difficulty ${item.difficulty.toFixed(2)} (level ${level.toFixed(1)}) is off the 1–10 level scale, where it would display clamped.`,
   };
 }
 

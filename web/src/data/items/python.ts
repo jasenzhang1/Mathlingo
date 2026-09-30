@@ -7543,7 +7543,7 @@ export const pythonItems: Item[] = [
 
   // -- numpy-arrays -------------------------------------------------------
   {
-    id: "numpy-arrays--recall-shape-attribute",
+    id: "numpy-arrays--recall-shape-attribute-alt",
     conceptId: "numpy-arrays",
     format: "mcq",
     cognitive: "recall",

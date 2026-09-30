@@ -3,6 +3,7 @@ export type Domain =
   | "probability"
   | "linear-algebra"
   | "multivariate-probability"
+  | "information-theory"
   | "statistics"
   | "regression"
   | "machine-learning"
@@ -27,6 +28,7 @@ export const domainMeta: Record<Domain, DomainMeta> = {
     label: "Multivariate & Asymptotics",
     color: "#d1495b",
   },
+  "information-theory": { label: "Information Theory", color: "#65a30d" },
   statistics: { label: "Statistical Inference", color: "#e0a72f" },
   regression: { label: "Linear Models", color: "#2f6fed" },
   "machine-learning": { label: "Machine Learning", color: "#16a34a" },
@@ -1261,15 +1263,85 @@ export const concepts: Concept[] = [
       "f-distribution",
     ],
   },
+
+  // ---------------------------------------------------------------------
+  // Information Theory — entropy, divergence, mutual information, and what
+  // they bound (code lengths, maximum-entropy models). KL divergence moved
+  // here from `multivariate-probability`: it is relative entropy, and every
+  // other concept in the chapter is either built from it or bounded by it.
+  // ---------------------------------------------------------------------
+  {
+    id: "self-information",
+    title: "Self-Information (Surprisal)",
+    domain: "information-theory",
+    blurb: "Why a rare outcome carries more information: −log p, and why the log is forced.",
+    prerequisites: ["pmf", "mutual-independence"],
+  },
+  {
+    id: "shannon-entropy",
+    title: "Shannon Entropy",
+    domain: "information-theory",
+    blurb: "Expected surprisal — the average uncertainty in a random variable, in bits.",
+    prerequisites: ["self-information", "expectation", "jensen-inequality"],
+  },
+  {
+    id: "joint-and-conditional-entropy",
+    title: "Joint & Conditional Entropy",
+    domain: "information-theory",
+    blurb: "H(X, Y), H(Y | X), the chain rule, and why conditioning never increases entropy on average.",
+    prerequisites: ["shannon-entropy", "joint-distribution", "conditional-distribution"],
+  },
   {
     id: "kl-divergence",
     title: "Kullback-Leibler Divergence",
-    domain: "multivariate-probability",
+    domain: "information-theory",
     blurb: "A measure of how one probability distribution diverges from another.",
     // Gibbs' inequality — the non-negativity that licenses "minimise the KL" as
     // an objective at all — is one application of Jensen's inequality to the
     // convex function −log. The edge records that dependency.
-    prerequisites: ["pdf", "pmf", "expectation", "jensen-inequality"],
+    prerequisites: ["pdf", "pmf", "expectation", "jensen-inequality", "shannon-entropy"],
+  },
+  {
+    id: "cross-entropy",
+    title: "Cross-Entropy",
+    domain: "information-theory",
+    blurb: "The cost of coding P with a code built for Q: H(P, Q) = H(P) + KL(P ‖ Q).",
+    prerequisites: ["shannon-entropy", "kl-divergence"],
+  },
+  {
+    id: "mutual-information",
+    title: "Mutual Information",
+    domain: "information-theory",
+    blurb: "How much knowing X tells you about Y — the KL from the joint to the product of marginals.",
+    prerequisites: ["joint-and-conditional-entropy", "kl-divergence"],
+  },
+  {
+    id: "data-processing-inequality",
+    title: "Data Processing Inequality",
+    domain: "information-theory",
+    blurb: "No processing of Y can tell you more about X than Y itself did.",
+    prerequisites: ["mutual-information"],
+  },
+  {
+    id: "differential-entropy",
+    title: "Differential Entropy",
+    domain: "information-theory",
+    blurb: "Entropy for densities — which can be negative, and why the Gaussian maximises it.",
+    prerequisites: ["shannon-entropy", "pdf", "normal-distribution"],
+  },
+  {
+    id: "maximum-entropy",
+    title: "Maximum Entropy Distributions",
+    domain: "information-theory",
+    blurb: "The least committal distribution matching given moments — and why it is always an exponential family.",
+    prerequisites: ["differential-entropy", "kl-divergence", "exponential-family"],
+  },
+  {
+    id: "source-coding",
+    title: "Source Coding & the Kraft Inequality",
+    domain: "information-theory",
+    blurb: "Entropy as the limit of lossless compression: prefix codes, Kraft, and Huffman.",
+    prerequisites: ["shannon-entropy"],
   },
 
   // ---------------------------------------------------------------------
@@ -1472,6 +1544,20 @@ export const concepts: Concept[] = [
     prerequisites: ["p-value", "type-i-ii-error"],
   },
   {
+    id: "neyman-pearson-lemma",
+    title: "Neyman–Pearson Lemma",
+    domain: "statistics",
+    blurb: "For simple vs simple hypotheses, the likelihood-ratio test is the most powerful test at its size.",
+    prerequisites: ["likelihood-vs-probability", "rejection-region", "type-i-ii-error", "power"],
+  },
+  {
+    id: "uniformly-most-powerful-test",
+    title: "Uniformly Most Powerful Tests",
+    domain: "statistics",
+    blurb: "When one test is most powerful against every alternative at once — monotone likelihood ratio and Karlin–Rubin.",
+    prerequisites: ["neyman-pearson-lemma", "sufficient-statistic", "exponential-family"],
+  },
+  {
     id: "family-wise-error-rate",
     title: "Family-Wise Error Rate",
     domain: "statistics",
@@ -1540,6 +1626,13 @@ export const concepts: Concept[] = [
     domain: "statistics",
     blurb: "Comparing distributions through the largest gap between their CDFs — no binning required.",
     prerequisites: ["chi-square-goodness-of-fit-test", "cdf"],
+  },
+  {
+    id: "qq-plots",
+    title: "Q-Q Plots & Checking Normality",
+    domain: "statistics",
+    blurb: "Sample quantiles against theoretical ones: a straight line means normal, and the bends say how it isn't. Plus Shapiro–Wilk.",
+    prerequisites: ["order-statistics", "cdf", "normal-distribution", "hypothesis-test"],
   },
 
   // ---------------------------------------------------------------------
@@ -1786,11 +1879,25 @@ export const concepts: Concept[] = [
     prerequisites: ["multiple-linear-regression", "sampling-methods"],
   },
   {
+    id: "odds-and-log-odds",
+    title: "Odds & Log Odds",
+    domain: "regression",
+    blurb: "p/(1 − p) and its logarithm, the logit — the scale on which logistic regression is linear.",
+    prerequisites: ["conditional-probability", "bernoulli-binomial"],
+  },
+  {
     id: "logistic-regression",
     title: "Logistic Regression",
     domain: "regression",
     blurb: "Modeling the probability of a binary outcome as a function of predictors.",
-    prerequisites: ["mle", "bernoulli-binomial", "multiple-linear-regression"],
+    prerequisites: ["mle", "bernoulli-binomial", "multiple-linear-regression", "odds-and-log-odds"],
+  },
+  {
+    id: "odds-ratio",
+    title: "Odds Ratios in Logistic Regression",
+    domain: "regression",
+    blurb: "Reading a coefficient: a one-unit change in x adds β to the log odds and multiplies the odds by e^β.",
+    prerequisites: ["logistic-regression", "odds-and-log-odds", "confidence-interval"],
   },
   {
     id: "probit-regression",
@@ -1812,6 +1919,13 @@ export const concepts: Concept[] = [
     domain: "regression",
     blurb: "Modeling count outcomes with a log link and a mean-equals-variance response distribution.",
     prerequisites: ["glm", "poisson-distribution"],
+  },
+  {
+    id: "deviance-residuals",
+    title: "Deviance & Deviance Residuals",
+    domain: "regression",
+    blurb: "A GLM's goodness of fit measured against the saturated model, and the per-observation residuals it splits into.",
+    prerequisites: ["glm", "poisson-regression", "studentized-residuals", "chi-square-distribution"],
   },
   {
     id: "cox-proportional-hazards-model",
@@ -2134,7 +2248,7 @@ export const concepts: Concept[] = [
     title: "Normal Probability Plots of Residuals",
     domain: "regression",
     blurb: "Checking the normality assumption by plotting ordered residuals against normal quantiles — and reading the common shapes. (§10.5.1)",
-    prerequisites: ["studentized-residuals", "order-statistics"],
+    prerequisites: ["studentized-residuals", "order-statistics", "qq-plots"],
   },
   {
     id: "box-cox-transformation",
@@ -2393,7 +2507,14 @@ export const concepts: Concept[] = [
     title: "Cross Entropy Loss",
     domain: "machine-learning",
     blurb: "The loss function behind most classifiers, straight from likelihood.",
-    prerequisites: ["loss-functions", "likelihood-vs-probability"],
+    prerequisites: ["loss-functions", "likelihood-vs-probability", "cross-entropy"],
+  },
+  {
+    id: "argmax-vs-softmax",
+    title: "Argmax vs Softmax",
+    domain: "machine-learning",
+    blurb: "Hard picks versus smooth probabilities: why training needs softmax and prediction uses argmax, and how temperature links them.",
+    prerequisites: ["cross-entropy-loss", "gradient-descent", "multiclass-classification"],
   },
   {
     id: "gradient-descent",
@@ -2401,6 +2522,34 @@ export const concepts: Concept[] = [
     domain: "machine-learning",
     blurb: "Iteratively nudging parameters downhill to minimize a loss function.",
     prerequisites: ["loss-functions", "matrix-calculus"],
+  },
+  {
+    id: "stochastic-gradient-descent",
+    title: "Stochastic Gradient Descent",
+    domain: "machine-learning",
+    blurb: "Stepping along one example's gradient — an unbiased but noisy estimate of the full gradient.",
+    prerequisites: ["gradient-descent", "expectation", "variance"],
+  },
+  {
+    id: "mini-batch-sgd",
+    title: "Mini-Batch SGD & Batch Size",
+    domain: "machine-learning",
+    blurb: "Averaging B gradients cuts the noise variance by B — epochs, shuffling, and what bigger batches do and don't buy.",
+    prerequisites: ["stochastic-gradient-descent", "sample-mean"],
+  },
+  {
+    id: "sgd-step-sizes",
+    title: "SGD Step Sizes & Convergence",
+    domain: "machine-learning",
+    blurb: "Why SGD with a constant step never settles, the Robbins–Monro conditions, and iterate averaging.",
+    prerequisites: ["stochastic-gradient-descent"],
+  },
+  {
+    id: "momentum",
+    title: "Momentum & Nesterov",
+    domain: "machine-learning",
+    blurb: "An exponentially weighted average of past gradients: faster along ravines, damped across them.",
+    prerequisites: ["stochastic-gradient-descent"],
   },
   {
     id: "bias-variance-tradeoff",
@@ -2459,11 +2608,32 @@ export const concepts: Concept[] = [
     prerequisites: ["classification-vs-regression"],
   },
   {
+    id: "sensitivity-and-specificity",
+    title: "Sensitivity & Specificity",
+    domain: "machine-learning",
+    blurb: "The true positive and true negative rates — what a test does to each class, whatever the prevalence.",
+    prerequisites: ["confusion-matrices", "conditional-probability"],
+  },
+  {
+    id: "predictive-values",
+    title: "PPV & NPV",
+    domain: "machine-learning",
+    blurb: "How much to trust a positive or negative result — and why it swings with prevalence (Bayes' rule).",
+    prerequisites: ["sensitivity-and-specificity", "bayes-rule"],
+  },
+  {
+    id: "precision-recall-f1",
+    title: "Precision, Recall & F1",
+    domain: "machine-learning",
+    blurb: "The ML names for PPV and sensitivity, their harmonic mean, F-beta, and macro vs micro averaging.",
+    prerequisites: ["predictive-values", "multiclass-classification"],
+  },
+  {
     id: "roc-curves",
     title: "ROC Curves",
     domain: "machine-learning",
     blurb: "Visualizing a classifier's tradeoff between true and false positives.",
-    prerequisites: ["confusion-matrices"],
+    prerequisites: ["confusion-matrices", "sensitivity-and-specificity"],
   },
   {
     id: "data-leakage",
@@ -2505,6 +2675,13 @@ export const concepts: Concept[] = [
     ],
   },
   {
+    id: "qda",
+    title: "Quadratic Discriminant Analysis",
+    domain: "machine-learning",
+    blurb: "LDA with a covariance matrix per class: quadratic boundaries, and many more parameters to estimate.",
+    prerequisites: ["lda"],
+  },
+  {
     id: "naive-bayes",
     title: "Naive Bayes",
     domain: "machine-learning",
@@ -2517,6 +2694,13 @@ export const concepts: Concept[] = [
     domain: "machine-learning",
     blurb: "Finding the directions of greatest variance to reduce dimensionality.",
     prerequisites: ["pca-matrix-edition", "covariance-matrix"],
+  },
+  {
+    id: "multidimensional-scaling",
+    title: "Multidimensional Scaling (MDS)",
+    domain: "machine-learning",
+    blurb: "Placing points in low dimensions from their pairwise distances alone — classical MDS by double centering, and stress-based metric MDS.",
+    prerequisites: ["pca", "eigendecomposition"],
   },
   {
     id: "kernel",
@@ -2816,7 +3000,7 @@ export const concepts: Concept[] = [
     domain: "deep-learning",
     blurb:
       "Momentum, RMSProp and Adam — why plain gradient descent is rarely what actually runs.",
-    prerequisites: ["gradient-descent", "backpropagation"],
+    prerequisites: ["gradient-descent", "backpropagation", "mini-batch-sgd", "momentum", "sgd-step-sizes"],
   },
   {
     id: "dropout",
@@ -3363,6 +3547,27 @@ export const concepts: Concept[] = [
     ],
   },
   {
+    id: "causal-dags",
+    title: "Causal DAGs & Confounding",
+    domain: "graphical-models",
+    blurb: "Arrows as causes: intervening with do(x) versus conditioning on x, and telling confounders, mediators and colliders apart.",
+    prerequisites: ["conditional-independence-d-separation", "conditional-probability"],
+  },
+  {
+    id: "backdoor-adjustment",
+    title: "Backdoor Criterion & Adjustment",
+    domain: "graphical-models",
+    blurb: "Which variables to adjust for: block every backdoor path, never condition on a descendant of the treatment.",
+    prerequisites: ["causal-dags", "law-of-total-expectation"],
+  },
+  {
+    id: "mediation-analysis",
+    title: "Mediation Analysis",
+    domain: "graphical-models",
+    blurb: "Splitting a total effect into the part through a mediator and the part that bypasses it — natural direct and indirect effects.",
+    prerequisites: ["backdoor-adjustment", "multiple-linear-regression"],
+  },
+  {
     id: "markov-random-fields",
     title: "Markov Random Fields",
     domain: "graphical-models",
@@ -3385,6 +3590,13 @@ export const concepts: Concept[] = [
     domain: "graphical-models",
     blurb: "An ℓ₁-penalised likelihood for the precision matrix — sparse estimate, sparse graph, even when p > n.",
     prerequisites: ["gaussian-graphical-models", "lasso", "mle"],
+  },
+  {
+    id: "joint-graphical-lasso",
+    title: "Joint Graphical Lasso (Group & Fused)",
+    domain: "graphical-models",
+    blurb: "Estimating several related precision matrices at once (Danaher, Wang & Witten, 2014): a group penalty shares edges across classes, a fused penalty shares edge values.",
+    prerequisites: ["graphical-lasso"],
   },
   {
     id: "markov-chains",
@@ -3443,11 +3655,39 @@ export const concepts: Concept[] = [
     prerequisites: ["bayes-rule", "mle"],
   },
   {
+    id: "quadrature-rules",
+    title: "Quadrature Rules",
+    domain: "graphical-models",
+    blurb: "Trapezoid and Simpson: integrals as weighted sums of function values, their error orders, and why grids collapse in high dimension.",
+    prerequisites: ["pdf", "expectation"],
+  },
+  {
+    id: "gaussian-quadrature",
+    title: "Gaussian Quadrature",
+    domain: "graphical-models",
+    blurb: "Choosing the nodes as well as the weights: n points integrate polynomials of degree 2n − 1 exactly. Gauss–Hermite for normal expectations.",
+    prerequisites: ["quadrature-rules", "normal-distribution"],
+  },
+  {
     id: "monte-carlo-integration",
     title: "Monte Carlo Sampling",
     domain: "graphical-models",
     blurb: "Replacing an integral with an average of random draws — unbiased, with error shrinking like 1/√n in any dimension.",
-    prerequisites: ["expectation", "law-of-large-numbers", "central-limit-theorem"],
+    prerequisites: ["expectation", "law-of-large-numbers", "central-limit-theorem", "quadrature-rules"],
+  },
+  {
+    id: "variance-reduction",
+    title: "Variance Reduction",
+    domain: "graphical-models",
+    blurb: "Antithetic variates, control variates, and stratification — the same 1/√n rate with a smaller constant.",
+    prerequisites: ["monte-carlo-integration", "covariance"],
+  },
+  {
+    id: "quasi-monte-carlo",
+    title: "Quasi-Monte Carlo",
+    domain: "graphical-models",
+    blurb: "Low-discrepancy points (Halton, Sobol) instead of random ones: error near 1/n, the Koksma–Hlawka bound, and randomized QMC.",
+    prerequisites: ["monte-carlo-integration", "variance-reduction"],
   },
   {
     id: "importance-sampling",
@@ -3469,6 +3709,20 @@ export const concepts: Concept[] = [
     domain: "graphical-models",
     blurb: "The Metropolis-Hastings special case that always accepts: cycle through each variable and resample it from its full conditional.",
     prerequisites: ["markov-chain-monte-carlo", "conditional-probability"],
+  },
+  {
+    id: "hamiltonian-monte-carlo",
+    title: "Hamiltonian Monte Carlo",
+    domain: "graphical-models",
+    blurb: "Proposals that follow the posterior's gradient: auxiliary momentum, leapfrog steps, and a Metropolis correction — plus NUTS.",
+    prerequisites: ["markov-chain-monte-carlo", "gradient-descent"],
+  },
+  {
+    id: "reversible-jump-mcmc",
+    title: "Reversible Jump MCMC",
+    domain: "graphical-models",
+    blurb: "MCMC across models of different dimension: dimension-matching moves and the Jacobian in the acceptance ratio.",
+    prerequisites: ["markov-chain-monte-carlo", "change-of-variables-jacobian", "bayesian-model-averaging"],
   },
   {
     id: "dirichlet-process",
@@ -3511,6 +3765,34 @@ export const concepts: Concept[] = [
     domain: "graphical-models",
     blurb: "Treating each observation as a whole curve rather than a finite vector of features — a data point living in a Hilbert space of functions.",
     prerequisites: ["hilbert-space"],
+  },
+  {
+    id: "hilbert-schmidt-operators",
+    title: "Hilbert–Schmidt & Covariance Operators",
+    domain: "graphical-models",
+    blurb: "Integral operators with square-integrable kernels: the covariance operator of a random curve, its spectral decomposition, and the Hilbert–Schmidt norm.",
+    prerequisites: ["functional-data-analysis", "covariance-matrix", "spectral-theorem"],
+  },
+  {
+    id: "functional-pca",
+    title: "Functional PCA",
+    domain: "graphical-models",
+    blurb: "Eigenfunctions of the covariance operator: the few smooth modes of variation that summarise a sample of curves, and how to estimate them from noisy, sparse data.",
+    prerequisites: ["hilbert-schmidt-operators", "pca", "mercers-theorem"],
+  },
+  {
+    id: "multivariate-fpca",
+    title: "Multivariate Functional PCA (MFPCA)",
+    domain: "graphical-models",
+    blurb: "Joint modes of variation when each subject has several curves, possibly on different domains — univariate FPCA per variable, then PCA on the combined scores.",
+    prerequisites: ["functional-pca"],
+  },
+  {
+    id: "functional-regression",
+    title: "Functional Regression",
+    domain: "graphical-models",
+    blurb: "Scalar-on-function, function-on-scalar and function-on-function models — why the coefficient function is ill-posed and how FPC truncation or roughness penalties fix it.",
+    prerequisites: ["functional-pca", "multiple-linear-regression", "regularization"],
   },
   {
     id: "rkhs",
@@ -3563,6 +3845,55 @@ export const concepts: Concept[] = [
     blurb:
       "The counting process built from independent Exponential waiting times — events land one at a time at a constant rate, and the count in any window is Poisson.",
     prerequisites: ["poisson-distribution", "exponential-distribution"],
+  },
+  {
+    id: "poisson-thinning-superposition",
+    title: "Superposition & Thinning",
+    domain: "stochastic-processes",
+    blurb: "Merging independent Poisson streams adds their rates; keeping each event with probability p splits one into independent Poisson streams.",
+    prerequisites: ["poisson-process"],
+  },
+  {
+    id: "nonhomogeneous-poisson-process",
+    title: "Non-Homogeneous Poisson Process",
+    domain: "stochastic-processes",
+    blurb: "A time-varying rate λ(t): counts are Poisson with mean ∫λ, simulated by thinning or by time change.",
+    prerequisites: ["poisson-process", "poisson-thinning-superposition"],
+  },
+  {
+    id: "compound-poisson-process",
+    title: "Compound Poisson Process",
+    domain: "stochastic-processes",
+    blurb: "A random sum of random jumps — claim totals and jump risk — with mean λtE[Y] and variance λtE[Y²].",
+    prerequisites: ["poisson-process", "law-of-total-expectation", "law-of-total-variance"],
+  },
+  {
+    id: "conditional-intensity",
+    title: "Point Processes & Conditional Intensity",
+    domain: "stochastic-processes",
+    blurb: "Describing any point process by its instantaneous event rate given the past, and the likelihood that follows from it.",
+    prerequisites: ["nonhomogeneous-poisson-process", "mle"],
+  },
+  {
+    id: "hawkes-process",
+    title: "Hawkes Processes",
+    domain: "stochastic-processes",
+    blurb: "Self-exciting events: each arrival raises the future rate. The branching ratio, stationarity, and clustering in trades and quakes.",
+    prerequisites: ["conditional-intensity"],
+  },
+  {
+    id: "cox-process",
+    title: "Cox Processes",
+    domain: "stochastic-processes",
+    blurb: "A Poisson process whose intensity is itself random — doubly stochastic. Overdispersed counts, mixed Poisson laws, and clustering driven by a hidden environment.",
+    prerequisites: ["nonhomogeneous-poisson-process", "law-of-total-variance"],
+  },
+  {
+    id: "log-gaussian-cox-process",
+    title: "Log-Gaussian Cox Processes",
+    domain: "stochastic-processes",
+    blurb: "A Cox process whose log-intensity is a Gaussian process: closed-form moments, the pair-correlation function exp(C(r)), and latent-field inference for spatial point patterns.",
+    prerequisites: ["cox-process", "gaussian-process"],
   },
   {
     id: "continuous-time-markov-chains",

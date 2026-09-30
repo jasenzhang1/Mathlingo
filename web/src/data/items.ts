@@ -44,6 +44,17 @@ import { computationalStatisticsItems } from "./items/computational-statistics";
 import { monteCarloIntegrationItems } from "./items/monte-carlo-integration";
 import { gaussianStructureLearningItems } from "./items/gaussian-structure-learning";
 import { multipleTestingErrorRateItems } from "./items/multiple-testing-error-rates";
+import { informationTheoryItems } from "./items/information-theory";
+import { optimalTestItems } from "./items/optimal-tests";
+import { mlOptimizationAndMetricsItems } from "./items/ml-optimization-and-metrics";
+import { oddsAndDevianceItems } from "./items/odds-and-deviance";
+import { causalAndComputationalItems } from "./items/causal-and-computational";
+import { pointProcessItems } from "./items/point-processes";
+import { coxJointGlassoItems } from "./items/cox-and-joint-glasso";
+import { functionalDataMethodsItems } from "./items/functional-data-methods";
+import { functionalDataExpansionItems } from "./items/functional-data-expansion";
+import { functionalDataToThirtyItems } from "./items/functional-data-to-thirty";
+import { expansionItems } from "./items/expansion";
 import { robustRegressionItems } from "./items/robust-regression";
 import { linearModelsEstimationItems } from "./items/linear-models-estimation";
 import { linearModelsInferenceItems } from "./items/linear-models-inference";
@@ -5181,7 +5192,18 @@ export const items: Item[] = [
   ...monteCarloIntegrationItems,
   ...gaussianStructureLearningItems,
   ...multipleTestingErrorRateItems,
+  ...informationTheoryItems,
+  ...optimalTestItems,
+  ...mlOptimizationAndMetricsItems,
+  ...oddsAndDevianceItems,
+  ...causalAndComputationalItems,
+  ...pointProcessItems,
+  ...coxJointGlassoItems,
   ...functionalDataAnalysisItems,
+  ...functionalDataExpansionItems,
+  ...functionalDataToThirtyItems,
+  ...expansionItems,
+  ...functionalDataMethodsItems,
 
   // -------------------------------------------------------------------------
   // Machine Learning — all 50 concepts, 5 items each, ported from

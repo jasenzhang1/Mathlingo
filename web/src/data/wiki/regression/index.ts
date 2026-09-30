@@ -15,6 +15,7 @@ import { linearRegressionProbabilisticVersionWiki } from "./linear-regression-pr
 import { linearRegressionTerminologyWiki } from "./linear-regression-terminology";
 import { loessSmoothingWiki } from "./loess-smoothing";
 import { logisticRegressionWiki } from "./logistic-regression";
+import { devianceResidualsWiki, oddsAndLogOddsWiki, oddsRatioWiki } from "./odds-and-deviance";
 import { mixedEffectModelsWiki } from "./mixed-effect-models";
 import { multipleLinearRegressionWiki } from "./multiple-linear-regression";
 import { normalEquationsWiki } from "./normal-equations";
@@ -159,10 +160,13 @@ export const regressionWikis: WikiArticle[] = [
 
   // reg-05 — generalized and special regression
   mixedEffectModelsWiki,
+  oddsAndLogOddsWiki,
   logisticRegressionWiki,
+  oddsRatioWiki,
   probitRegressionWiki,
   glmWiki,
   poissonRegressionWiki,
+  devianceResidualsWiki,
   coxProportionalHazardsModelWiki,
   generalizedEstimatingEquationsWiki,
 

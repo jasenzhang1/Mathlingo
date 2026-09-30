@@ -1,6 +1,14 @@
 import { simpleRandomWalkWiki } from "./simple-random-walk";
 import { brownianMotionWiki } from "./brownian-motion";
 import { poissonProcessWiki } from "./poisson-process";
+import {
+  compoundPoissonProcessWiki,
+  conditionalIntensityWiki,
+  hawkesProcessWiki,
+  nonhomogeneousPoissonProcessWiki,
+  poissonThinningSuperpositionWiki,
+} from "./point-processes";
+import { coxProcessWiki, logGaussianCoxProcessWiki } from "./cox-processes";
 import { continuousTimeMarkovChainsWiki } from "./continuous-time-markov-chains";
 import { kalmanFilterWiki } from "./kalman-filter";
 import { karhunenLoeveExpansionWiki } from "./karhunen-loeve-expansion";
@@ -40,6 +48,13 @@ export const stochasticWikiArticles: WikiArticle[] = [
   simpleRandomWalkWiki,
   brownianMotionWiki,
   poissonProcessWiki,
+  poissonThinningSuperpositionWiki,
+  nonhomogeneousPoissonProcessWiki,
+  compoundPoissonProcessWiki,
+  conditionalIntensityWiki,
+  hawkesProcessWiki,
+  coxProcessWiki,
+  logGaussianCoxProcessWiki,
   continuousTimeMarkovChainsWiki,
   kalmanFilterWiki,
   karhunenLoeveExpansionWiki,

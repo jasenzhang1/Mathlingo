@@ -4338,7 +4338,7 @@ export const pythonContainersSplitItems: Item[] = [
     status: "live",
   },
   {
-    id: "python-list-operations--transfer-mutate-while-iterating",
+    id: "python-list-operations--transfer-mutate-while-iterating-alt",
     conceptId: "python-list-operations",
     format: "short-answer",
     cognitive: "transfer",

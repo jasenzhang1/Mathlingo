@@ -5867,7 +5867,7 @@ export const ml15Items: Item[] = [
     status: "live",
   },
   {
-    id: "scaling-laws--recall-compute-optimal-definition",
+    id: "scaling-laws--recall-compute-optimal-definition-alt",
     conceptId: "scaling-laws",
     format: "short-answer",
     cognitive: "recall",
@@ -5891,7 +5891,7 @@ export const ml15Items: Item[] = [
     status: "live",
   },
   {
-    id: "scaling-laws--apply-compute-budget-7b",
+    id: "scaling-laws--apply-compute-budget-7b-alt",
     conceptId: "scaling-laws",
     format: "numeric",
     cognitive: "apply",
@@ -6049,7 +6049,7 @@ export const ml15Items: Item[] = [
 
   // --- Tokenization -------------------------------------------------------------
   {
-    id: "tokenization--recall-vocabulary-definition",
+    id: "tokenization--recall-vocabulary-definition-alt",
     conceptId: "tokenization",
     format: "mcq",
     cognitive: "recall",
@@ -6096,7 +6096,7 @@ export const ml15Items: Item[] = [
     status: "live",
   },
   {
-    id: "tokenization--recall-vocabulary-size-tradeoff",
+    id: "tokenization--recall-vocabulary-size-tradeoff-alt",
     conceptId: "tokenization",
     format: "short-answer",
     cognitive: "recall",
@@ -6283,7 +6283,7 @@ export const ml15Items: Item[] = [
 
   // --- Contrastive Learning -------------------------------------------------------
   {
-    id: "contrastive-learning--recall-temperature-role",
+    id: "contrastive-learning--recall-temperature-role-alt",
     conceptId: "contrastive-learning",
     format: "mcq",
     cognitive: "recall",
@@ -6355,7 +6355,7 @@ export const ml15Items: Item[] = [
     status: "live",
   },
   {
-    id: "contrastive-learning--apply-chance-loss-256",
+    id: "contrastive-learning--apply-chance-loss-256-alt",
     conceptId: "contrastive-learning",
     format: "numeric",
     cognitive: "apply",
@@ -7061,7 +7061,7 @@ export const ml15Items: Item[] = [
     status: "live",
   },
   {
-    id: "knowledge-distillation--apply-softmax-t1",
+    id: "knowledge-distillation--apply-softmax-t1-alt",
     conceptId: "knowledge-distillation",
     format: "numeric",
     cognitive: "apply",
@@ -7077,7 +7077,7 @@ export const ml15Items: Item[] = [
     status: "live",
   },
   {
-    id: "knowledge-distillation--apply-softmax-t4",
+    id: "knowledge-distillation--apply-softmax-t4-alt",
     conceptId: "knowledge-distillation",
     format: "numeric",
     cognitive: "apply",
@@ -7262,7 +7262,7 @@ export const ml15Items: Item[] = [
     status: "live",
   },
   {
-    id: "quantization--recall-per-tensor-vs-per-channel",
+    id: "quantization--recall-per-tensor-vs-per-channel-alt",
     conceptId: "quantization",
     format: "short-answer",
     cognitive: "recall",

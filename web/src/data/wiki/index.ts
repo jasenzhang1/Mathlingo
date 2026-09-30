@@ -29,6 +29,12 @@ const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
   "discrete-math": () => import("./discrete-math").then((m) => m.default),
   statistics: () => import("./core").then((m) => m.coreWikiArticles),
   "multivariate-probability": () => import("./core").then((m) => m.coreWikiArticles),
+  // KL divergence moved into this chapter but its article stayed in `./core`.
+  "information-theory": () =>
+    Promise.all([import("./information-theory"), import("./core")]).then(([it, core]) => [
+      ...it.informationTheoryWikis,
+      ...core.coreWikiArticles,
+    ]),
   "graphical-models": () => import("./core").then((m) => m.coreWikiArticles),
   probability: () => import("./probability").then((m) => m.default),
   regression: () => import("./regression").then((m) => m.regressionWikis),

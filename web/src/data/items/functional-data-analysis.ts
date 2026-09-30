@@ -27,7 +27,7 @@ export const functionalDataAnalysisItems: Item[] = [
         { id: "complete", description: "Names completeness: every Cauchy sequence converges to a point inside the space.", weight: 3, required: true },
       ],
     },
-    difficulty: -0.1,
+    difficulty: -4, // level 1.5
     discrimination: 1.2,
     expectedSeconds: 65,
     prereqClosure: ["hilbert-space"],
@@ -40,31 +40,31 @@ export const functionalDataAnalysisItems: Item[] = [
     format: "mcq",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Why is ℚ (the rationals) with the usual absolute-value norm not a Hilbert space, even though ℝⁿ is?",
+    stem: "Why is $\mathbb{Q}$ (the rationals) with the usual absolute-value norm not a Hilbert space, even though $\mathbb{R}^n$ is?",
     choices: [
-      { id: "a", text: "ℚ isn't complete — a Cauchy sequence of rationals (e.g. decimal truncations of √2) can converge to a limit outside ℚ", correct: true },
+      { id: "a", text: "$\mathbb{Q}$ isn’t complete — a Cauchy sequence of rationals (e.g. decimal truncations of $\sqrt{2}$) can converge to a limit outside $\mathbb{Q}$", correct: true },
       {
         id: "b",
-        text: "ℚ has no inner product defined on it",
+        text: "$\mathbb{Q}$ has no inner product defined on it",
         correct: false,
         misconception: {
           id: "hilbert-space-inner-product-confusion",
-          description: "ℚ inherits the same inner product (ordinary multiplication) as ℝ — what it lacks is completeness, not an inner product.",
+          description: "$\mathbb{Q}$ inherits the same inner product (ordinary multiplication) as $\mathbb{R}$ — what it lacks is completeness, not an inner product.",
           blameConceptId: "hilbert-space",
         },
       },
       {
         id: "c",
-        text: "ℚ is not a vector space, since it isn't closed under multiplication by irrational scalars",
+        text: "$\mathbb{Q}$ is not a vector space, since it isn’t closed under multiplication by irrational scalars",
         correct: false,
         misconception: {
           id: "hilbert-space-scalar-field-confusion",
-          description: "As a vector space over ℚ itself (scalars restricted to ℚ), it is closed under scaling — the actual obstruction is completeness, not the vector-space axioms.",
+          description: "As a vector space over $\mathbb{Q}$ itself (scalars restricted to $\mathbb{Q}$), it is closed under scaling — the actual obstruction is completeness, not the vector-space axioms.",
           blameConceptId: "hilbert-space",
         },
       },
     ],
-    difficulty: 0.4,
+    difficulty: -0.5, // level 5
     discrimination: 1.3,
     expectedSeconds: 85,
     prereqClosure: ["hilbert-space"],
@@ -77,18 +77,18 @@ export const functionalDataAnalysisItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "For L²[a, b], the space of square-integrable functions on [a, b], write the inner product of two functions f and g, and identify what plays the role of ℝⁿ's dot product Σᵢxᵢyᵢ.",
+    stem: "For $L^2[a, b]$, the space of square-integrable functions on $[a, b]$, write the inner product of two functions $f$ and $g$, and identify what plays the role of the dot product $\sum_i x_i y_i$ on $\mathbb{R}^n$.",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "Writes ⟨f, g⟩ = ∫ₐᵇ f(t)g(t) dt, identifying the integral as the function-space analogue of the finite sum in the ordinary dot product.",
+          description: "Writes $\langle f, g \rangle = \int_a^b f(t)g(t)\,dt$, identifying the integral as the function-space analogue of the finite sum in the ordinary dot product.",
           weight: 5,
           required: true,
         },
       ],
     },
-    difficulty: 0.5,
+    difficulty: -2.5, // level 3
     discrimination: 1.2,
     expectedSeconds: 80,
     prereqClosure: ["hilbert-space", "dot-product"],
@@ -108,13 +108,13 @@ export const functionalDataAnalysisItems: Item[] = [
       elements: [
         {
           id: "move",
-          description: "States that each curve is treated as a single point in a Hilbert space of functions, so 'vector' operations (distances, means, PCA) carry over with 'coordinate' reinterpreted as 'value of the function.'",
+          description: "States that each curve is treated as a single point in a Hilbert space of functions, so “vector” operations (distances, means, PCA) carry over with “coordinate” reinterpreted as “value of the function.”",
           weight: 5,
           required: true,
         },
       ],
     },
-    difficulty: 0.2,
+    difficulty: -3.5, // level 2
     discrimination: 1.2,
     expectedSeconds: 70,
     prereqClosure: ["functional-data-analysis", "hilbert-space"],
@@ -127,7 +127,7 @@ export const functionalDataAnalysisItems: Item[] = [
     format: "mcq",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Why does treating a densely-sampled curve as an ordinary p-dimensional feature vector (one feature per time point) lose something a functional treatment keeps?",
+    stem: "Why does treating a densely-sampled curve as an ordinary $p$-dimensional feature vector (one feature per time point) lose something a functional treatment keeps?",
     choices: [
       { id: "a", text: "It discards the smoothness and strong correlation between adjacent time points, which a functional (curve-based) treatment preserves", correct: true },
       {
@@ -141,7 +141,7 @@ export const functionalDataAnalysisItems: Item[] = [
         },
       },
     ],
-    difficulty: 0.4,
+    difficulty: -1.5, // level 4
     discrimination: 1.2,
     expectedSeconds: 85,
     prereqClosure: ["functional-data-analysis"],
@@ -171,7 +171,7 @@ export const functionalDataAnalysisItems: Item[] = [
         },
       ],
     },
-    difficulty: 0.8,
+    difficulty: 1.5, // level 7
     discrimination: 1.3,
     expectedSeconds: 110,
     prereqClosure: ["functional-data-analysis", "hilbert-space"],
