@@ -18,6 +18,7 @@ import { ml16CnnPractice } from "./ml-16-cnn-practice";
 import { ml17SsmAndGnn } from "./ml-17-ssm-and-gnn";
 import { ml18ScoreBasedGenerative } from "./ml-18-score-based-generative";
 import { ml19OptimizationAndMetrics } from "./ml-19-optimization-and-metrics";
+import { ml20FocusedTopics } from "./ml-20-focused-topics";
 
 /**
  * All 100 `machine-learning` domain articles, grouped into the same fifteen
@@ -55,5 +56,6 @@ export const mlWikiArticles: WikiArticle[] = [
   ...ml19OptimizationAndMetrics,
   ...ml14TrainingAtScale,
   ...ml12FurtherParadigms,
+  ...ml20FocusedTopics,
   ...ml15AdaptingAndServing,
 ];

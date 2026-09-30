@@ -36,6 +36,19 @@ const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
       ...core.coreWikiArticles,
     ]),
   "graphical-models": () => import("./core").then((m) => m.coreWikiArticles),
+  // Bayesian Statistics gathered lessons from three chapters, so its articles
+  // are spread across `./core` (graphical models), `./regression` (Bayesian
+  // linear regression, model averaging) and `./ml` (GP regression and
+  // classification), plus the new foundations in `./bayesian`.
+  "bayesian-statistics": () =>
+    Promise.all([import("./bayesian"), import("./core"), import("./regression"), import("./ml")]).then(
+      ([bayes, core, reg, ml]) => [
+        ...bayes.bayesianWikis,
+        ...core.coreWikiArticles,
+        ...reg.regressionWikis,
+        ...ml.mlWikiArticles,
+      ],
+    ),
   probability: () => import("./probability").then((m) => m.default),
   regression: () => import("./regression").then((m) => m.regressionWikis),
   "time-series": () => import("./time-series").then((m) => m.timeSeriesWikis),
