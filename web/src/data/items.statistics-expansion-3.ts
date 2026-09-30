@@ -1215,7 +1215,7 @@ export const statisticsExpansion3Items: Item[] = [
     status: "live",
   },
   {
-    id: "wilcoxon-rank-sum-test--explain-normal-approximation-conditions",
+    id: "wilcoxon-rank-sum-test--explain-normal-approximation-continuity",
     conceptId: "wilcoxon-rank-sum-test",
     format: "short-answer",
     cognitive: "explain",

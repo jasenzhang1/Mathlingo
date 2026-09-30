@@ -353,8 +353,38 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
     },
     {
       id: "asymptotics",
-      label: "Asymptotics & Divergences",
-      conceptIds: ["central-limit-theorem", "kl-divergence"],
+      label: "Asymptotics",
+      conceptIds: ["central-limit-theorem"],
+    },
+  ],
+
+  /**
+   * Placed after multivariate probability because mutual information needs
+   * joint and conditional distributions, and before statistics and ML because
+   * cross-entropy loss, the ELBO and every KL-regularised objective downstream
+   * are built from what this chapter defines. KL divergence lives here now; it
+   * used to close the multivariate chapter.
+   */
+  "information-theory": [
+    {
+      id: "entropy",
+      label: "Entropy",
+      conceptIds: ["self-information", "shannon-entropy", "joint-and-conditional-entropy"],
+    },
+    {
+      id: "divergence-and-mutual-information",
+      label: "Divergence & Mutual Information",
+      conceptIds: [
+        "kl-divergence",
+        "cross-entropy",
+        "mutual-information",
+        "data-processing-inequality",
+      ],
+    },
+    {
+      id: "continuous-and-coding",
+      label: "Continuous Entropy & Coding",
+      conceptIds: ["differential-entropy", "maximum-entropy", "source-coding"],
     },
   ],
 
@@ -384,6 +414,13 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "p-value",
         "confidence-interval",
       ],
+    },
+    {
+      // Needs `power` and `sufficient-statistic`, both filed in probability's
+      // estimation-theory section, which comes earlier — so no forward edges.
+      id: "optimal-tests",
+      label: "Most Powerful Tests",
+      conceptIds: ["neyman-pearson-lemma", "uniformly-most-powerful-test"],
     },
     {
       id: "named-tests",
@@ -425,6 +462,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "kruskal-wallis-test",
         "mcnemar-test",
         "kolmogorov-smirnov-test",
+        "qq-plots",
       ],
     },
   ],
@@ -608,10 +646,13 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       id: "generalized",
       label: "Beyond the Linear Model",
       conceptIds: [
+        "odds-and-log-odds",
         "logistic-regression",
+        "odds-ratio",
         "probit-regression",
         "glm",
         "poisson-regression",
+        "deviance-residuals",
         "generalized-estimating-equations",
         "mixed-effect-models",
         "cox-proportional-hazards-model",
@@ -662,11 +703,22 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "Model Evaluation & Selection",
       conceptIds: [
         "multiclass-classification",
-        "confusion-matrices",
-        "roc-curves",
         "k-fold-cross-validation",
         "hyperparameters",
         "sensitivity-analysis",
+      ],
+    },
+    {
+      // Every metric here is a ratio of cells in the confusion matrix; ROC
+      // closes the section because it traces sensitivity against 1 − specificity.
+      id: "classification-metrics",
+      label: "Classification Metrics",
+      conceptIds: [
+        "confusion-matrices",
+        "sensitivity-and-specificity",
+        "predictive-values",
+        "precision-recall-f1",
+        "roc-curves",
       ],
     },
     {
@@ -677,6 +729,17 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "overfitting-underfitting",
         "gradient-descent",
         "cross-entropy-loss",
+        "argmax-vs-softmax",
+      ],
+    },
+    {
+      id: "stochastic-optimization",
+      label: "Stochastic Gradient Descent",
+      conceptIds: [
+        "stochastic-gradient-descent",
+        "mini-batch-sgd",
+        "sgd-step-sizes",
+        "momentum",
       ],
     },
     {
@@ -686,6 +749,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "generative-vs-discriminative-models",
         "naive-bayes",
         "lda",
+        "qda",
         "knn",
         "svm",
         "svms-for-regression",
@@ -724,6 +788,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "umap",
         "ica",
         "pca",
+        "multidimensional-scaling",
       ],
     },
     {
@@ -882,9 +947,14 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
+      id: "causal-inference",
+      label: "Causal Inference with DAGs",
+      conceptIds: ["causal-dags", "backdoor-adjustment", "mediation-analysis"],
+    },
+    {
       id: "gaussian-structure-learning",
       label: "Gaussian Graphical Models & the Graphical Lasso",
-      conceptIds: ["gaussian-graphical-models", "graphical-lasso"],
+      conceptIds: ["gaussian-graphical-models", "graphical-lasso", "joint-graphical-lasso"],
     },
     {
       id: "latent-variables",
@@ -898,13 +968,27 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       ],
     },
     {
+      // Deterministic rules first, so the curse of dimensionality motivates Monte
+      // Carlo; importance sampling opens the next section and reuses all of it.
+      id: "numerical-integration",
+      label: "Numerical Integration",
+      conceptIds: [
+        "quadrature-rules",
+        "gaussian-quadrature",
+        "monte-carlo-integration",
+        "variance-reduction",
+        "quasi-monte-carlo",
+      ],
+    },
+    {
       id: "sampling-inference",
       label: "Sampling-Based Inference",
       conceptIds: [
-        "monte-carlo-integration",
         "importance-sampling",
         "markov-chain-monte-carlo",
         "gibbs-sampling",
+        "hamiltonian-monte-carlo",
+        "reversible-jump-mcmc",
         "dirichlet-process",
         "stick-breaking-construction",
       ],
@@ -922,7 +1006,14 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
     {
       id: "fda",
       label: "Functional Data Analysis",
-      conceptIds: ["hilbert-space", "functional-data-analysis"],
+      conceptIds: [
+        "hilbert-space",
+        "functional-data-analysis",
+        "hilbert-schmidt-operators",
+        "functional-pca",
+        "multivariate-fpca",
+        "functional-regression",
+      ],
     },
   ],
 
@@ -933,10 +1024,23 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       conceptIds: ["simple-random-walk", "brownian-motion"],
     },
     {
+      id: "point-processes",
+      label: "Point Processes",
+      conceptIds: [
+        "poisson-process",
+        "poisson-thinning-superposition",
+        "nonhomogeneous-poisson-process",
+        "compound-poisson-process",
+        "conditional-intensity",
+        "hawkes-process",
+        "cox-process",
+        "log-gaussian-cox-process",
+      ],
+    },
+    {
       id: "markov-and-filtering",
       label: "Markov Processes & Filtering",
       conceptIds: [
-        "poisson-process",
         "continuous-time-markov-chains",
         "kalman-filter",
         "karhunen-loeve-expansion",

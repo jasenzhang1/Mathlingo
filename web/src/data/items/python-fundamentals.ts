@@ -3138,7 +3138,7 @@ export const pythonFundamentalsItems: Item[] = [
     status: "live",
   },
   {
-    id: "python-variables-types--recall-multiple-assignment",
+    id: "python-variables-types--recall-multiple-assignment-alt",
     conceptId: "python-variables-types",
     format: "numeric",
     cognitive: "recall",
@@ -3225,7 +3225,7 @@ export const pythonFundamentalsItems: Item[] = [
     status: "live",
   },
   {
-    id: "python-variables-types--explain-is-vs-equals",
+    id: "python-variables-types--explain-is-vs-equals-alt",
     conceptId: "python-variables-types",
     format: "short-answer",
     cognitive: "explain",
@@ -3282,7 +3282,7 @@ export const pythonFundamentalsItems: Item[] = [
     status: "live",
   },
   {
-    id: "python-variables-types--transfer-small-int-caching",
+    id: "python-variables-types--transfer-small-int-caching-alt",
     conceptId: "python-variables-types",
     format: "mcq",
     cognitive: "transfer",
@@ -3541,7 +3541,7 @@ export const pythonFundamentalsItems: Item[] = [
 
   // -- python-operators (+8) -----------------------------------------------
   {
-    id: "python-operators--recall-exponent-operator",
+    id: "python-operators--recall-exponent-operator-alt",
     conceptId: "python-operators",
     format: "numeric",
     cognitive: "recall",
@@ -3556,7 +3556,7 @@ export const pythonFundamentalsItems: Item[] = [
     status: "live",
   },
   {
-    id: "python-operators--recall-not-equal",
+    id: "python-operators--recall-not-equal-alt",
     conceptId: "python-operators",
     format: "mcq",
     cognitive: "recall",
@@ -3776,7 +3776,7 @@ export const pythonFundamentalsItems: Item[] = [
     status: "live",
   },
   {
-    id: "python-tuples--recall-tuple-concatenation",
+    id: "python-tuples--recall-tuple-concatenation-alt",
     conceptId: "python-tuples",
     format: "numeric",
     cognitive: "recall",

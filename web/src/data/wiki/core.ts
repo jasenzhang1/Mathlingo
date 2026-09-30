@@ -19,6 +19,12 @@ import { emAlgorithmWiki } from "./em-algorithm";
 import { equivalenceTestingWiki } from "./equivalence-testing";
 import { fischersExactTestWiki } from "./fischers-exact-test";
 import { functionalDataAnalysisWiki } from "./functional-data-analysis";
+import {
+  functionalPcaWiki,
+  functionalRegressionWiki,
+  hilbertSchmidtOperatorsWiki,
+  multivariateFpcaWiki,
+} from "./functional-data-methods";
 import { gaussianMixtureModelsWiki } from "./gaussian-mixture-models";
 import { gaussianProcessWiki } from "./gaussian-process";
 import { graphsWiki } from "./graphs";
@@ -30,8 +36,19 @@ import { monteCarloIntegrationWiki } from "./monte-carlo-integration";
 import { precisionMatrixWiki } from "./precision-matrix";
 import { gaussianGraphicalModelsWiki } from "./gaussian-graphical-models";
 import { graphicalLassoWiki } from "./graphical-lasso";
+import { jointGraphicalLassoWiki } from "./joint-graphical-lasso";
 import { familyWiseErrorRateWiki } from "./family-wise-error-rate";
 import { falseDiscoveryRateWiki } from "./false-discovery-rate";
+import { backdoorAdjustmentWiki, causalDagsWiki, mediationAnalysisWiki } from "./causal-inference";
+import {
+  gaussianQuadratureWiki,
+  hamiltonianMonteCarloWiki,
+  quadratureRulesWiki,
+  quasiMonteCarloWiki,
+  reversibleJumpMcmcWiki,
+  varianceReductionWiki,
+} from "./numerical-integration";
+import { neymanPearsonLemmaWiki, qqPlotsWiki, uniformlyMostPowerfulTestWiki } from "./optimal-tests";
 import { gibbsSamplingWiki } from "./gibbs-sampling";
 import { klDivergenceWiki } from "./kl-divergence";
 import { kolmogorovSmirnovTestWiki } from "./kolmogorov-smirnov-test";
@@ -153,6 +170,8 @@ export const coreWikiArticles: WikiArticle[] = [
   multipleTestingWiki,
   familyWiseErrorRateWiki,
   falseDiscoveryRateWiki,
+  neymanPearsonLemmaWiki,
+  uniformlyMostPowerfulTestWiki,
   equivalenceTestingWiki,
   sequentialTestingWiki,
   predictionIntervalWiki,
@@ -163,6 +182,7 @@ export const coreWikiArticles: WikiArticle[] = [
   kruskalWallisTestWiki,
   mcnemarTestWiki,
   kolmogorovSmirnovTestWiki,
+  qqPlotsWiki,
 
   // Multivariate Probability & Asymptotics
   centralLimitTheoremWiki,
@@ -189,9 +209,13 @@ export const coreWikiArticles: WikiArticle[] = [
   graphsWiki,
   directedVsUndirectedGraphsWiki,
   conditionalIndependenceDSeparationWiki,
+  causalDagsWiki,
+  backdoorAdjustmentWiki,
+  mediationAnalysisWiki,
   markovRandomFieldsWiki,
   gaussianGraphicalModelsWiki,
   graphicalLassoWiki,
+  jointGraphicalLassoWiki,
   markovChainsWiki,
   hmmWiki,
 
@@ -202,11 +226,17 @@ export const coreWikiArticles: WikiArticle[] = [
   laplaceApproximationWiki,
   conjugatePriorsWiki,
 
-  // Cluster 2b: sampling-based inference
+  // Cluster 2b: numerical integration, then sampling-based inference
+  quadratureRulesWiki,
+  gaussianQuadratureWiki,
   monteCarloIntegrationWiki,
+  varianceReductionWiki,
+  quasiMonteCarloWiki,
   importanceSamplingWiki,
   markovChainMonteCarloWiki,
   gibbsSamplingWiki,
+  hamiltonianMonteCarloWiki,
+  reversibleJumpMcmcWiki,
   dirichletProcessWiki,
   stickBreakingConstructionWiki,
 
@@ -220,4 +250,8 @@ export const coreWikiArticles: WikiArticle[] = [
   // Cluster 4: functional data analysis
   hilbertSpaceWiki,
   functionalDataAnalysisWiki,
+  hilbertSchmidtOperatorsWiki,
+  functionalPcaWiki,
+  multivariateFpcaWiki,
+  functionalRegressionWiki,
 ];
