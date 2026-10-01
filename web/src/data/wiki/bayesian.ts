@@ -1,5 +1,6 @@
 import type { WikiArticle } from "./types";
 import { bayesianModelWikis } from "./bayesian-models";
+import { bayesianInversionWikis } from "./bayesian-inversion";
 
 /**
  * Foundations of the Bayesian Statistics chapter. The chapter's later lessons
@@ -410,4 +411,5 @@ export const bayesianWikis: WikiArticle[] = [
   hierarchicalModelsWiki,
   bayesFactorsWiki,
   ...bayesianModelWikis,
+  ...bayesianInversionWikis,
 ];

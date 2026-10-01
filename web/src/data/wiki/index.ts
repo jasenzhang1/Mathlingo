@@ -28,7 +28,11 @@ import type { WikiArticle } from "./types";
 const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
   "discrete-math": () => import("./discrete-math").then((m) => m.default),
   statistics: () => import("./core").then((m) => m.coreWikiArticles),
-  "multivariate-probability": () => import("./core").then((m) => m.coreWikiArticles),
+  "multivariate-probability": () =>
+    Promise.all([import("./core"), import("./copulas")]).then(([core, cop]) => [
+      ...core.coreWikiArticles,
+      ...cop.copulaWikis,
+    ]),
   // KL divergence moved into this chapter but its article stayed in `./core`.
   "information-theory": () =>
     Promise.all([import("./information-theory"), import("./core")]).then(([it, core]) => [
@@ -64,6 +68,13 @@ const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
   python: () => import("./python").then((m) => m.pythonWikiArticles),
   "stochastic-processes": () => import("./stochastic").then((m) => m.stochasticWikiArticles),
   "stochastic-calculus": () => import("./stochastic").then((m) => m.stochasticWikiArticles),
+  // Functional Data Analysis was a section of graphical-models (articles in
+  // `./core`) plus Karhunen–Loève from stochastic processes (`./stochastic`);
+  // the operator, smoothing and score lessons are in `./functional-data`.
+  "functional-data": () =>
+    Promise.all([import("./functional-data"), import("./core"), import("./stochastic")]).then(
+      ([fda, core, sp]) => [...fda.functionalDataWikis, ...core.coreWikiArticles, ...sp.stochasticWikiArticles],
+    ),
 };
 
 /** Domain -> its articles, indexed by concept id. Cached, so each chunk is fetched once. */

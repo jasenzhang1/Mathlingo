@@ -4241,14 +4241,18 @@
  {
   "id": "iq-0299",
   "section": "342-symmetry-stealing",
+  "otherSections": [
+   "343-symmetry-markov-chain"
+  ],
   "family": "dice-rolls-till-criteria",
   "difficulty": 3,
   "question": "A fair 6-sided die is rolled until a 6 appears. What is the probability that the sum of all rolled numbers is even?",
   "answer": "4/7",
-  "notes": "If we roll a 2 or a 4, we stay in place. If we roll a 1,3,5, we switch parity. If we roll a 6, we end.\n\np = 1/6 + 2/6 * p + 3/6 * (1-p)",
+  "notes": "METHOD 1: stealing symmetry.\nIf we roll a 2 or a 4, we stay in place. If we roll a 1,3,5, we switch parity. If we roll a 6, we end.\nSwitching parity turns \"end even\" into \"end odd\", so from the odd state the answer is 1 - p.\n\np = 1/6 + 2/6 * p + 3/6 * (1-p)\np = 4/7\n\nMETHOD 2: Markov chain (works, but inefficient).\nStates: E = running sum even, O = running sum odd, plus two absorbing states: stopped with an even sum, stopped with an odd sum. We start in E (sum 0).\nFrom E: 2,4 -> E (2/6); 1,3,5 -> O (3/6); 6 -> stop even (1/6).\nFrom O: 2,4 -> O (2/6); 1,3,5 -> E (3/6); 6 -> stop odd (1/6).\n\nLet p_E, p_O = P(stop with an even sum) from E and O:\np_E = 1/6 + 2/6 p_E + 3/6 p_O\np_O = 2/6 p_O + 3/6 p_E\nThe second gives p_O = 3/4 p_E; substituting, 7/24 p_E = 1/6, so p_E = 4/7 (and p_O = 3/7).\n\nEquivalently, with transient block Q = [[1/3, 1/2], [1/2, 1/3]] and absorbing block R = [[1/6, 0], [0, 1/6]], the absorption probabilities are (I - Q)^{-1} R = [[4/7, 3/7], [3/7, 4/7]]; row E gives 4/7.\n\nMethod 1 is faster: it notices p_O = 1 - p_E by symmetry, so it needs one equation instead of two.",
   "tags": [
    "Stealing symmetry",
-   "Odd Even Parity"
+   "Odd Even Parity",
+   "Markov Chain"
   ],
   "source": "Quantprof Dice Sum Parity",
   "numericAnswer": 0.5714285714285714

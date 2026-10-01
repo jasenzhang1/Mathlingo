@@ -34,7 +34,17 @@ export interface InterviewFamily {
 
 export interface InterviewQuestion {
   id: string;
+  /**
+   * The main technique: the most efficient solution, and the one an
+   * interviewer is looking for. Mock interviews credit this bar.
+   */
   section: string | null;
+  /**
+   * Other techniques that also solve the question, usually less efficiently
+   * (a Markov chain where symmetry is the intended trick). The question is
+   * also served when training these, and credits whichever one is trained.
+   */
+  otherSections?: string[];
   family: string | null;
   /** 0–10; 11–12 is "they are trying to end you". null when not yet rated. */
   difficulty: number | null;

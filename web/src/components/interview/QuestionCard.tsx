@@ -165,8 +165,15 @@ export function QuestionCard({
             </div>
           )}
           <p className="font-body text-xs text-[var(--ink-soft)]">
+            {q.otherSections?.length ? "Main technique: " : ""}
             {sectionLabel(q.section)}
             {family && ` · ${family.name}`}
+            {q.otherSections?.length ? (
+              <>
+                <br />
+                Also solvable by: {q.otherSections.map(sectionLabel).join("; ")}
+              </>
+            ) : null}
           </p>
 
           {grade?.kind === "correct" || grade?.kind === "incorrect" || skipped ? (

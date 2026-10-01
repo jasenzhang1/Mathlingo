@@ -104,6 +104,15 @@ import { gmFortyDItems } from "./gm-forty-d";
 import { stFortyAItems } from "./st-forty-a";
 import { bayesFoundationsItems } from "./bayes-foundations";
 import { bayesModelsItems } from "./bayes-models";
+import { fdaFoundationsItems } from "./fda-foundations";
+import { fdaOperatorsItems } from "./fda-operators";
+import { bayesInversionItems } from "./bayes-inversion";
+import { copulaItems } from "./copulas";
+import { fdaBayesCopulaTopupItems } from "./fda-bayes-copula-topups";
+import { rgToFortyAItems } from "./rg-to-forty-a";
+import { rgToFortyBItems } from "./rg-to-forty-b";
+import { rgToFortyCItems } from "./rg-to-forty-c";
+import { rgToFortyDItems } from "./rg-to-forty-d";
 import { mlFocusedAItems } from "./ml-focused-a";
 import { mlFocusedBItems } from "./ml-focused-b";
 import { spChainsItems } from "./sp-chains";
@@ -235,6 +244,15 @@ export const expansionItems: Item[] = [
   ...stFortyAItems,
   ...bayesFoundationsItems,
   ...bayesModelsItems,
+  ...fdaFoundationsItems,
+  ...fdaOperatorsItems,
+  ...bayesInversionItems,
+  ...copulaItems,
+  ...fdaBayesCopulaTopupItems,
+  ...rgToFortyAItems,
+  ...rgToFortyBItems,
+  ...rgToFortyCItems,
+  ...rgToFortyDItems,
   ...mlFocusedAItems,
   ...mlFocusedBItems,
   ...spChainsItems,

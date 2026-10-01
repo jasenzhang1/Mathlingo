@@ -51,9 +51,14 @@ export function bundleQuestions(bundle: Bundle): InterviewQuestion[] {
   });
 }
 
+/** Every technique a question can be trained under: its main section first, then the others. */
+export function techniquesOf(q: InterviewQuestion): string[] {
+  return [...(q.section ? [q.section] : []), ...(q.otherSections ?? [])];
+}
+
 /** Sections that have at least one servable question, grouped by topic in section-number order. */
 export function sectionsByTopic(): { topic: string; sections: InterviewSection[] }[] {
-  const used = new Set(liveQuestions.map((q) => q.section));
+  const used = new Set(liveQuestions.flatMap(techniquesOf));
   const groups = new Map<string, InterviewSection[]>();
   for (const s of [...sections].sort((a, b) => a.number - b.number || a.subtopic.localeCompare(b.subtopic))) {
     if (!used.has(s.id)) continue;
@@ -62,6 +67,7 @@ export function sectionsByTopic(): { topic: string; sections: InterviewSection[]
   return [...groups].map(([topic, secs]) => ({ topic, sections: secs }));
 }
 
+/** Questions to drill for a technique — those where it is the main technique or one of the others. */
 export function questionsInSection(sectionId: string): InterviewQuestion[] {
-  return liveQuestions.filter((q) => q.section === sectionId);
+  return liveQuestions.filter((q) => techniquesOf(q).includes(sectionId));
 }

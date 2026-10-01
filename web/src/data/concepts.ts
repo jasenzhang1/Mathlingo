@@ -12,6 +12,7 @@ export type Domain =
   | "graphical-models"
   | "stochastic-processes"
   | "stochastic-calculus"
+  | "functional-data"
   | "financial-instruments"
   | "time-series"
   | "python";
@@ -38,6 +39,7 @@ export const domainMeta: Record<Domain, DomainMeta> = {
   "graphical-models": { label: "Graphical Models & Computation", color: "#a855f7" },
   "stochastic-processes": { label: "Stochastic Processes", color: "#c2410c" },
   "stochastic-calculus": { label: "Stochastic Calculus", color: "#0891b2" },
+  "functional-data": { label: "Functional Data Analysis", color: "#4f46e5" },
   "financial-instruments": { label: "Financial Instruments", color: "#7c3aed" },
   "time-series": { label: "Stochastic Processes & Time Series", color: "#c2410c" },
   /**
@@ -1221,6 +1223,49 @@ export const concepts: Concept[] = [
       "quadratic-forms-random-vectors",
       "schur-complement",
     ],
+  },
+  // Copulas: dependence separated from the marginals.
+  {
+    id: "copulas",
+    title: "Copulas & Sklar's Theorem",
+    domain: "multivariate-probability",
+    blurb: "A joint distribution = marginals + a copula on the unit square: the probability integral transform, Sklar's theorem, and the Fréchet–Hoeffding bounds.",
+    prerequisites: ["joint-distribution", "marginal-distribution", "cdf", "distribution-transformations"],
+  },
+  {
+    id: "gaussian-and-t-copulas",
+    title: "Gaussian & t Copulas",
+    domain: "multivariate-probability",
+    blurb: "The dependence structure of the multivariate normal and t, simulated through their marginals — and the Gaussian copula's role in the 2008 credit crisis.",
+    prerequisites: ["copulas", "multivariate-normal"],
+  },
+  {
+    id: "archimedean-copulas",
+    title: "Archimedean Copulas",
+    domain: "multivariate-probability",
+    blurb: "Copulas from a single generator: Clayton, Gumbel and Frank, their parameters, and the asymmetric dependence they can express.",
+    prerequisites: ["copulas"],
+  },
+  {
+    id: "copula-rank-correlation",
+    title: "Rank Correlation: Kendall's τ & Spearman's ρ",
+    domain: "multivariate-probability",
+    blurb: "Dependence measures that depend only on the copula: concordance, Kendall's tau and Spearman's rho, and why Pearson correlation can mislead.",
+    prerequisites: ["copulas", "pearson-correlation"],
+  },
+  {
+    id: "tail-dependence",
+    title: "Tail Dependence",
+    domain: "multivariate-probability",
+    blurb: "Do extremes happen together? Upper and lower tail-dependence coefficients, and why the Gaussian copula has none.",
+    prerequisites: ["gaussian-and-t-copulas", "archimedean-copulas"],
+  },
+  {
+    id: "copula-estimation",
+    title: "Fitting Copulas",
+    domain: "multivariate-probability",
+    blurb: "Pseudo-observations from ranks, inversion of Kendall's τ, maximum pseudo-likelihood and IFM, and goodness-of-fit checks.",
+    prerequisites: ["copula-rank-correlation", "tail-dependence", "mle"],
   },
   {
     id: "precision-matrix",
@@ -3798,6 +3843,58 @@ export const concepts: Concept[] = [
   // The conjugate families worked one at a time, prediction intervals, and the
   // applied lessons (empirical Bayes, A/B testing, MCMC diagnostics).
   {
+    id: "exchangeability",
+    title: "Exchangeability & de Finetti's Theorem",
+    domain: "bayesian-statistics",
+    blurb: "Sequences whose joint law ignores order: why exchangeable data behave as if i.i.d. given a random parameter, and how that justifies priors.",
+    prerequisites: ["bayesian-inference", "mutual-independence"],
+  },
+  // Bayesian inversion: recovering an unknown (often a function) from indirect,
+  // noisy observations through a forward model, and the likelihood-free and
+  // ensemble methods used when that model is an expensive simulator.
+  {
+    id: "bayesian-inverse-problems",
+    title: "Bayesian Inverse Problems",
+    domain: "bayesian-statistics",
+    blurb: "Inferring an unknown u from data y = G(u) + η: the posterior as a regularised, well-posed answer to an ill-posed problem.",
+    prerequisites: ["bayesian-inference", "compact-operators", "multivariate-normal"],
+  },
+  {
+    id: "linear-gaussian-inverse-problems",
+    title: "Linear–Gaussian Inversion",
+    domain: "bayesian-statistics",
+    blurb: "Linear forward map, Gaussian prior and noise: the closed-form posterior, its Kalman-gain form, and the MAP estimate as Tikhonov regularisation.",
+    prerequisites: ["bayesian-inverse-problems", "conditional-multivariate-normal", "bayesian-linear-regression"],
+  },
+  {
+    id: "function-space-priors",
+    title: "Gaussian Priors on Function Spaces",
+    domain: "bayesian-statistics",
+    blurb: "Karhunen–Loève priors, trace-class covariances, Matérn and (−Δ)^−α priors, and why discretisation-invariant priors matter.",
+    prerequisites: ["bayesian-inverse-problems", "gaussian-process", "karhunen-loeve-expansion"],
+  },
+  {
+    id: "pcn-mcmc",
+    title: "Dimension-Robust MCMC (pCN)",
+    domain: "bayesian-statistics",
+    blurb: "The preconditioned Crank–Nicolson proposal: an MCMC method whose acceptance rate doesn't collapse as the mesh is refined.",
+    prerequisites: ["function-space-priors", "markov-chain-monte-carlo"],
+  },
+  {
+    id: "ensemble-kalman-inversion",
+    title: "Ensemble Kalman Inversion",
+    domain: "bayesian-statistics",
+    blurb: "Derivative-free inversion with an ensemble: sample covariances in place of adjoints, the Kalman update, and its link to data assimilation.",
+    prerequisites: ["linear-gaussian-inverse-problems", "kalman-filter"],
+  },
+  {
+    id: "approximate-bayesian-computation",
+    title: "Approximate Bayesian Computation",
+    domain: "bayesian-statistics",
+    blurb: "Likelihood-free inference for simulators: rejection ABC, summary statistics, tolerances, and what the approximate posterior really targets.",
+    prerequisites: ["bayesian-inverse-problems", "monte-carlo-integration"],
+  },
+  {
     id: "beta-binomial-model",
     title: "The Beta–Binomial Model",
     domain: "bayesian-statistics",
@@ -3947,44 +4044,138 @@ export const concepts: Concept[] = [
   {
     id: "hilbert-space",
     title: "Hilbert Space",
-    domain: "graphical-models",
+    domain: "functional-data",
     blurb: "A vector space with an inner product, complete enough that limits of Cauchy sequences stay inside it — the setting that lets 'vector' mean a function instead of a finite list of numbers.",
     prerequisites: ["dot-product", "vector-norm"],
   },
   {
     id: "functional-data-analysis",
     title: "Functional Data Analysis",
-    domain: "graphical-models",
+    domain: "functional-data",
     blurb: "Treating each observation as a whole curve rather than a finite vector of features — a data point living in a Hilbert space of functions.",
     prerequisites: ["hilbert-space"],
   },
   {
     id: "hilbert-schmidt-operators",
     title: "Hilbert–Schmidt & Covariance Operators",
-    domain: "graphical-models",
+    domain: "functional-data",
     blurb: "Integral operators with square-integrable kernels: the covariance operator of a random curve, its spectral decomposition, and the Hilbert–Schmidt norm.",
-    prerequisites: ["functional-data-analysis", "covariance-matrix", "spectral-theorem"],
+    prerequisites: ["functional-data-analysis", "covariance-matrix", "spectral-theorem", "compact-operators", "mean-covariance-functions"],
   },
   {
     id: "functional-pca",
     title: "Functional PCA",
-    domain: "graphical-models",
+    domain: "functional-data",
     blurb: "Eigenfunctions of the covariance operator: the few smooth modes of variation that summarise a sample of curves, and how to estimate them from noisy, sparse data.",
-    prerequisites: ["hilbert-schmidt-operators", "pca", "mercers-theorem"],
+    prerequisites: ["hilbert-schmidt-operators", "pca", "mercers-theorem", "projected-variance"],
   },
   {
     id: "multivariate-fpca",
     title: "Multivariate Functional PCA (MFPCA)",
-    domain: "graphical-models",
+    domain: "functional-data",
     blurb: "Joint modes of variation when each subject has several curves, possibly on different domains — univariate FPCA per variable, then PCA on the combined scores.",
     prerequisites: ["functional-pca"],
   },
   {
     id: "functional-regression",
     title: "Functional Regression",
-    domain: "graphical-models",
+    domain: "functional-data",
     blurb: "Scalar-on-function, function-on-scalar and function-on-function models — why the coefficient function is ill-posed and how FPC truncation or roughness penalties fix it.",
-    prerequisites: ["functional-pca", "multiple-linear-regression", "regularization"],
+    prerequisites: ["functional-pca", "multiple-linear-regression", "regularization", "fpc-scores", "cross-covariance-operators"],
+  },
+  // Functional Data Analysis — the function-space and operator foundations of
+  // a graduate FDA course, the smoothing and registration steps that turn raw
+  // records into curves, and the score/projection machinery behind FPCA.
+  {
+    id: "l2-space",
+    title: "The Space L²",
+    domain: "functional-data",
+    blurb: "Square-integrable functions with ⟨f, g⟩ = ∫ f g: the norm, Cauchy–Schwarz, orthogonality of functions, and why elements are equivalence classes.",
+    prerequisites: ["hilbert-space", "cauchy-schwarz"],
+  },
+  {
+    id: "orthonormal-function-bases",
+    title: "Orthonormal Function Bases",
+    domain: "functional-data",
+    blurb: "Fourier and Legendre systems, generalised Fourier coefficients, Parseval's identity, and truncation as the best L² approximation by orthogonal projection.",
+    prerequisites: ["l2-space", "orthonormal-basis"],
+  },
+  {
+    id: "basis-function-expansion",
+    title: "Basis Expansions: Fourier & B-splines",
+    domain: "functional-data",
+    blurb: "Turning discrete, noisy records into functions: x(t) = Σ cₖ φₖ(t), least-squares coefficients, choosing a basis and its size.",
+    prerequisites: ["functional-data-analysis", "orthonormal-function-bases", "regression-splines"],
+  },
+  {
+    id: "roughness-penalty-smoothing",
+    title: "Roughness Penalties & Smoothing",
+    domain: "functional-data",
+    blurb: "Penalising ∫ (x″)² to trade fit against wiggliness: the penalty matrix, the smoother matrix, effective degrees of freedom and choosing λ by GCV.",
+    prerequisites: ["basis-function-expansion", "smoothing-splines"],
+  },
+  {
+    id: "curve-registration",
+    title: "Curve Registration",
+    domain: "functional-data",
+    blurb: "Separating phase (timing) from amplitude variation: landmark and continuous registration with monotone warping functions.",
+    prerequisites: ["basis-function-expansion"],
+  },
+  {
+    id: "mean-covariance-functions",
+    title: "Mean & Covariance Functions",
+    domain: "functional-data",
+    blurb: "The pointwise mean curve, the covariance surface C(s, t) and correlation function, their sample estimates, and pointwise versus simultaneous bands.",
+    prerequisites: ["functional-data-analysis", "covariance-matrix"],
+  },
+  {
+    id: "bounded-linear-operators",
+    title: "Linear Operators on Hilbert Spaces",
+    domain: "functional-data",
+    blurb: "Linearity, boundedness and continuity, the operator norm, adjoints and self-adjointness — matrices generalised to function spaces.",
+    prerequisites: ["hilbert-space", "linear-transformations", "matrix-norms"],
+  },
+  {
+    id: "integral-operators",
+    title: "Integral Operators",
+    domain: "functional-data",
+    blurb: "(Kf)(s) = ∫ k(s, t) f(t) dt: the kernel as a continuous matrix, composition, adjoints via k(t, s), and discretisation back to a matrix.",
+    prerequisites: ["bounded-linear-operators", "l2-space"],
+  },
+  {
+    id: "compact-operators",
+    title: "Compact Operators & the Spectral Theorem",
+    domain: "functional-data",
+    blurb: "Limits of finite-rank operators: eigenvalues that accumulate only at zero, the spectral theorem for compact self-adjoint operators, and why there is no bounded inverse.",
+    prerequisites: ["integral-operators", "spectral-theorem"],
+  },
+  {
+    id: "linear-differential-operators",
+    title: "Linear Differential Operators",
+    domain: "functional-data",
+    blurb: "L = Dᵐ + βₘ₋₁Dᵐ⁻¹ + … + β₀: null spaces, unboundedness, L-penalties that shrink towards a model like harmonic motion, and principal differential analysis.",
+    prerequisites: ["bounded-linear-operators", "roughness-penalty-smoothing"],
+  },
+  {
+    id: "projected-variance",
+    title: "Projections & Variance Decomposition",
+    domain: "functional-data",
+    blurb: "Var⟨X, f⟩ = ⟨Cf, f⟩: the variance of projections onto functions and subspaces, total variance as a trace, and why the leading eigenfunctions capture the most.",
+    prerequisites: ["hilbert-schmidt-operators", "orthonormal-function-bases"],
+  },
+  {
+    id: "fpc-scores",
+    title: "FPC Scores & Loadings",
+    domain: "functional-data",
+    blurb: "Scores ξᵢⱼ = ⟨Xᵢ − μ, φⱼ⟩ and loadings √λⱼ φⱼ: computing, interpreting and plotting them, and predicting scores for sparse curves by conditional expectation (PACE).",
+    prerequisites: ["functional-pca", "conditional-multivariate-normal"],
+  },
+  {
+    id: "cross-covariance-operators",
+    title: "Cross-Covariance Operators",
+    domain: "functional-data",
+    blurb: "C_XY f = E[⟨X, f⟩ Y]: how two random functions co-vary, its kernel C(s, t) = Cov(X(s), Y(t)), and its role in functional regression and canonical correlation.",
+    prerequisites: ["hilbert-schmidt-operators"],
   },
   {
     id: "rkhs",
@@ -4106,10 +4297,10 @@ export const concepts: Concept[] = [
   {
     id: "karhunen-loeve-expansion",
     title: "Karhunen-Loève Expansion",
-    domain: "stochastic-processes",
+    domain: "functional-data",
     blurb:
       "Writing a random process as an infinite sum of fixed orthogonal functions times uncorrelated random coefficients — Mercer's theorem applied to a covariance function, and the reason Brownian motion has a closed-form series representation at all.",
-    prerequisites: ["functional-data-analysis", "mercers-theorem", "brownian-motion"],
+    prerequisites: ["functional-data-analysis", "mercers-theorem", "brownian-motion", "hilbert-schmidt-operators"],
   },
   // Discrete-time Markov chain theory, random walks and stopping, renewal
   // theory, birth–death chains and Ogata's thinning. `markov-chains` itself

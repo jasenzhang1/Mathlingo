@@ -1,67 +1,50 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../lib/auth/useAuth";
 
-interface HeroProps {
-  onPickPath: (path: "refresh" | "bootcamp") => void;
-}
+const bigButton =
+  "font-body inline-block rounded-full px-10 py-4 text-lg font-semibold text-[var(--accent-ink)] shadow-sm transition-transform hover:-translate-y-0.5";
 
-export function Hero({ onPickPath }: HeroProps) {
+export function Hero() {
+  const { user, loading } = useAuth();
+
   return (
-    <section className="border-b border-[var(--line)]">
-      <div className="mx-auto max-w-6xl px-6 py-20 text-center md:py-28">
-        <p className="font-body text-sm font-medium uppercase tracking-[0.2em] text-[var(--teal)]">
-          Duolingo, for the math you used to know
-        </p>
-        <h1 className="font-display mx-auto mt-5 max-w-3xl text-4xl leading-tight text-[var(--ink)] md:text-6xl">
-          Get sharp. Stay sharp. Break in.
+    <section className="flex min-h-[calc(100vh-14rem)] items-center">
+      <div className="mx-auto max-w-4xl px-6 py-20 text-center">
+        <h1 className="font-display text-5xl leading-tight text-[var(--ink)] md:text-7xl">
+          Get sharp.
+          <br />
+          Stay sharp.
         </h1>
-        <p className="font-body mx-auto mt-6 max-w-2xl text-lg text-[var(--ink-soft)]">
-          Mathlingo drills the linear algebra, calculus, and statistics
-          behind ML, AI, and quant work — in short, spaced, analogy-driven
-          reps, not another dry textbook chapter.
+        <p className="font-body mt-6 text-lg text-[var(--ink-soft)]">
+          Learn the math you want. Prep for the quant interview you need.
         </p>
 
-        <div className="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row sm:justify-center">
-          <button
-            type="button"
-            onClick={() => onPickPath("refresh")}
-            className="font-body rounded-full px-6 py-3 text-sm font-semibold text-[var(--accent-ink)] shadow-sm transition-transform hover:-translate-y-0.5"
-            style={{ background: "var(--accent)" }}
-          >
-            Refresh skills I've forgotten
-          </button>
-          <button
-            type="button"
-            onClick={() => onPickPath("bootcamp")}
-            className="font-body rounded-full border border-[var(--line)] bg-[var(--panel)] px-6 py-3 text-sm font-semibold text-[var(--ink)] shadow-sm transition-transform hover:-translate-y-0.5"
-          >
-            Break into ML / data roles
-          </button>
+        <div className="mt-12 flex flex-col items-center gap-4">
+          {loading ? (
+            <div className="h-[60px]" aria-hidden="true" />
+          ) : user ? (
+            <>
+              <Link to="/map" className={bigButton} style={{ background: "var(--accent)" }}>
+                Continue learning
+              </Link>
+              <Link to="/interview" className="font-body text-sm font-medium text-[var(--accent)] hover:underline">
+                Interview prep →
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/signup" className={bigButton} style={{ background: "var(--accent)" }}>
+                Get started
+              </Link>
+              <p className="font-body text-sm text-[var(--ink-soft)]">
+                Already have an account?{" "}
+                <Link to="/login" className="font-medium text-[var(--accent)] hover:underline">
+                  Log in
+                </Link>
+              </p>
+            </>
+          )}
         </div>
-
-        <Link
-          to="/map"
-          className="font-body mt-6 inline-block text-sm font-medium text-[var(--accent)] hover:underline"
-        >
-          Or explore the concept map →
-        </Link>
-
-        <dl className="font-body mx-auto mt-16 grid max-w-2xl grid-cols-2 gap-8 text-left sm:grid-cols-4 sm:text-center">
-          {[
-            ["6", "core subjects"],
-            ["1000+", "drilled concepts"],
-            ["SM-2", "spaced repetition"],
-            ["AI", "graded free response"],
-          ].map(([stat, label]) => (
-            <div key={label}>
-              <dt className="font-display text-2xl text-[var(--ink)]">
-                {stat}
-              </dt>
-              <dd className="mt-1 text-xs uppercase tracking-wide text-[var(--ink-soft)]">
-                {label}
-              </dd>
-            </div>
-          ))}
-        </dl>
       </div>
     </section>
   );

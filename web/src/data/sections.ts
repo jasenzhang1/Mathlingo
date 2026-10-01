@@ -352,6 +352,18 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       conceptIds: ["conditional-multivariate-normal", "precision-matrix"],
     },
     {
+      id: "copulas",
+      label: "Copulas & Dependence",
+      conceptIds: [
+        "copulas",
+        "gaussian-and-t-copulas",
+        "archimedean-copulas",
+        "copula-rank-correlation",
+        "tail-dependence",
+        "copula-estimation",
+      ],
+    },
+    {
       id: "asymptotics",
       label: "Asymptotics",
       conceptIds: ["central-limit-theorem"],
@@ -988,6 +1000,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "Prior, Likelihood & Posterior",
       conceptIds: [
         "bayesian-inference",
+        "exchangeability",
         "prior-selection",
         "conjugate-priors",
       ],
@@ -1053,6 +1066,18 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "stick-breaking-construction",
       ],
     },
+    {
+      id: "bayesian-inversion",
+      label: "Bayesian Inverse Problems",
+      conceptIds: [
+        "bayesian-inverse-problems",
+        "linear-gaussian-inverse-problems",
+        "function-space-priors",
+        "pcn-mcmc",
+        "ensemble-kalman-inversion",
+        "approximate-bayesian-computation",
+      ],
+    },
   ],
 
   "graphical-models": [
@@ -1107,18 +1132,6 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       conceptIds: [
         "rkhs",
         "wasserstein-distance",
-      ],
-    },
-    {
-      id: "fda",
-      label: "Functional Data Analysis",
-      conceptIds: [
-        "hilbert-space",
-        "functional-data-analysis",
-        "hilbert-schmidt-operators",
-        "functional-pca",
-        "multivariate-fpca",
-        "functional-regression",
       ],
     },
   ],
@@ -1180,7 +1193,6 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "continuous-time-markov-chains",
         "birth-death-processes",
         "kalman-filter",
-        "karhunen-loeve-expansion",
       ],
     },
   ],
@@ -1217,6 +1229,59 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       id: "pde-connections",
       label: "Connections with PDEs",
       conceptIds: ["feynman-kac-theorem"],
+    },
+  ],
+
+  "functional-data": [
+    {
+      id: "function-spaces",
+      label: "Function Spaces",
+      conceptIds: [
+        "hilbert-space",
+        "l2-space",
+        "orthonormal-function-bases",
+      ],
+    },
+    {
+      id: "raw-data-to-functions",
+      label: "From Raw Data to Functions",
+      conceptIds: [
+        "functional-data-analysis",
+        "basis-function-expansion",
+        "roughness-penalty-smoothing",
+        "curve-registration",
+        "mean-covariance-functions",
+      ],
+    },
+    {
+      id: "operators",
+      label: "Operators on Function Spaces",
+      conceptIds: [
+        "bounded-linear-operators",
+        "integral-operators",
+        "compact-operators",
+        "linear-differential-operators",
+        "hilbert-schmidt-operators",
+        "cross-covariance-operators",
+      ],
+    },
+    {
+      id: "functional-pca",
+      label: "Functional Principal Components",
+      conceptIds: [
+        "projected-variance",
+        "karhunen-loeve-expansion",
+        "functional-pca",
+        "fpc-scores",
+        "multivariate-fpca",
+      ],
+    },
+    {
+      id: "functional-regression",
+      label: "Functional Regression",
+      conceptIds: [
+        "functional-regression",
+      ],
     },
   ],
 
