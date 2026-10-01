@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
 import { startCheckout } from "../lib/billing/api";
-import { PLANS, type Tier } from "../lib/billing/tiers";
+import { INTERVIEW_FREE_PLAN, INTERVIEW_PLAN, PLANS, type Tier } from "../lib/billing/tiers";
 import { useSubscription } from "../lib/billing/useSubscription";
 import { useAuth } from "../lib/auth/useAuth";
 import { useOwnProfile } from "../lib/profiles";
@@ -11,14 +11,14 @@ import { useOwnProfile } from "../lib/profiles";
 export function PricingPage() {
   const { user } = useAuth();
   const profile = useOwnProfile();
-  const { subscription, loading } = useSubscription();
+  const { subscription, interview, loading } = useSubscription();
   const [searchParams] = useSearchParams();
-  const [pending, setPending] = useState<Tier | null>(null);
+  const [pending, setPending] = useState<Tier | "interview" | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const cancelled = searchParams.get("checkout") === "cancelled";
 
-  async function choose(tier: Tier) {
+  async function choose(tier: Tier | "interview") {
     if (tier === "free") return;
     setError(null);
     setPending(tier);
@@ -67,7 +67,8 @@ export function PricingPage() {
           </p>
         )}
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <h2 className="font-display mt-12 text-2xl text-[var(--ink)]">Learning</h2>
+        <div className="mt-5 grid gap-5 md:grid-cols-3">
           {PLANS.map((plan) => {
             const current = !loading && subscription.tier === plan.id;
             const featured = plan.id === "graded";
@@ -140,6 +141,78 @@ export function PricingPage() {
                       className="font-body w-full rounded-full bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:opacity-90 disabled:opacity-50"
                     >
                       {pending === plan.id ? "Opening checkout…" : `Choose ${plan.name}`}
+                    </button>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <h2 className="font-display mt-14 text-2xl text-[var(--ink)]">Interview prep</h2>
+        <p className="font-body mt-2 max-w-2xl text-sm text-[var(--ink-soft)]">
+          A separate subscription for quant interview practice. It doesn't need, and isn't part of, a learning plan.
+        </p>
+        <div className="mt-5 grid gap-5 md:grid-cols-2">
+          {[INTERVIEW_FREE_PLAN, INTERVIEW_PLAN].map((plan) => {
+            const paid = plan === INTERVIEW_PLAN;
+            const current = !loading && !!user && interview === paid;
+            return (
+              <div
+                key={plan.name}
+                className={`flex flex-col rounded-2xl border bg-[var(--panel)] p-6 shadow-sm ${
+                  paid ? "border-[var(--accent)]" : "border-[var(--line)]"
+                }`}
+              >
+                <h3 className="font-display text-xl text-[var(--ink)]">{plan.name}</h3>
+                <p className="font-display mt-1 text-3xl text-[var(--ink)]">
+                  {plan.priceLabel}
+                  {paid && <span className="font-body text-sm text-[var(--ink-soft)]">/month</span>}
+                </p>
+                <p className="font-body mt-2 text-sm text-[var(--ink-soft)]">{plan.tagline}</p>
+                <ul className="font-body mt-5 flex-1 space-y-2 text-sm text-[var(--ink)]">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className="flex gap-2">
+                      <span className="text-[var(--teal)]" aria-hidden="true">
+                        ✓
+                      </span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                  {plan.excludes?.map((feature) => (
+                      <li key={feature} className="flex gap-2 text-[var(--ink-soft)]">
+                        <span aria-hidden="true">·</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                </ul>
+                <div className="mt-6">
+                  {current ? (
+                    <span className="font-body block rounded-full border border-[var(--line)] px-4 py-2.5 text-center text-sm font-medium text-[var(--ink-soft)]">
+                      Your current plan
+                    </span>
+                  ) : !paid ? (
+                    <Link
+                      to={user ? "/interview" : "/signup"}
+                      className="font-body block rounded-full border border-[var(--line)] px-4 py-2.5 text-center text-sm font-medium text-[var(--ink)] hover:border-[var(--accent)]"
+                    >
+                      {user ? "Try the free decks" : "Sign up free"}
+                    </Link>
+                  ) : !user ? (
+                    <Link
+                      to="/login"
+                      className="font-body block rounded-full bg-[var(--accent)] px-4 py-2.5 text-center text-sm font-semibold text-white hover:opacity-90"
+                    >
+                      Sign in to subscribe
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => void choose("interview")}
+                      disabled={pending !== null}
+                      className="font-body w-full rounded-full bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:opacity-90 disabled:opacity-50"
+                    >
+                      {pending === "interview" ? "Opening checkout…" : `Choose ${plan.name}`}
                     </button>
                   )}
                 </div>

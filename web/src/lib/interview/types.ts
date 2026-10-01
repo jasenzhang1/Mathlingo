@@ -64,6 +64,12 @@ export interface InterviewQuestion {
   instructional?: string;
   /** Drafts are never served. */
   status?: "draft";
+  /**
+   * Free to everyone, subscription or not. A question in any free bundle is
+   * free regardless of this flag (see `isFreeQuestion`); this marks the free
+   * ones that live only in locked bundles, or in none.
+   */
+  free?: boolean;
   reviewNote?: string;
 }
 
@@ -82,4 +88,6 @@ export interface Bundle {
    * until someone curates them in `/dev/bundles`.
    */
   curated: boolean;
+  /** A free bundle is playable without the subscription, and makes every question in it free. */
+  free?: boolean;
 }

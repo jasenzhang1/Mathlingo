@@ -3,6 +3,7 @@ import familiesJson from "../../data/interview/families.json";
 import questionsJson from "../../data/interview/questions.json";
 import sectionsJson from "../../data/interview/sections.json";
 import { loadBundleDraft } from "./bundleDraft";
+import { applyQuestionDraft, loadQuestionDraft } from "./questionDraft";
 import type { Bundle, InterviewFamily, InterviewQuestion, InterviewSection } from "./types";
 
 /**
@@ -14,7 +15,13 @@ import type { Bundle, InterviewFamily, InterviewQuestion, InterviewSection } fro
 
 export const sections = sectionsJson as InterviewSection[];
 export const families = familiesJson as InterviewFamily[];
-export const questions = questionsJson as InterviewQuestion[];
+/** Questions as committed to the repo. */
+export const repoQuestions = questionsJson as InterviewQuestion[];
+/**
+ * The questions the app serves. A developer with unpublished edits from the
+ * Questions view of `/dev/bundles` sees those instead (read once, at load).
+ */
+export const questions = applyQuestionDraft(repoQuestions, loadQuestionDraft());
 /** Bundles as committed to the repo. */
 export const repoBundles = bundlesJson as Bundle[];
 
@@ -41,6 +48,19 @@ export function sectionLabel(id: string | null): string {
  */
 export function activeBundles(): Bundle[] {
   return loadBundleDraft() ?? repoBundles;
+}
+
+/** Ids of every question in a free bundle — free whatever their own flag says. */
+export function freeBundleQuestionIds(bundles: Bundle[] = activeBundles()): Set<string> {
+  return new Set(bundles.filter((b) => b.free).flatMap((b) => b.questions));
+}
+
+/**
+ * Free to everyone: marked free itself, or in a free bundle. A free bundle
+ * guarantees its questions are free; a locked bundle may still hold free ones.
+ */
+export function isFreeQuestion(q: InterviewQuestion, freeViaBundle: Set<string> = freeBundleQuestionIds()): boolean {
+  return Boolean(q.free) || freeViaBundle.has(q.id);
 }
 
 /** A bundle's questions in order, skipping drafts and ids that no longer exist. */

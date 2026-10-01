@@ -102,6 +102,19 @@ subscription on the same Stripe customer:
 - **Access check:** `has_interview_access()` applies the same "paying, with a 3-day grace" rule as
   `effective_tier()`.
 - **Developers:** always get in.
+- **Free tier:** any signed-in user without the subscription gets the free bundles and free
+  questions. Signed-out visitors see the sales page. Pages read the access level through
+  `useInterviewAccess()`.
+  - **Free bundles** have `"free": true` in `bundles.json` (currently *Lattice walk to (5, 5)*
+    and *Dice Rolls Till Criteria 1*). Mock interviews on the free tier only draw from these.
+  - **Free questions** are any question with `"free": true`, plus every question in a free
+    bundle (`isFreeQuestion` in [`bank.ts`](web/src/lib/interview/bank.ts)). A free bundle
+    guarantees its questions are free, but a locked bundle can still contain free questions.
+  - **Training** on the free tier drills a technique's free questions and links to the rest.
+    Techniques with no free questions show the upgrade card.
+
+The Plans page shows interview prep as its own row (Free and Interview Prep), separate from the
+learning plans.
 
 The gate is presentation, not protection. The questions ship in the site's JavaScript (in their
 own lazily loaded chunk), so the paywall controls what the app shows, not what a determined
@@ -110,15 +123,34 @@ by subscribers.
 
 ## Dev view: `/dev/bundles`
 
-This page is for developers (the `useIsDeveloper` allowlist) to see every bundle and reshape it:
+This page is for developers (the `useIsDeveloper` allowlist). It has two views.
+
+**Bundles** shows every mock-interview chain:
 
 - **Edit:** reorder, add, or remove questions, retitle, change the scenario, create or delete
-  bundles, and mark a bundle curated.
+  bundles, and mark a bundle curated or free. Each step shows whether its question is free or
+  locked, and *Edit* opens it in the Questions view.
 - **Pick questions:** search by text, tag, technique, or id, filtered to the bundle's scenario by
   default.
 - **Warnings:** a step that gets easier than the one before it, draft or missing questions, and
   chains shorter than two.
-- **Local first:** edits are saved in the browser, and that browser's mock interviews serve them,
-  so a chain can be played with *Play it* before it ships.
-- **Publish as PR:** sends the full list to `publish-item-edits`, which opens a PR replacing
-  `bundles.json`. Question text itself is edited in the JSON.
+
+**Questions** (`/dev/bundles?view=questions`) shows every question individually:
+
+- **Find:** search text, answers, tags, techniques, and ids. Filter by free, locked, draft, or
+  edited, and by technique or scenario.
+- **Edit:** change the question, answer, numeric answer, solution, main technique, other
+  techniques, scenario, difficulty, tags, source, and review note. Set it free or locked, and draft
+  or live. The editor shows which bundles hold the question and whether a free bundle makes it free
+  regardless of its own flag.
+- **Add:** *New question* creates the next `iq-NNNN` id as a draft, so nothing half-written is
+  served.
+
+Both views share how edits are saved and published:
+
+- **Local first:** edits are saved in the browser, and that browser's interview pages serve them.
+  Bundle edits apply immediately, so a chain can be played with *Play it* before it ships.
+  Question edits apply after a reload.
+- **Publish as PR:** one PR to `publish-item-edits`. The full bundle list replaces
+  `bundles.json`, and only the edited or new questions are merged into `questions.json` by id.
+  Both files are written as one-space JSON, so the diff shows only real changes.
