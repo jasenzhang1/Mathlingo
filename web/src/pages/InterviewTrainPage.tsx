@@ -77,7 +77,7 @@ function Train() {
         question={current}
         showLabels
         onResult={(r) => {
-          const { before, after } = record({ question: current, correctness: r.correctness, seconds: r.seconds, mode: "train" });
+          const { before, after } = record({ question: current, correctness: r.correctness, seconds: r.seconds, mode: "train", section: sectionId });
           // A first-ever answer has no real "before" to compare against.
           if (sessionStart === null && before?.observations) setSessionStart(skillBar(before));
           const nextSeen = new Set(seen).add(current.id);

@@ -21,8 +21,12 @@ There is no database copy and no external sync: to change a question, edit the J
 | `families.json` | **Scenarios**: the setup a candidate recognizes, e.g. *Lattice Walk*, *Dice Rolls Till Criteria*. `group` links related families. |
 | `bundles.json` | **Mock-interview chains**: an ordered list of question ids on one scenario. |
 
-A question has exactly one **section** (the technique it hinges on) and at most one **family**
-(its scenario). The two labels are independent, because the same scenario needs different
+A question has one main **section** (the technique it hinges on: the most efficient solution, and
+the one an interviewer is looking for) and at most one **family** (its scenario). It may also list
+`otherSections`, techniques that solve it too but less directly. For example, the die-parity
+question's main technique is *Symmetry (Stealing)*, but a Markov chain also works. Training any
+of a question's techniques serves it and moves that technique's bar. Mock interviews credit the
+main one, and the solution names both after the candidate answers. The two labels are independent, because the same scenario needs different
 techniques depending on what is asked:
 
 | Lattice Walk bundle | Section |

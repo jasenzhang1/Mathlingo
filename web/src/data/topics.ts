@@ -1,4 +1,3 @@
-export type Track = "refresh" | "bootcamp";
 
 export interface Topic {
   id: string;
@@ -6,7 +5,6 @@ export interface Topic {
   tagline: string;
   description: string;
   hours: number;
-  tracks: Track[];
 }
 
 export const topics: Topic[] = [
@@ -17,7 +15,6 @@ export const topics: Topic[] = [
     description:
       "Vectors, matrix decompositions, eigenvalues, and why rank(A) ≤ min(m, n) — rebuilt with intuition, not just proofs.",
     hours: 8,
-    tracks: ["refresh", "bootcamp"],
   },
   {
     id: "calculus-optimization",
@@ -26,7 +23,6 @@ export const topics: Topic[] = [
     description:
       "Derivatives, the chain rule, convexity, and gradient descent — the engine behind backpropagation.",
     hours: 7,
-    tracks: ["refresh", "bootcamp"],
   },
   {
     id: "probability-statistics",
@@ -35,7 +31,6 @@ export const topics: Topic[] = [
     description:
       "From Bayes' rule to hypothesis testing, motivated with real examples like a tennis serve's speed variance.",
     hours: 9,
-    tracks: ["refresh", "bootcamp"],
   },
   {
     id: "ml-foundations",
@@ -44,7 +39,6 @@ export const topics: Topic[] = [
     description:
       "Loss functions, regularization, and neural networks — built up so nothing feels like a black box.",
     hours: 10,
-    tracks: ["bootcamp"],
   },
   {
     id: "python",
@@ -53,7 +47,6 @@ export const topics: Topic[] = [
     description:
       "Variables, types, and conversion; lists, tuples, dicts, and sets; loops and comprehensions — then the same operations again at array and table scale in NumPy and pandas.",
     hours: 10,
-    tracks: ["refresh", "bootcamp"],
   },
   {
     id: "dsa",
@@ -62,7 +55,6 @@ export const topics: Topic[] = [
     description:
       "Big-O, trees, graphs, and dynamic programming, drilled the way you'd drill vocabulary in a language app.",
     hours: 8,
-    tracks: ["bootcamp"],
   },
   {
     id: "quant-finance",
@@ -71,6 +63,5 @@ export const topics: Topic[] = [
     description:
       "Brownian motion, Itô's lemma, and portfolio risk — for professionals sharpening skills they haven't used since grad school.",
     hours: 8,
-    tracks: ["refresh"],
   },
 ];

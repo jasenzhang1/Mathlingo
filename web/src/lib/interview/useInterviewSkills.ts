@@ -29,6 +29,12 @@ export interface Attempt {
   correctness: number;
   seconds: number;
   mode: AttemptMode;
+  /**
+   * The technique being practised, whose bar moves. Defaults to the question's
+   * main technique; training passes the one being drilled, which may be one of
+   * the question's `otherSections`.
+   */
+  section?: string;
 }
 
 const localKey = (userId: string) => `mathlingo:interview-skills:${userId}`;
@@ -105,12 +111,13 @@ export function useInterviewSkills() {
     (attempt: Attempt): { before?: Ability; after?: Ability; score: number } => {
       const { question: q, correctness, seconds, mode } = attempt;
       const score = effectiveScore(q, correctness, seconds);
-      if (!user || !q.section) return { score };
+      const sectionId = attempt.section ?? q.section;
+      if (!user || !sectionId) return { score };
 
-      const before = current.current.get(q.section);
+      const before = current.current.get(sectionId);
       const after = updateSkill(before, q, score);
       const next = new Map(current.current);
-      next.set(q.section, after);
+      next.set(sectionId, after);
       current.current = next;
       setSkills(next);
       writeLocal(user.id, next);
@@ -119,7 +126,7 @@ export function useInterviewSkills() {
         const { error } = await supabase.from("interview_skills").upsert(
           {
             user_id: user.id,
-            section_id: q.section,
+            section_id: sectionId,
             ability_mean: after.mean,
             ability_variance: after.variance,
             observations: after.observations,
@@ -140,7 +147,7 @@ export function useInterviewSkills() {
         await supabase.from("interview_attempts").insert({
           user_id: user.id,
           question_id: q.id,
-          section_id: q.section,
+          section_id: sectionId,
           correctness,
           seconds: Math.round(seconds),
           score,

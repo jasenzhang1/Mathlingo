@@ -5,7 +5,7 @@ import { Nav } from "../components/Nav";
 import { useAuth } from "../lib/auth/useAuth";
 import { useIsDeveloper } from "../lib/dev/devAuth";
 import { publishBundles } from "../lib/dev/publishOverrides";
-import { difficultyOf, families, familyById, isLive, questionById, questions, repoBundles, sectionLabel } from "../lib/interview/bank";
+import { difficultyOf, families, familyById, isLive, questionById, questions, repoBundles, sectionLabel, techniquesOf } from "../lib/interview/bank";
 import { clearBundleDraft, loadBundleDraft, saveBundleDraft } from "../lib/interview/bundleDraft";
 import type { Bundle } from "../lib/interview/types";
 
@@ -367,7 +367,7 @@ function QuestionPicker({ bundle, onAdd }: { bundle: Bundle; onAdd: (id: string)
     return questions
       .filter((q) => !inBundle.has(q.id))
       .filter((q) => !sameFamily || q.family === bundle.family)
-      .filter((q) => !t || q.id.includes(t) || q.question.toLowerCase().includes(t) || q.tags.some((tag) => tag.toLowerCase().includes(t)) || sectionLabel(q.section).toLowerCase().includes(t))
+      .filter((q) => !t || q.id.includes(t) || q.question.toLowerCase().includes(t) || q.tags.some((tag) => tag.toLowerCase().includes(t)) || techniquesOf(q).some((s) => sectionLabel(s).toLowerCase().includes(t)))
       .sort((a, b) => difficultyOf(a) - difficultyOf(b))
       .slice(0, 60);
   }, [text, sameFamily, bundle.questions, bundle.family]);
