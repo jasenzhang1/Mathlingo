@@ -5,7 +5,8 @@ import { json, preflight } from "../_shared/cors.ts";
  * Turns a developer's local edits into a pull request against the site's own
  * repo. Item edits from `/dev/questions` update `web/src/data/devOverrides.json`;
  * interview bundle edits from `/dev/bundles` replace
- * `web/src/data/interview/bundles.json`. For items, `devOverrides.json` is
+ * `web/src/data/interview/bundles.json`, and interview question edits from the
+ * same page are merged by id into `web/src/data/interview/questions.json`. For items, `devOverrides.json` is
  * the file `loadItemBank` merges on top of the hand-authored item banks (see
  * `web/src/data/items.ts`). A PR rather than a direct commit to main because
  * a bad edit here ships wrong questions to every learner; a review step
@@ -20,6 +21,8 @@ import { json, preflight } from "../_shared/cors.ts";
 const OVERRIDES_PATH = "web/src/data/devOverrides.json";
 /** Interview mock-interview chains, edited as a whole list in `/dev/bundles`. */
 const BUNDLES_PATH = "web/src/data/interview/bundles.json";
+/** Interview questions, edited a few at a time in `/dev/bundles` and merged in by id. */
+const QUESTIONS_PATH = "web/src/data/interview/questions.json";
 const GITHUB_API = "https://api.github.com";
 
 interface Item {
@@ -34,6 +37,12 @@ interface Bundle {
   family: string | null;
   questions: string[];
   curated: boolean;
+  free?: boolean;
+}
+
+interface InterviewQuestion {
+  id: string;
+  [key: string]: unknown;
 }
 
 interface PublishRequest {
@@ -41,6 +50,8 @@ interface PublishRequest {
   newItems?: Record<string, Item>;
   /** The complete bundle list; replaces bundles.json wholesale. */
   interviewBundles?: Bundle[];
+  /** Edited or new interview questions; each replaces (or is appended as) the question with its id. */
+  interviewQuestions?: InterviewQuestion[];
 }
 
 interface OverridesFile {
@@ -64,13 +75,51 @@ function isBundle(value: unknown): value is Bundle {
     (b.family === null || typeof b.family === "string") &&
     Array.isArray(b.questions) &&
     b.questions.every((q) => typeof q === "string") &&
-    typeof b.curated === "boolean"
+    typeof b.curated === "boolean" &&
+    (b.free === undefined || typeof b.free === "boolean")
+  );
+}
+
+const isString = (v: unknown) => typeof v === "string";
+const isStringArray = (v: unknown) => Array.isArray(v) && v.every(isString);
+const optional = (v: unknown, check: (v: unknown) => boolean) => v === undefined || check(v);
+
+/** Mirrors `InterviewQuestion` in web/src/lib/interview/types.ts. */
+function isInterviewQuestion(value: unknown): value is InterviewQuestion {
+  if (!value || typeof value !== "object") return false;
+  const q = value as Record<string, unknown>;
+  return (
+    typeof q.id === "string" &&
+    /^iq-[0-9]+$/.test(q.id) &&
+    (q.section === null || isString(q.section)) &&
+    (q.family === null || isString(q.family)) &&
+    (q.difficulty === null || typeof q.difficulty === "number") &&
+    isString(q.question) &&
+    isString(q.answer) &&
+    isString(q.notes) &&
+    isStringArray(q.tags) &&
+    isString(q.source) &&
+    optional(q.otherSections, isStringArray) &&
+    optional(q.numericAnswer, (v) => typeof v === "number" && Number.isFinite(v)) &&
+    optional(q.instructional, isString) &&
+    optional(q.status, (v) => v === "draft") &&
+    optional(q.free, (v) => typeof v === "boolean") &&
+    optional(q.reviewNote, isString)
   );
 }
 
 function validatePayload(body: unknown): PublishRequest | { error: string } {
   if (!body || typeof body !== "object") return { error: "Request body must be an object." };
-  const { overrides, newItems, interviewBundles } = body as PublishRequest;
+  const { overrides, newItems, interviewBundles, interviewQuestions } = body as PublishRequest;
+  if (interviewQuestions !== undefined) {
+    if (!Array.isArray(interviewQuestions)) return { error: "interviewQuestions must be an array." };
+    const ids = new Set<string>();
+    for (const q of interviewQuestions) {
+      if (!isInterviewQuestion(q)) return { error: `Question ${JSON.stringify((q as { id?: unknown })?.id)} is malformed.` };
+      if (ids.has(q.id)) return { error: `Question id "${q.id}" appears twice.` };
+      ids.add(q.id);
+    }
+  }
   if (interviewBundles !== undefined) {
     if (!Array.isArray(interviewBundles)) return { error: "interviewBundles must be an array." };
     const ids = new Set<string>();
@@ -88,7 +137,7 @@ function validatePayload(body: unknown): PublishRequest | { error: string } {
       return { error: `Item keyed "${key}" has id "${value.id}" — keys must match ids.` };
     }
   }
-  return { overrides: overrides ?? {}, newItems: newItems ?? {}, interviewBundles };
+  return { overrides: overrides ?? {}, newItems: newItems ?? {}, interviewBundles, interviewQuestions };
 }
 
 function allowedEmails(): Set<string> {
@@ -162,10 +211,11 @@ Deno.serve(async (req) => {
   const overrides = validated.overrides ?? {};
   const newItems = validated.newItems ?? {};
   const bundles = validated.interviewBundles;
+  const interviewQuestions = validated.interviewQuestions?.length ? validated.interviewQuestions : undefined;
 
   const changedIds = [...Object.keys(overrides), ...Object.keys(newItems)];
-  if (changedIds.length === 0 && !bundles) {
-    return json({ error: "Nothing to publish — no edits, new items or bundles were sent." }, 400);
+  if (changedIds.length === 0 && !bundles && !interviewQuestions) {
+    return json({ error: "Nothing to publish — no edits, new items, bundles or interview questions were sent." }, 400);
   }
 
   const githubToken = Deno.env.get("GITHUB_TOKEN");
@@ -267,10 +317,39 @@ Deno.serve(async (req) => {
       );
     }
 
-    // 5. Open the PR.
+    // 5. Interview questions: merged by id into questions.json as it is on the
+    // base branch — edited ones replaced in place, new ones appended — so a
+    // PR carries only the questions this developer touched.
+    let questionSummary = "";
+    if (interviewQuestions) {
+      const base = await readBase(QUESTIONS_PATH);
+      const current: InterviewQuestion[] = base ? JSON.parse(base.text) : [];
+      const incoming = new Map(interviewQuestions.map((q) => [q.id, q]));
+      const existing = new Set(current.map((q) => q.id));
+      const merged = current.map((q) => incoming.get(q.id) ?? q);
+      const added = interviewQuestions.filter((q) => !existing.has(q.id)).sort((a, b) => a.id.localeCompare(b.id));
+      merged.push(...added);
+      const changed = interviewQuestions.filter((q) => existing.has(q.id)).map((q) => q.id);
+      const code = (id: string) => "`" + id + "`";
+      questionSummary = [
+        added.length && `Added: ${added.map((q) => code(q.id)).join(", ")}`,
+        changed.length && `Changed: ${changed.map(code).join(", ")}`,
+      ]
+        .filter(Boolean)
+        .join("\n");
+      await writeBranch(
+        QUESTIONS_PATH,
+        JSON.stringify(merged, null, 1) + "\n",
+        `Interview questions via /dev/bundles\n\n${questionSummary}`,
+        base?.sha,
+      );
+    }
+
+    // 6. Open the PR.
     const parts = [
       changedIds.length > 0 && `${changedIds.length} item(s)`,
       bundles && "interview bundles",
+      interviewQuestions && `${interviewQuestions.length} interview question(s)`,
     ].filter(Boolean);
     const prRes = await githubFetch(`/repos/${owner}/${repo}/pulls`, githubToken, {
       method: "POST",
@@ -281,7 +360,8 @@ Deno.serve(async (req) => {
         body:
           `Published from the dev editor by ${userData.user.email}.\n\n` +
           (changedIds.length > 0 ? `**Items:**\n${changedIds.map((id) => `- \`${id}\``).join("\n")}\n\n` : "") +
-          (bundles ? `**Interview bundles:**\n${bundleSummary}\n` : ""),
+          (bundles ? `**Interview bundles:**\n${bundleSummary}\n\n` : "") +
+          (interviewQuestions ? `**Interview questions:**\n${questionSummary}\n` : ""),
       }),
     });
     if (!prRes.ok) {

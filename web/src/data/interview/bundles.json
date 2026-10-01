@@ -10,7 +10,8 @@
    "iq-1053",
    "iq-1054"
   ],
-  "curated": true
+  "curated": true,
+  "free": true
  },
  {
   "id": "russian-roulette-1",
@@ -727,7 +728,8 @@
    "iq-0312",
    "iq-0316"
   ],
-  "curated": false
+  "curated": false,
+  "free": true
  },
  {
   "id": "dice-rolls-till-criteria-2",

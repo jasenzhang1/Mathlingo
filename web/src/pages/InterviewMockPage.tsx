@@ -4,6 +4,7 @@ import { InterviewGate } from "../components/interview/InterviewGate";
 import { QuestionCard, type QuestionResult } from "../components/interview/QuestionCard";
 import { SkillBar } from "../components/interview/SkillBar";
 import { activeBundles, bundleQuestions, familyById, sectionById, sectionLabel } from "../lib/interview/bank";
+import { isFreeBundle, useInterviewAccess } from "../lib/interview/access";
 import { skillBar } from "../lib/interview/scoring";
 import type { Bundle, InterviewQuestion } from "../lib/interview/types";
 import { useInterviewSkills } from "../lib/interview/useInterviewSkills";
@@ -29,12 +30,15 @@ function rememberBundle(id: string) {
 /**
  * Picks the interview. Hand-curated chains are three times as likely as the
  * auto-generated ones, and the last few bundles done are skipped while there
- * is anything else left to choose from.
+ * is anything else left to choose from. The free tier only ever draws from the
+ * free decks; asking for any other bundle falls back to one of those.
  */
-function chooseBundle(bundleId: string | null, familyId: string | null): Bundle | undefined {
-  const all = activeBundles().filter((b) => bundleQuestions(b).length > 0);
-  if (bundleId) return all.find((b) => b.id === bundleId);
-  const pool = familyId ? all.filter((b) => b.family === familyId) : all;
+function chooseBundle(bundleId: string | null, familyId: string | null, freeOnly: boolean): Bundle | undefined {
+  const all = activeBundles().filter((b) => bundleQuestions(b).length > 0 && (!freeOnly || isFreeBundle(b)));
+  const requested = bundleId ? all.find((b) => b.id === bundleId) : undefined;
+  if (requested || (bundleId && !freeOnly)) return requested;
+  const inFamily = familyId ? all.filter((b) => b.family === familyId) : all;
+  const pool = inFamily.length ? inFamily : all;
   const recent = new Set(readRecent().slice(0, familyId ? 2 : 10));
   const fresh = pool.filter((b) => !recent.has(b.id));
   const candidates = fresh.length ? fresh : pool;
@@ -91,8 +95,9 @@ function MockRun({
   onAgain: (familyId?: string) => void;
 }) {
   const { record, saveError } = useInterviewSkills();
+  const { full } = useInterviewAccess();
   // Chosen once per run.
-  const [bundle] = useState(() => chooseBundle(bundleId, familyId));
+  const [bundle] = useState(() => chooseBundle(bundleId, familyId, !full));
   const steps = useMemo(() => (bundle ? bundleQuestions(bundle) : []), [bundle]);
   const [outcomes, setOutcomes] = useState<StepOutcome[]>([]);
 

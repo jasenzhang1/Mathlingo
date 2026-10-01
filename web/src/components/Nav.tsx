@@ -115,7 +115,7 @@ function UserMenu() {
                 onClick={() => setOpen(false)}
                 className="block rounded-lg px-3 py-2 text-left text-sm text-[var(--ink)] hover:bg-[var(--paper)]"
               >
-                Interview bundles (dev)
+                Interview databank (dev)
               </Link>
             )}
             <button
@@ -175,38 +175,40 @@ export function Nav() {
           </Link>
         </nav>
 
-        <GlobalSearch className="hidden flex-1 sm:block sm:max-w-xs" />
+        <div className="ml-auto flex min-w-0 items-center gap-3">
+          <GlobalSearch className="hidden min-w-0 sm:block sm:w-56 lg:w-72" />
 
-        <button
-          type="button"
-          onClick={() => setMobileSearchOpen((v) => !v)}
-          aria-label="Search"
-          aria-expanded={mobileSearchOpen}
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[var(--ink-soft)] hover:text-[var(--ink)] sm:hidden"
-        >
-          <SearchToggleIcon />
-        </button>
+          <button
+            type="button"
+            onClick={() => setMobileSearchOpen((v) => !v)}
+            aria-label="Search"
+            aria-expanded={mobileSearchOpen}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[var(--ink-soft)] hover:text-[var(--ink)] sm:hidden"
+          >
+            <SearchToggleIcon />
+          </button>
 
-        <div className="ml-auto flex shrink-0 items-center gap-3">
-          {loading ? null : user ? (
-            <UserMenu />
-          ) : (
-            <>
-              <Link
-                to="/login"
-                className="font-body hidden text-sm font-medium text-[var(--ink-soft)] hover:text-[var(--ink)] sm:inline"
-              >
-                Log in
-              </Link>
-              <Link
-                to="/signup"
-                className="font-body rounded-full px-4 py-2 text-sm font-medium text-[var(--accent-ink)] transition-opacity hover:opacity-90"
-                style={{ background: "var(--accent)" }}
-              >
-                Sign up
-              </Link>
-            </>
-          )}
+          <div className="flex shrink-0 items-center gap-3">
+            {loading ? null : user ? (
+              <UserMenu />
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="font-body hidden text-sm font-medium text-[var(--ink-soft)] hover:text-[var(--ink)] sm:inline"
+                >
+                  Log in
+                </Link>
+                <Link
+                  to="/signup"
+                  className="font-body rounded-full px-4 py-2 text-sm font-medium text-[var(--accent-ink)] transition-opacity hover:opacity-90"
+                  style={{ background: "var(--accent)" }}
+                >
+                  Sign up
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
 

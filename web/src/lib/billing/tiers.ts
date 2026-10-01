@@ -85,12 +85,34 @@ export const PLANS: TierPlan[] = [
 
 export const PAID_PLANS = PLANS.filter((p) => p.id !== "free");
 
+/** A card on the Plans page's interview-prep row. */
+export interface InterviewPlanCard {
+  name: string;
+  priceLabel: string;
+  tagline: string;
+  features: string[];
+  excludes?: string[];
+}
+
+export const INTERVIEW_FREE_PLAN: InterviewPlanCard = {
+  name: "Free",
+  priceLabel: "$0",
+  tagline: "Try the format before you commit.",
+  features: [
+    "A selection of free mock-interview decks",
+    "Free practice questions for training",
+    "Timed answers and automatic grading",
+    "Skill bars for the techniques you practise",
+  ],
+  excludes: ["The full question bank", "Every mock interview and every training drill"],
+};
+
 /**
  * Interview prep: a separate monthly product, not a tier — holding it neither
  * requires nor implies any learning plan. Display only; the amount is the
  * STRIPE_PRICE_INTERVIEW price.
  */
-export const INTERVIEW_PLAN = {
+export const INTERVIEW_PLAN: InterviewPlanCard = {
   name: "Interview Prep",
   priceLabel: "$20",
   tagline: "Quant interview questions the way they're actually asked.",

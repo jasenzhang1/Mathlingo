@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { InterviewGate } from "../components/interview/InterviewGate";
+import { InterviewGate, InterviewUpgradeCard } from "../components/interview/InterviewGate";
 import { QuestionCard } from "../components/interview/QuestionCard";
 import { SkillBar } from "../components/interview/SkillBar";
-import { questionsInSection, sectionById } from "../lib/interview/bank";
+import { useInterviewAccess } from "../lib/interview/access";
+import { freeBundleQuestionIds, isFreeQuestion, questionsInSection, sectionById } from "../lib/interview/bank";
+import type { InterviewQuestion } from "../lib/interview/types";
 import { pickTrainingQuestion, skillBar } from "../lib/interview/scoring";
 import { useInterviewSkills } from "../lib/interview/useInterviewSkills";
 
@@ -19,10 +21,43 @@ export function InterviewTrainPage() {
   );
 }
 
+/** Subscribers drill the whole technique; the free tier drills its free questions, if it has any. */
 function Train() {
+  const { full } = useInterviewAccess();
+  const { sectionId = "" } = useParams();
+  const all = questionsInSection(sectionId);
+  if (full) return <TrainSection pool={all} />;
+  const freeViaBundle = freeBundleQuestionIds();
+  const free = all.filter((q) => isFreeQuestion(q, freeViaBundle));
+  return free.length > 0 ? <TrainSection pool={free} lockedCount={all.length - free.length} /> : <TrainLocked />;
+}
+
+/** A technique with no free questions, for someone without the subscription. */
+function TrainLocked() {
   const { sectionId = "" } = useParams();
   const section = sectionById.get(sectionId);
-  const pool = questionsInSection(sectionId);
+  return (
+    <div className="mx-auto max-w-xl">
+      <Link to="/interview" className="font-body text-sm text-[var(--ink-soft)] hover:text-[var(--ink)]">
+        ← Interview Prep
+      </Link>
+      <h1 className="font-display mt-1 text-2xl text-[var(--ink)]">
+        Train{section ? `: ${section.subtopic}` : ""}
+      </h1>
+      <p className="font-body mt-2 text-[var(--ink-soft)]">
+        Technique training drills one method at a time, with questions pitched just above your current level. It comes
+        with Interview Prep.
+      </p>
+      <div className="mt-6">
+        <InterviewUpgradeCard />
+      </div>
+    </div>
+  );
+}
+
+function TrainSection({ pool, lockedCount = 0 }: { pool: InterviewQuestion[]; lockedCount?: number }) {
+  const { sectionId = "" } = useParams();
+  const section = sectionById.get(sectionId);
   const { skills, record, saveError } = useInterviewSkills();
   const [seen, setSeen] = useState<Set<string>>(new Set());
   // Captured at the first answer: the bars load asynchronously, so the value at mount may not be real yet.
@@ -53,7 +88,15 @@ function Train() {
         Train: {section.subtopic}
       </h1>
       <p className="font-body text-sm text-[var(--ink-soft)]">
-        {section.number} · {section.topic} · {pool.length} question{pool.length === 1 ? "" : "s"}
+        {section.number} · {section.topic} · {pool.length} {lockedCount > 0 ? "free " : ""}question{pool.length === 1 ? "" : "s"}
+        {lockedCount > 0 && (
+          <>
+            {" "}·{" "}
+            <Link to="/pricing" className="text-[var(--accent)] hover:underline">
+              {lockedCount} more with Interview Prep
+            </Link>
+          </>
+        )}
       </p>
 
       <div className="my-6 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5">

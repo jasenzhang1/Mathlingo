@@ -156,7 +156,7 @@
    "Recursion"
   ],
   "source": "AoPS 9.17",
-  "numericAnswer": 110.0
+  "numericAnswer": 110
  },
  {
   "id": "iq-0011",
@@ -260,7 +260,7 @@
    "Indicator Variables"
   ],
   "source": "Quantprof Couple I",
-  "numericAnswer": 2.0
+  "numericAnswer": 2
  },
  {
   "id": "iq-0018",
@@ -291,7 +291,7 @@
    "Indicator Variables"
   ],
   "source": "",
-  "numericAnswer": 12.0
+  "numericAnswer": 12
  },
  {
   "id": "iq-0020",
@@ -320,7 +320,7 @@
    "Indicator Variables"
   ],
   "source": "",
-  "numericAnswer": 5.0
+  "numericAnswer": 5
  },
  {
   "id": "iq-0022",
@@ -377,7 +377,7 @@
    "Casework"
   ],
   "source": "Quantprof Tricky Palindrome I",
-  "numericAnswer": 108.0
+  "numericAnswer": 108
  },
  {
   "id": "iq-0026",
@@ -392,7 +392,7 @@
    "Multiplication Rule"
   ],
   "source": "Quantprof Monotonic Subsequences",
-  "numericAnswer": 3696.0
+  "numericAnswer": 3696
  },
  {
   "id": "iq-0027",
@@ -406,7 +406,7 @@
    "Multiplication Rule"
   ],
   "source": "Quantprof Tricky Palindrome II",
-  "numericAnswer": 20.0
+  "numericAnswer": 20
  },
  {
   "id": "iq-0028",
@@ -462,7 +462,7 @@
    "Overcount then divide"
   ],
   "source": "",
-  "numericAnswer": 7920.0
+  "numericAnswer": 7920
  },
  {
   "id": "iq-0032",
@@ -476,7 +476,7 @@
    "Overcount then divide"
   ],
   "source": "",
-  "numericAnswer": 39600.0
+  "numericAnswer": 39600
  },
  {
   "id": "iq-0033",
@@ -581,7 +581,7 @@
    "Combinations"
   ],
   "source": "Quantprof Large Language Model",
-  "numericAnswer": 8.0
+  "numericAnswer": 8
  },
  {
   "id": "iq-0041",
@@ -607,7 +607,7 @@
   "notes": "Case 1: cycles of 3 and 5 = 672 \nCase 2: cycles of 4 and 4 = 315\nCase 3: cycle of 8 = 25250",
   "tags": [],
   "source": "",
-  "numericAnswer": 3507.0
+  "numericAnswer": 3507
  },
  {
   "id": "iq-0043",
@@ -622,7 +622,7 @@
    "Fibonacci"
   ],
   "source": "Quantprof 17",
-  "numericAnswer": 1156.0
+  "numericAnswer": 1156
  },
  {
   "id": "iq-0044",
@@ -676,7 +676,7 @@
   "notes": "Linearity of expectation intro\nThink of taking E[I_1 + I_2 + ... + I_n], and E[I_i] = 1/n",
   "tags": [],
   "source": "",
-  "numericAnswer": 1.0
+  "numericAnswer": 1
  },
  {
   "id": "iq-0048",
@@ -762,7 +762,7 @@
    "Bases"
   ],
   "source": "Quantprof Broken Calculator",
-  "numericAnswer": 233.0
+  "numericAnswer": 233
  },
  {
   "id": "iq-0054",
@@ -776,7 +776,7 @@
    "Binary Representation"
   ],
   "source": "Quantprof Interesting Summation IV",
-  "numericAnswer": -1002.0
+  "numericAnswer": -1002
  },
  {
   "id": "iq-0055",
@@ -913,7 +913,7 @@
    "Bayes"
   ],
   "source": "QuantProf Easy Probability",
-  "numericAnswer": 9.0
+  "numericAnswer": 9
  },
  {
   "id": "iq-0065",
@@ -998,7 +998,7 @@
    "Binary Representation"
   ],
   "source": "Quantprof Medium Brainteaser | Bacteria Population III",
-  "numericAnswer": 8.0
+  "numericAnswer": 8
  },
  {
   "id": "iq-0071",
@@ -1163,7 +1163,7 @@
    "Brainteaser"
   ],
   "source": "",
-  "numericAnswer": 4.0
+  "numericAnswer": 4
  },
  {
   "id": "iq-0083",
@@ -1178,7 +1178,7 @@
    "Binary Representation"
   ],
   "source": "",
-  "numericAnswer": 4.0
+  "numericAnswer": 4
  },
  {
   "id": "iq-0084",
@@ -1193,7 +1193,7 @@
    "Primes"
   ],
   "source": "Quantprof Bulb Toggle III",
-  "numericAnswer": 57.0
+  "numericAnswer": 57
  },
  {
   "id": "iq-0085",
@@ -1207,7 +1207,7 @@
    "Factors"
   ],
   "source": "Quantprof Bulb Toggle II",
-  "numericAnswer": 75.0
+  "numericAnswer": 75
  },
  {
   "id": "iq-0086",
@@ -1438,7 +1438,7 @@
    "Symmetry"
   ],
   "source": "QuantProf Easy Probability",
-  "numericAnswer": 60.0
+  "numericAnswer": 60
  },
  {
   "id": "iq-0102",
@@ -1571,7 +1571,7 @@
    "Symmetry"
   ],
   "source": "QuantProf Easy Probability",
-  "numericAnswer": 360.0
+  "numericAnswer": 360
  },
  {
   "id": "iq-0111",
@@ -1617,7 +1617,7 @@
    "Random points on a segment"
   ],
   "source": "Quantprof Apples And Oranges",
-  "numericAnswer": 20.0
+  "numericAnswer": 20
  },
  {
   "id": "iq-0114",
@@ -1704,7 +1704,7 @@
    "Symmetry"
   ],
   "source": "QuantProf Easy Probability | Game Of Discarding Cards",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0120",
@@ -1720,7 +1720,7 @@
    "Mode Finding"
   ],
   "source": "",
-  "numericAnswer": 54.0
+  "numericAnswer": 54
  },
  {
   "id": "iq-0121",
@@ -1793,7 +1793,7 @@
    "Independent RVs"
   ],
   "source": "",
-  "numericAnswer": 500.0
+  "numericAnswer": 500
  },
  {
   "id": "iq-0126",
@@ -1826,7 +1826,7 @@
    "Catalan"
   ],
   "source": "Quantprof Hard Brainteaser | Constrained Chords",
-  "numericAnswer": 323.0
+  "numericAnswer": 323
  },
  {
   "id": "iq-0128",
@@ -1895,7 +1895,7 @@
    "Indicator variables"
   ],
   "source": "Quantprof 13",
-  "numericAnswer": 15.0
+  "numericAnswer": 15
  },
  {
   "id": "iq-0133",
@@ -2066,7 +2066,7 @@
    "Radial Symmetry"
   ],
   "source": "",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0145",
@@ -2081,7 +2081,7 @@
    "Clever"
   ],
   "source": "Quantprof Easy Probability | Random Point On Disc",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0146",
@@ -2463,7 +2463,7 @@
    "Random Walk"
   ],
   "source": "Quantprof Going In Circles",
-  "numericAnswer": 99.0
+  "numericAnswer": 99
  },
  {
   "id": "iq-0173",
@@ -2475,7 +2475,7 @@
   "notes": "In 12 hours, the hour hand makes one lap, and the minute hand makes 12 laps, so the hour hand gets lapped 11 times. Relatively speaking from the hour hand's POV, we see the minute hand 90 degrees ahead of 270 degrees ahead. So this gives us 11*2 = 22 times. But this happens twice in a day, so we get 44",
   "tags": [],
   "source": "Thought myself",
-  "numericAnswer": 44.0
+  "numericAnswer": 44
  },
  {
   "id": "iq-0174",
@@ -2638,7 +2638,7 @@
   "notes": "Using square 1 principles, let p = probability of winning:\np = 1/2 + 1/2 (1-p)\nand we get p = 2/3\n\nThen, calculate our expected PNL:\n\n2/3 * (30) + 1/3 * (-30) = 10. So we are willing to pay $10 for this.",
   "tags": [],
   "source": "Quantprof Coin Toss Game VII",
-  "numericAnswer": 10.0
+  "numericAnswer": 10
  },
  {
   "id": "iq-0186",
@@ -2683,7 +2683,7 @@
    "Going First Recursion"
   ],
   "source": "",
-  "numericAnswer": 10.0
+  "numericAnswer": 10
  },
  {
   "id": "iq-0189",
@@ -2777,7 +2777,7 @@
    "Infinite Geometric Series"
   ],
   "source": "Quantprof Coin Toss Game VI",
-  "numericAnswer": 7.0
+  "numericAnswer": 7
  },
  {
   "id": "iq-0196",
@@ -3035,7 +3035,7 @@
    "Linearity of Expectation"
   ],
   "source": "QuantProf Easy Probability",
-  "numericAnswer": 6.0
+  "numericAnswer": 6
  },
  {
   "id": "iq-0214",
@@ -3283,7 +3283,7 @@
    "ABRACADABRA"
   ],
   "source": "Quantprof 12",
-  "numericAnswer": 2046.0
+  "numericAnswer": 2046
  },
  {
   "id": "iq-0232",
@@ -3297,7 +3297,7 @@
    "ABRACADABRA"
   ],
   "source": "Quantprof Medium Probability",
-  "numericAnswer": 62.0
+  "numericAnswer": 62
  },
  {
   "id": "iq-0233",
@@ -3327,7 +3327,7 @@
    "ABRACADABRA"
   ],
   "source": "",
-  "numericAnswer": 62.0
+  "numericAnswer": 62
  },
  {
   "id": "iq-0235",
@@ -3368,7 +3368,7 @@
    "Reduced Sample Space"
   ],
   "source": "Quantprof 3 Heads 3 Tails I",
-  "numericAnswer": 7.0
+  "numericAnswer": 7
  },
  {
   "id": "iq-0238",
@@ -3380,7 +3380,7 @@
   "notes": "Work backwards. Let f(n) = expected additional points you get if you currently have n. f(10) = 0, because we cannot get any more.\nf(9) = 1/10 * (10) = 1\nf(8) = 1/10 * (9 + f(9)) + 1/10 * (10 + f(10)) = 2\nWe notice a pattern, and f(7) = 3, f(6) = 4, f(5) = 5.\n\nSo finally, we get f(0) = 1/10 * (5 + f(5)) + ... + 1/10 (10 + f(10)) = 6",
   "tags": [],
   "source": "QuantProf IG Reels",
-  "numericAnswer": 6.0
+  "numericAnswer": 6
  },
  {
   "id": "iq-0239",
@@ -3422,7 +3422,7 @@
    "Integration"
   ],
   "source": "QuantProf Easy Probability",
-  "numericAnswer": 5.0
+  "numericAnswer": 5
  },
  {
   "id": "iq-0242",
@@ -3495,7 +3495,7 @@
   "notes": "A collision is equivalent to units passing through each other, so each pair of ants in opposite directions will collide.",
   "tags": [],
   "source": "",
-  "numericAnswer": 3200.0
+  "numericAnswer": 3200
  },
  {
   "id": "iq-0247",
@@ -3509,7 +3509,7 @@
    "Linearity of Expectation"
   ],
   "source": "",
-  "numericAnswer": 75.0
+  "numericAnswer": 75
  },
  {
   "id": "iq-0248",
@@ -3623,7 +3623,7 @@
    "Linearity of Expectation"
   ],
   "source": "",
-  "numericAnswer": 225.0
+  "numericAnswer": 225
  },
  {
   "id": "iq-0256",
@@ -3680,7 +3680,7 @@
   "notes": "Multiplication rule for each dimension. Each dimension has 6 boundary lines and we choose 2 of them.",
   "tags": [],
   "source": "",
-  "numericAnswer": 3375.0
+  "numericAnswer": 3375
  },
  {
   "id": "iq-0260",
@@ -4335,7 +4335,7 @@
   "notes": "E = 1/6 * (6) + 1/6 * (1 + E) + ... + 1/6 * (5 + E)",
   "tags": [],
   "source": "",
-  "numericAnswer": 21.0
+  "numericAnswer": 21
  },
  {
   "id": "iq-0306",
@@ -4351,7 +4351,7 @@
    "Recursion"
   ],
   "source": "Quantprof Increasing Rolls Expectation",
-  "numericAnswer": 10.0
+  "numericAnswer": 10
  },
  {
   "id": "iq-0307",
@@ -4365,7 +4365,7 @@
    "Geometric RV"
   ],
   "source": "QuantProf Easy Probability | Quantprof Roll Till Even",
-  "numericAnswer": 2.0
+  "numericAnswer": 2
  },
  {
   "id": "iq-0308",
@@ -4394,7 +4394,7 @@
    "Markov chains"
   ],
   "source": "",
-  "numericAnswer": 36.0
+  "numericAnswer": 36
  },
  {
   "id": "iq-0310",
@@ -4436,7 +4436,7 @@
    "Markov Chains"
   ],
   "source": "Quant Prof Hard Prob",
-  "numericAnswer": 10.0
+  "numericAnswer": 10
  },
  {
   "id": "iq-0313",
@@ -4536,7 +4536,7 @@
    "Geometric RV"
   ],
   "source": "Quantprof Dice Multiple I",
-  "numericAnswer": 6.0
+  "numericAnswer": 6
  },
  {
   "id": "iq-0320",
@@ -4551,7 +4551,7 @@
    "Reduction in Space"
   ],
   "source": "Quantprof Everything Odd",
-  "numericAnswer": 10.0
+  "numericAnswer": 10
  },
  {
   "id": "iq-0321",
@@ -4596,7 +4596,7 @@
    "Tail Sum"
   ],
   "source": "Quantprof Medium Probability",
-  "numericAnswer": 3.0
+  "numericAnswer": 3
  },
  {
   "id": "iq-0324",
@@ -4684,7 +4684,7 @@
    "Algebra"
   ],
   "source": "Quantprof Weighted Die",
-  "numericAnswer": 65.0
+  "numericAnswer": 65
  },
  {
   "id": "iq-0330",
@@ -4813,7 +4813,7 @@
   "notes": "Both outcomes have worse payouts than odds. So don't participate in anything.",
   "tags": [],
   "source": "Quantprof Easy Probability | Even Or Odd",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0339",
@@ -4857,7 +4857,7 @@
    "Fair Value"
   ],
   "source": "Quant Prof Easy Probability | Quantprof Stop Or Continue",
-  "numericAnswer": 45.0
+  "numericAnswer": 45
  },
  {
   "id": "iq-0342",
@@ -4988,7 +4988,7 @@
    "Order Symmetry"
   ],
   "source": "",
-  "numericAnswer": 1.0
+  "numericAnswer": 1
  },
  {
   "id": "iq-0352",
@@ -5002,7 +5002,7 @@
    "Digits"
   ],
   "source": "Quantprof Medium Brainteaser | Pppower",
-  "numericAnswer": 200.0
+  "numericAnswer": 200
  },
  {
   "id": "iq-0353",
@@ -5030,7 +5030,7 @@
    "Digits"
   ],
   "source": "Quantprof Digit Sum V",
-  "numericAnswer": 3.0
+  "numericAnswer": 3
  },
  {
   "id": "iq-0355",
@@ -5042,7 +5042,7 @@
   "notes": "First, notice that a palindrome must have an even amount of all integer counts, except for at most one. If it has an odd count, that digit must be the middle digit.\n\nWith that said, we see that n = 19 is the first time we can possibly have a valid palindrome. And we are able to construct it!\n\n1|12|3|14|5|16|7|18|9|10|19|8|17|6|15|4|13|2|11",
   "tags": [],
   "source": "Quantprof N-Palindrome",
-  "numericAnswer": 19.0
+  "numericAnswer": 19
  },
  {
   "id": "iq-0356",
@@ -5057,7 +5057,7 @@
    "Casework"
   ],
   "source": "Quantprof Sum Of Products",
-  "numericAnswer": 184320.0
+  "numericAnswer": 184320
  },
  {
   "id": "iq-0357",
@@ -5069,7 +5069,7 @@
   "notes": "Let S(n) = sum of products of all n-digit numbers. So S(1) = 46 = 6.\nIf we try to add a new place value, we get the relationship\n\nS(n+1) = 45*S(n) + S(n) = 46*S(n)\nSo we get S(100) = 46^100, which ends with 6",
   "tags": [],
   "source": "Quantprof 5",
-  "numericAnswer": 6.0
+  "numericAnswer": 6
  },
  {
   "id": "iq-0358",
@@ -5084,7 +5084,7 @@
    "Casework"
   ],
   "source": "Quantprof Constrained Digits",
-  "numericAnswer": 330.0
+  "numericAnswer": 330
  },
  {
   "id": "iq-0359",
@@ -5101,7 +5101,7 @@
    "Stars and Bars"
   ],
   "source": "Quantprof Interesting Average I",
-  "numericAnswer": 308253.0
+  "numericAnswer": 308253
  },
  {
   "id": "iq-0360",
@@ -5116,7 +5116,7 @@
    "Linearity of Expectation"
   ],
   "source": "Quantprof 1s And 9s",
-  "numericAnswer": 55555555.0
+  "numericAnswer": 55555555
  },
  {
   "id": "iq-0361",
@@ -5130,7 +5130,7 @@
    "Stars and Bars"
   ],
   "source": "",
-  "numericAnswer": 1287.0
+  "numericAnswer": 1287
  },
  {
   "id": "iq-0362",
@@ -5144,7 +5144,7 @@
    "Stars and Bars"
   ],
   "source": "",
-  "numericAnswer": 715.0
+  "numericAnswer": 715
  },
  {
   "id": "iq-0363",
@@ -5158,7 +5158,7 @@
    "Stars and Bars"
   ],
   "source": "",
-  "numericAnswer": 11440.0
+  "numericAnswer": 11440
  },
  {
   "id": "iq-0364",
@@ -5172,7 +5172,7 @@
    "Casework"
   ],
   "source": "Quantprof 23 (Medium Brainteaser)",
-  "numericAnswer": 156.0
+  "numericAnswer": 156
  },
  {
   "id": "iq-0365",
@@ -5196,7 +5196,7 @@
   "notes": "So the children's ages are x-4y, x-3y, x-2y, ... , x+4y. The sum of their squared ages is 9x^2 + 60y^2. This must be a perfect square.\n\nSince 3 divides each term, we reverse factor, so 3x^2+20y^2 must also be divisible by 3 to remain a perfect square. This forces y to be divisible by 3, and we let y = 3w to get:\n\n9x^2 + 60y^2\n9 (x^2 + 60w^2)\n\nNow, remember that x-4y = x-12w must be positive, so we try to minimize the interior term subject to this.\n\nIf w = 1, we see that x = 2 creates 4 + 60 = 64 which is a perfect square, but x-12w is not positive. Then, try w = 1, x = 14 to get 9*(196 + 60) = 9*256, and this is (3*16) = 48^2.",
   "tags": [],
   "source": "Quantprof Nine Children",
-  "numericAnswer": 48.0
+  "numericAnswer": 48
  },
  {
   "id": "iq-0367",
@@ -5225,7 +5225,7 @@
    "Bases"
   ],
   "source": "Quantprof 2, 4, and 6",
-  "numericAnswer": 22.0
+  "numericAnswer": 22
  },
  {
   "id": "iq-0369",
@@ -5255,7 +5255,7 @@
    "Independent RV"
   ],
   "source": "Quantprof Given LCM",
-  "numericAnswer": 49.0
+  "numericAnswer": 49
  },
  {
   "id": "iq-0371",
@@ -5267,7 +5267,7 @@
   "notes": "PIE for three groups",
   "tags": [],
   "source": "",
-  "numericAnswer": 132.0
+  "numericAnswer": 132
  },
  {
   "id": "iq-0372",
@@ -5281,7 +5281,7 @@
    "Average through summation"
   ],
   "source": "Quantprof Medium Brainteaser | Interesting Summation II",
-  "numericAnswer": 360.0
+  "numericAnswer": 360
  },
  {
   "id": "iq-0373",
@@ -5405,7 +5405,7 @@
    "Fundamental Green Book"
   ],
   "source": "Quantprof 2 Eggs",
-  "numericAnswer": 14.0
+  "numericAnswer": 14
  },
  {
   "id": "iq-0382",
@@ -5419,7 +5419,7 @@
    "Algebra"
   ],
   "source": "Quantprof Interesting Constraints",
-  "numericAnswer": 171.0
+  "numericAnswer": 171
  },
  {
   "id": "iq-0383",
@@ -5433,7 +5433,7 @@
    "Symmetric Random Walk"
   ],
   "source": "",
-  "numericAnswer": 24.0
+  "numericAnswer": 24
  },
  {
   "id": "iq-0384",
@@ -5447,7 +5447,7 @@
    "Symmetric Random Walk"
   ],
   "source": "",
-  "numericAnswer": 99.0
+  "numericAnswer": 99
  },
  {
   "id": "iq-0385",
@@ -5461,7 +5461,7 @@
    "Qualitative Strategy"
   ],
   "source": "",
-  "numericAnswer": 40.0
+  "numericAnswer": 40
  },
  {
   "id": "iq-0386",
@@ -5525,7 +5525,7 @@
    "Tedious"
   ],
   "source": "",
-  "numericAnswer": 1.0
+  "numericAnswer": 1
  },
  {
   "id": "iq-0390",
@@ -5552,7 +5552,7 @@
    "Brainteaser"
   ],
   "source": "",
-  "numericAnswer": 89.0
+  "numericAnswer": 89
  },
  {
   "id": "iq-0392",
@@ -5566,7 +5566,7 @@
    "Brainteaser"
   ],
   "source": "Quant Prof Medium Brainteasers | Quantprof Horse Racing",
-  "numericAnswer": 7.0
+  "numericAnswer": 7
  },
  {
   "id": "iq-0393",
@@ -5580,7 +5580,7 @@
    "Fibonacci"
   ],
   "source": "Quantprof Jumping Frog III",
-  "numericAnswer": 89.0
+  "numericAnswer": 89
  },
  {
   "id": "iq-0394",
@@ -5594,7 +5594,7 @@
    "Fibonacci"
   ],
   "source": "Quantprof Jumping Frog V (26)",
-  "numericAnswer": 34.0
+  "numericAnswer": 34
  },
  {
   "id": "iq-0395",
@@ -5608,7 +5608,7 @@
    "Fibonacci"
   ],
   "source": "Quantprof Jumping Frog IV",
-  "numericAnswer": 55.0
+  "numericAnswer": 55
  },
  {
   "id": "iq-0396",
@@ -5623,7 +5623,7 @@
    "Binary Representation"
   ],
   "source": "Quantprof Jumping Frog VI",
-  "numericAnswer": 512.0
+  "numericAnswer": 512
  },
  {
   "id": "iq-0397",
@@ -5693,7 +5693,7 @@
    "Odd Even Parity"
   ],
   "source": "",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0402",
@@ -5777,7 +5777,7 @@
    "Geometric RV"
   ],
   "source": "Quantprof Hit 995",
-  "numericAnswer": 10.0
+  "numericAnswer": 10
  },
  {
   "id": "iq-0408",
@@ -5792,7 +5792,7 @@
    "Linearity of Expectation"
   ],
   "source": "Quantprof Winner Takes Alll",
-  "numericAnswer": 122.0
+  "numericAnswer": 122
  },
  {
   "id": "iq-0409",
@@ -5860,7 +5860,7 @@
    "Nash Equilibrium"
   ],
   "source": "Quantprof Secret Marbles I",
-  "numericAnswer": 67.0
+  "numericAnswer": 67
  },
  {
   "id": "iq-0414",
@@ -5875,7 +5875,7 @@
    "Nash Equilibrium"
   ],
   "source": "Quantprof Secret Marbles II",
-  "numericAnswer": 50.0
+  "numericAnswer": 50
  },
  {
   "id": "iq-0415",
@@ -5932,7 +5932,7 @@
    "Graph Theory"
   ],
   "source": "Quantprof Central Cities",
-  "numericAnswer": 6.0
+  "numericAnswer": 6
  },
  {
   "id": "iq-0419",
@@ -5973,7 +5973,7 @@
    "Pigeonhole"
   ],
   "source": "Quantprof Hard Brainteaser | Grid Paint I",
-  "numericAnswer": 71.0
+  "numericAnswer": 71
  },
  {
   "id": "iq-0422",
@@ -5987,7 +5987,7 @@
    "Pigeonhole"
   ],
   "source": "Quantprof IG | Max Fill",
-  "numericAnswer": 32.0
+  "numericAnswer": 32
  },
  {
   "id": "iq-0423",
@@ -6031,7 +6031,7 @@
    "Parity"
   ],
   "source": "Quantprof Even Squares",
-  "numericAnswer": 56.0
+  "numericAnswer": 56
  },
  {
   "id": "iq-0426",
@@ -6045,7 +6045,7 @@
    "Casework"
   ],
   "source": "Quantprof 3D Tic-Tac-Toe",
-  "numericAnswer": 109.0
+  "numericAnswer": 109
  },
  {
   "id": "iq-0427",
@@ -6112,7 +6112,7 @@
    "Markov Chain"
   ],
   "source": "Quantprof Rook Moves",
-  "numericAnswer": 70.0
+  "numericAnswer": 70
  },
  {
   "id": "iq-0432",
@@ -6200,7 +6200,7 @@
    "Casework"
   ],
   "source": "",
-  "numericAnswer": 384.0
+  "numericAnswer": 384
  },
  {
   "id": "iq-0438",
@@ -6215,7 +6215,7 @@
    "Anagrams"
   ],
   "source": "",
-  "numericAnswer": 1680.0
+  "numericAnswer": 1680
  },
  {
   "id": "iq-0439",
@@ -6273,7 +6273,7 @@
    "Random walk"
   ],
   "source": "Quantprof Ant on a Cube I",
-  "numericAnswer": 10.0
+  "numericAnswer": 10
  },
  {
   "id": "iq-0443",
@@ -6290,7 +6290,7 @@
    "Kac's Lemma"
   ],
   "source": "Quantprof Ant on a Cube II",
-  "numericAnswer": 8.0
+  "numericAnswer": 8
  },
  {
   "id": "iq-0444",
@@ -6305,7 +6305,7 @@
    "Markov Chain"
   ],
   "source": "Quantprof 36",
-  "numericAnswer": 32.0
+  "numericAnswer": 32
  },
  {
   "id": "iq-0445",
@@ -6319,7 +6319,7 @@
    "Kac's Lemma"
   ],
   "source": "Fundamental Problem",
-  "numericAnswer": 4.0
+  "numericAnswer": 4
  },
  {
   "id": "iq-0446",
@@ -6594,7 +6594,7 @@
   "notes": "",
   "tags": [],
   "source": "SIG OA",
-  "numericAnswer": 113.0
+  "numericAnswer": 113
  },
  {
   "id": "iq-0465",
@@ -6634,7 +6634,7 @@
    "Casework"
   ],
   "source": "",
-  "numericAnswer": 48.0
+  "numericAnswer": 48
  },
  {
   "id": "iq-0468",
@@ -6660,7 +6660,7 @@
   "notes": "Bijection between paths and arrangements of RRRRUUU",
   "tags": [],
   "source": "",
-  "numericAnswer": 35.0
+  "numericAnswer": 35
  },
  {
   "id": "iq-0470",
@@ -6672,7 +6672,7 @@
   "notes": "Bijection between paths and arrangements of LLLRRRR with 7 R's and 3 L's",
   "tags": [],
   "source": "",
-  "numericAnswer": 120.0
+  "numericAnswer": 120
  },
  {
   "id": "iq-0471",
@@ -6699,7 +6699,7 @@
   "notes": "Notice that this simplifies to a lattice walk from (0, 0) to (4, 5)",
   "tags": [],
   "source": "Quant Prof Medium Brainteaser (35)",
-  "numericAnswer": 126.0
+  "numericAnswer": 126
  },
  {
   "id": "iq-0473",
@@ -6755,7 +6755,7 @@
    "Reflection Principle"
   ],
   "source": "Quantprof Hard Brainteaser | Count Paths III",
-  "numericAnswer": 28.0
+  "numericAnswer": 28
  },
  {
   "id": "iq-0477",
@@ -6798,7 +6798,7 @@
    "Expectation of Independent RV"
   ],
   "source": "Quantprof Up, Right and Diagonal",
-  "numericAnswer": 1811716.0
+  "numericAnswer": 1811716
  },
  {
   "id": "iq-0480",
@@ -6828,7 +6828,7 @@
    "Indicator Variables"
   ],
   "source": "",
-  "numericAnswer": 5.0
+  "numericAnswer": 5
  },
  {
   "id": "iq-0482",
@@ -6842,7 +6842,7 @@
    "Permutations"
   ],
   "source": "Quantprof Medium Probability",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0483",
@@ -6858,7 +6858,7 @@
    "Coloring"
   ],
   "source": "Quantprof 28",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0484",
@@ -6898,7 +6898,7 @@
    "Odd Even Parity"
   ],
   "source": "Quantprof Matrix Attack I",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0487",
@@ -6912,7 +6912,7 @@
    "Odd Even Parity"
   ],
   "source": "Quantprof 32",
-  "numericAnswer": 1.0
+  "numericAnswer": 1
  },
  {
   "id": "iq-0488",
@@ -6953,7 +6953,7 @@
    "Casework"
   ],
   "source": "Quantprof IG | Grid Arrangement III",
-  "numericAnswer": 2448.0
+  "numericAnswer": 2448
  },
  {
   "id": "iq-0491",
@@ -6981,7 +6981,7 @@
    "Multiplication Rule"
   ],
   "source": "Quantprof Grid Arrangement II",
-  "numericAnswer": 90.0
+  "numericAnswer": 90
  },
  {
   "id": "iq-0493",
@@ -7006,7 +7006,7 @@
    "Symmetry"
   ],
   "source": "Quantprof Grid Arrangement I",
-  "numericAnswer": 576.0
+  "numericAnswer": 576
  },
  {
   "id": "iq-0495",
@@ -7051,7 +7051,7 @@
    "Matrices"
   ],
   "source": "Quantprof Medium Probability",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0498",
@@ -7151,7 +7151,7 @@
    "Modular Arithmetic"
   ],
   "source": "Quantprof Changing Number",
-  "numericAnswer": 102564.0
+  "numericAnswer": 102564
  },
  {
   "id": "iq-0505",
@@ -7165,7 +7165,7 @@
    "Modular Arithmetic"
   ],
   "source": "Quantprof Sum Sum Sum",
-  "numericAnswer": 1.0
+  "numericAnswer": 1
  },
  {
   "id": "iq-0506",
@@ -7253,7 +7253,7 @@
    "Conditional Expectation"
   ],
   "source": "",
-  "numericAnswer": 1.0
+  "numericAnswer": 1
  },
  {
   "id": "iq-0512",
@@ -7334,7 +7334,7 @@
    "ABRACADABRA"
   ],
   "source": "",
-  "numericAnswer": 10.0
+  "numericAnswer": 10
  },
  {
   "id": "iq-0518",
@@ -7364,7 +7364,7 @@
    "Digit Multiply"
   ],
   "source": "",
-  "numericAnswer": 255558.0
+  "numericAnswer": 255558
  },
  {
   "id": "iq-0520",
@@ -7379,7 +7379,7 @@
    "Digit Multiply"
   ],
   "source": "",
-  "numericAnswer": 321954.0
+  "numericAnswer": 321954
  },
  {
   "id": "iq-0521",
@@ -7404,7 +7404,7 @@
   "notes": "Let k = number of ABG's we have went out with. We stop when the loss is equal to the possible gain.\n\nProb of gain = (99 - k)/(100 - k)\nProb of ruin = 1 / (100 - k)\n\nGain = + 100\nRuin = - 100k\n\n100 * (99 - k) / (100 - k) = 100k / (100 - k)\n\n99 - k = k\nk = 49.5\nSo when we are at k = 49, it still makes sense to try to get an ABG, but once we are at k = 50, it no longer is in our interest.\n\nProblem 2: this is the same as problem 1. We keep slamming the re-sample button until we get k = 50. So why not draw 50 all at once. \n\nMathematically, this is the same as maximizing [ (99 choose n) / (100 choose n) ] * 100n\nWhich is maximizing n * (100 - n)\nn = 50",
   "tags": [],
   "source": "SD Jeong IG",
-  "numericAnswer": 50.0
+  "numericAnswer": 50
  },
  {
   "id": "iq-0523",
@@ -7461,7 +7461,7 @@
    "Uniform Distribution"
   ],
   "source": "Quantprof Summation Series II",
-  "numericAnswer": 2.0
+  "numericAnswer": 2
  },
  {
   "id": "iq-0527",
@@ -7566,7 +7566,7 @@
    "Binomial RV"
   ],
   "source": "Quantprof Average Squared Distance",
-  "numericAnswer": 10.0
+  "numericAnswer": 10
  },
  {
   "id": "iq-0534",
@@ -7580,7 +7580,7 @@
    "Recurrence Relation"
   ],
   "source": "",
-  "numericAnswer": 7.0
+  "numericAnswer": 7
  },
  {
   "id": "iq-0535",
@@ -7654,7 +7654,7 @@
    "Linearity of Expectation"
   ],
   "source": "Quantprof Penguin Walk VIII",
-  "numericAnswer": 21.0
+  "numericAnswer": 21
  },
  {
   "id": "iq-0540",
@@ -7684,7 +7684,7 @@
    "Recursion"
   ],
   "source": "Quantprof Penguin Walk VI",
-  "numericAnswer": 3.0
+  "numericAnswer": 3
  },
  {
   "id": "iq-0542",
@@ -7715,7 +7715,7 @@
    "Variance"
   ],
   "source": "Quantprof Penguin Walk X",
-  "numericAnswer": 168.0
+  "numericAnswer": 168
  },
  {
   "id": "iq-0544",
@@ -7732,7 +7732,7 @@
    "Variance"
   ],
   "source": "Quantprof Penguin Walk IX",
-  "numericAnswer": 24.0
+  "numericAnswer": 24
  },
  {
   "id": "iq-0545",
@@ -7746,7 +7746,7 @@
    "Random Walk"
   ],
   "source": "Quantprof Penguin Walk I",
-  "numericAnswer": 3.0,
+  "numericAnswer": 3,
   "status": "draft",
   "reviewNote": "Same problem as the particle version (p = 2/3, expected steps to reach 1 = 3); reword or delete."
  },
@@ -7813,7 +7813,7 @@
   "notes": "Symmetry. \nFor the remaining 98 arrows, hits and misses are symmetric.",
   "tags": [],
   "source": "Quantprof Archery I",
-  "numericAnswer": 50.0
+  "numericAnswer": 50
  },
  {
   "id": "iq-0551",
@@ -7825,7 +7825,7 @@
   "notes": "Correspondence between choosing 4 vertices and one intersection.",
   "tags": [],
   "source": "",
-  "numericAnswer": 495.0
+  "numericAnswer": 495
  },
  {
   "id": "iq-0552",
@@ -7948,7 +7948,7 @@
    "Spheres"
   ],
   "source": "Quantprof Ten-Dimensional Ball",
-  "numericAnswer": 12.0
+  "numericAnswer": 12
  },
  {
   "id": "iq-0560",
@@ -7993,7 +7993,7 @@
    "Lower Bound"
   ],
   "source": "Quantprof Polygon Constraints",
-  "numericAnswer": 50.0
+  "numericAnswer": 50
  },
  {
   "id": "iq-0563",
@@ -8022,7 +8022,7 @@
    "Rotational Symmetry"
   ],
   "source": "Quantprof Tetrahedron Coloring I",
-  "numericAnswer": 2.0
+  "numericAnswer": 2
  },
  {
   "id": "iq-0565",
@@ -8036,7 +8036,7 @@
    "Rotational Symmetry"
   ],
   "source": "Quantprof Tetrahedron Coloring II",
-  "numericAnswer": 6.0
+  "numericAnswer": 6
  },
  {
   "id": "iq-0566",
@@ -8110,7 +8110,7 @@
    "Inequalities"
   ],
   "source": "",
-  "numericAnswer": 1.0
+  "numericAnswer": 1
  },
  {
   "id": "iq-0571",
@@ -8124,7 +8124,7 @@
    "Summation"
   ],
   "source": "Quantprof Rabbit On A Square Grid",
-  "numericAnswer": 10201.0
+  "numericAnswer": 10201
  },
  {
   "id": "iq-0572",
@@ -8200,7 +8200,7 @@
    "FOIL"
   ],
   "source": "Quantprof Power Distance II",
-  "numericAnswer": 2640.0
+  "numericAnswer": 2640
  },
  {
   "id": "iq-0577",
@@ -8230,7 +8230,7 @@
    "Random Walk"
   ],
   "source": "",
-  "numericAnswer": 3.0
+  "numericAnswer": 3
  },
  {
   "id": "iq-0579",
@@ -8258,7 +8258,7 @@
    "Bounds"
   ],
   "source": "Quantprof Maximize RPS Wins",
-  "numericAnswer": 7.0
+  "numericAnswer": 7
  },
  {
   "id": "iq-0581",
@@ -8272,7 +8272,7 @@
    "Clever Setup"
   ],
   "source": "Quantprof Greedy Pirates II",
-  "numericAnswer": 1005.0
+  "numericAnswer": 1005
  },
  {
   "id": "iq-0582",
@@ -8313,7 +8313,7 @@
    "Pigeonhole"
   ],
   "source": "Quantprof Medium Brainteaser | Min Collinearity",
-  "numericAnswer": 11.0
+  "numericAnswer": 11
  },
  {
   "id": "iq-0585",
@@ -8417,7 +8417,7 @@
    "Binomial RV"
   ],
   "source": "Quantprof IG",
-  "numericAnswer": 116.0
+  "numericAnswer": 116
  },
  {
   "id": "iq-0592",
@@ -8443,7 +8443,7 @@
    "Rectangles"
   ],
   "source": "Quantproof Youtube | Count Rectangles II",
-  "numericAnswer": 297.0
+  "numericAnswer": 297
  },
  {
   "id": "iq-0594",
@@ -8475,7 +8475,7 @@
    "Fibonacci"
   ],
   "source": "Quantprof Fibonacci Error",
-  "numericAnswer": 89.0
+  "numericAnswer": 89
  },
  {
   "id": "iq-0596",
@@ -8490,7 +8490,7 @@
    "Algebra"
   ],
   "source": "Quantprof Is It Fibonacci?",
-  "numericAnswer": 913.0
+  "numericAnswer": 913
  },
  {
   "id": "iq-0597",
@@ -8842,7 +8842,7 @@
    "Uniform RV"
   ],
   "source": "Quantprof Easy Probability | Field Construction",
-  "numericAnswer": 61500.0
+  "numericAnswer": 61500
  },
  {
   "id": "iq-0623",
@@ -8900,7 +8900,7 @@
    "Variance"
   ],
   "source": "QuantProf Easy Probability",
-  "numericAnswer": 300.0
+  "numericAnswer": 300
  },
  {
   "id": "iq-0627",
@@ -8931,7 +8931,7 @@
    "Symmetry"
   ],
   "source": "Quantprof Conditional Normal I",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0629",
@@ -9218,7 +9218,7 @@
   "notes": "f(n) = 2 * f(n-1) + 2 * f(n-2)\nBecause f(n-1) contributes when the next number is 1 or 2.\nAnd to account for numbers that end with 0, we have to go back to f(n-2) and add 10 or 20.",
   "tags": [],
   "source": "",
-  "numericAnswer": 24960.0
+  "numericAnswer": 24960
  },
  {
   "id": "iq-0649",
@@ -9294,7 +9294,7 @@
    "Recurrence Relation"
   ],
   "source": "",
-  "numericAnswer": 2.0
+  "numericAnswer": 2
  },
  {
   "id": "iq-0654",
@@ -9350,7 +9350,7 @@
    "Tail Sum"
   ],
   "source": "",
-  "numericAnswer": 4.0
+  "numericAnswer": 4
  },
  {
   "id": "iq-0658",
@@ -9406,7 +9406,7 @@
    "Independent RV"
   ],
   "source": "My game",
-  "numericAnswer": 100.0,
+  "numericAnswer": 100,
   "instructional": "Yes"
  },
  {
@@ -9464,7 +9464,7 @@
    "Bases"
   ],
   "source": "Quantprof Smallest Set",
-  "numericAnswer": 128.0
+  "numericAnswer": 128
  },
  {
   "id": "iq-0666",
@@ -9479,7 +9479,7 @@
    "Sets"
   ],
   "source": "Quantprof Divisible Permutation",
-  "numericAnswer": 24.0
+  "numericAnswer": 24
  },
  {
   "id": "iq-0667",
@@ -9494,7 +9494,7 @@
    "Graph Theory"
   ],
   "source": "Quantprof Medium Brainteaser | Least N",
-  "numericAnswer": 55.0
+  "numericAnswer": 55
  },
  {
   "id": "iq-0668",
@@ -9510,7 +9510,7 @@
    "Modular Arithmetic"
   ],
   "source": "Quantprof Constrained Subsets IV",
-  "numericAnswer": 667.0
+  "numericAnswer": 667
  },
  {
   "id": "iq-0669",
@@ -9538,7 +9538,7 @@
    "Multiplication Rule"
   ],
   "source": "Quantprof Constrained Subsets I",
-  "numericAnswer": 1365.0
+  "numericAnswer": 1365
  },
  {
   "id": "iq-0671",
@@ -9550,7 +9550,7 @@
   "notes": "Notice that if we start with 1, we only have 1 way to arrange.\nIf we start with 2, 3 through 9 must be in increasing order, but 1 can appear anywhere. This is 8c1 = 8 ways.\nIf we start with 3, we get 8c2 ways.\n\nIn total, it's 8c0 + 8c1 + ... + 8c8 = 256",
   "tags": [],
   "source": "Quantprof 16",
-  "numericAnswer": 256.0
+  "numericAnswer": 256
  },
  {
   "id": "iq-0672",
@@ -9564,7 +9564,7 @@
    "Complementary Counting"
   ],
   "source": "Quantprof Constrained Subsets III",
-  "numericAnswer": 6.0
+  "numericAnswer": 6
  },
  {
   "id": "iq-0673",
@@ -9594,7 +9594,7 @@
    "Casework"
   ],
   "source": "Quantprof Constrained Combinatorics",
-  "numericAnswer": 630.0
+  "numericAnswer": 630
  },
  {
   "id": "iq-0675",
@@ -9635,7 +9635,7 @@
   "notes": "Arrange the numbers in a 2x10 grid, and notice this is equivalent to domino tiling",
   "tags": [],
   "source": "",
-  "numericAnswer": 89.0
+  "numericAnswer": 89
  },
  {
   "id": "iq-0678",
@@ -9678,7 +9678,7 @@
    "Sets"
   ],
   "source": "Quantprof Subset Length Sum",
-  "numericAnswer": 4089.0
+  "numericAnswer": 4089
  },
  {
   "id": "iq-0681",
@@ -9693,7 +9693,7 @@
    "Combination"
   ],
   "source": "Quantprof Product of Solutions",
-  "numericAnswer": 11628.0
+  "numericAnswer": 11628
  },
  {
   "id": "iq-0682",
@@ -9708,7 +9708,7 @@
    "Indicator Variables"
   ],
   "source": "Quantprof Set Intersection",
-  "numericAnswer": 5.0
+  "numericAnswer": 5
  },
  {
   "id": "iq-0683",
@@ -9878,7 +9878,7 @@
    "Bounded Solution"
   ],
   "source": "Quantprof 5000 Sets",
-  "numericAnswer": 14.0
+  "numericAnswer": 14
  },
  {
   "id": "iq-0695",
@@ -10125,7 +10125,7 @@
    "Recursion"
   ],
   "source": "Quantprof Domino Tiling I",
-  "numericAnswer": 89.0
+  "numericAnswer": 89
  },
  {
   "id": "iq-0713",
@@ -10139,7 +10139,7 @@
    "Recursion"
   ],
   "source": "",
-  "numericAnswer": 571.0
+  "numericAnswer": 571
  },
  {
   "id": "iq-0714",
@@ -10153,7 +10153,7 @@
    "Recursion"
   ],
   "source": "Quantprof Domino Tiling II",
-  "numericAnswer": 153.0
+  "numericAnswer": 153
  },
  {
   "id": "iq-0715",
@@ -10167,7 +10167,7 @@
    "Recursion"
   ],
   "source": "Quantprof Grid Frog II",
-  "numericAnswer": 23409.0
+  "numericAnswer": 23409
  },
  {
   "id": "iq-0716",
@@ -10439,7 +10439,7 @@
    "Algebraic Deduction"
   ],
   "source": "Quant Prof Medium Brainteasers | Triangle Sum",
-  "numericAnswer": 4.0
+  "numericAnswer": 4
  },
  {
   "id": "iq-0735",
@@ -10453,7 +10453,7 @@
    "Multiplication Rule"
   ],
   "source": "Quantprof Triangle Tiling",
-  "numericAnswer": 1024.0
+  "numericAnswer": 1024
  },
  {
   "id": "iq-0736",
@@ -10468,7 +10468,7 @@
    "Combinations"
   ],
   "source": "Quantprof Triangles Inside Triangle",
-  "numericAnswer": 357.0
+  "numericAnswer": 357
  },
  {
   "id": "iq-0737",
@@ -10608,7 +10608,7 @@
    "Jumping to Zero"
   ],
   "source": "",
-  "numericAnswer": 4.38288920056101e-05
+  "numericAnswer": 0.0000438288920056101
  },
  {
   "id": "iq-0747",
@@ -10676,7 +10676,7 @@
    "Bayes Rule"
   ],
   "source": "",
-  "numericAnswer": 17.0
+  "numericAnswer": 17
  },
  {
   "id": "iq-0752",
@@ -10793,7 +10793,7 @@
    "Bases"
   ],
   "source": "Quant Prof Medium Brainteasers | Measure Everything I",
-  "numericAnswer": 7.0
+  "numericAnswer": 7
  },
  {
   "id": "iq-0760",
@@ -10833,7 +10833,7 @@
    "Brainteaser"
   ],
   "source": "",
-  "numericAnswer": 3.0
+  "numericAnswer": 3
  },
  {
   "id": "iq-0763",
@@ -10847,7 +10847,7 @@
    "Binary"
   ],
   "source": "Quantprof Easy Brainteaser",
-  "numericAnswer": 7.0
+  "numericAnswer": 7
  },
  {
   "id": "iq-0764",
@@ -10872,7 +10872,7 @@
   "notes": "Brainteaser. By definition, the rope must go down 40 and go up 40, leaving no room for x-coordinate movement.",
   "tags": [],
   "source": "Quantprof Hanging Chain",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0766",
@@ -10898,7 +10898,7 @@
   "notes": "Notice that each valid path must visit (1,0) before (2, 0) before (3,0) etc\nBut also (0, 1) must be visited before (1, 1). \nSo the 10 intermediate points have a loose ordering of y = 0 ordering and y = 1 ordering.",
   "tags": [],
   "source": "",
-  "numericAnswer": 252.0
+  "numericAnswer": 252
  },
  {
   "id": "iq-0768",
@@ -10923,7 +10923,7 @@
   "notes": "Let x = number of days that the asset's price increases.\n\np * (1.2)^x (0.8)^{10-x} = p\n(1.2)^x * (0.8)^{10-x} = 1\n\nBut there are no integer values of x that achieve this.",
   "tags": [],
   "source": "QuantProf Easy Probability",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0770",
@@ -10951,7 +10951,7 @@
    "Brainteaser"
   ],
   "source": "Quantprof Largest Mean Median Difference",
-  "numericAnswer": 40.0
+  "numericAnswer": 40
  },
  {
   "id": "iq-0772",
@@ -10976,7 +10976,7 @@
   "notes": "Not sure how to explain, it just is",
   "tags": [],
   "source": "Quantprof Medium Brainteaser",
-  "numericAnswer": 6.0
+  "numericAnswer": 6
  },
  {
   "id": "iq-0774",
@@ -11023,7 +11023,7 @@
   "notes": "Strategy is to find N such that we can start at N, then go to N + N-1, then N + N-1 + N-2 etc... so that if it ever breaks, we still have enough tries to explore the floors between these jumps\nWe see N = 14 is good. Start at 14, then 14+13, then 14+13+12, etc...",
   "tags": [],
   "source": "Green Book",
-  "numericAnswer": 14.0
+  "numericAnswer": 14
  },
  {
   "id": "iq-0778",
@@ -11048,7 +11048,7 @@
   "notes": "Notice that M can go anywhere, but since H will always be left of T, replacing TH with HT simply will never happen.\n\nAny end position of the M's is achievable by moving there greedily. So there are 8c4 = 70 possible positions.",
   "tags": [],
   "source": "Quant Prof Medium Brainteasers",
-  "numericAnswer": 70.0
+  "numericAnswer": 70
  },
  {
   "id": "iq-0780",
@@ -11076,7 +11076,7 @@
    "Logical Deduction"
   ],
   "source": "Quant Prof Hard Probability",
-  "numericAnswer": 1440.0
+  "numericAnswer": 1440
  },
  {
   "id": "iq-0782",
@@ -11118,7 +11118,7 @@
    "Brainteaser"
   ],
   "source": "Quantprof Sharing a Secret",
-  "numericAnswer": 10.0
+  "numericAnswer": 10
  },
  {
   "id": "iq-0785",
@@ -11158,7 +11158,7 @@
    "Binary Representation"
   ],
   "source": "",
-  "numericAnswer": 1024.0
+  "numericAnswer": 1024
  },
  {
   "id": "iq-0788",
@@ -11172,7 +11172,7 @@
    "Bases"
   ],
   "source": "Quantprof IG | Skipping 2s",
-  "numericAnswer": 3801.0
+  "numericAnswer": 3801
  },
  {
   "id": "iq-0789",
@@ -11208,7 +11208,7 @@
   "notes": "(N-1) = 0 mod 2, 3, 4, 5, 6, so N = 1 mod 60. Then bash to see that 121 is sufficient.",
   "tags": [],
   "source": "",
-  "numericAnswer": 121.0
+  "numericAnswer": 121
  },
  {
   "id": "iq-0792",
@@ -11234,7 +11234,7 @@
   "notes": "Make the observation that when we compare 2^n and 5^n, 2^n is bounded between 10^(a-1) and 10^a. 5^n is bounded between 10^(b-1) and 10^b.\n\na+b = n+1. And a+b-2 = n-1. This is because 2^n * 5^n is exactly 10^n.",
   "tags": [],
   "source": "",
-  "numericAnswer": 1990.0
+  "numericAnswer": 1990
  },
  {
   "id": "iq-0794",
@@ -11246,7 +11246,7 @@
   "notes": "Use a bounded argument. n-digit number * m-digit number cannot have more than (n+m+1) digits",
   "tags": [],
   "source": "",
-  "numericAnswer": 1001.0
+  "numericAnswer": 1001
  },
  {
   "id": "iq-0795",
@@ -11317,7 +11317,7 @@
   "notes": "First evaluate p(1). This gives us the sum of the coefficients. Let M = sum of coeffs + 1.\nThen evaluate p(M). This gives us a_n M^n + a_{n-1} M^{n-1} + ... + a_0, which is just a_n a_{n-1} a_{n-2} ... a_0 in base M. So when we convert this evalulation in base M, we report all the coefficients and are done.\n\nNotice that it is pivotal that each coefficient is nonnegative. We also make M = sum of coeffs + 1 so that each a_i is strictly less than M, and no borrowing happens.",
   "tags": [],
   "source": "Quantprof Polynomial Coefficient",
-  "numericAnswer": 2.0
+  "numericAnswer": 2
  },
  {
   "id": "iq-0800",
@@ -11329,7 +11329,7 @@
   "notes": "All combinations from 37000, 37037, ..., 37999 can rotate its last 3 digits to be divisible by 37.\n\nThis is because 100x + 10y + z - (100y + 10z + x) = 0 mod 37",
   "tags": [],
   "source": "",
-  "numericAnswer": 28.0
+  "numericAnswer": 28
  },
  {
   "id": "iq-0801",
@@ -11345,7 +11345,7 @@
    "Bases"
   ],
   "source": "Quantprof Evenbin",
-  "numericAnswer": 4100.0
+  "numericAnswer": 4100
  },
  {
   "id": "iq-0802",
@@ -11357,7 +11357,7 @@
   "notes": "Use LCM of the denomiantors. The total amount of people needed to be at least 300.\n\nAlso can use algebra",
   "tags": [],
   "source": "Quantprof Strange Party",
-  "numericAnswer": 125.0
+  "numericAnswer": 125
  },
  {
   "id": "iq-0803",
@@ -11381,7 +11381,7 @@
   "notes": "View the average as having to neutralize competing interests. If the average is 27 and we have a 23, then we pull in the left by 4.\n\nWith that said, want to stack as many small primes so they collectively pull to the left. Notice that odd primes below 27 pull by an even number, and 2 pulls by an odd number. For the right side, if we want to maximize the prime number, it must be a single odd number that pulls by an even amount, so we cannot have a 2 in here.\n\nWith that said, 2, 5, 7, 11, 13, 17, 19, 23 pull by (24, 22, 20, 16, 14, 10, 8, 4) respectively which adds to 145. The largest prime that can work with these pulls is 137, which is everything but 8.",
   "tags": [],
   "source": "Quantprof Prime Set",
-  "numericAnswer": 137.0
+  "numericAnswer": 137
  },
  {
   "id": "iq-0805",
@@ -11415,7 +11415,7 @@
   "notes": "Odd even parity",
   "tags": [],
   "source": "",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0808",
@@ -11427,7 +11427,7 @@
   "notes": "Odd even parity. It cannot be even.",
   "tags": [],
   "source": "Quantprof 38",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0809",
@@ -11452,7 +11452,7 @@
    "Invariance"
   ],
   "source": "Quantprof Easy Probability (22)",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0811",
@@ -11477,7 +11477,7 @@
    "Checkerboard Parity"
   ],
   "source": "Quantprof 29",
-  "numericAnswer": 1.0
+  "numericAnswer": 1
  },
  {
   "id": "iq-0813",
@@ -11624,7 +11624,7 @@
    "Monovariant"
   ],
   "source": "Green Book",
-  "numericAnswer": 47.0
+  "numericAnswer": 47
  },
  {
   "id": "iq-0825",
@@ -11769,7 +11769,7 @@
   "notes": "",
   "tags": [],
   "source": "",
-  "numericAnswer": 12.0
+  "numericAnswer": 12
  },
  {
   "id": "iq-0837",
@@ -11781,7 +11781,7 @@
   "notes": "",
   "tags": [],
   "source": "",
-  "numericAnswer": 243.0
+  "numericAnswer": 243
  },
  {
   "id": "iq-0838",
@@ -11796,7 +11796,7 @@
    "Primes"
   ],
   "source": "Quantprof Count Of Rational Numbers",
-  "numericAnswer": 512.0
+  "numericAnswer": 512
  },
  {
   "id": "iq-0839",
@@ -11810,7 +11810,7 @@
    "Multiplication rule"
   ],
   "source": "Quantprof Arrow On Dice",
-  "numericAnswer": 32.0
+  "numericAnswer": 32
  },
  {
   "id": "iq-0840",
@@ -11822,7 +11822,7 @@
   "notes": "",
   "tags": [],
   "source": "",
-  "numericAnswer": 7.0
+  "numericAnswer": 7
  },
  {
   "id": "iq-0841",
@@ -11834,7 +11834,7 @@
   "notes": "",
   "tags": [],
   "source": "",
-  "numericAnswer": 6.0
+  "numericAnswer": 6
  },
  {
   "id": "iq-0842",
@@ -11846,7 +11846,7 @@
   "notes": "5P3 = 5*4*3 = 60",
   "tags": [],
   "source": "",
-  "numericAnswer": 60.0
+  "numericAnswer": 60
  },
  {
   "id": "iq-0843",
@@ -11858,7 +11858,7 @@
   "notes": "3*3*3 = 27",
   "tags": [],
   "source": "",
-  "numericAnswer": 27.0
+  "numericAnswer": 27
  },
  {
   "id": "iq-0844",
@@ -11870,7 +11870,7 @@
   "notes": "10^4",
   "tags": [],
   "source": "",
-  "numericAnswer": 10000.0
+  "numericAnswer": 10000
  },
  {
   "id": "iq-0845",
@@ -11882,7 +11882,7 @@
   "notes": "7!/(2!2!)",
   "tags": [],
   "source": "",
-  "numericAnswer": 1260.0
+  "numericAnswer": 1260
  },
  {
   "id": "iq-0846",
@@ -11894,7 +11894,7 @@
   "notes": "6! / 6",
   "tags": [],
   "source": "",
-  "numericAnswer": 120.0
+  "numericAnswer": 120
  },
  {
   "id": "iq-0847",
@@ -11906,7 +11906,7 @@
   "notes": "6! / 6, but we also divide by 2 to account for flip symmetry",
   "tags": [],
   "source": "",
-  "numericAnswer": 60.0
+  "numericAnswer": 60
  },
  {
   "id": "iq-0848",
@@ -11918,7 +11918,7 @@
   "notes": "3c2 = 3",
   "tags": [],
   "source": "",
-  "numericAnswer": 3.0
+  "numericAnswer": 3
  },
  {
   "id": "iq-0849",
@@ -11930,7 +11930,7 @@
   "notes": "10c4",
   "tags": [],
   "source": "",
-  "numericAnswer": 210.0
+  "numericAnswer": 210
  },
  {
   "id": "iq-0850",
@@ -11994,7 +11994,7 @@
    "Binomial Theorem"
   ],
   "source": "",
-  "numericAnswer": 28.0
+  "numericAnswer": 28
  },
  {
   "id": "iq-0855",
@@ -12044,7 +12044,7 @@
    "digit problem"
   ],
   "source": "",
-  "numericAnswer": 9.0
+  "numericAnswer": 9
  },
  {
   "id": "iq-0859",
@@ -12056,7 +12056,7 @@
   "notes": "Principle inclusion exclusion",
   "tags": [],
   "source": "",
-  "numericAnswer": 66351.0
+  "numericAnswer": 66351
  },
  {
   "id": "iq-0860",
@@ -12116,7 +12116,7 @@
   "notes": "For the 6 points that don't matter, they create 7 gaps. Choose 4 gaps to place the 4 selected points, and they are never adjacent, and they always represent a new configuration.",
   "tags": [],
   "source": "",
-  "numericAnswer": 35.0
+  "numericAnswer": 35
  },
  {
   "id": "iq-0865",
@@ -12128,7 +12128,7 @@
   "notes": "PIE definition",
   "tags": [],
   "source": "",
-  "numericAnswer": 34.0
+  "numericAnswer": 34
  },
  {
   "id": "iq-0866",
@@ -12140,7 +12140,7 @@
   "notes": "PIE definition",
   "tags": [],
   "source": "",
-  "numericAnswer": 32.0
+  "numericAnswer": 32
  },
  {
   "id": "iq-0867",
@@ -12168,7 +12168,7 @@
    "Casework"
   ],
   "source": "Quantprof Medium Brainteaser",
-  "numericAnswer": 228.0
+  "numericAnswer": 228
  },
  {
   "id": "iq-0869",
@@ -12180,7 +12180,7 @@
   "notes": "PIE for 1 pair, 2 pairs, ... , 5 pairs\nN(at least 1) - N(at least 2) + N(at least 3) - N(at least 4) + N(at least 5)",
   "tags": [],
   "source": "",
-  "numericAnswer": 2365440.0
+  "numericAnswer": 2365440
  },
  {
   "id": "iq-0870",
@@ -12192,7 +12192,7 @@
   "notes": "add 2 bars, 14c2 = 91",
   "tags": [],
   "source": "",
-  "numericAnswer": 91.0
+  "numericAnswer": 91
  },
  {
   "id": "iq-0871",
@@ -12204,7 +12204,7 @@
   "notes": "Equivalent to the same problem, but x1 + x2 + x3 = 6 after removing their constraints",
   "tags": [],
   "source": "",
-  "numericAnswer": 28.0
+  "numericAnswer": 28
  },
  {
   "id": "iq-0872",
@@ -12216,7 +12216,7 @@
   "notes": "Equivalent to x1 + x2 + x3 = 9",
   "tags": [],
   "source": "",
-  "numericAnswer": 55.0
+  "numericAnswer": 55
  },
  {
   "id": "iq-0873",
@@ -12228,7 +12228,7 @@
   "notes": "Equivalent to y1 + ... + y6 = 45, with yi >= 0.",
   "tags": [],
   "source": "",
-  "numericAnswer": 2118760.0
+  "numericAnswer": 2118760
  },
  {
   "id": "iq-0874",
@@ -12240,7 +12240,7 @@
   "notes": "Equivalent to x1 + x2 + x3 + x4 + 12. This gives us 15c3 = 455",
   "tags": [],
   "source": "",
-  "numericAnswer": 455.0
+  "numericAnswer": 455
  },
  {
   "id": "iq-0875",
@@ -12304,7 +12304,7 @@
    "Careful counting"
   ],
   "source": "",
-  "numericAnswer": 288.0
+  "numericAnswer": 288
  },
  {
   "id": "iq-0880",
@@ -12362,7 +12362,7 @@
    "Definition"
   ],
   "source": "AoPS",
-  "numericAnswer": 9.0
+  "numericAnswer": 9
  },
  {
   "id": "iq-0884",
@@ -12390,7 +12390,7 @@
    "Overcount then divide"
   ],
   "source": "",
-  "numericAnswer": 30.0
+  "numericAnswer": 30
  },
  {
   "id": "iq-0886",
@@ -12453,7 +12453,7 @@
    "Catalan Numbers"
   ],
   "source": "",
-  "numericAnswer": 14.0
+  "numericAnswer": 14
  },
  {
   "id": "iq-0891",
@@ -12468,7 +12468,7 @@
    "Reflection Principle"
   ],
   "source": "",
-  "numericAnswer": 56.0
+  "numericAnswer": 56
  },
  {
   "id": "iq-0892",
@@ -12483,7 +12483,7 @@
    "Reflection Principle"
   ],
   "source": "",
-  "numericAnswer": 10.0
+  "numericAnswer": 10
  },
  {
   "id": "iq-0893",
@@ -12779,7 +12779,7 @@
    "Recurrence Relations"
   ],
   "source": "AoPS 10.3",
-  "numericAnswer": 24960.0
+  "numericAnswer": 24960
  },
  {
   "id": "iq-0916",
@@ -12880,7 +12880,7 @@
   "notes": "PIE for EV",
   "tags": [],
   "source": "",
-  "numericAnswer": 9.0
+  "numericAnswer": 9
  },
  {
   "id": "iq-0924",
@@ -12939,7 +12939,7 @@
   "notes": "Summation using expectation\nThere are 96309 valid numbers. We just need to find their expectation.\nFind the probability that each position equals 1, then use that to find the expectation of each position. Very tedious",
   "tags": [],
   "source": "",
-  "numericAnswer": 4853516499.0
+  "numericAnswer": 4853516499
  },
  {
   "id": "iq-0929",
@@ -12951,7 +12951,7 @@
   "notes": "Recursion expecation introduction",
   "tags": [],
   "source": "",
-  "numericAnswer": 9.0
+  "numericAnswer": 9
  },
  {
   "id": "iq-0930",
@@ -12965,7 +12965,7 @@
    "Harmonic Series"
   ],
   "source": "",
-  "numericAnswer": 3.0
+  "numericAnswer": 3
  },
  {
   "id": "iq-0931",
@@ -12977,7 +12977,7 @@
   "notes": "Markov Chain equations for expectation",
   "tags": [],
   "source": "",
-  "numericAnswer": 8.0
+  "numericAnswer": 8
  },
  {
   "id": "iq-0932",
@@ -13089,7 +13089,7 @@
   "notes": "For each matrix, there's an equal probability of constructing a matrix where columns 1 and 2 are swapped. Their determinants are opposite, so they cancel each other out when calculating the exepctation.\n\nSymmetry",
   "tags": [],
   "source": "",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0941",
@@ -13116,7 +13116,7 @@
    "Kac's Lemma"
   ],
   "source": "Quantprof Hard Probability",
-  "numericAnswer": 168.0
+  "numericAnswer": 168
  },
  {
   "id": "iq-0943",
@@ -13187,7 +13187,7 @@
    "Poisson"
   ],
   "source": "",
-  "numericAnswer": 54.0
+  "numericAnswer": 54
  },
  {
   "id": "iq-0948",
@@ -13242,7 +13242,7 @@
    "Casework"
   ],
   "source": "",
-  "numericAnswer": 50.0
+  "numericAnswer": 50
  },
  {
   "id": "iq-0952",
@@ -13377,7 +13377,7 @@
   "notes": "x, y unif[0, 9]. Find E[min(x, y)], but intuitively it's 3",
   "tags": [],
   "source": "",
-  "numericAnswer": 3.0
+  "numericAnswer": 3
  },
  {
   "id": "iq-0963",
@@ -13483,7 +13483,7 @@
    "Random points on a segment"
   ],
   "source": "",
-  "numericAnswer": 139.0
+  "numericAnswer": 139
  },
  {
   "id": "iq-0971",
@@ -13559,7 +13559,7 @@
   "notes": "Definition of variance, covariance",
   "tags": [],
   "source": "",
-  "numericAnswer": 1.0
+  "numericAnswer": 1
  },
  {
   "id": "iq-0977",
@@ -13723,7 +13723,7 @@
   "notes": "Expected value",
   "tags": [],
   "source": "",
-  "numericAnswer": 5.0
+  "numericAnswer": 5
  },
  {
   "id": "iq-0990",
@@ -13735,7 +13735,7 @@
   "notes": "p ~ unif[0, 1] is the distribution of proportion of black balls. So it's expectation is 1/2.",
   "tags": [],
   "source": "",
-  "numericAnswer": 5.0
+  "numericAnswer": 5
  },
  {
   "id": "iq-0991",
@@ -13761,7 +13761,7 @@
    "Conditional Expectation"
   ],
   "source": "",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0993",
@@ -13775,7 +13775,7 @@
    "Conditional Expectation"
   ],
   "source": "",
-  "numericAnswer": 0.0
+  "numericAnswer": 0
  },
  {
   "id": "iq-0994",
@@ -13790,7 +13790,7 @@
    "Tedious"
   ],
   "source": "Quantprof Medium Probability",
-  "numericAnswer": 1.0
+  "numericAnswer": 1
  },
  {
   "id": "iq-0995",
@@ -13952,7 +13952,7 @@
    "Modular Arithmetic"
   ],
   "source": "Quantprof Prisoner Hats Multicolor",
-  "numericAnswer": 99.0
+  "numericAnswer": 99
  },
  {
   "id": "iq-1007",
@@ -13964,7 +13964,7 @@
   "notes": "2 eggs, 9 drops = 45. So our first drop with 3 eggs 10 drops is 46. Because if it breaks, we have the 2 egg 9 drop subproblem.\n\nKeep going, (45 + 1) + (36 + 1) + ... + (3 + 1) + (1 + 1) + 1. This equals 175. But a 176-story building can still be determined because if all 10 drops survive, it is the 176-th story.",
   "tags": [],
   "source": "Quantprof 3 Eggs",
-  "numericAnswer": 176.0
+  "numericAnswer": 176
  },
  {
   "id": "iq-1008",
@@ -14322,7 +14322,7 @@
    "Recursion"
   ],
   "source": "",
-  "numericAnswer": 6.0
+  "numericAnswer": 6
  },
  {
   "id": "iq-1037",
@@ -14375,7 +14375,7 @@
    "Introductory"
   ],
   "source": "AoPS 9.10",
-  "numericAnswer": 233.0
+  "numericAnswer": 233
  },
  {
   "id": "iq-1041",
@@ -14403,7 +14403,7 @@
    "Introductory"
   ],
   "source": "AOPS 9.16",
-  "numericAnswer": 377.0
+  "numericAnswer": 377
  },
  {
   "id": "iq-1043",
@@ -14490,7 +14490,7 @@
    "Modular Arithmetic"
   ],
   "source": "",
-  "numericAnswer": 6560.0
+  "numericAnswer": 6560
  },
  {
   "id": "iq-1049",

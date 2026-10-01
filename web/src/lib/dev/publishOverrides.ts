@@ -27,13 +27,15 @@ export async function publishOverrides(store: ItemOverrideStore): Promise<Publis
 }
 
 /**
- * Sends the full interview bundle list from `/dev/bundles` to the same
- * function, which opens a PR replacing `web/src/data/interview/bundles.json`.
+ * Sends interview edits from `/dev/bundles` to the same function, which opens
+ * one PR: the full bundle list replaces `web/src/data/interview/bundles.json`,
+ * and edited or new questions are merged by id into `questions.json`. Either
+ * part may be omitted.
  */
-export async function publishBundles(bundles: unknown[]): Promise<PublishResult> {
+export async function publishInterview(edits: { bundles?: unknown[]; questions?: unknown[] }): Promise<PublishResult> {
   const { data, error } = await supabase.functions.invoke<{ prUrl: string; prNumber: number }>(
     "publish-item-edits",
-    { body: { interviewBundles: bundles } },
+    { body: { interviewBundles: edits.bundles, interviewQuestions: edits.questions } },
   );
   if (error) {
     const failure = await describeFunctionError(error);
