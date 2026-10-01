@@ -137,8 +137,17 @@ export function AccountPage() {
                 {plan.tagline}
               </p>
 
+              {subscription.tier !== "free" && subscription.lifetimeTier === subscription.tier && (
+                <p className="font-body mt-3 text-sm text-[var(--ink-soft)]">
+                  Yours for life — a one-time purchase with no renewal.
+                  {subscription.subscriptionTier !== "free" &&
+                    " You also have a monthly subscription, which you may no longer need — cancel it from Manage billing."}
+                </p>
+              )}
+
               {subscription.currentPeriodEnd &&
-                subscription.tier !== "free" && (
+                subscription.tier !== "free" &&
+                subscription.lifetimeTier !== subscription.tier && (
                   <p className="font-body mt-3 text-sm text-[var(--ink-soft)]">
                     {subscription.cancelAtPeriodEnd
                       ? `Cancels on ${new Date(subscription.currentPeriodEnd).toLocaleDateString()}. You keep access until then.`

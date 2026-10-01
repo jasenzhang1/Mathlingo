@@ -52,6 +52,8 @@ interface PublishRequest {
   interviewBundles?: Bundle[];
   /** Edited or new interview questions; each replaces (or is appended as) the question with its id. */
   interviewQuestions?: InterviewQuestion[];
+  /** Ids of interview questions to remove from questions.json (e.g. duplicates). */
+  interviewDeletedQuestions?: string[];
 }
 
 interface OverridesFile {
@@ -110,7 +112,15 @@ function isInterviewQuestion(value: unknown): value is InterviewQuestion {
 
 function validatePayload(body: unknown): PublishRequest | { error: string } {
   if (!body || typeof body !== "object") return { error: "Request body must be an object." };
-  const { overrides, newItems, interviewBundles, interviewQuestions } = body as PublishRequest;
+  const { overrides, newItems, interviewBundles, interviewQuestions, interviewDeletedQuestions } = body as PublishRequest;
+  if (interviewDeletedQuestions !== undefined) {
+    if (!Array.isArray(interviewDeletedQuestions) || !interviewDeletedQuestions.every((id) => typeof id === "string" && /^iq-[0-9]+$/.test(id))) {
+      return { error: "interviewDeletedQuestions must be an array of question ids." };
+    }
+    if (interviewQuestions?.some((q) => interviewDeletedQuestions.includes((q as { id?: string })?.id ?? ""))) {
+      return { error: "A question can't be both edited and deleted in the same publish." };
+    }
+  }
   if (interviewQuestions !== undefined) {
     if (!Array.isArray(interviewQuestions)) return { error: "interviewQuestions must be an array." };
     const ids = new Set<string>();
@@ -137,7 +147,7 @@ function validatePayload(body: unknown): PublishRequest | { error: string } {
       return { error: `Item keyed "${key}" has id "${value.id}" — keys must match ids.` };
     }
   }
-  return { overrides: overrides ?? {}, newItems: newItems ?? {}, interviewBundles, interviewQuestions };
+  return { overrides: overrides ?? {}, newItems: newItems ?? {}, interviewBundles, interviewQuestions, interviewDeletedQuestions };
 }
 
 function allowedEmails(): Set<string> {
@@ -212,9 +222,10 @@ Deno.serve(async (req) => {
   const newItems = validated.newItems ?? {};
   const bundles = validated.interviewBundles;
   const interviewQuestions = validated.interviewQuestions?.length ? validated.interviewQuestions : undefined;
+  const deletedQuestions = validated.interviewDeletedQuestions?.length ? validated.interviewDeletedQuestions : undefined;
 
   const changedIds = [...Object.keys(overrides), ...Object.keys(newItems)];
-  if (changedIds.length === 0 && !bundles && !interviewQuestions) {
+  if (changedIds.length === 0 && !bundles && !interviewQuestions && !deletedQuestions) {
     return json({ error: "Nothing to publish — no edits, new items, bundles or interview questions were sent." }, 400);
   }
 
@@ -321,19 +332,22 @@ Deno.serve(async (req) => {
     // base branch — edited ones replaced in place, new ones appended — so a
     // PR carries only the questions this developer touched.
     let questionSummary = "";
-    if (interviewQuestions) {
+    if (interviewQuestions || deletedQuestions) {
       const base = await readBase(QUESTIONS_PATH);
       const current: InterviewQuestion[] = base ? JSON.parse(base.text) : [];
-      const incoming = new Map(interviewQuestions.map((q) => [q.id, q]));
+      const incoming = new Map((interviewQuestions ?? []).map((q) => [q.id, q]));
+      const deleting = new Set(deletedQuestions ?? []);
       const existing = new Set(current.map((q) => q.id));
-      const merged = current.map((q) => incoming.get(q.id) ?? q);
-      const added = interviewQuestions.filter((q) => !existing.has(q.id)).sort((a, b) => a.id.localeCompare(b.id));
+      const merged = current.filter((q) => !deleting.has(q.id)).map((q) => incoming.get(q.id) ?? q);
+      const added = (interviewQuestions ?? []).filter((q) => !existing.has(q.id)).sort((a, b) => a.id.localeCompare(b.id));
       merged.push(...added);
-      const changed = interviewQuestions.filter((q) => existing.has(q.id)).map((q) => q.id);
+      const changed = (interviewQuestions ?? []).filter((q) => existing.has(q.id)).map((q) => q.id);
+      const removed = [...deleting].filter((id) => existing.has(id));
       const code = (id: string) => "`" + id + "`";
       questionSummary = [
         added.length && `Added: ${added.map((q) => code(q.id)).join(", ")}`,
         changed.length && `Changed: ${changed.map(code).join(", ")}`,
+        removed.length && `Removed: ${removed.map(code).join(", ")}`,
       ]
         .filter(Boolean)
         .join("\n");
@@ -350,6 +364,7 @@ Deno.serve(async (req) => {
       changedIds.length > 0 && `${changedIds.length} item(s)`,
       bundles && "interview bundles",
       interviewQuestions && `${interviewQuestions.length} interview question(s)`,
+      deletedQuestions && `${deletedQuestions.length} deleted interview question(s)`,
     ].filter(Boolean);
     const prRes = await githubFetch(`/repos/${owner}/${repo}/pulls`, githubToken, {
       method: "POST",
@@ -361,7 +376,7 @@ Deno.serve(async (req) => {
           `Published from the dev editor by ${userData.user.email}.\n\n` +
           (changedIds.length > 0 ? `**Items:**\n${changedIds.map((id) => `- \`${id}\``).join("\n")}\n\n` : "") +
           (bundles ? `**Interview bundles:**\n${bundleSummary}\n\n` : "") +
-          (interviewQuestions ? `**Interview questions:**\n${questionSummary}\n` : ""),
+          (interviewQuestions || deletedQuestions ? `**Interview questions:**\n${questionSummary}\n` : ""),
       }),
     });
     if (!prRes.ok) {

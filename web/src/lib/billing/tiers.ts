@@ -29,11 +29,30 @@ export function tierFor(entitlement: Entitlement): Tier {
   return REQUIRED[entitlement];
 }
 
+/** How a paid plan is bought: a monthly subscription, or once for life. */
+export type Billing = "monthly" | "lifetime";
+
+/** Verified students (`profiles.is_student`) get this off every paid plan. */
+export const STUDENT_DISCOUNT = 0.2;
+
+/**
+ * Display only. The real amounts live in the Stripe prices, and the real
+ * student discount in the STRIPE_STUDENT_COUPON_ID coupon — keep them in step.
+ */
+export function studentPrice(amount: number): number {
+  return Math.round(amount * (1 - STUDENT_DISCOUNT) * 100) / 100;
+}
+
+export function formatPrice(amount: number): string {
+  return Number.isInteger(amount) ? `$${amount}` : `$${amount.toFixed(2)}`;
+}
+
 export interface TierPlan {
   id: Tier;
   name: string;
-  /** Display only — the real amount lives in the Stripe price. */
-  priceLabel: string;
+  /** Display only, in dollars — the real amounts live in the Stripe prices. */
+  monthly: number;
+  lifetime: number;
   tagline: string;
   features: string[];
   /** Things this tier explicitly does not include, so the ladder is legible. */
@@ -44,7 +63,8 @@ export const PLANS: TierPlan[] = [
   {
     id: "free",
     name: "Free",
-    priceLabel: "$0",
+    monthly: 0,
+    lifetime: 0,
     tagline: "The whole curriculum, and everything that can be graded exactly.",
     features: [
       "All 247 concepts, slides and wiki",
@@ -57,7 +77,8 @@ export const PLANS: TierPlan[] = [
   {
     id: "graded",
     name: "Graded",
-    priceLabel: "$8",
+    monthly: 10,
+    lifetime: 100,
     tagline: "Explain your reasoning and have it marked properly.",
     features: [
       "Everything in Free",
@@ -71,7 +92,8 @@ export const PLANS: TierPlan[] = [
   {
     id: "tutored",
     name: "Tutored",
-    priceLabel: "$15",
+    monthly: 20,
+    lifetime: 150,
     tagline: "A sparring partner for every concept.",
     features: [
       "Everything in Graded",
@@ -88,7 +110,8 @@ export const PAID_PLANS = PLANS.filter((p) => p.id !== "free");
 /** A card on the Plans page's interview-prep row. */
 export interface InterviewPlanCard {
   name: string;
-  priceLabel: string;
+  monthly: number;
+  lifetime: number;
   tagline: string;
   features: string[];
   excludes?: string[];
@@ -96,7 +119,8 @@ export interface InterviewPlanCard {
 
 export const INTERVIEW_FREE_PLAN: InterviewPlanCard = {
   name: "Free",
-  priceLabel: "$0",
+  monthly: 0,
+  lifetime: 0,
   tagline: "Try the format before you commit.",
   features: [
     "A selection of free mock-interview decks",
@@ -108,13 +132,15 @@ export const INTERVIEW_FREE_PLAN: InterviewPlanCard = {
 };
 
 /**
- * Interview prep: a separate monthly product, not a tier — holding it neither
- * requires nor implies any learning plan. Display only; the amount is the
- * STRIPE_PRICE_INTERVIEW price.
+ * Interview prep: a separate product, bought monthly or once for life, not a
+ * tier — holding it neither requires nor implies any learning plan. Display
+ * only; the amounts are the STRIPE_PRICE_INTERVIEW and
+ * STRIPE_PRICE_INTERVIEW_LIFETIME prices.
  */
 export const INTERVIEW_PLAN: InterviewPlanCard = {
   name: "Interview Prep",
-  priceLabel: "$20",
+  monthly: 20,
+  lifetime: 100,
   tagline: "Quant interview questions the way they're actually asked.",
   features: [
     "Over a thousand brainteaser and probability interview questions",

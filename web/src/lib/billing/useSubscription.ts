@@ -16,18 +16,22 @@ export function useSubscription() {
   const [subscription, setSubscription] = useState<Subscription>(FREE_SUBSCRIPTION);
   /** The separate interview-prep subscription — independent of `subscription.tier`. */
   const [interview, setInterview] = useState(false);
+  /** True when interview access comes from a lifetime purchase rather than a subscription. */
+  const [interviewLifetime, setInterviewLifetime] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const refresh = useCallback(async () => {
     if (!user) {
       setSubscription(FREE_SUBSCRIPTION);
       setInterview(false);
+      setInterviewLifetime(false);
       setLoading(false);
       return;
     }
     const [sub, interviewAccess] = await Promise.all([loadSubscription(user.id), loadInterviewAccess(user.id)]);
     setSubscription(sub);
-    setInterview(interviewAccess);
+    setInterview(interviewAccess.access);
+    setInterviewLifetime(interviewAccess.lifetime);
     setLoading(false);
   }, [user]);
 
@@ -41,5 +45,5 @@ export function useSubscription() {
     [subscription.tier],
   );
 
-  return { subscription, interview, loading: loading || authLoading, can, refresh };
+  return { subscription, interview, interviewLifetime, loading: loading || authLoading, can, refresh };
 }

@@ -14,6 +14,7 @@ paste → Run. "Success. No rows returned" is what success looks like.
 | `migrations/0002_proficiency.sql` | `concept_states`, `assessment_responses` — the assessment tab |
 | `migrations/0003_response_detail.sql` | rubric breakdown, transcripts, and grader confidence on the review log |
 | `migrations/0008_interview.sql` | `interview_subscriptions`, `interview_skills`, `interview_attempts` — the interview prep tab (after `0004`) |
+| `migrations/0009_lifetime.sql` | `lifetime_purchases`, and `effective_tier` / `has_interview_access` taught to honour them — the "for life" plans (after `0008`) |
 
 `0002` depends on `0001` (it references `public.profiles`), so don't skip it.
 
@@ -127,19 +128,34 @@ card number.
 1. Create an account at <https://dashboard.stripe.com>. Stay in **Test mode**
    (toggle, top right) until you're ready to charge real money.
 2. **Products → Add product**, three times:
-   - *Graded* — recurring, monthly, $8. Copy the **price id** (`price_...`).
-   - *Tutored* — recurring, monthly, $15. Copy its price id.
-   - *Interview Prep* — recurring, monthly. Copy its price id. This is a
-     separate product, not a tier: a customer can hold it alongside a learning
-     plan, as a second subscription on the same Stripe customer. The webhook
-     routes it to `interview_subscriptions` by price id and never lets it touch
-     `subscriptions.tier`. The display price is `INTERVIEW_PLAN.priceLabel` in
-     `web/src/lib/billing/tiers.ts`; keep the two in step.
+   Each product gets two prices, a monthly one and a one-time "for life" one:
+
+   | Product | Monthly (recurring) | For life (one-time) |
+   |---|---|---|
+   | *Graded* | $10 → `STRIPE_PRICE_GRADED` | $100 → `STRIPE_PRICE_GRADED_LIFETIME` |
+   | *Tutored* | $20 → `STRIPE_PRICE_TUTORED` | $150 → `STRIPE_PRICE_TUTORED_LIFETIME` |
+   | *Interview Prep* | $20 → `STRIPE_PRICE_INTERVIEW` | $100 → `STRIPE_PRICE_INTERVIEW_LIFETIME` |
+
+   - Copy each **price id** (`price_...`).
+   - The display prices are `monthly` and `lifetime` in `web/src/lib/billing/tiers.ts`. Keep
+     them in step with these prices.
+   - Interview Prep is a separate product, not a tier. A customer can hold it alongside a
+     learning plan, as a second subscription on the same Stripe customer. The webhook routes it
+     to `interview_subscriptions` by price id and never lets it touch `subscriptions.tier`.
+   - Lifetime purchases are one-time Checkout payments. The webhook records them in
+     `lifetime_purchases` (migration `0009`), and effective access is the better of a lifetime
+     purchase and an active subscription.
+2b. **Student discount:** create a **Coupon** for **20% off**, with duration **Forever**, so it
+   keeps applying to every monthly renewal. Put its id in `STRIPE_STUDENT_COUPON_ID`. Checkout
+   applies it automatically for verified students, on both monthly and lifetime purchases. The
+   site shows the struck-through price from `STUDENT_DISCOUNT` in `tiers.ts`, so keep it at
+   `0.2`.
 3. **Developers → API keys** → copy the **Secret key** (`sk_test_...`).
 4. **Developers → Webhooks** (Stripe now labels this area *Event destinations*,
    and the button *Add destination* — same feature, renamed). Note the order:
    events are chosen **before** the URL.
-   - **Events**: `checkout.session.completed`, `customer.subscription.created`,
+   - **Events**: `checkout.session.completed`, `checkout.session.async_payment_succeeded`
+     (lifetime purchases paid by a delayed method), `customer.subscription.created`,
      `customer.subscription.updated`, `customer.subscription.deleted`
    - **Events from**: *Your account* (not Connected accounts)
    - **Destination type**: *Webhook endpoint* (not Amazon EventBridge)
@@ -156,11 +172,16 @@ STRIPE_WEBHOOK_SECRET=whsec_... \
 STRIPE_PRICE_GRADED=price_... \
 STRIPE_PRICE_TUTORED=price_... \
 STRIPE_PRICE_INTERVIEW=price_... \
+STRIPE_PRICE_GRADED_LIFETIME=price_... \
+STRIPE_PRICE_TUTORED_LIFETIME=price_... \
+STRIPE_PRICE_INTERVIEW_LIFETIME=price_... \
+STRIPE_STUDENT_COUPON_ID=... \
 ./supabase/deploy.sh YOUR_PROJECT_REF
 ```
 
-`STRIPE_PRICE_INTERVIEW` is optional; without it the interview tab's subscribe
-button reports that no price is configured.
+The interview and lifetime prices and the student coupon are optional. Without a price, its
+buy button reports that no price is configured. Without the coupon, students pay full price at
+checkout even though the site shows them the discount.
 
 Omit the Stripe variables and everything else still deploys; the pricing page
 then reports that billing isn't configured.

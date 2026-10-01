@@ -51,6 +51,24 @@ export function interviewPrice(): string | undefined {
   return Deno.env.get("STRIPE_PRICE_INTERVIEW");
 }
 
+export type Product = "graded" | "tutored" | "interview";
+
+/**
+ * The one-time "for life" price for a product (mode: "payment" Checkout).
+ * Lifetime purchases are recorded in `lifetime_purchases` (migration 0009).
+ */
+export function lifetimePrice(product: Product): string | undefined {
+  return Deno.env.get(
+    product === "graded"
+      ? "STRIPE_PRICE_GRADED_LIFETIME"
+      : product === "tutored"
+        ? "STRIPE_PRICE_TUTORED_LIFETIME"
+        : "STRIPE_PRICE_INTERVIEW_LIFETIME",
+  );
+}
+
+export const isProduct = (v: unknown): v is Product => v === "graded" || v === "tutored" || v === "interview";
+
 /**
  * `current_period_end` moved from the subscription onto its items in a 2025 API
  * version, and which one is populated depends on the version the account is

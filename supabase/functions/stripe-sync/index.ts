@@ -1,6 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { json, preflight } from "../_shared/cors.ts";
-import { isInterviewPrice, periodEndOf, stripeClient, tierForPrice } from "../_shared/stripe.ts";
+import { isInterviewPrice, isProduct, periodEndOf, stripeClient, tierForPrice } from "../_shared/stripe.ts";
 
 /**
  * Reconciles our subscription row against Stripe's live state.
@@ -53,6 +53,33 @@ Deno.serve(async (req) => {
 
     if (!customerId) {
       return json({ tier: "free", status: "inactive", synced: false });
+    }
+
+    // Lifetime purchases (migration 0009) have no subscription to list, so
+    // recover them from paid Checkout sessions — only ones created for this
+    // very user, since the customer may have been found by email.
+    const sessions = await stripe.checkout.sessions.list({ customer: customerId, limit: 100 });
+    for (const s of sessions.data) {
+      const product = s.metadata?.product;
+      if (
+        s.mode !== "payment" ||
+        s.metadata?.billing !== "lifetime" ||
+        s.payment_status !== "paid" ||
+        s.metadata?.supabase_user_id !== user.id ||
+        !isProduct(product)
+      ) {
+        continue;
+      }
+      await db.from("lifetime_purchases").upsert(
+        {
+          stripe_checkout_session_id: s.id,
+          user_id: user.id,
+          product,
+          amount_total: s.amount_total,
+          currency: s.currency,
+        },
+        { onConflict: "stripe_checkout_session_id" },
+      );
     }
 
     const subscriptions = await stripe.subscriptions.list({

@@ -7,7 +7,17 @@ import { useIsDeveloper } from "../lib/dev/devAuth";
 import { publishInterview } from "../lib/dev/publishOverrides";
 import { DEFAULT_DIFFICULTY, families, familyById, isLive, repoBundles, repoQuestions, sectionById, sectionLabel, sections, techniquesOf } from "../lib/interview/bank";
 import { clearBundleDraft, loadBundleDraft, saveBundleDraft } from "../lib/interview/bundleDraft";
-import { applyQuestionDraft, clearQuestionDraft, loadQuestionDraft, saveQuestionDraft, type QuestionDraft } from "../lib/interview/questionDraft";
+import { findDuplicateGroups, pairKey, tokenize, type DuplicateGroup } from "../lib/interview/duplicates";
+import {
+  applyQuestionDraft,
+  clearDeletedQuestions,
+  clearQuestionDraft,
+  loadDeletedQuestions,
+  loadQuestionDraft,
+  saveDeletedQuestions,
+  saveQuestionDraft,
+  type QuestionDraft,
+} from "../lib/interview/questionDraft";
 import type { Bundle, InterviewQuestion } from "../lib/interview/types";
 
 /**
@@ -104,19 +114,21 @@ function InterviewEditor() {
 
   const [bundles, setBundlesState] = useState<Bundle[]>(() => loadBundleDraft() ?? repoBundles);
   const [qDraft, setQDraftState] = useState<QuestionDraft>(() => loadQuestionDraft());
+  const [deleted, setDeletedState] = useState<string[]>(() => loadDeletedQuestions());
   const [selectedBundleId, setSelectedBundleId] = useState<string | null>(bundles[0]?.id ?? null);
   const [selectedQuestionId, setSelectedQuestionId] = useState<string | null>(null);
+  const [showDuplicates, setShowDuplicates] = useState(false);
   const [status, setStatus] = useState<{ kind: "ok" | "error"; text: string } | null>(null);
   const [publishing, setPublishing] = useState(false);
 
   const repoById = useMemo(() => new Map(repoQuestions.map((q) => [q.id, q])), []);
-  const allQuestions = useMemo(() => applyQuestionDraft(repoQuestions, qDraft), [qDraft]);
+  const allQuestions = useMemo(() => applyQuestionDraft(repoQuestions, qDraft, deleted), [qDraft, deleted]);
   const qById = useMemo(() => new Map(allQuestions.map((q) => [q.id, q])), [allQuestions]);
   const freeViaBundle = useMemo(() => new Set(bundles.filter((b) => b.free).flatMap((b) => b.questions)), [bundles]);
 
   const bundlesDirty = useMemo(() => JSON.stringify(bundles) !== JSON.stringify(repoBundles), [bundles]);
   const editedCount = Object.keys(qDraft).length;
-  const dirty = bundlesDirty || editedCount > 0;
+  const dirty = bundlesDirty || editedCount > 0 || deleted.length > 0;
 
   function setBundles(next: Bundle[]) {
     setBundlesState(next);
@@ -135,6 +147,27 @@ function InterviewEditor() {
     if (original && JSON.stringify(normalized) === JSON.stringify(original)) delete next[q.id];
     else next[q.id] = normalized;
     setQDraft(next);
+  }
+
+  /**
+   * Removes a question: an unpublished new one just disappears; a published
+   * one is queued for deletion from questions.json. Either way it's taken out
+   * of every bundle, so no chain points at a missing question.
+   */
+  function deleteQuestion(id: string) {
+    const holders = bundles.filter((b) => b.questions.includes(id));
+    const where = holders.length ? `\n\nIt will also be removed from: ${holders.map((b) => b.title).join(", ")}.` : "";
+    if (!confirm(`Delete ${id}?${where}`)) return;
+    const nextDraft = { ...qDraft };
+    delete nextDraft[id];
+    setQDraft(nextDraft);
+    if (repoById.has(id)) {
+      const nextDeleted = [...new Set([...deleted, id])];
+      setDeletedState(nextDeleted);
+      saveDeletedQuestions(nextDeleted);
+    }
+    if (holders.length) setBundles(bundles.map((b) => (b.questions.includes(id) ? { ...b, questions: b.questions.filter((x) => x !== id) } : b)));
+    if (selectedQuestionId === id) setSelectedQuestionId(null);
   }
 
   function revertQuestion(id: string) {
@@ -180,6 +213,7 @@ function InterviewEditor() {
     const result = await publishInterview({
       bundles: bundlesDirty ? bundles : undefined,
       questions: editedCount > 0 ? Object.values(qDraft) : undefined,
+      deletedQuestions: deleted.length > 0 ? deleted : undefined,
     });
     setPublishing(false);
     setStatus(result.ok ? { kind: "ok", text: `Opened PR #${result.prNumber}: ${result.prUrl}` } : { kind: "error", text: result.message });
@@ -195,7 +229,13 @@ function InterviewEditor() {
     URL.revokeObjectURL(a.href);
   }
 
-  const changes = [bundlesDirty && "bundles", editedCount > 0 && `${editedCount} question${editedCount === 1 ? "" : "s"}`].filter(Boolean).join(" and ");
+  const changes = [
+    bundlesDirty && "bundles",
+    editedCount > 0 && `${editedCount} question${editedCount === 1 ? "" : "s"}`,
+    deleted.length > 0 && `${deleted.length} deletion${deleted.length === 1 ? "" : "s"}`,
+  ]
+    .filter(Boolean)
+    .join(", ");
 
   return (
     <div>
@@ -214,6 +254,9 @@ function InterviewEditor() {
           <button type="button" className={btn} onClick={view === "bundles" ? newBundle : newQuestion}>
             {view === "bundles" ? "New bundle" : "New question"}
           </button>
+          <button type="button" className={showDuplicates ? primary : btn} onClick={() => setShowDuplicates((v) => !v)}>
+            {showDuplicates ? "Close duplicates" : "Find duplicates"}
+          </button>
           <button type="button" className={btn} onClick={exportJson}>
             Export JSON
           </button>
@@ -222,11 +265,13 @@ function InterviewEditor() {
             className={btn}
             disabled={!dirty}
             onClick={() => {
-              if (!confirm("Discard every unpublished bundle and question edit in this browser?")) return;
+              if (!confirm("Discard every unpublished bundle and question edit, and every deletion, in this browser?")) return;
               clearBundleDraft();
               clearQuestionDraft();
+              clearDeletedQuestions();
               setBundlesState(repoBundles);
               setQDraftState({});
+              setDeletedState([]);
               if (selectedQuestionId && !repoById.has(selectedQuestionId)) setSelectedQuestionId(null);
             }}
           >
@@ -256,7 +301,19 @@ function InterviewEditor() {
         ))}
       </div>
 
-      {view === "bundles" ? (
+      {showDuplicates ? (
+        <DuplicatePanel
+          allQuestions={allQuestions}
+          bundles={bundles}
+          freeViaBundle={freeViaBundle}
+          onEdit={(id) => {
+            setShowDuplicates(false);
+            setSelectedQuestionId(id);
+            setView("questions");
+          }}
+          onDelete={deleteQuestion}
+        />
+      ) : view === "bundles" ? (
         <BundleWorkspace
           bundles={bundles}
           setBundles={setBundles}
@@ -281,6 +338,7 @@ function InterviewEditor() {
           setSelectedId={setSelectedQuestionId}
           onSave={saveQuestion}
           onRevert={revertQuestion}
+          onDelete={deleteQuestion}
           openBundle={(id) => {
             setSelectedBundleId(id);
             setView("bundles");
@@ -613,6 +671,176 @@ function QuestionPicker({ bundle, allQuestions, onAdd }: { bundle: Bundle; allQu
 }
 
 // ---------------------------------------------------------------------------
+// Duplicates
+// ---------------------------------------------------------------------------
+
+/** Pairs a developer marked "not duplicates", so they stop reappearing. This browser only. */
+const DISMISSED_KEY = "mathlingo:dev:interview-dup-dismissed";
+
+function loadDismissed(): Set<string> {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(DISMISSED_KEY) ?? "[]");
+    return new Set(Array.isArray(parsed) ? parsed.filter((x): x is string => typeof x === "string") : []);
+  } catch {
+    return new Set();
+  }
+}
+
+const THRESHOLDS = [
+  { value: 0.9, label: "Near-identical (90%+)" },
+  { value: 0.75, label: "Very similar (75%+)" },
+  { value: 0.6, label: "Similar (60%+)" },
+];
+const GROUP_PAGE = 30;
+
+function DuplicatePanel({
+  allQuestions,
+  bundles,
+  freeViaBundle,
+  onEdit,
+  onDelete,
+}: {
+  allQuestions: InterviewQuestion[];
+  bundles: Bundle[];
+  freeViaBundle: Set<string>;
+  onEdit: (id: string) => void;
+  onDelete: (id: string) => void;
+}) {
+  const [threshold, setThreshold] = useState(0.75);
+  const [dismissed, setDismissed] = useState<Set<string>>(() => loadDismissed());
+  const [shown, setShown] = useState(GROUP_PAGE);
+  const groups = useMemo(() => findDuplicateGroups(allQuestions, threshold, dismissed), [allQuestions, threshold, dismissed]);
+  const qById = useMemo(() => new Map(allQuestions.map((q) => [q.id, q])), [allQuestions]);
+
+  function dismiss(g: DuplicateGroup) {
+    const next = new Set(dismissed);
+    for (const a of g.ids) for (const b of g.ids) if (a < b) next.add(pairKey(a, b));
+    setDismissed(next);
+    try {
+      localStorage.setItem(DISMISSED_KEY, JSON.stringify([...next]));
+    } catch {
+      // Not remembering only means the group may show up again.
+    }
+  }
+
+  return (
+    <section className="mt-6 space-y-4">
+      <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4">
+        <p className="font-body text-sm text-[var(--ink)]">
+          <span className="font-semibold">{groups.length}</span> group{groups.length === 1 ? "" : "s"} of duplicate or near-duplicate
+          questions, by word overlap in the question text. Highlighted words are the ones that differ.
+        </p>
+        <span className="flex-1" />
+        <select
+          value={threshold}
+          onChange={(e) => {
+            setThreshold(Number(e.target.value));
+            setShown(GROUP_PAGE);
+          }}
+          className="font-body rounded-lg border border-[var(--line)] bg-[var(--paper)] px-2 py-1 text-xs text-[var(--ink)]"
+        >
+          {THRESHOLDS.map((t) => (
+            <option key={t.value} value={t.value}>
+              {t.label}
+            </option>
+          ))}
+        </select>
+        {dismissed.size > 0 && (
+          <button
+            type="button"
+            className={btn}
+            onClick={() => {
+              setDismissed(new Set());
+              try {
+                localStorage.removeItem(DISMISSED_KEY);
+              } catch {
+                // Nothing to clear.
+              }
+            }}
+          >
+            Show dismissed ({dismissed.size} pair{dismissed.size === 1 ? "" : "s"})
+          </button>
+        )}
+      </div>
+
+      {groups.length === 0 && <p className="font-body text-sm text-[var(--ink-soft)]">No duplicates at this threshold.</p>}
+
+      {groups.slice(0, shown).map((g) => {
+        const members = g.ids.map((id) => qById.get(id)).filter((q): q is InterviewQuestion => Boolean(q));
+        // Words every member shares; anything else is what tells them apart.
+        const sets = members.map((q) => new Set(tokenize(q.question)));
+        const common = new Set([...sets[0]].filter((w) => sets.every((s) => s.has(w))));
+        return (
+          <div key={g.ids.join("|")} className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4">
+            <div className="font-body flex flex-wrap items-center gap-2">
+              <span className="font-display text-lg text-[var(--ink)]">{Math.round(g.score * 100)}%</span>
+              {g.exact && <span className="rounded-full bg-red-50 px-2 py-0.5 text-xs font-semibold text-red-700">Exact copy</span>}
+              {g.sameWords && (
+                <span className="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700">
+                  Same words — differs only in symbols or punctuation; read carefully
+                </span>
+              )}
+              <span className="text-xs text-[var(--ink-soft)]">{members.length} questions</span>
+              <span className="flex-1" />
+              <button type="button" className={btn} onClick={() => dismiss(g)}>
+                Not duplicates
+              </button>
+            </div>
+            <div className={`mt-3 grid gap-3 ${members.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
+              {members.map((q) => {
+                const free = Boolean(q.free) || freeViaBundle.has(q.id);
+                const holders = bundles.filter((b) => b.questions.includes(q.id));
+                return (
+                  <div key={q.id} className="font-body flex flex-col rounded-xl border border-[var(--line)] bg-[var(--paper)] p-3">
+                    <p className="flex flex-wrap items-center gap-1.5 text-xs text-[var(--ink-soft)]">
+                      <span className="font-semibold text-[var(--ink)]">{q.id}</span>
+                      <span className={free ? freeBadge : lockedBadge}>{free ? "free" : "locked"}</span>
+                      {!isLive(q) && <span className={lockedBadge}>draft</span>}
+                      difficulty {q.difficulty ?? "unrated"}
+                    </p>
+                    <p className="mt-2 flex-1 whitespace-pre-wrap text-sm text-[var(--ink)]">
+                      {q.question.split(/(\s+)/).map((chunk, i) =>
+                        tokenize(chunk).some((w) => !common.has(w)) ? (
+                          <mark key={i} className="rounded bg-amber-100 px-0.5 text-[var(--ink)]">
+                            {chunk}
+                          </mark>
+                        ) : (
+                          <span key={i}>{chunk}</span>
+                        ),
+                      )}
+                    </p>
+                    <p className="mt-2 text-xs text-[var(--ink-soft)]">
+                      <span className="font-semibold">Answer:</span> {q.answer || "—"}
+                    </p>
+                    <p className="mt-1 text-xs text-[var(--ink-soft)]">
+                      {sectionLabel(q.section)} · {holders.length ? `in ${holders.map((b) => b.title).join(", ")}` : "in no bundle"}
+                    </p>
+                    <div className="mt-3 flex gap-2">
+                      <button type="button" className={btn} onClick={() => onEdit(q.id)}>
+                        Edit
+                      </button>
+                      <button type="button" className={`${btn} hover:border-red-400`} onClick={() => onDelete(q.id)}>
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+
+      {groups.length > shown && (
+        <button type="button" className={btn} onClick={() => setShown((n) => n + GROUP_PAGE)}>
+          Show more ({groups.length - shown} left)
+        </button>
+      )}
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Questions view
 // ---------------------------------------------------------------------------
 
@@ -629,6 +857,7 @@ function QuestionWorkspace({
   setSelectedId,
   onSave,
   onRevert,
+  onDelete,
   openBundle,
 }: {
   allQuestions: InterviewQuestion[];
@@ -640,6 +869,7 @@ function QuestionWorkspace({
   setSelectedId: (id: string | null) => void;
   onSave: (q: InterviewQuestion) => void;
   onRevert: (id: string) => void;
+  onDelete: (id: string) => void;
   openBundle: (id: string) => void;
 }) {
   const [search, setSearch] = useState("");
@@ -739,6 +969,7 @@ function QuestionWorkspace({
           allQuestions={allQuestions}
           onSave={onSave}
           onRevert={() => onRevert(selected.id)}
+          onDelete={() => onDelete(selected.id)}
           openBundle={openBundle}
         />
       ) : (
@@ -757,6 +988,7 @@ function QuestionForm({
   allQuestions,
   onSave,
   onRevert,
+  onDelete,
   openBundle,
 }: {
   question: InterviewQuestion;
@@ -767,6 +999,7 @@ function QuestionForm({
   allQuestions: InterviewQuestion[];
   onSave: (q: InterviewQuestion) => void;
   onRevert: () => void;
+  onDelete: () => void;
   openBundle: (id: string) => void;
 }) {
   const [tagText, setTagText] = useState("");
@@ -797,17 +1030,20 @@ function QuestionForm({
           {!isLive(q) && <span className={lockedBadge}>draft</span>}
           {(isNew || edited) && <span className="font-body text-xs text-amber-600">{isNew ? "new — not yet published" : "edited — not yet published"}</span>}
           <span className="flex-1" />
-          {(isNew || edited) && (
+          {edited && !isNew && (
             <button
               type="button"
-              className={`${btn} hover:border-red-400`}
+              className={btn}
               onClick={() => {
-                if (confirm(isNew ? `Delete the unpublished question ${q.id}?` : `Revert ${q.id} to the published version?`)) onRevert();
+                if (confirm(`Revert ${q.id} to the published version?`)) onRevert();
               }}
             >
-              {isNew ? "Delete new question" : "Revert"}
+              Revert
             </button>
           )}
+          <button type="button" className={`${btn} hover:border-red-400`} onClick={onDelete}>
+            Delete
+          </button>
         </div>
 
         <div className="mt-4 grid gap-4 md:grid-cols-2">
