@@ -1,7 +1,9 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { startCheckout } from "../../lib/billing/api";
-import { INTERVIEW_PLAN } from "../../lib/billing/tiers";
+import { INTERVIEW_PLAN, type Billing } from "../../lib/billing/tiers";
+import { useOwnProfile } from "../../lib/profiles";
+import { Price } from "../billing/Price";
 import { useSubscription } from "../../lib/billing/useSubscription";
 import { useAuth } from "../../lib/auth/useAuth";
 import { useIsDeveloper } from "../../lib/dev/devAuth";
@@ -81,25 +83,29 @@ export function InterviewGate({ children }: { children: ReactNode }) {
   );
 }
 
-/** The subscribe card: price, what's included, and the checkout button. */
+/** The subscribe card: monthly or lifetime price (student-discounted when it applies), what's included, and checkout. */
 export function InterviewUpgradeCard() {
   const { user } = useAuth();
+  const student = Boolean(useOwnProfile()?.isStudent);
   const [searchParams] = useSearchParams();
-  const [pending, setPending] = useState(false);
+  const [pending, setPending] = useState<Billing | null>(null);
   const [error, setError] = useState<string | null>(null);
   const cancelled = searchParams.get("checkout") === "cancelled";
 
-  async function subscribe() {
+  async function buy(billing: Billing) {
     setError(null);
-    setPending(true);
-    const result = await startCheckout("interview");
+    setPending(billing);
+    const result = await startCheckout("interview", billing);
     if (!result.ok) {
       setError(result.message);
-      setPending(false);
+      setPending(null);
       return;
     }
     window.location.href = result.url;
   }
+
+  const button =
+    "font-body w-full rounded-full px-4 py-2.5 text-sm font-semibold hover:opacity-90 disabled:opacity-50";
 
   return (
     <div className="rounded-2xl border border-[var(--accent)] bg-[var(--panel)] p-6 shadow-sm">
@@ -109,11 +115,15 @@ export function InterviewUpgradeCard() {
         </p>
       )}
       {error && <p className="font-body mb-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>}
-      <p className="font-display text-3xl text-[var(--ink)]">
-        {INTERVIEW_PLAN.priceLabel}
-        <span className="font-body text-sm text-[var(--ink-soft)]">/month</span>
+      <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+        <Price amount={INTERVIEW_PLAN.monthly} student={student} suffix="/month" />
+        <span className="font-body text-sm text-[var(--ink-soft)]">or</span>
+        <Price amount={INTERVIEW_PLAN.lifetime} student={student} suffix="for life" />
+      </div>
+      <p className="font-body mt-1 text-xs text-[var(--ink-soft)]">
+        Separate from, and independent of, any learning plan.
+        {student && " Student pricing applied automatically at checkout."}
       </p>
-      <p className="font-body mt-1 text-xs text-[var(--ink-soft)]">Separate from, and independent of, any learning plan.</p>
       <ul className="font-body mt-5 space-y-2 text-sm text-[var(--ink)]">
         {INTERVIEW_PLAN.features.map((f) => (
           <li key={f} className="flex gap-2">
@@ -126,14 +136,19 @@ export function InterviewUpgradeCard() {
       </ul>
       <div className="mt-6">
         {user ? (
-          <button
-            type="button"
-            onClick={() => void subscribe()}
-            disabled={pending}
-            className="font-body w-full rounded-full bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:opacity-90 disabled:opacity-50"
-          >
-            {pending ? "Opening checkout…" : `Subscribe to ${INTERVIEW_PLAN.name}`}
-          </button>
+          <div className="grid gap-2 sm:grid-cols-2">
+            <button type="button" onClick={() => void buy("monthly")} disabled={pending !== null} className={`${button} bg-[var(--accent)] text-white`}>
+              {pending === "monthly" ? "Opening checkout…" : "Subscribe monthly"}
+            </button>
+            <button
+              type="button"
+              onClick={() => void buy("lifetime")}
+              disabled={pending !== null}
+              className={`${button} border border-[var(--accent)] text-[var(--accent)]`}
+            >
+              {pending === "lifetime" ? "Opening checkout…" : "Buy for life"}
+            </button>
+          </div>
         ) : (
           <Link
             to="/login"

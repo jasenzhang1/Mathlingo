@@ -145,6 +145,20 @@ This page is for developers (the `useIsDeveloper` allowlist). It has two views.
   regardless of its own flag.
 - **Add:** *New question* creates the next `iq-NNNN` id as a draft, so nothing half-written is
   served.
+- **Delete:** removes the question and takes it out of every bundle that holds it.
+
+**Find duplicates** (header button) checks all questions, including unpublished edits, for
+duplicates and near-duplicates. The logic is in
+[`duplicates.ts`](web/src/lib/interview/duplicates.ts).
+
+- **Matching:** each question becomes a set of normalised words, with LaTeX and punctuation
+  stripped and numbers kept. Pairs are scored by word overlap (Jaccard) at a chosen threshold
+  (90%, 75%, or 60%), and overlapping pairs merge into groups.
+- **Labels:** *Exact copy* means the text is identical. *Same words* means the questions differ
+  only in symbols or punctuation (`=` vs `<=`), so compare them carefully before deleting.
+- **Review:** the words that differ are highlighted. Each question can be edited or deleted.
+- **Not duplicates:** hides the group. This is remembered in this browser only, and *Show
+  dismissed* brings dismissed groups back.
 
 Both views share how edits are saved and published:
 
@@ -152,5 +166,6 @@ Both views share how edits are saved and published:
   Bundle edits apply immediately, so a chain can be played with *Play it* before it ships.
   Question edits apply after a reload.
 - **Publish as PR:** one PR to `publish-item-edits`. The full bundle list replaces
-  `bundles.json`, and only the edited or new questions are merged into `questions.json` by id.
+  `bundles.json`. Only edited or new questions are merged into `questions.json` by id, and
+  deleted questions are removed from it.
   Both files are written as one-space JSON, so the diff shows only real changes.

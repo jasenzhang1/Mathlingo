@@ -3,7 +3,7 @@ import familiesJson from "../../data/interview/families.json";
 import questionsJson from "../../data/interview/questions.json";
 import sectionsJson from "../../data/interview/sections.json";
 import { loadBundleDraft } from "./bundleDraft";
-import { applyQuestionDraft, loadQuestionDraft } from "./questionDraft";
+import { applyQuestionDraft, loadDeletedQuestions, loadQuestionDraft } from "./questionDraft";
 import type { Bundle, InterviewFamily, InterviewQuestion, InterviewSection } from "./types";
 
 /**
@@ -21,7 +21,7 @@ export const repoQuestions = questionsJson as InterviewQuestion[];
  * The questions the app serves. A developer with unpublished edits from the
  * Questions view of `/dev/bundles` sees those instead (read once, at load).
  */
-export const questions = applyQuestionDraft(repoQuestions, loadQuestionDraft());
+export const questions = applyQuestionDraft(repoQuestions, loadQuestionDraft(), loadDeletedQuestions());
 /** Bundles as committed to the repo. */
 export const repoBundles = bundlesJson as Bundle[];
 

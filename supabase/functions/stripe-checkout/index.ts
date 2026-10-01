@@ -1,17 +1,22 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { json, preflight } from "../_shared/cors.ts";
-import { interviewPrice, priceForTier, stripeClient } from "../_shared/stripe.ts";
+import { interviewPrice, lifetimePrice, priceForTier, stripeClient } from "../_shared/stripe.ts";
 
 /**
  * Creates a Stripe Checkout session and returns its URL for the browser to
  * redirect to.
  *
  * The price is resolved from the tier **on the server**. The client sends only
- * "graded", "tutored" or "interview" — never a price or an amount — because a
- * client that can name its own price can name a very low one.
+ * "graded", "tutored" or "interview", and "monthly" or "lifetime" — never a
+ * price or an amount — because a client that can name its own price can name
+ * a very low one.
  *
  * "interview" is the separate interview-prep product (migration 0008): a
  * second subscription on the same Stripe customer, not a tier.
+ *
+ * "lifetime" is a one-time payment (Checkout mode "payment") rather than a
+ * subscription; the webhook records it in `lifetime_purchases` (migration
+ * 0009) from the session's metadata.
  */
 
 Deno.serve(async (req) => {
@@ -34,15 +39,30 @@ Deno.serve(async (req) => {
 
     const body = await req.json();
     const product = body.tier === "interview" ? "interview" : body.tier === "tutored" ? "tutored" : "graded";
+    const lifetime = body.billing === "lifetime";
     const origin = String(body.origin ?? "").replace(/\/$/, "");
     if (!origin) return json({ error: "Missing origin." }, 400);
 
-    const price = product === "interview" ? interviewPrice() : priceForTier(product);
+    const price = lifetime ? lifetimePrice(product) : product === "interview" ? interviewPrice() : priceForTier(product);
     if (!price) {
       return json(
-        { error: `No Stripe price configured for ${product === "interview" ? "interview prep" : `the ${product} tier`}.` },
+        {
+          error: `No Stripe ${lifetime ? "lifetime " : ""}price configured for ${product === "interview" ? "interview prep" : `the ${product} tier`}.`,
+        },
         500,
       );
+    }
+
+    // Don't sell something the user already owns for life. Owning Tutored for
+    // life also covers Graded, so a lower lifetime tier is refused too.
+    if (lifetime) {
+      const { data: owned } = await db.from("lifetime_purchases").select("product").eq("user_id", user.id);
+      const products = new Set((owned ?? []).map((r) => r.product as string));
+      const covered =
+        products.has(product) || (product === "graded" && products.has("tutored"));
+      if (covered) {
+        return json({ error: "You already have this plan for life." }, 409);
+      }
     }
 
     const stripe = stripeClient();
@@ -83,7 +103,7 @@ Deno.serve(async (req) => {
     const applyStudentDiscount = Boolean(profile?.is_student) && Boolean(studentCoupon);
 
     const session = await stripe.checkout.sessions.create({
-      mode: "subscription",
+      mode: lifetime ? "payment" : "subscription",
       customer: customerId,
       // How the webhook ties the resulting subscription back to our user.
       client_reference_id: user.id,
@@ -96,7 +116,14 @@ Deno.serve(async (req) => {
       ...(applyStudentDiscount
         ? { discounts: [{ coupon: studentCoupon }] }
         : { allow_promotion_codes: true }),
-      subscription_data: { metadata: { supabase_user_id: user.id } },
+      // A lifetime purchase is identified by the session's own metadata (there
+      // is no subscription to carry it); a monthly plan by the subscription's.
+      ...(lifetime
+        ? {
+            metadata: { supabase_user_id: user.id, product, billing: "lifetime" },
+            invoice_creation: { enabled: true },
+          }
+        : { subscription_data: { metadata: { supabase_user_id: user.id } } }),
     });
 
     return json({ url: session.url });

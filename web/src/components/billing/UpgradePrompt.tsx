@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { PLANS, type Entitlement, tierFor } from "../../lib/billing/tiers";
+import { useOwnProfile } from "../../lib/profiles";
+import { Price } from "./Price";
 
 /**
  * Shown where a paid capability would be.
@@ -18,6 +20,7 @@ export function UpgradePrompt({
 }) {
   const required = tierFor(entitlement);
   const plan = PLANS.find((p) => p.id === required)!;
+  const student = Boolean(useOwnProfile()?.isStudent);
 
   const headline =
     entitlement === "ai-tutor"
@@ -35,8 +38,9 @@ export function UpgradePrompt({
       <p className="font-body mx-auto mt-2 max-w-md text-sm text-[var(--ink-soft)]">
         {body}
       </p>
-      <p className="font-body mt-3 text-sm text-[var(--ink)]">
-        {plan.name} — {plan.priceLabel}/month
+      <p className="font-body mt-3 flex flex-wrap items-baseline justify-center gap-x-1.5 text-sm text-[var(--ink)]">
+        {plan.name} — <Price amount={plan.monthly} student={student} suffix="/month" size="sm" /> or{" "}
+        <Price amount={plan.lifetime} student={student} suffix="for life" size="sm" />
       </p>
 
       <div className="mt-5 flex flex-wrap justify-center gap-3">

@@ -40,13 +40,47 @@ export function clearQuestionDraft(): void {
   }
 }
 
-/** The repo's questions with a draft applied: edited ones replaced in place, new ones appended. */
-export function applyQuestionDraft(repo: InterviewQuestion[], draft: QuestionDraft): InterviewQuestion[] {
+/** Ids of published questions deleted in this browser but not yet published. */
+const DELETED_KEY = "mathlingo:dev:interview-questions-deleted";
+
+export function loadDeletedQuestions(): string[] {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(DELETED_KEY) ?? "[]");
+    return Array.isArray(parsed) ? parsed.filter((x): x is string => typeof x === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+export function saveDeletedQuestions(ids: string[]): void {
+  try {
+    localStorage.setItem(DELETED_KEY, JSON.stringify(ids));
+  } catch {
+    // Storage full or blocked: deletions simply won't survive a reload.
+  }
+}
+
+export function clearDeletedQuestions(): void {
+  try {
+    localStorage.removeItem(DELETED_KEY);
+  } catch {
+    // Nothing to clear.
+  }
+}
+
+/**
+ * The repo's questions with a draft applied: edited ones replaced in place,
+ * new ones appended, deleted ones removed.
+ */
+export function applyQuestionDraft(repo: InterviewQuestion[], draft: QuestionDraft, deleted: string[] = []): InterviewQuestion[] {
+  const gone = new Set(deleted);
   const seen = new Set<string>();
-  const merged = repo.map((q) => {
-    seen.add(q.id);
-    return draft[q.id] ?? q;
-  });
-  for (const q of Object.values(draft)) if (!seen.has(q.id)) merged.push(q);
+  const merged = repo
+    .filter((q) => !gone.has(q.id))
+    .map((q) => {
+      seen.add(q.id);
+      return draft[q.id] ?? q;
+    });
+  for (const q of Object.values(draft)) if (!seen.has(q.id) && !gone.has(q.id)) merged.push(q);
   return merged;
 }

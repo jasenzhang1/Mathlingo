@@ -1,6 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import type Stripe from "npm:stripe@17";
-import { isInterviewPrice, periodEndOf, stripeClient, tierForPrice } from "../_shared/stripe.ts";
+import { isInterviewPrice, isProduct, periodEndOf, stripeClient, tierForPrice } from "../_shared/stripe.ts";
 
 /**
  * Stripe -> our subscriptions table. The only writer of entitlement.
@@ -20,6 +20,9 @@ import { isInterviewPrice, periodEndOf, stripeClient, tierForPrice } from "../_s
 
 const RELEVANT = new Set([
   "checkout.session.completed",
+  // A lifetime purchase paid by a delayed method (e.g. bank debit) completes
+  // its checkout unpaid and is only granted when this arrives.
+  "checkout.session.async_payment_succeeded",
   "customer.subscription.created",
   "customer.subscription.updated",
   "customer.subscription.deleted",
@@ -64,11 +67,11 @@ Deno.serve(async (req) => {
   try {
     const db = admin();
 
-    if (event.type === "checkout.session.completed") {
+    if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
       const session = event.data.object as Stripe.Checkout.Session;
       // `client_reference_id` is set to the Supabase user id when the Checkout
       // session is created — it is how a Stripe customer is tied to our user.
-      const userId = session.client_reference_id;
+      const userId = session.client_reference_id ?? session.metadata?.supabase_user_id ?? null;
       const customerId = typeof session.customer === "string" ? session.customer : null;
 
       if (userId && customerId) {
@@ -77,8 +80,30 @@ Deno.serve(async (req) => {
           { onConflict: "user_id" },
         );
       }
-      // The tier itself is set by the subscription.created/updated event that
-      // follows, so there is no need to duplicate that logic here.
+
+      // A lifetime purchase (migration 0009) has no subscription events to
+      // follow, so it is granted here — once paid. Keyed by session id, so a
+      // retried delivery is a no-op rather than a second purchase.
+      const product = session.metadata?.product;
+      if (session.mode === "payment" && session.metadata?.billing === "lifetime" && session.payment_status === "paid") {
+        if (!userId || !isProduct(product)) {
+          throw new Error(`Lifetime checkout ${session.id} is missing its user or product metadata.`);
+        }
+        const { error } = await db.from("lifetime_purchases").upsert(
+          {
+            stripe_checkout_session_id: session.id,
+            user_id: userId,
+            product,
+            amount_total: session.amount_total,
+            currency: session.currency,
+          },
+          { onConflict: "stripe_checkout_session_id" },
+        );
+        if (error) throw new Error(error.message);
+        console.log(`lifetime purchase ${session.id}: user ${userId} -> ${product}`);
+      }
+      // A subscription's tier is set by the subscription.created/updated event
+      // that follows, so there is no need to duplicate that logic here.
     } else {
       // RELEVANT narrows to subscription events here; the SDK's union type cannot know that.
       const subscription = event.data.object as Stripe.Subscription;
