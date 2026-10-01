@@ -20,13 +20,12 @@ export function PricingPage() {
   const student = Boolean(profile?.isStudent);
   const { subscription, interview, interviewLifetime, loading } = useSubscription();
   const [searchParams] = useSearchParams();
-  const [billing, setBilling] = useState<Billing>("monthly");
   const [pending, setPending] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const cancelled = searchParams.get("checkout") === "cancelled";
 
-  async function choose(product: Product) {
+  async function choose(product: Product, billing: Billing) {
     setError(null);
     setPending(`${product}-${billing}`);
 
@@ -41,37 +40,41 @@ export function PricingPage() {
     window.location.href = result.url;
   }
 
-  /** The price line for a paid plan in the selected billing, with the other option underneath. */
-  function priceBlock(monthly: number, lifetime: number) {
-    const [main, other] = billing === "monthly" ? [monthly, lifetime] : [lifetime, monthly];
+  /** Monthly and lifetime prices on one line, at the same size. */
+  function priceLine(monthly: number, lifetime: number) {
     return (
-      <>
-        <p className="mt-1">
-          <Price amount={main} student={student} suffix={billing === "monthly" ? "/month" : "once, for life"} />
-        </p>
-        <p className="font-body mt-0.5 text-xs text-[var(--ink-soft)]">
-          or <Price amount={other} student={student} suffix={billing === "monthly" ? "for life" : "/month"} size="sm" />
-        </p>
-      </>
+      <p className="mt-1 flex flex-wrap items-baseline gap-x-2">
+        <Price amount={monthly} student={student} suffix="/month" />
+        <span className="font-body text-sm text-[var(--ink-soft)]">or</span>
+        <Price amount={lifetime} student={student} suffix="for life" />
+      </p>
     );
   }
 
-  /** The button (or status) at the bottom of a paid card. */
-  function action(product: Product, name: string, owned: "lifetime" | "current" | null): ReactNode {
+  /** The buttons (or status) at the bottom of a paid card: subscribe monthly, or buy for life. */
+  function actions(product: Product, owned: "lifetime" | "current" | null): ReactNode {
     if (owned === "lifetime") return <span className={statusPill}>Yours for life</span>;
-    if (owned === "current" && billing === "monthly") return <span className={statusPill}>Your current plan</span>;
     if (!user) {
       return (
         <Link to="/login" className={primaryButton + " block text-center"}>
-          Sign in to {billing === "monthly" ? "subscribe" : "buy"}
+          Sign in to subscribe
         </Link>
       );
     }
-    const key = `${product}-${billing}`;
+    const busy = (billing: Billing) => pending === `${product}-${billing}`;
     return (
-      <button type="button" onClick={() => void choose(product)} disabled={pending !== null} className={primaryButton + " w-full"}>
-        {pending === key ? "Opening checkout…" : billing === "monthly" ? `Choose ${name}` : `Buy ${name} for life`}
-      </button>
+      <div className="grid gap-2">
+        {owned === "current" ? (
+          <span className={statusPill}>Your current plan (monthly)</span>
+        ) : (
+          <button type="button" onClick={() => void choose(product, "monthly")} disabled={pending !== null} className={primaryButton + " w-full"}>
+            {busy("monthly") ? "Opening checkout…" : "Subscribe monthly"}
+          </button>
+        )}
+        <button type="button" onClick={() => void choose(product, "lifetime")} disabled={pending !== null} className={outlineButton + " w-full"}>
+          {busy("lifetime") ? "Opening checkout…" : "Buy for life"}
+        </button>
+      </div>
     );
   }
 
@@ -85,29 +88,24 @@ export function PricingPage() {
             The curriculum is free, and always will be. What costs money is the part that needs a model behind it —
             marking your reasoning, and arguing with you about it.
           </p>
-
-          <div className="mt-8 inline-flex rounded-full border border-[var(--line)] bg-[var(--panel)] p-1" role="group" aria-label="Billing">
-            {(["monthly", "lifetime"] as Billing[]).map((b) => (
-              <button
-                key={b}
-                type="button"
-                onClick={() => setBilling(b)}
-                aria-pressed={billing === b}
-                className={`font-body rounded-full px-5 py-1.5 text-sm font-medium ${billing === b ? "bg-[var(--accent)] text-white" : "text-[var(--ink-soft)] hover:text-[var(--ink)]"}`}
-              >
-                {b === "monthly" ? "Monthly" : "For life"}
-              </button>
-            ))}
-          </div>
         </div>
 
         {student ? (
-          <p className="font-body mx-auto mt-6 max-w-md rounded-xl bg-[var(--accent-soft)] px-4 py-3 text-center text-sm text-[var(--accent)]">
-            Student pricing: {discountPercent}% off every paid plan, applied automatically at checkout.
-          </p>
+          <div className="mx-auto mt-8 max-w-xl rounded-2xl border border-red-500/30 bg-red-500/10 px-6 py-5 text-center">
+            <p className="font-display text-2xl text-[var(--ink)] md:text-3xl">
+              Student pricing: <span className="text-red-600 dark:text-red-400">{discountPercent}% off</span> every plan
+            </p>
+            <p className="font-display mt-1.5 text-base text-[var(--ink-soft)]">
+              Your school email is verified — the discount is applied automatically at checkout, monthly and for life.
+            </p>
+          </div>
         ) : (
-          <p className="font-body mx-auto mt-6 max-w-md text-center text-sm text-[var(--ink-soft)]">
-            Students get {discountPercent}% off every paid plan — sign up with your school email.
+          <p className="font-display mx-auto mt-8 max-w-xl text-center text-xl text-[var(--ink)]">
+            Students get <span className="text-red-600 dark:text-red-400">{discountPercent}% off</span> every plan —{" "}
+            <Link to="/signup" className="underline decoration-red-500/50 underline-offset-4 hover:decoration-red-500">
+              sign up with your school email
+            </Link>
+            .
           </p>
         )}
 
@@ -145,7 +143,7 @@ export function PricingPage() {
                     <Price amount={0} student={false} />
                   </p>
                 ) : (
-                  priceBlock(plan.monthly, plan.lifetime)
+                  priceLine(plan.monthly, plan.lifetime)
                 )}
                 <p className="font-body mt-2 text-sm text-[var(--ink-soft)]">{plan.tagline}</p>
 
@@ -161,7 +159,7 @@ export function PricingPage() {
                       </Link>
                     )
                   ) : (
-                    action(plan.id, plan.name, ownedForLife ? "lifetime" : subscribed ? "current" : null)
+                    actions(plan.id, ownedForLife ? "lifetime" : subscribed ? "current" : null)
                   )}
                 </div>
               </div>
@@ -196,11 +194,11 @@ export function PricingPage() {
 
           <div className="flex flex-col rounded-2xl border border-[var(--accent)] bg-[var(--panel)] p-6 shadow-sm">
             <h3 className="font-display text-xl text-[var(--ink)]">{INTERVIEW_PLAN.name}</h3>
-            {priceBlock(INTERVIEW_PLAN.monthly, INTERVIEW_PLAN.lifetime)}
+            {priceLine(INTERVIEW_PLAN.monthly, INTERVIEW_PLAN.lifetime)}
             <p className="font-body mt-2 text-sm text-[var(--ink-soft)]">{INTERVIEW_PLAN.tagline}</p>
             <FeatureList features={INTERVIEW_PLAN.features} excludes={INTERVIEW_PLAN.excludes} />
             <div className="mt-6">
-              {action("interview", INTERVIEW_PLAN.name, loading ? null : interviewLifetime ? "lifetime" : interview ? "current" : null)}
+              {actions("interview", loading ? null : interviewLifetime ? "lifetime" : interview ? "current" : null)}
             </div>
           </div>
         </div>
@@ -218,6 +216,8 @@ export function PricingPage() {
 
 const primaryButton =
   "font-body rounded-full bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:opacity-90 disabled:opacity-50";
+const outlineButton =
+  "font-body rounded-full border border-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-[var(--accent)] hover:bg-[var(--accent-soft)] disabled:opacity-50";
 const secondaryButton =
   "font-body block rounded-full border border-[var(--line)] px-4 py-2.5 text-center text-sm font-medium text-[var(--ink)] hover:border-[var(--accent)]";
 const statusPill =

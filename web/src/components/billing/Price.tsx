@@ -21,7 +21,10 @@ export function Price({
   return (
     <span className="inline-flex flex-wrap items-baseline gap-x-1.5">
       {discounted && (
-        <s className={`${size === "lg" ? "font-display text-xl" : "font-body"} text-[var(--ink-soft)]`} aria-label={`was ${formatPrice(amount)}`}>
+        <s
+          className={`${size === "lg" ? "font-display text-xl" : "font-body"} text-red-600 decoration-red-600 decoration-2 dark:text-red-400 dark:decoration-red-400`}
+          aria-label={`was ${formatPrice(amount)}`}
+        >
           {formatPrice(amount)}
         </s>
       )}
