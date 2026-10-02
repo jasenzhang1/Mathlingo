@@ -37,6 +37,8 @@ export interface Course {
   lessonCount: number;
   /** A few chapter names, for a taste of what's inside. */
   chapterNames: string[];
+  /** Every chapter with its lesson titles, in learning order, for previewing. */
+  chapters: { id: string; name: string; lessons: string[] }[];
 }
 
 export const COURSES: Course[] = chapters
@@ -49,6 +51,11 @@ export const COURSES: Course[] = chapters
     chapterCount: c.sections.length,
     lessonCount: c.concepts.length,
     chapterNames: c.sections.map((s) => s.label.replace(/^Ch\. \d+ · /, "")),
+    chapters: c.sections.map((s) => ({
+      id: s.id,
+      name: s.label.replace(/^Ch\. \d+ · /, ""),
+      lessons: s.concepts.map((concept) => concept.title),
+    })),
   }));
 
 export const courseById = new Map(COURSES.map((c) => [c.id, c]));

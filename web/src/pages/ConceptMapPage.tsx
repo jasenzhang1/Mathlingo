@@ -20,8 +20,7 @@ const VIEWS = [
 
 type ViewId = (typeof VIEWS)[number]["id"];
 
-const blurb: Record<ViewId, string> = {
-  map: "One course at a time, every lesson connected by what you need to know first. Drag to pan, use the buttons to zoom, and click a node to open its lesson.",
+const blurb: Partial<Record<ViewId, string>> = {
   list: "Every concept we teach, as folders: a chapter per subject, sections following the chapters of the books it's taught from, and your proficiency on the right of each line.",
 };
 
@@ -49,9 +48,11 @@ export function ConceptMapPage() {
             <h1 className="font-display text-xl text-[var(--ink)] sm:text-2xl">
               Lesson Map
             </h1>
-            <p className="font-body hidden text-sm text-[var(--ink-soft)] sm:block">
-              {blurb[view]}
-            </p>
+            {blurb[view] && (
+              <p className="font-body hidden text-sm text-[var(--ink-soft)] sm:block">
+                {blurb[view]}
+              </p>
+            )}
           </div>
 
           <div
