@@ -21,6 +21,7 @@ export interface JudgedResponse {
   verdicts: RubricVerdict[];
   confidence: number;
   feedback: string;
+  followUp?: string;
 }
 
 export type ModelGradeResult =
@@ -39,6 +40,7 @@ interface JudgeResponse {
   confidence: number;
   feedback: string;
   nextStep?: string;
+  followUp?: string;
 }
 
 /**
@@ -59,8 +61,10 @@ export async function gradeOpenResponse(input: {
   answer: string;
   channel: ResponseChannel;
   latencySeconds: number;
+  /** Set when `answer` is the reply to a follow-up question. */
+  followUp?: { question: string; originalAnswer: string };
 }): Promise<ModelGradeResult> {
-  const { item, rubric, answer, channel } = input;
+  const { item, rubric, answer, channel, followUp } = input;
 
   const { data, error } = await supabase.functions.invoke<JudgeResponse>("grade", {
     body: {
@@ -71,6 +75,7 @@ export async function gradeOpenResponse(input: {
       channel,
       answer,
       rubric,
+      followUp,
     },
   });
 
@@ -126,5 +131,6 @@ export async function gradeOpenResponse(input: {
     verdicts,
     confidence: Math.max(0, Math.min(1, data.confidence ?? 0.7)),
     feedback,
+    followUp: followUp ? undefined : data.followUp?.trim() || undefined,
   };
 }

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { CodeText } from "../components/assessment/CodeText";
+import { FeedbackInbox } from "../components/dev/FeedbackInbox";
 import { ItemEditorForm } from "../components/dev/ItemEditorForm";
 import { ItemPreviewPanel } from "../components/dev/ItemPreviewPanel";
 import { Footer } from "../components/Footer";
@@ -331,6 +332,17 @@ export function DevQuestionsPage() {
             )}
           </div>
         )}
+
+        <FeedbackInbox
+          findItem={(id) => {
+            if (itemsByConcept) for (const list of itemsByConcept.values()) {
+              const found = list.find((i) => i.id === id);
+              if (found) return found;
+            }
+            return undefined;
+          }}
+          onEdit={(item) => setEditing(item)}
+        />
 
         {!bank ? (
           <div className="mt-8 h-64 animate-pulse rounded-2xl border border-[var(--line)] bg-[var(--panel)]" />

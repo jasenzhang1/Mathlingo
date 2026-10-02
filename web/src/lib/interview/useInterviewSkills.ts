@@ -1,8 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { loadCalibrations, recordCalibration } from "../assessment/itemCalibration";
+import { PRIOR_ABILITY } from "../assessment/mastery";
 import type { Ability } from "../assessment/types";
 import { useAuth } from "../auth/useAuth";
 import { supabase } from "../supabase";
-import { effectiveScore, updateSkill } from "./scoring";
+import { questions } from "./bank";
+import {
+  authoredDifficultyLogit,
+  DISCRIMINATION,
+  effectiveScore,
+  interviewCalibrations,
+  updateSkill,
+} from "./scoring";
 import type { InterviewQuestion } from "./types";
 
 /**
@@ -56,6 +65,18 @@ function writeLocal(userId: string, skills: Map<string, Ability>) {
   }
 }
 
+/** Loaded once per page load; every question's live difficulty. */
+let calibrationsLoading: Promise<void> | null = null;
+function ensureCalibrations(): Promise<void> {
+  calibrationsLoading ??= loadCalibrations(
+    "interview",
+    questions.map((q) => q.id),
+  ).then((map) => {
+    for (const [id, c] of map) interviewCalibrations.set(id, c);
+  });
+  return calibrationsLoading;
+}
+
 export function useInterviewSkills() {
   const { user, loading: authLoading } = useAuth();
   const [skills, setSkills] = useState<Map<string, Ability>>(new Map());
@@ -66,6 +87,10 @@ export function useInterviewSkills() {
   useEffect(() => {
     current.current = skills;
   }, [skills]);
+
+  useEffect(() => {
+    void ensureCalibrations();
+  }, []);
 
   useEffect(() => {
     if (authLoading) return;
@@ -143,7 +168,19 @@ export function useInterviewSkills() {
                 ? "Couldn't reach the server, so this answer is only saved in this browser for now."
                 : error.message,
         );
-        // The raw log, for re-estimating question difficulty later. Best effort.
+        // Push back on the question: this answer is one vote on how hard it
+        // really is, weighted by the candidate's skill and how sure we are of
+        // it. Judged against who they were before answering.
+        const calibrated = await recordCalibration({
+          bank: "interview",
+          itemId: q.id,
+          authoredDifficulty: authoredDifficultyLogit(q),
+          discrimination: DISCRIMINATION,
+          score,
+          learner: before ?? PRIOR_ABILITY,
+        });
+        if (calibrated) interviewCalibrations.set(q.id, calibrated);
+        // The raw log, for re-fitting question difficulty in batch. Best effort.
         await supabase.from("interview_attempts").insert({
           user_id: user.id,
           question_id: q.id,

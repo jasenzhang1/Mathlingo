@@ -387,13 +387,13 @@ export const items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For an m × n matrix A, why must rank(A) ≤ min(m, n)? Give the argument for both bounds.",
+    stem: "For an $m \\times n$ matrix $\\mathbf{A}$, why must $\\operatorname{rank}(\\mathbf{A}) \\le \\min(m, n)$? Give the argument for both bounds.",
     rubric: {
       elements: [
         {
           id: "column-bound",
           description:
-            "rank is the dimension of the column space, which is a subspace of R^m, so it cannot exceed m.",
+            "Rank is the dimension of the column space, which is a subspace of $\\mathbb{R}^m$, so it cannot exceed $m$.",
           weight: 2,
           required: true,
           misconception: {
@@ -405,7 +405,7 @@ export const items: Item[] = [
         {
           id: "row-bound",
           description:
-            "There are only n columns, so at most n of them can be independent — hence rank ≤ n.",
+            "There are only $n$ columns, so at most $n$ of them can be independent — hence $\\operatorname{rank}(\\mathbf{A}) \\le n$.",
           weight: 2,
           required: true,
         },
@@ -435,7 +435,7 @@ export const items: Item[] = [
       { id: "a", text: "the dimension of its column space (equivalently, of its row space)", correct: true },
       {
         id: "b",
-        text: "the number of rows of A",
+        text: "the number of rows of $\\mathbf{A}$",
         correct: false,
         misconception: {
           id: "rank-as-row-count",
@@ -445,7 +445,7 @@ export const items: Item[] = [
       },
       {
         id: "c",
-        text: "the number of nonzero entries of A",
+        text: "the number of nonzero entries of $\\mathbf{A}$",
         correct: false,
         misconception: {
           id: "rank-as-nonzero-count",
@@ -455,7 +455,7 @@ export const items: Item[] = [
       },
       {
         id: "d",
-        text: "the largest entry of A",
+        text: "the largest entry of $\\mathbf{A}$",
         correct: false,
         misconception: {
           id: "rank-as-largest-entry",

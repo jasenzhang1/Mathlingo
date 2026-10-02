@@ -1,6 +1,7 @@
 import { PRIOR_ABILITY, masteryLevel, updateAbility } from "../assessment/mastery";
 import { clamp } from "../assessment/numeric";
 import type { Ability } from "../assessment/types";
+import type { Calibration } from "../assessment/itemCalibration";
 import { difficultyOf } from "./bank";
 import { evaluate } from "./evaluate";
 import type { InterviewQuestion } from "./types";
@@ -74,12 +75,24 @@ export function effectiveScore(q: InterviewQuestion, correctness: number, second
 // Skill
 // ---------------------------------------------------------------------------
 
-/** Maps the 0–12 difficulty scale onto the ability logit scale: 4 is a coin flip for a 0-logit candidate. */
-export function difficultyLogit(q: InterviewQuestion): number {
+/** Maps the authored 0–12 difficulty onto the ability logit scale: 4 is a coin flip for a 0-logit candidate. */
+export function authoredDifficultyLogit(q: InterviewQuestion): number {
   return clamp((difficultyOf(q) - 4) / 1.6, -3, 4);
 }
 
-const DISCRIMINATION = 1.2;
+/**
+ * Live difficulties, moved by every candidate's answers (migration 0013).
+ * Filled by `useInterviewSkills`; until it loads, or for a question nobody
+ * has answered, the authored value stands in.
+ */
+export const interviewCalibrations = new Map<string, Calibration>();
+
+/** The question's difficulty in logits as it stands now — crowd-calibrated once answered. */
+export function difficultyLogit(q: InterviewQuestion): number {
+  return interviewCalibrations.get(q.id)?.difficulty ?? authoredDifficultyLogit(q);
+}
+
+export const DISCRIMINATION = 1.2;
 
 export function updateSkill(ability: Ability | undefined, q: InterviewQuestion, score: number): Ability {
   return updateAbility(ability ?? PRIOR_ABILITY, { difficulty: difficultyLogit(q), discrimination: DISCRIMINATION }, score);
