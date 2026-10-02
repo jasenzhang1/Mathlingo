@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../lib/auth/useAuth";
 import { useIsDeveloper } from "../lib/dev/devAuth";
 import { useOwnProfile } from "../lib/profiles";
+import { Avatar } from "./Avatar";
 import { GlobalSearch } from "./GlobalSearch";
 
 function Logo() {
@@ -20,10 +21,6 @@ function Logo() {
       </span>
     </Link>
   );
-}
-
-function initialsFor(email: string): string {
-  return email.slice(0, 2).toUpperCase();
 }
 
 function UserMenu() {
@@ -46,12 +43,12 @@ function UserMenu() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex h-9 w-9 items-center justify-center rounded-full text-xs font-semibold text-[var(--accent-ink)]"
-        style={{ background: "var(--accent)" }}
+        className="flex rounded-full ring-offset-2 ring-offset-[var(--paper)] hover:ring-2 hover:ring-[var(--accent)]"
+        aria-label="Account menu"
         aria-haspopup="menu"
         aria-expanded={open}
       >
-        {initialsFor(user.email ?? "?")}
+        <Avatar url={profile?.avatarUrl} name={profile?.displayName ?? user.email ?? "?"} size={36} />
       </button>
       {open && (
         <>
@@ -82,7 +79,7 @@ function UserMenu() {
             )}
             {profile?.school && (
               <Link
-                to="/school"
+                to="/forums?space=school"
                 role="menuitem"
                 onClick={() => setOpen(false)}
                 className="block rounded-lg px-3 py-2 text-left text-sm text-[var(--ink)] hover:bg-[var(--paper)]"
@@ -158,24 +155,34 @@ export function Nav() {
       id="top"
       className="sticky top-0 z-40 border-b border-[var(--line)] bg-[var(--paper)]/90 backdrop-blur"
     >
-      <div className="mx-auto flex max-w-6xl items-center gap-3 px-6 py-4">
-        <Logo />
+      {/* Three columns — logo, tabs, search and account — so the tabs sit in the
+          true centre of the bar however wide the two sides are. */}
+      <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-3 px-6 py-4">
+        <div className="justify-self-start">
+          <Logo />
+        </div>
         <nav className="hidden items-center gap-8 font-body text-sm text-[var(--ink-soft)] md:flex">
+          <Link to="/courses" className="hover:text-[var(--ink)]">
+            Courses
+          </Link>
           <Link to="/map" className="hover:text-[var(--ink)]">
-            Concept map
+            Lesson Map
           </Link>
           <Link to="/interview" className="hover:text-[var(--ink)]">
-            Interview prep
+            Interview Prep
+          </Link>
+          <Link to="/forums" className="hover:text-[var(--ink)]">
+            Forums
           </Link>
           <Link to="/submit" className="hover:text-[var(--ink)]">
             Submit
           </Link>
-          <Link to="/pricing" className="hover:text-[var(--ink)]">
-            Pricing
+          <Link to="/pricing" className="font-bold text-[var(--accent)] hover:opacity-80">
+            Premium
           </Link>
         </nav>
 
-        <div className="ml-auto flex min-w-0 items-center gap-3">
+        <div className="col-start-3 flex min-w-0 items-center justify-end gap-3">
           <GlobalSearch className="hidden min-w-0 sm:block sm:w-56 lg:w-72" />
 
           <button

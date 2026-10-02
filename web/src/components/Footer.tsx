@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 
-/** Company and information links. About, Careers and Press join "How it works" here once those pages exist. */
-const links = [{ to: "/how-it-works", label: "How it works" }];
+/** Company and information links. About, Careers and Press join these once those pages exist. */
+const links = [
+  { to: "/how-it-works", label: "How it works" },
+  { to: "/contact", label: "Contact" },
+];
 
 export function Footer() {
   return (

@@ -1,5 +1,6 @@
 import { supabase } from "../supabase";
 import type { Comment, Post, PostKind, SortMode } from "./types";
+import { lessonIds, type ForumScope } from "./boards";
 
 /**
  * Every function here returns `{ data, error }` rather than throwing, matching
@@ -15,6 +16,46 @@ export async function fetchPosts(
     .from("posts_with_stats")
     .select("*")
     .eq("concept_id", conceptId);
+
+  query =
+    sort === "top"
+      ? query.order("score", { ascending: false }).order("created_at", { ascending: false })
+      : query.order("created_at", { ascending: false });
+
+  const { data, error } = await query.limit(100);
+  return { data: (data as Post[]) ?? [], error: error?.message ?? null };
+}
+
+/**
+ * A Forums feed: every post within a scope, across boards. Choosing a course
+ * matches its course-wide board, its chapter boards and every lesson thread in
+ * it; "all learning" is everything except the interview and school boards.
+ * Interview posts are filtered by the database itself for non-members (0011).
+ */
+export async function fetchForumPosts(
+  scope: ForumScope,
+  sort: SortMode,
+  school: string | null,
+): Promise<{ data: Post[]; error: string | null }> {
+  let query = supabase.from("posts_with_stats").select("*");
+
+  if (scope.space === "interview") {
+    query = scope.topic ? query.eq("concept_id", `interview:${scope.topic}`) : query.or("concept_id.eq.interview,concept_id.like.interview:*");
+  } else if (scope.space === "school") {
+    if (!school) return { data: [], error: null };
+    query = query.eq("concept_id", `school:${school}`);
+  } else if (scope.lesson) {
+    query = query.eq("concept_id", scope.lesson);
+  } else if (scope.course) {
+    const lessons = lessonIds(scope.course, scope.chapter);
+    const own = scope.chapter
+      ? [`concept_id.eq.chapter:${scope.course}:${scope.chapter}`]
+      : [`concept_id.eq.course:${scope.course}`, `concept_id.like.chapter:${scope.course}:*`];
+    const filters = lessons.length ? [...own, `concept_id.in.(${lessons.join(",")})`] : own;
+    query = query.or(filters.join(","));
+  } else {
+    query = query.not("concept_id", "like", "interview%").not("concept_id", "like", "school:%");
+  }
 
   query =
     sort === "top"

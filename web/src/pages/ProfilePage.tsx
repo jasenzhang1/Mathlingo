@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { Avatar } from "../components/Avatar";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
 import { type Achievement, computeAchievements } from "../lib/achievements";
@@ -14,6 +15,9 @@ import {
   type Profile,
   loadProfileByUsername,
   updateOwnProfile,
+  uploadAvatar,
+  removeAvatar,
+  useOwnProfileState,
 } from "../lib/profiles";
 import { getSchoolNameForDomain } from "../data/eduDomains";
 
@@ -88,6 +92,10 @@ export function ProfilePage() {
   const [form, setForm] = useState<EditForm | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [avatarBusy, setAvatarBusy] = useState(false);
+  const fileInput = useRef<HTMLInputElement>(null);
+  // The app-wide copy of your own profile (nav avatar, etc.), re-read after edits.
+  const { refresh: refreshOwnProfile } = useOwnProfileState();
 
   useEffect(() => {
     let cancelled = false;
@@ -179,6 +187,7 @@ export function ProfilePage() {
       return;
     }
     setEditing(false);
+    void refreshOwnProfile();
     if (normalizedUsername !== profile.username) {
       // The URL is the username — changing it means moving pages.
       navigate(`/u/${normalizedUsername}`, { replace: true });
@@ -192,6 +201,34 @@ export function ProfilePage() {
       showProficiency: form.showProficiency,
       showAchievements: form.showAchievements,
     });
+  }
+
+  async function changeAvatar(file: File | undefined) {
+    if (!file || !user || !profile) return;
+    setAvatarBusy(true);
+    setError(null);
+    const { url, error: uploadError } = await uploadAvatar(user.id, file);
+    setAvatarBusy(false);
+    if (uploadError) {
+      setError(uploadError);
+      return;
+    }
+    setProfile({ ...profile, avatarUrl: url });
+    void refreshOwnProfile();
+  }
+
+  async function clearAvatar() {
+    if (!user || !profile) return;
+    setAvatarBusy(true);
+    setError(null);
+    const { error: removeError } = await removeAvatar(user.id);
+    setAvatarBusy(false);
+    if (removeError) {
+      setError(removeError);
+      return;
+    }
+    setProfile({ ...profile, avatarUrl: null });
+    void refreshOwnProfile();
   }
 
   if (profile === undefined) {
@@ -239,13 +276,7 @@ export function ProfilePage() {
       <main className="mx-auto max-w-3xl px-6 py-16">
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-4">
-            <span
-              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full text-xl font-semibold text-[var(--accent-ink)]"
-              style={{ background: "var(--accent)" }}
-              aria-hidden="true"
-            >
-              {profile.displayName.slice(0, 2).toUpperCase()}
-            </span>
+            <Avatar url={profile.avatarUrl} name={profile.displayName} size={64} />
             <div>
               <h1 className="font-display text-2xl text-[var(--ink)]">
                 {profile.displayName}
@@ -274,6 +305,43 @@ export function ProfilePage() {
         {editing && form ? (
           <div className="mt-8 space-y-5 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-6 shadow-sm">
             <div>
+              <span className="font-body text-xs font-semibold uppercase tracking-wide text-[var(--ink-soft)]">
+                Profile picture
+              </span>
+              <div className="mt-2 flex items-center gap-4">
+                <Avatar url={profile.avatarUrl} name={form.displayName || profile.displayName} size={56} />
+                <button
+                  type="button"
+                  onClick={() => fileInput.current?.click()}
+                  disabled={avatarBusy}
+                  className="font-body rounded-full border border-[var(--line)] px-4 py-2 text-sm font-medium text-[var(--ink)] hover:border-[var(--accent)] disabled:opacity-50"
+                >
+                  {avatarBusy ? "Working…" : profile.avatarUrl ? "Change picture" : "Upload picture"}
+                </button>
+                {profile.avatarUrl && (
+                  <button
+                    type="button"
+                    onClick={() => void clearAvatar()}
+                    disabled={avatarBusy}
+                    className="font-body text-sm text-[var(--ink-soft)] hover:text-red-600 disabled:opacity-50"
+                  >
+                    Remove
+                  </button>
+                )}
+                <input
+                  ref={fileInput}
+                  type="file"
+                  accept="image/png,image/jpeg,image/webp,image/gif"
+                  className="hidden"
+                  onChange={(e) => {
+                    void changeAvatar(e.target.files?.[0]);
+                    e.target.value = "";
+                  }}
+                />
+              </div>
+              <p className="font-body mt-1.5 text-xs text-[var(--ink-soft)]">PNG, JPEG, WebP or GIF, up to 2 MB.</p>
+            </div>
+            <div>
               <label className="font-body text-xs font-semibold uppercase tracking-wide text-[var(--ink-soft)]">
                 Display name
               </label>
@@ -300,7 +368,7 @@ export function ProfilePage() {
               />
               <p className="font-body mt-1 text-xs text-[var(--ink-soft)]">
                 Lowercase letters, numbers, and hyphens. This is your profile's
-                URL: mathlingo.app/u/{form.username || "…"}
+                URL: /u/{form.username || "…"}
               </p>
             </div>
             <div>

@@ -6,7 +6,7 @@ export interface AuthContextValue {
   session: Session | null;
   /** True until the initial session check completes — avoids a login-page flash on reload. */
   loading: boolean;
-  signUp: (email: string, password: string) => Promise<{ error: string | null }>;
+  signUp: (email: string, password: string, fullName: string) => Promise<{ error: string | null }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signInWithGoogle: () => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;

@@ -1,25 +1,30 @@
 import { StrictMode, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./index.css";
 import App from "./App.tsx";
 import { AuthProvider } from "./lib/auth/AuthContext.tsx";
+import { ProfileProvider } from "./lib/ProfileProvider.tsx";
+import { OnboardingGate } from "./components/OnboardingGate.tsx";
 import { AccountPage } from "./pages/AccountPage.tsx";
 import { ConceptMapPage } from "./pages/ConceptMapPage.tsx";
 import { ConceptPage } from "./pages/ConceptPage.tsx";
+import { ContactPage } from "./pages/ContactPage.tsx";
+import { CoursesPage } from "./pages/CoursesPage.tsx";
 import { DevQuestionsPage } from "./pages/DevQuestionsPage.tsx";
 import { ForgotPasswordPage } from "./pages/ForgotPasswordPage.tsx";
+import { ForumsPage } from "./pages/ForumsPage.tsx";
 import { HowItWorksPage } from "./pages/HowItWorksPage.tsx";
 import { LoginPage } from "./pages/LoginPage.tsx";
 import { PostPage } from "./pages/PostPage.tsx";
 import { PricingPage } from "./pages/PricingPage.tsx";
 import { ProfilePage } from "./pages/ProfilePage.tsx";
 import { ResetPasswordPage } from "./pages/ResetPasswordPage.tsx";
-import { SchoolBoardPage } from "./pages/SchoolBoardPage.tsx";
 import { SignUpPage } from "./pages/SignUpPage.tsx";
 import { SubmitAnalogyPage } from "./pages/SubmitAnalogyPage.tsx";
 import { SubmitPage } from "./pages/SubmitPage.tsx";
 import { SubmitQuestionPage } from "./pages/SubmitQuestionPage.tsx";
+import { WelcomePage } from "./pages/WelcomePage.tsx";
 
 // Interview prep is lazy-loaded: its ~800 KB question bank is a separate
 // chunk, fetched only by people who open that section.
@@ -32,9 +37,13 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
+        <ProfileProvider>
+        <OnboardingGate />
         <Suspense fallback={null}>
           <Routes>
+            <Route path="/welcome" element={<WelcomePage />} />
             <Route path="/" element={<App />} />
+            <Route path="/courses" element={<CoursesPage />} />
             <Route path="/map" element={<ConceptMapPage />} />
             <Route path="/concepts/:id" element={<ConceptPage />} />
             <Route
@@ -43,9 +52,13 @@ createRoot(document.getElementById("root")!).render(
             />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/how-it-works" element={<HowItWorksPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/account" element={<AccountPage />} />
             <Route path="/u/:username" element={<ProfilePage />} />
-            <Route path="/school" element={<SchoolBoardPage />} />
+            <Route path="/forums" element={<ForumsPage />} />
+            <Route path="/forums/post/:postId" element={<PostPage />} />
+            {/* The school forum now lives in Forums; keep old links working. */}
+            <Route path="/school" element={<Navigate to="/forums?space=school" replace />} />
             <Route path="/submit" element={<SubmitPage />} />
             <Route path="/submit/questions" element={<SubmitQuestionPage />} />
             <Route path="/submit/analogies" element={<SubmitAnalogyPage />} />
@@ -60,6 +73,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/reset-password" element={<ResetPasswordPage />} />
           </Routes>
         </Suspense>
+        </ProfileProvider>
       </AuthProvider>
     </BrowserRouter>
   </StrictMode>,

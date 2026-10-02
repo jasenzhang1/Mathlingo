@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { relativeTime } from "../../lib/discussion/format";
+import type { Tag } from "../../lib/discussion/boards";
 import type { Post } from "../../lib/discussion/types";
 import { VoteButtons } from "./VoteButtons";
 
@@ -24,18 +25,40 @@ export function PostCard({
   canVote,
   conceptId,
   onVote,
+  href,
+  tags,
 }: {
   post: Post;
   myVote: number | undefined;
   canVote: boolean;
   conceptId: string;
   onVote: (value: 1 | -1) => void;
+  /** Where the post opens; defaults to its lesson's discussion page. */
+  href?: string;
+  /** Board tags to show (Forums), each linking to that tag's feed. */
+  tags?: Tag[];
 }) {
+  const to = href ?? `/concepts/${conceptId}/discussion/${post.id}`;
   return (
     <article className="flex gap-3 rounded-xl border border-[var(--line)] bg-[var(--panel)] p-4">
       <VoteButtons score={post.score} myVote={myVote} disabled={!canVote} onVote={onVote} />
 
       <div className="min-w-0 flex-1">
+        {tags && tags.length > 0 && (
+          <div className="font-body mb-1.5 flex flex-wrap items-center gap-1 text-xs">
+            {tags.map((tag, i) => (
+              <span key={tag.label + i} className="flex items-center gap-1">
+                {i > 0 && <span className="text-[var(--ink-soft)]">›</span>}
+                <Link
+                  to={`/forums?${new URLSearchParams(tag.params).toString()}`}
+                  className="rounded-full bg-[var(--paper)] px-2 py-0.5 font-medium text-[var(--ink-soft)] hover:text-[var(--accent)]"
+                >
+                  {tag.label}
+                </Link>
+              </span>
+            ))}
+          </div>
+        )}
         <div className="mb-1.5 flex flex-wrap items-center gap-2">
           <KindBadge kind={post.kind} />
           <span className="font-body text-xs text-[var(--ink-soft)]">
@@ -45,7 +68,7 @@ export function PostCard({
 
         <h3 className="font-display text-lg leading-snug text-[var(--ink)]">
           <Link
-            to={`/concepts/${conceptId}/discussion/${post.id}`}
+            to={to}
             className="hover:text-[var(--accent)]"
           >
             {post.title}
@@ -59,7 +82,7 @@ export function PostCard({
         )}
 
         <Link
-          to={`/concepts/${conceptId}/discussion/${post.id}`}
+          to={to}
           className="font-body mt-2 inline-block text-xs font-medium text-[var(--ink-soft)] hover:text-[var(--accent)]"
         >
           {post.comment_count} {post.comment_count === 1 ? "reply" : "replies"}

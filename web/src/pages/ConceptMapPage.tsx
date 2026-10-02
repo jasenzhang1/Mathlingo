@@ -21,7 +21,7 @@ const VIEWS = [
 type ViewId = (typeof VIEWS)[number]["id"];
 
 const blurb: Record<ViewId, string> = {
-  map: "Every concept we teach, connected by what you need to know first. Drag to pan, use the buttons to zoom, and click a node to open its lesson.",
+  map: "One course at a time, every lesson connected by what you need to know first. Drag to pan, use the buttons to zoom, and click a node to open its lesson.",
   list: "Every concept we teach, as folders: a chapter per subject, sections following the chapters of the books it's taught from, and your proficiency on the right of each line.",
 };
 
@@ -35,7 +35,9 @@ export function ConceptMapPage() {
   const view: ViewId = searchParams.get("view") === "list" ? "list" : "map";
 
   function selectView(next: ViewId) {
-    setSearchParams(next === "map" ? {} : { view: next }, { replace: true });
+    // Keep the chosen course (?course=) when switching views.
+    const course = searchParams.get("course");
+    setSearchParams({ ...(next === "map" ? {} : { view: next }), ...(course ? { course } : {}) }, { replace: true });
   }
 
   return (
@@ -45,7 +47,7 @@ export function ConceptMapPage() {
         <div className="mb-3 flex shrink-0 items-start justify-between gap-3">
           <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
             <h1 className="font-display text-xl text-[var(--ink)] sm:text-2xl">
-              Concept map
+              Lesson Map
             </h1>
             <p className="font-body hidden text-sm text-[var(--ink-soft)] sm:block">
               {blurb[view]}
