@@ -5,7 +5,7 @@ import dagre, {
   type Point,
 } from "@dagrejs/dagre";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { concepts, domainMeta, type Domain } from "../data/concepts";
 import { reducedEdges } from "../lib/prerequisiteGraph";
 import {
@@ -14,6 +14,8 @@ import {
   proficiencyRatio,
 } from "../lib/proficiencyFill";
 import { useProficiency } from "../lib/useProficiency";
+import { COURSES, isCourse } from "../lib/courses";
+import { useEnrollments } from "../lib/enrollment";
 import { ReviewSession } from "./assessment/ReviewSession";
 
 interface PositionedNode {
@@ -109,9 +111,9 @@ function boxFor(radius: number, lines: string[]) {
   };
 }
 
-function computeLayout(domainFilter: Domain | "all"): Layout {
+function computeLayout(domain: Domain): Layout {
   const nodeList = concepts.filter(
-    (c) => domainFilter === "all" || c.domain === domainFilter,
+    (c) => c.domain === domain,
   );
   const nodeIds = new Set(nodeList.map((c) => c.id));
   const edgeList = reducedEdges.filter(
@@ -258,13 +260,6 @@ function initialViewOf(bounds: ViewBox, aspect: number | null): ViewBox {
   return centredOn(bounds, cover.w * INITIAL_EXTENT, cover.h * INITIAL_EXTENT);
 }
 
-const domainOptions: { id: Domain | "all"; label: string }[] = [
-  { id: "all", label: "All domains" },
-  ...(
-    Object.entries(domainMeta) as [Domain, (typeof domainMeta)[Domain]][]
-  ).map(([id, meta]) => ({ id, label: meta.label })),
-];
-
 /** A node's circle: hollow at 0/100, filled from the bottom, solid at 100/100. */
 function ProficiencyDot({
   radius,
@@ -302,21 +297,37 @@ interface SubjectSession {
 }
 
 /**
- * The domain filter and pan/zoom, remembered across a visit to a lesson and
+ * The course shown and pan/zoom, remembered across a visit to a lesson and
  * back. This component unmounts entirely on that round trip (it's a
  * different route), so anything the student set here would otherwise reset
  * to the default view every time. Module-level rather than localStorage: it
  * only needs to survive for the life of this browser tab, not a full reload.
  */
-let savedSelectedDomain: Domain | "all" = "all";
+let savedSelectedDomain: Domain | null = null;
 let savedViewBox: ViewBox | null = null;
 
 export function ConceptMap() {
   const navigate = useNavigate();
   const { proficiency, bleeding, refresh } = useProficiency();
-  const [selectedDomain, setSelectedDomain] = useState<Domain | "all">(
-    savedSelectedDomain,
-  );
+  // One course at a time. Which one: the URL (?course=, so Courses can open
+  // the map on a course and links are shareable), then the last one viewed
+  // this visit, then the learner's first enrolled course, then the first.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { courses: enrolled } = useEnrollments();
+  const urlCourse = searchParams.get("course");
+  const selectedDomain: Domain = isCourse(urlCourse)
+    ? urlCourse
+    : (savedSelectedDomain ?? enrolled[0] ?? COURSES[0].id);
+  const setSelectedDomain = (domain: Domain) =>
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        next.set("course", domain);
+        return next;
+      },
+      { replace: true },
+    );
+  const otherCourses = COURSES.filter((c) => !enrolled.includes(c.id));
   const [session, setSession] = useState<SubjectSession | null>(null);
   const layout = useMemo(() => computeLayout(selectedDomain), [selectedDomain]);
   const [aspect, setAspect] = useState<number | null>(null);
@@ -350,9 +361,12 @@ export function ConceptMap() {
     return () => observer.disconnect();
   }, []);
 
+  // Remember only a real choice (a URL or dropdown pick), never the fallback
+  // shown while enrolments are still loading — that would pin the map to the
+  // first course before the learner's own first course is known.
   useEffect(() => {
-    savedSelectedDomain = selectedDomain;
-  }, [selectedDomain]);
+    if (isCourse(urlCourse)) savedSelectedDomain = urlCourse;
+  }, [urlCourse]);
 
   useEffect(() => {
     savedViewBox = viewBox;
@@ -440,54 +454,70 @@ export function ConceptMap() {
     return 0.4;
   }
 
-  const bleedingIds =
-    selectedDomain === "all"
-      ? []
-      : layout.nodes.filter((n) => bleeding.has(n.id)).map((n) => n.id);
+  const bleedingIds = layout.nodes.filter((n) => bleeding.has(n.id)).map((n) => n.id);
 
   return (
     <div className="relative flex h-full min-h-0 flex-col">
-      <div className="mb-3 flex shrink-0 items-center gap-2 overflow-x-auto pb-1">
-        {domainOptions.map((opt) => (
-          <button
-            key={opt.id}
-            type="button"
-            onClick={() => setSelectedDomain(opt.id)}
-            className={`font-body flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
-              selectedDomain === opt.id
-                ? "border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)]"
-                : "border-[var(--line)] bg-[var(--panel)] text-[var(--ink-soft)] hover:text-[var(--ink)]"
-            }`}
-          >
-            {opt.id !== "all" && (
-              <span
-                className="inline-block h-2 w-2 rounded-full"
-                style={{ background: domainMeta[opt.id].color }}
-                aria-hidden="true"
-              />
-            )}
-            {opt.label}
-          </button>
-        ))}
-        {selectedDomain !== "all" && (
-          <button
-            type="button"
-            onClick={() =>
-              setSession({
-                subjectLabel: domainMeta[selectedDomain].label,
-                color: domainMeta[selectedDomain].color,
-                conceptIds:
-                  bleedingIds.length > 0
-                    ? bleedingIds
-                    : layout.nodes.map((n) => n.id),
-                startMode: bleedingIds.length > 0 ? "review" : "drill",
-              })
-            }
-            className="font-body shrink-0 whitespace-nowrap rounded-full bg-[var(--accent)] px-3 py-1.5 text-xs font-semibold text-white transition-opacity hover:opacity-90"
-          >
-            {bleedingIds.length > 0 ? "Review" : "Drill"}
-          </button>
-        )}
+      <div className="mb-3 flex shrink-0 flex-wrap items-center gap-2">
+        <span
+          className="inline-block h-3 w-3 shrink-0 rounded-full"
+          style={{ background: domainMeta[selectedDomain].color }}
+          aria-hidden="true"
+        />
+        <label htmlFor="map-course" className="sr-only">
+          Course
+        </label>
+        <select
+          id="map-course"
+          value={selectedDomain}
+          onChange={(e) => setSelectedDomain(e.target.value as Domain)}
+          className="font-display min-w-0 max-w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] px-3 py-1.5 text-base text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+        >
+          {enrolled.length > 0 ? (
+            <>
+              <optgroup label="Your courses">
+                {enrolled.map((id) => (
+                  <option key={id} value={id}>
+                    {domainMeta[id].label}
+                  </option>
+                ))}
+              </optgroup>
+              <optgroup label="Other courses">
+                {otherCourses.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.label}
+                  </option>
+                ))}
+              </optgroup>
+            </>
+          ) : (
+            COURSES.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.label}
+              </option>
+            ))
+          )}
+        </select>
+        <button
+          type="button"
+          onClick={() =>
+            setSession({
+              subjectLabel: domainMeta[selectedDomain].label,
+              color: domainMeta[selectedDomain].color,
+              conceptIds:
+                bleedingIds.length > 0
+                  ? bleedingIds
+                  : layout.nodes.map((n) => n.id),
+              startMode: bleedingIds.length > 0 ? "review" : "drill",
+            })
+          }
+          className="font-body shrink-0 whitespace-nowrap rounded-full bg-[var(--accent)] px-3 py-1.5 text-xs font-semibold text-white transition-opacity hover:opacity-90"
+        >
+          {bleedingIds.length > 0 ? "Review" : "Drill"}
+        </button>
+        <Link to="/courses" className="font-body ml-auto shrink-0 text-xs font-medium text-[var(--accent)] hover:underline">
+          {enrolled.length > 0 ? "Edit my courses" : "Choose your courses"}
+        </Link>
       </div>
 
       <div className="mb-3 flex shrink-0 items-center justify-between gap-3">

@@ -17,6 +17,7 @@ import {
 } from "../lib/discussion/api";
 import type { Comment, Post } from "../lib/discussion/types";
 import { conceptById } from "../data/concepts";
+import { boardInfo } from "../lib/discussion/boards";
 
 export function PostPage() {
   const { id: conceptId, postId } = useParams();
@@ -32,16 +33,25 @@ export function PostPage() {
   const [posting, setPosting] = useState(false);
 
   const concept = conceptId ? conceptById.get(conceptId) : undefined;
-  // The school forum reuses this same route with a synthetic `school:<domain>`
-  // id (see SchoolBoardPage) — it isn't in the concept catalog, so it needs
-  // its own back link rather than the concept map's.
+  // Opened from the Forums tab (/forums/post/:postId) there's no lesson in the
+  // URL: go back to the forum feed filtered to this post's board. The school
+  // forum's synthetic `school:<domain>` id isn't a lesson either, so it also
+  // goes back into Forums.
   const isSchoolBoard = conceptId?.startsWith("school:") ?? false;
-  const backHref = isSchoolBoard ? "/school" : `/concepts/${conceptId}?tab=discussion`;
-  const backLabel = isSchoolBoard
-    ? "Back to your school forum"
-    : concept
-      ? `Back to ${concept.title}`
-      : "Back to the discussion";
+  const fromForums = !conceptId;
+  const lastTag = post ? boardInfo(post.concept_id).tags.at(-1) : undefined;
+  const backHref = fromForums
+    ? `/forums${lastTag ? `?${new URLSearchParams(lastTag.params).toString()}` : ""}`
+    : isSchoolBoard
+      ? "/forums?space=school"
+      : `/concepts/${conceptId}?tab=discussion`;
+  const backLabel = fromForums
+    ? "Back to Forums"
+    : isSchoolBoard
+      ? "Back to your school forum"
+      : concept
+        ? `Back to ${concept.title}`
+        : "Back to the discussion";
 
   const load = useCallback(async () => {
     if (!postId) return;

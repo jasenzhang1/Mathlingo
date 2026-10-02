@@ -29,8 +29,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => listener.subscription.unsubscribe();
   }, []);
 
-  async function signUp(email: string, password: string) {
-    const { error } = await supabase.auth.signUp({ email, password });
+  async function signUp(email: string, password: string, fullName: string) {
+    // `full_name` becomes the default display name (see handle_new_user in
+    // migration 0010), the same field Google sign-ins provide.
+    const { error } = await supabase.auth.signUp({ email, password, options: { data: { full_name: fullName.trim() } } });
     return { error: error?.message ?? null };
   }
 

@@ -15,6 +15,9 @@ paste → Run. "Success. No rows returned" is what success looks like.
 | `migrations/0003_response_detail.sql` | rubric breakdown, transcripts, and grader confidence on the review log |
 | `migrations/0008_interview.sql` | `interview_subscriptions`, `interview_skills`, `interview_attempts` — the interview prep tab (after `0004`) |
 | `migrations/0009_lifetime.sql` | `lifetime_purchases`, and `effective_tier` / `has_interview_access` taught to honour them — the "for life" plans (after `0008`) |
+| `migrations/0010_onboarding_avatars.sql` | First-run username choice, profile pictures (`avatars` bucket), and locking the profile columns a user may edit (after `0006`) |
+| `migrations/0011_forums.sql` | The Forums tab: interview boards locked to Interview Prep members, comments and votes following their post, `posts_with_stats` respecting RLS (after `0008`) |
+| `migrations/0012_enrollments.sql` | `course_enrollments` and the public `course_enrollment_counts()` — the Courses tab (after `0001`) |
 
 `0002` depends on `0001` (it references `public.profiles`), so don't skip it.
 

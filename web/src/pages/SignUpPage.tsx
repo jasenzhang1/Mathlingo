@@ -14,6 +14,7 @@ import { getSchoolName, isEduEmail } from "../data/eduDomains";
 
 export function SignUpPage() {
   const { signUp, signInWithGoogle } = useAuth();
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -28,7 +29,7 @@ export function SignUpPage() {
       return;
     }
     setLoading(true);
-    const { error } = await signUp(email, password);
+    const { error } = await signUp(email, password, fullName);
     setLoading(false);
     if (error) {
       setError(error);
@@ -82,6 +83,14 @@ export function SignUpPage() {
       {error && <AuthError message={error} />}
 
       <form onSubmit={handleSubmit}>
+        <AuthInput
+          label="Full name"
+          name="name"
+          autoComplete="name"
+          required
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
+        />
         <AuthInput
           label="Email"
           type="email"
