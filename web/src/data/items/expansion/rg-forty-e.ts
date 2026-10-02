@@ -70,7 +70,7 @@ export const rgFortyEItems: Item[] = [
   n(TK, "x4r-pairs", 5, "How many pairwise comparisons are there among $5$ means?", 10),
   n(TK, "x4r-hsd", 6.5, "Compute Tukey's HSD $q\\sqrt{MS_W/n}$ with $q = 3.5$, $MS_W = 8$ and $n = 8$.", 3.5, 0.001),
   n(TK, "x4r-diff", 7, "Two means are $12$ and $16.2$. What is their difference (compare it with an HSD of $3.5$)?", 4.2, 0.001),
-  n(TK, "x4r-kramer", 7.5, "Tukey–Kramer uses $\\sqrt{\\frac{MS_W}{2}(\\frac1{n_1} + \\frac1{n_2})}$. Compute it with $MS_W = 8$, $n_1 = 4$ and $n_2 = 8$.", 1.2247, 0.001),
+  n(TK, "x4r-kramer", 7.5, "Tukey–Kramer uses $\\sqrt{\\frac{MS_W}{2}\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}$. Compute it with $MS_W = 8$, $n_1 = 4$ and $n_2 = 8$.", 1.2247, 0.001),
   s(TK, "x4r-range", 8, "Why does Tukey's method use the studentised range distribution?",
     "All pairwise differences are covered simultaneously exactly when the largest one, $\\max\\bar{y} - \\min\\bar{y}$, is covered.",
     "The distribution of that range divided by its estimated standard error is the studentised range $q$, so its quantile gives exact simultaneous coverage in balanced designs."),

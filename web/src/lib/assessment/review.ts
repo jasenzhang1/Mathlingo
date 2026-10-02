@@ -3,12 +3,15 @@ import { expFor, type ExpSnapshot } from "./exp";
 import {
   applyIndirectEvidence,
   confidenceWeightedScore,
+  decayConfidence,
   enforceMinExpFloor,
   PASS_THRESHOLD,
+  priorItemBelief,
   PRIOR_ABILITY,
   probabilityCorrect,
   updateAbility,
-  updateItemDifficulty,
+  updateItemBelief,
+  type ItemBelief,
 } from "./mastery";
 import { clamp } from "./numeric";
 import { destabilise, reviewGradeFor, sessionGrade, updateMemory } from "./scheduling";
@@ -49,8 +52,16 @@ const MAX_HOPS = 2;
 export interface ReviewOutcome {
   /** States for every concept this response touched, keyed by concept id. */
   states: Map<string, ConceptState>;
-  /** The item's re-estimated difficulty, to be written back to the item bank. */
-  itemDifficulty: number;
+  /**
+   * The item's re-estimated difficulty belief. The shared copy is updated by
+   * `calibrate_item` in the database; this is the same step computed locally.
+   */
+  itemBelief: ItemBelief;
+  /**
+   * The learner as the item saw them: ability before this answer, with its
+   * uncertainty widened by time away. What the shared item update is fed.
+   */
+  learnerForItem: ConceptState["ability"];
   reviewGrade: ReviewGrade;
   /** Score after rubric caps and grader-confidence weighting. */
   effectiveScore: number;
@@ -145,9 +156,23 @@ export function applyReview(
     applyPropagation(states, updated, propagation, item, grade, score);
   }
 
+  // A learner whose proficiency has decayed is a less certain witness to how
+  // hard the item is, so their pull on it is weaker.
+  const daysAway = target.memory ? (now - target.memory.lastReviewedAt) / 86_400_000 : 0;
+  const learnerForItem = decayConfidence(target.ability, Math.max(daysAway, 0));
+  const itemBelief = updateItemBelief(
+    item.calibration
+      ? { difficulty: item.difficulty, variance: item.calibration.variance, exposures: item.calibration.exposures }
+      : priorItemBelief(item.difficulty),
+    item.discrimination,
+    learnerForItem,
+    score,
+  );
+
   return {
     states: updated,
-    itemDifficulty: updateItemDifficulty(item, score, target.ability.mean),
+    itemBelief,
+    learnerForItem,
     reviewGrade,
     effectiveScore: score,
     passed: score >= PASS_THRESHOLD,

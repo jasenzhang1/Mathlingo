@@ -6,7 +6,9 @@ import type {
   ItemFormat,
   ItemStatus,
   ResponseChannel,
+  Rubric,
 } from "../../lib/assessment/types";
+import { RubricEditor } from "./RubricEditor";
 import {
   DIFFICULTY_LEVEL_STEP,
   MAX_DIFFICULTY_LEVEL,
@@ -36,7 +38,6 @@ type AdvancedFields = Pick<
   | "params"
   | "solver"
   | "choices"
-  | "rubric"
   | "codeTests"
   | "starterCode"
   | "codePackages"
@@ -49,7 +50,6 @@ const ADVANCED_KEYS: (keyof AdvancedFields)[] = [
   "params",
   "solver",
   "choices",
-  "rubric",
   "codeTests",
   "starterCode",
   "codePackages",
@@ -119,6 +119,8 @@ export function ItemEditorForm({
     base.tolerance === undefined ? "" : String(base.tolerance),
   );
 
+  const [rubric, setRubric] = useState<Rubric>(base.rubric ?? { elements: [] });
+
   const initialAdvanced = useMemo(
     () => JSON.stringify(splitAdvanced(base), null, 2),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -176,8 +178,22 @@ export function ItemEditorForm({
           ? answerKey
           : Number(answerKey);
 
+    // Blank rows are dropped; a rubric with nothing left in it is no rubric.
+    const elements = rubric.elements.filter((e) => e.description.trim());
+    const forbiddenMoves = (rubric.forbiddenMoves ?? []).filter((e) => e.description.trim());
+    const graderNotes = rubric.graderNotes?.trim() || undefined;
+    const cleanRubric: Rubric | undefined =
+      elements.length || forbiddenMoves.length || graderNotes
+        ? {
+            elements,
+            ...(forbiddenMoves.length ? { forbiddenMoves } : {}),
+            ...(graderNotes ? { graderNotes } : {}),
+          }
+        : undefined;
+
     const next: Item = {
       ...advanced,
+      rubric: cleanRubric,
       id: trimmedId,
       conceptId: conceptId.trim(),
       format,
@@ -379,9 +395,21 @@ export function ItemEditorForm({
         </div>
       </div>
 
+      <details
+        className="rounded-lg border border-[var(--line)]"
+        open={["short-answer", "derivation", "interview"].includes(format)}
+      >
+        <summary className="cursor-pointer select-none px-3 py-2 text-sm font-medium text-[var(--ink)]">
+          Rubric — grading criteria and weights
+        </summary>
+        <div className="p-3 pt-0">
+          <RubricEditor rubric={rubric} onChange={setRubric} />
+        </div>
+      </details>
+
       <details className="rounded-lg border border-[var(--line)]">
         <summary className="cursor-pointer select-none px-3 py-2 text-sm font-medium text-[var(--ink)]">
-          Advanced (choices, rubric, codeTests, params, source, stats — raw JSON)
+          Advanced (choices, codeTests, params, source, stats — raw JSON)
         </summary>
         <div className="p-3 pt-0">
           <textarea

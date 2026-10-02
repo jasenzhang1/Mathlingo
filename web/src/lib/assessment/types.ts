@@ -100,6 +100,12 @@ export interface Rubric {
    * without justification, assuming independence from uncorrelatedness.
    */
   forbiddenMoves?: RubricElement[];
+  /**
+   * Free-text guidance to the model grader from whoever wrote or reviewed the
+   * question: alternative phrasings to accept, which elements to read loosely.
+   * Overrides the elements' wording where the two disagree.
+   */
+  graderNotes?: string;
 }
 
 export interface Choice {
@@ -226,6 +232,16 @@ export interface Item {
    * Seeded from the source's level, then continuously re-estimated.
    */
   difficulty: number;
+  /**
+   * Present once learners have answered the item: `difficulty` above is then
+   * the live, crowd-calibrated value, and this keeps how sure we are of it and
+   * what the author originally set. See `updateItemBelief` in mastery.ts.
+   */
+  calibration?: {
+    variance: number;
+    exposures: number;
+    authoredDifficulty: number;
+  };
   /** IRT discrimination — how sharply the item separates learners around `difficulty`. */
   discrimination: number;
   /** Seconds a fluent learner should need. Drives the speed component of the grade. */
@@ -292,6 +308,12 @@ export interface Grade {
   adjudicator: "exact" | "tolerance" | "cas" | "key" | "model-judge" | "human" | "sandbox";
   /** Shown to the learner. Must name the specific gap, not "incorrect". */
   feedback?: string;
+  /**
+   * Open responses only: a question giving the learner one chance to fill the
+   * gaps, when they got most of the way there. Answering it regrades the
+   * original answer and the reply together.
+   */
+  followUp?: string;
   /** For handwritten/spoken: what we believed the learner wrote or said. */
   transcript?: string;
   transcriptConfidence?: number;

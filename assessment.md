@@ -255,6 +255,19 @@ An LLM asked "grade this from 0 to 10" is not a measuring instrument. Four const
 Agreement with human re-grades is measured continuously per item (§4) and a rubric the judge cannot
 apply consistently is treated as a defective rubric, not a defective learner.
 
+**Ideas, not keywords.** A rubric element names something the learner must show they understand,
+never particular wording: "the sum of the products of corresponding entries" earns the same credit as
+the formula it describes. Each item's rubric can carry **grader notes** — free-text guidance from
+whoever wrote or reviewed it (alternative phrasings to accept, elements to read loosely) — which the
+judge follows over the elements' wording. Developers edit criteria, weights, required flags, forbidden
+moves and notes in the question editor (`/dev/questions`, or "Edit question (dev)" mid-assessment).
+
+**One follow-up.** When an open answer gets most of the way — the uncapped weighted credit is at least
+half but the score isn't full marks — the judge asks one short question aimed at exactly what's
+missing. Nothing is scored until the learner replies or skips: the reply is graded together with the
+original answer, can earn full credit, and never lowers the first score. The follow-up is the
+grader's detour, so it doesn't count against the fluency timing.
+
 ---
 
 ### 2.7 The grading pipeline
@@ -471,8 +484,11 @@ destroys trust in the bar and therefore in the product.
 
 ### 4.3 Learner feedback
 
-A **report** control on every question, with a reason taxonomy that maps onto the flags above:
-ambiguous / wrong answer key / typo / not about this topic / graded unfairly.
+A **feedback** control on every question ("Feedback on this question"), with a reason taxonomy that
+maps onto the flags above: graded too strictly / wrong answer key / unclear / typo or formatting /
+not about this lesson / too easy / too hard / other. Reports keep the stem as shown and the learner's
+answer, and land in an inbox at `/dev/questions` where developers edit the question and resolve
+them (`item_feedback`, migration 0014). Developers use the same control to leave themselves notes.
 
 An **appeal** re-grades the response with a human or a higher-effort judge. A sustained appeal
 **refunds** the EXP — replaying `applyReview` with the corrected grade, which is possible only because
@@ -504,8 +520,22 @@ A/B tests run on item variants, rubric versions, and scheduler parameters, and a
 
 Three loops, at three timescales:
 
-- **Per response:** item difficulty, by Elo (`updateItemDifficulty`), with a step size that shrinks
-  with exposure so new items calibrate fast and settled ones are not yanked by one answer.
+- **Per response:** item difficulty. Ranking and difficulty are push and pull: every graded answer
+  is one match, and the same surprise `score − p` that moves the learner moves the item the other
+  way. Clear an item more often than your ability predicted and it gets easier; miss it and it gets
+  harder. (`updateItemBelief` in `mastery.ts`; the shared copy is `calibrate_item` in migration
+  0013, run in the database so concurrent learners serialise on the item's row.)
+  - **The item is a Gaussian belief too**, seeded at its authored difficulty with variance 0.5. A new
+    item moves fast; each answer narrows it, down to a floor (σ ≈ 0.14) so it can still drift.
+  - **Who answered matters.** `p` is *this* learner's chance, so a strong learner clearing an item
+    barely moves it and a weak one clearing it moves it a lot. The learner's own uncertainty — wide
+    for a newcomer, widened further by time away from the concept — shrinks their pull through the
+    probit approximation `a / √(1 + π a² σ² / 8)`.
+  - **Guards:** one pull per learner per item per day, a 0.3-logit cap per answer, and the
+    learner's inputs clamped server-side.
+  - Simulated, an item authored two logits off its true difficulty is within ~0.3 of it after 100
+    answers. Developers see the live level, the authored level and the answer count on each question
+    in assessment mode. Interview questions calibrate the same way (`interview.md`).
 - **Nightly:** learner abilities, by batch MAP over the full log (§3.6).
 - **Periodically, once the review log is large enough:** the FSRS weights in §5, and a full IRT re-fit
   of the item bank. The shipped weights are a published prior, not a claim about our learners.

@@ -83,13 +83,15 @@ localStorage. The math reuses the learning side's model: a Gaussian ability beli
 2PL IRT response, quoted at the conservative end (`lib/assessment/mastery.ts`). It uses none of
 that side's state. The pieces, all in [`scoring.ts`](web/src/lib/interview/scoring.ts):
 
-- **Difficulty → logit:** `(difficulty − 4) / 1.6`, clamped to [−3, 4].
+- **Difficulty → logit:** `(difficulty − 4) / 1.6`, clamped to [−3, 4]. That is only the starting
+  point: every answer also moves the question's difficulty, exactly as on the learning side
+  (`assessment.md` §4.6), and skill updates and training picks use the live value.
 - **Score:** correctness (1, 0.5, or 0) × a speed factor.
 - **Speed factor:** full credit up to the expected time (`60 + 40 × difficulty` seconds), then
   20% less per doubling of that time, never below 60%. A slow right answer is still worth most of
   a right answer.
 - **Attempt log:** every answer is also written to `interview_attempts`, so question difficulty
-  can later be re-estimated from real response data.
+  can also be re-fitted in batch from real response data.
 
 ## Access
 

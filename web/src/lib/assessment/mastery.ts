@@ -194,16 +194,79 @@ export function masteryLevel(ability: Ability): number {
 }
 
 /**
- * Online re-estimation of item difficulty (Elo, with the same residual that
- * drove the ability update but the opposite sign). The step size shrinks with
- * exposure, so a brand-new item calibrates fast and a well-measured one is not
- * yanked around by a single response.
+ * Item difficulty is a belief too, and it is pushed and pulled by learners
+ * exactly as learners are pushed and pulled by items. Every response is one
+ * match: the learner's ability moves by the surprise of the result
+ * (`updateAbility`), and the item's difficulty moves by the same surprise with
+ * the opposite sign. If more learners clear an item than their abilities
+ * predicted, it gets easier; if they miss it, it gets harder.
+ *
+ * How hard one learner pulls on an item depends on who they are:
+ *
+ *  - **Their ability (the hidden Elo).** The residual is `score − p`, with `p`
+ *    the chance *this* learner had. A strong learner clearing an item was
+ *    expected and barely moves it; a weak learner clearing it is surprising
+ *    and makes it markedly easier. A strong learner *missing* it is the
+ *    loudest signal that it is harder than we thought.
+ *  - **How sure we are of that ability.** A newcomer, or someone whose
+ *    proficiency has decayed from time away, has a wide belief, and an answer
+ *    from someone whose level we cannot place says little about the item. The
+ *    learner's variance is folded in by the probit approximation to a logistic
+ *    averaged over a Gaussian, `a / sqrt(1 + π a² σ² / 8)`, which shrinks
+ *    their effective discrimination — and with it their pull — smoothly.
+ *
+ * The item's own variance plays the role exposure count used to: a new item's
+ * wide belief lets it move fast, and each response narrows it so a settled
+ * item is not yanked around by one answer. A floor keeps it from freezing, so
+ * an item can still drift if the population taking it changes.
+ *
+ * This is the reference implementation. The shared, persisted update runs in
+ * the database as `calibrate_item` (migration 0013) so that concurrent learners
+ * serialise on the item's row; the two must stay in step.
  */
-export function updateItemDifficulty(item: Item, score: number, abilityMean: number): number {
-  const exposures = item.stats?.exposures ?? 0;
-  const step = 0.6 / (1 + exposures / 15);
-  const p = probabilityCorrect(abilityMean, item);
-  return clamp(item.difficulty - step * (score - p), -4, 4);
+export interface ItemBelief {
+  /** Difficulty on the logit scale. */
+  difficulty: number;
+  variance: number;
+  /** Responses that have moved it. */
+  exposures: number;
+}
+
+/** How unsure we are of an authored difficulty before anyone has answered: ±0.7 logits. */
+export const ITEM_PRIOR_VARIANCE = 0.5;
+/** Settled items still drift, slowly. */
+const ITEM_VARIANCE_FLOOR = 0.02;
+/** No single response moves an item more than this many logits (a third of a level). */
+const MAX_ITEM_STEP = 0.3;
+/** The 1–10 level scale's ends (see difficultyLevel.ts). */
+const ITEM_DIFFICULTY_BOUND = 4.5;
+
+/** The authored difficulty as a belief, for an item nobody has answered yet. */
+export function priorItemBelief(authoredDifficulty: number): ItemBelief {
+  return { difficulty: authoredDifficulty, variance: ITEM_PRIOR_VARIANCE, exposures: 0 };
+}
+
+/** Discrimination attenuated by uncertainty in the other side of the match. */
+export function effectiveDiscrimination(discrimination: number, variance: number): number {
+  return discrimination / Math.sqrt(1 + (Math.PI * discrimination * discrimination * variance) / 8);
+}
+
+export function updateItemBelief(
+  belief: ItemBelief,
+  discrimination: number,
+  learner: Ability,
+  score: number,
+): ItemBelief {
+  const a = effectiveDiscrimination(discrimination, learner.variance);
+  const p = sigmoid(a * (learner.mean - belief.difficulty));
+  const posteriorVariance = 1 / (1 / belief.variance + a * a * p * (1 - p));
+  const step = clamp(posteriorVariance * a * (score - p), -MAX_ITEM_STEP, MAX_ITEM_STEP);
+  return {
+    // Opposite sign to the learner's update: doing better than expected makes the item easier.
+    difficulty: clamp(belief.difficulty - step, -ITEM_DIFFICULTY_BOUND, ITEM_DIFFICULTY_BOUND),
+    variance: Math.max(posteriorVariance, ITEM_VARIANCE_FLOOR),
+    exposures: belief.exposures + 1,
+  };
 }
 
 /**

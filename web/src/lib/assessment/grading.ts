@@ -206,8 +206,10 @@ export async function gradeSubmission(input: {
   item: Item;
   raw: RawSubmission;
   latencySeconds: number;
+  /** The learner is answering the judge's follow-up to an earlier answer. */
+  followUp?: { question: string; originalAnswer: string };
 }): Promise<GradeResult> {
-  const { item, raw, latencySeconds } = input;
+  const { item, raw, latencySeconds, followUp } = input;
 
   // 1. Normalize: text / image / audio -> one answer.
   const normalized = await normalizeSubmission(item, raw);
@@ -230,6 +232,7 @@ export async function gradeSubmission(input: {
   let verdicts: RubricVerdict[];
   let confidence = 1;
   let feedback: string | undefined;
+  let followUpQuestion: string | undefined;
 
   if (kind === "llm") {
     const judged = await gradeOpenResponse({
@@ -238,8 +241,10 @@ export async function gradeSubmission(input: {
       answer: answer.text,
       channel: answer.channel,
       latencySeconds,
+      followUp,
     });
     if (!judged.ok) return judged;
+    followUpQuestion = judged.followUp;
 
     verdicts = judged.verdicts;
     feedback = judged.feedback;
@@ -290,6 +295,7 @@ export async function gradeSubmission(input: {
               ? "sandbox"
               : "key",
       feedback: feedback ?? summarise(verdicts, credit),
+      followUp: followUpQuestion,
       transcript: answer.transcript,
       transcriptConfidence: answer.transcriptConfidence,
     },
