@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { CodeText } from "./CodeText";
-import { conceptById } from "../../data/concepts";
+import { conceptById, concepts } from "../../data/concepts";
 import { loadItemBank } from "../../data/items";
 import { expFor, type ExpSnapshot } from "../../lib/assessment/exp";
 import { gradeSubmission } from "../../lib/assessment/grading";
@@ -24,7 +24,16 @@ import { canInstantiate, instantiate } from "../../lib/assessment/templating";
 import type { ConceptState, Grade, Item, ItemFormat } from "../../lib/assessment/types";
 import { useAuth } from "../../lib/auth/useAuth";
 import { useSubscription } from "../../lib/billing/useSubscription";
+import { useIsDeveloper } from "../../lib/dev/devAuth";
+import {
+  applyOverrides,
+  loadStore,
+  saveNewItem,
+  saveOverride,
+  type ItemOverrideStore,
+} from "../../lib/dev/itemOverrides";
 import { UpgradePrompt } from "../billing/UpgradePrompt";
+import { ItemEditorForm } from "../dev/ItemEditorForm";
 import { AnswerInput } from "./AnswerInput";
 import { ProficiencyBar } from "./ProficiencyBar";
 import { RubricBreakdown } from "./RubricBreakdown";
@@ -53,6 +62,15 @@ export function AssessmentPanel({
   const { user } = useAuth();
   const { can, loading: subLoading } = useSubscription();
   const canGrade = can("ai-grading");
+  const isDeveloper = useIsDeveloper();
+  /**
+   * Developers can edit a question mid-assessment. Edits go to the same local
+   * override store as `/dev/questions` (publish them from there), and are
+   * layered onto this panel's pool so the edited version is what gets served.
+   */
+  const [devStore, setDevStore] = useState<ItemOverrideStore>(() => loadStore());
+  /** The source item (template, not the drawn instance) open in the editor. */
+  const [editing, setEditing] = useState<Item | null>(null);
   const [state, setState] = useState<ConceptState>(() => blankState(conceptId));
   const [phase, setPhase] = useState<Phase>({ kind: "loading" });
   const [text, setText] = useState("");
@@ -101,8 +119,14 @@ export function AssessmentPanel({
     };
   }, []);
 
+  const conceptItems = useMemo(() => {
+    const base = bank?.get(conceptId) ?? [];
+    if (!isDeveloper) return base;
+    return applyOverrides(base, devStore).filter((i) => i.conceptId === conceptId);
+  }, [bank, conceptId, isDeveloper, devStore]);
+
   const pool = useMemo(() => {
-    const all = bank?.get(conceptId) ?? [];
+    const all = conceptItems;
     const servable = all.filter(canInstantiate);
     if (servable.length < all.length) {
       const broken = all.filter((i) => !canInstantiate(i)).map((i) => i.id);
@@ -118,15 +142,15 @@ export function AssessmentPanel({
     return canGrade
       ? servable
       : servable.filter((i) => routeGrader(i) !== "llm");
-  }, [bank, conceptId, canGrade]);
+  }, [conceptItems, conceptId, canGrade]);
 
   /** How many open-response items the current tier is not seeing. */
   const withheldCount = useMemo(() => {
     if (canGrade) return 0;
-    return (bank?.get(conceptId) ?? []).filter(
+    return conceptItems.filter(
       (i) => canInstantiate(i) && routeGrader(i) === "llm",
     ).length;
-  }, [bank, conceptId, canGrade]);
+  }, [conceptItems, canGrade]);
 
   // Load persisted proficiency. Signed-out learners get a working session with
   // in-memory state; nothing is written until they have an account to write to.
@@ -223,6 +247,22 @@ export function AssessmentPanel({
     },
     [pool],
   );
+
+  function saveEdit(edited: Item) {
+    const next =
+      edited.id in devStore.newItems ? saveNewItem(edited) : saveOverride(edited);
+    setDevStore(next);
+    setEditing(null);
+    // Show the edit on the question in front of you. A templated item draws
+    // fresh values; if the edit broke it, show the raw item rather than crash.
+    let shown = edited;
+    try {
+      shown = instantiate(edited);
+    } catch (error) {
+      console.error(error);
+    }
+    setPhase((p) => ("item" in p ? { ...p, item: shown } : p));
+  }
 
   async function submit() {
     if (phase.kind !== "answering") return;
@@ -397,7 +437,22 @@ export function AssessmentPanel({
         phase.kind === "graded" ||
         phase.kind === "ungradeable") && (
         <PanelShell>
-          <ItemHeader item={phase.item} />
+          <div className="flex items-start justify-between gap-3">
+            <ItemHeader item={phase.item} />
+            {isDeveloper && (
+              <button
+                type="button"
+                onClick={() =>
+                  setEditing(
+                    conceptItems.find((i) => i.id === phase.item.id) ?? phase.item,
+                  )
+                }
+                className="font-body shrink-0 rounded-full border border-dashed border-[var(--line)] px-3 py-1 text-xs font-medium text-[var(--ink-soft)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              >
+                Edit question (dev)
+              </button>
+            )}
+          </div>
 
           <p className="font-body mt-3 whitespace-pre-wrap text-[var(--ink)]">
             <CodeText text={phase.item.stem} />
@@ -470,6 +525,43 @@ export function AssessmentPanel({
             />
           )}
         </PanelShell>
+      )}
+
+      {editing && (
+        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 p-6">
+          <div className="my-8 w-full max-w-3xl rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-6 shadow-xl">
+            <div className="mb-1 flex items-center justify-between">
+              <h3 className="font-display text-lg text-[var(--ink)]">
+                Edit {editing.id}
+              </h3>
+              <button
+                type="button"
+                onClick={() => setEditing(null)}
+                className="text-[var(--ink-soft)] hover:text-[var(--ink)]"
+                aria-label="Close"
+              >
+                ✕
+              </button>
+            </div>
+            <p className="font-body mb-4 text-xs text-[var(--ink-soft)]">
+              Saved in this browser.{" "}
+              <Link
+                to="/dev/questions"
+                className="font-medium text-[var(--accent)] hover:underline"
+              >
+                Publish from the question bank
+              </Link>{" "}
+              to open a pull request.
+            </p>
+            <ItemEditorForm
+              item={editing}
+              concepts={concepts}
+              existingIds={new Set(conceptItems.map((i) => i.id))}
+              onSave={saveEdit}
+              onCancel={() => setEditing(null)}
+            />
+          </div>
+        </div>
       )}
     </div>
   );
