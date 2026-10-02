@@ -327,7 +327,6 @@ export function ConceptMap() {
       },
       { replace: true },
     );
-  const otherCourses = COURSES.filter((c) => !enrolled.includes(c.id));
   const [session, setSession] = useState<SubjectSession | null>(null);
   const layout = useMemo(() => computeLayout(selectedDomain), [selectedDomain]);
   const [aspect, setAspect] = useState<number | null>(null);
@@ -474,22 +473,14 @@ export function ConceptMap() {
           className="font-display min-w-0 max-w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] px-3 py-1.5 text-base text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
         >
           {enrolled.length > 0 ? (
-            <>
-              <optgroup label="Your courses">
-                {enrolled.map((id) => (
-                  <option key={id} value={id}>
-                    {domainMeta[id].label}
-                  </option>
-                ))}
-              </optgroup>
-              <optgroup label="Other courses">
-                {otherCourses.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.label}
-                  </option>
-                ))}
-              </optgroup>
-            </>
+            // Only the learner's own courses — the full catalogue lives on
+            // /courses. A course opened by link stays listed so the select
+            // still shows it.
+            [...enrolled, ...(enrolled.includes(selectedDomain) ? [] : [selectedDomain])].map((id) => (
+              <option key={id} value={id}>
+                {domainMeta[id].label}
+              </option>
+            ))
           ) : (
             COURSES.map((c) => (
               <option key={c.id} value={c.id}>

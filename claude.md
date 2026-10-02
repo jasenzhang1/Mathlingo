@@ -30,3 +30,15 @@ See `assessment.md` for the full framework — where problems come from, how ope
 A separate tab (`/interview`), sold as its own monthly subscription, and not part of the learning path. It is a databank of quant interview questions, labelled by **section** (technique) and **family** (scenario). Candidates take **mock interviews**: chains of questions on one scenario that get harder as they go, timed and graded. They can also **train** one technique. Speed and accuracy move per-technique interview skill bars, which are completely separate from lesson proficiency.
 
 The questions live in `web/src/data/interview/`, and developers curate the mock-interview chains at `/dev/bundles`. See `interview.md`.
+
+
+## Formatting
+
+1) Make sure parentheses, brackets etc are as large as necessary for fractions and other large expressions
+2) Use $\mathbb{R}$ to denote real numbers
+3) Use $\mathbb{E}$ to denote expectation, \text{Var} to denote variance, \text{Cov} to denote covariance, and \text{Corr} to denote correlation.
+4) use bold letters to denote vectors
+5) Use capital letters to denote variables and lowercase letters to denote realizations
+6) Use codecase for code expressions 
+7) Use latex for numbers and mathematical expressions
+8) 

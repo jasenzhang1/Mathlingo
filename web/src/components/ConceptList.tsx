@@ -560,13 +560,6 @@ export function ConceptList() {
       </div>
 
       <div className="font-body mt-3 flex shrink-0 flex-wrap gap-x-5 gap-y-1 pb-1 text-xs text-[var(--ink-soft)]">
-        <span className="flex items-center gap-1.5">
-          <LessonDot />
-          Lesson available
-        </span>
-        <span>
-          Sections follow the chapters of the books each subject is taught from
-        </span>
         {!user && (
           <span>Sign in to see your own progress on each concept.</span>
         )}
