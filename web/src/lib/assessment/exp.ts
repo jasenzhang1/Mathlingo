@@ -79,10 +79,9 @@ export const GRACE_PERIOD_MS = DAY_MS;
  *   true ability θ = 0 (~50%)                                    ->  43 even at item 60
  *
  * At 65, a strong learner unlocks within a session and a shaky one needs a few
- * — which is the intended shape. Raising it to 80 would make most concepts
- * effectively ungated-forever; the conservatism is already carried by the
- * lower-confidence-bound inside `masteryLevel`, and doubling up on it here just
- * makes the tree impassable.
+ * — which is the intended shape. Since the bar is the actual ability estimate
+ * (no lower-confidence-bound shading in `masteryLevel`), 65 means "about a 65%
+ * chance on a level-5.5 question" — an honest gate rather than a padded one.
  */
 export const UNLOCK_THRESHOLD = 65;
 
@@ -98,7 +97,7 @@ export const MASTERY_THRESHOLD = 95;
 
 export function expFor(state: ConceptState, now: number): ExpSnapshot {
   // A learner who has never been assessed on this concept reads as 0, not the
-  // prior's conservative-end mastery (~14) — the prior exists to shape how
+  // prior's mastery (~19) — the prior exists to shape how
   // fast the *first* few answers move the estimate, not to hand out a
   // starting balance nobody earned.
   const ceiling =

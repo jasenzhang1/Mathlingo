@@ -151,11 +151,18 @@ export async function logResponse(input: {
   return { error: explainError(error?.message) };
 }
 
-/** Item ids this user has already seen, newest first — feeds the selector's recency penalty. */
+/**
+ * How many recently seen items the selector keeps out of rotation. Big enough
+ * that a learner doesn't meet the same question again within a session or the
+ * next one; small enough that a concept with a modest pool can still serve.
+ */
+export const RECENT_WINDOW = 25;
+
+/** Item ids this user has already seen, newest first — feeds the selector's recency rule. */
 export async function loadRecentItemIds(
   userId: string,
   conceptId: string,
-  limit = 10,
+  limit = RECENT_WINDOW,
 ): Promise<string[]> {
   const { data } = await supabase
     .from("assessment_responses")

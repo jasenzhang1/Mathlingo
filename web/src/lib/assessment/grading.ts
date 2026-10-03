@@ -1,4 +1,6 @@
 import { gradeOpenResponse } from "./modelGrader";
+import { parseNumericAnswer } from "./parseNumber";
+import { isVectorKey, parseVectorAnswer } from "./vectorAnswer";
 import { normalizeSubmission, type NormalizedAnswer, type RawSubmission } from "./normalize";
 import { routeGrader } from "./router";
 import {
@@ -23,26 +25,7 @@ export type GradeResult =
   | { ok: true; grade: Grade }
   | { ok: false; reason: "empty" | "unavailable" | "error"; message: string };
 
-/** Parses "0.45", ".45", "45%", "7/3" into a number, or null if unparseable. */
-export function parseNumericAnswer(raw: string): number | null {
-  const text = raw.trim().replace(/,/g, "");
-  if (!text) return null;
-
-  if (text.endsWith("%")) {
-    const pct = Number(text.slice(0, -1));
-    return Number.isFinite(pct) ? pct / 100 : null;
-  }
-
-  const fraction = /^(-?\d+(?:\.\d+)?)\s*\/\s*(-?\d+(?:\.\d+)?)$/.exec(text);
-  if (fraction) {
-    const denominator = Number(fraction[2]);
-    if (denominator === 0) return null;
-    return Number(fraction[1]) / denominator;
-  }
-
-  const value = Number(text);
-  return Number.isFinite(value) ? value : null;
-}
+export { parseNumericAnswer };
 
 // --- Exact grading -----------------------------------------------------------
 
@@ -118,6 +101,7 @@ function gradeExact(item: Item, answer: NormalizedAnswer): RubricVerdict[] {
  * in the hundreds.
  */
 function gradeMath(item: Item, answer: NormalizedAnswer): RubricVerdict[] {
+  if (isVectorKey(item.answerKey)) return gradeVector(item, item.answerKey, answer);
   const key = typeof item.answerKey === "number" ? item.answerKey : Number(item.answerKey);
 
   if (!Number.isFinite(key)) {
@@ -151,6 +135,47 @@ function gradeMath(item: Item, answer: NormalizedAnswer): RubricVerdict[] {
     makeVerdict({
       elementId: "value",
       description: "Computes the correct value, within the stated tolerance",
+      weight: 1,
+      required: true,
+      credit,
+      justification,
+    }),
+  ];
+}
+
+/**
+ * A vector answer, compared entry by entry with the same tolerance rule as a
+ * single number. Credit is the fraction of entries right, so one slipped sign
+ * in a 3-vector is a partial answer rather than a wrong one; a vector of the
+ * wrong length is wrong outright.
+ */
+function gradeVector(item: Item, keyText: string, answer: NormalizedAnswer): RubricVerdict[] {
+  const key = parseVectorAnswer(keyText);
+  if (!key) throw new Error(`Item ${item.id} has an unreadable vector answer key "${keyText}".`);
+
+  const value = parseVectorAnswer(answer.text);
+  const tolerance = item.tolerance ?? 0.001;
+  const close = (a: number, b: number) => Math.abs(a - b) <= Math.max(Math.abs(b) * tolerance, tolerance);
+
+  let credit = 0;
+  let justification: string;
+  if (!value) {
+    justification = `"${answer.text}" didn't read as a vector — write it like (3, -2). The answer was ${keyText}.`;
+  } else if (value.length !== key.length) {
+    justification = `That has ${value.length} entries, but the answer has ${key.length}: ${keyText}.`;
+  } else {
+    const right = value.filter((v, i) => close(v, key[i]!)).length;
+    credit = right / key.length;
+    justification =
+      right === key.length
+        ? "Correct."
+        : `${right} of ${key.length} entries are right; the answer is ${keyText}.`;
+  }
+
+  return [
+    makeVerdict({
+      elementId: "value",
+      description: "Computes the correct vector, entry by entry",
       weight: 1,
       required: true,
       credit,

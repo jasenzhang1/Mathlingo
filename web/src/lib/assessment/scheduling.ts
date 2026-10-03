@@ -204,9 +204,11 @@ export function sessionGrade(grades: ReviewGrade[]): ReviewGrade {
   const lapses = grades.filter((g) => g === AGAIN).length;
 
   // Enough of the session went wrong that the concept was not really recalled.
-  // A third is deliberately lenient: the selector targets a 75% success rate, so
-  // some misses are by design and must not be read as a lapse.
-  if (lapses / grades.length >= 1 / 3) return AGAIN;
+  // Half, not less: the selector aims most questions at a 50–70% success rate
+  // and some well beyond the learner (see drawTargetSuccess), so a learner who
+  // knows the material still misses a third or more by design — that must not
+  // be read as having forgotten it.
+  if (lapses / grades.length >= 1 / 2) return AGAIN;
 
   const mean = grades.reduce((sum, g) => sum + g, 0) / grades.length;
   return clamp(Math.round(mean), HARD, EASY) as ReviewGrade;

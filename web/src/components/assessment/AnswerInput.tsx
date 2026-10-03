@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { isVectorKey } from "../../lib/assessment/vectorAnswer";
 import { useSpeechInput } from "../../lib/assessment/useSpeechInput";
 import type { Item, ResponseChannel } from "../../lib/assessment/types";
 import { CodeText } from "./CodeText";
@@ -84,23 +85,28 @@ export function AnswerInput({
   }
 
   if (item.format === "numeric" || item.format === "symbolic") {
+    const vector = isVectorKey(item.answerKey);
     return (
       <div>
         <input
           type="text"
-          inputMode={item.format === "numeric" ? "decimal" : "text"}
+          inputMode={item.format === "numeric" && !vector ? "decimal" : "text"}
           value={text}
           disabled={disabled}
           onChange={(e) => onTextChange(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter" && !disabled) onSubmit();
           }}
-          placeholder={item.format === "numeric" ? "e.g. 0.4545, 45%, or 5/11" : "Your expression"}
+          placeholder={
+            vector ? "e.g. (3, -2, 1/2)" : item.format === "numeric" ? "e.g. 0.4545, 45%, or 5/11" : "Your expression"
+          }
           className="font-body w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-[var(--ink)] outline-none focus:border-[var(--accent)] disabled:opacity-70"
         />
         {item.format === "numeric" && (
           <p className="font-body mt-1.5 text-xs text-[var(--ink-soft)]">
-            Decimals, percentages, and fractions are all accepted.
+            {vector
+              ? "Write the vector's entries in order, separated by commas. Decimals and fractions are fine."
+              : "Decimals, percentages, and fractions are all accepted."}
           </p>
         )}
       </div>

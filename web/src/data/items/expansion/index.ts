@@ -13,6 +13,7 @@ import { laMatricesItems } from "./la-matrices";
 import { laSpacesSubspacesItems } from "./la-spaces-subspaces";
 import { laRankEigenItems } from "./la-rank-eigen";
 import { laSpectralSvdItems } from "./la-spectral-svd";
+import { laTemplateItems } from "./la-templates";
 import { multivariateItems } from "./multivariate";
 import { infoTheoryAItems } from "./info-theory-a";
 import { infoTheoryBItems } from "./info-theory-b";
@@ -153,6 +154,7 @@ export const expansionItems: Item[] = [
   ...laSpacesSubspacesItems,
   ...laRankEigenItems,
   ...laSpectralSvdItems,
+  ...laTemplateItems,
   ...multivariateItems,
   ...infoTheoryAItems,
   ...infoTheoryBItems,

@@ -17,9 +17,15 @@ import { clamp, sigmoid } from "./numeric";
  * fiftieth barely moves it at all, with no hand-tuned schedule.
  */
 
-/** Ability of a learner who has never attempted the concept. */
+/**
+ * Ability of a learner who has never attempted the concept. Centred a little
+ * below the reference item (about level 4.3, a 32% shot at level 5.5): with
+ * an honest bar, the prior is what the first answer is weighed against, and
+ * someone who hasn't studied a topic is not yet an even bet on it. A prior at
+ * 0 made one correct opening answer read as ~77/100.
+ */
 export const PRIOR_ABILITY: Ability = {
-  mean: 0,
+  mean: -1.2,
   /** Wide: ~95% of the prior mass spans roughly -3 to +3 logits. */
   variance: 2.25,
   observations: 0,
@@ -30,11 +36,23 @@ const REFERENCE_DIFFICULTY = 0;
 const REFERENCE_DISCRIMINATION = 1.2;
 
 /**
- * How many standard deviations below the mean we quote. Displayed mastery is a
- * lower confidence bound, so the bar reflects what we can *defend*, not the
- * most optimistic reading of two lucky answers.
+ * How many standard deviations below the mean the bar is quoted. Zero: the bar
+ * shows our actual best estimate of the learner's level, not a pessimistic
+ * lower bound. (At 1, a learner the engine believed sat at level ~6 read as
+ * 33/100, and questions pitched at their real level looked "too hard" for the
+ * number on the bar.) Robustness to a lucky streak comes from the prior and
+ * the per-answer step cap instead.
  */
-const CONSERVATISM_Z = 1;
+const CONSERVATISM_Z = 0;
+
+/**
+ * The ability belief never gets more certain than this (σ ≈ 0.7 logits).
+ * Learners have off days and keep learning; if the belief hardens, each new
+ * answer barely moves it and a learner who was once misjudged has to grind a
+ * long streak to prove otherwise. Keeping it loose means recent answers always
+ * count for something, in both directions.
+ */
+export const ABILITY_VARIANCE_FLOOR = 0.5;
 
 /** Ability is clamped to this band; beyond it the logistic is saturated anyway. */
 const ABILITY_BOUND = 4;
@@ -94,7 +112,7 @@ export function updateAbility(
      * learn elsewhere), so the belief must never harden to the point where new
      * evidence cannot move it.
      */
-    variance: Math.max(posteriorVariance, 0.04),
+    variance: Math.max(posteriorVariance, ABILITY_VARIANCE_FLOOR),
     observations: ability.observations + 1,
   };
 }
@@ -163,7 +181,7 @@ export function estimateAbilityFromLog(
 
   return {
     mean: mu,
-    variance: Math.max(1 / precision, 0.04),
+    variance: Math.max(1 / precision, ABILITY_VARIANCE_FLOOR),
     observations: observations.length,
   };
 }
@@ -330,7 +348,7 @@ export function applyIndirectEvidence(
 
   return {
     mean: clamp(ability.mean + step, -ABILITY_BOUND, ABILITY_BOUND),
-    variance: Math.max(posteriorVariance, 0.04),
+    variance: Math.max(posteriorVariance, ABILITY_VARIANCE_FLOOR),
     observations: ability.observations,
   };
 }
