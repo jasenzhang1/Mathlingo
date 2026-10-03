@@ -36,6 +36,7 @@ import { useSubscription } from "../../lib/billing/useSubscription";
 import { useIsDeveloper } from "../../lib/dev/devAuth";
 import {
   applyOverrides,
+  deleteNewItem,
   loadStore,
   saveNewItem,
   saveOverride,
@@ -323,6 +324,31 @@ export function AssessmentPanel({
     setPhase((p) => ("item" in p ? { ...p, item: shown } : p));
   }
 
+  /**
+   * Developer delete: a question that only exists locally is removed outright;
+   * a question from the source files is retired through the same local
+   * override store as an edit, so it stops being served here at once and the
+   * removal goes out with the next "Publish to GitHub" from /dev/questions
+   * (where "Revert" undoes it). Then move straight on to another question.
+   */
+  function deleteCurrentItem(shown: Item) {
+    const source = sourceItems.find((i) => i.id === shown.id);
+    if (!source) return;
+    if (!confirm(`Delete "${source.id}"? It won't be served again. You can undo this from the question bank (Revert) until you publish.`)) {
+      return;
+    }
+    const next =
+      source.id in devStore.newItems
+        ? deleteNewItem(source.id)
+        : saveOverride({ ...source, status: "retired" });
+    setDevStore(next);
+    // The pool only drops it on the next render, so also mark it as just seen
+    // — the selector won't pick it while anything else is available.
+    const recent = [source.id, ...recentIds].slice(0, RECENT_WINDOW);
+    setRecentIds(recent);
+    nextItem(state, recent);
+  }
+
   async function submit() {
     if (phase.kind !== "answering") return;
     const item = phase.item;
@@ -569,17 +595,26 @@ ${followText}`,
           <div className="flex items-start justify-between gap-3">
             <ItemHeader item={phase.item} showDifficulty={isDeveloper} />
             {isDeveloper && (
-              <button
-                type="button"
-                onClick={() =>
-                  setEditing(
-                    sourceItems.find((i) => i.id === phase.item.id) ?? phase.item,
-                  )
-                }
-                className="font-body shrink-0 rounded-full border border-dashed border-[var(--line)] px-3 py-1 text-xs font-medium text-[var(--ink-soft)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
-              >
-                Edit question (dev)
-              </button>
+              <div className="flex shrink-0 gap-2">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setEditing(
+                      sourceItems.find((i) => i.id === phase.item.id) ?? phase.item,
+                    )
+                  }
+                  className="font-body rounded-full border border-dashed border-[var(--line)] px-3 py-1 text-xs font-medium text-[var(--ink-soft)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                >
+                  Edit question (dev)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => deleteCurrentItem(phase.item)}
+                  className="font-body rounded-full border border-dashed border-[var(--line)] px-3 py-1 text-xs font-medium text-[var(--ink-soft)] hover:border-red-500 hover:text-red-600"
+                >
+                  Delete (dev)
+                </button>
+              </div>
             )}
           </div>
 
