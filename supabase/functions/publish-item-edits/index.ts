@@ -150,8 +150,16 @@ function validatePayload(body: unknown): PublishRequest | { error: string } {
   return { overrides: overrides ?? {}, newItems: newItems ?? {}, interviewBundles, interviewQuestions, interviewDeletedQuestions };
 }
 
+/**
+ * Who may publish. Defaults to the same list as DEV_EMAILS in
+ * web/src/lib/dev/devAuth.ts and is_developer() in migration 0014 — keep all
+ * three in step, or a developer sees the dev tools but is refused here.
+ * The DEV_EMAILS secret, if set, replaces the default entirely.
+ */
+const DEFAULT_DEV_EMAILS = "jasenzhang@g.ucla.edu,jasen.zhang.2008@gmail.com";
+
 function allowedEmails(): Set<string> {
-  const raw = Deno.env.get("DEV_EMAILS") ?? "jasenzhang@g.ucla.edu";
+  const raw = Deno.env.get("DEV_EMAILS") ?? DEFAULT_DEV_EMAILS;
   return new Set(raw.split(",").map((e) => e.trim().toLowerCase()).filter(Boolean));
 }
 
@@ -206,7 +214,12 @@ Deno.serve(async (req) => {
   }
 
   if (!allowedEmails().has(userData.user.email.toLowerCase())) {
-    return json({ error: "Not authorized to publish question edits." }, 403);
+    return json(
+      {
+        error: `Not authorized to publish question edits: ${userData.user.email} isn't in the server's DEV_EMAILS list.`,
+      },
+      403,
+    );
   }
 
   let body: unknown;

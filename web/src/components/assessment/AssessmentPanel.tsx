@@ -490,6 +490,8 @@ ${followText}`,
           item,
           answer,
           grade,
+          masteryBefore: outcome.expBefore.ceiling,
+          masteryAfter: outcome.expAfter.ceiling,
         }),
       ]);
       const error = saved.error ?? logged.error;

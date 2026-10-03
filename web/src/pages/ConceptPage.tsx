@@ -127,10 +127,6 @@ export function ConceptPage() {
               Submit question
             </Link>
           </div>
-          <p className="font-body mt-2 max-w-2xl text-[var(--ink-soft)]">
-            {concept.blurb}
-          </p>
-
           {prerequisites.length > 0 && (
             <div className="font-body mt-6">
               <h2 className="text-xs font-semibold uppercase tracking-wide text-[var(--ink-soft)]">

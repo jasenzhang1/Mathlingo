@@ -20,6 +20,17 @@ import {
   useOwnProfileState,
 } from "../lib/profiles";
 import { getSchoolNameForDomain } from "../data/eduDomains";
+import { loadStoredAchievements, type StoredAchievement } from "../lib/social/leaderboard";
+import {
+  chatStatus,
+  followCounts,
+  getShowOnLeaderboards,
+  isFollowing,
+  requestChat,
+  setFollowing,
+  setShowOnLeaderboards,
+  type ChatStatus,
+} from "../lib/social/social";
 
 function SubjectBar({
   label,
@@ -94,6 +105,14 @@ export function ProfilePage() {
   const [error, setError] = useState<string | null>(null);
   const [avatarBusy, setAvatarBusy] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
+  const [counts, setCounts] = useState<{ followers: number; following: number } | null>(null);
+  const [following, setFollowingState] = useState(false);
+  const [chat, setChat] = useState<ChatStatus>("none");
+  const [chatDraft, setChatDraft] = useState<string | null>(null);
+  const [socialError, setSocialError] = useState<string | null>(null);
+  const [honours, setHonours] = useState<StoredAchievement[]>([]);
+  /** Null until loaded, or when migration 0015 isn't in yet (the toggle is then hidden). */
+  const [onLeaderboards, setOnLeaderboards] = useState<boolean | null>(null);
   // The app-wide copy of your own profile (nav avatar, etc.), re-read after edits.
   const { refresh: refreshOwnProfile } = useOwnProfileState();
 
@@ -140,6 +159,58 @@ export function ProfilePage() {
       cancelled = true;
     };
   }, [profile, isOwner]);
+
+  // Followers, your relationship to this person, and their leaderboard honours.
+  useEffect(() => {
+    let cancelled = false;
+    if (!profile) return;
+    void followCounts(profile.id).then((c) => {
+      if (!cancelled) setCounts(c);
+    });
+    void loadStoredAchievements(profile.id).then((a) => {
+      if (!cancelled) setHonours(a);
+    });
+    if (user && user.id !== profile.id) {
+      void isFollowing(user.id, profile.id).then((f) => {
+        if (!cancelled) setFollowingState(f);
+      });
+      void chatStatus(user.id, profile.id).then((c) => {
+        if (!cancelled) setChat(c);
+      });
+    }
+    if (user && user.id === profile.id) {
+      void getShowOnLeaderboards(user.id).then((v) => {
+        if (!cancelled) setOnLeaderboards(v);
+      });
+    }
+    return () => {
+      cancelled = true;
+    };
+  }, [profile, user]);
+
+  async function toggleFollow() {
+    if (!user || !profile) return;
+    const next = !following;
+    setFollowingState(next);
+    setCounts((c) => (c ? { ...c, followers: c.followers + (next ? 1 : -1) } : c));
+    const result = await setFollowing(user.id, profile.id, next);
+    if (result.error) {
+      setFollowingState(!next);
+      setCounts((c) => (c ? { ...c, followers: c.followers + (next ? -1 : 1) } : c));
+      setSocialError(result.error);
+    }
+  }
+
+  async function sendChatRequest() {
+    if (!user || !profile || chatDraft === null) return;
+    const result = await requestChat(user.id, profile.id, chatDraft.trim());
+    if (result.error) {
+      setSocialError(/duplicate key/i.test(result.error) ? "You've already sent a request." : result.error);
+      return;
+    }
+    setChat("sent");
+    setChatDraft(null);
+  }
 
   const now = Date.now();
 
@@ -283,6 +354,12 @@ export function ProfilePage() {
               </h1>
               <p className="font-body text-sm text-[var(--ink-soft)]">
                 @{profile.username}
+                {counts && (
+                  <span className="ml-2">
+                    · <span className="text-[var(--ink)]">{counts.followers}</span> follower{counts.followers === 1 ? "" : "s"} ·{" "}
+                    <span className="text-[var(--ink)]">{counts.following}</span> following
+                  </span>
+                )}
               </p>
               {profile.school && (
                 <p className="font-body mt-1 inline-flex items-center rounded-full bg-[var(--accent-soft)] px-2.5 py-0.5 text-xs font-medium text-[var(--accent)]">
@@ -300,7 +377,68 @@ export function ProfilePage() {
               Edit profile
             </button>
           )}
+          {user && !isOwner && (
+            <div className="flex shrink-0 flex-wrap justify-end gap-2">
+              <button
+                type="button"
+                onClick={() => void toggleFollow()}
+                className={`font-body rounded-full px-4 py-2 text-sm font-medium ${
+                  following
+                    ? "border border-[var(--line)] text-[var(--ink)] hover:border-red-400"
+                    : "bg-[var(--accent)] text-white hover:opacity-90"
+                }`}
+              >
+                {following ? "Following" : "Follow"}
+              </button>
+              {chat === "accepted" ? (
+                <Link to={`/messages/${profile.username}`} className="font-body rounded-full border border-[var(--line)] px-4 py-2 text-sm font-medium text-[var(--ink)] hover:border-[var(--accent)]">
+                  Message
+                </Link>
+              ) : chat === "received" ? (
+                <Link to="/messages" className="font-body rounded-full border border-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent)]">
+                  Respond to chat request
+                </Link>
+              ) : chat === "sent" || chat === "declined" ? (
+                <span className="font-body rounded-full border border-dashed border-[var(--line)] px-4 py-2 text-sm text-[var(--ink-soft)]">
+                  Chat requested
+                </span>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setChatDraft(chatDraft === null ? "" : null)}
+                  className="font-body rounded-full border border-[var(--line)] px-4 py-2 text-sm font-medium text-[var(--ink)] hover:border-[var(--accent)]"
+                >
+                  Request chat
+                </button>
+              )}
+            </div>
+          )}
         </div>
+
+        {chatDraft !== null && (
+          <div className="mt-4 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4">
+            <p className="font-body text-sm text-[var(--ink)]">
+              Send {profile.displayName} a chat request. You can message each other once they accept.
+            </p>
+            <textarea
+              value={chatDraft}
+              onChange={(e) => setChatDraft(e.target.value)}
+              maxLength={500}
+              rows={2}
+              placeholder="Add a note (optional)"
+              className="font-body mt-2 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3 py-2 text-sm text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+            />
+            <div className="mt-2 flex gap-2">
+              <button type="button" onClick={() => void sendChatRequest()} className="font-body rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white">
+                Send request
+              </button>
+              <button type="button" onClick={() => setChatDraft(null)} className="font-body rounded-full border border-[var(--line)] px-4 py-2 text-sm text-[var(--ink)]">
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
+        {socialError && <p className="font-body mt-3 text-sm text-red-700">{socialError}</p>}
 
         {editing && form ? (
           <div className="mt-8 space-y-5 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-6 shadow-sm">
@@ -405,6 +543,21 @@ export function ProfilePage() {
               />
               Show my achievements on this page
             </label>
+            {onLeaderboards !== null && (
+              <label className="font-body flex items-center gap-2.5 text-sm text-[var(--ink)]">
+                <input
+                  type="checkbox"
+                  checked={onLeaderboards}
+                  onChange={(e) => {
+                    const next = e.target.checked;
+                    setOnLeaderboards(next);
+                    if (user) void setShowOnLeaderboards(user.id, next);
+                  }}
+                  className="h-4 w-4 rounded border-[var(--line)] accent-[var(--accent)]"
+                />
+                Show me on leaderboards
+              </label>
+            )}
 
             {error && <p className="font-body text-sm text-red-700">{error}</p>}
 
@@ -482,7 +635,20 @@ export function ProfilePage() {
                 </span>
               )}
             </h2>
-            {achievements.length === 0 ? (
+            {honours.length > 0 && (
+              <div className="mt-4 flex flex-wrap gap-3">
+                {honours.map((a) => (
+                  <div
+                    key={a.id}
+                    title={a.detail ?? undefined}
+                    className="font-body rounded-full border border-[var(--accent)] bg-[var(--accent-soft)] px-4 py-2 text-sm text-[var(--ink)] shadow-sm"
+                  >
+                    🏆 {a.label}
+                  </div>
+                ))}
+              </div>
+            )}
+            {achievements.length === 0 && honours.length === 0 ? (
               <p className="font-body mt-3 text-sm text-[var(--ink-soft)]">
                 {isOwner
                   ? "Clear a concept to earn your first one."

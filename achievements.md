@@ -113,7 +113,26 @@ No new storage — `ConceptState[]` and `expFor(...).ceiling` already carry ever
 it's a matter of adding the 80/95 milestone arrays alongside the existing 65-only `UNLOCK_MILESTONES`
 in `achievements.ts`.
 
-## 7. Other candidates
+## 7. Leaderboard placements (implemented)
+
+`/leaderboard` ranks the top 20 on six boards — a per-course ranking (average proficiency over every
+lesson in the course), questions answered, knowledge gained (net rise in proficiency), karma (net votes
+received on forum posts and analogies), forum posts, and analogies — the activity boards over the
+past day, week, month, year or all time. Placing earns a stored achievement, once per board, period
+and tier:
+
+| Tier | Earned by |
+|---|---|
+| Top 20 | appearing on the board |
+| Top 3 | ranking 3rd or better |
+| #1 | leading the board |
+
+These are written to `user_achievements` by `leaderboard()` (migration 0015) when a board is read,
+so they're the first achievements stored rather than computed on read. They show on profiles under the
+same "show achievements" opt-in, marked 🏆; `profiles.show_on_leaderboards` takes a learner off every
+board.
+
+## 8. Other candidates
 
 - **Comeback**: recover a concept's `retrievability` from below 50% back above the unlock line
   (rewards returning to decayed material instead of only chasing new ones).
@@ -125,6 +144,9 @@ in `achievements.ts`.
 - **Night Owl / Early Bird**: session-time-of-day flavor achievements, purely cosmetic.
 
 ## Implementation note
+
+(Leaderboard placements in §7 now use the `user_achievements` table proposed below.)
+
 
 `Achievement` in `web/src/lib/achievements.ts` currently has no `category` or `tier` field and no
 unlock timestamp, because everything it computes today is re-derived from `ConceptState[]` on every

@@ -128,8 +128,11 @@ export async function logResponse(input: {
   item: Item;
   answer: string;
   grade: Grade;
+  /** Bar height (0–100, un-decayed) before and after this answer — feeds the improvement leaderboard. */
+  masteryBefore?: number;
+  masteryAfter?: number;
 }): Promise<{ error: string | null }> {
-  const { error } = await supabase.from("assessment_responses").insert({
+  const row = {
     user_id: input.userId,
     concept_id: input.item.conceptId,
     item_id: input.item.id,
@@ -147,7 +150,17 @@ export async function logResponse(input: {
     transcript: input.grade.transcript ?? null,
     transcript_confidence: input.grade.transcriptConfidence ?? null,
     confidence: input.grade.confidence,
+  };
+  let { error } = await supabase.from("assessment_responses").insert({
+    ...row,
+    mastery_before: input.masteryBefore ?? null,
+    mastery_after: input.masteryAfter ?? null,
   });
+  // Before migration 0015 the mastery columns don't exist; keep logging the
+  // response itself rather than losing it.
+  if (error && /mastery_(before|after)/.test(error.message)) {
+    ({ error } = await supabase.from("assessment_responses").insert(row));
+  }
   return { error: explainError(error?.message) };
 }
 

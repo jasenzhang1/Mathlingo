@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { InfoTip } from "./InfoTip";
 import type { Concept } from "../../data/concepts";
 import type {
   CognitiveLevel,
@@ -231,7 +232,10 @@ export function ItemEditorForm({
     <div className="space-y-5">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label className={labelClass}>Id</label>
+          <label className={labelClass}>
+            Id
+            <InfoTip>The question's permanent identifier, conventionally <code>concept--short-slug</code>. It can't change after creation: answer logs, calibration and feedback all key on it.</InfoTip>
+          </label>
           <input
             className={inputClass}
             value={id}
@@ -242,7 +246,10 @@ export function ItemEditorForm({
           {idError && <p className="mt-1 text-xs text-red-600">{idError}</p>}
         </div>
         <div>
-          <label className={labelClass}>Concept (topic)</label>
+          <label className={labelClass}>
+            Concept (topic)
+            <InfoTip>The lesson this question assesses. Its answers move this lesson's proficiency bar, and a wrong answer can pass blame to this lesson's prerequisites.</InfoTip>
+          </label>
           <select
             className={inputClass}
             value={conceptId}
@@ -263,7 +270,10 @@ export function ItemEditorForm({
       </div>
 
       <div>
-        <label className={labelClass}>Stem (question wording)</label>
+        <label className={labelClass}>
+            Stem (question wording)
+            <InfoTip>The question text the learner sees. Wrap maths in <code>$…$</code> (LaTeX) and code in backticks. In a template, <code>{'{name}'}</code> is replaced by a drawn parameter — put a space before it after a <code>{'}'}</code> or a letter, or it's read as LaTeX.</InfoTip>
+          </label>
         <textarea
           className={`${inputClass} min-h-[100px]`}
           value={stem}
@@ -273,7 +283,10 @@ export function ItemEditorForm({
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         <div>
-          <label className={labelClass}>Format</label>
+          <label className={labelClass}>
+            Format
+            <InfoTip>How the learner answers and how it's graded. <b>numeric</b>: a number (or a vector like (3, -2)), checked against the key within the tolerance. <b>symbolic</b>: an expression, graded by the AI grader. <b>mcq</b>: pick one choice. <b>multi-select</b>: pick all correct choices; partial credit. <b>short-answer</b> / <b>derivation</b>: written answers graded by the AI against the rubric. <b>interview</b>: open, interview-style; AI-graded. <b>code</b>: Python run against the code tests.</InfoTip>
+          </label>
           <select
             className={inputClass}
             value={format}
@@ -287,7 +300,10 @@ export function ItemEditorForm({
           </select>
         </div>
         <div>
-          <label className={labelClass}>Cognitive level</label>
+          <label className={labelClass}>
+            Cognitive level
+            <InfoTip>What kind of thinking the question asks for. <b>recall</b>: state a definition or fact. <b>apply</b>: use a method to compute something. <b>explain</b>: say why a method works. <b>transfer</b>: use the idea in an unfamiliar setting or combine it with earlier concepts. Sessions favour levels not yet covered, so a review isn't all one kind.</InfoTip>
+          </label>
           <select
             className={inputClass}
             value={cognitive}
@@ -301,7 +317,10 @@ export function ItemEditorForm({
           </select>
         </div>
         <div>
-          <label className={labelClass}>Status</label>
+          <label className={labelClass}>
+            Status
+            <InfoTip>Whether learners see it. <b>draft</b>: never served. <b>shadow</b>: served occasionally to gather calibration data, but doesn't move the learner's bar. <b>live</b>: served and scored. <b>quarantined</b>: pulled automatically (e.g. disputed or non-discriminating). <b>retired</b>: deleted from rotation.</InfoTip>
+          </label>
           <select
             className={inputClass}
             value={status}
@@ -315,7 +334,10 @@ export function ItemEditorForm({
           </select>
         </div>
         <div>
-          <label className={labelClass}>Channels</label>
+          <label className={labelClass}>
+            Channels
+            <InfoTip>How the learner may answer: <b>typed</b>, <b>handwritten</b> (photo or drawing, transcribed before grading) or <b>spoken</b> (dictated).</InfoTip>
+          </label>
           <div className="flex h-[38px] items-center gap-3 text-sm text-[var(--ink)]">
             {CHANNELS.map((ch) => (
               <label key={ch} className="flex items-center gap-1">
@@ -333,7 +355,10 @@ export function ItemEditorForm({
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         <div>
-          <label className={labelClass}>Difficulty (1–10)</label>
+          <label className={labelClass}>
+            Difficulty (1–10)
+            <InfoTip>Authored starting difficulty: 1 = recall a definition, 4–5 = a standard multi-step calculation, 8–9 = a derivation or unfamiliar setting, 10 = genuinely hard. Learners' answers then push the live difficulty up or down from here.</InfoTip>
+          </label>
           <input
             type="number"
             min={MIN_DIFFICULTY_LEVEL}
@@ -345,7 +370,10 @@ export function ItemEditorForm({
           />
         </div>
         <div>
-          <label className={labelClass}>Discrimination</label>
+          <label className={labelClass}>
+            Discrimination
+            <InfoTip>How sharply the question separates learners just above its difficulty from those just below (the IRT slope). 1.2 is the default; higher means each answer says more about the learner, lower suits noisy or guessable questions.</InfoTip>
+          </label>
           <input
             type="number"
             step="0.1"
@@ -355,7 +383,10 @@ export function ItemEditorForm({
           />
         </div>
         <div>
-          <label className={labelClass}>Expected seconds</label>
+          <label className={labelClass}>
+            Expected seconds
+            <InfoTip>How long a fluent learner should take. Answering much slower than this marks a review as <i>hard</i> (known, not yet fluent), which shortens the next review interval. It never lowers the score itself.</InfoTip>
+          </label>
           <input
             type="number"
             className={inputClass}
@@ -364,7 +395,10 @@ export function ItemEditorForm({
           />
         </div>
         <div>
-          <label className={labelClass}>Tolerance</label>
+          <label className={labelClass}>
+            Tolerance
+            <InfoTip>Numeric items only: relative tolerance, which also acts as an absolute floor. 0.001 accepts about three significant figures; for an answer asked to 2 decimal places use at least 0.005.</InfoTip>
+          </label>
           <input
             type="number"
             step="0.001"
@@ -378,7 +412,10 @@ export function ItemEditorForm({
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label className={labelClass}>Answer key (numeric / symbolic)</label>
+          <label className={labelClass}>
+            Answer key (numeric / symbolic)
+            <InfoTip>The correct answer for a fixed numeric or symbolic item: a number, or a vector written as (3, -2). Leave it empty for templates (the solver computes it) and for choice or written formats.</InfoTip>
+          </label>
           <input
             className={inputClass}
             value={answerKey}
@@ -386,7 +423,10 @@ export function ItemEditorForm({
           />
         </div>
         <div>
-          <label className={labelClass}>Prerequisite closure (comma-separated concept ids)</label>
+          <label className={labelClass}>
+            Prerequisite closure (comma-separated concept ids)
+            <InfoTip>Every lesson the question actually relies on: this concept plus the prerequisites it uses. A question may only draw on these, so it never secretly tests something the learner hasn't reached.</InfoTip>
+          </label>
           <input
             className={inputClass}
             value={prereqClosure}
@@ -401,6 +441,7 @@ export function ItemEditorForm({
       >
         <summary className="cursor-pointer select-none px-3 py-2 text-sm font-medium text-[var(--ink)]">
           Rubric — grading criteria and weights
+          <InfoTip>What the AI grader checks in a written answer. Each criterion is scored 0–100 and the score is their weighted average. Choice and numeric formats build their own rubric from the answer key, so this matters mainly for short-answer, derivation and interview questions.</InfoTip>
         </summary>
         <div className="p-3 pt-0">
           <RubricEditor rubric={rubric} onChange={setRubric} />
@@ -410,6 +451,7 @@ export function ItemEditorForm({
       <details className="rounded-lg border border-[var(--line)]">
         <summary className="cursor-pointer select-none px-3 py-2 text-sm font-medium text-[var(--ink)]">
           Advanced (choices, codeTests, params, source, stats — raw JSON)
+          <InfoTip><b>choices</b>: options for mcq/multi-select, each with a misconception for wrong ones. <b>codeTests</b>: checks a code answer must pass. <b>params</b> + <b>solver</b>: make a template with fresh values each time. <b>source</b>: where the question came from. <b>stats</b>: response statistics.</InfoTip>
         </summary>
         <div className="p-3 pt-0">
           <textarea

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../lib/auth/useAuth";
 import { useIsDeveloper } from "../lib/dev/devAuth";
 import { useOwnProfile } from "../lib/profiles";
+import { inboxCount } from "../lib/social/social";
 import { Avatar } from "./Avatar";
 import { GlobalSearch } from "./GlobalSearch";
 
@@ -130,6 +131,41 @@ function UserMenu() {
   );
 }
 
+/** Inbox icon with a badge for pending chat requests and unread messages. */
+function MessagesButton({ userId }: { userId: string }) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    let cancelled = false;
+    const check = () =>
+      void inboxCount(userId).then((n) => {
+        if (!cancelled) setCount(n);
+      });
+    check();
+    const timer = setInterval(check, 60_000);
+    return () => {
+      cancelled = true;
+      clearInterval(timer);
+    };
+  }, [userId]);
+
+  return (
+    <Link
+      to="/messages"
+      aria-label={count > 0 ? `Messages (${count} new)` : "Messages"}
+      className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[var(--ink-soft)] hover:text-[var(--ink)]"
+    >
+      <svg viewBox="0 0 20 20" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.6} aria-hidden="true">
+        <path d="M3.5 5.5A1.5 1.5 0 0 1 5 4h10a1.5 1.5 0 0 1 1.5 1.5v7A1.5 1.5 0 0 1 15 14H8l-3.5 2.5V14H5a1.5 1.5 0 0 1-1.5-1.5v-7Z" strokeLinejoin="round" />
+      </svg>
+      {count > 0 && (
+        <span className="font-body absolute -right-0.5 -top-0.5 min-w-[18px] rounded-full bg-[var(--accent)] px-1 text-center text-[10px] font-semibold leading-[18px] text-white">
+          {count > 9 ? "9+" : count}
+        </span>
+      )}
+    </Link>
+  );
+}
+
 function SearchToggleIcon() {
   return (
     <svg
@@ -174,6 +210,9 @@ export function Nav() {
           <Link to="/forums" className="hover:text-[var(--ink)]">
             Forums
           </Link>
+          <Link to="/leaderboard" className="hover:text-[var(--ink)]">
+            Leaderboard
+          </Link>
           <Link to="/submit" className="hover:text-[var(--ink)]">
             Submit
           </Link>
@@ -197,7 +236,10 @@ export function Nav() {
 
           <div className="flex shrink-0 items-center gap-3">
             {loading ? null : user ? (
-              <UserMenu />
+              <>
+                <MessagesButton userId={user.id} />
+                <UserMenu />
+              </>
             ) : (
               <>
                 <Link

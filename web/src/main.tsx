@@ -14,6 +14,8 @@ import { CoursesPage } from "./pages/CoursesPage.tsx";
 import { DevQuestionsPage } from "./pages/DevQuestionsPage.tsx";
 import { ForgotPasswordPage } from "./pages/ForgotPasswordPage.tsx";
 import { ForumsPage } from "./pages/ForumsPage.tsx";
+import { LeaderboardPage } from "./pages/LeaderboardPage.tsx";
+import { MessagesPage } from "./pages/MessagesPage.tsx";
 import { HowItWorksPage } from "./pages/HowItWorksPage.tsx";
 import { LoginPage } from "./pages/LoginPage.tsx";
 import { PostPage } from "./pages/PostPage.tsx";
@@ -56,6 +58,9 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/account" element={<AccountPage />} />
             <Route path="/u/:username" element={<ProfilePage />} />
             <Route path="/forums" element={<ForumsPage />} />
+            <Route path="/leaderboard" element={<LeaderboardPage />} />
+            <Route path="/messages" element={<MessagesPage />} />
+            <Route path="/messages/:username" element={<MessagesPage />} />
             <Route path="/forums/post/:postId" element={<PostPage />} />
             {/* The school forum now lives in Forums; keep old links working. */}
             <Route path="/school" element={<Navigate to="/forums?space=school" replace />} />
