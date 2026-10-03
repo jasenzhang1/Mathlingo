@@ -98,7 +98,7 @@ export function AnswerInput({
             if (e.key === "Enter" && !disabled) onSubmit();
           }}
           placeholder={
-            vector ? "e.g. (3, -2, 1/2)" : item.format === "numeric" ? "e.g. 0.4545, 45%, or 5/11" : "Your expression"
+            vector ? "e.g. [3, -2, 1/2]" : item.format === "numeric" ? "e.g. 0.4545, 45%, or 5/11" : "Your expression"
           }
           className="font-body w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-[var(--ink)] outline-none focus:border-[var(--accent)] disabled:opacity-70"
         />

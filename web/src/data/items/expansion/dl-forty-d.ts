@@ -23,7 +23,7 @@ export const dlFortyDItems: Item[] = [
   num({ concept: CP, slug: "x4-apply-gap", cognitive: "apply", level: 5, seconds: 20,
     stem: "Global average pooling of a $7 \\times 7 \\times 512$ feature map gives a vector of what length?" }, 512, 0.001),
   num({ concept: CP, slug: "x4-apply-max", cognitive: "apply", level: 5, seconds: 15,
-    stem: "What is the $2 \\times 2$ max pool of $\\begin{pmatrix}1 & 3 \\\\ 2 & 4\\end{pmatrix}$?" }, 4),
+    stem: "What is the $2 \\times 2$ max pool of $\\begin{bmatrix}1 & 3 \\\\ 2 & 4\\end{bmatrix}$?" }, 4),
   num({ concept: CP, slug: "x4-apply-avg", cognitive: "apply", level: 5.5, seconds: 15,
     stem: "What is the $2 \\times 2$ average pool of the same block?" }, 2.5),
   num({ concept: CP, slug: "x4-apply-overlap", cognitive: "apply", level: 6.5, seconds: 40,

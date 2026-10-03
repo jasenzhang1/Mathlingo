@@ -148,7 +148,7 @@ export const dmFortyCItems: Item[] = [
   short({ concept: TR, slug: "x4-transfer-matrix-tree", cognitive: "transfer", level: 9, seconds: 300,
     stem: "State Kirchhoff's matrix-tree theorem and verify it for $K_3$." },
     [["theorem", "The number of spanning trees equals any cofactor of the Laplacian $L = D - A$ (delete one row and the matching column, take the determinant).", 5, true],
-     ["k3", "For $K_3$, $L$ has $2$ on the diagonal and $-1$ elsewhere; deleting a row and column gives $\\det\\begin{pmatrix}2 & -1 \\\\ -1 & 2\\end{pmatrix} = 3$, the $3$ spanning trees.", 4, true]]),
+     ["k3", "For $K_3$, $L$ has $2$ on the diagonal and $-1$ elsewhere; deleting a row and column gives $\\det\\begin{bmatrix}2 & -1 \\\\ -1 & 2\\end{bmatrix} = 3$, the $3$ spanning trees.", 4, true]]),
   short({ concept: TR, slug: "x4-transfer-prufer-proof", cognitive: "transfer", level: 9.5, seconds: 300,
     stem: "Explain how Prüfer sequences prove Cayley's formula $n^{n-2}$." },
     [["encode", "Repeatedly remove the smallest-labelled leaf and record its neighbour until two vertices remain, giving a sequence of length $n - 2$ over $\\{1, \\ldots, n\\}$.", 5, true],

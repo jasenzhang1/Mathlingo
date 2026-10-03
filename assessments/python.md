@@ -45,7 +45,7 @@ therefore no shipped item's seeded difficulty — changed. Internally the chain 
 | `pandas-dataframes` → `numpy-arrays`, `python-dicts` | A DataFrame is a dict of Series over a shared index, and a Series is a labelled array |
 | `pandas-groupby` → `pandas-dataframes`, `python-comprehensions` | Split-apply-combine needs the frame; `transform` is the group-wise map a comprehension makes concrete |
 
-The one edge deliberately *not* added is `numpy-arrays` → `python-comprehensions`. Vectorising is
+The one edge deliberately $\textbf{NOT}$ added is `numpy-arrays` → `python-comprehensions`. Vectorising is
 routinely motivated by contrast with a comprehension, but requiring comprehensions first would put an
 optional syntax in front of the array chapter for the sake of one rhetorical comparison. The items
 frame the contrast against an explicit loop instead, which `numpy-arrays` genuinely depends on.

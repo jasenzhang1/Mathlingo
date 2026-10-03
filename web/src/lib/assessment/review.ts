@@ -1,7 +1,8 @@
 import { prereqsOf } from "../prerequisiteGraph";
-import { expFor, type ExpSnapshot } from "./exp";
+import { evidenceCap, expFor, type ExpSnapshot } from "./exp";
 import {
   applyIndirectEvidence,
+  capMastery,
   confidenceWeightedScore,
   decayConfidence,
   enforceMinExpFloor,
@@ -142,10 +143,15 @@ export function applyReview(
   const nextTarget: ConceptState = counts
     ? {
         conceptId: target.conceptId,
-        ability: enforceMinExpFloor(
-          updateAbility(target.ability, item, score),
-          expBefore.ceiling,
-          score >= PASS_THRESHOLD,
+        // Held to the evidence cap so one answer can never read as proficient,
+        // however much indirect evidence the concept had collected beforehand.
+        ability: capMastery(
+          enforceMinExpFloor(
+            updateAbility(target.ability, item, score),
+            expBefore.ceiling,
+            score >= PASS_THRESHOLD,
+          ),
+          evidenceCap(target.ability.observations + 1),
         ),
         memory,
       }

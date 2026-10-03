@@ -199,7 +199,7 @@ export const rgFortyBItems: Item[] = [
   s(VI, "x4r-not-problem", 8.5, "Why isn't a high VIF necessarily a problem?",
     "Collinearity inflates the variances of individual coefficients but not of predictions within the data range, so it's harmless for pure prediction.",
     "It's also fine among control variables you don't interpret, or when $n$ is large enough that SEs are still small; the real issue is imprecision of the coefficients you care about."),
-  n(VI, "x4r-invcorr", 9, "The VIFs are the diagonal of the inverse correlation matrix. For the correlation matrix $\\begin{pmatrix}1 & 0.6\\\\0.6 & 1\\end{pmatrix}$, compute the VIF.", 1.5625, 0.001),
+  n(VI, "x4r-invcorr", 9, "The VIFs are the diagonal of the inverse correlation matrix. For the correlation matrix $\\begin{bmatrix}1 & 0.6\\\\0.6 & 1\\end{bmatrix}$, compute the VIF.", 1.5625, 0.001),
   s(VI, "x4r-multi", 9, "Why can a VIF be large when no pairwise correlation is high?",
     "Collinearity can involve several variables: $x_1$ may be nearly a linear combination of $x_2, \\ldots, x_5$ while each pairwise correlation is modest.",
     "$R_j^2$ captures the combined linear dependence, so VIFs (or condition indices) detect what a pairwise correlation matrix misses."),

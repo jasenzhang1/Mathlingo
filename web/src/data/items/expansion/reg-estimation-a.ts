@@ -272,7 +272,7 @@ export const regEstimationAItems: Item[] = [
   num({ concept: VI, slug: "x-apply-var-coef", cognitive: "apply", level: 6, seconds: 40,
     stem: "$\\operatorname{Var}(\\hat{\\beta}_j) = \\dfrac{\\sigma^2}{(n - 1)s_j^2}\\text{VIF}_j$. With $\\sigma^2 = 10$, $n = 11$, $s_j^2 = 2$ and $\\text{VIF}_j = 4$, compute it." }, 2),
   num({ concept: VI, slug: "x-apply-inverse-corr", cognitive: "apply", level: 7, seconds: 90,
-    stem: "The predictor correlation matrix is $\\begin{pmatrix} 1 & 0.8 \\\\ 0.8 & 1 \\end{pmatrix}$. What is the $(1,1)$ entry of its inverse (the VIF of $x_1$)?" }, 2.7778, 0.002),
+    stem: "The predictor correlation matrix is $\\begin{bmatrix} 1 & 0.8 \\\\ 0.8 & 1 \\end{bmatrix}$. What is the $(1,1)$ entry of its inverse (the VIF of $x_1$)?" }, 2.7778, 0.002),
   short({ concept: VI, slug: "x-explain-limitations", cognitive: "explain", level: 7.5, seconds: 150,
     stem: "What can VIFs miss, and what complementary diagnostic helps?" },
     [["which", "VIFs flag which coefficients are affected but not which variables are involved in each near-dependency.", 4, true],

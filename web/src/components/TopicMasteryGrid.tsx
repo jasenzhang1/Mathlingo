@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { formatProficiency } from "../lib/assessment/formatProficiency";
 import { useNavigate } from "react-router-dom";
 import { expFor } from "../lib/assessment/exp";
 import type { ConceptState } from "../lib/assessment/types";
@@ -58,7 +59,7 @@ function LessonCell({
     <button
       type="button"
       onClick={onOpen}
-      title={`${concept.title}: ${Math.round(value)}/100`}
+      title={`${concept.title}: ${formatProficiency(value)}/100`}
       className="shrink-0 rounded-[3px] border border-[var(--line)] transition-transform hover:z-10 hover:scale-125"
       style={{ width: CELL, height: CELL, ...fillStyle(color, value) }}
     />
@@ -91,7 +92,7 @@ function ChapterHive({
           aria-hidden="true"
         />
         <span className="font-medium text-[var(--ink)]">{chapter.label}</span>
-        <span>· {Math.round(average)}/100 avg</span>
+        <span>· {formatProficiency(average)}/100 avg</span>
       </div>
       <div className="overflow-x-auto pb-1">
         <div className="flex w-max flex-col" style={{ gap: GAP }}>

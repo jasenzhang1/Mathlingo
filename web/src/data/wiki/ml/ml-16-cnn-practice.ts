@@ -161,7 +161,7 @@ const cnnPooling: WikiArticle = {
             "Bottom-left $\\{0, 1, 2, 6\\}$: max $6$, mean $2.25$.",
             "Bottom-right $\\{3, 2, 1, 1\\}$: max $3$, mean $1.75$.",
           ],
-          answer: "Max pooling gives $\\begin{pmatrix} 4 & 5 \\\\ 6 & 3 \\end{pmatrix}$; average pooling gives $\\begin{pmatrix} 2.5 & 2 \\\\ 2.25 & 1.75 \\end{pmatrix}$.",
+          answer: "Max pooling gives $\\begin{bmatrix} 4 & 5 \\\\ 6 & 3 \\end{bmatrix}$; average pooling gives $\\begin{bmatrix} 2.5 & 2 \\\\ 2.25 & 1.75 \\end{bmatrix}$.",
         },
       ],
     },

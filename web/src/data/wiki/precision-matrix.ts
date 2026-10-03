@@ -74,11 +74,11 @@ export const precisionMatrixWiki: WikiArticle = {
           kind: "example",
           title: "A three-variable chain",
           problem:
-            "$X \\sim \\mathcal{N}(0, \\Sigma)$ with $\\Theta = \\begin{pmatrix} 2 & -1 & 0 \\\\ -1 & 2 & -1 \\\\ 0 & -1 & 2 \\end{pmatrix}$. Which pairs are conditionally independent given the rest, what is $\\rho_{12 \\cdot 3}$, and are $X_1$ and $X_3$ marginally independent?",
+            "$X \\sim \\mathcal{N}(0, \\Sigma)$ with $\\Theta = \\begin{bmatrix} 2 & -1 & 0 \\\\ -1 & 2 & -1 \\\\ 0 & -1 & 2 \\end{bmatrix}$. Which pairs are conditionally independent given the rest, what is $\\rho_{12 \\cdot 3}$, and are $X_1$ and $X_3$ marginally independent?",
           steps: [
             "Only $\\Theta_{13} = 0$, so $X_1 \\perp X_3 \\mid X_2$; the graph is the chain $1 - 2 - 3$.",
             "$\\rho_{12 \\cdot 3} = -\\Theta_{12}/\\sqrt{\\Theta_{11}\\Theta_{22}} = 1/\\sqrt{4} = 1/2$.",
-            "Inverting, $\\det\\Theta = 4$ and $\\Sigma = \\tfrac{1}{4}\\begin{pmatrix} 3 & 2 & 1 \\\\ 2 & 4 & 2 \\\\ 1 & 2 & 3 \\end{pmatrix}$, so $\\Sigma_{13} = 1/4 \\ne 0$.",
+            "Inverting, $\\det\\Theta = 4$ and $\\Sigma = \\tfrac{1}{4}\\begin{bmatrix} 3 & 2 & 1 \\\\ 2 & 4 & 2 \\\\ 1 & 2 & 3 \\end{bmatrix}$, so $\\Sigma_{13} = 1/4 \\ne 0$.",
           ],
           answer: "$X_1 \\perp X_3 \\mid X_2$ with $\\rho_{12 \\cdot 3} = 1/2$, yet $X_1$ and $X_3$ are marginally correlated ($\\Sigma_{13} = 1/4$).",
         },

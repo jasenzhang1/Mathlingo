@@ -1,3 +1,4 @@
+import { formatProficiency } from "../lib/assessment/formatProficiency";
 import dagre, {
   type EdgeLabel,
   type GraphLabel,
@@ -5,6 +6,9 @@ import dagre, {
   type Point,
 } from "@dagrejs/dagre";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useAuth } from "../lib/auth/useAuth";
+import { unmetPrerequisites } from "../lib/lessonLock";
+import { useIsDeveloper } from "../lib/dev/devAuth";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { concepts, domainMeta, type Domain } from "../data/concepts";
 import { reducedEdges } from "../lib/prerequisiteGraph";
@@ -308,7 +312,11 @@ let savedViewBox: ViewBox | null = null;
 
 export function ConceptMap() {
   const navigate = useNavigate();
-  const { proficiency, bleeding, refresh } = useProficiency();
+  const { proficiency, ceiling, bleeding, refresh } = useProficiency();
+  const { user: viewer } = useAuth();
+  const isDeveloper = useIsDeveloper();
+  const isLocked = (conceptId: string) =>
+    !!viewer && !isDeveloper && unmetPrerequisites(conceptId, ceiling).length > 0;
   // One course at a time. Which one: the URL (?course=, so Courses can open
   // the map on a course and links are shareable), then the last one viewed
   // this visit, then the learner's first enrolled course, then the first.
@@ -606,9 +614,9 @@ export function ConceptMap() {
                 opacity={nodeOpacity(node.id)}
                 style={{ cursor: "pointer" }}
               >
-                <title>{`${node.title} — proficiency ${Math.round(
+                <title>{`${isLocked(node.id) ? "🔒 " : ""}${node.title} — proficiency ${formatProficiency(
                   proficiency.get(node.id) ?? 0,
-                )}/${MAX_PROFICIENCY}`}</title>
+                )}/${MAX_PROFICIENCY}${isLocked(node.id) ? " (locked until its prerequisites reach 65)" : ""}`}</title>
                 <ProficiencyDot
                   radius={node.radius}
                   color={domainMeta[node.domain].color}

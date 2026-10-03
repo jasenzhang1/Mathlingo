@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { formatDelta, proficiencyDelta } from "../../lib/assessment/formatProficiency";
 import { Link } from "react-router-dom";
 import { CodeText } from "./CodeText";
 import { conceptById, concepts } from "../../data/concepts";
@@ -76,9 +77,15 @@ export function AssessmentPanel({
   conceptId,
   conceptTitle,
   onStateChange,
+  active = true,
 }: {
   conceptId: string;
   conceptTitle: string;
+  /**
+   * False while the lesson page shows another tab. The panel stays mounted so
+   * the learner returns to the same question, and the answer clock pauses.
+   */
+  active?: boolean;
   /** Fired whenever this concept's persisted state changes — on initial load
    *  and after every grade — so a caller running several concepts in sequence
    *  (a review/drill session) can track live proficiency without polling. */
@@ -122,6 +129,27 @@ export function AssessmentPanel({
   const lastFormat = useRef<ItemFormat | undefined>(undefined);
   /** When the current item was shown — latency is part of the FSRS grade. */
   const shownAt = useRef<number>(0);
+
+  // Pause the answer clock while the panel is out of view — another lesson tab
+  // or another browser tab — so time spent away isn’t graded as a slow answer.
+  useEffect(() => {
+    let hiddenSince: number | null = null;
+    const sync = () => {
+      const hidden = !active || document.visibilityState === "hidden";
+      if (hidden && hiddenSince === null) hiddenSince = Date.now();
+      if (!hidden && hiddenSince !== null) {
+        if (shownAt.current) shownAt.current += Date.now() - hiddenSince;
+        hiddenSince = null;
+      }
+    };
+    sync();
+    document.addEventListener("visibilitychange", sync);
+    return () => {
+      document.removeEventListener("visibilitychange", sync);
+      // Leaving while hidden (e.g. the tab switched back): credit the time away.
+      if (hiddenSince !== null && shownAt.current) shownAt.current += Date.now() - hiddenSince;
+    };
+  }, [active]);
   /**
    * The whole sitting counts as one FSRS review, so we keep the memory state as
    * it was before the first answer and re-derive from it each time.
@@ -616,6 +644,12 @@ ${followText}`,
                 >
                   Delete (dev)
                 </button>
+                <Link
+                  to={`/dev/questions?concept=${encodeURIComponent(phase.item.conceptId)}`}
+                  className="font-body rounded-full border border-dashed border-[var(--line)] px-3 py-1 text-xs font-medium text-[var(--ink-soft)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                >
+                  Question bank (dev)
+                </Link>
               </div>
             )}
           </div>
@@ -822,9 +856,6 @@ function ItemHeader({
       <span className="rounded-full border border-[var(--line)] px-2.5 py-0.5 font-medium text-[var(--ink-soft)]">
         {levelLabel[item.cognitive] ?? item.cognitive}
       </span>
-      <span className="text-[var(--ink-soft)]">
-        ~{Math.round(item.expectedSeconds / 15) * 15 || 15}s
-      </span>
       {showDifficulty && (
         <span
           className="rounded-full border border-dashed border-[var(--line)] px-2.5 py-0.5 text-[var(--ink-soft)]"
@@ -834,6 +865,7 @@ function ItemHeader({
           {item.calibration
             ? ` · authored ${formatDifficultyLevel(item.calibration.authoredDifficulty)} · ${item.calibration.exposures} answer${item.calibration.exposures === 1 ? "" : "s"}`
             : " · uncalibrated"}
+          {` · ~${Math.round(item.expectedSeconds / 15) * 15 || 15}s expected`}
         </span>
       )}
       {item.status === "shadow" && (
@@ -889,7 +921,7 @@ function Feedback({
   item: Item;
   onNext: () => void;
 }) {
-  const delta = outcome.expAfter.value - outcome.expBefore.value;
+  const delta = proficiencyDelta(outcome.expBefore.value, outcome.expAfter.value);
   const debits = outcome.propagation.filter((p) => p.direction === "debit");
 
   return (
@@ -907,8 +939,7 @@ function Feedback({
         </span>
         {item.status === "live" && (
           <span className="font-body text-sm text-[var(--ink-soft)]">
-            {delta >= 0 ? "+" : ""}
-            {delta.toFixed(1)} proficiency
+            {formatDelta(delta)} proficiency
           </span>
         )}
       </div>

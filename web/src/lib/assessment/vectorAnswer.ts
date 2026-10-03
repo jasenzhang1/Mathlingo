@@ -2,17 +2,19 @@ import { parseNumericAnswer } from "./parseNumber";
 
 /**
  * Numeric items whose answer is a vector rather than a single number — "compute
- * $3\mathbf{x} - 2\mathbf{y}$". The key is stored as a string, "(7, -2, 4)", so
- * it fits `Item.answerKey` unchanged and reads naturally wherever it's shown.
+ * $3\mathbf{x} - 2\mathbf{y}$". The key is stored as a string, "[7, -2, 4]" —
+ * the square-bracket notation used for vectors throughout — so it fits
+ * `Item.answerKey` unchanged and reads naturally wherever it's shown. Older
+ * keys written "(7, -2, 4)" are still recognised.
  */
 
 export function formatVector(values: number[]): string {
-  return `(${values.map((v) => String(Number(v.toFixed(6)))).join(", ")})`;
+  return `[${values.map((v) => String(Number(v.toFixed(6)))).join(", ")}]`;
 }
 
-/** True when an answer key is a vector, i.e. "(…, …)". */
+/** True when an answer key is a vector, i.e. "[…, …]" (or the older "(…, …)"). */
 export function isVectorKey(key: unknown): key is string {
-  return typeof key === "string" && /^\(.*,.*\)$/.test(key.trim());
+  return typeof key === "string" && /^(\(.*,.*\)|\[.*,.*\])$/.test(key.trim());
 }
 
 /**

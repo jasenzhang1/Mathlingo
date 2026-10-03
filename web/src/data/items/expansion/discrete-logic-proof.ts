@@ -387,7 +387,7 @@ export const discreteLogicProofItems: Item[] = [
      ["descend", "Repeating reaches $\\gcd(F_2, F_1) = 1$.", 3, true]]),
   short({ concept: FB, slug: "x-explain-cassini", cognitive: "explain", level: 7.5, seconds: 200,
     stem: "Prove Cassini’s identity $F_{n+1}F_{n-1} - F_n^2 = (-1)^n$." },
-    [["matrix", "Use $\\begin{pmatrix} 1 & 1 \\\\ 1 & 0 \\end{pmatrix}^n = \\begin{pmatrix} F_{n+1} & F_n \\\\ F_n & F_{n-1} \\end{pmatrix}$ (by induction).", 4, true],
+    [["matrix", "Use $\\begin{bmatrix} 1 & 1 \\\\ 1 & 0 \\end{bmatrix}^n = \\begin{bmatrix} F_{n+1} & F_n \\\\ F_n & F_{n-1} \\end{bmatrix}$ (by induction).", 4, true],
      ["det", "Take determinants: $(-1)^n = F_{n+1}F_{n-1} - F_n^2$.", 4, true]]),
   short({ concept: FB, slug: "x-transfer-binet", cognitive: "transfer", level: 7.5, seconds: 200,
     stem: "Derive Binet’s formula $F_n = \\frac{\\varphi^n - \\psi^n}{\\sqrt{5}}$ from the recurrence." },

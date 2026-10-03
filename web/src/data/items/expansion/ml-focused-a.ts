@@ -172,7 +172,7 @@ export const mlFocusedAItems: Item[] = [
   s(DM, "f-age-income", 6, "A dataset has age (years, SD $15$) and income (dollars, SD $30{,}000$). What does Euclidean $k$-NN on the raw features effectively do, and how do you fix it?",
     "Income differences are thousands of times larger, so distance is essentially income distance and age is ignored.",
     "Standardise each feature (z-scores), use a Mahalanobis distance, or learn a metric."),
-  n(DM, "f-mahal-corr1", 6.5, "With $\\Sigma = \\begin{pmatrix}1 & 0.5\\\\0.5 & 1\\end{pmatrix}$, compute the Mahalanobis distance from $(1, 1)$ to the origin.", 1.1547, 0.001),
+  n(DM, "f-mahal-corr1", 6.5, "With $\\Sigma = \\begin{bmatrix}1 & 0.5\\\\0.5 & 1\\end{bmatrix}$, compute the Mahalanobis distance from $(1, 1)$ to the origin.", 1.1547, 0.001),
   n(DM, "f-mahal-corr2", 6.5, "With the same $\\Sigma$, compute the Mahalanobis distance from $(1, -1)$ to the origin.", 2),
   m(DM, "f-mahal-why", 7, "Under positive correlation, why is $(1, -1)$ farther from the origin than $(1, 1)$ in Mahalanobis distance?", "It goes against the correlation, in a low-density direction",
     [["Its Euclidean norm is larger", "Both have norm $\\sqrt{2}$."], ["It has a negative coordinate", "Signs alone don't matter."], ["Mahalanobis distance isn't symmetric", "It is."]]),

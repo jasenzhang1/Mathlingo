@@ -130,7 +130,7 @@ fi
 #   ./supabase/deploy.sh <ref> grade        -> only the grader
 # Note stripe-webhook relies on config.toml to disable JWT verification; it
 # authenticates by verifying Stripe's signature instead.
-ALL_FUNCTIONS="tutor grade transcribe stripe-checkout stripe-portal stripe-sync stripe-webhook publish-item-edits"
+ALL_FUNCTIONS="tutor grade transcribe stripe-checkout stripe-portal stripe-sync stripe-webhook publish-item-edits revise-item"
 
 shift || true
 FUNCTIONS="${*:-$ALL_FUNCTIONS}"

@@ -345,7 +345,7 @@ export const mlUnsupervisedAItems: Item[] = [
   num({ concept: PC, slug: "x-apply-recon", cognitive: "apply", level: 5, seconds: 30,
     stem: "Eigenvalues $6$, $3$, $1$. What is the average squared reconstruction error keeping $2$ components?" }, 1),
   num({ concept: PC, slug: "x-apply-2x2", cognitive: "apply", level: 6.5, seconds: 90,
-    stem: "Covariance $\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$. What is the variance along PC1 (its largest eigenvalue)?" }, 3),
+    stem: "Covariance $\\begin{bmatrix} 2 & 1 \\\\ 1 & 2 \\end{bmatrix}$. What is the variance along PC1 (its largest eigenvalue)?" }, 3),
   short({ concept: PC, slug: "x-explain-scaling", cognitive: "explain", level: 7, seconds: 150,
     stem: "When should PCA be done on the correlation matrix rather than the covariance matrix?" },
     [["units", "When features have different units or very different variances; otherwise large-variance features dominate the components.", 5, true],

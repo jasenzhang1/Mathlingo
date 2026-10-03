@@ -35,7 +35,7 @@ export const chapmanKolmogorovWiki: WikiArticle = {
         {
           kind: "example",
           title: "Two-step weather",
-          problem: "States sunny (S) and rainy (R) with $P = \\begin{pmatrix}0.8 & 0.2\\\\0.4 & 0.6\\end{pmatrix}$. If today is sunny, what is the probability it is sunny in two days?",
+          problem: "States sunny (S) and rainy (R) with $P = \\begin{bmatrix}0.8 & 0.2\\\\0.4 & 0.6\\end{bmatrix}$. If today is sunny, what is the probability it is sunny in two days?",
           steps: ["Sum over tomorrow: $P_{SS}P_{SS} + P_{SR}P_{RS} = 0.8 \\times 0.8 + 0.2 \\times 0.4$."],
           answer: "$0.64 + 0.08 = 0.72$ — the $(S, S)$ entry of $P^2$.",
         },
@@ -48,7 +48,7 @@ export const chapmanKolmogorovWiki: WikiArticle = {
           kind: "list",
           items: [
             "Diagonalise: if $P = V\\Lambda V^{-1}$ then $P^n = V\\Lambda^nV^{-1}$; the eigenvalue $1$ gives the long-run part and $|\\lambda_2|^n$ controls how fast the rest dies out.",
-            "For a two-state chain with $P_{12} = a$ and $P_{21} = b$, the second eigenvalue is $1 - a - b$ and $P^n \\to \\frac{1}{a + b}\\begin{pmatrix}b & a\\\\b & a\\end{pmatrix}$.",
+            "For a two-state chain with $P_{12} = a$ and $P_{21} = b$, the second eigenvalue is $1 - a - b$ and $P^n \\to \\frac{1}{a + b}\\begin{bmatrix}b & a\\\\b & a\\end{bmatrix}$.",
             "Repeated squaring computes $P^n$ in $O(\\log n)$ matrix products.",
           ],
         },
@@ -182,7 +182,7 @@ export const absorbingChainsWiki: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "P = \\begin{pmatrix}Q & R\\\\0 & I\\end{pmatrix}, \\qquad N = (I - Q)^{-1} = \\sum_{n \\ge 0}Q^n",
+          latex: "P = \\begin{bmatrix}Q & R\\\\0 & I\\end{bmatrix}, \\qquad N = (I - Q)^{-1} = \\sum_{n \\ge 0}Q^n",
           caption: "$Q$: transient→transient; $R$: transient→absorbing",
         },
         {
@@ -203,9 +203,9 @@ export const absorbingChainsWiki: WikiArticle = {
           title: "A walk on $\\lbrace 0, 1, 2, 3\\rbrace$",
           problem: "A fair walk on $\\lbrace 0, 1, 2, 3\\rbrace$ is absorbed at $0$ and $3$. Find the expected time to absorption from $1$ and the probability of ending at $3$.",
           steps: [
-            "$Q = \\begin{pmatrix}0 & \\tfrac12\\\\\\tfrac12 & 0\\end{pmatrix}$, so $N = (I - Q)^{-1} = \\frac{1}{3}\\begin{pmatrix}4 & 2\\\\2 & 4\\end{pmatrix}$.",
+            "$Q = \\begin{bmatrix}0 & \\tfrac12\\\\\\tfrac12 & 0\\end{bmatrix}$, so $N = (I - Q)^{-1} = \\frac{1}{3}\\begin{bmatrix}4 & 2\\\\2 & 4\\end{bmatrix}$.",
             "$t = N\\mathbf{1} = (2, 2)$.",
-            "$R = \\begin{pmatrix}\\tfrac12 & 0\\\\0 & \\tfrac12\\end{pmatrix}$, so $B = NR = \\frac13\\begin{pmatrix}2 & 1\\\\1 & 2\\end{pmatrix}$.",
+            "$R = \\begin{bmatrix}\\tfrac12 & 0\\\\0 & \\tfrac12\\end{bmatrix}$, so $B = NR = \\frac13\\begin{bmatrix}2 & 1\\\\1 & 2\\end{bmatrix}$.",
           ],
           answer: "From $1$: expected $2$ steps, and absorption at $3$ with probability $\\tfrac13$.",
         },
@@ -288,7 +288,7 @@ export const ergodicityWiki: WikiArticle = {
         {
           kind: "example",
           title: "Long-run weather",
-          problem: "For $P = \\begin{pmatrix}0.8 & 0.2\\\\0.4 & 0.6\\end{pmatrix}$, find the long-run fraction of sunny days.",
+          problem: "For $P = \\begin{bmatrix}0.8 & 0.2\\\\0.4 & 0.6\\end{bmatrix}$, find the long-run fraction of sunny days.",
           steps: ["Solve $\\pi P = \\pi$: $0.2\\pi_S = 0.4\\pi_R$, so $\\pi_S = 2\\pi_R$.", "Normalise: $\\pi = (\\tfrac23, \\tfrac13)$."],
           answer: "$\\tfrac23$ of days are sunny, whatever today's weather.",
         },

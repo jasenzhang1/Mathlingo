@@ -85,7 +85,7 @@ starting at position $i$ to be a longest run, you need $k$ heads there flanked b
 boundary). A candidate is expected to set up P(longest run ≥ k) via a union bound / inclusion-exclusion
 over the $n-k+1$ possible starting positions, get a good approximate answer (longest run for $n=10$
 fair flips is around 3, since $\log_2 10 \approx 3.3$), and — critically — say explicitly that an exact
-closed form isn't the efficient use of interview time. Knowing when *not* to grind out exact arithmetic
+closed form isn't the efficient use of interview time. Knowing when $\textbf{NOT}$ to grind out exact arithmetic
 is itself the skill being probed.
 
 ---

@@ -156,7 +156,7 @@ export const prFortyCItems: Item[] = [
     "Integrating (marginalising) propagates uncertainty about the nuisance parameters into the inference about the parameter of interest, giving honestly wider intervals.",
     "E.g. integrating out $\\sigma^2$ turns a normal posterior for $\\mu$ into a $t$; plugging in $\\hat\\sigma$ would understate the uncertainty."),
   n(MA, "x4p-ey", 8.5, "For $f(x, y) = e^{-y}$ on $0 < x < y$, the marginal of $Y$ is $\\mathrm{Gamma}(2, 1)$. Compute $\\mathbb{E}[Y]$.", 2),
-  n(MA, "x4p-mvn", 9, "Bivariate normal with $\\mu = (1, 2)$ and $\\Sigma = \\begin{pmatrix}4 & 1\\\\1 & 9\\end{pmatrix}$. What is the marginal SD of $Y$?", 3),
+  n(MA, "x4p-mvn", 9, "Bivariate normal with $\\mu = (1, 2)$ and $\\Sigma = \\begin{bmatrix}4 & 1\\\\1 & 9\\end{bmatrix}$. What is the marginal SD of $Y$?", 3),
   n(MA, "x4p-hier", 9, "$X \\mid \\theta \\sim \\mathcal{N}(\\theta, 1)$ and $\\theta \\sim \\mathcal{N}(0, 4)$. Compute the marginal variance of $X$.", 5),
   s(MA, "x4p-normal-margins", 9, "Why can two variables have normal marginals without being jointly normal?",
     "Joint normality is a statement about the dependence as well as the margins; any copula other than the Gaussian copula combined with normal marginals gives a non-normal joint.",

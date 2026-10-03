@@ -24,9 +24,9 @@ export interface BoardDef {
 }
 
 export const BOARDS: BoardDef[] = [
-  { id: "mastery", label: "Course ranking", blurb: "Average proficiency across every lesson in the course (unattempted lessons count as 0).", unit: "/100", periodic: false, perCourse: true, decimals: 1 },
+  { id: "mastery", label: "Course ranking", blurb: "Average proficiency across every lesson in the course (unattempted lessons count as 0).", unit: "/100", periodic: false, perCourse: true, decimals: 2 },
   { id: "answered", label: "Questions answered", blurb: "Graded assessment answers.", unit: "answered", periodic: true, perCourse: false, decimals: 0 },
-  { id: "improvement", label: "Knowledge gained", blurb: "Net rise in proficiency, summed over every lesson — wrong answers count against it.", unit: "pts", periodic: true, perCourse: false, decimals: 1 },
+  { id: "improvement", label: "Knowledge gained", blurb: "Net rise in proficiency, summed over every lesson — wrong answers count against it.", unit: "pts", periodic: true, perCourse: false, decimals: 2 },
   { id: "karma", label: "Karma", blurb: "Net votes other people gave your forum posts and analogies.", unit: "karma", periodic: true, perCourse: false, decimals: 0 },
   { id: "posts", label: "Forum posts", blurb: "Questions and problems posted to the forums.", unit: "posts", periodic: true, perCourse: false, decimals: 0 },
   { id: "analogies", label: "Analogies", blurb: "Analogies submitted to lesson boards.", unit: "analogies", periodic: true, perCourse: false, decimals: 0 },

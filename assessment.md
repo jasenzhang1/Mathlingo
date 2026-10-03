@@ -409,6 +409,18 @@ A strong learner unlocks within a session; a shaky one needs a few. Because the 
 estimate, 65 means "about a 65% chance on a level-5.5 question" — the gate is honest rather than
 padded by a lower confidence bound.
 
+**Lesson gating.** A signed-in student can open a lesson only once every direct prerequisite has a
+ceiling of at least 65 (`unmetPrerequisites` in `web/src/lib/lessonLock.ts`); until then the lesson page
+shows what is missing, and the map and list mark it 🔒. Developers bypass the gate; signed-out visitors
+can browse.
+
+**Evidence cap.** The bar can never read higher than the number of direct answers supports:
+`100 · (1 − 0.5 · 0.8^(n−1))` after `n` answers — 50, 60, 68, 74, 80, … — enforced on both the
+display and the stored belief (`evidenceCap` in `exp.ts`, `capMastery` in `mastery.ts`). Indirect
+evidence from dependent lessons can push a prerequisite's belief up before it is ever assessed;
+without the cap the first direct answer could land at 65+ and unlock on one question. With it,
+unlocking takes at least three answers.
+
 **The belief never hardens.** The ability variance has a floor of 0.5 (σ ≈ 0.7 logits), so the
 estimate never becomes so confident that new answers stop moving it. Learners have off days and keep
 learning; a learner who was once misjudged shouldn't have to grind a long streak to prove otherwise.
