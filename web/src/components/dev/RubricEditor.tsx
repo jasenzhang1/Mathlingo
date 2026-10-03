@@ -1,4 +1,5 @@
 import type { Rubric, RubricElement } from "../../lib/assessment/types";
+import { InfoTip } from "./InfoTip";
 
 /**
  * Structured editing for an item's rubric: the criteria the model grader
@@ -46,6 +47,7 @@ export function RubricEditor({
         <div className="mb-2 flex items-baseline justify-between">
           <p className="font-body text-xs font-medium uppercase tracking-wide text-[var(--ink-soft)]">
             Criteria
+            <InfoTip>The ideas a full-credit answer must show. Write each as something to understand, not a keyword to include — the grader credits the idea in any wording.</InfoTip>
           </p>
           <p className="font-body text-xs text-[var(--ink-soft)]">
             Weights are relative; the share is what each is worth.
@@ -70,7 +72,10 @@ export function RubricEditor({
                 />
                 <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[var(--ink)]">
                   <label className="flex items-center gap-2">
-                    <span className="text-xs text-[var(--ink-soft)]">Weight</span>
+                    <span className="text-xs text-[var(--ink-soft)]">
+                      Weight
+                      <InfoTip>Relative importance. A criterion's share of the score is its weight divided by the total of all weights (shown as the %). Set 0 to keep a criterion for feedback without counting it.</InfoTip>
+                    </span>
                     <input
                       type="number"
                       min={0}
@@ -93,7 +98,10 @@ export function RubricEditor({
                         setElements(patch(elements, i, { required: e.target.checked || undefined }))
                       }
                     />
-                    <span className="text-xs">Required</span>
+                    <span className="text-xs">
+                      Required
+                      <InfoTip>Load-bearing: if this criterion scores under 50, the whole answer is capped at 50 however good the rest is. Use it for the one idea an answer can't be right without.</InfoTip>
+                    </span>
                   </label>
                   <span className="font-mono text-[10px] text-[var(--ink-soft)]">{element.id}</span>
                   {element.misconception && (
@@ -130,6 +138,7 @@ export function RubricEditor({
       <div>
         <p className="font-body mb-2 text-xs font-medium uppercase tracking-wide text-[var(--ink-soft)]">
           Forbidden moves
+          <InfoTip>Invalid reasoning that reaches a right-looking result — e.g. dividing by something that may be zero, or assuming independence from zero correlation. Committing one caps the score at 30.</InfoTip>
         </p>
         <p className="font-body mb-2 text-xs text-[var(--ink-soft)]">
           Committing one caps the score at 30 — e.g. assuming independence from zero correlation.
@@ -166,6 +175,7 @@ export function RubricEditor({
       <div>
         <p className="font-body mb-1 text-xs font-medium uppercase tracking-wide text-[var(--ink-soft)]">
           Notes to the grader
+          <InfoTip>Free-text instructions the AI grader follows over the criteria's wording: alternative phrasings to accept, criteria to read loosely, common answers that deserve credit.</InfoTip>
         </p>
         <textarea
           className={`${inputClass} min-h-[60px]`}
