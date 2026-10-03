@@ -19,6 +19,7 @@ import {
   loadConceptState,
   loadRecentItemIds,
   logResponse,
+  RECENT_WINDOW,
   saveConceptStates,
 } from "../../lib/assessment/persistence";
 import {
@@ -432,7 +433,7 @@ ${followText}`,
     if (item.format === "code") codeServed.current += 1;
     lastFormat.current = item.format;
     setState(target);
-    setRecentIds((prev) => [item.id, ...prev].slice(0, 10));
+    setRecentIds((prev) => [item.id, ...prev].slice(0, RECENT_WINDOW));
     setPhase({ kind: "graded", item, grade, outcome });
 
     if (user) {

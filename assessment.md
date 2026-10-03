@@ -142,6 +142,15 @@ the number, which is the §0 commitment made operational.
 Items that resist parameterisation — "why must rank(A) ≤ min(m, n)?" — are authored once and lean on
 the rubric instead.
 
+A solver may return a **vector** ("compute $amathbf{x} + bmathbf{y}$"): the key is stored as
+"(7, -2, 4)", the learner types the entries separated by commas, and each entry is graded with the
+usual tolerance, credit being the fraction right. Linear-algebra solvers (`linearCombination`,
+`dotProduct`, `norm`, `crossProduct`, `matVec2`, `det3`, …) live in `templating.ts`, each
+cross-checked in `npm run verify:items` against an independent identity (polarisation, Sarrus,
+Lagrange's identity, residual orthogonality). Templates are authored with the `tmpl` builder — see
+`data/items/expansion/la-templates.ts`; write a space before every `{placeholder}` that follows a
+`}` or a letter, or it is read as a LaTeX argument.
+
 ### 1.6 Verification gate
 
 `verifyItem` runs the mechanical checks: prerequisite closure, licence and rewrite approval,
@@ -369,9 +378,12 @@ That split is the framework's answer to "depending on the speed and accuracy of 
 EXP = 100 × mastery × retrievability
 ```
 
-- **mastery** is the durable factor: the probability of clearing a reference-difficulty item, quoted
-  at one standard deviation *below* the ability mean. It only moves when the learner is assessed, and
-  the lower confidence bound means it has to be earned across several items rather than won on one.
+- **mastery** is the durable factor: the probability of clearing a reference-difficulty item (level
+  5.5) at the *current best estimate* of the learner's ability — not a pessimistic lower bound. A bar
+  at 33 means we think the learner sits around level 4.9, and a question at that level is pitched at
+  them. It only moves when the learner is assessed. Robustness to a lucky streak comes from the prior
+  (centred at −1.2 logits, about level 4.3: an unstudied learner isn't an even bet) and the 1-logit
+  cap on any single update, not from shading the number down.
 - **retrievability** is the perishable factor: recall probability right now, draining along the
   forgetting curve of §5 with no input from the learner at all. This is what creates the pull back to
   a topic — the Anki mechanic rendered as a bar instead of a queue.
@@ -386,15 +398,21 @@ current value, so the gate does not slam shut on a proven concept the learner ha
 fortnight. This threshold is the most consequential product dial in the framework, so its exchange
 rate is worth knowing; simulated against a pool spanning ±2.5 logits:
 
-| true ability θ | ≈ success rate on a typical item | mastery by item 10 | by item 25 | by item 60 |
-|---|---|---|---|---|
-| 2.0 | 85% | 75 | 81 | 86 |
-| 1.0 | 72% | 59 | 63 | 69 |
-| 0.0 | 50% | 32 | 36 | 43 |
+| true ability θ | honest bar | bar after 20 items (simulated) | unlocked after 20 |
+|---|---|---|---|
+| 2.0 | 92 | 89–91 | ~100% |
+| 1.0 | 77 | 72–73 | ~75% |
+| 0.0 | 50 | 46–49 | ~10% |
+| −1.0 | 23 | 21–22 | 0% |
 
-A strong learner unlocks within a session; a shaky one needs a few. Raising the gate to 80 would make
-most of the tree impassable — the conservatism is already carried by the lower confidence bound, and
-doubling up on it here just blocks everyone.
+A strong learner unlocks within a session; a shaky one needs a few. Because the bar is now the actual
+estimate, 65 means "about a 65% chance on a level-5.5 question" — the gate is honest rather than
+padded by a lower confidence bound.
+
+**The belief never hardens.** The ability variance has a floor of 0.5 (σ ≈ 0.7 logits), so the
+estimate never becomes so confident that new answers stop moving it. Learners have off days and keep
+learning; a learner who was once misjudged shouldn't have to grind a long streak to prove otherwise.
+The cost is a bar that moves noticeably in both directions on every answer, which is the point.
 
 ### 3.4 Blame flows to prerequisites
 
@@ -419,11 +437,17 @@ go and look.
 
 ### 3.5 Choosing the next question
 
-Pure maximum-information selection targets a 50% success rate: statistically optimal, motivationally
-miserable. `selectNextItem` targets **75%** — hard enough to force real retrieval and to be
-informative, easy enough that a session is not an exam — and breaks ties toward sharper items, away
-from recently-seen instances, and toward cognitive levels the session has not covered yet, so a
-review cannot end up being all arithmetic. Shadow items are penalised so they trickle through for
+Each pick draws its own target success rate (`drawTargetSuccess`): 60% of picks aim at 50–70% —
+at the learner's level, informative, and worth a real move of the bar — 20% are breathers at 80–90%,
+and 20% are stretches at 25–40%, so a learner who is better than we think gets the chance to show it.
+A small random jitter breaks ties between similarly good candidates. Selection also favours sharper
+items and cognitive levels the session hasn't covered, so a review cannot end up being all arithmetic.
+
+**No quick repeats.** The last 25 items a learner saw (across sessions, `RECENT_WINDOW`) are excluded
+outright while anything else is available — first within the difficulty band, then from the whole
+pool — rather than merely penalised. Templated items (§1.5) are the exception: they come back with
+fresh values, so they only wait two questions. A concept's pool should therefore lean on templates for
+its routine computations, keeping fixed items for the questions whose wording is the point. Shadow items are penalised so they trickle through for
 calibration without crowding out the assessment.
 
 ### 3.6 A known limit: online estimation is path-dependent
@@ -609,9 +633,9 @@ memory is the concept. Ability still updates per item — every answer is real e
 learner knows, and that is what the IRT layer is for — but memory updates once, recomputed from a
 `SessionContext.anchor` (the memory state as of before the first answer) so that applying the nth
 result is idempotent rather than compounding. `sessionGrade` collapses the sitting's item grades into
-one FSRS grade: a lapse rate at or above ⅓ makes the session `AGAIN`, otherwise the mean grade rounds
-into `HARD`/`GOOD`/`EASY`. The ⅓ is deliberately lenient because §3.5 targets a 75% success rate —
-some misses are by design and must not read as forgetting.
+one FSRS grade: a lapse rate at or above ½ makes the session `AGAIN`, otherwise the mean grade rounds
+into `HARD`/`GOOD`/`EASY`. The threshold is ½ because §3.5 aims most questions at 50–70% success and some
+well beyond the learner — a third or more misses is by design and must not read as forgetting.
 
 With that in place the same θ = 2 learner ends at ~4 days, holds 90% retrievability for three, and on
 repeat sessions answered at the due date the interval compounds 3 → 12 → 7 → 20 → 52 days, with a
@@ -666,6 +690,6 @@ a due date they have to remember to check.
 3. **Shared item difficulty across populations.** A first-year undergraduate and a quant preparing for
    interviews are not the same population, and a single `b` per item averages them. Multi-group IRT is
    the standard answer; it is worth deferring until there is enough data to see the split.
-4. **How honest to be about the bar.** Showing mastery as a lower confidence bound is defensible and
-   also means the number is lower than the learner expects. Worth testing whether the ghost-line
-   ceiling is enough to make that feel fair rather than stingy.
+4. **How honest to be about the bar.** Settled (2026-10): the bar shows the best estimate, not a
+   lower confidence bound — a pessimistic number made questions at the learner's real level look too
+   hard for the bar and made correct answers feel under-rewarded.

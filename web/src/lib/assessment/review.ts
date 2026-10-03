@@ -243,13 +243,29 @@ function applyPropagation(
 /**
  * Layer 3's other half: how hard should the *next* question be?
  *
- * Pure maximum-information selection would target a 50% success rate, which is
- * statistically optimal and motivationally miserable. We target
- * `TARGET_SUCCESS` instead — hard enough to be informative and to force
- * retrieval, easy enough that a session does not feel like an exam — and break
- * ties toward items that carry more information and have not been seen recently.
+ * Each pick draws its own target success rate rather than aiming at one fixed
+ * number, so a session mixes breathers, questions right at the learner's level
+ * and genuine stretches. Most picks aim a bit below even odds — informative,
+ * and worth a real move of the bar when answered — with occasional easy ones
+ * so a session never feels like an exam, and occasional hard ones so a learner
+ * who is better than we think gets the chance to show it.
  */
-const TARGET_SUCCESS = 0.75;
+export function drawTargetSuccess(rng: () => number = Math.random): number {
+  const u = rng();
+  const within = (low: number, high: number) => low + rng() * (high - low);
+  if (u < 0.2) return within(0.8, 0.9); // breather
+  if (u < 0.8) return within(0.5, 0.7); // at their level
+  return within(0.25, 0.4); // stretch
+}
+
+/** Random tiebreak between similarly good candidates, so the order isn't fixed. */
+const SELECTION_JITTER = 0.08;
+
+/**
+ * Templated items draw fresh values every time, so they may come back sooner
+ * than fixed ones — just not back-to-back.
+ */
+const TEMPLATE_REPEAT_GAP = 2;
 
 /**
  * How far (in difficulty logits) an item may sit from the learner's current
@@ -309,6 +325,8 @@ export interface SelectionContext {
   lastFormat?: ItemFormat;
   /** Overrides `CODE_ITEM_QUOTA`; 0 disables the code-item guarantee entirely. */
   codeQuota?: number;
+  /** Source of randomness for the difficulty target and tiebreaks (tests pass a seeded one). */
+  rng?: () => number;
 }
 
 export function selectNextItem(
@@ -337,7 +355,23 @@ export function selectNextItem(
       // in the running and the bonus below decides between them.
       (codeStillOwed && item.format === "code"),
   );
-  const pool = withinBand.length > 0 ? withinBand : servable;
+  const inBand = withinBand.length > 0 ? withinBand : servable;
+
+  // Don't repeat a question the learner has seen recently while there is
+  // anything else to ask. A fixed question invites recalling the answer
+  // rather than re-deriving it; a template only waits a couple of questions,
+  // since it comes back with new values.
+  const isRecent = (item: Item) => {
+    const index = recent.indexOf(item.id);
+    if (index < 0) return false;
+    return item.params?.length ? index < TEMPLATE_REPEAT_GAP : true;
+  };
+  const fresh = inBand.filter((item) => !isRecent(item));
+  const freshAnywhere = servable.filter((item) => !isRecent(item));
+  const pool = fresh.length > 0 ? fresh : freshAnywhere.length > 0 ? freshAnywhere : inBand;
+
+  const rng = context.rng ?? Math.random;
+  const targetSuccess = drawTargetSuccess(rng);
 
   let best: Item | undefined;
   let bestScore = -Infinity;
@@ -346,7 +380,8 @@ export function selectNextItem(
     const p = probabilityCorrect(state.ability.mean, item);
 
     // Closeness to the target success rate, on a smooth 0..1 scale.
-    let score = 1 - Math.abs(p - TARGET_SUCCESS) / 0.75;
+    let score = 1 - Math.abs(p - targetSuccess) / 0.75;
+    score += SELECTION_JITTER * rng();
 
     // Sharper items measure more per question.
     score += 0.15 * clamp(item.discrimination / 2, 0, 1);

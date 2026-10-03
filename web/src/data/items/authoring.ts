@@ -1,4 +1,4 @@
-import type { CognitiveLevel, Item, SourceRef } from "../../lib/assessment/types";
+import type { CognitiveLevel, Item, ParamSpec, SourceRef } from "../../lib/assessment/types";
 import { levelToDifficulty } from "../../lib/assessment/difficultyLevel";
 import { conceptById } from "../concepts";
 
@@ -99,5 +99,22 @@ export function makeBuilders(source: SourceRef) {
     };
   }
 
-  return { mcq, short, num };
+  /**
+   * A templated numeric item: values are drawn from `params` each time it's
+   * served and the key is computed by a registered solver (see
+   * lib/assessment/templating.ts), so it can come back without repeating.
+   * A solver that returns a vector makes it a vector-answer item.
+   */
+  function tmpl(spec: Spec, solver: string, params: ParamSpec[], tolerance = 0.001): Item {
+    return {
+      ...base(spec),
+      format: "numeric",
+      channels: ["typed", "handwritten"],
+      params,
+      solver,
+      tolerance,
+    };
+  }
+
+  return { mcq, short, num, tmpl };
 }
