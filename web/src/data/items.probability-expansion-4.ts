@@ -14,22 +14,22 @@ export const probabilityExpansion4Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "$\\operatorname{Var}(X) = 0$ if and only if:",
+    stem: "$\\text{Var}(X) = 0$ if and only if:",
     choices: [
-      { id: "choice-1", text: "X is almost surely equal to a single constant", correct: true },
+      { id: "choice-1", text: "$X$ is almost surely equal to a single constant", correct: true },
       {
         id: "choice-2",
         text: "$\\mathbb{E}[X] = 0$",
         correct: false,
         misconception: {
           id: "variance--r3--misconception-2",
-          description: "confuses zero mean with zero spread — a mean of 0 says nothing about how spread out X is",
+          description: "confuses zero mean with zero spread — a mean of $0$ says nothing about how spread out $X$ is",
           blameConceptId: "variance",
         },
       },
       {
         id: "choice-3",
-        text: "X is symmetric around its mean",
+        text: "$X$ is symmetric around its mean",
         correct: false,
         misconception: {
           id: "variance--r3--misconception-3",
@@ -39,11 +39,11 @@ export const probabilityExpansion4Items: Item[] = [
       },
       {
         id: "choice-4",
-        text: "X takes only nonnegative values",
+        text: "$X$ takes only nonnegative values",
         correct: false,
         misconception: {
           id: "variance--r3--misconception-4",
-          description: "nonnegativity of X's values has nothing to do with how spread out those values are",
+          description: "nonnegativity of $X$’s values has nothing to do with how spread out those values are",
           blameConceptId: "variance",
         },
       },
@@ -61,12 +61,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "How does $\\operatorname{Var}(-X)$ relate to $\\operatorname{Var}(X)$?",
+    stem: "How does $\\text{Var}(-X)$ relate to $\\text{Var}(X)$?",
     choices: [
-      { id: "choice-1", text: "$\\operatorname{Var}(-X) = \\operatorname{Var}(X)$", correct: true },
+      { id: "choice-1", text: "$\\text{Var}(-X) = \\text{Var}(X)$", correct: true },
       {
         id: "choice-2",
-        text: "$\\operatorname{Var}(-X) = -\\operatorname{Var}(X)$",
+        text: "$\\text{Var}(-X) = -\\text{Var}(X)$",
         correct: false,
         misconception: {
           id: "variance--r4--misconception-2",
@@ -76,7 +76,7 @@ export const probabilityExpansion4Items: Item[] = [
       },
       {
         id: "choice-3",
-        text: "$\\operatorname{Var}(-X) = 0$",
+        text: "$\\text{Var}(-X) = 0$",
         correct: false,
         misconception: {
           id: "variance--r4--misconception-3",
@@ -86,11 +86,11 @@ export const probabilityExpansion4Items: Item[] = [
       },
       {
         id: "choice-4",
-        text: "$\\operatorname{Var}(-X)$ is undefined",
+        text: "$\\text{Var}(-X)$ is undefined",
         correct: false,
         misconception: {
           id: "variance--r4--misconception-4",
-          description: "assumes variance requires nonnegative values, but −X is just as valid a random variable as X",
+          description: "assumes variance requires nonnegative values, but $-X$ is just as valid a random variable as $X$",
           blameConceptId: "variance",
         },
       },
@@ -108,7 +108,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain, from the definition $\\operatorname{Var}(X)=\\mathbb{E}[(X-\\mathbb{E}[X])^2]$, why $\\operatorname{Var}(X)$ can never be negative — and what it would mean about X if $\\operatorname{Var}(X)$ were somehow exactly 0.",
+    stem: "Explain, from the definition $\\text{Var}(X)=\\mathbb{E}\\left[(X-\\mathbb{E}[X])^2\\right]$, why $\\text{Var}(X)$ can never be negative — and what it would mean about $X$ if $\\text{Var}(X)$ were somehow exactly $0$.",
     rubric: {
       elements: [
         {
@@ -119,7 +119,7 @@ export const probabilityExpansion4Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "$\\operatorname{Var}(X)=0$ forces $(X-\\mathbb{E}[X])^2=0$ with probability 1, i.e. X equals its own mean with probability 1 — X is almost surely a constant",
+          description: "$\\text{Var}(X)=0$ forces $(X-\\mathbb{E}[X])^2=0$ with probability $1$, i.e. $X$ equals its own mean with probability $1$ — $X$ is almost surely a constant",
           weight: 1,
         },
       ],
@@ -137,7 +137,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A fair six-sided die is rolled once; let X be the outcome. Find $\\operatorname{Var}(X)$.",
+    stem: "A fair six-sided die is rolled once; let $X$ be the outcome. Find $\\text{Var}(X)$.",
     answerKey: 2.9167,
     tolerance: 0.01,
     difficulty: -0.3,
@@ -153,7 +153,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "$X \\sim \\text{Bernoulli}(0.3)$. Find $\\operatorname{Var}(X)$.",
+    stem: "$X \\sim \\text{Bernoulli}(0.3)$. Find $\\text{Var}(X)$.",
     answerKey: 0.21,
     tolerance: 0.01,
     difficulty: -0.2,
@@ -169,7 +169,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "$X \\sim \\text{Uniform}(2, 10)$ (continuous). Find $\\operatorname{Var}(X)$, using $\\operatorname{Var} = (b-a)^2/12$.",
+    stem: "$X \\sim \\text{Uniform}(2, 10)$ (continuous). Find $\\text{Var}(X)$, using $\\text{Var} = (b-a)^2/12$.",
     answerKey: 5.333,
     tolerance: 0.01,
     difficulty: -0.05,
@@ -185,7 +185,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "$\\operatorname{Var}(X) = 4$. Find $\\operatorname{Var}(3X - 5)$.",
+    stem: "$\\text{Var}(X) = 4$. Find $\\text{Var}(3X - 5)$.",
     answerKey: 36,
     tolerance: 0.01,
     difficulty: 0.1,
@@ -201,23 +201,23 @@ export const probabilityExpansion4Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Fix a random variable X and consider $g(c) = \\mathbb{E}[(X-c)^2]$ as a function of the constant c. Show $g(c)$ is minimized exactly at $c=\\mathbb{E}[X]$, and find the minimum value.",
+    stem: "Fix a random variable $X$ and consider $g(c) = \\mathbb{E}\\left[(X-c)^2\\right]$ as a function of the constant $c$. Show $g(c)$ is minimized exactly at $c=\\mathbb{E}[X]$, and find the minimum value.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "expand $g(c) = \\mathbb{E}[X^2] - 2c\\mathbb{E}[X] + c^2$, an upward-opening parabola in c",
+          description: "expand $g(c) = \\mathbb{E}[X^2] - 2c\\,\\mathbb{E}[X] + c^2$, an upward-opening parabola in $c$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "differentiate: $g'(c) = -2\\mathbb{E}[X] + 2c$, set to 0 $\\implies c = \\mathbb{E}[X]$ (and $g''(c)=2>0$ confirms a minimum)",
+          description: "differentiate: $g'(c) = -2\\mathbb{E}[X] + 2c$, set to $0$ $\\implies c = \\mathbb{E}[X]$ (and $g''(c)=2>0$ confirms a minimum)",
           weight: 1,
         },
         {
           id: "element-3",
-          description: "the minimum value is $g(\\mathbb{E}[X]) = \\mathbb{E}[X^2] - (\\mathbb{E}[X])^2 = \\operatorname{Var}(X)$ — variance IS the smallest possible mean squared deviation from any fixed point",
+          description: "the minimum value is $g(\\mathbb{E}[X]) = \\mathbb{E}[X^2] - (\\mathbb{E}[X])^2 = \\text{Var}(X)$ — variance IS the smallest possible mean squared deviation from any fixed point",
           weight: 1,
         },
       ],
@@ -235,29 +235,29 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A classmate argues: 'since $\\operatorname{Var}(X+Y)=\\operatorname{Var}(X)+\\operatorname{Var}(Y)$ whenever X,Y are independent, it must also be true that $\\operatorname{Var}(X-Y)=\\operatorname{Var}(X)-\\operatorname{Var}(Y)$.' Explain what's wrong, and state the correct formula for $\\operatorname{Var}(X-Y)$ under independence.",
+    stem: "A classmate argues: “since $\\text{Var}(X+Y)=\\text{Var}(X)+\\text{Var}(Y)$ whenever $X$, $Y$ are independent, it must also be true that $\\text{Var}(X-Y)=\\text{Var}(X)-\\text{Var}(Y)$.” Explain what’s wrong, and state the correct formula for $\\text{Var}(X-Y)$ under independence.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "variance is not linear the way expectation is; scaling Y by −1 leaves $\\operatorname{Var}(-Y)=\\operatorname{Var}(Y)$ (unlike $\\mathbb{E}[-Y]=-\\mathbb{E}[Y]$), because variance depends on the squared deviation, not the signed value",
+          description: "variance is not linear the way expectation is; scaling $Y$ by $-1$ leaves $\\text{Var}(-Y)=\\text{Var}(Y)$ (unlike $\\mathbb{E}[-Y]=-\\mathbb{E}[Y]$), because variance depends on the squared deviation, not the signed value",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "the correct formula is $\\operatorname{Var}(X-Y)=\\operatorname{Var}(X)+\\operatorname{Var}(Y)$ under independence — subtraction still ADDS variances, since $\\operatorname{Var}(X-Y)=\\operatorname{Var}(X)+\\operatorname{Var}(-Y)=\\operatorname{Var}(X)+\\operatorname{Var}(Y)$",
+          description: "the correct formula is $\\text{Var}(X-Y)=\\text{Var}(X)+\\text{Var}(Y)$ under independence — subtraction still ADDS variances, since $\\text{Var}(X-Y)=\\text{Var}(X)+\\text{Var}(-Y)=\\text{Var}(X)+\\text{Var}(Y)$",
           weight: 1,
         },
       ],
       forbiddenMoves: [
         {
           id: "misconception",
-          description: "subtracts variances directly, treating Var like E and missing that it can produce a (nonsensical) negative variance",
+          description: "subtracts variances directly, treating $\\text{Var}$ like $\\mathbb{E}$ and missing that it can produce a (nonsensical) negative variance",
           weight: 0,
           misconception: {
             id: "variance--e4--misconception",
-            description: "subtracts variances directly, treating Var like E and missing that it can produce a (nonsensical) negative variance",
+            description: "subtracts variances directly, treating $\\text{Var}$ like $\\mathbb{E}$ and missing that it can produce a (nonsensical) negative variance",
             blameConceptId: "variance",
           },
         },
@@ -276,12 +276,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A savings account holds a fixed, guaranteed \\$10,000 alongside an independent, risky investment with variance V. Explain why the variance of (guaranteed amount + risky investment) is still exactly V, no matter how large the guaranteed amount is.",
+    stem: "A savings account holds a fixed, guaranteed $\\$10{,}000$ alongside an independent, risky investment with variance $V$. Explain why the variance of (guaranteed amount $+$ risky investment) is still exactly $V$, no matter how large the guaranteed amount is.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "adding a constant only shifts every outcome by that constant, shifting the mean by the same amount but changing no deviation from the mean at all — this is $\\operatorname{Var}(X+b)=\\operatorname{Var}(X)$ for any constant b, the a=1 case of the shift-invariance already seen for $\\operatorname{Var}(aX+b)$",
+          description: "adding a constant only shifts every outcome by that constant, shifting the mean by the same amount but changing no deviation from the mean at all — this is $\\text{Var}(X+b)=\\text{Var}(X)$ for any constant $b$, the $a=1$ case of the shift-invariance already seen for $\\text{Var}(aX+b)$",
           weight: 1,
           required: true,
         },
@@ -300,18 +300,18 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A portfolio is an equally-weighted average of n independent stocks, each with variance $\\sigma^2$. Find $\\operatorname{Var}(\\text{portfolio})$ in terms of n and $\\sigma^2$, and explain why buying more independent stocks ('diversification') shrinks the portfolio's variance even though no individual stock's own risk has changed.",
+    stem: "A portfolio is an equally-weighted average of $n$ independent stocks, each with variance $\\sigma^2$. Find $\\text{Var}(\\text{portfolio})$ in terms of $n$ and $\\sigma^2$, and explain why buying more independent stocks (‘diversification’) shrinks the portfolio’s variance even though no individual stock’s own risk has changed.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$\\text{portfolio} = \\frac{1}{n}\\sum X_i$; using $\\operatorname{Var}(aX)=a^2\\operatorname{Var}(X)$ and independence-additivity across the $X_i$, $\\operatorname{Var}(\\text{portfolio}) = \\frac{1}{n^2}\\cdot(n\\sigma^2) = \\frac{\\sigma^2}{n}$",
+          description: "$\\text{portfolio} = \\frac{1}{n}\\sum X_i$; using $\\text{Var}(aX)=a^2\\,\\text{Var}(X)$ and independence-additivity across the $X_i$, $\\text{Var}(\\text{portfolio}) = \\frac{1}{n^2}\\cdot(n\\sigma^2) = \\frac{\\sigma^2}{n}$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "as n grows, $\\sigma^2/n$ shrinks toward 0 — averaging independent risks cancels out their fluctuations even though each individual stock's own variance never changes",
+          description: "as $n$ grows, $\\sigma^2/n$ shrinks toward $0$ — averaging independent risks cancels out their fluctuations even though each individual stock’s own variance never changes",
           weight: 1,
         },
       ],
@@ -329,7 +329,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "A student's GPA (0–4.0 scale) has $\\operatorname{Var}(\\text{GPA})=0.09$. The school also reports an equivalent percentage score via $\\text{percentage} = 25 \\times \\text{GPA}$. Find $\\operatorname{Var}(\\text{percentage})$.",
+    stem: "A student’s GPA ($0$–$4.0$ scale) has $\\text{Var}(\\text{GPA})=0.09$. The school also reports an equivalent percentage score via $\\text{percentage} = 25 \\times \\text{GPA}$. Find $\\text{Var}(\\text{percentage})$.",
     answerKey: 56.25,
     tolerance: 0.01,
     difficulty: 0.85,
@@ -345,29 +345,29 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A pollster increases a poll's sample size from n to 4n, keeping everything else the same. Using $\\operatorname{Var}(\\text{sample mean})=\\sigma^2/n$ (population variance $\\sigma^2$ fixed), explain what happens to the variance of the sample mean, and why the standard deviation ('margin of error') only shrinks by a factor of 2, not 4.",
+    stem: "A pollster increases a poll’s sample size from $n$ to $4n$, keeping everything else the same. Using $\\text{Var}(\\text{sample mean})=\\sigma^2/n$ (population variance $\\sigma^2$ fixed), explain what happens to the variance of the sample mean, and why the standard deviation (‘margin of error’) only shrinks by a factor of $2$, not $4$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$\\operatorname{Var}(\\text{mean})$ at $4n$ is $\\sigma^2/(4n) = \\frac{1}{4}\\cdot(\\sigma^2/n)$ — the variance drops by exactly the factor of 4 that the sample size grew by",
+          description: "$\\text{Var}(\\text{mean})$ at $4n$ is $\\sigma^2/(4n) = \\frac{1}{4}\\cdot(\\sigma^2/n)$ — the variance drops by exactly the factor of $4$ that the sample size grew by",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "standard deviation is the SQUARE ROOT of variance, so a variance shrinking by a factor of 4 makes the standard deviation shrink by $\\sqrt{4}=2$, not 4 — a direct consequence of the square root in going from Var to SD",
+          description: "standard deviation is the SQUARE ROOT of variance, so a variance shrinking by a factor of $4$ makes the standard deviation shrink by $\\sqrt{4}=2$, not $4$ — a direct consequence of the square root in going from $\\text{Var}$ to SD",
           weight: 1,
         },
       ],
       forbiddenMoves: [
         {
           id: "misconception",
-          description: "assumes standard deviation shrinks by the same factor (4) as variance, missing the square root",
+          description: "assumes standard deviation shrinks by the same factor ($4$) as variance, missing the square root",
           weight: 0,
           misconception: {
             id: "variance--t4--misconception",
-            description: "assumes standard deviation shrinks by the same factor (4) as variance, missing the square root",
+            description: "assumes standard deviation shrinks by the same factor ($4$) as variance, missing the square root",
             blameConceptId: "variance",
           },
         },
@@ -388,7 +388,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "For a continuous pair (X,Y) with joint density $f(x,y)$, which condition must hold?",
+    stem: "For a continuous pair $(X, Y)$ with joint density $f(x,y)$, which condition must hold?",
     choices: [
       { id: "choice-1", text: "$\\iint f(x,y)\\,dx\\,dy = 1$, integrated over the whole support", correct: true },
       {
@@ -397,7 +397,7 @@ export const probabilityExpansion4Items: Item[] = [
         correct: false,
         misconception: {
           id: "joint-distribution--r3--misconception-2",
-          description: "confuses density VALUES (which can exceed 1) with probabilities (which cannot)",
+          description: "confuses density VALUES (which can exceed $1$) with probabilities (which cannot)",
           blameConceptId: "joint-distribution",
         },
       },
@@ -435,7 +435,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Define the joint CDF $F(x,y)=P(X\\leq x, Y\\leq y)$ for a pair (X,Y), and state one monotonicity property it must satisfy.",
+    stem: "Define the joint CDF $F(x,y)=P(X\\leq x, Y\\leq y)$ for a pair $(X, Y)$, and state one monotonicity property it must satisfy.",
     rubric: {
       elements: [
         {
@@ -445,7 +445,7 @@ export const probabilityExpansion4Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "F is nondecreasing in each argument separately: increasing x (or y) alone can only add more outcomes to the event, so F cannot decrease",
+          description: "$F$ is nondecreasing in each argument separately: increasing $x$ (or $y$) alone can only add more outcomes to the event, so $F$ cannot decrease",
           weight: 1,
         },
       ],
@@ -463,22 +463,22 @@ export const probabilityExpansion4Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "In a discrete joint pmf table whose entries are all in [0,1] and sum to 1, which of the following can still be true?",
+    stem: "In a discrete joint pmf table whose entries are all in $[0, 1]$ and sum to $1$, which of the following can still be true?",
     choices: [
-      { id: "choice-1", text: "one cell has value 0 while all the others are positive", correct: true },
+      { id: "choice-1", text: "one cell has value $0$ while all the others are positive", correct: true },
       {
         id: "choice-2",
-        text: "one cell has value 1.3",
+        text: "one cell has value $1.3$",
         correct: false,
         misconception: {
           id: "joint-distribution--r5--misconception-2",
-          description: "a pmf entry can never exceed 1, unlike a continuous density value at a point",
+          description: "a pmf entry can never exceed $1$, unlike a continuous density value at a point",
           blameConceptId: "joint-distribution",
         },
       },
       {
         id: "choice-3",
-        text: "the entries sum to 1 but one entry is negative",
+        text: "the entries sum to $1$ but one entry is negative",
         correct: false,
         misconception: {
           id: "joint-distribution--r5--misconception-3",
@@ -546,12 +546,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Two fair six-sided dice are rolled. Let X=min of the two rolls and Y=max of the two rolls. Find $P(X=2, Y=5)$.",
+    stem: "Two fair six-sided dice are rolled. Let $X$ = min of the two rolls and $Y$ = max of the two rolls. Find $P(X=2, Y=5)$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the only outcomes giving min=2, max=5 are (2,5) and (5,2), each with probability $1/36$, so $P(X=2,Y=5) = 2/36 = 1/18$",
+          description: "the only outcomes giving $\\min = 2$, $\\max = 5$ are $(2,5)$ and $(5,2)$, each with probability $1/36$, so $P(X=2,Y=5) = 2/36 = 1/18$",
           weight: 1,
         },
       ],
@@ -569,7 +569,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "derivation",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Let (X,Y) have joint density $f(x,y)=6xy^2$ for $0\\leq x\\leq 1$, $0\\leq y\\leq 1$ (and 0 elsewhere). Verify this is a valid density, then find $P(X<0.5, Y<0.5)$.",
+    stem: "Let $(X, Y)$ have joint density $f(x,y)=6xy^2$ for $0\\leq x\\leq 1$, $0\\leq y\\leq 1$ (and $0$ elsewhere). Verify this is a valid density, then find $P(X<0.5, Y<0.5)$.",
     rubric: {
       elements: [
         {
@@ -598,12 +598,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For a continuous pair (X,Y), $P(X=x_0, Y=y_0)=0$ for any single fixed point $(x_0,y_0)$, yet the joint density $f(x_0,y_0)$ can be a large positive number. Explain why these two facts don't contradict each other.",
+    stem: "For a continuous pair $(X, Y)$, $P(X=x_0, Y=y_0)=0$ for any single fixed point $(x_0,y_0)$, yet the joint density $f(x_0,y_0)$ can be a large positive number. Explain why these two facts don’t contradict each other.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$f(x,y)$ is a DENSITY, not a probability — probability corresponds to the volume under f over a region, and a single point has zero area, so its probability is 0 regardless of how tall f is there",
+          description: "$f(x,y)$ is a DENSITY, not a probability — probability corresponds to the volume under $f$ over a region, and a single point has zero area, so its probability is $0$ regardless of how tall $f$ is there",
           weight: 1,
           required: true,
         },
@@ -627,14 +627,14 @@ export const probabilityExpansion4Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using the table $p(0,0)=0.15$, $p(0,1)=0.25$, $p(1,0)=0.20$, $p(1,1)=0.40$, compute the row and column totals, then check whether X and Y are independent.",
+    stem: "Using the table $p(0,0)=0.15$, $p(0,1)=0.25$, $p(1,0)=0.20$, $p(1,1)=0.40$, compute the row and column totals, then check whether $X$ and $Y$ are independent.",
     rubric: {
       elements: [
-        { id: "element-1", description: "row totals (X marginal): $P(X=0)=0.40$, $P(X=1)=0.60$", weight: 1, required: true },
-        { id: "element-2", description: "column totals (Y marginal): $P(Y=0)=0.35$, $P(Y=1)=0.65$", weight: 1 },
+        { id: "element-1", description: "row totals ($X$ marginal): $P(X=0)=0.40$, $P(X=1)=0.60$", weight: 1, required: true },
+        { id: "element-2", description: "column totals ($Y$ marginal): $P(Y=0)=0.35$, $P(Y=1)=0.65$", weight: 1 },
         {
           id: "element-3",
-          description: "independence would require $p(0,0)=0.40\\times 0.35=0.14$, but the table has $p(0,0)=0.15\\neq 0.14$, so X and Y are dependent",
+          description: "independence would require $p(0,0)=0.40\\times 0.35=0.14$, but the table has $p(0,0)=0.15\\neq 0.14$, so $X$ and $Y$ are dependent",
           weight: 1,
         },
       ],
@@ -652,18 +652,18 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why the joint density $f(x,y)=6xy^2$ on $[0,1]^2$ can be factored as $f(x,y)=g(x)h(y)$ with $g(x)=2x$ and $h(y)=3y^2$, and why this factorization alone (once g,h are each checked to integrate to 1) is enough to conclude X and Y are independent.",
+    stem: "Explain why the joint density $f(x,y)=6xy^2$ on $[0,1]^2$ can be factored as $f(x,y)=g(x)h(y)$ with $g(x)=2x$ and $h(y)=3y^2$, and why this factorization alone (once $g$, $h$ are each checked to integrate to $1$) is enough to conclude $X$ and $Y$ are independent.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "a joint density factoring into a function of x alone times a function of y alone, with each factor a valid density on its own, is precisely the definition of independence for continuous random variables",
+          description: "a joint density factoring into a function of $x$ alone times a function of $y$ alone, with each factor a valid density on its own, is precisely the definition of independence for continuous random variables",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "here $g(x)=2x$ integrates to 1 over $[0,1]$ and $h(y)=3y^2$ integrates to 1 over $[0,1]$ `[verified]`, so $f(x,y)=g(x)h(y)$ confirms $X \\perp\\!\\!\\!\\perp Y$ — unlike the earlier discrete table, no dependence exists in this joint distribution",
+          description: "here $g(x)=2x$ integrates to $1$ over $[0,1]$ and $h(y)=3y^2$ integrates to $1$ over $[0,1]$ `[verified]`, so $f(x,y)=g(x)h(y)$ confirms $X \\perp\\!\\!\\!\\perp Y$ — unlike the earlier discrete table, no dependence exists in this joint distribution",
           weight: 1,
         },
       ],
@@ -681,18 +681,18 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A survey cross-tabulates 100 respondents by (satisfaction: low/high) and (would-recommend: no/yes), with raw counts 40, 10, 20, 30 in the four cells (low&no, low&yes, high&no, high&yes respectively). Convert this into a joint distribution, and explain what information it captures that the separate 'percent satisfied' and 'percent recommending' headline numbers do not.",
+    stem: "A survey cross-tabulates $100$ respondents by (satisfaction: low/high) and (would-recommend: no/yes), with raw counts $40$, $10$, $20$, $30$ in the four cells (low & no, low & yes, high & no, high & yes respectively). Convert this into a joint distribution, and explain what information it captures that the separate ‘percent satisfied’ and ‘percent recommending’ headline numbers do not.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "dividing each count by 100 gives the joint pmf: $p(\\text{low},\\text{no})=0.40$, $p(\\text{low},\\text{yes})=0.10$, $p(\\text{high},\\text{no})=0.20$, $p(\\text{high},\\text{yes})=0.30$",
+          description: "dividing each count by $100$ gives the joint pmf: $p(\\text{low},\\text{no})=0.40$, $p(\\text{low},\\text{yes})=0.10$, $p(\\text{high},\\text{no})=0.20$, $p(\\text{high},\\text{yes})=0.30$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "the joint table reveals HOW satisfaction and recommendation co-occur in the same people — e.g. that 10% are dissatisfied yet still recommend, and 20% are satisfied yet don't recommend — patterns the two separate marginal percentages alone could never distinguish from many other joint tables sharing the same marginals",
+          description: "the joint table reveals HOW satisfaction and recommendation co-occur in the same people — e.g. that $10\\%$ are dissatisfied yet still recommend, and $20\\%$ are satisfied yet don’t recommend — patterns the two separate marginal percentages alone could never distinguish from many other joint tables sharing the same marginals",
           weight: 1,
         },
       ],
@@ -710,7 +710,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Neighboring pixels in a photograph, X and Y, tend to have similar brightness because real images are locally smooth. Explain why a compression algorithm that stores only the separate marginal brightness histograms for X and for Y, with no joint information, fails to exploit this smoothness, and what the joint distribution captures that the two marginals miss.",
+    stem: "Neighboring pixels in a photograph, $X$ and $Y$, tend to have similar brightness because real images are locally smooth. Explain why a compression algorithm that stores only the separate marginal brightness histograms for $X$ and for $Y$, with no joint information, fails to exploit this smoothness, and what the joint distribution captures that the two marginals miss.",
     rubric: {
       elements: [
         {
@@ -721,7 +721,7 @@ export const probabilityExpansion4Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "because the joint distribution concentrates mass near $X \\approx Y$ for smooth images, encoding the difference $X-Y$ (compactly distributed) needs far fewer bits than encoding X and Y as if they were independent — exploiting exactly the joint structure the marginals discard",
+          description: "because the joint distribution concentrates mass near $X \\approx Y$ for smooth images, encoding the difference $X-Y$ (compactly distributed) needs far fewer bits than encoding $X$ and $Y$ as if they were independent — exploiting exactly the joint structure the marginals discard",
           weight: 1,
         },
       ],
@@ -739,12 +739,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A quality-control engineer records, per manufactured part, (X = length deviation from spec, Y = weight deviation from spec). A defect causes long parts to also be heavy. Explain why modeling X and Y jointly, rather than tracking two separate univariate control charts, is essential for detecting this kind of defect.",
+    stem: "A quality-control engineer records, per manufactured part, ($X$ = length deviation from spec, $Y$ = weight deviation from spec). A defect causes long parts to also be heavy. Explain why modeling $X$ and $Y$ jointly, rather than tracking two separate univariate control charts, is essential for detecting this kind of defect.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "if X and Y are tracked only marginally, a part can look normal on the length chart AND normal on the weight chart individually, while still being a highly improbable (X,Y) combination jointly — exactly the signature this defect produces",
+          description: "if $X$ and $Y$ are tracked only marginally, a part can look normal on the length chart AND normal on the weight chart individually, while still being a highly improbable $(X, Y)$ combination jointly — exactly the signature this defect produces",
           weight: 1,
           required: true,
         },
@@ -772,10 +772,10 @@ export const probabilityExpansion4Items: Item[] = [
     channels: ["typed", "handwritten"],
     stem: "Given a continuous joint density $f(x,y)$, the marginal density $f_Y(y)$ is obtained by:",
     choices: [
-      { id: "choice-1", text: "integrating $f(x,y)$ over all x, holding y fixed: $f_Y(y)=\\int f(x,y)\\,dx$", correct: true },
+      { id: "choice-1", text: "integrating $f(x,y)$ over all $x$, holding $y$ fixed: $f_Y(y)=\\int f(x,y)\\,dx$", correct: true },
       {
         id: "choice-2",
-        text: "evaluating $f(x,y)$ at one fixed value of x",
+        text: "evaluating $f(x,y)$ at one fixed value of $x$",
         correct: false,
         misconception: {
           id: "marginal-distribution--r3--misconception-2",
@@ -785,7 +785,7 @@ export const probabilityExpansion4Items: Item[] = [
       },
       {
         id: "choice-3",
-        text: "differentiating $f(x,y)$ with respect to x",
+        text: "differentiating $f(x,y)$ with respect to $x$",
         correct: false,
         misconception: {
           id: "marginal-distribution--r3--misconception-3",
@@ -795,11 +795,11 @@ export const probabilityExpansion4Items: Item[] = [
       },
       {
         id: "choice-4",
-        text: "taking the maximum of $f(x,y)$ over x",
+        text: "taking the maximum of $f(x,y)$ over $x$",
         correct: false,
         misconception: {
           id: "marginal-distribution--r3--misconception-4",
-          description: "confuses marginalizing (an averaging/summing operation) with an optimization over x",
+          description: "confuses marginalizing (an averaging/summing operation) with an optimization over $x$",
           blameConceptId: "marginal-distribution",
         },
       },
@@ -817,12 +817,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "True or false, with justification: the marginal distribution of X can always be recovered from the joint distribution of (X,Y), but the joint distribution generally CANNOT be recovered from the two marginals alone.",
+    stem: "True or false, with justification: the marginal distribution of $X$ can always be recovered from the joint distribution of $(X, Y)$, but the joint distribution generally CANNOT be recovered from the two marginals alone.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "true — marginalizing (summing or integrating out Y) is a well-defined, unique operation on the joint, so the marginal is always recoverable from it",
+          description: "true — marginalizing (summing or integrating out $Y$) is a well-defined, unique operation on the joint, so the marginal is always recoverable from it",
           weight: 1,
           required: true,
         },
@@ -846,16 +846,16 @@ export const probabilityExpansion4Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "If X and Y are independent, the marginal density $f_X(x)$ can also be written as:",
+    stem: "If $X$ and $Y$ are independent, the marginal density $f_X(x)$ can also be written as:",
     choices: [
-      { id: "choice-1", text: "$f(x,y)/f_Y(y)$, for any y with $f_Y(y)>0$ — under independence this ratio doesn't depend on y", correct: true },
+      { id: "choice-1", text: "$f(x,y)/f_Y(y)$, for any $y$ with $f_Y(y)>0$ — under independence this ratio doesn’t depend on $y$", correct: true },
       {
         id: "choice-2",
         text: "$f(x,y)$ itself, since independence makes the joint and marginal identical",
         correct: false,
         misconception: {
           id: "marginal-distribution--r5--misconception-2",
-          description: "confuses the joint density (a function of both x and y) with the marginal density (a function of x alone)",
+          description: "confuses the joint density (a function of both $x$ and $y$) with the marginal density (a function of $x$ alone)",
           blameConceptId: "marginal-distribution",
         },
       },
@@ -893,7 +893,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For the joint density $f(x,y)=6xy^2$ on $[0,1]^2$, find the marginal densities $f_X(x)$ and $f_Y(y)$, and verify each integrates to 1.",
+    stem: "For the joint density $f(x,y)=6xy^2$ on $[0,1]^2$, find the marginal densities $f_X(x)$ and $f_Y(y)$, and verify each integrates to $1$.",
     rubric: {
       elements: [
         { id: "element-1", description: "$f_X(x) = \\int_0^1 6xy^2\\,dy = 2x$, for $0\\leq x\\leq 1$", weight: 1 },
@@ -914,7 +914,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For the joint density $f(x,y)=2$ on the triangular region $0<x<y<1$ (0 elsewhere), find the marginal density $f_X(x)$.",
+    stem: "For the joint density $f(x,y)=2$ on the triangular region $0<x<y<1$ ($0$ elsewhere), find the marginal density $f_X(x)$.",
     rubric: {
       elements: [
         { id: "element-1", description: "$f_X(x) = \\int_x^1 2\\,dy = 2(1-x)$, for $0<x<1$", weight: 1 },
@@ -923,11 +923,11 @@ export const probabilityExpansion4Items: Item[] = [
       forbiddenMoves: [
         {
           id: "misconception",
-          description: "integrates y from 0 to 1 instead of from x to 1, ignoring that the triangular support restricts y to be above x",
+          description: "integrates $y$ from $0$ to $1$ instead of from $x$ to $1$, ignoring that the triangular support restricts $y$ to be above $x$",
           weight: 0,
           misconception: {
             id: "marginal-distribution--a4--misconception",
-            description: "integrates y from 0 to 1 instead of from x to 1, ignoring that the triangular support restricts y to be above x",
+            description: "integrates $y$ from $0$ to $1$ instead of from $x$ to $1$, ignoring that the triangular support restricts $y$ to be above $x$",
             blameConceptId: "marginal-distribution",
           },
         },
@@ -946,7 +946,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Two fair six-sided dice are rolled; let M=max of the two rolls. Find $P(M=5)$.",
+    stem: "Two fair six-sided dice are rolled; let $M$ = max of the two rolls. Find $P(M=5)$.",
     answerKey: 0.25,
     tolerance: 0.01,
     difficulty: 0.35,
@@ -962,7 +962,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using the table $p(0,0)=0.15$, $p(0,1)=0.25$, $p(1,0)=0.20$, $p(1,1)=0.40$, find the marginal pmf of X.",
+    stem: "Using the table $p(0,0)=0.15$, $p(0,1)=0.25$, $p(1,0)=0.20$, $p(1,1)=0.40$, find the marginal pmf of $X$.",
     rubric: {
       elements: [{ id: "element-1", description: "$P(X=0)=0.15+0.25=0.40$; $P(X=1)=0.20+0.40=0.60$", weight: 1 }],
     },
@@ -979,7 +979,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove that the marginal density $f_X(x)=\\int f(x,y)\\,dy$ of a valid joint density is itself a valid density: nonnegative and integrating to 1.",
+    stem: "Prove that the marginal density $f_X(x)=\\int f(x,y)\\,dy$ of a valid joint density is itself a valid density: nonnegative and integrating to $1$.",
     rubric: {
       elements: [
         {
@@ -1008,7 +1008,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For the joint density $f(x,y)=6xy^2$ on $[0,1]^2$, show $f(x,y)$ factors as $f_X(x)\\cdot f_Y(y)$, and explain what this factorization tells you about X and Y that neither marginal alone reveals.",
+    stem: "For the joint density $f(x,y)=6xy^2$ on $[0,1]^2$, show $f(x,y)$ factors as $f_X(x)\\cdot f_Y(y)$, and explain what this factorization tells you about $X$ and $Y$ that neither marginal alone reveals.",
     rubric: {
       elements: [
         {
@@ -1019,7 +1019,7 @@ export const probabilityExpansion4Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "this factorization is precisely the definition of independence — a fact invisible from f_X or f_Y in isolation, only detectable by checking the joint equals their product",
+          description: "this factorization is precisely the definition of independence — a fact invisible from $f_X$ or $f_Y$ in isolation, only detectable by checking the joint equals their product",
           weight: 1,
         },
       ],
@@ -1042,13 +1042,13 @@ export const probabilityExpansion4Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "$f_1(x,y)=2x$ (uniform in y, independent of x) has $f_X(x)=\\int_0^1 2x\\,dy=2x$",
+          description: "$f_1(x,y)=2x$ (uniform in $y$, independent of $x$) has $f_X(x)=\\int_0^1 2x\\,dy=2x$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "$f_2(x,y)=6xy^2$ also has $f_X(x)=\\int_0^1 6xy^2\\,dy=2x$ `[verified]`, yet $f_1$ and $f_2$ are visibly different functions ($f_1$ is flat in y, $f_2$ grows like $y^2$) — proving the X-marginal alone cannot distinguish between very different joint structures",
+          description: "$f_2(x,y)=6xy^2$ also has $f_X(x)=\\int_0^1 6xy^2\\,dy=2x$ `[verified]`, yet $f_1$ and $f_2$ are visibly different functions ($f_1$ is flat in $y$, $f_2$ grows like $y^2$) — proving the $X$-marginal alone cannot distinguish between very different joint structures",
           weight: 1,
         },
       ],
@@ -1124,12 +1124,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A logistics company knows the marginal distribution of (number of packages per truck). A manager claims this alone tells them the expected number of LATE packages, 'since the marginal has all the information about packages.' Using the max-of-two-dice marginal (P(M=5)=0.25) as an analogy, explain why a marginal — however completely it describes ONE variable — cannot answer a question that inherently depends on a SECOND variable.",
+    stem: "A logistics company knows the marginal distribution of (number of packages per truck). A manager claims this alone tells them the expected number of LATE packages, “since the marginal has all the information about packages.” Using the max-of-two-dice marginal ($P(M=5)=0.25$) as an analogy, explain why a marginal — however completely it describes ONE variable — cannot answer a question that inherently depends on a SECOND variable.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "a marginal fully describes one variable in isolation (e.g. packages per truck, or M=max of two dice) — that is a complete, valid answer to questions about that one variable alone",
+          description: "a marginal fully describes one variable in isolation (e.g. packages per truck, or $M$ = max of two dice) — that is a complete, valid answer to questions about that one variable alone",
           weight: 1,
         },
         {
@@ -1155,7 +1155,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "For discrete X,Y, the conditional pmf $p(y|x)=p(x,y)/p_X(x)$ requires:",
+    stem: "For discrete $X$, $Y$, the conditional pmf $p(y \\mid x)=p(x,y)/p_X(x)$ requires:",
     choices: [
       { id: "choice-1", text: "$p_X(x) > 0$", correct: true },
       {
@@ -1180,7 +1180,7 @@ export const probabilityExpansion4Items: Item[] = [
       },
       {
         id: "choice-4",
-        text: "X and Y independent",
+        text: "$X$ and $Y$ independent",
         correct: false,
         misconception: {
           id: "conditional-distribution--r3--misconception-4",
@@ -1225,22 +1225,22 @@ export const probabilityExpansion4Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "For continuous (X,Y), the conditional density $f(y|x)$ is a valid density in y for any fixed x with $f_X(x)>0$. Which is true?",
+    stem: "For continuous $(X, Y)$, the conditional density $f(y \\mid x)$ is a valid density in $y$ for any fixed $x$ with $f_X(x)>0$. Which is true?",
     choices: [
-      { id: "choice-1", text: "$\\int f(y|x)\\,dy = 1$, for each fixed x", correct: true },
+      { id: "choice-1", text: "$\\int f(y \\mid x)\\,dy = 1$, for each fixed $x$", correct: true },
       {
         id: "choice-2",
         text: "$\\iint f(y|x)\\,dx\\,dy = 1$",
         correct: false,
         misconception: {
           id: "conditional-distribution--r5--misconception-2",
-          description: "integrates over x as well, even though x is held fixed once we're conditioning on X=x",
+          description: "integrates over $x$ as well, even though $x$ is held fixed once we’re conditioning on $X=x$",
           blameConceptId: "conditional-distribution",
         },
       },
       {
         id: "choice-3",
-        text: "$f(y|x) = f(x,y)$, whenever X and Y are independent",
+        text: "$f(y \\mid x) = f(x,y)$, whenever $X$ and $Y$ are independent",
         correct: false,
         misconception: {
           id: "conditional-distribution--r5--misconception-3",
@@ -1250,11 +1250,11 @@ export const probabilityExpansion4Items: Item[] = [
       },
       {
         id: "choice-4",
-        text: "$f(y|x)$ is symmetric in x and y",
+        text: "$f(y \\mid x)$ is symmetric in $x$ and $y$",
         correct: false,
         misconception: {
           id: "conditional-distribution--r5--misconception-4",
-          description: "there is no reason f(y|x), which fixes x and varies y, should equal the function you'd get by swapping the two roles",
+          description: "there is no reason $f(y \\mid x)$, which fixes $x$ and varies $y$, should equal the function you’d get by swapping the two roles",
           blameConceptId: "conditional-distribution",
         },
       },
@@ -1272,7 +1272,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For the joint density $f(x,y)=2$ on $0<x<y<1$, find the conditional density $f(y|x)$ of Y given X=x, and name the resulting distribution.",
+    stem: "For the joint density $f(x,y)=2$ on $0<x<y<1$, find the conditional density $f(y \\mid x)$ of $Y$ given $X=x$, and name the resulting distribution.",
     rubric: {
       elements: [
         {
@@ -1282,7 +1282,7 @@ export const probabilityExpansion4Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "this is exactly the density of $\\text{Uniform}(x,1)$ — given X=x, Y is uniformly spread over the remaining interval $(x,1)$",
+          description: "this is exactly the density of $\\text{Uniform}(x,1)$ — given $X=x$, $Y$ is uniformly spread over the remaining interval $(x,1)$",
           weight: 1,
         },
       ],
@@ -1300,11 +1300,11 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using the same triangular joint density $f(x,y)=2$ on $0<x<y<1$, find the conditional density $f(x|y)$ of X given Y=y.",
+    stem: "Using the same triangular joint density $f(x,y)=2$ on $0<x<y<1$, find the conditional density $f(x \\mid y)$ of $X$ given $Y=y$.",
     rubric: {
       elements: [
         { id: "element-1", description: "$f_Y(y)=2y$, so $f(x|y)=f(x,y)/f_Y(y)=2/(2y)=1/y$, for $0<x<y$", weight: 1 },
-        { id: "element-2", description: "this is $\\text{Uniform}(0,y)$ — given Y=y, X is uniform on $(0,y)$", weight: 1 },
+        { id: "element-2", description: "this is $\\text{Uniform}(0,y)$ — given $Y=y$, $X$ is uniform on $(0,y)$", weight: 1 },
       ],
     },
     difficulty: 0.25,
@@ -1320,13 +1320,13 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For $f(x,y)=6xy^2$ on $[0,1]^2$, find $f(y|x)$. What do you notice, and what does it imply about X and Y?",
+    stem: "For $f(x,y)=6xy^2$ on $[0,1]^2$, find $f(y \\mid x)$. What do you notice, and what does it imply about $X$ and $Y$?",
     rubric: {
       elements: [
-        { id: "element-1", description: "$f(y|x)=6xy^2/(2x)=3y^2$ for $0\\leq y\\leq 1$ — this does NOT depend on x at all", weight: 1 },
+        { id: "element-1", description: "$f(y \\mid x)=6xy^2/(2x)=3y^2$ for $0\\leq y\\leq 1$ — this does NOT depend on $x$ at all", weight: 1 },
         {
           id: "element-2",
-          description: "since the conditional distribution of Y given X=x is the same for every x (always $3y^2$, matching $f_Y(y)$ itself), X and Y must be independent",
+          description: "since the conditional distribution of $Y$ given $X=x$ is the same for every $x$ (always $3y^2$, matching $f_Y(y)$ itself), $X$ and $Y$ must be independent",
           weight: 1,
         },
       ],
@@ -1344,7 +1344,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Two fair dice are rolled; X=min, Y=max. Given X=2, find $P(Y=5 \\mid X=2)$.",
+    stem: "Two fair dice are rolled; $X$ = min, $Y$ = max. Given $X=2$, find $P(Y=5 \\mid X=2)$.",
     answerKey: 0.2222,
     tolerance: 0.02,
     difficulty: 0.6,
@@ -1360,12 +1360,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove that $f(y|x)=1/(1-x)$ (the $\\text{Uniform}(x,1)$ conditional found for the triangular joint density) does integrate to 1 over y, for any fixed x in $(0,1)$.",
+    stem: "Prove that $f(y \\mid x)=1/(1-x)$ (the $\\text{Uniform}(x,1)$ conditional found for the triangular joint density) does integrate to $1$ over $y$, for any fixed $x$ in $(0,1)$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$\\int_x^1 1/(1-x)\\,dy = (1/(1-x))\\cdot(1-x) = 1$, confirming it's a valid density in y for each fixed x `[verified]`",
+          description: "$\\int_x^1 \\dfrac{1}{1-x}\\,dy = \\dfrac{1}{1-x}\\cdot(1-x) = 1$, confirming it’s a valid density in $y$ for each fixed $x$ `[verified]`",
           weight: 1,
           required: true,
         },
@@ -1384,18 +1384,18 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using the triangular example ($f(y|x)=\\text{Uniform}(x,1)$), explain why the conditional distribution's SUPPORT can itself depend on x, not just its shape — and why this differs fundamentally from the independent example $f(x,y)=6xy^2$, where the support of Y given X=x is always all of $[0,1]$.",
+    stem: "Using the triangular example ($f(y \\mid x)$ is $\\text{Uniform}(x,1)$), explain why the conditional distribution’s SUPPORT can itself depend on $x$, not just its shape — and why this differs fundamentally from the independent example $f(x,y)=6xy^2$, where the support of $Y$ given $X=x$ is always all of $[0,1]$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "in the triangular example, Y's possible values given X=x are restricted to $(x,1)$ — a range that literally shrinks as x increases, so conditioning changes not just the probabilities but which outcomes are even possible",
+          description: "in the triangular example, $Y$’s possible values given $X=x$ are restricted to $(x,1)$ — a range that literally shrinks as $x$ increases, so conditioning changes not just the probabilities but which outcomes are even possible",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "in the independent example, the support of Y given X=x is $[0,1]$ for every x — conditioning changes nothing at all, the sharpest possible signature of independence",
+          description: "in the independent example, the support of $Y$ given $X=x$ is $[0,1]$ for every $x$ — conditioning changes nothing at all, the sharpest possible signature of independence",
           weight: 1,
         },
       ],
@@ -1413,23 +1413,23 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why 'X and Y are independent' is logically equivalent to '$f(y|x)$ does not depend on x, for (almost) every x' — and connect this to why the a5 example ($f(y|x)=3y^2$, independent of x) is the independent one, while the a3/a4 example ($f(y|x)=1/(1-x)$, which does depend on x) is not.",
+    stem: "Explain why ‘$X$ and $Y$ are independent’ is logically equivalent to ‘$f(y \\mid x)$ does not depend on $x$, for (almost) every $x$’ — and connect this to why the a5 example ($f(y \\mid x)=3y^2$, independent of $x$) is the independent one, while the a3/a4 example ($f(y \\mid x)=1/(1-x)$, which does depend on $x$) is not.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "independence means $f(x,y)=f_X(x)f_Y(y)$, so $f(y|x)=f(x,y)/f_X(x)=f_Y(y)$ for every x — no dependence on x remains",
+          description: "independence means $f(x,y)=f_X(x)f_Y(y)$, so $f(y \\mid x)=f(x,y)/f_X(x)=f_Y(y)$ for every $x$ — no dependence on $x$ remains",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "conversely, if $f(y|x)$ is the same function of y for every x, that common function must equal $f_Y(y)$, and then $f(x,y)=f(y|x)f_X(x)=f_Y(y)f_X(x)$, the independence factorization",
+          description: "conversely, if $f(y \\mid x)$ is the same function of $y$ for every $x$, that common function must equal $f_Y(y)$, and then $f(x,y)=f(y \\mid x)f_X(x)=f_Y(y)f_X(x)$, the independence factorization",
           weight: 1,
         },
         {
           id: "element-3",
-          description: "this exactly separates the two running examples: $3y^2$ has no x in it (independent), while $1/(1-x)$ visibly changes with x (dependent)",
+          description: "this exactly separates the two running examples: $3y^2$ has no $x$ in it (independent), while $1/(1-x)$ visibly changes with $x$ (dependent)",
           weight: 1,
         },
       ],
@@ -1476,12 +1476,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A weather model uses $f(\\text{rainfall tomorrow} \\mid \\text{today's humidity})$ rather than the marginal distribution of rainfall. Using the triangular-density example's shrinking support (Y's range $(x,1)$ shrinks as x grows) as an analogy, explain why conditioning on today's humidity can not just shift the probabilities of tomorrow's rainfall but effectively rule some amounts out almost entirely.",
+    stem: "A weather model uses $f(\\text{rainfall tomorrow} \\mid \\text{today's humidity})$ rather than the marginal distribution of rainfall. Using the triangular-density example’s shrinking support ($Y$’s range $(x,1)$ shrinks as $x$ grows) as an analogy, explain why conditioning on today’s humidity can not just shift the probabilities of tomorrow’s rainfall but effectively rule some amounts out almost entirely.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "just as Y's possible range $(x,1)$ shrank as x grew in the triangular example, physical conditioning (e.g. very low humidity today) can make some future outcomes (heavy rainfall) so improbable under the conditional distribution that they are effectively excluded, even though they remain possible under the unconditional marginal",
+          description: "just as $Y$’s possible range $(x,1)$ shrank as $x$ grew in the triangular example, physical conditioning (e.g. very low humidity today) can make some future outcomes (heavy rainfall) so improbable under the conditional distribution that they are effectively excluded, even though they remain possible under the unconditional marginal",
           weight: 1,
           required: true,
         },
@@ -1500,7 +1500,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "In A/B testing, an analyst wants $P(\\text{user converts} \\mid \\text{shown variant B})$. Explain why this conditional quantity, not the marginal $P(\\text{converts})$ averaged over both variants, is what actually answers 'does variant B cause more conversions,' and connect this to how conditioning on X=2 changed $P(Y=5)$ in the a6 dice example.",
+    stem: "In A/B testing, an analyst wants $P(\\text{user converts} \\mid \\text{shown variant B})$. Explain why this conditional quantity, not the marginal $P(\\text{converts})$ averaged over both variants, is what actually answers ‘does variant B cause more conversions’, and connect this to how conditioning on $X=2$ changed $P(Y=5)$ in the a6 dice example.",
     rubric: {
       elements: [
         {
@@ -1511,7 +1511,7 @@ export const probabilityExpansion4Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "just as conditioning on X=2 changed $P(Y=5)$ from its unconditional value to $2/9$, conditioning on which variant a user saw changes the conversion probability from its blended marginal value to the variant-specific conditional value the experiment actually needs",
+          description: "just as conditioning on $X=2$ changed $P(Y=5)$ from its unconditional value to $2/9$, conditioning on which variant a user saw changes the conversion probability from its blended marginal value to the variant-specific conditional value the experiment actually needs",
           weight: 1,
         },
       ],
@@ -1531,36 +1531,36 @@ export const probabilityExpansion4Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "$\\operatorname{Cov}(X, c)$ for a constant c equals:",
+    stem: "$\\text{Cov}(X, c)$ for a constant $c$ equals:",
     choices: [
-      { id: "choice-1", text: "0", correct: true },
+      { id: "choice-1", text: "$0$", correct: true },
       {
         id: "choice-2",
-        text: "c",
+        text: "$c$",
         correct: false,
         misconception: {
           id: "covariance--r3--misconception-2",
-          description: "treats a constant as if it has its own variability that can co-vary with X",
+          description: "treats a constant as if it has its own variability that can co-vary with $X$",
           blameConceptId: "covariance",
         },
       },
       {
         id: "choice-3",
-        text: "$\\operatorname{Var}(X)$",
+        text: "$\\text{Var}(X)$",
         correct: false,
         misconception: {
           id: "covariance--r3--misconception-3",
-          description: "confuses covariance with a constant with the covariance of X with itself",
+          description: "confuses covariance with a constant with the covariance of $X$ with itself",
           blameConceptId: "covariance",
         },
       },
       {
         id: "choice-4",
-        text: "$c \\cdot \\operatorname{Var}(X)$",
+        text: "$c \\cdot \\text{Var}(X)$",
         correct: false,
         misconception: {
           id: "covariance--r3--misconception-4",
-          description: "mistakenly scales Var(X) by c instead of recognizing a constant contributes zero covariance",
+          description: "mistakenly scales $\\text{Var}(X)$ by $c$ instead of recognizing a constant contributes zero covariance",
           blameConceptId: "covariance",
         },
       },
@@ -1578,12 +1578,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "State the bilinearity property of covariance: how does $\\operatorname{Cov}(aX+b, cY+d)$ relate to $\\operatorname{Cov}(X,Y)$, for constants a,b,c,d?",
+    stem: "State the bilinearity property of covariance: how does $\\text{Cov}(aX+b, cY+d)$ relate to $\\text{Cov}(X,Y)$, for constants $a$, $b$, $c$, $d$?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$\\operatorname{Cov}(aX+b, cY+d) = ac\\cdot\\operatorname{Cov}(X,Y)$ — additive shifts b,d vanish (just like in variance), and the two scale factors a,c multiply together (not squared, since covariance is linear in each argument separately)",
+          description: "$\\text{Cov}(aX+b, cY+d) = ac\\cdot\\text{Cov}(X,Y)$ — additive shifts $b$, $d$ vanish (just like in variance), and the two scale factors $a$, $c$ multiply together (not squared, since covariance is linear in each argument separately)",
           weight: 1,
         },
       ],
@@ -1601,26 +1601,26 @@ export const probabilityExpansion4Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "Which best explains why $\\operatorname{Cov}(X,X) = \\operatorname{Var}(X)$?",
+    stem: "Which best explains why $\\text{Cov}(X,X) = \\text{Var}(X)$?",
     choices: [
-      { id: "choice-1", text: "$\\operatorname{Cov}(X,X) = \\mathbb{E}[(X-\\mathbb{E}[X])(X-\\mathbb{E}[X])] = \\mathbb{E}[(X-\\mathbb{E}[X])^2]$, exactly the definition of $\\operatorname{Var}(X)$", correct: true },
+      { id: "choice-1", text: "$\\text{Cov}(X,X) = \\mathbb{E}\\left[(X-\\mathbb{E}[X])(X-\\mathbb{E}[X])\\right] = \\mathbb{E}\\left[(X-\\mathbb{E}[X])^2\\right]$, exactly the definition of $\\text{Var}(X)$", correct: true },
       {
         id: "choice-2",
         text: "it's a coincidence with no deeper reason",
         correct: false,
         misconception: {
           id: "covariance--r5--misconception-2",
-          description: "misses that plugging Y=X into the covariance definition directly reproduces the variance definition",
+          description: "misses that plugging $Y=X$ into the covariance definition directly reproduces the variance definition",
           blameConceptId: "covariance",
         },
       },
       {
         id: "choice-3",
-        text: "because X is always independent of itself",
+        text: "because $X$ is always independent of itself",
         correct: false,
         misconception: {
           id: "covariance--r5--misconception-3",
-          description: "X is never independent of itself unless it's constant — this gets the actual reason backwards",
+          description: "$X$ is never independent of itself unless it’s constant — this gets the actual reason backwards",
           blameConceptId: "covariance",
         },
       },
@@ -1630,7 +1630,7 @@ export const probabilityExpansion4Items: Item[] = [
         correct: false,
         misconception: {
           id: "covariance--r5--misconception-4",
-          description: "confuses the special case Y=X with a general equality between covariance and variance",
+          description: "confuses the special case $Y=X$ with a general equality between covariance and variance",
           blameConceptId: "covariance",
         },
       },
@@ -1648,7 +1648,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "$\\mathbb{E}[X]=5$, $\\mathbb{E}[Y]=-2$, $\\mathbb{E}[XY]=-13$. Find $\\operatorname{Cov}(X,Y)$.",
+    stem: "$\\mathbb{E}[X]=5$, $\\mathbb{E}[Y]=-2$, $\\mathbb{E}[XY]=-13$. Find $\\text{Cov}(X,Y)$.",
     answerKey: -3,
     tolerance: 0.01,
     difficulty: -0.2,
@@ -1664,11 +1664,11 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using the table $p(0,0)=0.15$, $p(0,1)=0.25$, $p(1,0)=0.20$, $p(1,1)=0.40$, compute $\\operatorname{Cov}(X,Y)$.",
+    stem: "Using the table $p(0,0)=0.15$, $p(0,1)=0.25$, $p(1,0)=0.20$, $p(1,1)=0.40$, compute $\\text{Cov}(X,Y)$.",
     rubric: {
       elements: [
         { id: "element-1", description: "$\\mathbb{E}[X]=0.60$, $\\mathbb{E}[Y]=0.65$; $\\mathbb{E}[XY]$ gets a contribution only from $(1,1)$: $1\\cdot 1\\cdot 0.40=0.40$", weight: 1 },
-        { id: "element-2", description: "$\\operatorname{Cov} = 0.40 - (0.60)(0.65) = 0.40 - 0.39 = 0.01$", weight: 1 },
+        { id: "element-2", description: "$\\text{Cov}(X,Y) = 0.40 - (0.60)(0.65) = 0.40 - 0.39 = 0.01$", weight: 1 },
       ],
     },
     difficulty: 0.3,
@@ -1684,11 +1684,11 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Let $X \\sim \\text{Uniform}(0,1)$ and $Y=1-X$ (a perfect, deterministic decreasing relationship). Find $\\operatorname{Cov}(X,Y)$.",
+    stem: "Let $X \\sim \\text{Uniform}(0,1)$ and $Y=1-X$ (a perfect, deterministic decreasing relationship). Find $\\text{Cov}(X,Y)$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "$\\operatorname{Cov}(X, 1-X) = \\operatorname{Cov}(X,X)\\cdot(-1) + \\operatorname{Cov}(X,1) = -\\operatorname{Var}(X) + 0 = -\\operatorname{Var}(X)$, by bilinearity", weight: 1 },
-        { id: "element-2", description: "$\\operatorname{Var}(X)=1/12$ for $\\text{Uniform}(0,1)$, so $\\operatorname{Cov}(X,Y) = -1/12 \\approx -0.0833$ `[verified]`", weight: 1 },
+        { id: "element-1", description: "$\\text{Cov}(X, 1-X) = \\text{Cov}(X,X)\\cdot(-1) + \\text{Cov}(X,1) = -\\text{Var}(X) + 0 = -\\text{Var}(X)$, by bilinearity", weight: 1 },
+        { id: "element-2", description: "$\\text{Var}(X)=1/12$ for $\\text{Uniform}(0,1)$, so $\\text{Cov}(X,Y) = -1/12 \\approx -0.0833$ `[verified]`", weight: 1 },
       ],
     },
     difficulty: 0.45,
@@ -1704,7 +1704,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "For the joint density $f(x,y)=6xy^2$ on $[0,1]^2$ (from `joint-distribution`), find $\\operatorname{Cov}(X,Y)$.",
+    stem: "For the joint density $f(x,y)=6xy^2$ on $[0,1]^2$ (from `joint-distribution`), find $\\text{Cov}(X,Y)$.",
     answerKey: 0,
     tolerance: 0.01,
     difficulty: 0.55,
@@ -1720,7 +1720,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove the bilinearity property $\\operatorname{Cov}(aX+b, cY+d) = ac\\cdot\\operatorname{Cov}(X,Y)$ directly from the shortcut formula $\\operatorname{Cov}(U,V)=\\mathbb{E}[UV]-\\mathbb{E}[U]\\mathbb{E}[V]$.",
+    stem: "Prove the bilinearity property $\\text{Cov}(aX+b, cY+d) = ac\\cdot\\text{Cov}(X,Y)$ directly from the shortcut formula $\\text{Cov}(U,V)=\\mathbb{E}[UV]-\\mathbb{E}[U]\\mathbb{E}[V]$.",
     rubric: {
       elements: [
         {
@@ -1736,7 +1736,7 @@ export const probabilityExpansion4Items: Item[] = [
         },
         {
           id: "element-3",
-          description: "subtracting, every term except the $ac\\cdot\\mathbb{E}[XY]$ and $ac\\cdot\\mathbb{E}[X]\\mathbb{E}[Y]$ pieces cancels, leaving $ac(\\mathbb{E}[XY]-\\mathbb{E}[X]\\mathbb{E}[Y]) = ac\\cdot\\operatorname{Cov}(X,Y)$",
+          description: "subtracting, every term except the $ac\\cdot\\mathbb{E}[XY]$ and $ac\\cdot\\mathbb{E}[X]\\mathbb{E}[Y]$ pieces cancels, leaving $ac\\left(\\mathbb{E}[XY]-\\mathbb{E}[X]\\mathbb{E}[Y]\\right) = ac\\cdot\\text{Cov}(X,Y)$",
           weight: 1,
         },
       ],
@@ -1754,12 +1754,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For the triangular joint density $f(x,y)=2$ on $0<x<y<1$, $\\operatorname{Cov}(X,Y)=1/36>0$. Explain, in terms of the shape of the region $0<x<y<1$, why this positive sign makes intuitive sense.",
+    stem: "For the triangular joint density $f(x,y)=2$ on $0<x<y<1$, $\\text{Cov}(X,Y)=1/36>0$. Explain, in terms of the shape of the region $0<x<y<1$, why this positive sign makes intuitive sense.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the constraint X<Y forces the two variables to move together to some extent — whenever X lands on a large value, Y is forced to be even larger (since Y must exceed X), producing a genuine tendency for both to be simultaneously large or simultaneously small",
+          description: "the constraint $X<Y$ forces the two variables to move together to some extent — whenever $X$ lands on a large value, $Y$ is forced to be even larger (since $Y$ must exceed $X$), producing a genuine tendency for both to be simultaneously large or simultaneously small",
           weight: 1,
           required: true,
         },
@@ -1783,12 +1783,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Two analysts compute correlation $\\rho=\\operatorname{Cov}(X,Y)/\\sqrt{\\operatorname{Var}(X)\\operatorname{Var}(Y)}$ for two different datasets and get $\\rho=0.9$ and $\\rho=90$, respectively. Explain what must be wrong with the second result, using the Cauchy–Schwarz-type bound on covariance.",
+    stem: "Two analysts compute correlation $\\rho=\\dfrac{\\text{Cov}(X,Y)}{\\sqrt{\\text{Var}(X)\\text{Var}(Y)}}$ for two different datasets and get $\\rho=0.9$ and $\\rho=90$, respectively. Explain what must be wrong with the second result, using the Cauchy–Schwarz-type bound on covariance.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "correlation is always bounded in $[-1,1]$, a consequence of $|\\operatorname{Cov}(X,Y)| \\leq \\sqrt{\\operatorname{Var}(X)\\operatorname{Var}(Y)}$ (a Cauchy–Schwarz inequality) — so $\\rho=90$ is mathematically impossible and signals a computational error, not an unusually strong relationship",
+          description: "correlation is always bounded in $[-1,1]$, a consequence of $|\\text{Cov}(X,Y)| \\leq \\sqrt{\\text{Var}(X)\\text{Var}(Y)}$ (a Cauchy–Schwarz inequality) — so $\\rho=90$ is mathematically impossible and signals a computational error, not an unusually strong relationship",
           weight: 1,
           required: true,
         },
@@ -1819,18 +1819,18 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A hedge fund manager combines two assets into a portfolio $wX+(1-w)Y$. Without doing the full calculus, explain why the SIGN of $\\operatorname{Cov}(X,Y)$ matters enormously for how much risk-reduction is achievable — contrast $\\operatorname{Cov}(X,Y)>0$ (two similar stocks) with $\\operatorname{Cov}(X,Y)<0$ (a stock and an inverse hedge).",
+    stem: "A hedge fund manager combines two assets into a portfolio $wX+(1-w)Y$. Without doing the full calculus, explain why the SIGN of $\\text{Cov}(X,Y)$ matters enormously for how much risk-reduction is achievable — contrast $\\text{Cov}(X,Y)>0$ (two similar stocks) with $\\text{Cov}(X,Y)<0$ (a stock and an inverse hedge).",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$\\operatorname{Var}(wX+(1-w)Y) = w^2\\operatorname{Var}(X)+(1-w)^2\\operatorname{Var}(Y)+2w(1-w)\\operatorname{Cov}(X,Y)$; when $\\operatorname{Cov}(X,Y)$ is very negative, that last cross term can substantially subtract from the total, letting the combined portfolio's variance fall well below either individual asset's variance",
+          description: "$\\text{Var}\\left(wX+(1-w)Y\\right) = w^2\\text{Var}(X)+(1-w)^2\\text{Var}(Y)+2w(1-w)\\text{Cov}(X,Y)$; when $\\text{Cov}(X,Y)$ is very negative, that last cross term can substantially subtract from the total, letting the combined portfolio’s variance fall well below either individual asset’s variance",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "when $\\operatorname{Cov}(X,Y)$ is strongly positive instead, the cross term ADDS risk, so combining the two provides little to no diversification benefit — the sign of the covariance term is exactly what separates real hedging from merely holding two similar assets",
+          description: "when $\\text{Cov}(X,Y)$ is strongly positive instead, the cross term ADDS risk, so combining the two provides little to no diversification benefit — the sign of the covariance term is exactly what separates real hedging from merely holding two similar assets",
           weight: 1,
         },
       ],
@@ -1848,12 +1848,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A study finds $\\operatorname{Cov}(\\text{hours of sleep}, \\text{reaction time})<0$, and a second finds $\\operatorname{Cov}(\\text{cups of coffee}, \\text{reaction time})<0$ as well. A journalist writes 'sleep and coffee affect reaction time in the same way, with the same strength, since both covariances are negative.' What's the specific error, given that raw covariance is not comparable across variables measured in different units?",
+    stem: "A study finds $\\text{Cov}(\\text{hours of sleep}, \\text{reaction time})<0$, and a second finds $\\text{Cov}(\\text{cups of coffee}, \\text{reaction time})<0$ as well. A journalist writes “sleep and coffee affect reaction time in the same way, with the same strength, since both covariances are negative.” What’s the specific error, given that raw covariance is not comparable across variables measured in different units?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "covariance's numeric magnitude depends on the units and scale of both variables (via bilinearity, $\\operatorname{Cov}(aX,Y)=a\\cdot\\operatorname{Cov}(X,Y)$), so a negative covariance for 'hours of sleep' is not directly comparable in size to one for 'cups of coffee' — only the SIGN, not the magnitude, can be safely compared without standardizing",
+          description: "covariance’s numeric magnitude depends on the units and scale of both variables (via bilinearity, $\\text{Cov}(aX,Y)=a\\cdot\\text{Cov}(X,Y)$), so a negative covariance for ‘hours of sleep’ is not directly comparable in size to one for ‘cups of coffee’ — only the SIGN, not the magnitude, can be safely compared without standardizing",
           weight: 1,
           required: true,
         },
@@ -1877,18 +1877,18 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "An engineer measures two properties of the same manufactured beams: X = length in millimeters and Y = the exact same length in meters ($Y=X/1000$). Find how $\\operatorname{Cov}(X,Y)$ compares to $\\operatorname{Var}(X)$, and explain why this shows raw covariance magnitude can be made arbitrarily small or large by rescaling, without any real change in the underlying relationship.",
+    stem: "An engineer measures two properties of the same manufactured beams: $X$ = length in millimeters and $Y$ = the exact same length in meters ($Y=X/1000$). Find how $\\text{Cov}(X,Y)$ compares to $\\text{Var}(X)$, and explain why this shows raw covariance magnitude can be made arbitrarily small or large by rescaling, without any real change in the underlying relationship.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$Y=X/1000$ is a scalar multiple of X, so by bilinearity $\\operatorname{Cov}(X,Y)=\\operatorname{Cov}(X,X/1000)=(1/1000)\\operatorname{Var}(X)$ — positive, and exactly $1/1000$th of $\\operatorname{Var}(X)$, even though X and Y describe the identical physical relationship (perfect dependence) as when Y was measured in millimeters",
+          description: "$Y=X/1000$ is a scalar multiple of $X$, so by bilinearity $\\text{Cov}(X,Y)=\\text{Cov}(X,X/1000)=\\frac{1}{1000}\\text{Var}(X)$ — positive, and exactly $1/1000$th of $\\text{Var}(X)$, even though $X$ and $Y$ describe the identical physical relationship (perfect dependence) as when $Y$ was measured in millimeters",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "this shows raw covariance magnitude is not a meaningful measure of 'how related' two variables are — the underlying relationship (X literally determines Y) did not change at all when the units changed, but the covariance number did",
+          description: "this shows raw covariance magnitude is not a meaningful measure of ‘how related’ two variables are — the underlying relationship ($X$ literally determines $Y$) did not change at all when the units changed, but the covariance number did",
           weight: 1,
         },
       ],
@@ -1910,10 +1910,10 @@ export const probabilityExpansion4Items: Item[] = [
     channels: ["typed", "handwritten"],
     stem: "The law of total expectation $\\mathbb{E}[X]=\\mathbb{E}[\\mathbb{E}[X|Y]]$:",
     choices: [
-      { id: "choice-1", text: "holds completely generally, for any Y, as long as E[X] exists", correct: true },
+      { id: "choice-1", text: "holds completely generally, for any $Y$, as long as $\\mathbb{E}[X]$ exists", correct: true },
       {
         id: "choice-2",
-        text: "requires X and Y to be independent",
+        text: "requires $X$ and $Y$ to be independent",
         correct: false,
         misconception: {
           id: "law-of-total-expectation--r3--misconception-2",
@@ -1923,7 +1923,7 @@ export const probabilityExpansion4Items: Item[] = [
       },
       {
         id: "choice-3",
-        text: "requires Y to be discrete",
+        text: "requires $Y$ to be discrete",
         correct: false,
         misconception: {
           id: "law-of-total-expectation--r3--misconception-3",
@@ -1933,11 +1933,11 @@ export const probabilityExpansion4Items: Item[] = [
       },
       {
         id: "choice-4",
-        text: "requires E[X|Y] to be a constant",
+        text: "requires $\\mathbb{E}[X \\mid Y]$ to be a constant",
         correct: false,
         misconception: {
           id: "law-of-total-expectation--r3--misconception-4",
-          description: "$\\mathbb{E}[X|Y]$ being a genuine RANDOM VARIABLE (varying with Y) is exactly the point of the law, not a condition that rules it out",
+          description: "$\\mathbb{E}[X \\mid Y]$ being a genuine RANDOM VARIABLE (varying with $Y$) is exactly the point of the law, not a condition that rules it out",
           blameConceptId: "law-of-total-expectation",
         },
       },
@@ -1955,13 +1955,13 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Write the law of total expectation in its explicit 'weighted average of conditional means' form for discrete Y, and explain in one sentence what the weights are.",
+    stem: "Write the law of total expectation in its explicit ‘weighted average of conditional means’ form for discrete $Y$, and explain in one sentence what the weights are.",
     rubric: {
       elements: [
         { id: "element-1", description: "$\\mathbb{E}[X] = \\sum_y \\mathbb{E}[X|Y=y]\\cdot P(Y=y)$", weight: 1 },
         {
           id: "element-2",
-          description: "the weights $P(Y=y)$ are exactly how likely each conditioning scenario y is — more probable scenarios contribute more to the overall average",
+          description: "the weights $P(Y=y)$ are exactly how likely each conditioning scenario $y$ is — more probable scenarios contribute more to the overall average",
           weight: 1,
         },
       ],
@@ -1983,7 +1983,7 @@ export const probabilityExpansion4Items: Item[] = [
     choices: [
       { id: "choice-1", text: "forgetting to weight each $\\mathbb{E}[X|Y=y]$ by $P(Y=y)$, and just averaging the conditional means with equal weight", correct: true },
       { id: "choice-2", text: "using too many decimal places", correct: false, misconception: { id: "law-of-total-expectation--r5--misconception-2", description: "not a real conceptual error in applying the law", blameConceptId: "law-of-total-expectation" } },
-      { id: "choice-3", text: "applying it only when Y is continuous", correct: false, misconception: { id: "law-of-total-expectation--r5--misconception-3", description: "the law applies to both discrete and continuous conditioning variables, so restricting it to continuous Y is a fabricated restriction", blameConceptId: "law-of-total-expectation" } },
+      { id: "choice-3", text: "applying it only when $Y$ is continuous", correct: false, misconception: { id: "law-of-total-expectation--r5--misconception-3", description: "the law applies to both discrete and continuous conditioning variables, so restricting it to continuous $Y$ is a fabricated restriction", blameConceptId: "law-of-total-expectation" } },
       { id: "choice-4", text: "applying it more than once in a multi-stage problem", correct: false, misconception: { id: "law-of-total-expectation--r5--misconception-4", description: "the law can be legitimately applied repeatedly, e.g. across several stages of conditioning", blameConceptId: "law-of-total-expectation" } },
     ],
     difficulty: -0.9,
@@ -1999,7 +1999,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A fair six-sided die is rolled to pick N, the number of coins to flip; then N fair coins are flipped and the number of heads is recorded. Find E[number of heads].",
+    stem: "A fair six-sided die is rolled to pick $N$, the number of coins to flip; then $N$ fair coins are flipped and the number of heads is recorded. Find $\\mathbb{E}[\\text{number of heads}]$.",
     answerKey: 1.75,
     tolerance: 0.01,
     difficulty: 0.25,
@@ -2015,7 +2015,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A random parameter $\\Theta$ is $\\text{Uniform}(1,3)$, and given $\\Theta=\\theta$, X is $\\text{Exponential}(\\theta)$ so $\\mathbb{E}[X|\\Theta=\\theta]=1/\\theta$. Find $\\mathbb{E}[X]$ using the law of total expectation.",
+    stem: "A random parameter $\\Theta$ is $\\text{Uniform}(1,3)$, and given $\\Theta=\\theta$, $X$ is $\\text{Exponential}(\\theta)$ so $\\mathbb{E}[X \\mid \\Theta=\\theta]=1/\\theta$. Find $\\mathbb{E}[X]$ using the law of total expectation.",
     rubric: {
       elements: [
         { id: "element-1", description: "$\\mathbb{E}[X] = \\mathbb{E}[1/\\Theta] = \\int_1^3 (1/\\theta)\\cdot(1/2)\\,d\\theta = (1/2)[\\ln \\theta]_1^3 = (1/2)\\ln 3$", weight: 1 },
@@ -2035,11 +2035,11 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A store's daily number of customers N is $\\text{Poisson}(\\lambda=50)$, and each customer independently spends an average of $\\mu$ = \\$20 (regardless of N). Using the law of total expectation conditioned on N, find the expected total daily revenue $\\mathbb{E}[S]$ where $S=X_1+...+X_N$.",
+    stem: "A store’s daily number of customers $N$ is $\\text{Poisson}(\\lambda=50)$, and each customer independently spends an average of $\\mu = \\$20$ (regardless of $N$). Using the law of total expectation conditioned on $N$, find the expected total daily revenue $\\mathbb{E}[S]$ where $S=X_1+\\cdots+X_N$.",
     rubric: {
       elements: [
-        { id: "element-1", description: "conditional on $N=n$, $\\mathbb{E}[S|N=n] = n\\cdot\\mu = 20n$, by linearity over the n customers", weight: 1 },
-        { id: "element-2", description: "$\\mathbb{E}[S] = \\mathbb{E}[\\mathbb{E}[S|N]] = \\mathbb{E}[20N] = 20\\cdot\\mathbb{E}[N] = 20\\cdot 50 = \\$1000$", weight: 1 },
+        { id: "element-1", description: "conditional on $N=n$, $\\mathbb{E}[S \\mid N=n] = n\\cdot\\mu = 20n$, by linearity over the $n$ customers", weight: 1 },
+        { id: "element-2", description: "$\\mathbb{E}[S] = \\mathbb{E}\\left[\\mathbb{E}[S \\mid N]\\right] = \\mathbb{E}[20N] = 20\\cdot\\mathbb{E}[N] = 20\\cdot 50 = \\$1000$", weight: 1 },
       ],
     },
     difficulty: 0.6,
@@ -2055,7 +2055,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A machine's output quality depends on which of 2 equally-likely production shifts ran: Shift A gives expected defect rate 0.02, Shift B gives expected defect rate 0.08. Find the overall expected defect rate.",
+    stem: "A machine’s output quality depends on which of $2$ equally-likely production shifts ran: Shift A gives expected defect rate $0.02$, Shift B gives expected defect rate $0.08$. Find the overall expected defect rate.",
     answerKey: 0.05,
     tolerance: 0.01,
     difficulty: 0.3,
@@ -2100,12 +2100,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "In the store-revenue example, explain why it would be WRONG to compute $\\mathbb{E}[S]$ as '$\\mathbb{E}[X]\\cdot\\mathbb{E}[N]$' if each customer's individual spending distribution secretly depended on N itself (e.g. busier days have customers who spend less per person on average). What does the law of total expectation require that this shortcut skips?",
+    stem: "In the store-revenue example, explain why it would be WRONG to compute $\\mathbb{E}[S]$ as ‘$\\mathbb{E}[X]\\cdot\\mathbb{E}[N]$’ if each customer’s individual spending distribution secretly depended on $N$ itself (e.g. busier days have customers who spend less per person on average). What does the law of total expectation require that this shortcut skips?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the law of total expectation $\\mathbb{E}[S]=\\mathbb{E}[\\mathbb{E}[S|N]]$ is always valid, but '$\\mathbb{E}[S|N=n]=n\\cdot\\mu$' specifically requires that the per-customer spending distribution doesn't itself change with n — if it does, $\\mathbb{E}[S|N=n]$ is some other function of n, not simply $n\\cdot\\mu$, and the shortcut $\\mathbb{E}[X]\\cdot\\mathbb{E}[N]$ silently assumes away that dependence",
+          description: "the law of total expectation $\\mathbb{E}[S]=\\mathbb{E}\\left[\\mathbb{E}[S \\mid N]\\right]$ is always valid, but ‘$\\mathbb{E}[S \\mid N=n]=n\\cdot\\mu$’ specifically requires that the per-customer spending distribution doesn’t itself change with $n$ — if it does, $\\mathbb{E}[S \\mid N=n]$ is some other function of $n$, not simply $n\\cdot\\mu$, and the shortcut $\\mathbb{E}[X]\\cdot\\mathbb{E}[N]$ silently assumes away that dependence",
           weight: 1,
           required: true,
         },
@@ -2129,13 +2129,13 @@ export const probabilityExpansion4Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "the 'easy sub-problem' is: for a FIXED number of coins n, the expected number of heads is simply $n/2$ — trivial once N is pinned down",
+          description: "the ‘easy sub-problem’ is: for a FIXED number of coins $n$, the expected number of heads is simply $n/2$ — trivial once $N$ is pinned down",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "the 'averaging' step is the outer expectation: weight each sub-problem's answer $n/2$ by how likely that particular n is ($1/6$ for each face of the die), and sum — turning several easy conditional problems into the harder unconditional one",
+          description: "the ‘averaging’ step is the outer expectation: weight each sub-problem’s answer $n/2$ by how likely that particular $n$ is ($1/6$ for each face of the die), and sum — turning several easy conditional problems into the harder unconditional one",
           weight: 1,
         },
       ],
@@ -2153,18 +2153,18 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "An insurance actuary needs $\\mathbb{E}[\\text{claim amount}]$, but claims come from two populations mixed together: 'high-risk' policyholders (30% of the pool, mean claim \\$5000) and 'low-risk' (70%, mean claim \\$800). Using the law of total expectation, compute the actuary's overall expected claim, and explain why pricing every policyholder at this single blended number is a bad business idea even though it's the mathematically correct average.",
+    stem: "An insurance actuary needs $\\mathbb{E}[\\text{claim amount}]$, but claims come from two populations mixed together: ‘high-risk’ policyholders ($30\\%$ of the pool, mean claim $\\$5000$) and ‘low-risk’ ($70\\%$, mean claim $\\$800$). Using the law of total expectation, compute the actuary’s overall expected claim, and explain why pricing every policyholder at this single blended number is a bad business idea even though it’s the mathematically correct average.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$\\mathbb{E}[\\text{claim}] = 0.30(5000)+0.70(800) = 1500+560 = \\$2060$, by the law of total expectation with 'risk group' as the conditioning variable",
+          description: "$\\mathbb{E}[\\text{claim}] = 0.30(5000)+0.70(800) = 1500+560 = \\$2060$, by the law of total expectation with ‘risk group’ as the conditioning variable",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "pricing everyone at \\$2060 overcharges low-risk customers (who cost the company only \\$800 on average) and undercharges high-risk ones — the same lossy-blending problem seen when a marginal risk figure obscures very different conditional risks",
+          description: "pricing everyone at $\\$2060$ overcharges low-risk customers (who cost the company only $\\$800$ on average) and undercharges high-risk ones — the same lossy-blending problem seen when a marginal risk figure obscures very different conditional risks",
           weight: 1,
         },
       ],
@@ -2211,7 +2211,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "A stock's daily return has two regimes: with probability 0.8 the market is 'calm' (expected daily return 0.02%), and with probability 0.2 it is 'volatile' (expected daily return −0.5%, since volatile days tend to be crash days on average). Using the law of total expectation, find the unconditional expected daily return, as a percentage.",
+    stem: "A stock’s daily return has two regimes: with probability $0.8$ the market is ‘calm’ (expected daily return $0.02\\%$), and with probability $0.2$ it is ‘volatile’ (expected daily return $-0.5\\%$, since volatile days tend to be crash days on average). Using the law of total expectation, find the unconditional expected daily return, as a percentage.",
     answerKey: -0.084,
     tolerance: 0.05,
     difficulty: 1.1,
@@ -2229,12 +2229,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "If two random variables X and Y have MGFs that exist and agree, $M_X(t)=M_Y(t)$, on an open interval containing 0, then:",
+    stem: "If two random variables $X$ and $Y$ have MGFs that exist and agree, $M_X(t)=M_Y(t)$, on an open interval containing $0$, then:",
     choices: [
-      { id: "choice-1", text: "X and Y have exactly the same distribution", correct: true },
+      { id: "choice-1", text: "$X$ and $Y$ have exactly the same distribution", correct: true },
       {
         id: "choice-2",
-        text: "X and Y have the same mean only, not necessarily the same distribution",
+        text: "$X$ and $Y$ have the same mean only, not necessarily the same distribution",
         correct: false,
         misconception: {
           id: "mgf--r3--misconception-2",
@@ -2244,7 +2244,7 @@ export const probabilityExpansion4Items: Item[] = [
       },
       {
         id: "choice-3",
-        text: "X and Y must be independent",
+        text: "$X$ and $Y$ must be independent",
         correct: false,
         misconception: {
           id: "mgf--r3--misconception-3",
@@ -2258,7 +2258,7 @@ export const probabilityExpansion4Items: Item[] = [
         correct: false,
         misconception: {
           id: "mgf--r3--misconception-4",
-          description: "gets the uniqueness theorem backwards — a matching MGF on an interval around 0 DOES uniquely determine the distribution",
+          description: "gets the uniqueness theorem backwards — a matching MGF on an interval around $0$ DOES uniquely determine the distribution",
           blameConceptId: "mgf",
         },
       },
@@ -2276,10 +2276,10 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For which values of t does $M_X(t)=\\mathbb{E}[e^{tX}]$ need to be finite for the MGF to 'exist' in the sense used by the uniqueness theorem?",
+    stem: "For which values of $t$ does $M_X(t)=\\mathbb{E}\\left[e^{tX}\\right]$ need to be finite for the MGF to ‘exist’ in the sense used by the uniqueness theorem?",
     rubric: {
       elements: [
-        { id: "element-1", description: "$M_X(t)$ must be finite for every t in some open interval around 0 (not just at $t=0$, where it's always trivially 1)", weight: 1 },
+        { id: "element-1", description: "$M_X(t)$ must be finite for every $t$ in some open interval around $0$ (not just at $t=0$, where it’s always trivially $1$)", weight: 1 },
       ],
     },
     difficulty: -1.0,
@@ -2297,10 +2297,10 @@ export const probabilityExpansion4Items: Item[] = [
     channels: ["typed", "handwritten"],
     stem: "$M_X(t) = \\mathbb{E}[e^{tX}]$ is always:",
     choices: [
-      { id: "choice-1", text: "strictly positive wherever it's finite, since $e^{tX}>0$ for every real X", correct: true },
+      { id: "choice-1", text: "strictly positive wherever it’s finite, since $e^{tX}>0$ for every real $X$", correct: true },
       {
         id: "choice-2",
-        text: "bounded between −1 and 1",
+        text: "bounded between $-1$ and $1$",
         correct: false,
         misconception: {
           id: "mgf--r5--misconception-2",
@@ -2310,21 +2310,21 @@ export const probabilityExpansion4Items: Item[] = [
       },
       {
         id: "choice-3",
-        text: "equal to 1 for every t, not just t=0",
+        text: "equal to $1$ for every $t$, not just $t=0$",
         correct: false,
         misconception: {
           id: "mgf--r5--misconception-3",
-          description: "over-generalizes the fact $M_X(0)=1$ to every value of t",
+          description: "over-generalizes the fact $M_X(0)=1$ to every value of $t$",
           blameConceptId: "mgf",
         },
       },
       {
         id: "choice-4",
-        text: "undefined for negative t",
+        text: "undefined for negative $t$",
         correct: false,
         misconception: {
           id: "mgf--r5--misconception-4",
-          description: "assumes the MGF can only be evaluated at nonnegative t, but it is defined for any real t where the expectation is finite",
+          description: "assumes the MGF can only be evaluated at nonnegative $t$, but it is defined for any real $t$ where the expectation is finite",
           blameConceptId: "mgf",
         },
       },
@@ -2342,7 +2342,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "$X \\sim \\text{Exponential}(\\lambda)$. Derive $M_X(t)=\\mathbb{E}[e^{tX}]$ directly from the definition, and state for which t it is finite.",
+    stem: "$X \\sim \\text{Exponential}(\\lambda)$. Derive $M_X(t)=\\mathbb{E}\\left[e^{tX}\\right]$ directly from the definition, and state for which $t$ it is finite.",
     rubric: {
       elements: [
         { id: "element-1", description: "$M_X(t) = \\int_0^\\infty e^{tx}\\cdot\\lambda e^{-\\lambda x}\\,dx = \\lambda\\int_0^\\infty e^{-(\\lambda-t)x}\\,dx = \\lambda/(\\lambda-t)$", weight: 1 },
@@ -2378,11 +2378,11 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using $M_X(t)=\\lambda/(\\lambda-t)$, find $M_X''(0)$ and hence $\\operatorname{Var}(X)$, for $X\\sim\\text{Exponential}(\\lambda)$.",
+    stem: "Using $M_X(t)=\\dfrac{\\lambda}{\\lambda-t}$, find $M_X''(0)$ and hence $\\text{Var}(X)$, for $X\\sim\\text{Exponential}(\\lambda)$.",
     rubric: {
       elements: [
         { id: "element-1", description: "$M_X'(t)=\\lambda/(\\lambda-t)^2$, $M_X''(t)=2\\lambda/(\\lambda-t)^3$, so $M_X''(0)=2\\lambda/\\lambda^3=2/\\lambda^2=\\mathbb{E}[X^2]$", weight: 1 },
-        { id: "element-2", description: "$\\operatorname{Var}(X)=\\mathbb{E}[X^2]-(\\mathbb{E}[X])^2 = 2/\\lambda^2 - 1/\\lambda^2 = 1/\\lambda^2$ `[verified]`", weight: 1 },
+        { id: "element-2", description: "$\\text{Var}(X)=\\mathbb{E}[X^2]-(\\mathbb{E}[X])^2 = 2/\\lambda^2 - 1/\\lambda^2 = 1/\\lambda^2$ `[verified]`", weight: 1 },
       ],
     },
     difficulty: 0.6,
@@ -2418,7 +2418,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using $M_X(t)=\\exp(\\mu t+\\sigma^2 t^2/2)$ for $X\\sim\\text{Normal}(\\mu,\\sigma^2)$, derive $\\operatorname{Var}(X)$ by computing $M_X''(0)-(M_X'(0))^2$.",
+    stem: "Using $M_X(t)=\\exp\\left(\\mu t+\\sigma^2 t^2/2\\right)$ for $X\\sim\\mathcal{N}(\\mu,\\sigma^2)$, derive $\\text{Var}(X)$ by computing $M_X''(0)-\\left(M_X'(0)\\right)^2$.",
     rubric: {
       elements: [
         {
@@ -2428,7 +2428,7 @@ export const probabilityExpansion4Items: Item[] = [
           required: true,
         },
         { id: "element-2", description: "$M_X''(0) = \\sigma^2 + \\mu^2$", weight: 1 },
-        { id: "element-3", description: "$\\operatorname{Var}(X) = M_X''(0) - (M_X'(0))^2 = (\\sigma^2+\\mu^2) - \\mu^2 = \\sigma^2$ `[verified]`, correctly recovering the known variance", weight: 1 },
+        { id: "element-3", description: "$\\text{Var}(X) = M_X''(0) - \\left(M_X'(0)\\right)^2 = (\\sigma^2+\\mu^2) - \\mu^2 = \\sigma^2$ `[verified]`, correctly recovering the known variance", weight: 1 },
       ],
     },
     difficulty: 0.9,
@@ -2473,7 +2473,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why knowing only $M_X(0)=1$ and $M_X'(0)=\\mathbb{E}[X]$ is never enough, by itself, to identify a distribution — but knowing the ENTIRE function $M_X(t)$ (on an interval around 0) is.",
+    stem: "Explain why knowing only $M_X(0)=1$ and $M_X'(0)=\\mathbb{E}[X]$ is never enough, by itself, to identify a distribution — but knowing the ENTIRE function $M_X(t)$ (on an interval around $0$) is.",
     rubric: {
       elements: [
         {
@@ -2484,7 +2484,7 @@ export const probabilityExpansion4Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "the full function $M_X(t)$, by contrast, encodes EVERY moment simultaneously (via all its derivatives at 0), which is precisely why the uniqueness theorem needs the whole function on an interval, not just its value or a single derivative at one point",
+          description: "the full function $M_X(t)$, by contrast, encodes EVERY moment simultaneously (via all its derivatives at $0$), which is precisely why the uniqueness theorem needs the whole function on an interval, not just its value or a single derivative at one point",
           weight: 1,
         },
       ],
@@ -2507,7 +2507,7 @@ export const probabilityExpansion4Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "$M_X^{(k)}(0)=\\mathbb{E}[X^k]$ for every k, not just $k=1,2$ — so the MGF encodes the third moment (related to skewness) and fourth moment (related to kurtosis, tail heaviness), exactly the features that matter for risk beyond simple variance",
+          description: "$M_X^{(k)}(0)=\\mathbb{E}[X^k]$ for every $k$, not just $k=1,2$ — so the MGF encodes the third moment (related to skewness) and fourth moment (related to kurtosis, tail heaviness), exactly the features that matter for risk beyond simple variance",
           weight: 1,
           required: true,
         },
@@ -2536,7 +2536,7 @@ export const probabilityExpansion4Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "if the two candidate distributions' MGFs are DIFFERENT functions of t (even if they agree at t=0 and have matching first two derivatives, i.e. matching mean and variance), the uniqueness theorem guarantees the distributions themselves are different — settling the debate with certainty",
+          description: "if the two candidate distributions’ MGFs are DIFFERENT functions of $t$ (even if they agree at $t=0$ and have matching first two derivatives, i.e. matching mean and variance), the uniqueness theorem guarantees the distributions themselves are different — settling the debate with certainty",
           weight: 1,
           required: true,
         },
@@ -2560,7 +2560,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why the MGF is called a 'moment generating' function, in the sense that the single function $M_X(t)$ actually GENERATES the entire infinite sequence of moments $\\mathbb{E}[X]$, $\\mathbb{E}[X^2]$, $\\mathbb{E}[X^3]$, ... at once — the way a generating function in combinatorics packages an infinite sequence into one object.",
+    stem: "Explain why the MGF is called a ‘moment generating’ function, in the sense that the single function $M_X(t)$ actually GENERATES the entire infinite sequence of moments $\\mathbb{E}[X]$, $\\mathbb{E}[X^2]$, $\\mathbb{E}[X^3]$, … at once — the way a generating function in combinatorics packages an infinite sequence into one object.",
     rubric: {
       elements: [
         {
@@ -2571,7 +2571,7 @@ export const probabilityExpansion4Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "this is exactly analogous to an ordinary generating function in combinatorics, where a single power series encodes an entire sequence of counts — here the 'sequence' being encoded is the moments of X",
+          description: "this is exactly analogous to an ordinary generating function in combinatorics, where a single power series encodes an entire sequence of counts — here the ‘sequence’ being encoded is the moments of $X$",
           weight: 1,
         },
       ],
@@ -2591,7 +2591,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "For a constant a and random variable X, $M_{aX}(t)$ equals:",
+    stem: "For a constant $a$ and random variable $X$, $M_{aX}(t)$ equals:",
     choices: [
       { id: "choice-1", text: "$M_X(at)$", correct: true },
       {
@@ -2600,7 +2600,7 @@ export const probabilityExpansion4Items: Item[] = [
         correct: false,
         misconception: {
           id: "mgf-properties--r3--misconception-2",
-          description: "treats the MGF as linear in the scale factor, rather than plugging the scale into the argument t",
+          description: "treats the MGF as linear in the scale factor, rather than plugging the scale into the argument $t$",
           blameConceptId: "mgf-properties",
         },
       },
@@ -2610,7 +2610,7 @@ export const probabilityExpansion4Items: Item[] = [
         correct: false,
         misconception: {
           id: "mgf-properties--r3--misconception-3",
-          description: "confuses scaling a single variable with raising its MGF to a power, which is instead the rule for a SUM of a copies",
+          description: "confuses scaling a single variable with raising its MGF to a power, which is instead the rule for a SUM of $a$ copies",
           blameConceptId: "mgf-properties",
         },
       },
@@ -2664,7 +2664,7 @@ export const probabilityExpansion4Items: Item[] = [
         correct: false,
         misconception: {
           id: "mgf-properties--r5--misconception-2",
-          description: "swaps which factor (1/σ) gets multiplied inside M_X versus which stays outside, misapplying the scaling rule",
+          description: "swaps which factor ($1/\\sigma$) gets multiplied inside $M_X$ versus which stays outside, misapplying the scaling rule",
           blameConceptId: "mgf-properties",
         },
       },
@@ -2684,7 +2684,7 @@ export const probabilityExpansion4Items: Item[] = [
         correct: false,
         misconception: {
           id: "mgf-properties--r5--misconception-4",
-          description: "divides the whole MGF by σ instead of rescaling its argument by 1/σ",
+          description: "divides the whole MGF by $\\sigma$ instead of rescaling its argument by $1/\\sigma$",
           blameConceptId: "mgf-properties",
         },
       },
@@ -2708,7 +2708,7 @@ export const probabilityExpansion4Items: Item[] = [
         { id: "element-1", description: "by independence, $M_S(t) = [\\lambda/(\\lambda-t)]^n$", weight: 1 },
         {
           id: "element-2",
-          description: "this is exactly the MGF of a $\\text{Gamma}(n,\\lambda)$ random variable, so $S\\sim\\text{Gamma}(n,\\lambda)$ by the uniqueness theorem — sums of iid exponential waiting times give the Gamma/Erlang distribution",
+          description: "this is exactly the MGF of a $\\text{Gamma}(n,\\lambda)$ random variable, so $S\\sim\\text{Gamma}(n,\\lambda)$ by the uniqueness theorem — sums of i.i.d. exponential waiting times give the Gamma/Erlang distribution",
           weight: 1,
         },
       ],
@@ -2746,7 +2746,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "X has MGF $M_X(t)=e^{2t+3t^2}$. Using the scaling rule $M_{aX+b}(t)=e^{bt}M_X(at)$, find $M_{2X+1}(t)$ evaluated at $t=0.5$.",
+    stem: "$X$ has MGF $M_X(t)=e^{2t+3t^2}$. Using the scaling rule $M_{aX+b}(t)=e^{bt}M_X(at)$, find $M_{2X+1}(t)$ evaluated at $t=0.5$.",
     answerKey: 244.69,
     tolerance: 0.02,
     difficulty: 0.75,
@@ -2786,7 +2786,7 @@ export const probabilityExpansion4Items: Item[] = [
     rubric: {
       elements: [
         { id: "element-1", description: "$M_{aX+b}(t) = \\mathbb{E}[e^{t(aX+b)}] = \\mathbb{E}[e^{atX}\\cdot e^{tb}]$", weight: 1, required: true },
-        { id: "element-2", description: "since $e^{tb}$ is a constant (doesn't depend on X), pull it out of the expectation: $= e^{tb}\\cdot\\mathbb{E}[e^{(at)X}] = e^{bt}\\cdot M_X(at)$", weight: 1 },
+        { id: "element-2", description: "since $e^{tb}$ is a constant (doesn’t depend on $X$), pull it out of the expectation: $= e^{tb}\\cdot\\mathbb{E}\\left[e^{(at)X}\\right] = e^{bt}\\cdot M_X(at)$", weight: 1 },
       ],
     },
     difficulty: 0.7,
@@ -2807,13 +2807,13 @@ export const probabilityExpansion4Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "convolving two pmfs/pdfs to get the distribution of X+Y is generally a nontrivial sum or integral ($\\sum_k p_X(k)p_Y(n-k)$, or an analogous integral) that must be redone from scratch for each new pair of distributions",
+          description: "convolving two pmfs/pdfs to get the distribution of $X+Y$ is generally a nontrivial sum or integral ($\\sum_k p_X(k)p_Y(n-k)$, or an analogous integral) that must be redone from scratch for each new pair of distributions",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "the MGF turns this convolution into ordinary MULTIPLICATION of two functions of t — a vastly simpler algebraic operation, which is exactly why summing independent Poissons, Binomials, Normals, or Exponentials-into-Gammas all become one-line MGF-multiplication arguments instead of convolution integrals",
+          description: "the MGF turns this convolution into ordinary MULTIPLICATION of two functions of $t$ — a vastly simpler algebraic operation, which is exactly why summing independent Poissons, Binomials, Normals, or Exponentials-into-Gammas all become one-line MGF-multiplication arguments instead of convolution integrals",
           weight: 1,
         },
       ],
@@ -2831,7 +2831,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A student claims 'since $M_{X+Y}(t)=M_X(t)M_Y(t)$ for independent X,Y, it must also be true that $M_{XY}(t)=M_X(t)\\cdot M_Y(t)$ for the PRODUCT XY.' Explain why this is false, tracing exactly where the algebra that makes the sum rule work breaks down for products.",
+    stem: "A student claims “since $M_{X+Y}(t)=M_X(t)M_Y(t)$ for independent $X$, $Y$, it must also be true that $M_{XY}(t)=M_X(t)\\cdot M_Y(t)$ for the PRODUCT $XY$.” Explain why this is false, tracing exactly where the algebra that makes the sum rule work breaks down for products.",
     rubric: {
       elements: [
         {
@@ -2842,7 +2842,7 @@ export const probabilityExpansion4Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "for the product XY, $e^{t(XY)}$ does NOT factor as $e^{tX}\\cdot e^{tY}$ at all — there is no algebraic identity turning $t\\cdot XY$ into a sum of separate exponents in X and Y, so the independence trick has nothing to act on",
+          description: "for the product $XY$, $e^{t(XY)}$ does NOT factor as $e^{tX}\\cdot e^{tY}$ at all — there is no algebraic identity turning $t\\cdot XY$ into a sum of separate exponents in $X$ and $Y$, so the independence trick has nothing to act on",
           weight: 1,
         },
       ],
@@ -2872,12 +2872,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A call center's daily wait time is the sum of several independent 'stage' delays (queue, routing, agent connect), each $\\text{Exponential}(\\lambda)$. Using the fact that a sum of n iid Exponentials is $\\text{Gamma}(n,\\lambda)$, explain what changes about the resulting waiting-time distribution's SHAPE as more stages are added, and why call-center wait times are rarely well-modeled by a single Exponential once multiple stages are involved.",
+    stem: "A call center’s daily wait time is the sum of several independent ‘stage’ delays (queue, routing, agent connect), each $\\text{Exponential}(\\lambda)$. Using the fact that a sum of $n$ i.i.d. Exponentials is $\\text{Gamma}(n,\\lambda)$, explain what changes about the resulting waiting-time distribution’s SHAPE as more stages are added, and why call-center wait times are rarely well-modeled by a single Exponential once multiple stages are involved.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "as n grows, $\\text{Gamma}(n,\\lambda)$ becomes more symmetric and bell-shaped (its skewness decreases like $1/\\sqrt{n}$), unlike a single Exponential ($n=1$) which is always sharply right-skewed with its mode at 0",
+          description: "as $n$ grows, $\\text{Gamma}(n,\\lambda)$ becomes more symmetric and bell-shaped (its skewness decreases like $1/\\sqrt{n}$), unlike a single Exponential ($n=1$) which is always sharply right-skewed with its mode at $0$",
           weight: 1,
           required: true,
         },
@@ -2961,32 +2961,32 @@ export const probabilityExpansion4Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "handwritten"],
-    stem: "Given a fixed value of $\\theta$, viewing $p(x|\\theta)$ as a function of x (letting the data vary) makes it:",
+    stem: "Given a fixed value of $\\theta$, viewing $p(x \\mid \\theta)$ as a function of $x$ (letting the data vary) makes it:",
     choices: [
-      { id: "choice-1", text: "a probability distribution — it sums or integrates to 1 over x", correct: true },
+      { id: "choice-1", text: "a probability distribution — it sums or integrates to $1$ over $x$", correct: true },
       {
         id: "choice-2",
         text: "a likelihood function",
         correct: false,
         misconception: {
           id: "likelihood-vs-probability--r3--misconception-2",
-          description: "swaps which variable is held fixed — this describes the probability view ($\\theta$ fixed, x varying), not the likelihood view (x fixed, $\\theta$ varying)",
+          description: "swaps which variable is held fixed — this describes the probability view ($\\theta$ fixed, $x$ varying), not the likelihood view ($x$ fixed, $\\theta$ varying)",
           blameConceptId: "likelihood-vs-probability",
         },
       },
       {
         id: "choice-3",
-        text: "always equal to 1 for the observed x",
+        text: "always equal to $1$ for the observed $x$",
         correct: false,
         misconception: {
           id: "likelihood-vs-probability--r3--misconception-3",
-          description: "confuses the total probability over all x (which is 1) with the probability of one specific x (generally less than 1)",
+          description: "confuses the total probability over all $x$ (which is $1$) with the probability of one specific $x$ (generally less than $1$)",
           blameConceptId: "likelihood-vs-probability",
         },
       },
       {
         id: "choice-4",
-        text: "undefined unless θ is estimated first",
+        text: "undefined unless $\\theta$ is estimated first",
         correct: false,
         misconception: {
           id: "likelihood-vs-probability--r3--misconception-4",
@@ -3008,12 +3008,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For n iid observations, why is the joint likelihood $L(\\theta)=\\prod_i p(x_i|\\theta)$ a simple PRODUCT of the individual densities/pmfs, rather than some more complicated combination?",
+    stem: "For $n$ i.i.d. observations, why is the joint likelihood $L(\\theta)=\\prod_i p(x_i \\mid \\theta)$ a simple PRODUCT of the individual densities/pmfs, rather than some more complicated combination?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the observations are independent, so the joint probability (density) of observing all of them simultaneously, for a fixed θ, is the product of their individual probabilities (densities) — the same product rule used for any independent events",
+          description: "the observations are independent, so the joint probability (density) of observing all of them simultaneously, for a fixed $\\theta$, is the product of their individual probabilities (densities) — the same product rule used for any independent events",
           weight: 1,
         },
       ],
@@ -3084,7 +3084,7 @@ export const probabilityExpansion4Items: Item[] = [
         { id: "element-1", description: "$L(\\lambda) = \\prod_i (\\lambda^{x_i}e^{-\\lambda}/x_i!) = \\lambda^{\\sum x_i}e^{-n\\lambda} / \\prod x_i!$", weight: 1 },
         {
           id: "element-2",
-          description: "$\\log L(\\lambda) = (\\sum x_i)\\ln\\lambda - n\\lambda + \\text{const}$; differentiating and setting to 0 gives $(\\sum x_i)/\\lambda - n = 0$, so $\\hat\\lambda = (\\sum x_i)/n = \\bar{x}$, the sample mean `[verified via symbolic differentiation]`",
+          description: "$\\log L(\\lambda) = \\left(\\sum x_i\\right)\\ln\\lambda - n\\lambda + \\text{const}$; differentiating and setting to $0$ gives $\\left(\\sum x_i\\right)/\\lambda - n = 0$, so $\\hat\\lambda = \\left(\\sum x_i\\right)/n = \\bar{x}$, the sample mean `[verified via symbolic differentiation]`",
           weight: 1,
         },
       ],
@@ -3122,7 +3122,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "n=10 iid $\\text{Exponential}(\\lambda)$ observations sum to $\\sum x_i=25$. Find the MLE $\\hat\\lambda$.",
+    stem: "$n=10$ i.i.d. $\\text{Exponential}(\\lambda)$ observations sum to $\\sum x_i=25$. Find the MLE $\\hat\\lambda$.",
     answerKey: 0.4,
     tolerance: 0.01,
     difficulty: 0.35,
@@ -3138,11 +3138,11 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For n=20 iid $\\text{Bernoulli}(\\theta)$ trials with k=14 successes, compare $L(0.6)$ and $L(0.75)$ by reasoning about which $\\theta$ is closer to the MLE $k/n$, without fully computing either number.",
+    stem: "For $n=20$ i.i.d. $\\text{Bernoulli}(\\theta)$ trials with $k=14$ successes, compare $L(0.6)$ and $L(0.75)$ by reasoning about which $\\theta$ is closer to the MLE $k/n$, without fully computing either number.",
     rubric: {
       elements: [
         { id: "element-1", description: "the MLE here is $k/n = 14/20 = 0.7$; likelihood is maximized exactly at the MLE and decreases as $\\theta$ moves away from it in either direction", weight: 1 },
-        { id: "element-2", description: "0.6 is 0.1 away from 0.7 while 0.75 is only 0.05 away, so $L(0.75) > L(0.6)$", weight: 1 },
+        { id: "element-2", description: "$0.6$ is $0.1$ away from $0.7$ while $0.75$ is only $0.05$ away, so $L(0.75) > L(0.6)$", weight: 1 },
       ],
     },
     difficulty: 0.65,
@@ -3158,7 +3158,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For n iid $\\text{Normal}(0, \\sigma^2)$ observations (known mean 0, unknown variance $\\sigma^2$), derive the MLE $\\hat\\sigma^2$ by maximizing $\\log L(\\sigma^2)$.",
+    stem: "For $n$ i.i.d. $\\mathcal{N}(0, \\sigma^2)$ observations (known mean $0$, unknown variance $\\sigma^2$), derive the MLE $\\hat\\sigma^2$ by maximizing $\\log L(\\sigma^2)$.",
     rubric: {
       elements: [
         { id: "element-1", description: "$\\log L(\\sigma^2) = -(n/2)\\ln(2\\pi\\sigma^2) - (1/(2\\sigma^2))\\sum x_i^2$", weight: 1, required: true },
@@ -3178,12 +3178,12 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Check whether the simplest Bernoulli likelihood $L(\\theta)=\\theta^k(1-\\theta)^{n-k}$ integrates to 1 over $\\theta\\in[0,1]$ for n=1, k=1 (so $L(\\theta)=\\theta$), and use the result to explain why $L(\\theta)$ is generally NOT a probability density over $\\theta$.",
+    stem: "Check whether the simplest Bernoulli likelihood $L(\\theta)=\\theta^k(1-\\theta)^{n-k}$ integrates to $1$ over $\\theta\\in[0,1]$ for $n=1$, $k=1$ (so $L(\\theta)=\\theta$), and use the result to explain why $L(\\theta)$ is generally NOT a probability density over $\\theta$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$\\int_0^1 \\theta\\,d\\theta = 1/2 \\neq 1$, so this specific likelihood does NOT integrate to 1 over $\\theta$, directly demonstrating by counterexample that $L(\\theta)$ is not automatically a valid density in $\\theta$",
+          description: "$\\int_0^1 \\theta\\,d\\theta = 1/2 \\neq 1$, so this specific likelihood does NOT integrate to $1$ over $\\theta$, directly demonstrating by counterexample that $L(\\theta)$ is not automatically a valid density in $\\theta$",
           weight: 1,
           required: true,
         },
@@ -3236,7 +3236,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A forensic analyst testifies: 'the probability that the defendant is guilty, given this DNA match, is 99%, because the likelihood of this match given guilt is 99%.' Explain the specific logical error here (sometimes called the 'prosecutor's fallacy'), connecting it directly to the probability-versus-likelihood distinction.",
+    stem: "A forensic analyst testifies: “the probability that the defendant is guilty, given this DNA match, is $99\\%$, because the likelihood of this match given guilt is $99\\%$.” Explain the specific logical error here (sometimes called the ‘prosecutor’s fallacy’), connecting it directly to the probability-versus-likelihood distinction.",
     rubric: {
       elements: [
         {
@@ -3247,18 +3247,18 @@ export const probabilityExpansion4Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "converting one into the other requires Bayes' rule together with a PRIOR probability of guilt (e.g. how large the suspect pool is) — without that prior, equating the likelihood $P(\\text{evidence}|\\text{guilty})$ with the posterior $P(\\text{guilty}|\\text{evidence})$ is exactly the category error this concept warns about, now with life-altering stakes",
+          description: "converting one into the other requires Bayes’ rule together with a PRIOR probability of guilt (e.g. how large the suspect pool is) — without that prior, equating the likelihood $P(\\text{evidence} \\mid \\text{guilty})$ with the posterior $P(\\text{guilty} \\mid \\text{evidence})$ is exactly the category error this concept warns about, now with life-altering stakes",
           weight: 1,
         },
       ],
       forbiddenMoves: [
         {
           id: "misconception",
-          description: "accepts the analyst's reasoning because both numbers happen to be phrased as '99%'",
+          description: "accepts the analyst’s reasoning because both numbers happen to be phrased as ‘$99\\%$’",
           weight: 0,
           misconception: {
             id: "likelihood-vs-probability--t2--misconception",
-            description: "accepts the analyst's reasoning because both numbers happen to be phrased as '99%'",
+            description: "accepts the analyst’s reasoning because both numbers happen to be phrased as ‘$99\\%$’",
             blameConceptId: "likelihood-vs-probability",
           },
         },
@@ -3282,7 +3282,7 @@ export const probabilityExpansion4Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "maximum likelihood finds the parameter θ that makes the OBSERVED data as probable as possible under the model — it does not, by itself, compute or compare probabilities OF θ at all, since L(θ) is (in general) not a probability distribution over θ",
+          description: "maximum likelihood finds the parameter $\\theta$ that makes the OBSERVED data as probable as possible under the model — it does not, by itself, compute or compare probabilities OF $\\theta$ at all, since $L(\\theta)$ is (in general) not a probability distribution over $\\theta$",
           weight: 1,
           required: true,
         },
@@ -3306,7 +3306,7 @@ export const probabilityExpansion4Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Two competing scientific models, A and B, are each fit to the same dataset, giving maximized likelihoods $L_A(\\hat\\theta_A)$ and $L_B(\\hat\\theta_B)$. A reporter writes 'model A is more probable than model B because $L_A(\\hat\\theta_A) > L_B(\\hat\\theta_B)$.' Explain what's legitimate about comparing these two maximized likelihoods, and what additional step is needed to responsibly turn this into a genuine probability statement about which model is more likely to be TRUE.",
+    stem: "Two competing scientific models, A and B, are each fit to the same dataset, giving maximized likelihoods $L_A(\\hat\\theta_A)$ and $L_B(\\hat\\theta_B)$. A reporter writes “model A is more probable than model B because $L_A(\\hat\\theta_A) > L_B(\\hat\\theta_B)$.” Explain what’s legitimate about comparing these two maximized likelihoods, and what additional step is needed to responsibly turn this into a genuine probability statement about which model is more likely to be TRUE.",
     rubric: {
       elements: [
         {
@@ -3317,7 +3317,7 @@ export const probabilityExpansion4Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "turning it into an actual probability of 'model A is true' requires a full Bayesian model-comparison framework (priors over which model is correct, and typically a penalty for each model's complexity, since a more flexible model can generally achieve a higher L just by having more free parameters) — none of which the raw likelihood comparison alone supplies",
+          description: "turning it into an actual probability of ‘model A is true’ requires a full Bayesian model-comparison framework (priors over which model is correct, and typically a penalty for each model’s complexity, since a more flexible model can generally achieve a higher $L$ just by having more free parameters) — none of which the raw likelihood comparison alone supplies",
           weight: 1,
         },
       ],

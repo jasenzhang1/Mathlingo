@@ -17,22 +17,22 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "recall",
     channels: ["typed"],
     stem:
-      "Markov's inequality applied to |X| (for any random variable X, not necessarily nonnegative) states:",
+      "Markov’s inequality applied to $|X|$ (for any random variable $X$, not necessarily nonnegative) states:",
     choices: [
-      { id: "a", text: "$P(|X| \\geq a) \\leq E[|X|]/a$ for $a > 0$", correct: true },
+      { id: "a", text: "$P(|X| \\geq a) \\leq \\mathbb{E}|X|/a$ for $a > 0$", correct: true },
       {
         id: "b",
-        text: "$P(|X| \\geq a) \\leq E[X]/a$ for $a > 0$",
+        text: "$P(|X| \\geq a) \\leq \\mathbb{E}[X]/a$ for $a > 0$",
         correct: false,
         misconception: {
           id: "markov-inequality--r3--misconception-b",
-          description: "Uses $E[X]$ instead of $E[|X|]$ — $E[X]$ can be small or negative even when $|X|$ is often large.",
+          description: "Uses $\\mathbb{E}[X]$ instead of $\\mathbb{E}|X|$ — $\\mathbb{E}[X]$ can be small or negative even when $|X|$ is often large.",
           blameConceptId: "markov-inequality",
         },
       },
       {
-        id: "c",
-        text: "$P(|X| \\geq a) \\leq \\operatorname{Var}(X)/a^2$",
+        id: "$c$",
+        text: "$P(|X| \\geq a) \\leq \\text{Var}(X)/a^2$",
         correct: false,
         misconception: {
           id: "markov-inequality--r3--misconception-c",
@@ -42,11 +42,11 @@ export const probabilityExpansion6Items: Item[] = [
       },
       {
         id: "d",
-        text: "$P(|X| \\geq a) \\leq E[X^2]/a$",
+        text: "$P(|X| \\geq a) \\leq \\mathbb{E}[X^2]/a$",
         correct: false,
         misconception: {
           id: "markov-inequality--r3--misconception-d",
-          description: "Mismatches the power on the two sides — Markov applied to $|X|$ needs $E[|X|]$ over $a$, not $E[X^2]$ over $a$.",
+          description: "Mismatches the power on the two sides — Markov applied to $|X|$ needs $\\mathbb{E}|X|$ over $a$, not $\\mathbb{E}[X^2]$ over $a$.",
           blameConceptId: "markov-inequality",
         },
       },
@@ -96,7 +96,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "A server's response time $T$ (in ms, $T \\geq 0$) has mean 40. Using Markov's inequality, bound $P(T \\geq 100)$.",
+      "A server’s response time $T$ (in ms, $T \\geq 0$) has mean $40$. Using Markov’s inequality, bound $P(T \\geq 100)$.",
     answerKey: 0.4,
     tolerance: 0.01,
     difficulty: -0.2,
@@ -113,7 +113,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A component's lifetime is Exponential with mean 200 hours. Bound $P(\\text{lifetime} \\geq 800)$ via Markov, then compute the true probability $e^{-4}$, and state the multiplicative gap between the two.",
+      "A component’s lifetime is Exponential with mean $200$ hours. Bound $P(\\text{lifetime} \\geq 800)$ via Markov, then compute the true probability $e^{-4}$, and state the multiplicative gap between the two.",
     rubric: {
       elements: [
         {
@@ -144,7 +144,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Insurance claims $X$ ($X \\geq 0$) have mean \\$2,000. Find the Markov bound on P(X ≥ \\$50,000).",
+      "Insurance claims $X$ ($X \\geq 0$) have mean $\\$2{,}000$. Find the Markov bound on $P(X \\geq \\$50{,}000)$.",
     answerKey: 0.04,
     tolerance: 0.005,
     difficulty: -0.1,
@@ -161,18 +161,18 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For nonnegative $X$ with $E[X]=\\mu$, derive Markov's 'half rule': $P(X \\geq 2\\mu) \\leq 1/2$, and more generally $P(X \\geq k\\mu) \\leq 1/k$ for any $k>0$. Then check that $X$ taking values $0$ and $2\\mu$ with probability $1/2$ each achieves the $k=2$ case with equality.",
+      "For nonnegative $X$ with $\\mathbb{E}[X]=\\mu$, derive Markov’s ‘half rule’: $P(X \\geq 2\\mu) \\leq 1/2$, and more generally $P(X \\geq k\\mu) \\leq 1/k$ for any $k>0$. Then check that $X$ taking values $0$ and $2\\mu$ with probability $1/2$ each achieves the $k=2$ case with equality.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "substitutes $a=k\\mu$ into Markov: $P(X\\geq k\\mu) \\leq E[X]/(k\\mu) = \\mu/(k\\mu) = 1/k$",
+          description: "substitutes $a=k\\mu$ into Markov: $P(X\\geq k\\mu) \\leq \\mathbb{E}[X]/(k\\mu) = \\mu/(k\\mu) = 1/k$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "for the two-point distribution, $E[X]=\\mu$ and $P(X\\geq 2\\mu)=1/2$ exactly, matching the $k=2$ bound with equality",
+          description: "for the two-point distribution, $\\mathbb{E}[X]=\\mu$ and $P(X\\geq 2\\mu)=1/2$ exactly, matching the $k=2$ bound with equality",
           weight: 1,
           required: false,
         },
@@ -192,7 +192,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A nonnegative $X$ has $E[X]=10$. Which threshold $a$ makes the Markov bound on $P(X\\geq a)$ exactly equal to 0.25?",
+      "A nonnegative $X$ has $\\mathbb{E}[X]=10$. Which threshold $a$ makes the Markov bound on $P(X\\geq a)$ exactly equal to $0.25$?",
     choices: [
       { id: "a", text: "$a = 40$", correct: true },
       {
@@ -201,17 +201,17 @@ export const probabilityExpansion6Items: Item[] = [
         correct: false,
         misconception: {
           id: "markov-inequality--a7--misconception-b",
-          description: "Inverts the ratio (computes $a/E[X]$ instead of $E[X]/a$), giving 4 instead of 0.25.",
+          description: "Inverts the ratio (computes $a/\\mathbb{E}[X]$ instead of $\\mathbb{E}[X]/a$), giving $4$ instead of $0.25$.",
           blameConceptId: "markov-inequality",
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "$a = 10$",
         correct: false,
         misconception: {
           id: "markov-inequality--a7--misconception-c",
-          description: "Picks $a = E[X]$, which only gives the trivial bound 1, not 0.25.",
+          description: "Picks $a = \\mathbb{E}[X]$, which only gives the trivial bound $1$, not $0.25$.",
           blameConceptId: "markov-inequality",
         },
       },
@@ -221,7 +221,7 @@ export const probabilityExpansion6Items: Item[] = [
         correct: false,
         misconception: {
           id: "markov-inequality--a7--misconception-d",
-          description: "Arithmetic slip: $10/25 = 0.4$, not 0.25.",
+          description: "Arithmetic slip: $10/25 = 0.4$, not $0.25$.",
           blameConceptId: "markov-inequality",
         },
       },
@@ -240,18 +240,18 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Give a concrete example showing why Markov's inequality fails if applied naively to a random variable that can be negative, using $X \\sim N(0,1)$ and $a=1$.",
+      "Give a concrete example showing why Markov’s inequality fails if applied naively to a random variable that can be negative, using $X \\sim \\mathcal{N}(0,1)$ and $a=1$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$E[X]=0$, so the naive 'bound' $E[X]/a = 0/1 = 0$",
+          description: "$\\mathbb{E}[X]=0$, so the naive ‘bound’ $\\mathbb{E}[X]/a = 0/1 = 0$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "but the true $P(X\\geq 1) \\approx 0.159 > 0$, contradicting the claimed bound of 0 — showing the nonnegativity requirement is essential, not a technicality",
+          description: "but the true $P(X\\geq 1) \\approx 0.159 > 0$, contradicting the claimed bound of $0$ — showing the nonnegativity requirement is essential, not a technicality",
           weight: 1,
           required: false,
         },
@@ -271,12 +271,12 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Prove Markov's inequality for a continuous nonnegative $X$ by splitting the integral definition of $E[X]$ at $a$, instead of using the indicator trick.",
+      "Prove Markov’s inequality for a continuous nonnegative $X$ by splitting the integral definition of $\\mathbb{E}[X]$ at $a$, instead of using the indicator trick.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$E[X] = \\int_0^\\infty x f(x)\\,dx \\geq \\int_a^\\infty x f(x)\\,dx$, dropping the nonnegative contribution from $[0,a)$",
+          description: "$\\mathbb{E}[X] = \\int_0^\\infty x f(x)\\,dx \\geq \\int_a^\\infty x f(x)\\,dx$, dropping the nonnegative contribution from $[0,a)$",
           weight: 1,
           required: true,
         },
@@ -288,7 +288,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-3",
-          description: "combining gives $E[X] \\geq a \\cdot P(X\\geq a)$, i.e. $P(X\\geq a) \\leq E[X]/a$",
+          description: "combining gives $\\mathbb{E}[X] \\geq a \\cdot P(X\\geq a)$, i.e. $P(X\\geq a) \\leq \\mathbb{E}[X]/a$",
           weight: 1,
           required: false,
         },
@@ -319,7 +319,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "whether it helps depends on how well $E[g(X)]$ can be controlled — this is exactly the idea Chebyshev generalizes ($g$ = square of the centered variable) and that Chernoff-style bounds generalize further ($g$ = exponential)",
+          description: "whether it helps depends on how well $\\mathbb{E}[g(X)]$ can be controlled — this is exactly the idea Chebyshev generalizes ($g$ = square of the centered variable) and that Chernoff-style bounds generalize further ($g$ = exponential)",
           weight: 1,
           required: false,
         },
@@ -339,18 +339,18 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A hospital's daily patient count $X$ ($X\\geq 0$) has known mean 50. Administrators want $P(X \\geq 200) \\leq 0.01$ for capacity planning. Does Markov's inequality alone guarantee this? If not, what mean would be required for Markov alone to guarantee it?",
+      "A hospital’s daily patient count $X$ ($X\\geq 0$) has known mean $50$. Administrators want $P(X \\geq 200) \\leq 0.01$ for capacity planning. Does Markov’s inequality alone guarantee this? If not, what mean would be required for Markov alone to guarantee it?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "Markov bound is $50/200 = 0.25$, far above the desired 0.01 — Markov alone does NOT guarantee the requirement",
+          description: "Markov bound is $50/200 = 0.25$, far above the desired $0.01$ — Markov alone does NOT guarantee the requirement",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "for Markov alone to guarantee it, the mean would need to satisfy $\\mu/200 \\leq 0.01$, i.e. $\\mu \\leq 2$ — an unrealistically small mean, illustrating that Markov's looseness makes it unsuitable alone for tight capacity guarantees",
+          description: "for Markov alone to guarantee it, the mean would need to satisfy $\\mu/200 \\leq 0.01$, i.e. $\\mu \\leq 2$ — an unrealistically small mean, illustrating that Markov’s looseness makes it unsuitable alone for tight capacity guarantees",
           weight: 1,
           required: false,
         },
@@ -370,7 +370,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "A queueing system has average number of customers waiting $E[Q]=3$ ($Q\\geq 0$ always). Using only Markov's inequality, what is the tightest guarantee obtainable on $P(Q\\geq 30)$?",
+      "A queueing system has average number of customers waiting $\\mathbb{E}[Q]=3$ ($Q\\geq 0$ always). Using only Markov’s inequality, what is the tightest guarantee obtainable on $P(Q\\geq 30)$?",
     answerKey: 0.1,
     tolerance: 0.01,
     difficulty: 0.5,
@@ -387,7 +387,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A firm models daily loss $L$ ($L\\geq 0$, in \\$millions) with only $E[L]=0.5$ known. Regulators require that $P(L\\geq 10) \\leq 0.05$ be demonstrable using only the mean. Using Markov, determine whether the current mean satisfies this, and find the maximum mean the firm could report and still demonstrate compliance via Markov alone.",
+      "A firm models daily loss $L$ ($L\\geq 0$, in $\\$$ millions) with only $\\mathbb{E}[L]=0.5$ known. Regulators require that $P(L\\geq 10) \\leq 0.05$ be demonstrable using only the mean. Using Markov, determine whether the current mean satisfies this, and find the maximum mean the firm could report and still demonstrate compliance via Markov alone.",
     rubric: {
       elements: [
         {
@@ -398,7 +398,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "the maximum mean $m$ for which Markov alone certifies compliance solves $m/10 \\leq 0.05$, i.e. $m \\leq 0.5$ — the firm's current reported mean is already at the largest value Markov can certify",
+          description: "the maximum mean $m$ for which Markov alone certifies compliance solves $m/10 \\leq 0.05$, i.e. $m \\leq 0.5$ — the firm’s current reported mean is already at the largest value Markov can certify",
           weight: 1,
           required: false,
         },
@@ -435,7 +435,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "$X$ is symmetric about its mean",
         correct: false,
         misconception: {
@@ -494,7 +494,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Exam scores have mean 75, SD 8 (shape unknown). Bound $P(|X-75| \\geq 24)$ using Chebyshev.",
+      "Exam scores have mean $75$, SD $8$ (shape unknown). Bound $P(|X-75| \\geq 24)$ using Chebyshev.",
     answerKey: 0.111,
     tolerance: 0.005,
     difficulty: -0.2,
@@ -511,7 +511,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Machined part diameters have mean 50mm, SD 0.5mm. Find the half-width $c$ (in mm) such that Chebyshev guarantees at least $15/16$ of parts fall within $[50-c, 50+c]$.",
+      "Machined part diameters have mean $50$ mm, SD $0.5$ mm. Find the half-width $c$ (in mm) such that Chebyshev guarantees at least $15/16$ of parts fall within $[50-c, 50+c]$.",
     answerKey: 2,
     tolerance: 0.05,
     difficulty: 0.0,
@@ -528,7 +528,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Network latency (ms) has mean 20 and variance 16 (shape unknown). Bound $P(\\text{latency} \\geq 32 \\text{ or } \\text{latency} \\leq 8)$ using Chebyshev.",
+      "Network latency (ms) has mean $20$ and variance $16$ (shape unknown). Bound $P(\\text{latency} \\geq 32 \\text{ or } \\text{latency} \\leq 8)$ using Chebyshev.",
     answerKey: 0.111,
     tolerance: 0.005,
     difficulty: 0.1,
@@ -545,7 +545,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Test scores have mean 70 and SD at most 10 (worst case). Using Chebyshev with $\\sigma=10$, find the half-width $b$ such that at least 90% of scores are guaranteed to lie within $[70-b, 70+b]$. Give $b$ to two decimal places.",
+      "Test scores have mean $70$ and SD at most $10$ (worst case). Using Chebyshev with $\\sigma=10$, find the half-width $b$ such that at least $90\\%$ of scores are guaranteed to lie within $[70-b, 70+b]$. Give $b$ to two decimal places.",
     answerKey: 31.62,
     tolerance: 0.1,
     difficulty: 0.3,
@@ -573,7 +573,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "checks $\\operatorname{Var}(X) = (2\\sigma)^2 \\cdot (1/8+1/8) = \\sigma^2$ and $P(|X-\\mu|\\geq 2\\sigma)=1/8+1/8=1/4$, matching the bound exactly",
+          description: "checks $\\text{Var}(X) = (2\\sigma)^2 \\cdot \\left(\\tfrac18+\\tfrac18\\right) = \\sigma^2$ and $P(|X-\\mu|\\geq 2\\sigma)=\\tfrac18+\\tfrac18=\\tfrac14$, matching the bound exactly",
           weight: 1,
           required: false,
         },
@@ -593,7 +593,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Chebyshev's bound is nontrivial (less than 1) only when $k > 1$. What does the bound say for $k \\leq 1$, and why is that consistent with the axioms of probability rather than a flaw?",
+      "Chebyshev’s bound is nontrivial (less than $1$) only when $k > 1$. What does the bound say for $k \\leq 1$, and why is that consistent with the axioms of probability rather than a flaw?",
     rubric: {
       elements: [
         {
@@ -604,7 +604,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "this is consistent, not a flaw — the inequality only claims to be an upper bound, and an upper bound of 'at most 1' about a probability is simply vacuously correct",
+          description: "this is consistent, not a flaw — the inequality only claims to be an upper bound, and an upper bound of ‘at most $1$’ about a probability is simply vacuously correct",
           weight: 1,
           required: false,
         },
@@ -667,18 +667,18 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A bridge's load capacity has unknown shape but known mean and SD. An engineer proposes that a design load set 3 SDs below mean capacity gives $P(\\text{failure}) \\leq 0.05$, citing Chebyshev. Check this claim numerically, and state what margin (in SDs) Chebyshev would actually require for a genuine 0.05 guarantee.",
+      "A bridge’s load capacity has unknown shape but known mean and SD. An engineer proposes that a design load set $3$ SDs below mean capacity gives $P(\\text{failure}) \\leq 0.05$, citing Chebyshev. Check this claim numerically, and state what margin (in SDs) Chebyshev would actually require for a genuine $0.05$ guarantee.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "at $k=3$, Chebyshev only guarantees $P(|X-\\mu|\\geq 3\\sigma) \\leq 1/9 \\approx 0.111$, which is worse than (does not guarantee) 0.05 — the engineer's claim is not justified",
+          description: "at $k=3$, Chebyshev only guarantees $P(|X-\\mu|\\geq 3\\sigma) \\leq 1/9 \\approx 0.111$, which is worse than (does not guarantee) $0.05$ — the engineer’s claim is not justified",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "a genuine 0.05 two-sided guarantee needs $1/k^2\\leq 0.05$, i.e. $k\\geq \\sqrt{20}\\approx 4.47$ — nearly 4.5 SDs, not 3",
+          description: "a genuine $0.05$ two-sided guarantee needs $1/k^2\\leq 0.05$, i.e. $k\\geq \\sqrt{20}\\approx 4.47$ — nearly $4.5$ SDs, not $3$",
           weight: 1,
           required: false,
         },
@@ -698,7 +698,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "A shipping company wants a Chebyshev-based 99% guarantee that a package's weight (mean 5kg, SD 0.2kg, shape unknown) falls within some interval around the mean. Find the guaranteed half-width, in kg.",
+      "A shipping company wants a Chebyshev-based $99\\%$ guarantee that a package’s weight (mean $5$ kg, SD $0.2$ kg, shape unknown) falls within some interval around the mean. Find the guaranteed half-width, in kg.",
 
     answerKey: 2,
     tolerance: 0.05,
@@ -716,7 +716,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A grading committee knows only that a class of $200$ students has mean score 75 and variance 64 (no other distributional info). Using Chebyshev, bound the *number* (not proportion) of students scoring below 50 or above 100.",
+      "A grading committee knows only that a class of $200$ students has mean score $75$ and variance $64$ (no other distributional info). Using Chebyshev, bound the *number* (not proportion) of students scoring below $50$ or above $100$.",
     rubric: {
       elements: [
         {
@@ -727,7 +727,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "converting to a count by multiplying by $n=200$ gives at most about 20–21 students",
+          description: "converting to a count by multiplying by $n=200$ gives at most about $20$–$21$ students",
           weight: 1,
           required: false,
         },
@@ -758,7 +758,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "as $n\\to\\infty$ this bound shrinks to 0 for any fixed $\\varepsilon>0$ — exactly the definition of convergence in probability, which is the Weak Law of Large Numbers",
+          description: "as $n\\to\\infty$ this bound shrinks to $0$ for any fixed $\\varepsilon>0$ — exactly the definition of convergence in probability, which is the Weak Law of Large Numbers",
           weight: 1,
           required: false,
         },
@@ -782,12 +782,12 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "recall",
     channels: ["typed"],
     stem:
-      "For a concave function $h$ (e.g. $h(x)=\\sqrt{x}$ for $x>0$), Jensen's inequality states:",
+      "For a concave function $h$ (e.g. $h(x)=\\sqrt{x}$ for $x>0$), Jensen’s inequality states:",
     choices: [
-      { id: "a", text: "$E[h(X)] \\leq h(E[X])$", correct: true },
+      { id: "a", text: "$\\mathbb{E}[h(X)] \\leq h(\\mathbb{E}[X])$", correct: true },
       {
         id: "b",
-        text: "$E[h(X)] \\geq h(E[X])$",
+        text: "$\\mathbb{E}[h(X)] \\geq h(\\mathbb{E}[X])$",
         correct: false,
         misconception: {
           id: "jensen-inequality--r3--misconception-b",
@@ -796,12 +796,12 @@ export const probabilityExpansion6Items: Item[] = [
         },
       },
       {
-        id: "c",
-        text: "$E[h(X)] = h(E[X])$ always",
+        id: "$c$",
+        text: "$\\mathbb{E}[h(X)] = h(\\mathbb{E}[X])$ always",
         correct: false,
         misconception: {
           id: "jensen-inequality--r3--misconception-c",
-          description: "Equality only holds if h is linear on the relevant range or X is degenerate (a.s. constant) — not in general.",
+          description: "Equality only holds if $h$ is linear on the relevant range or $X$ is degenerate (a.s. constant) — not in general.",
           blameConceptId: "jensen-inequality",
         },
       },
@@ -861,7 +861,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "$X \\sim \\text{Bernoulli}(0.3)$. Compute $E[X^2] - (E[X])^2$, confirming (per Jensen with $g(x)=x^2$) that it is nonnegative.",
+      "$X \\sim \\text{Bernoulli}(0.3)$. Compute $\\mathbb{E}[X^2] - (\\mathbb{E}[X])^2$, confirming (per Jensen with $g(x)=x^2$) that it is nonnegative.",
     answerKey: 0.21,
     tolerance: 0.005,
     difficulty: -0.1,
@@ -878,7 +878,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "$X$ takes values 0 and 100 with equal probability. Using $g(x)=\\sqrt{x}$ (concave), compute the Jensen gap $\\sqrt{E[X]} - E[\\sqrt{X}]$.",
+      "$X$ takes values $0$ and $100$ with equal probability. Using $g(x)=\\sqrt{x}$ (concave), compute the Jensen gap $\\sqrt{\\mathbb{E}[X]} - \\mathbb{E}\\left[\\sqrt{X}\\right]$.",
     answerKey: 2.071,
     tolerance: 0.02,
     difficulty: 0.2,
@@ -895,7 +895,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "The values 4, 9, 16 are equally likely outcomes of $X$. Compute the arithmetic mean $E[X]$ and the geometric mean $(\\prod x_i)^{1/n}$, and confirm the $\\text{AM} \\geq \\text{GM}$ relation predicted by Jensen with $g=\\log$ (concave).",
+      "The values $4$, $9$, $16$ are equally likely outcomes of $X$. Compute the arithmetic mean $\\mathbb{E}[X]$ and the geometric mean $\\left(\\prod x_i\\right)^{1/n}$, and confirm the $\\text{AM} \\geq \\text{GM}$ relation predicted by Jensen with $g=\\log$ (concave).",
     rubric: {
       elements: [
         {
@@ -926,12 +926,12 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "$X$ has $E[X]=4$ (variance unknown). With $g(x)=x^2$ (convex), which is guaranteed by Jensen?",
+      "$X$ has $\\mathbb{E}[X]=4$ (variance unknown). With $g(x)=x^2$ (convex), which is guaranteed by Jensen?",
     choices: [
-      { id: "a", text: "$E[X^2] \\geq 16$", correct: true },
+      { id: "a", text: "$\\mathbb{E}[X^2] \\geq 16$", correct: true },
       {
         id: "b",
-        text: "$E[X^2] = 16$",
+        text: "$\\mathbb{E}[X^2] = 16$",
         correct: false,
         misconception: {
           id: "jensen-inequality--a6--misconception-b",
@@ -940,22 +940,22 @@ export const probabilityExpansion6Items: Item[] = [
         },
       },
       {
-        id: "c",
-        text: "$E[X^2] \\leq 16$",
+        id: "$c$",
+        text: "$\\mathbb{E}[X^2] \\leq 16$",
         correct: false,
         misconception: {
           id: "jensen-inequality--a6--misconception-c",
-          description: "Backwards — $x^2$ is convex, so Jensen gives $E[X^2] \\geq (E[X])^2$, not $\\leq$.",
+          description: "Backwards — $x^2$ is convex, so Jensen gives $\\mathbb{E}[X^2] \\geq (\\mathbb{E}[X])^2$, not $\\leq$.",
           blameConceptId: "jensen-inequality",
         },
       },
       {
         id: "d",
-        text: "Nothing can be concluded without knowing $\\operatorname{Var}(X)$",
+        text: "Nothing can be concluded without knowing $\\text{Var}(X)$",
         correct: false,
         misconception: {
           id: "jensen-inequality--a6--misconception-d",
-          description: "Jensen alone already guarantees $E[X^2]\\geq 16$ regardless of the actual variance — indeed the gap $E[X^2]-16$ IS the variance.",
+          description: "Jensen alone already guarantees $\\mathbb{E}[X^2]\\geq 16$ regardless of the actual variance — indeed the gap $\\mathbb{E}[X^2]-16$ IS the variance.",
           blameConceptId: "jensen-inequality",
         },
       },
@@ -979,13 +979,13 @@ export const probabilityExpansion6Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "concavity of log gives $E[\\log X] \\leq \\log(E[X])$",
+          description: "concavity of $\\log$ gives $\\mathbb{E}[\\log X] \\leq \\log(\\mathbb{E}[X])$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "$E[\\log X] = (1/n)\\sum \\log(x_i) = \\log((\\prod x_i)^{1/n}) = \\log(\\text{GM})$, while $\\log(E[X]) = \\log(\\text{AM})$",
+          description: "$\\mathbb{E}[\\log X] = \\frac{1}{n}\\sum \\log(x_i) = \\log\\left(\\left(\\prod x_i\\right)^{1/n}\\right) = \\log(\\text{GM})$, while $\\log(\\mathbb{E}[X]) = \\log(\\text{AM})$",
           weight: 1,
           required: true,
         },
@@ -1011,18 +1011,18 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A risk-averse investor's utility of wealth is $u(w)=\\sqrt{w}$ (concave). Use Jensen to explain why this investor strictly prefers a certain \\$50 over a fair coin flip paying \\$0 or \\$100, even though both have the same expected value.",
+      "A risk-averse investor’s utility of wealth is $u(w)=\\sqrt{w}$ (concave). Use Jensen to explain why this investor strictly prefers a certain $\\$50$ over a fair coin flip paying $\\$0$ or $\\$100$, even though both have the same expected value.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$E[u(\\text{gamble})] = (u(0)+u(100))/2 = (0+10)/2 = 5$, while $u(E[\\text{wealth}]) = u(50) = \\sqrt{50} \\approx 7.07$",
+          description: "$\\mathbb{E}[u(\\text{gamble})] = \\dfrac{u(0)+u(100)}{2} = \\dfrac{0+10}{2} = 5$, while $u(\\mathbb{E}[\\text{wealth}]) = u(50) = \\sqrt{50} \\approx 7.07$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "since $u$ is concave, Jensen directly gives $E[u(W)] \\leq u(E[W])$ — the expected utility of the gamble is strictly less than the utility of the sure payment, which is exactly the mathematical definition of risk aversion",
+          description: "since $u$ is concave, Jensen directly gives $\\mathbb{E}[u(W)] \\leq u(\\mathbb{E}[W])$ — the expected utility of the gamble is strictly less than the utility of the sure payment, which is exactly the mathematical definition of risk aversion",
           weight: 1,
           required: false,
         },
@@ -1047,13 +1047,13 @@ export const probabilityExpansion6Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "convexity of $P(y)$ means $E[P(Y)] \\geq P(E[Y])$ by Jensen — the bond's average payoff under uncertain yields exceeds the payoff evaluated at the average yield",
+          description: "convexity of $P(y)$ means $\\mathbb{E}[P(Y)] \\geq P(\\mathbb{E}[Y])$ by Jensen — the bond’s average payoff under uncertain yields exceeds the payoff evaluated at the average yield",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "the more convex the price-yield curve, the larger this Jensen gap, so more convexity amplifies the benefit from yield uncertainty — this is why convexity is a priced, sought-after property rather than a modeling nuisance (Jensen gap here meaning $E[P(Y)] - P(E[Y])$)",
+          description: "the more convex the price-yield curve, the larger this Jensen gap, so more convexity amplifies the benefit from yield uncertainty — this is why convexity is a priced, sought-after property rather than a modeling nuisance (Jensen gap here meaning $\\mathbb{E}[P(Y)] - P(\\mathbb{E}[Y])$)",
           weight: 1,
           required: false,
         },
@@ -1104,18 +1104,18 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A call option's payoff is $\\max(S-K, 0)$, a convex function of the underlying stock price $S$. A trader argues: 'since $E[S]$ equals today's forward price $F$, the option should be priced at $\\max(F-K,0)$, the payoff at the expected price.' Use Jensen to explain why this understates the option's fair value.",
+      "A call option’s payoff is $\\max(S-K, 0)$, a convex function of the underlying stock price $S$. A trader argues: “since $\\mathbb{E}[S]$ equals today’s forward price $F$, the option should be priced at $\\max(F-K,0)$, the payoff at the expected price.” Use Jensen to explain why this understates the option’s fair value.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "convexity of the payoff gives $E[\\max(S-K,0)] \\geq \\max(E[S]-K,0) = \\max(F-K,0)$ by Jensen",
+          description: "convexity of the payoff gives $\\mathbb{E}[\\max(S-K,0)] \\geq \\max(\\mathbb{E}[S]-K,0) = \\max(F-K,0)$ by Jensen",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "the option's expected payoff is always at least the naive point-estimate value, with the Jensen gap reflecting the option's 'time value,' which grows with the volatility of S — exactly why options are worth more than their payoff at the forward price",
+          description: "the option’s expected payoff is always at least the naive point-estimate value, with the Jensen gap reflecting the option’s ‘time value’, which grows with the volatility of $S$ — exactly why options are worth more than their payoff at the forward price",
           weight: 1,
           required: false,
         },
@@ -1147,18 +1147,18 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Manufacturing cost per unit as a function of batch size $q$ is $C(q)=100/q + 5q$ (convex for $q>0$). Demand takes values $q=10$ or $q=40$ with equal probability (mean 25). Compute $E[C(q)]$ and $C(E[q])$, and verify Jensen's inequality.",
+      "Manufacturing cost per unit as a function of batch size $q$ is $C(q)=100/q + 5q$ (convex for $q>0$). Demand takes values $q=10$ or $q=40$ with equal probability (mean $25$). Compute $\\mathbb{E}[C(q)]$ and $C(\\mathbb{E}[q])$, and verify Jensen’s inequality.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$C(10)=10+50=60$, $C(40)=2.5+200=202.5$, so $E[C(q)]=(60+202.5)/2=131.25$",
+          description: "$C(10)=10+50=60$, $C(40)=2.5+200=202.5$, so $\\mathbb{E}[C(q)]=(60+202.5)/2=131.25$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "$C(25)=4+125=129$, and indeed $E[C(q)]=131.25 \\geq C(25)=129$, confirming Jensen for this convex cost function",
+          description: "$C(25)=4+125=129$, and indeed $\\mathbb{E}[C(q)]=131.25 \\geq C(25)=129$, confirming Jensen for this convex cost function",
           weight: 1,
           required: false,
         },
@@ -1183,7 +1183,7 @@ export const probabilityExpansion6Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "for convex $g$, Jensen gives $g(E[X]) \\leq E[g(X)]$, so plugging the mean input into $g$ underestimates the true expected output whenever the relevant relationship is convex",
+          description: "for convex $g$, Jensen gives $g(\\mathbb{E}[X]) \\leq \\mathbb{E}[g(X)]$, so plugging the mean input into $g$ underestimates the true expected output whenever the relevant relationship is convex",
           weight: 1,
           required: true,
         },
@@ -1241,7 +1241,7 @@ export const probabilityExpansion6Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "$E[|X_n-X|^p] \\to 0$ as $n\\to\\infty$ (requiring the $p$th moments in question to exist)",
+          description: "$\\mathbb{E}\\left[|X_n-X|^p\\right] \\to 0$ as $n\\to\\infty$ (requiring the $p$th moments in question to exist)",
           weight: 1,
           required: false,
         },
@@ -1261,7 +1261,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Let $X_n = n$ with probability $1/n$ and $0$ with probability $1-1/n$. Show $X_n \\to 0$ in probability, but $X_n$ does NOT converge to 0 in $L^1$.",
+      "Let $X_n = n$ with probability $1/n$ and $0$ with probability $1-1/n$. Show $X_n \\to 0$ in probability, but $X_n$ does NOT converge to $0$ in $L^1$.",
     rubric: {
       elements: [
         {
@@ -1272,7 +1272,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "$E[|X_n|] = n\\cdot(1/n) + 0\\cdot(1-1/n) = 1$ for every $n$, which does not $\\to 0$, so there is no $L^1$ convergence — a vanishingly likely spike still carries enough magnitude to keep the mean from shrinking",
+          description: "$\\mathbb{E}|X_n| = n\\cdot\\frac1n + 0\\cdot\\left(1-\\frac1n\\right) = 1$ for every $n$, which does not $\\to 0$, so there is no $L^1$ convergence — a vanishingly likely spike still carries enough magnitude to keep the mean from shrinking",
           weight: 1,
           required: false,
         },
@@ -1292,18 +1292,18 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Let $X_n = 2^n$ with probability $2^{-n}$ and $0$ otherwise. Using the (first) Borel–Cantelli lemma, argue $X_n \\to 0$ almost surely, yet show $X_n$ does not converge to 0 in $L^1$.",
+      "Let $X_n = 2^n$ with probability $2^{-n}$ and $0$ otherwise. Using the (first) Borel–Cantelli lemma, argue $X_n \\to 0$ almost surely, yet show $X_n$ does not converge to $0$ in $L^1$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$\\sum P(X_n=2^n) = \\sum 2^{-n} < \\infty$, so by Borel–Cantelli the event $\\{X_n\\neq 0\\}$ occurs only finitely often almost surely, giving a.s. convergence to 0",
+          description: "$\\sum P(X_n=2^n) = \\sum 2^{-n} < \\infty$, so by Borel–Cantelli the event $\\{X_n\\neq 0\\}$ occurs only finitely often almost surely, giving a.s. convergence to $0$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "$E[X_n] = 2^n \\cdot 2^{-n} = 1$ for every $n$, so $E[|X_n-0|]$ never shrinks — almost sure convergence says nothing about convergence of means",
+          description: "$\\mathbb{E}[X_n] = 2^n \\cdot 2^{-n} = 1$ for every $n$, so $\\mathbb{E}|X_n-0|$ never shrinks — almost sure convergence says nothing about convergence of means",
           weight: 1,
           required: false,
         },
@@ -1323,7 +1323,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Let $Y_1,Y_2,\\ldots$ be independent with $P(Y_n=1)=1/n$ and $P(Y_n=0)=1-1/n$. Show $Y_n \\to 0$ in probability, then use the second Borel–Cantelli lemma ($\\sum 1/n$ diverges, and the events are independent) to argue $Y_n$ does NOT converge to 0 almost surely.",
+      "Let $Y_1, Y_2, \\ldots$ be independent with $P(Y_n=1)=1/n$ and $P(Y_n=0)=1-1/n$. Show $Y_n \\to 0$ in probability, then use the second Borel–Cantelli lemma ($\\sum 1/n$ diverges, and the events are independent) to argue $Y_n$ does NOT converge to $0$ almost surely.",
     rubric: {
       elements: [
         {
@@ -1334,7 +1334,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "since $\\sum P(Y_n=1) = \\sum 1/n = \\infty$ and the events are independent, the second Borel–Cantelli lemma gives $P(Y_n=1 \\text{ infinitely often}) = 1$ — so almost every outcome has $Y_n=1$ infinitely often and never settles at 0, ruling out a.s. convergence",
+          description: "since $\\sum P(Y_n=1) = \\sum 1/n = \\infty$ and the events are independent, the second Borel–Cantelli lemma gives $P(Y_n=1 \\text{ infinitely often}) = 1$ — so almost every outcome has $Y_n=1$ infinitely often and never settles at $0$, ruling out a.s. convergence",
           weight: 1,
           required: false,
         },
@@ -1359,7 +1359,7 @@ export const probabilityExpansion6Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "for any $\\varepsilon>0$, $P(|X_n-X|\\geq \\varepsilon) = P(|X_n-X|^p \\geq \\varepsilon^p) \\leq E[|X_n-X|^p]/\\varepsilon^p$ by Markov, since $|X_n-X|^p \\geq 0$",
+          description: "for any $\\varepsilon>0$, $P(|X_n-X|\\geq \\varepsilon) = P(|X_n-X|^p \\geq \\varepsilon^p) \\leq \\mathbb{E}\\left[|X_n-X|^p\\right]/\\varepsilon^p$ by Markov, since $|X_n-X|^p \\geq 0$",
           weight: 1,
           required: true,
         },
@@ -1390,13 +1390,13 @@ export const probabilityExpansion6Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "both put a shrinking-probability event on an ever-growing magnitude, tuned so the product (magnitude × probability) stays constant rather than vanishing",
+          description: "both put a shrinking-probability event on an ever-growing magnitude, tuned so the product (magnitude $\\times$ probability) stays constant rather than vanishing",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "this is exactly what keeps $E[|X_n|]$ from going to 0, even though the probability of the spike itself vanishes (or vanishes fast enough for a.s. convergence)",
+          description: "this is exactly what keeps $\\mathbb{E}|X_n|$ from going to $0$, even though the probability of the spike itself vanishes (or vanishes fast enough for a.s. convergence)",
           weight: 1,
           required: false,
         },
@@ -1416,12 +1416,12 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Explain why convergence in distribution to a constant c is actually equivalent to convergence in probability to c, even though convergence in distribution is generally the weakest mode.",
+      "Explain why convergence in distribution to a constant $c$ is actually equivalent to convergence in probability to $c$, even though convergence in distribution is generally the weakest mode.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "convergence in distribution to a degenerate limit forces the CDF to jump from 0 to 1 exactly at c, pinning down that essentially all probability mass concentrates arbitrarily close to c — the same conclusion convergence in probability gives",
+          description: "convergence in distribution to a degenerate limit forces the CDF to jump from $0$ to $1$ exactly at $c$, pinning down that essentially all probability mass concentrates arbitrarily close to $c$ — the same conclusion convergence in probability gives",
           weight: 1,
           required: true,
         },
@@ -1447,18 +1447,18 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Contrast the typewriter sequence with A5's independent-Bernoulli sequence — both converge in probability but not a.s. Do they fail almost sure convergence for the same underlying reason?",
+      "Contrast the typewriter sequence with A5’s independent-Bernoulli sequence — both converge in probability but not a.s. Do they fail almost sure convergence for the same underlying reason?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "yes, structurally the same reason despite looking different: the probability of the 'bad' event at step n shrinks to 0, but the sum of these probabilities across all n stays infinite (or the deterministic sweep literally revisits every point infinitely often)",
+          description: "yes, structurally the same reason despite looking different: the probability of the ‘bad’ event at step $n$ shrinks to $0$, but the sum of these probabilities across all $n$ stays infinite (or the deterministic sweep literally revisits every point infinitely often)",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "so by Borel–Cantelli–type reasoning, the bad event recurs infinitely often for almost every fixed outcome, even though no single n is individually very likely to be bad",
+          description: "so by Borel–Cantelli-type reasoning, the bad event recurs infinitely often for almost every fixed outcome, even though no single $n$ is individually very likely to be bad",
           weight: 1,
           required: false,
         },
@@ -1478,7 +1478,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "An MLE $\\hat{\\theta}_n$ is shown to converge in distribution to $\\theta$ (a Normal that shrinks toward a point mass at $\\theta$ as $n\\to\\infty$) — i.e. the limit is degenerate. A student says: 'convergence in distribution is the weakest mode, so this tells us almost nothing useful.' Are they right?",
+      "An MLE $\\hat{\\theta}_n$ is shown to converge in distribution to $\\theta$ (a Normal that shrinks toward a point mass at $\\theta$ as $n\\to\\infty$) — i.e. the limit is degenerate. A student says: “convergence in distribution is the weakest mode, so this tells us almost nothing useful.” Are they right?",
     rubric: {
       elements: [
         {
@@ -1552,12 +1552,12 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "$X_n = X + Z_n$, where $X$ is a fixed random variable and $Z_n \\sim N(0, 1/n)$, independent across $n$ and independent of $X$. Determine which of $L^2$, probability, and distribution convergence $X_n \\to X$ satisfies, and explain why none of these automatically implies almost sure convergence.",
+      "$X_n = X + Z_n$, where $X$ is a fixed random variable and $Z_n \\sim \\mathcal{N}(0, 1/n)$, independent across $n$ and independent of $X$. Determine which of $L^2$, probability, and distribution convergence $X_n \\to X$ satisfies, and explain why none of these automatically implies almost sure convergence.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$E[(X_n-X)^2] = E[Z_n^2] = 1/n \\to 0$, so $X_n \\to X$ in $L^2$, and therefore also in probability (via the Markov argument) and in distribution",
+          description: "$\\mathbb{E}\\left[(X_n-X)^2\\right] = \\mathbb{E}[Z_n^2] = 1/n \\to 0$, so $X_n \\to X$ in $L^2$, and therefore also in probability (via the Markov argument) and in distribution",
           weight: 1,
           required: true,
         },
@@ -1623,7 +1623,7 @@ export const probabilityExpansion6Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "for iid $X_1,\\ldots,X_n$ with finite mean $E[X]=\\mu$ (no finite-variance assumption needed), $\\bar{X}_n \\to_p \\mu$",
+          description: "for i.i.d. $X_1,\\ldots,X_n$ with finite mean $\\mathbb{E}[X]=\\mu$ (no finite-variance assumption needed), $\\bar{X}_n \\xrightarrow{p} \\mu$",
           weight: 1,
           required: false,
         },
@@ -1661,7 +1661,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "Yes, because Chebyshev's inequality is the only possible proof method",
         correct: false,
         misconception: {
@@ -1695,7 +1695,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "A fair six-sided die roll has $\\operatorname{Var}(\\text{roll})=35/12\\approx 2.9167$. Using the Chebyshev-based LLN bound, find the smallest $n$ guaranteeing $P(|\\bar{X}_n-3.5|\\geq 0.1) \\leq 0.10$.",
+      "A fair six-sided die roll has $\\text{Var}(\\text{roll})=35/12\\approx 2.9167$. Using the Chebyshev-based LLN bound, find the smallest $n$ guaranteeing $P(|\\bar{X}_n-3.5|\\geq 0.1) \\leq 0.10$.",
     answerKey: 2917,
     tolerance: 2,
     difficulty: -0.3,
@@ -1712,7 +1712,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "A fair coin flip has variance 0.25. Using the Chebyshev-based LLN bound, find the smallest $n$ guaranteeing the sample proportion of heads $\\hat{p}_n$ satisfies $P(|\\hat{p}_n-0.5|\\geq 0.02) \\leq 0.05$.",
+      "A fair coin flip has variance $0.25$. Using the Chebyshev-based LLN bound, find the smallest $n$ guaranteeing the sample proportion of heads $\\hat{p}_n$ satisfies $P(|\\hat{p}_n-0.5|\\geq 0.02) \\leq 0.05$.",
     answerKey: 12500,
     tolerance: 1,
     difficulty: -0.1,
@@ -1729,7 +1729,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "An e-commerce site's per-visitor conversion has variance at most 0.25 (worst case, since it's a proportion). Using the Chebyshev-LLN bound, find the smallest sample size guaranteeing the estimated conversion rate is within 0.03 of the truth with failure probability at most 0.05.",
+      "An e-commerce site’s per-visitor conversion has variance at most $0.25$ (worst case, since it’s a proportion). Using the Chebyshev-LLN bound, find the smallest sample size guaranteeing the estimated conversion rate is within $0.03$ of the truth with failure probability at most $0.05$.",
     answerKey: 5556,
     tolerance: 5,
     difficulty: 0.1,
@@ -1763,7 +1763,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "$\\bar{X}_n \\to \\mu$ in probability",
         correct: false,
         misconception: {
@@ -1797,7 +1797,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Monte Carlo methods estimate an unknown probability p by simulating n independent trials and reporting the sample proportion. Explain, via the LLN, why running more trials is legitimate for reducing estimation error — and why 'more trials' alone is not a guarantee about any single already-run simulation's error.",
+      "Monte Carlo methods estimate an unknown probability $p$ by simulating $n$ independent trials and reporting the sample proportion. Explain, via the LLN, why running more trials is legitimate for reducing estimation error — and why ‘more trials’ alone is not a guarantee about any single already-run simulation’s error.",
     rubric: {
       elements: [
         {
@@ -1828,12 +1828,12 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "The Gambler's Fallacy holds that after a long run of heads, a tail becomes 'due' to balance the average back toward 50%. Explain precisely what the LLN actually says that could be confused with this, and why it gives no such compensating mechanism.",
+      "The Gambler’s Fallacy holds that after a long run of heads, a tail becomes ‘due’ to balance the average back toward $50\\%$. Explain precisely what the LLN actually says that could be confused with this, and why it gives no such compensating mechanism.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the LLN says the long-run average converges to the true mean, which is true, but it says nothing about individual future outcomes compensating for past ones — each flip stays independent with the same 0.5 probability regardless of history",
+          description: "the LLN says the long-run average converges to the true mean, which is true, but it says nothing about individual future outcomes compensating for past ones — each flip stays independent with the same $0.5$ probability regardless of history",
           weight: 1,
           required: true,
         },
@@ -1902,24 +1902,24 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Show that for iid $X_i$ with finite variance $\\sigma^2$, $\\operatorname{Var}(\\text{sum of } n\\ X_i)$ grows linearly in $n$ ($=n\\sigma^2$) while $\\operatorname{Var}(\\bar{X}_n)$ shrinks like $1/n$ ($=\\sigma^2/n$), and explain why both facts hold simultaneously without contradiction.",
+      "Show that for i.i.d. $X_i$ with finite variance $\\sigma^2$, $\\text{Var}\\left(\\sum_{i=1}^n X_i\\right)$ grows linearly in $n$ ($=n\\sigma^2$) while $\\text{Var}(\\bar{X}_n)$ shrinks like $1/n$ ($=\\sigma^2/n$), and explain why both facts hold simultaneously without contradiction.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$\\operatorname{Var}(\\sum X_i) = n\\sigma^2$ by independence (variances add across independent terms)",
+          description: "$\\text{Var}\\left(\\sum X_i\\right) = n\\sigma^2$ by independence (variances add across independent terms)",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "$\\operatorname{Var}(\\bar{X}_n) = \\operatorname{Var}(\\sum X_i)/n^2 = n\\sigma^2/n^2 = \\sigma^2/n$",
+          description: "$\\text{Var}(\\bar{X}_n) = \\text{Var}\\left(\\sum X_i\\right)/n^2 = n\\sigma^2/n^2 = \\sigma^2/n$",
           weight: 1,
           required: true,
         },
         {
           id: "element-3",
-          description: "no contradiction — dividing by n twice (once for the sum, once more for averaging) shrinks the per-unit variance even while the raw sum's variance still grows, which is the mechanism behind T3's 'average is tamed, total isn't' distinction",
+          description: "no contradiction — dividing by $n$ twice (once for the sum, once more for averaging) shrinks the per-unit variance even while the raw sum’s variance still grows, which is the mechanism behind T3’s ‘average is tamed, total isn’t’ distinction",
           weight: 1,
           required: false,
         },
@@ -1939,7 +1939,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "Continuing A5's e-commerce setup, the team can realistically collect only n=1000 visitors, not the 5,556 required for a 0.05 failure probability. Using the same Chebyshev-LLN bound (variance 0.25, precision target 0.03), what is the largest failure probability the team can actually guarantee at n=1000? Give a decimal to three places.",
+      "Continuing A5’s e-commerce setup, the team can realistically collect only $n=1000$ visitors, not the $5{,}556$ required for a $0.05$ failure probability. Using the same Chebyshev-LLN bound (variance $0.25$, precision target $0.03$), what is the largest failure probability the team can actually guarantee at $n=1000$? Give a decimal to three places.",
     answerKey: 0.278,
     tolerance: 0.01,
     difficulty: 1.05,
@@ -1987,12 +1987,12 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Quality control samples n=100 items per batch, trusting by LLN reasoning that the sample mean defect rate reflects the batch's true rate. Explain what silently breaks if defects are NOT independent across items — e.g. a single upstream machine miscalibration causes a cluster of consecutive defective items — and how this changes what the sample of 100 can actually tell you.",
+      "Quality control samples $n=100$ items per batch, trusting by LLN reasoning that the sample mean defect rate reflects the batch’s true rate. Explain what silently breaks if defects are NOT independent across items — e.g. a single upstream machine miscalibration causes a cluster of consecutive defective items — and how this changes what the sample of $100$ can actually tell you.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the LLN's convergence relies on the $X_i$ being independent (or at least uncorrelated); with clustered/correlated defects, the *effective* number of independent pieces of information is much smaller than 100, since correlated items are nearly redundant",
+          description: "the LLN’s convergence relies on the $X_i$ being independent (or at least uncorrelated); with clustered/correlated defects, the *effective* number of independent pieces of information is much smaller than $100$, since correlated items are nearly redundant",
           weight: 1,
           required: true,
         },
@@ -2047,12 +2047,12 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "recall",
     channels: ["typed"],
     stem:
-      "For $X_1,\\ldots,X_n$ iid Uniform(0,1), the $k$-th order statistic $X_{(k)}$ follows which named distribution?",
+      "For $X_1,\\ldots,X_n$ i.i.d. $\\text{Uniform}(0,1)$, the $k$-th order statistic $X_{(k)}$ follows which named distribution?",
     choices: [
       { id: "a", text: "$\\text{Beta}(k, n-k+1)$", correct: true },
       {
         id: "b",
-        text: "Binomial(n, k/n)",
+        text: "$\\text{Binomial}(n, k/n)$",
         correct: false,
         misconception: {
           id: "order-statistics--r4--misconception-b",
@@ -2061,8 +2061,8 @@ export const probabilityExpansion6Items: Item[] = [
         },
       },
       {
-        id: "c",
-        text: "Uniform(k/(n+1), (k+1)/(n+1))",
+        id: "$c$",
+        text: "$\\text{Uniform}\\left(\\frac{k}{n+1}, \\frac{k+1}{n+1}\\right)$",
         correct: false,
         misconception: {
           id: "order-statistics--r4--misconception-c",
@@ -2072,7 +2072,7 @@ export const probabilityExpansion6Items: Item[] = [
       },
       {
         id: "d",
-        text: "Gamma(k, n−k+1)",
+        text: "$\\text{Gamma}(k, n-k+1)$",
         correct: false,
         misconception: {
           id: "order-statistics--r4--misconception-d",
@@ -2126,7 +2126,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "$X_1,\\ldots,X_5$ iid Uniform(0,1). Compute the density of the median $X_{(3)}$ at $x=0.5$.",
+      "$X_1,\\ldots,X_5$ i.i.d. $\\text{Uniform}(0,1)$. Compute the density of the median $X_{(3)}$ at $x=0.5$.",
     answerKey: 1.875,
     tolerance: 0.01,
     difficulty: 0.1,
@@ -2143,7 +2143,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "$n=8$ iid Exponential($\\lambda=2$) lifetimes go into service simultaneously; the system's first failure occurs at their minimum. Using the fact that the minimum of $n$ iid Exponential($\\lambda$) variables is Exponential($n\\lambda$), find $E[\\min]$.",
+      "$n=8$ i.i.d. $\\text{Exponential}(\\lambda=2)$ lifetimes go into service simultaneously; the system’s first failure occurs at their minimum. Using the fact that the minimum of $n$ i.i.d. $\\text{Exponential}(\\lambda)$ variables is $\\text{Exponential}(n\\lambda)$, find $\\mathbb{E}[\\min]$.",
     answerKey: 0.0625,
     tolerance: 0.002,
     difficulty: 0.3,
@@ -2196,7 +2196,7 @@ export const probabilityExpansion6Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "the coefficient is n!/((k−1)!(n−k)!) = 5!/(2!·2!) = 30",
+          description: "the coefficient is $\\dfrac{n!}{(k-1)!(n-k)!} = \\dfrac{5!}{2!\\cdot 2!} = 30$",
           weight: 1,
           required: true,
         },
@@ -2227,7 +2227,7 @@ export const probabilityExpansion6Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "by definition $X_{(1)} \\leq X_{(n)}$ with probability 1 — knowing $X_{(1)}$ is large already forces $X_{(n)}$ to be at least that large",
+          description: "by definition $X_{(1)} \\leq X_{(n)}$ with probability $1$ — knowing $X_{(1)}$ is large already forces $X_{(n)}$ to be at least that large",
           weight: 1,
           required: true,
         },
@@ -2253,12 +2253,12 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A3's Binomial-sum expression for $P(X_{(k)}\\leq x)$ and the direct Beta-based formula for continuous Uniform(0,1) data are two different-looking routes to the same CDF. Explain, at a high level, why both must agree.",
+      "A3’s Binomial-sum expression for $P(X_{(k)}\\leq x)$ and the direct Beta-based formula for continuous $\\text{Uniform}(0,1)$ data are two different-looking routes to the same CDF. Explain, at a high level, why both must agree.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "both expressions compute the probability of the identical event — 'at least $k$ of $n$ observations fall $\\leq x$' — just represented two ways: a sum of Binomial pmf terms, versus a Beta-family closed form",
+          description: "both expressions compute the probability of the identical event — ‘at least $k$ of $n$ observations fall $\\leq x$’ — just represented two ways: a sum of Binomial pmf terms, versus a Beta-family closed form",
           weight: 1,
           required: true,
         },
@@ -2284,18 +2284,18 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For $n$ iid Uniform(0,1) observations, $\\operatorname{Var}(X_{(k)}) = k(n-k+1)/[(n+1)^2(n+2)]$. Using this formula, compare $\\operatorname{Var}(X_{(1)})$ (the min) to the median's variance as $n$ grows large, and explain the surprising conclusion about which is more tightly concentrated.",
+      "For $n$ i.i.d. $\\text{Uniform}(0,1)$ observations, $\\text{Var}(X_{(k)}) = \\dfrac{k(n-k+1)}{(n+1)^2(n+2)}$. Using this formula, compare $\\text{Var}(X_{(1)})$ (the min) to the median’s variance as $n$ grows large, and explain the surprising conclusion about which is more tightly concentrated.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$\\operatorname{Var}(X_{(1)}) = n/[(n+1)^2(n+2)] \\sim 1/n^2$ for large $n$, while the median's variance ($k\\approx n/2$) is $\\sim 1/(4(n+2)) \\sim 1/(4n)$ — a much slower shrink rate",
+          description: "$\\text{Var}(X_{(1)}) = \\dfrac{n}{(n+1)^2(n+2)} \\sim 1/n^2$ for large $n$, while the median’s variance ($k\\approx n/2$) is $\\sim \\dfrac{1}{4(n+2)} \\sim \\dfrac{1}{4n}$ — a much slower shrink rate",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "so the minimum is actually MORE tightly concentrated (smaller variance) than the median at large n — the opposite of the naive intuition that extreme values are 'wilder' than central ones",
+          description: "so the minimum is actually MORE tightly concentrated (smaller variance) than the median at large $n$ — the opposite of the naive intuition that extreme values are ‘wilder’ than central ones",
           weight: 1,
           required: false,
         },
@@ -2315,7 +2315,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A system of n identical components, each with iid lifetime distribution F, fails as soon as the FIRST component fails (a 'series' system), while a backup design fails only once ALL n components have failed (a 'parallel' system). Express each system's lifetime in order-statistic notation, and explain which design has the longer expected lifetime and why.",
+      "A system of $n$ identical components, each with i.i.d. lifetime distribution $F$, fails as soon as the FIRST component fails (a ‘series’ system), while a backup design fails only once ALL $n$ components have failed (a ‘parallel’ system). Express each system’s lifetime in order-statistic notation, and explain which design has the longer expected lifetime and why.",
     rubric: {
       elements: [
         {
@@ -2346,7 +2346,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "In a race with n=6 independent runners, each runner's finishing time is iid Uniform(50,70) minutes. What is the probability the winning (fastest) time is under 55 minutes?",
+      "In a race with $n=6$ independent runners, each runner’s finishing time is i.i.d. $\\text{Uniform}(50, 70)$ minutes. What is the probability the winning (fastest) time is under $55$ minutes?",
     answerKey: 0.822,
     tolerance: 0.01,
     difficulty: 1.05,
@@ -2363,7 +2363,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "A security team models the time-to-first-breach across $n=1000$ independently defended servers, each with lifetime Exponential($\\lambda$) and a large mean (rare individual breach), as the minimum of the 1000 lifetimes. Explain, using order statistics, why 'each server individually is very safe' does NOT imply 'the overall network is very safe,' and how this scales with $n$.",
+      "A security team models the time-to-first-breach across $n=1000$ independently defended servers, each with lifetime $\\text{Exponential}(\\lambda)$ and a large mean (rare individual breach), as the minimum of the $1000$ lifetimes. Explain, using order statistics, why ‘each server individually is very safe’ does NOT imply ‘the overall network is very safe’, and how this scales with $n$.",
     rubric: {
       elements: [
         {
@@ -2403,13 +2403,13 @@ export const probabilityExpansion6Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "$E[U(\\theta;X)] = 0$ under standard regularity conditions",
+          description: "$\\mathbb{E}[U(\\theta;X)] = 0$ under standard regularity conditions",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "$\\operatorname{Var}(U(\\theta;X)) = I(\\theta)$ — the score's variance IS the Fisher information, tying together the two standard definitions",
+          description: "$\\text{Var}\\left(U(\\theta;X)\\right) = I(\\theta)$ — the score’s variance IS the Fisher information, tying together the two standard definitions",
           weight: 1,
           required: false,
         },
@@ -2429,7 +2429,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "recall",
     channels: ["typed"],
     stem:
-      "The formula $I(\\theta) = -E[\\partial^2/\\partial\\theta^2 \\log f(X;\\theta)]$ equals $E[(\\partial/\\partial\\theta \\log f)^2]$ under which regularity condition?",
+      "The formula $I(\\theta) = -\\mathbb{E}\\left[\\frac{\\partial^2}{\\partial\\theta^2} \\log f(X;\\theta)\\right]$ equals $\\mathbb{E}\\left[\\left(\\frac{\\partial}{\\partial\\theta} \\log f\\right)^2\\right]$ under which regularity condition?",
     choices: [
       {
         id: "a",
@@ -2438,7 +2438,7 @@ export const probabilityExpansion6Items: Item[] = [
       },
       {
         id: "b",
-        text: "f must belong to the exponential family",
+        text: "$f$ must belong to the exponential family",
         correct: false,
         misconception: {
           id: "fisher-information--r4--misconception-b",
@@ -2447,12 +2447,12 @@ export const probabilityExpansion6Items: Item[] = [
         },
       },
       {
-        id: "c",
-        text: "X must be nonnegative",
+        id: "$c$",
+        text: "$X$ must be nonnegative",
         correct: false,
         misconception: {
           id: "fisher-information--r4--misconception-c",
-          description: "The sign of X is irrelevant to this equivalence.",
+          description: "The sign of $X$ is irrelevant to this equivalence.",
           blameConceptId: "fisher-information",
         },
       },
@@ -2492,7 +2492,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "it is this total $nI(\\theta)$ that appears in the CRLB denominator, $\\operatorname{Var}(\\hat{\\theta}) \\geq 1/(nI(\\theta))$",
+          description: "it is this total $nI(\\theta)$ that appears in the CRLB denominator, $\\text{Var}(\\hat{\\theta}) \\geq 1/(nI(\\theta))$",
           weight: 1,
           required: false,
         },
@@ -2522,7 +2522,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "second derivative $-1/\\lambda^2$; $-E[\\cdot] = 1/\\lambda^2$, so $I(\\lambda) = 1/\\lambda^2$",
+          description: "second derivative $-1/\\lambda^2$; $-\\mathbb{E}[\\cdot] = 1/\\lambda^2$, so $I(\\lambda) = 1/\\lambda^2$",
           weight: 1,
           required: false,
         },
@@ -2552,7 +2552,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "second derivative $-x/\\lambda^2$; $-E[\\cdot] = E[X]/\\lambda^2 = \\lambda/\\lambda^2 = 1/\\lambda$, so $I(\\lambda) = 1/\\lambda$",
+          description: "second derivative $-x/\\lambda^2$; $-\\mathbb{E}[\\cdot] = \\mathbb{E}[X]/\\lambda^2 = \\lambda/\\lambda^2 = 1/\\lambda$, so $I(\\lambda) = 1/\\lambda$",
           weight: 1,
           required: false,
         },
@@ -2582,7 +2582,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "second derivative $-1/\\sigma^2$; $-E[\\cdot] = 1/\\sigma^2$, so $I(\\mu) = 1/\\sigma^2$",
+          description: "second derivative $-1/\\sigma^2$; $-\\mathbb{E}[\\cdot] = 1/\\sigma^2$, so $I(\\mu) = 1/\\sigma^2$",
           weight: 1,
           required: false,
         },
@@ -2630,7 +2630,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "using $E[(x-\\mu)^2]=\\sigma^2$, $-E[\\text{second derivative}] = -[1/(2\\sigma^4)-\\sigma^2/\\sigma^6] = 1/(2\\sigma^4)$, so $I(\\sigma^2) = 1/(2\\sigma^4)$",
+          description: "using $\\mathbb{E}\\left[(X-\\mu)^2\\right]=\\sigma^2$, $-\\mathbb{E}[\\text{second derivative}] = -\\left[\\frac{1}{2\\sigma^4}-\\frac{\\sigma^2}{\\sigma^6}\\right] = \\frac{1}{2\\sigma^4}$, so $I(\\sigma^2) = \\frac{1}{2\\sigma^4}$",
           weight: 1,
           required: false,
         },
@@ -2692,7 +2692,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "the shape of I(·) is not parametrization-invariant — under the logit scale the information function looks entirely different (here, like Bernoulli's variance), even though the underlying data and inferential content are unchanged",
+          description: "the shape of $I(\\cdot)$ is not parametrization-invariant — under the logit scale the information function looks entirely different (here, like Bernoulli’s variance), even though the underlying data and inferential content are unchanged",
           weight: 1,
           required: false,
         },
@@ -2743,7 +2743,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "Two independent studies estimate the same Poisson rate $\\lambda=4$ ($I(\\lambda)=1/\\lambda$). Study A collects $n=50$ observations, Study B collects $n=200$. Compute the ratio of Study B's total Fisher information to Study A's.",
+      "Two independent studies estimate the same Poisson rate $\\lambda=4$ ($I(\\lambda)=1/\\lambda$). Study A collects $n=50$ observations, Study B collects $n=200$. Compute the ratio of Study B’s total Fisher information to Study A’s.",
     answerKey: 4,
     tolerance: 0.05,
     difficulty: 1.0,
@@ -2795,12 +2795,12 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "State the general Cramér–Rao bound for a possibly-biased estimator $\\hat{\\theta}$ with bias function $b(\\theta)=E[\\hat{\\theta}]-\\theta$, not just the unbiased case.",
+      "State the general Cramér–Rao bound for a possibly-biased estimator $\\hat{\\theta}$ with bias function $b(\\theta)=\\mathbb{E}[\\hat{\\theta}]-\\theta$, not just the unbiased case.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$\\operatorname{Var}(\\hat{\\theta}) \\geq [1+b'(\\theta)]^2 / (nI(\\theta))$",
+          description: "$\\text{Var}(\\hat{\\theta}) \\geq \\dfrac{\\left[1+b'(\\theta)\\right]^2}{nI(\\theta)}$",
           weight: 1,
           required: true,
         },
@@ -2844,12 +2844,12 @@ export const probabilityExpansion6Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "guaranteed unbiased at every $n$",
         correct: false,
         misconception: {
           id: "cramer-rao-lower-bound--r4--misconception-c",
-          description: "MLEs can be biased at finite $n$ (e.g. the Uniform($0,\\theta$) MLE); this is a separate property from efficiency.",
+          description: "MLEs can be biased at finite $n$ (e.g. the $\\text{Uniform}(0,\\theta)$ MLE); this is a separate property from efficiency.",
           blameConceptId: "mle",
         },
       },
@@ -2878,7 +2878,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For iid Poisson($\\lambda$) with $I(\\lambda)=1/\\lambda$, find the CRLB for $\\operatorname{Var}(\\hat{\\lambda})$ at $\\lambda=4$ with $n=25$.",
+      "For i.i.d. $\\text{Poisson}(\\lambda)$ with $I(\\lambda)=1/\\lambda$, find the CRLB for $\\text{Var}(\\hat{\\lambda})$ at $\\lambda=4$ with $n=25$.",
     answerKey: 0.16,
     tolerance: 0.005,
     difficulty: -0.1,
@@ -2895,7 +2895,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "The Poisson sample mean $\\bar{X}$ has $\\operatorname{Var}(\\bar{X})=\\lambda/n$ exactly. Compare this to A3's bound and state the conclusion.",
+      "The Poisson sample mean $\\bar{X}$ has $\\text{Var}(\\bar{X})=\\lambda/n$ exactly. Compare this to A3’s bound and state the conclusion.",
     rubric: {
       elements: [
         {
@@ -2920,7 +2920,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For iid Exponential data with mean $\\mu$, one can show $I(\\mu)=1/\\mu^2$. Find the CRLB for $\\operatorname{Var}(\\hat{\\mu})$ when $\\mu=10$ and $n=40$.",
+      "For i.i.d. Exponential data with mean $\\mu$, one can show $I(\\mu)=1/\\mu^2$. Find the CRLB for $\\text{Var}(\\hat{\\mu})$ when $\\mu=10$ and $n=40$.",
     answerKey: 2.5,
     tolerance: 0.05,
     difficulty: 0.0,
@@ -2937,7 +2937,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "The Exponential sample mean $\\bar{X}$ has $\\operatorname{Var}(\\bar{X})=\\mu^2/n$ exactly. Compare this to A5's bound and state the conclusion.",
+      "The Exponential sample mean $\\bar{X}$ has $\\text{Var}(\\bar{X})=\\mu^2/n$ exactly. Compare this to A5’s bound and state the conclusion.",
     rubric: {
       elements: [
         {
@@ -2961,7 +2961,7 @@ export const probabilityExpansion6Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "For iid Bernoulli($\\theta$) at $\\theta=0.2$ with $n=400$, find the CRLB for $\\operatorname{Var}(\\hat{\\theta})$.",
+    stem: "For i.i.d. $\\text{Bernoulli}(\\theta)$ at $\\theta=0.2$ with $n=400$, find the CRLB for $\\text{Var}(\\hat{\\theta})$.",
     answerKey: 0.0004,
     tolerance: 0.00002,
     difficulty: -0.2,
@@ -2978,7 +2978,7 @@ export const probabilityExpansion6Items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For Normal($\\mu,\\sigma^2$) with $\\mu$ known, $I(\\sigma^2)=1/(2\\sigma^4)$. The natural unbiased estimator $\\hat{\\sigma}^2=(1/n)\\sum(X_i-\\mu)^2$ has $\\operatorname{Var}(\\hat{\\sigma}^2)=2\\sigma^4/n$. Compare this to the CRLB, and contrast with the usual sample variance $S^2=\\frac{1}{n-1}\\sum(X_i-\\bar{X})^2$ used when $\\mu$ is unknown.",
+      "For $\\mathcal{N}(\\mu,\\sigma^2)$ with $\\mu$ known, $I(\\sigma^2)=1/(2\\sigma^4)$. The natural unbiased estimator $\\hat{\\sigma}^2=\\frac{1}{n}\\sum(X_i-\\mu)^2$ has $\\text{Var}(\\hat{\\sigma}^2)=2\\sigma^4/n$. Compare this to the CRLB, and contrast with the usual sample variance $S^2=\\frac{1}{n-1}\\sum(X_i-\\bar{X})^2$ used when $\\mu$ is unknown.",
     rubric: {
       elements: [
         {
@@ -3051,7 +3051,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "$\\operatorname{Var}(\\hat{\\theta}) = [I_1^2 \\cdot (1/I_1) + I_2^2 \\cdot (1/I_2)]/(I_1+I_2)^2 = (I_1+I_2)/(I_1+I_2)^2 = 1/(I_1+I_2)$",
+          description: "$\\text{Var}(\\hat{\\theta}) = \\dfrac{I_1^2 \\cdot (1/I_1) + I_2^2 \\cdot (1/I_2)}{(I_1+I_2)^2} = \\dfrac{I_1+I_2}{(I_1+I_2)^2} = \\dfrac{1}{I_1+I_2}$",
           weight: 1,
           required: true,
         },
@@ -3088,7 +3088,7 @@ export const probabilityExpansion6Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "this is exactly the variance from treating the combined data as a single n=250 trial — optimal inverse-variance pooling of independent same-model estimators loses nothing (and gains nothing) compared to just combining the raw data",
+          description: "this is exactly the variance from treating the combined data as a single $n=250$ trial — optimal inverse-variance pooling of independent same-model estimators loses nothing (and gains nothing) compared to just combining the raw data",
           weight: 1,
           required: false,
         },

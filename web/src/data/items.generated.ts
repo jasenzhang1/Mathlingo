@@ -20,18 +20,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the density of Normal(μ, σ²) and what μ, σ² each control.",
+    "stem": "State the density of $\\mathcal{N}(\\mu, \\sigma^2)$ and what $\\mu$, $\\sigma^2$ each control.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "f(x) = 1/(σ√(2π)) · exp(−(x−μ)²/(2σ²))",
+          "description": "$f(x) = \\dfrac{1}{\\sigma\\sqrt{2\\pi}} \\exp\\left(-\\dfrac{(x-\\mu)^2}{2\\sigma^2}\\right)$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "μ shifts location, σ controls spread",
+          "description": "$\\mu$ shifts location, $\\sigma$ controls spread",
           "weight": 1,
           "required": false
         }
@@ -61,7 +61,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which is FALSE? (a) Normal is symmetric about μ (b) ≈95% of its mass lies within 2σ of μ (c) Normal is the *only* distribution with mean = median = mode.",
+    "stem": "Which is FALSE? (a) Normal is symmetric about $\\mu$ (b) $\\approx 95\\%$ of its mass lies within $2\\sigma$ of $\\mu$ (c) Normal is the *only* distribution with mean $=$ median $=$ mode.",
     "rubric": {
       "elements": [
         {
@@ -74,11 +74,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks (c) as true — misses that *any* symmetric, unimodal distribution (e.g. the t-distribution) shares this property; it isn't special to Normal",
+          "description": "picks (c) as true — misses that *any* symmetric, unimodal distribution (e.g. the $t$-distribution) shares this property; it isn’t special to Normal",
           "weight": 0,
           "misconception": {
             "id": "normal-distribution--r2--misconception",
-            "description": "picks (c) as true — misses that *any* symmetric, unimodal distribution (e.g. the t-distribution) shares this property; it isn't special to Normal",
+            "description": "picks (c) as true — misses that *any* symmetric, unimodal distribution (e.g. the $t$-distribution) shares this property; it isn’t special to Normal",
             "blameConceptId": "normal-distribution"
           }
         }
@@ -108,12 +108,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "IQ scores ~ N(100, 15²). Find P(score > 130).",
+    "stem": "IQ scores $X \\sim \\mathcal{N}(100, 15^2)$. Find $P(X > 130)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Z = (130−100)/15 = 2; P(Z>2) ≈ 0.0228",
+          "description": "$Z = \\dfrac{130-100}{15} = 2$; $P(Z>2) \\approx 0.0228$",
           "weight": 1,
           "required": false
         }
@@ -121,11 +121,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "forgets to standardize and looks up P(X>130) directly on a Z-table",
+          "description": "forgets to standardize and looks up $P(X>130)$ directly on a $Z$-table",
           "weight": 0,
           "misconception": {
             "id": "normal-distribution--a1--misconception",
-            "description": "forgets to standardize and looks up P(X>130) directly on a Z-table",
+            "description": "forgets to standardize and looks up $P(X>130)$ directly on a $Z$-table",
             "blameConceptId": "normal-distribution"
           }
         }
@@ -155,12 +155,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X ~ N(50, 10²). Find the 90th percentile of X.",
+    "stem": "$X \\sim \\mathcal{N}(50, 10^2)$. Find the $90$th percentile of $X$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "z₀.₉₀ ≈ 1.2816; x = 50 + 10(1.2816) ≈ 62.82",
+          "description": "$z_{0.90} \\approx 1.2816$; $x = 50 + 10(1.2816) \\approx 62.82$",
           "weight": 1,
           "required": false
         }
@@ -168,11 +168,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "applies the z-score formula backwards, computing 50 − 10(1.2816)",
+          "description": "applies the $z$-score formula backwards, computing $50 - 10(1.2816)$",
           "weight": 0,
           "misconception": {
             "id": "normal-distribution--a2--misconception",
-            "description": "applies the z-score formula backwards, computing 50 − 10(1.2816)",
+            "description": "applies the $z$-score formula backwards, computing $50 - 10(1.2816)$",
             "blameConceptId": "normal-distribution"
           }
         }
@@ -202,24 +202,24 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show directly (by differentiating the CDF, not by citing a named transformation rule) that Z=(X−μ)/σ is standard normal when X~N(μ,σ²).",
+    "stem": "Show directly (by differentiating the CDF, not by citing a named transformation rule) that $Z = \\dfrac{X-\\mu}{\\sigma}$ is standard normal when $X \\sim \\mathcal{N}(\\mu, \\sigma^2)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "F_Z(z) = P(Z≤z) = P(X≤μ+σz) = F_X(μ+σz)",
+          "description": "$F_Z(z) = P(Z \\le z) = P(X \\le \\mu + \\sigma z) = F_X(\\mu + \\sigma z)$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "differentiate: f_Z(z) = σ·f_X(μ+σz)",
+          "description": "differentiate: $f_Z(z) = \\sigma f_X(\\mu + \\sigma z)$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "substitute the Normal density and simplify the exponent to −z²/2, leaving the standard normal density",
+          "description": "substitute the Normal density and simplify the exponent to $-z^2/2$, leaving the standard normal density",
           "weight": 1,
           "required": false
         }
@@ -249,24 +249,24 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using only the symmetry f(μ+t) = f(μ−t), argue (don't just assert) that the mean, median, and mode of Normal(μ,σ²) all equal μ.",
+    "stem": "Using only the symmetry $f(\\mu+t) = f(\\mu-t)$, argue (don’t just assert) that the mean, median, and mode of $\\mathcal{N}(\\mu, \\sigma^2)$ all equal $\\mu$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "symmetry about μ makes μ the median directly (half the mass on each side by reflection)",
+          "description": "symmetry about $\\mu$ makes $\\mu$ the median directly (half the mass on each side by reflection)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "it makes μ the mode since f is maximized where the exponent's magnitude is smallest, i.e. at x=μ",
+          "description": "it makes $\\mu$ the mode since $f$ is maximized where the exponent’s magnitude is smallest, i.e. at $x = \\mu$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "and it makes μ the mean since ∫(x−μ)f(x)dx integrates an odd function around μ to 0",
+          "description": "and it makes $\\mu$ the mean since $\\int (x-\\mu)f(x)\\,dx$ integrates an odd function around $\\mu$ to $0$",
           "weight": 1,
           "required": false
         }
@@ -301,7 +301,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "good fits: measurement error, standardized test scores away from floor/ceiling effects. Common bad fit: household income (or reaction times) — right-skewed and bounded below by 0, while Normal is symmetric with support on all of ℝ",
+          "description": "good fits: measurement error, standardized test scores away from floor/ceiling effects. Common bad fit: household income (or reaction times) — right-skewed and bounded below by $0$, while Normal is symmetric with support on all of $\\mathbb{R}$",
           "weight": 1,
           "required": true
         },
@@ -315,11 +315,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks a skewed example but says only \"it doesn't look bell-shaped,\" without naming *which* Normal property (symmetry, unbounded support) actually fails",
+          "description": "picks a skewed example but says only “it doesn’t look bell-shaped”, without naming *which* Normal property (symmetry, unbounded support) actually fails",
           "weight": 0,
           "misconception": {
             "id": "normal-distribution--t1--misconception",
-            "description": "picks a skewed example but says only \"it doesn't look bell-shaped,\" without naming *which* Normal property (symmetry, unbounded support) actually fails",
+            "description": "picks a skewed example but says only “it doesn’t look bell-shaped”, without naming *which* Normal property (symmetry, unbounded support) actually fails",
             "blameConceptId": "normal-distribution"
           }
         }
@@ -349,12 +349,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the density, E[X], and Var(X) for Uniform(a,b).",
+    "stem": "State the density, $\\mathbb{E}[X]$, and $\\text{Var}(X)$ for $\\text{Uniform}(a, b)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "f(x)=1/(b−a) on [a,b]; E[X]=(a+b)/2; Var(X)=(b−a)²/12",
+          "description": "$f(x) = \\dfrac{1}{b-a}$ on $[a, b]$; $\\mathbb{E}[X] = \\dfrac{a+b}{2}$; $\\text{Var}(X) = \\dfrac{(b-a)^2}{12}$",
           "weight": 1,
           "required": false
         }
@@ -384,7 +384,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Uniform(a,b) is called the \"maximum-entropy\" distribution on [a,b] because:",
+    "stem": "$\\text{Uniform}(a, b)$ is called the “maximum-entropy” distribution on $[a, b]$ because:",
     "rubric": {
       "elements": [
         {
@@ -397,11 +397,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"it has the highest variance among all distributions on [a,b]\" — actually false: a two-point distribution at the endpoints has variance (b−a)²/4, larger than Uniform's (b−a)²/12",
+          "description": "picks “it has the highest variance among all distributions on $[a, b]$” — actually false: a two-point distribution at the endpoints has variance $(b-a)^2/4$, larger than Uniform’s $(b-a)^2/12$",
           "weight": 0,
           "misconception": {
             "id": "uniform-distribution--r2--misconception",
-            "description": "picks \"it has the highest variance among all distributions on [a,b]\" — actually false: a two-point distribution at the endpoints has variance (b−a)²/4, larger than Uniform's (b−a)²/12",
+            "description": "picks “it has the highest variance among all distributions on $[a, b]$” — actually false: a two-point distribution at the endpoints has variance $(b-a)^2/4$, larger than Uniform’s $(b-a)^2/12$",
             "blameConceptId": "uniform-distribution"
           }
         }
@@ -431,12 +431,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X ~ Uniform(2,10). Find P(3<X<7), E[X], Var(X).",
+    "stem": "$X \\sim \\text{Uniform}(2, 10)$. Find $P(3 < X < 7)$, $\\mathbb{E}[X]$, $\\text{Var}(X)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P=4/8=0.5; E[X]=6; Var=64/12≈5.333",
+          "description": "$P = 4/8 = 0.5$; $\\mathbb{E}[X] = 6$; $\\text{Var}(X) = 64/12 \\approx 5.333$",
           "weight": 1,
           "required": false
         }
@@ -466,12 +466,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Buses run every 15 minutes with no other information; you arrive at a random time. Find your expected wait and P(wait < 5 min).",
+    "stem": "Buses run every $15$ minutes with no other information; you arrive at a random time. Find your expected wait and $P(\\text{wait} < 5 \\text{ min})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Uniform(0,15): E=7.5; P(X<5)=5/15=1/3",
+          "description": "$\\text{Uniform}(0, 15)$: $\\mathbb{E}[X] = 7.5$; $P(X < 5) = 5/15 = 1/3$",
           "weight": 1,
           "required": false
         }
@@ -501,12 +501,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive Var(Uniform(a,b)) = (b−a)²/12 from E[X²] − (E[X])².",
+    "stem": "Derive $\\text{Var}\\left(\\text{Uniform}(a, b)\\right) = (b-a)^2/12$ from $\\mathbb{E}[X^2] - (\\mathbb{E}[X])^2$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X]=(a+b)/2; E[X²]=∫ₐᵇ x²/(b−a) dx = (a²+ab+b²)/3; subtract (a+b)²/4 and simplify to (b−a)²/12",
+          "description": "$\\mathbb{E}[X] = \\dfrac{a+b}{2}$; $\\mathbb{E}[X^2] = \\int_a^b \\dfrac{x^2}{b-a}\\,dx = \\dfrac{a^2+ab+b^2}{3}$; subtract $\\dfrac{(a+b)^2}{4}$ and simplify to $\\dfrac{(b-a)^2}{12}$",
           "weight": 1,
           "required": true
         }
@@ -536,12 +536,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show, with a concrete counterexample on Uniform(0,10), that Uniform is *not* memoryless the way Exponential is.",
+    "stem": "Show, with a concrete counterexample on $\\text{Uniform}(0, 10)$, that Uniform is *not* memoryless the way Exponential is.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(X>7|X>5) = (3/10)/(5/10) = 0.6, but P(X>2) = 0.8 — the two differ, so knowing you've survived past 5 *does* change the outlook (it doesn't here — it improves it, since the interval is bounded and running out)",
+          "description": "$P(X>7 \\mid X>5) = \\dfrac{3/10}{5/10} = 0.6$, but $P(X>2) = 0.8$ — the two differ, so knowing you’ve survived past $5$ *does* change the outlook (here it worsens it, since the interval is bounded and running out)",
           "weight": 1,
           "required": false
         }
@@ -583,12 +583,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Give two real scenarios well-modeled as Uniform. Then: why *can't* \"the wait for the next bus if buses arrive as a truly random (Poisson) process averaging one every 10 minutes\" be modeled as Uniform(0,10), even though the average gap is 10 minutes? Hint: what does \"no memory\" mean for a Poisson process?",
+    "stem": "Give two real scenarios well-modeled as Uniform. Then: why *can’t* “the wait for the next bus if buses arrive as a truly random (Poisson) process averaging one every $10$ minutes” be modeled as $\\text{Uniform}(0, 10)$, even though the average gap is $10$ minutes? Hint: what does “no memory” mean for a Poisson process?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "good fits: rounding error, a fair spinner's angle, a random-number generator's output. The Poisson wait time is **Exponential**, not Uniform: a Poisson process has no upper bound on the gap between events (Uniform(0,10) implicitly guarantees the bus arrives by minute 10, which a memoryless process does not promise), and its hazard is constant rather than rising toward a deadline the way E2 showed Uniform's effectively does",
+          "description": "good fits: rounding error, a fair spinner’s angle, a random-number generator’s output. The Poisson wait time is **Exponential**, not Uniform: a Poisson process has no upper bound on the gap between events ($\\text{Uniform}(0, 10)$ implicitly guarantees the bus arrives by minute $10$, which a memoryless process does not promise), and its hazard is constant rather than rising toward a deadline the way E2 showed Uniform’s effectively does",
           "weight": 1,
           "required": false
         }
@@ -596,11 +596,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "assumes \"average gap of 10 minutes\" is enough to justify Uniform(0,10) without checking the process's memory structure",
+          "description": "assumes “average gap of $10$ minutes” is enough to justify $\\text{Uniform}(0, 10)$ without checking the process’s memory structure",
           "weight": 0,
           "misconception": {
             "id": "uniform-distribution--t1--misconception",
-            "description": "assumes \"average gap of 10 minutes\" is enough to justify Uniform(0,10) without checking the process's memory structure",
+            "description": "assumes “average gap of $10$ minutes” is enough to justify $\\text{Uniform}(0, 10)$ without checking the process’s memory structure",
             "blameConceptId": "uniform-distribution"
           }
         }
@@ -630,12 +630,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the density, E[X], and Var(X) for Exponential(λ).",
+    "stem": "State the density, $\\mathbb{E}[X]$, and $\\text{Var}(X)$ for $\\text{Exponential}(\\lambda)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "f(x)=λe⁻ᵠˣ, x≥0; E[X]=1/λ; Var(X)=1/λ²",
+          "description": "$f(x) = \\lambda e^{-\\lambda x}$, $x \\ge 0$; $\\mathbb{E}[X] = 1/\\lambda$; $\\text{Var}(X) = 1/\\lambda^2$",
           "weight": 1,
           "required": false
         }
@@ -665,7 +665,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "How does Exponential(λ) relate to Poisson(λ)?",
+    "stem": "How does $\\text{Exponential}(\\lambda)$ relate to $\\text{Poisson}(\\lambda)$?",
     "rubric": {
       "elements": [
         {
@@ -684,11 +684,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "claims they're \"the same distribution\" in different notation",
+          "description": "claims they’re “the same distribution” in different notation",
           "weight": 0,
           "misconception": {
             "id": "exponential-distribution--r2--misconception",
-            "description": "claims they're \"the same distribution\" in different notation",
+            "description": "claims they’re “the same distribution” in different notation",
             "blameConceptId": "exponential-distribution"
           }
         }
@@ -718,12 +718,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A bulb's lifetime is Exponential with mean 1000 hours. Find P(lasts > 1500 hours).",
+    "stem": "A bulb’s lifetime is Exponential with mean $1000$ hours. Find $P(\\text{lasts} > 1500 \\text{ hours})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "λ=1/1000; P(X>1500)=e⁻¹·⁵ ≈ 0.2231",
+          "description": "$\\lambda = 1/1000$; $P(X > 1500) = e^{-1.5} \\approx 0.2231$",
           "weight": 1,
           "required": false
         }
@@ -753,12 +753,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Same bulb: find P(lasts > 2500 hours | already lasted 1000 hours), using memorylessness, and compare to A1.",
+    "stem": "Same bulb: find $P(\\text{lasts} > 2500 \\text{ hours} \\mid \\text{already lasted } 1000 \\text{ hours})$, using memorylessness, and compare to A1.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "by memorylessness this equals P(X>1500) from A1 exactly — the bulb \"forgets\" it has already survived 1000 hours",
+          "description": "by memorylessness this equals $P(X > 1500)$ from A1 exactly — the bulb “forgets” it has already survived $1000$ hours",
           "weight": 1,
           "required": false
         }
@@ -766,11 +766,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "computes P(X>2500) unconditionally (e⁻²·⁵) instead of applying memorylessness",
+          "description": "computes $P(X > 2500)$ unconditionally ($e^{-2.5}$) instead of applying memorylessness",
           "weight": 0,
           "misconception": {
             "id": "exponential-distribution--a2--misconception",
-            "description": "computes P(X>2500) unconditionally (e⁻²·⁵) instead of applying memorylessness",
+            "description": "computes $P(X > 2500)$ unconditionally ($e^{-2.5}$) instead of applying memorylessness",
             "blameConceptId": "exponential-distribution"
           }
         }
@@ -800,12 +800,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove memorylessness: P(X>s+t | X>s) = P(X>t).",
+    "stem": "Prove memorylessness: $P(X > s+t \\mid X > s) = P(X > t)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(X>x)=e⁻ᵠˣ; ratio e⁻ᵠ⁽ˢ⁺ᵗ⁾/e⁻ᵠˢ = e⁻ᵠᵗ = P(X>t)",
+          "description": "$P(X > x) = e^{-\\lambda x}$; ratio $\\dfrac{e^{-\\lambda(s+t)}}{e^{-\\lambda s}} = e^{-\\lambda t} = P(X > t)$",
           "weight": 1,
           "required": true
         }
@@ -846,7 +846,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "the waiting time (in units of intervals) is Geometric, and letting the interval width shrink to 0 while the rate stays fixed produces Exponential in the limit  — the same discretize-and-take-a-limit move as the Poisson-from-Binomial derivation earlier in this bank",
+          "description": "the waiting time (in units of intervals) is Geometric, and letting the interval width shrink to $0$ while the rate stays fixed produces Exponential in the limit — the same discretize-and-take-a-limit move as the Poisson-from-Binomial derivation earlier in this bank",
           "weight": 1,
           "required": false
         }
@@ -876,7 +876,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Give two real waiting times well-modeled by Exponential. Then: *why can't* the time until a car engine fails be modeled as Exponential, even though \"time until failure\" sounds like exactly the right setup? Hint: think about wear and aging.",
+    "stem": "Give two real waiting times well-modeled by Exponential. Then: *why can’t* the time until a car engine fails be modeled as Exponential, even though “time until failure” sounds like exactly the right setup? Hint: think about wear and aging.",
     "rubric": {
       "elements": [
         {
@@ -887,7 +887,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "gaps between independent website hits. Engine failure: mechanical wear increases the *hazard rate* with age — a 10-year-old engine is more likely to fail soon than a new one, which directly violates memorylessness (Exponential \"forgets\" its age entirely)",
+          "description": "gaps between independent website hits. Engine failure: mechanical wear increases the *hazard rate* with age — a $10$-year-old engine is more likely to fail soon than a new one, which directly violates memorylessness (Exponential “forgets” its age entirely)",
           "weight": 1,
           "required": false
         },
@@ -901,11 +901,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "attributes the failure to \"engines don't fail randomly\" rather than naming the specific violated property (constant hazard / memorylessness)",
+          "description": "attributes the failure to “engines don’t fail randomly” rather than naming the specific violated property (constant hazard / memorylessness)",
           "weight": 0,
           "misconception": {
             "id": "exponential-distribution--t1--misconception",
-            "description": "attributes the failure to \"engines don't fail randomly\" rather than naming the specific violated property (constant hazard / memorylessness)",
+            "description": "attributes the failure to “engines don’t fail randomly” rather than naming the specific violated property (constant hazard / memorylessness)",
             "blameConceptId": "exponential-distribution"
           }
         }
@@ -935,12 +935,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State E[X], Var(X) for Gamma(α, β), and identify which parameter is \"shape\" and which is \"rate.\"",
+    "stem": "State $\\mathbb{E}[X]$, $\\text{Var}(X)$ for $\\text{Gamma}(\\alpha, \\beta)$, and identify which parameter is “shape” and which is “rate”.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X]=α/β; Var(X)=α/β²; α = shape, β = rate",
+          "description": "$\\mathbb{E}[X] = \\alpha/\\beta$; $\\text{Var}(X) = \\alpha/\\beta^2$; $\\alpha$ = shape, $\\beta$ = rate",
           "weight": 1,
           "required": false
         }
@@ -970,12 +970,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Gamma(1, β) is exactly:",
+    "stem": "$\\text{Gamma}(1, \\beta)$ is exactly:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Exponential(β)",
+          "description": "$\\text{Exponential}(\\beta)$",
           "weight": 1,
           "required": false
         }
@@ -983,11 +983,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks Normal or Uniform, not recognizing Exponential as Gamma's α=1 special case",
+          "description": "picks Normal or Uniform, not recognizing Exponential as Gamma’s $\\alpha = 1$ special case",
           "weight": 0,
           "misconception": {
             "id": "gamma-distribution--r2--misconception",
-            "description": "picks Normal or Uniform, not recognizing Exponential as Gamma's α=1 special case",
+            "description": "picks Normal or Uniform, not recognizing Exponential as Gamma’s $\\alpha = 1$ special case",
             "blameConceptId": "gamma-distribution"
           }
         }
@@ -1017,12 +1017,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Customers arrive as Poisson(3/hour). Find E[time to the 5th customer] and its variance, via Gamma(5,3).",
+    "stem": "Customers arrive as a Poisson process at rate $3$/hour. Find $\\mathbb{E}[\\text{time to the } 5\\text{th customer}]$ and its variance, via $\\text{Gamma}(5, 3)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X]=5/3≈1.667 hours; Var=5/9≈0.556",
+          "description": "$\\mathbb{E}[X] = 5/3 \\approx 1.667$ hours; $\\text{Var}(X) = 5/9 \\approx 0.556$",
           "weight": 1,
           "required": false
         }
@@ -1052,18 +1052,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Same setup: find P(the 5th customer arrives within 1 hour) — *without* the Gamma pdf, using the count/waiting-time duality instead.",
+    "stem": "Same setup: find $P(\\text{the } 5\\text{th customer arrives within } 1 \\text{ hour})$ — *without* the Gamma pdf, using the count/waiting-time duality instead.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "\"5th arrival before time 1\" ⟺ \"at least 5 arrivals by time 1\"",
+          "description": "“$5$th arrival before time $1$” $\\iff$ “at least $5$ arrivals by time $1$”",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "N(1)~Poisson(3), so P = P(N(1)≥5) = 1−P(N(1)≤4) ≈ 0.1847",
+          "description": "$N(1) \\sim \\text{Poisson}(3)$, so $P = P\\left(N(1) \\ge 5\\right) = 1 - P\\left(N(1) \\le 4\\right) \\approx 0.1847$",
           "weight": 1,
           "required": false
         }
@@ -1071,11 +1071,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "tries to integrate the Gamma density directly and mishandles Γ(5)",
+          "description": "tries to integrate the Gamma density directly and mishandles $\\Gamma(5)$",
           "weight": 0,
           "misconception": {
             "id": "gamma-distribution--a2--misconception",
-            "description": "tries to integrate the Gamma density directly and mishandles Γ(5)",
+            "description": "tries to integrate the Gamma density directly and mishandles $\\Gamma(5)$",
             "blameConceptId": "gamma-distribution"
           }
         }
@@ -1105,18 +1105,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show the sum of α iid Exponential(β) waiting times is Gamma(α,β), using the waiting-time interpretation directly (no MGFs).",
+    "stem": "Show the sum of $\\alpha$ i.i.d. $\\text{Exponential}(\\beta)$ waiting times is $\\text{Gamma}(\\alpha, \\beta)$, using the waiting-time interpretation directly (no MGFs).",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the gap to the 1st Poisson event, plus the (memoryless, hence fresh) gap from the 1st to the 2nd, plus … α such gaps, sum to the total wait for the α-th event",
+          "description": "the gap to the $1$st Poisson event, plus the (memoryless, hence fresh) gap from the $1$st to the $2$nd, plus … $\\alpha$ such gaps, sum to the total wait for the $\\alpha$-th event",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "each gap is Exponential(β) by `exponential-distribution`'s memorylessness  — the same structure as `negative-binomial-distribution`'s sum-of-geometrics proof",
+          "description": "each gap is $\\text{Exponential}(\\beta)$ by `exponential-distribution`’s memorylessness — the same structure as `negative-binomial-distribution`’s sum-of-geometrics proof",
           "weight": 1,
           "required": false
         }
@@ -1146,12 +1146,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain the *Erlang–Poisson duality* used in A2: why does \"waiting time to the α-th event exceeds t\" have exactly the same probability as \"fewer than α events have occurred by time t\"?",
+    "stem": "Explain the *Erlang–Poisson duality* used in A2: why does “waiting time to the $\\alpha$-th event exceeds $t$” have exactly the same probability as “fewer than $\\alpha$ events have occurred by time $t$”?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "these describe the identical event two ways: the α-th event hasn't happened by time t *if and only if* strictly fewer than α events have occurred by then",
+          "description": "these describe the identical event two ways: the $\\alpha$-th event hasn’t happened by time $t$ *if and only if* strictly fewer than $\\alpha$ events have occurred by then",
           "weight": 1,
           "required": true
         }
@@ -1181,18 +1181,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Give a real process better modeled by Gamma than Exponential (hint: \"time until the *k*-th something,\" k>1). Then use the duality from E2 to find P(a store's 10th customer of the day arrives within the first hour, given customers arrive as Poisson(8/hour)) — without writing down the Gamma density or Γ(10).",
+    "stem": "Give a real process better modeled by Gamma than Exponential (hint: “time until the $k$-th something”, $k > 1$). Then use the duality from E2 to find $P(\\text{a store’s } 10\\text{th customer of the day arrives within the first hour})$, given customers arrive as a Poisson process at rate $8$/hour — without writing down the Gamma density or $\\Gamma(10)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "good examples: time until a machine's 3rd failure needing replacement",
+          "description": "good examples: time until a machine’s $3$rd failure needing replacement",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "time until a store's 10th customer. Computation: P(T₁₀<1) = P(N(1)≥10), N(1)~Poisson(8) — computed as a Poisson tail sum, demonstrating the practical payoff of never needing Γ(10) for an integer-shape Gamma",
+          "description": "time until a store’s $10$th customer. Computation: $P(T_{10} < 1) = P\\left(N(1) \\ge 10\\right)$, $N(1) \\sim \\text{Poisson}(8)$ — computed as a Poisson tail sum, demonstrating the practical payoff of never needing $\\Gamma(10)$ for an integer-shape Gamma",
           "weight": 1,
           "required": false
         }
@@ -1234,18 +1234,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "What kind of quantity does Beta(α,β) model, and what does Beta(1,1) reduce to?",
+    "stem": "What kind of quantity does $\\text{Beta}(\\alpha, \\beta)$ model, and what does $\\text{Beta}(1, 1)$ reduce to?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "a random *probability or proportion* on [0,1]",
+          "description": "a random *probability or proportion* on $[0, 1]$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "Beta(1,1) = Uniform(0,1)",
+          "description": "$\\text{Beta}(1, 1) = \\text{Uniform}(0, 1)$",
           "weight": 1,
           "required": false
         }
@@ -1275,12 +1275,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Beta(1,1) equals:",
+    "stem": "$\\text{Beta}(1, 1)$ equals:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Uniform(0,1)",
+          "description": "$\\text{Uniform}(0, 1)$",
           "weight": 1,
           "required": false
         }
@@ -1288,11 +1288,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"a point mass at 0.5,\" confusing \"flat/uninformative\" with \"concentrated at the center\"",
+          "description": "picks “a point mass at $0.5$”, confusing “flat/uninformative” with “concentrated at the center”",
           "weight": 0,
           "misconception": {
             "id": "beta-distribution--r2--misconception",
-            "description": "picks \"a point mass at 0.5,\" confusing \"flat/uninformative\" with \"concentrated at the center\"",
+            "description": "picks “a point mass at $0.5$”, confusing “flat/uninformative” with “concentrated at the center”",
             "blameConceptId": "beta-distribution"
           }
         }
@@ -1322,12 +1322,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X ~ Beta(2,3). Find E[X] and Var(X).",
+    "stem": "$X \\sim \\text{Beta}(2, 3)$. Find $\\mathbb{E}[X]$ and $\\text{Var}(X)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X]=2/5=0.4; Var(X)=2·3/(5²·6)=0.04",
+          "description": "$\\mathbb{E}[X] = 2/5 = 0.4$; $\\text{Var}(X) = \\dfrac{2\\cdot 3}{5^2\\cdot 6} = 0.04$",
           "weight": 1,
           "required": false
         }
@@ -1357,12 +1357,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "If α and β both grow large while α/(α+β) stays fixed, what happens to the shape of Beta(α,β)? Hint: think about the variance formula.",
+    "stem": "If $\\alpha$ and $\\beta$ both grow large while $\\alpha/(\\alpha+\\beta)$ stays fixed, what happens to the shape of $\\text{Beta}(\\alpha, \\beta)$? Hint: think about the variance formula.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Var = αβ/[(α+β)²(α+β+1)] shrinks toward 0 as α,β→∞ with their ratio fixed, since the denominator grows faster (order (α+β)³) than the numerator (order (α+β)²)",
+          "description": "$\\text{Var} = \\dfrac{\\alpha\\beta}{(\\alpha+\\beta)^2(\\alpha+\\beta+1)}$ shrinks toward $0$ as $\\alpha, \\beta \\to \\infty$ with their ratio fixed, since the denominator grows faster (order $(\\alpha+\\beta)^3$) than the numerator (order $(\\alpha+\\beta)^2$)",
           "weight": 1,
           "required": true
         },
@@ -1398,18 +1398,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Verify E[X] = α/(α+β) using ∫x^α(1−x)^(β−1)dx = B(α+1,β) and the Gamma recursion Γ(n+1)=nΓ(n).",
+    "stem": "Verify $\\mathbb{E}[X] = \\alpha/(\\alpha+\\beta)$ using $\\int x^{\\alpha}(1-x)^{\\beta-1}\\,dx = B(\\alpha+1, \\beta)$ and the Gamma recursion $\\Gamma(n+1) = n\\Gamma(n)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X] = B(α+1,β)/B(α,β)",
+          "description": "$\\mathbb{E}[X] = \\dfrac{B(\\alpha+1, \\beta)}{B(\\alpha, \\beta)}$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "expand each Beta function via Gammas, use Γ(α+1)=αΓ(α) to cancel, leaving α/(α+β)",
+          "description": "expand each Beta function via Gammas, use $\\Gamma(\\alpha+1) = \\alpha\\Gamma(\\alpha)$ to cancel, leaving $\\alpha/(\\alpha+\\beta)$",
           "weight": 1,
           "required": false
         }
@@ -1439,24 +1439,24 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is Beta a natural choice specifically for modeling \"a random probability,\" in a way Gamma or Exponential aren't?",
+    "stem": "Why is Beta a natural choice specifically for modeling “a random probability”, in a way Gamma or Exponential aren’t?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Beta's support is exactly [0,1], matching the constraint that a probability must lie in that range",
+          "description": "Beta’s support is exactly $[0, 1]$, matching the constraint that a probability must lie in that range",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "Gamma/Exponential have unbounded support on (0,∞) and would assign probability to nonsensical values like p=1.3",
+          "description": "Gamma/Exponential have unbounded support on $(0, \\infty)$ and would assign probability to nonsensical values like $p = 1.3$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "Beta is also flexible enough to be flat, U-shaped, or peaked depending on α,β",
+          "description": "Beta is also flexible enough to be flat, U-shaped, or peaked depending on $\\alpha$, $\\beta$",
           "weight": 1,
           "required": false
         }
@@ -1486,24 +1486,24 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Before seeing any A/B test data, you believe a website's conversion rate p is \"probably around 5%, but I'm not very sure.\" Without doing any calculation, explain why Beta is a far more natural choice than Normal to represent this belief about p.",
+    "stem": "Before seeing any A/B test data, you believe a website’s conversion rate $p$ is “probably around $5\\%$, but I’m not very sure.” Without doing any calculation, explain why Beta is a far more natural choice than Normal to represent this belief about $p$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "p is a probability, constrained to [0,1]",
+          "description": "$p$ is a probability, constrained to $[0, 1]$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "Normal has support on all of ℝ and would assign nonzero probability to impossible values like p=−0.1 or p=1.3",
+          "description": "Normal has support on all of $\\mathbb{R}$ and would assign nonzero probability to impossible values like $p = -0.1$ or $p = 1.3$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "Beta's support matches the constraint exactly, and its shape can be tuned (via α,β) to peak near 0.05 with an appropriate spread",
+          "description": "Beta’s support matches the constraint exactly, and its shape can be tuned (via $\\alpha$, $\\beta$) to peak near $0.05$ with an appropriate spread",
           "weight": 1,
           "required": false
         }
@@ -1511,11 +1511,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks Normal because \"the sample size will be large so CLT applies\" — true of the *estimator's* sampling distribution later on, but not a reason to use Normal for a *prior belief about p itself*",
+          "description": "picks Normal because “the sample size will be large so CLT applies” — true of the *estimator’s* sampling distribution later on, but not a reason to use Normal for a *prior belief about $p$ itself*",
           "weight": 0,
           "misconception": {
             "id": "beta-distribution--t1--misconception",
-            "description": "picks Normal because \"the sample size will be large so CLT applies\" — true of the *estimator's* sampling distribution later on, but not a reason to use Normal for a *prior belief about p itself*",
+            "description": "picks Normal because “the sample size will be large so CLT applies” — true of the *estimator’s* sampling distribution later on, but not a reason to use Normal for a *prior belief about $p$ itself*",
             "blameConceptId": "beta-distribution"
           }
         }
@@ -1545,12 +1545,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define χ²ₖ in terms of standard normals, and state E[X], Var(X).",
+    "stem": "Define $\\chi^2_k$ in terms of standard normals, and state $\\mathbb{E}[X]$, $\\text{Var}(X)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Z₁²+⋯+Zₖ² for iid Zᵢ~N(0,1); E[X]=k; Var(X)=2k",
+          "description": "$Z_1^2+\\cdots+Z_k^2$ for i.i.d. $Z_i \\sim \\mathcal{N}(0, 1)$; $\\mathbb{E}[X] = k$; $\\text{Var}(X) = 2k$",
           "weight": 1,
           "required": false
         }
@@ -1580,12 +1580,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "If Z₁,…,Zₖ are iid N(0,1), then Z₁²+⋯+Zₖ² has distribution:",
+    "stem": "If $Z_1, \\ldots, Z_k \\sim \\mathcal{N}(0, 1)$ i.i.d., then $Z_1^2+\\cdots+Z_k^2$ has distribution:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "χ²ₖ",
+          "description": "$\\chi^2_k$",
           "weight": 1,
           "required": false
         }
@@ -1593,11 +1593,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks N(0,k), forgetting squaring destroys normality and negativity",
+          "description": "picks $\\mathcal{N}(0, k)$, forgetting squaring destroys normality and negativity",
           "weight": 0,
           "misconception": {
             "id": "chi-square-distribution--r2--misconception",
-            "description": "picks N(0,k), forgetting squaring destroys normality and negativity",
+            "description": "picks $\\mathcal{N}(0, k)$, forgetting squaring destroys normality and negativity",
             "blameConceptId": "chi-square-distribution"
           }
         }
@@ -1627,12 +1627,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X ~ χ²₁₀. Find E[X], Var(X).",
+    "stem": "$X \\sim \\chi^2_{10}$. Find $\\mathbb{E}[X]$, $\\text{Var}(X)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X]=10; Var(X)=20",
+          "description": "$\\mathbb{E}[X] = 10$; $\\text{Var}(X) = 20$",
           "weight": 1,
           "required": false
         }
@@ -1662,12 +1662,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X~χ²₈, Y~χ²₅ independent. What is X+Y's distribution, and why (one line, from the definition)?",
+    "stem": "$X \\sim \\chi^2_8$, $Y \\sim \\chi^2_5$ independent. What is $X+Y$’s distribution, and why (one line, from the definition)?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "χ²₁₃ — X+Y is the sum of 8+5=13 iid squared standard normals pooled from the two independent groups",
+          "description": "$\\chi^2_{13}$ — $X+Y$ is the sum of $8+5=13$ i.i.d. squared standard normals pooled from the two independent groups",
           "weight": 1,
           "required": false
         }
@@ -1709,18 +1709,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove E[χ²ₖ] = k directly from the definition, using E[Zᵢ²] = Var(Zᵢ) + E[Zᵢ]² for each standard normal.",
+    "stem": "Prove $\\mathbb{E}[\\chi^2_k] = k$ directly from the definition, using $\\mathbb{E}[Z_i^2] = \\text{Var}(Z_i) + \\mathbb{E}[Z_i]^2$ for each standard normal.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[Zᵢ²] = 1 + 0 = 1 (a callback to `variance`'s shortcut formula, run in reverse)",
+          "description": "$\\mathbb{E}[Z_i^2] = 1 + 0 = 1$ (a callback to `variance`’s shortcut formula, run in reverse)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "linearity gives E[ΣZᵢ²] = k·1 = k",
+          "description": "linearity gives $\\mathbb{E}\\left[\\sum Z_i^2\\right] = k\\cdot 1 = k$",
           "weight": 1,
           "required": false
         }
@@ -1750,18 +1750,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain intuitively why χ²ₖ becomes more symmetric and Normal-looking as k grows, without invoking the formal CLT.",
+    "stem": "Explain intuitively why $\\chi^2_k$ becomes more symmetric and Normal-looking as $k$ grows, without invoking the formal CLT.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "it's a sum of k iid terms, and sums of many iid terms tend to look increasingly Gaussian (the general intuition behind CLT, used informally here)",
+          "description": "it’s a sum of $k$ i.i.d. terms, and sums of many i.i.d. terms tend to look increasingly Gaussian (the general intuition behind CLT, used informally here)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "concretely, the relative spread SD/mean = √(2k)/k = √(2/k) shrinks as k grows, so the distribution's *shape* relative to its own scale becomes tighter and more symmetric",
+          "description": "concretely, the relative spread $\\text{SD}/\\text{mean} = \\sqrt{2k}/k = \\sqrt{2/k}$ shrinks as $k$ grows, so the distribution’s *shape* relative to its own scale becomes tighter and more symmetric",
           "weight": 1,
           "required": false
         }
@@ -1791,7 +1791,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A quality engineer wants to test whether a machine's part-diameter variance exceeds a spec, and proposes comparing her variance *estimate* to a Normal distribution. Explain why Chi-Square is the right family instead — connect it to how a variance estimate is actually built.",
+    "stem": "A quality engineer wants to test whether a machine’s part-diameter variance exceeds a spec, and proposes comparing her variance *estimate* to a Normal distribution. Explain why Chi-Square is the right family instead — connect it to how a variance estimate is actually built.",
     "rubric": {
       "elements": [
         {
@@ -1802,7 +1802,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "since those (approximately) standardized deviations behave like standard normals, a sum of their squares is exactly what defines χ² — this is precisely the mechanism that will later justify `sample-variance`'s sampling distribution",
+          "description": "since those (approximately) standardized deviations behave like standard normals, a sum of their squares is exactly what defines $\\chi^2$ — this is precisely the mechanism that will later justify `sample-variance`’s sampling distribution",
           "weight": 1,
           "required": false
         }
@@ -1810,11 +1810,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "reaches for Normal because \"most sampling distributions are approximately Normal,\" missing that variance estimates are built from *squared* quantities, which is what chi-square is specifically for",
+          "description": "reaches for Normal because “most sampling distributions are approximately Normal”, missing that variance estimates are built from *squared* quantities, which is what chi-square is specifically for",
           "weight": 0,
           "misconception": {
             "id": "chi-square-distribution--t1--misconception",
-            "description": "reaches for Normal because \"most sampling distributions are approximately Normal,\" missing that variance estimates are built from *squared* quantities, which is what chi-square is specifically for",
+            "description": "reaches for Normal because “most sampling distributions are approximately Normal”, missing that variance estimates are built from *squared* quantities, which is what chi-square is specifically for",
             "blameConceptId": "chi-square-distribution"
           }
         }
@@ -1844,12 +1844,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define Tₖ in terms of a standard normal Z and an independent χ²ₖ variable V, and state what happens as k→∞.",
+    "stem": "Define $T_k$ in terms of a standard normal $Z$ and an independent $\\chi^2_k$ variable $V$, and state what happens as $k \\to \\infty$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Tₖ = Z/√(V/k); as k→∞, Tₖ → N(0,1)",
+          "description": "$T_k = Z/\\sqrt{V/k}$; as $k \\to \\infty$, $T_k \\to \\mathcal{N}(0, 1)$",
           "weight": 1,
           "required": false
         }
@@ -1879,7 +1879,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Compared to Normal(0,1), t with small degrees of freedom has:",
+    "stem": "Compared to $\\mathcal{N}(0, 1)$, $t$ with small degrees of freedom has:",
     "rubric": {
       "elements": [
         {
@@ -1892,11 +1892,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"lighter tails,\" backwards",
+          "description": "picks “lighter tails”, backwards",
           "weight": 0,
           "misconception": {
             "id": "t-distribution--r2--misconception",
-            "description": "picks \"lighter tails,\" backwards",
+            "description": "picks “lighter tails”, backwards",
             "blameConceptId": "t-distribution"
           }
         }
@@ -1926,12 +1926,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Without computing an exact value, explain why P(|T₅| > 2) is *larger* than P(|Z| > 2) for standard normal Z.",
+    "stem": "Without computing an exact value, explain why $P(|T_5| > 2)$ is *larger* than $P(|Z| > 2)$ for standard normal $Z$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "t has heavier tails than Normal at every fixed df, so it assigns strictly more probability to extreme values beyond any fixed threshold",
+          "description": "$t$ has heavier tails than Normal at every fixed $\\text{df}$, so it assigns strictly more probability to extreme values beyond any fixed threshold",
           "weight": 1,
           "required": true
         }
@@ -1939,11 +1939,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "assumes t and Normal agree everywhere except very close to the tails' extreme ends",
+          "description": "assumes $t$ and Normal agree everywhere except very close to the tails’ extreme ends",
           "weight": 0,
           "misconception": {
             "id": "t-distribution--a1--misconception",
-            "description": "assumes t and Normal agree everywhere except very close to the tails' extreme ends",
+            "description": "assumes $t$ and Normal agree everywhere except very close to the tails’ extreme ends",
             "blameConceptId": "t-distribution"
           }
         }
@@ -1973,18 +1973,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Find Var(T₄) using Var(Tₖ)=k/(k−2). What happens to this formula as k→2⁺, and what does that mean?",
+    "stem": "Find $\\text{Var}(T_4)$ using $\\text{Var}(T_k) = k/(k-2)$. What happens to this formula as $k \\to 2^+$, and what does that mean?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Var(T₄)=4/2=2 (already larger than Normal's variance of 1)",
+          "description": "$\\text{Var}(T_4) = 4/2 = 2$ (already larger than Normal’s variance of $1$)",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "as k→2⁺ the formula diverges, and for k≤2 the variance is infinite/undefined — an extreme version of \"heavier tails\"",
+          "description": "as $k \\to 2^+$ the formula diverges, and for $k \\le 2$ the variance is infinite/undefined — an extreme version of “heavier tails”",
           "weight": 1,
           "required": false
         }
@@ -1992,11 +1992,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "assumes Var(Tₖ) is always close to 1 like the standard normal, missing that it can be undefined for small k",
+          "description": "assumes $\\text{Var}(T_k)$ is always close to $1$ like the standard normal, missing that it can be undefined for small $k$",
           "weight": 0,
           "misconception": {
             "id": "t-distribution--a2--misconception",
-            "description": "assumes Var(Tₖ) is always close to 1 like the standard normal, missing that it can be undefined for small k",
+            "description": "assumes $\\text{Var}(T_k)$ is always close to $1$ like the standard normal, missing that it can be undefined for small $k$",
             "blameConceptId": "t-distribution"
           }
         }
@@ -2026,18 +2026,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show Var(Tₖ)=k/(k−2) is always > 1 for finite k>2, and explain why it approaches 1 as k→∞.",
+    "stem": "Show $\\text{Var}(T_k) = k/(k-2)$ is always $> 1$ for finite $k > 2$, and explain why it approaches $1$ as $k \\to \\infty$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "k/(k−2) > 1 whenever k>2 since k−2<k",
+          "description": "$k/(k-2) > 1$ whenever $k > 2$ since $k-2 < k$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "as k→∞, V/k → 1 (an informal law-of-large-numbers intuition — the chi-square average concentrates near its mean of 1), so Tₖ ≈ Z/1 = Z, recovering variance 1",
+          "description": "as $k \\to \\infty$, $V/k \\to 1$ (an informal law-of-large-numbers intuition — the chi-square average concentrates near its mean of $1$), so $T_k \\approx Z/1 = Z$, recovering variance $1$",
           "weight": 1,
           "required": false
         }
@@ -2067,18 +2067,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain the mechanism behind t's heavier tails, using Tₖ = Z/√(V/k) directly.",
+    "stem": "Explain the mechanism behind $t$’s heavier tails, using $T_k = Z/\\sqrt{V/k}$ directly.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "when V/k happens to be small by chance (the variance estimate underestimates the truth), the division inflates T, producing more extreme values than Z alone would generate",
+          "description": "when $V/k$ happens to be small by chance (the variance estimate underestimates the truth), the division inflates $T$, producing more extreme values than $Z$ alone would generate",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "this self-correcting inflation *is* the heavy tail, and it's exactly what \"pricing in\" uncertain variance estimation looks like",
+          "description": "this self-correcting inflation *is* the heavy tail, and it’s exactly what “pricing in” uncertain variance estimation looks like",
           "weight": 1,
           "required": false
         }
@@ -2108,18 +2108,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why must a small clinical trial (n=8) use the t-distribution for its confidence interval, while a huge trial (n=10,000) can essentially use Normal instead? Connect this to what \"degrees of freedom\" represents.",
+    "stem": "Why must a small clinical trial ($n=8$) use the $t$-distribution for its confidence interval, while a huge trial ($n=10{,}000$) can essentially use Normal instead? Connect this to what “degrees of freedom” represents.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "with small n, the sample standard deviation is itself a noisy, uncertain estimate of the true σ (few degrees of freedom), so t \"prices in\" that extra estimation uncertainty via heavier tails (E2's mechanism)",
+          "description": "with small $n$, the sample standard deviation is itself a noisy, uncertain estimate of the true $\\sigma$ (few degrees of freedom), so $t$ “prices in” that extra estimation uncertainty via heavier tails (E2’s mechanism)",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "with large n the sample SD is essentially exact (V/k→1 very precisely, per E1), so t converges to Normal and the distinction stops mattering in practice",
+          "description": "with large $n$ the sample SD is essentially exact ($V/k \\to 1$ very precisely, per E1), so $t$ converges to Normal and the distinction stops mattering in practice",
           "weight": 1,
           "required": false
         }
@@ -2127,11 +2127,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "treats \"large sample\" as making the *data* Normal, rather than making the *variance estimate* precise enough that t and Normal coincide",
+          "description": "treats “large sample” as making the *data* Normal, rather than making the *variance estimate* precise enough that $t$ and Normal coincide",
           "weight": 0,
           "misconception": {
             "id": "t-distribution--t1--misconception",
-            "description": "treats \"large sample\" as making the *data* Normal, rather than making the *variance estimate* precise enough that t and Normal coincide",
+            "description": "treats “large sample” as making the *data* Normal, rather than making the *variance estimate* precise enough that $t$ and Normal coincide",
             "blameConceptId": "t-distribution"
           }
         }
@@ -2161,18 +2161,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define F_{d₁,d₂} in terms of two independent chi-squares, and state its support.",
+    "stem": "Define $F_{d_1,d_2}$ in terms of two independent chi-squares, and state its support.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "F_{d₁,d₂} = (V₁/d₁)/(V₂/d₂) for independent V₁~χ²_d₁, V₂~χ²_d₂",
+          "description": "$F_{d_1,d_2} = \\dfrac{V_1/d_1}{V_2/d_2}$ for independent $V_1 \\sim \\chi^2_{d_1}$, $V_2 \\sim \\chi^2_{d_2}$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "support is (0,∞) only",
+          "description": "support is $(0, \\infty)$ only",
           "weight": 1,
           "required": false
         }
@@ -2202,12 +2202,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The square of a t-distributed variable with k df, T², has distribution:",
+    "stem": "The square of a $t$-distributed variable with $k$ df, $T^2$, has distribution:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "F_{1,k}",
+          "description": "$F_{1,k}$",
           "weight": 1,
           "required": false
         }
@@ -2215,11 +2215,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks χ²ₖ, missing that squaring a *ratio* (T is itself built from a ratio) doesn't collapse to a plain chi-square",
+          "description": "picks $\\chi^2_k$, missing that squaring a *ratio* ($T$ is itself built from a ratio) doesn’t collapse to a plain chi-square",
           "weight": 0,
           "misconception": {
             "id": "f-distribution--r2--misconception",
-            "description": "picks χ²ₖ, missing that squaring a *ratio* (T is itself built from a ratio) doesn't collapse to a plain chi-square",
+            "description": "picks $\\chi^2_k$, missing that squaring a *ratio* ($T$ is itself built from a ratio) doesn’t collapse to a plain chi-square",
             "blameConceptId": "f-distribution"
           }
         }
@@ -2249,18 +2249,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain directly from the definition why F_{d₁,d₂} can never be negative.",
+    "stem": "Explain directly from the definition why $F_{d_1,d_2}$ can never be negative.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "both V₁ and V₂ are sums of squares, hence always ≥0",
+          "description": "both $V_1$ and $V_2$ are sums of squares, hence always $\\ge 0$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "a ratio of two nonnegative quantities (each further divided by a positive constant) is always ≥0",
+          "description": "a ratio of two nonnegative quantities (each further divided by a positive constant) is always $\\ge 0$",
           "weight": 1,
           "required": false
         }
@@ -2290,12 +2290,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "If X ~ F_{5,20}, is 1/X also F-distributed? If so, with which parameters?",
+    "stem": "If $X \\sim F_{5,20}$, is $1/X$ also $F$-distributed? If so, with which parameters?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "yes — 1/X ~ F_{20,5}",
+          "description": "yes — $1/X \\sim F_{20,5}$",
           "weight": 1,
           "required": false
         },
@@ -2309,11 +2309,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "assumes 1/X has the same parameters as X",
+          "description": "assumes $1/X$ has the same parameters as $X$",
           "weight": 0,
           "misconception": {
             "id": "f-distribution--a2--misconception",
-            "description": "assumes 1/X has the same parameters as X",
+            "description": "assumes $1/X$ has the same parameters as $X$",
             "blameConceptId": "f-distribution"
           }
         }
@@ -2343,18 +2343,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Without computing E[F] exactly, argue informally why E[F_{d₁,d₂}] should be *close to 1* when d₁ and d₂ are both large.",
+    "stem": "Without computing $\\mathbb{E}[F]$ exactly, argue informally why $\\mathbb{E}[F_{d_1,d_2}]$ should be *close to $1$* when $d_1$ and $d_2$ are both large.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[V₁/d₁]=E[V₂/d₂]=1 always",
+          "description": "$\\mathbb{E}[V_1/d_1] = \\mathbb{E}[V_2/d_2] = 1$ always",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "for large d₁,d₂ both ratios concentrate tightly around 1 (their relative spread √(2/d) shrinks, per `chi-square-distribution`'s E2), so their ratio concentrates near 1/1=1",
+          "description": "for large $d_1, d_2$ both ratios concentrate tightly around $1$ (their relative spread $\\sqrt{2/d}$ shrinks, per `chi-square-distribution`’s E2), so their ratio concentrates near $1/1 = 1$",
           "weight": 1,
           "required": false
         }
@@ -2384,7 +2384,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is F always positive and — unlike Normal or Chi-Square itself in the large-df limit — persistently *not* symmetric?",
+    "stem": "Why is $F$ always positive and — unlike Normal or Chi-Square itself in the large-df limit — persistently *not* symmetric?",
     "rubric": {
       "elements": [
         {
@@ -2425,24 +2425,24 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "*⚠ requires `t-distribution` in addition to `chi-square-distribution`.* Show that if T~tₖ, then T² ~ F_{1,k}.",
+    "stem": "*⚠ requires `t-distribution` in addition to `chi-square-distribution`.* Show that if $T \\sim t_k$, then $T^2 \\sim F_{1,k}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Tₖ = Z/√(V/k), so T² = Z²/(V/k)",
+          "description": "$T_k = Z/\\sqrt{V/k}$, so $T^2 = \\dfrac{Z^2}{V/k}$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "Z² ~ χ²₁ (established in the Chi-Square section's own derivation of Z²~Gamma(½,½)=χ²₁)",
+          "description": "$Z^2 \\sim \\chi^2_1$ (established in the Chi-Square section’s own derivation of $Z^2 \\sim \\text{Gamma}\\left(\\tfrac12, \\tfrac12\\right) = \\chi^2_1$)",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "T² = (Z²/1)/(V/k), matching F_{1,k}'s definition exactly",
+          "description": "$T^2 = \\dfrac{Z^2/1}{V/k}$, matching $F_{1,k}$’s definition exactly",
           "weight": 1,
           "required": false
         }
@@ -2450,11 +2450,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "forgets Z² needs to be recognized as χ²₁ first, and tries to treat Z itself as chi-square",
+          "description": "forgets $Z^2$ needs to be recognized as $\\chi^2_1$ first, and tries to treat $Z$ itself as chi-square",
           "weight": 0,
           "misconception": {
             "id": "f-distribution--t1--misconception",
-            "description": "forgets Z² needs to be recognized as χ²₁ first, and tries to treat Z itself as chi-square",
+            "description": "forgets $Z^2$ needs to be recognized as $\\chi^2_1$ first, and tries to treat $Z$ itself as chi-square",
             "blameConceptId": "chi-square-distribution"
           }
         }
@@ -2496,7 +2496,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "a ratio is scale-free and naturally bounded below by 0, so \"twice as variable\" always reads as a ratio of 2 regardless of units — a difference is unit-dependent and treats a small perturbation and a genuine doubling inconsistently depending on the underlying scale",
+          "description": "a ratio is scale-free and naturally bounded below by $0$, so “twice as variable” always reads as a ratio of $2$ regardless of units — a difference is unit-dependent and treats a small perturbation and a genuine doubling inconsistently depending on the underlying scale",
           "weight": 1,
           "required": false
         }
@@ -2526,18 +2526,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the PMF of Poisson(λ) and what λ represents.",
+    "stem": "State the PMF of $\\text{Poisson}(\\lambda)$ and what $\\lambda$ represents.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(X=k) = e⁻ᵠλᵏ/k!, k=0,1,2,…",
+          "description": "$P(X=k) = \\dfrac{e^{-\\lambda}\\lambda^k}{k!}$, $k = 0, 1, 2, \\ldots$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "λ is both the mean rate and the mean count",
+          "description": "$\\lambda$ is both the mean rate and the mean count",
           "weight": 1,
           "required": false
         }
@@ -2567,12 +2567,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For Poisson(λ), Var(X) equals:",
+    "stem": "For $\\text{Poisson}(\\lambda)$, $\\text{Var}(X)$ equals:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "λ — the distinctive fact that mean and variance coincide",
+          "description": "$\\lambda$ — the distinctive fact that mean and variance coincide",
           "weight": 1,
           "required": false
         }
@@ -2580,11 +2580,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks λ², assuming variance generically scales as the mean squared",
+          "description": "picks $\\lambda^2$, assuming variance generically scales as the mean squared",
           "weight": 0,
           "misconception": {
             "id": "poisson-distribution--r2--misconception",
-            "description": "picks λ², assuming variance generically scales as the mean squared",
+            "description": "picks $\\lambda^2$, assuming variance generically scales as the mean squared",
             "blameConceptId": "poisson-distribution"
           }
         }
@@ -2613,7 +2613,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "A call center gets 4 calls/minute on average (Poisson). Find P(exactly 2 calls in a given minute).",
+    "stem": "A call center gets $4$ calls/minute on average (Poisson). Find $P(\\text{exactly } 2 \\text{ calls in a given minute})$.",
     "answerKey": 0.1465,
     "tolerance": 0.01,
     "difficulty": 0.72,
@@ -2640,18 +2640,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Same center, find P(at least 1 call in a 30-second window).",
+    "stem": "Same center, find $P(\\text{at least } 1 \\text{ call in a } 30\\text{-second window})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "rate over 30s is 2 (half of 4/min)",
+          "description": "rate over $30$ s is $2$ (half of $4$/min)",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "P(≥1) = 1−e⁻² ≈ 0.8647",
+          "description": "$P(\\ge 1) = 1 - e^{-2} \\approx 0.8647$",
           "weight": 1,
           "required": false
         }
@@ -2659,11 +2659,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "forgets to rescale λ to the shorter window and uses λ=4",
+          "description": "forgets to rescale $\\lambda$ to the shorter window and uses $\\lambda = 4$",
           "weight": 0,
           "misconception": {
             "id": "poisson-distribution--a2--misconception",
-            "description": "forgets to rescale λ to the shorter window and uses λ=4",
+            "description": "forgets to rescale $\\lambda$ to the shorter window and uses $\\lambda = 4$",
             "blameConceptId": "poisson-distribution"
           }
         }
@@ -2693,12 +2693,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive the Poisson PMF as the n→∞, p→0, np=λ (fixed) limit of Binomial(n,p).",
+    "stem": "Derive the Poisson PMF as the $n\\to\\infty$, $p\\to 0$, $np=\\lambda$ (fixed) limit of $\\text{Binomial}(n,p)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "C(n,k)pᵏ(1−p)ⁿ⁻ᵏ with p=λ/n: expand C(n,k)(λ/n)ᵏ(1−λ/n)ⁿ⁻ᵏ, take the limit term-by-term — n(n−1)⋯(n−k+1)/nᵏ → 1, (1−λ/n)ⁿ → e⁻ᵠ, (1−λ/n)⁻ᵏ → 1, leaving λᵏ/k! · e⁻ᵠ",
+          "description": "$\\binom{n}{k}p^k(1-p)^{n-k}$ with $p=\\lambda/n$: expand $\\binom{n}{k}\\left(\\frac{\\lambda}{n}\\right)^k\\left(1-\\frac{\\lambda}{n}\\right)^{n-k}$, take the limit term-by-term — $\\frac{n(n-1)\\cdots(n-k+1)}{n^k} \\to 1$, $\\left(1-\\frac{\\lambda}{n}\\right)^n \\to e^{-\\lambda}$, $\\left(1-\\frac{\\lambda}{n}\\right)^{-k} \\to 1$, leaving $\\frac{\\lambda^k}{k!} e^{-\\lambda}$",
           "weight": 1,
           "required": true
         }
@@ -2728,12 +2728,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show directly (by convolution, not MGF) that if X~Poisson(λ), Y~Poisson(μ) independent, then X+Y ~ Poisson(λ+μ).",
+    "stem": "Show directly (by convolution, not MGF) that if $X \\sim \\text{Poisson}(\\lambda)$, $Y \\sim \\text{Poisson}(\\mu)$ independent, then $X+Y \\sim \\text{Poisson}(\\lambda+\\mu)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(X+Y=n) = Σₖ P(X=k)P(Y=n−k) = e⁻⁽ᵠ⁺ᵘ⁾/n! · Σₖ C(n,k)λᵏμⁿ⁻ᵏ = e⁻⁽ᵠ⁺ᵘ⁾(λ+μ)ⁿ/n! by the binomial theorem `[verified for λ=3,μ=5,n=2: both sides give 0.010735]`  — a genuine payoff of the prerequisite closure, since `binomial-theorem` is an ancestor via `bernoulli-binomial`",
+          "description": "$P(X+Y=n) = \\sum_k P(X=k)P(Y=n-k) = \\frac{e^{-(\\lambda+\\mu)}}{n!} \\sum_k \\binom{n}{k}\\lambda^k\\mu^{n-k} = \\frac{e^{-(\\lambda+\\mu)}(\\lambda+\\mu)^n}{n!}$ by the binomial theorem `[verified for λ=3,μ=5,n=2: both sides give 0.010735]` — a genuine payoff of the prerequisite closure, since `binomial-theorem` is an ancestor via `bernoulli-binomial`",
           "weight": 1,
           "required": true
         }
@@ -2763,7 +2763,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "*Why can't earthquake counts in a region over a decade be modeled as Poisson*, even though \"rare event count over an interval\" sounds exactly like the Poisson setup? Hint: think about aftershocks.",
+    "stem": "*Why can’t earthquake counts in a region over a decade be modeled as Poisson*, even though “rare event count over an interval” sounds exactly like the Poisson setup? Hint: think about aftershocks.",
     "rubric": {
       "elements": [
         {
@@ -2782,11 +2782,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "says \"earthquakes aren't rare enough\" rather than identifying the dependence mechanism",
+          "description": "says “earthquakes aren’t rare enough” rather than identifying the dependence mechanism",
           "weight": 0,
           "misconception": {
             "id": "poisson-distribution--t1--misconception",
-            "description": "says \"earthquakes aren't rare enough\" rather than identifying the dependence mechanism",
+            "description": "says “earthquakes aren’t rare enough” rather than identifying the dependence mechanism",
             "blameConceptId": "poisson-distribution"
           }
         }
@@ -2816,12 +2816,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Give three real-world Poisson counts, naming the rate λ and the interval for each. Then give one counting scenario that looks Poisson-shaped but isn't, and say which assumption fails.",
+    "stem": "Give three real-world Poisson counts, naming the rate $\\lambda$ and the interval for each. Then give one counting scenario that looks Poisson-shaped but isn’t, and say which assumption fails.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "strong examples: typos per page (λ per page)",
+          "description": "strong examples: typos per page ($\\lambda$ per page)",
           "weight": 1,
           "required": false
         },
@@ -2881,18 +2881,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the PMF of Hypergeometric(N, K, n) and what each parameter means.",
+    "stem": "State the PMF of $\\text{Hypergeometric}(N, K, n)$ and what each parameter means.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(X=k) = C(K,k)C(N−K,n−k)/C(N,n)",
+          "description": "$P(X=k) = \\dfrac{\\binom{K}{k}\\binom{N-K}{n-k}}{\\binom{N}{n}}$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "N = population, K = successes in population, n = draws (without replacement)",
+          "description": "$N$ = population, $K$ = successes in population, $n$ = draws (without replacement)",
           "weight": 1,
           "required": false
         }
@@ -2935,11 +2935,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"Hypergeometric assumes constant probability of success across draws\" — exactly backwards",
+          "description": "picks “Hypergeometric assumes constant probability of success across draws” — exactly backwards",
           "weight": 0,
           "misconception": {
             "id": "hypergeometric-distribution--r2--misconception",
-            "description": "picks \"Hypergeometric assumes constant probability of success across draws\" — exactly backwards",
+            "description": "picks “Hypergeometric assumes constant probability of success across draws” — exactly backwards",
             "blameConceptId": "hypergeometric-distribution"
           }
         }
@@ -2968,7 +2968,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "A 52-card deck has 13 hearts. Draw 5 cards without replacement. Find P(exactly 2 hearts).",
+    "stem": "A $52$-card deck has $13$ hearts. Draw $5$ cards without replacement. Find $P(\\text{exactly } 2 \\text{ hearts})$.",
     "answerKey": 0.2743,
     "tolerance": 0.01,
     "difficulty": 0.58,
@@ -2995,12 +2995,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A shipment of 50 items has 5 defective. Inspect 10 without replacement. Find E[number defective], and compare it to what Binomial(10, 5/50) predicts.",
+    "stem": "A shipment of $50$ items has $5$ defective. Inspect $10$ without replacement. Find $\\mathbb{E}[\\text{number defective}]$, and compare it to what $\\text{Binomial}(10, 5/50)$ predicts.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X] = n·K/N = 10·5/50 = 1 — *identical* to the binomial mean np = 1. Required: notices the means agree exactly even though the distributions differ",
+          "description": "$\\mathbb{E}[X] = n\\cdot K/N = 10\\cdot 5/50 = 1$ — *identical* to the binomial mean $np = 1$. Required: notices the means agree exactly even though the distributions differ",
           "weight": 1,
           "required": false
         }
@@ -3042,18 +3042,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive E[X] = nK/N using indicator variables Iᵢ = 1{draw i is a success}, *without* assuming the draws are independent.",
+    "stem": "Derive $\\mathbb{E}[X] = nK/N$ using indicator variables $I_i = 1\\{\\text{draw } i \\text{ is a success}\\}$, *without* assuming the draws are independent.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "by symmetry, each draw is marginally a success with probability K/N (even though draws are dependent on each other), so E[Iᵢ] = K/N for every i",
+          "description": "by symmetry, each draw is marginally a success with probability $K/N$ (even though draws are dependent on each other), so $\\mathbb{E}[I_i] = K/N$ for every $i$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "linearity of expectation needs no independence, so E[X] = ΣE[Iᵢ] = nK/N",
+          "description": "linearity of expectation needs no independence, so $\\mathbb{E}[X] = \\sum \\mathbb{E}[I_i] = nK/N$",
           "weight": 1,
           "required": false
         }
@@ -3095,7 +3095,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is Var(Hypergeometric) *smaller* than the matching Binomial's variance (same n, p=K/N)?",
+    "stem": "Why is $\\text{Var}(\\text{Hypergeometric})$ *smaller* than the matching Binomial’s variance (same $n$, $p=K/N$)?",
     "rubric": {
       "elements": [
         {
@@ -3106,7 +3106,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "the finite population correction (N−n)/(N−1) < 1 encodes exactly this, and → 1 as N grows large relative to n  `[verified: N=50,K=5,n=10 gives Var_binom=0.90 vs Var_hyper=0.7347]`",
+          "description": "the finite population correction $\\frac{N-n}{N-1} < 1$ encodes exactly this, and $\\to 1$ as $N$ grows large relative to $n$ `[verified: N=50,K=5,n=10 gives Var_binom=0.90 vs Var_hyper=0.7347]`",
           "weight": 1,
           "required": false
         }
@@ -3136,18 +3136,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "You draw 5 cards from a deck and count hearts — why isn't this Binomial(5, 0.25)? Now: you sample 1000 voters from a city of 500,000 and count supporters — why is a Binomial approximation fine there? *(This question first appeared, marked ⚠, in the Bernoulli/Binomial pilot file — it belongs here.)*",
+    "stem": "You draw $5$ cards from a deck and count hearts — why isn’t this $\\text{Binomial}(5, 0.25)$? Now: you sample $1000$ voters from a city of $500{,}000$ and count supporters — why is a Binomial approximation fine there? *(This question first appeared, marked ⚠, in the Bernoulli/Binomial pilot file — it belongs here.)*",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "small population: p genuinely shifts after each draw (5/52, then 4/51 or 5/51, …)",
+          "description": "small population: $p$ genuinely shifts after each draw ($5/52$, then $4/51$ or $5/51$, …)",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "large population: n/N ≈ 0.002 makes the shift negligible — the usual rule of thumb is n < 10% of N, which is exactly E2's correction factor approaching 1",
+          "description": "large population: $n/N \\approx 0.002$ makes the shift negligible — the usual rule of thumb is $n < 10\\%$ of $N$, which is exactly E2’s correction factor approaching $1$",
           "weight": 1,
           "required": false
         }
@@ -3155,11 +3155,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "applies the 10%-rule as a hard cutoff rather than understanding it traces to the correction factor shrinking continuously",
+          "description": "applies the $10\\%$-rule as a hard cutoff rather than understanding it traces to the correction factor shrinking continuously",
           "weight": 0,
           "misconception": {
             "id": "hypergeometric-distribution--t1--misconception",
-            "description": "applies the 10%-rule as a hard cutoff rather than understanding it traces to the correction factor shrinking continuously",
+            "description": "applies the $10\\%$-rule as a hard cutoff rather than understanding it traces to the correction factor shrinking continuously",
             "blameConceptId": "hypergeometric-distribution"
           }
         }
@@ -3189,12 +3189,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "*Why can't* the number of aces in your 5-card poker hand and the number of aces in your opponent's 5-card hand (same deck, dealt after yours) be modeled as two *independent* Hypergeometric(52,4,5) draws? Hint: think about what your hand tells you about what's left.",
+    "stem": "*Why can’t* the number of aces in your $5$-card poker hand and the number of aces in your opponent’s $5$-card hand (same deck, dealt after yours) be modeled as two *independent* $\\text{Hypergeometric}(52, 4, 5)$ draws? Hint: think about what your hand tells you about what’s left.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "your hand changes the remaining deck's composition — 47 cards left with 4 minus (aces in your hand) aces remaining — so the opponent's draw is Hypergeometric on a *different, dependent* population, not an independent copy of your draw's distribution",
+          "description": "your hand changes the remaining deck’s composition — $47$ cards left with $4$ minus (aces in your hand) aces remaining — so the opponent’s draw is Hypergeometric on a *different, dependent* population, not an independent copy of your draw’s distribution",
           "weight": 1,
           "required": false
         }
@@ -3202,11 +3202,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "treats \"both draws are Hypergeometric\" as meaning \"both draws are independent\"",
+          "description": "treats “both draws are Hypergeometric” as meaning “both draws are independent”",
           "weight": 0,
           "misconception": {
             "id": "hypergeometric-distribution--t2--misconception",
-            "description": "treats \"both draws are Hypergeometric\" as meaning \"both draws are independent\"",
+            "description": "treats “both draws are Hypergeometric” as meaning “both draws are independent”",
             "blameConceptId": "hypergeometric-distribution"
           }
         }
@@ -3236,12 +3236,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the PMF of Geometric(p) under the \"number of trials until first success\" convention.",
+    "stem": "State the PMF of $\\text{Geometric}(p)$ under the “number of trials until first success” convention.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(X=k) = (1−p)ᵏ⁻¹p, k=1,2,3,…",
+          "description": "$P(X=k) = (1-p)^{k-1}p$, $k = 1, 2, 3, \\ldots$",
           "weight": 1,
           "required": false
         }
@@ -3271,12 +3271,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "There are two conventions — counting the trial of first success (range starts at 1) or counting failures before it (range starts at 0). Which quantity is the *same* under both?",
+    "stem": "There are two conventions — counting the trial of first success (range starts at $1$) or counting failures before it (range starts at $0$). Which quantity is the *same* under both?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Var(X) — shifting a random variable by a constant never changes its variance, per `variance`'s shift-invariance",
+          "description": "$\\text{Var}(X)$ — shifting a random variable by a constant never changes its variance, per `variance`’s shift-invariance",
           "weight": 1,
           "required": false
         }
@@ -3284,11 +3284,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks E[X], not noticing the two means (1/p vs (1−p)/p) genuinely differ by exactly the shift",
+          "description": "picks $\\mathbb{E}[X]$, not noticing the two means ($1/p$ vs $(1-p)/p$) genuinely differ by exactly the shift",
           "weight": 0,
           "misconception": {
             "id": "geometric-distribution--r2--misconception",
-            "description": "picks E[X], not noticing the two means (1/p vs (1−p)/p) genuinely differ by exactly the shift",
+            "description": "picks $\\mathbb{E}[X]$, not noticing the two means ($1/p$ vs $(1-p)/p$) genuinely differ by exactly the shift",
             "blameConceptId": "geometric-distribution"
           }
         }
@@ -3317,7 +3317,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "A sales rep closes a deal on each independent call with probability 0.15. Find P(the first sale happens on exactly the 5th call).",
+    "stem": "A sales rep closes a deal on each independent call with probability $0.15$. Find $P(\\text{the first sale happens on exactly the } 5\\text{th call})$.",
     "answerKey": 0.0783,
     "tolerance": 0.01,
     "difficulty": 0.72,
@@ -3344,12 +3344,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Same rep: find E[calls until first sale] and P(it takes more than 10 calls).",
+    "stem": "Same rep: find $\\mathbb{E}[\\text{calls until first sale}]$ and $P(\\text{it takes more than } 10 \\text{ calls})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X]=1/0.15≈6.667; P(X>10)=(0.85)¹⁰≈0.1969",
+          "description": "$\\mathbb{E}[X] = 1/0.15 \\approx 6.667$; $P(X>10) = 0.85^{10} \\approx 0.1969$",
           "weight": 1,
           "required": false
         }
@@ -3379,18 +3379,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove the memoryless property: P(X>m+n | X>m) = P(X>n).",
+    "stem": "Prove the memoryless property: $P(X>m+n \\mid X>m) = P(X>n)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "first show P(X>k)=(1−p)ᵏ (no success in k trials)",
+          "description": "first show $P(X>k) = (1-p)^k$ (no success in $k$ trials)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "then P(X>m+n|X>m) = (1−p)ᵐ⁺ⁿ/(1−p)ᵐ = (1−p)ⁿ = P(X>n) *(required: derives P(X>k) rather than asserting it)*",
+          "description": "then $P(X>m+n \\mid X>m) = \\dfrac{(1-p)^{m+n}}{(1-p)^m} = (1-p)^n = P(X>n)$ *(required: derives $P(X>k)$ rather than asserting it)*",
           "weight": 1,
           "required": false
         }
@@ -3425,7 +3425,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "each trial is independent of every past trial, so having already failed m times carries *no information* about future trials — the \"clock resets\" precisely because failures are uninformative under `mutual-independence`",
+          "description": "each trial is independent of every past trial, so having already failed $m$ times carries *no information* about future trials — the “clock resets” precisely because failures are uninformative under `mutual-independence`",
           "weight": 1,
           "required": true
         }
@@ -3455,18 +3455,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A gambler who has missed 5 free throws in a row says \"a geometric model says I'm due — my chance of making one within the next 2 throws must be higher now than it was fresh.\" Under a *true* Geometric(p) model, is this right? What does memorylessness actually say — and why might real free-throw shooting not be geometric at all (tying back to the Bernoulli/Binomial pilot's confidence argument)?",
+    "stem": "A gambler who has missed $5$ free throws in a row says “a geometric model says I’m due — my chance of making one within the next $2$ throws must be higher now than it was fresh.” Under a *true* $\\text{Geometric}(p)$ model, is this right? What does memorylessness actually say — and why might real free-throw shooting not be geometric at all (tying back to the Bernoulli/Binomial pilot’s confidence argument)?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "under a true geometric model: **no** — memorylessness means P(make within next 2) is *exactly* the same as it was before any misses",
+          "description": "under a true geometric model: **no** — memorylessness means $P(\\text{make within next } 2)$ is *exactly* the same as it was before any misses",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "this is the gambler's fallacy restated in geometric language. Real shooting likely isn't geometric for the same reason it isn't Binomial(2,p): makes and misses are plausibly correlated with confidence and rhythm, which memorylessness (and independence) explicitly rules out",
+          "description": "this is the gambler’s fallacy restated in geometric language. Real shooting likely isn’t geometric for the same reason it isn’t $\\text{Binomial}(2, p)$: makes and misses are plausibly correlated with confidence and rhythm, which memorylessness (and independence) explicitly rules out",
           "weight": 1,
           "required": false
         }
@@ -3474,11 +3474,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "agrees the gambler is right under the geometric model → `geometric-distribution`; or, correctly rejects the gambler's math but doesn't connect it to the earlier independence violation → misses the required synthesis",
+          "description": "agrees the gambler is right under the geometric model → `geometric-distribution`; or, correctly rejects the gambler’s math but doesn’t connect it to the earlier independence violation → misses the required synthesis",
           "weight": 0,
           "misconception": {
             "id": "geometric-distribution--t1--misconception",
-            "description": "agrees the gambler is right under the geometric model → `geometric-distribution`; or, correctly rejects the gambler's math but doesn't connect it to the earlier independence violation → misses the required synthesis",
+            "description": "agrees the gambler is right under the geometric model → `geometric-distribution`; or, correctly rejects the gambler’s math but doesn’t connect it to the earlier independence violation → misses the required synthesis",
             "blameConceptId": "geometric-distribution"
           }
         }
@@ -3508,18 +3508,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the PMF of NegativeBinomial(r, p) (trials-until-r-th-success convention), and explain the C(k−1, r−1) term combinatorially.",
+    "stem": "State the PMF of $\\text{NegativeBinomial}(r, p)$ (trials-until-$r$-th-success convention), and explain the $\\binom{k-1}{r-1}$ term combinatorially.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(X=k) = C(k−1,r−1)pʳ(1−p)ᵏ⁻ʳ",
+          "description": "$P(X=k) = \\binom{k-1}{r-1}p^r(1-p)^{k-r}$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "the term counts arrangements of r−1 successes among the *first* k−1 trials, since the k-th trial is forced to be the r-th success",
+          "description": "the term counts arrangements of $r-1$ successes among the *first* $k-1$ trials, since the $k$-th trial is forced to be the $r$-th success",
           "weight": 1,
           "required": false
         }
@@ -3549,12 +3549,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "NegativeBinomial(r=1, p) is exactly:",
+    "stem": "$\\text{NegativeBinomial}(r=1, p)$ is exactly:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Geometric(p)",
+          "description": "$\\text{Geometric}(p)$",
           "weight": 1,
           "required": false
         }
@@ -3562,11 +3562,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks Binomial(1,p) — confuses \"one success\" with \"one trial\"",
+          "description": "picks $\\text{Binomial}(1, p)$ — confuses “one success” with “one trial”",
           "weight": 0,
           "misconception": {
             "id": "negative-binomial-distribution--r2--misconception",
-            "description": "picks Binomial(1,p) — confuses \"one success\" with \"one trial\"",
+            "description": "picks $\\text{Binomial}(1, p)$ — confuses “one success” with “one trial”",
             "blameConceptId": "negative-binomial-distribution"
           }
         }
@@ -3595,7 +3595,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "A biologist needs 3 successful captures; each attempt succeeds independently with probability 0.2. Find P(the 3rd capture happens on exactly the 10th attempt).",
+    "stem": "A biologist needs $3$ successful captures; each attempt succeeds independently with probability $0.2$. Find $P(\\text{the } 3\\text{rd capture happens on exactly the } 10\\text{th attempt})$.",
     "answerKey": 0.0604,
     "tolerance": 0.01,
     "difficulty": 0.75,
@@ -3622,12 +3622,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Same setup: find E[attempts for 3 captures] and Var.",
+    "stem": "Same setup: find $\\mathbb{E}[\\text{attempts for } 3 \\text{ captures}]$ and $\\text{Var}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X]=r/p=15; Var(X)=r(1−p)/p²=60",
+          "description": "$\\mathbb{E}[X] = r/p = 15$; $\\text{Var}(X) = r(1-p)/p^2 = 60$",
           "weight": 1,
           "required": false
         }
@@ -3657,12 +3657,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show NegativeBinomial(r,p) is the sum of r iid Geometric(p) waiting times, using the trial-sequence interpretation directly (no MGFs).",
+    "stem": "Show $\\text{NegativeBinomial}(r, p)$ is the sum of $r$ i.i.d. $\\text{Geometric}(p)$ waiting times, using the trial-sequence interpretation directly (no MGFs).",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the trials-to-1st-success, plus trials-to-2nd-success-after-the-1st, plus … r such gaps are each Geometric(p) by memorylessness (each gap \"restarts fresh\" after the previous success, per `geometric-distribution`'s E1/E2), and their sum is exactly the total trials to the r-th success",
+          "description": "the trials-to-$1$st-success, plus trials-to-$2$nd-success-after-the-$1$st, plus … $r$ such gaps are each $\\text{Geometric}(p)$ by memorylessness (each gap “restarts fresh” after the previous success, per `geometric-distribution`’s E1/E2), and their sum is exactly the total trials to the $r$-th success",
           "weight": 1,
           "required": true
         }
@@ -3692,12 +3692,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is it C(k−1, r−1) and not C(k, r)?",
+    "stem": "Why is it $\\binom{k-1}{r-1}$ and not $\\binom{k}{r}$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the k-th (final) trial is *forced* to be a success — that's what stops the process — so only the first k−1 trials are free, and only r−1 successes need to be placed among them",
+          "description": "the $k$-th (final) trial is *forced* to be a success — that’s what stops the process — so only the first $k-1$ trials are free, and only $r-1$ successes need to be placed among them",
           "weight": 1,
           "required": true
         }
@@ -3727,18 +3727,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Give a real process better modeled by Negative Binomial than Binomial (hint: a stopping rule based on successes, not a fixed trial count — e.g. a VC fund investing until it has 5 successful exits). Then: why is it wrong to \"fix\" n at its average value r/p and just use Binomial(r/p, p) instead?",
+    "stem": "Give a real process better modeled by Negative Binomial than Binomial (hint: a stopping rule based on successes, not a fixed trial count — e.g. a VC fund investing until it has $5$ successful exits). Then: why is it wrong to “fix” $n$ at its average value $r/p$ and just use $\\text{Binomial}(r/p, p)$ instead?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "good examples: keep inspecting until k defects are found",
+          "description": "good examples: keep inspecting until $k$ defects are found",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "recruit patients until 20 complete a trial protocol. The Binomial-with-averaged-n approximation is wrong because **the number of trials is itself the random quantity being modeled** — plugging in its mean as a fixed n discards the genuine variability in *when* the process stops (Var = r(1−p)/p², a real feature of the process), and conflates a random stopping time with a deterministic sample size",
+          "description": "recruit patients until $20$ complete a trial protocol. The Binomial-with-averaged-$n$ approximation is wrong because **the number of trials is itself the random quantity being modeled** — plugging in its mean as a fixed $n$ discards the genuine variability in *when* the process stops ($\\text{Var} = r(1-p)/p^2$, a real feature of the process), and conflates a random stopping time with a deterministic sample size",
           "weight": 1,
           "required": false
         }
@@ -3746,11 +3746,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "proposes averaging n as a reasonable simplification without noticing n is the object of interest, not a nuisance parameter → `negative-binomial-distribution` — and this is the same \"fixed n\" condition first raised for `bernoulli-binomial` (R2 of the foundations cluster), now seen failing in the other direction",
+          "description": "proposes averaging $n$ as a reasonable simplification without noticing $n$ is the object of interest, not a nuisance parameter → `negative-binomial-distribution` — and this is the same “fixed $n$” condition first raised for `bernoulli-binomial` (R2 of the foundations cluster), now seen failing in the other direction",
           "weight": 0,
           "misconception": {
             "id": "negative-binomial-distribution--t1--misconception",
-            "description": "proposes averaging n as a reasonable simplification without noticing n is the object of interest, not a nuisance parameter → `negative-binomial-distribution` — and this is the same \"fixed n\" condition first raised for `bernoulli-binomial` (R2 of the foundations cluster), now seen failing in the other direction",
+            "description": "proposes averaging $n$ as a reasonable simplification without noticing $n$ is the object of interest, not a nuisance parameter → `negative-binomial-distribution` — and this is the same “fixed $n$” condition first raised for `bernoulli-binomial` (R2 of the foundations cluster), now seen failing in the other direction",
             "blameConceptId": "negative-binomial-distribution"
           }
         }
@@ -3780,12 +3780,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define a sufficient statistic T(X) for θ.",
+    "stem": "Define a sufficient statistic $T(\\mathbf{X})$ for $\\theta$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the conditional distribution of the data given T(X) does *not* depend on θ",
+          "description": "the conditional distribution of the data given $T(\\mathbf{X})$ does *not* depend on $\\theta$",
           "weight": 1,
           "required": false
         }
@@ -3815,12 +3815,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The Factorization theorem: f(x;θ) factors as g(T(x),θ)h(x) if and only if:",
+    "stem": "The Factorization theorem: $f(\\mathbf{x};\\theta)$ factors as $g(T(\\mathbf{x}),\\theta)\\,h(\\mathbf{x})$ if and only if:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "T(x) is sufficient for θ",
+          "description": "$T(\\mathbf{x})$ is sufficient for $\\theta$",
           "weight": 1,
           "required": false
         }
@@ -3828,11 +3828,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"T(x) is unbiased for θ\" — confuses two unrelated properties of a statistic",
+          "description": "picks “$T(\\mathbf{x})$ is unbiased for $\\theta$” — confuses two unrelated properties of a statistic",
           "weight": 0,
           "misconception": {
             "id": "sufficient-statistic--r2--misconception",
-            "description": "picks \"T(x) is unbiased for θ\" — confuses two unrelated properties of a statistic",
+            "description": "picks “$T(\\mathbf{x})$ is unbiased for $\\theta$” — confuses two unrelated properties of a statistic",
             "blameConceptId": "sufficient-statistic"
           }
         }
@@ -3862,12 +3862,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For iid Bernoulli(θ), use factorization to show T(X)=ΣXᵢ is sufficient.",
+    "stem": "For i.i.d. $\\text{Bernoulli}(\\theta)$, use factorization to show $T(\\mathbf{X})=\\sum X_i$ is sufficient.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "f(x;θ) = Πθˣⁱ(1−θ)¹⁻ˣⁱ = θ^{Σxᵢ}(1−θ)^{n−Σxᵢ} = g(Σxᵢ, θ)·h(x) with h(x)=1 — factors cleanly through Σxᵢ alone",
+          "description": "$f(\\mathbf{x};\\theta) = \\prod \\theta^{x_i}(1-\\theta)^{1-x_i} = \\theta^{\\sum x_i}(1-\\theta)^{n-\\sum x_i} = g\\left(\\sum x_i, \\theta\\right)\\cdot h(\\mathbf{x})$ with $h(\\mathbf{x})=1$ — factors cleanly through $\\sum x_i$ alone",
           "weight": 1,
           "required": true
         }
@@ -3897,18 +3897,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For iid Normal(μ, σ²) with σ² *known*, show T(X)=Σxᵢ is sufficient for μ via factorization.",
+    "stem": "For i.i.d. $\\mathcal{N}(\\mu, \\sigma^2)$ with $\\sigma^2$ *known*, show $T(\\mathbf{X})=\\sum x_i$ is sufficient for $\\mu$ via factorization.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the joint density's μ-dependent part is exp(μΣxᵢ/σ² − nμ²/(2σ²)), depending on the data only through Σxᵢ",
+          "description": "the joint density’s $\\mu$-dependent part is $\\exp\\left(\\mu\\sum x_i/\\sigma^2 - n\\mu^2/(2\\sigma^2)\\right)$, depending on the data only through $\\sum x_i$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "the rest (exp(−Σxᵢ²/(2σ²)) and normalizing constants) doesn't involve μ, giving the required g(T,θ)h(x) split",
+          "description": "the rest ($\\exp\\left(-\\sum x_i^2/(2\\sigma^2)\\right)$ and normalizing constants) doesn’t involve $\\mu$, giving the required $g(T,\\theta)\\,h(\\mathbf{x})$ split",
           "weight": 1,
           "required": false
         }
@@ -3916,11 +3916,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "includes x's individual values in the g(T,θ) factor rather than isolating them into h(x)",
+          "description": "includes $\\mathbf{x}$’s individual values in the $g(T,\\theta)$ factor rather than isolating them into $h(\\mathbf{x})$",
           "weight": 0,
           "misconception": {
             "id": "sufficient-statistic--a2--misconception",
-            "description": "includes x's individual values in the g(T,θ) factor rather than isolating them into h(x)",
+            "description": "includes $\\mathbf{x}$’s individual values in the $g(T,\\theta)$ factor rather than isolating them into $h(\\mathbf{x})$",
             "blameConceptId": "sufficient-statistic"
           }
         }
@@ -3950,12 +3950,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain intuitively why sufficiency means T(X) captures *all* the information in the data relevant to θ.",
+    "stem": "Explain intuitively why sufficiency means $T(\\mathbf{X})$ captures *all* the information in the data relevant to $\\theta$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "if the rest of the data is conditionally independent of θ given T (the defining property), then once T is known, examining the rest of the data cannot teach you anything more about θ — there is nothing left for it to reveal",
+          "description": "if the rest of the data is conditionally independent of $\\theta$ given $T$ (the defining property), then once $T$ is known, examining the rest of the data cannot teach you anything more about $\\theta$ — there is nothing left for it to reveal",
           "weight": 1,
           "required": true
         }
@@ -3985,12 +3985,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Connect this directly to `exponential-family`'s T(x) term: explain why the T(x) in any exponential family's canonical form f(x;θ)=h(x)exp(η(θ)T(x)−A(θ)) is *automatically* sufficient, by the Factorization theorem.",
+    "stem": "Connect this directly to `exponential-family`’s $T(x)$ term: explain why the $T(x)$ in any exponential family’s canonical form $f(x;\\theta)=h(x)\\exp\\left(\\eta(\\theta)T(x)-A(\\theta)\\right)$ is *automatically* sufficient, by the Factorization theorem.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the density is already exactly in the required g(T(x),θ)·h(x) form, with g(T,θ)=exp(η(θ)T−A(θ)) — sufficiency is immediate, with no extra work, purely from the shape of the canonical form",
+          "description": "the density is already exactly in the required $g(T(x),\\theta)\\cdot h(x)$ form, with $g(T,\\theta)=\\exp\\left(\\eta(\\theta)T-A(\\theta)\\right)$ — sufficiency is immediate, with no extra work, purely from the shape of the canonical form",
           "weight": 1,
           "required": true
         }
@@ -4020,12 +4020,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A hospital tracking 10,000 patients' Bernoulli(θ) recovery outcomes could safely delete every record except the total recovery count T=ΣXᵢ and n, losing nothing needed to estimate θ. Why might the hospital still want to keep the full data anyway?",
+    "stem": "A hospital tracking $10{,}000$ patients’ $\\text{Bernoulli}(\\theta)$ recovery outcomes could safely delete every record except the total recovery count $T=\\sum X_i$ and $n$, losing nothing needed to estimate $\\theta$. Why might the hospital still want to keep the full data anyway?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "sufficiency guarantees nothing is lost *for estimating this specific θ under this specific model* — but the full data may be needed for other purposes never contemplated by that model: checking model assumptions, studying interactions with other variables, auditing individual cases, or estimating a different parameter entirely later",
+          "description": "sufficiency guarantees nothing is lost *for estimating this specific $\\theta$ under this specific model* — but the full data may be needed for other purposes never contemplated by that model: checking model assumptions, studying interactions with other variables, auditing individual cases, or estimating a different parameter entirely later",
           "weight": 1,
           "required": true
         }
@@ -4067,12 +4067,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define ρ(X,Y) in terms of covariance and standard deviations.",
+    "stem": "Define $\\rho(X,Y)$ in terms of covariance and standard deviations.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "ρ(X,Y) = Cov(X,Y)/(σ_X σ_Y)",
+          "description": "$\\rho(X,Y) = \\dfrac{\\text{Cov}(X,Y)}{\\sigma_X \\sigma_Y}$",
           "weight": 1,
           "required": false
         }
@@ -4102,12 +4102,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "ρ(X,Y) always lies in:",
+    "stem": "$\\rho(X,Y)$ always lies in:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "[−1, 1]",
+          "description": "$[-1, 1]$",
           "weight": 1,
           "required": false
         }
@@ -4115,11 +4115,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks [0,1], treating correlation like a probability that can't be negative",
+          "description": "picks $[0,1]$, treating correlation like a probability that can’t be negative",
           "weight": 0,
           "misconception": {
             "id": "correlation--r2--misconception",
-            "description": "picks [0,1], treating correlation like a probability that can't be negative",
+            "description": "picks $[0,1]$, treating correlation like a probability that can’t be negative",
             "blameConceptId": "correlation"
           }
         }
@@ -4148,7 +4148,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Cov(X,Y)=2, Var(X)=4, Var(Y)=9. Find ρ(X,Y).",
+    "stem": "$\\text{Cov}(X,Y)=2$, $\\text{Var}(X)=4$, $\\text{Var}(Y)=9$. Find $\\rho(X,Y)$.",
     "answerKey": 0.333,
     "tolerance": 0.01,
     "difficulty": 0.62,
@@ -4175,18 +4175,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Reuse `covariance`'s example: X~Uniform(−1,1), Y=X², where Cov(X,Y)=0. What is ρ(X,Y) here, and what does it confirm?",
+    "stem": "Reuse `covariance`’s example: $X \\sim \\text{Uniform}(-1,1)$, $Y=X^2$, where $\\text{Cov}(X,Y)=0$. What is $\\rho(X,Y)$ here, and what does it confirm?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "ρ=0 (the numerator is 0)",
+          "description": "$\\rho=0$ (the numerator is $0$)",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "confirms correlation is exactly zero despite X, Y being maximally (nonlinearly) dependent — correlation captures *linear* association only, missing this perfect quadratic relationship entirely",
+          "description": "confirms correlation is exactly zero despite $X$, $Y$ being maximally (nonlinearly) dependent — correlation captures *linear* association only, missing this perfect quadratic relationship entirely",
           "weight": 1,
           "required": false
         }
@@ -4194,11 +4194,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "concludes X, Y are independent because ρ=0 → `covariance` (the same error `covariance`'s R2/E2 already targeted, now recurring under a new name)",
+          "description": "concludes $X$, $Y$ are independent because $\\rho=0$ → `covariance` (the same error `covariance`’s R2/E2 already targeted, now recurring under a new name)",
           "weight": 0,
           "misconception": {
             "id": "correlation--a2--misconception",
-            "description": "concludes X, Y are independent because ρ=0 → `covariance` (the same error `covariance`'s R2/E2 already targeted, now recurring under a new name)",
+            "description": "concludes $X$, $Y$ are independent because $\\rho=0$ → `covariance` (the same error `covariance`’s R2/E2 already targeted, now recurring under a new name)",
             "blameConceptId": "correlation"
           }
         }
@@ -4228,18 +4228,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove −1 ≤ ρ(X,Y) ≤ 1, using Var(aX−Y) ≥ 0 for *every* real a — without invoking Cauchy-Schwarz by name.",
+    "stem": "Prove $-1 \\le \\rho(X,Y) \\le 1$, using $\\text{Var}(aX-Y) \\ge 0$ for *every* real $a$ — without invoking Cauchy–Schwarz by name.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Var(aX−Y) = a²Var(X) − 2a·Cov(X,Y) + Var(Y) ≥ 0 for all a",
+          "description": "$\\text{Var}(aX-Y) = a^2\\,\\text{Var}(X) - 2a\\,\\text{Cov}(X,Y) + \\text{Var}(Y) \\ge 0$ for all $a$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "viewed as a quadratic in a that is never negative, its discriminant must satisfy 4Cov(X,Y)² − 4Var(X)Var(Y) ≤ 0, giving Cov(X,Y)² ≤ Var(X)Var(Y), i.e. |ρ| ≤ 1 after dividing by σ_Xσ_Y",
+          "description": "viewed as a quadratic in $a$ that is never negative, its discriminant must satisfy $4\\,\\text{Cov}(X,Y)^2 - 4\\,\\text{Var}(X)\\text{Var}(Y) \\le 0$, giving $\\text{Cov}(X,Y)^2 \\le \\text{Var}(X)\\text{Var}(Y)$, i.e. $|\\rho| \\le 1$ after dividing by $\\sigma_X\\sigma_Y$",
           "weight": 1,
           "required": false
         }
@@ -4269,12 +4269,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "What does ρ=±1 mean about the relationship between X and Y, and how does it fall out of E1's proof?",
+    "stem": "What does $\\rho=\\pm 1$ mean about the relationship between $X$ and $Y$, and how does it fall out of E1’s proof?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "equality in E1's discriminant condition means there *exists* an a where Var(aX−Y)=0 exactly — i.e. aX−Y is (almost surely) constant, i.e. Y is an **exact linear function of X**",
+          "description": "equality in E1’s discriminant condition means there *exists* an $a$ where $\\text{Var}(aX-Y)=0$ exactly — i.e. $aX-Y$ is (almost surely) constant, i.e. $Y$ is an **exact linear function of $X$**",
           "weight": 1,
           "required": true
         }
@@ -4304,24 +4304,24 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A study reports ρ(screen time, happiness) = −0.3. A headline claims \"screen time makes teens 30% less happy.\" Name at least two distinct problems with this interpretation.",
+    "stem": "A study reports $\\rho(\\text{screen time}, \\text{happiness}) = -0.3$. A headline claims “screen time makes teens $30\\%$ less happy.” Name at least two distinct problems with this interpretation.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "(1) correlation ≠ causation — reverse causation (unhappy teens use more screens) or a confounder (e.g. underlying mental health) could equally explain it",
+          "description": "(1) correlation $\\ne$ causation — reverse causation (unhappy teens use more screens) or a confounder (e.g. underlying mental health) could equally explain it",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "(2) −0.3 is a *correlation coefficient*, not a percentage effect size, and \"30% less happy\" badly mangles what the number means",
+          "description": "(2) $-0.3$ is a *correlation coefficient*, not a percentage effect size, and “$30\\%$ less happy” badly mangles what the number means",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "bonus: ρ only captures *linear* association (per A2), so it could understate a real but nonlinear effect",
+          "description": "bonus: $\\rho$ only captures *linear* association (per A2), so it could understate a real but nonlinear effect",
           "weight": 1,
           "required": false
         }
@@ -4368,7 +4368,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "Var(X) = E[Var(X|Y)] + Var(E[X|Y])",
+          "description": "$\\text{Var}(X) = \\mathbb{E}\\left[\\text{Var}(X \\mid Y)\\right] + \\text{Var}\\left(\\mathbb{E}[X \\mid Y]\\right)$",
           "weight": 1,
           "required": false
         }
@@ -4411,11 +4411,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "treats the two terms as \"two unrelated quantities that happen to sum to Var(X),\" missing the within/between interpretation",
+          "description": "treats the two terms as “two unrelated quantities that happen to sum to $\\text{Var}(X)$”, missing the within/between interpretation",
           "weight": 0,
           "misconception": {
             "id": "law-of-total-variance--r2--misconception",
-            "description": "treats the two terms as \"two unrelated quantities that happen to sum to Var(X),\" missing the within/between interpretation",
+            "description": "treats the two terms as “two unrelated quantities that happen to sum to $\\text{Var}(X)$”, missing the within/between interpretation",
             "blameConceptId": "law-of-total-variance"
           }
         }
@@ -4445,12 +4445,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Reuse `law-of-total-expectation`'s exam example: Method A → mean 75, variance 100; Method B → mean 85, variance 64; chosen 50/50. Find Var(overall score).",
+    "stem": "Reuse `law-of-total-expectation`’s exam example: Method A → mean $75$, variance $100$; Method B → mean $85$, variance $64$; chosen $50/50$. Find $\\text{Var}(\\text{overall score})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[Var|method] = 0.5(100)+0.5(64) = 82; Var(E[·|method]) — a 2-point variable (75 or 85, each w.p. 0.5) with mean 80 — has variance 0.5(75−80)²+0.5(85−80)² = 25; total = 82+25 = 107",
+          "description": "$\\mathbb{E}[\\text{Var} \\mid \\text{method}] = 0.5(100)+0.5(64) = 82$; $\\text{Var}\\left(\\mathbb{E}[\\cdot \\mid \\text{method}]\\right)$ — a $2$-point variable ($75$ or $85$, each w.p. $0.5$) with mean $80$ — has variance $0.5(75-80)^2+0.5(85-80)^2 = 25$; total $= 82+25 = 107$",
           "weight": 1,
           "required": false
         }
@@ -4492,12 +4492,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Revisit `law-of-total-expectation`'s marketing cliffhanger: 3 equally-likely campaigns with expected revenues $2M, $3M, $7M, each with within-campaign variance 1 ($M²). Find Var(overall revenue).",
+    "stem": "Revisit `law-of-total-expectation`’s marketing cliffhanger: $3$ equally-likely campaigns with expected revenues $\\$2\\text{M}$, $\\$3\\text{M}$, $\\$7\\text{M}$, each with within-campaign variance $1$ ($\\$\\text{M}^2$). Find $\\text{Var}(\\text{overall revenue})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[Var|campaign]=1; Var(E[·|campaign]) uses mean 4, second moment (4+9+49)/3≈20.67, giving between-variance ≈4.67; total ≈ 1+4.67 = 5.667",
+          "description": "$\\mathbb{E}[\\text{Var} \\mid \\text{campaign}]=1$; $\\text{Var}\\left(\\mathbb{E}[\\cdot \\mid \\text{campaign}]\\right)$ uses mean $4$, second moment $(4+9+49)/3\\approx 20.67$, giving between-variance $\\approx 4.67$; total $\\approx 1+4.67 = 5.667$",
           "weight": 1,
           "required": false
         }
@@ -4527,24 +4527,24 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive the law of total variance from Var(X)=E[X²]−(E[X])², applying the law of total expectation twice.",
+    "stem": "Derive the law of total variance from $\\text{Var}(X)=\\mathbb{E}[X^2]-(\\mathbb{E}[X])^2$, applying the law of total expectation twice.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Var(X) = E[E[X²|Y]] − (E[E[X|Y]])²",
+          "description": "$\\text{Var}(X) = \\mathbb{E}\\left[\\mathbb{E}[X^2 \\mid Y]\\right] - \\left(\\mathbb{E}\\left[\\mathbb{E}[X \\mid Y]\\right]\\right)^2$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "substitute E[X²|Y] = Var(X|Y) + (E[X|Y])² (the shortcut variance formula applied conditionally)",
+          "description": "substitute $\\mathbb{E}[X^2 \\mid Y] = \\text{Var}(X \\mid Y) + (\\mathbb{E}[X \\mid Y])^2$ (the shortcut variance formula applied conditionally)",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "this gives E[Var(X|Y)] + E[(E[X|Y])²] − (E[E[X|Y]])², and the last two terms are exactly Var(E[X|Y]) by definition",
+          "description": "this gives $\\mathbb{E}\\left[\\text{Var}(X \\mid Y)\\right] + \\mathbb{E}\\left[(\\mathbb{E}[X \\mid Y])^2\\right] - \\left(\\mathbb{E}\\left[\\mathbb{E}[X \\mid Y]\\right]\\right)^2$, and the last two terms are exactly $\\text{Var}\\left(\\mathbb{E}[X \\mid Y]\\right)$ by definition",
           "weight": 1,
           "required": false
         }
@@ -4609,12 +4609,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Resolve the marketing cliffhanger definitively: suppose the $7M campaign *alone* has variance 50, while A2's mixed strategy across all three campaigns has total variance only 5.667. Using both the mean and the variance, argue why a risk-averse company might prefer the mixed strategy or the $3M campaign over committing fully to the $7M one.",
+    "stem": "Resolve the marketing cliffhanger definitively: suppose the $\\$7\\text{M}$ campaign *alone* has variance $50$, while A2’s mixed strategy across all three campaigns has total variance only $5.667$. Using both the mean and the variance, argue why a risk-averse company might prefer the mixed strategy or the $\\$3\\text{M}$ campaign over committing fully to the $\\$7\\text{M}$ one.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "expected value alone (favoring $7M) ignores that committing fully to it inherits its own large variance (50) directly, while the mixed strategy's total variance (5.667) is far smaller — a genuine risk/return tradeoff that `law-of-total-expectation` alone could never surface, and exactly why this companion tool exists",
+          "description": "expected value alone (favoring $\\$7\\text{M}$) ignores that committing fully to it inherits its own large variance ($50$) directly, while the mixed strategy’s total variance ($5.667$) is far smaller — a genuine risk/return tradeoff that `law-of-total-expectation` alone could never surface, and exactly why this companion tool exists",
           "weight": 1,
           "required": true
         }
@@ -4622,11 +4622,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "repeats the \"always pick highest expected value\" reasoning from the original cliffhanger without incorporating the new variance information",
+          "description": "repeats the “always pick highest expected value” reasoning from the original cliffhanger without incorporating the new variance information",
           "weight": 0,
           "misconception": {
             "id": "law-of-total-variance--t1--misconception",
-            "description": "repeats the \"always pick highest expected value\" reasoning from the original cliffhanger without incorporating the new variance information",
+            "description": "repeats the “always pick highest expected value” reasoning from the original cliffhanger without incorporating the new variance information",
             "blameConceptId": "law-of-total-variance"
           }
         }
@@ -4656,12 +4656,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the two equivalent definitions of Fisher information I(θ).",
+    "stem": "State the two equivalent definitions of Fisher information $I(\\theta)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "I(θ) = E[(∂/∂θ log f(X;θ))²] = −E[∂²/∂θ² log f(X;θ)]",
+          "description": "$I(\\theta) = \\mathbb{E}\\left[\\left(\\frac{\\partial}{\\partial\\theta} \\log f(X;\\theta)\\right)^2\\right] = -\\mathbb{E}\\left[\\frac{\\partial^2}{\\partial\\theta^2} \\log f(X;\\theta)\\right]$",
           "weight": 1,
           "required": false
         }
@@ -4696,7 +4696,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "a sharper, more peaked likelihood — a more precisely estimable θ",
+          "description": "a sharper, more peaked likelihood — a more precisely estimable $\\theta$",
           "weight": 1,
           "required": false
         }
@@ -4704,11 +4704,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"a flatter, more spread-out likelihood,\" backwards",
+          "description": "picks “a flatter, more spread-out likelihood”, backwards",
           "weight": 0,
           "misconception": {
             "id": "fisher-information--r2--misconception",
-            "description": "picks \"a flatter, more spread-out likelihood,\" backwards",
+            "description": "picks “a flatter, more spread-out likelihood”, backwards",
             "blameConceptId": "fisher-information"
           }
         }
@@ -4738,30 +4738,30 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For X~Bernoulli(θ), compute I(θ) using the curvature form.",
+    "stem": "For $X \\sim \\text{Bernoulli}(\\theta)$, compute $I(\\theta)$ using the curvature form.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "log f = x ln θ + (1−x)ln(1−θ)",
+          "description": "$\\log f = x\\ln\\theta + (1-x)\\ln(1-\\theta)$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "first derivative x/θ − (1−x)/(1−θ)",
+          "description": "first derivative $\\dfrac{x}{\\theta} - \\dfrac{1-x}{1-\\theta}$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "second derivative −x/θ² − (1−x)/(1−θ)²",
+          "description": "second derivative $-\\dfrac{x}{\\theta^2} - \\dfrac{1-x}{(1-\\theta)^2}$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-4",
-          "description": "−E[·] = θ/θ² + (1−θ)/(1−θ)² = 1/θ + 1/(1−θ) = 1/(θ(1−θ))",
+          "description": "$-\\mathbb{E}[\\cdot] = \\dfrac{\\theta}{\\theta^2} + \\dfrac{1-\\theta}{(1-\\theta)^2} = \\dfrac{1}{\\theta} + \\dfrac{1}{1-\\theta} = \\dfrac{1}{\\theta(1-\\theta)}$",
           "weight": 1,
           "required": false
         }
@@ -4791,12 +4791,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using A1, compare I(0.5) and I(0.1). Which θ carries *more* information per observation?",
+    "stem": "Using A1, compare $I(0.5)$ and $I(0.1)$. Which $\\theta$ carries *more* information per observation?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "I(0.5)=1/(0.25)=4; I(0.1)=1/(0.09)≈11.11 — **more** information near the extremes than at 0.5, which can feel counterintuitive but reflects that the MLE's variance 1/(nI(θ)) is *smaller* there",
+          "description": "$I(0.5) = 1/0.25 = 4$; $I(0.1) = 1/0.09 \\approx 11.11$ — **more** information near the extremes than at $0.5$, which can feel counterintuitive but reflects that the MLE’s variance $1/(nI(\\theta))$ is *smaller* there",
           "weight": 1,
           "required": false
         }
@@ -4804,11 +4804,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "assumes information should be highest at θ=0.5, by analogy with variance being maximized there for Bernoulli",
+          "description": "assumes information should be highest at $\\theta = 0.5$, by analogy with variance being maximized there for Bernoulli",
           "weight": 0,
           "misconception": {
             "id": "fisher-information--a2--misconception",
-            "description": "assumes information should be highest at θ=0.5, by analogy with variance being maximized there for Bernoulli",
+            "description": "assumes information should be highest at $\\theta = 0.5$, by analogy with variance being maximized there for Bernoulli",
             "blameConceptId": "fisher-information"
           }
         }
@@ -4838,18 +4838,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain, geometrically, why sharper likelihood curvature means θ is more precisely estimable.",
+    "stem": "Explain, geometrically, why sharper likelihood curvature means $\\theta$ is more precisely estimable.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "a sharply peaked likelihood drops off quickly for θ away from θ̂, meaning the data strongly rules out nearby alternative values",
+          "description": "a sharply peaked likelihood drops off quickly for $\\theta$ away from $\\hat\\theta$, meaning the data strongly rules out nearby alternative values",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "a flat peak leaves many nearby θ values almost equally consistent with the data, so θ is poorly pinned down",
+          "description": "a flat peak leaves many nearby $\\theta$ values almost equally consistent with the data, so $\\theta$ is poorly pinned down",
           "weight": 1,
           "required": false
         }
@@ -4879,12 +4879,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is Fisher information additive across independent observations — total information for n iid observations is n·I(θ)?",
+    "stem": "Why is Fisher information additive across independent observations — total information for $n$ i.i.d. observations is $nI(\\theta)$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the log-likelihood of n iid observations is a *sum* of individual log-likelihoods",
+          "description": "the log-likelihood of $n$ i.i.d. observations is a *sum* of individual log-likelihoods",
           "weight": 1,
           "required": true
         },
@@ -4920,18 +4920,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A pollster with a fixed sample size wants to estimate the true support proportion θ. Using A2's finding that I(θ) is smallest at θ=0.5, explain what this implies about polling a close (50/50) race versus a landslide (90/10) race with the *same* sample size.",
+    "stem": "A pollster with a fixed sample size wants to estimate the true support proportion $\\theta$. Using A2’s finding that $I(\\theta)$ is smallest at $\\theta = 0.5$, explain what this implies about polling a close ($50/50$) race versus a landslide ($90/10$) race with the *same* sample size.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "a close race (θ near 0.5) is the *hardest* to poll precisely — lowest Fisher information means the MLE's variance 1/(nI(θ)) is largest there — while a landslide is easier to pin down with the same n",
+          "description": "a close race ($\\theta$ near $0.5$) is the *hardest* to poll precisely — lowest Fisher information means the MLE’s variance $1/(nI(\\theta))$ is largest there — while a landslide is easier to pin down with the same $n$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "close elections genuinely need larger samples to hit the same margin of error *(required: the explicit link from A2's I(θ) shape to sample-size requirements)*",
+          "description": "close elections genuinely need larger samples to hit the same margin of error *(required: the explicit link from A2’s $I(\\theta)$ shape to sample-size requirements)*",
           "weight": 1,
           "required": false
         }
@@ -4939,11 +4939,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "assumes all races are equally hard to poll to a given precision regardless of θ",
+          "description": "assumes all races are equally hard to poll to a given precision regardless of $\\theta$",
           "weight": 0,
           "misconception": {
             "id": "fisher-information--t1--misconception",
-            "description": "assumes all races are equally hard to poll to a given precision regardless of θ",
+            "description": "assumes all races are equally hard to poll to a given precision regardless of $\\theta$",
             "blameConceptId": "fisher-information"
           }
         }
@@ -4973,12 +4973,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the Cramér–Rao Lower Bound for an unbiased estimator θ̂ from n iid observations.",
+    "stem": "State the Cramér–Rao Lower Bound for an unbiased estimator $\\hat\\theta$ from $n$ i.i.d. observations.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Var(θ̂) ≥ 1/(nI(θ))",
+          "description": "$\\text{Var}(\\hat\\theta) \\ge \\dfrac{1}{nI(\\theta)}$",
           "weight": 1,
           "required": false
         }
@@ -5021,11 +5021,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"sufficient\" — a different, related-sounding term from `sufficient-statistic`",
+          "description": "picks “sufficient” — a different, related-sounding term from `sufficient-statistic`",
           "weight": 0,
           "misconception": {
             "id": "cramer-rao-lower-bound--r2--misconception",
-            "description": "picks \"sufficient\" — a different, related-sounding term from `sufficient-statistic`",
+            "description": "picks “sufficient” — a different, related-sounding term from `sufficient-statistic`",
             "blameConceptId": "sufficient-statistic"
           }
         }
@@ -5054,7 +5054,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "For iid Bernoulli(θ) with I(θ)=1/(θ(1−θ)) and n=100, find the CRLB for Var(θ̂) at θ=0.5.",
+    "stem": "For i.i.d. $\\text{Bernoulli}(\\theta)$ with $I(\\theta) = \\dfrac{1}{\\theta(1-\\theta)}$ and $n = 100$, find the CRLB for $\\text{Var}(\\hat\\theta)$ at $\\theta = 0.5$.",
     "answerKey": 0.0025,
     "tolerance": 0.01,
     "difficulty": 0.69,
@@ -5081,12 +5081,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The sample mean has Var(X̄)=θ(1−θ)/n exactly for Bernoulli data. Compare this to A1's bound and state what it proves.",
+    "stem": "The sample mean has $\\text{Var}(\\bar{X}) = \\theta(1-\\theta)/n$ exactly for Bernoulli data. Compare this to A1’s bound and state what it proves.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "θ(1−θ)/n = 0.5·0.5/100 = 0.0025, matching the CRLB *exactly* — the sample mean **achieves** the bound, so it is an *efficient* estimator for Bernoulli's θ",
+          "description": "$\\theta(1-\\theta)/n = 0.5\\cdot 0.5/100 = 0.0025$, matching the CRLB *exactly* — the sample mean **achieves** the bound, so it is an *efficient* estimator for Bernoulli’s $\\theta$",
           "weight": 1,
           "required": true
         }
@@ -5094,11 +5094,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "notes the two numbers match but doesn't draw the \"therefore efficient\" conclusion",
+          "description": "notes the two numbers match but doesn’t draw the “therefore efficient” conclusion",
           "weight": 0,
           "misconception": {
             "id": "cramer-rao-lower-bound--a2--misconception",
-            "description": "notes the two numbers match but doesn't draw the \"therefore efficient\" conclusion",
+            "description": "notes the two numbers match but doesn’t draw the “therefore efficient” conclusion",
             "blameConceptId": "cramer-rao-lower-bound"
           }
         }
@@ -5128,18 +5128,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Without a full Cauchy-Schwarz-based proof, explain intuitively why the bound has the specific form 1/(nI(θ)).",
+    "stem": "Without a full Cauchy–Schwarz-based proof, explain intuitively why the bound has the specific form $1/(nI(\\theta))$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "more observations (larger n) should make estimation easier, giving a *smaller* lower bound — n in the denominator matches",
+          "description": "more observations (larger $n$) should make estimation easier, giving a *smaller* lower bound — $n$ in the denominator matches",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "more information per observation (larger I(θ)) should also make estimation easier, giving a smaller bound — I(θ) also belongs in the denominator",
+          "description": "more information per observation (larger $I(\\theta)$) should also make estimation easier, giving a smaller bound — $I(\\theta)$ also belongs in the denominator",
           "weight": 1,
           "required": false
         }
@@ -5169,7 +5169,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is the CRLB called a \"universal speed limit,\" rather than just a bound on one specific estimator?",
+    "stem": "Why is the CRLB called a “universal speed limit”, rather than just a bound on one specific estimator?",
     "rubric": {
       "elements": [
         {
@@ -5204,12 +5204,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Two competing unbiased estimators of a drug's efficacy θ exist. A company wants to know if some third, cleverer unbiased method could ever beat both. How does the CRLB answer this *without* testing every conceivable estimator?",
+    "stem": "Two competing unbiased estimators of a drug’s efficacy $\\theta$ exist. A company wants to know if some third, cleverer unbiased method could ever beat both. How does the CRLB answer this *without* testing every conceivable estimator?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "compute the CRLB (1/(nI(θ))) once, from the model and sample size alone",
+          "description": "compute the CRLB ($1/(nI(\\theta))$) once, from the model and sample size alone",
           "weight": 1,
           "required": true
         },
@@ -5574,12 +5574,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State inclusion-exclusion for |A∪B∪C|.",
+    "stem": "State inclusion–exclusion for $|A \\cup B \\cup C|$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Σ|singles| − Σ|pairs| + |triple|",
+          "description": "$\\sum |\\text{singles}| - \\sum |\\text{pairs}| + |\\text{triple}|$",
           "weight": 1,
           "required": false
         }
@@ -5621,12 +5621,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Boole's inequality says P(⋃Aᵢ) is:",
+    "stem": "Boole’s inequality says $P\\left(\\bigcup A_i\\right)$ is:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "≤ ΣP(Aᵢ), always",
+          "description": "$\\le \\sum P(A_i)$, always",
           "weight": 1,
           "required": false
         }
@@ -5634,11 +5634,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "\"= ΣP(Aᵢ) when the Aᵢ are disjoint only\" picked as the general rule",
+          "description": "“$= \\sum P(A_i)$ when the $A_i$ are disjoint only” picked as the general rule",
           "weight": 0,
           "misconception": {
             "id": "pie-boole--r2--misconception",
-            "description": "\"= ΣP(Aᵢ) when the Aᵢ are disjoint only\" picked as the general rule",
+            "description": "“$= \\sum P(A_i)$ when the $A_i$ are disjoint only” picked as the general rule",
             "blameConceptId": "pie-boole"
           }
         }
@@ -5667,7 +5667,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "30 students take French, 20 take Spanish, 8 take both. How many take at least one?",
+    "stem": "$30$ students take French, $20$ take Spanish, $8$ take both. How many take at least one?",
     "answerKey": 42,
     "tolerance": 0.01,
     "difficulty": -0.35,
@@ -5694,18 +5694,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Rolling a fair die 4 times, bound P(at least one repeated value) using Boole's inequality over the 6 pairwise \"roll i = roll j\" events — is the bound tight?",
+    "stem": "Rolling a fair die $4$ times, bound $P(\\text{at least one repeated value})$ using Boole’s inequality over the $6$ pairwise “roll $i$ = roll $j$” events — is the bound tight?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Boole gives ≤ C(4,2)·(1/6) = 1.0 (vacuous — a probability can't exceed 1)",
+          "description": "Boole gives $\\le \\binom{4}{2} \\cdot \\frac{1}{6} = 1.0$ (vacuous — a probability can’t exceed $1$)",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "true probability of a repeat is 1 − (6·5·4·3)/6⁴ = **0.7222** — the bound is *useless* here, and the required insight is recognizing a vacuous bound as vacuous rather than reporting it",
+          "description": "true probability of a repeat is $1 - \\dfrac{6 \\cdot 5 \\cdot 4 \\cdot 3}{6^4} = \\mathbf{0.7222}$ — the bound is *useless* here, and the required insight is recognizing a vacuous bound as vacuous rather than reporting it",
           "weight": 1,
           "required": false
         }
@@ -5713,11 +5713,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "treats a Boole bound of 1.0 as if it were informative, or arithmetic-slips the complement (e.g. reports 0.4028 instead of 0.7222)",
+          "description": "treats a Boole bound of $1.0$ as if it were informative, or arithmetic-slips the complement (e.g. reports $0.4028$ instead of $0.7222$)",
           "weight": 0,
           "misconception": {
             "id": "pie-boole--a2--misconception",
-            "description": "treats a Boole bound of 1.0 as if it were informative, or arithmetic-slips the complement (e.g. reports 0.4028 instead of 0.7222)",
+            "description": "treats a Boole bound of $1.0$ as if it were informative, or arithmetic-slips the complement (e.g. reports $0.4028$ instead of $0.7222$)",
             "blameConceptId": "pie-boole"
           }
         }
@@ -5752,7 +5752,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "writes A∪B = A ⊔ (B∖A), applies countable additivity, uses monotonicity P(B∖A) ≤ P(B)",
+          "description": "writes $A \\cup B = A \\sqcup (B \\setminus A)$, applies countable additivity, uses monotonicity $P(B \\setminus A) \\le P(B)$",
           "weight": 1,
           "required": true
         }
@@ -5829,18 +5829,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A spell-checker flags a document if *any* of its 500 words is misspelled, each independently mis-flagged (false positive) with probability 0.002. Use Boole to bound the false-positive rate on the whole document, and say whether the bound is close to the truth here.",
+    "stem": "A spell-checker flags a document if *any* of its $500$ words is misspelled, each independently mis-flagged (false positive) with probability $0.002$. Use Boole to bound the false-positive rate on the whole document, and say whether the bound is close to the truth here.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "bound: 500×0.002 = 1.0 (vacuous, same failure mode as A2)",
+          "description": "bound: $500 \\times 0.002 = 1.0$ (vacuous, same failure mode as A2)",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "true rate 1−0.998⁵⁰⁰ ≈ 0.632 `[verified]`. Required: notice the bound is only useful when the per-event probabilities are small relative to 1/n",
+          "description": "true rate $1 - 0.998^{500} \\approx 0.632$ `[verified]`. Required: notice the bound is only useful when the per-event probabilities are small relative to $1/n$",
           "weight": 1,
           "required": false
         }
@@ -5882,12 +5882,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which are required of a σ-algebra ℱ on Ω?",
+    "stem": "Which are required of a $\\sigma$-algebra $\\mathcal{F}$ on $\\Omega$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Ω∈ℱ; closed under complement; closed under *countable* union",
+          "description": "$\\Omega \\in \\mathcal{F}$; closed under complement; closed under *countable* union",
           "weight": 1,
           "required": false
         }
@@ -5895,11 +5895,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "\"closed under finite union only\" and \"closed under arbitrary (uncountable) union\" are both wrong picks",
+          "description": "“closed under finite union only” and “closed under arbitrary (uncountable) union” are both wrong picks",
           "weight": 0,
           "misconception": {
             "id": "sigma-algebra--r1--misconception",
-            "description": "\"closed under finite union only\" and \"closed under arbitrary (uncountable) union\" are both wrong picks",
+            "description": "“closed under finite union only” and “closed under arbitrary (uncountable) union” are both wrong picks",
             "blameConceptId": "sigma-algebra"
           }
         }
@@ -5929,12 +5929,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show ∅ ∈ ℱ follows from the other axioms.",
+    "stem": "Show $\\varnothing \\in \\mathcal{F}$ follows from the other axioms.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Ω∈ℱ, complement closure ⟹ Ωᶜ=∅∈ℱ",
+          "description": "$\\Omega \\in \\mathcal{F}$, complement closure $\\implies \\Omega^c = \\varnothing \\in \\mathcal{F}$",
           "weight": 1,
           "required": false
         }
@@ -5964,12 +5964,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Ω = {1,2,3,4}. Is ℱ = {∅, Ω, {1,2}, {3,4}} a σ-algebra? Is {∅, Ω, {1}, {2,3,4}, {1,2}} one?",
+    "stem": "$\\Omega = \\{1, 2, 3, 4\\}$. Is $\\mathcal{F} = \\{\\varnothing, \\Omega, \\{1, 2\\}, \\{3, 4\\}\\}$ a $\\sigma$-algebra? Is $\\{\\varnothing, \\Omega, \\{1\\}, \\{2, 3, 4\\}, \\{1, 2\\}\\}$ one?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "first: yes; second: no — {1,2} is present but {1}ᶜ∩{1,2} = {2} is missing, so it isn't closed under intersection (equivalently union with {2,3,4} isn't handled)",
+          "description": "first: yes; second: no — $\\{1, 2\\}$ is present but $\\{1\\}^c \\cap \\{1, 2\\} = \\{2\\}$ is missing, so it isn’t closed under intersection (equivalently union with $\\{2, 3, 4\\}$ isn’t handled)",
           "weight": 1,
           "required": false
         }
@@ -5977,11 +5977,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "declares any collection containing Ω and ∅ sufficient",
+          "description": "declares any collection containing $\\Omega$ and $\\varnothing$ sufficient",
           "weight": 0,
           "misconception": {
             "id": "sigma-algebra--a1--misconception",
-            "description": "declares any collection containing Ω and ∅ sufficient",
+            "description": "declares any collection containing $\\Omega$ and $\\varnothing$ sufficient",
             "blameConceptId": "sigma-algebra"
           }
         }
@@ -6011,12 +6011,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show a σ-algebra is closed under countable intersection, using only the stated axioms.",
+    "stem": "Show a $\\sigma$-algebra is closed under countable intersection, using only the stated axioms.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "De Morgan: ⋂Aᵢ = (⋃Aᵢᶜ)ᶜ, and both operations used are axioms",
+          "description": "De Morgan: $\\bigcap A_i = \\left(\\bigcup A_i^c\\right)^c$, and both operations used are axioms",
           "weight": 1,
           "required": true
         }
@@ -6046,18 +6046,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why do we need σ-algebras at all — why not just let *every* subset of Ω be an event?",
+    "stem": "Why do we need $\\sigma$-algebras at all — why not just let *every* subset of $\\Omega$ be an event?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "for continuous spaces (e.g. Ω=[0,1]), the power set is too large to assign a countably-additive probability consistently (non-measurable sets exist)",
+          "description": "for continuous spaces (e.g. $\\Omega = [0, 1]$), the power set is too large to assign a countably-additive probability consistently (non-measurable sets exist)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "a σ-algebra is the largest collection on which \"probability\" behaves",
+          "description": "a $\\sigma$-algebra is the largest collection on which “probability” behaves",
           "weight": 1,
           "required": false
         }
@@ -6104,7 +6104,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "later constructions (limits of events, e.g. \"eventually always heads\") need countably infinite unions/intersections to even be expressible as events",
+          "description": "later constructions (limits of events, e.g. “eventually always heads”) need countably infinite unions/intersections to even be expressible as events",
           "weight": 1,
           "required": true
         }
@@ -6134,18 +6134,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The Borel σ-algebra on ℝ is generated by the open intervals. Explain what \"generated by\" means, and why we don't just define it as \"all subsets of ℝ\".",
+    "stem": "The Borel $\\sigma$-algebra on $\\mathbb{R}$ is generated by the open intervals. Explain what “generated by” means, and why we don’t just define it as “all subsets of $\\mathbb{R}$”.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "smallest σ-algebra containing the generators, i.e. the intersection of every σ-algebra that contains them",
+          "description": "smallest $\\sigma$-algebra containing the generators, i.e. the intersection of every $\\sigma$-algebra that contains them",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "\"all subsets\" fails for the same non-measurability reason as E1",
+          "description": "“all subsets” fails for the same non-measurability reason as E1",
           "weight": 1,
           "required": false
         }
@@ -6153,11 +6153,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "conflates \"generated by\" with \"equal to\"",
+          "description": "conflates “generated by” with “equal to”",
           "weight": 0,
           "misconception": {
             "id": "sigma-algebra--t1--misconception",
-            "description": "conflates \"generated by\" with \"equal to\"",
+            "description": "conflates “generated by” with “equal to”",
             "blameConceptId": "sigma-algebra"
           }
         }
@@ -6192,7 +6192,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "P(A)≥0 for all A; P(Ω)=1; countable additivity over disjoint events",
+          "description": "$P(A) \\ge 0$ for all $A$; $P(\\Omega) = 1$; countable additivity over disjoint events",
           "weight": 1,
           "required": false
         }
@@ -6200,11 +6200,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "\"P(A)≤1 for all A\" listed as an *axiom* rather than a derived fact",
+          "description": "“$P(A) \\le 1$ for all $A$” listed as an *axiom* rather than a derived fact",
           "weight": 0,
           "misconception": {
             "id": "axioms-of-probability--r1--misconception",
-            "description": "\"P(A)≤1 for all A\" listed as an *axiom* rather than a derived fact",
+            "description": "“$P(A) \\le 1$ for all $A$” listed as an *axiom* rather than a derived fact",
             "blameConceptId": "axioms-of-probability"
           }
         }
@@ -6234,7 +6234,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State countable additivity precisely — what condition on the Aᵢ does it require?",
+    "stem": "State countable additivity precisely — what condition on the $A_i$ does it require?",
     "rubric": {
       "elements": [
         {
@@ -6245,7 +6245,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "then P(⋃Aᵢ) = ΣP(Aᵢ)",
+          "description": "then $P\\left(\\bigcup A_i\\right) = \\sum P(A_i)$",
           "weight": 1,
           "required": false
         }
@@ -6275,7 +6275,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove P(∅) = 0 from the three axioms.",
+    "stem": "Prove $P(\\varnothing) = 0$ from the three axioms.",
     "rubric": {
       "elements": [
         {
@@ -6286,7 +6286,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "countable additivity forces P(∅) = ΣP(∅), which only holds if P(∅)=0 (given P(∅)≥0 and finiteness of P(Ω)=1)",
+          "description": "countable additivity forces $P(\\varnothing) = \\sum P(\\varnothing)$, which only holds if $P(\\varnothing) = 0$ (given $P(\\varnothing) \\ge 0$ and finiteness of $P(\\Omega) = 1$)",
           "weight": 1,
           "required": false
         }
@@ -6294,11 +6294,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "asserts P(∅)=0 \"by definition\"",
+          "description": "asserts $P(\\varnothing) = 0$ “by definition”",
           "weight": 0,
           "misconception": {
             "id": "axioms-of-probability--a1--misconception",
-            "description": "asserts P(∅)=0 \"by definition\"",
+            "description": "asserts $P(\\varnothing) = 0$ “by definition”",
             "blameConceptId": "axioms-of-probability"
           }
         }
@@ -6328,12 +6328,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove P(Aᶜ) = 1 − P(A).",
+    "stem": "Prove $P(A^c) = 1 - P(A)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "A ⊔ Aᶜ = Ω, additivity gives P(A)+P(Aᶜ)=P(Ω)=1",
+          "description": "$A \\sqcup A^c = \\Omega$, additivity gives $P(A) + P(A^c) = P(\\Omega) = 1$",
           "weight": 1,
           "required": true
         }
@@ -6363,12 +6363,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove monotonicity: A ⊆ B ⟹ P(A) ≤ P(B).",
+    "stem": "Prove monotonicity: $A \\subseteq B \\implies P(A) \\le P(B)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "write B = A ⊔ (B∖A), additivity gives P(B)=P(A)+P(B∖A), and P(B∖A)≥0 by axiom 1",
+          "description": "write $B = A \\sqcup (B \\setminus A)$, additivity gives $P(B) = P(A) + P(B \\setminus A)$, and $P(B \\setminus A) \\ge 0$ by axiom $1$",
           "weight": 1,
           "required": true
         }
@@ -6376,11 +6376,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "assumes P(B∖A) = P(B) − P(A) is itself an axiom rather than deriving it",
+          "description": "assumes $P(B \\setminus A) = P(B) - P(A)$ is itself an axiom rather than deriving it",
           "weight": 0,
           "misconception": {
             "id": "axioms-of-probability--e1--misconception",
-            "description": "assumes P(B∖A) = P(B) − P(A) is itself an axiom rather than deriving it",
+            "description": "assumes $P(B \\setminus A) = P(B) - P(A)$ is itself an axiom rather than deriving it",
             "blameConceptId": "axioms-of-probability"
           }
         }
@@ -6415,7 +6415,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "a continuum of disjoint singleton events each with probability 0 would need to sum (uncountably) to 1, which is inconsistent with any real-valued sum — e.g. Uniform(0,1)",
+          "description": "a continuum of disjoint singleton events each with probability $0$ would need to sum (uncountably) to $1$, which is inconsistent with any real-valued sum — e.g. $\\text{Uniform}(0, 1)$",
           "weight": 1,
           "required": true
         }
@@ -6445,7 +6445,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A measure µ satisfies µ(A)≥0 and countable additivity but µ(Ω) = 5, not 1. Is µ a valid probability measure? What is it instead, and how would you turn it into one?",
+    "stem": "A measure $\\mu$ satisfies $\\mu(A) \\ge 0$ and countable additivity but $\\mu(\\Omega) = 5$, not $1$. Is $\\mu$ a valid probability measure? What is it instead, and how would you turn it into one?",
     "rubric": {
       "elements": [
         {
@@ -6462,7 +6462,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-3",
-          "description": "normalize via P(A) = µ(A)/µ(Ω)",
+          "description": "normalize via $P(A) = \\mu(A)/\\mu(\\Omega)$",
           "weight": 1,
           "required": false
         }
@@ -6470,11 +6470,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "conflates \"measure\" and \"probability measure,\" or claims any non-negative additive set function is automatically a probability",
+          "description": "conflates “measure” and “probability measure”, or claims any non-negative additive set function is automatically a probability",
           "weight": 0,
           "misconception": {
             "id": "axioms-of-probability--t1--misconception",
-            "description": "conflates \"measure\" and \"probability measure,\" or claims any non-negative additive set function is automatically a probability",
+            "description": "conflates “measure” and “probability measure”, or claims any non-negative additive set function is automatically a probability",
             "blameConceptId": "axioms-of-probability"
           }
         }
@@ -6504,12 +6504,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Write the general (non-disjoint) addition rule for P(A∪B).",
+    "stem": "Write the general (non-disjoint) addition rule for $P(A \\cup B)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(A)+P(B)−P(A∩B)",
+          "description": "$P(A) + P(B) - P(A \\cap B)$",
           "weight": 1,
           "required": false
         }
@@ -6551,12 +6551,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "If P(A)=0.7 and P(B)=0.5, which value of P(A∩B) is *impossible*?",
+    "stem": "If $P(A) = 0.7$ and $P(B) = 0.5$, which value of $P(A \\cap B)$ is *impossible*?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Options include 0.05 (impossible, since P(A∪B)≤1 forces P(A∩B)≥P(A)+P(B)−1=0.2), 0.3, 0.5",
+          "description": "Options include $0.05$ (impossible, since $P(A \\cup B) \\le 1$ forces $P(A \\cap B) \\ge P(A) + P(B) - 1 = 0.2$), $0.3$, $0.5$",
           "weight": 1,
           "required": false
         }
@@ -6564,11 +6564,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks 0.05 as valid, missing the Bonferroni-type lower bound",
+          "description": "picks $0.05$ as valid, missing the Bonferroni-type lower bound",
           "weight": 0,
           "misconception": {
             "id": "probability-function--r2--misconception",
-            "description": "picks 0.05 as valid, missing the Bonferroni-type lower bound",
+            "description": "picks $0.05$ as valid, missing the Bonferroni-type lower bound",
             "blameConceptId": "probability-function"
           }
         }
@@ -6598,12 +6598,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "P(A)=0.6, P(B)=0.4, P(A∩B)=0.25. Find P(A∪B) and P(exactly one of A, B).",
+    "stem": "$P(A) = 0.6$, $P(B) = 0.4$, $P(A \\cap B) = 0.25$. Find $P(A \\cup B)$ and $P(\\text{exactly one of } A, B)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(A∪B)=0.75; P(exactly one) = P(A∪B) − P(A∩B) = 0.5",
+          "description": "$P(A \\cup B) = 0.75$; $P(\\text{exactly one}) = P(A \\cup B) - P(A \\cap B) = 0.5$",
           "weight": 1,
           "required": false
         }
@@ -6611,11 +6611,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "computes \"exactly one\" as P(A)+P(B)",
+          "description": "computes “exactly one” as $P(A) + P(B)$",
           "weight": 0,
           "misconception": {
             "id": "probability-function--a1--misconception",
-            "description": "computes \"exactly one\" as P(A)+P(B)",
+            "description": "computes “exactly one” as $P(A) + P(B)$",
             "blameConceptId": "probability-function"
           }
         }
@@ -6645,18 +6645,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "P(A)=0.3, P(B)=0.5, A and B disjoint. Find P(A∪B) and P(Aᶜ∩Bᶜ).",
+    "stem": "$P(A) = 0.3$, $P(B) = 0.5$, $A$ and $B$ disjoint. Find $P(A \\cup B)$ and $P(A^c \\cap B^c)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(A∪B)=0.8 (disjoint ⟹ additivity applies directly)",
+          "description": "$P(A \\cup B) = 0.8$ (disjoint $\\implies$ additivity applies directly)",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "P(Aᶜ∩Bᶜ)=P((A∪B)ᶜ)=0.2",
+          "description": "$P(A^c \\cap B^c) = P\\left((A \\cup B)^c\\right) = 0.2$",
           "weight": 1,
           "required": false
         }
@@ -6686,18 +6686,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive P(A∪B) = P(A)+P(B)−P(A∩B) from the axioms (not by citing a Venn diagram).",
+    "stem": "Derive $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$ from the axioms (not by citing a Venn diagram).",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "write A∪B = A ⊔ (B∖A) and B = (A∩B) ⊔ (B∖A)",
+          "description": "write $A \\cup B = A \\sqcup (B \\setminus A)$ and $B = (A \\cap B) \\sqcup (B \\setminus A)$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "additivity on each, then eliminate P(B∖A)",
+          "description": "additivity on each, then eliminate $P(B \\setminus A)$",
           "weight": 1,
           "required": false
         }
@@ -6739,18 +6739,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is P a *function* from events to numbers, not from outcomes to numbers — what would go wrong for continuous Ω if it were the latter?",
+    "stem": "Why is $P$ a *function* from events to numbers, not from outcomes to numbers — what would go wrong for continuous $\\Omega$ if it were the latter?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "for continuous Ω individual outcomes typically have probability 0",
+          "description": "for continuous $\\Omega$ individual outcomes typically have probability $0$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "only sets (intervals) can carry nonzero probability, which is exactly why the sample space needs a σ-algebra of events",
+          "description": "only sets (intervals) can carry nonzero probability, which is exactly why the sample space needs a $\\sigma$-algebra of events",
           "weight": 1,
           "required": false
         }
@@ -6780,12 +6780,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A quality report says P(defect in part A) = 0.1, P(defect in part B) = 0.1, P(defect in A or B) = 0.25. Is this report internally consistent?",
+    "stem": "A quality report says $P(\\text{defect in part A}) = 0.1$, $P(\\text{defect in part B}) = 0.1$, $P(\\text{defect in A or B}) = 0.25$. Is this report internally consistent?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "no — the addition rule forces P(A∪B) ≤ P(A)+P(B) = 0.2 < 0.25, a contradiction",
+          "description": "no — the addition rule forces $P(A \\cup B) \\le P(A) + P(B) = 0.2 < 0.25$, a contradiction",
           "weight": 1,
           "required": false
         },
@@ -6799,11 +6799,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "tries to \"solve for\" P(A∩B) and gets a negative number without recognizing that as proof of inconsistency",
+          "description": "tries to “solve for” $P(A \\cap B)$ and gets a negative number without recognizing that as proof of inconsistency",
           "weight": 0,
           "misconception": {
             "id": "probability-function--t1--misconception",
-            "description": "tries to \"solve for\" P(A∩B) and gets a negative number without recognizing that as proof of inconsistency",
+            "description": "tries to “solve for” $P(A \\cap B)$ and gets a negative number without recognizing that as proof of inconsistency",
             "blameConceptId": "probability-function"
           }
         }
@@ -7440,12 +7440,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define P(A|B), and state the one condition required for it to be defined.",
+    "stem": "Define $P(A \\mid B)$, and state the one condition required for it to be defined.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(A∩B)/P(B), requires P(B) > 0",
+          "description": "$P(A \\cap B)/P(B)$, requires $P(B) > 0$",
           "weight": 1,
           "required": false
         }
@@ -7453,11 +7453,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "omits the P(B)>0 condition",
+          "description": "omits the $P(B) > 0$ condition",
           "weight": 0,
           "misconception": {
             "id": "conditional-probability--r1--misconception",
-            "description": "omits the P(B)>0 condition",
+            "description": "omits the $P(B) > 0$ condition",
             "blameConceptId": "conditional-probability"
           }
         }
@@ -7487,12 +7487,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "If A and B are *disjoint* (mutually exclusive) with P(B) > 0, then P(A|B) equals:",
+    "stem": "If $A$ and $B$ are *disjoint* (mutually exclusive) with $P(B) > 0$, then $P(A \\mid B)$ equals:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "0",
+          "description": "$0$",
           "weight": 1,
           "required": false
         }
@@ -7500,11 +7500,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks P(A) — conflating disjoint with independent",
+          "description": "picks $P(A)$ — conflating disjoint with independent",
           "weight": 0,
           "misconception": {
             "id": "conditional-probability--r2--misconception",
-            "description": "picks P(A) — conflating disjoint with independent",
+            "description": "picks $P(A)$ — conflating disjoint with independent",
             "blameConceptId": "mutual-independence"
           }
         }
@@ -7534,12 +7534,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A die is rolled; given the result is even, what is P(result is 4)?",
+    "stem": "A die is rolled; given the result is even, what is $P(\\text{result is } 4)$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(4|even) = P({4})/P({2,4,6}) = (1/6)/(1/2) = 1/3",
+          "description": "$P(4 \\mid \\text{even}) = \\dfrac{P(\\{4\\})}{P(\\{2, 4, 6\\})} = \\dfrac{1/6}{1/2} = \\dfrac{1}{3}$",
           "weight": 1,
           "required": false
         }
@@ -7547,11 +7547,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "computes 1/6 (forgets to restrict the sample space to the conditioning event)",
+          "description": "computes $1/6$ (forgets to restrict the sample space to the conditioning event)",
           "weight": 0,
           "misconception": {
             "id": "conditional-probability--a1--misconception",
-            "description": "computes 1/6 (forgets to restrict the sample space to the conditioning event)",
+            "description": "computes $1/6$ (forgets to restrict the sample space to the conditioning event)",
             "blameConceptId": "conditional-probability"
           }
         }
@@ -7580,7 +7580,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "In a class, 60% study, 45% pass, and 35% both study and pass. What is P(pass | study)?",
+    "stem": "In a class, $60\\%$ study, $45\\%$ pass, and $35\\%$ both study and pass. What is $P(\\text{pass} \\mid \\text{study})$?",
     "answerKey": 0.583,
     "tolerance": 0.01,
     "difficulty": 0.25,
@@ -7607,18 +7607,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show that P(·|B) is itself a valid probability function on the restricted sample space B — i.e. verify it satisfies the three axioms.",
+    "stem": "Show that $P(\\cdot \\mid B)$ is itself a valid probability function on the restricted sample space $B$ — i.e. verify it satisfies the three axioms.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "non-negativity and P(B|B)=1 are immediate",
+          "description": "non-negativity and $P(B \\mid B) = 1$ are immediate",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "countable additivity: for disjoint Aᵢ, P(⋃Aᵢ|B) = P((⋃Aᵢ)∩B)/P(B) = ΣP(Aᵢ∩B)/P(B) = ΣP(Aᵢ|B)",
+          "description": "countable additivity: for disjoint $A_i$, $P\\left(\\bigcup A_i \\mid B\\right) = \\dfrac{P\\left(\\left(\\bigcup A_i\\right) \\cap B\\right)}{P(B)} = \\dfrac{\\sum P(A_i \\cap B)}{P(B)} = \\sum P(A_i \\mid B)$",
           "weight": 1,
           "required": false
         }
@@ -7626,11 +7626,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "verifies only P(B|B)=1 and treats that as sufficient",
+          "description": "verifies only $P(B \\mid B) = 1$ and treats that as sufficient",
           "weight": 0,
           "misconception": {
             "id": "conditional-probability--e1--misconception",
-            "description": "verifies only P(B|B)=1 and treats that as sufficient",
+            "description": "verifies only $P(B \\mid B) = 1$ and treats that as sufficient",
             "blameConceptId": "conditional-probability"
           }
         }
@@ -7660,7 +7660,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The *chain rule* P(A∩B∩C) = P(A)·P(B|A)·P(C|A∩B) follows from the definition of conditional probability alone. Show it, and say why this is useful even before independence is assumed.",
+    "stem": "The *chain rule* $P(A \\cap B \\cap C) = P(A)\\,P(B \\mid A)\\,P(C \\mid A \\cap B)$ follows from the definition of conditional probability alone. Show it, and say why this is useful even before independence is assumed.",
     "rubric": {
       "elements": [
         {
@@ -7671,7 +7671,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "useful because it lets you build up a joint probability from a sequence of \"easier\" conditional judgments (e.g. sequential draws without replacement)",
+          "description": "useful because it lets you build up a joint probability from a sequence of “easier” conditional judgments (e.g. sequential draws without replacement)",
           "weight": 1,
           "required": false
         }
@@ -7701,18 +7701,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "You're told \"P(rain | cloudy) = 0.8.\" A friend says this means \"80% of days are both cloudy and rainy.\" Are they right? If not, what do they need P(cloudy) for to get that number?",
+    "stem": "You’re told “$P(\\text{rain} \\mid \\text{cloudy}) = 0.8$.” A friend says this means “$80\\%$ of days are both cloudy and rainy.” Are they right? If not, what do they need $P(\\text{cloudy})$ for to get that number?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "wrong — 0.8 is the probability of rain *restricted to cloudy days*, not a joint probability of the whole sample space",
+          "description": "wrong — $0.8$ is the probability of rain *restricted to cloudy days*, not a joint probability of the whole sample space",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "the joint P(rain∩cloudy) = P(rain|cloudy)·P(cloudy), which needs the marginal P(cloudy) too",
+          "description": "the joint $P(\\text{rain} \\cap \\text{cloudy}) = P(\\text{rain} \\mid \\text{cloudy})\\,P(\\text{cloudy})$, which needs the marginal $P(\\text{cloudy})$ too",
           "weight": 1,
           "required": false
         }
@@ -7802,11 +7802,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"posterior\" for $P(A)$ instead of $P(A \\mid B)$",
+          "description": "picks “posterior” for $P(A)$ instead of $P(A \\mid B)$",
           "weight": 0,
           "misconception": {
             "id": "bayes-rule--r2--misconception",
-            "description": "picks \"posterior\" for $P(A)$ instead of $P(A \\mid B)$",
+            "description": "picks “posterior” for $P(A)$ instead of $P(A \\mid B)$",
             "blameConceptId": "bayes-rule"
           }
         }
@@ -7836,7 +7836,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Two urns: Urn 1 has 3 red/2 blue, Urn 2 has 1 red/4 blue. Pick an urn at random (50/50), draw a ball, it's red. $P(\\text{Urn 1} \\mid \\text{red})$?",
+    "stem": "Two urns: Urn $1$ has $3$ red/$2$ blue, Urn $2$ has $1$ red/$4$ blue. Pick an urn at random ($50/50$), draw a ball, it’s red. $P(\\text{Urn } 1 \\mid \\text{red})$?",
     "rubric": {
       "elements": [
         {
@@ -7889,7 +7889,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "*(the screening-test item already live as `bayes-rule--transfer-screening`; retained here as the canonical apply-level companion at a fresh set of numbers.)* Disease prevalence 0.5%, test sensitivity 98%, false-positive rate 3%. $P(\\text{disease} \\mid \\text{positive})$?",
+    "stem": "*(the screening-test item already live as `bayes-rule--transfer-screening`; retained here as the canonical apply-level companion at a fresh set of numbers.)* Disease prevalence $0.5\\%$, test sensitivity $98\\%$, false-positive rate $3\\%$. $P(\\text{disease} \\mid \\text{positive})$?",
     "rubric": {
       "elements": [
         {
@@ -7908,11 +7908,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "reports the sensitivity (0.98) as the answer → `conditional-probability` (inverse-conditional error)",
+          "description": "reports the sensitivity ($0.98$) as the answer → `conditional-probability` (inverse-conditional error)",
           "weight": 0,
           "misconception": {
             "id": "bayes-rule--a2--misconception",
-            "description": "reports the sensitivity (0.98) as the answer → `conditional-probability` (inverse-conditional error)",
+            "description": "reports the sensitivity ($0.98$) as the answer → `conditional-probability` (inverse-conditional error)",
             "blameConceptId": "bayes-rule"
           }
         }
@@ -7982,7 +7982,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "the false-positive pool (nearly all of the healthy 99.5%, times even a small false-positive rate) can outnumber the true-positive pool (a small prevalence times a high sensitivity) — a base-rate argument",
+          "description": "the false-positive pool (nearly all of the healthy $99.5\\%$, times even a small false-positive rate) can outnumber the true-positive pool (a small prevalence times a high sensitivity) — a base-rate argument",
           "weight": 1,
           "required": true
         }
@@ -8012,12 +8012,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A juror hears \"the defendant's blood type matches the crime-scene sample; only 1% of the population has this type.\" A lawyer argues \"so there's a 99% chance the defendant is guilty.\" Name the fallacy and what's missing from the argument.",
+    "stem": "A juror hears “the defendant’s blood type matches the crime-scene sample; only $1\\%$ of the population has this type.” A lawyer argues “so there’s a $99\\%$ chance the defendant is guilty.” Name the fallacy and what’s missing from the argument.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "prosecutor's fallacy — confuses $P(\\text{evidence} \\mid \\text{innocent})$ [≈1%] with $P(\\text{guilty} \\mid \\text{evidence})$",
+          "description": "prosecutor’s fallacy — confuses $P(\\text{evidence} \\mid \\text{innocent})$ [$\\approx 1\\%$] with $P(\\text{guilty} \\mid \\text{evidence})$",
           "weight": 1,
           "required": false
         },
@@ -8031,11 +8031,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "restates the 1% as if it directly answered the question asked",
+          "description": "restates the $1\\%$ as if it directly answered the question asked",
           "weight": 0,
           "misconception": {
             "id": "bayes-rule--t1--misconception",
-            "description": "restates the 1% as if it directly answered the question asked",
+            "description": "restates the $1\\%$ as if it directly answered the question asked",
             "blameConceptId": "bayes-rule"
           }
         }
@@ -8065,12 +8065,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define independence of two events A, B.",
+    "stem": "Define independence of two events $A$, $B$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(A∩B) = P(A)P(B)",
+          "description": "$P(A \\cap B) = P(A)P(B)$",
           "weight": 1,
           "required": false
         }
@@ -8078,11 +8078,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "defines it as P(A|B)=P(A|Bᶜ) — true but not the primitive definition, and undefined when P(B) or P(Bᶜ) is 0",
+          "description": "defines it as $P(A \\mid B) = P(A \\mid B^c)$ — true but not the primitive definition, and undefined when $P(B)$ or $P(B^c)$ is $0$",
           "weight": 0,
           "misconception": {
             "id": "independence-set-theory--r1--misconception",
-            "description": "defines it as P(A|B)=P(A|Bᶜ) — true but not the primitive definition, and undefined when P(B) or P(Bᶜ) is 0",
+            "description": "defines it as $P(A \\mid B) = P(A \\mid B^c)$ — true but not the primitive definition, and undefined when $P(B)$ or $P(B^c)$ is $0$",
             "blameConceptId": "independence-set-theory"
           }
         }
@@ -8125,11 +8125,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"independent events are always disjoint\"",
+          "description": "picks “independent events are always disjoint”",
           "weight": 0,
           "misconception": {
             "id": "independence-set-theory--r2--misconception",
-            "description": "picks \"independent events are always disjoint\"",
+            "description": "picks “independent events are always disjoint”",
             "blameConceptId": "independence-set-theory"
           }
         }
@@ -8159,18 +8159,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "P(A)=0.4, P(B)=0.5. If A, B independent, find P(A∪B). If instead A, B disjoint, find P(A∪B).",
+    "stem": "$P(A) = 0.4$, $P(B) = 0.5$. If $A$, $B$ independent, find $P(A \\cup B)$. If instead $A$, $B$ disjoint, find $P(A \\cup B)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "independent: 0.4+0.5−0.4·0.5=0.7",
+          "description": "independent: $0.4 + 0.5 - 0.4 \\cdot 0.5 = 0.7$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "disjoint: 0.4+0.5=0.9",
+          "description": "disjoint: $0.4 + 0.5 = 0.9$",
           "weight": 1,
           "required": false
         }
@@ -8213,12 +8213,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Two fair dice are rolled. Are \"sum = 7\" and \"first die = 4\" independent?",
+    "stem": "Two fair dice are rolled. Are “sum $= 7$” and “first die $= 4$” independent?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(sum=7)=1/6, P(sum=7|first=4)=P(second=3)=1/6 — equal, so independent (a fact worth being surprised by)",
+          "description": "$P(\\text{sum} = 7) = 1/6$, $P(\\text{sum} = 7 \\mid \\text{first} = 4) = P(\\text{second} = 3) = 1/6$ — equal, so independent (a fact worth being surprised by)",
           "weight": 1,
           "required": false
         }
@@ -8260,12 +8260,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove: if A and B are independent, then so are A and Bᶜ.",
+    "stem": "Prove: if $A$ and $B$ are independent, then so are $A$ and $B^c$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(A∩Bᶜ)=P(A)−P(A∩B)=P(A)−P(A)P(B)=P(A)(1−P(B))=P(A)P(Bᶜ)",
+          "description": "$P(A \\cap B^c) = P(A) - P(A \\cap B) = P(A) - P(A)P(B) = P(A)\\left(1 - P(B)\\right) = P(A)P(B^c)$",
           "weight": 1,
           "required": true
         }
@@ -8295,7 +8295,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The single most common confusion in this topic: explain, precisely, the difference between \"independent\" and \"mutually exclusive\" (disjoint), and why they pull in *opposite* directions for P(A∩B).",
+    "stem": "The single most common confusion in this topic: explain, precisely, the difference between “independent” and “mutually exclusive” (disjoint), and why they pull in *opposite* directions for $P(A \\cap B)$.",
     "rubric": {
       "elements": [
         {
@@ -8336,12 +8336,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A stock's daily up/down moves are modeled as independent. A trader says \"it's been up 6 days straight, so it's 'due' for a down day.\" What does independence actually imply about tomorrow, and name the fallacy.",
+    "stem": "A stock’s daily up/down moves are modeled as independent. A trader says “it’s been up $6$ days straight, so it’s ‘due’ for a down day.” What does independence actually imply about tomorrow, and name the fallacy.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "independence implies tomorrow's move is unaffected by the streak — P(down tomorrow) is unchanged",
+          "description": "independence implies tomorrow’s move is unaffected by the streak — $P(\\text{down tomorrow})$ is unchanged",
           "weight": 1,
           "required": false
         },
@@ -8389,12 +8389,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define mutual independence of events A₁,…,Aₙ (not just pairwise).",
+    "stem": "Define mutual independence of events $A_1, \\ldots, A_n$ (not just pairwise).",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(⋂ᵢ∈S Aᵢ) = Πᵢ∈S P(Aᵢ) for **every** subset S of {1,…,n}, not just pairs",
+          "description": "$P\\left(\\bigcap_{i\\in S} A_i\\right) = \\prod_{i\\in S} P(A_i)$ for **every** subset $S$ of $\\{1, \\ldots, n\\}$, not just pairs",
           "weight": 1,
           "required": false
         }
@@ -8436,12 +8436,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For n=3 events, how many independence equations does *full* mutual independence require (beyond the trivial ones)?",
+    "stem": "For $n = 3$ events, how many independence equations does *full* mutual independence require (beyond the trivial ones)?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "4 — three pairwise, one triple-wise",
+          "description": "$4$ — three pairwise, one triple-wise",
           "weight": 1,
           "required": false
         }
@@ -8449,11 +8449,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "counts only the 3 pairwise conditions",
+          "description": "counts only the $3$ pairwise conditions",
           "weight": 0,
           "misconception": {
             "id": "mutual-independence--r2--misconception",
-            "description": "counts only the 3 pairwise conditions",
+            "description": "counts only the $3$ pairwise conditions",
             "blameConceptId": "mutual-independence"
           }
         }
@@ -8483,18 +8483,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Three independent fair coins are flipped. Find P(all three heads) and P(exactly one head).",
+    "stem": "Three independent fair coins are flipped. Find $P(\\text{all three heads})$ and $P(\\text{exactly one head})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "all heads: (1/2)³=1/8",
+          "description": "all heads: $\\left(\\tfrac12\\right)^3 = \\tfrac18$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "exactly one: C(3,1)(1/2)³=3/8",
+          "description": "exactly one: $\\binom{3}{1}\\left(\\tfrac12\\right)^3 = \\tfrac38$",
           "weight": 1,
           "required": false
         }
@@ -8502,11 +8502,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "computes \"exactly one\" as 1/2 · (1/2)² without the C(3,1) count",
+          "description": "computes “exactly one” as $\\tfrac12 \\cdot \\left(\\tfrac12\\right)^2$ without the $\\binom{3}{1}$ count",
           "weight": 0,
           "misconception": {
             "id": "mutual-independence--a1--misconception",
-            "description": "computes \"exactly one\" as 1/2 · (1/2)² without the C(3,1) count",
+            "description": "computes “exactly one” as $\\tfrac12 \\cdot \\left(\\tfrac12\\right)^2$ without the $\\binom{3}{1}$ count",
             "blameConceptId": "binomial-theorem"
           }
         }
@@ -8536,12 +8536,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Three components in series each function independently with probability 0.95. What's the probability the system (all three) functions?",
+    "stem": "Three components in series each function independently with probability $0.95$. What’s the probability the system (all three) functions?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "0.95³ = 0.857375 — the multiplicative form is exactly what mutual independence licenses",
+          "description": "$0.95^3 = 0.857375$ — the multiplicative form is exactly what mutual independence licenses",
           "weight": 1,
           "required": false
         }
@@ -8549,11 +8549,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "adds the probabilities (0.95×3, capping oddly) or averages them instead of multiplying",
+          "description": "adds the probabilities ($0.95 \\times 3$, capping oddly) or averages them instead of multiplying",
           "weight": 0,
           "misconception": {
             "id": "mutual-independence--a2--misconception",
-            "description": "adds the probabilities (0.95×3, capping oddly) or averages them instead of multiplying",
+            "description": "adds the probabilities ($0.95 \\times 3$, capping oddly) or averages them instead of multiplying",
             "blameConceptId": "mutual-independence"
           }
         }
@@ -8583,18 +8583,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The classic counterexample: let X, Y be independent fair coin flips (0/1), and Z = X XOR Y. Show A={X=1}, B={Y=1}, C={Z=1} are *pairwise* independent but not *mutually* independent.",
+    "stem": "The classic counterexample: let $X$, $Y$ be independent fair coin flips ($0/1$), and $Z = X \\oplus Y$ (XOR). Show $A = \\{X = 1\\}$, $B = \\{Y = 1\\}$, $C = \\{Z = 1\\}$ are *pairwise* independent but not *mutually* independent.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "check all 3 pairs: each pair is independent by direct computation (P=1/4=1/2·1/2 for each)",
+          "description": "check all $3$ pairs: each pair is independent by direct computation ($P = 1/4 = \\tfrac12 \\cdot \\tfrac12$ for each)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "but P(A∩B∩C) = P(X=1,Y=1,Z=1) = 0 (since Z=X⊕Y=0 when X=Y=1) ≠ P(A)P(B)P(C)=1/8",
+          "description": "but $P(A \\cap B \\cap C) = P(X = 1, Y = 1, Z = 1) = 0$ (since $Z = X \\oplus Y = 0$ when $X = Y = 1$) $\\neq P(A)P(B)P(C) = 1/8$",
           "weight": 1,
           "required": false
         }
@@ -8636,7 +8636,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why does the variance of a sum, Var(ΣXᵢ) = ΣVar(Xᵢ), require only *pairwise* independence (in fact only pairwise zero covariance), while the multiplicative factorization of a joint pmf/pdf requires the *full* mutual independence condition?",
+    "stem": "Why does the variance of a sum, $\\text{Var}\\left(\\sum X_i\\right) = \\sum \\text{Var}(X_i)$, require only *pairwise* independence (in fact only pairwise zero covariance), while the multiplicative factorization of a joint pmf/pdf requires the *full* mutual independence condition?",
     "rubric": {
       "elements": [
         {
@@ -8647,7 +8647,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "a joint density factoring for *every* subset is a strictly stronger, higher-order statement  — this is why the XOR counterexample in E1 doesn't break additivity of variance even though it breaks mutual independence",
+          "description": "a joint density factoring for *every* subset is a strictly stronger, higher-order statement — this is why the XOR counterexample in E1 doesn’t break additivity of variance even though it breaks mutual independence",
           "weight": 1,
           "required": false
         }
@@ -8655,11 +8655,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "claims the XOR counterexample also breaks Var(sum)=sum(Var)",
+          "description": "claims the XOR counterexample also breaks $\\text{Var}(\\text{sum}) = \\sum \\text{Var}$",
           "weight": 0,
           "misconception": {
             "id": "mutual-independence--e2--misconception",
-            "description": "claims the XOR counterexample also breaks Var(sum)=sum(Var)",
+            "description": "claims the XOR counterexample also breaks $\\text{Var}(\\text{sum}) = \\sum \\text{Var}$",
             "blameConceptId": "mutual-independence"
           }
         }
@@ -8689,18 +8689,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A server farm has 100 machines, each failing independently with probability 0.01 per day. A manager claims \"with 100 machines at 1% each, we'll basically always have exactly one failure a day.\" Critique this using what mutual independence actually implies about the *distribution* of the failure count (this is the seed of `bernoulli-binomial`).",
+    "stem": "A server farm has $100$ machines, each failing independently with probability $0.01$ per day. A manager claims “with $100$ machines at $1\\%$ each, we’ll basically always have exactly one failure a day.” Critique this using what mutual independence actually implies about the *distribution* of the failure count (this is the seed of `bernoulli-binomial`).",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "mutual independence with identical p gives a Binomial(100, 0.01) count, not a deterministic \"exactly one\" — P(0 failures)≈0.366, P(1)≈0.370, P(≥2)≈0.264 `[verified]`",
+          "description": "mutual independence with identical $p$ gives a $\\text{Binomial}(100, 0.01)$ count, not a deterministic “exactly one” — $P(0 \\text{ failures}) \\approx 0.366$, $P(1) \\approx 0.370$, $P(\\ge 2) \\approx 0.264$ `[verified]`",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "the manager has mistaken the *mean* (1) for the *typical outcome*, ignoring the spread independence still allows",
+          "description": "the manager has mistaken the *mean* ($1$) for the *typical outcome*, ignoring the spread independence still allows",
           "weight": 1,
           "required": false
         }
@@ -8708,11 +8708,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "treats E[count]=1 as meaning the count is usually exactly 1 → `bernoulli-binomial` (this is precisely the prerequisite this concept was added to support, per `assessment.md` §1.4)",
+          "description": "treats $\\mathbb{E}[\\text{count}] = 1$ as meaning the count is usually exactly $1$ → `bernoulli-binomial` (this is precisely the prerequisite this concept was added to support, per `assessment.md` §1.4)",
           "weight": 0,
           "misconception": {
             "id": "mutual-independence--t1--misconception",
-            "description": "treats E[count]=1 as meaning the count is usually exactly 1 → `bernoulli-binomial` (this is precisely the prerequisite this concept was added to support, per `assessment.md` §1.4)",
+            "description": "treats $\\mathbb{E}[\\text{count}] = 1$ as meaning the count is usually exactly $1$ → `bernoulli-binomial` (this is precisely the prerequisite this concept was added to support, per `assessment.md` §1.4)",
             "blameConceptId": "mutual-independence"
           }
         }
@@ -13454,7 +13454,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "Power = 1−β = P(correctly rejecting H₀ | H₁ is true) — the probability of detecting a real effect when one exists",
+          "description": "Power $= 1-\\beta = P(\\text{correctly rejecting } H_0 \\mid H_1 \\text{ is true})$ — the probability of detecting a real effect when one exists",
           "weight": 1,
           "required": false
         }
@@ -13497,11 +13497,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"a smaller true effect size\" — backwards; smaller effects are *harder* to detect",
+          "description": "picks “a smaller true effect size” — backwards; smaller effects are *harder* to detect",
           "weight": 0,
           "misconception": {
             "id": "power--r2--misconception",
-            "description": "picks \"a smaller true effect size\" — backwards; smaller effects are *harder* to detect",
+            "description": "picks “a smaller true effect size” — backwards; smaller effects are *harder* to detect",
             "blameConceptId": "power"
           }
         }
@@ -13531,12 +13531,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A study with 40% power finds a non-significant result. Is this strong evidence the effect doesn't exist?",
+    "stem": "A study with $40\\%$ power finds a non-significant result. Is this strong evidence the effect doesn’t exist?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "no — even if the true effect is real, there's a 60% chance (β=0.6) the study fails to detect it purely from low power",
+          "description": "no — even if the true effect is real, there’s a $60\\%$ chance ($\\beta=0.6$) the study fails to detect it purely from low power",
           "weight": 1,
           "required": true
         },
@@ -13584,18 +13584,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A study currently has 55% power but the researcher wants 80%. Should n increase or decrease, and why?",
+    "stem": "A study currently has $55\\%$ power but the researcher wants $80\\%$. Should $n$ increase or decrease, and why?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "increase — larger n directly increases power (R2)",
+          "description": "increase — larger $n$ directly increases power (R2)",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "a formal power analysis would compute the specific n needed to reach exactly 80% for this effect size",
+          "description": "a formal power analysis would compute the specific $n$ needed to reach exactly $80\\%$ for this effect size",
           "weight": 1,
           "required": false
         }
@@ -13625,18 +13625,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using the same rejection-region-shrinking logic as `type-i-ii-error`'s E1 (now reversed), explain why *increasing* α increases power.",
+    "stem": "Using the same rejection-region-shrinking logic as `type-i-ii-error`’s E1 (now reversed), explain why *increasing* $\\alpha$ increases power.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "increasing α *grows* the rejection region, making it easier to reject H₀ whenever H₁ is actually true — at the direct cost of more false rejections when H₀ is true",
+          "description": "increasing $\\alpha$ *grows* the rejection region, making it easier to reject $H_0$ whenever $H_1$ is actually true — at the direct cost of more false rejections when $H_0$ is true",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "this completes the α/β/power triangle from the previous two concepts",
+          "description": "this completes the $\\alpha$/$\\beta$/power triangle from the previous two concepts",
           "weight": 1,
           "required": false
         }
@@ -13666,7 +13666,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why does a larger true effect size increase power, with no change to n or α?",
+    "stem": "Why does a larger true effect size increase power, with no change to $n$ or $\\alpha$?",
     "rubric": {
       "elements": [
         {
@@ -13701,7 +13701,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A trial with only 30 of a recommended 500 patients finds no significant drug effect. A competitor claims this proves the drug doesn't work. Critique this using `hypothesis-test`, `type-i-ii-error`, and `power` together.",
+    "stem": "A trial with only $30$ of a recommended $500$ patients finds no significant drug effect. A competitor claims this proves the drug doesn’t work. Critique this using `hypothesis-test`, `type-i-ii-error`, and `power` together.",
     "rubric": {
       "elements": [
         {
@@ -13712,13 +13712,13 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "with only 30 of 500 recommended patients, the study almost certainly had very low power to detect the expected effect size, making a Type II error highly likely regardless of whether the drug actually works",
+          "description": "with only $30$ of $500$ recommended patients, the study almost certainly had very low power to detect the expected effect size, making a Type II error highly likely regardless of whether the drug actually works",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "the claim conflates \"no significant evidence found\" with \"evidence of no effect,\" compounded by a design unlikely to detect a real effect even if one existed",
+          "description": "the claim conflates “no significant evidence found” with “evidence of no effect”, compounded by a design unlikely to detect a real effect even if one existed",
           "weight": 1,
           "required": false
         }
@@ -13726,11 +13726,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "critiques the trial on only one of the three grounds (e.g. sample size alone, without the \"fail to reject ≠ proof\" point)",
+          "description": "critiques the trial on only one of the three grounds (e.g. sample size alone, without the “fail to reject $\\ne$ proof” point)",
           "weight": 0,
           "misconception": {
             "id": "power--t1--misconception",
-            "description": "critiques the trial on only one of the three grounds (e.g. sample size alone, without the \"fail to reject ≠ proof\" point)",
+            "description": "critiques the trial on only one of the three grounds (e.g. sample size alone, without the “fail to reject $\\ne$ proof” point)",
             "blameConceptId": "power"
           }
         }
@@ -14319,12 +14319,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State Markov's inequality and its one requirement on X.",
+    "stem": "State Markov’s inequality and its one requirement on $X$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(X≥a) ≤ E[X]/a for a>0; requires X ≥ 0",
+          "description": "$P(X \\ge a) \\le \\mathbb{E}[X]/a$ for $a > 0$; requires $X \\ge 0$",
           "weight": 1,
           "required": false
         }
@@ -14371,7 +14371,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "only E[X]",
+          "description": "only $\\mathbb{E}[X]$",
           "weight": 1,
           "required": false
         }
@@ -14379,11 +14379,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"both E[X] and Var(X)\" — that's Chebyshev's requirement, not Markov's",
+          "description": "picks “both $\\mathbb{E}[X]$ and $\\text{Var}(X)$” — that’s Chebyshev’s requirement, not Markov’s",
           "weight": 0,
           "misconception": {
             "id": "markov-inequality--r2--misconception",
-            "description": "picks \"both E[X] and Var(X)\" — that's Chebyshev's requirement, not Markov's",
+            "description": "picks “both $\\mathbb{E}[X]$ and $\\text{Var}(X)$” — that’s Chebyshev’s requirement, not Markov’s",
             "blameConceptId": "markov-inequality"
           }
         }
@@ -14412,7 +14412,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "A factory's daily output (nonnegative) has mean 100 units. Bound P(output ≥ 150).",
+    "stem": "A factory’s daily output (nonnegative) has mean $100$ units. Bound $P(\\text{output} \\ge 150)$.",
     "answerKey": 0.667,
     "tolerance": 0.01,
     "difficulty": 0.5,
@@ -14439,12 +14439,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Same factory: bound P(output ≥ 500).",
+    "stem": "Same factory: bound $P(\\text{output} \\ge 500)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P ≤ 100/500 = 0.2 — the bound tightens (in relative usefulness) as the threshold grows relative to the mean",
+          "description": "$P \\le 100/500 = 0.2$ — the bound tightens (in relative usefulness) as the threshold grows relative to the mean",
           "weight": 1,
           "required": false
         }
@@ -14474,24 +14474,24 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove Markov's inequality using the indicator trick a·1{X≥a} ≤ X.",
+    "stem": "Prove Markov’s inequality using the indicator trick $a\\cdot 1\\{X \\ge a\\} \\le X$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "pointwise: if X≥a, LHS=a≤X=RHS",
+          "description": "pointwise: if $X \\ge a$, LHS $= a \\le X =$ RHS",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "if X<a, LHS=0≤X=RHS (using X≥0) — so the inequality holds for every outcome",
+          "description": "if $X < a$, LHS $= 0 \\le X =$ RHS (using $X \\ge 0$) — so the inequality holds for every outcome",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "taking expectations, E[a·1{X≥a}] = a·P(X≥a) ≤ E[X]",
+          "description": "taking expectations, $\\mathbb{E}\\left[a\\cdot 1\\{X \\ge a\\}\\right] = a\\cdot P(X \\ge a) \\le \\mathbb{E}[X]$",
           "weight": 1,
           "required": false
         }
@@ -14521,18 +14521,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why Markov's bound can be very loose. What does it say for a ≤ E[X]?",
+    "stem": "Explain why Markov’s bound can be very loose. What does it say for $a \\le \\mathbb{E}[X]$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "for a ≤ E[X], the bound E[X]/a ≥ 1 is vacuous (probabilities can't exceed 1)",
+          "description": "for $a \\le \\mathbb{E}[X]$, the bound $\\mathbb{E}[X]/a \\ge 1$ is vacuous (probabilities can’t exceed $1$)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "even for a > E[X], the bound can be far above the true tail probability, because it uses *only* the mean and nothing about the distribution's shape or spread  — motivating the sharper bound `chebyshev-inequality` builds next",
+          "description": "even for $a > \\mathbb{E}[X]$, the bound can be far above the true tail probability, because it uses *only* the mean and nothing about the distribution’s shape or spread — motivating the sharper bound `chebyshev-inequality` builds next",
           "weight": 1,
           "required": false
         }
@@ -14562,12 +14562,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A fund reports mean daily profit $10,000 (profit ≥ $0 always). Bound P(profit ≥ $1,000,000) via Markov, and explain why the *true* probability could be dramatically lower than this bound.",
+    "stem": "A fund reports mean daily profit $\\$10{,}000$ (profit $\\ge \\$0$ always). Bound $P(\\text{profit} \\ge \\$1{,}000{,}000)$ via Markov, and explain why the *true* probability could be dramatically lower than this bound.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "bound = 10,000/1,000,000 = 0.01 (1%)",
+          "description": "bound $= 10{,}000/1{,}000{,}000 = 0.01$ ($1\\%$)",
           "weight": 1,
           "required": true
         },
@@ -14581,11 +14581,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "reports the 1% bound as if it were the actual probability of a million-dollar day",
+          "description": "reports the $1\\%$ bound as if it were the actual probability of a million-dollar day",
           "weight": 0,
           "misconception": {
             "id": "markov-inequality--t1--misconception",
-            "description": "reports the 1% bound as if it were the actual probability of a million-dollar day",
+            "description": "reports the $1\\%$ bound as if it were the actual probability of a million-dollar day",
             "blameConceptId": "markov-inequality"
           }
         }
@@ -14615,12 +14615,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State Chebyshev's inequality in standardized form (k standard deviations).",
+    "stem": "State Chebyshev’s inequality in standardized form ($k$ standard deviations).",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(|X−μ| ≥ kσ) ≤ 1/k²",
+          "description": "$P(|X - \\mu| \\ge k\\sigma) \\le 1/k^2$",
           "weight": 1,
           "required": false
         }
@@ -14650,7 +14650,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Compared to the empirical 68-95-99.7 rule, Chebyshev's advantage is:",
+    "stem": "Compared to the empirical $68$–$95$–$99.7$ rule, Chebyshev’s advantage is:",
     "rubric": {
       "elements": [
         {
@@ -14663,11 +14663,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"it gives a tighter bound\" — backwards; Chebyshev trades sharpness for universality",
+          "description": "picks “it gives a tighter bound” — backwards; Chebyshev trades sharpness for universality",
           "weight": 0,
           "misconception": {
             "id": "chebyshev-inequality--r2--misconception",
-            "description": "picks \"it gives a tighter bound\" — backwards; Chebyshev trades sharpness for universality",
+            "description": "picks “it gives a tighter bound” — backwards; Chebyshev trades sharpness for universality",
             "blameConceptId": "chebyshev-inequality"
           }
         }
@@ -14697,12 +14697,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A distribution (shape unknown) has mean 50, SD 5. Bound P(|X−50| ≥ 15).",
+    "stem": "A distribution (shape unknown) has mean $50$, SD $5$. Bound $P(|X - 50| \\ge 15)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "k=15/5=3; bound ≤ 1/9 ≈ 0.111",
+          "description": "$k = 15/5 = 3$; bound $\\le 1/9 \\approx 0.111$",
           "weight": 1,
           "required": false
         }
@@ -14732,12 +14732,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Same setup: bound P(X<35 or X>65) — note this is the *same event* as A1, just rephrased.",
+    "stem": "Same setup: bound $P(X < 35 \\text{ or } X > 65)$ — note this is the *same event* as A1, just rephrased.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "identical computation, ≤ 1/9",
+          "description": "identical computation, $\\le 1/9$",
           "weight": 1,
           "required": false
         }
@@ -14779,12 +14779,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive Chebyshev's inequality *from Markov's*, applied to Y=(X−μ)².",
+    "stem": "Derive Chebyshev’s inequality *from Markov’s*, applied to $Y = (X - \\mu)^2$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Y=(X−μ)² ≥ 0; apply Markov with threshold k²σ²: P(Y≥k²σ²) ≤ E[Y]/(k²σ²) = σ²/(k²σ²) = 1/k²; note {Y≥k²σ²} is exactly {|X−μ|≥kσ}, so P(|X−μ|≥kσ) ≤ 1/k²",
+          "description": "$Y = (X - \\mu)^2 \\ge 0$; apply Markov with threshold $k^2\\sigma^2$: $P(Y \\ge k^2\\sigma^2) \\le \\mathbb{E}[Y]/(k^2\\sigma^2) = \\sigma^2/(k^2\\sigma^2) = 1/k^2$; note $\\{Y \\ge k^2\\sigma^2\\}$ is exactly $\\{|X - \\mu| \\ge k\\sigma\\}$, so $P(|X - \\mu| \\ge k\\sigma) \\le 1/k^2$",
           "weight": 1,
           "required": true
         }
@@ -14819,7 +14819,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "for standard Normal, the true P(|Z|≥3) ≈ 0.0027, while Chebyshev's guaranteed-safe bound is 1/9 ≈ 0.111 — roughly 40× looser",
+          "description": "for standard Normal, the true $P(|Z| \\ge 3) \\approx 0.0027$, while Chebyshev’s guaranteed-safe bound is $1/9 \\approx 0.111$ — roughly $40\\times$ looser",
           "weight": 1,
           "required": true
         }
@@ -14849,12 +14849,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Without assuming any shape for a stock's daily returns (mean 0%, SD 2%), Chebyshev-bound P(|return| ≥ 6%). Why might a risk manager prefer this conservative bound over a Normal-based calculation that gives a much smaller number?",
+    "stem": "Without assuming any shape for a stock’s daily returns (mean $0\\%$, SD $2\\%$), Chebyshev-bound $P(|\\text{return}| \\ge 6\\%)$. Why might a risk manager prefer this conservative bound over a Normal-based calculation that gives a much smaller number?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "bound ≤ 1/9 ≈ 11.1%; a risk manager may prefer the looser-but-universally-valid Chebyshev bound *because* it doesn't assume normality — real financial returns are well known to have fatter tails than Normal, so a Normal-based number can badly understate real tail risk, while Chebyshev's guarantee holds regardless of the true shape",
+          "description": "bound $\\le 1/9 \\approx 11.1\\%$; a risk manager may prefer the looser-but-universally-valid Chebyshev bound *because* it doesn’t assume normality — real financial returns are well known to have fatter tails than Normal, so a Normal-based number can badly understate real tail risk, while Chebyshev’s guarantee holds regardless of the true shape",
           "weight": 1,
           "required": true
         }
@@ -14896,12 +14896,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State Jensen's inequality for a convex function g.",
+    "stem": "State Jensen’s inequality for a convex function $g$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[g(X)] ≥ g(E[X])",
+          "description": "$\\mathbb{E}[g(X)] \\ge g(\\mathbb{E}[X])$",
           "weight": 1,
           "required": false
         }
@@ -14931,7 +14931,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which is FALSE? (a) for convex g, E[g(X)]≥g(E[X]) (b) equality holds if X is a constant (c) Jensen's inequality only applies to linear g.",
+    "stem": "Which is FALSE? (a) for convex $g$, $\\mathbb{E}[g(X)] \\ge g(\\mathbb{E}[X])$ (b) equality holds if $X$ is a constant (c) Jensen’s inequality only applies to linear $g$.",
     "rubric": {
       "elements": [
         {
@@ -14944,11 +14944,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks (c) as a true statement — backwards: linear g gives *trivial* equality; the inequality's actual content is for genuinely nonlinear (strictly convex/concave) g",
+          "description": "picks (c) as a true statement — backwards: linear $g$ gives *trivial* equality; the inequality’s actual content is for genuinely nonlinear (strictly convex/concave) $g$",
           "weight": 0,
           "misconception": {
             "id": "jensen-inequality--r2--misconception",
-            "description": "picks (c) as a true statement — backwards: linear g gives *trivial* equality; the inequality's actual content is for genuinely nonlinear (strictly convex/concave) g",
+            "description": "picks (c) as a true statement — backwards: linear $g$ gives *trivial* equality; the inequality’s actual content is for genuinely nonlinear (strictly convex/concave) $g$",
             "blameConceptId": "jensen-inequality"
           }
         }
@@ -14978,18 +14978,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Use Jensen (g(x)=x², convex) to explain why Var(X)=E[X²]−(E[X])² is *always* ≥ 0.",
+    "stem": "Use Jensen ($g(x) = x^2$, convex) to explain why $\\text{Var}(X) = \\mathbb{E}[X^2] - (\\mathbb{E}[X])^2$ is *always* $\\ge 0$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X²] ≥ (E[X])² directly by Jensen, since x² is convex",
+          "description": "$\\mathbb{E}[X^2] \\ge (\\mathbb{E}[X])^2$ directly by Jensen, since $x^2$ is convex",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "so E[X²]−(E[X])² ≥ 0 — the \"obvious\" fact that variance can't be negative is Jensen's inequality in disguise",
+          "description": "so $\\mathbb{E}[X^2] - (\\mathbb{E}[X])^2 \\ge 0$ — the “obvious” fact that variance can’t be negative is Jensen’s inequality in disguise",
           "weight": 1,
           "required": false
         }
@@ -15019,12 +15019,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A round trip covers equal distance at 60mph and 40mph. Is the trip's average speed the arithmetic mean, 50mph? Use Jensen (g(x)=1/x, convex for x>0) to explain why the true average is *lower*, and compute it.",
+    "stem": "A round trip covers equal distance at $60$ mph and $40$ mph. Is the trip’s average speed the arithmetic mean, $50$ mph? Use Jensen ($g(x) = 1/x$, convex for $x > 0$) to explain why the true average is *lower*, and compute it.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "true average speed is the harmonic mean: 2/(1/60+1/40) = 48mph, below 50 — more *time* is spent at the slower 40mph leg (same distance, lower speed = more time), dragging the true average down",
+          "description": "true average speed is the harmonic mean: $\\dfrac{2}{1/60 + 1/40} = 48$ mph, below $50$ — more *time* is spent at the slower $40$ mph leg (same distance, lower speed $=$ more time), dragging the true average down",
           "weight": 1,
           "required": true
         }
@@ -15032,11 +15032,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "computes 50mph, applying the arithmetic mean to rates without checking whether that's the right average for this quantity",
+          "description": "computes $50$ mph, applying the arithmetic mean to rates without checking whether that’s the right average for this quantity",
           "weight": 0,
           "misconception": {
             "id": "jensen-inequality--a2--misconception",
-            "description": "computes 50mph, applying the arithmetic mean to rates without checking whether that's the right average for this quantity",
+            "description": "computes $50$ mph, applying the arithmetic mean to rates without checking whether that’s the right average for this quantity",
             "blameConceptId": "jensen-inequality"
           }
         }
@@ -15066,18 +15066,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove Jensen's inequality using the tangent-line definition of convexity: g(x) ≥ g(x₀) + g′(x₀)(x−x₀) at any x₀.",
+    "stem": "Prove Jensen’s inequality using the tangent-line definition of convexity: $g(x) \\ge g(x_0) + g'(x_0)(x - x_0)$ at any $x_0$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "set x₀=E[X], x=X: g(X) ≥ g(E[X]) + g′(E[X])(X−E[X])",
+          "description": "set $x_0 = \\mathbb{E}[X]$, $x = X$: $g(X) \\ge g(\\mathbb{E}[X]) + g'(\\mathbb{E}[X])(X - \\mathbb{E}[X])$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "take expectations of both sides: E[g(X)] ≥ g(E[X]) + g′(E[X])·E[X−E[X]] = g(E[X]) + g′(E[X])·0 = g(E[X])",
+          "description": "take expectations of both sides: $\\mathbb{E}[g(X)] \\ge g(\\mathbb{E}[X]) + g'(\\mathbb{E}[X])\\cdot\\mathbb{E}[X - \\mathbb{E}[X]] = g(\\mathbb{E}[X]) + g'(\\mathbb{E}[X])\\cdot 0 = g(\\mathbb{E}[X])$",
           "weight": 1,
           "required": false
         }
@@ -15107,12 +15107,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain intuitively why convexity causes E[g(X)] ≥ g(E[X]) — what is convexity \"doing\" to spread-out inputs?",
+    "stem": "Explain intuitively why convexity causes $\\mathbb{E}[g(X)] \\ge g(\\mathbb{E}[X])$ — what is convexity “doing” to spread-out inputs?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "a convex function curves upward, so averaging the *outputs* of a spread-out set of inputs tends to land higher than applying g to the single averaged *input* — spread gets \"punished upward\" by a convex function (and correspondingly \"rewarded downward\" by a concave one, the mechanism behind risk aversion under a concave utility)",
+          "description": "a convex function curves upward, so averaging the *outputs* of a spread-out set of inputs tends to land higher than applying $g$ to the single averaged *input* — spread gets “punished upward” by a convex function (and correspondingly “rewarded downward” by a concave one, the mechanism behind risk aversion under a concave utility)",
           "weight": 1,
           "required": true
         }
@@ -15142,18 +15142,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A stock alternates +50%, −50% in successive years. The arithmetic average return is (50%+(−50%))/2 = 0%, suggesting break-even. Trace $100 through both years and explain, via Jensen, why the arithmetic mean of returns systematically *overstates* true compounded growth.",
+    "stem": "A stock alternates $+50\\%$, $-50\\%$ in successive years. The arithmetic average return is $\\left(50\\% + (-50\\%)\\right)/2 = 0\\%$, suggesting break-even. Trace $\\$100$ through both years and explain, via Jensen, why the arithmetic mean of returns systematically *overstates* true compounded growth.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$100 → $150 (+50%) → $75 (−50%) — a real **25% loss**, not break-even",
+          "description": "$\\$100 \\to \\$150$ ($+50\\%$) $\\to \\$75$ ($-50\\%$) — a real **$25\\%$ loss**, not break-even",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "compounded growth is a *multiplicative* (geometric) quantity, and by Jensen's inequality applied to the concavity of log-growth, the arithmetic mean of percentage returns is always ≥ the true compounded growth rate — the correct summary statistic here is the *geometric* mean, not the arithmetic one",
+          "description": "compounded growth is a *multiplicative* (geometric) quantity, and by Jensen’s inequality applied to the concavity of log-growth, the arithmetic mean of percentage returns is always $\\ge$ the true compounded growth rate — the correct summary statistic here is the *geometric* mean, not the arithmetic one",
           "weight": 1,
           "required": false
         }
@@ -15161,11 +15161,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "reports 0% expected return as consistent with the actual $75 outcome, not recognizing the discrepancy as meaningful",
+          "description": "reports $0\\%$ expected return as consistent with the actual $\\$75$ outcome, not recognizing the discrepancy as meaningful",
           "weight": 0,
           "misconception": {
             "id": "jensen-inequality--t1--misconception",
-            "description": "reports 0% expected return as consistent with the actual $75 outcome, not recognizing the discrepancy as meaningful",
+            "description": "reports $0\\%$ expected return as consistent with the actual $\\$75$ outcome, not recognizing the discrepancy as meaningful",
             "blameConceptId": "jensen-inequality"
           }
         }
@@ -15200,7 +15200,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "Xₙ →ₚ X if, for every ε>0, P(|Xₙ−X|>ε) → 0 as n→∞",
+          "description": "$X_n \\xrightarrow{p} X$ if, for every $\\varepsilon > 0$, $P(|X_n - X| > \\varepsilon) \\to 0$ as $n \\to \\infty$",
           "weight": 1,
           "required": false
         }
@@ -15277,12 +15277,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Xₙ = X + 1/n for a fixed random variable X. Does Xₙ → X almost surely? In probability?",
+    "stem": "$X_n = X + 1/n$ for a fixed random variable $X$. Does $X_n \\to X$ almost surely? In probability?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "yes to both — Xₙ(ω) − X(ω) = 1/n → 0 for *every* outcome ω, so convergence is sure (hence almost sure), and almost sure convergence implies convergence in probability",
+          "description": "yes to both — $X_n(\\omega) - X(\\omega) = 1/n \\to 0$ for *every* outcome $\\omega$, so convergence is sure (hence almost sure), and almost sure convergence implies convergence in probability",
           "weight": 1,
           "required": false
         }
@@ -15312,12 +15312,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The classic \"typewriter sequence\": Xₙ is the indicator of a shrinking-width interval that sweeps repeatedly across [0,1], hitting every point infinitely often. It converges to 0 in probability but *not* almost surely. Explain why this construction achieves that split.",
+    "stem": "The classic “typewriter sequence”: $X_n$ is the indicator of a shrinking-width interval that sweeps repeatedly across $[0, 1]$, hitting every point infinitely often. It converges to $0$ in probability but *not* almost surely. Explain why this construction achieves that split.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(Xₙ=1) → 0 as the interval widths shrink (giving convergence in probability), yet for *every fixed* ω, Xₙ(ω)=1 happens infinitely often as the sweep repeats forever — so no individual sample path ever settles at 0, which is exactly what almost sure convergence would require",
+          "description": "$P(X_n = 1) \\to 0$ as the interval widths shrink (giving convergence in probability), yet for *every fixed* $\\omega$, $X_n(\\omega) = 1$ happens infinitely often as the sweep repeats forever — so no individual sample path ever settles at $0$, which is exactly what almost sure convergence would require",
           "weight": 1,
           "required": true
         }
@@ -15352,7 +15352,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "it only requires the CDFs Fₙ(x) → F(x) pointwise (at continuity points) — it says nothing about Xₙ and X being numerically close to each other, and the two sequences need not even live on the same probability space",
+          "description": "it only requires the CDFs $F_n(x) \\to F(x)$ pointwise (at continuity points) — it says nothing about $X_n$ and $X$ being numerically close to each other, and the two sequences need not even live on the same probability space",
           "weight": 1,
           "required": true
         }
@@ -15387,7 +15387,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "the set of outcomes where Xₙ is \"far\" from the limit keeps shrinking in probability at each n, but that set keeps *moving around* the sample space rather than shrinking to nothing and staying there — so every individual ω keeps getting hit again and again, even though the probability of being hit at any single fixed n goes to 0",
+          "description": "the set of outcomes where $X_n$ is “far” from the limit keeps shrinking in probability at each $n$, but that set keeps *moving around* the sample space rather than shrinking to nothing and staying there — so every individual $\\omega$ keeps getting hit again and again, even though the probability of being hit at any single fixed $n$ goes to $0$",
           "weight": 1,
           "required": true
         }
@@ -15417,7 +15417,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "An estimator θ̂ₙ is known to converge to the true θ *in probability*. A colleague says: \"that means for any realization of the data, θ̂ₙ eventually gets arbitrarily close to θ and stays there.\" Is the colleague right? What would need to be true instead?",
+    "stem": "An estimator $\\hat\\theta_n$ is known to converge to the true $\\theta$ *in probability*. A colleague says: “that means for any realization of the data, $\\hat\\theta_n$ eventually gets arbitrarily close to $\\theta$ and stays there.” Is the colleague right? What would need to be true instead?",
     "rubric": {
       "elements": [
         {
@@ -15428,13 +15428,13 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "convergence in probability only guarantees the *probability* of a large deviation shrinks at each fixed n, not that any particular realized sequence permanently settles down",
+          "description": "convergence in probability only guarantees the *probability* of a large deviation shrinks at each fixed $n$, not that any particular realized sequence permanently settles down",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "the colleague's statement would require θ̂ₙ → θ almost surely",
+          "description": "the colleague’s statement would require $\\hat\\theta_n \\to \\theta$ almost surely",
           "weight": 1,
           "required": false
         }
@@ -15481,7 +15481,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "for iid X₁,…,Xₙ with mean μ and finite variance, X̄ₙ →ₚ μ as n→∞",
+          "description": "for i.i.d. $X_1, \\ldots, X_n$ with mean $\\mu$ and finite variance, $\\bar{X}_n \\xrightarrow{p} \\mu$ as $n \\to \\infty$",
           "weight": 1,
           "required": false
         }
@@ -15524,11 +15524,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "claims it establishes \"a faster rate of convergence\" — the distinction is the *mode* of convergence, not the speed",
+          "description": "claims it establishes “a faster rate of convergence” — the distinction is the *mode* of convergence, not the speed",
           "weight": 0,
           "misconception": {
             "id": "law-of-large-numbers--r2--misconception",
-            "description": "claims it establishes \"a faster rate of convergence\" — the distinction is the *mode* of convergence, not the speed",
+            "description": "claims it establishes “a faster rate of convergence” — the distinction is the *mode* of convergence, not the speed",
             "blameConceptId": "law-of-large-numbers"
           }
         }
@@ -15558,12 +15558,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X̄ₙ has mean μ and variance σ²/n. Apply Chebyshev to bound P(|X̄ₙ−μ|≥ε) for fixed ε, and show it → 0 as n→∞.",
+    "stem": "$\\bar{X}_n$ has mean $\\mu$ and variance $\\sigma^2/n$. Apply Chebyshev to bound $P(|\\bar{X}_n - \\mu| \\ge \\varepsilon)$ for fixed $\\varepsilon$, and show it $\\to 0$ as $n \\to \\infty$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(|X̄ₙ−μ|≥ε) ≤ Var(X̄ₙ)/ε² = σ²/(nε²) → 0 as n→∞, for any fixed ε>0 — this *is* the definition of convergence in probability",
+          "description": "$P(|\\bar{X}_n - \\mu| \\ge \\varepsilon) \\le \\text{Var}(\\bar{X}_n)/\\varepsilon^2 = \\sigma^2/(n\\varepsilon^2) \\to 0$ as $n \\to \\infty$, for any fixed $\\varepsilon > 0$ — this *is* the definition of convergence in probability",
           "weight": 1,
           "required": true
         }
@@ -15592,7 +15592,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "For iid Xᵢ with σ²=4, find the smallest n (via A1's Chebyshev bound) guaranteeing P(|X̄ₙ−μ|≥0.5) ≤ 0.05.",
+    "stem": "For i.i.d. $X_i$ with $\\sigma^2 = 4$, find the smallest $n$ (via A1’s Chebyshev bound) guaranteeing $P(|\\bar{X}_n - \\mu| \\ge 0.5) \\le 0.05$.",
     "answerKey": 320,
     "tolerance": 0.01,
     "difficulty": 0.8,
@@ -15619,24 +15619,24 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove the Weak LLN formally, combining X̄ₙ's variance σ²/n with Chebyshev's inequality.",
+    "stem": "Prove the Weak LLN formally, combining $\\bar{X}_n$’s variance $\\sigma^2/n$ with Chebyshev’s inequality.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Var(X̄ₙ)=σ²/n (from properties of an average of iid terms)",
+          "description": "$\\text{Var}(\\bar{X}_n) = \\sigma^2/n$ (from properties of an average of i.i.d. terms)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "Chebyshev gives P(|X̄ₙ−μ|≥ε) ≤ σ²/(nε²)",
+          "description": "Chebyshev gives $P(|\\bar{X}_n - \\mu| \\ge \\varepsilon) \\le \\sigma^2/(n\\varepsilon^2)$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "since this → 0 for every fixed ε>0, X̄ₙ →ₚ μ *by definition*",
+          "description": "since this $\\to 0$ for every fixed $\\varepsilon > 0$, $\\bar{X}_n \\xrightarrow{p} \\mu$ *by definition*",
           "weight": 1,
           "required": false
         }
@@ -15666,18 +15666,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why does the LLN require *finite variance*? What breaks for a Cauchy-distributed Xᵢ (no finite mean or variance)?",
+    "stem": "Why does the LLN require *finite variance*? What breaks for a Cauchy-distributed $X_i$ (no finite mean or variance)?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "without finite variance, the Chebyshev proof technique collapses entirely (the bound σ²/(nε²) is infinite/meaningless)",
+          "description": "without finite variance, the Chebyshev proof technique collapses entirely (the bound $\\sigma^2/(n\\varepsilon^2)$ is infinite/meaningless)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "for genuinely heavy-tailed cases like Cauchy, the sample mean does not converge to any constant as n grows at all",
+          "description": "for genuinely heavy-tailed cases like Cauchy, the sample mean does not converge to any constant as $n$ grows at all",
           "weight": 1,
           "required": false
         }
@@ -15707,7 +15707,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A casino relies on LLN across millions of bets despite genuine per-bet uncertainty. Explain why LLN makes the casino's *average* profit per bet reliably close to its expected edge as bet count grows — and why this same logic would *not* protect a gambler making one enormous, one-time bet with \"the same underlying probabilities.\"",
+    "stem": "A casino relies on LLN across millions of bets despite genuine per-bet uncertainty. Explain why LLN makes the casino’s *average* profit per bet reliably close to its expected edge as bet count grows — and why this same logic would *not* protect a gambler making one enormous, one-time bet with “the same underlying probabilities”.",
     "rubric": {
       "elements": [
         {
@@ -15718,13 +15718,13 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "the casino's average profit per hand converges to its expected edge as n→∞, so total profit grows reliably",
+          "description": "the casino’s average profit per hand converges to its expected edge as $n \\to \\infty$, so total profit grows reliably",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "a single large bet is essentially n=1, where LLN provides no guarantee — the outcome variance for one trial stays large regardless of what happens as n→∞ elsewhere",
+          "description": "a single large bet is essentially $n = 1$, where LLN provides no guarantee — the outcome variance for one trial stays large regardless of what happens as $n \\to \\infty$ elsewhere",
           "weight": 1,
           "required": false
         }
@@ -15732,11 +15732,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "argues the gambler is equally protected because \"the probabilities are the same\"",
+          "description": "argues the gambler is equally protected because “the probabilities are the same”",
           "weight": 0,
           "misconception": {
             "id": "law-of-large-numbers--t1--misconception",
-            "description": "argues the gambler is equally protected because \"the probabilities are the same\"",
+            "description": "argues the gambler is equally protected because “the probabilities are the same”",
             "blameConceptId": "law-of-large-numbers"
           }
         }
@@ -15766,18 +15766,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define the order statistics X₍₁₎,…,X₍ₙ₎ of a sample. Which is the min, which the max?",
+    "stem": "Define the order statistics $X_{(1)}, \\ldots, X_{(n)}$ of a sample. Which is the min, which the max?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the sorted values X₍₁₎≤X₍₂₎≤⋯≤X₍ₙ₎",
+          "description": "the sorted values $X_{(1)} \\le X_{(2)} \\le \\cdots \\le X_{(n)}$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "X₍₁₎ is the min, X₍ₙ₎ is the max",
+          "description": "$X_{(1)}$ is the min, $X_{(n)}$ is the max",
           "weight": 1,
           "required": false
         }
@@ -15807,12 +15807,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The CDF of the maximum, F₍ₙ₎(x), equals:",
+    "stem": "The CDF of the maximum, $F_{(n)}(x)$, equals:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "F(x)ⁿ",
+          "description": "$F(x)^n$",
           "weight": 1,
           "required": false
         }
@@ -15820,11 +15820,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks 1−[1−F(x)]ⁿ — that's actually the CDF of the *minimum*, an easy swap",
+          "description": "picks $1 - [1 - F(x)]^n$ — that’s actually the CDF of the *minimum*, an easy swap",
           "weight": 0,
           "misconception": {
             "id": "order-statistics--r2--misconception",
-            "description": "picks 1−[1−F(x)]ⁿ — that's actually the CDF of the *minimum*, an easy swap",
+            "description": "picks $1 - [1 - F(x)]^n$ — that’s actually the CDF of the *minimum*, an easy swap",
             "blameConceptId": "order-statistics"
           }
         }
@@ -15854,18 +15854,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive F₍ₙ₎(x) = F(x)ⁿ directly from independence.",
+    "stem": "Derive $F_{(n)}(x) = F(x)^n$ directly from independence.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "max≤x ⟺ *all* n values ≤x",
+          "description": "$\\max \\le x \\iff$ *all* $n$ values $\\le x$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "by independence, P(all ≤x) = ΠP(Xᵢ≤x) = F(x)ⁿ",
+          "description": "by independence, $P(\\text{all} \\le x) = \\prod P(X_i \\le x) = F(x)^n$",
           "weight": 1,
           "required": false
         }
@@ -15894,7 +15894,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "X₁,…,X₅ iid Uniform(0,1). Find P(max ≤ 0.9).",
+    "stem": "$X_1, \\ldots, X_5$ i.i.d. $\\text{Uniform}(0,1)$. Find $P(\\max \\le 0.9)$.",
     "answerKey": 0.59,
     "tolerance": 0.01,
     "difficulty": 0.4,
@@ -15921,12 +15921,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive the CDF of the minimum, F₍₁₎(x) = 1−[1−F(x)]ⁿ, via the complement trick.",
+    "stem": "Derive the CDF of the minimum, $F_{(1)}(x) = 1 - [1 - F(x)]^n$, via the complement trick.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(min≤x) = 1 − P(min>x) = 1 − P(all Xᵢ>x) = 1 − [1−F(x)]ⁿ by independence",
+          "description": "$P(\\min \\le x) = 1 - P(\\min > x) = 1 - P(\\text{all } X_i > x) = 1 - [1 - F(x)]^n$ by independence",
           "weight": 1,
           "required": true
         }
@@ -15956,18 +15956,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Connect order statistics directly to `mle`'s earlier finding: the Uniform(0,θ) MLE is θ̂=max(x₁,…,xₙ). Explain what this reveals about *why* that MLE is biased.",
+    "stem": "Connect order statistics directly to `mle`’s earlier finding: the $\\text{Uniform}(0,\\theta)$ MLE is $\\hat\\theta = \\max(x_1, \\ldots, x_n)$. Explain what this reveals about *why* that MLE is biased.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "θ̂ = X₍ₙ₎, the largest order statistic",
+          "description": "$\\hat\\theta = X_{(n)}$, the largest order statistic",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "every observed value is ≤ θ (by the distribution's own support), so their max is too — meaning X₍ₙ₎ *never exceeds* θ and therefore E[X₍ₙ₎] < θ strictly, confirming the MLE systematically underestimates θ",
+          "description": "every observed value is $\\le \\theta$ (by the distribution’s own support), so their max is too — meaning $X_{(n)}$ *never exceeds* $\\theta$ and therefore $\\mathbb{E}[X_{(n)}] < \\theta$ strictly, confirming the MLE systematically underestimates $\\theta$",
           "weight": 1,
           "required": false
         }
@@ -15997,12 +15997,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Civil engineers designing a levee need the distribution of the *worst* (highest) flood level over 100 years, not the average year's level. Explain why an extreme's distribution behaves very differently from a single year's, and why \"average year plus a margin\" can be a dangerously inadequate design approach.",
+    "stem": "Civil engineers designing a levee need the distribution of the *worst* (highest) flood level over $100$ years, not the average year’s level. Explain why an extreme’s distribution behaves very differently from a single year’s, and why “average year plus a margin” can be a dangerously inadequate design approach.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the max's distribution concentrates in the upper tail of the single-year distribution, and — for many common underlying distributions — E[max over n years] can keep growing with n, unlike the single-year mean, which stays fixed",
+          "description": "the max’s distribution concentrates in the upper tail of the single-year distribution, and — for many common underlying distributions — $\\mathbb{E}[\\max \\text{ over } n \\text{ years}]$ can keep growing with $n$, unlike the single-year mean, which stays fixed",
           "weight": 1,
           "required": true
         },
@@ -16050,12 +16050,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define the joint PMF of discrete X, Y, and its normalization condition.",
+    "stem": "Define the joint PMF of discrete $X$, $Y$, and its normalization condition.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "p(x,y) = P(X=x, Y=y); Σₓ Σᵧ p(x,y) = 1",
+          "description": "$p(x,y) = P(X=x, Y=y)$; $\\sum_x \\sum_y p(x,y) = 1$",
           "weight": 1,
           "required": false
         }
@@ -16085,12 +16085,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Σₓ Σᵧ p(x,y) always equals:",
+    "stem": "$\\sum_x \\sum_y p(x,y)$ always equals:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "1",
+          "description": "$1$",
           "weight": 1,
           "required": false
         }
@@ -16098,11 +16098,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "answers \"depends on X, Y\" — missing that normalization is a defining requirement, not a property to check case by case",
+          "description": "answers “depends on $X$, $Y$” — missing that normalization is a defining requirement, not a property to check case by case",
           "weight": 0,
           "misconception": {
             "id": "joint-distribution--r2--misconception",
-            "description": "answers \"depends on X, Y\" — missing that normalization is a defining requirement, not a property to check case by case",
+            "description": "answers “depends on $X$, $Y$” — missing that normalization is a defining requirement, not a property to check case by case",
             "blameConceptId": "joint-distribution"
           }
         }
@@ -16132,12 +16132,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "p(0,0)=0.1, p(0,1)=0.2, p(1,0)=0.3, p(1,1)=0.4. Verify validity and find P(X=1,Y=1).",
+    "stem": "$p(0,0)=0.1$, $p(0,1)=0.2$, $p(1,0)=0.3$, $p(1,1)=0.4$. Verify validity and find $P(X=1,Y=1)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "sums to 1.0 ✓; P(1,1)=0.4",
+          "description": "sums to $1.0$ ✓; $P(1,1)=0.4$",
           "weight": 1,
           "required": false
         }
@@ -16167,12 +16167,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using the same table, find P(X=Y) and P(X≠Y).",
+    "stem": "Using the same table, find $P(X=Y)$ and $P(X\\ne Y)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "P(X=Y)=p(0,0)+p(1,1)=0.5; P(X≠Y)=0.5",
+          "description": "$P(X=Y)=p(0,0)+p(1,1)=0.5$; $P(X\\ne Y)=0.5$",
           "weight": 1,
           "required": false
         }
@@ -16202,24 +16202,24 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Sum the table's rows and columns to get \"totals\" for X alone and Y alone, then use them to check whether X and Y are independent.",
+    "stem": "Sum the table’s rows and columns to get “totals” for $X$ alone and $Y$ alone, then use them to check whether $X$ and $Y$ are independent.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "row totals: 0.3, 0.7",
+          "description": "row totals: $0.3$, $0.7$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "column totals: 0.4, 0.6",
+          "description": "column totals: $0.4$, $0.6$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "independence would require p(0,0)=0.3×0.4=0.12, but the table has p(0,0)=0.1 ≠ 0.12 — so X, Y are dependent",
+          "description": "independence would require $p(0,0)=0.3\\times 0.4=0.12$, but the table has $p(0,0)=0.1 \\ne 0.12$ — so $X$, $Y$ are dependent",
           "weight": 1,
           "required": false
         }
@@ -16266,7 +16266,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "the totals are consistent with *many* different joint tables — e.g. the independent-product table (0.12, 0.18, 0.28, 0.42) has the *same* totals (0.3/0.7 and 0.4/0.6) as the actual dependent table (0.1, 0.2, 0.3, 0.4) `[verified]`, yet the two tables clearly differ",
+          "description": "the totals are consistent with *many* different joint tables — e.g. the independent-product table ($0.12$, $0.18$, $0.28$, $0.42$) has the *same* totals ($0.3/0.7$ and $0.4/0.6$) as the actual dependent table ($0.1$, $0.2$, $0.3$, $0.4$) `[verified]`, yet the two tables clearly differ",
           "weight": 1,
           "required": true
         }
@@ -16309,11 +16309,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "assumes knowing both separate distributions is \"basically\" the same as knowing the joint one",
+          "description": "assumes knowing both separate distributions is “basically” the same as knowing the joint one",
           "weight": 0,
           "misconception": {
             "id": "joint-distribution--t1--misconception",
-            "description": "assumes knowing both separate distributions is \"basically\" the same as knowing the joint one",
+            "description": "assumes knowing both separate distributions is “basically” the same as knowing the joint one",
             "blameConceptId": "joint-distribution"
           }
         }
@@ -16343,12 +16343,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define the marginal PMF of X in terms of a joint PMF p(x,y).",
+    "stem": "Define the marginal PMF of $X$ in terms of a joint PMF $p(x,y)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "p_X(x) = Σᵧ p(x,y) — sum out y",
+          "description": "$p_X(x) = \\sum_y p(x,y)$ — sum out $y$",
           "weight": 1,
           "required": false
         }
@@ -16378,7 +16378,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "To get the marginal of X from a joint PMF table, you:",
+    "stem": "To get the marginal of $X$ from a joint PMF table, you:",
     "rubric": {
       "elements": [
         {
@@ -16391,11 +16391,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"take the diagonal entries\" — confuses marginalizing with the P(X=Y) computation from the previous concept's A2",
+          "description": "picks “take the diagonal entries” — confuses marginalizing with the $P(X=Y)$ computation from the previous concept’s A2",
           "weight": 0,
           "misconception": {
             "id": "marginal-distribution--r2--misconception",
-            "description": "picks \"take the diagonal entries\" — confuses marginalizing with the P(X=Y) computation from the previous concept's A2",
+            "description": "picks “take the diagonal entries” — confuses marginalizing with the $P(X=Y)$ computation from the previous concept’s A2",
             "blameConceptId": "marginal-distribution"
           }
         }
@@ -16425,12 +16425,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using the shared table, find the marginal PMFs of X and of Y — this is exactly `joint-distribution`'s E1, now formalized and named.",
+    "stem": "Using the shared table, find the marginal PMFs of $X$ and of $Y$ — this is exactly `joint-distribution`’s E1, now formalized and named.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "p_X = (0.3, 0.7); p_Y = (0.4, 0.6)",
+          "description": "$p_X = (0.3, 0.7)$; $p_Y = (0.4, 0.6)$",
           "weight": 1,
           "required": false
         }
@@ -16460,18 +16460,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For continuous joint density f(x,y)=x+y on [0,1]², find the marginal density f_X(x).",
+    "stem": "For continuous joint density $f(x,y)=x+y$ on $[0,1]^2$, find the marginal density $f_X(x)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "f_X(x) = ∫₀¹ (x+y) dy = x + 0.5, for 0≤x≤1",
+          "description": "$f_X(x) = \\int_0^1 (x+y)\\,dy = x + 0.5$, for $0\\le x\\le 1$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "check: ∫₀¹(x+0.5)dx = 1 ✓",
+          "description": "check: $\\int_0^1 (x+0.5)\\,dx = 1$ ✓",
           "weight": 1,
           "required": false
         }
@@ -16479,11 +16479,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "forgets to integrate out y and leaves f_X as a function of both x and y",
+          "description": "forgets to integrate out $y$ and leaves $f_X$ as a function of both $x$ and $y$",
           "weight": 0,
           "misconception": {
             "id": "marginal-distribution--a2--misconception",
-            "description": "forgets to integrate out y and leaves f_X as a function of both x and y",
+            "description": "forgets to integrate out $y$ and leaves $f_X$ as a function of both $x$ and $y$",
             "blameConceptId": "marginal-distribution"
           }
         }
@@ -16518,7 +16518,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "Σₓ p_X(x) = Σₓ Σᵧ p(x,y) = 1, directly from the joint's defining condition",
+          "description": "$\\sum_x p_X(x) = \\sum_x \\sum_y p(x,y) = 1$, directly from the joint’s defining condition",
           "weight": 1,
           "required": true
         }
@@ -16553,7 +16553,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "the shared table's dependent joint (0.1, 0.2, 0.3, 0.4) and the independent-product table built from its own marginals (0.12, 0.18, 0.28, 0.42) both have marginals (0.3, 0.7) and (0.4, 0.6) `[verified]`, yet the joint entries differ — proving the marginals alone don't pin down the joint",
+          "description": "the shared table’s dependent joint ($0.1$, $0.2$, $0.3$, $0.4$) and the independent-product table built from its own marginals ($0.12$, $0.18$, $0.28$, $0.42$) both have marginals $(0.3, 0.7)$ and $(0.4, 0.6)$ `[verified]`, yet the joint entries differ — proving the marginals alone don’t pin down the joint",
           "weight": 1,
           "required": true
         }
@@ -16583,12 +16583,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A weather app reports P(rain tomorrow)=30% and, separately, P(traffic jam tomorrow)=40%. Someone computes P(rain AND traffic)=0.3×0.4=12%. What assumption does this secretly make, and why is it probably wrong here?",
+    "stem": "A weather app reports $P(\\text{rain tomorrow}) = 30\\%$ and, separately, $P(\\text{traffic jam tomorrow}) = 40\\%$. Someone computes $P(\\text{rain AND traffic}) = 0.3\\times 0.4 = 12\\%$. What assumption does this secretly make, and why is it probably wrong here?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "it assumes X, Y are *independent* — that the joint pmf is the product of the marginals, exactly the assumption E2 showed the marginals alone cannot justify",
+          "description": "it assumes $X$, $Y$ are *independent* — that the joint pmf is the product of the marginals, exactly the assumption E2 showed the marginals alone cannot justify",
           "weight": 1,
           "required": false
         },
@@ -16602,11 +16602,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "accepts the 12% figure as correct because \"that's how you combine two probabilities\"",
+          "description": "accepts the $12\\%$ figure as correct because “that’s how you combine two probabilities”",
           "weight": 0,
           "misconception": {
             "id": "marginal-distribution--t1--misconception",
-            "description": "accepts the 12% figure as correct because \"that's how you combine two probabilities\"",
+            "description": "accepts the $12\\%$ figure as correct because “that’s how you combine two probabilities”",
             "blameConceptId": "marginal-distribution"
           }
         }
@@ -16636,12 +16636,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define the conditional PMF of Y given X=x, and its one requirement.",
+    "stem": "Define the conditional PMF of $Y$ given $X=x$, and its one requirement.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "p(y|x) = p(x,y)/p_X(x), requiring p_X(x) > 0",
+          "description": "$p(y \\mid x) = p(x,y)/p_X(x)$, requiring $p_X(x) > 0$",
           "weight": 1,
           "required": false
         }
@@ -16671,12 +16671,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "As a function of y for *fixed* x, p(y|x) is:",
+    "stem": "As a function of $y$ for *fixed* $x$, $p(y \\mid x)$ is:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "a valid PMF — nonnegative and summing to 1 over y",
+          "description": "a valid PMF — nonnegative and summing to $1$ over $y$",
           "weight": 1,
           "required": false
         }
@@ -16684,11 +16684,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "claims it \"always equals the marginal p_Y(y)\" — true only under independence, not in general",
+          "description": "claims it “always equals the marginal $p_Y(y)$” — true only under independence, not in general",
           "weight": 0,
           "misconception": {
             "id": "conditional-distribution--r2--misconception",
-            "description": "claims it \"always equals the marginal p_Y(y)\" — true only under independence, not in general",
+            "description": "claims it “always equals the marginal $p_Y(y)$” — true only under independence, not in general",
             "blameConceptId": "conditional-distribution"
           }
         }
@@ -16718,12 +16718,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using the shared table (marginals p_X = 0.3, 0.7), find the conditional PMF of Y given X=0.",
+    "stem": "Using the shared table (marginals $p_X = (0.3, 0.7)$), find the conditional PMF of $Y$ given $X=0$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "p(0|0)=0.1/0.3=1/3; p(1|0)=0.2/0.3=2/3",
+          "description": "$p(0 \\mid 0)=0.1/0.3=1/3$; $p(1 \\mid 0)=0.2/0.3=2/3$",
           "weight": 1,
           "required": false
         }
@@ -16731,11 +16731,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "divides by the wrong marginal, e.g. by p_Y instead of p_X",
+          "description": "divides by the wrong marginal, e.g. by $p_Y$ instead of $p_X$",
           "weight": 0,
           "misconception": {
             "id": "conditional-distribution--a1--misconception",
-            "description": "divides by the wrong marginal, e.g. by p_Y instead of p_X",
+            "description": "divides by the wrong marginal, e.g. by $p_Y$ instead of $p_X$",
             "blameConceptId": "conditional-distribution"
           }
         }
@@ -16765,12 +16765,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Find the conditional PMF of Y given X=1, and compare to A1's answer given X=0. What does the difference tell you about independence?",
+    "stem": "Find the conditional PMF of $Y$ given $X=1$, and compare to A1’s answer given $X=0$. What does the difference tell you about independence?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "p(0|1)≈0.4286, p(1|1)≈0.5714 — different from (1/3, 2/3), confirming X and Y are dependent, consistent with `joint-distribution`'s E1 finding",
+          "description": "$p(0 \\mid 1)\\approx 0.4286$, $p(1 \\mid 1)\\approx 0.5714$ — different from $(1/3, 2/3)$, confirming $X$ and $Y$ are dependent, consistent with `joint-distribution`’s E1 finding",
           "weight": 1,
           "required": false
         }
@@ -16812,12 +16812,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove p(·|x) is a valid PMF over y, for any fixed x with p_X(x)>0.",
+    "stem": "Prove $p(\\cdot \\mid x)$ is a valid PMF over $y$, for any fixed $x$ with $p_X(x)>0$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Σᵧ p(y|x) = Σᵧ p(x,y)/p_X(x) = p_X(x)/p_X(x) = 1, using the marginal's own defining sum from `marginal-distribution`",
+          "description": "$\\sum_y p(y \\mid x) = \\sum_y p(x,y)/p_X(x) = p_X(x)/p_X(x) = 1$, using the marginal’s own defining sum from `marginal-distribution`",
           "weight": 1,
           "required": true
         }
@@ -16847,18 +16847,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why \"X, Y independent\" is *equivalent* to \"the conditional distribution of Y given X=x doesn't depend on x\" — argue both directions.",
+    "stem": "Explain why “$X$, $Y$ independent” is *equivalent* to “the conditional distribution of $Y$ given $X=x$ doesn’t depend on $x$” — argue both directions.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "independence ⟹ p(x,y)=p_X(x)p_Y(y) ⟹ p(y|x)=p_Y(y) for every x (no dependence on x)",
+          "description": "independence $\\implies p(x,y)=p_X(x)p_Y(y) \\implies p(y \\mid x)=p_Y(y)$ for every $x$ (no dependence on $x$)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "conversely, if p(y|x)=p_Y(y) for every x, then p(x,y)=p(y|x)p_X(x)=p_Y(y)p_X(x), which is exactly the independence factorization",
+          "description": "conversely, if $p(y \\mid x)=p_Y(y)$ for every $x$, then $p(x,y)=p(y \\mid x)p_X(x)=p_Y(y)p_X(x)$, which is exactly the independence factorization",
           "weight": 1,
           "required": false
         }
@@ -16888,7 +16888,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A doctor reports: given a patient smokes, P(lung disease)=15%; given they don't, P(lung disease)=2%. Why can quoting one overall (marginal) P(lung disease) for the whole population be seriously misleading for an individual patient?",
+    "stem": "A doctor reports: given a patient smokes, $P(\\text{lung disease})=15\\%$; given they don’t, $P(\\text{lung disease})=2\\%$. Why can quoting one overall (marginal) $P(\\text{lung disease})$ for the whole population be seriously misleading for an individual patient?",
     "rubric": {
       "elements": [
         {
@@ -16941,12 +16941,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define Cov(X,Y) and give its shortcut formula.",
+    "stem": "Define $\\text{Cov}(X,Y)$ and give its shortcut formula.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[(X−E[X])(Y−E[Y])] = E[XY] − E[X]E[Y]",
+          "description": "$\\mathbb{E}\\left[(X-\\mathbb{E}[X])(Y-\\mathbb{E}[Y])\\right] = \\mathbb{E}[XY] - \\mathbb{E}[X]\\mathbb{E}[Y]$",
           "weight": 1,
           "required": false
         }
@@ -16976,7 +16976,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which is FALSE? (a) Cov(X,X)=Var(X) (b) independent ⟹ Cov=0 (c) Cov=0 ⟹ independent.",
+    "stem": "Which is FALSE? (a) $\\text{Cov}(X,X)=\\text{Var}(X)$ (b) independent $\\implies \\text{Cov}=0$ (c) $\\text{Cov}=0 \\implies$ independent.",
     "rubric": {
       "elements": [
         {
@@ -17022,7 +17022,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "E[X]=2, E[Y]=3, E[XY]=8. Find Cov(X,Y).",
+    "stem": "$\\mathbb{E}[X]=2$, $\\mathbb{E}[Y]=3$, $\\mathbb{E}[XY]=8$. Find $\\text{Cov}(X,Y)$.",
     "answerKey": 2,
     "tolerance": 0.01,
     "difficulty": 0.54,
@@ -17049,12 +17049,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using the shared table, compute E[X], E[Y], E[XY], and Cov(X,Y).",
+    "stem": "Using the shared table, compute $\\mathbb{E}[X]$, $\\mathbb{E}[Y]$, $\\mathbb{E}[XY]$, and $\\text{Cov}(X,Y)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X]=0.7, E[Y]=0.6; E[XY] gets a contribution only from (1,1): 1·1·0.4=0.4; Cov = 0.4 − 0.42 = −0.02",
+          "description": "$\\mathbb{E}[X]=0.7$, $\\mathbb{E}[Y]=0.6$; $\\mathbb{E}[XY]$ gets a contribution only from $(1,1)$: $1\\cdot 1\\cdot 0.4=0.4$; $\\text{Cov} = 0.4 - 0.42 = -0.02$",
           "weight": 1,
           "required": false
         }
@@ -17062,11 +17062,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "sums X·Y·p(x,y) over all four cells but forgets that three of the four terms vanish (whenever X=0 or Y=0), double-counting",
+          "description": "sums $x\\,y\\,p(x,y)$ over all four cells but forgets that three of the four terms vanish (whenever $X=0$ or $Y=0$), double-counting",
           "weight": 0,
           "misconception": {
             "id": "covariance--a2--misconception",
-            "description": "sums X·Y·p(x,y) over all four cells but forgets that three of the four terms vanish (whenever X=0 or Y=0), double-counting",
+            "description": "sums $x\\,y\\,p(x,y)$ over all four cells but forgets that three of the four terms vanish (whenever $X=0$ or $Y=0$), double-counting",
             "blameConceptId": "covariance"
           }
         }
@@ -17096,18 +17096,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive Cov(X,Y) = E[XY] − E[X]E[Y] from E[(X−E[X])(Y−E[Y])], via linearity.",
+    "stem": "Derive $\\text{Cov}(X,Y) = \\mathbb{E}[XY] - \\mathbb{E}[X]\\mathbb{E}[Y]$ from $\\mathbb{E}\\left[(X-\\mathbb{E}[X])(Y-\\mathbb{E}[Y])\\right]$, via linearity.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "expand the product: XY − X·E[Y] − Y·E[X] + E[X]E[Y]",
+          "description": "expand the product: $XY - X\\,\\mathbb{E}[Y] - Y\\,\\mathbb{E}[X] + \\mathbb{E}[X]\\mathbb{E}[Y]$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "apply linearity termwise, using that E[X], E[Y] are constants under the expectation  — the two-variable analog of `variance`'s shortcut-formula derivation",
+          "description": "apply linearity termwise, using that $\\mathbb{E}[X]$, $\\mathbb{E}[Y]$ are constants under the expectation — the two-variable analog of `variance`’s shortcut-formula derivation",
           "weight": 1,
           "required": false
         }
@@ -17137,12 +17137,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Construct an explicit example where Cov(X,Y)=0 but X and Y are *maximally* dependent (Y is a deterministic function of X).",
+    "stem": "Construct an explicit example where $\\text{Cov}(X,Y)=0$ but $X$ and $Y$ are *maximally* dependent ($Y$ is a deterministic function of $X$).",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "X ~ Uniform(−1,1), Y = X². Cov(X,Y) = E[X³] − E[X]E[X²] = 0 − 0 = 0 (E[X³]=0 by odd symmetry, E[X]=0) `[verified numerically: ≈0]`, yet Y is *completely determined* by X — about as dependent as two variables can be",
+          "description": "$X \\sim \\text{Uniform}(-1,1)$, $Y = X^2$. $\\text{Cov}(X,Y) = \\mathbb{E}[X^3] - \\mathbb{E}[X]\\mathbb{E}[X^2] = 0 - 0 = 0$ ($\\mathbb{E}[X^3]=0$ by odd symmetry, $\\mathbb{E}[X]=0$) `[verified numerically: ≈0]`, yet $Y$ is *completely determined* by $X$ — about as dependent as two variables can be",
           "weight": 1,
           "required": true
         }
@@ -17172,7 +17172,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "An analyst finds Cov(hours studied, exam score) > 0 in one class, and separately Cov(ice cream sales, drowning deaths) > 0 across cities, concluding \"studying causes higher scores\" and \"ice cream causes drowning.\" What's wrong with using covariance alone to justify either causal claim — and what's genuinely different between the two examples?",
+    "stem": "An analyst finds $\\text{Cov}(\\text{hours studied}, \\text{exam score}) > 0$ in one class, and separately $\\text{Cov}(\\text{ice cream sales}, \\text{drowning deaths}) > 0$ across cities, concluding “studying causes higher scores” and “ice cream causes drowning.” What’s wrong with using covariance alone to justify either causal claim — and what’s genuinely different between the two examples?",
     "rubric": {
       "elements": [
         {
@@ -17197,11 +17197,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "accepts the study-hours claim as justified because it \"makes intuitive sense,\" without noticing the argument used to support it is identical to the flawed ice-cream argument",
+          "description": "accepts the study-hours claim as justified because it “makes intuitive sense”, without noticing the argument used to support it is identical to the flawed ice-cream argument",
           "weight": 0,
           "misconception": {
             "id": "covariance--t1--misconception",
-            "description": "accepts the study-hours claim as justified because it \"makes intuitive sense,\" without noticing the argument used to support it is identical to the flawed ice-cream argument",
+            "description": "accepts the study-hours claim as justified because it “makes intuitive sense”, without noticing the argument used to support it is identical to the flawed ice-cream argument",
             "blameConceptId": "covariance"
           }
         }
@@ -17236,7 +17236,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X] = E[E[X|Y]]",
+          "description": "$\\mathbb{E}[X] = \\mathbb{E}\\left[\\mathbb{E}[X \\mid Y]\\right]$",
           "weight": 1,
           "required": false
         }
@@ -17266,12 +17266,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "E[X|Y] is itself:",
+    "stem": "$\\mathbb{E}[X \\mid Y]$ is itself:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "a random variable — a function of Y",
+          "description": "a random variable — a function of $Y$",
           "weight": 1,
           "required": false
         }
@@ -17279,11 +17279,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "treats E[X|Y] as a fixed number, missing the conceptual leap the whole law depends on",
+          "description": "treats $\\mathbb{E}[X \\mid Y]$ as a fixed number, missing the conceptual leap the whole law depends on",
           "weight": 0,
           "misconception": {
             "id": "law-of-total-expectation--r2--misconception",
-            "description": "treats E[X|Y] as a fixed number, missing the conceptual leap the whole law depends on",
+            "description": "treats $\\mathbb{E}[X \\mid Y]$ as a fixed number, missing the conceptual leap the whole law depends on",
             "blameConceptId": "law-of-total-expectation"
           }
         }
@@ -17313,12 +17313,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Revisit `expectation`'s insurance example formally: let Y=1{claim occurs}. E[payout|Y=0]=0, E[payout|Y=1]=$3000, P(Y=1)=0.1. Recover the $300 premium via the law.",
+    "stem": "Revisit `expectation`’s insurance example formally: let $Y=1\\{\\text{claim occurs}\\}$. $\\mathbb{E}[\\text{payout} \\mid Y=0]=0$, $\\mathbb{E}[\\text{payout} \\mid Y=1]=\\$3000$, $P(Y=1)=0.1$. Recover the $\\$300$ premium via the law.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[payout] = P(Y=0)·0 + P(Y=1)·3000 = 0.9(0)+0.1(3000) = $300 — the same answer as before, now produced by the named tool rather than ad hoc case-splitting",
+          "description": "$\\mathbb{E}[\\text{payout}] = P(Y=0)\\cdot 0 + P(Y=1)\\cdot 3000 = 0.9(0)+0.1(3000) = \\$300$ — the same answer as before, now produced by the named tool rather than ad hoc case-splitting",
           "weight": 1,
           "required": false
         }
@@ -17347,7 +17347,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "A student uses one of two study methods, chosen 50/50 at random: Method A gives expected score 75, Method B gives expected score 85. Find the overall expected score.",
+    "stem": "A student uses one of two study methods, chosen $50/50$ at random: Method A gives expected score $75$, Method B gives expected score $85$. Find the overall expected score.",
     "answerKey": 80,
     "tolerance": 0.01,
     "difficulty": 0.75,
@@ -17379,7 +17379,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X] = Σₓ x·p_X(x) = Σₓ x Σᵧ p(x,y) = Σᵧ Σₓ x·p(x|y)·p_Y(y) = Σᵧ p_Y(y)·E[X|Y=y] = E[E[X|Y]]",
+          "description": "$\\mathbb{E}[X] = \\sum_x x\\,p_X(x) = \\sum_x x \\sum_y p(x,y) = \\sum_y \\sum_x x\\,p(x \\mid y)\\,p_Y(y) = \\sum_y p_Y(y)\\,\\mathbb{E}[X \\mid Y=y] = \\mathbb{E}\\left[\\mathbb{E}[X \\mid Y]\\right]$",
           "weight": 1,
           "required": true
         }
@@ -17409,12 +17409,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why must E[X|Y] be treated as a random variable (a function of Y) *before* E[E[X|Y]] means anything? What would go wrong if it were just one number?",
+    "stem": "Why must $\\mathbb{E}[X \\mid Y]$ be treated as a random variable (a function of $Y$) *before* $\\mathbb{E}\\left[\\mathbb{E}[X \\mid Y]\\right]$ means anything? What would go wrong if it were just one number?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "if E[X|Y] were a single fixed number, the outer expectation E[·] would have nothing to average over — the whole point of the law is that E[X|Y=y] varies with y, and the *outer* expectation averages that variation, weighted by how likely each y is",
+          "description": "if $\\mathbb{E}[X \\mid Y]$ were a single fixed number, the outer expectation $\\mathbb{E}[\\cdot]$ would have nothing to average over — the whole point of the law is that $\\mathbb{E}[X \\mid Y=y]$ varies with $y$, and the *outer* expectation averages that variation, weighted by how likely each $y$ is",
           "weight": 1,
           "required": true
         }
@@ -17444,7 +17444,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A company's revenue depends on which of 3 equally-likely marketing campaigns ran, with expected revenues $2M, $3M, and $7M. An analyst says \"just always run the $7M one — it's the guaranteed best.\" What's the error, using the law of total expectation to frame it?",
+    "stem": "A company’s revenue depends on which of $3$ equally-likely marketing campaigns ran, with expected revenues $\\$2\\text{M}$, $\\$3\\text{M}$, and $\\$7\\text{M}$. An analyst says “just always run the $\\$7\\text{M}$ one — it’s the guaranteed best.” What’s the error, using the law of total expectation to frame it?",
     "rubric": {
       "elements": [
         {
@@ -17455,7 +17455,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "the $7M campaign could carry far higher variance (huge upside and huge downside) that the expectation number alone says nothing about, which is exactly the kind of question `law-of-total-variance` exists to answer next",
+          "description": "the $\\$7\\text{M}$ campaign could carry far higher variance (huge upside and huge downside) that the expectation number alone says nothing about, which is exactly the kind of question `law-of-total-variance` exists to answer next",
           "weight": 1,
           "required": false
         }
@@ -17463,11 +17463,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "agrees $7M is \"guaranteed\" simply because it's the largest of the three expected values",
+          "description": "agrees $\\$7\\text{M}$ is “guaranteed” simply because it’s the largest of the three expected values",
           "weight": 0,
           "misconception": {
             "id": "law-of-total-expectation--t1--misconception",
-            "description": "agrees $7M is \"guaranteed\" simply because it's the largest of the three expected values",
+            "description": "agrees $\\$7\\text{M}$ is “guaranteed” simply because it’s the largest of the three expected values",
             "blameConceptId": "law-of-total-expectation"
           }
         }
@@ -61126,12 +61126,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define M_X(t) = E[e^{tX}], and state what M_X(0) always equals.",
+    "stem": "Define $M_X(t) = \\mathbb{E}\\left[e^{tX}\\right]$, and state what $M_X(0)$ always equals.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "M_X(0) = E[e⁰] = E[1] = 1, for *every* distribution",
+          "description": "$M_X(0) = \\mathbb{E}\\left[e^0\\right] = \\mathbb{E}[1] = 1$, for *every* distribution",
           "weight": 1,
           "required": false
         }
@@ -61161,12 +61161,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "M_X′(0) equals:",
+    "stem": "$M_X'(0)$ equals:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X]",
+          "description": "$\\mathbb{E}[X]$",
           "weight": 1,
           "required": false
         }
@@ -61174,11 +61174,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks Var(X) — conflating the first derivative with the second",
+          "description": "picks $\\text{Var}(X)$ — conflating the first derivative with the second",
           "weight": 0,
           "misconception": {
             "id": "mgf--r2--misconception",
-            "description": "picks Var(X) — conflating the first derivative with the second",
+            "description": "picks $\\text{Var}(X)$ — conflating the first derivative with the second",
             "blameConceptId": "mgf"
           }
         }
@@ -61208,18 +61208,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X = 1 with probability p, 0 with probability 1−p. Find M_X(t) directly from the definition.",
+    "stem": "$X = 1$ with probability $p$, $0$ with probability $1-p$. Find $M_X(t)$ directly from the definition.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "M(t) = (1−p)e⁰ + pe^t = (1−p) + pe^t",
+          "description": "$M(t) = (1-p)e^0 + pe^t = (1-p) + pe^t$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "check M(0)=(1−p)+p=1 ✓",
+          "description": "check $M(0)=(1-p)+p=1$ ✓",
           "weight": 1,
           "required": false
         }
@@ -61249,12 +61249,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using A1's MGF, differentiate to recover E[X] and check it matches p.",
+    "stem": "Using A1’s MGF, differentiate to recover $\\mathbb{E}[X]$ and check it matches $p$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "M′(t) = pe^t; M′(0) = p = E[X], matching directly",
+          "description": "$M'(t) = pe^t$; $M'(0) = p = \\mathbb{E}[X]$, matching directly",
           "weight": 1,
           "required": false
         }
@@ -61284,24 +61284,24 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive M_X^{(k)}(0) = E[X^k] — the k-th derivative at 0 gives the k-th raw moment.",
+    "stem": "Derive $M_X^{(k)}(0) = \\mathbb{E}[X^k]$ — the $k$-th derivative at $0$ gives the $k$-th raw moment.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "differentiating e^{tX} k times with respect to t gives X^k e^{tX}",
+          "description": "differentiating $e^{tX}$ $k$ times with respect to $t$ gives $X^k e^{tX}$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "evaluating at t=0 leaves X^k",
+          "description": "evaluating at $t=0$ leaves $X^k$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "taking E[·] gives E[X^k]",
+          "description": "taking $\\mathbb{E}[\\cdot]$ gives $\\mathbb{E}[X^k]$",
           "weight": 1,
           "required": false
         }
@@ -61331,12 +61331,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why the MGF, when it exists in an interval around 0, uniquely determines the distribution — and why that makes it a useful *proof tool*.",
+    "stem": "Explain why the MGF, when it exists in an interval around $0$, uniquely determines the distribution — and why that makes it a useful *proof tool*.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the uniqueness theorem: two distributions with matching MGFs (on a common interval containing 0) are the same distribution",
+          "description": "the uniqueness theorem: two distributions with matching MGFs (on a common interval containing $0$) are the same distribution",
           "weight": 1,
           "required": true
         },
@@ -61372,12 +61372,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is the MGF sometimes called a distribution's \"fingerprint\"? Give a scenario where comparing two MGFs is easier than comparing two pmfs or pdfs directly.",
+    "stem": "Why is the MGF sometimes called a distribution’s “fingerprint”? Give a scenario where comparing two MGFs is easier than comparing two pmfs or pdfs directly.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "sums of independent random variables, and distributions defined only as limits, are both cases where algebra on MGFs (multiplying, or taking a limit of a single function of t) is far simpler than manipulating pmf/pdf expressions directly — this is exactly the machinery `mgf-properties` builds next",
+          "description": "sums of independent random variables, and distributions defined only as limits, are both cases where algebra on MGFs (multiplying, or taking a limit of a single function of $t$) is far simpler than manipulating pmf/pdf expressions directly — this is exactly the machinery `mgf-properties` builds next",
           "weight": 1,
           "required": false
         }
@@ -61407,18 +61407,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the MGF of X+Y for independent X, Y, and of aX+b in terms of M_X.",
+    "stem": "State the MGF of $X+Y$ for independent $X$, $Y$, and of $aX+b$ in terms of $M_X$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "M_{X+Y}(t) = M_X(t)M_Y(t) (independent only)",
+          "description": "$M_{X+Y}(t) = M_X(t)M_Y(t)$ (independent only)",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "M_{aX+b}(t) = e^{bt}M_X(at)",
+          "description": "$M_{aX+b}(t) = e^{bt}M_X(at)$",
           "weight": 1,
           "required": false
         }
@@ -61448,12 +61448,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The product rule M_{X+Y}(t) = M_X(t)M_Y(t) requires:",
+    "stem": "The product rule $M_{X+Y}(t) = M_X(t)M_Y(t)$ requires:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "X, Y independent",
+          "description": "$X$, $Y$ independent",
           "weight": 1,
           "required": false
         }
@@ -61461,11 +61461,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "claims it holds \"always\" — a genuinely easy over-generalization to make",
+          "description": "claims it holds “always” — a genuinely easy over-generalization to make",
           "weight": 0,
           "misconception": {
             "id": "mgf-properties--r2--misconception",
-            "description": "claims it holds \"always\" — a genuinely easy over-generalization to make",
+            "description": "claims it holds “always” — a genuinely easy over-generalization to make",
             "blameConceptId": "mgf-properties"
           }
         }
@@ -61495,12 +61495,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Given M_Poisson(λ)(t) = exp(λ(e^t−1)), find M_{X+Y}(t) for independent X~Poisson(λ), Y~Poisson(μ), and identify the resulting distribution.",
+    "stem": "Given $M_{\\text{Poisson}(\\lambda)}(t) = \\exp\\left(\\lambda(e^t-1)\\right)$, find $M_{X+Y}(t)$ for independent $X \\sim \\text{Poisson}(\\lambda)$, $Y \\sim \\text{Poisson}(\\mu)$, and identify the resulting distribution.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "M_{X+Y}(t) = exp(λ(e^t−1))·exp(μ(e^t−1)) = exp((λ+μ)(e^t−1)) — exactly Poisson(λ+μ)'s MGF, re-deriving `poisson-distribution`'s convolution result in one line",
+          "description": "$M_{X+Y}(t) = \\exp\\left(\\lambda(e^t-1)\\right)\\cdot\\exp\\left(\\mu(e^t-1)\\right) = \\exp\\left((\\lambda+\\mu)(e^t-1)\\right)$ — exactly $\\text{Poisson}(\\lambda+\\mu)$’s MGF, re-deriving `poisson-distribution`’s convolution result in one line",
           "weight": 1,
           "required": false
         }
@@ -61530,18 +61530,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Y₁,…,Yₙ are iid Bernoulli(p) with MGF (1−p)+pe^t (from `mgf`'s A1). Find the MGF of S=ΣYᵢ and identify its distribution.",
+    "stem": "$Y_1, \\ldots, Y_n$ are i.i.d. $\\text{Bernoulli}(p)$ with MGF $(1-p)+pe^t$ (from `mgf`’s A1). Find the MGF of $S=\\sum Y_i$ and identify its distribution.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "M_S(t) = [(1−p)+pe^t]ⁿ — exactly the Binomial(n,p) MGF",
+          "description": "$M_S(t) = \\left[(1-p)+pe^t\\right]^n$ — exactly the $\\text{Binomial}(n,p)$ MGF",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "by uniqueness, S ~ Binomial(n,p), reproducing the very first combinatorial fact in this bank without any counting argument at all",
+          "description": "by uniqueness, $S \\sim \\text{Binomial}(n,p)$, reproducing the very first combinatorial fact in this bank without any counting argument at all",
           "weight": 1,
           "required": false
         }
@@ -61571,18 +61571,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive M_{X+Y}(t)=M_X(t)M_Y(t) for independent X,Y from the definition.",
+    "stem": "Derive $M_{X+Y}(t)=M_X(t)M_Y(t)$ for independent $X$, $Y$ from the definition.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "M_{X+Y}(t) = E[e^{t(X+Y)}] = E[e^{tX}e^{tY}]",
+          "description": "$M_{X+Y}(t) = \\mathbb{E}\\left[e^{t(X+Y)}\\right] = \\mathbb{E}\\left[e^{tX}e^{tY}\\right]$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "since X,Y are independent, so are e^{tX} and e^{tY} (functions of independent variables), so E[e^{tX}e^{tY}] = E[e^{tX}]E[e^{tY}] = M_X(t)M_Y(t)",
+          "description": "since $X$, $Y$ are independent, so are $e^{tX}$ and $e^{tY}$ (functions of independent variables), so $\\mathbb{E}\\left[e^{tX}e^{tY}\\right] = \\mathbb{E}\\left[e^{tX}\\right]\\mathbb{E}\\left[e^{tY}\\right] = M_X(t)M_Y(t)$",
           "weight": 1,
           "required": false
         }
@@ -61617,13 +61617,13 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "e^{tX} grows exponentially in X",
+          "description": "$e^{tX}$ grows exponentially in $X$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "if a distribution's tails decay too slowly (e.g. only polynomially, as with Cauchy), E[e^{tX}] diverges to infinity for any t≠0, so the MGF simply doesn't exist near 0",
+          "description": "if a distribution’s tails decay too slowly (e.g. only polynomially, as with Cauchy), $\\mathbb{E}\\left[e^{tX}\\right]$ diverges to infinity for any $t\\ne 0$, so the MGF simply doesn’t exist near $0$",
           "weight": 1,
           "required": false
         }
@@ -61653,18 +61653,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using only the MGF product rule (not combinatorics), re-derive that the sum of n iid Bernoulli(p) is Binomial(n,p) — the fact this whole bank started with.",
+    "stem": "Using only the MGF product rule (not combinatorics), re-derive that the sum of $n$ i.i.d. $\\text{Bernoulli}(p)$ is $\\text{Binomial}(n,p)$ — the fact this whole bank started with.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "M_S(t) = [(1−p)+pe^t]ⁿ (from A2)",
+          "description": "$M_S(t) = \\left[(1-p)+pe^t\\right]^n$ (from A2)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "recognizing this as exactly the Binomial(n,p) MGF (itself obtainable from `binomial-theorem`: Σ C(n,k)(pe^t)^k(1−p)^{n−k} = ((1−p)+pe^t)ⁿ) means, by uniqueness, S must be Binomial(n,p)",
+          "description": "recognizing this as exactly the $\\text{Binomial}(n,p)$ MGF (itself obtainable from `binomial-theorem`: $\\sum_k \\binom{n}{k}(pe^t)^k(1-p)^{n-k} = \\left((1-p)+pe^t\\right)^n$) means, by uniqueness, $S$ must be $\\text{Binomial}(n,p)$",
           "weight": 1,
           "required": false
         }
@@ -61706,18 +61706,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define the likelihood L(θ) given observed data x, and state the key distinction from the probability P(x|θ).",
+    "stem": "Define the likelihood $L(\\theta)$ given observed data $x$, and state the key distinction from the probability $P(x \\mid \\theta)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "same formula p(x|θ) or f(x|θ)",
+          "description": "same formula $p(x \\mid \\theta)$ or $f(x \\mid \\theta)$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "probability varies x for *fixed* θ, likelihood varies θ for *fixed* (observed) x",
+          "description": "probability varies $x$ for *fixed* $\\theta$, likelihood varies $\\theta$ for *fixed* (observed) $x$",
           "weight": 1,
           "required": false
         }
@@ -61747,12 +61747,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Viewed as a function of θ, the likelihood L(θ):",
+    "stem": "Viewed as a function of $\\theta$, the likelihood $L(\\theta)$:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "is not generally a probability distribution over θ at all",
+          "description": "is not generally a probability distribution over $\\theta$ at all",
           "weight": 1,
           "required": false
         }
@@ -61760,11 +61760,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "claims L(θ) \"always integrates to 1 over θ\" — the single most consequential confusion in this topic",
+          "description": "claims $L(\\theta)$ “always integrates to $1$ over $\\theta$” — the single most consequential confusion in this topic",
           "weight": 0,
           "misconception": {
             "id": "likelihood-vs-probability--r2--misconception",
-            "description": "claims L(θ) \"always integrates to 1 over θ\" — the single most consequential confusion in this topic",
+            "description": "claims $L(\\theta)$ “always integrates to $1$ over $\\theta$” — the single most consequential confusion in this topic",
             "blameConceptId": "likelihood-vs-probability"
           }
         }
@@ -61794,12 +61794,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For n iid Bernoulli(θ) observations with k successes, write L(θ).",
+    "stem": "For $n$ i.i.d. $\\text{Bernoulli}(\\theta)$ observations with $k$ successes, write $L(\\theta)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "L(θ) = θᵏ(1−θ)ⁿ⁻ᵏ",
+          "description": "$L(\\theta) = \\theta^k(1-\\theta)^{n-k}$",
           "weight": 1,
           "required": false
         }
@@ -61807,11 +61807,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "writes θᵏ(1−θ)ᵏ, reusing k in both exponents",
+          "description": "writes $\\theta^k(1-\\theta)^k$, reusing $k$ in both exponents",
           "weight": 0,
           "misconception": {
             "id": "likelihood-vs-probability--a1--misconception",
-            "description": "writes θᵏ(1−θ)ᵏ, reusing k in both exponents",
+            "description": "writes $\\theta^k(1-\\theta)^k$, reusing $k$ in both exponents",
             "blameConceptId": "likelihood-vs-probability"
           }
         }
@@ -61841,12 +61841,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For n=10, k=7, compare L(0.5) and L(0.7) numerically — which θ is \"more likely\" given this data?",
+    "stem": "For $n=10$, $k=7$, compare $L(0.5)$ and $L(0.7)$ numerically — which $\\theta$ is “more likely” given this data?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "L(0.7) > L(0.5) — θ=0.7 is more likely, sensibly matching the observed proportion 7/10",
+          "description": "$L(0.7) > L(0.5)$ — $\\theta=0.7$ is more likely, sensibly matching the observed proportion $7/10$",
           "weight": 1,
           "required": false
         }
@@ -61876,18 +61876,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using A1's likelihood, show it is maximized at θ=k/n by differentiating log L(θ).",
+    "stem": "Using A1’s likelihood, show it is maximized at $\\theta=k/n$ by differentiating $\\log L(\\theta)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "log L(θ) = k ln θ + (n−k) ln(1−θ)",
+          "description": "$\\log L(\\theta) = k \\ln \\theta + (n-k) \\ln(1-\\theta)$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "derivative k/θ − (n−k)/(1−θ) = 0 ⟹ k(1−θ) = (n−k)θ ⟹ θ = k/n  — this is `mle` before that concept has a name",
+          "description": "derivative $\\dfrac{k}{\\theta} - \\dfrac{n-k}{1-\\theta} = 0 \\implies k(1-\\theta) = (n-k)\\theta \\implies \\theta = k/n$ — this is `mle` before that concept has a name",
           "weight": 1,
           "required": false
         }
@@ -61928,7 +61928,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "since log is strictly increasing, the maximizing θ is identical either way",
+          "description": "since $\\log$ is strictly increasing, the maximizing $\\theta$ is identical either way",
           "weight": 1,
           "required": false
         }
@@ -61958,18 +61958,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A headline claims: \"Scientists find θ=0.3 is the most probable value, with probability 0.6, based on the likelihood function.\" What's wrong with this statement?",
+    "stem": "A headline claims: “Scientists find $\\theta=0.3$ is the most probable value, with probability $0.6$, based on the likelihood function.” What’s wrong with this statement?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "it treats L(θ) as a probability distribution over θ, which R2 already showed it generally is not — L(θ) need not integrate to 1 over θ, so \"probability 0.6\" is meaningless as stated",
+          "description": "it treats $L(\\theta)$ as a probability distribution over $\\theta$, which R2 already showed it generally is not — $L(\\theta)$ need not integrate to $1$ over $\\theta$, so “probability $0.6$” is meaningless as stated",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "a genuine probability statement about θ requires Bayesian machinery (a prior, then Bayes' rule) to convert the likelihood into an actual posterior",
+          "description": "a genuine probability statement about $\\theta$ requires Bayesian machinery (a prior, then Bayes’ rule) to convert the likelihood into an actual posterior",
           "weight": 1,
           "required": false
         }
@@ -61977,11 +61977,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "accepts the headline's framing and tries to compute what \"probability 0.6\" might mean rather than identifying the category error",
+          "description": "accepts the headline’s framing and tries to compute what “probability $0.6$” might mean rather than identifying the category error",
           "weight": 0,
           "misconception": {
             "id": "likelihood-vs-probability--t1--misconception",
-            "description": "accepts the headline's framing and tries to compute what \"probability 0.6\" might mean rather than identifying the category error",
+            "description": "accepts the headline’s framing and tries to compute what “probability $0.6$” might mean rather than identifying the category error",
             "blameConceptId": "likelihood-vs-probability"
           }
         }
@@ -62046,12 +62046,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For a distribution with 2 unknown parameters, method of moments generally requires:",
+    "stem": "For a distribution with $2$ unknown parameters, method of moments generally requires:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "2 equations (matching the first two moments)",
+          "description": "$2$ equations (matching the first two moments)",
           "weight": 1,
           "required": false
         }
@@ -62093,12 +62093,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X~Exponential(λ), so E[X]=1/λ. Given sample mean X̄=4, find λ̂.",
+    "stem": "$X \\sim \\text{Exponential}(\\lambda)$, so $\\mathbb{E}[X]=1/\\lambda$. Given sample mean $\\bar{X}=4$, find $\\hat\\lambda$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "λ̂ = 1/4 = 0.25",
+          "description": "$\\hat\\lambda = 1/4 = 0.25$",
           "weight": 1,
           "required": false
         }
@@ -62128,12 +62128,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X~Uniform(0,θ), so E[X]=θ/2. Given X̄=6, find θ̂.",
+    "stem": "$X \\sim \\text{Uniform}(0,\\theta)$, so $\\mathbb{E}[X]=\\theta/2$. Given $\\bar{X}=6$, find $\\hat\\theta$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "θ̂ = 12",
+          "description": "$\\hat\\theta = 12$",
           "weight": 1,
           "required": false
         }
@@ -62163,18 +62163,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Method-of-moments estimators aren't unique in *how* you match moments. For Uniform(0,θ), derive the estimator you'd get by matching the *second* moment instead of the first, and show it's a genuinely different formula.",
+    "stem": "Method-of-moments estimators aren’t unique in *how* you match moments. For $\\text{Uniform}(0,\\theta)$, derive the estimator you’d get by matching the *second* moment instead of the first, and show it’s a genuinely different formula.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X²] = Var(X) + E[X]² = θ²/12 + θ²/4 = θ²/3",
+          "description": "$\\mathbb{E}[X^2] = \\text{Var}(X) + \\mathbb{E}[X]^2 = \\theta^2/12 + \\theta^2/4 = \\theta^2/3$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "setting the sample second moment m₂ = θ²/3 gives θ̂ = √(3m₂) — a different closed form from θ̂=2X̄, and generally a *different number* on the same finite sample",
+          "description": "setting the sample second moment $m_2 = \\theta^2/3$ gives $\\hat\\theta = \\sqrt{3m_2}$ — a different closed form from $\\hat\\theta=2\\bar{X}$, and generally a *different number* on the same finite sample",
           "weight": 1,
           "required": false
         }
@@ -62209,7 +62209,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "moments are simple functions of the data (sample averages) set equal to typically simple algebraic expressions in θ — often solvable by hand",
+          "description": "moments are simple functions of the data (sample averages) set equal to typically simple algebraic expressions in $\\theta$ — often solvable by hand",
           "weight": 1,
           "required": true
         },
@@ -62245,12 +62245,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For Gamma(α,β) (2 unknown parameters), set up the two method-of-moments equations using E[X]=α/β and E[X²]=α/β²+(α/β)². Why does having two unknowns require exactly two equations — no more, no fewer?",
+    "stem": "For $\\text{Gamma}(\\alpha,\\beta)$ ($2$ unknown parameters), set up the two method-of-moments equations using $\\mathbb{E}[X]=\\alpha/\\beta$ and $\\mathbb{E}[X^2]=\\alpha/\\beta^2+(\\alpha/\\beta)^2$. Why does having two unknowns require exactly two equations — no more, no fewer?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X]=α/β=X̄ and E[X²]=α/β²+(α/β)²=m₂ give two equations in two unknowns (α,β), solvable simultaneously",
+          "description": "$\\mathbb{E}[X]=\\alpha/\\beta=\\bar{X}$ and $\\mathbb{E}[X^2]=\\alpha/\\beta^2+(\\alpha/\\beta)^2=m_2$ give two equations in two unknowns ($\\alpha$, $\\beta$), solvable simultaneously",
           "weight": 1,
           "required": true
         },
@@ -62264,11 +62264,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "writes only the mean equation and tries to solve for both α and β from it alone",
+          "description": "writes only the mean equation and tries to solve for both $\\alpha$ and $\\beta$ from it alone",
           "weight": 0,
           "misconception": {
             "id": "method-of-moments--t1--misconception",
-            "description": "writes only the mean equation and tries to solve for both α and β from it alone",
+            "description": "writes only the mean equation and tries to solve for both $\\alpha$ and $\\beta$ from it alone",
             "blameConceptId": "method-of-moments"
           }
         }
@@ -62298,12 +62298,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define the MLE θ̂ in one sentence.",
+    "stem": "Define the MLE $\\hat\\theta$ in one sentence.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the value of θ that maximizes the likelihood L(θ) (equivalently, log L(θ)) given the observed data",
+          "description": "the value of $\\theta$ that maximizes the likelihood $L(\\theta)$ (equivalently, $\\log L(\\theta)$) given the observed data",
           "weight": 1,
           "required": false
         }
@@ -62333,12 +62333,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "*Invariance property*: if θ̂ is the MLE of θ, the MLE of g(θ) (any function g) is:",
+    "stem": "*Invariance property*: if $\\hat\\theta$ is the MLE of $\\theta$, the MLE of $g(\\theta)$ (any function $g$) is:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "g(θ̂)",
+          "description": "$g(\\hat\\theta)$",
           "weight": 1,
           "required": false
         }
@@ -62346,11 +62346,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "claims the MLE of g(θ) is \"unrelated to θ̂ in general\" — missing one of MLE's most useful properties",
+          "description": "claims the MLE of $g(\\theta)$ is “unrelated to $\\hat\\theta$ in general” — missing one of MLE’s most useful properties",
           "weight": 0,
           "misconception": {
             "id": "mle--r2--misconception",
-            "description": "claims the MLE of g(θ) is \"unrelated to θ̂ in general\" — missing one of MLE's most useful properties",
+            "description": "claims the MLE of $g(\\theta)$ is “unrelated to $\\hat\\theta$ in general” — missing one of MLE’s most useful properties",
             "blameConceptId": "mle"
           }
         }
@@ -62379,7 +62379,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "From `likelihood-vs-probability`'s derivation, θ̂=0.7 for n=10, k=7. Use *invariance* (not a fresh derivation) to find the MLE of the odds θ/(1−θ).",
+    "stem": "From `likelihood-vs-probability`’s derivation, $\\hat\\theta = 0.7$ for $n=10$, $k=7$. Use *invariance* (not a fresh derivation) to find the MLE of the odds $\\theta/(1-\\theta)$.",
     "answerKey": 2.333,
     "tolerance": 0.01,
     "difficulty": 0.5,
@@ -62406,12 +62406,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For a single X~Exponential(λ), find the MLE of λ by maximizing L(λ)=λe^{−λx}.",
+    "stem": "For a single $X \\sim \\text{Exponential}(\\lambda)$, find the MLE of $\\lambda$ by maximizing $L(\\lambda) = \\lambda e^{-\\lambda x}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "log L = ln λ − λx; derivative 1/λ − x = 0 ⟹ λ̂ = 1/x",
+          "description": "$\\log L = \\ln \\lambda - \\lambda x$; derivative $1/\\lambda - x = 0 \\implies \\hat\\lambda = 1/x$",
           "weight": 1,
           "required": false
         }
@@ -62441,12 +62441,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For n iid Exponential(λ) observations, derive λ̂ = 1/X̄, and note which other concept's estimator this exactly matches.",
+    "stem": "For $n$ i.i.d. $\\text{Exponential}(\\lambda)$ observations, derive $\\hat\\lambda = 1/\\bar{X}$, and note which other concept’s estimator this exactly matches.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "L(λ)=λⁿexp(−λΣxᵢ); log L = n ln λ − λΣxᵢ; derivative n/λ − Σxᵢ = 0 ⟹ λ̂ = n/Σxᵢ = 1/X̄ — identical to `method-of-moments`'s estimator for this same distribution",
+          "description": "$L(\\lambda) = \\lambda^n \\exp\\left(-\\lambda\\sum x_i\\right)$; $\\log L = n \\ln \\lambda - \\lambda\\sum x_i$; derivative $n/\\lambda - \\sum x_i = 0 \\implies \\hat\\lambda = n/\\sum x_i = 1/\\bar{X}$ — identical to `method-of-moments`’s estimator for this same distribution",
           "weight": 1,
           "required": true
         }
@@ -62476,18 +62476,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Argue informally why the invariance property holds for a *monotonic* g: if θ̂ maximizes L(θ), why must g(θ̂) maximize the likelihood re-expressed in terms of φ=g(θ)?",
+    "stem": "Argue informally why the invariance property holds for a *monotonic* $g$: if $\\hat\\theta$ maximizes $L(\\theta)$, why must $g(\\hat\\theta)$ maximize the likelihood re-expressed in terms of $\\phi = g(\\theta)$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "g monotonic means it's one-to-one, so maximizing over θ is exactly equivalent to maximizing over φ=g(θ) — it's the same search, just relabeled",
+          "description": "$g$ monotonic means it’s one-to-one, so maximizing over $\\theta$ is exactly equivalent to maximizing over $\\phi = g(\\theta)$ — it’s the same search, just relabeled",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "the maximizing φ is therefore g applied to the maximizing θ, i.e. g(θ̂)",
+          "description": "the maximizing $\\phi$ is therefore $g$ applied to the maximizing $\\theta$, i.e. $g(\\hat\\theta)$",
           "weight": 1,
           "required": false
         }
@@ -62517,18 +62517,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "MLE and Method of Moments give the *identical* estimator (1/X̄) for Exponential's rate. Is this a coincidence, or does it always happen? Give a distribution where the two methods disagree, and say why.",
+    "stem": "MLE and Method of Moments give the *identical* estimator ($1/\\bar{X}$) for Exponential’s rate. Is this a coincidence, or does it always happen? Give a distribution where the two methods disagree, and say why.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "not general — for Uniform(0,θ), the MLE is θ̂ = max(x₁,…,xₙ) (the smallest θ consistent with every observed point",
+          "description": "not general — for $\\text{Uniform}(0,\\theta)$, the MLE is $\\hat\\theta = \\max(x_1, \\ldots, x_n)$ (the smallest $\\theta$ consistent with every observed point",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "L(θ)=1/θⁿ for θ≥max(xᵢ) is *decreasing* in θ, so the max is achieved at the smallest feasible θ), which is nothing like Method of Moments' θ̂=2X̄",
+          "description": "$L(\\theta) = 1/\\theta^n$ for $\\theta \\ge \\max(x_i)$ is *decreasing* in $\\theta$, so the max is achieved at the smallest feasible $\\theta$), which is nothing like Method of Moments’ $\\hat\\theta = 2\\bar{X}$",
           "weight": 1,
           "required": false
         }
@@ -62575,7 +62575,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "θ̂ is unbiased if E[θ̂] = θ for *every* possible true value of θ",
+          "description": "$\\hat\\theta$ is unbiased if $\\mathbb{E}[\\hat\\theta] = \\theta$ for *every* possible true value of $\\theta$",
           "weight": 1,
           "required": false
         }
@@ -62618,11 +62618,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks (a) — `mle`'s Exponential estimator happens to be unbiased-adjacent in some cases, but MLE is *not* unbiased in general (the classic counterexample is next, in A2/E1)",
+          "description": "picks (a) — `mle`’s Exponential estimator happens to be unbiased-adjacent in some cases, but MLE is *not* unbiased in general (the classic counterexample is next, in A2/E1)",
           "weight": 0,
           "misconception": {
             "id": "unbiased-estimator--r2--misconception",
-            "description": "picks (a) — `mle`'s Exponential estimator happens to be unbiased-adjacent in some cases, but MLE is *not* unbiased in general (the classic counterexample is next, in A2/E1)",
+            "description": "picks (a) — `mle`’s Exponential estimator happens to be unbiased-adjacent in some cases, but MLE is *not* unbiased in general (the classic counterexample is next, in A2/E1)",
             "blameConceptId": "unbiased-estimator"
           }
         }
@@ -62652,12 +62652,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show X̄ = (1/n)ΣXᵢ is unbiased for μ=E[Xᵢ], using linearity of expectation.",
+    "stem": "Show $\\bar{X} = \\frac{1}{n}\\sum X_i$ is unbiased for $\\mu = \\mathbb{E}[X_i]$, using linearity of expectation.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X̄] = (1/n)ΣE[Xᵢ] = (1/n)(nμ) = μ",
+          "description": "$\\mathbb{E}[\\bar{X}] = \\frac{1}{n}\\sum \\mathbb{E}[X_i] = \\frac{1}{n}(n\\mu) = \\mu$",
           "weight": 1,
           "required": true
         }
@@ -62687,12 +62687,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The \"naive\" variance estimator (1/n)Σ(Xᵢ−X̄)² has E[·] = ((n−1)/n)σ². For n=5, σ²=10, find its bias.",
+    "stem": "The “naive” variance estimator $\\frac{1}{n}\\sum(X_i - \\bar{X})^2$ has $\\mathbb{E}[\\cdot] = \\frac{n-1}{n}\\sigma^2$. For $n=5$, $\\sigma^2=10$, find its bias.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "bias = ((n−1)/n)σ² − σ² = −σ²/n = −10/5 = −2 — the naive estimator *underestimates* σ² by 2 on average at this sample size",
+          "description": "bias $= \\frac{n-1}{n}\\sigma^2 - \\sigma^2 = -\\sigma^2/n = -10/5 = -2$ — the naive estimator *underestimates* $\\sigma^2$ by $2$ on average at this sample size",
           "weight": 1,
           "required": false
         }
@@ -62700,11 +62700,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "assumes any \"reasonable-looking\" estimator built from an average must be unbiased",
+          "description": "assumes any “reasonable-looking” estimator built from an average must be unbiased",
           "weight": 0,
           "misconception": {
             "id": "unbiased-estimator--a2--misconception",
-            "description": "assumes any \"reasonable-looking\" estimator built from an average must be unbiased",
+            "description": "assumes any “reasonable-looking” estimator built from an average must be unbiased",
             "blameConceptId": "unbiased-estimator"
           }
         }
@@ -62734,12 +62734,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove E[(1/n)Σ(Xᵢ−X̄)²] = ((n−1)/n)σ², using the identity Σ(Xᵢ−X̄)² = Σ(Xᵢ−μ)² − n(X̄−μ)².",
+    "stem": "Prove $\\mathbb{E}\\left[\\frac{1}{n}\\sum(X_i - \\bar{X})^2\\right] = \\frac{n-1}{n}\\sigma^2$, using the identity $\\sum(X_i - \\bar{X})^2 = \\sum(X_i - \\mu)^2 - n(\\bar{X} - \\mu)^2$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[Σ(Xᵢ−μ)²] = nσ²; E[n(X̄−μ)²] = n·Var(X̄) = n·(σ²/n) = σ²; subtracting gives E[Σ(Xᵢ−X̄)²] = nσ²−σ² = (n−1)σ²; dividing by n gives the result `[verified: matches simulation to 3 sig figs]`  — this is exactly why the (n−1) (Bessel's) correction exists",
+          "description": "$\\mathbb{E}\\left[\\sum(X_i - \\mu)^2\\right] = n\\sigma^2$; $\\mathbb{E}\\left[n(\\bar{X} - \\mu)^2\\right] = n\\cdot\\text{Var}(\\bar{X}) = n\\cdot\\frac{\\sigma^2}{n} = \\sigma^2$; subtracting gives $\\mathbb{E}\\left[\\sum(X_i - \\bar{X})^2\\right] = n\\sigma^2 - \\sigma^2 = (n-1)\\sigma^2$; dividing by $n$ gives the result `[verified: matches simulation to 3 sig figs]` — this is exactly why the $(n-1)$ (Bessel’s) correction exists",
           "weight": 1,
           "required": true
         }
@@ -62769,12 +62769,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain *intuitively* why using X̄ (an estimate) instead of the true μ systematically makes the naive estimator underestimate spread.",
+    "stem": "Explain *intuitively* why using $\\bar{X}$ (an estimate) instead of the true $\\mu$ systematically makes the naive estimator underestimate spread.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "X̄ is, by construction, the value of c that *minimizes* Σ(Xᵢ−c)² over all choices of c — so plugging in the true (unknown) μ instead would give a sum of squared deviations at least as large",
+          "description": "$\\bar{X}$ is, by construction, the value of $c$ that *minimizes* $\\sum(X_i - c)^2$ over all choices of $c$ — so plugging in the true (unknown) $\\mu$ instead would give a sum of squared deviations at least as large",
           "weight": 1,
           "required": true
         },
@@ -62810,7 +62810,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A junior analyst divides by n \"because that's literally the definition of an average\"; their boss insists on n−1. Who's right, and does it matter much for n=1000 vs n=5?",
+    "stem": "A junior analyst divides by $n$ “because that’s literally the definition of an average”; their boss insists on $n-1$. Who’s right, and does it matter much for $n=1000$ vs $n=5$?",
     "rubric": {
       "elements": [
         {
@@ -62821,7 +62821,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "the practical gap shrinks as n grows — (n−1)/n = 0.8 at n=5 (a 20% average underestimate) but 0.999 at n=1000 (negligible)",
+          "description": "the practical gap shrinks as $n$ grows — $\\frac{n-1}{n} = 0.8$ at $n=5$ (a $20\\%$ average underestimate) but $0.999$ at $n=1000$ (negligible)",
           "weight": 1,
           "required": false
         }
@@ -62829,11 +62829,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "treats the correction as \"always negligible\" or \"always essential,\" without the sample-size-dependence",
+          "description": "treats the correction as “always negligible” or “always essential”, without the sample-size-dependence",
           "weight": 0,
           "misconception": {
             "id": "unbiased-estimator--t1--misconception",
-            "description": "treats the correction as \"always negligible\" or \"always essential,\" without the sample-size-dependence",
+            "description": "treats the correction as “always negligible” or “always essential”, without the sample-size-dependence",
             "blameConceptId": "unbiased-estimator"
           }
         }
@@ -62863,12 +62863,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the 1-D change-of-variables formula for Y=g(X), g strictly monotonic and differentiable.",
+    "stem": "State the 1-D change-of-variables formula for $Y = g(X)$, $g$ strictly monotonic and differentiable.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "f_Y(y) = f_X(g⁻¹(y))·|d/dy g⁻¹(y)|",
+          "description": "$f_Y(y) = f_X\\left(g^{-1}(y)\\right)\\cdot\\left|\\frac{d}{dy} g^{-1}(y)\\right|$",
           "weight": 1,
           "required": false
         }
@@ -62898,12 +62898,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For *non*-monotonic g (e.g. g(x)=x²), the formula:",
+    "stem": "For *non*-monotonic $g$ (e.g. $g(x) = x^2$), the formula:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "needs to sum contributions from every x-branch mapping to the same y",
+          "description": "needs to sum contributions from every $x$-branch mapping to the same $y$",
           "weight": 1,
           "required": false
         }
@@ -62945,12 +62945,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X~Uniform(0,1), Y=−ln(X). Find f_Y(y) and identify the distribution.",
+    "stem": "$X \\sim \\text{Uniform}(0,1)$, $Y = -\\ln X$. Find $f_Y(y)$ and identify the distribution.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "g⁻¹(y)=e⁻ʸ; |d/dy e⁻ʸ|=e⁻ʸ; f_X(e⁻ʸ)=1 for 0<e⁻ʸ<1 i.e. y>0; f_Y(y)=e⁻ʸ for y>0 — **exactly Exponential(1)**",
+          "description": "$g^{-1}(y) = e^{-y}$; $\\left|\\frac{d}{dy} e^{-y}\\right| = e^{-y}$; $f_X(e^{-y}) = 1$ for $0 < e^{-y} < 1$, i.e. $y > 0$; $f_Y(y) = e^{-y}$ for $y > 0$ — **exactly $\\text{Exponential}(1)$**",
           "weight": 1,
           "required": false
         }
@@ -62958,11 +62958,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "forgets the support restriction (y>0) that comes from X's own support",
+          "description": "forgets the support restriction ($y > 0$) that comes from $X$’s own support",
           "weight": 0,
           "misconception": {
             "id": "distribution-transformations--a1--misconception",
-            "description": "forgets the support restriction (y>0) that comes from X's own support",
+            "description": "forgets the support restriction ($y > 0$) that comes from $X$’s own support",
             "blameConceptId": "distribution-transformations"
           }
         }
@@ -62992,12 +62992,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X~N(0,1), Y=X². Using the two-branch rule from R2, set up f_Y(y) for y>0 (no need to simplify to the named χ²₁ constant).",
+    "stem": "$X \\sim \\mathcal{N}(0,1)$, $Y = X^2$. Using the two-branch rule from R2, set up $f_Y(y)$ for $y > 0$ (no need to simplify to the named $\\chi^2_1$ constant).",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "f_Y(y) = φ(√y)·(1/(2√y)) + φ(−√y)·(1/(2√y)) = φ(√y)/√y (using φ even) — this matches `chi-square-distribution`'s χ²₁ density, closing the loop from that cluster",
+          "description": "$f_Y(y) = \\varphi(\\sqrt{y})\\cdot\\frac{1}{2\\sqrt{y}} + \\varphi(-\\sqrt{y})\\cdot\\frac{1}{2\\sqrt{y}} = \\frac{\\varphi(\\sqrt{y})}{\\sqrt{y}}$ (using $\\varphi$ even) — this matches `chi-square-distribution`’s $\\chi^2_1$ density, closing the loop from that cluster",
           "weight": 1,
           "required": false
         }
@@ -63005,11 +63005,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "uses only one branch (x=√y), missing x=−√y entirely, halving the density",
+          "description": "uses only one branch ($x = \\sqrt{y}$), missing $x = -\\sqrt{y}$ entirely, halving the density",
           "weight": 0,
           "misconception": {
             "id": "distribution-transformations--a2--misconception",
-            "description": "uses only one branch (x=√y), missing x=−√y entirely, halving the density",
+            "description": "uses only one branch ($x = \\sqrt{y}$), missing $x = -\\sqrt{y}$ entirely, halving the density",
             "blameConceptId": "distribution-transformations"
           }
         }
@@ -63039,18 +63039,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove the change-of-variables formula for monotonic *increasing* g, via the CDF.",
+    "stem": "Prove the change-of-variables formula for monotonic *increasing* $g$, via the CDF.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "F_Y(y)=P(g(X)≤y)=P(X≤g⁻¹(y))=F_X(g⁻¹(y))",
+          "description": "$F_Y(y) = P(g(X) \\le y) = P\\left(X \\le g^{-1}(y)\\right) = F_X\\left(g^{-1}(y)\\right)$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "differentiate both sides in y via the chain rule to get f_Y(y)=f_X(g⁻¹(y))·(g⁻¹)′(y)  — this is the exact technique `normal-distribution`'s E1 used to standardize Z, proved here as the general theorem it was secretly a special case of",
+          "description": "differentiate both sides in $y$ via the chain rule to get $f_Y(y) = f_X\\left(g^{-1}(y)\\right)\\cdot\\left(g^{-1}\\right)'(y)$ — this is the exact technique `normal-distribution`’s E1 used to standardize $Z$, proved here as the general theorem it was secretly a special case of",
           "weight": 1,
           "required": false
         }
@@ -63080,7 +63080,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why does the formula need |·| around the derivative, rather than the signed derivative?",
+    "stem": "Why does the formula need $|\\cdot|$ around the derivative, rather than the signed derivative?",
     "rubric": {
       "elements": [
         {
@@ -63091,7 +63091,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "for g *decreasing*, the CDF derivation flips a direction (P(X≤g⁻¹(y)) becomes P(X≥g⁻¹(y))), introducing a sign that the absolute value correctly absorbs regardless of whether g is increasing or decreasing",
+          "description": "for $g$ *decreasing*, the CDF derivation flips a direction ($P\\left(X \\le g^{-1}(y)\\right)$ becomes $P\\left(X \\ge g^{-1}(y)\\right)$), introducing a sign that the absolute value correctly absorbs regardless of whether $g$ is increasing or decreasing",
           "weight": 1,
           "required": false
         }
@@ -63121,18 +63121,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Computers generate Uniform(0,1) numbers natively but need other distributions for simulation. Using A1, explain how a computer can produce an Exponential(1) draw from a Uniform(0,1) draw — and why this trick (inverse transform sampling) generalizes to *any* target distribution with an invertible CDF.",
+    "stem": "Computers generate $\\text{Uniform}(0,1)$ numbers natively but need other distributions for simulation. Using A1, explain how a computer can produce an $\\text{Exponential}(1)$ draw from a $\\text{Uniform}(0,1)$ draw — and why this trick (inverse transform sampling) generalizes to *any* target distribution with an invertible CDF.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "generate U~Uniform(0,1), output Y=−ln(U) (exactly A1, run in reverse)",
+          "description": "generate $U \\sim \\text{Uniform}(0,1)$, output $Y = -\\ln U$ (exactly A1, run in reverse)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "more generally, if U~Uniform(0,1), then Y=F⁻¹(U) has CDF F for *any* invertible target CDF F — the general statement this specific trick is an instance of *(required: states the general F⁻¹(U) fact, not just the Exponential special case)* — this is a real building block of random-number-generation libraries",
+          "description": "more generally, if $U \\sim \\text{Uniform}(0,1)$, then $Y = F^{-1}(U)$ has CDF $F$ for *any* invertible target CDF $F$ — the general statement this specific trick is an instance of *(required: states the general $F^{-1}(U)$ fact, not just the Exponential special case)* — this is a real building block of random-number-generation libraries",
           "weight": 1,
           "required": false
         }
@@ -63140,11 +63140,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "treats A1's trick as specific to Exponential, without generalizing to F⁻¹(U)",
+          "description": "treats A1’s trick as specific to Exponential, without generalizing to $F^{-1}(U)$",
           "weight": 0,
           "misconception": {
             "id": "distribution-transformations--t1--misconception",
-            "description": "treats A1's trick as specific to Exponential, without generalizing to F⁻¹(U)",
+            "description": "treats A1’s trick as specific to Exponential, without generalizing to $F^{-1}(U)$",
             "blameConceptId": "distribution-transformations"
           }
         }
@@ -63179,7 +63179,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "f(x;θ) = h(x)·exp(η(θ)T(x) − A(θ))",
+          "description": "$f(x;\\theta) = h(x)\\exp\\left(\\eta(\\theta)T(x) - A(\\theta)\\right)$",
           "weight": 1,
           "required": false
         }
@@ -63214,7 +63214,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "Uniform(0,θ) — because its support depends on θ",
+          "description": "$\\text{Uniform}(0,\\theta)$ — because its support depends on $\\theta$",
           "weight": 1,
           "required": false
         }
@@ -63256,18 +63256,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Write Bernoulli(θ) in exponential family form, identifying h(x), η(θ), T(x), A(θ).",
+    "stem": "Write $\\text{Bernoulli}(\\theta)$ in exponential family form, identifying $h(x)$, $\\eta(\\theta)$, $T(x)$, $A(\\theta)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "θˣ(1−θ)¹⁻ˣ = exp(x·ln(θ/(1−θ)) + ln(1−θ))",
+          "description": "$\\theta^x(1-\\theta)^{1-x} = \\exp\\left(x\\ln\\dfrac{\\theta}{1-\\theta} + \\ln(1-\\theta)\\right)$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "h(x)=1, η(θ)=ln(θ/(1−θ)) (the *logit*), T(x)=x, A(θ)=−ln(1−θ) *(required: the logit must appear as η(θ), not just \"some function of θ\")*",
+          "description": "$h(x)=1$, $\\eta(\\theta)=\\ln\\dfrac{\\theta}{1-\\theta}$ (the *logit*), $T(x)=x$, $A(\\theta)=-\\ln(1-\\theta)$ *(required: the logit must appear as $\\eta(\\theta)$, not just “some function of $\\theta$”)*",
           "weight": 1,
           "required": false
         }
@@ -63297,18 +63297,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Write Poisson(λ) in exponential family form.",
+    "stem": "Write $\\text{Poisson}(\\lambda)$ in exponential family form.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "e⁻ᵠλˣ/x! = (1/x!)exp(x ln λ − λ)",
+          "description": "$\\dfrac{e^{-\\lambda}\\lambda^x}{x!} = \\dfrac{1}{x!}\\exp(x\\ln\\lambda - \\lambda)$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "h(x)=1/x!, η(λ)=ln λ, T(x)=x, A(λ)=λ",
+          "description": "$h(x)=1/x!$, $\\eta(\\lambda)=\\ln\\lambda$, $T(x)=x$, $A(\\lambda)=\\lambda$",
           "weight": 1,
           "required": false
         }
@@ -63338,18 +63338,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why Uniform(0,θ) fails to be exponential family, connecting it to `mle`'s earlier finding about its MLE.",
+    "stem": "Explain why $\\text{Uniform}(0,\\theta)$ fails to be exponential family, connecting it to `mle`’s earlier finding about its MLE.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "exponential family densities require the support to *not* depend on θ",
+          "description": "exponential family densities require the support to *not* depend on $\\theta$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "Uniform(0,θ)'s support [0,θ] depends on θ directly, disqualifying it — and this is exactly why its MLE (θ̂=max(xᵢ), from `mle`'s T1) is a boundary/max solution rather than the smooth calculus solution (derivative=0) that exponential-family MLEs typically produce",
+          "description": "$\\text{Uniform}(0,\\theta)$’s support $[0,\\theta]$ depends on $\\theta$ directly, disqualifying it — and this is exactly why its MLE ($\\hat\\theta=\\max(x_i)$, from `mle`’s T1) is a boundary/max solution rather than the smooth calculus solution (derivative $=0$) that exponential-family MLEs typically produce",
           "weight": 1,
           "required": false
         }
@@ -63379,18 +63379,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "What does T(x) represent inside the exponential form, informally (without yet defining sufficiency formally)?",
+    "stem": "What does $T(x)$ represent inside the exponential form, informally (without yet defining sufficiency formally)?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "for Bernoulli, T(x)=x itself",
+          "description": "for Bernoulli, $T(x)=x$ itself",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "for a sample of n iid Bernoullis, the sum Σxᵢ turns out to be the *only* thing about the data that ends up mattering for inference about θ — a first, informal look at what `sufficient-statistic` will name precisely",
+          "description": "for a sample of $n$ i.i.d. Bernoullis, the sum $\\sum x_i$ turns out to be the *only* thing about the data that ends up mattering for inference about $\\theta$ — a first, informal look at what `sufficient-statistic` will name precisely",
           "weight": 1,
           "required": false
         }
@@ -63425,7 +63425,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "moments can be computed uniformly via derivatives of A(θ) (the log-partition function) instead of a fresh calculation per distribution",
+          "description": "moments can be computed uniformly via derivatives of $A(\\theta)$ (the log-partition function) instead of a fresh calculation per distribution",
           "weight": 1,
           "required": true
         },
@@ -63445,11 +63445,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "states only that it's \"mathematically elegant\" without naming a concrete downstream use",
+          "description": "states only that it’s “mathematically elegant” without naming a concrete downstream use",
           "weight": 0,
           "misconception": {
             "id": "exponential-family--t1--misconception",
-            "description": "states only that it's \"mathematically elegant\" without naming a concrete downstream use",
+            "description": "states only that it’s “mathematically elegant” without naming a concrete downstream use",
             "blameConceptId": "exponential-family"
           }
         }
@@ -78259,7 +78259,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "a function from the sample space Ω to the real numbers",
+          "description": "a function from the sample space $\\Omega$ to the real numbers",
           "weight": 1,
           "required": false
         }
@@ -78267,11 +78267,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"a variable that changes randomly over time\" — treating X as an intrinsically random quantity rather than a deterministic function of the outcome ω",
+          "description": "picks “a variable that changes randomly over time” — treating $X$ as an intrinsically random quantity rather than a deterministic function of the outcome $\\omega$",
           "weight": 0,
           "misconception": {
             "id": "random-variables--r1--misconception",
-            "description": "picks \"a variable that changes randomly over time\" — treating X as an intrinsically random quantity rather than a deterministic function of the outcome ω",
+            "description": "picks “a variable that changes randomly over time” — treating $X$ as an intrinsically random quantity rather than a deterministic function of the outcome $\\omega$",
             "blameConceptId": "random-variables"
           }
         }
@@ -78301,18 +78301,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why must X satisfy a measurability condition — that {ω: X(ω)≤x} is an event for every x — rather than being an arbitrary function Ω→ℝ?",
+    "stem": "Why must $X$ satisfy a measurability condition — that $\\{\\omega : X(\\omega) \\le x\\}$ is an event for every $x$ — rather than being an arbitrary function $\\Omega \\to \\mathbb{R}$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "so that P(X≤x) is well-defined",
+          "description": "so that $P(X \\le x)$ is well-defined",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "if the preimage weren't in the σ-algebra, we couldn't assign it a probability at all",
+          "description": "if the preimage weren’t in the $\\sigma$-algebra, we couldn’t assign it a probability at all",
           "weight": 1,
           "required": false
         }
@@ -78342,12 +78342,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Ω={HH,HT,TH,TT} (fair coin twice), X = number of heads. Give the range of X and P(X=x) for each x.",
+    "stem": "$\\Omega = \\{HH, HT, TH, TT\\}$ (fair coin twice), $X$ = number of heads. Give the range of $X$ and $P(X = x)$ for each $x$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "X∈{0,1,2}; P(0)=1/4, P(1)=1/2, P(2)=1/4",
+          "description": "$X \\in \\{0, 1, 2\\}$; $P(0) = 1/4$, $P(1) = 1/2$, $P(2) = 1/4$",
           "weight": 1,
           "required": false
         }
@@ -78355,11 +78355,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "lists 4 outcomes as 4 values of X, not noticing HT and TH collapse to the same X-value",
+          "description": "lists $4$ outcomes as $4$ values of $X$, not noticing $HT$ and $TH$ collapse to the same $X$-value",
           "weight": 0,
           "misconception": {
             "id": "random-variables--a1--misconception",
-            "description": "lists 4 outcomes as 4 values of X, not noticing HT and TH collapse to the same X-value",
+            "description": "lists $4$ outcomes as $4$ values of $X$, not noticing $HT$ and $TH$ collapse to the same $X$-value",
             "blameConceptId": "random-variables"
           }
         }
@@ -78389,12 +78389,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Two dice are rolled. X = sum, Y = max. Give the range of each — note they differ even though both are defined on the same Ω.",
+    "stem": "Two dice are rolled. $X$ = sum, $Y$ = max. Give the range of each — note they differ even though both are defined on the same $\\Omega$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "X∈{2,…,12}; Y∈{1,…,6}",
+          "description": "$X \\in \\{2, \\ldots, 12\\}$; $Y \\in \\{1, \\ldots, 6\\}$",
           "weight": 1,
           "required": false
         }
@@ -78424,12 +78424,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show that events like {a<X≤b} can be built from events of the form {X≤c}.",
+    "stem": "Show that events like $\\{a < X \\le b\\}$ can be built from events of the form $\\{X \\le c\\}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "{a<X≤b} = {X≤b} ∖ {X≤a}  — this is the fact that later makes the CDF alone sufficient to answer every question about X",
+          "description": "$\\{a < X \\le b\\} = \\{X \\le b\\} \\setminus \\{X \\le a\\}$ — this is the fact that later makes the CDF alone sufficient to answer every question about $X$",
           "weight": 1,
           "required": true
         }
@@ -78459,24 +78459,24 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain the distinction between the random variable X (a function) and a value x it might take, and why P(X=x) only parses once you keep the two separate.",
+    "stem": "Explain the distinction between the random variable $X$ (a function) and a value $x$ it might take, and why $P(X = x)$ only parses once you keep the two separate.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "X is the pre-experiment function",
+          "description": "$X$ is the pre-experiment function",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "x is a fixed real number",
+          "description": "$x$ is a fixed real number",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "P(X=x) is shorthand for P({ω : X(ω)=x})",
+          "description": "$P(X = x)$ is shorthand for $P(\\{\\omega : X(\\omega) = x\\})$",
           "weight": 1,
           "required": false
         }
@@ -78484,11 +78484,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "writes \"P(X)\" as if X itself were a probability",
+          "description": "writes “$P(X)$” as if $X$ itself were a probability",
           "weight": 0,
           "misconception": {
             "id": "random-variables--e2--misconception",
-            "description": "writes \"P(X)\" as if X itself were a probability",
+            "description": "writes “$P(X)$” as if $X$ itself were a probability",
             "blameConceptId": "random-variables"
           }
         }
@@ -78518,12 +78518,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A forecaster says \"30% chance of rain tomorrow, and if it rains, some amount will fall.\" Model this with a single random variable Y = rainfall amount (0 if no rain). Explain why Y needs both a discrete \"spike\" of probability at 0 *and* a continuous spread over positive values — you don't need to compute anything, just describe the shape.",
+    "stem": "A forecaster says “$30\\%$ chance of rain tomorrow, and if it rains, some amount will fall.” Model this with a single random variable $Y$ = rainfall amount ($0$ if no rain). Explain why $Y$ needs both a discrete “spike” of probability at $0$ *and* a continuous spread over positive values — you don’t need to compute anything, just describe the shape.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "identifies Y as neither purely discrete nor purely continuous: P(Y=0) > 0 is a genuine point mass, while the rainfall-given-rain part spreads continuously over (0,∞)  — this is the seed of the discrete/continuous distinction the next concept makes precise",
+          "description": "identifies $Y$ as neither purely discrete nor purely continuous: $P(Y = 0) > 0$ is a genuine point mass, while the rainfall-given-rain part spreads continuously over $(0, \\infty)$ — this is the seed of the discrete/continuous distinction the next concept makes precise",
           "weight": 1,
           "required": true
         }
@@ -78570,7 +78570,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "P(X=x) = 0 for every single value x",
+          "description": "$P(X = x) = 0$ for every single value $x$",
           "weight": 1,
           "required": false
         }
@@ -78578,11 +78578,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"takes non-integer values\" — conflating *continuous* with *not an integer* (a variable taking values in {0.5, 1.5, 2.5, …} is still discrete)",
+          "description": "picks “takes non-integer values” — conflating *continuous* with *not an integer* (a variable taking values in $\\{0.5, 1.5, 2.5, \\ldots\\}$ is still discrete)",
           "weight": 0,
           "misconception": {
             "id": "discrete-vs-continuous-random-variables--r1--misconception",
-            "description": "picks \"takes non-integer values\" — conflating *continuous* with *not an integer* (a variable taking values in {0.5, 1.5, 2.5, …} is still discrete)",
+            "description": "picks “takes non-integer values” — conflating *continuous* with *not an integer* (a variable taking values in $\\{0.5, 1.5, 2.5, \\ldots\\}$ is still discrete)",
             "blameConceptId": "discrete-vs-continuous-random-variables"
           }
         }
@@ -78617,7 +78617,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "e.g. insurance claim size: P(claim = 0) > 0 (no claim filed), with a continuous spread over claim > 0 — the T1 example from the previous concept, now named",
+          "description": "e.g. insurance claim size: $P(\\text{claim} = 0) > 0$ (no claim filed), with a continuous spread over $\\text{claim} > 0$ — the T1 example from the previous concept, now named",
           "weight": 1,
           "required": false
         }
@@ -78647,7 +78647,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Classify each as discrete or continuous: (a) number of defective items in a batch of 100 (b) time until a server crashes (c) number of typos on a page (d) a room's temperature measured with infinite precision.",
+    "stem": "Classify each as discrete or continuous: (a) number of defective items in a batch of $100$ (b) time until a server crashes (c) number of typos on a page (d) a room’s temperature measured with infinite precision.",
     "rubric": {
       "elements": [
         {
@@ -78660,11 +78660,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "classifies (b) as discrete because \"time\" is often measured in discrete units (seconds) in practice",
+          "description": "classifies (b) as discrete because “time” is often measured in discrete units (seconds) in practice",
           "weight": 0,
           "misconception": {
             "id": "discrete-vs-continuous-random-variables--a1--misconception",
-            "description": "classifies (b) as discrete because \"time\" is often measured in discrete units (seconds) in practice",
+            "description": "classifies (b) as discrete because “time” is often measured in discrete units (seconds) in practice",
             "blameConceptId": "discrete-vs-continuous-random-variables"
           }
         }
@@ -78694,7 +78694,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X takes values in the countably *infinite* set {1, 2, 3, …}. Is X discrete? Why doesn't \"discrete\" mean \"finite\"?",
+    "stem": "$X$ takes values in the countably *infinite* set $\\{1, 2, 3, \\ldots\\}$. Is $X$ discrete? Why doesn’t “discrete” mean “finite”?",
     "rubric": {
       "elements": [
         {
@@ -78729,7 +78729,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Without invoking a density function, explain why it doesn't make sense for a *continuous* random variable to assign positive probability to every individual value — use X = the exact height of a randomly chosen adult (infinite precision) as the example.",
+    "stem": "Without invoking a density function, explain why it doesn’t make sense for a *continuous* random variable to assign positive probability to every individual value — use $X$ = the exact height of a randomly chosen adult (infinite precision) as the example.",
     "rubric": {
       "elements": [
         {
@@ -78740,7 +78740,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "if each carried probability p>0, even countably many of them would already force total probability above 1, contradicting P(Ω)=1",
+          "description": "if each carried probability $p > 0$, even countably many of them would already force total probability above $1$, contradicting $P(\\Omega) = 1$",
           "weight": 1,
           "required": false
         }
@@ -78775,7 +78775,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "countably many point masses can be summed via countable additivity to exhaust probability 1",
+          "description": "countably many point masses can be summed via countable additivity to exhaust probability $1$",
           "weight": 1,
           "required": true
         },
@@ -78811,7 +78811,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A stock's daily return has a CDF that jumps by exactly 0.05 at return = −10% (a \"circuit breaker\" halts trading and clusters losses at exactly that value) and is otherwise smooth everywhere else. Is the underlying random variable discrete, continuous, or neither?",
+    "stem": "A stock’s daily return has a CDF that jumps by exactly $0.05$ at $\\text{return} = -10\\%$ (a “circuit breaker” halts trading and clusters losses at exactly that value) and is otherwise smooth everywhere else. Is the underlying random variable discrete, continuous, or neither?",
     "rubric": {
       "elements": [
         {
@@ -78858,12 +78858,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define the CDF of a random variable X.",
+    "stem": "Define the CDF of a random variable $X$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "F(x) = P(X ≤ x) for every real x",
+          "description": "$F(x) = P(X \\le x)$ for every real $x$",
           "weight": 1,
           "required": false
         }
@@ -78871,11 +78871,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "defines it with strict inequality P(X<x)",
+          "description": "defines it with strict inequality $P(X < x)$",
           "weight": 0,
           "misconception": {
             "id": "cdf--r1--misconception",
-            "description": "defines it with strict inequality P(X<x)",
+            "description": "defines it with strict inequality $P(X < x)$",
             "blameConceptId": "cdf"
           }
         }
@@ -78910,7 +78910,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "non-decreasing; right-continuous; F(x)→0 as x→−∞; F(x)→1 as x→+∞",
+          "description": "non-decreasing; right-continuous; $F(x) \\to 0$ as $x \\to -\\infty$; $F(x) \\to 1$ as $x \\to +\\infty$",
           "weight": 1,
           "required": false
         }
@@ -78918,11 +78918,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "\"must be continuous everywhere\" picked as required — true only when X is purely continuous, not in general",
+          "description": "“must be continuous everywhere” picked as required — true only when $X$ is purely continuous, not in general",
           "weight": 0,
           "misconception": {
             "id": "cdf--r2--misconception",
-            "description": "\"must be continuous everywhere\" picked as required — true only when X is purely continuous, not in general",
+            "description": "“must be continuous everywhere” picked as required — true only when $X$ is purely continuous, not in general",
             "blameConceptId": "cdf"
           }
         }
@@ -78952,12 +78952,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "X takes value 0 with probability 0.3 and value 1 with probability 0.7. Describe F(x) for all x.",
+    "stem": "$X$ takes value $0$ with probability $0.3$ and value $1$ with probability $0.7$. Describe $F(x)$ for all $x$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "F(x)=0 for x<0; F(x)=0.3 for 0≤x<1; F(x)=1 for x≥1 — a step function with jumps at the values X can take",
+          "description": "$F(x) = 0$ for $x < 0$; $F(x) = 0.3$ for $0 \\le x < 1$; $F(x) = 1$ for $x \\ge 1$ — a step function with jumps at the values $X$ can take",
           "weight": 1,
           "required": false
         }
@@ -78965,11 +78965,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "draws F as continuous, smoothing over the jumps",
+          "description": "draws $F$ as continuous, smoothing over the jumps",
           "weight": 0,
           "misconception": {
             "id": "cdf--a1--misconception",
-            "description": "draws F as continuous, smoothing over the jumps",
+            "description": "draws $F$ as continuous, smoothing over the jumps",
             "blameConceptId": "cdf"
           }
         }
@@ -78999,12 +78999,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using the F from A1, find P(X≤0.5), P(X<1), and P(X=1).",
+    "stem": "Using the $F$ from A1, find $P(X \\le 0.5)$, $P(X < 1)$, and $P(X = 1)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "F(0.5)=0.3; P(X<1)=F(1⁻)=0.3; P(X=1)=F(1)−F(1⁻)=1−0.3=0.7",
+          "description": "$F(0.5) = 0.3$; $P(X < 1) = F(1^-) = 0.3$; $P(X = 1) = F(1) - F(1^-) = 1 - 0.3 = 0.7$",
           "weight": 1,
           "required": false
         }
@@ -79012,11 +79012,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "computes P(X<1) as F(1)=1 instead of the left-limit",
+          "description": "computes $P(X < 1)$ as $F(1) = 1$ instead of the left-limit",
           "weight": 0,
           "misconception": {
             "id": "cdf--a2--misconception",
-            "description": "computes P(X<1) as F(1)=1 instead of the left-limit",
+            "description": "computes $P(X < 1)$ as $F(1) = 1$ instead of the left-limit",
             "blameConceptId": "cdf"
           }
         }
@@ -79046,12 +79046,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove F is non-decreasing, using only monotonicity of probability.",
+    "stem": "Prove $F$ is non-decreasing, using only monotonicity of probability.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "for a<b, {X≤a}⊆{X≤b}, so F(a)=P(X≤a)≤P(X≤b)=F(b) by monotonicity  — monotonicity itself traces back to `probability-function`",
+          "description": "for $a < b$, $\\{X \\le a\\} \\subseteq \\{X \\le b\\}$, so $F(a) = P(X \\le a) \\le P(X \\le b) = F(b)$ by monotonicity — monotonicity itself traces back to `probability-function`",
           "weight": 1,
           "required": true
         }
@@ -79081,18 +79081,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why P(X=x) = F(x) − F(x⁻) (the size of the jump at x), from the definition of F alone.",
+    "stem": "Explain why $P(X = x) = F(x) - F(x^-)$ (the size of the jump at $x$), from the definition of $F$ alone.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "{X≤x} = {X<x} ⊔ {X=x}",
+          "description": "$\\{X \\le x\\} = \\{X < x\\} \\sqcup \\{X = x\\}$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "taking the limit of F as the left endpoint approaches x from below gives F(x⁻)=P(X<x), so the gap is exactly P(X=x)",
+          "description": "taking the limit of $F$ as the left endpoint approaches $x$ from below gives $F(x^-) = P(X < x)$, so the gap is exactly $P(X = x)$",
           "weight": 1,
           "required": false
         }
@@ -79122,12 +79122,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "*(Companion to the mixed-distribution transfer item above.)* A grading curve's CDF is smooth everywhere except a single jump of size 0.02 exactly at the passing score, because ties at that score are rounded up. What does the jump tell you, on its own, without any other information about the curve?",
+    "stem": "*(Companion to the mixed-distribution transfer item above.)* A grading curve’s CDF is smooth everywhere except a single jump of size $0.02$ exactly at the passing score, because ties at that score are rounded up. What does the jump tell you, on its own, without any other information about the curve?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "a jump of size 0.02 at a point means exactly that much probability mass sits *at that single value* — P(score = passing) = 0.02, regardless of what the rest of the distribution looks like",
+          "description": "a jump of size $0.02$ at a point means exactly that much probability mass sits *at that single value* — $P(\\text{score} = \\text{passing}) = 0.02$, regardless of what the rest of the distribution looks like",
           "weight": 1,
           "required": false
         }
@@ -79135,11 +79135,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "reads the jump as information about the *slope* of F near that point rather than a point mass at it",
+          "description": "reads the jump as information about the *slope* of $F$ near that point rather than a point mass at it",
           "weight": 0,
           "misconception": {
             "id": "cdf--t1--misconception",
-            "description": "reads the jump as information about the *slope* of F near that point rather than a point mass at it",
+            "description": "reads the jump as information about the *slope* of $F$ near that point rather than a point mass at it",
             "blameConceptId": "cdf"
           }
         }
@@ -79169,12 +79169,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define the PMF of a discrete X, and state its two defining conditions.",
+    "stem": "Define the PMF of a discrete $X$, and state its two defining conditions.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "p(x) = P(X=x); p(x) ≥ 0 for all x; Σₓ p(x) = 1",
+          "description": "$p(x) = P(X = x)$; $p(x) \\ge 0$ for all $x$; $\\sum_x p(x) = 1$",
           "weight": 1,
           "required": false
         }
@@ -79204,12 +79204,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which of these could *not* be a valid PMF on {1,2,3}?",
+    "stem": "Which of these could *not* be a valid PMF on $\\{1, 2, 3\\}$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "p(1)=0.5, p(2)=0.6, p(3)=−0.1 (negative probability *and* doesn't sum to 1)",
+          "description": "$p(1) = 0.5$, $p(2) = 0.6$, $p(3) = -0.1$ (negative probability *and* doesn’t sum to $1$)",
           "weight": 1,
           "required": false
         }
@@ -79217,11 +79217,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks p(1)=1, p(2)=0, p(3)=0, thinking a PMF can't put all its mass on one point",
+          "description": "picks $p(1) = 1$, $p(2) = 0$, $p(3) = 0$, thinking a PMF can’t put all its mass on one point",
           "weight": 0,
           "misconception": {
             "id": "pmf--r2--misconception",
-            "description": "picks p(1)=1, p(2)=0, p(3)=0, thinking a PMF can't put all its mass on one point",
+            "description": "picks $p(1) = 1$, $p(2) = 0$, $p(3) = 0$, thinking a PMF can’t put all its mass on one point",
             "blameConceptId": "pmf"
           }
         }
@@ -79251,12 +79251,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "p(1)=c, p(2)=2c, p(3)=3c is a valid PMF. Find c and P(X≥2).",
+    "stem": "$p(1) = c$, $p(2) = 2c$, $p(3) = 3c$ is a valid PMF. Find $c$ and $P(X \\ge 2)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "c=1/6; P(X≥2)=5/6",
+          "description": "$c = 1/6$; $P(X \\ge 2) = 5/6$",
           "weight": 1,
           "required": false
         }
@@ -79264,11 +79264,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "normalizes over the wrong set, e.g. divides by 3 (the number of outcomes) instead of solving Σp(x)=1",
+          "description": "normalizes over the wrong set, e.g. divides by $3$ (the number of outcomes) instead of solving $\\sum p(x) = 1$",
           "weight": 0,
           "misconception": {
             "id": "pmf--a1--misconception",
-            "description": "normalizes over the wrong set, e.g. divides by 3 (the number of outcomes) instead of solving Σp(x)=1",
+            "description": "normalizes over the wrong set, e.g. divides by $3$ (the number of outcomes) instead of solving $\\sum p(x) = 1$",
             "blameConceptId": "pmf"
           }
         }
@@ -79298,12 +79298,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "F has jumps of size 0.2, 0.3, 0.5 at x=1,2,3 and is flat elsewhere. Recover the PMF.",
+    "stem": "$F$ has jumps of size $0.2$, $0.3$, $0.5$ at $x = 1, 2, 3$ and is flat elsewhere. Recover the PMF.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "p(1)=0.2, p(2)=0.3, p(3)=0.5 — jump size *is* the PMF value, from `cdf`'s E2",
+          "description": "$p(1) = 0.2$, $p(2) = 0.3$, $p(3) = 0.5$ — jump size *is* the PMF value, from `cdf`’s E2",
           "weight": 1,
           "required": false
         }
@@ -79311,11 +79311,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "reads off the *cumulative* values (0.2, 0.5, 1.0) instead of the jump sizes",
+          "description": "reads off the *cumulative* values ($0.2$, $0.5$, $1.0$) instead of the jump sizes",
           "weight": 0,
           "misconception": {
             "id": "pmf--a2--misconception",
-            "description": "reads off the *cumulative* values (0.2, 0.5, 1.0) instead of the jump sizes",
+            "description": "reads off the *cumulative* values ($0.2$, $0.5$, $1.0$) instead of the jump sizes",
             "blameConceptId": "cdf"
           }
         }
@@ -79346,18 +79346,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove Σₓ p(x) = 1 from countable additivity, using the fact that {X=x} for distinct x partitions Ω.",
+    "stem": "Prove $\\sum_x p(x) = 1$ from countable additivity, using the fact that $\\{X = x\\}$ for distinct $x$ partitions $\\Omega$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the events {X=x} are pairwise disjoint and their union is Ω (every outcome gives *some* value)",
+          "description": "the events $\\{X = x\\}$ are pairwise disjoint and their union is $\\Omega$ (every outcome gives *some* value)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "countable additivity then gives Σ P(X=x) = P(Ω) = 1",
+          "description": "countable additivity then gives $\\sum P(X = x) = P(\\Omega) = 1$",
           "weight": 1,
           "required": false
         }
@@ -79392,7 +79392,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "p(x) = P(X=x) = 0 for every x when X is continuous, so the \"PMF\" would be identically zero and carry no information",
+          "description": "$p(x) = P(X = x) = 0$ for every $x$ when $X$ is continuous, so the “PMF” would be identically zero and carry no information",
           "weight": 1,
           "required": true
         }
@@ -79422,12 +79422,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Two different random experiments: (1) roll a fair six-sided die and record 1 if the result is prime (2,3,5), 0 otherwise; (2) flip a coin that lands heads with probability exactly 1/2. Verify both produce the *same* PMF, and explain what that tells you about what a PMF does and doesn't capture.",
+    "stem": "Two different random experiments: (1) roll a fair six-sided die and record $1$ if the result is prime ($2$, $3$, $5$), $0$ otherwise; (2) flip a coin that lands heads with probability exactly $1/2$. Verify both produce the *same* PMF, and explain what that tells you about what a PMF does and doesn’t capture.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "primes on a die: P(1)=3/6=1/2=P(0), matching the coin exactly `[verified]`. Required: a PMF describes only the induced distribution of values, not the underlying sample space or experiment — two unrelated experiments can be \"the same random variable\" in every distributional sense",
+          "description": "primes on a die: $P(1) = 3/6 = 1/2 = P(0)$, matching the coin exactly `[verified]`. Required: a PMF describes only the induced distribution of values, not the underlying sample space or experiment — two unrelated experiments can be “the same random variable” in every distributional sense",
           "weight": 1,
           "required": false
         }
@@ -79469,12 +79469,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define the PDF f of a continuous X, and its two defining conditions.",
+    "stem": "Define the PDF $f$ of a continuous $X$, and its two defining conditions.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "f = F′ where F is differentiable; f(x) ≥ 0; ∫₋∞^∞ f(x)dx = 1",
+          "description": "$f = F'$ where $F$ is differentiable; $f(x) \\ge 0$; $\\int_{-\\infty}^{\\infty} f(x)\\,dx = 1$",
           "weight": 1,
           "required": false
         }
@@ -79504,12 +79504,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which is true of f(x) for a continuous random variable?",
+    "stem": "Which is true of $f(x)$ for a continuous random variable?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "f(x) can exceed 1",
+          "description": "$f(x)$ can exceed $1$",
           "weight": 1,
           "required": false
         }
@@ -79517,11 +79517,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks \"f(x) = P(X=x)\" — the single most common density misreading",
+          "description": "picks “$f(x) = P(X = x)$” — the single most common density misreading",
           "weight": 0,
           "misconception": {
             "id": "pdf--r2--misconception",
-            "description": "picks \"f(x) = P(X=x)\" — the single most common density misreading",
+            "description": "picks “$f(x) = P(X = x)$” — the single most common density misreading",
             "blameConceptId": "pdf"
           }
         }
@@ -79551,12 +79551,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "f(x) = c for 0 ≤ x ≤ 4, and 0 elsewhere. Find c and P(1≤X≤3).",
+    "stem": "$f(x) = c$ for $0 \\le x \\le 4$, and $0$ elsewhere. Find $c$ and $P(1 \\le X \\le 3)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "c = 0.25; P = 0.25×2 = 0.5",
+          "description": "$c = 0.25$; $P = 0.25 \\times 2 = 0.5$",
           "weight": 1,
           "required": false
         }
@@ -79564,11 +79564,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "integrates over the whole real line as if the support were unbounded, rather than restricting to [0,4]",
+          "description": "integrates over the whole real line as if the support were unbounded, rather than restricting to $[0, 4]$",
           "weight": 0,
           "misconception": {
             "id": "pdf--a1--misconception",
-            "description": "integrates over the whole real line as if the support were unbounded, rather than restricting to [0,4]",
+            "description": "integrates over the whole real line as if the support were unbounded, rather than restricting to $[0, 4]$",
             "blameConceptId": "pdf"
           }
         }
@@ -79598,18 +79598,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "f(x) = 2x for 0≤x≤1, 0 elsewhere. Verify it's a valid density, then find P(X>0.5).",
+    "stem": "$f(x) = 2x$ for $0 \\le x \\le 1$, $0$ elsewhere. Verify it’s a valid density, then find $P(X > 0.5)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "∫₀¹ 2x dx = 1, valid",
+          "description": "$\\int_0^1 2x\\,dx = 1$, valid",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "P(X>0.5) = ∫₀.₅¹ 2x dx = 0.75",
+          "description": "$P(X > 0.5) = \\int_{0.5}^1 2x\\,dx = 0.75$",
           "weight": 1,
           "required": false
         }
@@ -79617,11 +79617,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "computes P(X>0.5) as 1 − 0.5 = 0.5, treating the density as if it were uniform",
+          "description": "computes $P(X > 0.5)$ as $1 - 0.5 = 0.5$, treating the density as if it were uniform",
           "weight": 0,
           "misconception": {
             "id": "pdf--a2--misconception",
-            "description": "computes P(X>0.5) as 1 − 0.5 = 0.5, treating the density as if it were uniform",
+            "description": "computes $P(X > 0.5)$ as $1 - 0.5 = 0.5$, treating the density as if it were uniform",
             "blameConceptId": "pdf"
           }
         }
@@ -79651,18 +79651,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain concretely why f(x) can exceed 1, using f(x)=5 on [0, 0.2] as an example.",
+    "stem": "Explain concretely why $f(x)$ can exceed $1$, using $f(x) = 5$ on $[0, 0.2]$ as an example.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "f is a *density* — probability per unit length — not a probability",
+          "description": "$f$ is a *density* — probability per unit length — not a probability",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "a narrow support can carry a tall density and still integrate to 1 (5 × 0.2 = 1)",
+          "description": "a narrow support can carry a tall density and still integrate to $1$ ($5 \\times 0.2 = 1$)",
           "weight": 1,
           "required": false
         }
@@ -79692,18 +79692,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show P(a≤X≤b) = F(b) − F(a) = ∫ₐᵇ f(x)dx, connecting the two definitions via the fundamental theorem of calculus.",
+    "stem": "Show $P(a \\le X \\le b) = F(b) - F(a) = \\int_a^b f(x)\\,dx$, connecting the two definitions via the fundamental theorem of calculus.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "F(b)−F(a) by definition of CDF",
+          "description": "$F(b) - F(a)$ by definition of CDF",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "equals ∫ₐᵇ f by FTC since f=F′",
+          "description": "equals $\\int_a^b f$ by FTC since $f = F'$",
           "weight": 1,
           "required": false
         }
@@ -79733,18 +79733,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A dart lands at a random distance X (normalized to [0,1]) from the center of a board, uniformly over the *board's area* (not uniformly in distance!). Before computing anything: argue geometrically why the density of X should *increase* with x. Then verify f(x)=2x is consistent with that argument.",
+    "stem": "A dart lands at a random distance $X$ (normalized to $[0, 1]$) from the center of a board, uniformly over the *board’s area* (not uniformly in distance!). Before computing anything: argue geometrically why the density of $X$ should *increase* with $x$. Then verify $f(x) = 2x$ is consistent with that argument.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "a thin ring at radius x has area proportional to its circumference, 2πx",
+          "description": "a thin ring at radius $x$ has area proportional to its circumference, $2\\pi x$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "a uniform-over-area dart is proportionally more likely to land in a ring farther out, so the density in x must grow linearly — matching f(x)=2x after normalizing",
+          "description": "a uniform-over-area dart is proportionally more likely to land in a ring farther out, so the density in $x$ must grow linearly — matching $f(x) = 2x$ after normalizing",
           "weight": 1,
           "required": false
         }
@@ -79786,12 +79786,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the definition of E[X] for discrete and for continuous X.",
+    "stem": "State the definition of $\\mathbb{E}[X]$ for discrete and for continuous $X$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Σₓ x·p(x) discrete; ∫x·f(x)dx continuous",
+          "description": "$\\sum_x x\\,p(x)$ discrete; $\\int x f(x)\\,dx$ continuous",
           "weight": 1,
           "required": false
         }
@@ -79821,7 +79821,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which is FALSE in general? (a) E[X] is always a value X can actually take (b) E[aX+b] = aE[X]+b (c) E is linear.",
+    "stem": "Which is FALSE in general? (a) $\\mathbb{E}[X]$ is always a value $X$ can actually take (b) $\\mathbb{E}[aX+b] = a\\,\\mathbb{E}[X]+b$ (c) $\\mathbb{E}$ is linear.",
     "rubric": {
       "elements": [
         {
@@ -79834,11 +79834,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks (a) as *true* — expects the mean of a fair die (3.5) to be a possible roll",
+          "description": "picks (a) as *true* — expects the mean of a fair die ($3.5$) to be a possible roll",
           "weight": 0,
           "misconception": {
             "id": "expectation--r2--misconception",
-            "description": "picks (a) as *true* — expects the mean of a fair die (3.5) to be a possible roll",
+            "description": "picks (a) as *true* — expects the mean of a fair die ($3.5$) to be a possible roll",
             "blameConceptId": "expectation"
           }
         }
@@ -79867,7 +79867,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "X has PMF p(1)=0.5, p(2)=0.3, p(3)=0.2. Find E[X].",
+    "stem": "$X$ has PMF $p(1) = 0.5$, $p(2) = 0.3$, $p(3) = 0.2$. Find $\\mathbb{E}[X]$.",
     "answerKey": 1.7,
     "tolerance": 0.01,
     "difficulty": 0.45,
@@ -79893,7 +79893,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "X has density f(x)=2x on [0,1] (from the dart example). Find E[X].",
+    "stem": "$X$ has density $f(x) = 2x$ on $[0, 1]$ (from the dart example). Find $\\mathbb{E}[X]$.",
     "answerKey": 0.667,
     "tolerance": 0.01,
     "difficulty": 0.6,
@@ -79920,12 +79920,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove linearity: E[aX+b] = aE[X] + b, from the discrete definition.",
+    "stem": "Prove linearity: $\\mathbb{E}[aX+b] = a\\,\\mathbb{E}[X] + b$, from the discrete definition.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Σ(ax+b)p(x) = aΣx p(x) + bΣp(x) = aE[X] + b, using Σp(x)=1",
+          "description": "$\\sum (ax+b)p(x) = a\\sum x\\,p(x) + b\\sum p(x) = a\\,\\mathbb{E}[X] + b$, using $\\sum p(x) = 1$",
           "weight": 1,
           "required": true
         }
@@ -79955,7 +79955,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why E[X] is a \"probability-weighted average\" and, using the die-roll intuition from R2, why it need not equal any outcome X can produce.",
+    "stem": "Explain why $\\mathbb{E}[X]$ is a “probability-weighted average” and, using the die-roll intuition from R2, why it need not equal any outcome $X$ can produce.",
     "rubric": {
       "elements": [
         {
@@ -79990,12 +79990,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "An insurance policy pays $0 with probability 0.9, and (if a claim occurs) a random amount uniform on [$1000, $5000] with probability 0.1. Find the fair premium — the expected payout — by splitting into the two cases and combining.",
+    "stem": "An insurance policy pays $\\$0$ with probability $0.9$, and (if a claim occurs) a random amount uniform on $[\\$1000, \\$5000]$ with probability $0.1$. Find the fair premium — the expected payout — by splitting into the two cases and combining.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[payout] = 0.9(0) + 0.1·E[Uniform(1000,5000)] = 0.1(3000) = $300 — a first, informal encounter with conditioning on cases before `law-of-total-expectation` names it",
+          "description": "$\\mathbb{E}[\\text{payout}] = 0.9(0) + 0.1\\cdot\\mathbb{E}\\left[\\text{Uniform}(1000, 5000)\\right] = 0.1(3000) = \\$300$ — a first, informal encounter with conditioning on cases before `law-of-total-expectation` names it",
           "weight": 1,
           "required": false
         }
@@ -80003,11 +80003,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "computes E[Uniform(1000,5000)] correctly but forgets to weight by the 0.1 probability of a claim occurring at all",
+          "description": "computes $\\mathbb{E}\\left[\\text{Uniform}(1000, 5000)\\right]$ correctly but forgets to weight by the $0.1$ probability of a claim occurring at all",
           "weight": 0,
           "misconception": {
             "id": "expectation--t1--misconception",
-            "description": "computes E[Uniform(1000,5000)] correctly but forgets to weight by the 0.1 probability of a claim occurring at all",
+            "description": "computes $\\mathbb{E}\\left[\\text{Uniform}(1000, 5000)\\right]$ correctly but forgets to weight by the $0.1$ probability of a claim occurring at all",
             "blameConceptId": "expectation"
           }
         }
@@ -80037,12 +80037,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Give two equivalent formulas for Var(X).",
+    "stem": "Give two equivalent formulas for $\\text{Var}(X)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[(X−E[X])²] and E[X²] − (E[X])²",
+          "description": "$\\mathbb{E}\\left[(X - \\mathbb{E}[X])^2\\right]$ and $\\mathbb{E}[X^2] - (\\mathbb{E}[X])^2$",
           "weight": 1,
           "required": false
         }
@@ -80072,7 +80072,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which is FALSE? (a) Var(X) ≥ 0 always (b) Var(aX+b) = a²Var(X) (c) Var(aX+b) = a·Var(X) + b.",
+    "stem": "Which is FALSE? (a) $\\text{Var}(X) \\ge 0$ always (b) $\\text{Var}(aX+b) = a^2\\,\\text{Var}(X)$ (c) $\\text{Var}(aX+b) = a\\,\\text{Var}(X) + b$.",
     "rubric": {
       "elements": [
         {
@@ -80119,18 +80119,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using the PMF from Expectation's A1 (E[X]=1.7), find Var(X).",
+    "stem": "Using the PMF from Expectation’s A1 ($\\mathbb{E}[X] = 1.7$), find $\\text{Var}(X)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X²] = 1(0.5)+4(0.3)+9(0.2) = 3.5",
+          "description": "$\\mathbb{E}[X^2] = 1(0.5) + 4(0.3) + 9(0.2) = 3.5$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "Var = 3.5 − 1.7² = 0.61",
+          "description": "$\\text{Var}(X) = 3.5 - 1.7^2 = 0.61$",
           "weight": 1,
           "required": false
         }
@@ -80138,11 +80138,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "forgets to square E[X] before subtracting",
+          "description": "forgets to square $\\mathbb{E}[X]$ before subtracting",
           "weight": 0,
           "misconception": {
             "id": "variance--a1--misconception",
-            "description": "forgets to square E[X] before subtracting",
+            "description": "forgets to square $\\mathbb{E}[X]$ before subtracting",
             "blameConceptId": "variance"
           }
         }
@@ -80172,18 +80172,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using the density f(x)=2x on [0,1] (E[X]=2/3), find Var(X).",
+    "stem": "Using the density $f(x) = 2x$ on $[0, 1]$ ($\\mathbb{E}[X] = 2/3$), find $\\text{Var}(X)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X²] = ∫₀¹ x²·2x dx = 2/4 = 0.5",
+          "description": "$\\mathbb{E}[X^2] = \\int_0^1 x^2\\cdot 2x\\,dx = 2/4 = 0.5$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "Var = 0.5 − (2/3)² = 1/18",
+          "description": "$\\text{Var}(X) = 0.5 - (2/3)^2 = 1/18$",
           "weight": 1,
           "required": false
         }
@@ -80213,12 +80213,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive the shortcut formula Var(X) = E[X²] − (E[X])² starting from E[(X−E[X])²], using linearity of expectation.",
+    "stem": "Derive the shortcut formula $\\text{Var}(X) = \\mathbb{E}[X^2] - (\\mathbb{E}[X])^2$ starting from $\\mathbb{E}\\left[(X - \\mathbb{E}[X])^2\\right]$, using linearity of expectation.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "expand (X−μ)² = X² − 2μX + μ²",
+          "description": "expand $(X - \\mu)^2 = X^2 - 2\\mu X + \\mu^2$",
           "weight": 1,
           "required": true
         },
@@ -80230,7 +80230,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-3",
-          "description": "μ=E[X] is a constant so E[μ²]=μ² and E[2μX]=2μ²  — arguably the single most-used algebra trick in the subject",
+          "description": "$\\mu = \\mathbb{E}[X]$ is a constant so $\\mathbb{E}[\\mu^2] = \\mu^2$ and $\\mathbb{E}[2\\mu X] = 2\\mu^2$ — arguably the single most-used algebra trick in the subject",
           "weight": 1,
           "required": false
         }
@@ -80238,11 +80238,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "expands the square but drops a term, or forgets μ is a constant under the expectation",
+          "description": "expands the square but drops a term, or forgets $\\mu$ is a constant under the expectation",
           "weight": 0,
           "misconception": {
             "id": "variance--e1--misconception",
-            "description": "expands the square but drops a term, or forgets μ is a constant under the expectation",
+            "description": "expands the square but drops a term, or forgets $\\mu$ is a constant under the expectation",
             "blameConceptId": "expectation"
           }
         }
@@ -80273,18 +80273,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why Var(aX+b) = a²Var(X): why does the shift *b* vanish entirely, while the scale *a* enters *squared*?",
+    "stem": "Explain why $\\text{Var}(aX+b) = a^2\\,\\text{Var}(X)$: why does the shift $b$ vanish entirely, while the scale $a$ enters *squared*?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "shifting every outcome by b shifts the mean by b too, so deviations from the mean are unchanged — spread is shift-invariant",
+          "description": "shifting every outcome by $b$ shifts the mean by $b$ too, so deviations from the mean are unchanged — spread is shift-invariant",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "scaling by a scales every deviation by a, and variance is an *average squared* deviation, so the factor becomes a²",
+          "description": "scaling by $a$ scales every deviation by $a$, and variance is an *average squared* deviation, so the factor becomes $a^2$",
           "weight": 1,
           "required": false
         }
@@ -80314,12 +80314,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Variance is reported in squared units (e.g. dollars²), which is why practitioners usually quote the standard deviation instead. If a temperature's variance in Celsius is V, what is its variance in Fahrenheit (F = 1.8C + 32), and by what factor did it change?",
+    "stem": "Variance is reported in squared units (e.g. $\\text{dollars}^2$), which is why practitioners usually quote the standard deviation instead. If a temperature’s variance in Celsius is $V$, what is its variance in Fahrenheit ($F = 1.8C + 32$), and by what factor did it change?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "Var(F) = 1.8² · Var(C) = 3.24V — a real unit-conversion consequence of E2's scaling rule",
+          "description": "$\\text{Var}(F) = 1.8^2\\cdot\\text{Var}(C) = 3.24V$ — a real unit-conversion consequence of E2’s scaling rule",
           "weight": 1,
           "required": false
         }
@@ -80327,11 +80327,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "assumes temperature variance is unchanged by a unit conversion, since \"temperature is temperature\"",
+          "description": "assumes temperature variance is unchanged by a unit conversion, since “temperature is temperature”",
           "weight": 0,
           "misconception": {
             "id": "variance--t1--misconception",
-            "description": "assumes temperature variance is unchanged by a unit conversion, since \"temperature is temperature\"",
+            "description": "assumes temperature variance is unchanged by a unit conversion, since “temperature is temperature”",
             "blameConceptId": "variance"
           }
         }
