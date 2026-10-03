@@ -178,33 +178,33 @@ export const items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "X ~ Binomial(n, p). Which expression gives P(X = k) for an integer 0 ≤ k ≤ n?",
+    stem: "$X \\sim \\text{Binomial}(n, p)$. Which expression gives $P(X = k)$ for an integer $0 \\le k \\le n$?",
     choices: [
-      { id: "a", text: "C(n, k) · p^k · (1 − p)^(n − k)", correct: true },
+      { id: "a", text: "$\\binom{n}{k} p^k (1 - p)^{n - k}$", correct: true },
       {
         id: "b",
-        text: "p^k · (1 − p)^(n − k)",
+        text: "$p^k (1 - p)^{n - k}$",
         correct: false,
         misconception: {
           id: "forgets-binomial-coefficient",
           description:
-            "Gives the probability of one specific ordering of successes and failures, forgetting to count the C(n, k) orderings that all yield k successes.",
+            "Gives the probability of one specific ordering of successes and failures, forgetting to count the $\\binom{n}{k}$ orderings that all yield $k$ successes.",
           blameConceptId: "binomial-theorem",
         },
       },
       {
-        id: "c",
-        text: "C(n, k) · p^k · (1 − p)^k",
+        id: "$c$",
+        text: "$\\binom{n}{k} p^k (1 - p)^k$",
         correct: false,
         misconception: {
           id: "mismatched-exponents",
-          description: "Exponents do not sum to n, so the terms cannot form a partition of the sample space.",
+          description: "Exponents do not sum to $n$, so the terms cannot form a partition of the sample space.",
           blameConceptId: "pmf",
         },
       },
       {
         id: "d",
-        text: "(k/n) · p · (1 − p)",
+        text: "$\\dfrac{k}{n} \\cdot p (1 - p)$",
         correct: false,
         misconception: {
           id: "confuses-pmf-with-proportion",
@@ -259,13 +259,13 @@ export const items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "The variance of a Binomial(n, p) is np(1 − p), which is largest at p = 1/2. Explain why that is the right answer intuitively — not by differentiating, but by saying what p = 1/2 means about the individual trials.",
+    stem: "The variance of a $\\text{Binomial}(n, p)$ is $np(1 - p)$, which is largest at $p = 1/2$. Explain why that is the right answer intuitively — not by differentiating, but by saying what $p = 1/2$ means about the individual trials.",
     rubric: {
       elements: [
         {
           id: "decomposition",
           description:
-            "Recognises the binomial as a sum of n independent Bernoulli trials, so the variance is n times the variance of one trial.",
+            "Recognises the binomial as a sum of $n$ independent Bernoulli trials, so the variance is $n$ times the variance of one trial.",
           weight: 2,
           required: true,
           misconception: {
@@ -278,7 +278,7 @@ export const items: Item[] = [
         {
           id: "uncertainty-peak",
           description:
-            "Argues that a single trial is most unpredictable when the two outcomes are equally likely, and near-deterministic as p approaches 0 or 1.",
+            "Argues that a single trial is most unpredictable when the two outcomes are equally likely, and near-deterministic as $p$ approaches $0$ or $1$.",
           weight: 2,
           required: true,
         },
@@ -293,7 +293,7 @@ export const items: Item[] = [
         {
           id: "asserts-without-argument",
           description:
-            "Asserts that variance peaks at 1/2 by symmetry alone, with no claim about what the trials are doing.",
+            "Asserts that variance peaks at $1/2$ by symmetry alone, with no claim about what the trials are doing.",
           weight: 1,
         },
       ],
@@ -313,7 +313,7 @@ export const items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "A screening test for a condition affecting 1 in 1000 people has a 99% true positive rate and a 5% false positive rate. A patient tests positive. A colleague says 'so there's a 99% chance they have it.' Say what your colleague has confused with what, and roughly what the actual probability is.",
+    stem: "A screening test for a condition affecting $1$ in $1000$ people has a $99\\%$ true positive rate and a $5\\%$ false positive rate. A patient tests positive. A colleague says “so there’s a $99\\%$ chance they have it.” Say what your colleague has confused with what, and roughly what the actual probability is.",
     rubric: {
       elements: [
         {
@@ -331,13 +331,13 @@ export const items: Item[] = [
         {
           id: "base-rate",
           description:
-            "Explains that with a 0.1% prevalence, false positives vastly outnumber true positives.",
+            "Explains that with a $0.1\\%$ prevalence, false positives vastly outnumber true positives.",
           weight: 2,
           required: true,
         },
         {
           id: "magnitude",
-          description: "Lands on roughly 2% (accept anything in 1%–3%).",
+          description: "Lands on roughly $2\\%$ (accept anything in $1\\%$–$3\\%$).",
           weight: 2,
         },
       ],
@@ -488,11 +488,11 @@ export const items: Item[] = [
     choices: [
       { id: "a", text: "A fixed number of trials, decided in advance", correct: true },
       { id: "b", text: "Each trial has exactly two outcomes", correct: true },
-      { id: "c", text: "The same success probability on every trial", correct: true },
+      { id: "$c$", text: "The same success probability on every trial", correct: true },
       { id: "d", text: "The trials are mutually independent", correct: true },
       {
         id: "e",
-        text: "n must be large (at least 30)",
+        text: "$n$ must be large (at least $30$)",
         correct: false,
         misconception: {
           id: "confuses-model-with-approximation",
@@ -503,11 +503,11 @@ export const items: Item[] = [
       },
       {
         id: "f",
-        text: "p must be at least 0.5",
+        text: "$p$ must be at least $0.5$",
         correct: false,
         misconception: {
           id: "invents-p-constraint",
-          description: "Invents a constraint on p; any p in [0,1] is valid.",
+          description: "Invents a constraint on $p$; any $p \\in [0, 1]$ is valid.",
           blameConceptId: "bernoulli-binomial",
         },
       },
@@ -526,8 +526,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A component fails on any given day with probability 0.02, independently of other days. " +
-      "Over 30 days, what is the probability of at least one failure? Give a decimal to three places.",
+      "A component fails on any given day with probability $0.02$, independently of other days. Over $30$ days, what is the probability of at least one failure? Give a decimal to three places.",
     answerKey: 0.4545,
     tolerance: 0.01,
     difficulty: 0.3,
@@ -544,8 +543,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "A binomial distribution has mean 6 and variance 2.4. Find n. " +
-      "(Hint: divide the variance by the mean.)",
+      "A binomial distribution has mean $6$ and variance $2.4$. Find $n$. (Hint: divide the variance by the mean.)",
     answerKey: 10,
     tolerance: 0.001,
     difficulty: 0.9,
@@ -562,9 +560,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "An airline sells 108 tickets for a 100-seat plane. Each passenger shows up independently " +
-      "with probability 0.90. What is the probability the flight is overbooked (more than 100 " +
-      "passengers arrive)? Give a decimal to three places.",
+      "An airline sells $108$ tickets for a $100$-seat plane. Each passenger shows up independently with probability $0.90$. What is the probability the flight is overbooked (more than $100$ passengers arrive)? Give a decimal to three places.",
     answerKey: 0.143,
     tolerance: 0.01,
     difficulty: 1.5,
@@ -581,14 +577,13 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "The binomial PMF is C(n,k)·pᵏ(1−p)ⁿ⁻ᵏ. Explain what the C(n,k) factor is counting, " +
-      "and what pᵏ(1−p)ⁿ⁻ᵏ alone would give you without it.",
+      "The binomial PMF is $\\binom{n}{k} p^k (1-p)^{n-k}$. Explain what the $\\binom{n}{k}$ factor is counting, and what $p^k (1-p)^{n-k}$ alone would give you without it.",
     rubric: {
       elements: [
         {
           id: "one-sequence",
           description:
-            "States that pᵏ(1−p)ⁿ⁻ᵏ is the probability of ONE specific ordering of k successes and n−k failures.",
+            "States that $p^k (1-p)^{n-k}$ is the probability of ONE specific ordering of $k$ successes and $n-k$ failures.",
           weight: 2,
           required: true,
           misconception: {
@@ -601,7 +596,7 @@ export const items: Item[] = [
         {
           id: "counts-orderings",
           description:
-            "States that C(n,k) counts how many distinct orderings produce exactly k successes.",
+            "States that $\\binom{n}{k}$ counts how many distinct orderings produce exactly $k$ successes.",
           weight: 2,
           required: true,
           misconception: {
@@ -632,14 +627,13 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Why can't two free throws by the same player be modelled as Binomial(2, p)? " +
-      "Think about player confidence — and say what the violation does to the variance.",
+      "Why can’t two free throws by the same player be modelled as $\\text{Binomial}(2, p)$? Think about player confidence — and say what the violation does to the variance.",
     rubric: {
       elements: [
         {
           id: "names-violation",
           description:
-            "Identifies that independence and/or constant p fails: making the first shot can change the probability of making the second.",
+            "Identifies that independence and/or constant $p$ fails: making the first shot can change the probability of making the second.",
           weight: 3,
           required: true,
           misconception: {
@@ -651,7 +645,7 @@ export const items: Item[] = [
         {
           id: "consequence-on-variance",
           description:
-            "States the consequence: positive correlation makes Var(X) = 2p(1−p) + 2Cov exceed the binomial's 2p(1−p), so the model understates the spread (more 0s and 2s, fewer 1s).",
+            "States the consequence: positive correlation makes $\\text{Var}(X) = 2p(1-p) + 2\\,\\text{Cov}$ exceed the binomial’s $2p(1-p)$, so the model understates the spread (more $0$s and $2$s, fewer $1$s).",
           weight: 3,
           required: true,
         },
@@ -684,11 +678,11 @@ export const items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "State the mean and the variance of X ~ Binomial(n, p) in terms of n and p.",
+    stem: "State the mean and the variance of $X \\sim \\text{Binomial}(n, p)$ in terms of $n$ and $p$.",
     rubric: {
       elements: [
-        { id: "mean", description: "Gives E[X] = np.", weight: 2, required: true },
-        { id: "variance", description: "Gives Var(X) = np(1 − p).", weight: 2, required: true },
+        { id: "mean", description: "Gives $\\mathbb{E}[X] = np$.", weight: 2, required: true },
+        { id: "variance", description: "Gives $\\text{Var}(X) = np(1 - p)$.", weight: 2, required: true },
       ],
     },
     difficulty: -2.2,
@@ -704,36 +698,36 @@ export const items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For X ~ Binomial(n, p), what is the support of X (the set of values it can take)?",
+    stem: "For $X \\sim \\text{Binomial}(n, p)$, what is the support of $X$ (the set of values it can take)?",
     choices: [
-      { id: "a", text: "{0, 1, 2, …, n}", correct: true },
+      { id: "a", text: "$\\{0, 1, 2, \\ldots, n\\}$", correct: true },
       {
         id: "b",
-        text: "{0, 1}",
+        text: "$\\{0, 1\\}$",
         correct: false,
         misconception: {
           id: "confuses-with-bernoulli",
-          description: "Gives the support of a single Bernoulli trial rather than of the count of n such trials.",
+          description: "Gives the support of a single Bernoulli trial rather than of the count of $n$ such trials.",
           blameConceptId: "bernoulli-binomial",
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "All nonnegative integers",
         correct: false,
         misconception: {
           id: "drops-the-upper-bound",
-          description: "Forgets that a count of successes out of n trials can never exceed n.",
+          description: "Forgets that a count of successes out of $n$ trials can never exceed $n$.",
           blameConceptId: "pmf",
         },
       },
       {
         id: "d",
-        text: "{1, 2, …, n}",
+        text: "$\\{1, 2, \\ldots, n\\}$",
         correct: false,
         misconception: {
           id: "excludes-zero-successes",
-          description: "Excludes the possibility of zero successes, which has positive probability (1 − p)ⁿ whenever p < 1.",
+          description: "Excludes the possibility of zero successes, which has positive probability $(1 - p)^n$ whenever $p < 1$.",
           blameConceptId: "pmf",
         },
       },
@@ -752,8 +746,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A salesperson closes a sale with probability 0.25 on each of 8 independent calls in a day. " +
-      "What is the probability that none of the calls result in a sale? Give a decimal to three places.",
+      "A salesperson closes a sale with probability $0.25$ on each of $8$ independent calls in a day. What is the probability that none of the calls result in a sale? Give a decimal to three places.",
     answerKey: 0.1,
     tolerance: 0.005,
     difficulty: -0.7,
@@ -770,8 +763,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "A factory's defect rate is 5% per unit, independently across units. In a sample of 15 units, " +
-      "what is the probability that exactly 2 are defective? Give a decimal to three places.",
+      "A factory’s defect rate is $5\\%$ per unit, independently across units. In a sample of $15$ units, what is the probability that exactly $2$ are defective? Give a decimal to three places.",
     answerKey: 0.135,
     tolerance: 0.005,
     difficulty: 0.1,
@@ -788,7 +780,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "A binomial distribution has variance 4 and p = 0.2. Find n. (Hint: divide the variance by p(1 − p).)",
+      "A binomial distribution has variance $4$ and $p = 0.2$. Find $n$. (Hint: divide the variance by $p(1 - p)$.)",
     answerKey: 25,
     tolerance: 0.001,
     difficulty: 1.1,
@@ -805,14 +797,13 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "The binomial PMF C(n,k)pᵏ(1−p)ⁿ⁻ᵏ assumes the trials are independent. Explain what would go wrong " +
-      "with the formula if consecutive trials were positively correlated.",
+      "The binomial PMF $\\binom{n}{k} p^k (1-p)^{n-k}$ assumes the trials are independent. Explain what would go wrong with the formula if consecutive trials were positively correlated.",
     rubric: {
       elements: [
         {
           id: "multiplication-needs-independence",
           description:
-            "Explains that multiplying pᵏ(1−p)ⁿ⁻ᵏ for one ordering is only valid because independence lets probabilities of individual outcomes multiply.",
+            "Explains that multiplying $p^k (1-p)^{n-k}$ for one ordering is only valid because independence lets probabilities of individual outcomes multiply.",
           weight: 3,
           required: true,
           misconception: {
@@ -824,7 +815,7 @@ export const items: Item[] = [
         {
           id: "consequence",
           description:
-            "Notes that positive correlation would make extreme counts (near 0 or near n) more likely than the formula predicts, understating the true spread.",
+            "Notes that positive correlation would make extreme counts (near $0$ or near $n$) more likely than the formula predicts, understating the true spread.",
           weight: 3,
           required: true,
         },
@@ -844,20 +835,19 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why P(X = k) for Binomial(n, p) equals P(X = n − k) for Binomial(n, 1 − p), using the roles " +
-      "of 'success' and 'failure.'",
+      "Explain why $P(X = k)$ for $\\text{Binomial}(n, p)$ equals $P(X = n - k)$ for $\\text{Binomial}(n, 1 - p)$, using the roles of ‘success’ and ‘failure’.",
     rubric: {
       elements: [
         {
           id: "relabelling",
           description:
-            "Explains that swapping the labels 'success' and 'failure' turns k successes out of n into n − k 'successes' under the relabelled scheme with probability 1 − p.",
+            "Explains that swapping the labels ‘success’ and ‘failure’ turns $k$ successes out of $n$ into $n - k$ ‘successes’ under the relabelled scheme with probability $1 - p$.",
           weight: 3,
           required: true,
         },
         {
           id: "coefficient-symmetry",
-          description: "Notes C(n, k) = C(n, n − k), so the counting factor matches under the relabelling too.",
+          description: "Notes $\\binom{n}{k} = \\binom{n}{n-k}$, so the counting factor matches under the relabelling too.",
           weight: 3,
           required: true,
         },
@@ -877,14 +867,13 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "X ~ Binomial(10, 0.3) and Y ~ Binomial(15, 0.3) are independent. A colleague claims X + Y ~ " +
-      "Binomial(25, 0.3). Is this correct? Justify it, and say what condition would make it fail.",
+      "$X \\sim \\text{Binomial}(10, 0.3)$ and $Y \\sim \\text{Binomial}(15, 0.3)$ are independent. A colleague claims $X + Y \\sim \\text{Binomial}(25, 0.3)$. Is this correct? Justify it, and say what condition would make it fail.",
     rubric: {
       elements: [
         {
           id: "correct-given-equal-p",
           description:
-            "States the claim is correct here, because X and Y can each be written as sums of independent Bernoulli(0.3) trials, so X + Y is a sum of 25 independent Bernoulli(0.3) trials.",
+            "States the claim is correct here, because $X$ and $Y$ can each be written as sums of independent $\\text{Bernoulli}(0.3)$ trials, so $X + Y$ is a sum of $25$ independent $\\text{Bernoulli}(0.3)$ trials.",
           weight: 3,
           required: true,
         },
@@ -916,15 +905,13 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "Suppose n Bernoulli(p) trials are negatively correlated (as when sampling without replacement from " +
-      "a finite population), so Cov(Xᵢ, Xⱼ) < 0 for i ≠ j. Compare Var(ΣXᵢ) to the binomial variance " +
-      "np(1 − p), and give the intuitive reason using a finite-population argument.",
+      "Suppose $n$ $\\text{Bernoulli}(p)$ trials are negatively correlated (as when sampling without replacement from a finite population), so $\\text{Cov}(X_i, X_j) < 0$ for $i \\ne j$. Compare $\\text{Var}\\left(\\sum X_i\\right)$ to the binomial variance $np(1 - p)$, and give the intuitive reason using a finite-population argument.",
     rubric: {
       elements: [
         {
           id: "variance-decomposition",
           description:
-            "Writes Var(ΣXᵢ) = np(1 − p) + n(n − 1)·Cov(Xᵢ, Xⱼ), so negative pairwise covariance pulls the total below the binomial value.",
+            "Writes $\\text{Var}\\left(\\sum X_i\\right) = np(1 - p) + n(n - 1)\\,\\text{Cov}(X_i, X_j)$, so negative pairwise covariance pulls the total below the binomial value.",
           weight: 3,
           required: true,
           misconception: {
@@ -1131,8 +1118,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A population has mean 50 and variance 100. A sample of n = 64 is drawn. " +
-      "By the CLT, X̄ is approximately Normal — what is its variance? Give a decimal to four places.",
+      "A population has mean 50 and variance 100. A sample of n = 64 is drawn. By the CLT, X̄ is approximately Normal — what is its variance? Give a decimal to four places.",
     answerKey: 1.5625,
     tolerance: 0.001,
     difficulty: 0.7,
@@ -1149,8 +1135,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "A population has mean 50 and variance 100, and n = 64. Using the CLT approximation, " +
-      "what is P(X̄ > 52)? Give a decimal to three places.",
+      "A population has mean 50 and variance 100, and n = 64. Using the CLT approximation, what is P(X̄ > 52)? Give a decimal to three places.",
     answerKey: 0.055,
     tolerance: 0.005,
     difficulty: 1.0,
@@ -1167,9 +1152,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "A machine part has a lifetime with mean 3 years and variance 4, independently across parts. " +
-      "A depot stocks 100 of them and uses them one after another. Using the CLT, what is the " +
-      "probability the 100 parts last more than 320 years in total? Give a decimal to three places.",
+      "A machine part has a lifetime with mean 3 years and variance 4, independently across parts. A depot stocks 100 of them and uses them one after another. Using the CLT, what is the probability the 100 parts last more than 320 years in total? Give a decimal to three places.",
     answerKey: 0.159,
     tolerance: 0.005,
     difficulty: 1.2,
@@ -1186,8 +1169,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Why does the CLT multiply (X̄ₙ − μ) by √n rather than by n or by nothing at all? " +
-      "Say what goes wrong with each of the other two scalings.",
+      "Why does the CLT multiply (X̄ₙ − μ) by √n rather than by n or by nothing at all? Say what goes wrong with each of the other two scalings.",
     rubric: {
       elements: [
         {
@@ -1239,8 +1221,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten"],
     stem:
-      "Sketch the MGF proof of the central limit theorem, from the standardised summands through " +
-      "to the standard Normal's MGF.",
+      "Sketch the MGF proof of the central limit theorem, from the standardised summands through to the standard Normal's MGF.",
     rubric: {
       elements: [
         {
@@ -1313,8 +1294,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The law of large numbers already says X̄ₙ → μ. What does the central limit theorem add that " +
-      "the LLN does not give you, and what could you not build from the LLN alone?",
+      "The law of large numbers already says X̄ₙ → μ. What does the central limit theorem add that the LLN does not give you, and what could you not build from the LLN alone?",
     rubric: {
       elements: [
         {
@@ -1370,8 +1350,7 @@ export const items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "State the multivariate change-of-variables formula for the density of Y = g(X), and say what " +
-      "each factor is.",
+      "State the multivariate change-of-variables formula for the density of Y = g(X), and say what each factor is.",
     rubric: {
       elements: [
         {
@@ -1464,8 +1443,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "X ~ Uniform(0, 1) and Y = X². Using the change-of-variables formula, evaluate the density of " +
-      "Y at y = 0.25. Give a decimal to two places.",
+      "X ~ Uniform(0, 1) and Y = X². Using the change-of-variables formula, evaluate the density of Y at y = 0.25. Give a decimal to two places.",
     answerKey: 1.0,
     tolerance: 0.01,
     difficulty: 0.6,
@@ -1482,8 +1460,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For the polar map x = r cos θ, y = r sin θ, compute the Jacobian determinant and evaluate it " +
-      "at r = 3, θ = π/4.",
+      "For the polar map x = r cos θ, y = r sin θ, compute the Jacobian determinant and evaluate it at r = 3, θ = π/4.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: 0.9,
@@ -1500,8 +1477,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Show that the multivariate change-of-variables formula reduces exactly to the univariate one " +
-      "f_Y(y) = f_X(g⁻¹(y))·|(g⁻¹)′(y)| when n = 1.",
+      "Show that the multivariate change-of-variables formula reduces exactly to the univariate one f_Y(y) = f_X(g⁻¹(y))·|(g⁻¹)′(y)| when n = 1.",
     rubric: {
       elements: [
         {
@@ -1546,8 +1522,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten"],
     stem:
-      "Derive the density of Y = AX + b for an invertible matrix A, and say what happens to the " +
-      "density when A is orthogonal.",
+      "Derive the density of Y = AX + b for an invertible matrix A, and say what happens to the density when A is orthogonal.",
     rubric: {
       elements: [
         {
@@ -1604,8 +1579,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Why must a density be multiplied by a volume-scaling factor at all when it is transformed? " +
-      "Argue both directions — expansion and contraction.",
+      "Why must a density be multiplied by a volume-scaling factor at all when it is transformed? Argue both directions — expansion and contraction.",
     rubric: {
       elements: [
         {
@@ -1657,9 +1631,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "Every calculus course insists that a double integral in polar coordinates is written " +
-      "r dr dθ, not dr dθ. Explain where that r comes from, and why it is the same fact as the " +
-      "change-of-variables formula for densities.",
+      "Every calculus course insists that a double integral in polar coordinates is written r dr dθ, not dr dθ. Explain where that r comes from, and why it is the same fact as the change-of-variables formula for densities.",
     rubric: {
       elements: [
         {
@@ -1714,8 +1686,7 @@ export const items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Define the covariance matrix Σ of a random vector X, and say what sits on its diagonal and " +
-      "off its diagonal.",
+      "Define the covariance matrix Σ of a random vector X, and say what sits on its diagonal and off its diagonal.",
     rubric: {
       elements: [
         {
@@ -1838,8 +1809,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "With the same Σ = [[4, 3], [3, 9]], compute Var(X₁ − X₂). " +
-      "(If your answer is larger than Var(X₁ + X₂), check the sign on the cross term.)",
+      "With the same Σ = [[4, 3], [3, 9]], compute Var(X₁ − X₂). (If your answer is larger than Var(X₁ + X₂), check the sign on the cross term.)",
     answerKey: 7,
     tolerance: 0.001,
     difficulty: 1.0,
@@ -1856,8 +1826,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten"],
     stem:
-      "Prove that every covariance matrix is positive semi-definite, and explain why the argument " +
-      "does not deliver strict positive definiteness.",
+      "Prove that every covariance matrix is positive semi-definite, and explain why the argument does not deliver strict positive definiteness.",
     rubric: {
       elements: [
         {
@@ -1908,8 +1877,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Suppose Σ is positive semi-definite but singular. What does that say about the components of " +
-      "X, concretely?",
+      "Suppose Σ is positive semi-definite but singular. What does that say about the components of X, concretely?",
     rubric: {
       elements: [
         {
@@ -1954,9 +1922,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A genomics dataset has 20,000 measured features and 80 samples. Why is the sample covariance " +
-      "matrix guaranteed to be singular here, no matter how clean the measurements are, and what " +
-      "breaks as a result?",
+      "A genomics dataset has 20,000 measured features and 80 samples. Why is the sample covariance matrix guaranteed to be singular here, no matter how clean the measurements are, and what breaks as a result?",
     rubric: {
       elements: [
         {
@@ -2110,8 +2076,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "(X, Y) is bivariate normal with μ_X = μ_Y = 0, σ_X = 1, σ_Y = 2, ρ = 0.5. " +
-      "Compute E[Y | X = 1].",
+      "(X, Y) is bivariate normal with μ_X = μ_Y = 0, σ_X = 1, σ_Y = 2, ρ = 0.5. Compute E[Y | X = 1].",
     answerKey: 1,
     tolerance: 0.001,
     difficulty: 0.8,
@@ -2128,8 +2093,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For the same bivariate normal (μ_X = μ_Y = 0, σ_X = 1, σ_Y = 2, ρ = 0.5), compute " +
-      "Var(Y | X = 1). Then note whether your answer would change for X = 3.",
+      "For the same bivariate normal (μ_X = μ_Y = 0, σ_X = 1, σ_Y = 2, ρ = 0.5), compute Var(Y | X = 1). Then note whether your answer would change for X = 3.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: 0.9,
@@ -2163,8 +2127,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "spoken"],
     stem:
-      "X ~ N(0, 1) and Y = X², so Cov(X, Y) = 0 while Y is a deterministic function of X. " +
-      "Why does this not contradict the result that ρ = 0 implies independence?",
+      "X ~ N(0, 1) and Y = X², so Cov(X, Y) = 0 while Y is a deterministic function of X. Why does this not contradict the result that ρ = 0 implies independence?",
     rubric: {
       elements: [
         {
@@ -2209,8 +2172,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten"],
     stem:
-      "Starting from the bivariate normal density, show directly that setting ρ = 0 makes it factor " +
-      "into the product of the two univariate Normal marginals.",
+      "Starting from the bivariate normal density, show directly that setting ρ = 0 makes it factor into the product of the two univariate Normal marginals.",
     rubric: {
       elements: [
         {
@@ -2270,9 +2232,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "An analyst checks whether two variables are independent by computing their correlation and " +
-      "finding it near zero. When is that a legitimate test, and when does it fail? Give a case " +
-      "where the shortcut would mislead.",
+      "An analyst checks whether two variables are independent by computing their correlation and finding it near zero. When is that a legitimate test, and when does it fail? Give a case where the shortcut would mislead.",
     rubric: {
       elements: [
         {
@@ -2326,8 +2286,7 @@ export const items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten"],
     stem:
-      "State the density of a k-dimensional multivariate normal N_k(μ, Σ), and name the univariate " +
-      "quantity each factor generalises.",
+      "State the density of a k-dimensional multivariate normal N_k(μ, Σ), and name the univariate quantity each factor generalises.",
     rubric: {
       elements: [
         {
@@ -2416,8 +2375,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "X ~ N₂(0, Σ) with Σ = [[4, 2], [2, 3]]. Compute |Σ|, the quantity appearing as |Σ|^(−1/2) in " +
-      "the density.",
+      "X ~ N₂(0, Σ) with Σ = [[4, 2], [2, 3]]. Compute |Σ|, the quantity appearing as |Σ|^(−1/2) in the density.",
     answerKey: 8,
     tolerance: 0.001,
     difficulty: 0.8,
@@ -2434,8 +2392,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "X ~ N₂(0, Σ) with Σ = [[4, 2], [2, 3]]. The random variable X₁ − X₂ is Normal; compute its " +
-      "variance.",
+      "X ~ N₂(0, Σ) with Σ = [[4, 2], [2, 3]]. The random variable X₁ − X₂ is Normal; compute its variance.",
     answerKey: 3,
     tolerance: 0.001,
     difficulty: 1.0,
@@ -2452,8 +2409,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Using the spectral decomposition Σ = QΛQᵀ, explain why the level sets of the multivariate " +
-      "normal density are ellipsoids whose axes point along Σ's eigenvectors.",
+      "Using the spectral decomposition Σ = QΛQᵀ, explain why the level sets of the multivariate normal density are ellipsoids whose axes point along Σ's eigenvectors.",
     rubric: {
       elements: [
         {
@@ -2499,9 +2455,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "In the multivariate normal, the conditional covariance of X₁ given X₂ = x₂ is " +
-      "Σ₁₁ − Σ₁₂Σ₂₂⁻¹Σ₂₁ — an expression with no x₂ in it. Say what that means in practice, and " +
-      "why it is a substantive claim rather than an algebraic accident.",
+      "In the multivariate normal, the conditional covariance of X₁ given X₂ = x₂ is Σ₁₁ − Σ₁₂Σ₂₂⁻¹Σ₂₁ — an expression with no x₂ in it. Say what that means in practice, and why it is a substantive claim rather than an algebraic accident.",
     rubric: {
       elements: [
         {
@@ -2547,8 +2501,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten"],
     stem:
-      "Show that Z = Σ^(−1/2)(X − μ) has a standard multivariate normal distribution when " +
-      "X ~ N_k(μ, Σ), and connect the construction to univariate standardisation.",
+      "Show that Z = Σ^(−1/2)(X − μ) has a standard multivariate normal distribution when X ~ N_k(μ, Σ), and connect the construction to univariate standardisation.",
     rubric: {
       elements: [
         {
@@ -2612,9 +2565,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Linear discriminant analysis, MANOVA, Kalman filters, and Gaussian graphical models all " +
-      "assume multivariate normality. What property of the family are they actually relying on, and " +
-      "why would a generic joint distribution not do?",
+      "Linear discriminant analysis, MANOVA, Kalman filters, and Gaussian graphical models all assume multivariate normality. What property of the family are they actually relying on, and why would a generic joint distribution not do?",
     rubric: {
       elements: [
         {
@@ -2806,8 +2757,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For the four points (1, 2), (2, 4), (3, 5), (4, 8), compute the sample Pearson correlation r. " +
-      "Give a decimal to three places.",
+      "For the four points (1, 2), (2, 4), (3, 5), (4, 8), compute the sample Pearson correlation r. Give a decimal to three places.",
     answerKey: 0.981,
     tolerance: 0.005,
     difficulty: 0.8,
@@ -2824,8 +2774,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For the five points (2, 7), (4, 5), (6, 6), (8, 3), (10, 2), compute r. " +
-      "Give a decimal to three places, including the sign.",
+      "For the five points (2, 7), (4, 5), (6, 6), (8, 3), (10, 2), compute r. Give a decimal to three places, including the sign.",
     answerKey: -0.915,
     tolerance: 0.005,
     difficulty: 0.9,
@@ -2842,8 +2791,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Show term by term that r is the sample analogue of ρ = Cov(X, Y)/(σ_X σ_Y). Where do the " +
-      "1/(n − 1) factors go?",
+      "Show term by term that r is the sample analogue of ρ = Cov(X, Y)/(σ_X σ_Y). Where do the 1/(n − 1) factors go?",
     rubric: {
       elements: [
         {
@@ -2941,8 +2889,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A colleague reports 'r = 0.98 between the two measures' with no other information, and treats " +
-      "it as settled. What are you missing, and why does it matter most for small samples?",
+      "A colleague reports 'r = 0.98 between the two measures' with no other information, and treats it as settled. What are you missing, and why does it matter most for small samples?",
     rubric: {
       elements: [
         {
@@ -2996,8 +2943,7 @@ export const items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "Define the Kullback–Leibler divergence D_KL(P ‖ Q), and say which distribution the " +
-      "expectation is taken under.",
+      "Define the Kullback–Leibler divergence D_KL(P ‖ Q), and say which distribution the expectation is taken under.",
     rubric: {
       elements: [
         {
@@ -3092,8 +3038,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "P = Bernoulli(0.5) and Q = Bernoulli(0.9). Compute D_KL(P ‖ Q) in nats (natural log). " +
-      "Give a decimal to three places.",
+      "P = Bernoulli(0.5) and Q = Bernoulli(0.9). Compute D_KL(P ‖ Q) in nats (natural log). Give a decimal to three places.",
     answerKey: 0.511,
     tolerance: 0.005,
     difficulty: 0.6,
@@ -3110,8 +3055,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "With the same P = Bernoulli(0.5) and Q = Bernoulli(0.9), now compute D_KL(Q ‖ P) in nats. " +
-      "Give a decimal to three places.",
+      "With the same P = Bernoulli(0.5) and Q = Bernoulli(0.9), now compute D_KL(Q ‖ P) in nats. Give a decimal to three places.",
     answerKey: 0.368,
     tolerance: 0.005,
     difficulty: 0.7,
@@ -3128,8 +3072,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For two Normals with the same variance, D_KL(N(μ₁, σ²) ‖ N(μ₂, σ²)) = (μ₁ − μ₂)²/(2σ²). " +
-      "Compute D_KL(N(0, 1) ‖ N(1, 1)) in nats, to three decimals.",
+      "For two Normals with the same variance, D_KL(N(μ₁, σ²) ‖ N(μ₂, σ²)) = (μ₁ − μ₂)²/(2σ²). Compute D_KL(N(0, 1) ‖ N(1, 1)) in nats, to three decimals.",
     answerKey: 0.5,
     tolerance: 0.005,
     difficulty: 0.9,
@@ -3146,8 +3089,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Classifiers are trained by minimising cross-entropy, yet the quantity we claim to be " +
-      "minimising is a KL divergence. Reconcile the two.",
+      "Classifiers are trained by minimising cross-entropy, yet the quantity we claim to be minimising is a KL divergence. Reconcile the two.",
     rubric: {
       elements: [
         {
@@ -3257,9 +3199,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "KL divergence is not a distance — it is asymmetric, violates the triangle inequality, and can " +
-      "be infinite. Why is it nevertheless the objective of choice across statistics and machine " +
-      "learning? What property is actually being used?",
+      "KL divergence is not a distance — it is asymmetric, violates the triangle inequality, and can be infinite. Why is it nevertheless the objective of choice across statistics and machine learning? What property is actually being used?",
     rubric: {
       elements: [
         {
@@ -3374,8 +3314,7 @@ export const items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "spoken"],
     stem:
-      "State the CLT's conclusion in words: as n grows, what shape does the distribution of the sample " +
-      "mean approach, and around what center and spread?",
+      "State the CLT's conclusion in words: as n grows, what shape does the distribution of the sample mean approach, and around what center and spread?",
     rubric: {
       elements: [
         {
@@ -3406,8 +3345,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A population has standard deviation 40. A sample of n = 25 is drawn. What is the standard error " +
-      "of the sample mean X̄?",
+      "A population has standard deviation 40. A sample of n = 25 is drawn. What is the standard error of the sample mean X̄?",
     answerKey: 8,
     tolerance: 0.01,
     difficulty: 0.4,
@@ -3424,8 +3362,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "A population has mean 10 and standard deviation 5, and n = 49. Using the CLT approximation, what is " +
-      "P(X̄ < 9)? Give a decimal to three places.",
+      "A population has mean 10 and standard deviation 5, and n = 49. Using the CLT approximation, what is P(X̄ < 9)? Give a decimal to three places.",
     answerKey: 0.081,
     tolerance: 0.005,
     difficulty: 1.3,
@@ -3442,9 +3379,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "The CLT requires the Xᵢ to be independent. Explain what specifically fails, and what happens to the " +
-      "usual standard-error formula, if the data instead consists of repeated measurements on a single " +
-      "individual over time (autocorrelated).",
+      "The CLT requires the Xᵢ to be independent. Explain what specifically fails, and what happens to the usual standard-error formula, if the data instead consists of repeated measurements on a single individual over time (autocorrelated).",
     rubric: {
       elements: [
         {
@@ -3481,8 +3416,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why the CLT approximation for X̄ is worse, at the same n, when the population is heavily " +
-      "skewed than when it is symmetric.",
+      "Explain why the CLT approximation for X̄ is worse, at the same n, when the population is heavily skewed than when it is symmetric.",
     rubric: {
       elements: [
         {
@@ -3520,9 +3454,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A quality engineer treats X̄ as exactly Normal for a sample of n = 5 drawn from a heavily " +
-      "right-skewed lead-time distribution, in order to set a 99.9% control limit. Explain why this " +
-      "application is risky, and what evidence would make it more defensible.",
+      "A quality engineer treats X̄ as exactly Normal for a sample of n = 5 drawn from a heavily right-skewed lead-time distribution, in order to set a 99.9% control limit. Explain why this application is risky, and what evidence would make it more defensible.",
     rubric: {
       elements: [
         {
@@ -3560,10 +3492,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Two analysts each build a 95% CI for a mean from n = 10,000 observations. One is averaging iid " +
-      "transaction amounts; the other is averaging daily website error counts collected during a period " +
-      "when a single outage caused correlated spikes across many days. Explain why the same n offers very " +
-      "different protection in the two cases.",
+      "Two analysts each build a 95% CI for a mean from n = 10,000 observations. One is averaging iid transaction amounts; the other is averaging daily website error counts collected during a period when a single outage caused correlated spikes across many days. Explain why the same n offers very different protection in the two cases.",
     rubric: {
       elements: [
         {
@@ -3650,8 +3579,7 @@ export const items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "spoken"],
     stem:
-      "In f_Y(y) = f_X(g⁻¹(y))·|det J(y)|, name what each of the three pieces on the right-hand side " +
-      "contributes, in one phrase each.",
+      "In f_Y(y) = f_X(g⁻¹(y))·|det J(y)|, name what each of the three pieces on the right-hand side contributes, in one phrase each.",
     rubric: {
       elements: [
         {
@@ -3687,8 +3615,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "X ~ Uniform(0, 1) and Y = −ln(X). Using the change-of-variables formula, evaluate the density of Y " +
-      "at y = 1. Give a decimal to four places.",
+      "X ~ Uniform(0, 1) and Y = −ln(X). Using the change-of-variables formula, evaluate the density of Y at y = 1. Give a decimal to four places.",
     answerKey: 0.3679,
     tolerance: 0.001,
     difficulty: 0.5,
@@ -3705,8 +3632,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For the linear map (x₁, x₂) ↦ (2x₁ + x₂, x₁ + 3x₂), compute the absolute value of the Jacobian " +
-      "determinant.",
+      "For the linear map (x₁, x₂) ↦ (2x₁ + x₂, x₁ + 3x₂), compute the absolute value of the Jacobian determinant.",
     answerKey: 5,
     tolerance: 0.001,
     difficulty: 1.0,
@@ -3723,8 +3649,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "The 1-D formula is sometimes written using g'(x) evaluated at x = g⁻¹(y) instead of (g⁻¹)'(y) " +
-      "evaluated at y. Explain why these give the same number.",
+      "The 1-D formula is sometimes written using g'(x) evaluated at x = g⁻¹(y) instead of (g⁻¹)'(y) evaluated at y. Explain why these give the same number.",
     rubric: {
       elements: [
         {
@@ -3760,8 +3685,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why the basic change-of-variables formula fails outright — not just becomes harder — when " +
-      "g is not injective, using Y = X² for X ranging over all of ℝ as the example.",
+      "Explain why the basic change-of-variables formula fails outright — not just becomes harder — when g is not injective, using Y = X² for X ranging over all of ℝ as the example.",
     rubric: {
       elements: [
         {
@@ -3798,9 +3722,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A simulation library draws U ~ Uniform(0, 1) and returns Y = F_Y⁻¹(U) to sample from a target " +
-      "density f_Y. Explain why this is a special case of the change-of-variables formula, and identify " +
-      "what plays the role of the Jacobian.",
+      "A simulation library draws U ~ Uniform(0, 1) and returns Y = F_Y⁻¹(U) to sample from a target density f_Y. Explain why this is a special case of the change-of-variables formula, and identify what plays the role of the Jacobian.",
     rubric: {
       elements: [
         {
@@ -3837,10 +3759,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A researcher fits a Normal posterior for log(θ) and reports the posterior mode of θ by simply " +
-      "exponentiating the posterior mode of log(θ). Explain what changes about the density (not just the " +
-      "point estimate) under this transformation, and why the mode does not transform the same way a " +
-      "quantile does.",
+      "A researcher fits a Normal posterior for log(θ) and reports the posterior mode of θ by simply exponentiating the posterior mode of log(θ). Explain what changes about the density (not just the point estimate) under this transformation, and why the mode does not transform the same way a quantile does.",
     rubric: {
       elements: [
         {
@@ -3974,8 +3893,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Var(X₁) = 9, Var(X₂) = 4, Cov(X₁, X₂) = −2. Using Var(aX₁ + bX₂) = a²Var(X₁) + b²Var(X₂) + " +
-      "2ab·Cov(X₁, X₂), compute Var(2X₁ − X₂).",
+      "Var(X₁) = 9, Var(X₂) = 4, Cov(X₁, X₂) = −2. Using Var(aX₁ + bX₂) = a²Var(X₁) + b²Var(X₂) + 2ab·Cov(X₁, X₂), compute Var(2X₁ − X₂).",
     answerKey: 48,
     tolerance: 0.01,
     difficulty: 0.6,
@@ -4009,8 +3927,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why Σ being diagonal is equivalent to the components of X being pairwise uncorrelated, " +
-      "directly from the definition of Σ.",
+      "Explain why Σ being diagonal is equivalent to the components of X being pairwise uncorrelated, directly from the definition of Σ.",
     rubric: {
       elements: [
         {
@@ -4046,9 +3963,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "A data scientist standardises every feature to unit variance and then computes the covariance " +
-      "matrix of the standardised features, calling the result 'the covariance matrix.' Explain what " +
-      "object they have actually computed, and why calling it that is misleading.",
+      "A data scientist standardises every feature to unit variance and then computes the covariance matrix of the standardised features, calling the result 'the covariance matrix.' Explain what object they have actually computed, and why calling it that is misleading.",
     rubric: {
       elements: [
         {
@@ -4085,8 +4000,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "An analyst estimates Σ for three assets from monthly returns, then uses that same Σ directly to " +
-      "justify a daily risk decision. What's wrong with this?",
+      "An analyst estimates Σ for three assets from monthly returns, then uses that same Σ directly to justify a daily risk decision. What's wrong with this?",
     rubric: {
       elements: [
         {
@@ -4122,9 +4036,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "In a factor model, returns are X = Bf + ε, where f is a k-dimensional factor vector and ε is " +
-      "idiosyncratic noise, uncorrelated with f and across assets. Derive how Σ decomposes, and explain " +
-      "why this is useful when the number of assets p is much larger than the number of factors k.",
+      "In a factor model, returns are X = Bf + ε, where f is a k-dimensional factor vector and ε is idiosyncratic noise, uncorrelated with f and across assets. Derive how Σ decomposes, and explain why this is useful when the number of assets p is much larger than the number of factors k.",
     rubric: {
       elements: [
         {
@@ -4210,8 +4122,7 @@ export const items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "spoken"],
     stem:
-      "Write the five numbers that parameterise a bivariate normal distribution, and give the constraint ρ " +
-      "must satisfy.",
+      "Write the five numbers that parameterise a bivariate normal distribution, and give the constraint ρ must satisfy.",
     rubric: {
       elements: [
         {
@@ -4276,8 +4187,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain, without computing anything, why Var(Y | X = x) for a bivariate normal does not depend on " +
-      "the specific value x.",
+      "Explain, without computing anything, why Var(Y | X = x) for a bivariate normal does not depend on the specific value x.",
     rubric: {
       elements: [
         {
@@ -4313,8 +4223,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten"],
     stem:
-      "Show algebraically why ρ = ±1 makes the bivariate normal density degenerate (undefined via the " +
-      "usual formula), and say what this means geometrically.",
+      "Show algebraically why ρ = ±1 makes the bivariate normal density degenerate (undefined via the usual formula), and say what this means geometrically.",
     rubric: {
       elements: [
         {
@@ -4350,10 +4259,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A financial model assumes two stocks' returns are bivariate normal with ρ = 0.3. During a market " +
-      "crash, both stocks are observed to crash together far more often than this model would predict, " +
-      "even though the linear correlation over the whole period is still about 0.3. Explain what's " +
-      "happening, and why relying on ρ alone understates the joint tail risk.",
+      "A financial model assumes two stocks' returns are bivariate normal with ρ = 0.3. During a market crash, both stocks are observed to crash together far more often than this model would predict, even though the linear correlation over the whole period is still about 0.3. Explain what's happening, and why relying on ρ alone understates the joint tail risk.",
     rubric: {
       elements: [
         {
@@ -4389,9 +4295,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Simple linear regression of Y on X assumes E[Y | X = x] is exactly linear in x. Explain the precise " +
-      "sense in which the bivariate normal model justifies that assumption, and give a joint distribution " +
-      "where it would be wrong to assume linearity.",
+      "Simple linear regression of Y on X assumes E[Y | X = x] is exactly linear in x. Explain the precise sense in which the bivariate normal model justifies that assumption, and give a joint distribution where it would be wrong to assume linearity.",
     rubric: {
       elements: [
         {
@@ -4476,8 +4380,7 @@ export const items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "spoken"],
     stem:
-      "If X ~ N_k(μ, Σ), what is the distribution of a linear combination aᵀX for a fixed vector a? Give " +
-      "its mean and variance.",
+      "If X ~ N_k(μ, Σ), what is the distribution of a linear combination aᵀX for a fixed vector a? Give its mean and variance.",
     rubric: {
       elements: [
         {
@@ -4540,8 +4443,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why any subset of components of a multivariate normal vector is itself multivariate normal, " +
-      "and why finding its parameters needs no integration.",
+      "Explain why any subset of components of a multivariate normal vector is itself multivariate normal, and why finding its parameters needs no integration.",
     rubric: {
       elements: [
         {
@@ -4577,8 +4479,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why the multivariate normal's contours of constant density are always ellipsoids centred at " +
-      "μ, and why the special case Σ = σ²I gives spheres.",
+      "Explain why the multivariate normal's contours of constant density are always ellipsoids centred at μ, and why the special case Σ = σ²I gives spheres.",
     rubric: {
       elements: [
         {
@@ -4609,9 +4510,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A dataset has 50 features and only 40 observations. Someone wants to fit a full multivariate " +
-      "normal model (unrestricted Σ) to it for anomaly detection via Mahalanobis distance. Explain " +
-      "concretely what goes wrong, and name one remedy.",
+      "A dataset has 50 features and only 40 observations. Someone wants to fit a full multivariate normal model (unrestricted Σ) to it for anomaly detection via Mahalanobis distance. Explain concretely what goes wrong, and name one remedy.",
     rubric: {
       elements: [
         {
@@ -4647,8 +4546,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why the multivariate normal is the maximum-entropy distribution among all continuous " +
-      "distributions on ℝᵏ with a given mean and covariance, and what this property is used for.",
+      "Explain why the multivariate normal is the maximum-entropy distribution among all continuous distributions on ℝᵏ with a given mean and covariance, and what this property is used for.",
     rubric: {
       elements: [
         {
@@ -4733,8 +4631,7 @@ export const items: Item[] = [
     cognitive: "recall",
     channels: ["typed", "spoken"],
     stem:
-      "What happens to r if you swap the roles of X and Y — that is, compute the correlation of Y with X " +
-      "instead of X with Y?",
+      "What happens to r if you swap the roles of X and Y — that is, compute the correlation of Y with X instead of X with Y?",
     rubric: {
       elements: [
         {
@@ -4775,8 +4672,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For the five points (1, 5), (2, 3), (3, 6), (4, 2), (5, 4), compute r. Give a decimal to two " +
-      "places, including the sign.",
+      "For the five points (1, 5), (2, 3), (3, 6), (4, 2), (5, 4), compute r. Give a decimal to two places, including the sign.",
     answerKey: -0.3,
     tolerance: 0.02,
     difficulty: 1.1,
@@ -4793,8 +4689,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why standardising both variables to z-scores before computing their covariance yields r " +
-      "directly.",
+      "Explain why standardising both variables to z-scores before computing their covariance yields r directly.",
     rubric: {
       elements: [
         {
@@ -4825,8 +4720,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "r can be read as the cosine of the angle between the centred data vectors u and v. Explain why " +
-      "r = 0 exactly when u and v are orthogonal, and connect this to 'zero linear association.'",
+      "r can be read as the cosine of the angle between the centred data vectors u and v. Explain why r = 0 exactly when u and v are orthogonal, and connect this to 'zero linear association.'",
     rubric: {
       elements: [
         {
@@ -4857,9 +4751,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "A study reports r = 0.4 between hours studied and exam score, computed only among students who " +
-      "chose to take an optional retake exam. Explain what selection does to this correlation, " +
-      "referencing restriction of range.",
+      "A study reports r = 0.4 between hours studied and exam score, computed only among students who chose to take an optional retake exam. Explain what selection does to this correlation, referencing restriction of range.",
     rubric: {
       elements: [
         {
@@ -4895,8 +4787,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Describe a pair of variables that are deterministically related but have r ≈ 0, and explain why " +
-      "this does not contradict the Cauchy–Schwarz bound |r| ≤ 1.",
+      "Describe a pair of variables that are deterministically related but have r ≈ 0, and explain why this does not contradict the Cauchy–Schwarz bound |r| ≤ 1.",
     rubric: {
       elements: [
         {
@@ -5005,8 +4896,7 @@ export const items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "P = Bernoulli(0.3) and Q = Bernoulli(0.5). Compute D_KL(P ‖ Q) in nats. Give a decimal to three " +
-      "places.",
+      "P = Bernoulli(0.3) and Q = Bernoulli(0.5). Compute D_KL(P ‖ Q) in nats. Give a decimal to three places.",
     answerKey: 0.082,
     tolerance: 0.003,
     difficulty: 0.2,
@@ -5039,8 +4929,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why D_KL(P ‖ Q) can be infinite even when D_KL(Q ‖ P) is finite, using a case where Q " +
-      "assigns zero probability somewhere P does not.",
+      "Explain why D_KL(P ‖ Q) can be infinite even when D_KL(Q ‖ P) is finite, using a case where Q assigns zero probability somewhere P does not.",
     rubric: {
       elements: [
         {
@@ -5076,8 +4965,7 @@ export const items: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain the mode-seeking versus mass-covering distinction between minimising D_KL(Q ‖ P) and " +
-      "D_KL(P ‖ Q) when Q is a simple family (e.g. a single Gaussian) approximating a complex multimodal P.",
+      "Explain the mode-seeking versus mass-covering distinction between minimising D_KL(Q ‖ P) and D_KL(P ‖ Q) when Q is a simple family (e.g. a single Gaussian) approximating a complex multimodal P.",
     rubric: {
       elements: [
         {
@@ -5108,9 +4996,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "The evidence lower bound (ELBO) used in variational inference satisfies log p(x) = ELBO + " +
-      "D_KL(q ‖ p_posterior). Explain, using only the non-negativity property of KL divergence, why " +
-      "maximising the ELBO is equivalent to minimising that KL term.",
+      "The evidence lower bound (ELBO) used in variational inference satisfies log p(x) = ELBO + D_KL(q ‖ p_posterior). Explain, using only the non-negativity property of KL divergence, why maximising the ELBO is equivalent to minimising that KL term.",
     rubric: {
       elements: [
         {
@@ -5146,9 +5032,7 @@ export const items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "An A/B test summarises how different two arms' outcome distributions are using the symmetrised " +
-      "Jeffreys divergence ½[D_KL(P‖Q) + D_KL(Q‖P)]. Explain what this symmetrisation buys, and what " +
-      "property it still lacks that a true distance would need.",
+      "An A/B test summarises how different two arms' outcome distributions are using the symmetrised Jeffreys divergence ½[D_KL(P‖Q) + D_KL(Q‖P)]. Explain what this symmetrisation buys, and what property it still lacks that a true distance would need.",
     rubric: {
       elements: [
         {

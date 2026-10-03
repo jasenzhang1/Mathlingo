@@ -16,7 +16,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For any two finite sets A, B, |A $\\cup$ B| equals:",
+    stem: "For any two finite sets $A$, $B$, $|A \\cup B|$ equals:",
     choices: [
       { id: "a", text: "$|A| + |B| - |A \\cap B|$", correct: true },
       {
@@ -25,13 +25,13 @@ export const probabilityExpansion1Items: Item[] = [
         correct: false,
         misconception: {
           id: "pie-boole--two-set-union-formula--b",
-          description: "Double-counts every element that lies in both A and B.",
+          description: "Double-counts every element that lies in both $A$ and $B$.",
           blameConceptId: "pie-boole",
         },
       },
       {
-        id: "c",
-        text: "$|A| + |B| +$ |A $\\cap$ B|",
+        id: "$c$",
+        text: "$|A| + |B| + |A \\cap B|$",
         correct: false,
         misconception: {
           id: "pie-boole--two-set-union-formula--c",
@@ -41,7 +41,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "d",
-        text: "max(|A|, |B|)",
+        text: "$\\max(|A|, |B|)$",
         correct: false,
         misconception: {
           id: "pie-boole--two-set-union-formula--d",
@@ -113,7 +113,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "Bayes' rule and the definition of conditional probability",
         correct: false,
         misconception: {
@@ -146,7 +146,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "In a survey of 100 people, 55 like coffee, 40 like tea, and 15 like both. How many like neither?",
+    stem: "In a survey of $100$ people, $55$ like coffee, $40$ like tea, and $15$ like both. How many like neither?",
     answerKey: 20,
     tolerance: 0.01,
     difficulty: -0.4,
@@ -162,7 +162,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Among 200 students: 90 take Calculus, 70 take Physics, 60 take Chemistry. 30 take both Calculus and Physics, 25 take both Calculus and Chemistry, 20 take both Physics and Chemistry, and 10 take all three. How many take at least one of the three?",
+    stem: "Among $200$ students: $90$ take Calculus, $70$ take Physics, $60$ take Chemistry. $30$ take both Calculus and Physics, $25$ take both Calculus and Chemistry, $20$ take both Physics and Chemistry, and $10$ take all three. How many take at least one of the three?",
     answerKey: 155,
     tolerance: 0.01,
     difficulty: -0.25,
@@ -178,7 +178,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Five independent alarms each trigger falsely with probability 0.1 on a given night. Use Boole's inequality to bound P(at least one false alarm), then compute the exact probability (using independence), and compare the two.",
+    stem: "Five independent alarms each trigger falsely with probability $0.1$ on a given night. Use Boole’s inequality to bound $P(\\text{at least one false alarm})$, then compute the exact probability (using independence), and compare the two.",
     rubric: {
       elements: [
         {
@@ -195,7 +195,7 @@ export const probabilityExpansion1Items: Item[] = [
       forbiddenMoves: [
         {
           id: "misconception",
-          description: "reports the Boole bound (0.5) as if it were the exact probability",
+          description: "reports the Boole bound ($0.5$) as if it were the exact probability",
           weight: 0,
           misconception: {
             id: "pie-boole--union-bound-alarms--misconception",
@@ -218,7 +218,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A network has 10 links, each failing (independently or not — Boole doesn't care) with probability 0.03. Using Boole's inequality, what is the upper bound on P(at least one link fails)?",
+    stem: "A network has $10$ links, each failing (independently or not — Boole doesn’t care) with probability $0.03$. Using Boole’s inequality, what is the upper bound on $P(\\text{at least one link fails})$?",
     answerKey: 0.3,
     tolerance: 0.02,
     difficulty: 0.05,
@@ -234,7 +234,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Of 500 shoppers: 300 bought bread, 250 bought milk, 200 bought eggs. 150 bought bread and milk, 120 bought bread and eggs, 90 bought milk and eggs, and 60 bought all three. How many bought none of the three?",
+    stem: "Of $500$ shoppers: $300$ bought bread, $250$ bought milk, $200$ bought eggs. $150$ bought bread and milk, $120$ bought bread and eggs, $90$ bought milk and eggs, and $60$ bought all three. How many bought none of the three?",
     answerKey: 50,
     tolerance: 0.02,
     difficulty: 0.15,
@@ -255,7 +255,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "an element in all three sets is counted 3 times among the singles, then subtracted 3 times among the pairs (net count 0), so it must be added back once to be counted exactly once overall",
+          description: "an element in all three sets is counted $3$ times among the singles, then subtracted $3$ times among the pairs (net count $0$), so it must be added back once to be counted exactly once overall",
           weight: 1,
           required: true,
         },
@@ -327,17 +327,17 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A study runs m = 20 independent statistical tests, each at significance level $\\alpha = 0.05$. Someone claims 'each test's false-positive rate is 5%, so the whole study's false-positive rate is 5%.' Use Boole's inequality to correct this, giving the numeric Boole bound, and note whether it's informative.",
+    stem: "A study runs $m = 20$ independent statistical tests, each at significance level $\\alpha = 0.05$. Someone claims “each test’s false-positive rate is $5\\%$, so the whole study’s false-positive rate is $5\\%$.” Use Boole’s inequality to correct this, giving the numeric Boole bound, and note whether it’s informative.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "Boole bound on P(at least one false positive) $\\leq 20 \\times 0.05 = 1.0$ — vacuous",
+          description: "Boole bound on $P(\\text{at least one false positive}) \\leq 20 \\times 0.05 = 1.0$ — vacuous",
           weight: 1,
         },
         {
           id: "element-2",
-          description: "true value under independence is $1 - 0.95^{20} \\approx 0.642$, far above 5% — the real risk is much higher than the per-test rate, which is exactly the multiple-comparisons problem",
+          description: "true value under independence is $1 - 0.95^{20} \\approx 0.642$, far above $5\\%$ — the real risk is much higher than the per-test rate, which is exactly the multiple-comparisons problem",
           weight: 1,
         },
       ],
@@ -355,7 +355,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "A researcher wants the Boole/Bonferroni bound on the familywise false-positive rate to stay at or below 0.05 while running m = 10 independent tests. What per-test significance level $\\alpha$ should each test use?",
+    stem: "A researcher wants the Boole/Bonferroni bound on the familywise false-positive rate to stay at or below $0.05$ while running $m = 10$ independent tests. What per-test significance level $\\alpha$ should each test use?",
     answerKey: 0.005,
     tolerance: 0.01,
     difficulty: 0.95,
@@ -389,7 +389,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "Closed under complement",
         correct: false,
         misconception: {
@@ -422,7 +422,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Is the trivial collection {∅, Ω} a $\\sigma$-algebra on any $\\Omega$? Justify briefly.",
+    stem: "Is the trivial collection $\\{\\varnothing, \\Omega\\}$ a $\\sigma$-algebra on any $\\Omega$? Justify briefly.",
     rubric: {
       elements: [
         {
@@ -460,7 +460,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "No, because $2^{\\Omega}$ is uncountable when $\\Omega$ is infinite, and $\\sigma$-algebras must be countable",
         correct: false,
         misconception: {
@@ -493,12 +493,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Let $\\Omega =$ {1,2,3}. List every $\\sigma$-algebra on $\\Omega$ that contains the set {1}.",
+    stem: "Let $\\Omega = \\{1, 2, 3\\}$. List every $\\sigma$-algebra on $\\Omega$ that contains the set $\\{1\\}$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "exactly two: {∅, {1}, {2,3}, Ω} (4 sets) and the full power set $2^{\\Omega}$ (8 sets) — every finite $\\sigma$-algebra is generated by a partition, and {2,3} either stays whole or splits into {2},{3}",
+          description: "exactly two: $\\{\\varnothing, \\{1\\}, \\{2, 3\\}, \\Omega\\}$ ($4$ sets) and the full power set $2^{\\Omega}$ ($8$ sets) — every finite $\\sigma$-algebra is generated by a partition, and $\\{2, 3\\}$ either stays whole or splits into $\\{2\\}, \\{3\\}$",
           weight: 1,
           required: true,
         },
@@ -534,7 +534,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "complement: if A is countable, $A^{c}$ has countable complement (namely A), so $A^{c} \\in \\mathcal{F}$; symmetric argument if A has countable complement",
+          description: "complement: if $A$ is countable, $A^{c}$ has countable complement (namely $A$), so $A^{c} \\in \\mathcal{F}$; symmetric argument if $A$ has countable complement",
           weight: 1,
           required: true,
         },
@@ -558,12 +558,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "$\\Omega =$ {a,b,c,d}. Which of these collections IS a $\\sigma$-algebra on $\\Omega$?",
+    stem: "$\\Omega = \\{a, b, c, d\\}$. Which of these collections IS a $\\sigma$-algebra on $\\Omega$?",
     choices: [
       { id: "a", text: "{∅, $\\Omega$, {a,b}, {c,d}}", correct: true },
       {
         id: "b",
-        text: "{∅, $\\Omega$, {a}, {b,c,d}, {a,b}}",
+        text: "$\\{\\varnothing, \\Omega, \\{a\\}, \\{b, c, d\\}, \\{a, b\\}\\}$",
         correct: false,
         misconception: {
           id: "sigma-algebra--which-is-sigma-algebra--b",
@@ -572,12 +572,12 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "{∅, $\\Omega$, {a}, {b}, {c}, {d}}",
         correct: false,
         misconception: {
           id: "sigma-algebra--which-is-sigma-algebra--c",
-          description: "Lists singletons but omits their unions (e.g. {a,b}), so it isn't closed under union.",
+          description: "Lists singletons but omits their unions (e.g. $\\{a, b\\}$), so it isn’t closed under union.",
           blameConceptId: "sigma-algebra",
         },
       },
@@ -587,7 +587,7 @@ export const probabilityExpansion1Items: Item[] = [
         correct: false,
         misconception: {
           id: "sigma-algebra--which-is-sigma-algebra--d",
-          description: "Omits $\\Omega$ itself, even though {a,b}∪{c,d}=Ω is forced by union-closure — treats $\\Omega$ as optional rather than derivable/required.",
+          description: "Omits $\\Omega$ itself, even though $\\{a, b\\} \\cup \\{c, d\\} = \\Omega$ is forced by union-closure — treats $\\Omega$ as optional rather than derivable/required.",
           blameConceptId: "sigma-algebra",
         },
       },
@@ -605,7 +605,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "$\\Omega =$ {1,2,3,4,5,6}. How many elements does the $\\sigma$-algebra generated by the single set A = {1,2,3} (together with $\\Omega$) have?",
+    stem: "$\\Omega = \\{1, 2, 3, 4, 5, 6\\}$. How many elements does the $\\sigma$-algebra generated by the single set $A = \\{1, 2, 3\\}$ (together with $\\Omega$) have?",
     answerKey: 4,
     tolerance: 0.01,
     difficulty: -0.2,
@@ -661,7 +661,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "if A is in every $\\mathcal{F}_{i}$, so is $A^{c}$ (each $\\mathcal{F}_{i}$ is closed under complement), so $A^{c}$ is in the intersection",
+          description: "if $A$ is in every $\\mathcal{F}_{i}$, so is $A^{c}$ (each $\\mathcal{F}_{i}$ is closed under complement), so $A^{c}$ is in the intersection",
           weight: 1,
         },
         {
@@ -689,7 +689,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "the union need not be closed under further set operations mixing sets from the two algebras — e.g. Ω={1,2,3}, $\\mathcal{F}_{1}$ generated by {1}, $\\mathcal{F}_{2}$ generated by {2}; {1}∈ℱ₁ and {2}∈ℱ₂, but {1,2} $\\notin \\mathcal{F}_{1}\\cup \\mathcal{F}_{2}$",
+          description: "the union need not be closed under further set operations mixing sets from the two algebras — e.g. $\\Omega = \\{1, 2, 3\\}$, $\\mathcal{F}_{1}$ generated by $\\{1\\}$, $\\mathcal{F}_{2}$ generated by $\\{2\\}$; $\\{1\\} \\in \\mathcal{F}_1$ and $\\{2\\} \\in \\mathcal{F}_2$, but $\\{1, 2\\} \\notin \\mathcal{F}_{1} \\cup \\mathcal{F}_{2}$",
           weight: 1,
           required: true,
         },
@@ -708,12 +708,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "The $\\sigma$-algebra generated by a random variable X, $\\sigma(X)$, consists of all events of the form {X $\\in$ B}. Explain why $\\sigma(X)$ being 'small' (few sets) corresponds to X carrying 'little information,' connecting the algebraic closure properties to this intuitive idea.",
+    stem: "The $\\sigma$-algebra generated by a random variable $X$, $\\sigma(X)$, consists of all events of the form $\\{X \\in B\\}$. Explain why $\\sigma(X)$ being ‘small’ (few sets) corresponds to $X$ carrying ‘little information’, connecting the algebraic closure properties to this intuitive idea.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "a coarser $\\sigma$-algebra (fewer distinguishable sets) can distinguish fewer possible outcomes — if $\\sigma(X)$ contains only $\\emptyset$, a few coarse blocks, and $\\Omega$, then knowing X's value doesn't narrow $\\omega$ down beyond those blocks",
+          description: "a coarser $\\sigma$-algebra (fewer distinguishable sets) can distinguish fewer possible outcomes — if $\\sigma(X)$ contains only $\\emptyset$, a few coarse blocks, and $\\Omega$, then knowing $X$’s value doesn’t narrow $\\omega$ down beyond those blocks",
           weight: 1,
           required: true,
         },
@@ -737,7 +737,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "symbolic",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "A $\\sigma$-algebra on a finite $\\Omega$ that is generated by a partition of $\\Omega$ into k blocks (atoms) has exactly how many elements, as a function of k?",
+    stem: "A $\\sigma$-algebra on a finite $\\Omega$ that is generated by a partition of $\\Omega$ into $k$ blocks (atoms) has exactly how many elements, as a function of $k$?",
     answerKey: "$2^{k}$",
     difficulty: 0.9,
     discrimination: 1.2,
@@ -752,12 +752,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A 'filtration' in stochastic processes is an increasing sequence of $\\sigma$-algebras $\\mathcal{F}_{0}\\subseteq \\mathcal{F}_{1}\\subseteq \\mathcal{F}_{2}\\subseteq\\cdots$, modeling information accumulating over time. Using only the closure properties of a $\\sigma$-algebra, explain why 'increasing' must mean literal set-containment $\\mathcal{F}_{t} \\subseteq \\mathcal{F}_{t+1}$ (not merely a growing count of sets) for the 'more information over time' interpretation to make sense.",
+    stem: "A ‘filtration’ in stochastic processes is an increasing sequence of $\\sigma$-algebras $\\mathcal{F}_{0}\\subseteq \\mathcal{F}_{1}\\subseteq \\mathcal{F}_{2}\\subseteq\\cdots$, modeling information accumulating over time. Using only the closure properties of a $\\sigma$-algebra, explain why ‘increasing’ must mean literal set-containment $\\mathcal{F}_{t} \\subseteq \\mathcal{F}_{t+1}$ (not merely a growing count of sets) for the ‘more information over time’ interpretation to make sense.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "if some event in $\\mathcal{F}_{t}$ were not in $\\mathcal{F}_{t+1}$, that would mean 'forgetting' information already available — literal subset containment guarantees every question answerable at time t stays answerable later",
+          description: "if some event in $\\mathcal{F}_{t}$ were not in $\\mathcal{F}_{t+1}$, that would mean ‘forgetting’ information already available — literal subset containment guarantees every question answerable at time $t$ stays answerable later",
           weight: 1,
           required: true,
         },
@@ -780,9 +780,9 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which of these is a CONSEQUENCE of Kolmogorov's axioms rather than one of the axioms itself?",
+    stem: "Which of these is a CONSEQUENCE of Kolmogorov’s axioms rather than one of the axioms itself?",
     choices: [
-      { id: "a", text: "$P(A) \\leq 1$ for every event A", correct: true },
+      { id: "a", text: "$P(A) \\leq 1$ for every event $A$", correct: true },
       {
         id: "b",
         text: "$P(\\Omega) = 1$",
@@ -794,8 +794,8 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
-        text: "$P(A) \\geq 0$ for every event A",
+        id: "$c$",
+        text: "$P(A) \\geq 0$ for every event $A$",
         correct: false,
         misconception: {
           id: "axioms-of-probability--derived-vs-axiom--c",
@@ -851,7 +851,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "If A and B are NOT disjoint, does additivity directly give $P(A\\cup B) = P(A) + P(B)$?",
+    stem: "If $A$ and $B$ are NOT disjoint, does additivity directly give $P(A\\cup B) = P(A) + P(B)$?",
     choices: [
       { id: "a", text: "No — additivity requires disjointness; the general two-event formula needs the separate $P(A)$+$P(B)$$-$$P(A\\cap B)$ result", correct: true },
       {
@@ -865,8 +865,8 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
-        text: "Yes, but only if $P(A\\cap B)$ happens to equal 0.5",
+        id: "$c$",
+        text: "Yes, but only if $P(A\\cap B)$ happens to equal $0.5$",
         correct: false,
         misconception: {
           id: "axioms-of-probability--nondisjoint-additivity--c",
@@ -898,12 +898,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove that $P(A) \\leq 1$ for every event A, using only the three axioms plus monotonicity (which itself follows from them).",
+    stem: "Prove that $P(A) \\leq 1$ for every event $A$, using only the three axioms plus monotonicity (which itself follows from them).",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "A $\\subseteq \\Omega$ always, so monotonicity gives $P(A) \\leq P(\\Omega) = 1$ by axiom 2",
+          description: "$A \\subseteq \\Omega$ always, so monotonicity gives $P(A) \\leq P(\\Omega) = 1$ by axiom $2$",
           weight: 1,
           required: true,
         },
@@ -922,18 +922,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "For any two events A, B (not necessarily disjoint), prove $P(A\\cup B) \\leq P(A) + P(B)$ directly from the three axioms, without first deriving the exact addition formula.",
+    stem: "For any two events $A$, $B$ (not necessarily disjoint), prove $P(A\\cup B) \\leq P(A) + P(B)$ directly from the three axioms, without first deriving the exact addition formula.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "write $A\\cup B =$ A $\\sqcup (B\\setminus A)$; additivity gives $P(A\\cup B) = P(A) + P(B\\setminus A)$",
+          description: "write $A\\cup B = A \\sqcup (B\\setminus A)$; additivity gives $P(A\\cup B) = P(A) + P(B\\setminus A)$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "$B\\setminus A \\subseteq$ B, so by monotonicity $P(B\\setminus A) \\leq P(B)$; combine to get $P(A\\cup B) \\leq P(A) + P(B)$",
+          description: "$B\\setminus A \\subseteq B$, so by monotonicity $P(B\\setminus A) \\leq P(B)$; combine to get $P(A\\cup B) \\leq P(A) + P(B)$",
           weight: 1,
         },
       ],
@@ -956,7 +956,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "apply monotonicity to each consecutive pair: $A_{n} \\subseteq A_{n+1}$ gives $P(A_{n}) \\leq P(A_{n+1})$, for every n",
+          description: "apply monotonicity to each consecutive pair: $A_{n} \\subseteq A_{n+1}$ gives $P(A_{n}) \\leq P(A_{n+1})$, for every $n$",
           weight: 1,
           required: true,
         },
@@ -975,7 +975,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Events A and B are disjoint with $P(A) = 0.3$ and $P(A\\cup B) = 0.9$. Using additivity, find $P(B)$.",
+    stem: "Events $A$ and $B$ are disjoint with $P(A) = 0.3$ and $P(A\\cup B) = 0.9$. Using additivity, find $P(B)$.",
     answerKey: 0.6,
     tolerance: 0.01,
     difficulty: 0.05,
@@ -991,7 +991,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "$\\Omega =$ {1,2,3} with P({1}) = 0.2, P({2}) = 0.3, and P({2,3}) = 0.8. Using additivity, find P({3}), and confirm $P(\\Omega) = 1$.",
+    stem: "$\\Omega = \\{1, 2, 3\\}$ with $P(\\{1\\}) = 0.2$, $P(\\{2\\}) = 0.3$, and $P(\\{2, 3\\}) = 0.8$. Using additivity, find $P(\\{3\\})$, and confirm $P(\\Omega) = 1$.",
     answerKey: 0.5,
     tolerance: 0.01,
     difficulty: 0.15,
@@ -1007,12 +1007,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "The axioms only pin down P as a function on events (the $\\sigma$-algebra), not on individual outcomes $\\omega$. Explain why this matters when $\\Omega$ is uncountable, using the $\\text{Uniform}(0,1)$ example.",
+    stem: "The axioms only pin down $P$ as a function on events (the $\\sigma$-algebra), not on individual outcomes $\\omega$. Explain why this matters when $\\Omega$ is uncountable, using the $\\text{Uniform}(0,1)$ example.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "for $\\text{Uniform}(0,1)$, every single point has probability 0 — otherwise uncountably many positive numbers would have to sum past 1, which is impossible for any real-valued sum",
+          description: "for $\\text{Uniform}(0,1)$, every single point has probability $0$ — otherwise uncountably many positive numbers would have to sum past $1$, which is impossible for any real-valued sum",
           weight: 1,
           required: true,
         },
@@ -1036,7 +1036,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Two axiom systems are proposed: (i) Kolmogorov's three axioms; (ii) the same, but with finite additivity in place of countable additivity. What class of probabilistic statements becomes impossible to make under (ii) that is possible under (i)?",
+    stem: "Two axiom systems are proposed: (i) Kolmogorov’s three axioms; (ii) the same, but with finite additivity in place of countable additivity. What class of probabilistic statements becomes impossible to make under (ii) that is possible under (i)?",
     rubric: {
       elements: [
         {
@@ -1094,7 +1094,7 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "no — countable additivity (not just finite additivity) forces continuity from below, $P(\\bigcup_{n}A_{n})$$=lim_{n}P(A_{n}); \\mu$ violates this, so it fails axiom 3 even though it may satisfy analogues of axioms 1–2",
+          description: "no — countable additivity (not just finite additivity) forces continuity from below, $P\\left(\\bigcup_{n}A_{n}\\right) = \\lim_{n}P(A_{n})$; $\\mu$ violates this, so it fails axiom $3$ even though it may satisfy analogues of axioms $1$–$2$",
           weight: 1,
           required: true,
         },
@@ -1113,12 +1113,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Modeling infinite coin flips, someone wants to assign P('eventually all heads') = 0, an event depending on infinitely many coordinates. Explain, in terms of the axioms, why finite additivity alone could never pin this down, while countable additivity can.",
+    stem: "Modeling infinite coin flips, someone wants to assign $P(\\text{eventually all heads}) = 0$, an event depending on infinitely many coordinates. Explain, in terms of the axioms, why finite additivity alone could never pin this down, while countable additivity can.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "'eventually all heads' is built from a countable union/intersection of finite-coordinate events; only countable additivity (via continuity) lets you take the limit of the computable finite-prefix probabilities down to 0",
+          description: "‘eventually all heads’ is built from a countable union/intersection of finite-coordinate events; only countable additivity (via continuity) lets you take the limit of the computable finite-prefix probabilities down to $0$",
           weight: 1,
           required: true,
         },
@@ -1146,7 +1146,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For any two events A, B, which inequality always holds?",
+    stem: "For any two events $A$, $B$, which inequality always holds?",
     choices: [
       { id: "a", text: "$P(A\\cap B) \\leq$ min($P(A)$, $P(B)$)", correct: true },
       {
@@ -1160,7 +1160,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "$P(A\\cap B) = P(A)$$\\cdot$$P(B)$ always",
         correct: false,
         misconception: {
@@ -1193,12 +1193,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "State the Bonferroni-type lower bound: for two events A, B, what is the smallest $P(A\\cap B)$ can possibly be, in terms of $P(A)$ and $P(B)$?",
+    stem: "State the Bonferroni-type lower bound: for two events $A$, $B$, what is the smallest $P(A\\cap B)$ can possibly be, in terms of $P(A)$ and $P(B)$?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "max(0, $P(A) + P(B) -$ 1)",
+          description: "$\\max\\left(0, P(A) + P(B) - 1\\right)$",
           weight: 1,
           required: true,
         },
@@ -1219,10 +1219,10 @@ export const probabilityExpansion1Items: Item[] = [
     channels: ["typed"],
     stem: "$P(A) = P(B) = P(C) = 0.5$, and the events are claimed to be pairwise disjoint. Is this scenario possible?",
     choices: [
-      { id: "a", text: "No — additivity would force $P(A\\cup B\\cup C) = 1.5$, which exceeds 1", correct: true },
+      { id: "a", text: "No — additivity would force $P(A\\cup B\\cup C) = 1.5$, which exceeds $1$", correct: true },
       {
         id: "b",
-        text: "Yes, as long as A, B, C are independent",
+        text: "Yes, as long as $A$, $B$, $C$ are independent",
         correct: false,
         misconception: {
           id: "probability-function--impossible-disjoint-sum--b",
@@ -1231,8 +1231,8 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
-        text: "Yes, since each individual probability (0.5) is itself valid",
+        id: "$c$",
+        text: "Yes, since each individual probability ($0.5$) is itself valid",
         correct: false,
         misconception: {
           id: "probability-function--impossible-disjoint-sum--c",
@@ -1280,7 +1280,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "$P(A) = 0.7, P(B) = 0.6, P(A\\cap B) = 0.5$. Find $P(A\\cap B^{c})$ — the part of A outside B.",
+    stem: "$P(A) = 0.7$, $P(B) = 0.6$, $P(A\\cap B) = 0.5$. Find $P(A\\cap B^{c})$ — the part of $A$ outside $B$.",
     answerKey: 0.2,
     tolerance: 0.01,
     difficulty: -0.25,
@@ -1296,7 +1296,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "$P(A) = 0.2, P(B) = 0.3, P(C) = 0.4$, and A, B, C are pairwise disjoint. Find $P((A\\cup B\\cup C)^{c})$.",
+    stem: "$P(A) = 0.2$, $P(B) = 0.3$, $P(C) = 0.4$, and $A$, $B$, $C$ are pairwise disjoint. Find $P\\left((A\\cup B\\cup C)^{c}\\right)$.",
     answerKey: 0.1,
     tolerance: 0.01,
     difficulty: -0.1,
@@ -1312,7 +1312,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "In a factory, P(machine A fails) = 0.08, P(machine B fails) = 0.05, P(both fail) = 0.02. Find P(exactly one machine fails).",
+    stem: "In a factory, $P(\\text{machine A fails}) = 0.08$, $P(\\text{machine B fails}) = 0.05$, $P(\\text{both fail}) = 0.02$. Find $P(\\text{exactly one machine fails})$.",
     answerKey: 0.09,
     tolerance: 0.01,
     difficulty: 0.0,
@@ -1344,12 +1344,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why $P(A\\cap B) \\leq$ min($P(A)$, $P(B)$) for any two events, using monotonicity rather than a Venn-diagram appeal.",
+    stem: "Explain why $P(A\\cap B) \\leq \\min\\left(P(A), P(B)\\right)$ for any two events, using monotonicity rather than a Venn-diagram appeal.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$A\\cap B \\subseteq$ A and $A\\cap B \\subseteq$ B, so by monotonicity (itself derived from the axioms) $P(A\\cap B) \\leq P(A)$ and $P(A\\cap B) \\leq P(B)$, hence $P(A\\cap B) \\leq$ min of the two",
+          description: "$A\\cap B \\subseteq A$ and $A\\cap B \\subseteq B$, so by monotonicity (itself derived from the axioms) $P(A\\cap B) \\leq P(A)$ and $P(A\\cap B) \\leq P(B)$, hence $P(A\\cap B) \\leq$ the min of the two",
           weight: 1,
           required: true,
         },
@@ -1392,7 +1392,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Extend the Bonferroni bound to three events: derive $P(A\\cap B\\cap C) \\geq P(A) + P(B) + P(C) - 2$ by applying the two-event bound ($P(X\\cap Y) \\geq P(X)$+$P(Y)$$-1$) twice, once with $X=A\\cap B$, Y=C.",
+    stem: "Extend the Bonferroni bound to three events: derive $P(A\\cap B\\cap C) \\geq P(A) + P(B) + P(C) - 2$ by applying the two-event bound ($P(X\\cap Y) \\geq P(X) + P(Y) - 1$) twice, once with $X = A\\cap B$, $Y = C$.",
     rubric: {
       elements: [
         {
@@ -1403,7 +1403,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "second application to $(A\\cap B)$ and C: $P((A\\cap B)\\cap C) \\geq P(A\\cap B) + P(C) - 1 \\geq$ ($P(A)$+$P(B)$$-1) + P(C) - 1 = P(A$)+$P(B)$+$P(C)$$-2$",
+          description: "second application to $A\\cap B$ and $C$: $P\\left((A\\cap B)\\cap C\\right) \\geq P(A\\cap B) + P(C) - 1 \\geq \\left(P(A) + P(B) - 1\\right) + P(C) - 1 = P(A) + P(B) + P(C) - 2$",
           weight: 1,
         },
       ],
@@ -1421,12 +1421,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A dashboard reports: P(server up) = 0.99, P(database up) = 0.98, P(both up) = 0.995. A colleague accepts this at face value. Explain why the addition-rule constraints alone — with no assumption about independence or dependence — already rule this out.",
+    stem: "A dashboard reports: $P(\\text{server up}) = 0.99$, $P(\\text{database up}) = 0.98$, $P(\\text{both up}) = 0.995$. A colleague accepts this at face value. Explain why the addition-rule constraints alone — with no assumption about independence or dependence — already rule this out.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$P(A\\cap B)$ must be $\\leq$ min($P(A)$,$P(B)$) = min(0.99, 0.98) = 0.98 for ANY joint distribution; the reported 0.995 exceeds this, so the report is impossible regardless of any dependence structure",
+          description: "$P(A\\cap B)$ must be $\\leq \\min\\left(P(A), P(B)\\right) = \\min(0.99, 0.98) = 0.98$ for ANY joint distribution; the reported $0.995$ exceeds this, so the report is impossible regardless of any dependence structure",
           weight: 1,
           required: true,
         },
@@ -1445,7 +1445,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "A marketer reports: P(clicked ad) = 0.12, P(purchased) = 0.03, P(clicked and purchased) = 0.05. Using the constraint $P(A\\cap B) \\leq$ min($P(A)$, $P(B)$), by how much does the reported joint probability exceed the maximum it could possibly be?",
+    stem: "A marketer reports: $P(\\text{clicked ad}) = 0.12$, $P(\\text{purchased}) = 0.03$, $P(\\text{clicked and purchased}) = 0.05$. Using the constraint $P(A\\cap B) \\leq \\min\\left(P(A), P(B)\\right)$, by how much does the reported joint probability exceed the maximum it could possibly be?",
     answerKey: 0.02,
     tolerance: 0.02,
     difficulty: 0.95,
@@ -1467,10 +1467,10 @@ export const probabilityExpansion1Items: Item[] = [
     channels: ["typed"],
     stem: "$P(A|B)$ is defined only when:",
     choices: [
-      { id: "a", text: "$P(B)$ > 0", correct: true },
+      { id: "a", text: "$P(B) > 0$", correct: true },
       {
         id: "b",
-        text: "$P(A)$ > 0",
+        text: "$P(A) > 0$",
         correct: false,
         misconception: {
           id: "conditional-probability--defined-condition--b",
@@ -1479,22 +1479,22 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
-        text: "$P(A\\cap B)$ > 0",
+        id: "$c$",
+        text: "$P(A\\cap B) > 0$",
         correct: false,
         misconception: {
           id: "conditional-probability--defined-condition--c",
-          description: "States a stronger condition than necessary — $P(A|B)$ is well-defined (and can be 0) whenever $P(B)$>0, even if $A\\cap B$ is empty.",
+          description: "States a stronger condition than necessary — $P(A \\mid B)$ is well-defined (and can be $0$) whenever $P(B) > 0$, even if $A\\cap B$ is empty.",
           blameConceptId: "conditional-probability",
         },
       },
       {
         id: "d",
-        text: "A and B are independent",
+        text: "$A$ and $B$ are independent",
         correct: false,
         misconception: {
           id: "conditional-probability--defined-condition--d",
-          description: "Confuses a property that makes $P(A|B)$=$P(A)$ with the condition required for $P(A|B)$ to be defined at all.",
+          description: "Confuses a property that makes $P(A \\mid B) = P(A)$ with the condition required for $P(A \\mid B)$ to be defined at all.",
           blameConceptId: "conditional-probability",
         },
       },
@@ -1512,12 +1512,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Is it true that $P(A|B) + P(A^{c}|B) = 1$ whenever $P(B)$ > 0? Justify briefly.",
+    stem: "Is it true that $P(A \\mid B) + P(A^{c} \\mid B) = 1$ whenever $P(B) > 0$? Justify briefly.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "yes: $P(A|B) + P(A^{c}|B) =$ [$P(A\\cap B) + P(A^{c}\\cap B)$] / $P(B) = P(B)$/$P(B) = 1$, since $A\\cap B$ and $A^{c}\\cap B$ partition B",
+          description: "yes: $P(A \\mid B) + P(A^{c} \\mid B) = \\dfrac{P(A\\cap B) + P(A^{c}\\cap B)}{P(B)} = \\dfrac{P(B)}{P(B)} = 1$, since $A\\cap B$ and $A^{c}\\cap B$ partition $B$",
           weight: 1,
           required: true,
         },
@@ -1536,7 +1536,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "If $P(A|B) = P(A)$ (with $P(A)$, $P(B)$ > 0), which statement is also definitely true?",
+    stem: "If $P(A \\mid B) = P(A)$ (with $P(A), P(B) > 0$), which statement is also definitely true?",
     choices: [
       { id: "a", text: "$P(B|A) = P(B)$", correct: true },
       {
@@ -1550,12 +1550,12 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "$P(A\\cap B) = 0$",
         correct: false,
         misconception: {
           id: "conditional-probability--symmetric-independence-mcq--c",
-          description: "Confuses $P(A|B)$=$P(A)$ (independence) with disjointness, which would instead force $P(A|B)$=0.",
+          description: "Confuses $P(A \\mid B) = P(A)$ (independence) with disjointness, which would instead force $P(A \\mid B) = 0$.",
           blameConceptId: "mutual-independence",
         },
       },
@@ -1583,7 +1583,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A card is drawn from a standard 52-card deck. Given that the card is a face card (J, Q, or K), what is P(the card is a King)?",
+    stem: "A card is drawn from a standard $52$-card deck. Given that the card is a face card (J, Q, or K), what is $P(\\text{the card is a King})$?",
     answerKey: 0.333,
     tolerance: 0.02,
     difficulty: -0.35,
@@ -1599,7 +1599,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "In a bag of marbles, 40% are red, and 25% of all marbles are both red and striped. What is P(striped | red)?",
+    stem: "In a bag of marbles, $40\\%$ are red, and $25\\%$ of all marbles are both red and striped. What is $P(\\text{striped} \\mid \\text{red})$?",
     answerKey: 0.625,
     tolerance: 0.01,
     difficulty: -0.15,
@@ -1615,7 +1615,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Two cards are drawn without replacement from a standard deck. Given the first card is an Ace, what is P(second card is also an Ace)?",
+    stem: "Two cards are drawn without replacement from a standard deck. Given the first card is an Ace, what is $P(\\text{second card is also an Ace})$?",
     answerKey: 0.0588,
     tolerance: 0.02,
     difficulty: 0.0,
@@ -1631,12 +1631,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Machine A produces 60% of a factory's items with a 2% defect rate; Machine B produces 40% with a 5% defect rate. Given an item is defective, is it more likely to have come from A or B? (Compare P(defective∩A) and P(defective∩B) — you don't need to normalize into a full conditional probability yet.)",
+    stem: "Machine A produces $60\\%$ of a factory’s items with a $2\\%$ defect rate; Machine B produces $40\\%$ with a $5\\%$ defect rate. Given an item is defective, is it more likely to have come from A or B? (Compare $P(\\text{defective} \\cap A)$ and $P(\\text{defective} \\cap B)$ — you don’t need to normalize into a full conditional probability yet.)",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(defective∩A) $= 0.6\\times 0.02 = 0.012$; P(defective∩B) $= 0.4\\times 0.05 = 0.02$; since 0.02 > 0.012, a defective item is more likely to have come from B",
+          description: "$P(\\text{defective} \\cap A) = 0.6\\times 0.02 = 0.012$; $P(\\text{defective} \\cap B) = 0.4\\times 0.05 = 0.02$; since $0.02 > 0.012$, a defective item is more likely to have come from B",
           weight: 1,
           required: true,
         },
@@ -1644,7 +1644,7 @@ export const probabilityExpansion1Items: Item[] = [
       forbiddenMoves: [
         {
           id: "misconception",
-          description: "compares the raw defect rates 2% vs 5% directly, ignoring each machine's share of total output",
+          description: "compares the raw defect rates $2\\%$ vs $5\\%$ directly, ignoring each machine’s share of total output",
           weight: 0,
           misconception: {
             id: "conditional-probability--machine-defect-compare--misconception",
@@ -1667,23 +1667,23 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why $P(A|B)$ can be larger than, smaller than, or equal to $P(A)$ — i.e., why conditioning has no built-in direction — using one example of each case with a simple die roll.",
+    stem: "Explain why $P(A \\mid B)$ can be larger than, smaller than, or equal to $P(A)$ — i.e., why conditioning has no built-in direction — using one example of each case with a simple die roll.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "increases: e.g. P(even) $= 1/2$, but P(even | roll > 3) = P({4,6})/P({4,5,6}) $= 2/3$ > $1/2$",
+          description: "increases: e.g. $P(\\text{even}) = 1/2$, but $P(\\text{even} \\mid \\text{roll} > 3) = \\dfrac{P(\\{4, 6\\})}{P(\\{4, 5, 6\\})} = 2/3 > 1/2$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "decreases: e.g. P(even) $= 1/2$, but P(even | roll ≤ 1) = P(∅ within {1})/P({1}) = 0 < $1/2$ (or any similar example where conditioning excludes even outcomes)",
+          description: "decreases: e.g. $P(\\text{even}) = 1/2$, but $P(\\text{even} \\mid \\text{roll} \\le 1) = 0 < 1/2$, since no even outcome lies in $\\{1\\}$ (or any similar example where conditioning excludes even outcomes)",
           weight: 1,
         },
         {
           id: "element-3",
-          description: "stays equal: any independent conditioning event, e.g. P(even | roll is a multiple of 1, i.e. Ω itself) = P(even)",
+          description: "stays equal: any independent conditioning event, e.g. $P(\\text{even} \\mid \\Omega) = P(\\text{even})$ (conditioning on “the roll is a multiple of $1$”)",
           weight: 1,
         },
       ],
@@ -1701,12 +1701,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove that $P(\\cdot|B)$, as a function of its first argument, is monotone: if $A_{1} \\subseteq A_{2}$ then $P(A_{1}|B) \\leq P(A_{2}|B)$, for $P(B)$ > 0.",
+    stem: "Prove that $P(\\cdot \\mid B)$, as a function of its first argument, is monotone: if $A_{1} \\subseteq A_{2}$ then $P(A_{1} \\mid B) \\leq P(A_{2} \\mid B)$, for $P(B) > 0$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$A_{1}\\cap B \\subseteq A_{2}\\cap B$, so by monotonicity of P, $P(A_{1}\\cap B) \\leq P(A_{2}\\cap B)$",
+          description: "$A_{1}\\cap B \\subseteq A_{2}\\cap B$, so by monotonicity of $P$, $P(A_{1}\\cap B) \\leq P(A_{2}\\cap B)$",
           weight: 1,
           required: true,
         },
@@ -1730,18 +1730,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain why 'conditioning on B' can be understood as zooming in and rescaling: describe what happens to the probability of outcomes outside B and to the relative probabilities of outcomes inside B.",
+    stem: "Explain why ‘conditioning on $B$’ can be understood as zooming in and rescaling: describe what happens to the probability of outcomes outside $B$ and to the relative probabilities of outcomes inside $B$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "outcomes outside B get probability 0 under $P(\\cdot|B)$ — they're zeroed out",
+          description: "outcomes outside $B$ get probability $0$ under $P(\\cdot \\mid B)$ — they’re zeroed out",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "outcomes inside B keep their relative proportions to each other but are all uniformly rescaled by the factor 1/$P(B)$ so the total over B becomes 1",
+          description: "outcomes inside $B$ keep their relative proportions to each other but are all uniformly rescaled by the factor $1/P(B)$ so the total over $B$ becomes $1$",
           weight: 1,
         },
       ],
@@ -1759,18 +1759,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A weather app says P(rain today) = 20% (unconditional). You learn it is currently cloudy, and historically P(cloudy) = 0.5 while P(rain and cloudy) = 0.15. Update your probability of rain given the new information, and say whether observing 'cloudy' made rain more or less likely than the app's original number.",
+    stem: "A weather app says $P(\\text{rain today}) = 20\\%$ (unconditional). You learn it is currently cloudy, and historically $P(\\text{cloudy}) = 0.5$ while $P(\\text{rain and cloudy}) = 0.15$. Update your probability of rain given the new information, and say whether observing ‘cloudy’ made rain more or less likely than the app’s original number.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(rain|cloudy) = 0.15/0.5 = 0.3",
+          description: "$P(\\text{rain} \\mid \\text{cloudy}) = 0.15/0.5 = 0.3$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "0.3 > 0.2, so observing 'cloudy' makes rain more likely than the unconditional 20%",
+          description: "$0.3 > 0.2$, so observing ‘cloudy’ makes rain more likely than the unconditional $20\\%$",
           weight: 1,
         },
       ],
@@ -1788,7 +1788,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "A family has two children (each independently equally likely to be a boy or girl). Given that at least one child is a girl, what is P(both children are girls)? (Treat the sample space of ordered pairs {BB, BG, GB, GG} as uniform.)",
+    stem: "A family has two children (each independently equally likely to be a boy or girl). Given that at least one child is a girl, what is $P(\\text{both children are girls})$? (Treat the sample space of ordered pairs $\\{BB, BG, GB, GG\\}$ as uniform.)",
     answerKey: 0.333,
     tolerance: 0.02,
     difficulty: 0.85,
@@ -1804,18 +1804,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Building on the two-child problem: explain why conditioning on 'at least one child is a girl' gives P(both girls) $= 1/3$, while conditioning instead on 'the older child is a girl' gives P(both girls) $= 1/2$ — even though both facts seem to say 'one specific child is a girl.'",
+    stem: "Building on the two-child problem: explain why conditioning on ‘at least one child is a girl’ gives $P(\\text{both girls}) = 1/3$, while conditioning instead on ‘the older child is a girl’ gives $P(\\text{both girls}) = 1/2$ — even though both facts seem to say ‘one specific child is a girl’.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "'at least one girl' = {BG, GB, GG}, 3 equally likely outcomes, only 1 of which (GG) has both girls, giving $1/3$",
+          description: "‘at least one girl’ $= \\{BG, GB, GG\\}$, $3$ equally likely outcomes, only $1$ of which ($GG$) has both girls, giving $1/3$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "'older child is a girl' = {GB, GG} (using an older/younger ordering), only 2 outcomes, 1 of which has both girls, giving $1/2$",
+          description: "‘older child is a girl’ $= \\{GB, GG\\}$ (using an older/younger ordering), only $2$ outcomes, $1$ of which has both girls, giving $1/2$",
           weight: 1,
         },
         {
@@ -1856,7 +1856,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "posterior",
         correct: false,
         misconception: {
@@ -1927,7 +1927,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "$P(A) / P(B)$",
         correct: false,
         misconception: {
@@ -1960,7 +1960,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A factory has 3 machines producing 50%, 30%, 20% of total output, with defect rates 1%, 2%, 3% respectively. An item is defective. Find $P(\\text{machine 3} \\mid \\text{defective})$.",
+    stem: "A factory has $3$ machines producing $50\\%$, $30\\%$, $20\\%$ of total output, with defect rates $1\\%$, $2\\%$, $3\\%$ respectively. An item is defective. Find $P(\\text{machine } 3 \\mid \\text{defective})$.",
     answerKey: 0.353,
     tolerance: 0.02,
     difficulty: -0.3,
@@ -1976,7 +1976,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A test for a trait is 90% accurate for both positives and negatives (sensitivity = specificity = 90%). The trait's base rate is 10%. Given a positive result, find $P(\\text{trait} \\mid \\text{positive})$.",
+    stem: "A test for a trait is $90\\%$ accurate for both positives and negatives (sensitivity $=$ specificity $= 90\\%$). The trait’s base rate is $10\\%$. Given a positive result, find $P(\\text{trait} \\mid \\text{positive})$.",
     answerKey: 0.5,
     tolerance: 0.02,
     difficulty: -0.15,
@@ -1992,7 +1992,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Three bags: Bag A has 2 white/3 black, Bag B has 4 white/1 black, Bag C has 1 white/4 black. Choose a bag uniformly at random, draw a ball, it's white. Find $P(\\text{Bag B} \\mid \\text{white})$.",
+    stem: "Three bags: Bag A has $2$ white/$3$ black, Bag B has $4$ white/$1$ black, Bag C has $1$ white/$4$ black. Choose a bag uniformly at random, draw a ball, it’s white. Find $P(\\text{Bag B} \\mid \\text{white})$.",
     rubric: {
       elements: [
         {
@@ -2021,7 +2021,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A spam filter flags 95% of actual spam and false-flags 2% of legitimate emails. If 30% of incoming email is spam, what is $P(\\text{spam} \\mid \\text{flagged})$?",
+    stem: "A spam filter flags $95\\%$ of actual spam and false-flags $2\\%$ of legitimate emails. If $30\\%$ of incoming email is spam, what is $P(\\text{spam} \\mid \\text{flagged})$?",
     answerKey: 0.953,
     tolerance: 0.01,
     difficulty: 0.15,
@@ -2037,18 +2037,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain, in terms of Bayes' rule, why gathering more independent pieces of weak evidence — each individually only mildly informative — can still push a posterior probability arbitrarily close to 1.",
+    stem: "Explain, in terms of Bayes’ rule, why gathering more independent pieces of weak evidence — each individually only mildly informative — can still push a posterior probability arbitrarily close to $1$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "treat the posterior after step k as the new prior for step k+1; the odds form of Bayes' rule shows each update multiplies the current odds by that piece of evidence's likelihood ratio",
+          description: "treat the posterior after step $k$ as the new prior for step $k+1$; the odds form of Bayes’ rule shows each update multiplies the current odds by that piece of evidence’s likelihood ratio",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "as long as each new piece of evidence has a likelihood ratio consistently on one side of 1, the odds keep multiplying by the same-direction factor each time, growing (or shrinking) without bound even though each individual factor is close to 1",
+          description: "as long as each new piece of evidence has a likelihood ratio consistently on one side of $1$, the odds keep multiplying by the same-direction factor each time, growing (or shrinking) without bound even though each individual factor is close to $1$",
           weight: 1,
         },
       ],
@@ -2066,7 +2066,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Derive the odds form of Bayes' rule — posterior odds = likelihood ratio $\\times$ prior odds — starting from the standard ratio form of Bayes' rule applied to A and $A^{c}$.",
+    stem: "Derive the odds form of Bayes’ rule — posterior odds $=$ likelihood ratio $\\times$ prior odds — starting from the standard ratio form of Bayes’ rule applied to $A$ and $A^{c}$.",
     rubric: {
       elements: [
         {
@@ -2124,12 +2124,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A classifier reports 99% accuracy on a dataset where 99% of examples are the 'negative' class. A colleague says the classifier is clearly excellent. Using the same base-rate logic as Bayes' rule, explain why 99% accuracy alone tells you almost nothing about whether a specific POSITIVE prediction is trustworthy.",
+    stem: "A classifier reports $99\\%$ accuracy on a dataset where $99\\%$ of examples are the ‘negative’ class. A colleague says the classifier is clearly excellent. Using the same base-rate logic as Bayes’ rule, explain why $99\\%$ accuracy alone tells you almost nothing about whether a specific POSITIVE prediction is trustworthy.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "a trivial classifier that always predicts 'negative' also achieves 99% accuracy on this dataset, so accuracy alone doesn't distinguish a good classifier from a useless one",
+          description: "a trivial classifier that always predicts ‘negative’ also achieves $99\\%$ accuracy on this dataset, so accuracy alone doesn’t distinguish a good classifier from a useless one",
           weight: 1,
           required: true,
         },
@@ -2153,7 +2153,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "Two diagnostic tests for a rare disease (prevalence 1%) each have 95% sensitivity and 90% specificity. A patient tests positive on BOTH tests (assume, given true disease status, the two test results are independent). Find $P(\\text{disease} \\mid \\text{both positive})$.",
+    stem: "Two diagnostic tests for a rare disease (prevalence $1\\%$) each have $95\\%$ sensitivity and $90\\%$ specificity. A patient tests positive on BOTH tests (assume, given true disease status, the two test results are independent). Find $P(\\text{disease} \\mid \\text{both positive})$.",
     answerKey: 0.477,
     tolerance: 0.02,
     difficulty: 1.0,
@@ -2173,7 +2173,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Two events A, B with $P(A)$ > $0, P(B)$ > 0 are independent. Which of these must be true?",
+    stem: "Two events $A$, $B$ with $P(A) > 0$, $P(B) > 0$ are independent. Which of these must be true?",
     choices: [
       { id: "a", text: "$P(A|B) = P(A)$", correct: true },
       {
@@ -2187,7 +2187,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "$P(A\\cup B) = P(A) + P(B)$",
         correct: false,
         misconception: {
@@ -2220,7 +2220,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "State the general 'at least one' formula for P(at least one of A₁,…,Aₙ) when the $A_{i}$ are MUTUALLY independent (not a sum).",
+    stem: "State the general ‘at least one’ formula for $P(\\text{at least one of } A_1, \\ldots, A_n)$ when the $A_{i}$ are MUTUALLY independent (not a sum).",
     rubric: {
       elements: [
         {
@@ -2244,7 +2244,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Draw one card from a full 52-card deck. Are 'card is a heart' and 'card is a face card (J,Q,K)' independent?",
+    stem: "Draw one card from a full $52$-card deck. Are ‘card is a heart’ and ‘card is a face card (J, Q, K)’ independent?",
     choices: [
       { id: "a", text: "Yes — $P(\\text{heart}) \\cdot P(\\text{face}) = 0.25 \\times (12/52) = 3/52$, exactly equal to $P(\\text{heart} \\cap \\text{face}) = 3/52$", correct: true },
       {
@@ -2258,7 +2258,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "No — 'heart' and 'face card' are unrelated categories, so they must be dependent by default",
         correct: false,
         misconception: {
@@ -2291,12 +2291,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Draw one card from a standard 52-card deck (all cards present). Are 'card is an Ace' and 'card is red' independent? Verify with the numbers.",
+    stem: "Draw one card from a standard $52$-card deck (all cards present). Are ‘card is an Ace’ and ‘card is red’ independent? Verify with the numbers.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(ace) $= 4/52 = 1/13$, P(red) $= 26/52 = 1/2$, P(ace∩red) $= 2/52 = 1/26$; since (1/13)(1/2) $= 1/26$ exactly, the events are independent",
+          description: "$P(\\text{ace}) = 4/52 = 1/13$, $P(\\text{red}) = 26/52 = 1/2$, $P(\\text{ace} \\cap \\text{red}) = 2/52 = 1/26$; since $(1/13)(1/2) = 1/26$ exactly, the events are independent",
           weight: 1,
           required: true,
         },
@@ -2315,7 +2315,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A weighted coin has P(heads) = 0.6. It is flipped twice, independently. Find P(exactly one head in the two flips).",
+    stem: "A weighted coin has $P(\\text{heads}) = 0.6$. It is flipped twice, independently. Find $P(\\text{exactly one head in the two flips})$.",
     answerKey: 0.48,
     tolerance: 0.01,
     difficulty: -0.2,
@@ -2331,12 +2331,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A bag has 12 balls: 6 red, 6 blue. Of the red balls, 3 are striped; of the blue balls, 3 are also striped (6 striped total). Draw one ball. Are 'red' and 'striped' independent?",
+    stem: "A bag has $12$ balls: $6$ red, $6$ blue. Of the red balls, $3$ are striped; of the blue balls, $3$ are also striped ($6$ striped total). Draw one ball. Are ‘red’ and ‘striped’ independent?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(red) = 0.5, P(striped) $= 6/12 = 0.5$, P(red∩striped) $= 3/12 = 0.25$; since $0.5\\times 0.5 = 0.25$, independent",
+          description: "$P(\\text{red}) = 0.5$, $P(\\text{striped}) = 6/12 = 0.5$, $P(\\text{red} \\cap \\text{striped}) = 3/12 = 0.25$; since $0.5\\times 0.5 = 0.25$, independent",
           weight: 1,
           required: true,
         },
@@ -2355,12 +2355,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Same bag setup (12 balls: 6 red, 6 blue), but now 4 of the red balls are striped and 2 of the blue balls are striped (6 striped total). Draw one ball. Is 'red' independent of 'striped' now?",
+    stem: "Same bag setup ($12$ balls: $6$ red, $6$ blue), but now $4$ of the red balls are striped and $2$ of the blue balls are striped ($6$ striped total). Draw one ball. Is ‘red’ independent of ‘striped’ now?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(red) = 0.5, P(striped) $= 6/12 = 0.5$, but P(red∩striped) $= 4/12 \\approx 0.333$; since $0.5\\times 0.5 = 0.25 \\neq 0.333$, the events are now dependent (striped balls skew red)",
+          description: "$P(\\text{red}) = 0.5$, $P(\\text{striped}) = 6/12 = 0.5$, but $P(\\text{red} \\cap \\text{striped}) = 4/12 \\approx 0.333$; since $0.5\\times 0.5 = 0.25 \\neq 0.333$, the events are now dependent (striped balls skew red)",
           weight: 1,
           required: true,
         },
@@ -2379,18 +2379,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "You verify $P(A\\cap B) = P(A)$$P(B)$ for specific numbers, and it happens to hold. Explain why this is a coincidence of the probability values, rather than a structural fact about how A and B overlap as sets.",
+    stem: "You verify $P(A\\cap B) = P(A)P(B)$ for specific numbers, and it happens to hold. Explain why this is a coincidence of the probability values, rather than a structural fact about how $A$ and $B$ overlap as sets.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "independence is a numeric identity depending on the measure P, not a set-theoretic relationship like disjointness or nesting, which don't change if you reweight outcomes",
+          description: "independence is a numeric identity depending on the measure $P$, not a set-theoretic relationship like disjointness or nesting, which don’t change if you reweight outcomes",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "reweighting the same underlying outcomes' probabilities can break or create the identity $P(A\\cap B)$=$P(A)$$P(B)$ without changing which outcomes belong to A, B, or $A\\cap B$ at all",
+          description: "reweighting the same underlying outcomes’ probabilities can break or create the identity $P(A\\cap B) = P(A)P(B)$ without changing which outcomes belong to $A$, $B$, or $A\\cap B$ at all",
           weight: 1,
         },
       ],
@@ -2408,7 +2408,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Prove: if A and B are independent, then $A^{c}$ and $B^{c}$ are also independent.",
+    stem: "Prove: if $A$ and $B$ are independent, then $A^{c}$ and $B^{c}$ are also independent.",
     rubric: {
       elements: [
         {
@@ -2437,7 +2437,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Conditional independence ($A\\perp B$ | C) does not imply unconditional independence $(A\\perp B)$, and vice versa. Give a brief reason why two variables can be dependent overall but become independent once you condition on a shared cause.",
+    stem: "Conditional independence ($A\\perp B \\mid C$) does not imply unconditional independence ($A\\perp B$), and vice versa. Give a brief reason why two variables can be dependent overall but become independent once you condition on a shared cause.",
     rubric: {
       elements: [
         {
@@ -2461,18 +2461,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Two independent fair coins are flipped; A = {first coin heads}, B = {second coin heads}. Let C $= A\\cup B =$ {at least one head}. Are A and B still independent GIVEN C — i.e., does $P(A\\cap B|C) = P(A|C)$$P(B|C)$?",
+    stem: "Two independent fair coins are flipped; $A = \\{\\text{first coin heads}\\}$, $B = \\{\\text{second coin heads}\\}$. Let $C = A\\cup B = \\{\\text{at least one head}\\}$. Are $A$ and $B$ still independent GIVEN $C$ — i.e., does $P(A\\cap B \\mid C) = P(A \\mid C)\\,P(B \\mid C)$?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$P(C)$=3/4; $P(A\\cap B|C) = P(A\\cap B)$/$P(C) =$ (1/4)/(3/4) $= 1/3$, since $A\\cap B \\subseteq$ C",
+          description: "$P(C) = 3/4$; $P(A\\cap B \\mid C) = \\dfrac{P(A\\cap B)}{P(C)} = \\dfrac{1/4}{3/4} = \\dfrac{1}{3}$, since $A\\cap B \\subseteq C$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "$P(A|C) = P(A)$/$P(C) =$ (1/2)/(3/4) $= 2/3$ (since $A\\subseteq C$), and likewise $P(B|C)$=2/3; their product is $4/9 \\neq 1/3$, so A and B become DEPENDENT once you condition on C",
+          description: "$P(A \\mid C) = \\dfrac{P(A)}{P(C)} = \\dfrac{1/2}{3/4} = \\dfrac{2}{3}$ (since $A\\subseteq C$), and likewise $P(B \\mid C) = 2/3$; their product is $4/9 \\neq 1/3$, so $A$ and $B$ become DEPENDENT once you condition on $C$",
           weight: 1,
         },
       ],
@@ -2490,7 +2490,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A hiring pipeline only interviews candidates who pass EITHER a coding test OR a design test (or both) — i.e., it conditions on 'at least one passed.' The two test results are actually independent in the general applicant pool. Using the mechanism from the two-coins example, explain why coding and design performance can appear NEGATIVELY associated among interviewed candidates even though they're independent in the general population.",
+    stem: "A hiring pipeline only interviews candidates who pass EITHER a coding test OR a design test (or both) — i.e., it conditions on ‘at least one passed’. The two test results are actually independent in the general applicant pool. Using the mechanism from the two-coins example, explain why coding and design performance can appear NEGATIVELY associated among interviewed candidates even though they’re independent in the general population.",
     rubric: {
       elements: [
         {
@@ -2514,18 +2514,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Two independent defect detectors each catch a real defect with probability 0.8. Compute P(flagged by at least one detector) and P(flagged by exactly one), and check that the numbers are internally consistent with each other and with P(flagged by both).",
+    stem: "Two independent defect detectors each catch a real defect with probability $0.8$. Compute $P(\\text{flagged by at least one detector})$ and $P(\\text{flagged by exactly one})$, and check that the numbers are internally consistent with each other and with $P(\\text{flagged by both})$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "P(missed by both) $= 0.2\\times 0.2 = 0.04$, so P(at least one) = 0.96",
+          description: "$P(\\text{missed by both}) = 0.2\\times 0.2 = 0.04$, so $P(\\text{at least one}) = 0.96$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "P(exactly one) $= 2\\times 0.8\\times 0.2 = 0.32$; P(both) $= 0.8\\times 0.8 = 0.64$; and 0.32+0.64=0.96, matching P(at least one) exactly, confirming consistency",
+          description: "$P(\\text{exactly one}) = 2\\times 0.8\\times 0.2 = 0.32$; $P(\\text{both}) = 0.8\\times 0.8 = 0.64$; and $0.32 + 0.64 = 0.96$, matching $P(\\text{at least one})$ exactly, confirming consistency",
           weight: 1,
         },
       ],
@@ -2546,22 +2546,22 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For four events A, B, C, D to be fully mutually independent, how many independence equations (product-rule constraints on subsets of size $\\geq$ 2) must hold, using the count $2^{n} -$ n $-$ 1?",
+    stem: "For four events $A$, $B$, $C$, $D$ to be fully mutually independent, how many independence equations (product-rule constraints on subsets of size $\\geq 2$) must hold, using the count $2^{n} - n - 1$?",
     choices: [
-      { id: "a", text: "11", correct: true },
+      { id: "a", text: "$11$", correct: true },
       {
         id: "b",
-        text: "6",
+        text: "$6$",
         correct: false,
         misconception: {
           id: "mutual-independence--n4-condition-count--b",
-          description: "Counts only the pairwise (size-2) conditions — C(4,2)=6 — and misses the four triple-wise conditions and the one quadruple-wise condition.",
+          description: "Counts only the pairwise (size-$2$) conditions — $\\binom{4}{2} = 6$ — and misses the four triple-wise conditions and the one quadruple-wise condition.",
           blameConceptId: "mutual-independence",
         },
       },
       {
-        id: "c",
-        text: "15",
+        id: "$c$",
+        text: "$15$",
         correct: false,
         misconception: {
           id: "mutual-independence--n4-condition-count--c",
@@ -2571,7 +2571,7 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "d",
-        text: "4",
+        text: "$4$",
         correct: false,
         misconception: {
           id: "mutual-independence--n4-condition-count--d",
@@ -2622,7 +2622,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For n $\\geq 3$ events, which statement about pairwise independence and mutual independence is correct?",
+    stem: "For $n \\geq 3$ events, which statement about pairwise independence and mutual independence is correct?",
     choices: [
       { id: "a", text: "Mutual independence implies pairwise independence, but not conversely.", correct: true },
       {
@@ -2636,8 +2636,8 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
-        text: "The two notions are logically equivalent for any n.",
+        id: "$c$",
+        text: "The two notions are logically equivalent for any $n$.",
         correct: false,
         misconception: {
           id: "mutual-independence--pairwise-vs-mutual-direction--c",
@@ -2669,11 +2669,11 @@ export const probabilityExpansion1Items: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For events A, B, C to be mutually independent, which of the following equations are actually required? Select all that must hold.",
+    stem: "For events $A$, $B$, $C$ to be mutually independent, which of the following equations are actually required? Select all that must hold.",
     choices: [
       { id: "a", text: "$P(A\\cap B) = P(A)$$P(B)$", correct: true },
       { id: "b", text: "$P(A\\cap C) = P(A)$$P(C)$", correct: true },
-      { id: "c", text: "$P(B\\cap C) = P(B)$$P(C)$", correct: true },
+      { id: "$c$", text: "$P(B\\cap C) = P(B)$$P(C)$", correct: true },
       { id: "d", text: "$P(A\\cap B\\cap C) = P(A)$$P(B)$$P(C)$", correct: true },
       {
         id: "e",
@@ -2699,18 +2699,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Two independent fair six-sided dice show values X and Y. Let A = {X is even}, B = {Y is even}, and C = {X+Y is even}. Compute $P(A)$, $P(C)$, and $P(A\\cap C)$, and check whether A and C are pairwise independent.",
+    stem: "Two independent fair six-sided dice show values $X$ and $Y$. Let $A = \\{X \\text{ is even}\\}$, $B = \\{Y \\text{ is even}\\}$, and $C = \\{X + Y \\text{ is even}\\}$. Compute $P(A)$, $P(C)$, and $P(A\\cap C)$, and check whether $A$ and $C$ are pairwise independent.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$P(A)$=1/2, and $P(C)$=1/2 since X+Y is even exactly when X and Y have the same parity: P(both even)+P(both odd) = 1/4+1/4 $= 1/2$",
+          description: "$P(A) = 1/2$, and $P(C) = 1/2$ since $X + Y$ is even exactly when $X$ and $Y$ have the same parity: $P(\\text{both even}) + P(\\text{both odd}) = 1/4 + 1/4 = 1/2$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "$A\\cap C$ requires X even and (X+Y even, which given X even forces Y even), so $A\\cap C =$ {X even, Y even}, giving $P(A\\cap C)$=1/4 $= P(A)$$P(C)$ — so yes, A and C are pairwise independent",
+          description: "$A\\cap C$ requires $X$ even and $X + Y$ even, which given $X$ even forces $Y$ even, so $A\\cap C = \\{X \\text{ even}, Y \\text{ even}\\}$, giving $P(A\\cap C) = 1/4 = P(A)P(C)$ — so yes, $A$ and $C$ are pairwise independent",
           weight: 1,
           required: true,
         },
@@ -2729,7 +2729,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A circuit closes only if all four of its relays close. The relays operate mutually independently, each closing with probability 0.9. What is P(circuit closes)? Give your answer to 4 decimal places.",
+    stem: "A circuit closes only if all four of its relays close. The relays operate mutually independently, each closing with probability $0.9$. What is $P(\\text{circuit closes})$? Give your answer to $4$ decimal places.",
     answerKey: 0.6561,
     tolerance: 0.001,
     difficulty: -0.15,
@@ -2745,11 +2745,11 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Events A, B, C each have probability $1/2$, and all three pairwise products check out: $P(A\\cap B)$=$P(A\\cap C)$=$P(B\\cap C)$=1/4. You're additionally told $P(A\\cap B\\cap C)$=1/4. Are A, B, C mutually independent?",
+    stem: "Events $A$, $B$, $C$ each have probability $1/2$, and all three pairwise products check out: $P(A\\cap B) = P(A\\cap C) = P(B\\cap C) = 1/4$. You’re additionally told $P(A\\cap B\\cap C) = 1/4$. Are $A$, $B$, $C$ mutually independent?",
     choices: [
       {
         id: "a",
-        text: "No — $P(A\\cap B\\cap C)$=1/4 $\\neq P(A)$$P(B)$$P(C)$=1/8, so mutual independence fails despite all pairwise checks passing.",
+        text: "No — $P(A\\cap B\\cap C) = 1/4 \\neq P(A)P(B)P(C) = 1/8$, so mutual independence fails despite all pairwise checks passing.",
         correct: true,
       },
       {
@@ -2763,7 +2763,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "Yes — since $P(A\\cap B\\cap C)$ is nonzero, they must be independent.",
         correct: false,
         misconception: {
@@ -2801,13 +2801,13 @@ export const probabilityExpansion1Items: Item[] = [
       elements: [
         {
           id: "element-1",
-          description: "mutual independence requires P(⋂_{k∈S} Aₖ) = Π_{k∈S} $P(A_{k})$ for EVERY subset S $\\subseteq$ {1,…,n}; taking S={i,j} (a valid, if small, subset) gives exactly $P(A_{i}\\cap A_{j})$=$P(A_{i})$$P(A_{j})$, i.e. pairwise independence for that pair",
+          description: "mutual independence requires $P\\left(\\bigcap_{k\\in S} A_k\\right) = \\prod_{k\\in S} P(A_{k})$ for EVERY subset $S \\subseteq \\{1, \\ldots, n\\}$; taking $S = \\{i, j\\}$ (a valid, if small, subset) gives exactly $P(A_{i}\\cap A_{j}) = P(A_{i})P(A_{j})$, i.e. pairwise independence for that pair",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "since i,j were arbitrary, this holds for every pair, so mutual independence forces all C(n,2) pairwise conditions as a special case — the converse fails only because there are strictly more subsets (of size $\\geq$ 3) that the pairwise conditions never test",
+          description: "since $i, j$ were arbitrary, this holds for every pair, so mutual independence forces all $\\binom{n}{2}$ pairwise conditions as a special case — the converse fails only because there are strictly more subsets (of size $\\geq 3$) that the pairwise conditions never test",
           weight: 1,
         },
       ],
@@ -2825,18 +2825,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Two independent fair dice show X, Y. Let A={X even}, B={Y even}, C={X+Y even}. Given that each pair among A, B, C is pairwise independent (each pairwise intersection has probability 1/4), show that A, B, C are NOT mutually independent.",
+    stem: "Two independent fair dice show $X$, $Y$. Let $A = \\{X \\text{ even}\\}$, $B = \\{Y \\text{ even}\\}$, $C = \\{X + Y \\text{ even}\\}$. Given that each pair among $A$, $B$, $C$ is pairwise independent (each pairwise intersection has probability $1/4$), show that $A$, $B$, $C$ are NOT mutually independent.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$A\\cap B\\cap C =$ {X even and Y even}, since X even and Y even already force X+Y even, so $P(A\\cap B\\cap C)$=$P(A\\cap B)$=1/4",
+          description: "$A\\cap B\\cap C = \\{X \\text{ even and } Y \\text{ even}\\}$, since $X$ even and $Y$ even already force $X + Y$ even, so $P(A\\cap B\\cap C) = P(A\\cap B) = 1/4$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "$P(A)$$P(B)$$P(C) =$ (1/2)(1/2)(1/2) $= 1/8$, and $1/4 \\neq 1/8$, so the triple product-rule condition fails even though all three pairwise conditions hold — mutual independence fails",
+          description: "$P(A)P(B)P(C) = \\left(\\tfrac12\\right)\\left(\\tfrac12\\right)\\left(\\tfrac12\\right) = 1/8$, and $1/4 \\neq 1/8$, so the triple product-rule condition fails even though all three pairwise conditions hold — mutual independence fails",
           weight: 1,
           required: true,
         },
@@ -2855,12 +2855,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Let A, B, C be events, and let 1_A, 1_B, 1_C be their indicator random variables (1 if the event occurs, 0 otherwise). Explain why 'A, B, C are mutually independent events' and '1_A, 1_B, 1_C are mutually independent random variables' are exactly the same statement, just phrased two ways.",
+    stem: "Let $A$, $B$, $C$ be events, and let $1_A$, $1_B$, $1_C$ be their indicator random variables ($1$ if the event occurs, $0$ otherwise). Explain why ‘$A$, $B$, $C$ are mutually independent events’ and ‘$1_A$, $1_B$, $1_C$ are mutually independent random variables’ are exactly the same statement, just phrased two ways.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "each indicator 1_A is a two-valued (Bernoulli) random variable built entirely from A or its complement, so any joint probability statement about the indicators — like $P(1_A=1,1_B=1,1_C=1)$=$P(A\\cap B\\cap C)$ — is just a relabeling of the corresponding event probability",
+          description: "each indicator $1_A$ is a two-valued (Bernoulli) random variable built entirely from $A$ or its complement, so any joint probability statement about the indicators — like $P(1_A = 1, 1_B = 1, 1_C = 1) = P(A\\cap B\\cap C)$ — is just a relabeling of the corresponding event probability",
           weight: 1,
           required: true,
         },
@@ -2884,12 +2884,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A factory runs four inspection tests on each unit. Historical data confirms every PAIR of tests is independent (passing one test tells you nothing about passing any other single test). The quality manager concludes: 'since every pair is independent, I can compute P(fails all four) as the product of the four individual fail rates.' Evaluate this reasoning.",
+    stem: "A factory runs four inspection tests on each unit. Historical data confirms every PAIR of tests is independent (passing one test tells you nothing about passing any other single test). The quality manager concludes: “since every pair is independent, I can compute $P(\\text{fails all four})$ as the product of the four individual fail rates.” Evaluate this reasoning.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the manager's computation (multiplying all four fail rates together) is only valid under FULL mutual independence — i.e. the product rule holding for the 4-way intersection, not just for every pair",
+          description: "the manager’s computation (multiplying all four fail rates together) is only valid under FULL mutual independence — i.e. the product rule holding for the $4$-way intersection, not just for every pair",
           weight: 1,
           required: true,
         },
@@ -2913,18 +2913,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Using the dice example (A={X even}, B={Y even}, C={X+Y even}, each with probability $1/2$, pairwise independent but not mutually independent), let 1_A, 1_B, 1_C be the corresponding indicator random variables. Explain why $\\operatorname{Var}(1_A+1_B+1_C) = \\operatorname{Var}(1_A) + \\operatorname{Var}(1_B) + \\operatorname{Var}(1_C)$ STILL holds despite mutual independence failing, and identify one stronger claim about 1_A+1_B+1_C that would NOT be justified.",
+    stem: "Using the dice example ($A = \\{X \\text{ even}\\}$, $B = \\{Y \\text{ even}\\}$, $C = \\{X + Y \\text{ even}\\}$, each with probability $1/2$, pairwise independent but not mutually independent), let $1_A$, $1_B$, $1_C$ be the corresponding indicator random variables. Explain why $\\text{Var}(1_A + 1_B + 1_C) = \\text{Var}(1_A) + \\text{Var}(1_B) + \\text{Var}(1_C)$ STILL holds despite mutual independence failing, and identify one stronger claim about $1_A + 1_B + 1_C$ that would NOT be justified.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$\\operatorname{Var}(\\text{sum}) = \\sum \\operatorname{Var} + 2\\sum_{i<j} \\operatorname{Cov}(i,j)$, and pairwise independence makes every covariance term zero (each pair is independent, hence uncorrelated), so variance-additivity holds using only the pairwise condition this example does satisfy",
+          description: "$\\text{Var}(\\text{sum}) = \\sum \\text{Var} + 2\\sum_{i<j} \\text{Cov}(i,j)$, and pairwise independence makes every covariance term zero (each pair is independent, hence uncorrelated), so variance-additivity holds using only the pairwise condition this example does satisfy",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "what is NOT justified is treating 1_A+1_B+1_C as if it had the distribution of a sum of mutually independent Bernoullis (e.g. computing $P(1_A+1_B+1_C=3)$ as the product $P(A)$$P(B)$$P(C)$=1/8) — the joint distribution of the triple is distorted by the higher-order dependence, so only the second-moment (variance) fact survives, not a full distributional one",
+          description: "what is NOT justified is treating $1_A + 1_B + 1_C$ as if it had the distribution of a sum of mutually independent Bernoullis (e.g. computing $P(1_A + 1_B + 1_C = 3)$ as the product $P(A)P(B)P(C) = 1/8$) — the joint distribution of the triple is distorted by the higher-order dependence, so only the second-moment (variance) fact survives, not a full distributional one",
           weight: 1,
           required: true,
         },
@@ -2943,7 +2943,7 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A monitoring system has three sensors that are mutually independent, each correctly detecting an intrusion with probability 0.7 (independently of whether the others detect it). Compute P(at least 2 of the 3 sensors detect it), explicitly using mutual independence to justify treating the number of detections as $\\text{Binomial}(3, 0.7)$.",
+    stem: "A monitoring system has three sensors that are mutually independent, each correctly detecting an intrusion with probability $0.7$ (independently of whether the others detect it). Compute $P(\\text{at least } 2 \\text{ of the } 3 \\text{ sensors detect it})$, explicitly using mutual independence to justify treating the number of detections as $\\text{Binomial}(3, 0.7)$.",
     rubric: {
       elements: [
         {
@@ -2976,12 +2976,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Given a probability space ($\\Omega$, F, P), which condition is required for a function X: $\\Omega \\to \\mathbb{R}$ to qualify as a random variable?",
+    stem: "Given a probability space $(\\Omega, \\mathcal{F}, P)$, which condition is required for a function $X: \\Omega \\to \\mathbb{R}$ to qualify as a random variable?",
     choices: [
-      { id: "a", text: "{ω : $X(\\omega) \\leq$ x} $\\in$ F for every real x", correct: true },
+      { id: "a", text: "$\\{\\omega : X(\\omega) \\leq x\\} \\in \\mathcal{F}$ for every real $x$", correct: true },
       {
         id: "b",
-        text: "X must be a continuous function of $\\omega$.",
+        text: "$X$ must be a continuous function of $\\omega$.",
         correct: false,
         misconception: {
           id: "random-variables--measurable-function-mcq--b",
@@ -2990,18 +2990,18 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
-        text: "X must be injective (one-to-one).",
+        id: "$c$",
+        text: "$X$ must be injective (one-to-one).",
         correct: false,
         misconception: {
           id: "random-variables--measurable-function-mcq--c",
-          description: "Most random variables (e.g. 'number of heads') collapse many outcomes to the same value; injectivity has nothing to do with being a valid random variable.",
+          description: "Most random variables (e.g. ‘number of heads’) collapse many outcomes to the same value; injectivity has nothing to do with being a valid random variable.",
           blameConceptId: "random-variables",
         },
       },
       {
         id: "d",
-        text: "X's range must be a finite set.",
+        text: "$X$’s range must be a finite set.",
         correct: false,
         misconception: {
           id: "random-variables--measurable-function-mcq--d",
@@ -3023,12 +3023,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Define the support of a random variable X.",
+    stem: "Define the support of a random variable $X$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the support is the set of values that X can actually take with positive probability nearby — for a discrete X, {x : $P(X=x)$ > 0}; more generally, the smallest closed set that X falls into with probability 1",
+          description: "the support is the set of values that $X$ can actually take with positive probability nearby — for a discrete $X$, $\\{x : P(X = x) > 0\\}$; more generally, the smallest closed set that $X$ falls into with probability $1$",
           weight: 1,
           required: true,
         },
@@ -3047,36 +3047,36 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Let $\\Omega =$ {1,2,3,4} with the coarser $\\sigma$-algebra F = {∅, {1,2}, {3,4}, Ω}. Which function X: $\\Omega \\to \\mathbb{R}$ IS a valid random variable with respect to F?",
+    stem: "Let $\\Omega = \\{1, 2, 3, 4\\}$ with the coarser $\\sigma$-algebra $\\mathcal{F} = \\{\\varnothing, \\{1, 2\\}, \\{3, 4\\}, \\Omega\\}$. Which function $X: \\Omega \\to \\mathbb{R}$ IS a valid random variable with respect to $\\mathcal{F}$?",
     choices: [
-      { id: "a", text: "$X(\\omega) = 1$ if $\\omega \\in$ {1,2}, and $X(\\omega) = 0$ if $\\omega \\in$ {3,4}", correct: true },
+      { id: "a", text: "$X(\\omega) = 1$ if $\\omega \\in \\{1, 2\\}$, and $X(\\omega) = 0$ if $\\omega \\in \\{3, 4\\}$", correct: true },
       {
         id: "b",
         text: "$X(\\omega) = \\omega$ (the identity function)",
         correct: false,
         misconception: {
           id: "random-variables--coarse-sigma-algebra-measurability--b",
-          description: "Assumes any function to the reals is automatically a random variable without checking preimages against the given $\\sigma$-algebra; {X≤1}={1} is not in F, so this fails measurability.",
+          description: "Assumes any function to the reals is automatically a random variable without checking preimages against the given $\\sigma$-algebra; $\\{X \\le 1\\} = \\{1\\}$ is not in $\\mathcal{F}$, so this fails measurability.",
           blameConceptId: "random-variables",
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "$X(\\omega) = 1$ if $\\omega = 1$, and $X(\\omega) = 0$ otherwise",
         correct: false,
         misconception: {
           id: "random-variables--coarse-sigma-algebra-measurability--c",
-          description: "{X=1}={1} is not in F, so this function is not measurable with respect to the given (coarser) $\\sigma$-algebra, even though it looks like an ordinary indicator function.",
+          description: "$\\{X = 1\\} = \\{1\\}$ is not in $\\mathcal{F}$, so this function is not measurable with respect to the given (coarser) $\\sigma$-algebra, even though it looks like an ordinary indicator function.",
           blameConceptId: "random-variables",
         },
       },
       {
         id: "d",
-        text: "$X(\\omega) = \\omega$ mod 2",
+        text: "$X(\\omega) = \\omega \\bmod 2$",
         correct: false,
         misconception: {
           id: "random-variables--coarse-sigma-algebra-measurability--d",
-          description: "{X=1} = {1,3} is not a member of F = {∅, {1,2}, {3,4}, Ω}, so this function's preimages don't respect the given $\\sigma$-algebra.",
+          description: "$\\{X = 1\\} = \\{1, 3\\}$ is not a member of $\\mathcal{F} = \\{\\varnothing, \\{1, 2\\}, \\{3, 4\\}, \\Omega\\}$, so this function’s preimages don’t respect the given $\\sigma$-algebra.",
           blameConceptId: "random-variables",
         },
       },
@@ -3094,12 +3094,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Two fair dice are rolled. X = |die1 $-$ die2| (the absolute difference). What is the support of X, and is 0 included?",
+    stem: "Two fair dice are rolled. $X = |\\text{die}_1 - \\text{die}_2|$ (the absolute difference). What is the support of $X$, and is $0$ included?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "support = {0,1,2,3,4,5}; the maximum possible difference is $6-1=5$, and 0 IS included since the two dice can show equal values",
+          description: "support $= \\{0, 1, 2, 3, 4, 5\\}$; the maximum possible difference is $6 - 1 = 5$, and $0$ IS included since the two dice can show equal values",
           weight: 1,
           required: true,
         },
@@ -3118,12 +3118,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Let X be uniform on {1,2,3,4,5,6} (a fair die), and let Y = X mod 3 (the remainder when X is divided by 3, so Y $\\in$ {0,1,2}). Find the distribution of Y.",
+    stem: "Let $X$ be uniform on $\\{1, 2, 3, 4, 5, 6\\}$ (a fair die), and let $Y = X \\bmod 3$ (the remainder when $X$ is divided by $3$, so $Y \\in \\{0, 1, 2\\}$). Find the distribution of $Y$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "Y=0 when X∈{3,6}: $P(Y=0)$=2/6=1/3; Y=1 when X∈{1,4}: $P(Y=1)$=1/3; Y=2 when X∈{2,5}: $P(Y=2)$=1/3 — so Y is ALSO uniform on {0,1,2}, even though it was built by a many-to-one function of X",
+          description: "$Y = 0$ when $X \\in \\{3, 6\\}$: $P(Y = 0) = 2/6 = 1/3$; $Y = 1$ when $X \\in \\{1, 4\\}$: $P(Y = 1) = 1/3$; $Y = 2$ when $X \\in \\{2, 5\\}$: $P(Y = 2) = 1/3$ — so $Y$ is ALSO uniform on $\\{0, 1, 2\\}$, even though it was built by a many-to-one function of $X$",
           weight: 1,
           required: true,
         },
@@ -3142,12 +3142,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "A coin is flipped 3 times; X = number of heads. In a completely different experiment, three independent lightbulbs each work with probability $1/2$; Y = number of working bulbs. What can you say about X and Y?",
+    stem: "A coin is flipped $3$ times; $X$ = number of heads. In a completely different experiment, three independent lightbulbs each work with probability $1/2$; $Y$ = number of working bulbs. What can you say about $X$ and $Y$?",
     choices: [
-      { id: "a", text: "X and Y have identical distributions, even though they're defined on entirely different sample spaces.", correct: true },
+      { id: "a", text: "$X$ and $Y$ have identical distributions, even though they’re defined on entirely different sample spaces.", correct: true },
       {
         id: "b",
-        text: "X and Y must be the same random variable, since they're computed by the same formula.",
+        text: "$X$ and $Y$ must be the same random variable, since they’re computed by the same formula.",
         correct: false,
         misconception: {
           id: "random-variables--coin-vs-bulbs-same-distribution--b",
@@ -3156,7 +3156,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "They can't be meaningfully compared, since they come from different experiments.",
         correct: false,
         misconception: {
@@ -3167,11 +3167,11 @@ export const probabilityExpansion1Items: Item[] = [
       },
       {
         id: "d",
-        text: "Y's distribution depends on the coin flips from the first experiment too.",
+        text: "$Y$’s distribution depends on the coin flips from the first experiment too.",
         correct: false,
         misconception: {
           id: "random-variables--coin-vs-bulbs-same-distribution--d",
-          description: "Treats the two experiments as sharing randomness when they are described as completely separate — Y is a function only of the lightbulb outcomes.",
+          description: "Treats the two experiments as sharing randomness when they are described as completely separate — $Y$ is a function only of the lightbulb outcomes.",
           blameConceptId: "random-variables",
         },
       },
@@ -3189,18 +3189,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Explain what it means to say a random variable 'induces' a distribution on the reals, and use X = number of heads in 3 fair coin flips together with X' = number of TAILS in the same 3 flips (X' $= 3 -$ X) to illustrate how two different functions on the same $\\Omega$ can induce the same distribution.",
+    stem: "Explain what it means to say a random variable ‘induces’ a distribution on the reals, and use $X$ = number of heads in $3$ fair coin flips together with $X'$ = number of TAILS in the same $3$ flips ($X' = 3 - X$) to illustrate how two different functions on the same $\\Omega$ can induce the same distribution.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "the induced distribution is the pushforward measure P_X(B) = P({ω : X(ω) ∈ B}) — it summarizes how probability is spread across X's values, discarding the rest of the description of $\\omega$",
+          description: "the induced distribution is the pushforward measure $P_X(B) = P(\\{\\omega : X(\\omega) \\in B\\})$ — it summarizes how probability is spread across $X$’s values, discarding the rest of the description of $\\omega$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "X and $X'=3-X$ are different functions ($X(\\omega)=X'(\\omega)$ only when both equal 1.5, which is impossible), yet by the symmetry of a fair coin both are $\\text{Binomial}(3, 1/2)$ — same induced distribution despite disagreeing pointwise everywhere",
+          description: "$X$ and $X' = 3 - X$ are different functions ($X(\\omega) = X'(\\omega)$ only when both equal $1.5$, which is impossible), yet by the symmetry of a fair coin both are $\\text{Binomial}(3, 1/2)$ — same induced distribution despite disagreeing pointwise everywhere",
           weight: 1,
           required: true,
         },
@@ -3219,18 +3219,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Given that {X $\\leq$ x} $\\in$ F for every real x, prove that {X < x} $\\in$ F as well, using only the closure properties of a $\\sigma$-algebra.",
+    stem: "Given that $\\{X \\leq x\\} \\in \\mathcal{F}$ for every real $x$, prove that $\\{X < x\\} \\in \\mathcal{F}$ as well, using only the closure properties of a $\\sigma$-algebra.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "{X < x} = ⋃_{n=1}^∞ {X $\\leq$ x $-$ 1/n} — the explicit countable-union construction that reaches every value strictly below x",
+          description: "$\\{X < x\\} = \\bigcup_{n=1}^{\\infty} \\{X \\leq x - 1/n\\}$ — the explicit countable-union construction that reaches every value strictly below $x$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "each set {X $\\leq$ x−1/n} is in F by the measurability hypothesis, and F is closed under countable unions (a $\\sigma$-algebra axiom), so the union — and hence {X<x} — is in F",
+          description: "each set $\\{X \\leq x - 1/n\\}$ is in $\\mathcal{F}$ by the measurability hypothesis, and $\\mathcal{F}$ is closed under countable unions (a $\\sigma$-algebra axiom), so the union — and hence $\\{X < x\\}$ — is in $\\mathcal{F}$",
           weight: 1,
           required: true,
         },
@@ -3249,18 +3249,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A student defines 'Y = the probability that a randomly selected student passes' as a random variable on the sample space of students. Explain what's wrong with this definition.",
+    stem: "A student defines “$Y$ = the probability that a randomly selected student passes” as a random variable on the sample space of students. Explain what’s wrong with this definition.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "as described, Y is a single fixed number (a probability, e.g. 0.8) — it does not vary with $\\omega$, so it isn't a function $\\Omega\\to \\mathbb{R}$ at all; it's a parameter, not a random variable",
+          description: "as described, $Y$ is a single fixed number (a probability, e.g. $0.8$) — it does not vary with $\\omega$, so it isn’t a function $\\Omega\\to \\mathbb{R}$ at all; it’s a parameter, not a random variable",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "a valid fix is to let Y be the INDICATOR of passing, $Y(\\omega)=1$ if student $\\omega$ passes and 0 otherwise — that genuinely varies with $\\omega$, and 'the probability that a randomly selected student passes' is then just $\\mathbb{E}[Y]$ or $P(Y=1)$, a number computed FROM the random variable, not the random variable itself",
+          description: "a valid fix is to let $Y$ be the INDICATOR of passing, $Y(\\omega) = 1$ if student $\\omega$ passes and $0$ otherwise — that genuinely varies with $\\omega$, and ‘the probability that a randomly selected student passes’ is then just $\\mathbb{E}[Y]$ or $P(Y = 1)$, a number computed FROM the random variable, not the random variable itself",
           weight: 1,
         },
       ],
@@ -3289,7 +3289,7 @@ export const probabilityExpansion1Items: Item[] = [
         },
         {
           id: "element-2",
-          description: "fix: either restrict X to depend only on the realized market path already in $\\Omega$ (e.g. define X purely as a function of the closing price), or enlarge $\\Omega$ to also encode the randomness in her decisions so that X becomes a genuine function of the enlarged outcome",
+          description: "fix: either restrict $X$ to depend only on the realized market path already in $\\Omega$ (e.g. define $X$ purely as a function of the closing price), or enlarge $\\Omega$ to also encode the randomness in her decisions so that $X$ becomes a genuine function of the enlarged outcome",
           weight: 1,
         },
       ],
@@ -3307,18 +3307,18 @@ export const probabilityExpansion1Items: Item[] = [
     format: "derivation",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Experiment 1: draw a card from a standard 52-card deck; X=1 if it's red, 0 otherwise. Experiment 2: flip a fair coin; Y=1 if heads, 0 otherwise. Prove that X and Y induce exactly the same distribution on {0,1}, and explain why any probability question that only involves X's distribution (not the deck itself) can be answered equally validly using Y.",
+    stem: "Experiment 1: draw a card from a standard $52$-card deck; $X = 1$ if it’s red, $0$ otherwise. Experiment 2: flip a fair coin; $Y = 1$ if heads, $0$ otherwise. Prove that $X$ and $Y$ induce exactly the same distribution on $\\{0, 1\\}$, and explain why any probability question that only involves $X$’s distribution (not the deck itself) can be answered equally validly using $Y$.",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$P(X=1)$=26/52=1/2=$P(Y=1)$ (and correspondingly $P(X=0)$=$P(Y=0)$=1/2), so X and Y both have the $\\text{Bernoulli}(1/2)$ distribution — the same induced (pushforward) measure on {0,1}",
+          description: "$P(X = 1) = 26/52 = 1/2 = P(Y = 1)$ (and correspondingly $P(X = 0) = P(Y = 0) = 1/2$), so $X$ and $Y$ both have the $\\text{Bernoulli}(1/2)$ distribution — the same induced (pushforward) measure on $\\{0, 1\\}$",
           weight: 1,
           required: true,
         },
         {
           id: "element-2",
-          description: "any downstream probability computation that depends only on the distribution of a random variable — not on the specific sample space it came from — is a function of that pushforward measure alone, so it necessarily gives the same answer whether computed via X or via Y",
+          description: "any downstream probability computation that depends only on the distribution of a random variable — not on the specific sample space it came from — is a function of that pushforward measure alone, so it necessarily gives the same answer whether computed via $X$ or via $Y$",
           weight: 1,
           required: true,
         },
@@ -3337,12 +3337,12 @@ export const probabilityExpansion1Items: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "A component's lifetime T (in years) physically must satisfy T $\\geq 0$, so its support should be a subset of [$0,\\infty$). A model proposes T = X $- 2$, where X is an Exponential random variable with support [$0,\\infty$). What's wrong with this proposed model, and how does checking the support pinpoint the problem?",
+    stem: "A component’s lifetime $T$ (in years) physically must satisfy $T \\geq 0$, so its support should be a subset of $[0, \\infty)$. A model proposes $T = X - 2$, where $X$ is an Exponential random variable with support $[0, \\infty)$. What’s wrong with this proposed model, and how does checking the support pinpoint the problem?",
     rubric: {
       elements: [
         {
           id: "element-1",
-          description: "$T=X-2$ has support [$-2,\\infty$), since X ranges over [$0,\\infty$); in particular X=0 gives $T=-2$, a negative lifetime",
+          description: "$T = X - 2$ has support $[-2, \\infty)$, since $X$ ranges over $[0, \\infty)$; in particular $X = 0$ gives $T = -2$, a negative lifetime",
           weight: 1,
           required: true,
         },
@@ -3367,32 +3367,32 @@ export const probabilityExpansion1Items: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "For a fair six-sided die roll X, which set is the support of X?",
+    stem: "For a fair six-sided die roll $X$, which set is the support of $X$?",
     choices: [
-      { id: "a", text: "{1, 2, 3, 4, 5, 6}", correct: true },
+      { id: "a", text: "$\\{1, 2, 3, 4, 5, 6\\}$", correct: true },
       {
         id: "b",
-        text: "{0, 1, 2, 3, 4, 5, 6}",
+        text: "$\\{0, 1, 2, 3, 4, 5, 6\\}$",
         correct: false,
         misconception: {
           id: "random-variables--fair-die-support-mcq--b",
-          description: "Off-by-one error including 0, a value the die can never actually show.",
+          description: "Off-by-one error including $0$, a value the die can never actually show.",
           blameConceptId: "random-variables",
         },
       },
       {
-        id: "c",
+        id: "$c$",
         text: "$\\mathbb{R}$ (all real numbers)",
         correct: false,
         misconception: {
           id: "random-variables--fair-die-support-mcq--c",
-          description: "Confuses the codomain of X (the reals, where X happens to land) with its support (the values X can actually take with positive probability).",
+          description: "Confuses the codomain of $X$ (the reals, where $X$ happens to land) with its support (the values $X$ can actually take with positive probability).",
           blameConceptId: "random-variables",
         },
       },
       {
         id: "d",
-        text: "{1}",
+        text: "$\\{1\\}$",
         correct: false,
         misconception: {
           id: "random-variables--fair-die-support-mcq--d",

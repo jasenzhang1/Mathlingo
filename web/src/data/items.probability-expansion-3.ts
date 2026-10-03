@@ -18,17 +18,17 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the 68-95-99.7 empirical rule for $\\text{Normal}(\\mu, \\sigma^2)$: what fraction of the mass lies within $1\\sigma$, $2\\sigma$, and $3\\sigma$ of $\\mu$?",
+    "stem": "State the $68$–$95$–$99.7$ empirical rule for $\\mathcal{N}(\\mu, \\sigma^2)$: what fraction of the mass lies within $1\\sigma$, $2\\sigma$, and $3\\sigma$ of $\\mu$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "about 68% of the mass lies within $1\\sigma$ of $\\mu$",
+          "description": "about $68\\%$ of the mass lies within $1\\sigma$ of $\\mu$",
           "weight": 1
         },
         {
           "id": "element-2",
-          "description": "about 95% lies within $2\\sigma$, and about 99.7% lies within $3\\sigma$",
+          "description": "about $95\\%$ lies within $2\\sigma$, and about $99.7\\%$ lies within $3\\sigma$",
           "weight": 1
         }
       ]
@@ -118,7 +118,7 @@ export const probabilityExpansion3Items: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "$\\Phi(0) = 0.5$, since the density is symmetric about 0",
+          "description": "$\\Phi(0) = 0.5$, since the density is symmetric about $0$",
           "weight": 1
         }
       ]
@@ -147,7 +147,7 @@ export const probabilityExpansion3Items: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "true — the exponential term $e^{-(x-\\mu)^2/(2\\sigma^2)}$ never equals exactly 0 for any finite $x$, so the support is all of $\\mathbb{R}$ even though the tails become vanishingly small far from $\\mu$",
+          "description": "true — the exponential term $e^{-(x-\\mu)^2/(2\\sigma^2)}$ never equals exactly $0$ for any finite $x$, so the support is all of $\\mathbb{R}$ even though the tails become vanishingly small far from $\\mu$",
           "weight": 1,
           "required": true
         }
@@ -171,7 +171,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Adult male heights are modeled as $N(70, 3^2)$ inches. Find $P(66 < X < 76)$.",
+    "stem": "Adult male heights are modeled as $X \\sim \\mathcal{N}(70, 3^2)$ inches. Find $P(66 < X < 76)$.",
     "answerKey": 0.886,
     "tolerance": 0.02,
     "difficulty": -0.45,
@@ -192,7 +192,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "A standardized test's scores are $N(500, 100^2)$. A scholarship requires being in the top 10% of scores. Find the minimum score needed.",
+    "stem": "A standardized test’s scores are $\\mathcal{N}(500, 100^2)$. A scholarship requires being in the top $10\\%$ of scores. Find the minimum score needed.",
     "answerKey": 628.2,
     "tolerance": 0.02,
     "difficulty": -0.2,
@@ -213,7 +213,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$X \\sim N(20, 4^2)$. Find $P(X < 15 \\text{ or } X > 25)$.",
+    "stem": "$X \\sim \\mathcal{N}(20, 4^2)$. Find $P(X < 15 \\text{ or } X > 25)$.",
     "answerKey": 0.211,
     "tolerance": 0.02,
     "difficulty": 0.05,
@@ -235,7 +235,7 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why the 68-95-99.7 empirical rule fails badly for a symmetric, bell-shaped-looking distribution like Cauchy.",
+    "stem": "Explain why the $68$–$95$–$99.7$ empirical rule fails badly for a symmetric, bell-shaped-looking distribution like Cauchy.",
     "rubric": {
       "elements": [
         {
@@ -275,13 +275,13 @@ export const probabilityExpansion3Items: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "every valid density must integrate to exactly 1 over its support",
+          "description": "every valid density must integrate to exactly $1$ over its support",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "spreading the bump out over a wider range (larger $\\sigma$) lowers its peak height so the enclosed area stays fixed at 1; the constant scales as $1/\\sigma$ to compensate",
+          "description": "spreading the bump out over a wider range (larger $\\sigma$) lowers its peak height so the enclosed area stays fixed at $1$; the constant scales as $1/\\sigma$ to compensate",
           "weight": 1
         }
       ]
@@ -305,7 +305,7 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive $P(\\mu-\\sigma < X < \\mu+\\sigma)$ in terms of $\\Phi$, then use $\\Phi(1) \\approx 0.8413$ to recover the numeric '68%' of the empirical rule.",
+    "stem": "Derive $P(\\mu-\\sigma < X < \\mu+\\sigma)$ in terms of $\\Phi$, then use $\\Phi(1) \\approx 0.8413$ to recover the numeric ‘$68\\%$’ of the empirical rule.",
     "rubric": {
       "elements": [
         {
@@ -345,7 +345,7 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "If $X\\sim N(\\mu,\\sigma^2)$, show that $Y=(X-\\mu)^2/\\sigma^2$ is distributed as $\\chi^2_1$ — a first glimpse of how Normal connects to Chi-Square.",
+    "stem": "If $X\\sim \\mathcal{N}(\\mu,\\sigma^2)$, show that $Y = \\dfrac{(X-\\mu)^2}{\\sigma^2}$ is distributed as $\\chi^2_1$ — a first glimpse of how Normal connects to Chi-Square.",
     "rubric": {
       "elements": [
         {
@@ -356,7 +356,7 @@ export const probabilityExpansion3Items: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "$Y = Z^2$, and by the definition of chi-square with 1 degree of freedom, the square of a single standard normal is $\\chi^2_1$",
+          "description": "$Y = Z^2$, and by the definition of chi-square with $1$ degree of freedom, the square of a single standard normal is $\\chi^2_1$",
           "weight": 1
         }
       ]
@@ -380,12 +380,12 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A chemical reaction's duration is $X \\sim N(30, 5^2)$ minutes. A quality check flags reactions in the extreme 1% combined (0.5% in each tail). Find the two cutoff times.",
+    "stem": "A chemical reaction’s duration is $X \\sim \\mathcal{N}(30, 5^2)$ minutes. A quality check flags reactions in the extreme $1\\%$ combined ($0.5\\%$ in each tail). Find the two cutoff times.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the two-sided 1% cutoff uses $z_{0.995} \\approx 2.5758$",
+          "description": "the two-sided $1\\%$ cutoff uses $z_{0.995} \\approx 2.5758$",
           "weight": 1,
           "required": true
         },
@@ -498,7 +498,7 @@ export const probabilityExpansion3Items: Item[] = [
       },
       {
         "id": "choice-3",
-        "text": "$E[X] = a$",
+        "text": "$\\mathbb{E}[X] = a$",
         "correct": false,
         "misconception": {
           "id": "choice-3--misconception",
@@ -508,7 +508,7 @@ export const probabilityExpansion3Items: Item[] = [
       },
       {
         "id": "choice-4",
-        "text": "$Var(X) = (b-a)/12$",
+        "text": "$\\text{Var}(X) = (b-a)/12$",
         "correct": false,
         "misconception": {
           "id": "choice-4--misconception",
@@ -586,12 +586,12 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A machine's cycle time is $\\text{Uniform}(40,60)$ seconds. Find $Var(X)$ and $P(45 < X < 50)$.",
+    "stem": "A machine’s cycle time is $\\text{Uniform}(40, 60)$ seconds. Find $\\text{Var}(X)$ and $P(45 < X < 50)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$Var(X) = (60-40)^2/12 = 400/12 \\approx 33.33$",
+          "description": "$\\text{Var}(X) = (60-40)^2/12 = 400/12 \\approx 33.33$",
           "weight": 1
         },
         {
@@ -692,18 +692,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Let $Y = X-a$, so $Y \\sim \\text{Uniform}(0, b-a)$. Show $Var(X) = Var(Y)$ without recomputing an integral over $[a,b]$.",
+    "stem": "Let $Y = X - a$, so $Y \\sim \\text{Uniform}(0, b-a)$. Show $\\text{Var}(X) = \\text{Var}(Y)$ without recomputing an integral over $[a, b]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "shifting a random variable by a constant $a$ doesn't change its spread: $Var(X) = Var(Y+a) = Var(Y)$, since variance is shift-invariant",
+          "description": "shifting a random variable by a constant $a$ doesn’t change its spread: $\\text{Var}(X) = \\text{Var}(Y + a) = \\text{Var}(Y)$, since variance is shift-invariant",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "so $Var(X)$ can be computed as $Var(\\text{Uniform}(0,b-a)) = (b-a)^2/12$ without ever integrating over the original interval $[a,b]$",
+          "description": "so $\\text{Var}(X)$ can be computed as $\\text{Var}\\left(\\text{Uniform}(0, b-a)\\right) = (b-a)^2/12$ without ever integrating over the original interval $[a, b]$",
           "weight": 1
         }
       ]
@@ -891,12 +891,12 @@ export const probabilityExpansion3Items: Item[] = [
     "choices": [
       {
         "id": "choice-1",
-        "text": "$E[X] = 1/\\lambda$",
+        "text": "$\\mathbb{E}[X] = 1/\\lambda$",
         "correct": true
       },
       {
         "id": "choice-2",
-        "text": "$E[X] = \\lambda$",
+        "text": "$\\mathbb{E}[X] = \\lambda$",
         "correct": false,
         "misconception": {
           "id": "choice-2--misconception",
@@ -906,11 +906,11 @@ export const probabilityExpansion3Items: Item[] = [
       },
       {
         "id": "choice-3",
-        "text": "$Var(X) = 1/\\lambda$",
+        "text": "$\\text{Var}(X) = 1/\\lambda$",
         "correct": false,
         "misconception": {
           "id": "choice-3--misconception",
-          "description": "forgets the squaring in the variance formula $Var(X)=1/\\lambda^2$",
+          "description": "forgets the squaring in the variance formula $\\text{Var}(X) = 1/\\lambda^2$",
           "blameConceptId": "exponential-distribution"
         }
       },
@@ -978,7 +978,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Time between customer arrivals at a call center is Exponential with mean 4 minutes. Find P(the next arrival is within 2 minutes).",
+    "stem": "Time between customer arrivals at a call center is Exponential with mean $4$ minutes. Find $P(\\text{the next arrival is within } 2 \\text{ minutes})$.",
     "answerKey": 0.3935,
     "tolerance": 0.02,
     "difficulty": -0.45,
@@ -999,7 +999,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "A component has a constant failure rate $\\lambda=0.02$ per hour (Exponential lifetime). Find the probability it survives beyond 100 hours.",
+    "stem": "A component has a constant failure rate $\\lambda = 0.02$ per hour (Exponential lifetime). Find the probability it survives beyond $100$ hours.",
     "answerKey": 0.1353,
     "tolerance": 0.02,
     "difficulty": -0.25,
@@ -1021,12 +1021,12 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Radioactive decay events occur as a Poisson process at rate 5/minute. Find the expected gap between consecutive decays and the probability that a gap exceeds 30 seconds (0.5 minutes).",
+    "stem": "Radioactive decay events occur as a Poisson process at rate $5$/minute. Find the expected gap between consecutive decays and the probability that a gap exceeds $30$ seconds ($0.5$ minutes).",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "gaps are $\\text{Exponential}(5)$; $E[\\text{gap}] = 1/5 = 0.2$ minutes",
+          "description": "gaps are $\\text{Exponential}(5)$; $\\mathbb{E}[\\text{gap}] = 1/5 = 0.2$ minutes",
           "weight": 1
         },
         {
@@ -1054,7 +1054,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "An ATM's time between customers is Exponential with rate 0.5/minute. Find $P(1 < X < 3)$.",
+    "stem": "An ATM’s time between customers is Exponential with rate $0.5$/minute. Find $P(1 < X < 3)$.",
     "answerKey": 0.3834,
     "tolerance": 0.02,
     "difficulty": 0.15,
@@ -1081,7 +1081,7 @@ export const probabilityExpansion3Items: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "Exponential is right-skewed: a heavy right tail pulls the mean up more than the median, which only tracks the 50th percentile",
+          "description": "Exponential is right-skewed: a heavy right tail pulls the mean up more than the median, which only tracks the $50$th percentile",
           "weight": 1,
           "required": true
         },
@@ -1111,7 +1111,7 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive the CDF $F(x) = 1 - e^{-\\lambda x}$ for $\\text{Exponential}(\\lambda)$ by integrating the density from 0 to $x$.",
+    "stem": "Derive the CDF $F(x) = 1 - e^{-\\lambda x}$ for $\\text{Exponential}(\\lambda)$ by integrating the density from $0$ to $x$.",
     "rubric": {
       "elements": [
         {
@@ -1192,7 +1192,7 @@ export const probabilityExpansion3Items: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "this matches the survival function of Exponential(1) exactly",
+          "description": "this matches the survival function of $\\text{Exponential}(1)$ exactly",
           "weight": 1
         }
       ]
@@ -1215,7 +1215,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "A system fails as soon as the FIRST of 3 identical, independent Exponential($\\lambda=0.1$/hour) components fails. Find the mean lifetime of the system.",
+    "stem": "A system fails as soon as the FIRST of $3$ identical, independent $\\text{Exponential}(\\lambda = 0.1/\\text{hour})$ components fails. Find the mean lifetime of the system.",
     "answerKey": 3.333,
     "tolerance": 0.02,
     "difficulty": 0.85,
@@ -1248,7 +1248,7 @@ export const probabilityExpansion3Items: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "averaging effects (like those behind the CLT) reduce relative variability as terms are summed, producing a hump away from 0 — unlike Exponential's own density, which is always maximized at 0",
+          "description": "averaging effects (like those behind the CLT) reduce relative variability as terms are summed, producing a hump away from $0$ — unlike Exponential’s own density, which is always maximized at $0$",
           "weight": 1
         }
       ]
@@ -1273,17 +1273,17 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\text{Gamma}(\\alpha,\\beta)$ has $E[X]=\\alpha/\\beta$. If $\\alpha$ is doubled while $\\beta$ stays fixed, what happens to $E[X]$ and $Var(X)$?",
+    "stem": "$\\text{Gamma}(\\alpha, \\beta)$ has $\\mathbb{E}[X] = \\alpha/\\beta$. If $\\alpha$ is doubled while $\\beta$ stays fixed, what happens to $\\mathbb{E}[X]$ and $\\text{Var}(X)$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$E[X]$ doubles, to $2\\alpha/\\beta$",
+          "description": "$\\mathbb{E}[X]$ doubles, to $2\\alpha/\\beta$",
           "weight": 1
         },
         {
           "id": "element-2",
-          "description": "$Var(X)=\\alpha/\\beta^2$ also doubles, to $2\\alpha/\\beta^2$",
+          "description": "$\\text{Var}(X) = \\alpha/\\beta^2$ also doubles, to $2\\alpha/\\beta^2$",
           "weight": 1
         }
       ]
@@ -1310,7 +1310,7 @@ export const probabilityExpansion3Items: Item[] = [
     "choices": [
       {
         "id": "choice-1",
-        "text": "both decrease, since $E[X]=\\alpha/\\beta$ and $Var(X)=\\alpha/\\beta^2$ both fall as $\\beta$ rises",
+        "text": "both decrease, since $\\mathbb{E}[X] = \\alpha/\\beta$ and $\\text{Var}(X) = \\alpha/\\beta^2$ both fall as $\\beta$ rises",
         "correct": true
       },
       {
@@ -1339,7 +1339,7 @@ export const probabilityExpansion3Items: Item[] = [
         "correct": false,
         "misconception": {
           "id": "choice-4--misconception",
-          "description": "misses that $\\beta$ enters both $E[X]=\\alpha/\\beta$ and $Var(X)=\\alpha/\\beta^2$ directly",
+          "description": "misses that $\\beta$ enters both $\\mathbb{E}[X] = \\alpha/\\beta$ and $\\text{Var}(X) = \\alpha/\\beta^2$ directly",
           "blameConceptId": "gamma-distribution"
         }
       }
@@ -1373,7 +1373,7 @@ export const probabilityExpansion3Items: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "for $\\alpha<1$ the density is unbounded and decreasing from $x=0$ (it blows up near 0 rather than peaking away from it), so there is no interior mode",
+          "description": "for $\\alpha < 1$ the density is unbounded and decreasing from $x = 0$ (it blows up near $0$ rather than peaking away from it), so there is no interior mode",
           "weight": 1
         }
       ]
@@ -1396,7 +1396,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Website hits arrive as $\\text{Poisson}(6/\\text{hour})$. Using $\\text{Gamma}(8,6)$, find the standard deviation of the time until the 8th hit.",
+    "stem": "Website hits arrive as a Poisson process at rate $6$/hour. Using $\\text{Gamma}(8, 6)$, find the standard deviation of the time until the $8$th hit.",
     "answerKey": 0.4714,
     "tolerance": 0.02,
     "difficulty": -0.4,
@@ -1417,7 +1417,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "A machine is replaced on its 3rd repair; repairs occur as a Poisson process at rate 0.5/month. Using $\\text{Gamma}(3,0.5)$, find $E[\\text{time to replacement}]$ and $Var(\\text{time to replacement})$.",
+    "stem": "A machine is replaced on its $3$rd repair; repairs occur as a Poisson process at rate $0.5$/month. Using $\\text{Gamma}(3, 0.5)$, find $\\mathbb{E}[\\text{time to replacement}]$ and $\\text{Var}(\\text{time to replacement})$.",
     "answerKey": 6,
     "tolerance": 0.02,
     "difficulty": -0.15,
@@ -1438,7 +1438,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$X \\sim \\text{Gamma}(4,2)$. Find $E[X]$ and $Var(X)$.",
+    "stem": "$X \\sim \\text{Gamma}(4, 2)$. Find $\\mathbb{E}[X]$ and $\\text{Var}(X)$.",
     "answerKey": 2,
     "tolerance": 0.01,
     "difficulty": 0.1,
@@ -1465,13 +1465,13 @@ export const probabilityExpansion3Items: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "'4th claim by time 1' is the same event as 'at least 4 claims by time 1'",
+          "description": "‘$4$th claim by time $1$’ is the same event as ‘at least $4$ claims by time $1$’",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "$N(1)\\sim \\text{Poisson}(2)$; $P(N\\geq 4) = 1 - P(N\\leq 3) = 1 - (0.1353+0.2707+0.2707+0.1804) \\approx 1 - 0.8571 = 0.1429$",
+          "description": "$N(1) \\sim \\text{Poisson}(2)$; $P(N \\geq 4) = 1 - P(N \\leq 3) = 1 - (0.1353+0.2707+0.2707+0.1804) \\approx 1 - 0.8571 = 0.1429$",
           "weight": 1
         }
       ]
@@ -1530,18 +1530,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show $Var(\\text{Gamma}(\\alpha,\\beta)) = \\alpha/\\beta^2$ by computing the variance of a sum of $\\alpha$ iid $\\text{Exponential}(\\beta)$ variables (do not integrate the Gamma density).",
+    "stem": "Show $\\text{Var}\\left(\\text{Gamma}(\\alpha, \\beta)\\right) = \\alpha/\\beta^2$ by computing the variance of a sum of $\\alpha$ i.i.d. $\\text{Exponential}(\\beta)$ variables (do not integrate the Gamma density).",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$Var(\\text{Exponential}(\\beta)) = 1/\\beta^2$",
+          "description": "$\\text{Var}\\left(\\text{Exponential}(\\beta)\\right) = 1/\\beta^2$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "for independent variables, variances add: $Var(\\text{sum of }\\alpha\\text{ of them}) = \\alpha\\cdot(1/\\beta^2) = \\alpha/\\beta^2$",
+          "description": "for independent variables, variances add: $\\text{Var}(\\text{sum of } \\alpha \\text{ of them}) = \\alpha\\cdot(1/\\beta^2) = \\alpha/\\beta^2$",
           "weight": 1
         }
       ]
@@ -1576,7 +1576,7 @@ export const probabilityExpansion3Items: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "this lets Gamma model a waiting process whose intensity build-up looks like a fractional number of stages — useful when observed skew doesn't match any integer-α Gamma",
+          "description": "this lets Gamma model a waiting process whose intensity build-up looks like a fractional number of stages — useful when observed skew doesn’t match any integer-$\\alpha$ Gamma",
           "weight": 1
         }
       ]
@@ -1600,12 +1600,12 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show that if $X \\sim \\text{Gamma}(\\alpha,\\beta)$, then $Y=cX$ ($c>0$) is $\\text{Gamma}(\\alpha, \\beta/c)$. Verify using $E[Y]=\\alpha/(\\beta/c)$.",
+    "stem": "Show that if $X \\sim \\text{Gamma}(\\alpha, \\beta)$, then $Y = cX$ ($c > 0$) is $\\text{Gamma}(\\alpha, \\beta/c)$. Verify using $\\mathbb{E}[Y] = \\alpha/(\\beta/c)$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$E[Y] = E[cX] = cE[X] = c\\alpha/\\beta$",
+          "description": "$\\mathbb{E}[Y] = \\mathbb{E}[cX] = c\\,\\mathbb{E}[X] = c\\alpha/\\beta$",
           "weight": 1,
           "required": true
         },
@@ -1720,7 +1720,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Which condition makes $\\text{Beta}(\\alpha,\\beta)$ symmetric about 0.5?",
+    "stem": "Which condition makes $\\text{Beta}(\\alpha, \\beta)$ symmetric about $0.5$?",
     "choices": [
       {
         "id": "choice-1",
@@ -1782,7 +1782,7 @@ export const probabilityExpansion3Items: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "U-shaped: since $\\alpha-1=\\beta-1=-0.5<0$, the density increases without bound toward both 0 and 1, with a dip in the middle",
+          "description": "U-shaped: since $\\alpha-1=\\beta-1=-0.5<0$, the density increases without bound toward both $0$ and $1$, with a dip in the middle",
           "weight": 1
         }
       ]
@@ -1805,7 +1805,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$X \\sim \\text{Beta}(5,2)$. Find $E[X]$ and $Var(X)$.",
+    "stem": "$X \\sim \\text{Beta}(5, 2)$. Find $\\mathbb{E}[X]$ and $\\text{Var}(X)$.",
     "answerKey": 0.7143,
     "tolerance": 0.02,
     "difficulty": -0.4,
@@ -1881,7 +1881,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$X \\sim \\text{Beta}(4,4)$. Find $E[X]$ and $Var(X)$.",
+    "stem": "$X \\sim \\text{Beta}(4, 4)$. Find $\\mathbb{E}[X]$ and $\\text{Var}(X)$.",
     "answerKey": 0.5,
     "tolerance": 0.01,
     "difficulty": 0.2,
@@ -1914,7 +1914,7 @@ export const probabilityExpansion3Items: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "the denominator grows as the cube of $(\\alpha+\\beta)$ while the numerator $\\alpha\\beta$ grows only as its square, so the ratio shrinks toward 0 as $\\alpha+\\beta$ grows — mirroring how a posterior concentrates as more data accumulates",
+          "description": "the denominator grows as the cube of $(\\alpha+\\beta)$ while the numerator $\\alpha\\beta$ grows only as its square, so the ratio shrinks toward $0$ as $\\alpha+\\beta$ grows — mirroring how a posterior concentrates as more data accumulates",
           "weight": 1
         }
       ]
@@ -1938,7 +1938,7 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For the symmetric case $\\alpha=\\beta=k$ (mean fixed at 0.5), show $Var(X) = \\frac{1}{4(2k+1)}$ using the general Beta variance formula.",
+    "stem": "For the symmetric case $\\alpha=\\beta=k$ (mean fixed at $0.5$), show $\\text{Var}(X) = \\frac{1}{4(2k+1)}$ using the general Beta variance formula.",
     "rubric": {
       "elements": [
         {
@@ -1984,7 +1984,7 @@ export const probabilityExpansion3Items: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "so the posterior $\\propto \\text{prior}\\times\\text{likelihood}$ stays in the Beta family, with the counts simply adding: $\\text{Beta}(\\alpha+s, \\beta+f)$ — this is why Beta is called the 'conjugate' prior for a Binomial/Bernoulli likelihood",
+          "description": "so the posterior $\\propto \\text{prior}\\times\\text{likelihood}$ stays in the Beta family, with the counts simply adding: $\\text{Beta}(\\alpha+s, \\beta+f)$ — this is why Beta is called the ‘conjugate’ prior for a Binomial/Bernoulli likelihood",
           "weight": 1
         }
       ]
@@ -2037,7 +2037,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "An A/B test observes 8 successes out of 20 trials, starting from a $\\text{Beta}(1,1)$ (uniform) prior, giving posterior $\\text{Beta}(9,13)$. Find the posterior mean.",
+    "stem": "An A/B test observes $8$ successes out of $20$ trials, starting from a $\\text{Beta}(1,1)$ (uniform) prior, giving posterior $\\text{Beta}(9,13)$. Find the posterior mean.",
     "answerKey": 0.4091,
     "tolerance": 0.02,
     "difficulty": 0.9,
@@ -2070,7 +2070,7 @@ export const probabilityExpansion3Items: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "this follows because $Var(X)\\to 0$ as $\\alpha+\\beta\\to\\infty$ with the mean fixed, so nearly all the mass piles up in a shrinking neighborhood of $p$",
+          "description": "this follows because $\\text{Var}(X)\\to 0$ as $\\alpha+\\beta\\to\\infty$ with the mean fixed, so nearly all the mass piles up in a shrinking neighborhood of $p$",
           "weight": 1
         }
       ]
@@ -2136,13 +2136,13 @@ export const probabilityExpansion3Items: Item[] = [
         "correct": false,
         "misconception": {
           "id": "choice-2--misconception",
-          "description": "has the direction backwards; larger k averages more squared-normal terms, which reduces relative skew",
+          "description": "has the direction backwards; larger $k$ averages more squared-normal terms, which reduces relative skew",
           "blameConceptId": "chi-square-distribution"
         }
       },
       {
         "id": "choice-3",
-        "text": "stays exactly 0 for every $k$",
+        "text": "stays exactly $0$ for every $k$",
         "correct": false,
         "misconception": {
           "id": "choice-3--misconception",
@@ -2213,7 +2213,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$X \\sim \\chi^2_{20}$. Find $E[X]$, $Var(X)$, and $SD(X)$.",
+    "stem": "$X \\sim \\chi^2_{20}$. Find $\\mathbb{E}[X]$, $\\text{Var}(X)$, and $\\text{SD}(X)$.",
     "answerKey": 6.325,
     "tolerance": 0.02,
     "difficulty": -0.4,
@@ -2235,7 +2235,7 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "If $Z_1,\\ldots,Z_6$ are iid $N(0,1)$, find $E[Z_1^2+\\cdots+Z_6^2]$ and its variance.",
+    "stem": "If $Z_1,\\ldots,Z_6 \\sim \\mathcal{N}(0,1)$ i.i.d., find $\\mathbb{E}\\left[Z_1^2+\\cdots+Z_6^2\\right]$ and its variance.",
     "rubric": {
       "elements": [
         {
@@ -2269,7 +2269,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$X\\sim \\chi^2_4$, $Y\\sim \\chi^2_9$ independent. Find $E[X+Y]$.",
+    "stem": "$X\\sim \\chi^2_4$, $Y\\sim \\chi^2_9$ independent. Find $\\mathbb{E}[X+Y]$.",
     "answerKey": 13,
     "tolerance": 0.01,
     "difficulty": 0.0,
@@ -2312,7 +2312,7 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using $Var(\\chi^2_k)=2k$, explain why the RELATIVE spread $\\sqrt{2/k}$ shrinks as $k$ grows, even though the ABSOLUTE spread $SD=\\sqrt{2k}$ actually grows.",
+    "stem": "Using $\\text{Var}(\\chi^2_k) = 2k$, explain why the RELATIVE spread $\\sqrt{2/k}$ shrinks as $k$ grows, even though the ABSOLUTE spread $\\text{SD} = \\sqrt{2k}$ actually grows.",
     "rubric": {
       "elements": [
         {
@@ -2347,12 +2347,12 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive $Var(\\chi^2_k)=2k$ directly from the definition $\\sum_i Z_i^2$, using $Var(Z_i^2)=2$ for a standard normal $Z_i$ (you may take this fact as given) and independence.",
+    "stem": "Derive $\\text{Var}(\\chi^2_k) = 2k$ directly from the definition $\\sum_i Z_i^2$, using $\\text{Var}(Z_i^2) = 2$ for a standard normal $Z_i$ (you may take this fact as given) and independence.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$Var(\\sum Z_i^2) = \\sum Var(Z_i^2)$, using independence of the $Z_i$",
+          "description": "$\\text{Var}\\left(\\sum Z_i^2\\right) = \\sum \\text{Var}(Z_i^2)$, using independence of the $Z_i$",
           "weight": 1,
           "required": true
         },
@@ -2417,7 +2417,7 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "If $X\\sim \\chi^2_{10}$, identify Gamma's $\\alpha$ and $\\beta$ for $X$, and verify $E[X]=\\alpha/\\beta$ gives 10.",
+    "stem": "If $X\\sim \\chi^2_{10}$, identify Gamma’s $\\alpha$ and $\\beta$ for $X$, and verify $\\mathbb{E}[X] = \\alpha/\\beta$ gives $10$.",
     "rubric": {
       "elements": [
         {
@@ -2428,7 +2428,7 @@ export const probabilityExpansion3Items: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "$E[X] = \\alpha/\\beta = 5/0.5 = 10$, matching $\\chi^2_{10}$'s known mean",
+          "description": "$\\mathbb{E}[X] = \\alpha/\\beta = 5/0.5 = 10$, matching $\\chi^2_{10}$’s known mean",
           "weight": 1
         }
       ]
@@ -2451,7 +2451,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "In estimating variance from $n=15$ Normal measurements, the standardized sum of squared deviations follows $\\chi^2_{14}$ ($n-1$ degrees of freedom). Find $Var(\\chi^2_{14})$.",
+    "stem": "In estimating variance from $n=15$ Normal measurements, the standardized sum of squared deviations follows $\\chi^2_{14}$ ($n-1$ degrees of freedom). Find $\\text{Var}(\\chi^2_{14})$.",
     "answerKey": 28,
     "tolerance": 0.01,
     "difficulty": 0.85,
@@ -2509,7 +2509,7 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$T_k = Z/\\sqrt{V/k}$ for standard normal $Z$ and independent $\\chi^2_k$ variable $V$. Is $T_k$ symmetric about 0 for every $k$? Justify briefly.",
+    "stem": "$T_k = Z/\\sqrt{V/k}$ for standard normal $Z$ and independent $\\chi^2_k$ variable $V$. Is $T_k$ symmetric about $0$ for every $k$? Justify briefly.",
     "rubric": {
       "elements": [
         {
@@ -2519,7 +2519,7 @@ export const probabilityExpansion3Items: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "$Z$ is symmetric about 0, and the denominator $\\sqrt{V/k}$ is always positive and doesn't depend on $Z$'s sign, so $T_k$ inherits $Z$'s sign symmetry exactly",
+          "description": "$Z$ is symmetric about $0$, and the denominator $\\sqrt{V/k}$ is always positive and doesn’t depend on $Z$’s sign, so $T_k$ inherits $Z$’s sign symmetry exactly",
           "weight": 1
         }
       ]
@@ -2542,7 +2542,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "For which values of $k$ is $Var(T_k)$ undefined or infinite?",
+    "stem": "For which values of $k$ is $\\text{Var}(T_k)$ undefined or infinite?",
     "choices": [
       {
         "id": "choice-1",
@@ -2555,13 +2555,13 @@ export const probabilityExpansion3Items: Item[] = [
         "correct": false,
         "misconception": {
           "id": "choice-2--misconception",
-          "description": "misidentifies where $Var(T_k)=k/(k-2)$ diverges — the denominator vanishes at $k=2$, and t is not even defined for $k=0$",
+          "description": "misidentifies where $\\text{Var}(T_k) = k/(k-2)$ diverges — the denominator vanishes at $k=2$, and $t$ is not even defined for $k=0$",
           "blameConceptId": "t-distribution"
         }
       },
       {
         "id": "choice-3",
-        "text": "$Var(T_k)$ is always finite for $k\\geq 1$",
+        "text": "$\\text{Var}(T_k)$ is always finite for $k\\geq 1$",
         "correct": false,
         "misconception": {
           "id": "choice-3--misconception",
@@ -2575,7 +2575,7 @@ export const probabilityExpansion3Items: Item[] = [
         "correct": false,
         "misconception": {
           "id": "choice-4--misconception",
-          "description": "backwards — $Var(T_k)$ exists and is finite precisely for $k>2$, not for $k\\geq 2$",
+          "description": "backwards — $\\text{Var}(T_k)$ exists and is finite precisely for $k>2$, not for $k\\geq 2$",
           "blameConceptId": "t-distribution"
         }
       }
@@ -2604,7 +2604,7 @@ export const probabilityExpansion3Items: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "$T_k$ converges to the standard normal $N(0,1)$",
+          "description": "$T_k$ converges to the standard normal $\\mathcal{N}(0,1)$",
           "weight": 1
         },
         {
@@ -2632,7 +2632,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Find $Var(T_{10})$ using $Var(T_k)=k/(k-2)$.",
+    "stem": "Find $\\text{Var}(T_{10})$ using $\\text{Var}(T_k) = k/(k-2)$.",
     "answerKey": 1.25,
     "tolerance": 0.01,
     "difficulty": -0.45,
@@ -2654,18 +2654,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Find $Var(T_{30})$ and $Var(T_5)$. Which is closer to 1, and what does that mean?",
+    "stem": "Find $\\text{Var}(T_{30})$ and $\\text{Var}(T_5)$. Which is closer to $1$, and what does that mean?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$Var(T_{30}) = 30/28 \\approx 1.071$; $Var(T_5) = 5/3 \\approx 1.667$",
+          "description": "$\\text{Var}(T_{30}) = 30/28 \\approx 1.071$; $\\text{Var}(T_5) = 5/3 \\approx 1.667$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "$T_{30}$ is much closer to Normal's variance of 1, confirming $T_k$ converges toward Normal as $k$ grows",
+          "description": "$T_{30}$ is much closer to Normal’s variance of $1$, confirming $T_k$ converges toward Normal as $k$ grows",
           "weight": 1
         }
       ]
@@ -2689,18 +2689,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A sample of $n=6$ ($df=5$) gives a two-sided 95% critical value of about 2.571, versus Normal's 1.96. Explain why the t critical value must be larger in magnitude here.",
+    "stem": "A sample of $n=6$ ($\\text{df}=5$) gives a two-sided $95\\%$ critical value of about $2.571$, versus Normal’s $1.96$. Explain why the $t$ critical value must be larger in magnitude here.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "with only 5 degrees of freedom, $T_5$ has noticeably heavier tails than the standard normal",
+          "description": "with only $5$ degrees of freedom, $T_5$ has noticeably heavier tails than the standard normal",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "a larger cutoff is needed to enclose the same 95% central probability, since more mass sits out in the tails",
+          "description": "a larger cutoff is needed to enclose the same $95\\%$ central probability, since more mass sits out in the tails",
           "weight": 1
         }
       ]
@@ -2724,18 +2724,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Find $Var(T_6)$ and $Var(T_{100})$. Which is closer to 1?",
+    "stem": "Find $\\text{Var}(T_6)$ and $\\text{Var}(T_{100})$. Which is closer to $1$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$Var(T_6) = 6/4 = 1.5$; $Var(T_{100}) = 100/98 \\approx 1.0204$",
+          "description": "$\\text{Var}(T_6) = 6/4 = 1.5$; $\\text{Var}(T_{100}) = 100/98 \\approx 1.0204$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "$T_{100}$ is much closer to 1, as expected from convergence to Normal",
+          "description": "$T_{100}$ is much closer to $1$, as expected from convergence to Normal",
           "weight": 1
         }
       ]
@@ -2759,12 +2759,12 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain, using $T_k=Z/\\sqrt{V/k}$, why $T_k$ is always symmetric about 0 regardless of $k$.",
+    "stem": "Explain, using $T_k=Z/\\sqrt{V/k}$, why $T_k$ is always symmetric about $0$ regardless of $k$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$Z$ is symmetric about 0: $P(Z>z)=P(Z<-z)$ for every $z$",
+          "description": "$Z$ is symmetric about $0$: $P(Z>z)=P(Z<-z)$ for every $z$",
           "weight": 1,
           "required": true
         },
@@ -2794,18 +2794,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show $E[T_k]=0$ for $k>1$, using independence of $Z$ and $V$ and $E[Z]=0$ (you need not derive $E[1/\\sqrt{V/k}]$ itself).",
+    "stem": "Show $\\mathbb{E}[T_k]=0$ for $k>1$, using independence of $Z$ and $V$ and $\\mathbb{E}[Z]=0$ (you need not derive $\\mathbb{E}\\left[1/\\sqrt{V/k}\\right]$ itself).",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "by independence, $E[T_k] = E[Z/\\sqrt{V/k}] = E[Z]\\cdot E[1/\\sqrt{V/k}]$",
+          "description": "by independence, $\\mathbb{E}[T_k] = \\mathbb{E}\\left[Z/\\sqrt{V/k}\\right] = \\mathbb{E}[Z]\\cdot \\mathbb{E}\\left[1/\\sqrt{V/k}\\right]$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "$= 0 \\cdot$ (some finite constant) $= 0$, valid whenever $E[1/\\sqrt{V/k}]$ is finite, i.e. $k>1$",
+          "description": "$= 0 \\cdot$ (some finite constant) $= 0$, valid whenever $\\mathbb{E}\\left[1/\\sqrt{V/k}\\right]$ is finite, i.e. $k>1$",
           "weight": 1
         }
       ]
@@ -2829,18 +2829,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why $Var(T_k)$ is always strictly greater than $Var(Z)=1$ for $k>2$, tracing the extra variability to the random denominator.",
+    "stem": "Explain why $\\text{Var}(T_k)$ is always strictly greater than $\\text{Var}(Z)=1$ for $k>2$, tracing the extra variability to the random denominator.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "dividing $Z$ by a random quantity $\\sqrt{V/k}$ that fluctuates around 1 (rather than always being exactly 1) adds extra variability on top of $Z$'s own",
+          "description": "dividing $Z$ by a random quantity $\\sqrt{V/k}$ that fluctuates around $1$ (rather than always being exactly $1$) adds extra variability on top of $Z$’s own",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "the denominator's own noise stacks with the numerator's, inflating total variance above 1",
+          "description": "the denominator’s own noise stacks with the numerator’s, inflating total variance above $1$",
           "weight": 1
         }
       ]
@@ -2893,7 +2893,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "A confidence interval for a mean uses t with $df=20$, critical value $t_{0.025,20}\\approx 2.086$. If the sample mean is 50 and the standard error is 3, find the upper endpoint of the 95% CI.",
+    "stem": "A confidence interval for a mean uses $t$ with $\\text{df}=20$, critical value $t_{0.025,20}\\approx 2.086$. If the sample mean is $50$ and the standard error is $3$, find the upper endpoint of the $95\\%$ CI.",
     "answerKey": 56.26,
     "tolerance": 0.02,
     "difficulty": 0.85,
@@ -2915,18 +2915,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why practitioners often use $z=1.96$ once $df$ exceeds about 100, even though the t-correction is technically always required whenever $\\sigma$ is estimated.",
+    "stem": "Explain why practitioners often use $z=1.96$ once $\\text{df}$ exceeds about $100$, even though the $t$-correction is technically always required whenever $\\sigma$ is estimated.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$Var(T_k)=k/(k-2)\\to 1$ rapidly — at $k=100$ it's already about 1.0204, with a critical value near 1.984 versus Normal's 1.96",
+          "description": "$\\text{Var}(T_k) = k/(k-2)\\to 1$ rapidly — at $k=100$ it’s already about $1.0204$, with a critical value near $1.984$ versus Normal’s $1.96$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "the correction becomes practically negligible well before k is enormous, so the simplification introduces only trivial error",
+          "description": "the correction becomes practically negligible well before $k$ is enormous, so the simplification introduces only trivial error",
           "weight": 1
         }
       ]
@@ -2951,18 +2951,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State $E[F_{d1,d2}]$ for $d2>2$, and explain why it doesn't depend on $d1$.",
+    "stem": "State $\\mathbb{E}[F_{d_1,d_2}]$ for $d_2>2$, and explain why it doesn’t depend on $d_1$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$E[F_{d1,d2}] = d2/(d2-2)$ for $d2>2$",
+          "description": "$\\mathbb{E}[F_{d_1,d_2}] = d_2/(d_2-2)$ for $d_2>2$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "this is because $E[V1/d1]=1$ regardless of $d1$, so by independence $E[F]=E[V1/d1]\\cdot E[d2/V2]=1\\cdot d2/(d2-2)$, leaving only $d2$ in the answer",
+          "description": "this is because $\\mathbb{E}[V_1/d_1]=1$ regardless of $d_1$, so by independence $\\mathbb{E}[F]=\\mathbb{E}[V_1/d_1]\\cdot \\mathbb{E}[d_2/V_2]=1\\cdot \\dfrac{d_2}{d_2-2}$, leaving only $d_2$ in the answer",
           "weight": 1
         }
       ]
@@ -2989,16 +2989,16 @@ export const probabilityExpansion3Items: Item[] = [
     "choices": [
       {
         "id": "choice-1",
-        "text": "1",
+        "text": "$1$",
         "correct": true
       },
       {
         "id": "choice-2",
-        "text": "0",
+        "text": "$0$",
         "correct": false,
         "misconception": {
           "id": "choice-2--misconception",
-          "description": "confuses F's lower bound (0) with its limiting central value, which is 1",
+          "description": "confuses $F$’s lower bound ($0$) with its limiting central value, which is $1$",
           "blameConceptId": "f-distribution"
         }
       },
@@ -3008,7 +3008,7 @@ export const probabilityExpansion3Items: Item[] = [
         "correct": false,
         "misconception": {
           "id": "choice-3--misconception",
-          "description": "mixes up F with an unnormalized ratio of raw chi-squares; each $V_i/d_i$ individually concentrates near 1, not near $d1/d2$",
+          "description": "mixes up $F$ with an unnormalized ratio of raw chi-squares; each $V_i/d_i$ individually concentrates near $1$, not near $d_1/d_2$",
           "blameConceptId": "f-distribution"
         }
       },
@@ -3018,7 +3018,7 @@ export const probabilityExpansion3Items: Item[] = [
         "correct": false,
         "misconception": {
           "id": "choice-4--misconception",
-          "description": "misses that both the numerator and denominator ratios $V1/d1$, $V2/d2$ individually concentrate near their shared mean of 1",
+          "description": "misses that both the numerator and denominator ratios $V_1/d_1$, $V_2/d_2$ individually concentrate near their shared mean of $1$",
           "blameConceptId": "f-distribution"
         }
       }
@@ -3042,12 +3042,12 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For which values of $d2$ does $Var(F_{d1,d2})$ fail to exist (be infinite/undefined)?",
+    "stem": "For which values of $d_2$ does $\\text{Var}(F_{d_1,d_2})$ fail to exist (be infinite/undefined)?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$Var(F_{d1,d2})$ requires $d2>4$; for $d2\\leq 4$ the variance is infinite or undefined",
+          "description": "$\\text{Var}(F_{d_1,d_2})$ requires $d_2>4$; for $d_2\\leq 4$ the variance is infinite or undefined",
           "weight": 1
         }
       ]
@@ -3071,7 +3071,7 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Since $T^2 \\sim F_{1,k}$, and the two-sided t critical value at $df=20$ is $t_{0.025,20}\\approx 2.086$, find the corresponding F critical value $F_{0.05,1,20}$.",
+    "stem": "Since $T^2 \\sim F_{1,k}$, and the two-sided $t$ critical value at $\\text{df}=20$ is $t_{0.025,20}\\approx 2.086$, find the corresponding $F$ critical value $F_{0.05,1,20}$.",
     "rubric": {
       "elements": [
         {
@@ -3130,7 +3130,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Find $E[F_{10,30}]$ using $E[F_{d1,d2}]=d2/(d2-2)$.",
+    "stem": "Find $\\mathbb{E}[F_{10,30}]$ using $\\mathbb{E}[F_{d_1,d_2}]=d_2/(d_2-2)$.",
     "answerKey": 1.0714,
     "tolerance": 0.02,
     "difficulty": 0.15,
@@ -3152,18 +3152,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why $Var(F_{d1,d2})$ requires $d2>4$ to exist, connecting it to why $E[F]$ itself requires only $d2>2$.",
+    "stem": "Explain why $\\text{Var}(F_{d_1,d_2})$ requires $d_2>4$ to exist, connecting it to why $\\mathbb{E}[F]$ itself requires only $d_2>2$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "both moments come from $E[1/V2^m]$ for the denominator chi-square",
+          "description": "both moments come from $\\mathbb{E}\\left[1/V_2^m\\right]$ for the denominator chi-square",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "this blows up unless the chi-square has enough degrees of freedom to keep its reciprocal moments finite: $E[1/V2]$ needs $d2>2$, while $E[1/V2^2]$ (needed for the second moment/variance) needs the stronger condition $d2>4$",
+          "description": "this blows up unless the chi-square has enough degrees of freedom to keep its reciprocal moments finite: $\\mathbb{E}[1/V_2]$ needs $d_2>2$, while $\\mathbb{E}\\left[1/V_2^2\\right]$ (needed for the second moment/variance) needs the stronger condition $d_2>4$",
           "weight": 1
         }
       ]
@@ -3187,18 +3187,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why $F_{d1,d2}$ concentrates around 1 as BOTH $d1$ and $d2$ grow, but not if only one of them grows while the other stays small.",
+    "stem": "Explain why $F_{d_1,d_2}$ concentrates around $1$ as BOTH $d_1$ and $d_2$ grow, but not if only one of them grows while the other stays small.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "concentration comes from each of $V1/d1$ and $V2/d2$ individually settling near 1 as its own df grows (relative spread $\\sqrt{2/d}$ shrinking)",
+          "description": "concentration comes from each of $V_1/d_1$ and $V_2/d_2$ individually settling near $1$ as its own df grows (relative spread $\\sqrt{2/d}$ shrinking)",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "if only one df grows, the other ratio still fluctuates a lot, so the overall ratio F stays noisy — both chi-squares must concentrate for their ratio to",
+          "description": "if only one df grows, the other ratio still fluctuates a lot, so the overall ratio $F$ stays noisy — both chi-squares must concentrate for their ratio to",
           "weight": 1
         }
       ]
@@ -3227,7 +3227,7 @@ export const probabilityExpansion3Items: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "as $d2\\to\\infty$, $Var(V2/d2)=2/d2\\to 0$, so $V2/d2\\to 1$ by concentration",
+          "description": "as $d_2\\to\\infty$, $\\text{Var}(V_2/d_2)=2/d_2\\to 0$, so $V_2/d_2\\to 1$ by concentration",
           "weight": 1,
           "required": true
         },
@@ -3257,12 +3257,12 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "If $V_1\\sim \\chi^2_5$ and $V_2\\sim \\chi^2_5$ are independent (equal df), find $E[F_{5,5}]$. Does the equal-df case make $F$ symmetric about 1? Explain.",
+    "stem": "If $V_1\\sim \\chi^2_5$ and $V_2\\sim \\chi^2_5$ are independent (equal df), find $\\mathbb{E}[F_{5,5}]$. Does the equal-df case make $F$ symmetric about $1$? Explain.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$E[F_{5,5}] = 5/3 \\approx 1.667$",
+          "description": "$\\mathbb{E}[F_{5,5}] = 5/3 \\approx 1.667$",
           "weight": 1,
           "required": true
         },
@@ -3292,7 +3292,7 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Two lines' variance estimates give an F-statistic of $F=0.4$ with $df$ $(10,10)$. Using the reciprocal-F property, find the equivalent 'line 2 vs line 1' statistic and its distribution.",
+    "stem": "Two lines’ variance estimates give an $F$-statistic of $F=0.4$ with $\\text{df}$ $(10, 10)$. Using the reciprocal-$F$ property, find the equivalent ‘line $2$ vs line $1$’ statistic and its distribution.",
     "rubric": {
       "elements": [
         {
@@ -3303,7 +3303,7 @@ export const probabilityExpansion3Items: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "reciprocating F just flips which line is 'on top' without changing the F family, when d1=d2",
+          "description": "reciprocating $F$ just flips which line is ‘on top’ without changing the $F$ family, when $d_1=d_2$",
           "weight": 1
         }
       ]
@@ -3327,7 +3327,7 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Trace the chain Normal → Chi-Square → t and F in terms of what operation is applied at each step.",
+    "stem": "Trace the chain Normal → Chi-Square → $t$ and $F$ in terms of what operation is applied at each step.",
     "rubric": {
       "elements": [
         {
@@ -3338,7 +3338,7 @@ export const probabilityExpansion3Items: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "a chi-square is combined with a fresh independent standard normal in a ratio $Z/\\sqrt{V/k}$ to build t; two independent chi-squares are combined in a ratio $(V1/d1)/(V2/d2)$ to build F",
+          "description": "a chi-square is combined with a fresh independent standard normal in a ratio $Z/\\sqrt{V/k}$ to build $t$; two independent chi-squares are combined in a ratio $(V_1/d_1)/(V_2/d_2)$ to build $F$",
           "weight": 1
         },
         {
@@ -3368,17 +3368,17 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the 'law of the unconscious statistician' (LOTUS): how is E[g(X)] computed directly from X's PMF/PDF, without first finding the distribution of g(X)?",
+    "stem": "State the ‘law of the unconscious statistician’ (LOTUS): how is $\\mathbb{E}[g(X)]$ computed directly from $X$’s PMF/PDF, without first finding the distribution of $g(X)$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[g(X)] = Σₓ g(x)p(x) (discrete) or ∫g(x)f(x)dx (continuous)",
+          "description": "$\\mathbb{E}[g(X)] = \\sum_x g(x)p(x)$ (discrete) or $\\int g(x)f(x)\\,dx$ (continuous)",
           "weight": 1
         },
         {
           "id": "element-2",
-          "description": "computed directly using X's own distribution, without deriving Y=g(X)'s distribution first",
+          "description": "computed directly using $X$’s own distribution, without deriving $Y = g(X)$’s distribution first",
           "weight": 1
         }
       ]
@@ -3401,16 +3401,16 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Linearity of expectation, E[X+Y]=E[X]+E[Y], is guaranteed to hold:",
+    "stem": "Linearity of expectation, $\\mathbb{E}[X+Y] = \\mathbb{E}[X] + \\mathbb{E}[Y]$, is guaranteed to hold:",
     "choices": [
       {
         "id": "choice-1",
-        "text": "even when X and Y are dependent",
+        "text": "even when $X$ and $Y$ are dependent",
         "correct": true
       },
       {
         "id": "choice-2",
-        "text": "only when X and Y are independent",
+        "text": "only when $X$ and $Y$ are independent",
         "correct": false,
         "misconception": {
           "id": "choice-2--misconception",
@@ -3420,7 +3420,7 @@ export const probabilityExpansion3Items: Item[] = [
       },
       {
         "id": "choice-3",
-        "text": "only when X and Y are identically distributed",
+        "text": "only when $X$ and $Y$ are identically distributed",
         "correct": false,
         "misconception": {
           "id": "choice-3--misconception",
@@ -3458,18 +3458,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Can E[X] be negative even if X takes positive values with high probability? Explain the idea.",
+    "stem": "Can $\\mathbb{E}[X]$ be negative even if $X$ takes positive values with high probability? Explain the idea.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "yes — if X occasionally takes a very large negative value, even with small probability, that value can pull the weighted average below 0",
+          "description": "yes — if $X$ occasionally takes a very large negative value, even with small probability, that value can pull the weighted average below $0$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "a fat left tail can dominate the weighted sum despite X being positive 'most of the time'",
+          "description": "a fat left tail can dominate the weighted sum despite $X$ being positive ‘most of the time’",
           "weight": 1
         }
       ]
@@ -3492,7 +3492,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "A game pays \\$10 with probability 0.2, \\$0 with probability 0.5, and −\\$5 with probability 0.3. Find the expected payout.",
+    "stem": "A game pays $\\$10$ with probability $0.2$, $\\$0$ with probability $0.5$, and $-\\$5$ with probability $0.3$. Find the expected payout.",
     "answerKey": 0.5,
     "tolerance": 0.01,
     "difficulty": -0.45,
@@ -3513,7 +3513,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "X has density f(x)=3x² on [0,1]. Find E[X].",
+    "stem": "$X$ has density $f(x) = 3x^2$ on $[0, 1]$. Find $\\mathbb{E}[X]$.",
     "answerKey": 0.75,
     "tolerance": 0.01,
     "difficulty": -0.25,
@@ -3534,7 +3534,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Using LOTUS, find E[X²] for X with PMF p(1)=0.4, p(2)=0.4, p(3)=0.2 (without first finding Var(X)).",
+    "stem": "Using LOTUS, find $\\mathbb{E}[X^2]$ for $X$ with PMF $p(1) = 0.4$, $p(2) = 0.4$, $p(3) = 0.2$ (without first finding $\\text{Var}(X)$).",
     "answerKey": 3.8,
     "tolerance": 0.01,
     "difficulty": 0.0,
@@ -3555,7 +3555,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "X ~ Uniform(0,1). Using LOTUS, find E[X³].",
+    "stem": "$X \\sim \\text{Uniform}(0, 1)$. Using LOTUS, find $\\mathbb{E}[X^3]$.",
     "answerKey": 0.25,
     "tolerance": 0.01,
     "difficulty": 0.15,
@@ -3577,18 +3577,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why LOTUS (averaging g(x)f(x)) is necessary — give the concrete reason E[X²] ≠ (E[X])² in general.",
+    "stem": "Explain why LOTUS (averaging $g(x)f(x)$) is necessary — give the concrete reason $\\mathbb{E}[X^2] \\ne (\\mathbb{E}[X])^2$ in general.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "averaging is not the same operation as squaring; by Jensen's inequality E[g(X)]≥g(E[X]) for convex g like x², with equality only when X is constant",
+          "description": "averaging is not the same operation as squaring; by Jensen’s inequality $\\mathbb{E}[g(X)] \\ge g(\\mathbb{E}[X])$ for convex $g$ like $x^2$, with equality only when $X$ is constant",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "plugging the mean into g first, rather than averaging g(X) over the whole distribution, generally gives a different (smaller, for convex g) number",
+          "description": "plugging the mean into $g$ first, rather than averaging $g(X)$ over the whole distribution, generally gives a different (smaller, for convex $g$) number",
           "weight": 1
         }
       ]
@@ -3612,18 +3612,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive E[X] for a fair six-sided die from the discrete sum definition, and confirm it need not be an achievable face.",
+    "stem": "Derive $\\mathbb{E}[X]$ for a fair six-sided die from the discrete sum definition, and confirm it need not be an achievable face.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[X] = Σ x·(1/6) for x=1,…,6 = (1+2+3+4+5+6)/6 = 21/6 = 3.5",
+          "description": "$\\mathbb{E}[X] = \\sum x\\cdot\\tfrac16$ for $x = 1, \\ldots, 6$ $= \\dfrac{1+2+3+4+5+6}{6} = \\dfrac{21}{6} = 3.5$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "3.5 is not a face the die can show, confirming the mean need not be an attainable value",
+          "description": "$3.5$ is not a face the die can show, confirming the mean need not be an attainable value",
           "weight": 1
         }
       ]
@@ -3647,18 +3647,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why E[c]=c for any constant c, treating c as a degenerate random variable, using the discrete definition directly.",
+    "stem": "Explain why $\\mathbb{E}[c] = c$ for any constant $c$, treating $c$ as a degenerate random variable, using the discrete definition directly.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "a constant c can be viewed as a random variable taking the single value c with probability 1",
+          "description": "a constant $c$ can be viewed as a random variable taking the single value $c$ with probability $1$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "the sum Σx·p(x) collapses to c·1 = c — expectation of something with no randomness is just that fixed value",
+          "description": "the sum $\\sum x\\,p(x)$ collapses to $c\\cdot 1 = c$ — expectation of something with no randomness is just that fixed value",
           "weight": 1
         }
       ]
@@ -3681,7 +3681,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "A fair die is rolled twice; let S be the sum. Using linearity (not the joint PMF of S), find E[S].",
+    "stem": "A fair die is rolled twice; let $S$ be the sum. Using linearity (not the joint PMF of $S$), find $\\mathbb{E}[S]$.",
     "answerKey": 7,
     "tolerance": 0.01,
     "difficulty": 0.6,
@@ -3702,7 +3702,7 @@ export const probabilityExpansion3Items: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "An investor holds asset A (returns \\$1000 w.p. 0.6, −\\$500 w.p. 0.4) and independent asset B (returns \\$200 w.p. 0.5, \\$0 otherwise). Using linearity, find E[total return].",
+    "stem": "An investor holds asset A (returns $\\$1000$ w.p. $0.6$, $-\\$500$ w.p. $0.4$) and independent asset B (returns $\\$200$ w.p. $0.5$, $\\$0$ otherwise). Using linearity, find $\\mathbb{E}[\\text{total return}]$.",
     "answerKey": 500,
     "tolerance": 0.02,
     "difficulty": 0.85,
@@ -3724,18 +3724,18 @@ export const probabilityExpansion3Items: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A lottery sells 1000 tickets at \\$5 each; exactly one ticket wins \\$2000, the rest win nothing. Find the buyer's expected net gain (payout minus price), and explain what this number means for a single play even though no ticket can lose exactly that amount.",
+    "stem": "A lottery sells $1000$ tickets at $\\$5$ each; exactly one ticket wins $\\$2000$, the rest win nothing. Find the buyer’s expected net gain (payout minus price), and explain what this number means for a single play even though no ticket can lose exactly that amount.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "E[payout] = 2000·(1/1000) = \\$2; net gain = 2 − 5 = −\\$3",
+          "description": "$\\mathbb{E}[\\text{payout}] = 2000\\cdot\\tfrac{1}{1000} = \\$2$; net gain $= 2 - 5 = -\\$3$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "this is a long-run per-ticket average, not a possible single-play outcome — a ticket either nets +\\$1995 or −\\$5, never −\\$3",
+          "description": "this is a long-run per-ticket average, not a possible single-play outcome — a ticket either nets $+\\$1995$ or $-\\$5$, never $-\\$3$",
           "weight": 1
         }
       ]
