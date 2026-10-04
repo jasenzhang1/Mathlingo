@@ -16,7 +16,7 @@ import type { Item, SourceRef } from "../lib/assessment/types";
  * where p₀ belongs is debited on the proportions test, not on arithmetic.
  *
  * Closure notes. `wilcoxon-rank-sum-test` is downstream of `order-statistics`
- * and `hypothesis-test` but *not* of `one-sample-t-test`, so its items cannot
+ * and `hypothesis-test` but $\\textbf{NOT}$ of `one-sample-t-test`, so its items cannot
  * assume the t-test — the comparison against a mean-based test is therefore
  * framed in terms the learner has (sensitivity of an average to one extreme
  * value) rather than by naming the t-test as a prerequisite. `bootstrapping`

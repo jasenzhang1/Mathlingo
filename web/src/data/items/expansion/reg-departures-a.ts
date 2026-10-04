@@ -339,7 +339,7 @@ export const regDeparturesAItems: Item[] = [
     [["pcr", "PCR drops components with small eigenvalues entirely — a hard threshold: shrinkage factor $1$ or $0$.", 4, true],
      ["ridge", "Ridge shrinks each component by $\\lambda_k/(\\lambda_k + k)$ — a smooth down-weighting that most affects small-eigenvalue directions.", 5, true]]),
   mcq({ concept: CE, slug: "x-apply-centering", cognitive: "apply", level: 5, seconds: 25,
-    stem: "Why do Belsley–Kuh–Welsch recommend *not* centring before computing condition indices?" },
+    stem: "Why do Belsley–Kuh–Welsch recommend $\\textbf{NOT}$ centring before computing condition indices?" },
     "Centring hides dependencies involving the intercept (e.g. a nearly constant predictor)",
     [["Centring changes the fitted values", "bkw-fitted", "It doesn't."],
      ["Centring is illegal", "bkw-illegal", "No."],

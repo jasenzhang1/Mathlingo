@@ -24,7 +24,7 @@ const MP = "moore-penrose-inverse";
 const PC = "pca-matrix-edition";
 const EY = "eckart-young";
 
-const M425 = "$\\mathbf{A} =\\begin{pmatrix}4 & 2\\\\2 & 5\\end{pmatrix}$";
+const M425 = "$\\mathbf{A} =\\begin{bmatrix}4 & 2\\\\2 & 5\\end{bmatrix}$";
 
 export const laFortyEItems: Item[] = [
   // --- idempotent-matrices -------------------------------------------------------------
@@ -35,21 +35,21 @@ export const laFortyEItems: Item[] = [
   s(ID, "x4l-eig", 8.5, "Why are the eigenvalues of an idempotent matrix $0$ or $1$?",
     "If $\\mathbf{P}\\mathbf{x} = \\lambda \\mathbf{x}$ with $\\mathbf{x} \\ne \\mathbf{0}$, then $\\lambda \\mathbf{x} = \\mathbf{P}\\mathbf{x} = \\mathbf{P}^2\\mathbf{x} = \\lambda^2\\mathbf{x}$, so $\\lambda^2 = \\lambda$.",
     "Idempotent matrices are diagonalisable, so rank = number of eigenvalues equal to $1$ = trace."),
-  n(ID, "x4l-oblique", 8.5, "$\\mathbf{P} = \\begin{pmatrix}1 & 1\\\\0 & 0\\end{pmatrix}$. Find the $(1, 2)$ entry of $\\mathbf{P}^2$.", 1),
+  n(ID, "x4l-oblique", 8.5, "$\\mathbf{P} = \\begin{bmatrix}1 & 1\\\\0 & 0\\end{bmatrix}$. Find the $(1, 2)$ entry of $\\mathbf{P}^2$.", 1),
   n(ID, "x4l-oblique-rank", 9, "What is the rank of that $\\mathbf{P}$?", 1),
   s(ID, "x4l-orth-vs-obl", 9, "Distinguish orthogonal projections from oblique ones.",
     "Every idempotent matrix projects onto its column space along its null space; it's an orthogonal projection exactly when it's also symmetric ($\\mathbf{P} = \\mathbf{P}^\\top$), so that the null space is orthogonal to the range.",
-    "Oblique projections like $\\begin{pmatrix}1 & 1\\\\0 & 0\\end{pmatrix}$ can lengthen vectors ($\\|\\mathbf{P}\\| > 1$); orthogonal ones never do."),
+    "Oblique projections like $\\begin{bmatrix}1 & 1\\\\0 & 0\\end{bmatrix}$ can lengthen vectors ($\\|\\mathbf{P}\\| > 1$); orthogonal ones never do."),
   n(ID, "x4l-center", 9, "What is the rank of the centring matrix $\\mathbf{I} - \\frac{1}{n}\\mathbf{1}\\mathbf{1}^\\top$ for $n = 5$?", 4),
   s(ID, "x4l-cochran", 9.5, "Explain the idea behind Cochran's theorem.",
     "If $\\mathbf{z} \\sim \\mathcal{N}(\\mathbf{0}, \\mathbf{I})$ and $\\mathbf{P}$ is a symmetric idempotent matrix of rank $r$, then $\\mathbf{z}^\\top \\mathbf{P}\\mathbf{z} \\sim \\chi^2_r$ (rotate to the eigenbasis: it's a sum of $r$ squared standard normals).",
     "When $\\mathbf{I} = \\mathbf{P}_1 + \\cdots + \\mathbf{P}_k$ with ranks adding to $n$, the quadratic forms are independent $\\chi^2$ variables — this is why regression and residual sums of squares give F-tests."),
 
   // --- rayleigh-quotient ----------------------------------------------------------------
-  n(RQ, "x4l-e1", 4, "Compute $R(\\mathbf{x}) = \\mathbf{x}^\\top \\mathbf{A}\\mathbf{x}/\\mathbf{x}^\\top \\mathbf{x}$ for $\\mathbf{A} = \\operatorname{diag}(1, 5)$ and $\\mathbf{x} = (1, 0)$.", 1),
+  n(RQ, "x4l-e1", 4, "Compute $R(\\mathbf{x}) = \\mathbf{x}^\\top \\mathbf{A}\\mathbf{x}/\\mathbf{x}^\\top \\mathbf{x}$ for $\\mathbf{A} = \\operatorname{diag}(1, 5)$ and $\\mathbf{x} = [1, 0]$.", 1),
   n(RQ, "x4l-max", 5, "What is the maximum of $R(\\mathbf{x})$ over nonzero $\\mathbf{x}$ for the same $\\mathbf{A}$?", 5),
-  n(RQ, "x4l-mix", 7, "Compute $R(\\mathbf{x})$ for the same $\\mathbf{A}$ at $\\mathbf{x} = (1, 1)$.", 3),
-  n(RQ, "x4l-offdiag", 8, "Compute $R(\\mathbf{x})$ for $\\mathbf{A} = \\begin{pmatrix}2 & 1\\\\1 & 2\\end{pmatrix}$ at $\\mathbf{x} = (1, 0)$.", 2),
+  n(RQ, "x4l-mix", 7, "Compute $R(\\mathbf{x})$ for the same $\\mathbf{A}$ at $\\mathbf{x} = [1, 1]$.", 3),
+  n(RQ, "x4l-offdiag", 8, "Compute $R(\\mathbf{x})$ for $\\mathbf{A} = \\begin{bmatrix}2 & 1\\\\1 & 2\\end{bmatrix}$ at $\\mathbf{x} = [1, 0]$.", 2),
   s(RQ, "x4l-variational", 8.5, "Why is the Rayleigh quotient maximised by the top eigenvector of a symmetric matrix?",
     "Expand $\\mathbf{x} = \\sum_i c_i\\mathbf{q}_i$ in orthonormal eigenvectors: $R(\\mathbf{x}) = \\sum_i \\lambda_ic_i^2/\\sum_i c_i^2$, a weighted average of the eigenvalues.",
     "A weighted average is at most $\\lambda_{\\max}$, attained when all the weight is on $\\mathbf{q}_1$; similarly the minimum is $\\lambda_{\\min}$."),
@@ -66,10 +66,10 @@ export const laFortyEItems: Item[] = [
   // --- matrix-stability ---------------------------------------------------------------
   n(MS, "x4l-rho", 4, "$\\mathbf{x}_{k+1} = \\mathbf{A}\\mathbf{x}_k$ with $\\mathbf{A} = \\operatorname{diag}(0.5, 0.9)$. What is the spectral radius?", 0.9, 0.001),
   n(MS, "x4l-cont", 5, "For $\\dot{\\mathbf{x}} = \\mathbf{A}\\mathbf{x}$ with $\\mathbf{A} = \\operatorname{diag}(-1, 2)$, what is the largest real part of an eigenvalue (showing instability)?", 2),
-  n(MS, "x4l-jordan-rho", 7, "What is the spectral radius of $\\begin{pmatrix}0.5 & 1\\\\0 & 0.5\\end{pmatrix}$?", 0.5, 0.001),
+  n(MS, "x4l-jordan-rho", 7, "What is the spectral radius of $\\begin{bmatrix}0.5 & 1\\\\0 & 0.5\\end{bmatrix}$?", 0.5, 0.001),
   n(MS, "x4l-transient", 8, "For that matrix, find the $(1, 2)$ entry of $\\mathbf{A}^2$.", 1),
   s(MS, "x4l-growth", 8.5, "Why can a system with spectral radius below $1$ still show large transient growth?",
-    "For non-normal matrices, $\\|\\mathbf{A}^k\\|$ can grow for a while before decaying: e.g. $\\begin{pmatrix}0.5 & 1\\\\0 & 0.5\\end{pmatrix}^k$ has $(1, 2)$ entry $k \\cdot 0.5^{k-1}$.",
+    "For non-normal matrices, $\\|\\mathbf{A}^k\\|$ can grow for a while before decaying: e.g. $\\begin{bmatrix}0.5 & 1\\\\0 & 0.5\\end{bmatrix}^k$ has $(1, 2)$ entry $k \\cdot 0.5^{k-1}$.",
     "Eigenvalues govern only the long-run rate; nearly parallel eigenvectors (non-normality) allow transient amplification — relevant in fluid dynamics and ecology."),
   n(MS, "x4l-ar2", 8.5, "The AR(2) model $x_t = 1.2x_{t-1} - 0.32x_{t-2}$ has companion-matrix eigenvalues solving $\\lambda^2 - 1.2\\lambda + 0.32 = 0$. Find the larger.", 0.8, 0.001),
   n(MS, "x4l-halflife", 9, "With dominant eigenvalue $0.9$, how many steps does it take for a deviation to halve?", 6.5788, 0.001),
@@ -89,8 +89,8 @@ export const laFortyEItems: Item[] = [
   s(CH, "x4l-pd", 8.5, "Why does the Cholesky factorisation require positive definiteness, and how does it fail otherwise?",
     "$\\mathbf{A} = \\mathbf{L}\\mathbf{L}^\\top$ with real $\\mathbf{L}$ implies $\\mathbf{x}^\\top \\mathbf{A}\\mathbf{x} = \\|\\mathbf{L}^\\top \\mathbf{x}\\|^2 \\ge 0$, so only positive (semi)definite matrices can have one.",
     "The algorithm takes square roots of $a_{jj} - \\sum_k \\ell_{jk}^2$; for a non-PD matrix one of these is $\\le 0$ and it breaks down — which makes it a cheap PD test."),
-  n(CH, "x4l-logdet", 8.5, "Compute $\\log\\det \\mathbf{A} = 2\\sum_i \\log \\ell_{ii}$ when $\\mathbf{L}$ has diagonal $(2, 2)$.", 2.7726, 0.001),
-  n(CH, "x4l-sample", 9, `Sampling $\\mathbf{x} = \\boldsymbol{\\mu} + \\mathbf{L}\\mathbf{z}$ from $\\mathcal{N}(\\mathbf{0}, \\mathbf{A})$ with ${M425}, $\\boldsymbol{\\mu} = \\mathbf{0}$ and $\\mathbf{z} = (1, 0)$: find $x_2$.`, 1),
+  n(CH, "x4l-logdet", 8.5, "Compute $\\log\\det \\mathbf{A} = 2\\sum_i \\log \\ell_{ii}$ when $\\mathbf{L}$ has diagonal $[2, 2]$.", 2.7726, 0.001),
+  n(CH, "x4l-sample", 9, `Sampling $\\mathbf{x} = \\boldsymbol{\\mu} + \\mathbf{L}\\mathbf{z}$ from $\\mathcal{N}(\\mathbf{0}, \\mathbf{A})$ with ${M425}, $\\boldsymbol{\\mu} = \\mathbf{0}$ and $\\mathbf{z} = [1, 0]$: find $x_2$.`, 1),
   s(CH, "x4l-sampling", 9, "Explain how Cholesky is used to sample correlated Gaussians, and why it works.",
     "Draw $\\mathbf{z} \\sim \\mathcal{N}(\\mathbf{0}, \\mathbf{I})$ and set $\\mathbf{x} = \\boldsymbol{\\mu} + \\mathbf{L}\\mathbf{z}$ with $\\boldsymbol{\\Sigma} = \\mathbf{L}\\mathbf{L}^\\top$.",
     "Then $\\text{Cov}(\\mathbf{x}) = \\mathbf{L}\\,\\text{Cov}(\\mathbf{z})\\,\\mathbf{L}^\\top = \\mathbf{L}\\mathbf{L}^\\top = \\boldsymbol{\\Sigma}$, and $\\mathbf{x}$ is Gaussian as a linear transform of a Gaussian."),
@@ -114,7 +114,7 @@ export const laFortyEItems: Item[] = [
   s(ST, "x4l-proof", 9, "Sketch a proof of the spectral theorem by induction.",
     "A symmetric matrix has a real eigenvalue with unit eigenvector $\\mathbf{q}_1$ (e.g. the maximiser of the Rayleigh quotient).",
     "The orthogonal complement of $\\mathbf{q}_1$ is invariant under $\\mathbf{A}$ (if $\\mathbf{x} \\perp \\mathbf{q}_1$ then $\\mathbf{q}_1^\\top \\mathbf{A}\\mathbf{x} = \\lambda_1\\mathbf{q}_1^\\top \\mathbf{x} = 0$), and $\\mathbf{A}$ restricted to it is symmetric; apply induction."),
-  n(ST, "x4l-commute", 9.5, "$\\mathbf{A} = \\begin{pmatrix}2 & 1\\\\1 & 2\\end{pmatrix}$ and $\\mathbf{B} = \\begin{pmatrix}1 & 3\\\\3 & 1\\end{pmatrix}$ commute and share eigenvectors. What is the eigenvalue of $\\mathbf{B}$ on $(1, 1)/\\sqrt{2}$?", 4),
+  n(ST, "x4l-commute", 9.5, "$\\mathbf{A} = \\begin{bmatrix}2 & 1\\\\1 & 2\\end{bmatrix}$ and $\\mathbf{B} = \\begin{bmatrix}1 & 3\\\\3 & 1\\end{bmatrix}$ commute and share eigenvectors. What is the eigenvalue of $\\mathbf{B}$ on $[1, 1]/\\sqrt{2}$?", 4),
   s(ST, "x4l-operators", 9.5, "How does the spectral theorem generalise to operators in infinite dimensions?",
     "Compact self-adjoint operators on a Hilbert space have an orthonormal basis of eigenvectors with real eigenvalues tending to $0$; e.g. Mercer's theorem for kernels, and Karhunen–Loève expansions.",
     "Differential operators like $-d^2/dx^2$ with boundary conditions are self-adjoint with eigenfunctions $\\sin(k\\pi x)$: Fourier series are the spectral decomposition of the Laplacian."),
@@ -122,12 +122,12 @@ export const laFortyEItems: Item[] = [
   // --- svd ----------------------------------------------------------------------------
   n(SV, "x4l-diag", 5, "What is the largest singular value of $\\operatorname{diag}(3, -4)$?", 4),
   n(SV, "x4l-rank", 5.5, "A matrix has singular values $5$, $3$ and $0$. What is its rank?", 2),
-  n(SV, "x4l-col", 8, "Find the singular value of $\\begin{pmatrix}3 & 0\\\\4 & 0\\end{pmatrix}$ that isn't zero.", 5),
+  n(SV, "x4l-col", 8, "Find the singular value of $\\begin{bmatrix}3 & 0\\\\4 & 0\\end{bmatrix}$ that isn't zero.", 5),
   n(SV, "x4l-frob", 8.5, "A matrix has singular values $5$ and $3$. Compute its Frobenius norm.", 5.831, 0.001),
   s(SV, "x4l-eig", 8.5, "How is the SVD related to the eigendecompositions of $\\mathbf{A}^\\top \\mathbf{A}$ and $\\mathbf{A}\\mathbf{A}^\\top$?",
     "$\\mathbf{A}^\\top \\mathbf{A} = \\mathbf{V}\\boldsymbol{\\Sigma}^2\\mathbf{V}^\\top$ and $\\mathbf{A}\\mathbf{A}^\\top = \\mathbf{U}\\boldsymbol{\\Sigma}^2\\mathbf{U}^\\top$: the right and left singular vectors are their eigenvectors, and the singular values are the square roots of their eigenvalues.",
     "Computing the SVD via $\\mathbf{A}^\\top \\mathbf{A}$ squares the condition number, so stable algorithms (Golub–Kahan bidiagonalisation) work on $\\mathbf{A}$ directly."),
-  n(SV, "x4l-ones", 9, "Find the largest singular value of $\\begin{pmatrix}1 & 1\\\\1 & 1\\end{pmatrix}$.", 2),
+  n(SV, "x4l-ones", 9, "Find the largest singular value of $\\begin{bmatrix}1 & 1\\\\1 & 1\\end{bmatrix}$.", 2),
   n(SV, "x4l-cond", 9, "A matrix has singular values $10$ and $0.1$. Compute its condition number.", 100),
   s(SV, "x4l-geometry", 9, "Describe the geometric meaning of the SVD.",
     "$\\mathbf{A} = \\mathbf{U}\\boldsymbol{\\Sigma}\\mathbf{V}^\\top$: rotate or reflect with $\\mathbf{V}^\\top$, stretch the axes by the singular values, then rotate or reflect with $\\mathbf{U}$.",
@@ -180,13 +180,13 @@ export const laFortyEItems: Item[] = [
   // --- moore-penrose-inverse -----------------------------------------------------------------
   n(MP, "x4l-diag11", 4, "Find the $(1, 1)$ entry of the pseudoinverse of $\\operatorname{diag}(2, 0)$.", 0.5, 0.001),
   n(MP, "x4l-diag22", 5, "Find its $(2, 2)$ entry.", 0),
-  n(MP, "x4l-vector", 7, "The pseudoinverse of the column $\\mathbf{v} = (3, 4)^\\top$ is $\\mathbf{v}^\\top/\\|\\mathbf{v}\\|^2$. Find its first entry.", 0.12, 0.001),
-  n(MP, "x4l-fullcol", 8, "For $\\mathbf{A} = (1, 1)^\\top$ (full column rank), $\\mathbf{A}^+ = (\\mathbf{A}^\\top \\mathbf{A})^{-1}\\mathbf{A}^\\top$. What is each entry?", 0.5, 0.001),
+  n(MP, "x4l-vector", 7, "The pseudoinverse of the column $\\mathbf{v} = [3, 4]^\\top$ is $\\mathbf{v}^\\top/\\|\\mathbf{v}\\|^2$. Find its first entry.", 0.12, 0.001),
+  n(MP, "x4l-fullcol", 8, "For $\\mathbf{A} = [1, 1]^\\top$ (full column rank), $\\mathbf{A}^+ = (\\mathbf{A}^\\top \\mathbf{A})^{-1}\\mathbf{A}^\\top$. What is each entry?", 0.5, 0.001),
   s(MP, "x4l-penrose", 8.5, "State the four Penrose conditions that define $\\mathbf{A}^+$.",
     "$\\mathbf{A}\\mathbf{A}^+\\mathbf{A} = \\mathbf{A}$ and $\\mathbf{A}^+\\mathbf{A}\\mathbf{A}^+ = \\mathbf{A}^+$.",
     "$(\\mathbf{A}\\mathbf{A}^+)^\\top = \\mathbf{A}\\mathbf{A}^+$ and $(\\mathbf{A}^+\\mathbf{A})^\\top = \\mathbf{A}^+\\mathbf{A}$ (both products are orthogonal projections). Exactly one matrix satisfies all four."),
-  n(MP, "x4l-minnorm", 8.5, "Use the pseudoinverse to find the minimum-norm solution of $\\begin{pmatrix}1 & 1\\end{pmatrix}\\mathbf{x} = 2$. Give $x_1$.", 1),
-  n(MP, "x4l-ones", 9, "Find the $(1, 1)$ entry of the pseudoinverse of $\\begin{pmatrix}1 & 1\\\\1 & 1\\end{pmatrix}$.", 0.25, 0.001),
+  n(MP, "x4l-minnorm", 8.5, "Use the pseudoinverse to find the minimum-norm solution of $\\begin{bmatrix}1 & 1\\end{bmatrix}\\mathbf{x} = 2$. Give $x_1$.", 1),
+  n(MP, "x4l-ones", 9, "Find the $(1, 1)$ entry of the pseudoinverse of $\\begin{bmatrix}1 & 1\\\\1 & 1\\end{bmatrix}$.", 0.25, 0.001),
   s(MP, "x4l-why-min", 9, "Why is $\\mathbf{A}^+\\mathbf{b}$ the minimum-norm least squares solution?",
     "$\\mathbf{A}\\mathbf{A}^+$ is the projection onto $C(\\mathbf{A})$, so $\\mathbf{A}\\mathbf{A}^+\\mathbf{b}$ is the closest achievable point: $\\mathbf{A}^+\\mathbf{b}$ solves least squares.",
     "$\\mathbf{A}^+\\mathbf{b}$ lies in the row space, and every other least squares solution adds a null-space component orthogonal to it, which only increases the norm."),

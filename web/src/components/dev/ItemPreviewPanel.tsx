@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { formatDelta, proficiencyDelta } from "../../lib/assessment/formatProficiency";
 import { CodeText } from "../assessment/CodeText";
 import { AnswerInput } from "../assessment/AnswerInput";
 import { ProficiencyBar } from "../assessment/ProficiencyBar";
@@ -226,7 +227,7 @@ function PreviewFeedback({
   item: Item;
   onNext: () => void;
 }) {
-  const delta = outcome.expAfter.value - outcome.expBefore.value;
+  const delta = proficiencyDelta(outcome.expBefore.value, outcome.expAfter.value);
 
   return (
     <div className="mt-5 border-t border-[var(--line)] pt-4">
@@ -241,8 +242,7 @@ function PreviewFeedback({
         </span>
         {item.status === "live" && (
           <span className="font-body text-sm text-[var(--ink-soft)]">
-            {delta >= 0 ? "+" : ""}
-            {delta.toFixed(1)} simulated proficiency
+            {formatDelta(delta)} simulated proficiency
           </span>
         )}
         {item.status !== "live" && (

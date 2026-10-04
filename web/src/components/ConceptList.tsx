@@ -1,4 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { formatProficiency, roundProficiency } from "../lib/assessment/formatProficiency";
+import { unmetPrerequisites } from "../lib/lessonLock";
+import { useIsDeveloper } from "../lib/dev/devAuth";
 import { Link, useLocation } from "react-router-dom";
 import type { Concept } from "../data/concepts";
 import { DAY_MS } from "../lib/assessment/numeric";
@@ -64,7 +67,7 @@ function ProgressMeter({
   label: string;
   className?: string;
 }) {
-  const rounded = Math.round(value);
+  const rounded = roundProficiency(value);
 
   return (
     <div className="flex shrink-0 items-center gap-2">
@@ -84,8 +87,8 @@ function ProgressMeter({
           }}
         />
       </div>
-      <span className="font-body w-6 text-right text-xs tabular-nums text-[var(--ink-soft)]">
-        {rounded}
+      <span className="font-body w-10 text-right text-xs tabular-nums text-[var(--ink-soft)]">
+        {formatProficiency(rounded)}
       </span>
     </div>
   );
@@ -205,11 +208,14 @@ function ConceptRow({
   number,
   color,
   value,
+  locked = false,
 }: {
   concept: Concept;
   number: string;
   color: string;
   value: number;
+  /** Prerequisites not yet at the unlock threshold. */
+  locked?: boolean;
 }) {
   return (
     <li>
@@ -221,7 +227,10 @@ function ConceptRow({
           {number}
         </span>
         <span className="flex min-w-0 flex-1 items-center gap-1.5">
-          <span className="font-body truncate text-sm font-medium text-[var(--ink)]">
+          <span
+            className={`font-body truncate text-sm font-medium ${locked ? "text-[var(--ink-soft)]" : "text-[var(--ink)]"}`}
+          >
+            {locked && <span title="Locked until its prerequisites reach 65" aria-label="Locked">🔒 </span>}
             {concept.title}
           </span>
           {concept.embedUrl && <LessonDot />}
@@ -254,7 +263,10 @@ let savedScrollTop = 0;
 
 export function ConceptList() {
   const { user } = useAuth();
-  const { proficiency, dueAt, bleeding, refresh } = useProficiency();
+  const { proficiency, ceiling, dueAt, bleeding, refresh } = useProficiency();
+  const isDeveloper = useIsDeveloper();
+  const isLocked = (conceptId: string) =>
+    !!user && !isDeveloper && unmetPrerequisites(conceptId, ceiling).length > 0;
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState<Set<string>>(loadOpen);
   const [session, setSession] = useState<SubjectSession | null>(null);
@@ -543,6 +555,7 @@ export function ConceptList() {
                                     number={`${chapter.number}.${section.number}.${position}`}
                                     color={chapter.color}
                                     value={proficiency.get(concept.id) ?? 0}
+                                    locked={isLocked(concept.id)}
                                   />
                                 ))}
                               </ul>

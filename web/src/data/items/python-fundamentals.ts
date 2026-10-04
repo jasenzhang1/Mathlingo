@@ -1853,7 +1853,7 @@ export const pythonFundamentalsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which operator tests that two values are *not* equal?",
+    stem: "Which operator tests that two values are $\\textbf{NOT}$ equal?",
     choices: [
       { id: "a", text: "`!=`", correct: true },
       {

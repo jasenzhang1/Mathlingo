@@ -398,6 +398,22 @@ export function enforceMinExpFloor(
 }
 
 /**
+ * Lower the ability mean, if needed, so mastery reads no higher than
+ * `maxCeiling` (in EXP points). Used to hold the belief to the evidence cap in
+ * `exp.ts`, so the bar can't be carried past what the direct answers support
+ * by indirect evidence accumulated beforehand.
+ */
+export function capMastery(ability: Ability, maxCeiling: number): Ability {
+  if (100 * masteryLevel(ability) <= maxCeiling) return ability;
+  const p = clamp(maxCeiling / 100, 1e-6, 1 - 1e-6);
+  const mean =
+    Math.log(p / (1 - p)) / REFERENCE_DISCRIMINATION +
+    REFERENCE_DIFFICULTY +
+    CONSERVATISM_Z * Math.sqrt(ability.variance);
+  return { ...ability, mean: clamp(mean, -ABILITY_BOUND, ABILITY_BOUND) };
+}
+
+/**
  * Down-weight the evidence when the grader was unsure — a shaky transcription
  * of handwriting, or a model judge that abstained. We still record the attempt,
  * but a low-confidence grade should not swing the ability estimate as hard as a

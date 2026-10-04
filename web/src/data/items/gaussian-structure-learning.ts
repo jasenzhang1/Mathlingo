@@ -115,7 +115,7 @@ export const gaussianStructureLearningItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "$X \\sim \\mathcal{N}(0, \\Theta^{-1})$ with $\\Theta = \\begin{pmatrix} 3 & -1 & 0 \\\\ -1 & 3 & -1 \\\\ 0 & -1 & 3 \\end{pmatrix}$. " +
+      "$X \\sim \\mathcal{N}(0, \\Theta^{-1})$ with $\\Theta = \\begin{bmatrix} 3 & -1 & 0 \\\\ -1 & 3 & -1 \\\\ 0 & -1 & 3 \\end{bmatrix}$. " +
       "Which statement is correct?",
     choices: [
       { id: "a", text: "$X_1 \\perp X_3 \\mid X_2$, but $X_1$ and $X_3$ are marginally correlated", correct: true },

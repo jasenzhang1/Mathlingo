@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
@@ -34,6 +34,12 @@ const AnalogyFeed = lazy(() =>
 );
 import { conceptById } from "../data/concepts";
 import { prereqsOf, unlocksOf } from "../lib/prerequisiteGraph";
+import { formatProficiency } from "../lib/assessment/formatProficiency";
+import { UNLOCK_THRESHOLD } from "../lib/assessment/exp";
+import { useAuth } from "../lib/auth/useAuth";
+import { useIsDeveloper } from "../lib/dev/devAuth";
+import { unmetPrerequisites, type UnmetPrerequisite } from "../lib/lessonLock";
+import { useProficiency } from "../lib/useProficiency";
 
 const TABS = [
   { id: "slides", label: "Slides" },
@@ -64,6 +70,21 @@ export function ConceptPage() {
   // this), falling back to the map for a direct link or a click from
   // somewhere else in the app (e.g. a prerequisite chip).
   const from = searchParams.get("from");
+
+  // The lesson whose assessment has been opened this visit. Kept so switching
+  // tabs mid-question hides the panel rather than discarding its state.
+  const [assessmentOpenedFor, setAssessmentOpenedFor] = useState<string | null>(null);
+  useEffect(() => {
+    if (activeTab === "assessment" && concept) setAssessmentOpenedFor(concept.id);
+  }, [activeTab, concept]);
+
+  // Lessons open only once every prerequisite is at 65+. Developers bypass the
+  // gate; signed-out visitors can still browse (there is no progress to gate on).
+  const { user } = useAuth();
+  const isDeveloper = useIsDeveloper();
+  const { ceiling, loading: proficiencyLoading } = useProficiency();
+  const unmet = concept && user && !isDeveloper ? unmetPrerequisites(concept.id, ceiling) : [];
+  const locked = !proficiencyLoading && unmet.length > 0;
   const backHref = from === "list" ? "/map?view=list" : "/map";
 
   function selectTab(tab: TabId) {
@@ -146,6 +167,10 @@ export function ConceptPage() {
             </div>
           )}
 
+          {locked ? (
+            <LockedLesson unmet={unmet} />
+          ) : (
+          <>
           <div
             className="mt-8 flex flex-wrap gap-1 border-b border-[var(--line)]"
             role="tablist"
@@ -194,12 +219,18 @@ export function ConceptPage() {
               />
             )}
 
-            {activeTab === "assessment" && (
-              <AssessmentPanel
-                key={concept.id}
-                conceptId={concept.id}
-                conceptTitle={concept.title}
-              />
+            {/* Once opened, the assessment stays mounted (just hidden) while
+                another tab is showing, so the learner comes back to the same
+                question instead of a fresh one. */}
+            {(activeTab === "assessment" || assessmentOpenedFor === concept.id) && (
+              <div hidden={activeTab !== "assessment"}>
+                <AssessmentPanel
+                  key={concept.id}
+                  conceptId={concept.id}
+                  conceptTitle={concept.title}
+                  active={activeTab === "assessment"}
+                />
+              </div>
             )}
 
             {activeTab === "analogy" && <AnalogyFeed conceptId={concept.id} />}
@@ -207,6 +238,8 @@ export function ConceptPage() {
             {activeTab === "forum" && <DiscussionFeed conceptId={concept.id} />}
             </Suspense>
           </div>
+          </>
+          )}
 
           {activeTab === "slides" && unlocks.length > 0 && (
             <div className="font-body mt-8">
@@ -266,5 +299,32 @@ function TabButton({
     >
       {label}
     </button>
+  );
+}
+
+/** Shown in place of the lesson until every prerequisite reaches the unlock threshold. */
+function LockedLesson({ unmet }: { unmet: UnmetPrerequisite[] }) {
+  return (
+    <div className="font-body mt-8 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-6">
+      <p className="text-lg font-semibold text-[var(--ink)]">🔒 This lesson is locked</p>
+      <p className="mt-1 text-sm text-[var(--ink-soft)]">
+        Reach {UNLOCK_THRESHOLD} proficiency in {unmet.length === 1 ? "this prerequisite" : "each of these prerequisites"} to open it.
+      </p>
+      <ul className="mt-4 space-y-2">
+        {unmet.map(({ concept, ceiling }) => (
+          <li key={concept.id} className="flex items-center justify-between gap-3">
+            <Link
+              to={`/concepts/${concept.id}?tab=assessment`}
+              className="text-sm font-medium text-[var(--accent)] hover:underline"
+            >
+              {concept.title}
+            </Link>
+            <span className="text-sm tabular-nums text-[var(--ink-soft)]">
+              {formatProficiency(ceiling)} / {UNLOCK_THRESHOLD}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

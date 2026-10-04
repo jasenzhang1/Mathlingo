@@ -22,6 +22,8 @@ import { useAuth } from "./auth/useAuth";
  */
 export function useProficiency(): {
   proficiency: Map<string, number>;
+  /** Un-decayed proficiency (the bar’s ghost line) — what lesson gating reads. */
+  ceiling: Map<string, number>;
   dueAt: Map<string, number>;
   bleeding: Set<string>;
   loading: boolean;
@@ -31,6 +33,7 @@ export function useProficiency(): {
   const [proficiency, setProficiency] = useState<Map<string, number>>(
     new Map(),
   );
+  const [ceiling, setCeiling] = useState<Map<string, number>>(new Map());
   const [dueAt, setDueAt] = useState<Map<string, number>>(new Map());
   const [bleeding, setBleeding] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
@@ -43,6 +46,7 @@ export function useProficiency(): {
       if (authLoading) return;
       if (!user) {
         setProficiency(new Map());
+        setCeiling(new Map());
         setDueAt(new Map());
         setBleeding(new Set());
         setLoading(false);
@@ -55,10 +59,12 @@ export function useProficiency(): {
       const now = Date.now();
       const proficiencyMap = new Map<string, number>();
       const dueAtMap = new Map<string, number>();
+      const ceilingMap = new Map<string, number>();
       const bleedingSet = new Set<string>();
       for (const state of states) {
         const snapshot = expFor(state, now);
         proficiencyMap.set(state.conceptId, snapshot.value);
+        ceilingMap.set(state.conceptId, snapshot.ceiling);
         if (snapshot.dueAt !== undefined) {
           dueAtMap.set(state.conceptId, snapshot.dueAt);
         }
@@ -67,6 +73,7 @@ export function useProficiency(): {
         }
       }
       setProficiency(proficiencyMap);
+      setCeiling(ceilingMap);
       setDueAt(dueAtMap);
       setBleeding(bleedingSet);
       setLoading(false);
@@ -80,5 +87,5 @@ export function useProficiency(): {
 
   const refresh = useCallback(() => setGeneration((g) => g + 1), []);
 
-  return { proficiency, dueAt, bleeding, loading, refresh };
+  return { proficiency, ceiling, dueAt, bleeding, loading, refresh };
 }

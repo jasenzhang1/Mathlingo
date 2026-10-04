@@ -221,8 +221,8 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       id: "matrices",
       label: "Matrices & Structure",
       conceptIds: [
-        "matrix-multiplication",
         "matrices",
+        "matrix-multiplication",
         "trace",
         "linear-transformations",
         "matrix-calculus",

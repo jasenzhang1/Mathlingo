@@ -345,7 +345,7 @@ export const dmFortyAItems: Item[] = [
     stem: "Using $\\gcd(F_m, F_n) = F_{\\gcd(m, n)}$, what is $\\gcd(F_{12}, F_{18})$?" }, 8, 0.001),
   short({ concept: FB, slug: "x4-transfer-matrix", cognitive: "transfer", level: 8.5, seconds: 240,
     stem: "How can $F_n$ be computed with $O(\\log n)$ arithmetic operations?" },
-    [["matrix", "$\\begin{pmatrix}1 & 1 \\\\ 1 & 0\\end{pmatrix}^n = \\begin{pmatrix}F_{n+1} & F_n \\\\ F_n & F_{n-1}\\end{pmatrix}$.", 5, true],
+    [["matrix", "$\\begin{bmatrix}1 & 1 \\\\ 1 & 0\\end{bmatrix}^n = \\begin{bmatrix}F_{n+1} & F_n \\\\ F_n & F_{n-1}\\end{bmatrix}$.", 5, true],
      ["power", "Compute the power by repeated squaring (or the doubling identities $F_{2k} = F_k(2F_{k+1} - F_k)$, $F_{2k+1} = F_{k+1}^2 + F_k^2$).", 3, true]]),
   short({ concept: FB, slug: "x4-transfer-lame", cognitive: "transfer", level: 9.5, seconds: 300,
     stem: "State Lamé's theorem on the Euclidean algorithm and explain why Fibonacci numbers are the worst case." },

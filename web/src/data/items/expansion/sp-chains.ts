@@ -26,7 +26,7 @@ const HT = "first-passage-hitting-times";
 const ER = "ergodicity";
 const DB = "detailed-balance-reversibility";
 
-const W = "$P = \\begin{pmatrix}0.8 & 0.2\\\\0.4 & 0.6\\end{pmatrix}$ (states S, R)";
+const W = "$P = \\begin{bmatrix}0.8 & 0.2\\\\0.4 & 0.6\\end{bmatrix}$ (states S, R)";
 
 export const spChainsItems: Item[] = [
   // --- chapman-kolmogorov -------------------------------------------------------
@@ -63,7 +63,7 @@ export const spChainsItems: Item[] = [
   s(CK, "c-not-sufficient", 7, "Explain why the Chapman–Kolmogorov equations are necessary but not sufficient for a process to be Markov.",
     "They only constrain the two-time transition probabilities to compose consistently; a non-Markov process can have transition probabilities that still satisfy them.",
     "The Markov property requires the whole past to be irrelevant given the present — a statement about all finite-dimensional distributions, not just pairwise transitions."),
-  n(CK, "c-default2", 7, "Ratings A, B and default D: $P = \\begin{pmatrix}0.9 & 0.08 & 0.02\\\\0.1 & 0.8 & 0.1\\\\0 & 0 & 1\\end{pmatrix}$. What is the probability an A-rated firm has defaulted within $2$ years?", 0.046, 0.0005),
+  n(CK, "c-default2", 7, "Ratings A, B and default D: $P = \\begin{bmatrix}0.9 & 0.08 & 0.02\\\\0.1 & 0.8 & 0.1\\\\0 & 0 & 1\\end{bmatrix}$. What is the probability an A-rated firm has defaulted within $2$ years?", 0.046, 0.0005),
   n(CK, "c-ab2", 7.5, "Same matrix: what is the probability an A-rated firm is B-rated after $2$ years?", 0.136, 0.001),
   m(CK, "c-forward", 7.5, "For a continuous-time chain with generator $Q$, Kolmogorov's forward equation is:", "$P'(t) = P(t)Q$",
     [["$P'(t) = Q$", "No."], ["$P(t) = I + Qt$", "Only to first order."], ["$P'(t) = P(t)^2$", "No."]]),
@@ -71,8 +71,8 @@ export const spChainsItems: Item[] = [
   s(CK, "c-stochastic", 8, "Show that $P^n$ is a stochastic matrix whenever $P$ is.",
     "Products of non-negative matrices are non-negative, and $P\\mathbf{1} = \\mathbf{1}$ gives $P^n\\mathbf{1} = P^{n-1}(P\\mathbf{1}) = \\cdots = \\mathbf{1}$, so rows sum to $1$.",
     "Formally by induction on $n$; equivalently, $\\mathbf{1}$ is a right eigenvector with eigenvalue $1$ for every power."),
-  m(CK, "c-embed", 8.5, "Which matrix cannot be $P^2$ for any two-state transition matrix $P$?", "$\\begin{pmatrix}0 & 1\\\\1 & 0\\end{pmatrix}$",
-    [["$\\begin{pmatrix}1 & 0\\\\0 & 1\\end{pmatrix}$", "Take $P = I$."], ["$\\begin{pmatrix}0.5 & 0.5\\\\0.5 & 0.5\\end{pmatrix}$", "Take $P$ equal to it."], ["$\\begin{pmatrix}0.8 & 0.2\\\\0.4 & 0.6\\end{pmatrix}$", "Its second eigenvalue $0.4$ is positive, so a square root exists."]]),
+  m(CK, "c-embed", 8.5, "Which matrix cannot be $P^2$ for any two-state transition matrix $P$?", "$\\begin{bmatrix}0 & 1\\\\1 & 0\\end{bmatrix}$",
+    [["$\\begin{bmatrix}1 & 0\\\\0 & 1\\end{bmatrix}$", "Take $P = I$."], ["$\\begin{bmatrix}0.5 & 0.5\\\\0.5 & 0.5\\end{bmatrix}$", "Take $P$ equal to it."], ["$\\begin{bmatrix}0.8 & 0.2\\\\0.4 & 0.6\\end{bmatrix}$", "Its second eigenvalue $0.4$ is positive, so a square root exists."]]),
   s(CK, "c-embedding", 9, "Given an annual credit-rating matrix $P$, when can you find a monthly matrix $M$ with $M^{12} = P$, and why can this fail?",
     "You need a stochastic twelfth root; roots of $P$ may have negative entries or be complex, e.g. when $P$ has negative or complex eigenvalues or near-zero entries.",
     "The continuous-time version needs a valid generator $Q = \\log P$ with non-negative off-diagonal entries — often violated, so practitioners regularise the matrix logarithm."),
@@ -157,7 +157,7 @@ export const spChainsItems: Item[] = [
   n(PE, "c-cycle7", 4, "A random walk on a $7$-vertex cycle: what is its period?", 1),
   m(PE, "c-converge", 4, "For a periodic irreducible chain, $P^n$:", "Doesn't converge, although time averages still converge to $\\pi$",
     [["Converges to $\\pi$ in every row", "Needs aperiodicity."], ["Converges to $0$", "No."], ["Is constant", "No."]]),
-  n(PE, "c-swap-101", 4.5, "For the swap chain $P = \\begin{pmatrix}0 & 1\\\\1 & 0\\end{pmatrix}$ started in state $1$, compute $P(X_{101} = 1)$.", 0),
+  n(PE, "c-swap-101", 4.5, "For the swap chain $P = \\begin{bmatrix}0 & 1\\\\1 & 0\\end{bmatrix}$ started in state $1$, compute $P(X_{101} = 1)$.", 0),
   n(PE, "c-swap-avg", 5, "For the swap chain, what is the long-run fraction of time spent in state $1$?", 0.5, 0.001),
   m(PE, "c-lazy", 5, "The lazy chain $\\tfrac12(I + P)$:", "Is aperiodic and has the same stationary distribution as $P$",
     [["Has a different stationary distribution", "$\\pi P = \\pi$ implies $\\pi\\tfrac12(I + P) = \\pi$."], ["Is periodic with twice the period", "No."], ["Is reducible", "No."]]),
@@ -186,7 +186,7 @@ export const spChainsItems: Item[] = [
     [["Periodic with period $d$", "Taking $d$ steps at a time removes the periodicity."], ["The identity", "No."], ["Reducible", "Within a class it's irreducible."]]),
   s(PE, "c-swap-powers", 9, "For the swap chain, compute $P^n$ for even and odd $n$, and explain how the eigenvalue $-1$ causes the oscillation.",
     "$P^n = I$ for even $n$ and $P^n = P$ for odd $n$.",
-    "$P = \\tfrac12\\begin{pmatrix}1 & 1\\\\1 & 1\\end{pmatrix} + (-1)\\cdot\\tfrac12\\begin{pmatrix}1 & -1\\\\-1 & 1\\end{pmatrix}$, so $P^n$ carries $(-1)^n$ on the second component, which never decays."),
+    "$P = \\tfrac12\\begin{bmatrix}1 & 1\\\\1 & 1\\end{bmatrix} + (-1)\\cdot\\tfrac12\\begin{bmatrix}1 & -1\\\\-1 & 1\\end{bmatrix}$, so $P^n$ carries $(-1)^n$ on the second component, which never decays."),
   s(PE, "c-mcmc", 9, "Why do practitioners rarely worry about periodicity with Metropolis–Hastings?",
     "Rejected proposals leave the chain where it is, giving self-loops with positive probability, which makes the chain aperiodic.",
     "Periodicity only arises in contrived samplers that always move (e.g. deterministic proposals on bipartite structures); the lazy trick fixes those."),
@@ -197,7 +197,7 @@ export const spChainsItems: Item[] = [
   // --- absorbing-markov-chains ----------------------------------------------------
   m(AB, "c-def", 1, "An absorbing state is one that:", "The chain never leaves once it enters",
     [["The chain never enters", "No."], ["Has the largest stationary probability", "No."], ["Is visited infinitely often from everywhere", "No."]]),
-  m(AB, "c-q", 1, "In the canonical form $P = \\begin{pmatrix}Q & R\\\\0 & I\\end{pmatrix}$, $Q$ contains:", "Transitions among transient states",
+  m(AB, "c-q", 1, "In the canonical form $P = \\begin{bmatrix}Q & R\\\\0 & I\\end{bmatrix}$, $Q$ contains:", "Transitions among transient states",
     [["Transitions into absorbing states", "That's $R$."], ["Transitions among absorbing states", "That's $I$."], ["The stationary distribution", "No."]]),
   m(AB, "c-n", 1.5, "The fundamental matrix of an absorbing chain is:", "$N = (I - Q)^{-1}$",
     [["$N = Q^{-1}$", "No."], ["$N = I - Q$", "Missing the inverse."], ["$N = R^{-1}$", "No."]]),
@@ -214,7 +214,7 @@ export const spChainsItems: Item[] = [
   n(AB, "c-walk-b", 4, "Same walk: what is the probability of absorption at $3$ from $1$?", 0.3333, 0.001),
   m(AB, "c-certain", 4.5, "Absorption is certain when:", "Every transient state can reach some absorbing state",
     [["There is at least one absorbing state", "Some transient states might not reach it."], ["$Q$ is symmetric", "No."], ["The chain is irreducible", "Absorbing chains are reducible."]]),
-  n(AB, "c-n11", 5, "$Q = \\begin{pmatrix}0 & 0.5\\\\0.5 & 0\\end{pmatrix}$. Compute $N_{11}$.", 1.3333, 0.001),
+  n(AB, "c-n11", 5, "$Q = \\begin{bmatrix}0 & 0.5\\\\0.5 & 0\\end{bmatrix}$. Compute $N_{11}$.", 1.3333, 0.001),
   n(AB, "c-hh", 5, "A fair coin is flipped until two heads in a row appear. What is the expected number of flips?", 6),
   n(AB, "c-ht", 5.5, "A fair coin is flipped until heads is immediately followed by tails. What is the expected number of flips?", 4),
   s(AB, "c-hh-vs-ht", 5.5, "Why is the expected wait for HH longer than for HT, although each has probability $\\tfrac14$ at any position?",
@@ -310,7 +310,7 @@ export const spChainsItems: Item[] = [
   m(ER, "c-aperiodic-role", 3, "Aperiodicity is needed for:", "$P^n$ to converge, but not for time averages to converge",
     [["Time averages to converge", "They converge without it."], ["A stationary distribution to exist", "No."], ["Irreducibility", "Unrelated."]]),
   n(ER, "c-reward", 3.5, "A chain has $\\pi = (0.5, 0.3, 0.2)$ and reward $f = (10, 0, -5)$. What is the long-run average reward?", 4),
-  n(ER, "c-three", 4, "$P = \\begin{pmatrix}0.5 & 0.5 & 0\\\\0.25 & 0.5 & 0.25\\\\0 & 0.5 & 0.5\\end{pmatrix}$. Compute $\\pi_2$.", 0.5, 0.001),
+  n(ER, "c-three", 4, "$P = \\begin{bmatrix}0.5 & 0.5 & 0\\\\0.25 & 0.5 & 0.25\\\\0 & 0.5 & 0.5\\end{bmatrix}$. Compute $\\pi_2$.", 0.5, 0.001),
   m(ER, "c-coupling", 4, "Coupling bounds the distance to stationarity by:", "The probability that two copies, started differently, haven't yet met",
     [["The second eigenvalue exactly", "That's a different bound."], ["The number of states", "No."], ["The entropy of $\\pi$", "No."]]),
   m(ER, "c-rate", 4.5, "For a finite reversible chain, the convergence rate is governed by:", "The second-largest eigenvalue in absolute value",
@@ -322,7 +322,7 @@ export const spChainsItems: Item[] = [
     "The long-run behaviour then depends on which class the chain enters, so there's no single limit independent of the start."),
   m(ER, "c-srw", 6, "Simple symmetric random walk on $\\mathbb{Z}$:", "Has no stationary distribution, and $P^{(n)}_{00} \\to 0$",
     [["Is ergodic with uniform $\\pi$", "A uniform distribution on $\\mathbb{Z}$ doesn't exist."], ["Converges to $\\pi_0 = \\tfrac12$", "No."], ["Is transient", "It's null recurrent."]]),
-  n(ER, "c-return", 6, "$P = \\begin{pmatrix}0.9 & 0.1\\\\0.5 & 0.5\\end{pmatrix}$. What is the mean return time to state $2$?", 6),
+  n(ER, "c-return", 6, "$P = \\begin{bmatrix}0.9 & 0.1\\\\0.5 & 0.5\\end{bmatrix}$. What is the mean return time to state $2$?", 6),
   n(ER, "c-graph", 6.5, "A random walk on a triangle A–B–C with an extra vertex D attached to A. Compute $\\pi_A$.", 0.375, 0.001),
   s(ER, "c-burnin", 6.5, "Why do MCMC users discard burn-in, and what does ergodicity guarantee?",
     "Ergodicity guarantees that the distribution of $X_n$ converges to $\\pi$ and that time averages converge from any starting point.",

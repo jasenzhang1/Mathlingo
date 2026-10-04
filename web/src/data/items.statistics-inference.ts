@@ -17,7 +17,7 @@ import type { Item, SourceRef } from "../lib/assessment/types";
  * caught an item reaching for something the learner may not have met.
  *
  * `confidence-interval` sits downstream of `standard-error` and
- * `sampling-distribution` but *not* of `hypothesis-test`, `test-statistic` or
+ * `sampling-distribution` but $\\textbf{NOT}$ of `hypothesis-test`, `test-statistic` or
  * `p-value` — so interval items may not lean on testing vocabulary, and the
  * CI/test duality is deliberately assessed from the `rejection-region` side,
  * where the closure permits it.

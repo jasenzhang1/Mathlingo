@@ -536,7 +536,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Show, with a concrete counterexample on $\\text{Uniform}(0, 10)$, that Uniform is *not* memoryless the way Exponential is.",
+    "stem": "Show, with a concrete counterexample on $\\text{Uniform}(0, 10)$, that Uniform is $\\textbf{NOT}$ memoryless the way Exponential is.",
     "rubric": {
       "elements": [
         {
@@ -2384,7 +2384,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is $F$ always positive and — unlike Normal or Chi-Square itself in the large-df limit — persistently *not* symmetric?",
+    "stem": "Why is $F$ always positive and — unlike Normal or Chi-Square itself in the large-df limit — persistently $\\textbf{NOT}$ symmetric?",
     "rubric": {
       "elements": [
         {
@@ -3785,7 +3785,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "the conditional distribution of the data given $T(\\mathbf{X})$ does *not* depend on $\\theta$",
+          "description": "the conditional distribution of the data given $T(\\mathbf{X})$ does $\\textbf{NOT}$ depend on $\\theta$",
           "weight": 1,
           "required": false
         }
@@ -11129,7 +11129,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which is *not* true of a GP being \"nonparametric\"?",
+    "stem": "Which is $\\textbf{NOT}$ true of a GP being \"nonparametric\"?",
     "rubric": {
       "elements": [
         {
@@ -15312,7 +15312,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The classic “typewriter sequence”: $X_n$ is the indicator of a shrinking-width interval that sweeps repeatedly across $[0, 1]$, hitting every point infinitely often. It converges to $0$ in probability but *not* almost surely. Explain why this construction achieves that split.",
+    "stem": "The classic “typewriter sequence”: $X_n$ is the indicator of a shrinking-width interval that sweeps repeatedly across $[0, 1]$, hitting every point infinitely often. It converges to $0$ in probability but $\\textbf{NOT}$ almost surely. Explain why this construction achieves that split.",
     "rubric": {
       "elements": [
         {
@@ -15707,7 +15707,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A casino relies on LLN across millions of bets despite genuine per-bet uncertainty. Explain why LLN makes the casino’s *average* profit per bet reliably close to its expected edge as bet count grows — and why this same logic would *not* protect a gambler making one enormous, one-time bet with “the same underlying probabilities”.",
+    "stem": "A casino relies on LLN across millions of bets despite genuine per-bet uncertainty. Explain why LLN makes the casino’s *average* profit per bet reliably close to its expected edge as bet count grows — and why this same logic would $\\textbf{NOT}$ protect a gambler making one enormous, one-time bet with “the same underlying probabilities”.",
     "rubric": {
       "elements": [
         {
@@ -17538,7 +17538,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which is *not* a valid way to think of a vector in $\\mathbb{R}^2$?",
+    "stem": "Which is $\\textbf{NOT}$ a valid way to think of a vector in $\\mathbb{R}^2$?",
     "rubric": {
       "elements": [
         {
@@ -17673,12 +17673,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{v} = (3, 4)$. Compute $-2\\mathbf{v}$ and $\\mathbf{v} + (1, 1)$.",
+    "stem": "$\\mathbf{v} = [3, 4]$. Compute $-2\\mathbf{v}$ and $\\mathbf{v} + [1, 1]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$-2\\mathbf{v} = (-6, -8)$; $\\mathbf{v} + (1, 1) = (4, 5)$",
+          "description": "$-2\\mathbf{v} = [-6, -8]$; $\\mathbf{v} + [1, 1] = [4, 5]$",
           "weight": 1,
           "required": false
         }
@@ -17708,12 +17708,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (-2, 5)$. Compute $3\\mathbf{u}$ and $-\\mathbf{u}$.",
+    "stem": "$\\mathbf{u} = [-2, 5]$. Compute $3\\mathbf{u}$ and $-\\mathbf{u}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$3\\mathbf{u} = (-6, 15)$; $-\\mathbf{u} = (2, -5)$",
+          "description": "$3\\mathbf{u} = [-6, 15]$; $-\\mathbf{u} = [2, -5]$",
           "weight": 1,
           "required": false
         }
@@ -17743,12 +17743,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "In $\\mathbb{R}^3$, let $\\mathbf{v} = (1, -1, 2)$. Find a vector $\\mathbf{w}$ such that $\\mathbf{v} + \\mathbf{w} = (0, 0, 0)$.",
+    "stem": "In $\\mathbb{R}^3$, let $\\mathbf{v} = [1, -1, 2]$. Find a vector $\\mathbf{w}$ such that $\\mathbf{v} + \\mathbf{w} = [0, 0, 0]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{w} = -\\mathbf{v} = (-1, 1, -2)$, the additive inverse of $\\mathbf{v}$",
+          "description": "$\\mathbf{w} = -\\mathbf{v} = [-1, 1, -2]$, the additive inverse of $\\mathbf{v}$",
           "weight": 1,
           "required": false
         }
@@ -17790,7 +17790,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A vector in $\\mathbb{R}^4$ is given by its components $(2, 0, -3, 7)$. What is its dimension $n$, and what is its $3$rd component?",
+    "stem": "A vector in $\\mathbb{R}^4$ is given by its components $[2, 0, -3, 7]$. What is its dimension $n$, and what is its $3$rd component?",
     "rubric": {
       "elements": [
         {
@@ -17825,7 +17825,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Determine whether $(1, 2, 3)$ and $(1, 2, 3, 0)$ can be added.",
+    "stem": "Determine whether $[1, 2, 3]$ and $[1, 2, 3, 0]$ can be added.",
     "rubric": {
       "elements": [
         {
@@ -17844,11 +17844,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "pads $(1, 2, 3)$ with a trailing $0$ and adds anyway, treating dimension as flexible",
+          "description": "pads $[1, 2, 3]$ with a trailing $0$ and adds anyway, treating dimension as flexible",
           "weight": 0,
           "misconception": {
             "id": "vectors--a5--misconception",
-            "description": "pads $(1, 2, 3)$ with a trailing $0$ and adds anyway, treating dimension as flexible",
+            "description": "pads $[1, 2, 3]$ with a trailing $0$ and adds anyway, treating dimension as flexible",
             "blameConceptId": "vectors"
           }
         }
@@ -17878,18 +17878,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{v} = (2, -2)$. Compute $\\mathbf{v} + \\mathbf{v} + \\mathbf{v}$ two ways — repeated addition and scalar multiplication — and confirm they match.",
+    "stem": "$\\mathbf{v} = [2, -2]$. Compute $\\mathbf{v} + \\mathbf{v} + \\mathbf{v}$ two ways — repeated addition and scalar multiplication — and confirm they match.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "repeated addition $(2, -2) + (2, -2) + (2, -2) = (6, -6)$",
+          "description": "repeated addition $[2, -2] + [2, -2] + [2, -2] = [6, -6]$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "scalar multiplication $3\\mathbf{v} = (6, -6)$ — they match",
+          "description": "scalar multiplication $3\\mathbf{v} = [6, -6]$ — they match",
           "weight": 1,
           "required": false
         }
@@ -17919,12 +17919,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Displacement vectors $\\mathbf{d}_1 = (4, 3)$ and $\\mathbf{d}_2 = (-1, 2)$ represent two legs of a hiker's trip. Find the net displacement.",
+    "stem": "Displacement vectors $\\mathbf{d}_1 = [4, 3]$ and $\\mathbf{d}_2 = [-1, 2]$ represent two legs of a hiker's trip. Find the net displacement.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{d}_1 + \\mathbf{d}_2 = (3, 5)$",
+          "description": "$\\mathbf{d}_1 + \\mathbf{d}_2 = [3, 5]$",
           "weight": 1,
           "required": false
         }
@@ -18001,7 +18001,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is a vector in $\\mathbb{R}^n$ *not* the same thing as a point in $\\mathbb{R}^n$, even though both are described by $n$ numbers?",
+    "stem": "Why is a vector in $\\mathbb{R}^n$ $\\textbf{NOT}$ the same thing as a point in $\\mathbb{R}^n$, even though both are described by $n$ numbers?",
     "rubric": {
       "elements": [
         {
@@ -18200,7 +18200,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "In color spaces, an RGB color is stored as a vector $(r, g, b)$. Blending two colors by averaging their RGB vectors is a vector operation. Why might this “linear” blend look visually wrong compared to how humans perceive color mixing?",
+    "stem": "In color spaces, an RGB color is stored as a vector $[r, g, b]$. Blending two colors by averaging their RGB vectors is a vector operation. Why might this “linear” blend look visually wrong compared to how humans perceive color mixing?",
     "rubric": {
       "elements": [
         {
@@ -18401,11 +18401,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "claims it \"only changes magnitude,\" missing the direction flip",
+          "description": "claims it “only changes magnitude”, missing the direction flip",
           "weight": 0,
           "misconception": {
             "id": "vector-operations--r2--misconception",
-            "description": "claims it \"only changes magnitude,\" missing the direction flip",
+            "description": "claims it “only changes magnitude”, missing the direction flip",
             "blameConceptId": "vector-operations"
           }
         }
@@ -18476,7 +18476,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is vector subtraction u−v a new, independent operation, or can it be built from addition and scalar multiplication?",
+    "stem": "Is vector subtraction $\\mathbf{u} - \\mathbf{v}$ a new, independent operation, or can it be built from addition and scalar multiplication?",
     "rubric": {
       "elements": [
         {
@@ -18529,12 +18529,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (2, -1, 3)$, $\\mathbf{v} = (0, 4, -2)$. Compute $2\\mathbf{u} - 3\\mathbf{v}$.",
+    "stem": "$\\mathbf{u} = [2, -1, 3]$, $\\mathbf{v} = [0, 4, -2]$. Compute $2\\mathbf{u} - 3\\mathbf{v}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$2\\mathbf{u} = (4, -2, 6)$; $3\\mathbf{v} = (0, 12, -6)$; $2\\mathbf{u} - 3\\mathbf{v} = (4, -14, 12)$",
+          "description": "$2\\mathbf{u} = [4, -2, 6]$; $3\\mathbf{v} = [0, 12, -6]$; $2\\mathbf{u} - 3\\mathbf{v} = [4, -14, 12]$",
           "weight": 1,
           "required": false
         }
@@ -18564,12 +18564,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (5, 0, -2)$, $\\mathbf{v} = (-1, 3, 4)$. Compute $\\mathbf{u} + \\mathbf{v}$ and $\\mathbf{u} - \\mathbf{v}$.",
+    "stem": "$\\mathbf{u} = [5, 0, -2]$, $\\mathbf{v} = [-1, 3, 4]$. Compute $\\mathbf{u} + \\mathbf{v}$ and $\\mathbf{u} - \\mathbf{v}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{u} + \\mathbf{v} = (4, 3, 2)$; $\\mathbf{u} - \\mathbf{v} = (6, -3, -6)$",
+          "description": "$\\mathbf{u} + \\mathbf{v} = [4, 3, 2]$; $\\mathbf{u} - \\mathbf{v} = [6, -3, -6]$",
           "weight": 1,
           "required": false
         }
@@ -18598,7 +18598,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Find $c$ such that $c(2, -1) = (6, -3)$.",
+    "stem": "Let $\\mathbf{u} = [2, -1]$ and $\\mathbf{v} = [6, -3]$. Find $c$ such that $c\\mathbf{u} = \\mathbf{v}$.",
     "answerKey": -3,
     "tolerance": 0.01,
     "difficulty": -0.1,
@@ -18625,18 +18625,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (1, 1, 1)$, $\\mathbf{v} = (2, -1, 0)$, $\\mathbf{w} = (0, 3, -2)$. Verify $(\\mathbf{u} + \\mathbf{v}) + \\mathbf{w} = \\mathbf{u} + (\\mathbf{v} + \\mathbf{w})$.",
+    "stem": "$\\mathbf{u} = [1, 1, 1]$, $\\mathbf{v} = [2, -1, 0]$, $\\mathbf{w} = [0, 3, -2]$. Verify $(\\mathbf{u} + \\mathbf{v}) + \\mathbf{w} = \\mathbf{u} + (\\mathbf{v} + \\mathbf{w})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(\\mathbf{u} + \\mathbf{v}) + \\mathbf{w} = (3, 0, 1) + (0, 3, -2) = (3, 3, -1)$",
+          "description": "$(\\mathbf{u} + \\mathbf{v}) + \\mathbf{w} = [3, 0, 1] + [0, 3, -2] = [3, 3, -1]$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "$\\mathbf{u} + (\\mathbf{v} + \\mathbf{w}) = (1, 1, 1) + (2, 2, -2) = (3, 3, -1)$ — equal, confirming associativity",
+          "description": "$\\mathbf{u} + (\\mathbf{v} + \\mathbf{w}) = [1, 1, 1] + [2, 2, -2] = [3, 3, -1]$ — equal, confirming associativity",
           "weight": 1,
           "required": false
         }
@@ -18666,12 +18666,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A shopkeeper's inventory changes by the vector $(+3, -2, +5)$ on Monday and $(-1, +4, -2)$ on Tuesday, across three products. Find the net two-day change.",
+    "stem": "A shopkeeper’s inventory changes by the vector $\\mathbf{m} = [3, -2, 5]$ on Monday and $\\mathbf{t} = [-1, 4, -2]$ on Tuesday, across three products. Find the net two-day change $\\mathbf{m} + \\mathbf{t}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "sum $= (2, 2, 3)$",
+          "description": "$\\mathbf{m} + \\mathbf{t} = [2, 2, 3]$",
           "weight": 1,
           "required": false
         }
@@ -18748,12 +18748,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Solve for the vector $\\mathbf{x}$: $\\mathbf{x} + (3, -1) = (1, 4)$.",
+    "stem": "Solve for the vector $\\mathbf{x}$: $\\mathbf{x} + [3, -1] = [1, 4]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{x} = (1, 4) - (3, -1) = (-2, 5)$",
+          "description": "$\\mathbf{x} = [1, 4] - [3, -1] = [-2, 5]$",
           "weight": 1,
           "required": false
         }
@@ -18788,7 +18788,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "adding two n-tuples component-wise, or scaling one, produces another n-tuple — the result never leaves Rⁿ",
+          "description": "adding two $n$-tuples component-wise, or scaling one, produces another $n$-tuple — the result never leaves $\\mathbb{R}^n$",
           "weight": 1,
           "required": true
         }
@@ -18981,7 +18981,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "this is scalar multiplication (velocity by `dt`) followed by vector addition, applied identically regardless of dimension — writing it as one vector equation avoids repeating the same update three times for $x$, $y$, $z$ separately",
+          "description": "this is scalar multiplication (velocity by `dt`) followed by vector addition, applied identically regardless of dimension — writing it as one vector equation $\\mathbf{p} \\leftarrow \\mathbf{p} + \\Delta t\\,\\mathbf{v}$ avoids repeating the same update three times for $x$, $y$, $z$ separately",
           "weight": 1,
           "required": true
         }
@@ -19057,7 +19057,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "each $w_i \\cdot (\\text{asset return})$ is scalar multiplication, and combining them is vector addition — a linear combination",
+          "description": "each $w_i \\cdot (\\text{asset return vector})$ is scalar multiplication, and combining them is vector addition — a linear combination",
           "weight": 1,
           "required": true
         },
@@ -19315,7 +19315,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$\\mathbf{u} = (1, 2, 3)$, $\\mathbf{v} = (4, -5, 6)$. Compute $\\mathbf{u} \\cdot \\mathbf{v}$.",
+    "stem": "$\\mathbf{u} = [1, 2, 3]$, $\\mathbf{v} = [4, -5, 6]$. Compute $\\mathbf{u} \\cdot \\mathbf{v}$.",
     "answerKey": 12,
     "tolerance": 0.01,
     "difficulty": -0.15,
@@ -19342,7 +19342,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (2, 2)$, $\\mathbf{v} = (3, -3)$. Compute $\\mathbf{u} \\cdot \\mathbf{v}$ and state what it implies about the angle between them.",
+    "stem": "$\\mathbf{u} = [2, 2]$, $\\mathbf{v} = [3, -3]$. Compute $\\mathbf{u} \\cdot \\mathbf{v}$ and state what it implies about the angle between them.",
     "rubric": {
       "elements": [
         {
@@ -19376,7 +19376,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$\\mathbf{u} = (-1, 0, 2, 3)$, $\\mathbf{v} = (2, 1, -1, 1)$. Compute $\\mathbf{u} \\cdot \\mathbf{v}$.",
+    "stem": "$\\mathbf{u} = [-1, 0, 2, 3]$, $\\mathbf{v} = [2, 1, -1, 1]$. Compute $\\mathbf{u} \\cdot \\mathbf{v}$.",
     "answerKey": -1,
     "tolerance": 0.01,
     "difficulty": 0.08,
@@ -19403,7 +19403,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (1, 2)$, $\\mathbf{v} = (3, 6)$. Compute $\\mathbf{u} \\cdot \\mathbf{v}$ and $\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|$, and state what their equality reveals about $\\mathbf{u}$ and $\\mathbf{v}$.",
+    "stem": "$\\mathbf{u} = [1, 2]$, $\\mathbf{v} = [3, 6]$. Compute $\\mathbf{u} \\cdot \\mathbf{v}$ and $\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|$, and state what their equality reveals about $\\mathbf{u}$ and $\\mathbf{v}$.",
     "rubric": {
       "elements": [
         {
@@ -19438,7 +19438,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A force $\\mathbf{f} = (10, 5)$ N acts on an object moving along displacement $\\mathbf{d} = (3, 0)$ m. Compute the work done, $\\mathbf{f} \\cdot \\mathbf{d}$.",
+    "stem": "A force $\\mathbf{f} = [10, 5]$ N acts on an object moving along displacement $\\mathbf{d} = [3, 0]$ m. Compute the work done, $\\mathbf{f} \\cdot \\mathbf{d}$.",
     "rubric": {
       "elements": [
         {
@@ -19485,7 +19485,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (1, -2, 2)$, $\\mathbf{v} = (2, 1, -2)$. Compute $\\mathbf{u} \\cdot \\mathbf{v}$ and determine whether the angle between them is acute, right, or obtuse.",
+    "stem": "$\\mathbf{u} = [1, -2, 2]$, $\\mathbf{v} = [2, 1, -2]$. Compute $\\mathbf{u} \\cdot \\mathbf{v}$ and determine whether the angle between them is acute, right, or obtuse.",
     "rubric": {
       "elements": [
         {
@@ -19520,7 +19520,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Two document feature vectors (word counts) are $\\mathbf{u} = (1, 0, 3, 0)$ and $\\mathbf{v} = (0, 2, 1, 0)$. Compute $\\mathbf{u} \\cdot \\mathbf{v}$ and interpret it as a similarity score.",
+    "stem": "Two document feature vectors (word counts) are $\\mathbf{u} = [1, 0, 3, 0]$ and $\\mathbf{v} = [0, 2, 1, 0]$. Compute $\\mathbf{u} \\cdot \\mathbf{v}$ and interpret it as a similarity score.",
     "rubric": {
       "elements": [
         {
@@ -20070,7 +20070,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{v} = (3, 4)$. Compute $\\|\\mathbf{v}\\|$ and normalize $\\mathbf{v}$ to a unit vector.",
+    "stem": "$\\mathbf{v} = [3, 4]$. Compute $\\|\\mathbf{v}\\|$ and normalize $\\mathbf{v}$ to a unit vector.",
     "rubric": {
       "elements": [
         {
@@ -20104,7 +20104,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$\\mathbf{v} = (1, 1, 1, 1)$. Compute $\\|\\mathbf{v}\\|$.",
+    "stem": "$\\mathbf{v} = [1, 1, 1, 1]$. Compute $\\|\\mathbf{v}\\|$.",
     "answerKey": 2,
     "tolerance": 0.01,
     "difficulty": 0.1,
@@ -20131,12 +20131,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{v} = (6, -8)$. Normalize $\\mathbf{v}$ to a unit vector.",
+    "stem": "$\\mathbf{v} = [6, -8]$. Normalize $\\mathbf{v}$ to a unit vector.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\|\\mathbf{v}\\| = 10$; $\\mathbf{v}/\\|\\mathbf{v}\\| = (0.6, -0.8)$",
+          "description": "$\\|\\mathbf{v}\\| = 10$; $\\mathbf{v}/\\|\\mathbf{v}\\| = [0.6, -0.8]$",
           "weight": 1,
           "required": false
         }
@@ -20166,12 +20166,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (2, 2)$, $\\mathbf{v} = (-1, 3)$. Compute $\\|\\mathbf{u} - \\mathbf{v}\\|$, the distance between them.",
+    "stem": "$\\mathbf{u} = [2, 2]$, $\\mathbf{v} = [-1, 3]$. Compute $\\|\\mathbf{u} - \\mathbf{v}\\|$, the distance between them.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{u} - \\mathbf{v} = (3, -1)$; $\\|\\mathbf{u} - \\mathbf{v}\\| = \\sqrt{9 + 1} = \\sqrt{10} \\approx 3.16$",
+          "description": "$\\mathbf{u} - \\mathbf{v} = [3, -1]$; $\\|\\mathbf{u} - \\mathbf{v}\\| = \\sqrt{9 + 1} = \\sqrt{10} \\approx 3.16$",
           "weight": 1,
           "required": false
         }
@@ -20213,7 +20213,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{v} = (3, 4, 0)$. Compute $\\|\\mathbf{v}\\|$ and $\\|2\\mathbf{v}\\|$, confirming $\\|2\\mathbf{v}\\| = 2\\|\\mathbf{v}\\|$.",
+    "stem": "$\\mathbf{v} = [3, 4, 0]$. Compute $\\|\\mathbf{v}\\|$ and $\\|2\\mathbf{v}\\|$, confirming $\\|2\\mathbf{v}\\| = 2\\|\\mathbf{v}\\|$.",
     "rubric": {
       "elements": [
         {
@@ -20248,7 +20248,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A GPS reports a hiker moved from $(0, 0)$ to $(120, 160)$ meters. Compute the straight-line distance traveled.",
+    "stem": "A GPS reports a hiker moved from $[0, 0]$ to $[120, 160]$ meters. Compute the straight-line distance traveled.",
     "rubric": {
       "elements": [
         {
@@ -20283,7 +20283,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{v} = (1, -2, 2, 4)$. Compute $\\|\\mathbf{v}\\|$ and $\\|\\mathbf{v}\\|^2$.",
+    "stem": "$\\mathbf{v} = [1, -2, 2, 4]$. Compute $\\|\\mathbf{v}\\|$ and $\\|\\mathbf{v}\\|^2$.",
     "rubric": {
       "elements": [
         {
@@ -20863,7 +20863,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (1, 2)$, $\\mathbf{v} = (3, 4)$. Verify Cauchy-Schwarz numerically.",
+    "stem": "$\\mathbf{u} = [1, 2]$, $\\mathbf{v} = [3, 4]$. Verify Cauchy-Schwarz numerically.",
     "rubric": {
       "elements": [
         {
@@ -20898,7 +20898,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (1, 0, 0)$, $\\mathbf{v} = (0, 1, 0)$. Compute both sides of Cauchy-Schwarz, and note whether the inequality is strict or an equality.",
+    "stem": "$\\mathbf{u} = [1, 0, 0]$, $\\mathbf{v} = [0, 1, 0]$. Compute both sides of Cauchy-Schwarz, and note whether the inequality is strict or an equality.",
     "rubric": {
       "elements": [
         {
@@ -20933,7 +20933,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (2, -1, 2)$, $\\mathbf{v} = (1, 2, 2)$. Verify Cauchy-Schwarz numerically.",
+    "stem": "$\\mathbf{u} = [2, -1, 2]$, $\\mathbf{v} = [1, 2, 2]$. Verify Cauchy-Schwarz numerically.",
     "rubric": {
       "elements": [
         {
@@ -20968,7 +20968,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (5, 0)$, $\\mathbf{v} = (0, -3)$. Confirm Cauchy-Schwarz for these orthogonal vectors and note the slack.",
+    "stem": "$\\mathbf{u} = [5, 0]$, $\\mathbf{v} = [0, -3]$. Confirm Cauchy-Schwarz for these orthogonal vectors and note the slack.",
     "rubric": {
       "elements": [
         {
@@ -21003,7 +21003,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (2, 4)$, $\\mathbf{v} = (1, 2)$. Confirm equality holds here, and identify the scalar $t$ with $\\mathbf{u} = t\\mathbf{v}$.",
+    "stem": "$\\mathbf{u} = [2, 4]$, $\\mathbf{v} = [1, 2]$. Confirm equality holds here, and identify the scalar $t$ with $\\mathbf{u} = t\\mathbf{v}$.",
     "rubric": {
       "elements": [
         {
@@ -21038,7 +21038,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (1, 1, 1)$, $\\mathbf{v} = (1, -1, 1)$. Verify Cauchy-Schwarz and note the sign of $\\mathbf{u} \\cdot \\mathbf{v}$.",
+    "stem": "$\\mathbf{u} = [1, 1, 1]$, $\\mathbf{v} = [1, -1, 1]$. Verify Cauchy-Schwarz and note the sign of $\\mathbf{u} \\cdot \\mathbf{v}$.",
     "rubric": {
       "elements": [
         {
@@ -21073,7 +21073,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Two portfolios' $3$-period return vectors are $\\mathbf{r}_1 = (0.02, -0.01, 0.03)$ and $\\mathbf{r}_2 = (0.01, 0.02, -0.01)$. Verify Cauchy-Schwarz.",
+    "stem": "Two portfolios' $3$-period return vectors are $\\mathbf{r}_1 = [0.02, -0.01, 0.03]$ and $\\mathbf{r}_2 = [0.01, 0.02, -0.01]$. Verify Cauchy-Schwarz.",
     "rubric": {
       "elements": [
         {
@@ -21641,7 +21641,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (1, 0)$, $\\mathbf{v} = (1, 1)$. Find the angle between them.",
+    "stem": "$\\mathbf{u} = [1, 0]$, $\\mathbf{v} = [1, 1]$. Find the angle between them.",
     "rubric": {
       "elements": [
         {
@@ -21676,7 +21676,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (1, 0, 0)$, $\\mathbf{v} = (0, 0, 1)$. Find the angle between them.",
+    "stem": "$\\mathbf{u} = [1, 0, 0]$, $\\mathbf{v} = [0, 0, 1]$. Find the angle between them.",
     "rubric": {
       "elements": [
         {
@@ -21711,7 +21711,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (1, 1)$, $\\mathbf{v} = (-1, 1)$. Find the angle between them.",
+    "stem": "$\\mathbf{u} = [1, 1]$, $\\mathbf{v} = [-1, 1]$. Find the angle between them.",
     "rubric": {
       "elements": [
         {
@@ -21746,7 +21746,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (3, 0)$, $\\mathbf{v} = (3, 3)$. Find the angle between them.",
+    "stem": "$\\mathbf{u} = [3, 0]$, $\\mathbf{v} = [3, 3]$. Find the angle between them.",
     "rubric": {
       "elements": [
         {
@@ -21781,7 +21781,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (1, -1, 0)$, $\\mathbf{v} = (-1, 1, 0)$. Find the angle between them.",
+    "stem": "$\\mathbf{u} = [1, -1, 0]$, $\\mathbf{v} = [-1, 1, 0]$. Find the angle between them.",
     "rubric": {
       "elements": [
         {
@@ -21816,7 +21816,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (2, 0, 0)$, $\\mathbf{v} = (1, 1, 1)$. Find the angle between them, to the nearest degree.",
+    "stem": "$\\mathbf{u} = [2, 0, 0]$, $\\mathbf{v} = [1, 1, 1]$. Find the angle between them, to the nearest degree.",
     "rubric": {
       "elements": [
         {
@@ -21851,7 +21851,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Wind vectors $\\mathbf{u} = (4, 3)$ and $\\mathbf{v} = (-3, 4)$ (in km/h, with $x$ = east and $y$ = north). Find the angle between the two wind directions.",
+    "stem": "Wind vectors $\\mathbf{u} = [4, 3]$ and $\\mathbf{v} = [-3, 4]$ (in km/h, with $x$ = east and $y$ = north). Find the angle between the two wind directions.",
     "rubric": {
       "elements": [
         {
@@ -22420,12 +22420,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (3, 4)$, $\\mathbf{v} = (1, 0)$. Find $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u}$.",
+    "stem": "$\\mathbf{u} = [3, 4]$, $\\mathbf{v} = [1, 0]$. Find $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{u} \\cdot \\mathbf{v} = 3$, $\\|\\mathbf{v}\\|^2 = 1$, so $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = 3(1, 0) = (3, 0)$ — projecting onto the $x$-axis keeps only the $x$-component",
+          "description": "$\\mathbf{u} \\cdot \\mathbf{v} = 3$, $\\|\\mathbf{v}\\|^2 = 1$, so $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = 3(1, 0) = [3, 0]$ — projecting onto the $x$-axis keeps only the $x$-component",
           "weight": 1,
           "required": false
         }
@@ -22455,12 +22455,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (0, 5)$, $\\mathbf{v} = (1, 0)$. Find $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u}$.",
+    "stem": "$\\mathbf{u} = [0, 5]$, $\\mathbf{v} = [1, 0]$. Find $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{u} \\cdot \\mathbf{v} = 0$, so $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = 0\\mathbf{v} = (0, 0)$ — $\\mathbf{u}$ is entirely perpendicular to $\\mathbf{v}$, so there is no shadow along $\\mathbf{v}$",
+          "description": "$\\mathbf{u} \\cdot \\mathbf{v} = 0$, so $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = 0\\mathbf{v} = [0, 0]$ — $\\mathbf{u}$ is entirely perpendicular to $\\mathbf{v}$, so there is no shadow along $\\mathbf{v}$",
           "weight": 1,
           "required": false
         }
@@ -22490,12 +22490,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (2, 2)$, $\\mathbf{v} = (1, 1)$. Find $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u}$.",
+    "stem": "$\\mathbf{u} = [2, 2]$, $\\mathbf{v} = [1, 1]$. Find $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{u} \\cdot \\mathbf{v} = 4$, $\\|\\mathbf{v}\\|^2 = 2$, so $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = \\frac{4}{2}(1, 1) = (2, 2)$ — since $\\mathbf{u}$ is already parallel to $\\mathbf{v}$, the projection equals $\\mathbf{u}$ itself",
+          "description": "$\\mathbf{u} \\cdot \\mathbf{v} = 4$, $\\|\\mathbf{v}\\|^2 = 2$, so $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = \\frac{4}{2}(1, 1) = [2, 2]$ — since $\\mathbf{u}$ is already parallel to $\\mathbf{v}$, the projection equals $\\mathbf{u}$ itself",
           "weight": 1,
           "required": false
         }
@@ -22525,7 +22525,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (4, 0, 0)$, $\\mathbf{v} = (1, 1, 1)$. Find $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u}$.",
+    "stem": "$\\mathbf{u} = [4, 0, 0]$, $\\mathbf{v} = [1, 1, 1]$. Find $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u}$.",
     "rubric": {
       "elements": [
         {
@@ -22560,12 +22560,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (5, -1)$, $\\mathbf{v} = (0, 2)$. Find $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u}$.",
+    "stem": "$\\mathbf{u} = [5, -1]$, $\\mathbf{v} = [0, 2]$. Find $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{u} \\cdot \\mathbf{v} = -2$, $\\|\\mathbf{v}\\|^2 = 4$, so $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = -\\frac{2}{4}(0, 2) = (0, -1)$",
+          "description": "$\\mathbf{u} \\cdot \\mathbf{v} = -2$, $\\|\\mathbf{v}\\|^2 = 4$, so $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = -\\frac{2}{4}(0, 2) = [0, -1]$",
           "weight": 1,
           "required": false
         }
@@ -22595,12 +22595,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A ramp's direction is $\\mathbf{v} = (4, 3)$, and a box's weight vector is $\\mathbf{u} = (0, -10)$ (in N). Find the component of the weight along the ramp, $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u}$.",
+    "stem": "A ramp's direction is $\\mathbf{v} = [4, 3]$, and a box's weight vector is $\\mathbf{u} = [0, -10]$ (in N). Find the component of the weight along the ramp, $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{u} \\cdot \\mathbf{v} = -30$, $\\|\\mathbf{v}\\|^2 = 25$, so $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = -\\frac{30}{25}(4, 3) = (-4.8, -3.6)$",
+          "description": "$\\mathbf{u} \\cdot \\mathbf{v} = -30$, $\\|\\mathbf{v}\\|^2 = 25$, so $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = -\\frac{30}{25}(4, 3) = [-4.8, -3.6]$",
           "weight": 1,
           "required": false
         }
@@ -22630,7 +22630,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{u} = (3, 4)$, $\\mathbf{v} = (3, 4)$. Verify $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = \\mathbf{u}$ (projecting a vector onto itself).",
+    "stem": "$\\mathbf{u} = [3, 4]$, $\\mathbf{v} = [3, 4]$. Verify $\\operatorname{proj}_{\\mathbf{v}}\\mathbf{u} = \\mathbf{u}$ (projecting a vector onto itself).",
     "rubric": {
       "elements": [
         {
@@ -23168,7 +23168,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Verify that $(1, 2, -1)$ and $(1, 0, 1)$ are orthogonal.",
+    "stem": "Verify that $[1, 2, -1]$ and $[1, 0, 1]$ are orthogonal.",
     "rubric": {
       "elements": [
         {
@@ -23203,7 +23203,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Determine whether $(2, 0, 0)$, $(0, 3, 0)$, $(0, 0, -1)$ form an orthogonal set.",
+    "stem": "Determine whether $[2, 0, 0]$, $[0, 3, 0]$, $[0, 0, -1]$ form an orthogonal set.",
     "rubric": {
       "elements": [
         {
@@ -23238,12 +23238,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Determine whether $(1, 1, 0)$, $(1, -1, 0)$, $(0, 0, 1)$ form an orthogonal set.",
+    "stem": "Determine whether $[1, 1, 0]$, $[1, -1, 0]$, $[0, 0, 1]$ form an orthogonal set.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "yes — $(1, 1, 0) \\cdot (1, -1, 0) = 0$, $(1, 1, 0) \\cdot (0, 0, 1) = 0$, $(1, -1, 0) \\cdot (0, 0, 1) = 0$",
+          "description": "yes — $[1, 1, 0] \\cdot [1, -1, 0] = 0$, $[1, 1, 0] \\cdot [0, 0, 1] = 0$, $[1, -1, 0] \\cdot [0, 0, 1] = 0$",
           "weight": 1,
           "required": false
         }
@@ -23273,12 +23273,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Find a nonzero vector in $\\mathbb{R}^2$ orthogonal to $(3, 4)$.",
+    "stem": "Find a nonzero vector in $\\mathbb{R}^2$ orthogonal to $[3, 4]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "any scalar multiple of $(4, -3)$ — e.g. $(4, -3)$: $3 \\cdot 4 + 4 \\cdot (-3) = 12 - 12 = 0$",
+          "description": "any scalar multiple of $[4, -3]$ — e.g. $[4, -3]$: $3 \\cdot 4 + 4 \\cdot (-3) = 12 - 12 = 0$",
           "weight": 1,
           "required": false
         }
@@ -23308,12 +23308,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Find a nonzero vector in $\\mathbb{R}^3$ orthogonal to both $(1, 0, 0)$ and $(0, 1, 0)$.",
+    "stem": "Find a nonzero vector in $\\mathbb{R}^3$ orthogonal to both $[1, 0, 0]$ and $[0, 1, 0]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(0, 0, 1)$, or any scalar multiple — its dot product with both given vectors is $0$",
+          "description": "$[0, 0, 1]$, or any scalar multiple — its dot product with both given vectors is $0$",
           "weight": 1,
           "required": false
         }
@@ -23343,7 +23343,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Determine whether $(1, 2, 3)$ and $(2, 4, 6)$ are orthogonal.",
+    "stem": "Determine whether $[1, 2, 3]$ and $[2, 4, 6]$ are orthogonal.",
     "rubric": {
       "elements": [
         {
@@ -23396,12 +23396,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Normalize the orthogonal set $\\lbrace (3, 0), (0, 5) \\rbrace$ into an orthonormal set.",
+    "stem": "Normalize the orthogonal set $\\lbrace [3, 0], [0, 5] \\rbrace$ into an orthonormal set.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "divide each vector by its own norm: $(3, 0)/3 = (1, 0)$; $(0, 5)/5 = (0, 1)$",
+          "description": "divide each vector by its own norm: $[3, 0]/3 = [1, 0]$; $[0, 5]/5 = [0, 1]$",
           "weight": 1,
           "required": false
         }
@@ -23804,7 +23804,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "generally *not* commutative ($\\mathbf{A}\\mathbf{B} \\ne \\mathbf{B}\\mathbf{A}$)",
+          "description": "generally $\\textbf{NOT}$ commutative ($\\mathbf{A}\\mathbf{B} \\ne \\mathbf{B}\\mathbf{A}$)",
           "weight": 1,
           "required": false
         }
@@ -23916,7 +23916,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$, $\\mathbf{B} = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}$. Compute $\\mathbf{A}\\mathbf{B}$ and $\\mathbf{B}\\mathbf{A}$; confirm they differ.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$, $\\mathbf{B} = \\begin{bmatrix} 5 & 6 \\\\ 7 & 8 \\end{bmatrix}$. Compute $\\mathbf{A}\\mathbf{B}$ and $\\mathbf{B}\\mathbf{A}$; confirm they differ.",
     "rubric": {
       "elements": [
         {
@@ -23951,12 +23951,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 0 & 2 \\\\ 0 & 1 & 3 \\end{pmatrix}$ ($2 \\times 3$), $\\mathbf{B} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\\\ 1 & 1 \\end{pmatrix}$ ($3 \\times 2$). Compute $\\mathbf{A}\\mathbf{B}$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 1 & 3 \\end{bmatrix}$ ($2 \\times 3$), $\\mathbf{B} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\\\ 1 & 1 \\end{bmatrix}$ ($3 \\times 2$). Compute $\\mathbf{A}\\mathbf{B}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A}\\mathbf{B} = \\begin{pmatrix} 3 & 2 \\\\ 3 & 4 \\end{pmatrix}$ — a $2 \\times 2$ result, since the inner dimension $3$ matches",
+          "description": "$\\mathbf{A}\\mathbf{B} = \\begin{bmatrix} 3 & 2 \\\\ 3 & 4 \\end{bmatrix}$ — a $2 \\times 2$ result, since the inner dimension $3$ matches",
           "weight": 1,
           "required": false
         }
@@ -23986,12 +23986,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$, $\\mathbf{B} = \\begin{pmatrix} 2 & 0 \\\\ 1 & 2 \\end{pmatrix}$, $\\mathbf{C} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 3 \\end{pmatrix}$. Compute $(\\mathbf{A}\\mathbf{B})\\mathbf{C}$ and $\\mathbf{A}(\\mathbf{B}\\mathbf{C})$; confirm they're equal.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$, $\\mathbf{B} = \\begin{bmatrix} 2 & 0 \\\\ 1 & 2 \\end{bmatrix}$, $\\mathbf{C} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 3 \\end{bmatrix}$. Compute $(\\mathbf{A}\\mathbf{B})\\mathbf{C}$ and $\\mathbf{A}(\\mathbf{B}\\mathbf{C})$; confirm they're equal.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(\\mathbf{A}\\mathbf{B})\\mathbf{C} = \\mathbf{A}(\\mathbf{B}\\mathbf{C}) = \\begin{pmatrix} 3 & 6 \\\\ 1 & 6 \\end{pmatrix}$ — a concrete check of associativity",
+          "description": "$(\\mathbf{A}\\mathbf{B})\\mathbf{C} = \\mathbf{A}(\\mathbf{B}\\mathbf{C}) = \\begin{bmatrix} 3 & 6 \\\\ 1 & 6 \\end{bmatrix}$ — a concrete check of associativity",
           "weight": 1,
           "required": false
         }
@@ -24021,7 +24021,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$. Compute $\\mathbf{A}\\mathbf{I}$, where $\\mathbf{I}$ is the $2 \\times 2$ identity.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$. Compute $\\mathbf{A}\\mathbf{I}$, where $\\mathbf{I}$ is the $2 \\times 2$ identity.",
     "rubric": {
       "elements": [
         {
@@ -24091,12 +24091,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix}$, $\\mathbf{v} = (4, 5)$ (as a column vector). Compute $\\mathbf{A}\\mathbf{v}$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix}$, $\\mathbf{v} = [4, 5]$ (as a column vector). Compute $\\mathbf{A}\\mathbf{v}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A}\\mathbf{v} = (2 \\cdot 4 + 1 \\cdot 5,\\ 0 \\cdot 4 + 3 \\cdot 5) = (13, 15)$ — the matrix-vector product is a special case ($p = 1$) of matrix multiplication",
+          "description": "$\\mathbf{A}\\mathbf{v} = (2 \\cdot 4 + 1 \\cdot 5,\\ 0 \\cdot 4 + 3 \\cdot 5) = [13, 15]$ — the matrix-vector product is a special case ($p = 1$) of matrix multiplication",
           "weight": 1,
           "required": false
         }
@@ -24670,12 +24670,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$. Compute $\\mathbf{A}$ applied to $(1, 1)$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 0 \\\\ 0 & 3 \\end{bmatrix}$. Compute $\\mathbf{A}$ applied to $[1, 1]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(2, 3)$",
+          "description": "$[2, 3]$",
           "weight": 1,
           "required": false
         }
@@ -24705,12 +24705,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$ (a $90^\\circ$ rotation). Compute $\\mathbf{A}$ applied to $(2, -1)$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}$ (a $90^\\circ$ rotation). Compute $\\mathbf{A}$ applied to $[2, -1]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A}(2, -1) = (1, 2)$ — rotating the point $90^\\circ$ counterclockwise",
+          "description": "$\\mathbf{A}(2, -1) = [1, 2]$ — rotating the point $90^\\circ$ counterclockwise",
           "weight": 1,
           "required": false
         }
@@ -24740,12 +24740,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$ (a shear). Compute $\\mathbf{A}$ applied to $(1, 3)$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 0 & 1 \\end{bmatrix}$ (a shear). Compute $\\mathbf{A}$ applied to $[1, 3]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A}(1, 3) = (7, 3)$ — the $x$-coordinate shifts by twice the $y$-coordinate, while $y$ is unchanged",
+          "description": "$\\mathbf{A}(1, 3) = [7, 3]$ — the $x$-coordinate shifts by twice the $y$-coordinate, while $y$ is unchanged",
           "weight": 1,
           "required": false
         }
@@ -24775,12 +24775,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$ (projection onto the $x$-axis). Compute $\\mathbf{A}$ applied to $(5, 7)$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 0 \\end{bmatrix}$ (projection onto the $x$-axis). Compute $\\mathbf{A}$ applied to $[5, 7]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A}(5, 7) = (5, 0)$ — the $y$-component is discarded entirely",
+          "description": "$\\mathbf{A}(5, 7) = [5, 0]$ — the $y$-component is discarded entirely",
           "weight": 1,
           "required": false
         }
@@ -24810,12 +24810,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\operatorname{diag}(2, -1)$. Compute $\\mathbf{A}$ applied to $(3, 4)$, and describe geometrically what each axis does.",
+    "stem": "$\\mathbf{A} = \\operatorname{diag}(2, -1)$. Compute $\\mathbf{A}$ applied to $[3, 4]$, and describe geometrically what each axis does.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A}(3, 4) = (6, -4)$ — the $x$-axis is stretched by $2$, the $y$-axis is flipped and left the same length",
+          "description": "$\\mathbf{A}(3, 4) = [6, -4]$ — the $x$-axis is stretched by $2$, the $y$-axis is flipped and left the same length",
           "weight": 1,
           "required": false
         }
@@ -24845,18 +24845,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{R} = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$ (rotate $90^\\circ$), $\\mathbf{S} = \\operatorname{diag}(2, 3)$ (scale). Compute $\\mathbf{S}(\\mathbf{R}(1, 0))$ and $(\\mathbf{S}\\mathbf{R})(1, 0)$, confirming they match.",
+    "stem": "$\\mathbf{R} = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}$ (rotate $90^\\circ$), $\\mathbf{S} = \\operatorname{diag}(2, 3)$ (scale). Compute $\\mathbf{S}(\\mathbf{R}(1, 0))$ and $(\\mathbf{S}\\mathbf{R})(1, 0)$, confirming they match.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{S}(\\mathbf{R}(1, 0)) = \\mathbf{S}(0, 1) = (0, 3)$",
+          "description": "$\\mathbf{S}(\\mathbf{R}(1, 0)) = \\mathbf{S}(0, 1) = [0, 3]$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "$(\\mathbf{S}\\mathbf{R})(1, 0) = (0, 3)$ — matches, since the matrix of a composition is the product of the matrices",
+          "description": "$(\\mathbf{S}\\mathbf{R})(1, 0) = [0, 3]$ — matches, since the matrix of a composition is the product of the matrices",
           "weight": 1,
           "required": false
         }
@@ -24886,18 +24886,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 3 & 1 \\\\ 2 & 4 \\end{pmatrix}$. Without computing $\\mathbf{A}\\mathbf{v}$ for any $\\mathbf{v}$, state where $\\mathbf{e}_1 = (1, 0)$ and $\\mathbf{e}_2 = (0, 1)$ are sent.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 3 & 1 \\\\ 2 & 4 \\end{bmatrix}$. Without computing $\\mathbf{A}\\mathbf{v}$ for any $\\mathbf{v}$, state where $\\mathbf{e}_1 = [1, 0]$ and $\\mathbf{e}_2 = [0, 1]$ are sent.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{e}_1$ is sent to the first column of $\\mathbf{A}$, $(3, 2)$",
+          "description": "$\\mathbf{e}_1$ is sent to the first column of $\\mathbf{A}$, $[3, 2]$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "$\\mathbf{e}_2$ is sent to the second column of $\\mathbf{A}$, $(1, 4)$ — reading columns directly, no multiplication needed",
+          "description": "$\\mathbf{e}_2$ is sent to the second column of $\\mathbf{A}$, $[1, 4]$ — reading columns directly, no multiplication needed",
           "weight": 1,
           "required": false
         }
@@ -24954,7 +24954,7 @@ export const generatedItems: Item[] = [
   },
   {
     "id": "matrices--e2",
-    "conceptId": "matrices",
+    "conceptId": "matrix-multiplication",
     "format": "short-answer",
     "cognitive": "explain",
     "channels": [
@@ -24983,6 +24983,7 @@ export const generatedItems: Item[] = [
     "discrimination": 1.2,
     "expectedSeconds": 150,
     "prereqClosure": [
+      "matrix-multiplication",
       "matrices"
     ],
     "source": {
@@ -25153,7 +25154,7 @@ export const generatedItems: Item[] = [
   },
   {
     "id": "matrices--t2",
-    "conceptId": "matrices",
+    "conceptId": "matrix-multiplication",
     "format": "short-answer",
     "cognitive": "transfer",
     "channels": [
@@ -25182,6 +25183,7 @@ export const generatedItems: Item[] = [
     "discrimination": 1.2,
     "expectedSeconds": 150,
     "prereqClosure": [
+      "matrix-multiplication",
       "matrices"
     ],
     "source": {
@@ -25453,7 +25455,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$. Compute $\\operatorname{tr}(\\mathbf{A})$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$. Compute $\\operatorname{tr}(\\mathbf{A})$.",
     "answerKey": 5,
     "tolerance": 0.01,
     "difficulty": 0.1,
@@ -25479,7 +25481,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 1 & 0 \\\\ 0 & 3 & 1 \\\\ 1 & 0 & 4 \\end{pmatrix}$. Compute $\\operatorname{tr}(\\mathbf{A})$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 1 & 0 \\\\ 0 & 3 & 1 \\\\ 1 & 0 & 4 \\end{bmatrix}$. Compute $\\operatorname{tr}(\\mathbf{A})$.",
     "answerKey": 9,
     "tolerance": 0.01,
     "difficulty": 0.22,
@@ -25506,12 +25508,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$, $\\mathbf{B} = \\begin{pmatrix} 5 & -1 \\\\ 0 & 2 \\end{pmatrix}$. Verify $\\operatorname{tr}(\\mathbf{A} + \\mathbf{B}) = \\operatorname{tr}(\\mathbf{A}) + \\operatorname{tr}(\\mathbf{B})$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$, $\\mathbf{B} = \\begin{bmatrix} 5 & -1 \\\\ 0 & 2 \\end{bmatrix}$. Verify $\\operatorname{tr}(\\mathbf{A} + \\mathbf{B}) = \\operatorname{tr}(\\mathbf{A}) + \\operatorname{tr}(\\mathbf{B})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\operatorname{tr}(\\mathbf{A} + \\mathbf{B}) = \\operatorname{tr}\\begin{pmatrix} 6 & 1 \\\\ 3 & 6 \\end{pmatrix} = 12$",
+          "description": "$\\operatorname{tr}(\\mathbf{A} + \\mathbf{B}) = \\operatorname{tr}\\begin{bmatrix} 6 & 1 \\\\ 3 & 6 \\end{bmatrix} = 12$",
           "weight": 1,
           "required": false
         },
@@ -25546,7 +25548,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix}$. Compute $\\operatorname{tr}(3\\mathbf{A})$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix}$. Compute $\\operatorname{tr}(3\\mathbf{A})$.",
     "answerKey": 15,
     "tolerance": 0.01,
     "difficulty": 0.46,
@@ -25573,7 +25575,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$, $\\mathbf{B} = \\begin{pmatrix} 2 & 0 \\\\ 1 & 1 \\end{pmatrix}$, $\\mathbf{C} = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$. Compute $\\operatorname{tr}(\\mathbf{A}\\mathbf{B}\\mathbf{C})$, $\\operatorname{tr}(\\mathbf{B}\\mathbf{C}\\mathbf{A})$, and $\\operatorname{tr}(\\mathbf{A}\\mathbf{C}\\mathbf{B})$; confirm the first two match but the third differs.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 0 & 1 \\end{bmatrix}$, $\\mathbf{B} = \\begin{bmatrix} 2 & 0 \\\\ 1 & 1 \\end{bmatrix}$, $\\mathbf{C} = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$. Compute $\\operatorname{tr}(\\mathbf{A}\\mathbf{B}\\mathbf{C})$, $\\operatorname{tr}(\\mathbf{B}\\mathbf{C}\\mathbf{A})$, and $\\operatorname{tr}(\\mathbf{A}\\mathbf{C}\\mathbf{B})$; confirm the first two match but the third differs.",
     "rubric": {
       "elements": [
         {
@@ -25620,7 +25622,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$. Compute $\\operatorname{tr}(\\mathbf{A}^2)$ directly, and compare it to the sum of the squares of the eigenvalues of $\\mathbf{A}$ (which are $3$ and $1$).",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 1 & 2 \\end{bmatrix}$. Compute $\\operatorname{tr}(\\mathbf{A}^2)$ directly, and compare it to the sum of the squares of the eigenvalues of $\\mathbf{A}$ (which are $3$ and $1$).",
     "rubric": {
       "elements": [
         {
@@ -26094,7 +26096,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which is *not* a linear transformation? (a) $T(x) = 2x$ (b) $T(x) = x + 1$ (c) $T(x, y) = (y, x)$",
+    "stem": "Which is $\\textbf{NOT}$ a linear transformation? (a) $T(x) = 2x$ (b) $T(x) = x + 1$ (c) $T(x, y) = [y, x]$",
     "rubric": {
       "elements": [
         {
@@ -26223,12 +26225,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Spot-check $T(x, y) = (x + y, x - y)$ for additivity using $(1, 2)$ and $(3, 4)$.",
+    "stem": "Spot-check $T(x, y) = [x + y, x - y]$ for additivity using $[1, 2]$ and $[3, 4]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$T(4, 6) = (10, -2)$; $T(1, 2) + T(3, 4) = (3, -1) + (7, -1) = (10, -2)$ — matches, consistent with linearity (a spot-check, not a full proof)",
+          "description": "$T(4, 6) = [10, -2]$; $T(1, 2) + T(3, 4) = [3, -1] + [7, -1] = [10, -2]$ — matches, consistent with linearity (a spot-check, not a full proof)",
           "weight": 1,
           "required": false
         }
@@ -26258,12 +26260,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Check $T(x, y, z) = (x + 2y, y - z, 3x + z)$ for additivity using $\\mathbf{v}_1 = (1, 0, 2)$ and $\\mathbf{v}_2 = (0, 1, 1)$.",
+    "stem": "Check $T(x, y, z) = [x + 2y, y - z, 3x + z]$ for additivity using $\\mathbf{v}_1 = [1, 0, 2]$ and $\\mathbf{v}_2 = [0, 1, 1]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$T(1, 1, 3) = (3, -2, 6)$; $T(1, 0, 2) + T(0, 1, 1) = (1, -2, 3) + (2, 0, 3) = (3, -2, 6)$ — matches",
+          "description": "$T(1, 1, 3) = [3, -2, 6]$; $T(1, 0, 2) + T(0, 1, 1) = [1, -2, 3] + [2, 0, 3] = [3, -2, 6]$ — matches",
           "weight": 1,
           "required": false
         }
@@ -26293,12 +26295,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$T(x, y) = (3x - y, x + 2y)$. Find the matrix $\\mathbf{A}$ representing $T$, and compute $T(2, 5)$ using it.",
+    "stem": "$T(x, y) = [3x - y, x + 2y]$. Find the matrix $\\mathbf{A}$ representing $T$, and compute $T(2, 5)$ using it.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A} = \\begin{pmatrix} 3 & -1 \\\\ 1 & 2 \\end{pmatrix}$; $\\mathbf{A}(2, 5) = (3 \\cdot 2 - 5,\\ 2 + 2 \\cdot 5) = (1, 12)$",
+          "description": "$\\mathbf{A} = \\begin{bmatrix} 3 & -1 \\\\ 1 & 2 \\end{bmatrix}$; $\\mathbf{A}(2, 5) = (3 \\cdot 2 - 5,\\ 2 + 2 \\cdot 5) = [1, 12]$",
           "weight": 1,
           "required": false
         }
@@ -26328,12 +26330,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$S(x, y) = (y, x)$ (a swap) and $T(x, y) = (3x - y, x + 2y)$. Compute $S(T(1, 1))$.",
+    "stem": "$S(x, y) = [y, x]$ (a swap) and $T(x, y) = [3x - y, x + 2y]$. Compute $S(T(1, 1))$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$T(1, 1) = (2, 3)$; $S(2, 3) = (3, 2)$",
+          "description": "$T(1, 1) = [2, 3]$; $S(2, 3) = [3, 2]$",
           "weight": 1,
           "required": false
         }
@@ -26363,12 +26365,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$T(x, y) = (xy, x)$. Use $\\mathbf{v} = (1, 3)$ and the scalar $c = 2$ to check homogeneity: compare $T(2\\mathbf{v})$ to $2T(\\mathbf{v})$.",
+    "stem": "$T(x, y) = [xy, x]$. Use $\\mathbf{v} = [1, 3]$ and the scalar $c = 2$ to check homogeneity: compare $T(2\\mathbf{v})$ to $2T(\\mathbf{v})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$T(2, 6) = (12, 2)$, but $2T(1, 3) = 2(3, 1) = (6, 2)$ — these disagree, so $T$ fails homogeneity and is not linear",
+          "description": "$T(2, 6) = [12, 2]$, but $2T(1, 3) = 2(3, 1) = [6, 2]$ — these disagree, so $T$ fails homogeneity and is not linear",
           "weight": 1,
           "required": false
         }
@@ -26410,18 +26412,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$T(x, y) = (x + y, x - y)$. Is $(1, -1)$ in $\\ker T$? Is $(1, 1)$?",
+    "stem": "$T(x, y) = [x + y, x - y]$. Is $[1, -1]$ in $\\ker T$? Is $[1, 1]$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$T(1, -1) = (0, 2) \\ne \\mathbf{0}$, so $(1, -1)$ is not in $\\ker T$",
+          "description": "$T(1, -1) = [0, 2] \\ne \\mathbf{0}$, so $[1, -1]$ is not in $\\ker T$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "$T(1, 1) = (2, 0) \\ne \\mathbf{0}$ either — neither vector is in the kernel",
+          "description": "$T(1, 1) = [2, 0] \\ne \\mathbf{0}$ either — neither vector is in the kernel",
           "weight": 1,
           "required": false
         }
@@ -26451,18 +26453,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$T(x, y) = (2x + y, -x + 3y)$. Find $T(\\mathbf{e}_1)$ and $T(\\mathbf{e}_2)$, and use them to write the matrix of $T$ directly.",
+    "stem": "$T(x, y) = [2x + y, -x + 3y]$. Find $T(\\mathbf{e}_1)$ and $T(\\mathbf{e}_2)$, and use them to write the matrix of $T$ directly.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$T(\\mathbf{e}_1) = (2, -1)$, $T(\\mathbf{e}_2) = (1, 3)$",
+          "description": "$T(\\mathbf{e}_1) = [2, -1]$, $T(\\mathbf{e}_2) = [1, 3]$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "the matrix is $\\begin{pmatrix} 2 & 1 \\\\ -1 & 3 \\end{pmatrix}$ — its columns are exactly these images",
+          "description": "the matrix is $\\begin{bmatrix} 2 & 1 \\\\ -1 & 3 \\end{bmatrix}$ — its columns are exactly these images",
           "weight": 1,
           "required": false
         }
@@ -27013,12 +27015,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$f(x, y) = x^2 + 3y^2$. Compute $\\nabla f$ at $(1, 2)$.",
+    "stem": "$f(x, y) = x^2 + 3y^2$. Compute $\\nabla f$ at $[1, 2]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\nabla f = (2x, 6y)$; at $(1, 2)$: $(2, 12)$",
+          "description": "$\\nabla f = [2x, 6y]$; at $[1, 2]$: $[2, 12]$",
           "weight": 1,
           "required": false
         }
@@ -27095,12 +27097,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$f(x, y, z) = x^2 + 2y^2 + 3z^2$. Compute $\\nabla f$ at $(1, -1, 2)$.",
+    "stem": "$f(x, y, z) = x^2 + 2y^2 + 3z^2$. Compute $\\nabla f$ at $[1, -1, 2]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\nabla f = (2x, 4y, 6z)$; at $(1, -1, 2)$: $(2, -4, 12)$",
+          "description": "$\\nabla f = [2x, 4y, 6z]$; at $[1, -1, 2]$: $[2, -4, 12]$",
           "weight": 1,
           "required": false
         }
@@ -27130,12 +27132,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$f(x, y) = xy$. Compute $\\nabla f$ at $(3, 4)$.",
+    "stem": "$f(x, y) = xy$. Compute $\\nabla f$ at $[3, 4]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\nabla f = (y, x)$; at $(3, 4)$: $(4, 3)$",
+          "description": "$\\nabla f = [y, x]$; at $[3, 4]$: $[4, 3]$",
           "weight": 1,
           "required": false
         }
@@ -27165,18 +27167,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{g}(x, y) = (x + y, x - y, xy)$. Compute the Jacobian at $(2, 1)$.",
+    "stem": "$\\mathbf{g}(x, y) = [x + y, x - y, xy]$. Compute the Jacobian at $[2, 1]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{J} = \\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\\\ y & x \\end{pmatrix}$",
+          "description": "$\\mathbf{J} = \\begin{bmatrix} 1 & 1 \\\\ 1 & -1 \\\\ y & x \\end{bmatrix}$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "at $(2, 1)$: $\\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\\\ 1 & 2 \\end{pmatrix}$",
+          "description": "at $[2, 1]$: $\\begin{bmatrix} 1 & 1 \\\\ 1 & -1 \\\\ 1 & 2 \\end{bmatrix}$",
           "weight": 1,
           "required": false
         }
@@ -27206,12 +27208,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$f(x, y) = x^2 + y^2 - 3x$. Compute $\\nabla f$ at $(2, 5)$.",
+    "stem": "$f(x, y) = x^2 + y^2 - 3x$. Compute $\\nabla f$ at $[2, 5]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\nabla f = (2x - 3, 2y)$; at $(2, 5)$: $(1, 10)$",
+          "description": "$\\nabla f = (2x - 3, 2y)$; at $[2, 5]$: $[1, 10]$",
           "weight": 1,
           "required": false
         }
@@ -27241,12 +27243,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$f(\\mathbf{x}) = \\mathbf{x}^\\top \\mathbf{A}\\mathbf{x}$ for $\\mathbf{A} = \\begin{pmatrix} 2 & 1 \\\\ 1 & 3 \\end{pmatrix}$ (symmetric). Compute $\\nabla f = 2\\mathbf{A}\\mathbf{x}$ at $\\mathbf{x} = (1, 1)$, and verify against the direct partial derivatives of $f(x, y) = 2x^2 + 2xy + 3y^2$.",
+    "stem": "$f(\\mathbf{x}) = \\mathbf{x}^\\top \\mathbf{A}\\mathbf{x}$ for $\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 1 & 3 \\end{bmatrix}$ (symmetric). Compute $\\nabla f = 2\\mathbf{A}\\mathbf{x}$ at $\\mathbf{x} = [1, 1]$, and verify against the direct partial derivatives of $f(x, y) = 2x^2 + 2xy + 3y^2$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$2\\mathbf{A}\\mathbf{x} = (6, 8)$; the direct partials $\\frac{\\partial f}{\\partial x} = 4x + 2y = 6$ and $\\frac{\\partial f}{\\partial y} = 2x + 6y = 8$ at $(1, 1)$ — matches",
+          "description": "$2\\mathbf{A}\\mathbf{x} = [6, 8]$; the direct partials $\\frac{\\partial f}{\\partial x} = 4x + 2y = 6$ and $\\frac{\\partial f}{\\partial y} = 2x + 6y = 8$ at $[1, 1]$ — matches",
           "weight": 1,
           "required": false
         }
@@ -27281,13 +27283,13 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\frac{\\partial f}{\\partial x} = 2x$, $\\frac{\\partial f}{\\partial y} = 4y$, giving $\\nabla f = (2x, 4y)$",
+          "description": "$\\frac{\\partial f}{\\partial x} = 2x$, $\\frac{\\partial f}{\\partial y} = 4y$, giving $\\nabla f = [2x, 4y]$",
           "weight": 1,
           "required": true
         },
         {
           "id": "element-2",
-          "description": "$2\\mathbf{A}\\mathbf{x}$ with $\\mathbf{A} = \\operatorname{diag}(1, 2)$ gives $(2x, 4y)$ — matches",
+          "description": "$2\\mathbf{A}\\mathbf{x}$ with $\\mathbf{A} = \\operatorname{diag}(1, 2)$ gives $[2x, 4y]$ — matches",
           "weight": 1,
           "required": false
         }
@@ -27833,12 +27835,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\end{pmatrix}$ ($1 \\times 2$), $\\mathbf{B} = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$ ($2 \\times 2$). Compute $\\mathbf{A} \\otimes \\mathbf{B}$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\end{bmatrix}$ ($1 \\times 2$), $\\mathbf{B} = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$ ($2 \\times 2$). Compute $\\mathbf{A} \\otimes \\mathbf{B}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A} \\otimes \\mathbf{B} = \\begin{pmatrix} 1\\mathbf{B} & 2\\mathbf{B} \\end{pmatrix} = \\begin{pmatrix} 0 & 1 & 0 & 2 \\\\ 1 & 0 & 2 & 0 \\end{pmatrix}$",
+          "description": "$\\mathbf{A} \\otimes \\mathbf{B} = \\begin{bmatrix} 1\\mathbf{B} & 2\\mathbf{B} \\end{bmatrix} = \\begin{bmatrix} 0 & 1 & 0 & 2 \\\\ 1 & 0 & 2 & 0 \\end{bmatrix}$",
           "weight": 1,
           "required": false
         }
@@ -27868,12 +27870,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$ ($2 \\times 2$), $\\mathbf{B} = \\begin{pmatrix} 0 & 1 \\end{pmatrix}$ ($1 \\times 2$). Compute $\\mathbf{A} \\otimes \\mathbf{B}$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$ ($2 \\times 2$), $\\mathbf{B} = \\begin{bmatrix} 0 & 1 \\end{bmatrix}$ ($1 \\times 2$). Compute $\\mathbf{A} \\otimes \\mathbf{B}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A} \\otimes \\mathbf{B} = \\begin{pmatrix} 0 & 1 & 0 & 2 \\\\ 0 & 3 & 0 & 4 \\end{pmatrix}$",
+          "description": "$\\mathbf{A} \\otimes \\mathbf{B} = \\begin{bmatrix} 0 & 1 & 0 & 2 \\\\ 0 & 3 & 0 & 4 \\end{bmatrix}$",
           "weight": 1,
           "required": false
         }
@@ -27903,7 +27905,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\mathbf{I}_2$ (the $2 \\times 2$ identity), $\\mathbf{B} = \\begin{pmatrix} 2 & 3 \\\\ 4 & 5 \\end{pmatrix}$. Compute $\\mathbf{I}_2 \\otimes \\mathbf{B}$, and describe its structure.",
+    "stem": "$\\mathbf{A} = \\mathbf{I}_2$ (the $2 \\times 2$ identity), $\\mathbf{B} = \\begin{bmatrix} 2 & 3 \\\\ 4 & 5 \\end{bmatrix}$. Compute $\\mathbf{I}_2 \\otimes \\mathbf{B}$, and describe its structure.",
     "rubric": {
       "elements": [
         {
@@ -27938,12 +27940,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix}$ ($2 \\times 1$), $\\mathbf{B} = \\begin{pmatrix} 1 & 4 \\end{pmatrix}$ ($1 \\times 2$). Compute $\\mathbf{A} \\otimes \\mathbf{B}$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 \\\\ 3 \\end{bmatrix}$ ($2 \\times 1$), $\\mathbf{B} = \\begin{bmatrix} 1 & 4 \\end{bmatrix}$ ($1 \\times 2$). Compute $\\mathbf{A} \\otimes \\mathbf{B}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A} \\otimes \\mathbf{B} = \\begin{pmatrix} 2 & 8 \\\\ 3 & 12 \\end{pmatrix}$ — for a column times a row, the Kronecker product coincides with the ordinary outer product",
+          "description": "$\\mathbf{A} \\otimes \\mathbf{B} = \\begin{bmatrix} 2 & 8 \\\\ 3 & 12 \\end{bmatrix}$ — for a column times a row, the Kronecker product coincides with the ordinary outer product",
           "weight": 1,
           "required": false
         }
@@ -27973,12 +27975,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$, $\\mathbf{B} = \\begin{pmatrix} 2 & 0 \\\\ 1 & 3 \\end{pmatrix}$. Verify $(\\mathbf{A} \\otimes \\mathbf{B})^\\top = \\mathbf{A}^\\top \\otimes \\mathbf{B}^\\top$ by computing both sides.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 0 & 1 \\end{bmatrix}$, $\\mathbf{B} = \\begin{bmatrix} 2 & 0 \\\\ 1 & 3 \\end{bmatrix}$. Verify $(\\mathbf{A} \\otimes \\mathbf{B})^\\top = \\mathbf{A}^\\top \\otimes \\mathbf{B}^\\top$ by computing both sides.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(\\mathbf{A} \\otimes \\mathbf{B})^\\top = \\mathbf{A}^\\top \\otimes \\mathbf{B}^\\top = \\begin{pmatrix} 2 & 1 & 0 & 0 \\\\ 0 & 3 & 0 & 0 \\\\ 4 & 2 & 2 & 1 \\\\ 0 & 6 & 0 & 3 \\end{pmatrix}$ — matches",
+          "description": "$(\\mathbf{A} \\otimes \\mathbf{B})^\\top = \\mathbf{A}^\\top \\otimes \\mathbf{B}^\\top = \\begin{bmatrix} 2 & 1 & 0 & 0 \\\\ 0 & 3 & 0 & 0 \\\\ 4 & 2 & 2 & 1 \\\\ 0 & 6 & 0 & 3 \\end{bmatrix}$ — matches",
           "weight": 1,
           "required": false
         }
@@ -28008,7 +28010,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$, $\\mathbf{B} = \\begin{pmatrix} 2 & 0 \\\\ 1 & 1 \\end{pmatrix}$. Compute $\\det(\\mathbf{A} \\otimes \\mathbf{B})$ and confirm it equals $\\det(\\mathbf{A})^2 \\det(\\mathbf{B})^2$ (using $\\det(\\mathbf{A} \\otimes \\mathbf{B}) = \\det(\\mathbf{A})^p \\det(\\mathbf{B})^n$ for $\\mathbf{A}$ $n \\times n$ and $\\mathbf{B}$ $p \\times p$).",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$, $\\mathbf{B} = \\begin{bmatrix} 2 & 0 \\\\ 1 & 1 \\end{bmatrix}$. Compute $\\det(\\mathbf{A} \\otimes \\mathbf{B})$ and confirm it equals $\\det(\\mathbf{A})^2 \\det(\\mathbf{B})^2$ (using $\\det(\\mathbf{A} \\otimes \\mathbf{B}) = \\det(\\mathbf{A})^p \\det(\\mathbf{B})^n$ for $\\mathbf{A}$ $n \\times n$ and $\\mathbf{B}$ $p \\times p$).",
     "rubric": {
       "elements": [
         {
@@ -28043,18 +28045,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$, $\\mathbf{X} = \\begin{pmatrix} 1 & 0 \\\\ 2 & 1 \\end{pmatrix}$, $\\mathbf{B} = \\begin{pmatrix} 1 & 1 \\\\ 0 & 2 \\end{pmatrix}$. Verify $\\operatorname{vec}(\\mathbf{A}\\mathbf{X}\\mathbf{B}) = (\\mathbf{B}^\\top \\otimes \\mathbf{A})\\operatorname{vec}(\\mathbf{X})$ numerically (column-major $\\operatorname{vec}$).",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 0 & 1 \\end{bmatrix}$, $\\mathbf{X} = \\begin{bmatrix} 1 & 0 \\\\ 2 & 1 \\end{bmatrix}$, $\\mathbf{B} = \\begin{bmatrix} 1 & 1 \\\\ 0 & 2 \\end{bmatrix}$. Verify $\\operatorname{vec}(\\mathbf{A}\\mathbf{X}\\mathbf{B}) = (\\mathbf{B}^\\top \\otimes \\mathbf{A})\\operatorname{vec}(\\mathbf{X})$ numerically (column-major $\\operatorname{vec}$).",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\operatorname{vec}(\\mathbf{A}\\mathbf{X}\\mathbf{B}) = (5, 2, 9, 4)$, computed directly",
+          "description": "$\\operatorname{vec}(\\mathbf{A}\\mathbf{X}\\mathbf{B}) = [5, 2, 9, 4]$, computed directly",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "$(\\mathbf{B}^\\top \\otimes \\mathbf{A})\\operatorname{vec}(\\mathbf{X}) = (5, 2, 9, 4)$, computed via the identity — matches",
+          "description": "$(\\mathbf{B}^\\top \\otimes \\mathbf{A})\\operatorname{vec}(\\mathbf{X}) = [5, 2, 9, 4]$, computed via the identity — matches",
           "weight": 1,
           "required": false
         }
@@ -28630,7 +28632,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "$4$ — the largest diagonal entry, since $\\mathbf{A}$ stretches the $(0, 1)$ direction by exactly $4$, the maximum possible stretch for this diagonal matrix",
+          "description": "$4$ — the largest diagonal entry, since $\\mathbf{A}$ stretches the $[0, 1]$ direction by exactly $4$, the maximum possible stretch for this diagonal matrix",
           "weight": 1,
           "required": false
         }
@@ -28671,7 +28673,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$. Compute $\\|\\mathbf{A}\\|_F$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 1 \\end{bmatrix}$. Compute $\\|\\mathbf{A}\\|_F$.",
     "answerKey": 3.16,
     "tolerance": 0.01,
     "difficulty": 0.32,
@@ -28698,7 +28700,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ (symmetric, with eigenvalues $3$ and $-1$). Compute $\\|\\mathbf{A}\\|_2$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 1 \\end{bmatrix}$ (symmetric, with eigenvalues $3$ and $-1$). Compute $\\|\\mathbf{A}\\|_2$.",
     "rubric": {
       "elements": [
         {
@@ -28745,7 +28747,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 3 \\end{pmatrix}$. Compute $\\|\\mathbf{A}\\|_F$ and $\\|\\mathbf{A}\\|_2$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 3 \\end{bmatrix}$. Compute $\\|\\mathbf{A}\\|_F$ and $\\|\\mathbf{A}\\|_2$.",
     "rubric": {
       "elements": [
         {
@@ -28786,7 +28788,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$, $\\mathbf{B} = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$. Compute $\\|\\mathbf{A}\\mathbf{B}\\|_2$ and $\\|\\mathbf{A}\\|_2\\|\\mathbf{B}\\|_2$; confirm submultiplicativity holds.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$, $\\mathbf{B} = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$. Compute $\\|\\mathbf{A}\\mathbf{B}\\|_2$ and $\\|\\mathbf{A}\\|_2\\|\\mathbf{B}\\|_2$; confirm submultiplicativity holds.",
     "rubric": {
       "elements": [
         {
@@ -28821,7 +28823,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\mathbf{I}_2$, $\\mathbf{B} = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$ (a swap). Compute $\\|\\mathbf{A} + \\mathbf{B}\\|_F$ and confirm it's less than $\\|\\mathbf{A}\\|_F + \\|\\mathbf{B}\\|_F$, illustrating the triangle inequality.",
+    "stem": "$\\mathbf{A} = \\mathbf{I}_2$, $\\mathbf{B} = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$ (a swap). Compute $\\|\\mathbf{A} + \\mathbf{B}\\|_F$ and confirm it's less than $\\|\\mathbf{A}\\|_F + \\|\\mathbf{B}\\|_F$, illustrating the triangle inequality.",
     "rubric": {
       "elements": [
         {
@@ -29377,7 +29379,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Are $(3, -1, 2)$, $(6, -2, 4)$, and $(1, 0, 0)$ linearly dependent?",
+    "stem": "Are $[3, -1, 2]$, $[6, -2, 4]$, and $[1, 0, 0]$ linearly dependent?",
     "rubric": {
       "elements": [
         {
@@ -29424,7 +29426,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Determine whether $(1, 1, 0)$, $(0, 1, 1)$, $(1, 0, -1)$ are linearly dependent.",
+    "stem": "Determine whether $[1, 1, 0]$, $[0, 1, 1]$, $[1, 0, -1]$ are linearly dependent.",
     "rubric": {
       "elements": [
         {
@@ -29459,12 +29461,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Are $(1, 2)$ and $(2, 4)$ linearly dependent?",
+    "stem": "Are $[1, 2]$ and $[2, 4]$ linearly dependent?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "yes — $(2, 4) = 2(1, 2)$",
+          "description": "yes — $[2, 4] = 2(1, 2)$",
           "weight": 1,
           "required": false
         }
@@ -29494,7 +29496,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "In $\\mathbb{R}^4$, are the vectors $(1, 0, 0, 0)$, $(0, 1, 0, 0)$, $(0, 0, 1, 0)$, $(0, 0, 0, 1)$, $(1, 1, 1, 1)$ linearly dependent?",
+    "stem": "In $\\mathbb{R}^4$, are the vectors $[1, 0, 0, 0]$, $[0, 1, 0, 0]$, $[0, 0, 1, 0]$, $[0, 0, 0, 1]$, $[1, 1, 1, 1]$ linearly dependent?",
     "rubric": {
       "elements": [
         {
@@ -29546,7 +29548,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "yes — $1 \\cdot (1 + x) - 1 \\cdot (x + x^2) - 1 \\cdot (1 - x^2) = 0$, a nontrivial relation among the coefficient vectors $(1, 1, 0)$, $(0, 1, 1)$, $(1, 0, -1)$",
+          "description": "yes — $1 \\cdot (1 + x) - 1 \\cdot (x + x^2) - 1 \\cdot (1 - x^2) = 0$, a nontrivial relation among the coefficient vectors $[1, 1, 0]$, $[0, 1, 1]$, $[1, 0, -1]$",
           "weight": 1,
           "required": false
         }
@@ -29817,7 +29819,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Two students disagree: one says “$(0, 0)$ is linearly dependent on any vector,” the other says “dependence is a property of a set, not a single vector.” Who is right, and why?",
+    "stem": "Two students disagree: one says “$[0, 0]$ is linearly dependent on any vector,” the other says “dependence is a property of a set, not a single vector.” Who is right, and why?",
     "rubric": {
       "elements": [
         {
@@ -30708,12 +30710,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A student claims “$\\mathbb{R}^2$ with the usual addition but scalar multiplication redefined as $c \\cdot (x, y) = (cx, 0)$ is still a vector space, since it's closed under both operations.” What axiom does this redefinition violate?",
+    "stem": "A student claims “$\\mathbb{R}^2$ with the usual addition but scalar multiplication redefined as $c \\cdot [x, y] = [cx, 0]$ is still a vector space, since it's closed under both operations.” What axiom does this redefinition violate?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "it violates the identity (compatibility) axiom $1 \\cdot \\mathbf{v} = \\mathbf{v}$: $1 \\cdot (x, y) = (x, 0) \\ne (x, y)$ whenever $y \\ne 0$, so this fails to be a vector space despite being closed under the redefined operations",
+          "description": "it violates the identity (compatibility) axiom $1 \\cdot \\mathbf{v} = \\mathbf{v}$: $1 \\cdot [x, y] = [x, 0] \\ne [x, y]$ whenever $y \\ne 0$, so this fails to be a vector space despite being closed under the redefined operations",
           "weight": 1,
           "required": true
         }
@@ -30960,12 +30962,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The span of $\\lbrace (1, 2, 3), (2, 4, 6) \\rbrace$ in $\\mathbb{R}^3$ is best described as:",
+    "stem": "The span of $\\lbrace [1, 2, 3], [2, 4, 6] \\rbrace$ in $\\mathbb{R}^3$ is best described as:",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "a line through the origin (through $(1, 2, 3)$) — since $(2, 4, 6) = 2(1, 2, 3)$ adds no new direction",
+          "description": "a line through the origin (through $[1, 2, 3]$) — since $[2, 4, 6] = 2(1, 2, 3)$ adds no new direction",
           "weight": 1,
           "required": false
         }
@@ -31089,12 +31091,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "What is the span of the single vector $(0, 0, 0)$ in $\\mathbb{R}^3$?",
+    "stem": "What is the span of the single vector $[0, 0, 0]$ in $\\mathbb{R}^3$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "just the origin $\\lbrace (0, 0, 0) \\rbrace$ — every scalar multiple of the zero vector is still the zero vector",
+          "description": "just the origin $\\lbrace [0, 0, 0] \\rbrace$ — every scalar multiple of the zero vector is still the zero vector",
           "weight": 1,
           "required": false
         }
@@ -31136,12 +31138,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Does $(2, -1, 3)$ lie in the span of $(1, 0, 1)$ and $(0, 1, 1)$?",
+    "stem": "Does $[2, -1, 3]$ lie in the span of $[1, 0, 1]$ and $[0, 1, 1]$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "no — solving gives $c_1 = 2$, $c_2 = -1$ from the first two coordinates, but then $c_1 + c_2 = 1 \\ne 3$ in the third coordinate, so no combination reaches $(2, -1, 3)$",
+          "description": "no — solving gives $c_1 = 2$, $c_2 = -1$ from the first two coordinates, but then $c_1 + c_2 = 1 \\ne 3$ in the third coordinate, so no combination reaches $[2, -1, 3]$",
           "weight": 1,
           "required": false
         }
@@ -31183,7 +31185,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "What is the span of $(1, 0)$ and $(0, 1)$ in $\\mathbb{R}^2$? What about $(1, 1)$ and $(2, 2)$?",
+    "stem": "What is the span of $[1, 0]$ and $[0, 1]$ in $\\mathbb{R}^2$? What about $[1, 1]$ and $[2, 2]$?",
     "rubric": {
       "elements": [
         {
@@ -31194,7 +31196,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "second pair: only a line (since they're dependent — $(2, 2) = 2(1, 1)$)",
+          "description": "second pair: only a line (since they're dependent — $[2, 2] = 2(1, 1)$)",
           "weight": 1,
           "required": false
         }
@@ -31236,12 +31238,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "What is the span of $\\lbrace (1, 1), (1, 1), (1, 1) \\rbrace$ (the same vector listed three times)?",
+    "stem": "What is the span of $\\lbrace [1, 1], [1, 1], [1, 1] \\rbrace$ (the same vector listed three times)?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "a line through the origin — repeating a vector adds no new combinations beyond what one copy already gives, so the span is identical to $\\operatorname{span}\\lbrace (1, 1) \\rbrace$",
+          "description": "a line through the origin — repeating a vector adds no new combinations beyond what one copy already gives, so the span is identical to $\\operatorname{span}\\lbrace [1, 1] \\rbrace$",
           "weight": 1,
           "required": false
         }
@@ -31318,12 +31320,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "In $\\mathbb{R}^4$, does the span of $(1, 0, 0, 0)$, $(0, 1, 0, 0)$, $(0, 0, 1, 0)$ include the vector $(1, 1, 1, 1)$?",
+    "stem": "In $\\mathbb{R}^4$, does the span of $[1, 0, 0, 0]$, $[0, 1, 0, 0]$, $[0, 0, 1, 0]$ include the vector $[1, 1, 1, 1]$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "no — every vector in that span has fourth coordinate $0$ (since none of the three spanning vectors has a nonzero fourth entry), but $(1, 1, 1, 1)$ has fourth coordinate $1$",
+          "description": "no — every vector in that span has fourth coordinate $0$ (since none of the three spanning vectors has a nonzero fourth entry), but $[1, 1, 1, 1]$ has fourth coordinate $1$",
           "weight": 1,
           "required": false
         }
@@ -31534,7 +31536,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "the span depends only on the *set of reachable combinations*, not on which particular vectors generate them — many different generating sets (of possibly different sizes) can produce identical reachable sets, the way $\\lbrace (1, 0), (0, 1) \\rbrace$ and $\\lbrace (1, 1), (1, -1) \\rbrace$ both span all of $\\mathbb{R}^2$",
+          "description": "the span depends only on the *set of reachable combinations*, not on which particular vectors generate them — many different generating sets (of possibly different sizes) can produce identical reachable sets, the way $\\lbrace [1, 0], [0, 1] \\rbrace$ and $\\lbrace [1, 1], [1, -1] \\rbrace$ both span all of $\\mathbb{R}^2$",
           "weight": 1,
           "required": true
         }
@@ -31651,7 +31653,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "it means $\\mathbf{v}_{\\text{queen}}$ lies (approximately) in the span of $\\mathbf{v}_{\\text{king}}$, $\\mathbf{v}_{\\text{man}}$, and $\\mathbf{v}_{\\text{woman}}$ with coefficients $(1, -1, 1)$ — the semantic relationship is captured entirely as a point reachable by linear combination of existing embedding vectors, not by some nonlinear transformation of them",
+          "description": "it means $\\mathbf{v}_{\\text{queen}}$ lies (approximately) in the span of $\\mathbf{v}_{\\text{king}}$, $\\mathbf{v}_{\\text{man}}$, and $\\mathbf{v}_{\\text{woman}}$ with coefficients $[1, -1, 1]$ — the semantic relationship is captured entirely as a point reachable by linear combination of existing embedding vectors, not by some nonlinear transformation of them",
           "weight": 1,
           "required": true
         }
@@ -31939,7 +31941,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is $\\lbrace (1, 2) \\rbrace$ a basis for $\\mathbb{R}^2$?",
+    "stem": "Is $\\lbrace [1, 2] \\rbrace$ a basis for $\\mathbb{R}^2$?",
     "rubric": {
       "elements": [
         {
@@ -32021,7 +32023,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is $\\lbrace (1, 0), (1, 1) \\rbrace$ a basis for $\\mathbb{R}^2$? Is $\\lbrace (1, 0), (2, 0), (0, 1) \\rbrace$?",
+    "stem": "Is $\\lbrace [1, 0], [1, 1] \\rbrace$ a basis for $\\mathbb{R}^2$? Is $\\lbrace [1, 0], [2, 0], [0, 1] \\rbrace$?",
     "rubric": {
       "elements": [
         {
@@ -32032,7 +32034,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "second: no — $(1, 0)$ and $(2, 0)$ are dependent, disqualifying the set even though it does span",
+          "description": "second: no — $[1, 0]$ and $[2, 0]$ are dependent, disqualifying the set even though it does span",
           "weight": 1,
           "required": false
         }
@@ -32074,7 +32076,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is $\\lbrace (1, 0, 0), (0, 1, 0), (1, 1, 0) \\rbrace$ a basis for $\\mathbb{R}^3$?",
+    "stem": "Is $\\lbrace [1, 0, 0], [0, 1, 0], [1, 1, 0] \\rbrace$ a basis for $\\mathbb{R}^3$?",
     "rubric": {
       "elements": [
         {
@@ -32126,7 +32128,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "e.g. $\\lbrace (2, -1, 0), (1, 0, 1) \\rbrace$ — both vectors satisfy the equation, they're independent (not scalar multiples), and since the solution space is a plane ($2$-dimensional), two independent vectors in it suffice to be a basis",
+          "description": "e.g. $\\lbrace [2, -1, 0], [1, 0, 1] \\rbrace$ — both vectors satisfy the equation, they're independent (not scalar multiples), and since the solution space is a plane ($2$-dimensional), two independent vectors in it suffice to be a basis",
           "weight": 1,
           "required": false
         }
@@ -32156,7 +32158,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is $\\lbrace (1, 0), (0, 1), (1, 1) \\rbrace$ linearly independent? Could it still be a spanning set for $\\mathbb{R}^2$? Is it a basis?",
+    "stem": "Is $\\lbrace [1, 0], [0, 1], [1, 1] \\rbrace$ linearly independent? Could it still be a spanning set for $\\mathbb{R}^2$? Is it a basis?",
     "rubric": {
       "elements": [
         {
@@ -32215,7 +32217,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The vector space of symmetric $2 \\times 2$ matrices has dimension $3$. Verify that $\\left\\lbrace \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}, \\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}, \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix} \\right\\rbrace$ is a basis.",
+    "stem": "The vector space of symmetric $2 \\times 2$ matrices has dimension $3$. Verify that $\\left\\lbrace \\begin{bmatrix} 1 & 0 \\\\ 0 & 0 \\end{bmatrix}, \\begin{bmatrix} 0 & 0 \\\\ 0 & 1 \\end{bmatrix}, \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix} \\right\\rbrace$ is a basis.",
     "rubric": {
       "elements": [
         {
@@ -32789,7 +32791,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The standard basis vectors $\\mathbf{e}_1, \\mathbf{e}_2$ are expressed in a new basis $B = \\lbrace (2, 0), (0, 3) \\rbrace$. Find the $B$-coordinates of $\\mathbf{e}_1 = (1, 0)$ and $\\mathbf{e}_2 = (0, 1)$.",
+    "stem": "The standard basis vectors $\\mathbf{e}_1, \\mathbf{e}_2$ are expressed in a new basis $B = \\lbrace [2, 0], [0, 3] \\rbrace$. Find the $B$-coordinates of $\\mathbf{e}_1 = [1, 0]$ and $\\mathbf{e}_2 = [0, 1]$.",
     "rubric": {
       "elements": [
         {
@@ -32830,12 +32832,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Given the change-of-basis matrix $\\mathbf{P} = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$ converting $B$-coordinates to standard coordinates, find the standard coordinates of the vector with $B$-coordinates $(4, 5)$.",
+    "stem": "Given the change-of-basis matrix $\\mathbf{P} = \\begin{bmatrix} 2 & 0 \\\\ 0 & 3 \\end{bmatrix}$ converting $B$-coordinates to standard coordinates, find the standard coordinates of the vector with $B$-coordinates $[4, 5]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(8, 15)$ — computed as $\\mathbf{P}$ times the $B$-coordinate vector",
+          "description": "$[8, 15]$ — computed as $\\mathbf{P}$ times the $B$-coordinate vector",
           "weight": 1,
           "required": false
         }
@@ -32865,12 +32867,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{b}_1 = (1, 1)$ and $\\mathbf{b}_2 = (1, -1)$ form a basis for $\\mathbb{R}^2$. A vector $\\mathbf{v}$ has $B$-coordinates $(2, 3)$ — i.e. $\\mathbf{v} = 2\\mathbf{b}_1 + 3\\mathbf{b}_2$. Find $\\mathbf{v}$ in standard coordinates.",
+    "stem": "$\\mathbf{b}_1 = [1, 1]$ and $\\mathbf{b}_2 = [1, -1]$ form a basis for $\\mathbb{R}^2$. A vector $\\mathbf{v}$ has $B$-coordinates $[2, 3]$ — i.e. $\\mathbf{v} = 2\\mathbf{b}_1 + 3\\mathbf{b}_2$. Find $\\mathbf{v}$ in standard coordinates.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{v} = 2(1, 1) + 3(1, -1) = (5, -1)$",
+          "description": "$\\mathbf{v} = 2(1, 1) + 3(1, -1) = [5, -1]$",
           "weight": 1,
           "required": false
         }
@@ -32900,12 +32902,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{b}_1 = (2, 1)$ and $\\mathbf{b}_2 = (1, 1)$ form a basis for $\\mathbb{R}^2$. Find the $B$-coordinates of the standard vector $\\mathbf{v} = (5, 3)$.",
+    "stem": "$\\mathbf{b}_1 = [2, 1]$ and $\\mathbf{b}_2 = [1, 1]$ form a basis for $\\mathbb{R}^2$. Find the $B$-coordinates of the standard vector $\\mathbf{v} = [5, 3]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$B$-coordinates $(2, 1)$, since $2\\mathbf{b}_1 + 1\\mathbf{b}_2 = (4, 2) + (1, 1) = (5, 3)$",
+          "description": "$B$-coordinates $[2, 1]$, since $2\\mathbf{b}_1 + 1\\mathbf{b}_2 = [4, 2] + [1, 1] = [5, 3]$",
           "weight": 1,
           "required": false
         }
@@ -33029,12 +33031,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "In the basis $B = \\lbrace (1, 1, 0), (0, 1, 1), (1, 0, 1) \\rbrace$ for $\\mathbb{R}^3$, find the standard coordinates of the vector with $B$-coordinates $(1, 1, 1)$.",
+    "stem": "In the basis $B = \\lbrace [1, 1, 0], [0, 1, 1], [1, 0, 1] \\rbrace$ for $\\mathbb{R}^3$, find the standard coordinates of the vector with $B$-coordinates $[1, 1, 1]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(2, 2, 2)$ — sum the three basis vectors, each weighted by the coefficient $1$",
+          "description": "$[2, 2, 2]$ — sum the three basis vectors, each weighted by the coefficient $1$",
           "weight": 1,
           "required": false
         }
@@ -33609,7 +33611,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Let $U = \\operatorname{span}\\lbrace (1, 0, 0), (0, 1, 0) \\rbrace$ (the $xy$-plane) and $W = \\operatorname{span}\\lbrace (0, 0, 1) \\rbrace$ (the $z$-axis) in $\\mathbb{R}^3$. Find $U + W$ and $U \\cap W$.",
+    "stem": "Let $U = \\operatorname{span}\\lbrace [1, 0, 0], [0, 1, 0] \\rbrace$ (the $xy$-plane) and $W = \\operatorname{span}\\lbrace [0, 0, 1] \\rbrace$ (the $z$-axis) in $\\mathbb{R}^3$. Find $U + W$ and $U \\cap W$.",
     "rubric": {
       "elements": [
         {
@@ -33655,7 +33657,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "$U \\cap W$ is the $x$-axis, $\\operatorname{span}\\lbrace (1, 0, 0) \\rbrace$ — the set of points satisfying both $z = 0$ (in $U$) and $y = 0$ (in $W$)",
+          "description": "$U \\cap W$ is the $x$-axis, $\\operatorname{span}\\lbrace [1, 0, 0] \\rbrace$ — the set of points satisfying both $z = 0$ (in $U$) and $y = 0$ (in $W$)",
           "weight": 1,
           "required": false
         }
@@ -33702,7 +33704,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "no — $(1, 0) + (0, 1) = (1, 1)$ lies in neither axis, so $U \\cup W$ fails closure under addition",
+          "description": "no — $[1, 0] + [0, 1] = [1, 1]$ lies in neither axis, so $U \\cup W$ fails closure under addition",
           "weight": 1,
           "required": false
         },
@@ -33837,7 +33839,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "$U \\cap W = \\lbrace (0, 0) \\rbrace$ only — the two lines $x = -y$ and $x = y$ intersect solely at the origin, so $U$ and $W$ form a direct sum, $U \\oplus W = \\mathbb{R}^2$",
+          "description": "$U \\cap W = \\lbrace [0, 0] \\rbrace$ only — the two lines $x = -y$ and $x = y$ intersect solely at the origin, so $U$ and $W$ form a direct sum, $U \\oplus W = \\mathbb{R}^2$",
           "weight": 1,
           "required": false
         }
@@ -34688,7 +34690,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 4 \\\\ 1 & 2 \\\\ 3 & 6 \\end{pmatrix}$ ($3 \\times 2$). Confirm $\\operatorname{rank}(\\mathbf{A}) = 1$ and give the dimension of each of the four subspaces.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 4 \\\\ 1 & 2 \\\\ 3 & 6 \\end{bmatrix}$ ($3 \\times 2$). Confirm $\\operatorname{rank}(\\mathbf{A}) = 1$ and give the dimension of each of the four subspaces.",
     "rubric": {
       "elements": [
         {
@@ -35327,7 +35329,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\\\ 1 & 1 \\end{pmatrix}$ ($3 \\times 2$). Describe $C(\\mathbf{A})$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\\\ 1 & 1 \\end{bmatrix}$ ($3 \\times 2$). Describe $C(\\mathbf{A})$.",
     "rubric": {
       "elements": [
         {
@@ -35362,12 +35364,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\end{pmatrix}$ ($2 \\times 3$, all columns multiples of $(1, 2)$). Describe $C(\\mathbf{A})$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\end{bmatrix}$ ($2 \\times 3$, all columns multiples of $[1, 2]$). Describe $C(\\mathbf{A})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "a line in $\\mathbb{R}^2$, spanned by $(1, 2)$ — rank $1$ despite having three columns",
+          "description": "a line in $\\mathbb{R}^2$, spanned by $[1, 2]$ — rank $1$ despite having three columns",
           "weight": 1,
           "required": false
         }
@@ -35397,7 +35399,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\\\ 1 & 1 & 1 \\end{pmatrix}$ ($4 \\times 3$, full column rank). Describe $C(\\mathbf{A})$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\\\ 1 & 1 & 1 \\end{bmatrix}$ ($4 \\times 3$, full column rank). Describe $C(\\mathbf{A})$.",
     "rubric": {
       "elements": [
         {
@@ -35438,7 +35440,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 6 \\\\ 2 & 4 \\end{pmatrix}$ ($3 \\times 2$, columns proportional). Is $\\mathbf{b} = (1, 3, 2)$ in $C(\\mathbf{A})$?",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 3 & 6 \\\\ 2 & 4 \\end{bmatrix}$ ($3 \\times 2$, columns proportional). Is $\\mathbf{b} = [1, 3, 2]$ in $C(\\mathbf{A})$?",
     "rubric": {
       "elements": [
         {
@@ -35473,12 +35475,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For the same $\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 6 \\\\ 2 & 4 \\end{pmatrix}$, is $\\mathbf{b} = (1, 0, 0)$ in $C(\\mathbf{A})$?",
+    "stem": "For the same $\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 3 & 6 \\\\ 2 & 4 \\end{bmatrix}$, is $\\mathbf{b} = [1, 0, 0]$ in $C(\\mathbf{A})$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "no — $C(\\mathbf{A})$ is the line $\\operatorname{span}\\lbrace (1, 3, 2) \\rbrace$, and $(1, 0, 0)$ is not a scalar multiple of that vector",
+          "description": "no — $C(\\mathbf{A})$ is the line $\\operatorname{span}\\lbrace [1, 3, 2] \\rbrace$, and $[1, 0, 0]$ is not a scalar multiple of that vector",
           "weight": 1,
           "required": false
         }
@@ -36141,12 +36143,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 1 \\\\ 2 & 2 \\end{pmatrix}$. Find $N(\\mathbf{A})$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 1 \\\\ 2 & 2 \\end{bmatrix}$. Find $N(\\mathbf{A})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the rows are dependent, giving one equation $x_1 + x_2 = 0$; $N(\\mathbf{A}) = \\operatorname{span}\\lbrace (1, -1) \\rbrace$",
+          "description": "the rows are dependent, giving one equation $x_1 + x_2 = 0$; $N(\\mathbf{A}) = \\operatorname{span}\\lbrace [1, -1] \\rbrace$",
           "weight": 1,
           "required": false
         }
@@ -36176,7 +36178,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\end{pmatrix}$ ($2 \\times 3$). Find $N(\\mathbf{A})$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\end{bmatrix}$ ($2 \\times 3$). Find $N(\\mathbf{A})$.",
     "rubric": {
       "elements": [
         {
@@ -36187,7 +36189,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "$N(\\mathbf{A})$ is a $2$-dimensional plane in $\\mathbb{R}^3$, e.g. spanned by $(2, -1, 0)$ and $(3, 0, -1)$",
+          "description": "$N(\\mathbf{A})$ is a $2$-dimensional plane in $\\mathbb{R}^3$, e.g. spanned by $[2, -1, 0]$ and $[3, 0, -1]$",
           "weight": 1,
           "required": false
         }
@@ -36217,12 +36219,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$ ($2 \\times 2$). Find $N(\\mathbf{A})$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 0 \\end{bmatrix}$ ($2 \\times 2$). Find $N(\\mathbf{A})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$N(\\mathbf{A}) = \\operatorname{span}\\lbrace (0, 1) \\rbrace$ — the second coordinate is entirely free, since the second row of $\\mathbf{A}$ is zero",
+          "description": "$N(\\mathbf{A}) = \\operatorname{span}\\lbrace [0, 1] \\rbrace$ — the second coordinate is entirely free, since the second row of $\\mathbf{A}$ is zero",
           "weight": 1,
           "required": false
         }
@@ -36287,12 +36289,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 1 & 1 \\\\ 1 & 1 & 1 \\end{pmatrix}$ ($3 \\times 3$, all rows identical). Find $\\dim N(\\mathbf{A})$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 1 & 1 \\\\ 1 & 1 & 1 \\end{bmatrix}$ ($3 \\times 3$, all rows identical). Find $\\dim N(\\mathbf{A})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\operatorname{rank}(\\mathbf{A}) = 1$, so $\\dim N(\\mathbf{A}) = 3 - 1 = 2$ — a plane, e.g. spanned by $(1, -1, 0)$ and $(1, 0, -1)$",
+          "description": "$\\operatorname{rank}(\\mathbf{A}) = 1$, so $\\dim N(\\mathbf{A}) = 3 - 1 = 2$ — a plane, e.g. spanned by $[1, -1, 0]$ and $[1, 0, -1]$",
           "weight": 1,
           "required": false
         }
@@ -36925,12 +36927,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\\\ 3 & 6 \\end{pmatrix}$ ($3 \\times 2$). Describe the row space.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 4 \\\\ 3 & 6 \\end{bmatrix}$ ($3 \\times 2$). Describe the row space.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\operatorname{span}\\lbrace (1, 2) \\rbrace$ — every row is a multiple of $(1, 2)$",
+          "description": "$\\operatorname{span}\\lbrace [1, 2] \\rbrace$ — every row is a multiple of $[1, 2]$",
           "weight": 1,
           "required": false
         }
@@ -36960,12 +36962,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 1 \\\\ 1 & 1 & 2 \\end{pmatrix}$ ($3 \\times 3$, with $\\text{row}_1 + \\text{row}_2 = \\text{row}_3$). Describe the row space.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 1 \\\\ 1 & 1 & 2 \\end{bmatrix}$ ($3 \\times 3$, with $\\text{row}_1 + \\text{row}_2 = \\text{row}_3$). Describe the row space.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "a $2$-dimensional plane in $\\mathbb{R}^3$ spanned by $(1, 0, 1)$ and $(0, 1, 1)$, since row $3$ is a combination of the other two",
+          "description": "a $2$-dimensional plane in $\\mathbb{R}^3$ spanned by $[1, 0, 1]$ and $[0, 1, 1]$, since row $3$ is a combination of the other two",
           "weight": 1,
           "required": false
         }
@@ -36995,12 +36997,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 1 \\\\ 4 & 2 \\\\ 6 & 3 \\end{pmatrix}$ ($3 \\times 2$, all rows multiples of $(2, 1)$). Give the row space.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 4 & 2 \\\\ 6 & 3 \\end{bmatrix}$ ($3 \\times 2$, all rows multiples of $[2, 1]$). Give the row space.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\operatorname{span}\\lbrace (2, 1) \\rbrace$, a line in $\\mathbb{R}^2$",
+          "description": "$\\operatorname{span}\\lbrace [2, 1] \\rbrace$, a line in $\\mathbb{R}^2$",
           "weight": 1,
           "required": false
         }
@@ -37065,7 +37067,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For $\\mathbf{A} = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{pmatrix}$ ($2 \\times 3$, independent rows), what is the dimension of the row space, and is that the maximum possible for a $2 \\times 3$ matrix?",
+    "stem": "For $\\mathbf{A} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix}$ ($2 \\times 3$, independent rows), what is the dimension of the row space, and is that the maximum possible for a $2 \\times 3$ matrix?",
     "rubric": {
       "elements": [
         {
@@ -37147,12 +37149,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 3 \\\\ 2 & 6 \\\\ -1 & -3 \\end{pmatrix}$ ($3 \\times 2$, rows all multiples of $(1, 3)$). Verify the row space is $1$-dimensional and give a basis.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 3 \\\\ 2 & 6 \\\\ -1 & -3 \\end{bmatrix}$ ($3 \\times 2$, rows all multiples of $[1, 3]$). Verify the row space is $1$-dimensional and give a basis.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "rank $1$; the row space is $\\operatorname{span}\\lbrace (1, 3) \\rbrace$",
+          "description": "rank $1$; the row space is $\\operatorname{span}\\lbrace [1, 3] \\rbrace$",
           "weight": 1,
           "required": false
         }
@@ -37697,7 +37699,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\end{pmatrix}$ (columns dependent). Find the left null space.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 4 \\end{bmatrix}$ (columns dependent). Find the left null space.",
     "rubric": {
       "elements": [
         {
@@ -37708,7 +37710,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "the left null space is $\\operatorname{span}\\lbrace (-2, 1) \\rbrace$",
+          "description": "the left null space is $\\operatorname{span}\\lbrace [-2, 1] \\rbrace$",
           "weight": 1,
           "required": false
         }
@@ -37738,12 +37740,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 1 \\\\ 2 & 2 \\\\ 3 & 3 \\end{pmatrix}$ ($3 \\times 2$, columns proportional). Find the left null space.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 1 \\\\ 2 & 2 \\\\ 3 & 3 \\end{bmatrix}$ ($3 \\times 2$, columns proportional). Find the left null space.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{y}^\\top \\mathbf{A} = \\mathbf{0}^\\top$ gives $y_1 + 2y_2 + 3y_3 = 0$ (from either column, since they're proportional) — a $2$-dimensional plane in $\\mathbb{R}^3$, e.g. spanned by $(2, -1, 0)$ and $(3, 0, -1)$",
+          "description": "$\\mathbf{y}^\\top \\mathbf{A} = \\mathbf{0}^\\top$ gives $y_1 + 2y_2 + 3y_3 = 0$ (from either column, since they're proportional) — a $2$-dimensional plane in $\\mathbb{R}^3$, e.g. spanned by $[2, -1, 0]$ and $[3, 0, -1]$",
           "weight": 1,
           "required": false
         }
@@ -37773,12 +37775,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\\\ 1 & 1 \\end{pmatrix}$ ($3 \\times 2$, full column rank). Find the left null space.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\\\ 1 & 1 \\end{bmatrix}$ ($3 \\times 2$, full column rank). Find the left null space.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$y_1 + y_3 = 0$ and $y_2 + y_3 = 0$ give a $1$-dimensional space, $\\operatorname{span}\\lbrace (1, 1, -1) \\rbrace$ (matching the dimension $3 - 2 = 1$)",
+          "description": "$y_1 + y_3 = 0$ and $y_2 + y_3 = 0$ give a $1$-dimensional space, $\\operatorname{span}\\lbrace [1, 1, -1] \\rbrace$ (matching the dimension $3 - 2 = 1$)",
           "weight": 1,
           "required": false
         }
@@ -37878,7 +37880,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\\\ 3 & 6 \\\\ 4 & 8 \\end{pmatrix}$ ($4 \\times 2$, all rows multiples of $(1, 2)$). Find the left null space.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 4 \\\\ 3 & 6 \\\\ 4 & 8 \\end{bmatrix}$ ($4 \\times 2$, all rows multiples of $[1, 2]$). Find the left null space.",
     "rubric": {
       "elements": [
         {
@@ -38546,18 +38548,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For $\\mathbf{A} = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$ (diagonal, invertible), decompose $\\mathbf{x} = (4, 5)$ into its row-space and null-space components and compute $\\mathbf{A}\\mathbf{x}$ both directly and via the decomposition.",
+    "stem": "For $\\mathbf{A} = \\begin{bmatrix} 2 & 0 \\\\ 0 & 3 \\end{bmatrix}$ (diagonal, invertible), decompose $\\mathbf{x} = [4, 5]$ into its row-space and null-space components and compute $\\mathbf{A}\\mathbf{x}$ both directly and via the decomposition.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the row space is all of $\\mathbb{R}^2$ ($\\mathbf{A}$ is invertible, so $N(\\mathbf{A}) = \\lbrace \\mathbf{0} \\rbrace$), so $\\mathbf{x} = (4, 5)$ itself is entirely the row-space part",
+          "description": "the row space is all of $\\mathbb{R}^2$ ($\\mathbf{A}$ is invertible, so $N(\\mathbf{A}) = \\lbrace \\mathbf{0} \\rbrace$), so $\\mathbf{x} = [4, 5]$ itself is entirely the row-space part",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "$\\mathbf{A}\\mathbf{x} = (8, 15)$ directly, matching $\\mathbf{A}$ applied to the full row-space component, since there is no null-space part to discard",
+          "description": "$\\mathbf{A}\\mathbf{x} = [8, 15]$ directly, matching $\\mathbf{A}$ applied to the full row-space component, since there is no null-space part to discard",
           "weight": 1,
           "required": false
         }
@@ -38587,12 +38589,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 1 \\\\ 1 & 1 \\end{pmatrix}$ (rank $1$, row space $\\operatorname{span}\\lbrace (1, 1) \\rbrace$, null space $\\operatorname{span}\\lbrace (1, -1) \\rbrace$). Decompose $\\mathbf{x} = (3, 1)$ into row-space and null-space parts and verify that $\\mathbf{A}\\mathbf{x}$ depends only on the row-space part.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix}$ (rank $1$, row space $\\operatorname{span}\\lbrace [1, 1] \\rbrace$, null space $\\operatorname{span}\\lbrace [1, -1] \\rbrace$). Decompose $\\mathbf{x} = [3, 1]$ into row-space and null-space parts and verify that $\\mathbf{A}\\mathbf{x}$ depends only on the row-space part.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{x} = 2(1, 1) + 1(1, -1)$; $\\mathbf{A}\\mathbf{x} = \\mathbf{A}(3, 1) = (4, 4)$; computing $\\mathbf{A}$ on just the row-space part $2(1, 1)$ gives $\\mathbf{A}(2, 2) = (4, 4)$, matching — confirming the null-space part $(1, -1)$ contributed $\\mathbf{0}$",
+          "description": "$\\mathbf{x} = 2(1, 1) + 1(1, -1)$; $\\mathbf{A}\\mathbf{x} = \\mathbf{A}(3, 1) = [4, 4]$; computing $\\mathbf{A}$ on just the row-space part $2(1, 1)$ gives $\\mathbf{A}(2, 2) = [4, 4]$, matching — confirming the null-space part $[1, -1]$ contributed $\\mathbf{0}$",
           "weight": 1,
           "required": false
         }
@@ -38745,12 +38747,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\\\ 3 & 6 \\end{pmatrix}$ (rank $1$, row space $\\operatorname{span}\\lbrace (1, 2) \\rbrace$, null space $\\operatorname{span}\\lbrace (2, -1) \\rbrace$). For $\\mathbf{x} = (1, 2)$ (already in the row space), compute $\\mathbf{A}\\mathbf{x}$ and confirm it's nonzero, landing in $C(\\mathbf{A})$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 4 \\\\ 3 & 6 \\end{bmatrix}$ (rank $1$, row space $\\operatorname{span}\\lbrace [1, 2] \\rbrace$, null space $\\operatorname{span}\\lbrace [2, -1] \\rbrace$). For $\\mathbf{x} = [1, 2]$ (already in the row space), compute $\\mathbf{A}\\mathbf{x}$ and confirm it's nonzero, landing in $C(\\mathbf{A})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A}\\mathbf{x} = (1 + 4, 2 + 8, 3 + 12) = (5, 10, 15) = 5(1, 2, 3)$, a nonzero vector in $C(\\mathbf{A}) = \\operatorname{span}\\lbrace (1, 2, 3) \\rbrace$",
+          "description": "$\\mathbf{A}\\mathbf{x} = (1 + 4, 2 + 8, 3 + 12) = [5, 10, 15] = 5(1, 2, 3)$, a nonzero vector in $C(\\mathbf{A}) = \\operatorname{span}\\lbrace [1, 2, 3] \\rbrace$",
           "weight": 1,
           "required": false
         }
@@ -39307,12 +39309,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For $\\mathbf{A} = \\begin{pmatrix} 1 & 1 \\\\ 2 & 2 \\end{pmatrix}$ (row space $\\operatorname{span}\\lbrace (1, 1) \\rbrace$, null space $\\operatorname{span}\\lbrace (1, -1) \\rbrace$), verify orthogonality directly.",
+    "stem": "For $\\mathbf{A} = \\begin{bmatrix} 1 & 1 \\\\ 2 & 2 \\end{bmatrix}$ (row space $\\operatorname{span}\\lbrace [1, 1] \\rbrace$, null space $\\operatorname{span}\\lbrace [1, -1] \\rbrace$), verify orthogonality directly.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(1, 1) \\cdot (1, -1) = 1 - 1 = 0$ ✓",
+          "description": "$[1, 1] \\cdot [1, -1] = 1 - 1 = 0$ ✓",
           "weight": 1,
           "required": false
         }
@@ -39342,12 +39344,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For $\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\end{pmatrix}$ (row space $\\operatorname{span}\\lbrace (1, 2) \\rbrace$, column space $\\operatorname{span}\\lbrace (1, 2) \\rbrace$, left null space $\\operatorname{span}\\lbrace (-2, 1) \\rbrace$), verify column space $\\perp$ left null space directly.",
+    "stem": "For $\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 4 \\end{bmatrix}$ (row space $\\operatorname{span}\\lbrace [1, 2] \\rbrace$, column space $\\operatorname{span}\\lbrace [1, 2] \\rbrace$, left null space $\\operatorname{span}\\lbrace [-2, 1] \\rbrace$), verify column space $\\perp$ left null space directly.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(1, 2) \\cdot (-2, 1) = -2 + 2 = 0$ ✓",
+          "description": "$[1, 2] \\cdot [-2, 1] = -2 + 2 = 0$ ✓",
           "weight": 1,
           "required": false
         }
@@ -39377,12 +39379,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\end{pmatrix}$ ($2 \\times 3$, full row rank, $N(\\mathbf{A}) = \\operatorname{span}\\lbrace (0, 0, 1) \\rbrace$, row space $\\operatorname{span}\\lbrace (1, 0, 0), (0, 1, 0) \\rbrace$). Verify that a row-space basis is orthogonal to the null-space vector.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\end{bmatrix}$ ($2 \\times 3$, full row rank, $N(\\mathbf{A}) = \\operatorname{span}\\lbrace [0, 0, 1] \\rbrace$, row space $\\operatorname{span}\\lbrace [1, 0, 0], [0, 1, 0] \\rbrace$). Verify that a row-space basis is orthogonal to the null-space vector.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(1, 0, 0) \\cdot (0, 0, 1) = 0$ and $(0, 1, 0) \\cdot (0, 0, 1) = 0$ — both row-space basis vectors are orthogonal to the null-space vector ✓",
+          "description": "$[1, 0, 0] \\cdot [0, 0, 1] = 0$ and $[0, 1, 0] \\cdot [0, 0, 1] = 0$ — both row-space basis vectors are orthogonal to the null-space vector ✓",
           "weight": 1,
           "required": false
         }
@@ -39453,18 +39455,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For $\\mathbf{A} = \\begin{pmatrix} 3 & 6 \\\\ 1 & 2 \\end{pmatrix}$ (row space $\\operatorname{span}\\lbrace (3, 6) \\rbrace$, or equivalently $\\operatorname{span}\\lbrace (1, 2) \\rbrace$; null space $\\operatorname{span}\\lbrace (2, -1) \\rbrace$), confirm orthogonality and identify why both bases describe “the same” row space.",
+    "stem": "For $\\mathbf{A} = \\begin{bmatrix} 3 & 6 \\\\ 1 & 2 \\end{bmatrix}$ (row space $\\operatorname{span}\\lbrace [3, 6] \\rbrace$, or equivalently $\\operatorname{span}\\lbrace [1, 2] \\rbrace$; null space $\\operatorname{span}\\lbrace [2, -1] \\rbrace$), confirm orthogonality and identify why both bases describe “the same” row space.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(1, 2) \\cdot (2, -1) = 2 - 2 = 0$ ✓",
+          "description": "$[1, 2] \\cdot [2, -1] = 2 - 2 = 0$ ✓",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "$(3, 6)$ and $(1, 2)$ are scalar multiples of each other, spanning the identical $1$-dimensional subspace, so either can serve as “the” row space basis",
+          "description": "$[3, 6]$ and $[1, 2]$ are scalar multiples of each other, spanning the identical $1$-dimensional subspace, so either can serve as “the” row space basis",
           "weight": 1,
           "required": false
         }
@@ -40127,7 +40129,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\end{pmatrix}$. Find $\\operatorname{rank}(\\mathbf{A})$. Then find $\\operatorname{rank}(\\mathbf{I}_3)$, the rank of the $3 \\times 3$ identity.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 4 \\end{bmatrix}$. Find $\\operatorname{rank}(\\mathbf{A})$. Then find $\\operatorname{rank}(\\mathbf{I}_3)$, the rank of the $3 \\times 3$ identity.",
     "rubric": {
       "elements": [
         {
@@ -40168,7 +40170,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{B} = \\begin{pmatrix} 1 & 0 & 2 \\\\ 0 & 1 & 3 \\\\ 1 & 1 & 5 \\end{pmatrix}$. Find $\\operatorname{rank}(\\mathbf{B})$.",
+    "stem": "$\\mathbf{B} = \\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 1 & 3 \\\\ 1 & 1 & 5 \\end{bmatrix}$. Find $\\operatorname{rank}(\\mathbf{B})$.",
     "rubric": {
       "elements": [
         {
@@ -40244,7 +40246,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{C} = \\begin{pmatrix} 2 & 4 & 6 \\\\ 1 & 2 & 3 \\\\ 0 & 0 & 1 \\end{pmatrix}$. Find $\\operatorname{rank}(\\mathbf{C})$.",
+    "stem": "$\\mathbf{C} = \\begin{bmatrix} 2 & 4 & 6 \\\\ 1 & 2 & 3 \\\\ 0 & 0 & 1 \\end{bmatrix}$. Find $\\operatorname{rank}(\\mathbf{C})$.",
     "rubric": {
       "elements": [
         {
@@ -41712,7 +41714,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is the standard basis $\\lbrace (1, 0, 0), (0, 1, 0), (0, 0, 1) \\rbrace$ orthonormal?",
+    "stem": "Is the standard basis $\\lbrace [1, 0, 0], [0, 1, 0], [0, 0, 1] \\rbrace$ orthonormal?",
     "rubric": {
       "elements": [
         {
@@ -41747,12 +41749,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using the orthonormal basis $\\lbrace (1, 0), (0, 1) \\rbrace$ of $\\mathbb{R}^2$, find the coordinates of $\\mathbf{v} = (3, -4)$ via dot products.",
+    "stem": "Using the orthonormal basis $\\lbrace [1, 0], [0, 1] \\rbrace$ of $\\mathbb{R}^2$, find the coordinates of $\\mathbf{v} = [3, -4]$ via dot products.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "the coordinates are $(\\mathbf{v} \\cdot \\mathbf{q}_1, \\mathbf{v} \\cdot \\mathbf{q}_2) = (3, -4)$, identical to the standard components of $\\mathbf{v}$, since this basis is the standard one",
+          "description": "the coordinates are $(\\mathbf{v} \\cdot \\mathbf{q}_1, \\mathbf{v} \\cdot \\mathbf{q}_2) = [3, -4]$, identical to the standard components of $\\mathbf{v}$, since this basis is the standard one",
           "weight": 1,
           "required": false
         }
@@ -41858,7 +41860,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For the orthonormal basis $\\left\\lbrace \\left(\\frac{1}{\\sqrt{2}}, \\frac{1}{\\sqrt{2}}\\right), \\left(\\frac{1}{\\sqrt{2}}, -\\frac{1}{\\sqrt{2}}\\right) \\right\\rbrace$ and $\\mathbf{v} = (4, 2)$, find the coordinates of $\\mathbf{v}$.",
+    "stem": "For the orthonormal basis $\\left\\lbrace \\left(\\frac{1}{\\sqrt{2}}, \\frac{1}{\\sqrt{2}}\\right), \\left(\\frac{1}{\\sqrt{2}}, -\\frac{1}{\\sqrt{2}}\\right) \\right\\rbrace$ and $\\mathbf{v} = [4, 2]$, find the coordinates of $\\mathbf{v}$.",
     "rubric": {
       "elements": [
         {
@@ -41899,12 +41901,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Why is $\\lbrace (1, 1), (1, -1) \\rbrace$ NOT an orthonormal basis of $\\mathbb{R}^2$, even though the two vectors are orthogonal?",
+    "stem": "Why is $\\lbrace [1, 1], [1, -1] \\rbrace$ NOT an orthonormal basis of $\\mathbb{R}^2$, even though the two vectors are orthogonal?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "although $(1, 1) \\cdot (1, -1) = 0$ (orthogonal), neither vector has unit norm (each has norm $\\sqrt{2}$), so both must be normalized first",
+          "description": "although $[1, 1] \\cdot [1, -1] = 0$ (orthogonal), neither vector has unit norm (each has norm $\\sqrt{2}$), so both must be normalized first",
           "weight": 1,
           "required": false
         }
@@ -42425,7 +42427,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Apply Gram-Schmidt to $\\mathbf{v}_1 = (1, 1)$, $\\mathbf{v}_2 = (1, 0)$.",
+    "stem": "Apply Gram-Schmidt to $\\mathbf{v}_1 = [1, 1]$, $\\mathbf{v}_2 = [1, 0]$.",
     "rubric": {
       "elements": [
         {
@@ -42436,7 +42438,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "$\\mathbf{w}_2 = \\mathbf{v}_2 - (\\mathbf{v}_2 \\cdot \\mathbf{q}_1)\\mathbf{q}_1 = (1, 0) - \\frac{1}{\\sqrt{2}}\\left(\\frac{1}{\\sqrt{2}}, \\frac{1}{\\sqrt{2}}\\right) = \\left(\\frac{1}{2}, -\\frac{1}{2}\\right)$",
+          "description": "$\\mathbf{w}_2 = \\mathbf{v}_2 - (\\mathbf{v}_2 \\cdot \\mathbf{q}_1)\\mathbf{q}_1 = [1, 0] - \\frac{1}{\\sqrt{2}}\\left(\\frac{1}{\\sqrt{2}}, \\frac{1}{\\sqrt{2}}\\right) = \\left(\\frac{1}{2}, -\\frac{1}{2}\\right)$",
           "weight": 1,
           "required": false
         },
@@ -42472,12 +42474,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Apply Gram-Schmidt to $\\mathbf{v}_1 = (1, 0)$, $\\mathbf{v}_2 = (2, 2)$.",
+    "stem": "Apply Gram-Schmidt to $\\mathbf{v}_1 = [1, 0]$, $\\mathbf{v}_2 = [2, 2]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{q}_1 = (1, 0)/1 = (1, 0)$; $\\mathbf{w}_2 = (2, 2) - 2(1, 0) = (0, 2)$; $\\mathbf{q}_2 = (0, 2)/2 = (0, 1)$",
+          "description": "$\\mathbf{q}_1 = [1, 0]/1 = [1, 0]$; $\\mathbf{w}_2 = [2, 2] - 2(1, 0) = [0, 2]$; $\\mathbf{q}_2 = [0, 2]/2 = [0, 1]$",
           "weight": 1,
           "required": false
         }
@@ -42507,12 +42509,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Apply Gram-Schmidt to $\\mathbf{v}_1 = (0, 3)$, $\\mathbf{v}_2 = (4, 4)$.",
+    "stem": "Apply Gram-Schmidt to $\\mathbf{v}_1 = [0, 3]$, $\\mathbf{v}_2 = [4, 4]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{q}_1 = (0, 3)/3 = (0, 1)$; $\\mathbf{w}_2 = (4, 4) - 4(0, 1) = (4, 0)$; $\\mathbf{q}_2 = (4, 0)/4 = (1, 0)$",
+          "description": "$\\mathbf{q}_1 = [0, 3]/3 = [0, 1]$; $\\mathbf{w}_2 = [4, 4] - 4(0, 1) = [4, 0]$; $\\mathbf{q}_2 = [4, 0]/4 = [1, 0]$",
           "weight": 1,
           "required": false
         }
@@ -42577,24 +42579,24 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Apply Gram-Schmidt to $\\mathbf{v}_1 = (3, 4)$, $\\mathbf{v}_2 = (1, 0)$.",
+    "stem": "Apply Gram-Schmidt to $\\mathbf{v}_1 = [3, 4]$, $\\mathbf{v}_2 = [1, 0]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{q}_1 = (3, 4)/5 = (0.6, 0.8)$",
+          "description": "$\\mathbf{q}_1 = [3, 4]/5 = [0.6, 0.8]$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "$\\mathbf{w}_2 = (1, 0) - 0.6(0.6, 0.8) = (0.64, -0.48)$",
+          "description": "$\\mathbf{w}_2 = [1, 0] - 0.6(0.6, 0.8) = [0.64, -0.48]$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "$\\mathbf{q}_2 = (0.64, -0.48)/0.8 = (0.8, -0.6)$",
+          "description": "$\\mathbf{q}_2 = [0.64, -0.48]/0.8 = [0.8, -0.6]$",
           "weight": 1,
           "required": false
         }
@@ -43256,7 +43258,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Find the QR decomposition of $\\mathbf{A} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 3 \\end{pmatrix}$.",
+    "stem": "Find the QR decomposition of $\\mathbf{A} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 3 \\end{bmatrix}$.",
     "rubric": {
       "elements": [
         {
@@ -43267,7 +43269,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "normalizing gives $\\mathbf{q}_1 = (1, 0)$, $\\mathbf{q}_2 = (0, 1)$, so $\\mathbf{Q} = \\mathbf{I}$ and $\\mathbf{R} = \\operatorname{diag}(1, 3)$ holds the original norms",
+          "description": "normalizing gives $\\mathbf{q}_1 = [1, 0]$, $\\mathbf{q}_2 = [0, 1]$, so $\\mathbf{Q} = \\mathbf{I}$ and $\\mathbf{R} = \\operatorname{diag}(1, 3)$ holds the original norms",
           "weight": 1,
           "required": false
         }
@@ -43297,12 +43299,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using the A2 example from `gram-schmidt` ($\\mathbf{v}_1 = (1, 0)$, $\\mathbf{v}_2 = (2, 2)$, giving $\\mathbf{q}_1 = (1, 0)$, $\\mathbf{q}_2 = (0, 1)$), write out $\\mathbf{A} = \\mathbf{Q}\\mathbf{R}$ explicitly.",
+    "stem": "Using the A2 example from `gram-schmidt` ($\\mathbf{v}_1 = [1, 0]$, $\\mathbf{v}_2 = [2, 2]$, giving $\\mathbf{q}_1 = [1, 0]$, $\\mathbf{q}_2 = [0, 1]$), write out $\\mathbf{A} = \\mathbf{Q}\\mathbf{R}$ explicitly.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 0 & 2 \\end{pmatrix}$, $\\mathbf{Q} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$, $\\mathbf{R} = \\begin{pmatrix} 1 & 2 \\\\ 0 & 2 \\end{pmatrix}$ — the entries of $\\mathbf{R}$ are the norms and the projection coefficient ($2$) from that run",
+          "description": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 0 & 2 \\end{bmatrix}$, $\\mathbf{Q} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}$, $\\mathbf{R} = \\begin{bmatrix} 1 & 2 \\\\ 0 & 2 \\end{bmatrix}$ — the entries of $\\mathbf{R}$ are the norms and the projection coefficient ($2$) from that run",
           "weight": 1,
           "required": false
         }
@@ -43332,12 +43334,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 0 & 4 \\\\ 3 & 0 \\end{pmatrix}$. Find its QR decomposition.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 0 & 4 \\\\ 3 & 0 \\end{bmatrix}$. Find its QR decomposition.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{q}_1 = (0, 3)/3 = (0, 1)$; $\\mathbf{w}_2 = (4, 0) - 0\\,\\mathbf{q}_1 = (4, 0)$; $\\mathbf{q}_2 = (1, 0)$; the diagonal of $\\mathbf{R}$ holds the norms $3$ and $4$, and the off-diagonal entry is $0$ since the columns were already orthogonal",
+          "description": "$\\mathbf{q}_1 = [0, 3]/3 = [0, 1]$; $\\mathbf{w}_2 = [4, 0] - 0\\,\\mathbf{q}_1 = [4, 0]$; $\\mathbf{q}_2 = [1, 0]$; the diagonal of $\\mathbf{R}$ holds the norms $3$ and $4$, and the off-diagonal entry is $0$ since the columns were already orthogonal",
           "weight": 1,
           "required": false
         }
@@ -43402,7 +43404,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Given $\\mathbf{R} = \\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix}$ and $\\mathbf{Q}^\\top \\mathbf{b} = (4, 6)$, solve $\\mathbf{R}\\mathbf{x} = \\mathbf{Q}^\\top \\mathbf{b}$ for $\\mathbf{x}$.",
+    "stem": "Given $\\mathbf{R} = \\begin{bmatrix} 2 & 1 \\\\ 0 & 3 \\end{bmatrix}$ and $\\mathbf{Q}^\\top \\mathbf{b} = [4, 6]$, solve $\\mathbf{R}\\mathbf{x} = \\mathbf{Q}^\\top \\mathbf{b}$ for $\\mathbf{x}$.",
     "rubric": {
       "elements": [
         {
@@ -43975,7 +43977,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\end{pmatrix}$ (rank $1$). Is $\\mathbf{A}$ invertible? Is $\\begin{pmatrix} 1 & 2 \\\\ 3 & 5 \\end{pmatrix}$ invertible?",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 4 \\end{bmatrix}$ (rank $1$). Is $\\mathbf{A}$ invertible? Is $\\begin{bmatrix} 1 & 2 \\\\ 3 & 5 \\end{bmatrix}$ invertible?",
     "rubric": {
       "elements": [
         {
@@ -44010,7 +44012,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 0 \\\\ 0 & 5 \\end{pmatrix}$. Is $\\mathbf{A}$ invertible? If so, find $\\mathbf{A}^{-1}$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 0 \\\\ 0 & 5 \\end{bmatrix}$. Is $\\mathbf{A}$ invertible? If so, find $\\mathbf{A}^{-1}$.",
     "rubric": {
       "elements": [
         {
@@ -44021,7 +44023,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "$\\mathbf{A}^{-1} = \\begin{pmatrix} \\frac{1}{2} & 0 \\\\ 0 & \\frac{1}{5} \\end{pmatrix}$, the reciprocal of each diagonal entry, since $\\mathbf{A}$ is diagonal",
+          "description": "$\\mathbf{A}^{-1} = \\begin{bmatrix} \\frac{1}{2} & 0 \\\\ 0 & \\frac{1}{5} \\end{bmatrix}$, the reciprocal of each diagonal entry, since $\\mathbf{A}$ is diagonal",
           "weight": 1,
           "required": false
         }
@@ -44051,7 +44053,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 1 \\\\ 1 & 1 \\end{pmatrix}$. Is $\\mathbf{A}$ invertible? Justify using rank.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix}$. Is $\\mathbf{A}$ invertible? Justify using rank.",
     "rubric": {
       "elements": [
         {
@@ -44086,7 +44088,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 4 & 7 \\\\ 2 & 6 \\end{pmatrix}$. Find $\\det(\\mathbf{A})$ and state whether $\\mathbf{A}$ is invertible.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 4 & 7 \\\\ 2 & 6 \\end{bmatrix}$. Find $\\det(\\mathbf{A})$ and state whether $\\mathbf{A}$ is invertible.",
     "rubric": {
       "elements": [
         {
@@ -44156,7 +44158,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 4 \\\\ 0 & 0 & 1 \\end{pmatrix}$ (upper triangular). Is $\\mathbf{A}$ invertible?",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 4 \\\\ 0 & 0 & 1 \\end{bmatrix}$ (upper triangular). Is $\\mathbf{A}$ invertible?",
     "rubric": {
       "elements": [
         {
@@ -44606,7 +44608,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\det\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc$",
+          "description": "$\\det\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} = ad - bc$",
           "weight": 1,
           "required": false
         },
@@ -44694,7 +44696,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\det = a(ei - fh) - b(di - fg) + c(dh - eg)$ for $\\begin{pmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \\end{pmatrix}$",
+          "description": "$\\det = a(ei - fh) - b(di - fg) + c(dh - eg)$ for $\\begin{bmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \\end{bmatrix}$",
           "weight": 1,
           "required": true
         }
@@ -44770,7 +44772,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Compute $\\det\\begin{pmatrix} 3 & 1 \\\\ 2 & 4 \\end{pmatrix}$.",
+    "stem": "Compute $\\det\\begin{bmatrix} 3 & 1 \\\\ 2 & 4 \\end{bmatrix}$.",
     "answerKey": 10,
     "tolerance": 0.01,
     "difficulty": 0.1,
@@ -44796,7 +44798,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Compute $\\det\\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & 4 & 5 \\\\ 0 & 0 & 6 \\end{pmatrix}$.",
+    "stem": "Compute $\\det\\begin{bmatrix} 1 & 2 & 3 \\\\ 0 & 4 & 5 \\\\ 0 & 0 & 6 \\end{bmatrix}$.",
     "answerKey": 24,
     "tolerance": 0.01,
     "difficulty": 0.25,
@@ -44822,7 +44824,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Compute $\\det\\begin{pmatrix} 2 & 0 \\\\ 5 & -3 \\end{pmatrix}$.",
+    "stem": "Compute $\\det\\begin{bmatrix} 2 & 0 \\\\ 5 & -3 \\end{bmatrix}$.",
     "answerKey": -6,
     "tolerance": 0.01,
     "difficulty": 0.35,
@@ -44848,7 +44850,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Compute $\\det\\begin{pmatrix} 1 & 2 & 1 \\\\ 2 & 1 & 0 \\\\ 1 & 1 & 2 \\end{pmatrix}$ by cofactor expansion along the first row.",
+    "stem": "Compute $\\det\\begin{bmatrix} 1 & 2 & 1 \\\\ 2 & 1 & 0 \\\\ 1 & 1 & 2 \\end{bmatrix}$ by cofactor expansion along the first row.",
     "answerKey": -5,
     "tolerance": 0.01,
     "difficulty": 0.45,
@@ -44936,12 +44938,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Compute the determinant via row reduction: $\\mathbf{A} = \\begin{pmatrix} 2 & 4 \\\\ 1 & 3 \\end{pmatrix}$. Reduce to triangular form and take the product of the pivots.",
+    "stem": "Compute the determinant via row reduction: $\\mathbf{A} = \\begin{bmatrix} 2 & 4 \\\\ 1 & 3 \\end{bmatrix}$. Reduce to triangular form and take the product of the pivots.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$R_2 - \\frac{1}{2}R_1$ gives $\\begin{pmatrix} 2 & 4 \\\\ 0 & 1 \\end{pmatrix}$",
+          "description": "$R_2 - \\frac{1}{2}R_1$ gives $\\begin{bmatrix} 2 & 4 \\\\ 0 & 1 \\end{bmatrix}$",
           "weight": 1,
           "required": false
         },
@@ -46261,12 +46263,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$. Find its eigenvalues and eigenvectors by inspection.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 0 \\\\ 0 & 3 \\end{bmatrix}$. Find its eigenvalues and eigenvectors by inspection.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "eigenvalues $2$, $3$ with eigenvectors $(1, 0)$, $(0, 1)$ respectively — for a diagonal matrix, the eigenvalues *are* the diagonal entries",
+          "description": "eigenvalues $2$, $3$ with eigenvectors $[1, 0]$, $[0, 1]$ respectively — for a diagonal matrix, the eigenvalues *are* the diagonal entries",
           "weight": 1,
           "required": false
         }
@@ -46295,7 +46297,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}$. Find its eigenvalues by solving $\\det(\\mathbf{A} - \\lambda \\mathbf{I}) = 0$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 4 & 1 \\\\ 2 & 3 \\end{bmatrix}$. Find its eigenvalues by solving $\\det(\\mathbf{A} - \\lambda \\mathbf{I}) = 0$.",
     "answerKey": 2,
     "tolerance": 0.01,
     "difficulty": 0.7,
@@ -46322,7 +46324,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Find the eigenvalues of $\\mathbf{A} = \\begin{pmatrix} 5 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & 3 \\end{pmatrix}$.",
+    "stem": "Find the eigenvalues of $\\mathbf{A} = \\begin{bmatrix} 5 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & 3 \\end{bmatrix}$.",
     "rubric": {
       "elements": [
         {
@@ -46356,7 +46358,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Find the eigenvalues of $\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ by solving $\\det(\\mathbf{A} - \\lambda \\mathbf{I}) = 0$.",
+    "stem": "Find the eigenvalues of $\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 1 \\end{bmatrix}$ by solving $\\det(\\mathbf{A} - \\lambda \\mathbf{I}) = 0$.",
     "answerKey": -1,
     "tolerance": 0.01,
     "difficulty": 0.9,
@@ -46383,12 +46385,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ has eigenvalues $3$ and $-1$ (from A4). Find the eigenvector for $\\lambda = 3$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 1 \\end{bmatrix}$ has eigenvalues $3$ and $-1$ (from A4). Find the eigenvector for $\\lambda = 3$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(\\mathbf{A} - 3\\mathbf{I})\\mathbf{v} = \\mathbf{0} \\Rightarrow \\begin{pmatrix} -2 & 2 \\\\ 2 & -2 \\end{pmatrix}\\mathbf{v} = \\mathbf{0} \\Rightarrow \\mathbf{v} = (1, 1)$ (or any scalar multiple)",
+          "description": "$(\\mathbf{A} - 3\\mathbf{I})\\mathbf{v} = \\mathbf{0} \\Rightarrow \\begin{bmatrix} -2 & 2 \\\\ 2 & -2 \\end{bmatrix}\\mathbf{v} = \\mathbf{0} \\Rightarrow \\mathbf{v} = [1, 1]$ (or any scalar multiple)",
           "weight": 1,
           "required": false
         }
@@ -46418,7 +46420,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Use the trace and determinant shortcuts to find the eigenvalues of $\\mathbf{A} = \\begin{pmatrix} 6 & 2 \\\\ 2 & 3 \\end{pmatrix}$ without expanding the full characteristic polynomial.",
+    "stem": "Use the trace and determinant shortcuts to find the eigenvalues of $\\mathbf{A} = \\begin{bmatrix} 6 & 2 \\\\ 2 & 3 \\end{bmatrix}$ without expanding the full characteristic polynomial.",
     "rubric": {
       "elements": [
         {
@@ -46728,7 +46730,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "In PCA, the covariance matrix's largest eigenvalue is $8$ with eigenvector $(1, 0)$; the smallest eigenvalue is $2$ with eigenvector $(0, 1)$. If you must summarize the data's spread in one number, why does the largest eigenvalue (not the trace or determinant) tell you the “most informative direction”?",
+    "stem": "In PCA, the covariance matrix's largest eigenvalue is $8$ with eigenvector $[1, 0]$; the smallest eigenvalue is $2$ with eigenvector $[0, 1]$. If you must summarize the data's spread in one number, why does the largest eigenvalue (not the trace or determinant) tell you the “most informative direction”?",
     "rubric": {
       "elements": [
         {
@@ -47003,7 +47005,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "From A2 in `eigenvalues-eigenvectors` ($\\lambda = 5, 2$ for $\\mathbf{A} = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}$), are these eigenvalues distinct? What does that guarantee?",
+    "stem": "From A2 in `eigenvalues-eigenvectors` ($\\lambda = 5, 2$ for $\\mathbf{A} = \\begin{bmatrix} 4 & 1 \\\\ 2 & 3 \\end{bmatrix}$), are these eigenvalues distinct? What does that guarantee?",
     "rubric": {
       "elements": [
         {
@@ -47038,12 +47040,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ has a repeated eigenvalue $\\lambda = 1$ (algebraic multiplicity $2$). Find the eigenspace for $\\lambda = 1$ and determine whether $\\mathbf{A}$ is diagonalizable.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$ has a repeated eigenvalue $\\lambda = 1$ (algebraic multiplicity $2$). Find the eigenspace for $\\lambda = 1$ and determine whether $\\mathbf{A}$ is diagonalizable.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(\\mathbf{A} - \\mathbf{I})\\mathbf{v} = \\mathbf{0}$ gives $\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}\\mathbf{v} = \\mathbf{0}$, so $\\mathbf{v} = (1, 0)$ up to a scalar — only a $1$-dimensional eigenspace (geometric multiplicity $1$) against algebraic multiplicity $2$, so $\\mathbf{A}$ is *not* diagonalizable",
+          "description": "$(\\mathbf{A} - \\mathbf{I})\\mathbf{v} = \\mathbf{0}$ gives $\\begin{bmatrix} 0 & 1 \\\\ 0 & 0 \\end{bmatrix}\\mathbf{v} = \\mathbf{0}$, so $\\mathbf{v} = [1, 0]$ up to a scalar — only a $1$-dimensional eigenspace (geometric multiplicity $1$) against algebraic multiplicity $2$, so $\\mathbf{A}$ is $\\textbf{NOT}$ diagonalizable",
           "weight": 1,
           "required": false
         }
@@ -47073,7 +47075,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 3 & 0 \\\\ 0 & 3 \\end{pmatrix}$ has eigenvalue $3$ with algebraic multiplicity $2$. Is $\\mathbf{A}$ diagonalizable?",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 3 & 0 \\\\ 0 & 3 \\end{bmatrix}$ has eigenvalue $3$ with algebraic multiplicity $2$. Is $\\mathbf{A}$ diagonalizable?",
     "rubric": {
       "elements": [
         {
@@ -47126,12 +47128,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 1 \\\\ 0 & 2 \\end{pmatrix}$ has eigenvalue $2$ with algebraic multiplicity $2$. Find the dimension of its eigenspace and state whether $\\mathbf{A}$ is diagonalizable.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 0 & 2 \\end{bmatrix}$ has eigenvalue $2$ with algebraic multiplicity $2$. Find the dimension of its eigenspace and state whether $\\mathbf{A}$ is diagonalizable.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(\\mathbf{A} - 2\\mathbf{I})\\mathbf{v} = \\mathbf{0}$ gives $\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}\\mathbf{v} = \\mathbf{0}$, so the eigenspace is $\\operatorname{span}\\lbrace (1, 0) \\rbrace$, of dimension $1 <$ algebraic multiplicity $2$, so $\\mathbf{A}$ is not diagonalizable",
+          "description": "$(\\mathbf{A} - 2\\mathbf{I})\\mathbf{v} = \\mathbf{0}$ gives $\\begin{bmatrix} 0 & 1 \\\\ 0 & 0 \\end{bmatrix}\\mathbf{v} = \\mathbf{0}$, so the eigenspace is $\\operatorname{span}\\lbrace [1, 0] \\rbrace$, of dimension $1 <$ algebraic multiplicity $2$, so $\\mathbf{A}$ is not diagonalizable",
           "weight": 1,
           "required": false
         }
@@ -47161,12 +47163,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}$ has eigenvalues $5$ and $2$ (from A2 in `eigenvalues-eigenvectors`) with eigenvectors $(1, 1)$ and $(1, -2)$. Write out $\\mathbf{P}$ and $\\mathbf{D}$ such that $\\mathbf{A} = \\mathbf{P}\\mathbf{D}\\mathbf{P}^{-1}$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 4 & 1 \\\\ 2 & 3 \\end{bmatrix}$ has eigenvalues $5$ and $2$ (from A2 in `eigenvalues-eigenvectors`) with eigenvectors $[1, 1]$ and $[1, -2]$. Write out $\\mathbf{P}$ and $\\mathbf{D}$ such that $\\mathbf{A} = \\mathbf{P}\\mathbf{D}\\mathbf{P}^{-1}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{P} = \\begin{pmatrix} 1 & 1 \\\\ 1 & -2 \\end{pmatrix}$, $\\mathbf{D} = \\operatorname{diag}(5, 2)$",
+          "description": "$\\mathbf{P} = \\begin{bmatrix} 1 & 1 \\\\ 1 & -2 \\end{bmatrix}$, $\\mathbf{D} = \\operatorname{diag}(5, 2)$",
           "weight": 1,
           "required": false
         },
@@ -47214,7 +47216,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 0 & 1 \\\\ -2 & 3 \\end{pmatrix}$ has eigenvalues $1$ and $2$, with eigenvectors $(1, 1)$ for $\\lambda = 1$ and $(1, 2)$ for $\\lambda = 2$. Compute $\\mathbf{A}^2$ using diagonalization rather than direct matrix multiplication.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 0 & 1 \\\\ -2 & 3 \\end{bmatrix}$ has eigenvalues $1$ and $2$, with eigenvectors $[1, 1]$ for $\\lambda = 1$ and $[1, 2]$ for $\\lambda = 2$. Compute $\\mathbf{A}^2$ using diagonalization rather than direct matrix multiplication.",
     "rubric": {
       "elements": [
         {
@@ -47225,7 +47227,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "direct multiplication check: $\\mathbf{A}^2 = \\begin{pmatrix} 0 & 1 \\\\ -2 & 3 \\end{pmatrix}^2 = \\begin{pmatrix} -2 & 3 \\\\ -6 & 7 \\end{pmatrix}$, matching",
+          "description": "direct multiplication check: $\\mathbf{A}^2 = \\begin{bmatrix} 0 & 1 \\\\ -2 & 3 \\end{bmatrix}^2 = \\begin{bmatrix} -2 & 3 \\\\ -6 & 7 \\end{bmatrix}$, matching",
           "weight": 1,
           "required": false
         }
@@ -47366,7 +47368,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain why a defective matrix (like $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$) cannot be written as $\\mathbf{P}\\mathbf{D}\\mathbf{P}^{-1}$ for any invertible $\\mathbf{P}$.",
+    "stem": "Explain why a defective matrix (like $\\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$) cannot be written as $\\mathbf{P}\\mathbf{D}\\mathbf{P}^{-1}$ for any invertible $\\mathbf{P}$.",
     "rubric": {
       "elements": [
         {
@@ -47829,7 +47831,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$ (a $90^\\circ$ rotation). Does it have real eigenvalues?",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}$ (a $90^\\circ$ rotation). Does it have real eigenvalues?",
     "rubric": {
       "elements": [
         {
@@ -47882,12 +47884,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 5 & 4 \\\\ 1 & 2 \\end{pmatrix}$ has eigenvalues $6$ and $1$ with eigenvectors $(4, 1)$ and $(-1, 1)$. Verify that $\\mathbf{P}\\mathbf{D}\\mathbf{P}^{-1}$ reconstructs $\\mathbf{A}$ by checking a single entry.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 5 & 4 \\\\ 1 & 2 \\end{bmatrix}$ has eigenvalues $6$ and $1$ with eigenvectors $[4, 1]$ and $[-1, 1]$. Verify that $\\mathbf{P}\\mathbf{D}\\mathbf{P}^{-1}$ reconstructs $\\mathbf{A}$ by checking a single entry.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "computing the $(1, 1)$ entry of $\\mathbf{P}\\mathbf{D}\\mathbf{P}^{-1}$ using $\\mathbf{P} = \\begin{pmatrix} 4 & -1 \\\\ 1 & 1 \\end{pmatrix}$, $\\mathbf{D} = \\operatorname{diag}(6, 1)$, $\\mathbf{P}^{-1} = \\frac{1}{5}\\begin{pmatrix} 1 & 1 \\\\ -1 & 4 \\end{pmatrix}$ gives $\\frac{1}{5}(24 + 1) = 5$, matching the $(1, 1)$ entry of $\\mathbf{A}$",
+          "description": "computing the $(1, 1)$ entry of $\\mathbf{P}\\mathbf{D}\\mathbf{P}^{-1}$ using $\\mathbf{P} = \\begin{bmatrix} 4 & -1 \\\\ 1 & 1 \\end{bmatrix}$, $\\mathbf{D} = \\operatorname{diag}(6, 1)$, $\\mathbf{P}^{-1} = \\frac{1}{5}\\begin{bmatrix} 1 & 1 \\\\ -1 & 4 \\end{bmatrix}$ gives $\\frac{1}{5}(24 + 1) = 5$, matching the $(1, 1)$ entry of $\\mathbf{A}$",
           "weight": 1,
           "required": false
         }
@@ -47917,7 +47919,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 0 & 2 \\\\ -1 & 0 \\end{pmatrix}$ (a scaled rotation-like map). Compute the discriminant of its characteristic polynomial to determine whether its eigenvalues are real.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 0 & 2 \\\\ -1 & 0 \\end{bmatrix}$ (a scaled rotation-like map). Compute the discriminant of its characteristic polynomial to determine whether its eigenvalues are real.",
     "rubric": {
       "elements": [
         {
@@ -47952,7 +47954,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$ (already diagonal). Write its eigendecomposition explicitly.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 0 \\\\ 0 & 3 \\end{bmatrix}$ (already diagonal). Write its eigendecomposition explicitly.",
     "rubric": {
       "elements": [
         {
@@ -48022,7 +48024,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 0 & 3 \\end{pmatrix}$ (upper triangular). State its eigenvalues immediately, then find the eigenvector for the smaller one.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 0 & 3 \\end{bmatrix}$ (upper triangular). State its eigenvalues immediately, then find the eigenvector for the smaller one.",
     "rubric": {
       "elements": [
         {
@@ -48033,7 +48035,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "for $\\lambda = 1$, $(\\mathbf{A} - \\mathbf{I})\\mathbf{v} = \\mathbf{0}$ gives $\\begin{pmatrix} 0 & 2 \\\\ 0 & 2 \\end{pmatrix}\\mathbf{v} = \\mathbf{0}$, so $\\mathbf{v} = (1, 0)$",
+          "description": "for $\\lambda = 1$, $(\\mathbf{A} - \\mathbf{I})\\mathbf{v} = \\mathbf{0}$ gives $\\begin{bmatrix} 0 & 2 \\\\ 0 & 2 \\end{bmatrix}\\mathbf{v} = \\mathbf{0}$, so $\\mathbf{v} = [1, 0]$",
           "weight": 1,
           "required": false
         }
@@ -48176,7 +48178,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "having real eigenvalues alone doesn't guarantee enough independent real eigenvectors — a defective matrix like $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ has a real repeated eigenvalue ($1$) but only a $1$-dimensional eigenspace, so no full set of $n$ independent real eigenvectors exists even though all the eigenvalues themselves are real",
+          "description": "having real eigenvalues alone doesn't guarantee enough independent real eigenvectors — a defective matrix like $\\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$ has a real repeated eigenvalue ($1$) but only a $1$-dimensional eigenspace, so no full set of $n$ independent real eigenvectors exists even though all the eigenvalues themselves are real",
           "weight": 1,
           "required": true
         }
@@ -48663,7 +48665,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Find the LU decomposition of $\\mathbf{A} = \\begin{pmatrix} 4 & 3 \\\\ 6 & 3 \\end{pmatrix}$.",
+    "stem": "Find the LU decomposition of $\\mathbf{A} = \\begin{bmatrix} 4 & 3 \\\\ 6 & 3 \\end{bmatrix}$.",
     "rubric": {
       "elements": [
         {
@@ -48674,13 +48676,13 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "$R_2 - 1.5R_1$ gives $(0,\\ 3 - 1.5 \\cdot 3) = (0, -1.5)$",
+          "description": "$R_2 - 1.5R_1$ gives $(0,\\ 3 - 1.5 \\cdot 3) = [0, -1.5]$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-3",
-          "description": "so $\\mathbf{L} = \\begin{pmatrix} 1 & 0 \\\\ 1.5 & 1 \\end{pmatrix}$, $\\mathbf{U} = \\begin{pmatrix} 4 & 3 \\\\ 0 & -1.5 \\end{pmatrix}$",
+          "description": "so $\\mathbf{L} = \\begin{bmatrix} 1 & 0 \\\\ 1.5 & 1 \\end{bmatrix}$, $\\mathbf{U} = \\begin{bmatrix} 4 & 3 \\\\ 0 & -1.5 \\end{bmatrix}$",
           "weight": 1,
           "required": false
         }
@@ -48710,7 +48712,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using $\\mathbf{A} = \\mathbf{L}\\mathbf{U}$ with $\\mathbf{L} = \\begin{pmatrix} 1 & 0 \\\\ 2 & 1 \\end{pmatrix}$ and $\\mathbf{U} = \\begin{pmatrix} 3 & 1 \\\\ 0 & 2 \\end{pmatrix}$, solve $\\mathbf{L}\\mathbf{y} = \\mathbf{b}$ for $\\mathbf{b} = (5, 16)$ via forward substitution.",
+    "stem": "Using $\\mathbf{A} = \\mathbf{L}\\mathbf{U}$ with $\\mathbf{L} = \\begin{bmatrix} 1 & 0 \\\\ 2 & 1 \\end{bmatrix}$ and $\\mathbf{U} = \\begin{bmatrix} 3 & 1 \\\\ 0 & 2 \\end{bmatrix}$, solve $\\mathbf{L}\\mathbf{y} = \\mathbf{b}$ for $\\mathbf{b} = [5, 16]$ via forward substitution.",
     "rubric": {
       "elements": [
         {
@@ -48745,7 +48747,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Continuing A3 ($\\mathbf{U} = \\begin{pmatrix} 3 & 1 \\\\ 0 & 2 \\end{pmatrix}$, $\\mathbf{y} = (5, 6)$), solve $\\mathbf{U}\\mathbf{x} = \\mathbf{y}$ via back substitution to find $\\mathbf{x}$.",
+    "stem": "Continuing A3 ($\\mathbf{U} = \\begin{bmatrix} 3 & 1 \\\\ 0 & 2 \\end{bmatrix}$, $\\mathbf{y} = [5, 6]$), solve $\\mathbf{U}\\mathbf{x} = \\mathbf{y}$ via back substitution to find $\\mathbf{x}$.",
     "rubric": {
       "elements": [
         {
@@ -48815,12 +48817,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\end{pmatrix}$ is singular ($\\det = 0$). What happens when you attempt Gaussian elimination to find $\\mathbf{L}$ and $\\mathbf{U}$?",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 4 \\end{bmatrix}$ is singular ($\\det = 0$). What happens when you attempt Gaussian elimination to find $\\mathbf{L}$ and $\\mathbf{U}$?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "eliminating the first column gives $R_2 - 2R_1 = (0, 0)$, producing a zero row and hence a zero pivot in the second diagonal entry of $\\mathbf{U}$ — the LU decomposition still formally succeeds ($\\mathbf{L}$ and $\\mathbf{U}$ exist) but $\\mathbf{U}$ is itself singular, correctly reflecting that $\\mathbf{A}$ is singular",
+          "description": "eliminating the first column gives $R_2 - 2R_1 = [0, 0]$, producing a zero row and hence a zero pivot in the second diagonal entry of $\\mathbf{U}$ — the LU decomposition still formally succeeds ($\\mathbf{L}$ and $\\mathbf{U}$ exist) but $\\mathbf{U}$ is itself singular, correctly reflecting that $\\mathbf{A}$ is singular",
           "weight": 1,
           "required": false
         }
@@ -48862,7 +48864,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 1 & 1 \\\\ 4 & 3 & 3 \\\\ 8 & 7 & 9 \\end{pmatrix}$. Find the first elimination multiplier and the updated second row after one elimination step.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 1 & 1 \\\\ 4 & 3 & 3 \\\\ 8 & 7 & 9 \\end{bmatrix}$. Find the first elimination multiplier and the updated second row after one elimination step.",
     "rubric": {
       "elements": [
         {
@@ -48873,7 +48875,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "the new second row is $R_2 - 2R_1 = (4 - 4,\\ 3 - 2,\\ 3 - 2) = (0, 1, 1)$",
+          "description": "the new second row is $R_2 - 2R_1 = (4 - 4,\\ 3 - 2,\\ 3 - 2) = [0, 1, 1]$",
           "weight": 1,
           "required": false
         }
@@ -49107,7 +49109,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A} = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$ has a zero in the pivot position, forcing a row swap before elimination can proceed at all, even though $\\mathbf{A}$ is perfectly invertible ($\\det = -1 \\ne 0$) — this is exactly why real numerical software uses partial pivoting",
+          "description": "$\\mathbf{A} = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$ has a zero in the pivot position, forcing a row swap before elimination can proceed at all, even though $\\mathbf{A}$ is perfectly invertible ($\\det = -1 \\ne 0$) — this is exactly why real numerical software uses partial pivoting",
           "weight": 1,
           "required": true
         }
@@ -49430,7 +49432,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is $\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 3 \\end{pmatrix}$ symmetric? Is $\\mathbf{B} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$?",
+    "stem": "Is $\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 3 \\end{bmatrix}$ symmetric? Is $\\mathbf{B} = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}$?",
     "rubric": {
       "elements": [
         {
@@ -49465,7 +49467,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is $\\mathbf{A} = \\begin{pmatrix} 0 & 3 & 1 \\\\ 3 & 0 & 2 \\\\ 1 & 2 & 0 \\end{pmatrix}$ symmetric? Justify by checking entries.",
+    "stem": "Is $\\mathbf{A} = \\begin{bmatrix} 0 & 3 & 1 \\\\ 3 & 0 & 2 \\\\ 1 & 2 & 0 \\end{bmatrix}$ symmetric? Justify by checking entries.",
     "rubric": {
       "elements": [
         {
@@ -49499,7 +49501,7 @@ export const generatedItems: Item[] = [
       "typed",
       "handwritten"
     ],
-    "stem": "Find the eigenvalues of the symmetric matrix $\\mathbf{A} = \\begin{pmatrix} 4 & 2 \\\\ 2 & 1 \\end{pmatrix}$.",
+    "stem": "Find the eigenvalues of the symmetric matrix $\\mathbf{A} = \\begin{bmatrix} 4 & 2 \\\\ 2 & 1 \\end{bmatrix}$.",
     "answerKey": 5,
     "tolerance": 0.01,
     "difficulty": 0.35,
@@ -49526,18 +49528,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For $\\mathbf{A} = \\begin{pmatrix} 4 & 2 \\\\ 2 & 1 \\end{pmatrix}$ (eigenvalues $0$ and $5$, from A3), find the eigenvector for $\\lambda = 0$ and verify it's orthogonal to the eigenvector for $\\lambda = 5$, which is $(2, 1)$.",
+    "stem": "For $\\mathbf{A} = \\begin{bmatrix} 4 & 2 \\\\ 2 & 1 \\end{bmatrix}$ (eigenvalues $0$ and $5$, from A3), find the eigenvector for $\\lambda = 0$ and verify it's orthogonal to the eigenvector for $\\lambda = 5$, which is $[2, 1]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$(\\mathbf{A} - 0\\mathbf{I})\\mathbf{v} = \\mathbf{0}$ gives $\\begin{pmatrix} 4 & 2 \\\\ 2 & 1 \\end{pmatrix}\\mathbf{v} = \\mathbf{0}$, so $\\mathbf{v} = (1, -2)$",
+          "description": "$(\\mathbf{A} - 0\\mathbf{I})\\mathbf{v} = \\mathbf{0}$ gives $\\begin{bmatrix} 4 & 2 \\\\ 2 & 1 \\end{bmatrix}\\mathbf{v} = \\mathbf{0}$, so $\\mathbf{v} = [1, -2]$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "checking orthogonality: $(1, -2) \\cdot (2, 1) = 2 - 2 = 0$ ✓, confirming the guaranteed orthogonality",
+          "description": "checking orthogonality: $[1, -2] \\cdot [2, 1] = 2 - 2 = 0$ ✓, confirming the guaranteed orthogonality",
           "weight": 1,
           "required": false
         }
@@ -49567,7 +49569,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 3 & 0 & 0 \\\\ 0 & 3 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}$ is symmetric (diagonal). What are its eigenvalues, and is it positive definite?",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 3 & 0 & 0 \\\\ 0 & 3 & 0 \\\\ 0 & 0 & -1 \\end{bmatrix}$ is symmetric (diagonal). What are its eigenvalues, and is it positive definite?",
     "rubric": {
       "elements": [
         {
@@ -49608,7 +49610,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is $\\mathbf{A}^\\top \\mathbf{A}$ symmetric for any matrix $\\mathbf{A}$? Compute it for $\\mathbf{A} = \\begin{pmatrix} 1 & 0 \\\\ 1 & 1 \\end{pmatrix}$ to check.",
+    "stem": "Is $\\mathbf{A}^\\top \\mathbf{A}$ symmetric for any matrix $\\mathbf{A}$? Compute it for $\\mathbf{A} = \\begin{bmatrix} 1 & 0 \\\\ 1 & 1 \\end{bmatrix}$ to check.",
     "rubric": {
       "elements": [
         {
@@ -49619,7 +49621,7 @@ export const generatedItems: Item[] = [
         },
         {
           "id": "element-2",
-          "description": "for $\\mathbf{A} = \\begin{pmatrix} 1 & 0 \\\\ 1 & 1 \\end{pmatrix}$, $\\mathbf{A}^\\top \\mathbf{A} = \\begin{pmatrix} 2 & 1 \\\\ 1 & 1 \\end{pmatrix}$, which is indeed symmetric (both off-diagonal entries are $1$)",
+          "description": "for $\\mathbf{A} = \\begin{bmatrix} 1 & 0 \\\\ 1 & 1 \\end{bmatrix}$, $\\mathbf{A}^\\top \\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 1 & 1 \\end{bmatrix}$, which is indeed symmetric (both off-diagonal entries are $1$)",
           "weight": 1,
           "required": false
         }
@@ -49654,7 +49656,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{H} = \\begin{pmatrix} 2 & 3 \\\\ 3 & 2 \\end{pmatrix}$",
+          "description": "$\\mathbf{H} = \\begin{bmatrix} 2 & 3 \\\\ 3 & 2 \\end{bmatrix}$",
           "weight": 1,
           "required": false
         },
@@ -49936,7 +49938,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "An optimization algorithm checks the Hessian's eigenvalues to classify a critical point. At a point, the Hessian $\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ has eigenvalues $3$ and $1$ (both positive). Explain what this guarantees about the critical point, using the quadratic-form connection from E5.",
+    "stem": "An optimization algorithm checks the Hessian's eigenvalues to classify a critical point. At a point, the Hessian $\\begin{bmatrix} 2 & 1 \\\\ 1 & 2 \\end{bmatrix}$ has eigenvalues $3$ and $1$ (both positive). Explain what this guarantees about the critical point, using the quadratic-form connection from E5.",
     "rubric": {
       "elements": [
         {
@@ -50252,18 +50254,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 4 & 2 \\\\ 2 & 4 \\end{pmatrix}$ has eigenvalues $6, 2$ with unit eigenvectors $\\mathbf{q}_1 = (1, 1)/\\sqrt{2}$, $\\mathbf{q}_2 = (1, -1)/\\sqrt{2}$. Verify $\\mathbf{A} = 6\\mathbf{q}_1\\mathbf{q}_1^\\top + 2\\mathbf{q}_2\\mathbf{q}_2^\\top$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 4 & 2 \\\\ 2 & 4 \\end{bmatrix}$ has eigenvalues $6, 2$ with unit eigenvectors $\\mathbf{q}_1 = [1, 1]/\\sqrt{2}$, $\\mathbf{q}_2 = [1, -1]/\\sqrt{2}$. Verify $\\mathbf{A} = 6\\mathbf{q}_1\\mathbf{q}_1^\\top + 2\\mathbf{q}_2\\mathbf{q}_2^\\top$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$6\\mathbf{q}_1\\mathbf{q}_1^\\top = \\begin{pmatrix} 3 & 3 \\\\ 3 & 3 \\end{pmatrix}$, $2\\mathbf{q}_2\\mathbf{q}_2^\\top = \\begin{pmatrix} 1 & -1 \\\\ -1 & 1 \\end{pmatrix}$",
+          "description": "$6\\mathbf{q}_1\\mathbf{q}_1^\\top = \\begin{bmatrix} 3 & 3 \\\\ 3 & 3 \\end{bmatrix}$, $2\\mathbf{q}_2\\mathbf{q}_2^\\top = \\begin{bmatrix} 1 & -1 \\\\ -1 & 1 \\end{bmatrix}$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "summing gives $\\begin{pmatrix} 4 & 2 \\\\ 2 & 4 \\end{pmatrix}$, matching $\\mathbf{A}$ exactly",
+          "description": "summing gives $\\begin{bmatrix} 4 & 2 \\\\ 2 & 4 \\end{bmatrix}$, matching $\\mathbf{A}$ exactly",
           "weight": 1,
           "required": false
         }
@@ -50293,7 +50295,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Symmetric $\\mathbf{A} = \\begin{pmatrix} 5 & 3 \\\\ 3 & 5 \\end{pmatrix}$. Verify that the trace and determinant match the sum and product of its eigenvalues $8$ and $2$.",
+    "stem": "Symmetric $\\mathbf{A} = \\begin{bmatrix} 5 & 3 \\\\ 3 & 5 \\end{bmatrix}$. Verify that the trace and determinant match the sum and product of its eigenvalues $8$ and $2$.",
     "rubric": {
       "elements": [
         {
@@ -50445,7 +50447,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Symmetric $\\mathbf{A} = \\begin{pmatrix} 3 & 4 \\\\ 4 & -3 \\end{pmatrix}$. Find its eigenvalues using the trace and determinant.",
+    "stem": "Symmetric $\\mathbf{A} = \\begin{bmatrix} 3 & 4 \\\\ 4 & -3 \\end{bmatrix}$. Find its eigenvalues using the trace and determinant.",
     "rubric": {
       "elements": [
         {
@@ -50597,7 +50599,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Explain specifically what breaks the Spectral Theorem for the non-symmetric matrix $\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$.",
+    "stem": "Explain specifically what breaks the Spectral Theorem for the non-symmetric matrix $\\begin{bmatrix} 0 & 1 \\\\ 0 & 0 \\end{bmatrix}$.",
     "rubric": {
       "elements": [
         {
@@ -50989,12 +50991,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{Q} = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$ (a $90^\\circ$ rotation). Verify $\\mathbf{Q}^\\top \\mathbf{Q} = \\mathbf{I}$.",
+    "stem": "$\\mathbf{Q} = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}$ (a $90^\\circ$ rotation). Verify $\\mathbf{Q}^\\top \\mathbf{Q} = \\mathbf{I}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{Q}^\\top \\mathbf{Q} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$ ✓",
+          "description": "$\\mathbf{Q}^\\top \\mathbf{Q} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}$ ✓",
           "weight": 1,
           "required": false
         }
@@ -51024,12 +51026,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{Q} = \\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix}$. Verify $\\mathbf{Q}^\\top \\mathbf{Q} = \\mathbf{I}$ and compute $\\det(\\mathbf{Q})$.",
+    "stem": "$\\mathbf{Q} = \\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix}$. Verify $\\mathbf{Q}^\\top \\mathbf{Q} = \\mathbf{I}$ and compute $\\det(\\mathbf{Q})$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{Q}^\\top \\mathbf{Q} = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}\\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = \\mathbf{I}$; $\\det(\\mathbf{Q}) = 0 \\cdot 0 - 1 \\cdot (-1) = 1$",
+          "description": "$\\mathbf{Q}^\\top \\mathbf{Q} = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}\\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = \\mathbf{I}$; $\\det(\\mathbf{Q}) = 0 \\cdot 0 - 1 \\cdot (-1) = 1$",
           "weight": 1,
           "required": false
         }
@@ -51059,7 +51061,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{Q} = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$ (a reflection). Verify orthogonality and compute $\\det(\\mathbf{Q})$.",
+    "stem": "$\\mathbf{Q} = \\begin{bmatrix} 1 & 0 \\\\ 0 & -1 \\end{bmatrix}$ (a reflection). Verify orthogonality and compute $\\det(\\mathbf{Q})$.",
     "rubric": {
       "elements": [
         {
@@ -51755,7 +51757,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is $\\mathbf{A} = \\begin{pmatrix} 2 & -1 \\\\ -1 & 2 \\end{pmatrix}$ positive definite?",
+    "stem": "Is $\\mathbf{A} = \\begin{bmatrix} 2 & -1 \\\\ -1 & 2 \\end{bmatrix}$ positive definite?",
     "rubric": {
       "elements": [
         {
@@ -51802,7 +51804,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Is $\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ positive definite?",
+    "stem": "Is $\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 1 \\end{bmatrix}$ positive definite?",
     "rubric": {
       "elements": [
         {
@@ -51884,7 +51886,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For $\\mathbf{A} = \\operatorname{diag}(2, 3)$ and $\\mathbf{x} = (1, 2)$, compute $\\mathbf{x}^\\top \\mathbf{A}\\mathbf{x}$.",
+    "stem": "For $\\mathbf{A} = \\operatorname{diag}(2, 3)$ and $\\mathbf{x} = [1, 2]$, compute $\\mathbf{x}^\\top \\mathbf{A}\\mathbf{x}$.",
     "rubric": {
       "elements": [
         {
@@ -51954,7 +51956,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Verify that $\\mathbf{A} = \\begin{pmatrix} 3 & 1 \\\\ 1 & 3 \\end{pmatrix}$ is positive definite two ways: leading minors and eigenvalues.",
+    "stem": "Verify that $\\mathbf{A} = \\begin{bmatrix} 3 & 1 \\\\ 1 & 3 \\end{bmatrix}$ is positive definite two ways: leading minors and eigenvalues.",
     "rubric": {
       "elements": [
         {
@@ -52604,12 +52606,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Compute the Cholesky factor of $\\mathbf{A} = \\begin{pmatrix} 4 & 2 \\\\ 2 & 5 \\end{pmatrix}$.",
+    "stem": "Compute the Cholesky factor of $\\mathbf{A} = \\begin{bmatrix} 4 & 2 \\\\ 2 & 5 \\end{bmatrix}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\ell_{11} = \\sqrt{4} = 2$; $\\ell_{21} = 2/2 = 1$; $\\ell_{22} = \\sqrt{5 - 1^2} = \\sqrt{4} = 2$, giving $\\mathbf{L} = \\begin{pmatrix} 2 & 0 \\\\ 1 & 2 \\end{pmatrix}$; check: $\\mathbf{L}\\mathbf{L}^\\top = \\begin{pmatrix} 4 & 2 \\\\ 2 & 5 \\end{pmatrix} = \\mathbf{A}$ ✓",
+          "description": "$\\ell_{11} = \\sqrt{4} = 2$; $\\ell_{21} = 2/2 = 1$; $\\ell_{22} = \\sqrt{5 - 1^2} = \\sqrt{4} = 2$, giving $\\mathbf{L} = \\begin{bmatrix} 2 & 0 \\\\ 1 & 2 \\end{bmatrix}$; check: $\\mathbf{L}\\mathbf{L}^\\top = \\begin{bmatrix} 4 & 2 \\\\ 2 & 5 \\end{bmatrix} = \\mathbf{A}$ ✓",
           "weight": 1,
           "required": false
         }
@@ -52639,12 +52641,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Compute the Cholesky factor of $\\mathbf{A} = \\begin{pmatrix} 9 & 3 \\\\ 3 & 2 \\end{pmatrix}$.",
+    "stem": "Compute the Cholesky factor of $\\mathbf{A} = \\begin{bmatrix} 9 & 3 \\\\ 3 & 2 \\end{bmatrix}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\ell_{11} = \\sqrt{9} = 3$; $\\ell_{21} = 3/3 = 1$; $\\ell_{22} = \\sqrt{2 - 1^2} = \\sqrt{1} = 1$, giving $\\mathbf{L} = \\begin{pmatrix} 3 & 0 \\\\ 1 & 1 \\end{pmatrix}$",
+          "description": "$\\ell_{11} = \\sqrt{9} = 3$; $\\ell_{21} = 3/3 = 1$; $\\ell_{22} = \\sqrt{2 - 1^2} = \\sqrt{1} = 1$, giving $\\mathbf{L} = \\begin{bmatrix} 3 & 0 \\\\ 1 & 1 \\end{bmatrix}$",
           "weight": 1,
           "required": false
         }
@@ -52674,7 +52676,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Attempting Cholesky on $\\mathbf{A} = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ fails at which step, and why?",
+    "stem": "Attempting Cholesky on $\\mathbf{A} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 1 \\end{bmatrix}$ fails at which step, and why?",
     "rubric": {
       "elements": [
         {
@@ -53347,12 +53349,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{P} = \\begin{pmatrix} 1 & 1 \\\\ 0 & 0 \\end{pmatrix}$. Verify $\\mathbf{P}^2 = \\mathbf{P}$. Is $\\mathbf{P}$ symmetric?",
+    "stem": "$\\mathbf{P} = \\begin{bmatrix} 1 & 1 \\\\ 0 & 0 \\end{bmatrix}$. Verify $\\mathbf{P}^2 = \\mathbf{P}$. Is $\\mathbf{P}$ symmetric?",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{P}^2 = \\begin{pmatrix} 1 \\cdot 1 + 1 \\cdot 0 & 1 \\cdot 1 + 1 \\cdot 0 \\\\ 0 & 0 \\end{pmatrix} = \\begin{pmatrix} 1 & 1 \\\\ 0 & 0 \\end{pmatrix} = \\mathbf{P}$ ✓",
+          "description": "$\\mathbf{P}^2 = \\begin{bmatrix} 1 \\cdot 1 + 1 \\cdot 0 & 1 \\cdot 1 + 1 \\cdot 0 \\\\ 0 & 0 \\end{bmatrix} = \\begin{bmatrix} 1 & 1 \\\\ 0 & 0 \\end{bmatrix} = \\mathbf{P}$ ✓",
           "weight": 1,
           "required": false
         },
@@ -53388,7 +53390,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{P} = \\begin{pmatrix} 0.5 & 0.5 \\\\ 0.5 & 0.5 \\end{pmatrix}$. Verify $\\mathbf{P}^2 = \\mathbf{P}$ and find its eigenvalues.",
+    "stem": "$\\mathbf{P} = \\begin{bmatrix} 0.5 & 0.5 \\\\ 0.5 & 0.5 \\end{bmatrix}$. Verify $\\mathbf{P}^2 = \\mathbf{P}$ and find its eigenvalues.",
     "rubric": {
       "elements": [
         {
@@ -53429,7 +53431,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{X} = \\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$ (a $3 \\times 1$ column of ones). Compute the hat matrix $\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^\\top \\mathbf{X})^{-1}\\mathbf{X}^\\top$.",
+    "stem": "$\\mathbf{X} = \\begin{bmatrix} 1 \\\\ 1 \\\\ 1 \\end{bmatrix}$ (a $3 \\times 1$ column of ones). Compute the hat matrix $\\mathbf{H} = \\mathbf{X}(\\mathbf{X}^\\top \\mathbf{X})^{-1}\\mathbf{X}^\\top$.",
     "rubric": {
       "elements": [
         {
@@ -53598,7 +53600,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{C} = \\begin{pmatrix} \\frac{2}{3} & -\\frac{1}{3} & -\\frac{1}{3} \\\\ -\\frac{1}{3} & \\frac{2}{3} & -\\frac{1}{3} \\\\ -\\frac{1}{3} & -\\frac{1}{3} & \\frac{2}{3} \\end{pmatrix}$",
+          "description": "$\\mathbf{C} = \\begin{bmatrix} \\frac{2}{3} & -\\frac{1}{3} & -\\frac{1}{3} \\\\ -\\frac{1}{3} & \\frac{2}{3} & -\\frac{1}{3} \\\\ -\\frac{1}{3} & -\\frac{1}{3} & \\frac{2}{3} \\end{bmatrix}$",
           "weight": 1,
           "required": false
         },
@@ -54015,7 +54017,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Define the Schur complement of $\\mathbf{D}$ in the block matrix $\\begin{pmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{pmatrix}$.",
+    "stem": "Define the Schur complement of $\\mathbf{D}$ in the block matrix $\\begin{bmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{bmatrix}$.",
     "rubric": {
       "elements": [
         {
@@ -54102,7 +54104,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "the $(1, 1)$ block of $\\begin{pmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{pmatrix}^{-1}$ equals $\\mathbf{S}^{-1} = (\\mathbf{A} - \\mathbf{B}\\mathbf{D}^{-1}\\mathbf{C})^{-1}$",
+          "description": "the $(1, 1)$ block of $\\begin{bmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{bmatrix}^{-1}$ equals $\\mathbf{S}^{-1} = (\\mathbf{A} - \\mathbf{B}\\mathbf{D}^{-1}\\mathbf{C})^{-1}$",
           "weight": 1,
           "required": false
         }
@@ -54132,7 +54134,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The Schur complement of $\\mathbf{D}$ in $\\begin{pmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{pmatrix}$ is well-defined exactly when:",
+    "stem": "The Schur complement of $\\mathbf{D}$ in $\\begin{bmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{bmatrix}$ is well-defined exactly when:",
     "rubric": {
       "elements": [
         {
@@ -54184,7 +54186,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\det\\begin{pmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{pmatrix} = \\det(\\mathbf{D})\\det(\\mathbf{A} - \\mathbf{B}\\mathbf{D}^{-1}\\mathbf{C})$, for invertible $\\mathbf{D}$",
+          "description": "$\\det\\begin{bmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{bmatrix} = \\det(\\mathbf{D})\\det(\\mathbf{A} - \\mathbf{B}\\mathbf{D}^{-1}\\mathbf{C})$, for invertible $\\mathbf{D}$",
           "weight": 1,
           "required": false
         }
@@ -54214,7 +54216,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For $\\begin{pmatrix} 2 & 1 \\\\ 1 & 3 \\end{pmatrix}$ partitioned with $a = 2$, $b = 1$, $c = 1$, $d = 3$, compute the Schur complement of $d$.",
+    "stem": "For $\\begin{bmatrix} 2 & 1 \\\\ 1 & 3 \\end{bmatrix}$ partitioned with $a = 2$, $b = 1$, $c = 1$, $d = 3$, compute the Schur complement of $d$.",
     "rubric": {
       "elements": [
         {
@@ -54249,7 +54251,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Using the result of A2, verify $\\det\\begin{pmatrix} 2 & 1 \\\\ 1 & 3 \\end{pmatrix}$ two ways: directly, and via $d \\cdot s$.",
+    "stem": "Using the result of A2, verify $\\det\\begin{bmatrix} 2 & 1 \\\\ 1 & 3 \\end{bmatrix}$ two ways: directly, and via $d \\cdot s$.",
     "rubric": {
       "elements": [
         {
@@ -54284,7 +54286,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For $\\begin{pmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{pmatrix}$ with $\\mathbf{D}$ a $1 \\times 1$ invertible scalar $d$, write the Schur complement of $\\mathbf{D}$ explicitly.",
+    "stem": "For $\\begin{bmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{bmatrix}$ with $\\mathbf{D}$ a $1 \\times 1$ invertible scalar $d$, write the Schur complement of $\\mathbf{D}$ explicitly.",
     "rubric": {
       "elements": [
         {
@@ -54319,7 +54321,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A joint covariance matrix $\\boldsymbol{\\Sigma} = \\begin{pmatrix} 4 & 2 \\\\ 2 & 3 \\end{pmatrix}$ describes $(X, Y)$. Compute $\\text{Var}(X \\mid Y)$ using the Schur complement.",
+    "stem": "A joint covariance matrix $\\boldsymbol{\\Sigma} = \\begin{bmatrix} 4 & 2 \\\\ 2 & 3 \\end{bmatrix}$ describes $(X, Y)$. Compute $\\text{Var}(X \\mid Y)$ using the Schur complement.",
     "rubric": {
       "elements": [
         {
@@ -54459,12 +54461,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Derive the Schur complement via block Gaussian elimination on $\\begin{pmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{pmatrix}$, eliminating $\\mathbf{C}$ using $\\mathbf{D}$.",
+    "stem": "Derive the Schur complement via block Gaussian elimination on $\\begin{bmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{bmatrix}$, eliminating $\\mathbf{C}$ using $\\mathbf{D}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "subtract $\\mathbf{B}\\mathbf{D}^{-1}$ times the bottom block row from the top block row: $\\begin{pmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{pmatrix} \\to \\begin{pmatrix} \\mathbf{A} - \\mathbf{B}\\mathbf{D}^{-1}\\mathbf{C} & \\mathbf{0} \\\\ \\mathbf{C} & \\mathbf{D} \\end{pmatrix}$, zeroing the $(1, 2)$ block into block-lower-triangular form whose top-left entry is exactly the Schur complement",
+          "description": "subtract $\\mathbf{B}\\mathbf{D}^{-1}$ times the bottom block row from the top block row: $\\begin{bmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{bmatrix} \\to \\begin{bmatrix} \\mathbf{A} - \\mathbf{B}\\mathbf{D}^{-1}\\mathbf{C} & \\mathbf{0} \\\\ \\mathbf{C} & \\mathbf{D} \\end{bmatrix}$, zeroing the $(1, 2)$ block into block-lower-triangular form whose top-left entry is exactly the Schur complement",
           "weight": 1,
           "required": true
         }
@@ -54494,7 +54496,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "State the necessary and sufficient condition for a symmetric block matrix $\\begin{pmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{B}^\\top & \\mathbf{D} \\end{pmatrix}$ to be positive definite, in terms of the Schur complement.",
+    "stem": "State the necessary and sufficient condition for a symmetric block matrix $\\begin{bmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{B}^\\top & \\mathbf{D} \\end{bmatrix}$ to be positive definite, in terms of the Schur complement.",
     "rubric": {
       "elements": [
         {
@@ -54529,7 +54531,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Prove $\\begin{pmatrix} \\mathbf{I} & -\\mathbf{B}\\mathbf{D}^{-1} \\\\ \\mathbf{0} & \\mathbf{I} \\end{pmatrix}\\begin{pmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{pmatrix} = \\begin{pmatrix} \\mathbf{A} - \\mathbf{B}\\mathbf{D}^{-1}\\mathbf{C} & \\mathbf{0} \\\\ \\mathbf{C} & \\mathbf{D} \\end{pmatrix}$ by multiplying out the blocks.",
+    "stem": "Prove $\\begin{bmatrix} \\mathbf{I} & -\\mathbf{B}\\mathbf{D}^{-1} \\\\ \\mathbf{0} & \\mathbf{I} \\end{bmatrix}\\begin{bmatrix} \\mathbf{A} & \\mathbf{B} \\\\ \\mathbf{C} & \\mathbf{D} \\end{bmatrix} = \\begin{bmatrix} \\mathbf{A} - \\mathbf{B}\\mathbf{D}^{-1}\\mathbf{C} & \\mathbf{0} \\\\ \\mathbf{C} & \\mathbf{D} \\end{bmatrix}$ by multiplying out the blocks.",
     "rubric": {
       "elements": [
         {
@@ -54939,7 +54941,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\operatorname{diag}(2, 5)$. Compute $R(\\mathbf{x})$ for $\\mathbf{x} = (1, 0)$, $(0, 1)$, $(1, 1)$; which is largest?",
+    "stem": "$\\mathbf{A} = \\operatorname{diag}(2, 5)$. Compute $R(\\mathbf{x})$ for $\\mathbf{x} = [1, 0]$, $[0, 1]$, $[1, 1]$; which is largest?",
     "rubric": {
       "elements": [
         {
@@ -54974,7 +54976,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\operatorname{diag}(1, 4, 9)$. Compute $R(\\mathbf{x})$ for $\\mathbf{x} = (1, 1, 1)$.",
+    "stem": "$\\mathbf{A} = \\operatorname{diag}(1, 4, 9)$. Compute $R(\\mathbf{x})$ for $\\mathbf{x} = [1, 1, 1]$.",
     "rubric": {
       "elements": [
         {
@@ -55009,12 +55011,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "The symmetric matrix $\\mathbf{A} = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ has eigenvalues $3, 1$. Compute $R(\\mathbf{x})$ at $\\mathbf{x} = (1, 1)$ and verify it equals the largest eigenvalue.",
+    "stem": "The symmetric matrix $\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\\\ 1 & 2 \\end{bmatrix}$ has eigenvalues $3, 1$. Compute $R(\\mathbf{x})$ at $\\mathbf{x} = [1, 1]$ and verify it equals the largest eigenvalue.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{x}^\\top \\mathbf{A}\\mathbf{x} = (1, 1) \\cdot (3, 3) = 6$; $\\mathbf{x}^\\top\\mathbf{x} = 2$; $R = \\frac{6}{2} = 3 = \\lambda_{\\max}$",
+          "description": "$\\mathbf{x}^\\top \\mathbf{A}\\mathbf{x} = [1, 1] \\cdot [3, 3] = 6$; $\\mathbf{x}^\\top\\mathbf{x} = 2$; $R = \\frac{6}{2} = 3 = \\lambda_{\\max}$",
           "weight": 1,
           "required": false
         }
@@ -55044,12 +55046,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "For the same $\\mathbf{A}$, compute $R(\\mathbf{x})$ at $\\mathbf{x} = (1, -1)$ and verify it equals the smallest eigenvalue.",
+    "stem": "For the same $\\mathbf{A}$, compute $R(\\mathbf{x})$ at $\\mathbf{x} = [1, -1]$ and verify it equals the smallest eigenvalue.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{x}^\\top \\mathbf{A}\\mathbf{x} = (1, -1) \\cdot (1, -1) = 2$; $\\mathbf{x}^\\top\\mathbf{x} = 2$; $R = \\frac{2}{2} = 1 = \\lambda_{\\min}$",
+          "description": "$\\mathbf{x}^\\top \\mathbf{A}\\mathbf{x} = [1, -1] \\cdot [1, -1] = 2$; $\\mathbf{x}^\\top\\mathbf{x} = 2$; $R = \\frac{2}{2} = 1 = \\lambda_{\\min}$",
           "weight": 1,
           "required": false
         }
@@ -55120,18 +55122,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Estimate the largest eigenvalue of $\\mathbf{A} = \\begin{pmatrix} 6 & 2 \\\\ 2 & 3 \\end{pmatrix}$ using $R(\\mathbf{x})$ at $\\mathbf{x} = (2, 1)$.",
+    "stem": "Estimate the largest eigenvalue of $\\mathbf{A} = \\begin{bmatrix} 6 & 2 \\\\ 2 & 3 \\end{bmatrix}$ using $R(\\mathbf{x})$ at $\\mathbf{x} = [2, 1]$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A}\\mathbf{x} = (14, 7) = 7(2, 1)$, so $\\mathbf{x}$ is actually an eigenvector",
+          "description": "$\\mathbf{A}\\mathbf{x} = [14, 7] = 7(2, 1)$, so $\\mathbf{x}$ is actually an eigenvector",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "$\\mathbf{x}^\\top \\mathbf{A}\\mathbf{x} = (2, 1) \\cdot (14, 7) = 35$, $\\mathbf{x}^\\top\\mathbf{x} = 5$, $R = \\frac{35}{5} = 7$",
+          "description": "$\\mathbf{x}^\\top \\mathbf{A}\\mathbf{x} = [2, 1] \\cdot [14, 7] = 35$, $\\mathbf{x}^\\top\\mathbf{x} = 5$, $R = \\frac{35}{5} = 7$",
           "weight": 1,
           "required": false
         }
@@ -55799,7 +55801,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix}$ (a $90^\\circ$ rotation). Find its eigenvalues and determine whether $\\mathbf{x}_{k+1} = \\mathbf{A}\\mathbf{x}_k$ converges, diverges, or neither.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix}$ (a $90^\\circ$ rotation). Find its eigenvalues and determine whether $\\mathbf{x}_{k+1} = \\mathbf{A}\\mathbf{x}_k$ converges, diverges, or neither.",
     "rubric": {
       "elements": [
         {
@@ -55834,12 +55836,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\operatorname{diag}(2, 0.5)$, $\\mathbf{x}_0 = (1, 1)$. Compute $\\mathbf{x}_5$.",
+    "stem": "$\\mathbf{A} = \\operatorname{diag}(2, 0.5)$, $\\mathbf{x}_0 = [1, 1]$. Compute $\\mathbf{x}_5$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{x}_k = (2^k, 0.5^k)$, so $\\mathbf{x}_5 = (32, 0.03125)$ — the first component has exploded while the second has nearly vanished",
+          "description": "$\\mathbf{x}_k = (2^k, 0.5^k)$, so $\\mathbf{x}_5 = [32, 0.03125]$ — the first component has exploded while the second has nearly vanished",
           "weight": 1,
           "required": false
         },
@@ -55875,7 +55877,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ (a Jordan block, $\\rho(\\mathbf{A}) = 1$). Does $\\mathbf{x}_{k+1} = \\mathbf{A}\\mathbf{x}_k$ stay bounded for a generic starting vector?",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 1 \\\\ 0 & 1 \\end{bmatrix}$ (a Jordan block, $\\rho(\\mathbf{A}) = 1$). Does $\\mathbf{x}_{k+1} = \\mathbf{A}\\mathbf{x}_k$ stay bounded for a generic starting vector?",
     "rubric": {
       "elements": [
         {
@@ -56618,18 +56620,18 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 3 & 0 \\\\ 4 & 0 \\end{pmatrix}$. Compute the singular values of $\\mathbf{A}$ and the first left singular vector $\\mathbf{u}_1$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 3 & 0 \\\\ 4 & 0 \\end{bmatrix}$. Compute the singular values of $\\mathbf{A}$ and the first left singular vector $\\mathbf{u}_1$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A}^\\top \\mathbf{A} = \\begin{pmatrix} 25 & 0 \\\\ 0 & 0 \\end{pmatrix}$, with eigenvalues $25, 0$, so the singular values are $5, 0$",
+          "description": "$\\mathbf{A}^\\top \\mathbf{A} = \\begin{bmatrix} 25 & 0 \\\\ 0 & 0 \\end{bmatrix}$, with eigenvalues $25, 0$, so the singular values are $5, 0$",
           "weight": 1,
           "required": false
         },
         {
           "id": "element-2",
-          "description": "$\\mathbf{v}_1 = (1, 0)^\\top$, so $\\mathbf{u}_1 = \\mathbf{A}\\mathbf{v}_1/\\sigma_1 = (3, 4)^\\top/5 = (0.6, 0.8)^\\top$",
+          "description": "$\\mathbf{v}_1 = [1, 0]^\\top$, so $\\mathbf{u}_1 = \\mathbf{A}\\mathbf{v}_1/\\sigma_1 = [3, 4]^\\top/5 = [0.6, 0.8]^\\top$",
           "weight": 1,
           "required": false
         }
@@ -57353,7 +57355,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = 3\\mathbf{I}_2$ (i.e. $\\begin{pmatrix} 3 & 0 \\\\ 0 & 3 \\end{pmatrix}$). Describe the full freedom in choosing $(\\mathbf{U}, \\mathbf{V})$, compared to the sign-only freedom when the singular values are distinct.",
+    "stem": "$\\mathbf{A} = 3\\mathbf{I}_2$ (i.e. $\\begin{bmatrix} 3 & 0 \\\\ 0 & 3 \\end{bmatrix}$). Describe the full freedom in choosing $(\\mathbf{U}, \\mathbf{V})$, compared to the sign-only freedom when the singular values are distinct.",
     "rubric": {
       "elements": [
         {
@@ -57499,7 +57501,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "A symmetric PSD matrix has a repeated eigenvalue $4$ with a $2$-dimensional eigenspace spanned by $(1, 0, 0)$ and $(0, 1, 0)$. State the exact SVD analogue of this non-uniqueness.",
+    "stem": "A symmetric PSD matrix has a repeated eigenvalue $4$ with a $2$-dimensional eigenspace spanned by $[1, 0, 0]$ and $[0, 1, 0]$. State the exact SVD analogue of this non-uniqueness.",
     "rubric": {
       "elements": [
         {
@@ -58329,7 +58331,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$ (already diagonal, rank $1$). Read off all four fundamental subspaces by inspection and verify they match the SVD-derived bases.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 0 \\end{bmatrix}$ (already diagonal, rank $1$). Read off all four fundamental subspaces by inspection and verify they match the SVD-derived bases.",
     "rubric": {
       "elements": [
         {
@@ -58961,12 +58963,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 1 \\end{pmatrix}$ ($1 \\times 2$, full row rank). Compute $\\mathbf{A}^+$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 1 \\end{bmatrix}$ ($1 \\times 2$, full row rank). Compute $\\mathbf{A}^+$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A}\\mathbf{A}^\\top = 4 + 1 = 5$, so $\\mathbf{A}^+ = \\mathbf{A}^\\top(\\mathbf{A}\\mathbf{A}^\\top)^{-1} = (2, 1)^\\top/5 = (0.4, 0.2)^\\top$",
+          "description": "$\\mathbf{A}\\mathbf{A}^\\top = 4 + 1 = 5$, so $\\mathbf{A}^+ = \\mathbf{A}^\\top(\\mathbf{A}\\mathbf{A}^\\top)^{-1} = [2, 1]^\\top/5 = [0.4, 0.2]^\\top$",
           "weight": 1,
           "required": false
         }
@@ -58996,12 +58998,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$ ($2 \\times 1$, full column rank). Compute $\\mathbf{A}^+$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 1 \\\\ 2 \\end{bmatrix}$ ($2 \\times 1$, full column rank). Compute $\\mathbf{A}^+$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A}^\\top \\mathbf{A} = 1 + 4 = 5$, so $\\mathbf{A}^+ = (\\mathbf{A}^\\top \\mathbf{A})^{-1}\\mathbf{A}^\\top = \\frac{1}{5}(1, 2) = (0.2, 0.4)$",
+          "description": "$\\mathbf{A}^\\top \\mathbf{A} = 1 + 4 = 5$, so $\\mathbf{A}^+ = (\\mathbf{A}^\\top \\mathbf{A})^{-1}\\mathbf{A}^\\top = \\frac{1}{5}(1, 2) = [0.2, 0.4]$",
           "weight": 1,
           "required": false
         }
@@ -59119,12 +59121,12 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "$\\mathbf{A} = \\begin{pmatrix} 2 & 0 \\\\ 0 & 0 \\end{pmatrix}$ (rank $1$). Compute $\\mathbf{A}^+$ and verify $\\mathbf{A}\\mathbf{A}^+\\mathbf{A} = \\mathbf{A}$.",
+    "stem": "$\\mathbf{A} = \\begin{bmatrix} 2 & 0 \\\\ 0 & 0 \\end{bmatrix}$ (rank $1$). Compute $\\mathbf{A}^+$ and verify $\\mathbf{A}\\mathbf{A}^+\\mathbf{A} = \\mathbf{A}$.",
     "rubric": {
       "elements": [
         {
           "id": "element-1",
-          "description": "$\\mathbf{A}^+ = \\begin{pmatrix} 0.5 & 0 \\\\ 0 & 0 \\end{pmatrix}$; $\\mathbf{A}\\mathbf{A}^+ = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$; $(\\mathbf{A}\\mathbf{A}^+)\\mathbf{A} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}\\begin{pmatrix} 2 & 0 \\\\ 0 & 0 \\end{pmatrix} = \\begin{pmatrix} 2 & 0 \\\\ 0 & 0 \\end{pmatrix} = \\mathbf{A}$ ✓",
+          "description": "$\\mathbf{A}^+ = \\begin{bmatrix} 0.5 & 0 \\\\ 0 & 0 \\end{bmatrix}$; $\\mathbf{A}\\mathbf{A}^+ = \\begin{bmatrix} 1 & 0 \\\\ 0 & 0 \\end{bmatrix}$; $(\\mathbf{A}\\mathbf{A}^+)\\mathbf{A} = \\begin{bmatrix} 1 & 0 \\\\ 0 & 0 \\end{bmatrix}\\begin{bmatrix} 2 & 0 \\\\ 0 & 0 \\end{bmatrix} = \\begin{bmatrix} 2 & 0 \\\\ 0 & 0 \\end{bmatrix} = \\mathbf{A}$ ✓",
           "weight": 1,
           "required": false
         }
@@ -60198,7 +60200,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "In a Netflix-style matrix-factorization recommender, Eckart-Young justifies why keeping the top-k latent factors minimizes reconstruction error on the *training* ratings matrix. What does the theorem *not* guarantee, and why?",
+    "stem": "In a Netflix-style matrix-factorization recommender, Eckart-Young justifies why keeping the top-k latent factors minimizes reconstruction error on the *training* ratings matrix. What does the theorem $\\textbf{NOT}$ guarantee, and why?",
     "rubric": {
       "elements": [
         {
@@ -62618,11 +62620,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "picks (a) — `mle`’s Exponential estimator happens to be unbiased-adjacent in some cases, but MLE is *not* unbiased in general (the classic counterexample is next, in A2/E1)",
+          "description": "picks (a) — `mle`’s Exponential estimator happens to be unbiased-adjacent in some cases, but MLE is $\\textbf{NOT}$ unbiased in general (the classic counterexample is next, in A2/E1)",
           "weight": 0,
           "misconception": {
             "id": "unbiased-estimator--r2--misconception",
-            "description": "picks (a) — `mle`’s Exponential estimator happens to be unbiased-adjacent in some cases, but MLE is *not* unbiased in general (the classic counterexample is next, in A2/E1)",
+            "description": "picks (a) — `mle`’s Exponential estimator happens to be unbiased-adjacent in some cases, but MLE is $\\textbf{NOT}$ unbiased in general (the classic counterexample is next, in A2/E1)",
             "blameConceptId": "unbiased-estimator"
           }
         }
@@ -63209,7 +63211,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which of these is *not* a member of the exponential family in its usual form?",
+    "stem": "Which of these is $\\textbf{NOT}$ a member of the exponential family in its usual form?",
     "rubric": {
       "elements": [
         {
@@ -63343,7 +63345,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "exponential family densities require the support to *not* depend on $\\theta$",
+          "description": "exponential family densities require the support to $\\textbf{NOT}$ depend on $\\theta$",
           "weight": 1,
           "required": true
         },
@@ -77426,7 +77428,7 @@ export const generatedItems: Item[] = [
       "elements": [
         {
           "id": "element-1",
-          "description": "Σ(O−E)²/E ~ χ²_{k−1} for k categories — df is k−1, *not* (r−1)(c−1) as in the independence test",
+          "description": "Σ(O−E)²/E ~ χ²_{k−1} for k categories — df is k−1, $\\textbf{NOT}$ (r−1)(c−1) as in the independence test",
           "weight": 1,
           "required": false
         }
@@ -78085,11 +78087,11 @@ export const generatedItems: Item[] = [
       "forbiddenMoves": [
         {
           "id": "misconception",
-          "description": "treats \"the true population as known exactly\" — missing that the whole method exists because the population is *not* known",
+          "description": "treats \"the true population as known exactly\" — missing that the whole method exists because the population is $\\textbf{NOT}$ known",
           "weight": 0,
           "misconception": {
             "id": "bootstrapping--r2--misconception",
-            "description": "treats \"the true population as known exactly\" — missing that the whole method exists because the population is *not* known",
+            "description": "treats \"the true population as known exactly\" — missing that the whole method exists because the population is $\\textbf{NOT}$ known",
             "blameConceptId": "bootstrapping"
           }
         }
@@ -79204,7 +79206,7 @@ export const generatedItems: Item[] = [
       "handwritten",
       "spoken"
     ],
-    "stem": "Which of these could *not* be a valid PMF on $\\{1, 2, 3\\}$?",
+    "stem": "Which of these could $\\textbf{NOT}$ be a valid PMF on $\\{1, 2, 3\\}$?",
     "rubric": {
       "elements": [
         {

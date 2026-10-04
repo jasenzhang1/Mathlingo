@@ -638,17 +638,17 @@ const mfpca: Item[] = [
   ),
   num(
     { concept: MF, slug: "apply-correlated-eigenvalue", cognitive: "apply", level: 6, seconds: 90,
-      stem: "The stacked score covariance matrix is $\\begin{pmatrix} 4 & 2 \\\\ 2 & 1 \\end{pmatrix}$ (unit weights). What is the largest multivariate eigenvalue?" },
+      stem: "The stacked score covariance matrix is $\\begin{bmatrix} 4 & 2 \\\\ 2 & 1 \\end{bmatrix}$ (unit weights). What is the largest multivariate eigenvalue?" },
     5,
   ),
   num(
     { concept: MF, slug: "apply-multivariate-score", cognitive: "apply", level: 7, seconds: 120,
-      stem: "The score covariance matrix is $\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ with unit weights and orthonormal univariate bases. A subject has univariate scores $(1, 3)$. Compute their first multivariate score (with the eigenvector's first entry positive). Give $3$ decimal places." },
+      stem: "The score covariance matrix is $\\begin{bmatrix} 2 & 1 \\\\ 1 & 2 \\end{bmatrix}$ with unit weights and orthonormal univariate bases. A subject has univariate scores $(1, 3)$. Compute their first multivariate score (with the eigenvector's first entry positive). Give $3$ decimal places." },
     2.828,
   ),
   num(
     { concept: MF, slug: "apply-weighted-share", cognitive: "apply", level: 8.5, seconds: 200,
-      stem: "The unweighted score covariance matrix is $\\begin{pmatrix} 4 & 1 \\\\ 1 & 1 \\end{pmatrix}$, one score per variable. Rescale with weights $w = (\\tfrac{1}{4}, 1)$, i.e. analyse $D^{1/2} Z D^{1/2}$ with $D = \\operatorname{diag}(w)$. What fraction of the total weighted variance does the first component explain?" },
+      stem: "The unweighted score covariance matrix is $\\begin{bmatrix} 4 & 1 \\\\ 1 & 1 \\end{bmatrix}$, one score per variable. Rescale with weights $w = (\\tfrac{1}{4}, 1)$, i.e. analyse $D^{1/2} Z D^{1/2}$ with $D = \\operatorname{diag}(w)$. What fraction of the total weighted variance does the first component explain?" },
     0.75,
   ),
   mcq(

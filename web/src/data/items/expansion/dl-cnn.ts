@@ -94,7 +94,7 @@ export const dlCnnItems: Item[] = [
      ["One per channel", "po-params-channel", "No."],
      ["$k^2$", "po-params-k2", "No."]]),
   num({ concept: PO, slug: "x-apply-max", cognitive: "apply", level: 1.5, seconds: 15,
-    stem: "Max-pool the $2 \\times 2$ window $\\begin{pmatrix} 1 & 5 \\\\ 3 & 2 \\end{pmatrix}$." }, 5),
+    stem: "Max-pool the $2 \\times 2$ window $\\begin{bmatrix} 1 & 5 \\\\ 3 & 2 \\end{bmatrix}$." }, 5),
   num({ concept: PO, slug: "x-apply-avg", cognitive: "apply", level: 1.5, seconds: 15,
     stem: "Average-pool the same window." }, 2.75),
   num({ concept: PO, slug: "x-apply-size", cognitive: "apply", level: 2, seconds: 20,

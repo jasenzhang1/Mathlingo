@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { CodeText } from "../components/assessment/CodeText";
+import { DifficultyHistogram } from "../components/dev/DifficultyHistogram";
 import { FeedbackInbox } from "../components/dev/FeedbackInbox";
 import { ItemEditorForm } from "../components/dev/ItemEditorForm";
 import { ItemPreviewPanel } from "../components/dev/ItemPreviewPanel";
@@ -81,6 +83,17 @@ const NO_FILTERS: Filters = {
   cognitive: [],
 };
 
+/**
+ * Filters that open the bank on one lesson: its course and chapter, so the
+ * lesson is listed and selected. Used by the assessment panel’s dev link
+ * (`/dev/questions?concept=<id>`).
+ */
+function filtersForConcept(conceptId: string | null): Filters {
+  const concept = conceptId ? conceptById.get(conceptId) : undefined;
+  if (!concept) return NO_FILTERS;
+  return { ...NO_FILTERS, course: concept.domain, chapter: chapterKeyOf.get(concept.id) ?? "" };
+}
+
 /** Course and chapter narrow which topics are listed; the rest narrow the questions within them. */
 function conceptInScope(conceptId: string, filters: Filters): boolean {
   if (filters.chapter) return chapterKeyOf.get(conceptId) === filters.chapter;
@@ -113,9 +126,15 @@ export function DevQuestionsPage() {
 
   const [bank, setBank] = useState<Map<string, Item[]> | null>(null);
   const [store, setStore] = useState<ItemOverrideStore>(() => loadStore());
-  const [selectedConceptId, setSelectedConceptId] = useState<string | null>(null);
+  const [searchParams] = useSearchParams();
+  const linkedConcept = searchParams.get("concept");
+  const [selectedConceptId, setSelectedConceptId] = useState<string | null>(() =>
+    linkedConcept && conceptById.has(linkedConcept) ? linkedConcept : null,
+  );
   const [search, setSearch] = useState("");
-  const [filters, setFilters] = useState<Filters>(NO_FILTERS);
+  /** Narrows the lesson list on the left by title. */
+  const [lessonQuery, setLessonQuery] = useState("");
+  const [filters, setFilters] = useState<Filters>(() => filtersForConcept(linkedConcept));
   // undefined = editor closed, null = creating a new item, Item = editing that item.
   const [editing, setEditing] = useState<Item | null | undefined>(undefined);
   const [previewing, setPreviewing] = useState<Item | null>(null);
@@ -157,6 +176,19 @@ export function DevQuestionsPage() {
     }
     return map;
   }, [itemsByConcept, filters, search]);
+
+  // The histogram shows what every *other* filter keeps, so moving the
+  // difficulty range never changes the bars it is drawn over.
+  const histogramLevels = useMemo(() => {
+    if (!itemsByConcept) return [];
+    const wide = { ...filters, minLevel: MIN_DIFFICULTY_LEVEL, maxLevel: MAX_DIFFICULTY_LEVEL };
+    const levels: number[] = [];
+    for (const list of itemsByConcept.values())
+      for (const item of list) if (itemMatchesFilters(item, wide, search)) levels.push(difficultyToLevel(item.difficulty));
+    return levels;
+  }, [itemsByConcept, filters, search]);
+
+  const lessonNeedle = lessonQuery.trim().toLowerCase();
 
   const filtersActive =
     filters.course !== "" ||
@@ -342,6 +374,7 @@ export function DevQuestionsPage() {
             return undefined;
           }}
           onEdit={(item) => setEditing(item)}
+          onApply={(item) => refresh(store.newItems[item.id] ? saveNewItem(item) : saveOverride(item))}
         />
 
         {!bank ? (
@@ -400,40 +433,14 @@ export function DevQuestionsPage() {
                   </select>
                 </label>
 
-                <div>
-                  <span className="font-body text-xs text-[var(--ink-soft)]">
-                    Difficulty {filters.minLevel.toFixed(1)} – {filters.maxLevel.toFixed(1)}
-                  </span>
-                  <div className="mt-1 flex items-center gap-2">
-                    <input
-                      type="number"
-                      min={MIN_DIFFICULTY_LEVEL}
-                      max={MAX_DIFFICULTY_LEVEL}
-                      step={0.5}
-                      value={filters.minLevel}
-                      aria-label="Minimum difficulty"
-                      onChange={(e) => {
-                        const v = Number(e.target.value);
-                        if (Number.isFinite(v)) updateFilters({ ...filters, minLevel: v });
-                      }}
-                      className="w-full rounded-lg border border-[var(--line)] bg-[var(--paper)] px-2 py-1 text-sm text-[var(--ink)]"
-                    />
-                    <span className="text-[var(--ink-soft)]">to</span>
-                    <input
-                      type="number"
-                      min={MIN_DIFFICULTY_LEVEL}
-                      max={MAX_DIFFICULTY_LEVEL}
-                      step={0.5}
-                      value={filters.maxLevel}
-                      aria-label="Maximum difficulty"
-                      onChange={(e) => {
-                        const v = Number(e.target.value);
-                        if (Number.isFinite(v)) updateFilters({ ...filters, maxLevel: v });
-                      }}
-                      className="w-full rounded-lg border border-[var(--line)] bg-[var(--paper)] px-2 py-1 text-sm text-[var(--ink)]"
-                    />
-                  </div>
-                </div>
+                <DifficultyHistogram
+                  levels={histogramLevels}
+                  min={MIN_DIFFICULTY_LEVEL}
+                  max={MAX_DIFFICULTY_LEVEL}
+                  lower={filters.minLevel}
+                  upper={filters.maxLevel}
+                  onChange={(minLevel, maxLevel) => updateFilters({ ...filters, minLevel, maxLevel })}
+                />
 
                 <FilterChips
                   label="Format"
@@ -467,7 +474,24 @@ export function DevQuestionsPage() {
                 </button>
               )}
 
-              {visibleCourses.map((course) => (
+              <input
+                type="search"
+                value={lessonQuery}
+                onChange={(e) => setLessonQuery(e.target.value)}
+                placeholder="Find a lesson…"
+                aria-label="Find a lesson"
+                className="font-body mb-3 w-full rounded-lg border border-[var(--line)] bg-[var(--paper)] px-2 py-1.5 text-sm text-[var(--ink)] focus:border-[var(--accent)] focus:outline-none"
+              />
+
+              {visibleCourses
+                .filter(
+                  (course) =>
+                    !lessonNeedle ||
+                    course.sections.some((section) =>
+                      section.concepts.some((c) => c.title.toLowerCase().includes(lessonNeedle)),
+                    ),
+                )
+                .map((course) => (
                 <div key={course.domain} className="mb-3">
                   <p
                     className="font-body px-2 text-xs font-semibold uppercase tracking-wide"
@@ -478,7 +502,9 @@ export function DevQuestionsPage() {
                   {course.sections.map((section) => {
                     // Hide topics a filter has emptied, but keep the selected one so it can't vanish mid-edit.
                     const shown = section.concepts.filter(
-                      (c) => !searching || matchesByConcept.has(c.id) || c.id === selectedConceptId,
+                      (c) =>
+                        (!searching || matchesByConcept.has(c.id) || c.id === selectedConceptId) &&
+                        (!lessonNeedle || c.title.toLowerCase().includes(lessonNeedle) || c.id === selectedConceptId),
                     );
                     if (shown.length === 0) return null;
                     return (
@@ -492,7 +518,10 @@ export function DevQuestionsPage() {
                             <button
                               key={c.id}
                               type="button"
-                              onClick={() => setSelectedConceptId(c.id)}
+                              // Clicking the selected lesson again deselects it.
+                              onClick={() => setSelectedConceptId((cur) => (cur === c.id ? null : c.id))}
+                              aria-pressed={selectedConceptId === c.id}
+                              title={selectedConceptId === c.id ? "Click again to deselect" : undefined}
                               className={`font-body block w-full truncate rounded-lg px-2 py-1.5 text-left text-sm ${
                                 selectedConceptId === c.id
                                   ? "bg-[var(--accent)] text-[var(--accent-ink)]"
@@ -531,6 +560,17 @@ export function DevQuestionsPage() {
                         {selectedConceptId
                           ? (conceptById.get(selectedConceptId)?.title ?? selectedConceptId)
                           : "All matching questions"}
+                        {selectedConceptId && (
+                          <button
+                            type="button"
+                            onClick={() => setSelectedConceptId(null)}
+                            aria-label="Deselect lesson"
+                            title="Deselect lesson"
+                            className="font-body ml-2 align-middle text-base text-[var(--ink-soft)] hover:text-[var(--ink)]"
+                          >
+                            ×
+                          </button>
+                        )}
                       </h2>
                       <p className="font-body text-sm text-[var(--ink-soft)]">
                         {selectedItems.length} question{selectedItems.length === 1 ? "" : "s"}

@@ -232,7 +232,7 @@ export const mlFocusedBItems: Item[] = [
   s(BE, "f-derive", 7, "Derive the Bellman expectation equation from $V^\\pi(s) = \\mathbb{E}_\\pi[G_t \\mid s_t = s]$.",
     "Write $G_t = r_{t+1} + \\gamma G_{t+1}$ and condition on the action $a$ and next state $s'$: $V^\\pi(s) = \\sum_a\\pi(a \\mid s)\\sum_{s'}P(s' \\mid s, a)[R(s, a) + \\gamma\\mathbb{E}[G_{t+1} \\mid s_{t+1} = s']]$.",
     "By the Markov property, $\\mathbb{E}[G_{t+1} \\mid s_{t+1} = s'] = V^\\pi(s')$, giving the recursion."),
-  n(BE, "f-matrix", 7.5, "$P^\\pi = \\begin{pmatrix}0.5 & 0.5\\\\0 & 1\\end{pmatrix}$, $R^\\pi = (1, 0)$ and $\\gamma = 0.8$. Compute $V(s_1)$.", 1.6667, 0.001),
+  n(BE, "f-matrix", 7.5, "$P^\\pi = \\begin{bmatrix}0.5 & 0.5\\\\0 & 1\\end{bmatrix}$, $R^\\pi = (1, 0)$ and $\\gamma = 0.8$. Compute $V(s_1)$.", 1.6667, 0.001),
   m(BE, "f-residual-bound", 8, "If $\\|V - TV\\|_\\infty \\le \\varepsilon$ for the Bellman optimality operator $T$, then $\\|V - V^*\\|_\\infty$ is at most:", "$\\varepsilon/(1 - \\gamma)$",
     [["$\\varepsilon$", "Errors compound."], ["$\\gamma\\varepsilon$", "Too small."], ["$\\varepsilon/\\gamma$", "No."]]),
   n(BE, "f-residual-calc", 8, "Evaluate that bound for $\\varepsilon = 0.1$ and $\\gamma = 0.95$.", 2),

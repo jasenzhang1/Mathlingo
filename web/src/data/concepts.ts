@@ -775,14 +775,14 @@ export const concepts: Concept[] = [
     title: "Matrix Multiplication",
     domain: "linear-algebra",
     blurb: "Combining matrices row by column — and what it really means.",
-    prerequisites: ["vector-operations"],
+    prerequisites: ["matrices"],
   },
   {
     id: "matrices",
     title: "Matrices",
     domain: "linear-algebra",
     blurb: "Rectangular arrays of numbers that represent linear maps.",
-    prerequisites: ["matrix-multiplication"],
+    prerequisites: ["vector-operations"],
   },
   {
     id: "trace",

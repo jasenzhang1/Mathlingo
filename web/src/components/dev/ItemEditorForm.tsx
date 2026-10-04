@@ -285,7 +285,7 @@ export function ItemEditorForm({
         <div>
           <label className={labelClass}>
             Format
-            <InfoTip>How the learner answers and how it's graded. <b>numeric</b>: a number (or a vector like (3, -2)), checked against the key within the tolerance. <b>symbolic</b>: an expression, graded by the AI grader. <b>mcq</b>: pick one choice. <b>multi-select</b>: pick all correct choices; partial credit. <b>short-answer</b> / <b>derivation</b>: written answers graded by the AI against the rubric. <b>interview</b>: open, interview-style; AI-graded. <b>code</b>: Python run against the code tests.</InfoTip>
+            <InfoTip>How the learner answers and how it's graded. <b>numeric</b>: a number (or a vector like [3, -2]), checked against the key within the tolerance. <b>symbolic</b>: an expression, graded by the AI grader. <b>mcq</b>: pick one choice. <b>multi-select</b>: pick all correct choices; partial credit. <b>short-answer</b> / <b>derivation</b>: written answers graded by the AI against the rubric. <b>interview</b>: open, interview-style; AI-graded. <b>code</b>: Python run against the code tests.</InfoTip>
           </label>
           <select
             className={inputClass}
@@ -414,7 +414,7 @@ export function ItemEditorForm({
         <div>
           <label className={labelClass}>
             Answer key (numeric / symbolic)
-            <InfoTip>The correct answer for a fixed numeric or symbolic item: a number, or a vector written as (3, -2). Leave it empty for templates (the solver computes it) and for choice or written formats.</InfoTip>
+            <InfoTip>The correct answer for a fixed numeric or symbolic item: a number, or a vector written as [3, -2]. Leave it empty for templates (the solver computes it) and for choice or written formats.</InfoTip>
           </label>
           <input
             className={inputClass}

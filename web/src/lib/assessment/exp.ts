@@ -79,7 +79,8 @@ export const GRACE_PERIOD_MS = DAY_MS;
  *   true ability θ = 0 (~50%)                                    ->  43 even at item 60
  *
  * At 65, a strong learner unlocks within a session and a shaky one needs a few
- * — which is the intended shape. Since the bar is the actual ability estimate
+ * — which is the intended shape. `evidenceCap` also means no one unlocks on
+ * fewer than three direct answers, whatever the estimate. Since the bar is the actual ability estimate
  * (no lower-confidence-bound shading in `masteryLevel`), 65 means "about a 65%
  * chance on a level-5.5 question" — an honest gate rather than a padded one.
  */
@@ -95,13 +96,32 @@ export const SATISFACTION_THRESHOLD = UNLOCK_THRESHOLD;
 export const PROFICIENCY_THRESHOLD = 80;
 export const MASTERY_THRESHOLD = 95;
 
+/**
+ * The highest the bar can read after `observations` direct answers on the
+ * concept: 50 after one, then 60, 68, 74, 80, … approaching 100.
+ *
+ * The ability belief can arrive at a concept already high — correct answers on
+ * dependent lessons push prerequisites up as indirect evidence — and the first
+ * direct answer then lands on top of that. Without a cap one answer could read
+ * as 65+ and unlock the next lessons on the strength of a single question. The
+ * cap applies only to what is shown and gated on; the belief itself (and so
+ * item selection) is untouched, so a strong learner sees the bar climb quickly
+ * once the answers are actually in.
+ */
+export function evidenceCap(observations: number): number {
+  if (observations <= 0) return 0;
+  return 100 * (1 - 0.5 * Math.pow(0.8, observations - 1));
+}
+
 export function expFor(state: ConceptState, now: number): ExpSnapshot {
   // A learner who has never been assessed on this concept reads as 0, not the
   // prior's mastery (~19) — the prior exists to shape how
   // fast the *first* few answers move the estimate, not to hand out a
   // starting balance nobody earned.
-  const ceiling =
-    state.ability.observations === 0 ? 0 : 100 * masteryLevel(state.ability);
+  const ceiling = Math.min(
+    100 * masteryLevel(state.ability),
+    evidenceCap(state.ability.observations),
+  );
 
   if (!state.memory) {
     return {

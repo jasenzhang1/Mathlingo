@@ -1671,7 +1671,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For iid Uniform$(0,\\theta)$, use factorization to show $T(X)=\\max(x_i)$ is sufficient for $\\theta$, even though Uniform$(0,\\theta)$ is *not* exponential family (its support depends on $\\theta$).",
+      "For iid Uniform$(0,\\theta)$, use factorization to show $T(X)=\\max(x_i)$ is sufficient for $\\theta$, even though Uniform$(0,\\theta)$ is $\\textbf{NOT}$ exponential family (its support depends on $\\theta$).",
     rubric: {
       elements: [
         { id: "element-1", description: "$f(x;\\theta) = \\prod (1/\\theta)\\cdot 1\\{0\\le x_i\\le\\theta\\} = (1/\\theta)^n\\cdot 1\\{\\max(x_i)\\le\\theta\\}\\cdot 1\\{\\min(x_i)\\ge 0\\} = g(\\max(x_i),\\theta)\\cdot h(x)$, with $h(x)=1\\{\\min(x_i)\\ge 0\\}$", weight: 1, required: true },
@@ -2046,7 +2046,7 @@ export const probabilityExpansion5Items: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "For $(X, Y)$ jointly Bivariate Normal, is it true that $\\rho(X,Y)=0$ implies $X$ and $Y$ are independent? Contrast your answer with this concept’s existing A2 (Uniform/quadratic example), where $\\rho=0$ clearly did *not* imply independence.",
+      "For $(X, Y)$ jointly Bivariate Normal, is it true that $\\rho(X,Y)=0$ implies $X$ and $Y$ are independent? Contrast your answer with this concept’s existing A2 (Uniform/quadratic example), where $\\rho=0$ clearly did $\\textbf{NOT}$ imply independence.",
     rubric: {
       elements: [
         { id: "element-1", description: "yes — for jointly (Bivariate) Normal random variables specifically, $\\rho=0$ does imply independence, because the bivariate Normal density factors into the product of the marginals exactly when the correlation term vanishes", weight: 1, required: true },

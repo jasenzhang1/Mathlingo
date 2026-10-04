@@ -722,7 +722,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "$S = \\{a, b\\}$. Which of the following is *not* a valid element of $P(S)$?",
+    stem: "$S = \\{a, b\\}$. Which of the following is $\\textbf{NOT}$ a valid element of $P(S)$?",
     choices: [
       { id: "a", text: "$a$", correct: true },
       {
@@ -1568,7 +1568,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why $A \\times B$ is generally *not* equal to $B \\times A$, and give a small example where they differ.",
+    stem: "Explain why $A \\times B$ is generally $\\textbf{NOT}$ equal to $B \\times A$, and give a small example where they differ.",
     rubric: {
       elements: [
         {
@@ -2091,7 +2091,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "$A = \\{1,2,3\\}$, $B = \\{4,5\\}$. Which of these relations is *not* a function from $A$ to $B$?",
+    stem: "$A = \\{1,2,3\\}$, $B = \\{4,5\\}$. Which of these relations is $\\textbf{NOT}$ a function from $A$ to $B$?",
     choices: [
       { id: "a", text: "$\\{(1,4), (1,5), (2,4), (3,5)\\}$", correct: true },
       {
@@ -2391,7 +2391,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "$A = \\{1,2,3\\}$, $B = \\{4,5\\}$. Which of these relations is *not* a function from $A$ to $B$?",
+    stem: "$A = \\{1,2,3\\}$, $B = \\{4,5\\}$. Which of these relations is $\\textbf{NOT}$ a function from $A$ to $B$?",
     choices: [
       { id: "a", text: "$\\{(1,4), (2,5)\\}$", correct: true },
       {
@@ -3072,7 +3072,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Which of these relations on the set of all people is *not* an equivalence relation?",
+    stem: "Which of these relations on the set of all people is $\\textbf{NOT}$ an equivalence relation?",
     choices: [
       {
         id: "a",
@@ -4095,7 +4095,7 @@ export const discreteMathSetsItems: Item[] = [
         },
         {
           id: "hashing-wants-non-injective",
-          description: "Explains a password hash is deliberately designed so that recovering the input from the output is intractable, which is aided by *not* being invertible (many-to-one, i.e. not injective) — an attacker who finds a preimage may find a different password with the same hash, but can't recover the original directly from a bijective structure.",
+          description: "Explains a password hash is deliberately designed so that recovering the input from the output is intractable, which is aided by $\\textbf{NOT}$ being invertible (many-to-one, i.e. not injective) — an attacker who finds a preimage may find a different password with the same hash, but can't recover the original directly from a bijective structure.",
           weight: 3,
           required: true,
         },
@@ -4206,7 +4206,7 @@ export const discreteMathSetsItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Which of the following sets is *not* countable?",
+    stem: "Which of the following sets is $\\textbf{NOT}$ countable?",
     choices: [
       { id: "a", text: "$\\mathbb{R}$, the real numbers", correct: true },
       {

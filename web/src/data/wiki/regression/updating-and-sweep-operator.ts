@@ -49,7 +49,7 @@ export const updatingAndSweepOperatorWiki: WikiArticle = {
         },
         {
           kind: "formula",
-          latex: "M = \\begin{pmatrix} XᵀX & Xᵀy \\\\ yᵀX & yᵀy \\end{pmatrix};\\quad \\text{sweep}_k: \\; a_{kk} ← −\\frac{1}{a_{kk}},\\; a_{ik} ← \\frac{a_{ik}}{a_{kk}},\\; a_{kj} ← \\frac{a_{kj}}{a_{kk}},\\; a_{ij} ← a_{ij} − \\frac{a_{ik}a_{kj}}{a_{kk}}",
+          latex: "M = \\begin{bmatrix} XᵀX & Xᵀy \\\\ yᵀX & yᵀy \\end{bmatrix};\\quad \\text{sweep}_k: \\; a_{kk} ← −\\frac{1}{a_{kk}},\\; a_{ik} ← \\frac{a_{ik}}{a_{kk}},\\; a_{kj} ← \\frac{a_{kj}}{a_{kk}},\\; a_{ij} ← a_{ij} − \\frac{a_{ik}a_{kj}}{a_{kk}}",
           caption: "On the right-hand sides, a_kk, a_ik and a_kj denote the values before the sweep.",
         },
         {

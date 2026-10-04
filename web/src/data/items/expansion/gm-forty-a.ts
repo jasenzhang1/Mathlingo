@@ -357,7 +357,7 @@ export const gmFortyAItems: Item[] = [
      ["$\\Omega_{ii} = 0$", "gg4-zr-diag", "Diagonals are positive."],
      ["Equal variances", "gg4-zr-var", "No."]]),
   num({ concept: GG, slug: "x4-apply-pcorr", cognitive: "apply", level: 6, seconds: 40,
-    stem: "$\\Omega = \\begin{pmatrix}2 & -1 \\\\ -1 & 2\\end{pmatrix}$. What is the partial correlation $-\\Omega_{12}/\\sqrt{\\Omega_{11}\\Omega_{22}}$?" }, 0.5),
+    stem: "$\\Omega = \\begin{bmatrix}2 & -1 \\\\ -1 & 2\\end{bmatrix}$. What is the partial correlation $-\\Omega_{12}/\\sqrt{\\Omega_{11}\\Omega_{22}}$?" }, 0.5),
   num({ concept: GG, slug: "x4-apply-chain-zeros", cognitive: "apply", level: 7, seconds: 30,
     stem: "A Gaussian chain $X_1 - X_2 - X_3$ has a tridiagonal precision matrix. How many zero off-diagonal pairs does it have?" }, 1, 0.001),
   num({ concept: GG, slug: "x4-apply-cov", cognitive: "apply", level: 7.5, seconds: 60,

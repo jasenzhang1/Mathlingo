@@ -65,7 +65,7 @@ export const schurComplement: WikiArticle = {
       blocks: [
         {
           kind: "prose",
-          text: "Split a jointly Gaussian vector $\\begin{pmatrix}X\\\\Y\\end{pmatrix} \\sim N\\!\\left(\\begin{pmatrix}\\mu_X\\\\\\mu_Y\\end{pmatrix}, \\begin{bmatrix}\\Sigma_{XX} & \\Sigma_{XY} \\\\ \\Sigma_{YX} & \\Sigma_{YY}\\end{bmatrix}\\right)$. Conditioning on $Y=y$ gives $X\\mid Y=y$ a Gaussian distribution whose covariance is",
+          text: "Split a jointly Gaussian vector $\\begin{bmatrix}X\\\\Y\\end{bmatrix} \\sim N\\!\\left(\\begin{bmatrix}\\mu_X\\\\\\mu_Y\\end{bmatrix}, \\begin{bmatrix}\\Sigma_{XX} & \\Sigma_{XY} \\\\ \\Sigma_{YX} & \\Sigma_{YY}\\end{bmatrix}\\right)$. Conditioning on $Y=y$ gives $X\\mid Y=y$ a Gaussian distribution whose covariance is",
         },
         {
           kind: "formula",

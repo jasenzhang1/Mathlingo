@@ -59,7 +59,7 @@ export const regFitMeasuresItems: Item[] = [
     [["substitute", "$\\hat{\\boldsymbol{\\beta}} = (X^\\top X)^{-1}X^\\top(X\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}) = \\boldsymbol{\\beta} + (X^\\top X)^{-1}X^\\top\\boldsymbol{\\varepsilon}$.", 5, true],
      ["expect", "Taking expectations conditional on $X$ kills the second term.", 3, true]]),
   num({ concept: OP, slug: "x-apply-covariance", cognitive: "apply", level: 7, seconds: 90,
-    stem: "$\\sigma^2 = 2$ and $(X^\\top X)^{-1} = \\begin{pmatrix} 0.5 & -0.1 \\\\ -0.1 & 0.2 \\end{pmatrix}$. What is $\\operatorname{Var}(\\hat{\\beta}_1 + \\hat{\\beta}_2)$?" }, 1),
+    stem: "$\\sigma^2 = 2$ and $(X^\\top X)^{-1} = \\begin{bmatrix} 0.5 & -0.1 \\\\ -0.1 & 0.2 \\end{bmatrix}$. What is $\\operatorname{Var}(\\hat{\\beta}_1 + \\hat{\\beta}_2)$?" }, 1),
   num({ concept: OP, slug: "x-apply-intercept-var", cognitive: "apply", level: 7.5, seconds: 90,
     stem: "In simple regression $\\operatorname{Var}(b_0) = \\sigma^2\\left(\\frac{1}{n} + \\frac{\\bar{x}^2}{S_{xx}}\\right)$. With $\\sigma^2 = 4$, $n = 10$, $\\bar{x} = 5$ and $S_{xx} = 50$, compute it." }, 2.4),
   short({ concept: OP, slug: "x-explain-gm-proof", cognitive: "explain", level: 8.5, seconds: 300,

@@ -212,7 +212,7 @@ export const rgFortyCItems: Item[] = [
   s(CR, "x4r-not-box", 8, "Why isn't a joint confidence region the rectangle formed by the individual intervals?",
     "Each individual interval covers its own coefficient with $95\\%$ probability, but the rectangle doesn't have $95\\%$ joint coverage, and it ignores correlation between the estimates.",
     "The joint region accounts for that correlation (a tilted ellipse), so some points inside the rectangle are implausible jointly and vice versa."),
-  n(CR, "x4r-corr", 8, "$(X^\\top X)^{-1} = \\begin{pmatrix}1 & -0.5\\\\-0.5 & 1\\end{pmatrix}$. What is the correlation between $\\hat\\beta_1$ and $\\hat\\beta_2$?", -0.5, 0.001),
+  n(CR, "x4r-corr", 8, "$(X^\\top X)^{-1} = \\begin{bmatrix}1 & -0.5\\\\-0.5 & 1\\end{bmatrix}$. What is the correlation between $\\hat\\beta_1$ and $\\hat\\beta_2$?", -0.5, 0.001),
   s(CR, "x4r-tilt", 8.5, "Why is the confidence ellipse tilted when the coefficient estimates are correlated?",
     "The ellipse's axes are the eigenvectors of $X^\\top X$; when $X^\\top X$ isn't diagonal, those axes aren't aligned with the coordinates.",
     "E.g. positively correlated predictors give negatively correlated estimates: the data pin down one combination of the coefficients well but not their split."),

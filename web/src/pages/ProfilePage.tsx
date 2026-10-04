@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { formatProficiency } from "../lib/assessment/formatProficiency";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Avatar } from "../components/Avatar";
 import { Footer } from "../components/Footer";
@@ -55,8 +56,8 @@ function SubjectBar({
           }}
         />
       </div>
-      <span className="font-body w-8 shrink-0 text-right text-xs tabular-nums text-[var(--ink-soft)]">
-        {Math.round(value)}
+      <span className="font-body w-10 shrink-0 text-right text-xs tabular-nums text-[var(--ink-soft)]">
+        {formatProficiency(value)}
       </span>
     </div>
   );

@@ -3151,7 +3151,7 @@ export const ml10Items: Item[] = [
         correct: false,
         misconception: {
           id: "roc-baseline-thought-prevalence-dependent",
-          description: "ROC AUC's random baseline is fixed at 0.5 no matter the class balance — it is the metric whose baseline does *not* move with prevalence.",
+          description: "ROC AUC's random baseline is fixed at 0.5 no matter the class balance — it is the metric whose baseline does $\\textbf{NOT}$ move with prevalence.",
           blameConceptId: "roc-curves",
         },
       },
@@ -7587,7 +7587,7 @@ export const ml10Items: Item[] = [
         correct: false,
         misconception: {
           id: "model-agnostic-thought-linear-only",
-          description: "That is the opposite of the term's meaning — a model-agnostic method is defined by *not* depending on the model class at all.",
+          description: "That is the opposite of the term's meaning — a model-agnostic method is defined by $\\textbf{NOT}$ depending on the model class at all.",
           blameConceptId: "model-interpretability",
         },
       },
@@ -8057,7 +8057,7 @@ export const ml10Items: Item[] = [
         {
           id: "anomalies-share-no-form",
           description:
-            "Anomalies are defined by *not* resembling the normal data, so they have no common form for a classifier to learn.",
+            "Anomalies are defined by $\\textbf{NOT}$ resembling the normal data, so they have no common form for a classifier to learn.",
           weight: 4,
           required: true,
         },
