@@ -428,11 +428,21 @@ mark; answers within 0.05 of expectation aren't forced. The bar is a sigmoid, so
 real step in ability barely shows without this.
 
 **Evidence cap.** The bar can never read higher than the number of direct answers supports:
-`100 · (1 − 0.5 · 0.8^(n−1))` after `n` answers — 50, 60, 68, 74, 80, … — enforced on both the
-display and the stored belief (`evidenceCap` in `exp.ts`, `capMastery` in `mastery.ts`). Indirect
-evidence from dependent lessons can push a prerequisite's belief up before it is ever assessed;
-without the cap the first direct answer could land at 65+ and unlock on one question. With it,
-unlocking takes at least three answers.
+`min(100, 40 + 10n)` after `n` answers — 50, 60, 70, 80, 90, then no cap — enforced on the belief
+(`evidenceCap` in `exp.ts`, `capMastery` in `mastery.ts`) and limiting how fast the stored number can
+rise. Indirect evidence from dependent lessons can push a prerequisite's belief up before it is ever
+assessed; without the cap the first direct answer could land at 65+ and unlock on one question. With
+it, unlocking takes at least three answers. (An earlier geometric cap that only approached 100
+throttled strong learners to fractions of a point per perfect answer near the top.)
+
+**Surprise loosens the belief.** Before each update, if the response's squared standardised residual
+`(score − p)² / p(1 − p)` exceeds 4 (a 2 s.d. surprise), the prior variance is inflated by up to 3×,
+so an answer that contradicts the estimate moves it substantially instead of being absorbed by an
+overconfident belief.
+
+**Repairing pinned rows.** An old bug could force a below-pass answer's estimate to the ability
+floor (−4). On load, a row at the floor is refitted from the learner's full answer log with
+`estimateAbilityFromLog`, and its stored proficiency is only ever raised by the repair.
 
 **The belief never hardens.** The ability variance has a floor of 0.5 (σ ≈ 0.7 logits), so the
 estimate never becomes so confident that new answers stop moving it. Learners have off days and keep

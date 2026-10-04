@@ -90,7 +90,7 @@ export function RubricEditor({
                       {Math.round(share * 100)}%
                     </span>
                   </label>
-                  <label className="flex items-center gap-1.5" title="Missing it caps the score at 50, however good the rest is">
+                  <label className="flex items-center gap-1.5" title="Missing it caps the score at 59 (just under the pass mark), however good the rest is">
                     <input
                       type="checkbox"
                       checked={Boolean(element.required)}
@@ -100,7 +100,7 @@ export function RubricEditor({
                     />
                     <span className="text-xs">
                       Required
-                      <InfoTip>Load-bearing: if this criterion scores under 50, the whole answer is capped at 50 however good the rest is. Use it for the one idea an answer can't be right without.</InfoTip>
+                      <InfoTip>Load-bearing: if this criterion scores under 50, the whole answer is capped at 59 (just under the pass mark) however good the rest is. Use it for the one idea an answer can't be right without.</InfoTip>
                     </span>
                   </label>
                   <span className="font-mono text-[10px] text-[var(--ink-soft)]">{element.id}</span>
@@ -138,10 +138,10 @@ export function RubricEditor({
       <div>
         <p className="font-body mb-2 text-xs font-medium uppercase tracking-wide text-[var(--ink-soft)]">
           Forbidden moves
-          <InfoTip>Invalid reasoning that reaches a right-looking result — e.g. dividing by something that may be zero, or assuming independence from zero correlation. Committing one caps the score at 30.</InfoTip>
+          <InfoTip>Invalid reasoning that reaches a right-looking result — e.g. dividing by something that may be zero, or assuming independence from zero correlation. Committing one caps the score at 45.</InfoTip>
         </p>
         <p className="font-body mb-2 text-xs text-[var(--ink-soft)]">
-          Committing one caps the score at 30 — e.g. assuming independence from zero correlation.
+          Committing one caps the score at 45 — e.g. assuming independence from zero correlation.
         </p>
         <ul className="space-y-2">
           {moves.map((move, i) => (

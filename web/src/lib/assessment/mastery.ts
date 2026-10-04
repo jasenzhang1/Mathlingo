@@ -1,5 +1,6 @@
 import type { Ability, Grade, Item } from "./types";
 import { clamp, sigmoid } from "./numeric";
+import { FORBIDDEN_CAP, REQUIRED_MISS_CAP } from "./rubric";
 
 /**
  * Layer 3 — how hard is the question, and what does answering it do to the
@@ -98,7 +99,15 @@ export function updateAbility(
   const a = item.discrimination;
   const p = probabilityCorrect(ability.mean, item);
 
-  const priorPrecision = 1 / ability.variance;
+  // A response far outside what the belief predicted (full credit where it
+  // gave a 10% chance, or a miss where it gave 95%) is evidence the belief is
+  // wrong, not just noise. Loosen it before updating so the estimate can
+  // actually move, instead of a misjudged learner crawling back two points at a
+  // time. z² is the squared standardised residual; below 4 (2 s.d.) nothing changes.
+  const z2 = ((score - p) * (score - p)) / Math.max(p * (1 - p), 1e-3);
+  const inflate = z2 > 4 ? Math.min(3, z2 / 4) : 1;
+
+  const priorPrecision = 1 / (ability.variance * inflate);
   const information = a * a * p * (1 - p);
   const posteriorVariance = 1 / (priorPrecision + information);
 
@@ -305,15 +314,17 @@ export const PASS_THRESHOLD = 0.6;
 export function effectiveScore(grade: Grade, item: Item): number {
   let score = clamp(grade.score, 0, 1);
 
+  // Same caps as the rubric scorer (rubric.ts) — applied once, not twice over
+  // with harsher numbers here.
   const missedRequired = (item.rubric?.elements ?? []).some(
     (el) => el.required && grade.rubricElementsMissed.includes(el.id),
   );
-  if (missedRequired) score = Math.min(score, PASS_THRESHOLD - 0.05);
+  if (missedRequired) score = Math.min(score, REQUIRED_MISS_CAP);
 
   const usedForbiddenMove = (item.rubric?.forbiddenMoves ?? []).some((el) =>
     grade.rubricElementsHit.includes(el.id),
   );
-  if (usedForbiddenMove) score = Math.min(score, 0.25);
+  if (usedForbiddenMove) score = Math.min(score, FORBIDDEN_CAP);
 
   return score;
 }

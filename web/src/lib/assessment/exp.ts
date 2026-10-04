@@ -98,7 +98,7 @@ export const MASTERY_THRESHOLD = 95;
 
 /**
  * The highest the bar can read after `observations` direct answers on the
- * concept: 50 after one, then 60, 68, 74, 80, … approaching 100.
+ * concept: 50 after one, then 60, 70, 80, 90, and no cap from the sixth on.
  *
  * The ability belief can arrive at a concept already high — correct answers on
  * dependent lessons push prerequisites up as indirect evidence — and the first
@@ -110,7 +110,11 @@ export const MASTERY_THRESHOLD = 95;
  */
 export function evidenceCap(observations: number): number {
   if (observations <= 0) return 0;
-  return 100 * (1 - 0.5 * Math.pow(0.8, observations - 1));
+  // 50, 60, 70, 80, 90, 100: one answer can't unlock (65 needs three), and
+  // after six answers it stops constraining anyone. (A geometric cap that only
+  // approached 100 throttled strong learners to fractions of a point per
+  // perfect answer near the top.)
+  return Math.min(100, 40 + 10 * observations);
 }
 
 /**

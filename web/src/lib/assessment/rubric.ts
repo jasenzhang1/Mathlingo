@@ -17,10 +17,15 @@ import type { Item, Rubric, RubricVerdict } from "./types";
 
 /** A required element below this is treated as absent rather than thin. */
 export const REQUIRED_CREDIT_BAR = 0.5;
-/** Cap applied when a required element is absent. */
-export const REQUIRED_MISS_CAP = 0.5;
+/**
+ * Cap applied when a required element is absent: just under the pass mark
+ * (0.6). An answer can't pass without its key idea, but it keeps everything
+ * else it earned up to there — the old cap of 0.5 wiped out real partial
+ * credit on top of the missing piece.
+ */
+export const REQUIRED_MISS_CAP = 0.59;
 /** Cap applied when a forbidden move is committed at or above half credit. */
-export const FORBIDDEN_CAP = 0.3;
+export const FORBIDDEN_CAP = 0.45;
 
 /**
  * The rubric a question is graded against.

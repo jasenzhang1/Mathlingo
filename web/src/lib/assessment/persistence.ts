@@ -1,5 +1,6 @@
 import { supabase } from "../supabase";
 import { modelProficiency } from "./exp";
+import { estimateAbilityFromLog } from "./mastery";
 import { blankState } from "./review";
 import type { ConceptState, Grade, Item } from "./types";
 
@@ -68,6 +69,48 @@ function rowToState(row: ConceptStateRow): ConceptState {
  * Best effort: if migration 0016 hasn't run, nothing is written and the value
  * is simply recomputed as before.
  */
+/**
+ * Repairs lessons an old engine bug pinned to the bottom of the scale.
+ *
+ * Before the surprise-based floor, a below-pass answer could force the
+ * estimate to the ability bound ("can't answer anything"), and from there
+ * even perfect answers were worth ~2 points. Such a row is refitted from the
+ * learner's whole answer log with the batch estimator (order-independent, no
+ * floor), and only ever raised — never lowered — so repairing the bug can't
+ * cost anyone. Runs once per pinned row: after it, the row isn't pinned.
+ */
+async function repairPinned(userId: string, states: ConceptState[]): Promise<ConceptState[]> {
+  const pinned = states.filter((s) => s.ability.observations > 0 && s.ability.mean <= PINNED_MEAN);
+  if (pinned.length === 0) return states;
+
+  const repaired = new Map<string, ConceptState>();
+  for (const state of pinned) {
+    const { data } = await supabase
+      .from("assessment_responses")
+      .select("score, item_difficulty, item_discrimination")
+      .eq("user_id", userId)
+      .eq("concept_id", state.conceptId);
+    const log = ((data as { score: number; item_difficulty: number; item_discrimination: number }[] | null) ?? [])
+      .filter((r) => Number.isFinite(r.item_difficulty) && Number.isFinite(r.item_discrimination))
+      .map((r) => ({ score: r.score, difficulty: r.item_difficulty, discrimination: r.item_discrimination }));
+    if (log.length === 0) continue;
+
+    const refit = estimateAbilityFromLog(log);
+    if (refit.mean <= state.ability.mean) continue;
+    const next: ConceptState = {
+      ...state,
+      ability: { ...refit, observations: state.ability.observations },
+    };
+    next.proficiency = Math.max(state.proficiency ?? 0, modelProficiency(next));
+    repaired.set(state.conceptId, next);
+  }
+  if (repaired.size > 0) void saveConceptStates(userId, [...repaired.values()]);
+  return states.map((s) => repaired.get(s.conceptId) ?? s);
+}
+
+/** At (or within rounding of) the ability floor — where the old bug left learners. */
+const PINNED_MEAN = -3.95;
+
 function freezeMissing(userId: string, states: ConceptState[]): ConceptState[] {
   const missing = states.filter((s) => s.proficiency === undefined && s.ability.observations > 0);
   if (missing.length === 0) return states;
@@ -87,7 +130,9 @@ export async function loadConceptState(
     .eq("concept_id", conceptId)
     .maybeSingle();
 
-  return data ? freezeMissing(userId, [rowToState(data as ConceptStateRow)])[0] : blankState(conceptId);
+  if (!data) return blankState(conceptId);
+  const [repaired] = await repairPinned(userId, [rowToState(data as ConceptStateRow)]);
+  return freezeMissing(userId, [repaired])[0];
 }
 
 /**
@@ -107,7 +152,7 @@ export async function loadAllConceptStates(
     .eq("user_id", userId);
 
   const states = ((data as ConceptStateRow[]) ?? []).map(rowToState);
-  return freeze ? freezeMissing(userId, states) : states;
+  return freeze ? freezeMissing(userId, await repairPinned(userId, states)) : states;
 }
 
 /** Upserts one or more concept states — the review may have touched prerequisites too. */

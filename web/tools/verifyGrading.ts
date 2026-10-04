@@ -1,8 +1,10 @@
 import { loadItemBank } from "../src/data/items.ts";
 import {
   explainScore,
+  FORBIDDEN_CAP,
   makeVerdict,
   rubricFor,
+  REQUIRED_MISS_CAP,
   scoreFromVerdicts,
 } from "../src/lib/assessment/rubric.ts";
 import { routeGrader } from "../src/lib/assessment/router.ts";
@@ -56,14 +58,14 @@ check("blank answer", scoreFromVerdicts(rubric(0, 0, 0)), 0);
 check("perfect on every element", scoreFromVerdicts(rubric(1, 1, 1)), 1);
 check("all present but thinly justified", scoreFromVerdicts(rubric(0.75, 0.75, 0.75)), 0.75);
 check("strong on required, nothing else", scoreFromVerdicts(rubric(1, 0, 0)), 0.4);
-check("everything but the required element -> capped", scoreFromVerdicts(rubric(0, 1, 1)), 0.5);
+check("everything but the required element -> capped", scoreFromVerdicts(rubric(0, 1, 1)), REQUIRED_MISS_CAP);
 check("required thin (0.75) is NOT capped", scoreFromVerdicts(rubric(0.75, 1, 1)), 0.9);
 check("required at the bar (0.5) is not capped", scoreFromVerdicts(rubric(0.5, 1, 1)), 0.8);
-check("required below the bar (0.25) is capped", scoreFromVerdicts(rubric(0.25, 1, 1)), 0.5);
+check("required below the bar (0.25) is capped", scoreFromVerdicts(rubric(0.25, 1, 1)), REQUIRED_MISS_CAP);
 check(
   "perfect answer with a forbidden move",
   scoreFromVerdicts([...rubric(1, 1, 1), forbidden("phrase", 1)]),
-  0.3,
+  FORBIDDEN_CAP,
 );
 check(
   "forbidden move only quarter-committed does not cap",

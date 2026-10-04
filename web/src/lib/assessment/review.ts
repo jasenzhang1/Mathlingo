@@ -16,6 +16,10 @@ import {
   type ItemBelief,
 } from "./mastery";
 import { clamp } from "./numeric";
+import { routeGrader } from "./router";
+
+/** How much below-expectation evidence from an AI-graded (written) answer counts. */
+const WRITTEN_DOWNSIDE_WEIGHT = 0.5;
 import { destabilise, reviewGradeFor, sessionGrade, updateMemory } from "./scheduling";
 import type {
   ConceptState,
@@ -119,7 +123,17 @@ export function applyReview(
   const target = stateFor(states, item.conceptId);
   const expBefore = expFor(target, now);
 
-  const score = confidenceWeightedScore(grade, item, target.ability.mean);
+  const rawScore = confidenceWeightedScore(grade, item, target.ability.mean);
+  // Written answers are graded by a model judge — a noisier witness than an
+  // answer key, and one that leans strict. Below-expectation evidence from
+  // them counts half: the shortfall from the expected score is halved, so a
+  // harshly graded paragraph can't drag a learner down like a wrong number.
+  // Above-expectation evidence counts in full.
+  const expectedScore = probabilityCorrect(target.ability.mean, item);
+  const score =
+    routeGrader(item) === "llm" && rawScore < expectedScore
+      ? expectedScore - WRITTEN_DOWNSIDE_WEIGHT * (expectedScore - rawScore)
+      : rawScore;
   const reviewGrade = reviewGradeFor({ ...grade, score }, item);
 
   /**
@@ -168,7 +182,7 @@ export function applyReview(
   updated.set(item.conceptId, nextTarget);
 
   if (counts) {
-    applyPropagation(states, updated, propagation, item, grade, score);
+    applyPropagation(states, updated, propagation, item, grade, rawScore);
   }
 
   // A learner whose proficiency has decayed is a less certain witness to how
@@ -190,7 +204,7 @@ export function applyReview(
     learnerForItem,
     reviewGrade,
     effectiveScore: score,
-    passed: score >= PASS_THRESHOLD,
+    passed: rawScore >= PASS_THRESHOLD,
     expBefore,
     expAfter: expFor(nextTarget, now),
     firstAnswer: counts && target.ability.observations === 0,

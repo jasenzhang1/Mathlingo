@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
@@ -74,9 +74,9 @@ export function ConceptPage() {
   // The lesson whose assessment has been opened this visit. Kept so switching
   // tabs mid-question hides the panel rather than discarding its state.
   const [assessmentOpenedFor, setAssessmentOpenedFor] = useState<string | null>(null);
-  useEffect(() => {
-    if (activeTab === "assessment" && concept) setAssessmentOpenedFor(concept.id);
-  }, [activeTab, concept]);
+  if (activeTab === "assessment" && concept && assessmentOpenedFor !== concept.id) {
+    setAssessmentOpenedFor(concept.id);
+  }
 
   // Lessons open only once every prerequisite is at 65+. Developers bypass the
   // gate; signed-out visitors can still browse (there is no progress to gate on).
@@ -84,7 +84,15 @@ export function ConceptPage() {
   const isDeveloper = useIsDeveloper();
   const { ceiling, loading: proficiencyLoading } = useProficiency();
   const unmet = concept && user && !isDeveloper ? unmetPrerequisites(concept.id, ceiling) : [];
-  const locked = !proficiencyLoading && unmet.length > 0;
+  // Once a lesson has opened during this visit it stays open. Proficiency
+  // reloads when Supabase refreshes the login (window refocus, an expired
+  // token), and for that moment every prerequisite reads 0 — re-locking then
+  // would unmount the assessment and throw away the question in progress.
+  const [openedFor, setOpenedFor] = useState<string | null>(null);
+  const gateSettled = !!concept && !proficiencyLoading;
+  const gateOpen = gateSettled && unmet.length === 0;
+  if (gateOpen && concept && openedFor !== concept.id) setOpenedFor(concept.id);
+  const locked = gateSettled && unmet.length > 0 && openedFor !== concept?.id;
   const backHref = from === "list" ? "/map?view=list" : "/map";
 
   function selectTab(tab: TabId) {
