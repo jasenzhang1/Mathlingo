@@ -366,24 +366,45 @@ export function applyIndirectEvidence(
 export const MIN_EXP_DELTA = 2;
 
 /**
+ * Extra guaranteed movement per unit of surprise. The bar is a sigmoid of
+ * ability, so near 0 or 100 even a large step in ability barely moves it — a
+ * learner sitting at 2/100 who scores 35% on a question they were expected to
+ * score 1% on has shown real ability, and should see it. With this, that
+ * answer moves the bar at least 2 + 8 × 0.34 ≈ 4.7 points; a full-credit
+ * answer the model gave a 5% chance moves it at least ~9.6.
+ */
+export const SURPRISE_EXP_DELTA = 8;
+
+/** Responses within this of what was expected count as "no news" — no forced move. */
+const SURPRISE_DEADBAND = 0.05;
+
+/**
  * If the ordinary IRT update would move mastery (in EXP points) by less than
- * `MIN_EXP_DELTA` in the direction the response earned, push the ability mean
- * just far enough to hit the floor. `masteryLevel` is a monotonic sigmoid of
- * the conservative mean, so the floor is met by inverting it directly rather
- * than by iterating the update.
+ * the floor in the direction the response earned, push the ability mean just
+ * far enough to hit it.
+ *
+ * The direction is *surprise*, not pass/fail: scoring above what the model
+ * expected at the learner's level moves them up, even below the pass mark (35%
+ * on a question you were given a 1% chance at is good news), and scoring below
+ * it moves them down. The floor scales with the surprise, so an answer that
+ * contradicts the estimate always shows. `masteryLevel` is a monotonic sigmoid,
+ * so the floor is met by inverting it directly.
  */
 export function enforceMinExpFloor(
   ability: Ability,
   priorCeiling: number,
-  passed: boolean,
+  score: number,
+  expected: number,
 ): Ability {
-  const desiredCeiling = clamp(
-    passed ? priorCeiling + MIN_EXP_DELTA : priorCeiling - MIN_EXP_DELTA,
-    0,
-    100,
-  );
+  const surprise = score - expected;
+  if (Math.abs(surprise) < SURPRISE_DEADBAND) return ability;
+  const up = surprise > 0;
+  const minDelta = MIN_EXP_DELTA + SURPRISE_EXP_DELTA * Math.abs(surprise);
+  // Never aim at the very ends: a target of 0 would pin the estimate to the
+  // ability bound, a "can't answer anything" verdict no single answer supports.
+  const desiredCeiling = clamp(up ? priorCeiling + minDelta : priorCeiling - minDelta, 0.5, 99.5);
   const currentCeiling = 100 * masteryLevel(ability);
-  const floorMet = passed ? currentCeiling >= desiredCeiling : currentCeiling <= desiredCeiling;
+  const floorMet = up ? currentCeiling >= desiredCeiling : currentCeiling <= desiredCeiling;
   if (floorMet) return ability;
 
   const p = clamp(desiredCeiling / 100, 1e-6, 1 - 1e-6);

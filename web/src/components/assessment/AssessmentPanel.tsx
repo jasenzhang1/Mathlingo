@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { formatDelta, proficiencyDelta } from "../../lib/assessment/formatProficiency";
+import { formatDelta, formatProficiency, proficiencyDelta } from "../../lib/assessment/formatProficiency";
 import { Link } from "react-router-dom";
 import { CodeText } from "./CodeText";
 import { conceptById, concepts } from "../../data/concepts";
@@ -939,7 +939,9 @@ function Feedback({
         </span>
         {item.status === "live" && (
           <span className="font-body text-sm text-[var(--ink-soft)]">
-            {formatDelta(delta)} proficiency
+            {outcome.firstAnswer
+              ? `Starting proficiency: ${formatProficiency(outcome.expAfter.value)}`
+              : `${formatDelta(delta)} proficiency`}
           </span>
         )}
       </div>

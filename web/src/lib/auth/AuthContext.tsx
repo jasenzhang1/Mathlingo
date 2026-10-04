@@ -1,4 +1,4 @@
-import type { Session } from "@supabase/supabase-js";
+import type { Session, User } from "@supabase/supabase-js";
 import { useEffect, useState, type ReactNode } from "react";
 import { supabase } from "../supabase";
 import { AuthContext } from "./authContextValue";
@@ -13,17 +13,29 @@ import { AuthContext } from "./authContextValue";
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  // Supabase refreshes the session whenever the tab regains focus, handing us
+  // a new User object even though nothing about the user changed. Everything
+  // keyed on `user` (the assessment in progress, the tutor chat, loaded
+  // proficiency) would reload and lose its place, so the previous object is
+  // kept unless the user is actually different — another account, or an
+  // edited email/profile.
+  const [user, setUser] = useState<User | null>(null);
+  const adopt = (next: Session | null) => {
+    setSession(next);
+    const nextUser = next?.user ?? null;
+    setUser((prev) => (prev && nextUser && !userChanged(prev, nextUser) ? prev : nextUser));
+  };
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session);
+      adopt(data.session);
       setLoading(false);
     });
 
     // Fires on sign-in, sign-out, token refresh, and password recovery —
     // keeps every component's view of the session current automatically.
     const { data: listener } = supabase.auth.onAuthStateChange((_event, newSession) => {
-      setSession(newSession);
+      adopt(newSession);
     });
 
     return () => listener.subscription.unsubscribe();
@@ -68,7 +80,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   return (
     <AuthContext.Provider
       value={{
-        user: session?.user ?? null,
+        user,
         session,
         loading,
         signUp,
@@ -81,5 +93,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     >
       {children}
     </AuthContext.Provider>
+  );
+}
+
+function userChanged(a: User, b: User): boolean {
+  return (
+    a.id !== b.id ||
+    a.email !== b.email ||
+    JSON.stringify(a.user_metadata) !== JSON.stringify(b.user_metadata) ||
+    JSON.stringify(a.app_metadata) !== JSON.stringify(b.app_metadata)
   );
 }

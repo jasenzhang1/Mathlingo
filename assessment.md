@@ -414,6 +414,19 @@ ceiling of at least 65 (`unmetPrerequisites` in `web/src/lib/lessonLock.ts`); un
 shows what is missing, and the map and list mark it 🔒. Developers bypass the gate; signed-out visitors
 can browse.
 
+**Proficiency is stored, not recomputed.** `concept_states.proficiency` (migration 0016) holds the
+number the learner sees. Each answer moves it by however much the model moved (`carryProficiency` in
+`review.ts`), so a change to the engine's formulas never moves anyone's existing number; it only
+changes how far future answers push it. A learner's first answer on a lesson sets it to the model's
+estimate ("Starting proficiency"). Rows saved before 0016 are backfilled from the last logged
+`mastery_after`, or frozen at their current value on first load.
+
+**Minimum move follows surprise.** Every answer moves the bar at least `2 + 8 × |score − expected|`
+points, in the direction of `score − expected` (the expected score at the learner's current
+estimate), not pass/fail. Partial credit above expectation moves a learner up even below the pass
+mark; answers within 0.05 of expectation aren't forced. The bar is a sigmoid, so at its ends a
+real step in ability barely shows without this.
+
 **Evidence cap.** The bar can never read higher than the number of direct answers supports:
 `100 · (1 − 0.5 · 0.8^(n−1))` after `n` answers — 50, 60, 68, 74, 80, … — enforced on both the
 display and the stored belief (`evidenceCap` in `exp.ts`, `capMastery` in `mastery.ts`). Indirect
