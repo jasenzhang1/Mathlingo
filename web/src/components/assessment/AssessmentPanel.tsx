@@ -238,45 +238,63 @@ export function AssessmentPanel({
 
   // Load persisted proficiency. Signed-out learners get a working session with
   // in-memory state; nothing is written until they have an account to write to.
+  //
+  // This runs ONCE per learner and lesson. Anything else that changes while a
+  // question is open — the window regaining focus, Supabase refreshing the
+  // login (which can report a momentary sign-out when the token has expired),
+  // a calibration or subscription reload — must never reset the session and
+  // throw the learner off the question they're answering.
+  const userId = user?.id ?? null;
+  const loadedKey = useRef<string | null>(null);
   useEffect(() => {
     let cancelled = false;
+    const key = `${userId ?? "anon"}|${conceptId}`;
 
     async function load() {
       // Wait for the tier before choosing a pool, or the session would start on
       // the free subset and then be rebuilt underneath the learner.
       if (subLoading || !bank || !calibrationReady) return;
+      if (loadedKey.current === key) return;
+      // Signed out for a moment mid-session (token refresh): keep going.
+      if (!userId && loadedKey.current?.endsWith(`|${conceptId}`)) return;
 
       if (pool.length === 0) {
         if (!cancelled) setPhase({ kind: "empty" });
         return;
       }
-      if (!user) {
+      const startFresh = () => {
+        coveredLevels.current = new Set();
+        codeServed.current = 0;
+        lastFormat.current = undefined;
+      };
+      if (!userId) {
         if (!cancelled) {
+          startFresh();
+          session.current = { anchor: undefined, grades: [] };
           setState(blankState(conceptId));
           setPhase({ kind: "idle" });
+          loadedKey.current = key;
         }
         return;
       }
       const [loaded, recent] = await Promise.all([
-        loadConceptState(user.id, conceptId),
-        loadRecentItemIds(user.id, conceptId),
+        loadConceptState(userId, conceptId),
+        loadRecentItemIds(userId, conceptId),
       ]);
       if (cancelled) return;
+      startFresh();
       setState(loaded);
       setRecentIds(recent);
       session.current = { anchor: loaded.memory, grades: [] };
       setPhase({ kind: "idle" });
+      loadedKey.current = key;
     }
 
-    coveredLevels.current = new Set();
-    codeServed.current = 0;
-    lastFormat.current = undefined;
-    session.current = { anchor: undefined, grades: [] };
     void load();
     return () => {
       cancelled = true;
     };
-  }, [user, conceptId, pool.length, subLoading, bank, calibrationReady]);
+  }, [userId, conceptId, pool.length, subLoading, bank, calibrationReady]);
 
   // The bar decays continuously, so it needs a clock rather than a render-time
   // Date.now() — otherwise the displayed proficiency and the "due for review"
@@ -829,12 +847,13 @@ ${followText}`,
  * A second chance is for answers that got most of the way: the judge asked a
  * follow-up, the answer isn't already full marks, and the uncapped weighted
  * credit shows the bulk of the rubric was met (a missed *required* element
- * caps the score at 50 even when everything else is there — exactly the case
+ * caps the score at 59 even when everything else is there — exactly the case
  * worth a follow-up).
  */
 function offersFollowUp(grade: Grade): grade is Grade & { followUp: string } {
   if (!grade.followUp || grade.score >= 0.95) return false;
-  return explainScore(grade.breakdown ?? []).weighted >= 0.5;
+  // Any real piece of the idea earns the one second chance.
+  return explainScore(grade.breakdown ?? []).weighted >= 0.3;
 }
 
 function ItemHeader({
