@@ -1,11 +1,12 @@
 import { prereqsOf } from "../prerequisiteGraph";
-import { evidenceCap, expFor, type ExpSnapshot } from "./exp";
+import { evidenceCap, expFor, modelProficiency, type ExpSnapshot } from "./exp";
 import {
   applyIndirectEvidence,
   capMastery,
   confidenceWeightedScore,
   decayConfidence,
   enforceMinExpFloor,
+  masteryLevel,
   PASS_THRESHOLD,
   priorItemBelief,
   PRIOR_ABILITY,
@@ -70,6 +71,8 @@ export interface ReviewOutcome {
   /** EXP before and after, for the concept under test. */
   expBefore: ExpSnapshot;
   expAfter: ExpSnapshot;
+  /** The first direct answer on this concept: the bar shows a starting estimate, not a change. */
+  firstAnswer: boolean;
   /** Concepts debited or credited indirectly, with the weight applied. */
   propagation: { conceptId: string; weight: number; direction: "credit" | "debit" }[];
 }
@@ -148,14 +151,20 @@ export function applyReview(
         ability: capMastery(
           enforceMinExpFloor(
             updateAbility(target.ability, item, score),
-            expBefore.ceiling,
-            score >= PASS_THRESHOLD,
+            // Model to model: the floor guarantees the *delta*, which carryProficiency
+            // then applies to the stored number. The baseline is the belief itself
+            // (uncapped) — before a first answer that's the prior (~19), not the 0
+            // the bar shows, so a first miss isn't measured from 0 and slammed down.
+            100 * masteryLevel(target.ability),
+            score,
+            probabilityCorrect(target.ability.mean, item),
           ),
           evidenceCap(target.ability.observations + 1),
         ),
         memory,
       }
     : target;
+  if (counts) nextTarget.proficiency = carryProficiency(target, nextTarget);
   updated.set(item.conceptId, nextTarget);
 
   if (counts) {
@@ -184,8 +193,31 @@ export function applyReview(
     passed: score >= PASS_THRESHOLD,
     expBefore,
     expAfter: expFor(nextTarget, now),
+    firstAnswer: counts && target.ability.observations === 0,
     propagation,
   };
+}
+
+/**
+ * The stored proficiency after an update: the learner's current number moved
+ * by however much the model moved. Moving by the model's *delta* (rather than
+ * jumping to the model's value) is what keeps engine changes from resetting
+ * anyone: the number a learner has is theirs, and the engine only decides how
+ * far each new answer pushes it. The evidence cap still limits how fast it can
+ * rise, but never pulls an existing number down.
+ */
+export function carryProficiency(before: ConceptState, after: ConceptState): number {
+  // The first direct answer on a lesson sets the bar to the engine's honest
+  // estimate. (Moving from the 0 an unassessed lesson shows would leave the
+  // bar permanently ~19 below the estimate — the prior's offset — forever.)
+  if (before.proficiency === undefined && before.ability.observations === 0 && after.ability.observations > 0) {
+    return clamp(modelProficiency(after), 0, 100);
+  }
+  const stored = before.proficiency ?? modelProficiency(before);
+  let next = stored + (modelProficiency(after) - modelProficiency(before));
+  const cap = evidenceCap(after.ability.observations);
+  if (next > stored && next > cap) next = Math.max(stored, cap);
+  return clamp(next, 0, 100);
 }
 
 function applyPropagation(
@@ -237,7 +269,9 @@ function applyPropagation(
     const memory =
       !passed && prior.memory ? destabilise(prior.memory, 1 - weight / 2) : prior.memory;
 
-    updated.set(conceptId, { conceptId, ability, memory });
+    const next: ConceptState = { conceptId, ability, memory };
+    next.proficiency = carryProficiency(prior, next);
+    updated.set(conceptId, next);
     propagation.push({
       conceptId,
       weight,

@@ -152,7 +152,7 @@ export function ProfilePage() {
         setStates([]);
         return;
       }
-      const loaded = await loadAllConceptStates(profile.id);
+      const loaded = await loadAllConceptStates(profile.id, isOwner);
       if (!cancelled) setStates(loaded);
     }
     void loadStates();

@@ -113,15 +113,22 @@ export function evidenceCap(observations: number): number {
   return 100 * (1 - 0.5 * Math.pow(0.8, observations - 1));
 }
 
+/**
+ * What today's engine says the proficiency is, from the ability belief alone.
+ * Used to measure how much an update moves the bar (`carryProficiency` in
+ * review.ts) and as a fallback for state saved before proficiency was stored.
+ * A learner who has never been assessed on the concept reads as 0, not the
+ * prior's mastery (~19) — the prior shapes how fast the first answers move the
+ * estimate, it isn't a starting balance nobody earned.
+ */
+export function modelProficiency(state: ConceptState): number {
+  return Math.min(100 * masteryLevel(state.ability), evidenceCap(state.ability.observations));
+}
+
 export function expFor(state: ConceptState, now: number): ExpSnapshot {
-  // A learner who has never been assessed on this concept reads as 0, not the
-  // prior's mastery (~19) — the prior exists to shape how
-  // fast the *first* few answers move the estimate, not to hand out a
-  // starting balance nobody earned.
-  const ceiling = Math.min(
-    100 * masteryLevel(state.ability),
-    evidenceCap(state.ability.observations),
-  );
+  // The stored number, so a change to the engine never moves what the learner
+  // already has; only answers move it.
+  const ceiling = state.proficiency ?? modelProficiency(state);
 
   if (!state.memory) {
     return {

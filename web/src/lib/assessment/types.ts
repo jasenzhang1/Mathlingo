@@ -347,6 +347,13 @@ export interface ConceptState {
   ability: Ability;
   /** Undefined until the concept's first graded review. */
   memory?: MemoryState;
+  /**
+   * The proficiency (0–100, un-decayed) the learner was shown after their last
+   * answer — stored rather than recomputed, so engine changes never move a
+   * number the learner already has. Undefined for state saved before this
+   * existed; `expFor` then falls back to the model.
+   */
+  proficiency?: number;
 }
 
 /** FSRS grade buckets, derived from accuracy and speed together. */

@@ -1,4 +1,5 @@
 import { supabase } from "../supabase";
+import { modelProficiency } from "./exp";
 import { blankState } from "./review";
 import type { ConceptState, Grade, Item } from "./types";
 
@@ -35,6 +36,8 @@ interface ConceptStateRow {
   last_reviewed_at: string | null;
   reps: number;
   lapses: number;
+  /** Stored proficiency (migration 0016); absent/null on older rows. */
+  proficiency?: number | null;
 }
 
 function rowToState(row: ConceptStateRow): ConceptState {
@@ -55,7 +58,22 @@ function rowToState(row: ConceptStateRow): ConceptState {
             lapses: row.lapses,
           }
         : undefined,
+    proficiency: row.proficiency ?? undefined,
   };
+}
+
+/**
+ * Rows saved before proficiency was stored get it frozen now, at the value the
+ * learner currently sees — so the next change to the engine can't move it.
+ * Best effort: if migration 0016 hasn't run, nothing is written and the value
+ * is simply recomputed as before.
+ */
+function freezeMissing(userId: string, states: ConceptState[]): ConceptState[] {
+  const missing = states.filter((s) => s.proficiency === undefined && s.ability.observations > 0);
+  if (missing.length === 0) return states;
+  const frozen = new Map(missing.map((s) => [s.conceptId, { ...s, proficiency: modelProficiency(s) }]));
+  void saveConceptStates(userId, [...frozen.values()]);
+  return states.map((s) => frozen.get(s.conceptId) ?? s);
 }
 
 export async function loadConceptState(
@@ -69,7 +87,7 @@ export async function loadConceptState(
     .eq("concept_id", conceptId)
     .maybeSingle();
 
-  return data ? rowToState(data as ConceptStateRow) : blankState(conceptId);
+  return data ? freezeMissing(userId, [rowToState(data as ConceptStateRow)])[0] : blankState(conceptId);
 }
 
 /**
@@ -80,13 +98,16 @@ export async function loadConceptState(
  */
 export async function loadAllConceptStates(
   userId: string,
+  /** Freeze rows lacking a stored proficiency — only for the signed-in user’s own data. */
+  freeze = true,
 ): Promise<ConceptState[]> {
   const { data } = await supabase
     .from("concept_states")
     .select("*")
     .eq("user_id", userId);
 
-  return ((data as ConceptStateRow[]) ?? []).map(rowToState);
+  const states = ((data as ConceptStateRow[]) ?? []).map(rowToState);
+  return freeze ? freezeMissing(userId, states) : states;
 }
 
 /** Upserts one or more concept states — the review may have touched prerequisites too. */
@@ -112,9 +133,16 @@ export async function saveConceptStates(
     updated_at: new Date().toISOString(),
   }));
 
-  const { error } = await supabase
+  let { error } = await supabase
     .from("concept_states")
-    .upsert(rows, { onConflict: "user_id,concept_id" });
+    .upsert(
+      rows.map((row, i) => ({ ...row, proficiency: states[i].proficiency ?? null })),
+      { onConflict: "user_id,concept_id" },
+    );
+  // Before migration 0016 the column doesn't exist; keep saving progress.
+  if (error && /proficiency/.test(error.message)) {
+    ({ error } = await supabase.from("concept_states").upsert(rows, { onConflict: "user_id,concept_id" }));
+  }
   return { error: explainError(error?.message) };
 }
 
