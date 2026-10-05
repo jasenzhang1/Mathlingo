@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { numericAnswerFormat } from "../../lib/assessment/answerFormat";
 import { isVectorKey } from "../../lib/assessment/vectorAnswer";
 import { useSpeechInput } from "../../lib/assessment/useSpeechInput";
 import type { Item, ResponseChannel } from "../../lib/assessment/types";
@@ -86,27 +87,37 @@ export function AnswerInput({
 
   if (item.format === "numeric" || item.format === "symbolic") {
     const vector = isVectorKey(item.answerKey);
+    // A plain number gets a fill-in-the-blank look: "k = [ 12 ]", with the
+    // gray placeholder showing the format wanted (see answerFormat.ts).
+    const format = item.format === "numeric" && !vector ? numericAnswerFormat(item) : undefined;
     return (
       <div>
-        <input
-          type="text"
-          inputMode={item.format === "numeric" && !vector ? "decimal" : "text"}
-          value={text}
-          disabled={disabled}
-          onChange={(e) => onTextChange(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && !disabled) onSubmit();
-          }}
-          placeholder={
-            vector ? "e.g. [3, -2, 1/2]" : item.format === "numeric" ? "e.g. 0.4545, 45%, or 5/11" : "Your expression"
-          }
-          className="font-body w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-[var(--ink)] outline-none focus:border-[var(--accent)] disabled:opacity-70"
-        />
+        <div className="flex items-center gap-3">
+          {format?.label && (
+            <span className="font-body shrink-0 text-lg text-[var(--ink)]">
+              <CodeText text={format.label} />
+            </span>
+          )}
+          <input
+            type="text"
+            inputMode={format ? "decimal" : "text"}
+            value={text}
+            disabled={disabled}
+            onChange={(e) => onTextChange(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !disabled) onSubmit();
+            }}
+            placeholder={format ? format.placeholder : vector ? "e.g. [3, -2, 1/2]" : "Your expression"}
+            className={`font-body rounded-xl border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-[var(--ink)] outline-none placeholder:text-[var(--ink-soft)] placeholder:opacity-50 focus:border-[var(--accent)] disabled:opacity-70 ${
+              format?.label ? "w-full max-w-xs" : "w-full"
+            }`}
+          />
+        </div>
         {item.format === "numeric" && (
           <p className="font-body mt-1.5 text-xs text-[var(--ink-soft)]">
             {vector
               ? "Write the vector's entries in order, separated by commas. Decimals and fractions are fine."
-              : "Decimals, percentages, and fractions are all accepted."}
+              : format?.hint}
           </p>
         )}
       </div>

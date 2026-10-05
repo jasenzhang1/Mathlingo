@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { formatProficiency, roundProficiency } from "../lib/assessment/formatProficiency";
-import { unmetPrerequisites } from "../lib/lessonLock";
+import { buildLessonAccess, useCourseAccess } from "../lib/lessonAccess";
 import { useIsDeveloper } from "../lib/dev/devAuth";
 import { Link, useLocation } from "react-router-dom";
 import type { Concept } from "../data/concepts";
@@ -10,6 +10,7 @@ import { chapters } from "../lib/learningOrder";
 import { MAX_PROFICIENCY, proficiencyRatio } from "../lib/proficiencyFill";
 import { useProficiency } from "../lib/useProficiency";
 import { ReviewSession } from "./assessment/ReviewSession";
+import { ProgressLegend } from "./ProgressLegend";
 
 /**
  * The concept map's other reading: the same concepts as a table of contents,
@@ -217,11 +218,16 @@ function ConceptRow({
   /** Prerequisites not yet at the unlock threshold. */
   locked?: boolean;
 }) {
+  // Every lesson opens; a locked one is view-only (faded, with a lock) because
+  // its assessment won't count until the prerequisites reach the threshold.
   return (
     <li>
       <Link
         to={`/concepts/${concept.id}?from=list`}
-        className="flex items-center gap-3 rounded-xl px-2 py-2 transition-colors hover:bg-[var(--accent-soft)] sm:px-3"
+        title={locked ? "View only: the assessment unlocks when its prerequisites reach 65" : undefined}
+        className={`flex items-center gap-3 rounded-xl px-2 py-2 transition-colors hover:bg-[var(--accent-soft)] sm:px-3 ${
+          locked ? "opacity-60" : ""
+        }`}
       >
         <span className="font-body w-8 shrink-0 text-xs tabular-nums text-[var(--ink-soft)] sm:w-12">
           {number}
@@ -230,7 +236,7 @@ function ConceptRow({
           <span
             className={`font-body truncate text-sm font-medium ${locked ? "text-[var(--ink-soft)]" : "text-[var(--ink)]"}`}
           >
-            {locked && <span title="Locked until its prerequisites reach 65" aria-label="Locked">🔒 </span>}
+            {locked && <span aria-label="View only">🔒 </span>}
             {concept.title}
           </span>
           {concept.embedUrl && <LessonDot />}
@@ -263,10 +269,21 @@ let savedScrollTop = 0;
 
 export function ConceptList() {
   const { user } = useAuth();
-  const { proficiency, ceiling, dueAt, bleeding, refresh } = useProficiency();
+  const { proficiency, ceiling, dueAt, bleeding, refresh, loading: proficiencyLoading } = useProficiency();
   const isDeveloper = useIsDeveloper();
-  const isLocked = (conceptId: string) =>
-    !!user && !isDeveloper && unmetPrerequisites(conceptId, ceiling).length > 0;
+  const courseAccess = useCourseAccess();
+  const access = buildLessonAccess({
+    courses: courseAccess,
+    isDeveloper,
+    ceiling,
+    proficiencyReady: !proficiencyLoading,
+  });
+  // "Locked" means view-only: the lesson opens, but its assessment doesn't.
+  const isLocked = (conceptId: string) => !access.canAssess(conceptId);
+  // Only courses the visitor can see (signed out: the public one; free plan:
+  // their chosen course). Keyed by the visible set so the memo below updates.
+  const canViewCourse = courseAccess.canViewCourse;
+  const visibleKey = chapters.filter((c) => canViewCourse(c.domain)).map((c) => c.domain).join(",");
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState<Set<string>>(loadOpen);
   const [session, setSession] = useState<SubjectSession | null>(null);
@@ -333,8 +350,10 @@ export function ConceptList() {
             }))
             .filter((section) => section.rows.length > 0),
         }))
+        // Only courses the visitor can see (see visibleKey above).
+        .filter((chapter) => visibleKey.split(",").includes(chapter.domain))
         .filter((chapter) => chapter.sectionRows.length > 0),
-    [trimmedQuery],
+    [trimmedQuery, visibleKey],
   );
 
   const matchCount = visible.reduce(
@@ -396,6 +415,10 @@ export function ConceptList() {
               : `${matchCount} concepts · ${sectionCount} sections · ${chapters.length} chapters`}
           </span>
         </div>
+      </div>
+
+      <div className="mb-3 shrink-0">
+        <ProgressLegend access={courseAccess} />
       </div>
 
       <div
@@ -475,7 +498,11 @@ export function ConceptList() {
                             conceptIds:
                               bleedingIds.length > 0
                                 ? bleedingIds
-                                : chapter.concepts.map((c) => c.id),
+                                : // Drill only what's open: no questions on
+                                  // lessons the learner hasn't unlocked.
+                                  chapter.concepts
+                                    .filter((c) => !isLocked(c.id))
+                                    .map((c) => c.id),
                             startMode:
                               bleedingIds.length > 0 ? "review" : "drill",
                           })

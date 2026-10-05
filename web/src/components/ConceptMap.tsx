@@ -6,8 +6,7 @@ import dagre, {
   type Point,
 } from "@dagrejs/dagre";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useAuth } from "../lib/auth/useAuth";
-import { unmetPrerequisites } from "../lib/lessonLock";
+import { buildLessonAccess, PUBLIC_COURSES, useCourseAccess } from "../lib/lessonAccess";
 import { useIsDeveloper } from "../lib/dev/devAuth";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { concepts, domainMeta, type Domain } from "../data/concepts";
@@ -21,6 +20,7 @@ import { useProficiency } from "../lib/useProficiency";
 import { COURSES, isCourse } from "../lib/courses";
 import { useEnrollments } from "../lib/enrollment";
 import { ReviewSession } from "./assessment/ReviewSession";
+import { ProgressLegend } from "./ProgressLegend";
 
 interface PositionedNode {
   id: string;
@@ -312,20 +312,34 @@ let savedViewBox: ViewBox | null = null;
 
 export function ConceptMap() {
   const navigate = useNavigate();
-  const { proficiency, ceiling, bleeding, refresh } = useProficiency();
-  const { user: viewer } = useAuth();
+  const { proficiency, ceiling, bleeding, refresh, loading: proficiencyLoading } = useProficiency();
   const isDeveloper = useIsDeveloper();
-  const isLocked = (conceptId: string) =>
-    !!viewer && !isDeveloper && unmetPrerequisites(conceptId, ceiling).length > 0;
+  const courseAccess = useCourseAccess();
+  const access = buildLessonAccess({
+    courses: courseAccess,
+    isDeveloper,
+    ceiling,
+    proficiencyReady: !proficiencyLoading,
+  });
+  // "Locked" means view-only: the lesson opens, but its assessment doesn't.
+  const isLocked = (conceptId: string) => !access.canAssess(conceptId);
   // One course at a time. Which one: the URL (?course=, so Courses can open
   // the map on a course and links are shareable), then the last one viewed
   // this visit, then the learner's first enrolled course, then the first.
   const [searchParams, setSearchParams] = useSearchParams();
   const { courses: enrolled } = useEnrollments();
   const urlCourse = searchParams.get("course");
-  const selectedDomain: Domain = isCourse(urlCourse)
+  const wantedDomain: Domain = isCourse(urlCourse)
     ? urlCourse
     : (savedSelectedDomain ?? enrolled[0] ?? COURSES[0].id);
+  // Only courses the visitor can see: signed out, the public one; on the free
+  // plan, their chosen course (see lessonAccess).
+  const selectedDomain: Domain =
+    !courseAccess.ready || courseAccess.canViewCourse(wantedDomain)
+      ? wantedDomain
+      : (courseAccess.freeCourse ?? PUBLIC_COURSES[0]!);
+  const visibleCourses = COURSES.filter((c) => courseAccess.canViewCourse(c.id));
+  const visibleEnrolled = enrolled.filter((c) => courseAccess.canViewCourse(c));
   const setSelectedDomain = (domain: Domain) =>
     setSearchParams(
       (prev) => {
@@ -480,17 +494,17 @@ export function ConceptMap() {
           onChange={(e) => setSelectedDomain(e.target.value as Domain)}
           className="font-display min-w-0 max-w-full rounded-xl border border-[var(--line)] bg-[var(--panel)] px-3 py-1.5 text-base text-[var(--ink)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
         >
-          {enrolled.length > 0 ? (
+          {visibleEnrolled.length > 0 ? (
             // Only the learner's own courses — the full catalogue lives on
             // /courses. A course opened by link stays listed so the select
             // still shows it.
-            [...enrolled, ...(enrolled.includes(selectedDomain) ? [] : [selectedDomain])].map((id) => (
+            [...visibleEnrolled, ...(visibleEnrolled.includes(selectedDomain) ? [] : [selectedDomain])].map((id) => (
               <option key={id} value={id}>
                 {domainMeta[id].label}
               </option>
             ))
           ) : (
-            COURSES.map((c) => (
+            visibleCourses.map((c) => (
               <option key={c.id} value={c.id}>
                 {c.label}
               </option>
@@ -506,7 +520,9 @@ export function ConceptMap() {
               conceptIds:
                 bleedingIds.length > 0
                   ? bleedingIds
-                  : layout.nodes.map((n) => n.id),
+                  : // Drill only what's open: no questions on lessons the
+                    // learner hasn't unlocked.
+                    layout.nodes.filter((n) => !isLocked(n.id)).map((n) => n.id),
               startMode: bleedingIds.length > 0 ? "review" : "drill",
             })
           }
@@ -517,6 +533,10 @@ export function ConceptMap() {
         <Link to="/courses" className="font-body ml-auto shrink-0 text-xs font-medium text-[var(--accent)] hover:underline">
           {enrolled.length > 0 ? "Edit my courses" : "Choose your courses"}
         </Link>
+      </div>
+
+      <div className="mb-3 shrink-0">
+        <ProgressLegend access={courseAccess} />
       </div>
 
       <div className="mb-3 flex shrink-0 items-center justify-between gap-3">
@@ -604,24 +624,40 @@ export function ConceptMap() {
           </g>
 
           <g>
-            {layout.nodes.map((node) => (
+            {layout.nodes.map((node) => {
+              // Every lesson opens; a locked one is view-only — faded, with a
+              // lock — because its assessment won't count yet.
+              const locked = isLocked(node.id);
+              return (
               <g
                 key={node.id}
                 transform={`translate(${node.x}, ${node.y})`}
                 onPointerEnter={() => setHoveredId(node.id)}
                 onPointerLeave={() => setHoveredId(null)}
                 onClick={() => navigate(`/concepts/${node.id}?from=map`)}
-                opacity={nodeOpacity(node.id)}
+                opacity={nodeOpacity(node.id) * (locked ? 0.55 : 1)}
                 style={{ cursor: "pointer" }}
               >
-                <title>{`${isLocked(node.id) ? "🔒 " : ""}${node.title} — proficiency ${formatProficiency(
+                <title>{`${locked ? "🔒 " : ""}${node.title} — proficiency ${formatProficiency(
                   proficiency.get(node.id) ?? 0,
-                )}/${MAX_PROFICIENCY}${isLocked(node.id) ? " (locked until its prerequisites reach 65)" : ""}`}</title>
+                )}/${MAX_PROFICIENCY}${locked ? " (view only: the assessment unlocks when its prerequisites reach 65)" : ""}`}</title>
                 <ProficiencyDot
                   radius={node.radius}
                   color={domainMeta[node.domain].color}
                   value={proficiency.get(node.id) ?? 0}
                 />
+                {locked && (
+                  <text
+                    x={0}
+                    y={node.radius * 0.4}
+                    fontSize={node.radius * 1.1}
+                    textAnchor="middle"
+                    className="pointer-events-none select-none"
+                    aria-hidden="true"
+                  >
+                    🔒
+                  </text>
+                )}
                 {/* Paper behind the label: reserving the footprint keeps
                     edges off it in the common case, but a long diagonal
                     between ranks can still sweep across, and the node should
@@ -649,7 +685,8 @@ export function ConceptMap() {
                   ))}
                 </text>
               </g>
-            ))}
+              );
+            })}
           </g>
         </svg>
       </div>

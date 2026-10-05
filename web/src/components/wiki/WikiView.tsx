@@ -57,7 +57,7 @@ export function WikiView({ conceptId }: { conceptId: string }) {
       {article.sections.map((section) => (
         <section key={section.heading} className="mt-9">
           <h2 className="font-display border-b border-[var(--line)] pb-2 text-xl text-[var(--ink)]">
-            {section.heading}
+            <RichText text={section.heading} />
           </h2>
           <div className="mt-4 flex flex-col gap-4">
             {section.blocks.map((block, i) => (
@@ -98,7 +98,7 @@ function Block({ block }: { block: WikiBlock }) {
           <BlockMath latex={block.latex} />
           {block.caption && (
             <figcaption className="font-body mt-2 text-xs text-[var(--ink-soft)]">
-              {block.caption}
+              <RichText text={block.caption} />
             </figcaption>
           )}
         </figure>
@@ -112,7 +112,7 @@ function Block({ block }: { block: WikiBlock }) {
           </pre>
           {block.caption && (
             <figcaption className="font-body mt-2 text-xs text-[var(--ink-soft)]">
-              {block.caption}
+              <RichText text={block.caption} />
             </figcaption>
           )}
         </figure>
@@ -187,7 +187,7 @@ function Block({ block }: { block: WikiBlock }) {
                     key={h}
                     className="border-b border-[var(--line)] px-3 py-2 text-left font-semibold text-[var(--ink)]"
                   >
-                    {h}
+                    <RichText text={h} />
                   </th>
                 ))}
               </tr>
@@ -209,7 +209,7 @@ function Block({ block }: { block: WikiBlock }) {
           </table>
           {block.caption && (
             <figcaption className="font-body mt-2 text-xs text-[var(--ink-soft)]">
-              {block.caption}
+              <RichText text={block.caption} />
             </figcaption>
           )}
         </figure>

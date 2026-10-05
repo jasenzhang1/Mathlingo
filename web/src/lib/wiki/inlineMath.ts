@@ -59,3 +59,50 @@ export function splitMath(text: string): Segment[] {
   if (buffer) segments.push({ text: buffer, kind: "text" });
   return segments;
 }
+
+export interface EmphasisRun {
+  style: "plain" | "em" | "strong";
+  segments: Segment[];
+}
+
+const EMPHASIS =
+  /(?<![\p{L}\p{N})\]}*])(?:\*\*(?=\S)([\s\S]*?\S)\*\*|\*(?=[^\s*])([^*]*?[^\s*])\*)(?![\p{L}\p{N}*])/gu;
+
+/**
+ * Groups segments into runs of plain, `*emphasised*` and `**strong**` prose.
+ *
+ * Maths and code are masked out before matching, so a star inside them
+ * (`$Q^*$`, `` `*args` ``) is never a delimiter, while an emphasised phrase may
+ * still contain them (`*the $x$ value*`). A delimiter must hug its text and
+ * sit at a word boundary, so `2 * 3 * 4`, starred notation such as `m*` or
+ * `K**`, and a lone footnote `*` all stay literal.
+ */
+export function splitEmphasis(segments: Segment[]): EmphasisRun[] {
+  const masked = segments
+    .map((s, i) => (s.kind === "text" ? s.text : `${i}`))
+    .join("");
+
+  const restore = (chunk: string): Segment[] => {
+    const out: Segment[] = [];
+    for (const [j, piece] of chunk.split(/(\d+)/).entries()) {
+      if (j % 2 === 1) out.push(segments[Number(piece)]!);
+      else if (piece) out.push({ text: piece, kind: "text" });
+    }
+    return out;
+  };
+
+  const runs: EmphasisRun[] = [];
+  let last = 0;
+  for (const match of masked.matchAll(EMPHASIS)) {
+    const start = match.index ?? 0;
+    if (start > last) runs.push({ style: "plain", segments: restore(masked.slice(last, start)) });
+    runs.push(
+      match[1] !== undefined
+        ? { style: "strong", segments: restore(match[1]) }
+        : { style: "em", segments: restore(match[2]!) },
+    );
+    last = start + match[0].length;
+  }
+  if (last < masked.length) runs.push({ style: "plain", segments: restore(masked.slice(last)) });
+  return runs;
+}

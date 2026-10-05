@@ -1,7 +1,7 @@
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import { useMemo } from "react";
-import { splitMath } from "../../lib/wiki/inlineMath";
+import { splitEmphasis, splitMath, type Segment } from "../../lib/wiki/inlineMath";
 
 /**
  * LaTeX rendering for wiki content.
@@ -64,24 +64,30 @@ export function InlineMath({ latex }: { latex: string }) {
  * the surrounding prose.
  */
 export function RichText({ text }: { text: string }) {
-  const parts = useMemo(() => splitMath(text), [text]);
+  const runs = useMemo(() => splitEmphasis(splitMath(text)), [text]);
 
   return (
     <>
-      {parts.map((part, i) => {
-        if (part.kind === "math") return <InlineMath key={i} latex={part.text} />;
-        if (part.kind === "code") {
-          return (
-            <code
-              key={i}
-              className="rounded bg-[var(--paper)] px-1 py-0.5 font-mono text-[0.9em] text-[var(--ink)]"
-            >
-              {part.text}
-            </code>
-          );
-        }
-        return <span key={i}>{part.text}</span>;
+      {runs.map((run, i) => {
+        const content = run.segments.map((part, j) => <Part key={j} part={part} />);
+        // Both emphasis forms are bold; single stars are also italic, so they
+        // still stand out inside text that is already bold (callout titles).
+        if (run.style === "strong") return <strong key={i} className="font-semibold">{content}</strong>;
+        if (run.style === "em") return <em key={i} className="font-semibold">{content}</em>;
+        return <span key={i}>{content}</span>;
       })}
     </>
   );
+}
+
+function Part({ part }: { part: Segment }) {
+  if (part.kind === "math") return <InlineMath latex={part.text} />;
+  if (part.kind === "code") {
+    return (
+      <code className="rounded bg-[var(--paper)] px-1 py-0.5 font-mono text-[0.9em] text-[var(--ink)]">
+        {part.text}
+      </code>
+    );
+  }
+  return <>{part.text}</>;
 }

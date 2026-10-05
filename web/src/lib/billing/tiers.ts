@@ -65,14 +65,14 @@ export const PLANS: TierPlan[] = [
     name: "Free",
     monthly: 0,
     lifetime: 0,
-    tagline: "The whole curriculum, and everything that can be graded exactly.",
+    tagline: "One course of your choice, and everything that can be graded exactly.",
     features: [
-      "All 247 concepts, slides and wiki",
+      "One course of your choice: every lesson, slides and wiki",
       "Multiple-choice and numeric assessment",
       "Proficiency tracking and spaced review",
       "Forums — ask, answer, post problems",
     ],
-    excludes: ["Written, handwritten, and spoken answers", "AI tutor"],
+    excludes: ["The other courses", "Written, handwritten, and spoken answers", "AI tutor"],
   },
   {
     id: "graded",
@@ -81,7 +81,7 @@ export const PLANS: TierPlan[] = [
     lifetime: 100,
     tagline: "Explain your reasoning and have it marked properly.",
     features: [
-      "Everything in Free",
+      "Everything in Free, across every course",
       "AI grading of written answers, against a rubric",
       "Per-element feedback on why you scored what you scored",
       "Handwritten answers — draw or photograph your work",
