@@ -21,7 +21,7 @@ export const linearTransformations: WikiArticle = {
           kind: "callout",
           tone: "warning",
           title: "$f(x) = mx + b$ is not linear",
-          text: "It is *affine*. The constant $b$ breaks both conditions — $f(2x) \\ne 2f(x)$ unless $b = 0$. This clashes with the everyday use of \"linear\" for a straight line, and it matters: an affine map has no matrix in the usual sense. The standard fix is to append a coordinate of 1 and absorb $b$ into a larger matrix, which is exactly what the bias term in a neural network layer and homogeneous coordinates in graphics both do.",
+          text: "It is *affine*. The constant $b$ breaks both conditions — $f(2x) \\ne 2f(x)$ unless $b = 0$. This clashes with the everyday use of “linear” for a straight line, and it matters: an affine map has no matrix in the usual sense. The standard fix is to append a coordinate of 1 and absorb $b$ into a larger matrix, which is exactly what the bias term in a neural network layer and homogeneous coordinates in graphics both do.",
         },
       ],
     },
@@ -30,12 +30,12 @@ export const linearTransformations: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "A = \\begin{bmatrix} | & & | \\\\ T(\\mathbf{e}_1) & \\cdots & T(\\mathbf{e}_n) \\\\ | & & | \\end{bmatrix}, \\qquad T(\\mathbf{x}) = A\\mathbf{x}",
+          latex: "\\mathbf{A} = \\begin{bmatrix} | & & | \\\\ T(\\mathbf{e}_1) & \\cdots & T(\\mathbf{e}_n) \\\\ | & & | \\end{bmatrix}, \\qquad T(\\mathbf{x}) = \\mathbf{A}\\mathbf{x}",
           caption: "Record the images of the basis vectors as columns",
         },
         {
           kind: "prose",
-          text: "The argument is short. Write $\\mathbf{x} = \\sum_j x_j\\mathbf{e}_j$; linearity gives $T(\\mathbf{x}) = \\sum_j x_j T(\\mathbf{e}_j)$, which is precisely $A\\mathbf{x}$ with those images as columns. So a function on an infinite set of inputs is determined by $n$ vectors — the reason linear algebra is computable at all.",
+          text: "The argument is short. Write $\\mathbf{x} = \\sum_j x_j\\mathbf{e}_j$; linearity gives $T(\\mathbf{x}) = \\sum_j x_j T(\\mathbf{e}_j)$, which is precisely $\\mathbf{A}\\mathbf{x}$ with those images as columns. So a function on an infinite set of inputs is determined by $n$ vectors — the reason linear algebra is computable at all.",
         },
         {
           kind: "table",
@@ -74,12 +74,12 @@ export const linearTransformations: WikiArticle = {
           problem:
             "Find the matrix of the transformation that reflects $\\mathbb{R}^{2}$ across the line $y = x$.",
           steps: [
-            "Where does $\\mathbf{e}_1 = (1,0)$ go? Reflecting across $y=x$ swaps coordinates: $(0,1)$.",
-            "Where does $\\mathbf{e}_2 = (0,1)$ go? To $(1,0)$.",
+            "Where does $\\mathbf{e}_1 = [1, 0]$ go? Reflecting across $y=x$ swaps coordinates: $[0, 1]$.",
+            "Where does $\\mathbf{e}_2 = [0, 1]$ go? To $[1, 0]$.",
             "Those images are the columns.",
           ],
           answer:
-            "$A = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0\\end{bmatrix}$. Note $A^{2} = I$ — reflecting twice returns you to the start, as it must.",
+            "$\\mathbf{A} = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0\\end{bmatrix}$. Note $\\mathbf{A}^{2} = \\mathbf{I}$ — reflecting twice returns you to the start, as it must.",
         },
       ],
     },

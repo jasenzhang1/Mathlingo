@@ -15,7 +15,7 @@ export const vectorOperations: WikiArticle = {
         },
         {
           kind: "prose",
-          text: "Scalar multiplication by $c > 1$ stretches, $0 < c < 1$ shrinks, and $c < 0$ additionally reverses direction. The direction flip is the part most often dropped when the rule is stated as \"changes the magnitude\".",
+          text: "Scalar multiplication by $c > 1$ stretches, $0 < c < 1$ shrinks, and $c < 0$ additionally reverses direction. The direction flip is the part most often dropped when the rule is stated as “changes the magnitude”.",
         },
         {
           kind: "callout",
@@ -35,18 +35,18 @@ export const vectorOperations: WikiArticle = {
         },
         {
           kind: "prose",
-          text: "Almost every question in linear algebra is a question about linear combinations. *Span*: which vectors are reachable? *Independence*: is any combination redundant? *Matrix–vector product*: $A\\mathbf{x}$ is a linear combination of $A$'s columns weighted by $\\mathbf{x}$. *Solving $A\\mathbf{x} = \\mathbf{b}$*: can $\\mathbf{b}$ be written as such a combination?",
+          text: "Almost every question in linear algebra is a question about linear combinations. *Span*: which vectors are reachable? *Independence*: is any combination redundant? *Matrix–vector product*: $\\mathbf{A}\\mathbf{x}$ is a linear combination of $\\mathbf{A}$'s columns weighted by $\\mathbf{x}$. *Solving $\\mathbf{A}\\mathbf{x} = \\mathbf{b}$*: can $\\mathbf{b}$ be written as such a combination?",
         },
         {
           kind: "example",
           title: "Combining",
-          problem: "$\\mathbf{u} = (2,-1,3)$, $\\mathbf{v} = (0,4,-2)$. Compute $2\\mathbf{u} - 3\\mathbf{v}$.",
+          problem: "$\\mathbf{u} = [2, -1, 3]$, $\\mathbf{v} = [0, 4, -2]$. Compute $2\\mathbf{u} - 3\\mathbf{v}$.",
           steps: [
-            "$2\\mathbf{u} = (4,-2,6)$.",
-            "$3\\mathbf{v} = (0,12,-6)$.",
+            "$2\\mathbf{u} = [4, -2, 6]$.",
+            "$3\\mathbf{v} = [0, 12, -6]$.",
             "Subtract: $(4-0,\\ -2-12,\\ 6+6)$.",
           ],
-          answer: "$(4,-14,12)$.",
+          answer: "$[4, -14, 12]$.",
         },
       ],
     },

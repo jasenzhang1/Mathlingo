@@ -3,15 +3,15 @@ import type { WikiArticle } from "../types";
 export const rayleighQuotient: WikiArticle = {
   conceptId: "rayleigh-quotient",
   summary:
-    "The Rayleigh quotient turns eigenvalues into an optimisation problem: maximising $\\mathbf{x}^{\\top}A\\mathbf{x}/\\mathbf{x}^{\\top}\\mathbf{x}$ finds the largest eigenvalue, and the maximiser is its eigenvector. This is why PCA can be *defined* as variance maximisation and still produce eigenvectors.",
+    "The Rayleigh quotient turns eigenvalues into an optimisation problem: maximising $\\mathbf{x}^{\\top}\\mathbf{A}\\mathbf{x}/\\mathbf{x}^{\\top}\\mathbf{x}$ finds the largest eigenvalue, and the maximiser is its eigenvector. This is why PCA can be *defined* as variance maximisation and still produce eigenvectors.",
   sections: [
     {
       heading: "Definition and bounds",
       blocks: [
         {
           kind: "formula",
-          latex: "R(\\mathbf{x}) = \\frac{\\mathbf{x}^{\\top}A\\mathbf{x}}{\\mathbf{x}^{\\top}\\mathbf{x}}, \\qquad \\lambda_{\\min} \\le R(\\mathbf{x}) \\le \\lambda_{\\max}",
-          caption: "For symmetric $A$ and $\\mathbf{x} \\ne \\mathbf{0}$",
+          latex: "R(\\mathbf{x}) = \\frac{\\mathbf{x}^{\\top}\\mathbf{A}\\mathbf{x}}{\\mathbf{x}^{\\top}\\mathbf{x}}, \\qquad \\lambda_{\\min} \\le R(\\mathbf{x}) \\le \\lambda_{\\max}",
+          caption: "For symmetric $\\mathbf{A}$ and $\\mathbf{x} \\ne \\mathbf{0}$",
         },
         {
           kind: "prose",
@@ -21,7 +21,7 @@ export const rayleighQuotient: WikiArticle = {
           kind: "callout",
           tone: "insight",
           title: "Variational characterisation",
-          text: "$\\lambda_{\\max} = \\max_{\\mathbf{x}\\ne\\mathbf{0}} R(\\mathbf{x})$, attained at the corresponding eigenvector. Eigenvalues are therefore not just roots of a polynomial — they are solutions to an optimisation problem. That reframing is what connects them to statistics and machine learning, where the natural question is almost always \"which direction maximises something?\" rather than \"which scalars satisfy $\\det(A-\\lambda I)=0$?\"",
+          text: "$\\lambda_{\\max} = \\max_{\\mathbf{x}\\ne\\mathbf{0}} R(\\mathbf{x})$, attained at the corresponding eigenvector. Eigenvalues are therefore not just roots of a polynomial — they are solutions to an optimisation problem. That reframing is what connects them to statistics and machine learning, where the natural question is almost always “which direction maximises something?” rather than “which scalars satisfy $\\det(\\mathbf{A}-\\lambda \\mathbf{I})=0$?”",
         },
       ],
     },
@@ -34,13 +34,13 @@ export const rayleighQuotient: WikiArticle = {
           problem:
             "Find the unit direction $\\mathbf{w}$ maximising the variance of the projected data $\\mathbf{w}^{\\top}\\mathbf{x}$.",
           steps: [
-            "$\\operatorname{Var}(\\mathbf{w}^{\\top}\\mathbf{x}) = \\mathbf{w}^{\\top}\\Sigma\\mathbf{w}$ for the covariance $\\Sigma$.",
+            "$\\text{Var}(\\mathbf{w}^{\\top}\\mathbf{x}) = \\mathbf{w}^{\\top}\\boldsymbol{\\Sigma}\\mathbf{w}$ for the covariance $\\boldsymbol{\\Sigma}$.",
             "With $\\|\\mathbf{w}\\| = 1$ this is exactly $R(\\mathbf{w})$.",
-            "The maximum of the Rayleigh quotient is $\\lambda_{\\max}(\\Sigma)$.",
+            "The maximum of the Rayleigh quotient is $\\lambda_{\\max}(\\boldsymbol{\\Sigma})$.",
             "Attained at the corresponding eigenvector.",
           ],
           answer:
-            "The first principal component is the top eigenvector of $\\Sigma$, and the variance it explains is the top eigenvalue. PCA was posed as variance maximisation and answered with an eigenvector — the Rayleigh quotient is why those are the same question.",
+            "The first principal component is the top eigenvector of $\\boldsymbol{\\Sigma}$, and the variance it explains is the top eigenvalue. PCA was posed as variance maximisation and answered with an eigenvector — the Rayleigh quotient is why those are the same question.",
         },
         {
           kind: "formula",
@@ -66,9 +66,9 @@ export const rayleighQuotient: WikiArticle = {
           kind: "list",
           ordered: false,
           items: [
-            "**Power iteration.** Repeatedly applying $A$ and normalising converges to the dominant eigenvector; the Rayleigh quotient of each iterate gives a sharp running estimate of $\\lambda_{\\max}$.",
+            "**Power iteration.** Repeatedly applying $\\mathbf{A}$ and normalising converges to the dominant eigenvector; the Rayleigh quotient of each iterate gives a sharp running estimate of $\\lambda_{\\max}$.",
             "**Spectral clustering.** Minimising the graph cut is a Rayleigh quotient over the Laplacian; the relaxation from binary to real vectors is what turns an NP-hard problem into an eigenvector computation.",
-            "**Generalised eigenproblems.** $R(\\mathbf{x}) = \\mathbf{x}^{\\top}A\\mathbf{x}/\\mathbf{x}^{\\top}B\\mathbf{x}$ solves $A\\mathbf{x} = \\lambda B\\mathbf{x}$ — the form behind linear discriminant analysis, maximising between-class over within-class scatter.",
+            "**Generalised eigenproblems.** $R(\\mathbf{x}) = \\mathbf{x}^{\\top}\\mathbf{A}\\mathbf{x}/\\mathbf{x}^{\\top}B\\mathbf{x}$ solves $\\mathbf{A}\\mathbf{x} = \\lambda B\\mathbf{x}$ — the form behind linear discriminant analysis, maximising between-class over within-class scatter.",
             "**Bounds without computation.** Evaluating $R$ at any convenient vector gives an immediate lower bound on $\\lambda_{\\max}$; a standard basis vector gives $a_{ii}$, so $\\lambda_{\\max} \\ge \\max_i a_{ii}$.",
           ],
         },

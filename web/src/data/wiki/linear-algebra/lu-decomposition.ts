@@ -10,16 +10,16 @@ export const luDecomposition: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "PA = LU",
-          caption: "$L$ unit lower triangular, $U$ upper triangular, $P$ a permutation for pivoting",
+          latex: "\\mathbf{P}\\mathbf{A} = \\mathbf{L}\\mathbf{U}",
+          caption: "$\\mathbf{L}$ unit lower triangular, $\\mathbf{U}$ upper triangular, $\\mathbf{P}$ a permutation for pivoting",
         },
         {
           kind: "prose",
-          text: "$U$ is what elimination leaves behind. $L$ holds the multipliers used along the way — the number subtracted from each row, stored in the position it was used to zero out. Nothing is computed twice: the factorisation is elimination with bookkeeping.",
+          text: "$\\mathbf{U}$ is what elimination leaves behind. $\\mathbf{L}$ holds the multipliers used along the way — the number subtracted from each row, stored in the position it was used to zero out. Nothing is computed twice: the factorisation is elimination with bookkeeping.",
         },
         {
           kind: "formula",
-          latex: "A\\mathbf{x} = \\mathbf{b} \\ \\longrightarrow \\ L\\mathbf{y} = P\\mathbf{b}, \\ \\text{ then } \\ U\\mathbf{x} = \\mathbf{y}",
+          latex: "\\mathbf{A}\\mathbf{x} = \\mathbf{b} \\ \\longrightarrow \\ \\mathbf{L}\\mathbf{y} = \\mathbf{P}\\mathbf{b}, \\ \\text{ then } \\ \\mathbf{U}\\mathbf{x} = \\mathbf{y}",
           caption: "Forward substitution, then back substitution — two $O(n^{2})$ passes",
         },
       ],
@@ -35,7 +35,7 @@ export const luDecomposition: WikiArticle = {
         },
         {
           kind: "prose",
-          text: "It also gives the determinant nearly free: $\\det A = \\pm\\prod_i u_{ii}$, with the sign from the number of row swaps in $P$. That is how determinants are computed in practice — cofactor expansion is $O(n!)$ and unusable.",
+          text: "It also gives the determinant nearly free: $\\det \\mathbf{A} = \\pm\\prod_i u_{ii}$, with the sign from the number of row swaps in $\\mathbf{P}$. That is how determinants are computed in practice — cofactor expansion is $O(n!)$ and unusable.",
         },
       ],
     },
@@ -71,9 +71,9 @@ export const luDecomposition: WikiArticle = {
           kind: "table",
           headers: ["Situation", "Factorisation", "Cost"],
           rows: [
-            ["General square", "$PA = LU$", "$\\tfrac{2}{3}n^{3}$"],
-            ["Symmetric positive definite", "$A = LL^{\\top}$ (Cholesky)", "$\\tfrac{1}{3}n^{3}$ — half"],
-            ["Symmetric indefinite", "$A = LDL^{\\top}$", "$\\tfrac{1}{3}n^{3}$"],
+            ["General square", "$\\mathbf{P}\\mathbf{A} = \\mathbf{L}\\mathbf{U}$", "$\\tfrac{2}{3}n^{3}$"],
+            ["Symmetric positive definite", "$\\mathbf{A} = \\mathbf{L}\\mathbf{L}^{\\top}$ (Cholesky)", "$\\tfrac{1}{3}n^{3}$ — half"],
+            ["Symmetric indefinite", "$\\mathbf{A} = LDL^{\\top}$", "$\\tfrac{1}{3}n^{3}$"],
             ["Rectangular / least squares", "QR instead", "$2mn^{2}$"],
             ["Banded or sparse", "sparse LU with reordering", "far less"],
           ],

@@ -10,12 +10,12 @@ export const eckartYoung: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "A_k = \\sum_{i=1}^{k} \\sigma_i\\,\\mathbf{u}_i\\mathbf{v}_i^{\\top} \\ = \\ \\arg\\min_{\\operatorname{rank}(B) \\le k} \\|A - B\\|",
+          latex: "\\mathbf{A}_k = \\sum_{i=1}^{k} \\sigma_i\\,\\mathbf{u}_i\\mathbf{v}_i^{\\top} \\ = \\ \\arg\\min_{\\operatorname{rank}(B) \\le k} \\|\\mathbf{A} - \\mathbf{B}\\|",
           caption: "The truncated SVD minimises the error over all rank-$k$ matrices",
         },
         {
           kind: "formula",
-          latex: "\\|A - A_k\\|_2 = \\sigma_{k+1}, \\qquad \\|A - A_k\\|_F = \\sqrt{\\sum_{i>k}\\sigma_i^{2}}",
+          latex: "\\|\\mathbf{A} - \\mathbf{A}_k\\|_2 = \\sigma_{k+1}, \\qquad \\|\\mathbf{A} - \\mathbf{A}_k\\|_F = \\sqrt{\\sum_{i>k}\\sigma_i^{2}}",
           caption: "And the error is exactly the discarded singular values",
         },
         {
@@ -51,7 +51,7 @@ export const eckartYoung: WikiArticle = {
           kind: "callout",
           tone: "warning",
           title: "A gradual decay means there is no natural rank",
-          text: "The elbow heuristic works when singular values fall off a cliff. When they decay smoothly — which is common for real data — any cutoff is arbitrary, and reporting \"the rank\" implies a structure the data does not have. In that situation the honest options are to justify the rank by downstream performance, or to use a method that shrinks rather than truncates.",
+          text: "The elbow heuristic works when singular values fall off a cliff. When they decay smoothly — which is common for real data — any cutoff is arbitrary, and reporting “the rank” implies a structure the data does not have. In that situation the honest options are to justify the rank by downstream performance, or to use a method that shrinks rather than truncates.",
         },
       ],
     },

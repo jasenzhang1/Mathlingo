@@ -9,6 +9,7 @@ import {
   poissonThinningSuperpositionWiki,
 } from "./point-processes";
 import { coxProcessWiki, logGaussianCoxProcessWiki } from "./cox-processes";
+import { levyItoDecompositionWiki, levyKhintchineFormulaWiki, levyProcessesWiki } from "./levy-processes";
 import { continuousTimeMarkovChainsWiki } from "./continuous-time-markov-chains";
 import { kalmanFilterWiki } from "./kalman-filter";
 import { karhunenLoeveExpansionWiki } from "./karhunen-loeve-expansion";
@@ -57,6 +58,9 @@ export const stochasticWikiArticles: WikiArticle[] = [
   hawkesProcessWiki,
   coxProcessWiki,
   logGaussianCoxProcessWiki,
+  levyProcessesWiki,
+  levyKhintchineFormulaWiki,
+  levyItoDecompositionWiki,
   continuousTimeMarkovChainsWiki,
   kalmanFilterWiki,
   karhunenLoeveExpansionWiki,

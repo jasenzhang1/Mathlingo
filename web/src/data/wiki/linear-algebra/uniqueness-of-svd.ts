@@ -16,7 +16,7 @@ export const uniquenessOfSvd: WikiArticle = {
           kind: "callout",
           tone: "insight",
           title: "Values are numbers; vectors are directions",
-          text: "It helps to keep the two questions separate. \"How much does A stretch along this axis?\" has one answer. \"Which axis, exactly?\" can have several equally correct answers whenever the stretch amount ties with another axis's — and even when it doesn't, \"which axis\" is only pinned down up to a sign, since an axis and its reverse are the same line.",
+          text: "It helps to keep the two questions separate. “How much does A stretch along this axis?” has one answer. “Which axis, exactly?” can have several equally correct answers whenever the stretch amount ties with another axis's — and even when it doesn't, “which axis” is only pinned down up to a sign, since an axis and its reverse are the same line.",
         },
       ],
     },
@@ -25,7 +25,7 @@ export const uniquenessOfSvd: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "A\\mathbf{v}_i = \\sigma_i \\mathbf{u}_i \\quad\\Longrightarrow\\quad A(-\\mathbf{v}_i) = \\sigma_i(-\\mathbf{u}_i)",
+          latex: "\\mathbf{A}\\mathbf{v}_i = \\sigma_i \\mathbf{u}_i \\quad\\Longrightarrow\\quad A(-\\mathbf{v}_i) = \\sigma_i(-\\mathbf{u}_i)",
           caption: "Flipping both vectors in a pair leaves the relation — and A — unchanged",
         },
         {
@@ -102,7 +102,7 @@ export const uniquenessOfSvd: WikiArticle = {
             "**A sign flip is not a bug.** If reconstructing UΣVᵀ still gives back A, both sign conventions are correct — comparing raw vector coordinates across two runs is the wrong test; comparing the reconstructed matrix or the spanned subspace is the right one.",
             "**Ties do not have to be exact to matter.** Singular values that are merely *close* behave numerically like a soft version of a repeated singular value: small perturbations to the data can swing the vectors substantially inside that near-degenerate subspace.",
             "**The values alone are always a safe comparison.** Two SVD routines that disagree on U or V but agree on Σ (up to sorting and rounding) are agreeing about A completely.",
-            "**Ordering is a convention, not a discovery.** Listing σ₁ ≥ σ₂ ≥ ⋯ is what makes \"the first singular value\" a well-defined phrase; without an ordering rule, the indices themselves could be permuted arbitrarily.",
+            "**Ordering is a convention, not a discovery.** Listing σ₁ ≥ σ₂ ≥ ⋯ is what makes “the first singular value” a well-defined phrase; without an ordering rule, the indices themselves could be permuted arbitrarily.",
           ],
         },
       ],

@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "../auth/useAuth";
 import { FREE_SUBSCRIPTION, loadInterviewAccess, loadSubscription, type Subscription } from "./api";
+import { useIsRealDeveloper } from "../dev/devAuth";
+import { useStudentView } from "../dev/studentView";
 import { hasEntitlement, type Entitlement } from "./tiers";
 
 /**
@@ -40,10 +42,26 @@ export function useSubscription() {
     void refresh();
   }, [authLoading, refresh]);
 
+  // A developer in "Student view" can preview another plan. Display only: the
+  // server still checks the real one.
+  const isRealDeveloper = useIsRealDeveloper();
+  const view = useStudentView();
+  const previewing = isRealDeveloper && view.on;
+  const shownSubscription: Subscription =
+    previewing && view.plan !== "actual" ? { ...subscription, tier: view.plan } : subscription;
+  const shownInterview = previewing && view.interview !== "actual" ? view.interview === "on" : interview;
+
   const can = useCallback(
-    (entitlement: Entitlement) => hasEntitlement(subscription.tier, entitlement),
-    [subscription.tier],
+    (entitlement: Entitlement) => hasEntitlement(shownSubscription.tier, entitlement),
+    [shownSubscription.tier],
   );
 
-  return { subscription, interview, interviewLifetime, loading: loading || authLoading, can, refresh };
+  return {
+    subscription: shownSubscription,
+    interview: shownInterview,
+    interviewLifetime: shownInterview && interviewLifetime,
+    loading: loading || authLoading,
+    can,
+    refresh,
+  };
 }

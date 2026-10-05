@@ -3,7 +3,7 @@ import type { WikiArticle } from "../types";
 export const orthogonalVectors: WikiArticle = {
   conceptId: "orthogonal-vectors",
   summary:
-    "Two vectors are orthogonal when their dot product is zero. The definition is algebraic so that it survives into dimensions where \"perpendicular\" cannot be drawn — and orthogonality is the single most useful structural property in the subject, because it makes components independent and computations decouple.",
+    "Two vectors are orthogonal when their dot product is zero. The definition is algebraic so that it survives into dimensions where “perpendicular” cannot be drawn — and orthogonality is the single most useful structural property in the subject, because it makes components independent and computations decouple.",
   sections: [
     {
       heading: "Definition and consequences",
@@ -49,7 +49,7 @@ export const orthogonalVectors: WikiArticle = {
         },
         {
           kind: "prose",
-          text: "A square matrix $Q$ with orthonormal columns satisfies $Q^{\\top}Q = I$, so $Q^{-1} = Q^{\\top}$ — inversion becomes transposition. Such matrices preserve lengths and angles, which is why they represent rotations and reflections, and why numerical algorithms prefer them: they cannot amplify error.",
+          text: "A square matrix $\\mathbf{Q}$ with orthonormal columns satisfies $\\mathbf{Q}^{\\top}\\mathbf{Q} = \\mathbf{I}$, so $\\mathbf{Q}^{-1} = \\mathbf{Q}^{\\top}$ — inversion becomes transposition. Such matrices preserve lengths and angles, which is why they represent rotations and reflections, and why numerical algorithms prefer them: they cannot amplify error.",
         },
       ],
     },
@@ -69,7 +69,7 @@ export const orthogonalVectors: WikiArticle = {
           kind: "example",
           title: "Checking orthogonality",
           problem:
-            "Are $\\mathbf{u} = (1,2,-1)$ and $\\mathbf{v} = (3,-1,1)$ orthogonal? What about $\\mathbf{w} = (2,0,2)$?",
+            "Are $\\mathbf{u} = [1, 2, -1]$ and $\\mathbf{v} = [3, -1, 1]$ orthogonal? What about $\\mathbf{w} = [2, 0, 2]$?",
           steps: [
             "$\\mathbf{u}\\cdot\\mathbf{v} = 3 - 2 - 1 = 0$. ✓ Orthogonal.",
             "$\\mathbf{u}\\cdot\\mathbf{w} = 2 + 0 - 2 = 0$. ✓ Also orthogonal.",
@@ -91,14 +91,14 @@ export const orthogonalVectors: WikiArticle = {
             "**Gram–Schmidt and QR.** Converting an arbitrary basis into an orthonormal one turns an ill-conditioned system into a stable one.",
             "**PCA.** Principal components are orthogonal by construction, so each explains a distinct, non-overlapping portion of variance.",
             "**Fourier analysis.** Sines and cosines are orthogonal under the integral inner product, which is why each coefficient is an independent projection.",
-            "**Statistics.** Uncorrelated random variables are orthogonal under $\\langle X,Y\\rangle = \\mathbb{E}[XY]$ after centring — and $\\operatorname{Var}(X+Y) = \\operatorname{Var}(X)+\\operatorname{Var}(Y)$ is Pythagoras.",
+            "**Statistics.** Uncorrelated random variables are orthogonal under $\\langle X,Y\\rangle = \\mathbb{E}[XY]$ after centring — and $\\text{Var}(X+Y) = \\text{Var}(X)+\\text{Var}(Y)$ is Pythagoras.",
           ],
         },
         {
           kind: "callout",
           tone: "warning",
           title: "The zero vector is orthogonal to everything",
-          text: "Including itself. So \"orthogonal\" alone does not mean \"at right angles\" — statements about orthogonal sets almost always require the vectors to be non-zero, and the independence result above fails without that hypothesis.",
+          text: "Including itself. So “orthogonal” alone does not mean “at right angles” — statements about orthogonal sets almost always require the vectors to be non-zero, and the independence result above fails without that hypothesis.",
         },
       ],
     },

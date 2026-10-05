@@ -56,7 +56,7 @@ export const cauchySchwarz: WikiArticle = {
         },
         {
           kind: "prose",
-          text: "The correlation row is worth dwelling on. Applying Cauchy–Schwarz to the centred variables $X - \\mu_X$ and $Y - \\mu_Y$ under the inner product $\\langle A,B\\rangle = \\mathbb{E}[AB]$ gives $|\\operatorname{Cov}(X,Y)| \\le \\sigma_X\\sigma_Y$ — which is precisely the statement that $|\\rho| \\le 1$. The bound on correlation is not a separate fact about statistics; it is this inequality in a different inner product space.",
+          text: "The correlation row is worth dwelling on. Applying Cauchy–Schwarz to the centred variables $X - \\mu_X$ and $Y - \\mu_Y$ under the inner product $\\langle \\mathbf{A},\\mathbf{B}\\rangle = \\mathbb{E}[\\mathbf{A}\\mathbf{B}]$ gives $|\\text{Cov}(X,Y)| \\le \\sigma_X\\sigma_Y$ — which is precisely the statement that $|\\rho| \\le 1$. The bound on correlation is not a separate fact about statistics; it is this inequality in a different inner product space.",
         },
       ],
     },
@@ -76,7 +76,7 @@ export const cauchySchwarz: WikiArticle = {
           kind: "example",
           title: "Checking the bound",
           problem:
-            "For $\\mathbf{u} = (1,2,2)$ and $\\mathbf{v} = (3,0,4)$, verify Cauchy–Schwarz and find how far from equality it is.",
+            "For $\\mathbf{u} = [1, 2, 2]$ and $\\mathbf{v} = [3, 0, 4]$, verify Cauchy–Schwarz and find how far from equality it is.",
           steps: [
             "$\\mathbf{u}\\cdot\\mathbf{v} = 3 + 0 + 8 = 11$.",
             "$\\|\\mathbf{u}\\|\\,\\|\\mathbf{v}\\| = 3 \\times 5 = 15$.",
@@ -98,7 +98,7 @@ export const cauchySchwarz: WikiArticle = {
             "**Bounding an unknown inner product** by quantities you can compute — the standard first move in analysis proofs.",
             "**The Cramér–Rao bound** is Cauchy–Schwarz applied to an estimator and the score function; the resulting constraint on their correlation *is* the variance floor.",
             "**Kernel methods** rely on it to guarantee that a kernel matrix behaves like a Gram matrix of inner products.",
-            "**Matrix norms**: $\\|A\\mathbf{x}\\| \\le \\|A\\|\\,\\|\\mathbf{x}\\|$ is the operator-norm analogue, and it is what makes conditioning analysis possible.",
+            "**Matrix norms**: $\\|\\mathbf{A}\\mathbf{x}\\| \\le \\|\\mathbf{A}\\|\\,\\|\\mathbf{x}\\|$ is the operator-norm analogue, and it is what makes conditioning analysis possible.",
           ],
         },
         {

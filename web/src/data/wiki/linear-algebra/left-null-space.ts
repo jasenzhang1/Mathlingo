@@ -10,17 +10,17 @@ export const leftNullSpace: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "N(A^{\\top}) = \\{\\mathbf{y} \\in \\mathbb{R}^{m} : A^{\\top}\\mathbf{y} = \\mathbf{0}\\} = \\{\\mathbf{y} : \\mathbf{y}^{\\top}A = \\mathbf{0}^{\\top}\\}",
-          caption: "The 'left' refers to $\\mathbf{y}$ multiplying $A$ from the left",
+          latex: "N(\\mathbf{A}^{\\top}) = \\{\\mathbf{y} \\in \\mathbb{R}^{m} : \\mathbf{A}^{\\top}\\mathbf{y} = \\mathbf{0}\\} = \\{\\mathbf{y} : \\mathbf{y}^{\\top}\\mathbf{A} = \\mathbf{0}^{\\top}\\}",
+          caption: "The 'left' refers to $\\mathbf{y}$ multiplying $\\mathbf{A}$ from the left",
         },
         {
           kind: "formula",
-          latex: "N(A^{\\top}) = C(A)^{\\perp}, \\qquad \\dim N(A^{\\top}) = m - r",
+          latex: "N(\\mathbf{A}^{\\top}) = C(\\mathbf{A})^{\\perp}, \\qquad \\dim N(\\mathbf{A}^{\\top}) = m - r",
           caption: "Orthogonal complement of the column space, inside the output space $\\mathbb{R}^{m}$",
         },
         {
           kind: "prose",
-          text: "The orthogonality is again a restatement: $A^{\\top}\\mathbf{y} = \\mathbf{0}$ says $\\mathbf{y}$ has zero dot product with every column of $A$, hence with their span. This is the mirror of the row space / null space relationship, one space over.",
+          text: "The orthogonality is again a restatement: $\\mathbf{A}^{\\top}\\mathbf{y} = \\mathbf{0}$ says $\\mathbf{y}$ has zero dot product with every column of $\\mathbf{A}$, hence with their span. This is the mirror of the row space / null space relationship, one space over.",
         },
       ],
     },
@@ -29,14 +29,14 @@ export const leftNullSpace: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "\\mathbf{y} - \\hat{\\mathbf{y}} \\in N(X^{\\top}) \\iff X^{\\top}(\\mathbf{y} - X\\boldsymbol{\\beta}) = \\mathbf{0}",
+          latex: "\\mathbf{y} - \\hat{\\mathbf{y}} \\in N(\\mathbf{X}^{\\top}) \\iff \\mathbf{X}^{\\top}(\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\beta}) = \\mathbf{0}",
           caption: "The normal equations, read as a statement about the left null space",
         },
         {
           kind: "callout",
           tone: "insight",
           title: "Least squares splits $\\mathbf{y}$ across the two output subspaces",
-          text: "$\\mathbb{R}^{m}$ decomposes into $C(X)$, everything the model can produce, and $N(X^{\\top})$, everything it cannot. The observed $\\mathbf{y}$ splits uniquely into a fitted part in the first and a residual in the second. \"Residuals are orthogonal to the predictors\" is not an extra condition imposed on the fit — it is the definition of that decomposition, and it is why residual plots showing structure indicate a mis-specified model rather than a computational error.",
+          text: "$\\mathbb{R}^{m}$ decomposes into $C(\\mathbf{X})$, everything the model can produce, and $N(\\mathbf{X}^{\\top})$, everything it cannot. The observed $\\mathbf{y}$ splits uniquely into a fitted part in the first and a residual in the second. “Residuals are orthogonal to the predictors” is not an extra condition imposed on the fit — it is the definition of that decomposition, and it is why residual plots showing structure indicate a mis-specified model rather than a computational error.",
         },
         {
           kind: "prose",
@@ -57,19 +57,19 @@ export const leftNullSpace: WikiArticle = {
           problem:
             "Why is the system $x + y = 1$, $2x + 2y = 3$ inconsistent, expressed via the left null space?",
           steps: [
-            "$A = \\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$, rank 1, so $\\dim N(A^{\\top}) = 2 - 1 = 1$.",
-            "Solve $A^{\\top}\\mathbf{y} = \\mathbf{0}$: $y_1 + 2y_2 = 0$, giving $\\mathbf{y} = (2,-1)$.",
+            "$\\mathbf{A} = \\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$, rank 1, so $\\dim N(\\mathbf{A}^{\\top}) = 2 - 1 = 1$.",
+            "Solve $\\mathbf{A}^{\\top}\\mathbf{y} = \\mathbf{0}$: $y_1 + 2y_2 = 0$, giving $\\mathbf{y} = [2, -1]$.",
             "This says $2\\times(\\text{row }1) - 1\\times(\\text{row }2) = \\mathbf{0}$ — the equations are dependent.",
             "Apply the same combination to the right side: $2(1) - 1(3) = -1 \\ne 0$.",
           ],
           answer:
-            "Inconsistent. Solvability requires $\\mathbf{y}^{\\top}\\mathbf{b} = 0$ for every $\\mathbf{y}$ in the left null space — the Fredholm alternative, and the precise condition for $\\mathbf{b} \\in C(A)$.",
+            "Inconsistent. Solvability requires $\\mathbf{y}^{\\top}\\mathbf{b} = 0$ for every $\\mathbf{y}$ in the left null space — the Fredholm alternative, and the precise condition for $\\mathbf{b} \\in C(\\mathbf{A})$.",
         },
         {
           kind: "callout",
           tone: "insight",
           title: "Conservation laws are left null space vectors",
-          text: "In a network flow or chemical reaction system, a vector $\\mathbf{y}$ with $A^{\\top}\\mathbf{y} = \\mathbf{0}$ identifies a quantity conserved by every possible process. In electrical circuits these are Kirchhoff's loop laws; in metabolic networks they are the conserved moieties. The left null space is where a system's invariants are found.",
+          text: "In a network flow or chemical reaction system, a vector $\\mathbf{y}$ with $\\mathbf{A}^{\\top}\\mathbf{y} = \\mathbf{0}$ identifies a quantity conserved by every possible process. In electrical circuits these are Kirchhoff's loop laws; in metabolic networks they are the conserved moieties. The left null space is where a system's invariants are found.",
         },
       ],
     },

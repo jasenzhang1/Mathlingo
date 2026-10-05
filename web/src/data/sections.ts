@@ -226,7 +226,6 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "trace",
         "linear-transformations",
         "matrix-calculus",
-        "kronecker-product",
         "matrix-norms",
       ],
     },
@@ -238,8 +237,8 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "vector-spaces",
         "span",
         "basis",
-        "change-of-basis",
         "subspace-operations",
+        "rank",
       ],
     },
     {
@@ -251,6 +250,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "null-space",
         "row-space",
         "left-null-space",
+        "rank-nullity-theorem",
         "matmul-four-fundamental-subspaces",
         "disjointness-four-fundamental-subspaces",
       ],
@@ -259,12 +259,8 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       id: "rank-orthogonalization",
       label: "Rank & Orthogonalization",
       conceptIds: [
-        "rank",
-        "rank-nullity-theorem",
         "orthonormal-basis",
         "gram-schmidt",
-        "qr-decomposition",
-        "invertible-matrices",
       ],
     },
     {
@@ -273,7 +269,9 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       conceptIds: [
         "determinant",
         "determinant-properties",
+        "invertible-matrices",
         "eigenvalues-eigenvectors",
+        "change-of-basis",
         "diagonalization",
         "eigendecomposition",
         "lu-decomposition",
@@ -292,6 +290,8 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "schur-complement",
         "rayleigh-quotient",
         "matrix-stability",
+        "qr-decomposition",
+        "kronecker-product",
       ],
     },
     {
@@ -310,11 +310,26 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
 
   "multivariate-probability": [
     {
+      /**
+       * The domain's foundation: treat k random variables as one vector, see
+       * that its spread takes k² numbers rather than one, package them as Σ,
+       * and learn how the mean and Σ move under X ↦ AX + b. Every later
+       * section — the MVN, quadratic forms, conditioning — is that rule applied.
+       * The Jacobian lesson sits here because the density of AX needs it.
+       */
+      id: "random-vectors",
+      label: "Random Vectors",
+      conceptIds: [
+        "random-vectors",
+        "covariance-matrix",
+        "change-of-variables-jacobian",
+        "linear-transformations-random-vectors",
+      ],
+    },
+    {
       id: "multivariate-distributions",
       label: "Multivariate Distributions",
       conceptIds: [
-        "change-of-variables-jacobian",
-        "covariance-matrix",
         "bivariate-normal",
         "multivariate-normal",
         "multivariate-mgf",
@@ -619,6 +634,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       id: "robust-regression",
       label: "Ch. 3.13 · Robust Regression",
       conceptIds: [
+        "robust-regression-overview",
         "m-estimators-regression",
         "breakdown-point-and-influence-function",
         "high-breakdown-regression",
@@ -1185,6 +1201,11 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "log-gaussian-cox-process",
         "ogata-thinning",
       ],
+    },
+    {
+      id: "levy-processes",
+      label: "Lévy Processes",
+      conceptIds: ["levy-processes", "levy-khintchine-formula", "levy-ito-decomposition"],
     },
     {
       id: "markov-and-filtering",

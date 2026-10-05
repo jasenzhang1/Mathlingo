@@ -17,8 +17,10 @@ export const covarianceMatrixWiki: WikiArticle = {
           kind: "prose",
           text:
             "Let X = (X₁, …, X_k)ᵀ be a random vector with mean vector μ = E[X], meaning " +
-            "μᵢ = E[Xᵢ] componentwise. The covariance matrix is the matrix of all pairwise " +
-            "covariances.",
+            "μᵢ = E[Xᵢ] componentwise. As the Random Vectors lesson showed, the spread of X " +
+            "cannot be summarised by its k variances alone — the variance of any weighted sum " +
+            "depends on every pairwise covariance too. The covariance matrix is the object that " +
+            "holds all of them.",
         },
         {
           kind: "formula",
@@ -108,7 +110,9 @@ export const covarianceMatrixWiki: WikiArticle = {
           kind: "prose",
           text:
             "Almost everything downstream reduces to one identity: how the covariance matrix behaves " +
-            "under an affine map Y = AX + b.",
+            "under an affine map Y = AX + b. It is stated here for what it says about Σ; the " +
+            "Linear Transformations of Random Vectors lesson proves it and goes on to the full " +
+            "distribution of AX + b.",
         },
         {
           kind: "formula",

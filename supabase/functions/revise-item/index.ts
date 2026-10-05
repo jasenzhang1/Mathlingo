@@ -44,12 +44,34 @@ interface Feedback {
 }
 
 interface RevisionRequest {
+  /** "feedback" (default): revise per learner feedback. "match-stem": the
+   *  developer rewrote the stem; bring every other field in line with it. */
+  mode: "feedback" | "match-stem";
   item: Record<string, unknown>;
   feedback: Feedback[];
   /** 0–100: how much the developer agrees with the feedback. */
   agreement: number;
   note?: string;
+  /** match-stem: the stem the other fields were written for. */
+  previousStem?: string;
 }
+
+const MATCH_STEM_SYSTEM = `You maintain the question bank of a mathematics learning platform. A developer has rewritten the wording of one assessment question (its stem). Every other field still matches the OLD stem. Rewrite those fields so the question is consistent with the NEW stem.
+${"FORMATTING_PLACEHOLDER"}
+
+- Do NOT change the stem: the developer's wording is final.
+- Recompute the answer key from the new stem. For a numeric format it is a number, or a vector written "[a, b]". Keep the tolerance sensible for the precision the stem asks for.
+- For mcq / multi-select, rewrite the choices for the new stem: keep the same number of choices, keep exactly the same number of correct ones, and give every wrong choice a short misconception describing the mistake that leads to it.
+- For written formats (short-answer, derivation, interview), rewrite the rubric: the ideas a full-credit answer to the NEW stem must show, each with a weight; mark the one load-bearing idea "required" if there is one; keep forbidden moves only if they still apply; keep grader notes only if they still apply.
+- Re-estimate "difficulty" in logits on the bank's scale (level 1 ≈ -4.5 recall, level 5.5 ≈ 0, level 10 ≈ +4.5), "cognitive" (recall / apply / explain / transfer), and "expectedSeconds" for a fluent learner. Only change them if the new stem actually changes them.
+- Template placeholders like {a} or {x1} in the stem must keep working: don't invent parameters the item doesn't define.
+
+Reply with JSON only:
+{
+  "summary": "one or two sentences on what you changed",
+  "changes": ["short bullet per change"],
+  "patch": { ...only the fields you changed, chosen from: ${["choices", "answerKey", "tolerance", "rubric", "difficulty", "discrimination", "cognitive", "expectedSeconds"].join(", ")} }
+}`;
 
 const AGREEMENT_GUIDE = `
 How far to go is set by the developer's AGREEMENT with the feedback (0–100):
@@ -88,12 +110,24 @@ function validate(body: unknown): RevisionRequest | { error: string } {
   if (!body || typeof body !== "object") return { error: "Body must be an object." };
   const b = body as Record<string, unknown>;
   if (!b.item || typeof b.item !== "object") return { error: "Missing item." };
+  const mode = b.mode === "match-stem" ? "match-stem" : "feedback";
+  if (mode === "match-stem") {
+    return {
+      mode,
+      item: b.item as Record<string, unknown>,
+      feedback: [],
+      agreement: 100,
+      note: typeof b.note === "string" ? b.note.slice(0, 2000) : undefined,
+      previousStem: typeof b.previousStem === "string" ? b.previousStem.slice(0, 20000) : undefined,
+    };
+  }
   if (!Array.isArray(b.feedback) || b.feedback.length === 0) return { error: "Missing feedback." };
   const agreement = Number(b.agreement);
   if (!Number.isFinite(agreement) || agreement < 0 || agreement > 100) {
     return { error: "agreement must be 0–100." };
   }
   return {
+    mode,
     item: b.item as Record<string, unknown>,
     feedback: (b.feedback as Feedback[]).slice(0, 20),
     agreement,
@@ -131,8 +165,17 @@ Deno.serve(async (req) => {
   const request = validate(body);
   if ("error" in request) return json({ error: request.error }, 400);
 
+  const matchStem = request.mode === "match-stem";
   // The model sees the whole question (for context) but may only return editable fields.
-  const userPrompt = [
+  const userPrompt = matchStem
+    ? [
+        request.previousStem ? `OLD STEM:\n${request.previousStem}` : "OLD STEM: (not available)",
+        `NEW STEM:\n${String(request.item.stem ?? "")}`,
+        request.note ? `DEVELOPER NOTE: ${request.note}` : "DEVELOPER NOTE: (none)",
+        "QUESTION (JSON — every field except the stem still matches the OLD stem):",
+        JSON.stringify(request.item, null, 2),
+      ].join("\n\n")
+    : [
     `AGREEMENT: ${Math.round(request.agreement)}`,
     request.note ? `DEVELOPER NOTE: ${request.note}` : "DEVELOPER NOTE: (none)",
     "QUESTION (JSON):",
@@ -153,13 +196,15 @@ Deno.serve(async (req) => {
 
   try {
     const text = await complete({
-      system: SYSTEM,
+      system: matchStem ? MATCH_STEM_SYSTEM.replace("FORMATTING_PLACEHOLDER", FORMATTING) : SYSTEM,
       messages: [{ role: "user", content: userPrompt }],
       maxTokens: 4096,
     });
     const parsed = extractJson<{ summary?: string; changes?: string[]; patch?: Record<string, unknown> }>(text);
     const patch: Record<string, unknown> = {};
     for (const key of EDITABLE) {
+      // In match-stem mode the developer's wording is final.
+      if (matchStem && key === "stem") continue;
       if (parsed.patch && key in parsed.patch) patch[key] = parsed.patch[key];
     }
     return json({

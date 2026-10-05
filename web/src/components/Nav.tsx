@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../lib/auth/useAuth";
-import { useIsDeveloper } from "../lib/dev/devAuth";
+import { useIsDeveloper, useIsRealDeveloper } from "../lib/dev/devAuth";
+import { setStudentView, useStudentView, type StudentView } from "../lib/dev/studentView";
 import { useOwnProfile } from "../lib/profiles";
 import { inboxCount } from "../lib/social/social";
 import { Avatar } from "./Avatar";
@@ -28,6 +29,7 @@ function UserMenu() {
   const { user, signOut } = useAuth();
   const profile = useOwnProfile();
   const isDeveloper = useIsDeveloper();
+  const isRealDeveloper = useIsRealDeveloper();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -116,6 +118,7 @@ function UserMenu() {
                 Interview databank (dev)
               </Link>
             )}
+            {isRealDeveloper && <StudentViewControls />}
             <button
               type="button"
               role="menuitem"
@@ -266,6 +269,97 @@ export function Nav() {
           <GlobalSearch />
         </div>
       )}
+      <StudentViewBanner />
     </header>
+  );
+}
+
+const PLAN_LABELS: Record<StudentView["plan"], string> = {
+  actual: "My real plan",
+  free: "Free",
+  graded: "Graded",
+  tutored: "Tutored",
+};
+const INTERVIEW_LABELS: Record<StudentView["interview"], string> = {
+  actual: "My real access",
+  on: "Has Interview Prep",
+  off: "No Interview Prep",
+};
+
+/** "Student view" switch and plan pickers, in the account menu (real developers only). */
+function StudentViewControls() {
+  const view = useStudentView();
+  const selectClass =
+    "mt-1 w-full rounded-lg border border-[var(--line)] bg-[var(--paper)] px-2 py-1 text-xs text-[var(--ink)]";
+  return (
+    <div className="my-1 rounded-lg border border-dashed border-[var(--line)] px-3 py-2 font-body text-sm">
+      <label className="flex cursor-pointer items-center justify-between gap-3 text-[var(--ink)]">
+        Student view
+        <input
+          type="checkbox"
+          checked={view.on}
+          onChange={(e) => setStudentView({ on: e.target.checked })}
+          className="h-4 w-4 accent-[var(--accent)]"
+        />
+      </label>
+      <p className="mt-0.5 text-[11px] leading-snug text-[var(--ink-soft)]">
+        See the site with a student's permissions: dev tools hidden, lesson locks on.
+      </p>
+      {view.on && (
+        <>
+          <label className="mt-2 block text-[11px] text-[var(--ink-soft)]">
+            Plan
+            <select
+              value={view.plan}
+              onChange={(e) => setStudentView({ plan: e.target.value as StudentView["plan"] })}
+              className={selectClass}
+            >
+              {Object.entries(PLAN_LABELS).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="mt-2 block text-[11px] text-[var(--ink-soft)]">
+            Interview Prep
+            <select
+              value={view.interview}
+              onChange={(e) => setStudentView({ interview: e.target.value as StudentView["interview"] })}
+              className={selectClass}
+            >
+              {Object.entries(INTERVIEW_LABELS).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </label>
+        </>
+      )}
+    </div>
+  );
+}
+
+/** A slim reminder across the top while a developer is in Student view. */
+function StudentViewBanner() {
+  const isRealDeveloper = useIsRealDeveloper();
+  const view = useStudentView();
+  if (!isRealDeveloper || !view.on) return null;
+  const plan = view.plan === "actual" ? "your real plan" : `the ${PLAN_LABELS[view.plan]} plan`;
+  const interview =
+    view.interview === "actual" ? "" : view.interview === "on" ? ", with Interview Prep" : ", without Interview Prep";
+  return (
+    <div className="border-t border-[var(--line)] bg-[var(--accent-soft)] px-6 py-1.5 text-center font-body text-xs text-[var(--ink)]">
+      Student view: you're seeing what a student on {plan}
+      {interview} sees. Dev tools are hidden. (Display only: the server still checks your real plan.)
+      <button
+        type="button"
+        onClick={() => setStudentView({ on: false })}
+        className="ml-3 font-semibold text-[var(--accent)] hover:underline"
+      >
+        Exit
+      </button>
+    </div>
   );
 }

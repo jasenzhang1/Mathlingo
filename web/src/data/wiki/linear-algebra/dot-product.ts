@@ -22,7 +22,7 @@ export const dotProduct: WikiArticle = {
           kind: "callout",
           tone: "insight",
           title: "The equivalence is the useful part",
-          text: "The first formula is computable in any dimension; the second is meaningful only if \"angle\" makes sense. Because they agree, the algebraic version *defines* angle in $\\mathbb{R}^{784}$ — and questions like \"are these two documents similar in direction?\" become arithmetic. Nearly every application of the dot product is this trade: compute algebraically, interpret geometrically.",
+          text: "The first formula is computable in any dimension; the second is meaningful only if “angle” makes sense. Because they agree, the algebraic version *defines* angle in $\\mathbb{R}^{784}$ — and questions like “are these two documents similar in direction?” become arithmetic. Nearly every application of the dot product is this trade: compute algebraically, interpret geometrically.",
         },
       ],
     },
@@ -47,7 +47,7 @@ export const dotProduct: WikiArticle = {
           kind: "callout",
           tone: "warning",
           title: "The zero vector is orthogonal to everything",
-          text: "$\\mathbf{0} \\cdot \\mathbf{v} = 0$ for every $\\mathbf{v}$, including itself. This is a convention that keeps theorems clean, but it means \"orthogonal\" does not imply \"geometrically perpendicular\" without also assuming both vectors are non-zero. Proofs about orthogonal sets almost always exclude $\\mathbf{0}$ for this reason.",
+          text: "$\\mathbf{0} \\cdot \\mathbf{v} = 0$ for every $\\mathbf{v}$, including itself. This is a convention that keeps theorems clean, but it means “orthogonal” does not imply “geometrically perpendicular” without also assuming both vectors are non-zero. Proofs about orthogonal sets almost always exclude $\\mathbf{0}$ for this reason.",
         },
       ],
     },
@@ -82,7 +82,7 @@ export const dotProduct: WikiArticle = {
         {
           kind: "example",
           title: "Computing an angle",
-          problem: "Find the angle between $\\mathbf{u} = (1, 2, 2)$ and $\\mathbf{v} = (3, 0, 4)$.",
+          problem: "Find the angle between $\\mathbf{u} = [1, 2, 2]$ and $\\mathbf{v} = [3, 0, 4]$.",
           steps: [
             "$\\mathbf{u}\\cdot\\mathbf{v} = 3 + 0 + 8 = 11$.",
             "$\\|\\mathbf{u}\\| = \\sqrt{1+4+4} = 3$, $\\|\\mathbf{v}\\| = \\sqrt{9+0+16} = 5$.",

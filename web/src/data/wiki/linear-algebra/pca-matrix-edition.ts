@@ -10,8 +10,8 @@ export const pcaMatrixEdition: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "X_c = U\\Sigma V^{\\top}, \\qquad \\Sigma_{\\text{cov}} = \\frac{X_c^{\\top}X_c}{n-1} = V\\frac{\\Sigma^{2}}{n-1}V^{\\top}",
-          caption: "SVD of the centred data; $V$ holds the principal directions",
+          latex: "\\mathbf{X}_c = \\mathbf{U}\\boldsymbol{\\Sigma} \\mathbf{V}^{\\top}, \\qquad \\boldsymbol{\\Sigma}_{\\text{cov}} = \\frac{\\mathbf{X}_c^{\\top}\\mathbf{X}_c}{n-1} = \\mathbf{V}\\frac{\\boldsymbol{\\Sigma}^{2}}{n-1}\\mathbf{V}^{\\top}",
+          caption: "SVD of the centred data; $\\mathbf{V}$ holds the principal directions",
         },
         {
           kind: "table",
@@ -19,12 +19,12 @@ export const pcaMatrixEdition: WikiArticle = {
           rows: [
             [
               "Maximise variance",
-              "$\\max_{\\|\\mathbf{w}\\|=1} \\mathbf{w}^{\\top}\\Sigma_{\\text{cov}}\\mathbf{w}$",
+              "$\\max_{\\|\\mathbf{w}\\|=1} \\mathbf{w}^{\\top}\\boldsymbol{\\Sigma}_{\\text{cov}}\\mathbf{w}$",
               "top eigenvector of the covariance",
             ],
             [
               "Minimise reconstruction error",
-              "$\\min_{\\operatorname{rank} k}\\|X_c - \\hat{X}\\|_F$",
+              "$\\min_{\\operatorname{rank} k}\\|\\mathbf{X}_c - \\hat{\\mathbf{X}}\\|_F$",
               "top $k$ right singular vectors",
             ],
           ],
@@ -51,15 +51,15 @@ export const pcaMatrixEdition: WikiArticle = {
           kind: "list",
           ordered: false,
           items: [
-            "**Loadings** — columns of $V$, giving each original variable's contribution to a component.",
-            "**Scores** — $X_cV = U\\Sigma$, the data in the new coordinates.",
-            "**Whitening** — $U$ alone, or $X_cV\\Sigma^{-1}$, produces uncorrelated unit-variance components.",
+            "**Loadings** — columns of $\\mathbf{V}$, giving each original variable's contribution to a component.",
+            "**Scores** — $\\mathbf{X}_c\\mathbf{V} = \\mathbf{U}\\boldsymbol{\\Sigma}$, the data in the new coordinates.",
+            "**Whitening** — $\\mathbf{U}$ alone, or $\\mathbf{X}_c\\mathbf{V}\\boldsymbol{\\Sigma}^{-1}$, produces uncorrelated unit-variance components.",
           ],
         },
         {
           kind: "callout",
           tone: "warning",
-          title: "Compute the SVD of $X_c$, not the eigendecomposition of $X_c^{\\top}X_c$",
+          title: "Compute the SVD of $\\mathbf{X}_c$, not the eigendecomposition of $\\mathbf{X}_c^{\\top}\\mathbf{X}_c$",
           text: "Forming the covariance matrix squares the condition number, so small components are lost to rounding — the same argument as for the normal equations. Every serious PCA implementation runs the SVD on the centred data directly. It is also cheaper when $n \\gg p$ or $p \\gg n$, since only the smaller dimension's decomposition is needed.",
         },
       ],

@@ -45,19 +45,18 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "recall",
     channels: ["typed", "spoken"],
     stem:
-      "In the Riemann-sum definition of ∫₀ᵗ Δₛ dWₛ, at which point of each sub-interval [tᵢ, tᵢ₊₁] is the " +
-      "integrand Δ evaluated, and what kind of limit is taken as the partition mesh shrinks to 0?",
+      "In the Riemann-sum definition of $\\int_0^t \\Delta_s\\,dW_s$, at which point of each sub-interval $[t_i, t_{i+1}]$ is the integrand $\\Delta$ evaluated, and what kind of limit is taken as the partition mesh shrinks to $0$?",
     rubric: {
       elements: [
         {
           id: "left-endpoint",
-          description: "States that Δ is evaluated at the left endpoint tᵢ of each sub-interval.",
+          description: "States that $\\Delta$ is evaluated at the left endpoint $t_i$ of each sub-interval.",
           weight: 3,
           required: true,
         },
         {
           id: "l2-limit",
-          description: "States that the limit is an L² (mean-square) limit, not a pathwise/almost-sure limit.",
+          description: "States that the limit is an $L^2$ (mean-square) limit, not a pathwise/almost-sure limit.",
           weight: 2,
         },
       ],
@@ -75,16 +74,16 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which condition must the integrand Δₛ satisfy for ∫₀ᵗ Δₛ dWₛ to be defined as an Itô integral?",
+    stem: "Which condition must the integrand $\\Delta_s$ satisfy for $\\int_0^t \\Delta_s\\,dW_s$ to be defined as an Itô integral?",
     choices: [
       {
         id: "a",
-        text: "Δₛ is adapted to the Brownian filtration and E[∫₀ᵗ Δₛ² ds] < ∞",
+        text: "$\\Delta_s$ is adapted to the Brownian filtration and $\\mathbb{E}\\left[\\int_0^t \\Delta_s^2\\,ds\\right] < \\infty$",
         correct: true,
       },
       {
         id: "b",
-        text: "Δₛ is a deterministic (non-random) function of s",
+        text: "$\\Delta_s$ is a deterministic (non-random) function of $s$",
         correct: false,
         misconception: {
           id: "deterministic-only",
@@ -94,7 +93,7 @@ export const stochasticCalculusItoItems: Item[] = [
       },
       {
         id: "c",
-        text: "Δₛ must be continuous and of bounded variation in s",
+        text: "$\\Delta_s$ must be continuous and of bounded variation in $s$",
         correct: false,
         misconception: {
           id: "bounded-variation-integrand",
@@ -104,11 +103,11 @@ export const stochasticCalculusItoItems: Item[] = [
       },
       {
         id: "d",
-        text: "Δₛ must be independent of the Brownian motion Wₛ it is integrated against",
+        text: "$\\Delta_s$ must be independent of the Brownian motion $W_s$ it is integrated against",
         correct: false,
         misconception: {
           id: "independence-required",
-          description: "The whole point of the theory is that Δₛ may depend on the path of W up to time s (adapted); independence is not required and would make the theory nearly useless for SDEs.",
+          description: "The whole point of the theory is that $\\Delta_s$ may depend on the path of $W$ up to time $s$ (adapted); independence is not required and would make the theory nearly useless for SDEs.",
           blameConceptId: "filtrations-and-adapted-processes",
         },
       },
@@ -131,7 +130,7 @@ export const stochasticCalculusItoItems: Item[] = [
       elements: [
         {
           id: "formula",
-          description: "Writes E[(∫₀ᵗ Δₛ dWₛ)²] = E[∫₀ᵗ Δₛ² ds].",
+          description: "Writes $\\mathbb{E}\\left[\\left(\\int_0^t \\Delta_s\\,dW_s\\right)^2\\right] = \\mathbb{E}\\left[\\int_0^t \\Delta_s^2\\,ds\\right]$.",
           weight: 4,
           required: true,
         },
@@ -155,22 +154,22 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "As a process in t, what is E[∫₀ᵗ Δₛ dWₛ], and what property does the process I(t) = ∫₀ᵗ Δₛ dWₛ have?",
+    stem: "As a process in $t$, what is $\\mathbb{E}\\left[\\int_0^t \\Delta_s\\,dW_s\\right]$, and what property does the process $I(t) = \\int_0^t \\Delta_s\\,dW_s$ have?",
     choices: [
-      { id: "a", text: "E[I(t)] = 0 for all t, and I(t) is a martingale", correct: true },
+      { id: "a", text: "$\\mathbb{E}[I(t)] = 0$ for all $t$, and $I(t)$ is a martingale", correct: true },
       {
         id: "b",
-        text: "E[I(t)] = t, and I(t) is a submartingale",
+        text: "$\\mathbb{E}[I(t)] = t$, and $I(t)$ is a submartingale",
         correct: false,
         misconception: {
           id: "confuses-with-wt-squared",
-          description: "Confuses the mean of the Itô integral itself (0) with the mean of Wₜ² (which is t) — a different, related quantity.",
+          description: "Confuses the mean of the Itô integral itself ($0$) with the mean of $W_t^2$ (which is $t$) — a different, related quantity.",
           blameConceptId: "quadratic-variation",
         },
       },
       {
         id: "c",
-        text: "E[I(t)] = 0, but I(t) is not a martingale because dWₛ has unbounded variation",
+        text: "$\\mathbb{E}[I(t)] = 0$, but $I(t)$ is not a martingale because $dW_s$ has unbounded variation",
         correct: false,
         misconception: {
           id: "unbounded-variation-breaks-martingale",
@@ -192,18 +191,18 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "What is the quadratic variation ⟨I, I⟩ₜ of the Itô integral I(t) = ∫₀ᵗ Δₛ dWₛ, in terms of Δ?",
+    stem: "What is the quadratic variation $\\langle I, I \\rangle_t$ of the Itô integral $I(t) = \\int_0^t \\Delta_s\\,dW_s$, in terms of $\\Delta$?",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "States ⟨I,I⟩ₜ = ∫₀ᵗ Δₛ² ds.",
+          description: "States $\\langle I, I \\rangle_t = \\int_0^t \\Delta_s^2\\,ds$.",
           weight: 4,
           required: true,
         },
         {
           id: "mechanism",
-          description: "Connects this to dI·dI = Δₛ² dWₛ·dWₛ = Δₛ² ds.",
+          description: "Connects this to $dI \\cdot dI = \\Delta_s^2\\,dW_s \\cdot dW_s = \\Delta_s^2\\,ds$.",
           weight: 2,
         },
       ],
@@ -221,7 +220,7 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Using the Itô isometry, compute Var(∫₀⁴ Wₛ dWₛ).",
+    stem: "Using the Itô isometry, compute $\\text{Var}\\left(\\int_0^4 W_s\\,dW_s\\right)$.",
     answerKey: 8,
     tolerance: 0.01,
     difficulty: 0.1,
@@ -237,7 +236,7 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Let Δₛ = s. Using the Itô isometry, find Var(∫₀³ s dWₛ).",
+    stem: "Let $\\Delta_s = s$. Using the Itô isometry, find $\\text{Var}\\left(\\int_0^3 s\\,dW_s\\right)$.",
     answerKey: 9,
     tolerance: 0.01,
     difficulty: -0.2,
@@ -253,7 +252,7 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "For any adapted, square-integrable Δ, what is E[∫₀⁵ Δₛ dWₛ]?",
+    stem: "For any adapted, square-integrable $\\Delta$, what is $\\mathbb{E}\\left[\\int_0^5 \\Delta_s\\,dW_s\\right]$?",
     answerKey: 0,
     tolerance: 0.001,
     difficulty: -1.0,
@@ -270,8 +269,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Let Δₛ = 3 (a constant). Using the Itô isometry, find Var(∫₀² 3 dWₛ), and check it against the fact " +
-      "that ∫₀² 3 dWₛ = 3(W₂ − W₀) is just 3 times a Normal increment.",
+      "Let $\\Delta_s = 3$ (a constant). Using the Itô isometry, find $\\text{Var}\\left(\\int_0^2 3\\,dW_s\\right)$, and check it against the fact that $\\int_0^2 3\\,dW_s = 3(W_2 - W_0)$ is just $3$ times a normal increment.",
     answerKey: 36,
     tolerance: 0.01,
     difficulty: -0.3,
@@ -288,23 +286,22 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "apply",
     channels: ["typed"],
     stem:
-      "A partition 0 = t₀ < t₁ < … < tₙ = t is refined so its mesh → 0. Which sum converges (in L²) to " +
-      "∫₀ᵗ Wₛ dWₛ?",
+      "A partition $0 = t_0 < t_1 < \\cdots < t_n = t$ is refined so its mesh $\\to 0$. Which sum converges (in $L^2$) to $\\int_0^t W_s\\,dW_s$?",
     choices: [
-      { id: "a", text: "Σᵢ W(tᵢ)[W(tᵢ₊₁) − W(tᵢ)]", correct: true },
+      { id: "a", text: "$\\sum_i W(t_i)\\left[W(t_{i+1}) - W(t_i)\\right]$", correct: true },
       {
         id: "b",
-        text: "Σᵢ W(tᵢ₊₁)[W(tᵢ₊₁) − W(tᵢ)]",
+        text: "$\\sum_i W(t_{i+1})\\left[W(t_{i+1}) - W(t_i)\\right]$",
         correct: false,
         misconception: {
           id: "right-endpoint-sum",
-          description: "This right-endpoint sum converges instead to the Stratonovich integral, ∫Wₛ∘dWₛ = W²ₜ/2, not the Itô integral.",
+          description: "This right-endpoint sum does not converge to the Itô integral: it picks up an extra $[W, W]_t = t$, converging to $\\frac{W_t^2}{2} + \\frac{t}{2}$. (The midpoint sum gives the Stratonovich integral $\\int W_s \\circ dW_s = \\frac{W_t^2}{2}$.)",
           blameConceptId: "ito-integral",
         },
       },
       {
         id: "c",
-        text: "Σᵢ ½[W(tᵢ) + W(tᵢ₊₁)][W(tᵢ₊₁) − W(tᵢ)]",
+        text: "$\\sum_i \\frac{1}{2}\\left[W(t_i) + W(t_{i+1})\\right]\\left[W(t_{i+1}) - W(t_i)\\right]$",
         correct: false,
         misconception: {
           id: "midpoint-sum",
@@ -327,25 +324,24 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten"],
     stem:
-      "Explain why evaluating Δ at the left endpoint of each sub-interval — rather than the right endpoint " +
-      "or midpoint — is what makes the partial Riemann sums, and hence the Itô integral, a martingale.",
+      "Explain why evaluating $\\Delta$ at the left endpoint of each sub-interval — rather than the right endpoint or midpoint — is what makes the partial Riemann sums, and hence the Itô integral, a martingale.",
     rubric: {
       elements: [
         {
           id: "condition-on-filtration",
-          description: "Conditions the increment of the partial sum on ℱ(tᵢ) and notes Δ(tᵢ) is ℱ(tᵢ)-measurable, so it factors out of the conditional expectation.",
+          description: "Conditions the increment of the partial sum on $\\mathcal{F}(t_i)$ and notes $\\Delta(t_i)$ is $\\mathcal{F}(t_i)$-measurable, so it factors out of the conditional expectation.",
           weight: 3,
           required: true,
         },
         {
           id: "zero-mean-increment",
-          description: "Uses E[W(tᵢ₊₁) − W(tᵢ) | ℱ(tᵢ)] = 0 from independent increments to conclude the conditional expected increment of the sum is 0.",
+          description: "Uses $\\mathbb{E}\\left[W(t_{i+1}) - W(t_i) \\mid \\mathcal{F}(t_i)\\right] = 0$ from independent increments to conclude the conditional expected increment of the sum is $0$.",
           weight: 3,
           required: true,
         },
         {
           id: "right-endpoint-fails",
-          description: "Notes that evaluating at the right endpoint tᵢ₊₁ would make the integrand depend on information not yet available at tᵢ, breaking the conditioning argument.",
+          description: "Notes that evaluating at the right endpoint $t_{i+1}$ would make the integrand depend on information not yet available at $t_i$, breaking the conditioning argument.",
           weight: 2,
         },
       ],
@@ -375,9 +371,7 @@ export const stochasticCalculusItoItems: Item[] = [
       {
         id: "a",
         text:
-          "The Stratonovich integral (right/midpoint evaluation) obeys the ordinary chain rule with no correction " +
-          "term, but is generally not a martingale; the Itô integral is a martingale but needs the second-order " +
-          "correction term in its chain rule.",
+          "The Stratonovich integral (right/midpoint evaluation) obeys the ordinary chain rule with no correction term, but is generally not a martingale; the Itô integral is a martingale but needs the second-order correction term in its chain rule.",
         correct: true,
       },
       {
@@ -386,7 +380,7 @@ export const stochasticCalculusItoItems: Item[] = [
         correct: false,
         misconception: {
           id: "integrals-always-agree",
-          description: "The Itô and Stratonovich integrals differ by a deterministic correction term (a covariation term) whenever the integrand depends on W itself; they are related, not interchangeable.",
+          description: "The Itô and Stratonovich integrals differ by a correction term (a covariation term) whenever the integrand depends on $W$ itself; they are related, not interchangeable.",
           blameConceptId: "ito-integral",
         },
       },
@@ -414,18 +408,18 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Why does the definition of the Itô integral require E[∫₀ᵗ Δₛ² ds] < ∞, rather than just adaptedness?",
+    stem: "Why does the definition of the Itô integral require $\\mathbb{E}\\left[\\int_0^t \\Delta_s^2\\,ds\\right] < \\infty$, rather than just adaptedness?",
     rubric: {
       elements: [
         {
           id: "isometry-needs-it",
-          description: "Explains that this condition is exactly what makes the Itô isometry's right-hand side finite, which is needed for the L² limit defining the integral to exist and be well-behaved.",
+          description: "Explains that this condition is exactly what makes the Itô isometry's right-hand side finite, which is needed for the $L^2$ limit defining the integral to exist and be well-behaved.",
           weight: 4,
           required: true,
         },
         {
           id: "l2-space",
-          description: "Frames Δ as living in the space of adapted, square-integrable processes on which the integral is an isometry into L²(Ω).",
+          description: "Frames $\\Delta$ as living in the space of adapted, square-integrable processes on which the integral is an isometry into $L^2(\\Omega)$.",
           weight: 2,
         },
       ],
@@ -443,7 +437,7 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Why can't ∫₀ᵗ Δₛ dWₛ be defined path-by-path as an ordinary Riemann-Stieltjes integral?",
+    stem: "Why can't $\\int_0^t \\Delta_s\\,dW_s$ be defined path-by-path as an ordinary Riemann–Stieltjes integral?",
     rubric: {
       elements: [
         {
@@ -454,7 +448,7 @@ export const stochasticCalculusItoItems: Item[] = [
         },
         {
           id: "quadratic-variation-nonzero",
-          description: "Connects this to the fact that quadratic variation of W is t (nonzero), which is the quantity a finite-variation path would instead have equal to zero.",
+          description: "Connects this to the fact that the quadratic variation of $W$ is $t$ (nonzero), which is the quantity a finite-variation path would instead have equal to zero.",
           weight: 2,
         },
       ],
@@ -473,19 +467,18 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten"],
     stem:
-      "Sketch why, when squaring the Riemann sum Σᵢ Δ(tᵢ)[W(tᵢ₊₁) − W(tᵢ)] and taking expectations, the " +
-      "cross terms (i ≠ j) vanish while the diagonal terms (i = j) survive to give E[∫₀ᵗ Δₛ² ds].",
+      "Sketch why, when squaring the Riemann sum $\\sum_i \\Delta(t_i)\\left[W(t_{i+1}) - W(t_i)\\right]$ and taking expectations, the cross terms ($i \\ne j$) vanish while the diagonal terms ($i = j$) survive to give $\\mathbb{E}\\left[\\int_0^t \\Delta_s^2\\,ds\\right]$.",
     rubric: {
       elements: [
         {
           id: "independent-increments-cross",
-          description: "Explains that for i < j, conditioning on ℱ(tⱼ) makes the later increment W(tⱼ₊₁) − W(tⱼ) independent of everything before it with mean zero, killing the cross term in expectation.",
+          description: "Explains that for $i < j$, conditioning on $\\mathcal{F}(t_j)$ makes the later increment $W(t_{j+1}) - W(t_j)$ independent of everything before it with mean zero, killing the cross term in expectation.",
           weight: 4,
           required: true,
         },
         {
           id: "diagonal-variance",
-          description: "Explains that on the diagonal, E[Δ(tᵢ)²(W(tᵢ₊₁) − W(tᵢ))²] = E[Δ(tᵢ)²](tᵢ₊₁ − tᵢ), which sums (in the limit) to E[∫₀ᵗ Δₛ² ds].",
+          description: "Explains that on the diagonal, $\\mathbb{E}\\left[\\Delta(t_i)^2\\left(W(t_{i+1}) - W(t_i)\\right)^2\\right] = \\mathbb{E}[\\Delta(t_i)^2](t_{i+1} - t_i)$, which sums (in the limit) to $\\mathbb{E}\\left[\\int_0^t \\Delta_s^2\\,ds\\right]$.",
           weight: 4,
           required: true,
         },
@@ -505,9 +498,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Every Itô integral I(t) = ∫₀ᵗ Δₛ dWₛ is a martingale. What deeper theorem (stated for the general " +
-      "Brownian filtration) says the converse essentially holds — that martingales in this filtration all look " +
-      "like this?",
+      "Every Itô integral $I(t) = \\int_0^t \\Delta_s\\,dW_s$ is a martingale. What deeper theorem (stated for the general Brownian filtration) says the converse essentially holds — that martingales in this filtration all look like this?",
     rubric: {
       elements: [
         {
@@ -518,7 +509,7 @@ export const stochasticCalculusItoItems: Item[] = [
         },
         {
           id: "states-content",
-          description: "States that every martingale M(t) adapted to the Brownian filtration can be written as M(0) + ∫₀ᵗ Δₛ dWₛ for some adapted Δ.",
+          description: "States that every martingale $M(t)$ adapted to the Brownian filtration can be written as $M(0) + \\int_0^t \\Delta_s\\,dW_s$ for some adapted $\\Delta$.",
           weight: 3,
         },
       ],
@@ -537,14 +528,12 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Both the Itô isometry and the classical variance-of-a-sum formula for independent random variables " +
-      "produce a variance by summing squared contributions with no cross terms. Explain the structural analogy: " +
-      "what plays the role of \"independent increments\" in each setting?",
+      "Both the Itô isometry and the classical variance-of-a-sum formula for independent random variables produce a variance by summing squared contributions with no cross terms. Explain the structural analogy: what plays the role of “independent increments” in each setting?",
     rubric: {
       elements: [
         {
           id: "discrete-analogy",
-          description: "Notes that for independent Xᵢ, Var(ΣXᵢ) = ΣVar(Xᵢ) because Cov(Xᵢ,Xⱼ) = 0 for i≠j.",
+          description: "Notes that for independent $X_i$, $\\text{Var}\\left(\\sum_i X_i\\right) = \\sum_i \\text{Var}(X_i)$ because $\\text{Cov}(X_i, X_j) = 0$ for $i \\ne j$.",
           weight: 3,
           required: true,
         },
@@ -570,9 +559,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "A Brownian path is sampled at t = 0, 1, 2, 3 with W(0)=0, W(1)=1, W(2)=0.5, W(3)=2. Using the " +
-      "left-endpoint Riemann sum (the discrete approximation underlying the Itô integral) with this partition, " +
-      "estimate ∫₀³ Wₛ dWₛ.",
+      "A Brownian path is sampled at $t = 0, 1, 2, 3$ with $W(0) = 0$, $W(1) = 1$, $W(2) = 0.5$, $W(3) = 2$. Using the left-endpoint Riemann sum (the discrete approximation underlying the Itô integral) with this partition, estimate $\\int_0^3 W_s\\,dW_s$.",
     answerKey: 0.75,
     tolerance: 0.01,
     difficulty: 0.9,
@@ -589,19 +576,16 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "In a simple random walk, martingale differences (fair-game bets decided *before* each step) sum to a " +
-      "martingale — the discrete analog of the left-endpoint Itô construction. Which modification to a simple " +
-      "random walk's betting strategy would break the martingale property, mirroring what right-endpoint " +
-      "evaluation does to the Itô integral?",
+      "In a simple random walk, martingale differences (fair-game bets decided *before* each step) sum to a martingale — the discrete analog of the left-endpoint Itô construction. Which modification to a simple random walk's betting strategy would break the martingale property, mirroring what right-endpoint evaluation does to the Itô integral?",
     choices: [
       {
         id: "a",
-        text: "Letting the bet size on step i depend on the outcome of step i itself, not just on steps before it",
+        text: "Letting the bet size on step $i$ depend on the outcome of step $i$ itself, not just on steps before it",
         correct: true,
       },
       {
         id: "b",
-        text: "Making the bet size on step i a fixed nonrandom constant",
+        text: "Making the bet size on step $i$ a fixed nonrandom constant",
         correct: false,
         misconception: {
           id: "deterministic-bets-still-fine",
@@ -634,19 +618,18 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Using the Itô isometry together with Chebyshev's inequality, explain how you would bound " +
-      "P(|∫₀ᵗ Δₛ dWₛ| > a) for a known bound on E[∫₀ᵗ Δₛ² ds].",
+      "Using the Itô isometry together with Chebyshev's inequality, explain how you would bound $P\\left(\\left|\\int_0^t \\Delta_s\\,dW_s\\right| > a\\right)$ for a known bound on $\\mathbb{E}\\left[\\int_0^t \\Delta_s^2\\,ds\\right]$.",
     rubric: {
       elements: [
         {
           id: "isometry-gives-variance",
-          description: "Uses the Itô isometry to identify Var(∫₀ᵗ Δₛ dWₛ) = E[∫₀ᵗ Δₛ² ds].",
+          description: "Uses the Itô isometry to identify $\\text{Var}\\left(\\int_0^t \\Delta_s\\,dW_s\\right) = \\mathbb{E}\\left[\\int_0^t \\Delta_s^2\\,ds\\right]$.",
           weight: 3,
           required: true,
         },
         {
           id: "chebyshev-applied",
-          description: "Applies Chebyshev's inequality, P(|X − E[X]| > a) ≤ Var(X)/a², using that the Itô integral has mean 0.",
+          description: "Applies Chebyshev's inequality, $P(|X - \\mathbb{E}[X]| > a) \\le \\text{Var}(X)/a^2$, using that the Itô integral has mean $0$.",
           weight: 3,
           required: true,
         },
@@ -668,18 +651,18 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "For dX = μ dt + σ dW, write Itô's formula for df(t, Xₜ), naming each term.",
+    stem: "For $dX = \\mu\\,dt + \\sigma\\,dW$, write Itô's formula for $df(t, X_t)$, naming each term.",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "Writes df = [f_t + μf_x + ½σ²f_xx] dt + σf_x dW.",
+          description: "Writes $df = \\left[f_t + \\mu f_x + \\frac{1}{2}\\sigma^2 f_{xx}\\right]dt + \\sigma f_x\\,dW$.",
           weight: 4,
           required: true,
         },
         {
           id: "names-correction",
-          description: "Identifies ½σ²f_xx dt specifically as the Itô correction term absent from the ordinary chain rule.",
+          description: "Identifies $\\frac{1}{2}\\sigma^2 f_{xx}\\,dt$ specifically as the Itô correction term absent from the ordinary chain rule.",
           weight: 2,
         },
       ],
@@ -697,16 +680,16 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "In the Taylor expansion behind Itô's formula, why does the second-order term ½f_xx(dX)² survive while higher terms vanish?",
+    stem: "In the Taylor expansion behind Itô's formula, why does the second-order term $\\frac{1}{2}f_{xx}(dX)^2$ survive while higher terms vanish?",
     choices: [
       {
         id: "a",
-        text: "Because (dW)² = dt is order dt, not smaller, so ½σ²f_xx(dW)² contributes an order-dt term that cannot be dropped",
+        text: "Because $(dW)^2 = dt$ is order $dt$, not smaller, so $\\frac{1}{2}\\sigma^2 f_{xx}(dW)^2$ contributes an order-$dt$ term that cannot be dropped",
         correct: true,
       },
       {
         id: "b",
-        text: "Because f_xx is generally larger in magnitude than f_x for smooth functions",
+        text: "Because $f_{xx}$ is generally larger in magnitude than $f_x$ for smooth functions",
         correct: false,
         misconception: {
           id: "magnitude-of-derivative",
@@ -720,7 +703,7 @@ export const stochasticCalculusItoItems: Item[] = [
         correct: false,
         misconception: {
           id: "dt-negligible-vs-dw",
-          description: "Gets the scaling backwards: dt and (dW)² are the same order; dt is not smaller than dW-squared, it equals its expected value/limit.",
+          description: "Gets the scaling backwards: $dt$ and $(dW)^2$ are the same order; $dt$ is not smaller than $(dW)^2$, it equals its expected value/limit.",
           blameConceptId: "quadratic-variation",
         },
       },
@@ -738,12 +721,12 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "State the Itô multiplication table: what are dt·dt, dt·dW, and dW·dW?",
+    stem: "State the Itô multiplication table: what are $dt \\cdot dt$, $dt \\cdot dW$, and $dW \\cdot dW$?",
     rubric: {
       elements: [
-        { id: "dtdt", description: "dt · dt = 0.", weight: 2, required: true },
-        { id: "dtdw", description: "dt · dW = 0.", weight: 2, required: true },
-        { id: "dwdw", description: "dW · dW = dt.", weight: 3, required: true },
+        { id: "dtdt", description: "$dt \\cdot dt = 0$.", weight: 2, required: true },
+        { id: "dtdw", description: "$dt \\cdot dW = 0$.", weight: 2, required: true },
+        { id: "dwdw", description: "$dW \\cdot dW = dt$.", weight: 3, required: true },
       ],
     },
     difficulty: -1.3,
@@ -759,12 +742,12 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Specialize Itô's formula to X = W (so μ = 0, σ = 1) and f(x) depending only on x, not t. Write df(Wₜ).",
+    stem: "Specialize Itô's formula to $X = W$ (so $\\mu = 0$, $\\sigma = 1$) and $f(x)$ depending only on $x$, not $t$. Write $df(W_t)$.",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "Writes df(Wₜ) = ½f''(Wₜ) dt + f'(Wₜ) dWₜ.",
+          description: "Writes $df(W_t) = \\frac{1}{2}f''(W_t)\\,dt + f'(W_t)\\,dW_t$.",
           weight: 4,
           required: true,
         },
@@ -783,12 +766,12 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Apply Itô's formula to f(x) = x² and X = W to find d(Wₜ²).",
+    stem: "Apply Itô's formula to $f(x) = x^2$ and $X = W$ to find $d(W_t^2)$.",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "Derives d(Wₜ²) = dt + 2Wₜ dWₜ (using f_x=2x, f_xx=2, μ=0, σ=1).",
+          description: "Derives $d(W_t^2) = dt + 2W_t\\,dW_t$ (using $f_x = 2x$, $f_{xx} = 2$, $\\mu = 0$, $\\sigma = 1$).",
           weight: 4,
           required: true,
         },
@@ -808,8 +791,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Apply Itô's formula to f(x) = x³ and X = W. The drift coefficient of d(Wₜ³) is 3Wₜ. Evaluate this " +
-      "drift coefficient at Wₜ = 2.",
+      "Apply Itô's formula to $f(x) = x^3$ and $X = W$. The drift coefficient of $d(W_t^3)$ is $3W_t$. Evaluate this drift coefficient at $W_t = 2$.",
     answerKey: 6,
     tolerance: 0.01,
     difficulty: 0.0,
@@ -826,25 +808,24 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Let Xₜ = exp(σWₜ − ½σ²t) and f(t,x) = ln x. Show that Itô's formula applied to f(t, Xₜ) recovers " +
-      "dXₜ = σXₜ dWₜ (i.e., verify Xₜ is driftless geometric Brownian motion).",
+      "Let $X_t = \\exp\\left(\\sigma W_t - \\frac{1}{2}\\sigma^2 t\\right)$ and $f(t, x) = \\ln x$. Show that Itô's formula applied to $f(t, X_t)$ recovers $dX_t = \\sigma X_t\\,dW_t$ (i.e., verify $X_t$ is driftless geometric Brownian motion).",
     rubric: {
       elements: [
         {
           id: "ito-on-log",
-          description: "Correctly computes d(ln Xₜ) directly from the given exponent: ln Xₜ = σWₜ − ½σ²t, so d(ln Xₜ) = σ dWₜ − ½σ² dt.",
+          description: "Correctly computes $d(\\ln X_t)$ directly from the given exponent: $\\ln X_t = \\sigma W_t - \\frac{1}{2}\\sigma^2 t$, so $d(\\ln X_t) = \\sigma\\,dW_t - \\frac{1}{2}\\sigma^2\\,dt$.",
           weight: 3,
           required: true,
         },
         {
           id: "invert-with-ito",
-          description: "Applies Itô's formula to g(y) = e^y at y = ln Xₜ (g_y = g, g_yy = g) to get dXₜ = Xₜ d(ln Xₜ) + ½Xₜ (d ln Xₜ)² = Xₜ(σ dWₜ − ½σ²dt) + ½Xₜσ²dt.",
+          description: "Applies Itô's formula to $g(y) = e^y$ at $y = \\ln X_t$ ($g_y = g$, $g_{yy} = g$) to get $dX_t = X_t\\,d(\\ln X_t) + \\frac{1}{2}X_t\\,(d\\ln X_t)^2 = X_t\\left(\\sigma\\,dW_t - \\frac{1}{2}\\sigma^2\\,dt\\right) + \\frac{1}{2}X_t\\sigma^2\\,dt$.",
           weight: 4,
           required: true,
         },
         {
           id: "cancellation",
-          description: "Shows the −½σ² dt and +½σ² dt terms cancel, leaving dXₜ = σXₜ dWₜ exactly.",
+          description: "Shows the $-\\frac{1}{2}\\sigma^2\\,dt$ and $+\\frac{1}{2}\\sigma^2\\,dt$ terms cancel, leaving $dX_t = \\sigma X_t\\,dW_t$ exactly.",
           weight: 3,
           required: true,
         },
@@ -852,7 +833,7 @@ export const stochasticCalculusItoItems: Item[] = [
       forbiddenMoves: [
         {
           id: "drops-correction-both-ways",
-          description: "Treats ln and exp as ordinary inverse chain-rule operations without ever applying the ½·second-derivative correction, which happens to hide the very cancellation the item is testing.",
+          description: "Treats $\\ln$ and $\\exp$ as ordinary inverse chain-rule operations without ever applying the $\\frac{1}{2}$ second-derivative correction, which happens to hide the very cancellation the item is testing.",
           weight: 2,
         },
       ],
@@ -871,8 +852,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "From d(Wₜ²) = dt + 2Wₜ dWₜ, integrate both sides from 0 to t = 9 and solve for ∫₀⁹ Wₛ dWₛ in terms of " +
-      "W₉ and t, then evaluate it given W₉ = 5.",
+      "From $d(W_t^2) = dt + 2W_t\\,dW_t$, integrate both sides from $0$ to $t = 9$ and solve for $\\int_0^9 W_s\\,dW_s$ in terms of $W_9$ and $t$, then evaluate it given $W_9 = 5$.",
     answerKey: 8,
     tolerance: 0.01,
     difficulty: 0.5,
@@ -888,18 +868,18 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Let f(t,x) = eᵗ x². Apply Itô's formula with X = W to write df(t, Wₜ).",
+    stem: "Let $f(t, x) = e^t x^2$. Apply Itô's formula with $X = W$ to write $df(t, W_t)$.",
     rubric: {
       elements: [
         {
           id: "partials",
-          description: "Correctly computes f_t = e^t x², f_x = 2e^t x, f_xx = 2e^t.",
+          description: "Correctly computes $f_t = e^t x^2$, $f_x = 2e^t x$, $f_{xx} = 2e^t$.",
           weight: 3,
           required: true,
         },
         {
           id: "assemble",
-          description: "Assembles df = e^t[Wₜ² + 1] dt + 2e^t Wₜ dWₜ (using μ=0, σ=1 for W).",
+          description: "Assembles $df = e^t\\left[W_t^2 + 1\\right]dt + 2e^t W_t\\,dW_t$ (using $\\mu = 0$, $\\sigma = 1$ for $W$).",
           weight: 4,
           required: true,
         },
@@ -919,8 +899,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Let dXₜ = 2 dt + 3 dWₜ and f(x) = x². By Itô's formula, the dt-coefficient of d(f(Xₜ)) is 2Xₜ·μ + " +
-      "½σ²f_xx = 2Xₜ(2) + ½(9)(2). Evaluate this dt-coefficient at Xₜ = 1.",
+      "Let $dX_t = 2\\,dt + 3\\,dW_t$ and $f(x) = x^2$. By Itô's formula, the $dt$-coefficient of $d(f(X_t))$ is $2X_t \\cdot \\mu + \\frac{1}{2}\\sigma^2 f_{xx} = 2X_t(2) + \\frac{1}{2}(9)(2)$. Evaluate this $dt$-coefficient at $X_t = 1$.",
     answerKey: 13,
     tolerance: 0.01,
     difficulty: 0.3,
@@ -937,32 +916,30 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten"],
     stem:
-      "Starting from the full second-order Taylor expansion df = f_t dt + f_x dX + ½f_xx(dX)² + …, derive " +
-      "Itô's formula by substituting dX = μ dt + σ dW and discarding negligible terms. Be explicit about which " +
-      "terms are discarded and why.",
+      "Starting from the full second-order Taylor expansion $df = f_t\\,dt + f_x\\,dX + \\frac{1}{2}f_{xx}(dX)^2 + \\cdots$, derive Itô's formula by substituting $dX = \\mu\\,dt + \\sigma\\,dW$ and discarding negligible terms. Be explicit about which terms are discarded and why.",
     rubric: {
       elements: [
         {
           id: "expand-dx-squared",
-          description: "Expands (dX)² = μ²(dt)² + 2μσ dt dW + σ²(dW)² using the substitution.",
+          description: "Expands $(dX)^2 = \\mu^2(dt)^2 + 2\\mu\\sigma\\,dt\\,dW + \\sigma^2(dW)^2$ using the substitution.",
           weight: 3,
           required: true,
         },
         {
           id: "apply-multiplication-table",
-          description: "Applies dt·dt = 0, dt·dW = 0, dW·dW = dt to reduce (dX)² to exactly σ² dt.",
+          description: "Applies $dt \\cdot dt = 0$, $dt \\cdot dW = 0$, $dW \\cdot dW = dt$ to reduce $(dX)^2$ to exactly $\\sigma^2\\,dt$.",
           weight: 3,
           required: true,
         },
         {
           id: "discard-higher-order",
-          description: "Explains that f_tt(dt)², f_tx dt·dX, and higher terms are all o(dt) and correctly discarded, unlike ½f_xx(dX)² which is not.",
+          description: "Explains that $f_{tt}(dt)^2$, $f_{tx}\\,dt \\cdot dX$, and higher terms are all $o(dt)$ and correctly discarded, unlike $\\frac{1}{2}f_{xx}(dX)^2$ which is not.",
           weight: 3,
           required: true,
         },
         {
           id: "assemble-final",
-          description: "Collects surviving terms into df = [f_t + μf_x + ½σ²f_xx] dt + σf_x dW.",
+          description: "Collects surviving terms into $df = \\left[f_t + \\mu f_x + \\frac{1}{2}\\sigma^2 f_{xx}\\right]dt + \\sigma f_x\\,dW$.",
           weight: 3,
           required: true,
         },
@@ -970,7 +947,7 @@ export const stochasticCalculusItoItems: Item[] = [
       forbiddenMoves: [
         {
           id: "drops-second-order-entirely",
-          description: "Truncates the Taylor expansion at first order the way ordinary multivariable calculus would, discarding ½f_xx(dX)² along with the genuinely negligible terms.",
+          description: "Truncates the Taylor expansion at first order the way ordinary multivariable calculus would, discarding $\\frac{1}{2}f_{xx}(dX)^2$ along with the genuinely negligible terms.",
           weight: 2,
         },
       ],
@@ -989,17 +966,16 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "Suppose someone applies the ordinary chain rule to d(Wₜ²), getting d(Wₜ²) = 2Wₜ dWₜ (dropping the dt " +
-      "term). What goes wrong?",
+      "Suppose someone applies the ordinary chain rule to $d(W_t^2)$, getting $d(W_t^2) = 2W_t\\,dW_t$ (dropping the $dt$ term). What goes wrong?",
     choices: [
       {
         id: "a",
-        text: "The result would claim Wₜ² is a martingale (an Itô integral has mean 0), but E[Wₜ²] = t ≠ 0, a direct contradiction",
+        text: "The result would claim $W_t^2$ is a martingale (an Itô integral has mean $0$), but $\\mathbb{E}[W_t^2] = t \\ne 0$, a direct contradiction",
         correct: true,
       },
       {
         id: "b",
-        text: "Nothing goes wrong for small t, since the dt term is negligible for short time horizons",
+        text: "Nothing goes wrong for small $t$, since the $dt$ term is negligible for short time horizons",
         correct: false,
         misconception: {
           id: "small-t-approximation",
@@ -1013,7 +989,7 @@ export const stochasticCalculusItoItems: Item[] = [
         correct: false,
         misconception: {
           id: "missing-constant-of-integration",
-          description: "This isn't a missing constant — it's a missing dt term that accumulates over time (∫₀ᵗ dt = t), fundamentally changing the process's mean.",
+          description: "This isn't a missing constant — it's a missing $dt$ term that accumulates over time ($\\int_0^t ds = t$), fundamentally changing the process's mean.",
           blameConceptId: "ito-doeblin-formula",
         },
       },
@@ -1031,18 +1007,18 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Why does Itô's formula require f to be twice differentiable in x, but only once differentiable in t?",
+    stem: "Why does Itô's formula require $f$ to be twice differentiable in $x$, but only once differentiable in $t$?",
     rubric: {
       elements: [
         {
           id: "x-second-order",
-          description: "Explains that the second x-derivative is needed because (dX)² is order dt (via dW·dW=dt), so f_xx appears in the surviving dt-order term.",
+          description: "Explains that the second $x$-derivative is needed because $(dX)^2$ is order $dt$ (via $dW \\cdot dW = dt$), so $f_{xx}$ appears in the surviving $dt$-order term.",
           weight: 3,
           required: true,
         },
         {
           id: "t-first-order",
-          description: "Explains that dt itself is already order dt, so (dt)² is negligible and no second t-derivative term ever survives.",
+          description: "Explains that $dt$ itself is already order $dt$, so $(dt)^2$ is negligible and no second $t$-derivative term ever survives.",
           weight: 3,
           required: true,
         },
@@ -1066,7 +1042,7 @@ export const stochasticCalculusItoItems: Item[] = [
       elements: [
         {
           id: "connection",
-          description: "States that the correction term exists because Brownian motion accumulates nonzero quadratic variation at rate dt, unlike a differentiable path whose quadratic variation is 0.",
+          description: "States that the correction term exists because Brownian motion accumulates nonzero quadratic variation at rate $dt$, unlike a differentiable path whose quadratic variation is $0$.",
           weight: 4,
           required: true,
         },
@@ -1086,14 +1062,12 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "In the derivation of the Black-Scholes-Merton PDE, Itô's formula is applied to the option value " +
-      "function V(t, Sₜ) where Sₜ follows geometric Brownian motion. Which term in Itô's formula is responsible " +
-      "for the PDE containing a ½σ²S²V_SS term (the 'gamma' term)?",
+      "In the derivation of the Black–Scholes–Merton PDE, Itô's formula is applied to the option value function $V(t, S_t)$ where $S_t$ follows geometric Brownian motion. Which term in Itô's formula is responsible for the PDE containing a $\\frac{1}{2}\\sigma^2 S^2 V_{SS}$ term (the “gamma” term)?",
     rubric: {
       elements: [
         {
           id: "identifies-correction-term",
-          description: "Identifies the ½σ²f_xx dt Itô correction term (here with f=V, σ→σS from GBM) as the direct source of the ½σ²S²V_SS term.",
+          description: "Identifies the $\\frac{1}{2}\\sigma^2 f_{xx}\\,dt$ Itô correction term (here with $f = V$, $\\sigma \\to \\sigma S$ from geometric Brownian motion) as the direct source of the $\\frac{1}{2}\\sigma^2 S^2 V_{SS}$ term.",
           weight: 4,
           required: true,
         },
@@ -1113,20 +1087,18 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "For the Ornstein-Uhlenbeck SDE dXₜ = −θXₜ dt + σ dWₜ, applying Itô's formula to f(t,x) = e^{θt}x lets " +
-      "you solve the SDE exactly. Compute d(e^{θt}Xₜ) using Itô's formula, and explain why no second-order " +
-      "correction term appears despite this being an Itô-formula application.",
+      "For the Ornstein–Uhlenbeck SDE $dX_t = -\\theta X_t\\,dt + \\sigma\\,dW_t$, applying Itô's formula to $f(t, x) = e^{\\theta t}x$ lets you solve the SDE exactly. Compute $d(e^{\\theta t}X_t)$ using Itô's formula, and explain why no second-order correction term appears despite this being an Itô-formula application.",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "Derives d(e^{θt}Xₜ) = e^{θt}σ dWₜ, i.e., the drift terms exactly cancel.",
+          description: "Derives $d(e^{\\theta t}X_t) = e^{\\theta t}\\sigma\\,dW_t$, i.e., the drift terms exactly cancel.",
           weight: 4,
           required: true,
         },
         {
           id: "no-correction-because-linear",
-          description: "Explains that f(t,x)=e^{θt}x is linear in x, so f_xx = 0, making the Itô correction term ½σ²f_xx vanish identically — not because the formula doesn't apply, but because this particular f has zero curvature in x.",
+          description: "Explains that $f(t, x) = e^{\\theta t}x$ is linear in $x$, so $f_{xx} = 0$, making the Itô correction term $\\frac{1}{2}\\sigma^2 f_{xx}$ vanish identically — not because the formula doesn't apply, but because this particular $f$ has zero curvature in $x$.",
           weight: 4,
           required: true,
         },
@@ -1146,9 +1118,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "Using d(e^{θt}Xₜ) = e^{θt}σ dWₜ from the Ornstein-Uhlenbeck integrating-factor trick, integrate from " +
-      "0 to t and solve for Xₜ: Xₜ = X₀e^{−θt} + σ∫₀ᵗ e^{−θ(t−s)} dWₛ. With θ = 1, X₀ = 2, t = ln 4 (so " +
-      "e^{−θt} = 1/4), and assuming the stochastic integral term happens to equal 0 on this sample path, what is Xₜ?",
+      "Using $d(e^{\\theta t}X_t) = e^{\\theta t}\\sigma\\,dW_t$ from the Ornstein–Uhlenbeck integrating-factor trick, integrate from $0$ to $t$ and solve for $X_t$: $X_t = X_0 e^{-\\theta t} + \\sigma\\int_0^t e^{-\\theta(t - s)}\\,dW_s$. With $\\theta = 1$, $X_0 = 2$, $t = \\ln 4$ (so $e^{-\\theta t} = 1/4$), and assuming the stochastic integral term happens to equal $0$ on this sample path, what is $X_t$?",
     answerKey: 0.5,
     tolerance: 0.01,
     difficulty: 1.2,
@@ -1165,31 +1135,30 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "If Xₜ were instead a differentiable deterministic function of t (σ = 0), what would Itô's formula " +
-      "reduce to, and why?",
+      "If $X_t$ were instead a differentiable deterministic function of $t$ ($\\sigma = 0$), what would Itô's formula reduce to, and why?",
     choices: [
       {
         id: "a",
-        text: "The ordinary chain rule df = [f_t + μf_x] dt, because σ=0 makes both the dW term and the ½σ²f_xx correction vanish",
+        text: "The ordinary chain rule $df = \\left[f_t + \\mu f_x\\right]dt$, because $\\sigma = 0$ makes both the $dW$ term and the $\\frac{1}{2}\\sigma^2 f_{xx}$ correction vanish",
         correct: true,
       },
       {
         id: "b",
-        text: "Itô's formula still needs the ½σ²f_xx term even with σ=0, since it depends only on f's curvature",
+        text: "Itô's formula still needs the $\\frac{1}{2}\\sigma^2 f_{xx}$ term even with $\\sigma = 0$, since it depends only on $f$'s curvature",
         correct: false,
         misconception: {
           id: "correction-independent-of-sigma",
-          description: "The correction term is ½σ²f_xx — it scales with σ², so σ=0 makes it exactly zero regardless of f's curvature.",
+          description: "The correction term is $\\frac{1}{2}\\sigma^2 f_{xx}$ — it scales with $\\sigma^2$, so $\\sigma = 0$ makes it exactly zero regardless of $f$'s curvature.",
           blameConceptId: "ito-doeblin-formula",
         },
       },
       {
         id: "c",
-        text: "The formula becomes undefined when σ=0, since Itô's formula assumes genuine randomness",
+        text: "The formula becomes undefined when $\\sigma = 0$, since Itô's formula assumes genuine randomness",
         correct: false,
         misconception: {
           id: "assumes-formula-needs-randomness",
-          description: "Itô's formula is a Taylor-expansion identity that degenerates gracefully to the deterministic chain rule when σ=0; it doesn't become undefined.",
+          description: "Itô's formula is a Taylor-expansion identity that degenerates gracefully to the deterministic chain rule when $\\sigma = 0$; it doesn't become undefined.",
           blameConceptId: "ito-doeblin-formula",
         },
       },
@@ -1208,20 +1177,18 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Let f(t,x) = exp(θx − ½θ²t) for constant θ, applied to X = W. Show, using Itô's formula, that " +
-      "f(t, Wₜ) is driftless (i.e., its dt-coefficient is exactly 0), which is why this exponential process is a " +
-      "martingale — the continuous-time analogue of a moment generating function trick.",
+      "Let $f(t, x) = \\exp\\left(\\theta x - \\frac{1}{2}\\theta^2 t\\right)$ for constant $\\theta$, applied to $X = W$. Show, using Itô's formula, that $f(t, W_t)$ is driftless (i.e., its $dt$-coefficient is exactly $0$), which is why this exponential process is a martingale — the continuous-time analogue of a moment generating function trick.",
     rubric: {
       elements: [
         {
           id: "partials",
-          description: "Computes f_t = −½θ²f, f_x = θf, f_xx = θ²f.",
+          description: "Computes $f_t = -\\frac{1}{2}\\theta^2 f$, $f_x = \\theta f$, $f_{xx} = \\theta^2 f$.",
           weight: 3,
           required: true,
         },
         {
           id: "dt-coefficient-zero",
-          description: "Assembles the dt-coefficient f_t + 0·f_x + ½(1)²f_xx = −½θ²f + ½θ²f = 0 and concludes the process has zero drift.",
+          description: "Assembles the $dt$-coefficient $f_t + 0 \\cdot f_x + \\frac{1}{2}(1)^2 f_{xx} = -\\frac{1}{2}\\theta^2 f + \\frac{1}{2}\\theta^2 f = 0$ and concludes the process has zero drift.",
           weight: 4,
           required: true,
         },
@@ -1241,8 +1208,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For f(t,x) = exp(θx − ½θ²t) applied to Brownian motion with θ = 2, evaluate the dt-coefficient's two " +
-      "pieces f_t and ½f_xx separately at t = 3, x = 1, and report their sum (which Itô's formula says must be 0).",
+      "For $f(t, x) = \\exp\\left(\\theta x - \\frac{1}{2}\\theta^2 t\\right)$ applied to Brownian motion with $\\theta = 2$, evaluate the $dt$-coefficient's two pieces $f_t$ and $\\frac{1}{2}f_{xx}$ separately at $t = 3$, $x = 1$, and report their sum (which Itô's formula says must be $0$).",
     answerKey: 0,
     tolerance: 1e-9,
     difficulty: 0.5,
@@ -1262,13 +1228,12 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "recall",
     channels: ["typed", "spoken"],
     stem:
-      "For two Brownian motions W¹ and W² with instantaneous correlation ρ, what is dW¹·dW²? What does it " +
-      "reduce to when ρ = 0 and when the two are the same process (i = j)?",
+      "For two Brownian motions $W^1$ and $W^2$ with instantaneous correlation $\\rho$, what is $dW^1 \\cdot dW^2$? What does it reduce to when $\\rho = 0$ and when the two are the same process ($i = j$)?",
     rubric: {
       elements: [
-        { id: "general", description: "States dW¹·dW² = ρ dt.", weight: 3, required: true },
-        { id: "independent-case", description: "States it reduces to 0 when ρ = 0 (independent).", weight: 2 },
-        { id: "same-process-case", description: "States it reduces to dt when i = j (ρ_ii = 1), recovering the one-dimensional rule.", weight: 2 },
+        { id: "general", description: "States $dW^1 \\cdot dW^2 = \\rho\\,dt$.", weight: 3, required: true },
+        { id: "independent-case", description: "States it reduces to $0$ when $\\rho = 0$ (independent).", weight: 2 },
+        { id: "same-process-case", description: "States it reduces to $dt$ when $i = j$ ($\\rho_{ii} = 1$), recovering the one-dimensional rule.", weight: 2 },
       ],
     },
     difficulty: -0.8,
@@ -1285,19 +1250,18 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "recall",
     channels: ["typed", "spoken"],
     stem:
-      "Write the multivariate Itô formula for df(t, Xₜ) where dXⁱ = μᵢ dt + Σₖσᵢₖ dWᵏ, naming what plays " +
-      "the role of the one-dimensional ½σ²f_xx term.",
+      "Write the multivariate Itô formula for $df(t, \\mathbf{X}_t)$ where $dX^i = \\mu_i\\,dt + \\sum_k \\sigma_{ik}\\,dW^k$, naming what plays the role of the one-dimensional $\\frac{1}{2}\\sigma^2 f_{xx}$ term.",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "Writes df = f_t dt + ∇f·dX + ½Σᵢⱼ(σσᵀ)ᵢⱼ f_{xᵢxⱼ} dt.",
+          description: "Writes $df = f_t\\,dt + \\nabla f \\cdot d\\mathbf{X} + \\frac{1}{2}\\sum_{i,j} (\\boldsymbol{\\sigma}\\boldsymbol{\\sigma}^\\top)_{ij} f_{x_i x_j}\\,dt$.",
           weight: 4,
           required: true,
         },
         {
           id: "role",
-          description: "Identifies the ½Σᵢⱼ(σσᵀ)ᵢⱼf_{xᵢxⱼ} dt sum as the multidimensional generalization of the single ½σ²f_xx term.",
+          description: "Identifies the $\\frac{1}{2}\\sum_{i,j} (\\boldsymbol{\\sigma}\\boldsymbol{\\sigma}^\\top)_{ij} f_{x_i x_j}\\,dt$ sum as the multidimensional generalization of the single $\\frac{1}{2}\\sigma^2 f_{xx}$ term.",
           weight: 3,
         },
       ],
@@ -1315,30 +1279,30 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Under what condition does the multivariate Itô formula collapse into n separate copies of the one-dimensional formula?",
+    stem: "Under what condition does the multivariate Itô formula collapse into $n$ separate copies of the one-dimensional formula?",
     choices: [
       {
         id: "a",
-        text: "When all the Brownian motions are pairwise independent (ρᵢⱼ = 0 for i ≠ j)",
+        text: "When all the Brownian motions are pairwise independent ($\\rho_{ij} = 0$ for $i \\ne j$)",
         correct: true,
       },
       {
         id: "b",
-        text: "When f is linear in each coordinate",
+        text: "When $f$ is linear in each coordinate",
         correct: false,
         misconception: {
           id: "linearity-not-independence",
-          description: "Linear f makes all second-derivative terms (diagonal and off-diagonal) vanish entirely, which is a stronger and different condition — it removes the correction terms rather than merely decoupling coordinates.",
+          description: "Linear $f$ makes all second-derivative terms (diagonal and off-diagonal) vanish entirely, which is a stronger and different condition — it removes the correction terms rather than merely decoupling coordinates.",
           blameConceptId: "multidimensional-ito-calculus",
         },
       },
       {
         id: "c",
-        text: "When n = 2, since cross terms only appear with three or more processes",
+        text: "When $n = 2$, since cross terms only appear with three or more processes",
         correct: false,
         misconception: {
           id: "cross-terms-need-three-processes",
-          description: "Cross terms appear with as few as two correlated processes (the i≠j pair); the count n is irrelevant to whether they vanish.",
+          description: "Cross terms appear with as few as two correlated processes (the $i \\ne j$ pair); the count $n$ is irrelevant to whether they vanish.",
           blameConceptId: "multidimensional-ito-calculus",
         },
       },
@@ -1356,12 +1320,12 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "State the Itô product rule d(XₜYₜ) for two Itô processes X, Y in terms of dX, dY, and their cross-variation.",
+    stem: "State the Itô product rule $d(X_t Y_t)$ for two Itô processes $X$, $Y$ in terms of $dX$, $dY$, and their cross-variation.",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "Writes d(XY) = X dY + Y dX + dX·dY (the multidimensional Itô formula applied to f(x,y)=xy).",
+          description: "Writes $d(XY) = X\\,dY + Y\\,dX + dX \\cdot dY$ (the multidimensional Itô formula applied to $f(x, y) = xy$).",
           weight: 4,
           required: true,
         },
@@ -1380,7 +1344,7 @@ export const stochasticCalculusItoItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "What discrete-probability concept does the cross-variation rate ρᵢⱼ (or more generally (σσᵀ)ᵢⱼ) generalize?",
+    stem: "What discrete-probability concept does the cross-variation rate $\\rho_{ij}$ (or more generally $(\\boldsymbol{\\sigma}\\boldsymbol{\\sigma}^\\top)_{ij}$) generalize?",
     rubric: {
       elements: [
         {
@@ -1405,19 +1369,18 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Let dS¹ = μ₁S¹dt + σ₁S¹dW¹ and dS² = μ₂S²dt + σ₂S²dW², with d⟨W¹,W²⟩ₜ = ρ dt. Apply the multivariate " +
-      "Itô formula to f(x,y)=xy to find d(S¹S²).",
+      "Let $dS^1 = \\mu_1 S^1\\,dt + \\sigma_1 S^1\\,dW^1$ and $dS^2 = \\mu_2 S^2\\,dt + \\sigma_2 S^2\\,dW^2$, with $d\\langle W^1, W^2 \\rangle_t = \\rho\\,dt$. Apply the multivariate Itô formula to $f(x, y) = xy$ to find $d(S^1 S^2)$.",
     rubric: {
       elements: [
         {
           id: "chain-rule-terms",
-          description: "Includes the ordinary terms S²dS¹ + S¹dS².",
+          description: "Includes the ordinary terms $S^2\\,dS^1 + S^1\\,dS^2$.",
           weight: 3,
           required: true,
         },
         {
           id: "cross-term",
-          description: "Includes the cross-variation term ρσ₁σ₂S¹S² dt from f_{xy}=1 times dS¹·dS².",
+          description: "Includes the cross-variation term $\\rho\\sigma_1\\sigma_2 S^1 S^2\\,dt$ from $f_{xy} = 1$ times $dS^1 \\cdot dS^2$.",
           weight: 4,
           required: true,
         },
@@ -1437,8 +1400,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Two correlated GBMs have μ₁ = 0.05, μ₂ = 0.03, σ₁ = 0.2, σ₂ = 0.3, ρ = 0.5. The combined drift of " +
-      "S¹S² is (μ₁+μ₂+ρσ₁σ₂). Compute this combined drift.",
+      "Two correlated geometric Brownian motions have $\\mu_1 = 0.05$, $\\mu_2 = 0.03$, $\\sigma_1 = 0.2$, $\\sigma_2 = 0.3$, $\\rho = 0.5$. The combined drift of $S^1 S^2$ is $\\mu_1 + \\mu_2 + \\rho\\sigma_1\\sigma_2$. Compute this combined drift.",
     answerKey: 0.11,
     tolerance: 0.001,
     difficulty: 0.4,
@@ -1455,19 +1417,18 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Apply the multivariate Itô formula to f(x,y) = x/y to derive d(Sₜ¹/Sₜ²) for two correlated Itô " +
-      "processes S¹, S² (with S² ≠ 0), including all necessary partial derivatives f_x, f_y, f_xx, f_yy, f_xy.",
+      "Apply the multivariate Itô formula to $f(x, y) = x/y$ to derive $d\\left(S_t^1 / S_t^2\\right)$ for two correlated Itô processes $S^1$, $S^2$ (with $S^2 \\ne 0$), including all necessary partial derivatives $f_x$, $f_y$, $f_{xx}$, $f_{yy}$, $f_{xy}$.",
     rubric: {
       elements: [
         {
           id: "partials",
-          description: "Correctly computes f_x=1/y, f_y=−x/y², f_xx=0, f_yy=2x/y³, f_xy=−1/y².",
+          description: "Correctly computes $f_x = 1/y$, $f_y = -x/y^2$, $f_{xx} = 0$, $f_{yy} = 2x/y^3$, $f_{xy} = -1/y^2$.",
           weight: 3,
           required: true,
         },
         {
           id: "assembles-all-terms",
-          description: "Assembles the full formula including both diagonal terms (½·f_yy·dY·dY) and the off-diagonal cross term (f_xy·dX·dY), not just the naive quotient-rule terms f_x dX + f_y dY.",
+          description: "Assembles the full formula including both diagonal terms ($\\frac{1}{2}f_{yy}\\,dY \\cdot dY$) and the off-diagonal cross term ($f_{xy}\\,dX \\cdot dY$), not just the naive quotient-rule terms $f_x\\,dX + f_y\\,dY$.",
           weight: 5,
           required: true,
         },
@@ -1475,7 +1436,7 @@ export const stochasticCalculusItoItems: Item[] = [
       forbiddenMoves: [
         {
           id: "ordinary-quotient-rule-only",
-          description: "Applies only the deterministic quotient rule d(x/y) = dX/Y − X dY/Y² without any second-order correction terms — this is exactly the mistake the multidimensional Itô formula exists to correct.",
+          description: "Applies only the deterministic quotient rule $d(x/y) = dX/Y - X\\,dY/Y^2$ without any second-order correction terms — this is exactly the mistake the multidimensional Itô formula exists to correct.",
           weight: 2,
         },
       ],
@@ -1494,9 +1455,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Two independent Brownian motions W¹, W² drive dX = X dW¹ + X dW². Apply the multivariate Itô formula " +
-      "to f(x) = x² to find the dt-coefficient of d(Xₜ²) at Xₜ = 3. (Hint: (σσᵀ) here is the sum of squared " +
-      "diffusion coefficients since ρ=0 makes cross terms vanish, each coefficient is 1.)",
+      "Two independent Brownian motions $W^1$, $W^2$ drive $dX = X\\,dW^1 + X\\,dW^2$. Apply the multivariate Itô formula to $f(x) = x^2$ to find the $dt$-coefficient of $d(X_t^2)$ at $X_t = 3$. (Hint: $(\\boldsymbol{\\sigma}\\boldsymbol{\\sigma}^\\top)$ here is the sum of squared diffusion coefficients since $\\rho = 0$ makes cross terms vanish; each coefficient is $1$.)",
     answerKey: 9,
     tolerance: 0.01,
     difficulty: 0.6,
@@ -1513,8 +1472,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For correlated Brownian motions with d⟨W¹,W²⟩ₜ=ρdt, ρ=0.4, the multidimensional analog of the Itô " +
-      "isometry gives Cov(∫₀ᵗdW¹ₛ, ∫₀ᵗdW²ₛ) = ρt. Compute this covariance for t = 5.",
+      "For correlated Brownian motions with $d\\langle W^1, W^2 \\rangle_t = \\rho\\,dt$, $\\rho = 0.4$, the multidimensional analog of the Itô isometry gives $\\text{Cov}\\left(\\int_0^t dW_s^1, \\int_0^t dW_s^2\\right) = \\rho t$. Compute this covariance for $t = 5$.",
     answerKey: 2,
     tolerance: 0.01,
     difficulty: 0.2,
@@ -1531,19 +1489,18 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "Explain why the off-diagonal Hessian term (σσᵀ)ᵢⱼf_{xᵢxⱼ}dt (for i≠j) is 'genuinely new' compared to " +
-      "the one-dimensional case, and name the two conditions both of which must hold for it to be nonzero.",
+      "Explain why the off-diagonal Hessian term $(\\boldsymbol{\\sigma}\\boldsymbol{\\sigma}^\\top)_{ij} f_{x_i x_j}\\,dt$ (for $i \\ne j$) is “genuinely new” compared to the one-dimensional case, and name the two conditions both of which must hold for it to be nonzero.",
     rubric: {
       elements: [
         {
           id: "two-conditions",
-          description: "States both conditions: the two noise sources must be correlated (ρᵢⱼ≠0) AND f must have nonzero mixed curvature (f_{xᵢxⱼ}≠0) between those coordinates.",
+          description: "States both conditions: the two noise sources must be correlated ($\\rho_{ij} \\ne 0$) $\\textbf{and}$ $f$ must have nonzero mixed curvature ($f_{x_i x_j} \\ne 0$) between those coordinates.",
           weight: 4,
           required: true,
         },
         {
           id: "one-dim-has-no-analog",
-          description: "Explains that with only one Brownian motion there is no 'other' coordinate to correlate with, so this term simply cannot arise in the 1-D formula.",
+          description: "Explains that with only one Brownian motion there is no “other” coordinate to correlate with, so this term simply cannot arise in the one-dimensional formula.",
           weight: 3,
         },
       ],
@@ -1562,12 +1519,11 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "explain",
     channels: ["typed"],
     stem:
-      "If ρᵢⱼ = 0 for all i ≠ j, which statement correctly describes what happens to the multivariate Itô " +
-      "formula?",
+      "If $\\rho_{ij} = 0$ for all $i \\ne j$, which statement correctly describes what happens to the multivariate Itô formula?",
     choices: [
       {
         id: "a",
-        text: "It reduces to n separate one-dimensional Itô formulas, one per coordinate, since every cross term vanishes",
+        text: "It reduces to $n$ separate one-dimensional Itô formulas, one per coordinate, since every cross term vanishes",
         correct: true,
       },
       {
@@ -1576,7 +1532,7 @@ export const stochasticCalculusItoItems: Item[] = [
         correct: false,
         misconception: {
           id: "drops-diagonal-terms-too",
-          description: "Independence kills only the off-diagonal (i≠j) terms; the diagonal ½σᵢᵢ²f_{xᵢxᵢ}dt terms survive exactly as in the one-dimensional case, since ρᵢᵢ=1 always.",
+          description: "Independence kills only the off-diagonal ($i \\ne j$) terms; the diagonal $\\frac{1}{2}\\sigma_{ii}^2 f_{x_i x_i}\\,dt$ terms survive exactly as in the one-dimensional case, since $\\rho_{ii} = 1$ always.",
           blameConceptId: "multidimensional-ito-calculus",
         },
       },
@@ -1605,19 +1561,18 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten"],
     stem:
-      "Two Brownian motions are constructed as W¹ = B¹ and W² = ρB¹ + √(1−ρ²)B², where B¹, B² are " +
-      "independent standard Brownian motions. Derive that d⟨W¹,W²⟩ₜ = ρ dt from this construction.",
+      "Two Brownian motions are constructed as $W^1 = B^1$ and $W^2 = \\rho B^1 + \\sqrt{1 - \\rho^2}\\,B^2$, where $B^1$, $B^2$ are independent standard Brownian motions. Derive that $d\\langle W^1, W^2 \\rangle_t = \\rho\\,dt$ from this construction.",
     rubric: {
       elements: [
         {
           id: "expand-product",
-          description: "Computes dW¹·dW² = dB¹·(ρdB¹+√(1−ρ²)dB²) = ρ(dB¹)² + √(1−ρ²)dB¹dB².",
+          description: "Computes $dW^1 \\cdot dW^2 = dB^1 \\cdot \\left(\\rho\\,dB^1 + \\sqrt{1 - \\rho^2}\\,dB^2\\right) = \\rho(dB^1)^2 + \\sqrt{1 - \\rho^2}\\,dB^1\\,dB^2$.",
           weight: 4,
           required: true,
         },
         {
           id: "apply-independence-and-table",
-          description: "Uses (dB¹)²=dt and, by independence of B¹,B², dB¹dB²=0, leaving exactly ρ dt.",
+          description: "Uses $(dB^1)^2 = dt$ and, by independence of $B^1$, $B^2$, $dB^1\\,dB^2 = 0$, leaving exactly $\\rho\\,dt$.",
           weight: 4,
           required: true,
         },
@@ -1637,19 +1592,18 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "spoken"],
     stem:
-      "In the sum ½Σᵢⱼ(σσᵀ)ᵢⱼf_{xᵢxⱼ}dt, explain why each off-diagonal pair (i,j) with i≠j is effectively " +
-      "counted twice (once as (i,j) and once as (j,i)), and why this is correct rather than double-counting error.",
+      "In the sum $\\frac{1}{2}\\sum_{i,j} (\\boldsymbol{\\sigma}\\boldsymbol{\\sigma}^\\top)_{ij} f_{x_i x_j}\\,dt$, explain why each off-diagonal pair $(i, j)$ with $i \\ne j$ is effectively counted twice (once as $(i, j)$ and once as $(j, i)$), and why this is correct rather than a double-counting error.",
     rubric: {
       elements: [
         {
           id: "symmetry-of-both-matrices",
-          description: "Notes that both (σσᵀ) and the Hessian f_{xᵢxⱼ} are symmetric matrices (Clairaut's theorem for f), so the (i,j) and (j,i) terms are numerically equal.",
+          description: "Notes that both $\\boldsymbol{\\sigma}\\boldsymbol{\\sigma}^\\top$ and the Hessian $f_{x_i x_j}$ are symmetric matrices (Clairaut's theorem for $f$), so the $(i, j)$ and $(j, i)$ terms are numerically equal.",
           weight: 3,
           required: true,
         },
         {
           id: "half-factor-compensates",
-          description: "Explains the leading ½ exists precisely to compensate for this symmetric double-counting, so the total correctly represents each unordered pair's contribution once.",
+          description: "Explains the leading $\\frac{1}{2}$ exists precisely to compensate for this symmetric double-counting, so the total correctly represents each unordered pair's contribution once.",
           weight: 3,
           required: true,
         },
@@ -1669,9 +1623,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Why does the multivariate Girsanov theorem (changing measure for several correlated Brownian motions " +
-      "at once) need the multivariate Itô formula, rather than just applying the one-dimensional Girsanov " +
-      "theorem separately to each Wⁱ?",
+      "Why does the multivariate Girsanov theorem (changing measure for several correlated Brownian motions at once) need the multivariate Itô formula, rather than just applying the one-dimensional Girsanov theorem separately to each Wⁱ?",
     rubric: {
       elements: [
         {
@@ -1696,10 +1648,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "A portfolio value is V = S¹ + S², with dS¹=σ₁S¹dW¹, dS²=σ₂S²dW² (zero drift for simplicity), " +
-      "d⟨W¹,W²⟩ₜ=ρdt. Apply the multivariate Itô formula to f(x,y)=x+y (so f_xx=f_yy=f_xy=0) to find dV, and " +
-      "hence the *quadratic variation rate* d⟨V,V⟩ₜ/dt at S¹=S²=1, σ₁=0.2, σ₂=0.3, ρ=0.5. (⟨V,V⟩ variance " +
-      "rate = σ₁²S¹²+σ₂²S²²+2ρσ₁σ₂S¹S².)",
+      "A portfolio value is $V = S^1 + S^2$, with $dS^1 = \\sigma_1 S^1\\,dW^1$, $dS^2 = \\sigma_2 S^2\\,dW^2$ (zero drift for simplicity), $d\\langle W^1, W^2 \\rangle_t = \\rho\\,dt$. Apply the multivariate Itô formula to $f(x, y) = x + y$ (so $f_{xx} = f_{yy} = f_{xy} = 0$) to find $dV$, and hence the *quadratic variation rate* $d\\langle V, V \\rangle_t / dt$ at $S^1 = S^2 = 1$, $\\sigma_1 = 0.2$, $\\sigma_2 = 0.3$, $\\rho = 0.5$. (The rate is $\\sigma_1^2 (S^1)^2 + \\sigma_2^2 (S^2)^2 + 2\\rho\\sigma_1\\sigma_2 S^1 S^2$.)",
     answerKey: 0.19,
     tolerance: 0.001,
     difficulty: 1.5,
@@ -1716,20 +1665,18 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Explain the structural parallel between Var(X+Y) = Var(X)+Var(Y)+2Cov(X,Y) for ordinary random " +
-      "variables, and the quadratic variation rate d⟨S¹+S²,S¹+S²⟩ₜ formula that includes a 2ρσ₁σ₂S¹S² cross " +
-      "term.",
+      "Explain the structural parallel between $\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y) + 2\\,\\text{Cov}(X, Y)$ for ordinary random variables, and the quadratic variation rate $d\\langle S^1 + S^2, S^1 + S^2 \\rangle_t$ formula that includes a $2\\rho\\sigma_1\\sigma_2 S^1 S^2$ cross term.",
     rubric: {
       elements: [
         {
           id: "identifies-parallel",
-          description: "Identifies that the cross-variation term 2ρσ₁σ₂S¹S²dt plays exactly the role of 2Cov(X,Y) in the classical variance-of-a-sum formula, both arising from the bilinearity of variance/covariation.",
+          description: "Identifies that the cross-variation term $2\\rho\\sigma_1\\sigma_2 S^1 S^2\\,dt$ plays exactly the role of $2\\,\\text{Cov}(X, Y)$ in the classical variance-of-a-sum formula, both arising from the bilinearity of variance/covariation.",
           weight: 4,
           required: true,
         },
         {
           id: "notes-continuous-time-mechanism",
-          description: "Notes the continuous-time version arises mechanically from the off-diagonal Hessian term of the multivariate Itô formula applied to f(x,y)=x+y, rather than from an independent probabilistic argument.",
+          description: "Notes the continuous-time version arises mechanically from the off-diagonal Hessian term of the multivariate Itô formula applied to $f(x, y) = x + y$, rather than from an independent probabilistic argument.",
           weight: 3,
         },
       ],
@@ -1748,22 +1695,20 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "An exchange option's payoff depends on S¹/S² at maturity. Which fact about the multidimensional Itô " +
-      "formula explains why the *correlation* ρ between the two underlyings' Brownian motions directly affects " +
-      "the option's fair price, not just each stock's individual volatility?",
+      "An exchange option's payoff depends on $S^1/S^2$ at maturity. Which fact about the multidimensional Itô formula explains why the *correlation* $\\rho$ between the two underlyings' Brownian motions directly affects the option's fair price, not just each stock's individual volatility?",
     choices: [
       {
         id: "a",
-        text: "Because d(S¹/S²) picks up a cross-variation term proportional to ρσ₁σ₂ from the off-diagonal Hessian of f(x,y)=x/y, which changes the ratio process's own effective volatility",
+        text: "Because $d(S^1/S^2)$ picks up a cross-variation term proportional to $\\rho\\sigma_1\\sigma_2$ from the off-diagonal Hessian of $f(x, y) = x/y$, which changes the ratio process's own effective volatility",
         correct: true,
       },
       {
         id: "b",
-        text: "Because correlation changes each stock's own drift μᵢ, which directly appears in the option pricing formula",
+        text: "Because correlation changes each stock's own drift $\\mu_i$, which directly appears in the option pricing formula",
         correct: false,
         misconception: {
           id: "correlation-changes-individual-drift",
-          description: "Correlation ρ is a property of the joint noise structure and does not alter either stock's own marginal drift μᵢ; its effect enters only through the cross-variation term in a function of both processes.",
+          description: "Correlation $\\rho$ is a property of the joint noise structure and does not alter either stock's own marginal drift $\\mu_i$; its effect enters only through the cross-variation term in a function of both processes.",
           blameConceptId: "multidimensional-ito-calculus",
         },
       },
@@ -1773,7 +1718,7 @@ export const stochasticCalculusItoItems: Item[] = [
         correct: false,
         misconception: {
           id: "correlation-cancels-in-ratio",
-          description: "The opposite is true: for a ratio or exchange payoff, correlation directly determines the ratio process's effective diffusion coefficient (σ₁²+σ₂²−2ρσ₁σ₂ style term), so it strongly affects the price.",
+          description: "The opposite is true: for a ratio or exchange payoff, correlation directly determines the ratio process's effective diffusion coefficient (a $\\sigma_1^2 + \\sigma_2^2 - 2\\rho\\sigma_1\\sigma_2$ style term), so it strongly affects the price.",
           blameConceptId: "multidimensional-ito-calculus",
         },
       },
@@ -1792,24 +1737,23 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten"],
     stem:
-      "For X = W¹ (independent of W²) and Y = W², derive Itô's formula for f(X,Y) from the general " +
-      "two-variable Taylor expansion, and show why the dW¹dW² cross term drops out entirely.",
+      "For $X = W^1$ (independent of $W^2$) and $Y = W^2$, derive Itô's formula for $f(X, Y)$ from the general two-variable Taylor expansion, and show why the $dW^1\\,dW^2$ cross term drops out entirely.",
     rubric: {
       elements: [
         {
           id: "taylor-terms",
-          description: "Writes the second-order Taylor expansion df = f_x dX + f_y dY + ½f_xx(dX)² + f_xy dXdY + ½f_yy(dY)².",
+          description: "Writes the second-order Taylor expansion $df = f_x\\,dX + f_y\\,dY + \\frac{1}{2}f_{xx}(dX)^2 + f_{xy}\\,dX\\,dY + \\frac{1}{2}f_{yy}(dY)^2$.",
           weight: 3,
           required: true,
         },
         {
           id: "independence-kills-cross-term",
-          description: "Uses independence of W¹ and W² to argue dW¹dW² = ρ dt with ρ = 0, so the f_xy term vanishes and only the diagonal ½f_xx dt + ½f_yy dt terms survive.",
+          description: "Uses independence of $W^1$ and $W^2$ to argue $dW^1\\,dW^2 = \\rho\\,dt$ with $\\rho = 0$, so the $f_{xy}$ term vanishes and only the diagonal $\\frac{1}{2}f_{xx}\\,dt + \\frac{1}{2}f_{yy}\\,dt$ terms survive.",
           weight: 4,
           required: true,
           misconception: {
             id: "assumes-cross-term-always-present",
-            description: "Keeps a nonzero dW¹dW² cross term even when the two driving Brownian motions are independent, treating correlation as always present rather than as a modeling choice.",
+            description: "Keeps a nonzero $dW^1\\,dW^2$ cross term even when the two driving Brownian motions are independent, treating correlation as always present rather than as a modeling choice.",
             blameConceptId: "multidimensional-ito-calculus",
           },
         },
@@ -1829,9 +1773,7 @@ export const stochasticCalculusItoItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "A portfolio value is V = S¹ + S², where dS¹ = σ₁S¹dW¹ and dS² = σ₂S²dW² with σ₁ = 0.3, σ₂ = 0.2, " +
-      "correlation ρ = 0.5, and at some instant S¹ = S² = 10. Using the multidimensional Itô product/sum rule, " +
-      "find the instantaneous variance rate of dV (i.e. the dt-coefficient of (dV)²).",
+      "A portfolio value is $V = S^1 + S^2$, where $dS^1 = \\sigma_1 S^1\\,dW^1$ and $dS^2 = \\sigma_2 S^2\\,dW^2$ with $\\sigma_1 = 0.3$, $\\sigma_2 = 0.2$, correlation $\\rho = 0.5$, and at some instant $S^1 = S^2 = 10$. Using the multidimensional Itô product/sum rule, find the instantaneous variance rate of $dV$ (i.e. the $dt$-coefficient of $(dV)^2$).",
     answerKey: 19,
     tolerance: 0.5,
     difficulty: 1.4,

@@ -1,4 +1,5 @@
 import type { Item, SourceRef } from "../lib/assessment/types";
+import { CONCEPT_MOVES } from "./conceptMoves";
 import { graphicalModelsItems } from "./items.graphical-models";
 import { statisticsFoundationsItems } from "./items.statistics-foundations";
 import { statisticsInferenceItems } from "./items.statistics-inference";
@@ -45,6 +46,7 @@ import { monteCarloIntegrationItems } from "./items/monte-carlo-integration";
 import { gaussianStructureLearningItems } from "./items/gaussian-structure-learning";
 import { multipleTestingErrorRateItems } from "./items/multiple-testing-error-rates";
 import { informationTheoryItems } from "./items/information-theory";
+import { randomVectorItems } from "./items/random-vectors";
 import { optimalTestItems } from "./items/optimal-tests";
 import { mlOptimizationAndMetricsItems } from "./items/ml-optimization-and-metrics";
 import { oddsAndDevianceItems } from "./items/odds-and-deviance";
@@ -5077,6 +5079,7 @@ export const items: Item[] = [
   ...gaussianStructureLearningItems,
   ...multipleTestingErrorRateItems,
   ...informationTheoryItems,
+  ...randomVectorItems,
   ...optimalTestItems,
   ...mlOptimizationAndMetricsItems,
   ...oddsAndDevianceItems,
@@ -5239,7 +5242,12 @@ export function loadItemBank(): Promise<Map<string, Item[]>> {
     // via PR, so an edit or new question shipped that way takes effect for
     // every visitor once merged and deployed, not just the browser that made it.
     const overridden = items.map((item) => devOverrides.overrides?.[item.id] ?? item);
-    for (const item of [...overridden, ...generatedItems, ...Object.values(devOverrides.newItems ?? {})]) {
+    for (const authored of [...overridden, ...generatedItems, ...Object.values(devOverrides.newItems ?? {})]) {
+      // Questions moved to the lesson whose prerequisites actually cover them.
+      const movedTo = CONCEPT_MOVES[authored.id];
+      const item = movedTo
+        ? { ...authored, conceptId: movedTo, prereqClosure: [...new Set([...(authored.prereqClosure ?? []), movedTo])] }
+        : authored;
       const bucket = index.get(item.conceptId);
       if (bucket) bucket.push(item);
       else index.set(item.conceptId, [item]);

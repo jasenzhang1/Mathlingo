@@ -19,7 +19,7 @@ export const vectors: WikiArticle = {
             {
               term: "As a list",
               description:
-                "$n$ real numbers in a fixed order. Order matters: $(1,2) \\ne (2,1)$. This is what a computer stores.",
+                "$n$ real numbers in a fixed order. Order matters: $[1, 2] \\ne [2, 1]$. This is what a computer stores.",
             },
             {
               term: "As an arrow",
@@ -72,13 +72,13 @@ export const vectors: WikiArticle = {
           kind: "example",
           title: "Combining vectors",
           problem:
-            "$\\mathbf{u} = (2, -1, 3)$ and $\\mathbf{v} = (0, 4, -2)$. Compute $2\\mathbf{u} - 3\\mathbf{v}$.",
+            "$\\mathbf{u} = [2, -1, 3]$ and $\\mathbf{v} = [0, 4, -2]$. Compute $2\\mathbf{u} - 3\\mathbf{v}$.",
           steps: [
-            "$2\\mathbf{u} = (4, -2, 6)$ — scale each component.",
-            "$3\\mathbf{v} = (0, 12, -6)$.",
+            "$2\\mathbf{u} = [4, -2, 6]$ — scale each component.",
+            "$3\\mathbf{v} = [0, 12, -6]$.",
             "Subtract component-wise: $(4 - 0,\\ -2 - 12,\\ 6 - (-6))$.",
           ],
-          answer: "$(4, -14, 12)$.",
+          answer: "$[4, -14, 12]$.",
         },
         {
           kind: "prose",
@@ -95,7 +95,7 @@ export const vectors: WikiArticle = {
           items: [
             "**Column by default.** Vectors are columns unless stated otherwise, so $\\mathbf{v} \\in \\mathbb{R}^{n}$ is $n \\times 1$ and $\\mathbf{v}^{\\top}$ is a row. This convention makes $A\\mathbf{v}$ the natural product and is assumed throughout.",
             "**The zero vector $\\mathbf{0}$** has every component zero. It is the only vector with no direction, and the additive identity.",
-            "**Standard basis vectors $\\mathbf{e}_i$** have a 1 in position $i$ and zeros elsewhere. Every vector is $\\sum_i v_i \\mathbf{e}_i$ — which is what \"components\" means.",
+            "**Standard basis vectors $\\mathbf{e}_i$** have a 1 in position $i$ and zeros elsewhere. Every vector is $\\sum_i v_i \\mathbf{e}_i$ — which is what “components” means.",
           ],
         },
       ],

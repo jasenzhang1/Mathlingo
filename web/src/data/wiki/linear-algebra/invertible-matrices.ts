@@ -10,7 +10,7 @@ export const invertibleMatrices: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "AA^{-1} = A^{-1}A = I",
+          latex: "\\mathbf{A}\\mathbf{A}^{-1} = \\mathbf{A}^{-1}\\mathbf{A} = \\mathbf{I}",
           caption: "The inverse undoes the transformation, from either side",
         },
         {
@@ -24,22 +24,22 @@ export const invertibleMatrices: WikiArticle = {
       blocks: [
         {
           kind: "prose",
-          text: "For a square $n\\times n$ matrix $A$, all of the following are equivalent. Any one implies all the others.",
+          text: "For a square $n\\times n$ matrix $\\mathbf{A}$, all of the following are equivalent. Any one implies all the others.",
         },
         {
           kind: "list",
           ordered: false,
           items: [
-            "$A^{-1}$ exists.",
-            "$\\det A \\ne 0$.",
-            "$\\operatorname{rank}(A) = n$ — full rank.",
-            "$N(A) = \\{\\mathbf{0}\\}$ — nothing is crushed to zero.",
-            "$C(A) = \\mathbb{R}^{n}$ — everything is reachable.",
+            "$\\mathbf{A}^{-1}$ exists.",
+            "$\\det \\mathbf{A} \\ne 0$.",
+            "$\\operatorname{rank}(\\mathbf{A}) = n$ — full rank.",
+            "$N(\\mathbf{A}) = \\{\\mathbf{0}\\}$ — nothing is crushed to zero.",
+            "$C(\\mathbf{A}) = \\mathbb{R}^{n}$ — everything is reachable.",
             "The columns are linearly independent; likewise the rows.",
-            "$A\\mathbf{x} = \\mathbf{b}$ has exactly one solution, for every $\\mathbf{b}$.",
+            "$\\mathbf{A}\\mathbf{x} = \\mathbf{b}$ has exactly one solution, for every $\\mathbf{b}$.",
             "0 is not an eigenvalue.",
             "All $n$ pivots are non-zero.",
-            "$A^{\\top}A$ is positive definite.",
+            "$\\mathbf{A}^{\\top}\\mathbf{A}$ is positive definite.",
             "All singular values are positive.",
           ],
         },
@@ -58,10 +58,10 @@ export const invertibleMatrices: WikiArticle = {
           kind: "table",
           headers: ["Rule", "Statement"],
           rows: [
-            ["Product", "$(AB)^{-1} = B^{-1}A^{-1}$ — order reverses"],
-            ["Transpose", "$(A^{\\top})^{-1} = (A^{-1})^{\\top}$"],
-            ["Determinant", "$\\det(A^{-1}) = 1/\\det A$"],
-            ["Eigenvalues", "those of $A^{-1}$ are $1/\\lambda_i$, with the same eigenvectors"],
+            ["Product", "$(\\mathbf{A}\\mathbf{B})^{-1} = \\mathbf{B}^{-1}\\mathbf{A}^{-1}$ — order reverses"],
+            ["Transpose", "$(\\mathbf{A}^{\\top})^{-1} = (\\mathbf{A}^{-1})^{\\top}$"],
+            ["Determinant", "$\\det(\\mathbf{A}^{-1}) = 1/\\det \\mathbf{A}$"],
+            ["Eigenvalues", "those of $\\mathbf{A}^{-1}$ are $1/\\lambda_i$, with the same eigenvectors"],
             ["Orthogonal", "$Q^{-1} = Q^{\\top}$ — inversion is free"],
             ["Diagonal", "invert each diagonal entry"],
           ],
@@ -70,11 +70,11 @@ export const invertibleMatrices: WikiArticle = {
           kind: "callout",
           tone: "warning",
           title: "Never compute an inverse to solve a system",
-          text: "$\\mathbf{x} = A^{-1}\\mathbf{b}$ is correct mathematics and poor computation. Forming $A^{-1}$ costs about three times as much as an LU factorisation, and it is less accurate — the explicit inverse amplifies rounding error. Use `solve(A, b)`, never `inv(A) @ b`. The only good reasons to form an inverse explicitly are when its individual entries are the quantity of interest, as with the covariance matrix of regression coefficients.",
+          text: "$\\mathbf{x} = \\mathbf{A}^{-1}\\mathbf{b}$ is correct mathematics and poor computation. Forming $\\mathbf{A}^{-1}$ costs about three times as much as an LU factorisation, and it is less accurate — the explicit inverse amplifies rounding error. Use `solve(A, b)`, never `inv(A) @ b`. The only good reasons to form an inverse explicitly are when its individual entries are the quantity of interest, as with the covariance matrix of regression coefficients.",
         },
         {
           kind: "formula",
-          latex: "\\kappa(A) = \\|A\\|\\,\\|A^{-1}\\| = \\frac{\\sigma_{\\max}}{\\sigma_{\\min}}",
+          latex: "\\kappa(\\mathbf{A}) = \\|\\mathbf{A}\\|\\,\\|\\mathbf{A}^{-1}\\| = \\frac{\\sigma_{\\max}}{\\sigma_{\\min}}",
           caption: "The condition number — how much the inverse can amplify error",
         },
         {
@@ -90,19 +90,19 @@ export const invertibleMatrices: WikiArticle = {
           kind: "example",
           title: "The $2\\times2$ formula, and its failure",
           problem:
-            "Invert $A = \\begin{bmatrix} 3 & 1 \\\\ 2 & 4\\end{bmatrix}$. Then attempt $B = \\begin{bmatrix} 1 & 2 \\\\ 2 & 4\\end{bmatrix}$.",
+            "Invert $\\mathbf{A} = \\begin{bmatrix} 3 & 1 \\\\ 2 & 4\\end{bmatrix}$. Then attempt $\\mathbf{B} = \\begin{bmatrix} 1 & 2 \\\\ 2 & 4\\end{bmatrix}$.",
           steps: [
-            "$\\det A = 12 - 2 = 10 \\ne 0$, so $A$ is invertible.",
-            "$A^{-1} = \\tfrac{1}{10}\\begin{bmatrix} 4 & -1 \\\\ -2 & 3\\end{bmatrix}$ — swap the diagonal, negate the off-diagonal, divide by the determinant.",
-            "$\\det B = 4 - 4 = 0$, so no inverse exists.",
-            "Indeed row 2 is twice row 1: $B$ collapses $\\mathbb{R}^{2}$ onto a line, and $(2,-1)$ lies in its null space.",
+            "$\\det \\mathbf{A} = 12 - 2 = 10 \\ne 0$, so $\\mathbf{A}$ is invertible.",
+            "$\\mathbf{A}^{-1} = \\tfrac{1}{10}\\begin{bmatrix} 4 & -1 \\\\ -2 & 3\\end{bmatrix}$ — swap the diagonal, negate the off-diagonal, divide by the determinant.",
+            "$\\det \\mathbf{B} = 4 - 4 = 0$, so no inverse exists.",
+            "Indeed row 2 is twice row 1: $\\mathbf{B}$ collapses $\\mathbb{R}^{2}$ onto a line, and $[2, -1]$ lies in its null space.",
           ],
           answer:
-            "$A^{-1}$ as above; $B$ is singular, with the redundancy visible as a dependent row.",
+            "$\\mathbf{A}^{-1}$ as above; $\\mathbf{B}$ is singular, with the redundancy visible as a dependent row.",
         },
         {
           kind: "prose",
-          text: "When no inverse exists the pseudoinverse $A^{+}$ takes over. It returns the least-squares solution when the system is inconsistent, and the minimum-norm solution when there are many — reducing to $A^{-1}$ exactly when that exists. It is built from the SVD by inverting the non-zero singular values, which also makes it the natural tool for near-singular matrices where a true inverse would be numerically worthless.",
+          text: "When no inverse exists the pseudoinverse $\\mathbf{A}^{+}$ takes over. It returns the least-squares solution when the system is inconsistent, and the minimum-norm solution when there are many — reducing to $\\mathbf{A}^{-1}$ exactly when that exists. It is built from the SVD by inverting the non-zero singular values, which also makes it the natural tool for near-singular matrices where a true inverse would be numerically worthless.",
         },
       ],
     },

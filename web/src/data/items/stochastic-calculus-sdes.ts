@@ -32,36 +32,36 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which expression is the general form of a stochastic differential equation for a process X_t?",
+    stem: "Which expression is the general form of a stochastic differential equation for a process $X_t$?",
     choices: [
-      { id: "a", text: "dX_t = μ(X_t, t) dt + σ(X_t, t) dW_t", correct: true },
+      { id: "a", text: "$dX_t = \\mu(X_t, t)\\,dt + \\sigma(X_t, t)\\,dW_t$", correct: true },
       {
         id: "b",
-        text: "dX_t = μ(X_t, t) dt · σ(X_t, t) dW_t",
+        text: "$dX_t = \\mu(X_t, t)\\,dt \\cdot \\sigma(X_t, t)\\,dW_t$",
         correct: false,
         misconception: {
           id: "multiplies-drift-and-diffusion",
-          description: "Multiplies the drift and diffusion terms together instead of adding them as two separate contributions to the change in X.",
+          description: "Multiplies the drift and diffusion terms together instead of adding them as two separate contributions to the change in $X$.",
           blameConceptId: "stochastic-differential-equations",
         },
       },
       {
         id: "c",
-        text: "dX_t = μ(X_t, t) dW_t + σ(X_t, t) dt",
+        text: "$dX_t = \\mu(X_t, t)\\,dW_t + \\sigma(X_t, t)\\,dt$",
         correct: false,
         misconception: {
           id: "swaps-drift-and-diffusion-roles",
-          description: "Swaps which coefficient multiplies dt and which multiplies dW_t — the deterministic trend and the random fluctuation are attached to the wrong differentials.",
+          description: "Swaps which coefficient multiplies $dt$ and which multiplies $dW_t$ — the deterministic trend and the random fluctuation are attached to the wrong differentials.",
           blameConceptId: "stochastic-differential-equations",
         },
       },
       {
         id: "d",
-        text: "dX_t = μ(X_t, t) dt + σ(X_t, t) dt²",
+        text: "$dX_t = \\mu(X_t, t)\\,dt + \\sigma(X_t, t)\\,dt^2$",
         correct: false,
         misconception: {
           id: "no-noise-term",
-          description: "Replaces the Brownian increment dW_t with dt², leaving no source of randomness at all — this is just an ODE.",
+          description: "Replaces the Brownian increment $dW_t$ with $dt^2$, leaving no source of randomness at all — this is just an ODE.",
           blameConceptId: "brownian-motion",
         },
       },
@@ -79,18 +79,18 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "State the Lipschitz condition and the linear growth condition on μ(x,t) and σ(x,t), and say in one sentence what each one rules out.",
+    stem: "State the Lipschitz condition and the linear growth condition on $\\mu(x, t)$ and $\\sigma(x, t)$, and say in one sentence what each one rules out.",
     rubric: {
       elements: [
         {
           id: "lipschitz",
-          description: "States |μ(x,t) − μ(y,t)| + |σ(x,t) − σ(y,t)| ≤ K|x−y| and says it rules out coefficients that vary too wildly in x (needed for uniqueness).",
+          description: "States $|\\mu(x, t) - \\mu(y, t)| + |\\sigma(x, t) - \\sigma(y, t)| \\le K|x - y|$ and says it rules out coefficients that vary too wildly in $x$ (needed for uniqueness).",
           weight: 3,
           required: true,
         },
         {
           id: "linear-growth",
-          description: "States |μ(x,t)| + |σ(x,t)| ≤ K(1+|x|) and says it rules out coefficients that grow too fast in x, which prevents finite-time blow-up (needed for existence).",
+          description: "States $|\\mu(x, t)| + |\\sigma(x, t)| \\le K(1 + |x|)$ and says it rules out coefficients that grow too fast in $x$, which prevents finite-time blow-up (needed for existence).",
           weight: 3,
           required: true,
         },
@@ -109,36 +109,36 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which is the Euler-Maruyama update for advancing X_t to X_{t+Δt}?",
+    stem: "Which is the Euler–Maruyama update for advancing $X_t$ to $X_{t+\\Delta t}$?",
     choices: [
-      { id: "a", text: "X_{t+Δt} ≈ X_t + μ(X_t, t) Δt + σ(X_t, t) ΔW, with ΔW ~ N(0, Δt)", correct: true },
+      { id: "a", text: "$X_{t+\\Delta t} \\approx X_t + \\mu(X_t, t)\\,\\Delta t + \\sigma(X_t, t)\\,\\Delta W$, with $\\Delta W \\sim \\mathcal{N}(0, \\Delta t)$", correct: true },
       {
         id: "b",
-        text: "X_{t+Δt} ≈ X_t + μ(X_t, t) Δt + σ(X_t, t) Δt, with the noise term also scaled by Δt",
+        text: "$X_{t+\\Delta t} \\approx X_t + \\mu(X_t, t)\\,\\Delta t + \\sigma(X_t, t)\\,\\Delta t$, with the noise term also scaled by $\\Delta t$",
         correct: false,
         misconception: {
           id: "noise-scaled-like-drift",
-          description: "Scales the diffusion term by Δt like the drift term, instead of by a Gaussian increment ΔW with standard deviation √Δt.",
+          description: "Scales the diffusion term by $\\Delta t$ like the drift term, instead of by a Gaussian increment $\\Delta W$ with standard deviation $\\sqrt{\\Delta t}$.",
           blameConceptId: "brownian-motion",
         },
       },
       {
         id: "c",
-        text: "X_{t+Δt} ≈ X_t + μ(X_t, t) Δt + σ(X_t, t) ΔW, with ΔW ~ N(0, Δt²)",
+        text: "$X_{t+\\Delta t} \\approx X_t + \\mu(X_t, t)\\,\\Delta t + \\sigma(X_t, t)\\,\\Delta W$, with $\\Delta W \\sim \\mathcal{N}(0, \\Delta t^2)$",
         correct: false,
         misconception: {
           id: "variance-scales-like-dt-squared",
-          description: "Gives the Brownian increment variance Δt² instead of Δt — Brownian motion's quadratic variation accumulates linearly in time, not quadratically.",
+          description: "Gives the Brownian increment variance $\\Delta t^2$ instead of $\\Delta t$ — Brownian motion's quadratic variation accumulates linearly in time, not quadratically.",
           blameConceptId: "quadratic-variation",
         },
       },
       {
         id: "d",
-        text: "X_{t+Δt} ≈ X_t · (1 + μ(X_t, t) Δt + σ(X_t, t) ΔW)",
+        text: "$X_{t+\\Delta t} \\approx X_t \\cdot \\left(1 + \\mu(X_t, t)\\,\\Delta t + \\sigma(X_t, t)\\,\\Delta W\\right)$",
         correct: false,
         misconception: {
           id: "multiplicative-instead-of-additive-step",
-          description: "Applies the update multiplicatively, which is only correct for a GBM-specific log-transformed scheme, not the general Euler-Maruyama step.",
+          description: "Applies the update multiplicatively, which is only correct for a geometric-Brownian-motion-specific log-transformed scheme, not the general Euler–Maruyama step.",
           blameConceptId: "geometric-brownian-motion",
         },
       },
@@ -158,7 +158,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     channels: ["typed"],
     stem: "The existence-and-uniqueness theorem for SDEs guarantees a unique 'strong solution'. What does that mean?",
     choices: [
-      { id: "a", text: "A solution process X_t that is adapted to the given Brownian filtration — it only uses information available up to time t", correct: true },
+      { id: "a", text: "A solution process $X_t$ that is adapted to the given Brownian filtration — it only uses information available up to time $t$", correct: true },
       {
         id: "b",
         text: "A solution that can be written in closed form, without simulation",
@@ -175,7 +175,7 @@ export const stochasticCalculusSdesItems: Item[] = [
         correct: false,
         misconception: {
           id: "confuses-strong-with-weak-solution",
-          description: "Describes something closer to a 'weak solution' (existence of some filtered probability space and Brownian motion for which the SDE holds), not the stronger requirement of adaptedness to a given, fixed filtration.",
+          description: "Describes something closer to a “weak solution” (existence of some filtered probability space and Brownian motion for which the SDE holds), not the stronger requirement of adaptedness to a given, fixed filtration.",
           blameConceptId: "filtrations-and-adapted-processes",
         },
       },
@@ -195,21 +195,21 @@ export const stochasticCalculusSdesItems: Item[] = [
     channels: ["typed"],
     stem: "Select every condition that is part of the standard sufficient conditions for an SDE to have a unique strong solution.",
     choices: [
-      { id: "a", text: "A Lipschitz condition on μ and σ jointly", correct: true },
-      { id: "b", text: "A linear growth condition on μ and σ jointly", correct: true },
+      { id: "a", text: "A Lipschitz condition on $\\mu$ and $\\sigma$ jointly", correct: true },
+      { id: "b", text: "A linear growth condition on $\\mu$ and $\\sigma$ jointly", correct: true },
       {
         id: "c",
-        text: "σ(x,t) must be constant in x",
+        text: "$\\sigma(x, t)$ must be constant in $x$",
         correct: false,
         misconception: {
           id: "requires-constant-diffusion",
-          description: "The theorem allows σ to depend on x (as in GBM, σ = σX) — it only bounds how fast σ can vary and grow, not whether it varies at all.",
+          description: "The theorem allows $\\sigma$ to depend on $x$ (as in geometric Brownian motion, $\\sigma(x) = \\sigma x$) — it only bounds how fast $\\sigma$ can vary and grow, not whether it varies at all.",
           blameConceptId: "stochastic-differential-equations",
         },
       },
       {
         id: "d",
-        text: "μ(x,t) must be a linear function of x",
+        text: "$\\mu(x, t)$ must be a linear function of $x$",
         correct: false,
         misconception: {
           id: "requires-linear-drift",
@@ -233,8 +233,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "Use one Euler-Maruyama step to advance X_0 = 5 for the SDE dX = 0.1X dt + 0.2X dW, with step size " +
-      "Δt = 0.25 and a drawn increment ΔW = 0.1. Find X_{Δt}.",
+      "Use one Euler–Maruyama step to advance $X_0 = 5$ for the SDE $dX = 0.1X\\,dt + 0.2X\\,dW$, with step size $\\Delta t = 0.25$ and a drawn increment $\\Delta W = 0.1$. Find $X_{\\Delta t}$.",
     answerKey: 5.225,
     tolerance: 0.005,
     difficulty: -0.4,
@@ -250,7 +249,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "In an Euler-Maruyama simulation with step size Δt = 0.09, what is Var(ΔW) for the simulated Brownian increment?",
+    stem: "In an Euler–Maruyama simulation with step size $\\Delta t = 0.09$, what is $\\text{Var}(\\Delta W)$ for the simulated Brownian increment?",
     answerKey: 0.09,
     tolerance: 0.001,
     difficulty: -1.0,
@@ -267,8 +266,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "The Ornstein-Uhlenbeck SDE is dX = θ(m − X) dt + σ dW. With θ = 0.4, m = 10, X_0 = 6, step size " +
-      "Δt = 0.5, and a drawn increment ΔW = 0, use one Euler-Maruyama step to find X_{Δt}.",
+      "The Ornstein–Uhlenbeck SDE is $dX = \\theta(m - X)\\,dt + \\sigma\\,dW$. With $\\theta = 0.4$, $m = 10$, $X_0 = 6$, step size $\\Delta t = 0.5$, and a drawn increment $\\Delta W = 0$, use one Euler–Maruyama step to find $X_{\\Delta t}$.",
     answerKey: 6.8,
     tolerance: 0.01,
     difficulty: -0.2,
@@ -285,8 +283,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "For the SDE dX = 0.05 dt + 0.3 dW with X_0 = 2, step size Δt = 0.16, and a drawn increment " +
-      "ΔW = −0.2, use one Euler-Maruyama step to find X_{Δt}.",
+      "For the SDE $dX = 0.05\\,dt + 0.3\\,dW$ with $X_0 = 2$, step size $\\Delta t = 0.16$, and a drawn increment $\\Delta W = -0.2$, use one Euler–Maruyama step to find $X_{\\Delta t}$.",
     answerKey: 1.948,
     tolerance: 0.005,
     difficulty: -0.3,
@@ -302,26 +299,26 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "For the SDE dX_t = (3 − X_t) dt + 0.5√X_t dW_t, what are μ(x,t) and σ(x,t)?",
+    stem: "For the SDE $dX_t = (3 - X_t)\\,dt + 0.5\\sqrt{X_t}\\,dW_t$, what are $\\mu(x, t)$ and $\\sigma(x, t)$?",
     choices: [
-      { id: "a", text: "μ(x,t) = 3 − x, σ(x,t) = 0.5√x", correct: true },
+      { id: "a", text: "$\\mu(x, t) = 3 - x$, $\\sigma(x, t) = 0.5\\sqrt{x}$", correct: true },
       {
         id: "b",
-        text: "μ(x,t) = 3 − x, σ(x,t) = 0.5x",
+        text: "$\\mu(x, t) = 3 - x$, $\\sigma(x, t) = 0.5x$",
         correct: false,
         misconception: {
           id: "drops-square-root",
-          description: "Reads off the diffusion coefficient as 0.5x instead of 0.5√x, dropping the square root that appears in the coefficient of dW_t.",
+          description: "Reads off the diffusion coefficient as $0.5x$ instead of $0.5\\sqrt{x}$, dropping the square root that appears in the coefficient of $dW_t$.",
           blameConceptId: "stochastic-differential-equations",
         },
       },
       {
         id: "c",
-        text: "μ(x,t) = 0.5√x, σ(x,t) = 3 − x",
+        text: "$\\mu(x, t) = 0.5\\sqrt{x}$, $\\sigma(x, t) = 3 - x$",
         correct: false,
         misconception: {
           id: "swaps-drift-and-diffusion-roles",
-          description: "Swaps which term is the coefficient of dt and which is the coefficient of dW_t.",
+          description: "Swaps which term is the coefficient of $dt$ and which is the coefficient of $dW_t$.",
           blameConceptId: "stochastic-differential-equations",
         },
       },
@@ -339,7 +336,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "For dX = 2 dt + 3 dW with X_0 fixed, find Var(X_t) at t = 4.",
+    stem: "For $dX = 2\\,dt + 3\\,dW$ with $X_0$ fixed, find $\\text{Var}(X_t)$ at $t = 4$.",
     answerKey: 36,
     tolerance: 0.01,
     difficulty: 0.1,
@@ -356,18 +353,18 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "The notation dX_t = μ dt + σ dW_t is never literally differentiated. Explain what it actually stands for, and why that distinction matters.",
+    stem: "The notation $dX_t = \\mu\\,dt + \\sigma\\,dW_t$ is never literally differentiated. Explain what it actually stands for, and why that distinction matters.",
     rubric: {
       elements: [
         {
           id: "integral-form",
-          description: "States that it is shorthand for X_t = X_0 + ∫₀ᵗ μ(X_s,s) ds + ∫₀ᵗ σ(X_s,s) dW_s.",
+          description: "States that it is shorthand for $X_t = X_0 + \\int_0^t \\mu(X_s, s)\\,ds + \\int_0^t \\sigma(X_s, s)\\,dW_s$.",
           weight: 3,
           required: true,
         },
         {
           id: "why-not-literal",
-          description: "Explains that W_t is nowhere differentiable (has unbounded variation on every interval), so dW_t/dt does not exist as an ordinary derivative — the integral form is the only rigorous meaning.",
+          description: "Explains that $W_t$ is nowhere differentiable (has unbounded variation on every interval), so $dW_t/dt$ does not exist as an ordinary derivative — the integral form is the only rigorous meaning.",
           weight: 3,
           required: true,
         },
@@ -375,7 +372,7 @@ export const stochasticCalculusSdesItems: Item[] = [
       forbiddenMoves: [
         {
           id: "treats-dw-as-ordinary-differential",
-          description: "Manipulates dW_t as if it were an ordinary infinitesimal that can be divided by dt.",
+          description: "Manipulates $dW_t$ as if it were an ordinary infinitesimal that can be divided by $dt$.",
           weight: 1,
         },
       ],
@@ -393,16 +390,16 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Why does the Euler-Maruyama scheme draw ΔW from N(0, Δt) rather than treating it as a small fixed increment like Δt itself?",
+    stem: "Why does the Euler–Maruyama scheme draw $\\Delta W$ from $\\mathcal{N}(0, \\Delta t)$ rather than treating it as a small fixed increment like $\\Delta t$ itself?",
     choices: [
-      { id: "a", text: "Brownian motion's quadratic variation accumulates like t, so Var(W_{t+Δt} − W_t) = Δt exactly — the increment's size genuinely scales with √Δt, not Δt", correct: true },
+      { id: "a", text: "Brownian motion's quadratic variation accumulates like $t$, so $\\text{Var}(W_{t+\\Delta t} - W_t) = \\Delta t$ exactly — the increment's size genuinely scales with $\\sqrt{\\Delta t}$, not $\\Delta t$", correct: true },
       {
         id: "b",
         text: "It is an arbitrary modeling convention chosen for numerical stability, not a property of Brownian motion itself",
         correct: false,
         misconception: {
           id: "treats-scaling-as-arbitrary",
-          description: "Misses that √Δt scaling is forced by the actual variance of a Brownian increment, not a free numerical choice.",
+          description: "Misses that $\\sqrt{\\Delta t}$ scaling is forced by the actual variance of a Brownian increment, not a free numerical choice.",
           blameConceptId: "brownian-motion",
         },
       },
@@ -412,7 +409,7 @@ export const stochasticCalculusSdesItems: Item[] = [
         correct: false,
         misconception: {
           id: "confuses-dt-with-random-term",
-          description: "dt is the deterministic time step; only dW_t is random. Conflating the two loses the distinction between the ordinary integral and the Itô integral.",
+          description: "$dt$ is the deterministic time step; only $dW_t$ is random. Conflating the two loses the distinction between the ordinary integral and the Itô integral.",
           blameConceptId: "ito-integral",
         },
       },
@@ -431,19 +428,18 @@ export const stochasticCalculusSdesItems: Item[] = [
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
     stem:
-      "The ODE dx/dt = x², x(0) = 1 blows up to infinity in finite time (its solution is x(t) = 1/(1−t)). " +
-      "Explain how the linear growth condition |μ(x,t)| + |σ(x,t)| ≤ K(1+|x|) rules out an SDE drift like μ(x) = x² from qualifying, and why that connects to blow-up.",
+      "The ODE $\\frac{dx}{dt} = x^2$, $x(0) = 1$ blows up to infinity in finite time (its solution is $x(t) = \\frac{1}{1 - t}$). Explain how the linear growth condition $|\\mu(x, t)| + |\\sigma(x, t)| \\le K(1 + |x|)$ rules out an SDE drift like $\\mu(x) = x^2$ from qualifying, and why that connects to blow-up.",
     rubric: {
       elements: [
         {
           id: "growth-comparison",
-          description: "Notes that μ(x) = x² grows quadratically in x while K(1+|x|) only grows linearly, so no constant K can bound x² for all x.",
+          description: "Notes that $\\mu(x) = x^2$ grows quadratically in $x$ while $K(1 + |x|)$ only grows linearly, so no constant $K$ can bound $x^2$ for all $x$.",
           weight: 3,
           required: true,
         },
         {
           id: "blowup-link",
-          description: "Connects this to the ODE example: coefficients that outrun a linear bound are exactly the ones whose solutions can escape to infinity in finite time, as x² does.",
+          description: "Connects this to the ODE example: coefficients that outrun a linear bound are exactly the ones whose solutions can escape to infinity in finite time, as $x^2$ does.",
           weight: 3,
           required: true,
         },
@@ -462,7 +458,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "The Lipschitz condition on μ and σ is primarily needed to guarantee which property of an SDE's solution?",
+    stem: "The Lipschitz condition on $\\mu$ and $\\sigma$ is primarily needed to guarantee which property of an SDE's solution?",
     choices: [
       { id: "a", text: "Uniqueness — two solutions starting from the same point cannot diverge, because the coefficients cannot vary too wildly between nearby states", correct: true },
       {
@@ -499,18 +495,18 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Why must a strong solution X_t to an SDE be adapted to the driving Brownian motion's filtration — what would go wrong if X_t were allowed to depend on future increments of W?",
+    stem: "Why must a strong solution $X_t$ to an SDE be adapted to the driving Brownian motion's filtration — what would go wrong if $X_t$ were allowed to depend on future increments of $W$?",
     rubric: {
       elements: [
         {
           id: "no-lookahead",
-          description: "States that adaptedness means X_t is determined by information available up to time t only, with no dependence on W_s for s > t.",
+          description: "States that adaptedness means $X_t$ is determined by information available up to time $t$ only, with no dependence on $W_s$ for $s > t$.",
           weight: 3,
           required: true,
         },
         {
           id: "why-it-matters",
-          description: "Explains that allowing future information would make X_t unobservable/unusable as a model of a real process built up causally from the noise, and would break the definition of the Itô integral, which itself requires the integrand to be adapted.",
+          description: "Explains that allowing future information would make $X_t$ unobservable/unusable as a model of a real process built up causally from the noise, and would break the definition of the Itô integral, which itself requires the integrand to be adapted.",
           weight: 3,
           required: true,
         },
@@ -530,26 +526,26 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "Geometric Brownian motion, dS = μS dt + σS dW, is a special case of the general SDE dX = μ(X,t) dt + σ(X,t) dW. What are μ(x,t) and σ(x,t) in this case?",
+    stem: "Geometric Brownian motion, $dS = \\mu S\\,dt + \\sigma S\\,dW$, is a special case of the general SDE $dX = \\mu(X, t)\\,dt + \\sigma(X, t)\\,dW$. What are $\\mu(x, t)$ and $\\sigma(x, t)$ in this case?",
     choices: [
-      { id: "a", text: "μ(x,t) = μx and σ(x,t) = σx — both coefficients scale linearly with the current level", correct: true },
+      { id: "a", text: "$\\mu(x, t) = \\mu x$ and $\\sigma(x, t) = \\sigma x$ — both coefficients scale linearly with the current level", correct: true },
       {
         id: "b",
-        text: "μ(x,t) = μ and σ(x,t) = σ, constants independent of x",
+        text: "$\\mu(x, t) = \\mu$ and $\\sigma(x, t) = \\sigma$, constants independent of $x$",
         correct: false,
         misconception: {
           id: "misses-multiplicative-structure",
-          description: "Describes arithmetic Brownian motion with drift, not GBM — the defining feature of GBM is that both coefficients are proportional to the current level x, not constant.",
+          description: "Describes arithmetic Brownian motion with drift, not geometric Brownian motion — the defining feature of geometric Brownian motion is that both coefficients are proportional to the current level $x$, not constant.",
           blameConceptId: "geometric-brownian-motion",
         },
       },
       {
         id: "c",
-        text: "μ(x,t) = μx and σ(x,t) = σ, only the drift scales with x",
+        text: "$\\mu(x, t) = \\mu x$ and $\\sigma(x, t) = \\sigma$, only the drift scales with $x$",
         correct: false,
         misconception: {
           id: "only-drift-scales",
-          description: "Gets only half of the multiplicative structure right — in GBM the diffusion term σS dW also scales with S, which is what keeps volatility 'proportional to price' and keeps S positive.",
+          description: "Gets only half of the multiplicative structure right — in geometric Brownian motion the diffusion term $\\sigma S\\,dW$ also scales with $S$, which is what keeps volatility “proportional to price” and keeps $S$ positive.",
           blameConceptId: "geometric-brownian-motion",
         },
       },
@@ -567,18 +563,18 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "Girsanov's theorem lets you change the drift μ of an SDE while leaving σ untouched, by changing the underlying probability measure. Explain at a high level why this operates on the general SDE form rather than being specific to any one named process, and why it is only the drift (not σ) that changes.",
+    stem: "Girsanov's theorem lets you change the drift $\\mu$ of an SDE while leaving $\\sigma$ untouched, by changing the underlying probability measure. Explain at a high level why this operates on the general SDE form rather than being specific to any one named process, and why it is only the drift (not $\\sigma$) that changes.",
     rubric: {
       elements: [
         {
           id: "general-mechanism",
-          description: "Explains that Girsanov's theorem is a statement about how a measure change turns a Brownian motion under one measure into a Brownian motion with drift under another — it applies to any μ(x,t) and σ(x,t), which is why it works on the general SDE form.",
+          description: "Explains that Girsanov's theorem is a statement about how a measure change turns a Brownian motion under one measure into a Brownian motion with drift under another — it applies to any $\\mu(x, t)$ and $\\sigma(x, t)$, which is why it works on the general SDE form.",
           weight: 3,
           required: true,
         },
         {
           id: "sigma-unchanged",
-          description: "Notes that changing measure reweights the paths' relative probabilities without altering their quadratic variation, so σ (which governs the paths' realized fluctuation size) is unaffected — only the drift, a statement about expected direction, changes.",
+          description: "Notes that changing measure reweights the paths' relative probabilities without altering their quadratic variation, so $\\sigma$ (which governs the paths' realized fluctuation size) is unaffected — only the drift, a statement about expected direction, changes.",
           weight: 3,
           required: true,
         },
@@ -597,9 +593,9 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "The Feynman-Kac formula connects a general SDE's solution to a PDE. The Black-Scholes-Merton PDE is best understood as:",
+    stem: "The Feynman–Kac formula connects a general SDE's solution to a PDE. The Black–Scholes–Merton PDE is best understood as:",
     choices: [
-      { id: "a", text: "The specific Feynman-Kac PDE that results from taking X to follow geometric Brownian motion under the risk-neutral measure", correct: true },
+      { id: "a", text: "The specific Feynman–Kac PDE that results from taking $X$ to follow geometric Brownian motion under the risk-neutral measure", correct: true },
       {
         id: "b",
         text: "An entirely separate result from Feynman-Kac, discovered independently with no shared structure",
@@ -612,11 +608,11 @@ export const stochasticCalculusSdesItems: Item[] = [
       },
       {
         id: "c",
-        text: "The Feynman-Kac PDE for an SDE with constant, level-independent σ, since Black-Scholes assumes a fixed volatility number",
+        text: "The Feynman–Kac PDE for an SDE with constant, level-independent $\\sigma$, since Black–Scholes assumes a fixed volatility number",
         correct: false,
         misconception: {
           id: "confuses-constant-sigma-with-level-independent-sigma",
-          description: "Confuses 'constant σ' (a fixed number, true of Black-Scholes) with 'σ independent of the state x' — GBM's diffusion coefficient σS still depends on the current price level even though the parameter σ itself is a constant.",
+          description: "Confuses “constant $\\sigma$” (a fixed number, true of Black–Scholes) with “$\\sigma$ independent of the state $x$” — geometric Brownian motion's diffusion coefficient $\\sigma S$ still depends on the current price level even though the parameter $\\sigma$ itself is a constant.",
           blameConceptId: "geometric-brownian-motion",
         },
       },
@@ -634,18 +630,18 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "Brownian motion's quadratic variation satisfies [W,W]_t = t. Use this fact to explain why the Euler-Maruyama increment ΔW must have variance Δt rather than some other power of Δt.",
+    stem: "Brownian motion's quadratic variation satisfies $[W, W]_t = t$. Use this fact to explain why the Euler–Maruyama increment $\\Delta W$ must have variance $\\Delta t$ rather than some other power of $\\Delta t$.",
     rubric: {
       elements: [
         {
           id: "quad-var-to-variance",
-          description: "Connects [W,W]_t = t to Var(W_{t+Δt} − W_t) = Δt: quadratic variation accumulating linearly in t is exactly the statement that the increment's variance over a step Δt equals Δt.",
+          description: "Connects $[W, W]_t = t$ to $\\text{Var}(W_{t+\\Delta t} - W_t) = \\Delta t$: quadratic variation accumulating linearly in $t$ is exactly the statement that the increment's variance over a step $\\Delta t$ equals $\\Delta t$.",
           weight: 4,
           required: true,
         },
         {
           id: "consistency-with-simulation",
-          description: "Notes that any other scaling (e.g. Δt or Δt²) would make the simulated path's accumulated variance diverge from t as Δt → 0, so the scheme would not converge to the true process.",
+          description: "Notes that any other scaling (e.g. $\\Delta t$ or $\\Delta t^2$) would make the simulated path's accumulated variance diverge from $t$ as $\\Delta t \\to 0$, so the scheme would not converge to the true process.",
           weight: 3,
         },
       ],
@@ -667,12 +663,12 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which SDE defines geometric Brownian motion for a stock price S_t?",
+    stem: "Which SDE defines geometric Brownian motion for a stock price $S_t$?",
     choices: [
-      { id: "a", text: "dS_t = μ S_t dt + σ S_t dW_t", correct: true },
+      { id: "a", text: "$dS_t = \\mu S_t\\,dt + \\sigma S_t\\,dW_t$", correct: true },
       {
         id: "b",
-        text: "dS_t = μ dt + σ dW_t",
+        text: "$dS_t = \\mu\\,dt + \\sigma\\,dW_t$",
         correct: false,
         misconception: {
           id: "confuses-gbm-with-arithmetic-bm",
@@ -682,11 +678,11 @@ export const stochasticCalculusSdesItems: Item[] = [
       },
       {
         id: "c",
-        text: "dS_t = μ S_t dt + σ dW_t",
+        text: "$dS_t = \\mu S_t\\,dt + \\sigma\\,dW_t$",
         correct: false,
         misconception: {
           id: "only-drift-scales-with-price",
-          description: "Only scales the drift term by S_t, leaving the diffusion term as a fixed dollar amount — this misses that GBM's volatility is also proportional to the current price.",
+          description: "Only scales the drift term by $S_t$, leaving the diffusion term as a fixed dollar amount — this misses that geometric Brownian motion's volatility is also proportional to the current price.",
           blameConceptId: "geometric-brownian-motion",
         },
       },
@@ -704,17 +700,17 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Write the closed-form solution S_t of dS = μS dt + σS dW in terms of S_0, μ, σ, t, and W_t.",
+    stem: "Write the closed-form solution $S_t$ of $dS = \\mu S\\,dt + \\sigma S\\,dW$ in terms of $S_0$, $\\mu$, $\\sigma$, $t$, and $W_t$.",
     rubric: {
       elements: [
         {
           id: "closed-form",
-          description: "Gives S_t = S_0 exp[(μ − ½σ²)t + σW_t].",
+          description: "Gives $S_t = S_0 \\exp\\left[\\left(\\mu - \\frac{1}{2}\\sigma^2\\right)t + \\sigma W_t\\right]$.",
           weight: 4,
           required: true,
           misconception: {
             id: "drops-half-sigma-squared-term",
-            description: "Writes the exponent as μt + σW_t, omitting the −½σ² Itô correction.",
+            description: "Writes the exponent as $\\mu t + \\sigma W_t$, omitting the $-\\frac{1}{2}\\sigma^2$ Itô correction.",
             blameConceptId: "geometric-brownian-motion",
           },
         },
@@ -733,26 +729,26 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Under GBM with parameters μ, σ, starting at S_0, log S_t is normally distributed with which mean and variance?",
+    stem: "Under geometric Brownian motion with parameters $\\mu$, $\\sigma$, starting at $S_0$, $\\log S_t$ is normally distributed with which mean and variance?",
     choices: [
-      { id: "a", text: "Mean log S_0 + (μ − ½σ²)t, variance σ²t", correct: true },
+      { id: "a", text: "Mean $\\log S_0 + \\left(\\mu - \\frac{1}{2}\\sigma^2\\right)t$, variance $\\sigma^2 t$", correct: true },
       {
         id: "b",
-        text: "Mean log S_0 + μt, variance σ²t",
+        text: "Mean $\\log S_0 + \\mu t$, variance $\\sigma^2 t$",
         correct: false,
         misconception: {
           id: "drops-ito-correction-in-mean",
-          description: "Omits the −½σ² Itô correction from the mean of log S_t, effectively applying the ordinary chain rule to log S instead of Itô's lemma.",
+          description: "Omits the $-\\frac{1}{2}\\sigma^2$ Itô correction from the mean of $\\log S_t$, effectively applying the ordinary chain rule to $\\log S$ instead of Itô's lemma.",
           blameConceptId: "geometric-brownian-motion",
         },
       },
       {
         id: "c",
-        text: "Mean log S_0 + (μ − ½σ²)t, variance σ²t²",
+        text: "Mean $\\log S_0 + \\left(\\mu - \\frac{1}{2}\\sigma^2\\right)t$, variance $\\sigma^2 t^2$",
         correct: false,
         misconception: {
           id: "wrong-variance-scaling",
-          description: "Scales the variance by t² instead of t — Brownian motion's variance grows linearly in time, not quadratically.",
+          description: "Scales the variance by $t^2$ instead of $t$ — Brownian motion's variance grows linearly in time, not quadratically.",
           blameConceptId: "brownian-motion",
         },
       },
@@ -770,26 +766,26 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Why does S_t stay strictly positive for all t under GBM, unlike arithmetic Brownian motion with drift?",
+    stem: "Why does $S_t$ stay strictly positive for all $t$ under geometric Brownian motion, unlike arithmetic Brownian motion with drift?",
     choices: [
-      { id: "a", text: "The diffusion term σS dW shrinks toward 0 as S shrinks toward 0, and S_t = S_0 exp[...] is literally an exponential, which is always positive", correct: true },
+      { id: "a", text: "The diffusion term $\\sigma S\\,dW$ shrinks toward $0$ as $S$ shrinks toward $0$, and $S_t = S_0 \\exp[\\cdots]$ is literally an exponential, which is always positive", correct: true },
       {
         id: "b",
-        text: "Because μ is required to be positive in the definition of GBM",
+        text: "Because $\\mu$ is required to be positive in the definition of geometric Brownian motion",
         correct: false,
         misconception: {
           id: "requires-positive-drift",
-          description: "GBM's positivity holds for any real μ, positive or negative — positivity comes from the multiplicative structure and the exponential solution, not from a sign restriction on μ.",
+          description: "Positivity holds for any real $\\mu$, positive or negative — it comes from the multiplicative structure and the exponential solution, not from a sign restriction on $\\mu$.",
           blameConceptId: "geometric-brownian-motion",
         },
       },
       {
         id: "c",
-        text: "Because σ is required to equal 0",
+        text: "Because $\\sigma$ is required to equal $0$",
         correct: false,
         misconception: {
           id: "requires-zero-volatility",
-          description: "Setting σ = 0 would make GBM deterministic — positivity holds for any σ ≥ 0 precisely because of the exponential closed-form solution, not because volatility is absent.",
+          description: "Setting $\\sigma = 0$ would make the process deterministic — positivity holds for any $\\sigma \\ge 0$ precisely because of the exponential closed-form solution, not because volatility is absent.",
           blameConceptId: "geometric-brownian-motion",
         },
       },
@@ -807,17 +803,17 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "multi-select",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "In dS = μS dt + σS dW, which quantities are expressed in 'percentage of current price' terms rather than fixed dollar terms? Select all that apply.",
+    stem: "In $dS = \\mu S\\,dt + \\sigma S\\,dW$, which quantities are expressed in “percentage of current price” terms rather than fixed dollar terms? Select all that apply.",
     choices: [
-      { id: "a", text: "μ, the drift rate", correct: true },
-      { id: "b", text: "σ, the volatility", correct: true },
+      { id: "a", text: "$\\mu$, the drift rate", correct: true },
+      { id: "b", text: "$\\sigma$, the volatility", correct: true },
       {
         id: "c",
-        text: "S_t itself, the stock price",
+        text: "$S_t$ itself, the stock price",
         correct: false,
         misconception: {
           id: "confuses-price-with-rate",
-          description: "S_t is the dollar price level being modeled, not a percentage rate — μ and σ are the percentage-scaled parameters that act on S_t.",
+          description: "$S_t$ is the dollar price level being modeled, not a percentage rate — $\\mu$ and $\\sigma$ are the percentage-scaled parameters that act on $S_t$.",
           blameConceptId: "geometric-brownian-motion",
         },
       },
@@ -836,7 +832,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A stock follows GBM with S_0 = $50, μ = 0.08, σ = 0.3. Find E[S_2] to two decimal places.",
+    stem: "A stock follows geometric Brownian motion with $S_0 = \\$50$, $\\mu = 0.08$, $\\sigma = 0.3$. Find $\\mathbb{E}[S_2]$ to two decimal places.",
     answerKey: 58.68,
     tolerance: 0.01,
     difficulty: -0.1,
@@ -852,7 +848,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "For the same stock (S_0 = $50, μ = 0.08, σ = 0.3), find the median of S_2 to two decimal places.",
+    stem: "For the same stock ($S_0 = \\$50$, $\\mu = 0.08$, $\\sigma = 0.3$), find the median of $S_2$ to two decimal places.",
     answerKey: 53.63,
     tolerance: 0.01,
     difficulty: 0.2,
@@ -868,7 +864,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A stock follows GBM with S_0 = $100, μ = 0.05, σ = 0.2. Find Var(S_1) to two decimal places.",
+    stem: "A stock follows geometric Brownian motion with $S_0 = \\$100$, $\\mu = 0.05$, $\\sigma = 0.2$. Find $\\text{Var}(S_1)$ to two decimal places.",
     answerKey: 451.03,
     tolerance: 0.02,
     difficulty: 0.5,
@@ -884,7 +880,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "For a GBM with μ = 0.12 and σ = 0.25, find the drift of log S_t (the coefficient of dt in d(log S)).",
+    stem: "For a geometric Brownian motion with $\\mu = 0.12$ and $\\sigma = 0.25$, find the drift of $\\log S_t$ (the coefficient of $dt$ in $d(\\log S)$).",
     answerKey: 0.08875,
     tolerance: 0.005,
     difficulty: -0.2,
@@ -900,7 +896,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "For a GBM with σ = 0.4, find Var(log S_t) at t = 0.25.",
+    stem: "For a geometric Brownian motion with $\\sigma = 0.4$, find $\\text{Var}(\\log S_t)$ at $t = 0.25$.",
     answerKey: 0.04,
     tolerance: 0.002,
     difficulty: -0.4,
@@ -916,7 +912,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "In Itô's lemma applied to GBM, (dS_t)² = σ²S_t² dt. For S = $50 and σ = 0.3, find the coefficient σ²S².",
+    stem: "In Itô's lemma applied to geometric Brownian motion, $(dS_t)^2 = \\sigma^2 S_t^2\\,dt$. For $S = \\$50$ and $\\sigma = 0.3$, find the coefficient $\\sigma^2 S^2$.",
     answerKey: 225,
     tolerance: 0.5,
     difficulty: 0.1,
@@ -933,18 +929,18 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "An ordinary chain rule would give d(log S) = (1/S) dS = μ dt + σ dW, with no −½σ² term. Explain where the −½σ² term actually comes from, and why the ordinary chain rule is wrong here.",
+    stem: "An ordinary chain rule would give $d(\\log S) = \\frac{1}{S}\\,dS = \\mu\\,dt + \\sigma\\,dW$, with no $-\\frac{1}{2}\\sigma^2$ term. Explain where the $-\\frac{1}{2}\\sigma^2$ term actually comes from, and why the ordinary chain rule is wrong here.",
     rubric: {
       elements: [
         {
           id: "second-order-term",
-          description: "Explains that Itô's lemma includes a second-derivative term −½(1/S²)(dS)² that the ordinary chain rule omits.",
+          description: "Explains that Itô's lemma includes a second-derivative term $-\\frac{1}{2}\\cdot\\frac{1}{S^2}(dS)^2$ that the ordinary chain rule omits.",
           weight: 3,
           required: true,
         },
         {
           id: "dw-squared-is-dt",
-          description: "States that (dS)² = σ²S² dt because (dW)² behaves like dt (not like a negligible higher-order term as in ordinary calculus), which is exactly what makes the second-order term survive and contribute a first-order −½σ² dt piece.",
+          description: "States that $(dS)^2 = \\sigma^2 S^2\\,dt$ because $(dW)^2$ behaves like $dt$ (not like a negligible higher-order term as in ordinary calculus), which is exactly what makes the second-order term survive and contribute a first-order $-\\frac{1}{2}\\sigma^2\\,dt$ piece.",
           weight: 3,
           required: true,
         },
@@ -952,7 +948,7 @@ export const stochasticCalculusSdesItems: Item[] = [
       forbiddenMoves: [
         {
           id: "treats-dw-squared-as-negligible",
-          description: "Treats (dW)² as a negligible higher-order infinitesimal, the way (dt)² would be treated in ordinary calculus.",
+          description: "Treats $(dW)^2$ as a negligible higher-order infinitesimal, the way $(dt)^2$ would be treated in ordinary calculus.",
           weight: 1,
         },
       ],
@@ -970,26 +966,26 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "For σ > 0, why is E[S_t] = S_0 e^{μt} larger than the median S_0 e^{(μ−½σ²)t}?",
+    stem: "For $\\sigma > 0$, why is $\\mathbb{E}[S_t] = S_0 e^{\\mu t}$ larger than the median $S_0 e^{(\\mu - \\frac{1}{2}\\sigma^2)t}$?",
     choices: [
-      { id: "a", text: "S_t is lognormal, which is right-skewed — a small chance of an enormous up-move pulls the average above the typical (median) outcome", correct: true },
+      { id: "a", text: "$S_t$ is lognormal, which is right-skewed — a small chance of an enormous up-move pulls the average above the typical (median) outcome", correct: true },
       {
         id: "b",
         text: "It's a rounding artifact — the two should be equal in a correctly specified model",
         correct: false,
         misconception: {
           id: "denies-mean-median-gap",
-          description: "The gap between the mean and median is a structural feature of the lognormal distribution, not an error — it holds exactly for every σ > 0.",
+          description: "The gap between the mean and median is a structural feature of the lognormal distribution, not an error — it holds exactly for every $\\sigma > 0$.",
           blameConceptId: "geometric-brownian-motion",
         },
       },
       {
         id: "c",
-        text: "Because μ was measured incorrectly and should already have ½σ² subtracted from it",
+        text: "Because $\\mu$ was measured incorrectly and should already have $\\frac{1}{2}\\sigma^2$ subtracted from it",
         correct: false,
         misconception: {
           id: "misassigns-correction-to-input",
-          description: "μ is the correctly specified arithmetic drift parameter by definition — the −½σ² term belongs to the transformation to log-space and the resulting median, not to a mis-measurement of μ itself.",
+          description: "$\\mu$ is the correctly specified arithmetic drift parameter by definition — the $-\\frac{1}{2}\\sigma^2$ term belongs to the transformation to log-space and the resulting median, not to a mis-measurement of $\\mu$ itself.",
           blameConceptId: "geometric-brownian-motion",
         },
       },
@@ -1007,30 +1003,30 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Starting from dS = μS dt + σS dW, apply Itô's lemma to f(S) = log S step by step to derive d(log S) = (μ − ½σ²) dt + σ dW.",
+    stem: "Starting from $dS = \\mu S\\,dt + \\sigma S\\,dW$, apply Itô's lemma to $f(S) = \\log S$ step by step to derive $d(\\log S) = \\left(\\mu - \\frac{1}{2}\\sigma^2\\right)dt + \\sigma\\,dW$.",
     rubric: {
       elements: [
         {
           id: "derivatives",
-          description: "Computes f'(S) = 1/S and f''(S) = −1/S².",
+          description: "Computes $f'(S) = \\frac{1}{S}$ and $f''(S) = -\\frac{1}{S^2}$.",
           weight: 2,
           required: true,
         },
         {
           id: "ito-expansion",
-          description: "Writes Itô's lemma: d(log S) = f'(S) dS + ½f''(S)(dS)².",
+          description: "Writes Itô's lemma: $d(\\log S) = f'(S)\\,dS + \\frac{1}{2}f''(S)(dS)^2$.",
           weight: 2,
           required: true,
         },
         {
           id: "substitute-ds-squared",
-          description: "Substitutes (dS)² = σ²S² dt (since the dt·dW and dt² cross-terms vanish, and (dW)² = dt).",
+          description: "Substitutes $(dS)^2 = \\sigma^2 S^2\\,dt$ (since the $dt \\cdot dW$ and $dt^2$ cross-terms vanish, and $(dW)^2 = dt$).",
           weight: 2,
           required: true,
         },
         {
           id: "simplify",
-          description: "Simplifies (1/S)(μS dt + σS dW) − ½(1/S²)(σ²S² dt) to (μ − ½σ²) dt + σ dW.",
+          description: "Simplifies $\\frac{1}{S}\\left(\\mu S\\,dt + \\sigma S\\,dW\\right) - \\frac{1}{2}\\cdot\\frac{1}{S^2}\\left(\\sigma^2 S^2\\,dt\\right)$ to $\\left(\\mu - \\frac{1}{2}\\sigma^2\\right)dt + \\sigma\\,dW$.",
           weight: 2,
           required: true,
         },
@@ -1038,7 +1034,7 @@ export const stochasticCalculusSdesItems: Item[] = [
       forbiddenMoves: [
         {
           id: "skips-second-order-term",
-          description: "Jumps straight to d(log S) = (1/S) dS without including the ½f''(S)(dS)² term.",
+          description: "Jumps straight to $d(\\log S) = \\frac{1}{S}\\,dS$ without including the $\\frac{1}{2}f''(S)(dS)^2$ term.",
           weight: 1,
         },
       ],
@@ -1056,22 +1052,22 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "For a GBM with σ > 0, which is true of S_t's mean and median at any fixed t > 0?",
+    stem: "For a geometric Brownian motion with $\\sigma > 0$, which is true of $S_t$'s mean and median at any fixed $t > 0$?",
     choices: [
-      { id: "a", text: "Mean > median, always, and the gap grows with σ", correct: true },
+      { id: "a", text: "Mean $>$ median, always, and the gap grows with $\\sigma$", correct: true },
       {
         id: "b",
-        text: "Mean = median, since S_t's distribution is symmetric",
+        text: "Mean $=$ median, since $S_t$'s distribution is symmetric",
         correct: false,
         misconception: {
           id: "assumes-symmetric-distribution",
-          description: "The lognormal distribution of S_t is right-skewed, not symmetric — only log S_t is symmetric (Gaussian).",
+          description: "The lognormal distribution of $S_t$ is right-skewed, not symmetric — only $\\log S_t$ is symmetric (Gaussian).",
           blameConceptId: "normal-distribution",
         },
       },
       {
         id: "c",
-        text: "Mean < median, since volatility drags the expected value down",
+        text: "Mean $<$ median, since volatility drags the expected value down",
         correct: false,
         misconception: {
           id: "inverts-drag-direction",
@@ -1093,18 +1089,18 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain what 'volatility drag' means for a GBM-modeled investment, and why it matters more over long horizons than short ones.",
+    stem: "Explain what “volatility drag” means for an investment modeled by geometric Brownian motion, and why it matters more over long horizons than short ones.",
     rubric: {
       elements: [
         {
           id: "definition",
-          description: "Defines volatility drag as the gap (μ − (μ − ½σ²)) = ½σ² between the arithmetic drift and the log-return drift — the reason the median path grows more slowly than the mean.",
+          description: "Defines volatility drag as the gap $\\mu - \\left(\\mu - \\frac{1}{2}\\sigma^2\\right) = \\frac{1}{2}\\sigma^2$ between the arithmetic drift and the log-return drift — the reason the median path grows more slowly than the mean.",
           weight: 3,
           required: true,
         },
         {
           id: "compounds-over-time",
-          description: "Notes the gap between mean and median (in level terms) grows with t, since it enters through e^{(μ−½σ²)t} vs e^{μt} — the multiplicative discrepancy compounds, so long-horizon investors should reason about the median/typical path, not just the expected value.",
+          description: "Notes the gap between mean and median (in level terms) grows with $t$, since it enters through $e^{(\\mu - \\frac{1}{2}\\sigma^2)t}$ vs $e^{\\mu t}$ — the multiplicative discrepancy compounds, so long-horizon investors should reason about the median/typical path, not just the expected value.",
           weight: 3,
           required: true,
         },
@@ -1124,7 +1120,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "For any GBM with σ > 0 and any t > 0, what is P(S_t > median(S_t))? Give a decimal.",
+    stem: "For any geometric Brownian motion with $\\sigma > 0$ and any $t > 0$, what is $P\\left(S_t > \\text{median}(S_t)\\right)$? Give a decimal.",
     answerKey: 0.5,
     tolerance: 0.01,
     difficulty: 1.1,
@@ -1140,16 +1136,16 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "Under GBM, log(S_t/S_0) is exactly Normal for every t. If you instead only assumed daily log-returns were i.i.d. with finite variance (without assuming they were individually Gaussian), which result would still justify treating the sum of many days' log-returns as approximately Normal?",
+    stem: "Under geometric Brownian motion, $\\log(S_t/S_0)$ is exactly normal for every $t$. If you instead only assumed daily log-returns were i.i.d. with finite variance (without assuming they were individually Gaussian), which result would still justify treating the sum of many days' log-returns as approximately normal?",
     choices: [
       { id: "a", text: "The Central Limit Theorem, applied to the sum of the i.i.d. daily log-returns", correct: true },
       {
         id: "b",
-        text: "The Law of Large Numbers, since it guarantees the sum converges to a Normal distribution",
+        text: "The Law of Large Numbers, since it guarantees the sum converges to a normal distribution",
         correct: false,
         misconception: {
           id: "confuses-lln-with-clt",
-          description: "The Law of Large Numbers gives convergence of an average to a constant (the mean), not convergence in distribution to a Normal shape — that is the Central Limit Theorem's job.",
+          description: "The Law of Large Numbers gives convergence of an average to a constant (the mean), not convergence in distribution to a normal shape — that is the Central Limit Theorem's job.",
           blameConceptId: "law-of-large-numbers",
         },
       },
@@ -1178,25 +1174,24 @@ export const stochasticCalculusSdesItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "spoken"],
     stem:
-      "Using the fact that if X ~ N(m, v) then E[e^X] = e^{m + v/2} (the normal moment generating function evaluated at 1), " +
-      "derive E[S_t] = S_0 e^{μt} starting from log S_t ~ N(log S_0 + (μ−½σ²)t, σ²t).",
+      "Using the fact that if $X \\sim \\mathcal{N}(m, v)$ then $\\mathbb{E}[e^X] = e^{m + v/2}$ (the normal moment generating function evaluated at $1$), derive $\\mathbb{E}[S_t] = S_0 e^{\\mu t}$ starting from $\\log S_t \\sim \\mathcal{N}\\left(\\log S_0 + \\left(\\mu - \\frac{1}{2}\\sigma^2\\right)t, \\sigma^2 t\\right)$.",
     rubric: {
       elements: [
         {
           id: "identifies-m-and-v",
-          description: "Identifies m = log S_0 + (μ−½σ²)t and v = σ²t as the mean and variance of log S_t.",
+          description: "Identifies $m = \\log S_0 + \\left(\\mu - \\frac{1}{2}\\sigma^2\\right)t$ and $v = \\sigma^2 t$ as the mean and variance of $\\log S_t$.",
           weight: 3,
           required: true,
         },
         {
           id: "applies-mgf-identity",
-          description: "Applies E[S_t] = E[e^{log S_t}] = e^{m + v/2} = e^{log S_0 + (μ−½σ²)t + ½σ²t}.",
+          description: "Applies $\\mathbb{E}[S_t] = \\mathbb{E}[e^{\\log S_t}] = e^{m + v/2} = e^{\\log S_0 + (\\mu - \\frac{1}{2}\\sigma^2)t + \\frac{1}{2}\\sigma^2 t}$.",
           weight: 3,
           required: true,
         },
         {
           id: "simplifies",
-          description: "Simplifies the exponent to log S_0 + μt, giving E[S_t] = S_0 e^{μt} — the −½σ² and +½σ² terms cancel exactly.",
+          description: "Simplifies the exponent to $\\log S_0 + \\mu t$, giving $\\mathbb{E}[S_t] = S_0 e^{\\mu t}$ — the $-\\frac{1}{2}\\sigma^2$ and $+\\frac{1}{2}\\sigma^2$ terms cancel exactly.",
           weight: 3,
           required: true,
         },
@@ -1216,8 +1211,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
     stem:
-      "A GBM has S_0 = $100, μ = 0.07, σ = 0.35. Find the dollar gap between E[S_3] and median(S_3) — the size of the " +
-      "volatility drag in dollar terms at t = 3. Give a decimal to two places.",
+      "A geometric Brownian motion has $S_0 = \\$100$, $\\mu = 0.07$, $\\sigma = 0.35$. Find the dollar gap between $\\mathbb{E}[S_3]$ and $\\text{median}(S_3)$ — the size of the volatility drag in dollar terms at $t = 3$. Give a decimal to two places.",
     answerKey: 20.71,
     tolerance: 0.03,
     difficulty: 1.4,
@@ -1237,32 +1231,32 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Which is the Black-Scholes-Merton PDE for an option value V(S,t) on a stock following GBM with volatility σ, at riskless rate r?",
+    stem: "Which is the Black–Scholes–Merton PDE for an option value $V(S, t)$ on a stock following geometric Brownian motion with volatility $\\sigma$, at riskless rate $r$?",
     choices: [
-      { id: "a", text: "∂V/∂t + rS ∂V/∂S + ½σ²S² ∂²V/∂S² − rV = 0", correct: true },
+      { id: "a", text: "$\\frac{\\partial V}{\\partial t} + rS\\frac{\\partial V}{\\partial S} + \\frac{1}{2}\\sigma^2 S^2 \\frac{\\partial^2 V}{\\partial S^2} - rV = 0$", correct: true },
       {
         id: "b",
-        text: "∂V/∂t + μS ∂V/∂S + ½σ²S² ∂²V/∂S² − rV = 0",
+        text: "$\\frac{\\partial V}{\\partial t} + \\mu S\\frac{\\partial V}{\\partial S} + \\frac{1}{2}\\sigma^2 S^2 \\frac{\\partial^2 V}{\\partial S^2} - rV = 0$",
         correct: false,
         misconception: {
           id: "leaves-mu-in-pde",
-          description: "Leaves the real-world drift μ in the PDE — the hedging argument makes μ cancel out entirely, replaced by the riskless rate r in the first-order term.",
+          description: "Leaves the real-world drift $\\mu$ in the PDE — the hedging argument makes $\\mu$ cancel out entirely, replaced by the riskless rate $r$ in the first-order term.",
           blameConceptId: "black-scholes-merton-equation",
         },
       },
       {
         id: "c",
-        text: "∂V/∂t + rS ∂V/∂S + σS² ∂²V/∂S² − rV = 0",
+        text: "$\\frac{\\partial V}{\\partial t} + rS\\frac{\\partial V}{\\partial S} + \\sigma S^2 \\frac{\\partial^2 V}{\\partial S^2} - rV = 0$",
         correct: false,
         misconception: {
           id: "drops-one-half-and-sigma-squared",
-          description: "Drops the ½ and uses σ instead of σ² in the second-order term, which should carry the coefficient ½σ²S² coming directly from Itô's lemma applied to V(S,t).",
+          description: "Drops the $\\frac{1}{2}$ and uses $\\sigma$ instead of $\\sigma^2$ in the second-order term, which should carry the coefficient $\\frac{1}{2}\\sigma^2 S^2$ coming directly from Itô's lemma applied to $V(S, t)$.",
           blameConceptId: "black-scholes-merton-equation",
         },
       },
       {
         id: "d",
-        text: "∂V/∂t + rS ∂V/∂S + ½σ²S² ∂²V/∂S² + rV = 0",
+        text: "$\\frac{\\partial V}{\\partial t} + rS\\frac{\\partial V}{\\partial S} + \\frac{1}{2}\\sigma^2 S^2 \\frac{\\partial^2 V}{\\partial S^2} + rV = 0$",
         correct: false,
         misconception: {
           id: "flips-sign-of-rv-term",
@@ -1284,18 +1278,18 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Define the hedge ratio Δ used in the Black-Scholes-Merton derivation, and define what it means for the replicating portfolio to be 'self-financing'.",
+    stem: "Define the hedge ratio $\\Delta$ used in the Black–Scholes–Merton derivation, and define what it means for the replicating portfolio to be “self-financing”.",
     rubric: {
       elements: [
         {
           id: "delta-definition",
-          description: "States Δ = ∂V/∂S, the number of shares of stock held in the replicating portfolio at each instant.",
+          description: "States $\\Delta = \\frac{\\partial V}{\\partial S}$, the number of shares of stock held in the replicating portfolio at each instant.",
           weight: 3,
           required: true,
         },
         {
           id: "self-financing",
-          description: "States that a self-financing portfolio has no cash added or withdrawn after t = 0 — every rebalancing trade in stock is funded by an offsetting trade in the bond.",
+          description: "States that a self-financing portfolio has no cash added or withdrawn after $t = 0$ — every rebalancing trade in stock is funded by an offsetting trade in the bond.",
           weight: 3,
           required: true,
         },
@@ -1314,12 +1308,12 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What boundary condition does the Black-Scholes-Merton PDE need in order to price a European call with strike K expiring at T?",
+    stem: "What boundary condition does the Black–Scholes–Merton PDE need in order to price a European call with strike $K$ expiring at $T$?",
     choices: [
-      { id: "a", text: "V(S, T) = max(S − K, 0)", correct: true },
+      { id: "a", text: "$V(S, T) = \\max(S - K, 0)$", correct: true },
       {
         id: "b",
-        text: "V(S, T) = max(K − S, 0)",
+        text: "$V(S, T) = \\max(K - S, 0)$",
         correct: false,
         misconception: {
           id: "uses-put-payoff",
@@ -1329,11 +1323,11 @@ export const stochasticCalculusSdesItems: Item[] = [
       },
       {
         id: "c",
-        text: "V(S, 0) = max(S − K, 0)",
+        text: "$V(S, 0) = \\max(S - K, 0)$",
         correct: false,
         misconception: {
           id: "applies-condition-at-wrong-time",
-          description: "Applies the payoff condition at t = 0 instead of t = T — the PDE is a backward equation solved from the known terminal payoff at expiry back to today.",
+          description: "Applies the payoff condition at $t = 0$ instead of $t = T$ — the PDE is a backward equation solved from the known terminal payoff at expiry back to today.",
           blameConceptId: "black-scholes-merton-equation",
         },
       },
@@ -1353,24 +1347,24 @@ export const stochasticCalculusSdesItems: Item[] = [
     channels: ["typed"],
     stem: "Which parameter of the stock's real-world dynamics famously does not appear in the Black-Scholes-Merton PDE?",
     choices: [
-      { id: "a", text: "μ, the stock's real-world drift", correct: true },
+      { id: "a", text: "$\\mu$, the stock's real-world drift", correct: true },
       {
         id: "b",
-        text: "σ, the stock's volatility",
+        text: "$\\sigma$, the stock's volatility",
         correct: false,
         misconception: {
           id: "thinks-sigma-cancels",
-          description: "σ does not cancel — it is the only parameter of the stock's dynamics the option price actually depends on. Only μ drops out of the hedging argument.",
+          description: "$\\sigma$ does not cancel — it is the only parameter of the stock's dynamics the option price actually depends on. Only $\\mu$ drops out of the hedging argument.",
           blameConceptId: "black-scholes-merton-equation",
         },
       },
       {
         id: "c",
-        text: "S, the current stock price",
+        text: "$S$, the current stock price",
         correct: false,
         misconception: {
           id: "thinks-price-cancels",
-          description: "S is the PDE's own state variable — it obviously appears throughout the equation and the formula.",
+          description: "$S$ is the PDE's own state variable — it obviously appears throughout the equation and the formula.",
           blameConceptId: "black-scholes-merton-equation",
         },
       },
@@ -1390,17 +1384,17 @@ export const stochasticCalculusSdesItems: Item[] = [
     channels: ["typed"],
     stem: "Select every input to the Black-Scholes formula that is directly observable from the market or the contract, with no estimation needed.",
     choices: [
-      { id: "a", text: "S, the current stock price", correct: true },
-      { id: "b", text: "K, the strike price", correct: true },
-      { id: "c", text: "T − t, time to expiry", correct: true },
-      { id: "d", text: "r, a riskless rate proxy", correct: true },
+      { id: "a", text: "$S$, the current stock price", correct: true },
+      { id: "b", text: "$K$, the strike price", correct: true },
+      { id: "c", text: "$T - t$, time to expiry", correct: true },
+      { id: "d", text: "$r$, a riskless rate proxy", correct: true },
       {
         id: "e",
-        text: "σ, the volatility",
+        text: "$\\sigma$, the volatility",
         correct: false,
         misconception: {
           id: "treats-sigma-as-observable",
-          description: "σ must be estimated (historically or via implied volatility) — it is the one input the model does not hand you directly, and the model assumes it is a single fixed number for the option's whole life.",
+          description: "$\\sigma$ must be estimated (historically or via implied volatility) — it is the one input the model does not hand you directly, and the model assumes it is a single fixed number for the option's whole life.",
           blameConceptId: "black-scholes-merton-equation",
         },
       },
@@ -1419,7 +1413,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "For S = $100, K = $100, r = 5%, σ = 20%, T − t = 1 year, compute d_1 = [ln(S/K) + (r + ½σ²)(T−t)] / (σ√(T−t)).",
+    stem: "For $S = \\$100$, $K = \\$100$, $r = 5\\%$, $\\sigma = 20\\%$, $T - t = 1$ year, compute $d_1 = \\dfrac{\\ln(S/K) + \\left(r + \\frac{1}{2}\\sigma^2\\right)(T - t)}{\\sigma\\sqrt{T - t}}$.",
     answerKey: 0.35,
     tolerance: 0.01,
     difficulty: -0.1,
@@ -1435,7 +1429,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Using the same setup (S = $100, K = $100, r = 5%, σ = 20%, T − t = 1 year, so d_1 = 0.35), compute d_2 = d_1 − σ√(T−t).",
+    stem: "Using the same setup ($S = \\$100$, $K = \\$100$, $r = 5\\%$, $\\sigma = 20\\%$, $T - t = 1$ year, so $d_1 = 0.35$), compute $d_2 = d_1 - \\sigma\\sqrt{T - t}$.",
     answerKey: 0.15,
     tolerance: 0.01,
     difficulty: -0.2,
@@ -1452,8 +1446,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     cognitive: "apply",
     channels: ["typed", "handwritten"],
     stem:
-      "S = $100, K = $100, r = 5%, σ = 20%, T − t = 1 year, d_1 = 0.35, d_2 = 0.15, Φ(0.35) ≈ 0.6368, Φ(0.15) ≈ 0.5596. " +
-      "Compute the Black-Scholes call price C = S·Φ(d_1) − K e^{-r(T-t)}·Φ(d_2).",
+      "$S = \\$100$, $K = \\$100$, $r = 5\\%$, $\\sigma = 20\\%$, $T - t = 1$ year, $d_1 = 0.35$, $d_2 = 0.15$, $\\Phi(0.35) \\approx 0.6368$, $\\Phi(0.15) \\approx 0.5596$. Compute the Black–Scholes call price $C = S\\,\\Phi(d_1) - Ke^{-r(T - t)}\\,\\Phi(d_2)$.",
     answerKey: 10.45,
     tolerance: 0.02,
     difficulty: 0.3,
@@ -1469,7 +1462,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Using put-call parity C − P = S − K e^{-r(T-t)} with the same setup (C = 10.45, S = 100, K = 100, r = 5%, T − t = 1), find the price P of the European put.",
+    stem: "Using put–call parity $C - P = S - Ke^{-r(T - t)}$ with the same setup ($C = 10.45$, $S = 100$, $K = 100$, $r = 5\\%$, $T - t = 1$), find the price $P$ of the European put.",
     answerKey: 5.57,
     tolerance: 0.02,
     difficulty: 0.4,
@@ -1485,7 +1478,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A European call with S = $95, K = $100, r = 4%, T − t = 0.5 years trades at C = $8. Use put-call parity to find the price of the corresponding put.",
+    stem: "A European call with $S = \\$95$, $K = \\$100$, $r = 4\\%$, $T - t = 0.5$ years trades at $C = \\$8$. Use put–call parity to find the price of the corresponding put.",
     answerKey: 11.02,
     tolerance: 0.02,
     difficulty: 0.5,
@@ -1501,7 +1494,7 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A trader is short 100 of the calls from the earlier example (Δ = Φ(d_1) = 0.6368). How many shares of stock must they hold to delta-hedge the position?",
+    stem: "A trader is short $100$ of the calls from the earlier example ($\\Delta = \\Phi(d_1) = 0.6368$). How many shares of stock must they hold to delta-hedge the position?",
     answerKey: 63.68,
     tolerance: 0.02,
     difficulty: 0.1,
@@ -1518,18 +1511,18 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "In the portfolio Π = V − ΔS with Δ = ∂V/∂S, explain why the σS dW term cancels exactly between dV and Δ dS.",
+    stem: "In the portfolio $\\Pi = V - \\Delta S$ with $\\Delta = \\frac{\\partial V}{\\partial S}$, explain why the $\\sigma S\\,dW$ term cancels exactly between $dV$ and $\\Delta\\,dS$.",
     rubric: {
       elements: [
         {
           id: "matches-diffusion-coefficients",
-          description: "Notes that Itô's lemma gives dV a diffusion term σS(∂V/∂S) dW, and Δ dS has diffusion term Δ·σS dW = σS(∂V/∂S) dW when Δ = ∂V/∂S — the two are identical.",
+          description: "Notes that Itô's lemma gives $dV$ a diffusion term $\\sigma S\\frac{\\partial V}{\\partial S}\\,dW$, and $\\Delta\\,dS$ has diffusion term $\\Delta \\cdot \\sigma S\\,dW = \\sigma S\\frac{\\partial V}{\\partial S}\\,dW$ when $\\Delta = \\frac{\\partial V}{\\partial S}$ — the two are identical.",
           weight: 3,
           required: true,
         },
         {
           id: "why-delta-is-chosen-this-way",
-          description: "States that Δ is chosen specifically to force this cancellation — it is not a coincidence but the defining property of the hedge ratio.",
+          description: "States that $\\Delta$ is chosen specifically to force this cancellation — it is not a coincidence but the defining property of the hedge ratio.",
           weight: 3,
           required: true,
         },
@@ -1548,16 +1541,16 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Once the hedge removes all randomness from dΠ, why must the portfolio earn exactly the riskless rate r rather than some other rate?",
+    stem: "Once the hedge removes all randomness from $d\\Pi$, why must the portfolio earn exactly the riskless rate $r$ rather than some other rate?",
     choices: [
-      { id: "a", text: "A riskless portfolio earning more than r would let anyone borrow at r and pocket the excess for free; one earning less would be shorted against the bond for the same free profit — either breaks no-arbitrage", correct: true },
+      { id: "a", text: "A riskless portfolio earning more than $r$ would let anyone borrow at $r$ and pocket the excess for free; one earning less would be shorted against the bond for the same free profit — either breaks no-arbitrage", correct: true },
       {
         id: "b",
-        text: "Because Π is built from stock and bond, and stock always earns exactly r in expectation",
+        text: "Because $\\Pi$ is built from stock and bond, and stock always earns exactly $r$ in expectation",
         correct: false,
         misconception: {
           id: "assumes-stock-earns-riskless-rate",
-          description: "The stock's own expected return is μ, generally different from r — it is only the fully hedged, riskless combination that is forced to earn r, not the stock on its own.",
+          description: "The stock's own expected return is $\\mu$, generally different from $r$ — it is only the fully hedged, riskless combination that is forced to earn $r$, not the stock on its own.",
           blameConceptId: "geometric-brownian-motion",
         },
       },
@@ -1585,24 +1578,24 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Verify that V(S,t) = S satisfies the Black-Scholes-Merton PDE, and give the financial interpretation of this solution.",
+    stem: "Verify that $V(S, t) = S$ satisfies the Black–Scholes–Merton PDE, and give the financial interpretation of this solution.",
     rubric: {
       elements: [
         {
           id: "partials",
-          description: "Computes ∂V/∂t = 0, ∂V/∂S = 1, ∂²V/∂S² = 0.",
+          description: "Computes $\\frac{\\partial V}{\\partial t} = 0$, $\\frac{\\partial V}{\\partial S} = 1$, $\\frac{\\partial^2 V}{\\partial S^2} = 0$.",
           weight: 2,
           required: true,
         },
         {
           id: "substitution",
-          description: "Substitutes into the PDE: 0 + rS(1) + ½σ²S²(0) − r(S) = rS − rS = 0, confirming it solves the PDE.",
+          description: "Substitutes into the PDE: $0 + rS(1) + \\frac{1}{2}\\sigma^2 S^2(0) - rS = 0$, confirming it solves the PDE.",
           weight: 3,
           required: true,
         },
         {
           id: "interpretation",
-          description: "Interprets V = S as the trivial 'contract' of simply holding one share of stock, whose hedge ratio Δ = ∂V/∂S = 1 is constant — no rebalancing ever needed.",
+          description: "Interprets $V = S$ as the trivial “contract” of simply holding one share of stock, whose hedge ratio $\\Delta = \\frac{\\partial V}{\\partial S} = 1$ is constant — no rebalancing ever needed.",
           weight: 2,
         },
       ],
@@ -1620,24 +1613,24 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten", "spoken"],
-    stem: "Verify that V(S,t) = K e^{-r(T-t)} (a fixed cash payment of K at time T, discounted) satisfies the Black-Scholes-Merton PDE, and interpret the result.",
+    stem: "Verify that $V(S, t) = Ke^{-r(T - t)}$ (a fixed cash payment of $K$ at time $T$, discounted) satisfies the Black–Scholes–Merton PDE, and interpret the result.",
     rubric: {
       elements: [
         {
           id: "partials",
-          description: "Computes ∂V/∂S = 0, ∂²V/∂S² = 0, and ∂V/∂t = r·K e^{-r(T-t)} = rV (since d/dt[−r(T−t)] = r).",
+          description: "Computes $\\frac{\\partial V}{\\partial S} = 0$, $\\frac{\\partial^2 V}{\\partial S^2} = 0$, and $\\frac{\\partial V}{\\partial t} = rKe^{-r(T - t)} = rV$ (since $\\frac{d}{dt}\\left[-r(T - t)\\right] = r$).",
           weight: 3,
           required: true,
         },
         {
           id: "substitution",
-          description: "Substitutes into the PDE: rV + rS(0) + ½σ²S²(0) − rV = 0, confirming it solves the PDE.",
+          description: "Substitutes into the PDE: $rV + rS(0) + \\frac{1}{2}\\sigma^2 S^2(0) - rV = 0$, confirming it solves the PDE.",
           weight: 3,
           required: true,
         },
         {
           id: "interpretation",
-          description: "Interprets this as the pure-bond replication of a fixed future cash payment, with zero exposure to the stock (Δ = 0) — no hedging needed since it carries no stock risk.",
+          description: "Interprets this as the pure-bond replication of a fixed future cash payment, with zero exposure to the stock ($\\Delta = 0$) — no hedging needed since it carries no stock risk.",
           weight: 2,
         },
       ],
@@ -1655,26 +1648,26 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "S really does drift at rate μ in the real world, yet μ does not appear in the option's price. Why doesn't a bullish trader's higher personal view of μ change the fair option price they should pay?",
+    stem: "$S$ really does drift at rate $\\mu$ in the real world, yet $\\mu$ does not appear in the option's price. Why doesn't a bullish trader's higher personal view of $\\mu$ change the fair option price they should pay?",
     choices: [
-      { id: "a", text: "The hedge is constructed instant-by-instant purely from σ and the current Δ, never from a forecast of μ, so any two investors who agree on σ must arrive at the same price no matter how they disagree on μ", correct: true },
+      { id: "a", text: "The hedge is constructed instant-by-instant purely from $\\sigma$ and the current $\\Delta$, never from a forecast of $\\mu$, so any two investors who agree on $\\sigma$ must arrive at the same price no matter how they disagree on $\\mu$", correct: true },
       {
         id: "b",
-        text: "μ does not matter because options are always priced under the assumption μ = r for every stock",
+        text: "$\\mu$ does not matter because options are always priced under the assumption $\\mu = r$ for every stock",
         correct: false,
         misconception: {
           id: "confuses-real-world-and-risk-neutral-drift",
-          description: "The real-world drift genuinely is μ, not r — it is only that the hedging argument makes the price insensitive to μ's value, not that μ is secretly equal to r.",
+          description: "The real-world drift genuinely is $\\mu$, not $r$ — it is only that the hedging argument makes the price insensitive to $\\mu$'s value, not that $\\mu$ is secretly equal to $r$.",
           blameConceptId: "black-scholes-merton-equation",
         },
       },
       {
         id: "c",
-        text: "μ cancels only because this specific example used an at-the-money option; for other strikes it would remain in the formula",
+        text: "$\\mu$ cancels only because this specific example used an at-the-money option; for other strikes it would remain in the formula",
         correct: false,
         misconception: {
           id: "thinks-cancellation-is-strike-specific",
-          description: "μ cancels for every strike and every payoff structure that is priced by this same hedging argument — the cancellation happens in the PDE derivation itself, before any specific boundary condition is applied.",
+          description: "$\\mu$ cancels for every strike and every payoff structure that is priced by this same hedging argument — the cancellation happens in the PDE derivation itself, before any specific boundary condition is applied.",
           blameConceptId: "black-scholes-merton-equation",
         },
       },
@@ -1693,18 +1686,18 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "The Feynman-Kac formula says a PDE solution equals a discounted expectation of the terminal payoff under a particular measure. State what that measure and expectation are for the Black-Scholes-Merton PDE, and why this gives the same answer as solving the PDE directly.",
+    stem: "The Feynman–Kac formula says a PDE solution equals a discounted expectation of the terminal payoff under a particular measure. State what that measure and expectation are for the Black–Scholes–Merton PDE, and why this gives the same answer as solving the PDE directly.",
     rubric: {
       elements: [
         {
           id: "risk-neutral-expectation",
-          description: "States V(S,t) = e^{-r(T-t)} E^Q[payoff(S_T) | S_t = S], where Q is the risk-neutral measure under which S follows GBM with drift r (instead of μ).",
+          description: "States $V(S, t) = e^{-r(T - t)}\\,\\mathbb{E}^{\\mathbb{Q}}\\left[\\text{payoff}(S_T) \\mid S_t = S\\right]$, where $\\mathbb{Q}$ is the risk-neutral measure under which $S$ follows geometric Brownian motion with drift $r$ (instead of $\\mu$).",
           weight: 4,
           required: true,
         },
         {
           id: "why-they-agree",
-          description: "Explains this is the specific case of Feynman-Kac where the SDE is GBM under Q — the analytic route (PDE) and the probabilistic route (simulate under Q, discount) are two representations of the same underlying object.",
+          description: "Explains this is the specific case of Feynman–Kac where the SDE is geometric Brownian motion under $\\mathbb{Q}$ — the analytic route (PDE) and the probabilistic route (simulate under $\\mathbb{Q}$, discount) are two representations of the same underlying object.",
           weight: 3,
           required: true,
         },
@@ -1724,26 +1717,26 @@ export const stochasticCalculusSdesItems: Item[] = [
     cognitive: "transfer",
     channels: ["typed"],
     stem:
-      "The derivation expands dV using dV = (∂V/∂t + μS ∂V/∂S + ½σ²S² ∂²V/∂S²) dt + σS ∂V/∂S dW. Why is Itô's lemma required here rather than the ordinary multivariable chain rule?",
+      "The derivation expands $dV$ using $dV = \\left(\\frac{\\partial V}{\\partial t} + \\mu S\\frac{\\partial V}{\\partial S} + \\frac{1}{2}\\sigma^2 S^2 \\frac{\\partial^2 V}{\\partial S^2}\\right)dt + \\sigma S\\frac{\\partial V}{\\partial S}\\,dW$. Why is Itô's lemma required here rather than the ordinary multivariable chain rule?",
     choices: [
-      { id: "a", text: "S itself follows an SDE with a nonzero quadratic variation term, so expanding V(S,t) to first order in dS misses a second-derivative contribution that survives because (dS)² = σ²S² dt is order dt, not negligible", correct: true },
+      { id: "a", text: "$S$ itself follows an SDE with a nonzero quadratic variation term, so expanding $V(S, t)$ to first order in $dS$ misses a second-derivative contribution that survives because $(dS)^2 = \\sigma^2 S^2\\,dt$ is order $dt$, not negligible", correct: true },
       {
         id: "b",
-        text: "Because V is a function of two variables, and the chain rule only applies to functions of one variable",
+        text: "Because $V$ is a function of two variables, and the chain rule only applies to functions of one variable",
         correct: false,
         misconception: {
           id: "misidentifies-why-chain-rule-fails",
-          description: "The ordinary multivariable chain rule handles two-variable functions fine when both inputs are ordinary differentiable functions of t — the failure here is specific to S being driven by Brownian motion with nonzero quadratic variation, not the mere fact of having two variables.",
+          description: "The ordinary multivariable chain rule handles two-variable functions fine when both inputs are ordinary differentiable functions of $t$ — the failure here is specific to $S$ being driven by Brownian motion with nonzero quadratic variation, not the mere fact of having two variables.",
           blameConceptId: "geometric-brownian-motion",
         },
       },
       {
         id: "c",
-        text: "Because r appears in the drift instead of μ",
+        text: "Because $r$ appears in the drift instead of $\\mu$",
         correct: false,
         misconception: {
           id: "misattributes-to-measure-change",
-          description: "The choice of r vs μ in the drift is a separate, later step (the risk-neutral measure change) — it has nothing to do with why Itô's lemma rather than the ordinary chain rule is needed to expand dV in the first place.",
+          description: "The choice of $r$ vs $\\mu$ in the drift is a separate, later step (the risk-neutral measure change) — it has nothing to do with why Itô's lemma rather than the ordinary chain rule is needed to expand $dV$ in the first place.",
           blameConceptId: "black-scholes-merton-equation",
         },
       },
@@ -1761,16 +1754,16 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "mcq",
     cognitive: "transfer",
     channels: ["typed"],
-    stem: "Different strikes on the same underlying, at the same expiry, imply different σ when you solve the Black-Scholes formula backwards from their market prices (the 'volatility smile'). What does this reveal about the model's assumptions?",
+    stem: "Different strikes on the same underlying, at the same expiry, imply different $\\sigma$ when you solve the Black–Scholes formula backwards from their market prices (the “volatility smile”). What does this reveal about the model's assumptions?",
     choices: [
-      { id: "a", text: "The underlying assumption that S follows GBM with one constant σ for its whole life is only an approximation — if it held exactly, every option on the same stock and expiry would back out the same σ", correct: true },
+      { id: "a", text: "The underlying assumption that $S$ follows geometric Brownian motion with one constant $\\sigma$ for its whole life is only an approximation — if it held exactly, every option on the same stock and expiry would back out the same $\\sigma$", correct: true },
       {
         id: "b",
-        text: "It reveals that r must be different for each strike, since only r and σ appear in the pricing formula",
+        text: "It reveals that $r$ must be different for each strike, since only $r$ and $\\sigma$ appear in the pricing formula",
         correct: false,
         misconception: {
           id: "misattributes-smile-to-rate",
-          description: "r is a market-wide riskless rate, the same for every option on the same underlying and expiry — the smile is specifically an inconsistency in the implied σ, not r.",
+          description: "$r$ is a market-wide riskless rate, the same for every option on the same underlying and expiry — the smile is specifically an inconsistency in the implied $\\sigma$, not $r$.",
           blameConceptId: "black-scholes-merton-equation",
         },
       },
@@ -1798,24 +1791,24 @@ export const stochasticCalculusSdesItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "Explain why put-call parity, C − P = S − K e^{-r(T-t)}, follows from the Black-Scholes-Merton PDE being linear, without needing to solve the PDE for either C or P individually.",
+    stem: "Explain why put–call parity, $C - P = S - Ke^{-r(T - t)}$, follows from the Black–Scholes–Merton PDE being linear, without needing to solve the PDE for either $C$ or $P$ individually.",
     rubric: {
       elements: [
         {
           id: "linearity",
-          description: "Notes that the PDE is linear in V, so any linear combination of solutions is itself a solution.",
+          description: "Notes that the PDE is linear in $V$, so any linear combination of solutions is itself a solution.",
           weight: 3,
           required: true,
         },
         {
           id: "payoff-difference",
-          description: "Observes that a long call minus a long put has terminal payoff max(S−K,0) − max(K−S,0) = S − K exactly, for every value of S.",
+          description: "Observes that a long call minus a long put has terminal payoff $\\max(S - K, 0) - \\max(K - S, 0) = S - K$ exactly, for every value of $S$.",
           weight: 3,
           required: true,
         },
         {
           id: "conclusion",
-          description: "Concludes that since C − P solves the same linear PDE with terminal condition S − K, and V(S,t) = S − Ke^{-r(T-t)} also solves the PDE with that same terminal condition (by the earlier V=S and V=Ke^{-r(T-t)} results), the two must be equal at every t by uniqueness of the PDE's solution.",
+          description: "Concludes that since $C - P$ solves the same linear PDE with terminal condition $S - K$, and $V(S, t) = S - Ke^{-r(T - t)}$ also solves the PDE with that same terminal condition (by the earlier $V = S$ and $V = Ke^{-r(T - t)}$ results), the two must be equal at every $t$ by uniqueness of the PDE's solution.",
           weight: 3,
           required: true,
         },

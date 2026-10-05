@@ -13,19 +13,19 @@ export const matrixNorms: WikiArticle = {
           headers: ["Norm", "Definition", "In singular values", "Answers"],
           rows: [
             [
-              "Spectral $\\|A\\|_2$",
-              "$\\max_{\\mathbf{x}\\ne 0}\\dfrac{\\|A\\mathbf{x}\\|}{\\|\\mathbf{x}\\|}$",
+              "Spectral $\\|\\mathbf{A}\\|_2$",
+              "$\\max_{\\mathbf{x}\\ne 0}\\dfrac{\\|\\mathbf{A}\\mathbf{x}\\|}{\\|\\mathbf{x}\\|}$",
               "$\\sigma_1$",
               "worst-case stretch",
             ],
             [
-              "Frobenius $\\|A\\|_F$",
+              "Frobenius $\\|\\mathbf{A}\\|_F$",
               "$\\sqrt{\\sum_{ij}a_{ij}^{2}}$",
               "$\\sqrt{\\sum_i\\sigma_i^{2}}$",
               "total size",
             ],
             [
-              "Nuclear $\\|A\\|_*$",
+              "Nuclear $\\|\\mathbf{A}\\|_*$",
               "—",
               "$\\sum_i \\sigma_i$",
               "convex surrogate for rank",
@@ -34,13 +34,13 @@ export const matrixNorms: WikiArticle = {
         },
         {
           kind: "prose",
-          text: "The Frobenius norm treats the matrix as a long vector and applies the Euclidean norm — it is the one with an inner product behind it, $\\langle A,B\\rangle = \\operatorname{tr}(A^{\\top}B)$, which is why least-squares problems on matrices use it.",
+          text: "The Frobenius norm treats the matrix as a long vector and applies the Euclidean norm — it is the one with an inner product behind it, $\\langle \\mathbf{A},\\mathbf{B}\\rangle = \\operatorname{tr}(\\mathbf{A}^{\\top}\\mathbf{B})$, which is why least-squares problems on matrices use it.",
         },
         {
           kind: "callout",
           tone: "insight",
           title: "The spectral norm is an *operator* norm",
-          text: "It is defined by what the matrix does, not by its entries: the largest factor by which any vector's length can grow. That definition makes $\\|A\\mathbf{x}\\| \\le \\|A\\|_2\\|\\mathbf{x}\\|$ true by construction, and it is the property every error-propagation argument in numerical analysis relies on. The identity $\\|A\\|_2 = \\sigma_1$ then says the largest singular value *is* the worst-case stretch.",
+          text: "It is defined by what the matrix does, not by its entries: the largest factor by which any vector's length can grow. That definition makes $\\|\\mathbf{A}\\mathbf{x}\\| \\le \\|\\mathbf{A}\\|_2\\|\\mathbf{x}\\|$ true by construction, and it is the property every error-propagation argument in numerical analysis relies on. The identity $\\|\\mathbf{A}\\|_2 = \\sigma_1$ then says the largest singular value *is* the worst-case stretch.",
         },
       ],
     },
@@ -49,7 +49,7 @@ export const matrixNorms: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "\\|AB\\| \\le \\|A\\|\\,\\|B\\|",
+          latex: "\\|\\mathbf{A}\\mathbf{B}\\| \\le \\|\\mathbf{A}\\|\\,\\|\\mathbf{B}\\|",
           caption: "Holds for the spectral and Frobenius norms — the property that makes norms useful",
         },
         {
@@ -60,15 +60,15 @@ export const matrixNorms: WikiArticle = {
           kind: "example",
           title: "Comparing the norms",
           problem:
-            "For $A = \\begin{bmatrix} 3 & 0 \\\\ 0 & 4\\end{bmatrix}$, compute all three norms.",
+            "For $\\mathbf{A} = \\begin{bmatrix} 3 & 0 \\\\ 0 & 4\\end{bmatrix}$, compute all three norms.",
           steps: [
             "Diagonal, so the singular values are $|3|$ and $|4|$, i.e. $\\sigma_1 = 4$, $\\sigma_2 = 3$.",
-            "$\\|A\\|_2 = \\sigma_1 = 4$ — the most any vector can be stretched.",
-            "$\\|A\\|_F = \\sqrt{9+16} = 5$.",
-            "$\\|A\\|_* = 4 + 3 = 7$.",
+            "$\\|\\mathbf{A}\\|_2 = \\sigma_1 = 4$ — the most any vector can be stretched.",
+            "$\\|\\mathbf{A}\\|_F = \\sqrt{9+16} = 5$.",
+            "$\\|\\mathbf{A}\\|_* = 4 + 3 = 7$.",
           ],
           answer:
-            "$4$, $5$, $7$. In general $\\|A\\|_2 \\le \\|A\\|_F \\le \\|A\\|_*$, with equality throughout only for rank-one matrices.",
+            "$4$, $5$, $7$. In general $\\|\\mathbf{A}\\|_2 \\le \\|\\mathbf{A}\\|_F \\le \\|\\mathbf{A}\\|_*$, with equality throughout only for rank-one matrices.",
         },
       ],
     },
@@ -77,8 +77,8 @@ export const matrixNorms: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "\\kappa(A) = \\|A\\|\\,\\|A^{-1}\\| = \\frac{\\sigma_{\\max}}{\\sigma_{\\min}}",
-          caption: "How much relative error can be amplified when solving $A\\mathbf{x}=\\mathbf{b}$",
+          latex: "\\kappa(\\mathbf{A}) = \\|\\mathbf{A}\\|\\,\\|\\mathbf{A}^{-1}\\| = \\frac{\\sigma_{\\max}}{\\sigma_{\\min}}",
+          caption: "How much relative error can be amplified when solving $\\mathbf{A}\\mathbf{x}=\\mathbf{b}$",
         },
         {
           kind: "prose",
@@ -88,7 +88,7 @@ export const matrixNorms: WikiArticle = {
           kind: "callout",
           tone: "warning",
           title: "Conditioning is a property of the problem, not the algorithm",
-          text: "No algorithm can solve an ill-conditioned system accurately — the sensitivity is in the matrix itself. A *stable* algorithm achieves accuracy proportional to $\\kappa$; an unstable one does worse. This is why forming $A^{\\top}A$ is criticised: it squares $\\kappa$, converting a hard-but-solvable problem into an unsolvable one, and no amount of care afterwards recovers the lost digits.",
+          text: "No algorithm can solve an ill-conditioned system accurately — the sensitivity is in the matrix itself. A *stable* algorithm achieves accuracy proportional to $\\kappa$; an unstable one does worse. This is why forming $\\mathbf{A}^{\\top}\\mathbf{A}$ is criticised: it squares $\\kappa$, converting a hard-but-solvable problem into an unsolvable one, and no amount of care afterwards recovers the lost digits.",
         },
       ],
     },
@@ -102,7 +102,7 @@ export const matrixNorms: WikiArticle = {
             "**Spectral norm** — Lipschitz constants, gradient-explosion analysis in deep networks, and spectral normalisation in GANs, which divides weights by $\\sigma_1$ to control amplification.",
             "**Frobenius norm** — the objective in matrix least squares, PCA reconstruction error, and the natural loss for matrix completion.",
             "**Nuclear norm** — minimised in low-rank recovery, exactly as $\\ell_1$ is minimised for sparse vectors. It is the convex envelope of rank, which is what makes the problem tractable.",
-            "**Unitary invariance.** All three are unchanged by orthogonal transformations, $\\|QAZ\\| = \\|A\\|$ — which is why they are expressible in singular values, and why Eckart–Young holds for spectral and Frobenius simultaneously.",
+            "**Unitary invariance.** All three are unchanged by orthogonal transformations, $\\|QAZ\\| = \\|\\mathbf{A}\\|$ — which is why they are expressible in singular values, and why Eckart–Young holds for spectral and Frobenius simultaneously.",
           ],
         },
       ],

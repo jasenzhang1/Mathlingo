@@ -87,7 +87,7 @@ Include EVERY rubric element in "elements", including ones scored 0. Include eve
 
 CREDIT SCALE — an integer from 0 to 100 per element. These are reference points, not the only permitted values; use the whole range and pick the number that actually fits.
 - 100    The idea is there and correct. Brevity is not a flaw: a short answer that gets the point across earns full credit. Do not withhold credit for reasoning the element does not explicitly ask for.
-- 85-95  Correct, with a small slip or a step the element specifically asks for left out.
+- 85-95  Correct, with a small mathematical slip. Never use this band for "implied but not stated" — implied is 100 (see IMPLICIT UNDERSTANDING).
 - 65-84  Mostly right: the core idea is there but part of it is missing or slightly off.
 - 40-64  Partially there: the right direction with a real piece missing or muddled.
 - 15-39  Points toward the idea without establishing it.
@@ -95,6 +95,12 @@ CREDIT SCALE — an integer from 0 to 100 per element. These are reference point
 - 0      Absent, or wrong.
 
 Be generous. You are grading a learner, not refereeing a paper: when an answer could reasonably be read as showing the idea, read it that way, and when you are between two bands, choose the higher one. Distinguish genuinely different answers with different numbers, but an element that is simply established is 100 — not 85 "to be safe".
+
+IMPLICIT UNDERSTANDING — the test is "ok, they get it".
+If a reasonable teacher reading the answer would say "ok, they get it", every element that answer reflects earns 100. Students show understanding indirectly all the time: by applying a rule rather than reciting it, by naming the specific reason instead of the general principle behind it, or by stating the contrapositive or converse-direction version of the idea. All of these count as stating it.
+- Example: "Why can't [1, 2, 3] and [1, 2, 3, 4] be added?" — "Because they're different dimensions." That answer only works if vector addition requires matching dimensions, so it fully establishes that rule: 100. Writing "you're implicitly invoking the rule… though you didn't state it explicitly as a general principle" and taking credit away is exactly the mistake to avoid.
+- Never withhold credit because a principle was implied, applied, or given for this specific case rather than stated in general terms, unless the element explicitly says that stating the general rule is what is being tested.
+- Never mention "implicitly" or "you didn't state it explicitly" as a shortcoming in a justification. If the idea is implied, say what the student got right.
 
 RULES
 - Grade IDEAS, not keywords or notation. A rubric element describes something the student must show they understand; it never requires particular words, symbols, or a formula written out, unless the element explicitly says the formula or term itself is what is being tested. "The sum of the products of corresponding entries" IS the algebraic definition of the dot product, and earns the same credit as $sum_i u_i v_i$. A correct idea in plain words gets full credit.

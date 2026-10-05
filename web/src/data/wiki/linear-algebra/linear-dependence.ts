@@ -21,7 +21,7 @@ export const linearDependence: WikiArticle = {
           kind: "callout",
           tone: "warning",
           title: "Independence is a property of the set, not of pairs",
-          text: "Three vectors can be pairwise non-parallel and still dependent — $(1,0)$, $(0,1)$, $(1,1)$ in $\\mathbb{R}^{2}$, where the third is the sum of the first two. Checking pairs is not enough, exactly as it was not enough for mutual independence of events. The condition quantifies over all combinations at once.",
+          text: "Three vectors can be pairwise non-parallel and still dependent — $[1, 0]$, $[0, 1]$, $[1, 1]$ in $\\mathbb{R}^{2}$, where the third is the sum of the first two. Checking pairs is not enough, exactly as it was not enough for mutual independence of events. The condition quantifies over all combinations at once.",
         },
       ],
     },
@@ -30,19 +30,19 @@ export const linearDependence: WikiArticle = {
       blocks: [
         {
           kind: "prose",
-          text: "Put the vectors in the columns of a matrix $A$ and ask whether $A\\mathbf{c} = \\mathbf{0}$ has a non-zero solution. Three equivalent answers:",
+          text: "Put the vectors in the columns of a matrix $\\mathbf{A}$ and ask whether $\\mathbf{A}\\mathbf{c} = \\mathbf{0}$ has a non-zero solution. Three equivalent answers:",
         },
         {
           kind: "table",
           headers: ["Test", "Independent when", "Note"],
           rows: [
-            ["Null space", "$N(A) = \\{\\mathbf{0}\\}$", "the definition, restated"],
-            ["Rank", "$\\operatorname{rank}(A) = k$ (full column rank)", "usually the practical test"],
+            ["Null space", "$N(\\mathbf{A}) = \\{\\mathbf{0}\\}$", "the definition, restated"],
+            ["Rank", "$\\operatorname{rank}(\\mathbf{A}) = k$ (full column rank)", "usually the practical test"],
             ["Row reduction", "every column has a pivot", "how it is computed by hand"],
             [
               "Determinant",
-              "$\\det(A) \\neq 0$",
-              "**only for square $A$** — $k$ vectors in $\\mathbb{R}^{k}$",
+              "$\\det(\\mathbf{A}) \\neq 0$",
+              "**only for square $\\mathbf{A}$** — $k$ vectors in $\\mathbb{R}^{k}$",
             ],
           ],
         },
@@ -50,15 +50,15 @@ export const linearDependence: WikiArticle = {
           kind: "callout",
           tone: "insight",
           title: "More vectors than dimensions is automatically dependent",
-          text: "Any $k > n$ vectors in $\\mathbb{R}^{n}$ must be dependent — there are more unknowns than equations, so $A\\mathbf{c} = \\mathbf{0}$ has a non-trivial solution by counting alone. Three vectors in $\\mathbb{R}^{2}$ can never be independent, whatever they are. This is why a dataset with more predictors than observations always has collinear columns, and why $p > n$ regression has no unique least-squares solution.",
+          text: "Any $k > n$ vectors in $\\mathbb{R}^{n}$ must be dependent — there are more unknowns than equations, so $\\mathbf{A}\\mathbf{c} = \\mathbf{0}$ has a non-trivial solution by counting alone. Three vectors in $\\mathbb{R}^{2}$ can never be independent, whatever they are. This is why a dataset with more predictors than observations always has collinear columns, and why $p > n$ regression has no unique least-squares solution.",
         },
         {
           kind: "example",
           title: "Detecting dependence",
           problem:
-            "Are $(1,2,3)$, $(2,4,6)$, and $(1,0,1)$ independent?",
+            "Are $[1, 2, 3]$, $[2, 4, 6]$, and $[1, 0, 1]$ independent?",
           steps: [
-            "Notice $(2,4,6) = 2(1,2,3)$ — the second is a multiple of the first.",
+            "Notice $[2, 4, 6] = 2(1,2,3)$ — the second is a multiple of the first.",
             "So $2\\mathbf{v}_1 - \\mathbf{v}_2 + 0\\mathbf{v}_3 = \\mathbf{0}$ with coefficients not all zero.",
             "Dependent, and the third vector was irrelevant to the conclusion.",
           ],
@@ -77,13 +77,13 @@ export const linearDependence: WikiArticle = {
         },
         {
           kind: "prose",
-          text: "If a set is dependent, some vector in its span can be written as a combination in more than one way — so \"the coefficients\" is not well defined. Independence is precisely what rules that out, and it is why a basis must be independent: coordinates would otherwise be ambiguous.",
+          text: "If a set is dependent, some vector in its span can be written as a combination in more than one way — so “the coefficients” is not well defined. Independence is precisely what rules that out, and it is why a basis must be independent: coordinates would otherwise be ambiguous.",
         },
         {
           kind: "callout",
           tone: "warning",
           title: "Near-dependence is the practical problem",
-          text: "Exact collinearity is rare in real data and easy to detect. Vectors that are *nearly* dependent are common and far more damaging: $A^{\\top}A$ is technically invertible but ill-conditioned, so coefficients swing wildly with tiny data changes while predictions stay stable. Height in centimetres and height in inches, entered as separate predictors, is exactly this. The variance inflation factor measures it, and ridge regression is the standard remedy.",
+          text: "Exact collinearity is rare in real data and easy to detect. Vectors that are *nearly* dependent are common and far more damaging: $\\mathbf{A}^{\\top}\\mathbf{A}$ is technically invertible but ill-conditioned, so coefficients swing wildly with tiny data changes while predictions stay stable. Height in centimetres and height in inches, entered as separate predictors, is exactly this. The variance inflation factor measures it, and ridge regression is the standard remedy.",
         },
         {
           kind: "list",

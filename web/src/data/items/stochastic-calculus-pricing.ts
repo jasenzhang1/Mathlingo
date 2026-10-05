@@ -37,18 +37,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Write the Radon-Nikodym density Z_t used to define a Girsanov measure change from an adapted process θ_s, and say what Z_t represents.",
+    stem: "Write the Radon–Nikodym density $Z_t$ used to define a Girsanov measure change from an adapted process $\\theta_s$, and say what $Z_t$ represents.",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "Gives Z_t = exp(−∫₀ᵗ θₛ dWₛ − ½∫₀ᵗ θₛ² ds).",
+          description: "Gives $Z_t = \\exp\\left(-\\int_0^t \\theta_s\\,dW_s - \\frac{1}{2}\\int_0^t \\theta_s^2\\,ds\\right)$.",
           weight: 4,
           required: true,
         },
         {
           id: "meaning",
-          description: "States Z_t is dQ/dP restricted to F_t, so Q is defined by dQ = Z_T dP.",
+          description: "States $Z_t$ is $\\frac{d\\mathbb{Q}}{d\\mathbb{P}}$ restricted to $\\mathcal{F}_t$, so $\\mathbb{Q}$ is defined by $d\\mathbb{Q} = Z_T\\,d\\mathbb{P}$.",
           weight: 3,
           required: true,
         },
@@ -67,18 +67,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "State Girsanov's theorem: given W_t a Brownian motion under P and Z_t built from θ_s, what process is a Brownian motion under Q?",
+    stem: "State Girsanov's theorem: given $W_t$ a Brownian motion under $\\mathbb{P}$ and $Z_t$ built from $\\theta_s$, what process is a Brownian motion under $\\mathbb{Q}$?",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "Gives W̃_t = W_t + ∫₀ᵗ θₛ ds.",
+          description: "Gives $\\tilde{W}_t = W_t + \\int_0^t \\theta_s\\,ds$.",
           weight: 4,
           required: true,
         },
         {
           id: "properties",
-          description: "Notes W̃ satisfies the four defining Brownian motion properties (starts at 0, independent increments, continuous paths, N(0, t−s) increments) under Q specifically.",
+          description: "Notes $\\tilde{W}$ satisfies the four defining Brownian motion properties (starts at $0$, independent increments, continuous paths, $\\mathcal{N}(0, t - s)$ increments) under $\\mathbb{Q}$ specifically.",
           weight: 2,
         },
       ],
@@ -96,26 +96,26 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "What does Novikov's condition guarantee about Z_t = exp(−∫θdW − ½∫θ²ds)?",
+    stem: "What does Novikov's condition guarantee about $Z_t = \\exp\\left(-\\int \\theta\\,dW - \\frac{1}{2}\\int \\theta^2\\,ds\\right)$?",
     choices: [
-      { id: "a", text: "That Z_t is a true martingale under P, so E[Z_T] = 1 and Q is a genuine probability measure", correct: true },
+      { id: "a", text: "That $Z_t$ is a true martingale under $\\mathbb{P}$, so $\\mathbb{E}[Z_T] = 1$ and $\\mathbb{Q}$ is a genuine probability measure", correct: true },
       {
         id: "b",
-        text: "That θ_t is bounded",
+        text: "That $\\theta_t$ is bounded",
         correct: false,
         misconception: {
           id: "novikov-as-boundedness",
-          description: "Novikov's condition is an integrability bound on E[exp(½∫θ²ds)], not a boundedness requirement on θ itself; many unbounded θ processes satisfy it.",
+          description: "Novikov's condition is an integrability bound on $\\mathbb{E}\\left[\\exp\\left(\\frac{1}{2}\\int \\theta^2\\,ds\\right)\\right]$, not a boundedness requirement on $\\theta$ itself; many unbounded $\\theta$ processes satisfy it.",
           blameConceptId: "girsanov-theorem",
         },
       },
       {
         id: "c",
-        text: "That the quadratic variation of W̃_t under Q equals t",
+        text: "That the quadratic variation of $\\tilde{W}_t$ under $\\mathbb{Q}$ equals $t$",
         correct: false,
         misconception: {
           id: "novikov-controls-quadratic-variation",
-          description: "Quadratic variation being invariant under an equivalent measure change is automatic and needs no integrability condition; Novikov's condition is purely about Z_t being a true (not just local) martingale.",
+          description: "Quadratic variation being invariant under an equivalent measure change is automatic and needs no integrability condition; Novikov's condition is purely about $Z_t$ being a true (not just local) martingale.",
           blameConceptId: "girsanov-theorem",
         },
       },
@@ -148,7 +148,7 @@ export const stochasticCalculusPricingItems: Item[] = [
       },
       {
         id: "c",
-        text: "Both drift and volatility can be shifted arbitrarily by choosing θ",
+        text: "Both drift and volatility can be shifted arbitrarily by choosing $\\theta$",
         correct: false,
         misconception: {
           id: "assumes-volatility-changeable",
@@ -170,18 +170,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "What does it mean for two probability measures P and Q to be 'equivalent', and why does a Girsanov change of measure always produce equivalent measures?",
+    stem: "What does it mean for two probability measures $\\mathbb{P}$ and $\\mathbb{Q}$ to be “equivalent”, and why does a Girsanov change of measure always produce equivalent measures?",
     rubric: {
       elements: [
         {
           id: "definition",
-          description: "States equivalent means P and Q agree on which events have probability zero (mutually absolutely continuous).",
+          description: "States equivalent means $\\mathbb{P}$ and $\\mathbb{Q}$ agree on which events have probability zero (mutually absolutely continuous).",
           weight: 3,
           required: true,
         },
         {
           id: "why",
-          description: "Notes Z_t > 0 almost surely (it's an exponential), so no event assigned probability 0 by P gets a different verdict under Q, and vice versa.",
+          description: "Notes $Z_t > 0$ almost surely (it's an exponential), so no event assigned probability $0$ by $\\mathbb{P}$ gets a different verdict under $\\mathbb{Q}$, and vice versa.",
           weight: 3,
           required: true,
         },
@@ -201,7 +201,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A stock has drift μ = 0.12 and volatility σ = 0.25 under P; the riskless rate is r = 0.04. The Girsanov shift used for risk-neutral pricing sets θ = (μ − r)/σ. Compute θ.",
+    stem: "A stock has drift $\\mu = 0.12$ and volatility $\\sigma = 0.25$ under $\\mathbb{P}$; the riskless rate is $r = 0.04$. The Girsanov shift used for risk-neutral pricing sets $\\theta = (\\mu - r)/\\sigma$. Compute $\\theta$.",
     answerKey: 0.32,
     tolerance: 0.001,
     difficulty: -0.2,
@@ -217,7 +217,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "θ_s = 0.5 (constant). At time t = 4, W_t = 1.2 under P. Compute W̃_t = W_t + ∫₀ᵗ θₛ ds.",
+    stem: "$\\theta_s = 0.5$ (constant). At time $t = 4$, $W_t = 1.2$ under $\\mathbb{P}$. Compute $\\tilde{W}_t = W_t + \\int_0^t \\theta_s\\,ds$.",
     answerKey: 3.2,
     tolerance: 0.01,
     difficulty: -0.3,
@@ -233,7 +233,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "θ_s = 0.3 (constant). At t = 2, W_t = 0.5. Evaluate Z_t = exp(−θW_t − ½θ²t). Give a decimal to three places.",
+    stem: "$\\theta_s = 0.3$ (constant). At $t = 2$, $W_t = 0.5$. Evaluate $Z_t = \\exp\\left(-\\theta W_t - \\frac{1}{2}\\theta^2 t\\right)$. Give a decimal to three places.",
     answerKey: 0.822,
     tolerance: 0.005,
     difficulty: 0.3,
@@ -249,18 +249,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "derivation",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A process satisfies dX_t = 3 dt + 2 dW_t under P. Using dW_t = dW̃_t − θ dt with θ = 1.5, rewrite dX_t entirely in terms of dW̃_t and simplify the drift.",
+    stem: "A process satisfies $dX_t = 3\\,dt + 2\\,dW_t$ under $\\mathbb{P}$. Using $dW_t = d\\tilde{W}_t - \\theta\\,dt$ with $\\theta = 1.5$, rewrite $dX_t$ entirely in terms of $d\\tilde{W}_t$ and simplify the drift.",
     rubric: {
       elements: [
         {
           id: "substitution",
-          description: "Substitutes dW_t = dW̃_t − 1.5 dt into dX_t = 3 dt + 2 dW_t.",
+          description: "Substitutes $dW_t = d\\tilde{W}_t - 1.5\\,dt$ into $dX_t = 3\\,dt + 2\\,dW_t$.",
           weight: 3,
           required: true,
         },
         {
           id: "simplify",
-          description: "Simplifies to dX_t = (3 − 2·1.5) dt + 2 dW̃_t = 0 dt + 2 dW̃_t, i.e. X becomes driftless under Q.",
+          description: "Simplifies to $dX_t = (3 - 2 \\cdot 1.5)\\,dt + 2\\,d\\tilde{W}_t = 0\\,dt + 2\\,d\\tilde{W}_t$, i.e. $X$ becomes driftless under $\\mathbb{Q}$.",
           weight: 4,
           required: true,
         },
@@ -279,7 +279,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "dX_t = 7 dt + 4 dW_t under P. What constant θ makes X driftless under the measure Q built from θ (i.e. what θ satisfies 7 − 4θ = 0)?",
+    stem: "$dX_t = 7\\,dt + 4\\,dW_t$ under $\\mathbb{P}$. What constant $\\theta$ makes $X$ driftless under the measure $\\mathbb{Q}$ built from $\\theta$ (i.e. what $\\theta$ satisfies $7 - 4\\theta = 0$)?",
     answerKey: 1.75,
     tolerance: 0.001,
     difficulty: 0.1,
@@ -296,7 +296,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain, in terms of quadratic variation, why no choice of θ in a Girsanov change of measure can alter a process's volatility.",
+    stem: "Explain, in terms of quadratic variation, why no choice of $\\theta$ in a Girsanov change of measure can alter a process's volatility.",
     rubric: {
       elements: [
         {
@@ -307,7 +307,7 @@ export const stochasticCalculusPricingItems: Item[] = [
         },
         {
           id: "measure-change-mechanism",
-          description: "Explains that Z_t only reweights which paths get which probability — it does not alter what any individual path looks like — so a quantity defined path-by-path cannot be touched.",
+          description: "Explains that $Z_t$ only reweights which paths get which probability — it does not alter what any individual path looks like — so a quantity defined path-by-path cannot be touched.",
           weight: 4,
           required: true,
           misconception: {
@@ -331,29 +331,29 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "derivation",
     cognitive: "explain",
     channels: ["typed", "handwritten"],
-    stem: "Apply Itô's formula to Z_t = exp(Y_t) where Y_t = −∫₀ᵗθₛdWₛ − ½∫₀ᵗθₛ²ds, and show dZ_t = −θ_t Z_t dW_t.",
+    stem: "Apply Itô's formula to $Z_t = \\exp(Y_t)$ where $Y_t = -\\int_0^t \\theta_s\\,dW_s - \\frac{1}{2}\\int_0^t \\theta_s^2\\,ds$, and show $dZ_t = -\\theta_t Z_t\\,dW_t$.",
     rubric: {
       elements: [
         {
           id: "dy",
-          description: "Writes dY_t = −θ_t dW_t − ½θ_t² dt.",
+          description: "Writes $dY_t = -\\theta_t\\,dW_t - \\frac{1}{2}\\theta_t^2\\,dt$.",
           weight: 2,
           required: true,
         },
         {
           id: "ito-on-exp",
-          description: "Applies Itô's lemma to f(y) = e^y: dZ = Z dY + ½Z (dY)², using (dY)² = θ_t² dt (since the dt part contributes nothing to quadratic variation).",
+          description: "Applies Itô's lemma to $f(y) = e^y$: $dZ = Z\\,dY + \\frac{1}{2}Z\\,(dY)^2$, using $(dY)^2 = \\theta_t^2\\,dt$ (since the $dt$ part contributes nothing to quadratic variation).",
           weight: 3,
           required: true,
           misconception: {
             id: "drops-quadratic-variation-of-dy",
-            description: "Omits the ½Z(dY)² correction term, treating exp as if ordinary calculus's chain rule applied to a stochastic process.",
+            description: "Omits the $\\frac{1}{2}Z\\,(dY)^2$ correction term, treating $\\exp$ as if ordinary calculus's chain rule applied to a stochastic process.",
             blameConceptId: "ito-doeblin-formula",
           },
         },
         {
           id: "cancel",
-          description: "Substitutes to get dZ = Z(−θdW − ½θ²dt) + ½Zθ²dt = −θZdW, so the dt terms cancel exactly.",
+          description: "Substitutes to get $dZ = Z\\left(-\\theta\\,dW - \\frac{1}{2}\\theta^2\\,dt\\right) + \\frac{1}{2}Z\\theta^2\\,dt = -\\theta Z\\,dW$, so the $dt$ terms cancel exactly.",
           weight: 3,
           required: true,
         },
@@ -372,23 +372,23 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Z_t always satisfies dZ_t = −θ_t Z_t dW_t, which makes it a local martingale. Why isn't that enough by itself to guarantee Q is a genuine probability measure, and what does Novikov's condition add?",
+    stem: "$Z_t$ always satisfies $dZ_t = -\\theta_t Z_t\\,dW_t$, which makes it a local martingale. Why isn't that enough by itself to guarantee $\\mathbb{Q}$ is a genuine probability measure, and what does Novikov's condition add?",
     rubric: {
       elements: [
         {
           id: "local-vs-true",
-          description: "Explains a local martingale can fail to be a true martingale — its expectation can drift below the starting value, e.g. E[Z_T] < Z_0 = 1 is possible without an extra condition.",
+          description: "Explains a local martingale can fail to be a true martingale — its expectation can drift below the starting value, e.g. $\\mathbb{E}[Z_T] < Z_0 = 1$ is possible without an extra condition.",
           weight: 3,
           required: true,
           misconception: {
             id: "conflates-local-and-true-martingale",
-            description: "Assumes every local martingale automatically satisfies E[Z_t] = 1 for all t, missing the gap between the two notions that Novikov's condition closes.",
+            description: "Assumes every local martingale automatically satisfies $\\mathbb{E}[Z_t] = 1$ for all $t$, missing the gap between the two notions that Novikov's condition closes.",
             blameConceptId: "martingales-continuous-time",
           },
         },
         {
           id: "novikov-closes-gap",
-          description: "States Novikov's integrability condition rules out this failure mode, guaranteeing Z_t is a true martingale so E[Z_T] = 1 and dQ = Z_T dP integrates to 1 over the whole space.",
+          description: "States Novikov's integrability condition rules out this failure mode, guaranteeing $Z_t$ is a true martingale so $\\mathbb{E}[Z_T] = 1$ and $d\\mathbb{Q} = Z_T\\,d\\mathbb{P}$ integrates to $1$ over the whole space.",
           weight: 4,
           required: true,
         },
@@ -407,18 +407,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Girsanov's theorem lets you cancel drift with any adapted θ_t, seemingly without restriction. What restriction does still apply, and why doesn't it contradict the theorem's generality?",
+    stem: "Girsanov's theorem lets you cancel drift with any adapted $\\theta_t$, seemingly without restriction. What restriction does still apply, and why doesn't it contradict the theorem's generality?",
     rubric: {
       elements: [
         {
           id: "integrability-restriction",
-          description: "Identifies that θ must be adapted and satisfy an integrability condition (Novikov's, or at minimum making Z a true martingale) — arbitrary processes are not automatically admissible.",
+          description: "Identifies that $\\theta$ must be adapted and satisfy an integrability condition (Novikov's, or at minimum making $Z$ a true martingale) — arbitrary processes are not automatically admissible.",
           weight: 4,
           required: true,
         },
         {
           id: "not-a-contradiction",
-          description: "Notes the theorem's generality is about which drift shapes are reachable in principle, not a claim that every θ works with no side conditions.",
+          description: "Notes the theorem's generality is about which drift shapes are reachable in principle, not a claim that every $\\theta$ works with no side conditions.",
           weight: 3,
           required: true,
         },
@@ -437,20 +437,20 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "mcq",
     cognitive: "explain",
     channels: ["typed"],
-    stem: "Why must Z_t > 0 almost surely for P and Q to be equivalent (not merely Q absolutely continuous with respect to P)?",
+    stem: "Why must $Z_t > 0$ almost surely for $\\mathbb{P}$ and $\\mathbb{Q}$ to be equivalent (not merely $\\mathbb{Q}$ absolutely continuous with respect to $\\mathbb{P}$)?",
     choices: [
       {
         id: "a",
-        text: "If Z_t could be 0 on a set of positive P-probability, Q would assign that set probability 0 while P does not — breaking the 'agree on null sets in both directions' requirement",
+        text: "If $Z_t$ could be $0$ on a set of positive $\\mathbb{P}$-probability, $\\mathbb{Q}$ would assign that set probability $0$ while $\\mathbb{P}$ does not — breaking the “agree on null sets in both directions” requirement",
         correct: true,
       },
       {
         id: "b",
-        text: "Z_t > 0 is needed only so that Z_t has a well-defined logarithm, which is a technical convenience rather than a probabilistic requirement",
+        text: "$Z_t > 0$ is needed only so that $Z_t$ has a well-defined logarithm, which is a technical convenience rather than a probabilistic requirement",
         correct: false,
         misconception: {
           id: "treats-positivity-as-technicality",
-          description: "Misses that Z_t > 0 is precisely what makes the measure change reversible (Z_t and 1/Z_t both well-defined), which is the actual content of equivalence, not an incidental convenience.",
+          description: "Misses that $Z_t > 0$ is precisely what makes the measure change reversible ($Z_t$ and $1/Z_t$ both well-defined), which is the actual content of equivalence, not an incidental convenience.",
           blameConceptId: "girsanov-theorem",
         },
       },
@@ -469,18 +469,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "Risk-neutral pricing sets θ = (μ − r)/σ specifically. Explain what this choice of θ achieves for the discounted stock price e^(−rt)S_t, using Girsanov's theorem.",
+    stem: "Risk-neutral pricing sets $\\theta = (\\mu - r)/\\sigma$ specifically. Explain what this choice of $\\theta$ achieves for the discounted stock price $e^{-rt}S_t$, using Girsanov's theorem.",
     rubric: {
       elements: [
         {
           id: "identifies-drift-of-discounted-price",
-          description: "Notes the discounted price under P has drift (μ − r)e^(−rt)S_t, nonzero whenever μ ≠ r.",
+          description: "Notes the discounted price under $\\mathbb{P}$ has drift $(\\mu - r)e^{-rt}S_t$, nonzero whenever $\\mu \\ne r$.",
           weight: 3,
           required: true,
         },
         {
           id: "girsanov-cancels-it",
-          description: "Explains that θ = (μ−r)/σ is exactly the value that, under the resulting Q, replaces μ with r in the SDE for S, making the discounted price driftless — a Q-martingale.",
+          description: "Explains that $\\theta = (\\mu - r)/\\sigma$ is exactly the value that, under the resulting $\\mathbb{Q}$, replaces $\\mu$ with $r$ in the SDE for $S$, making the discounted price driftless — a $\\mathbb{Q}$-martingale.",
           weight: 4,
           required: true,
         },
@@ -499,7 +499,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "Girsanov's theorem alone gives existence of a risk-neutral measure Q. What additional theorem is needed to conclude the market is complete (every payoff replicable), and what does that theorem supply that Girsanov's does not?",
+    stem: "Girsanov's theorem alone gives existence of a risk-neutral measure $\\mathbb{Q}$. What additional theorem is needed to conclude the market is complete (every payoff replicable), and what does that theorem supply that Girsanov's does not?",
     rubric: {
       elements: [
         {
@@ -536,16 +536,16 @@ export const stochasticCalculusPricingItems: Item[] = [
     channels: ["typed"],
     stem: "Which of these are genuine consequences of Girsanov's theorem? Select all that apply.",
     choices: [
-      { id: "a", text: "A Brownian motion with drift under P can be turned into a driftless Brownian motion under an equivalent measure Q", correct: true },
-      { id: "b", text: "The quadratic variation of the process is exactly the same under P and Q", correct: true },
-      { id: "c", text: "The choice of θ = (μ−r)/σ is what makes discounted asset prices martingales under Q, the foundation of risk-neutral pricing", correct: true },
+      { id: "a", text: "A Brownian motion with drift under $\\mathbb{P}$ can be turned into a driftless Brownian motion under an equivalent measure $\\mathbb{Q}$", correct: true },
+      { id: "b", text: "The quadratic variation of the process is exactly the same under $\\mathbb{P}$ and $\\mathbb{Q}$", correct: true },
+      { id: "c", text: "The choice of $\\theta = (\\mu - r)/\\sigma$ is what makes discounted asset prices martingales under $\\mathbb{Q}$, the foundation of risk-neutral pricing", correct: true },
       {
         id: "d",
-        text: "Any two probability measures on the same space can be related by some Girsanov-type change with a suitable θ",
+        text: "Any two probability measures on the same space can be related by some Girsanov-type change with a suitable $\\theta$",
         correct: false,
         misconception: {
           id: "overgeneralizes-to-arbitrary-measures",
-          description: "Girsanov's theorem only relates measures built from an exponential martingale of a Brownian-driven θ process; it does not connect arbitrary measure pairs, e.g. ones that differ on which events are null.",
+          description: "Girsanov's theorem only relates measures built from an exponential martingale of a Brownian-driven $\\theta$ process; it does not connect arbitrary measure pairs, e.g. ones that differ on which events are null.",
           blameConceptId: "girsanov-theorem",
         },
       },
@@ -573,7 +573,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "Exponential tilting of a random variable X reweights its density by e^(θx)/M(θ), where M is the MGF, to shift its mean. Explain the structural analogy between this and Girsanov's Z_t.",
+    stem: "Exponential tilting of a random variable $X$ reweights its density by $e^{\\theta x}/M(\\theta)$, where $M$ is the MGF, to shift its mean. Explain the structural analogy between this and Girsanov's $Z_t$.",
     rubric: {
       elements: [
         {
@@ -584,7 +584,7 @@ export const stochasticCalculusPricingItems: Item[] = [
         },
         {
           id: "normalization-role",
-          description: "Notes both need a normalizing piece to keep total probability 1 — the MGF denominator in tilting, the −½∫θ²ds term (making E[Z_T]=1 under Novikov) in Girsanov.",
+          description: "Notes both need a normalizing piece to keep total probability $1$ — the MGF denominator in tilting, the $-\\frac{1}{2}\\int \\theta^2\\,ds$ term (making $\\mathbb{E}[Z_T] = 1$ under Novikov) in Girsanov.",
           weight: 4,
           required: true,
         },
@@ -603,7 +603,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "In the discrete analogue (a simple random walk step ±1 with P(up) = 0.6), reweighting to make the walk a fair (driftless) martingale under Q requires Q(up). If the reweighting must preserve the total probability of each path proportionally to a likelihood ratio, and the fair value is Q(up) = 0.5, what is the ratio Q(up)/P(up)?",
+    stem: "In the discrete analogue (a simple random walk step $\\pm 1$ with $P(\\text{up}) = 0.6$), reweighting to make the walk a fair (driftless) martingale under $\\mathbb{Q}$ requires $\\mathbb{Q}(\\text{up}) = 0.5$. If the reweighting must preserve the total probability of each path proportionally to a likelihood ratio, what is the ratio $\\mathbb{Q}(\\text{up})/P(\\text{up})$?",
     answerKey: 0.8333,
     tolerance: 0.01,
     difficulty: 1.3,
@@ -624,18 +624,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Give the formula for the market price of risk θ used to build the risk-neutral measure Q, and name each symbol.",
+    stem: "Give the formula for the market price of risk $\\theta$ used to build the risk-neutral measure $\\mathbb{Q}$, and name each symbol.",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "States θ = (μ − r)/σ.",
+          description: "States $\\theta = (\\mu - r)/\\sigma$.",
           weight: 3,
           required: true,
         },
         {
           id: "names",
-          description: "Names μ as the real-world drift, r as the riskless rate, σ as volatility.",
+          description: "Names $\\mu$ as the real-world drift, $r$ as the riskless rate, $\\sigma$ as volatility.",
           weight: 3,
           required: true,
         },
@@ -654,18 +654,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "State the risk-neutral pricing formula for a derivative's value V_t at time t.",
+    stem: "State the risk-neutral pricing formula for a derivative's value $V_t$ at time $t$.",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "Gives V_t = E^Q[e^(−r(T−t)) · Payoff | F_t].",
+          description: "Gives $V_t = \\mathbb{E}^{\\mathbb{Q}}\\left[e^{-r(T - t)} \\cdot \\text{Payoff} \\mid \\mathcal{F}_t\\right]$.",
           weight: 4,
           required: true,
         },
         {
           id: "measure",
-          description: "Specifies the expectation is under Q, not the real-world measure P.",
+          description: "Specifies the expectation is under $\\mathbb{Q}$, not the real-world measure $\\mathbb{P}$.",
           weight: 3,
           required: true,
         },
@@ -686,14 +686,14 @@ export const stochasticCalculusPricingItems: Item[] = [
     channels: ["typed"],
     stem: "The fundamental theorem of asset pricing says a market has no arbitrage if and only if:",
     choices: [
-      { id: "a", text: "An equivalent martingale measure Q exists, under which discounted asset prices are martingales", correct: true },
+      { id: "a", text: "An equivalent martingale measure $\\mathbb{Q}$ exists, under which discounted asset prices are martingales", correct: true },
       {
         id: "b",
-        text: "The real-world drift μ equals the riskless rate r for every asset",
+        text: "The real-world drift $\\mu$ equals the riskless rate $r$ for every asset",
         correct: false,
         misconception: {
           id: "assumes-drift-equals-rate",
-          description: "No-arbitrage never requires μ = r under the real-world measure; it only requires the existence of some equivalent measure Q under which discounted prices are martingales.",
+          description: "No-arbitrage never requires $\\mu = r$ under the real-world measure; it only requires the existence of some equivalent measure $\\mathbb{Q}$ under which discounted prices are martingales.",
           blameConceptId: "risk-neutral-pricing",
         },
       },
@@ -721,12 +721,12 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "What market property corresponds to uniqueness of the risk-neutral measure Q (as opposed to mere existence)?",
+    stem: "What market property corresponds to uniqueness of the risk-neutral measure $\\mathbb{Q}$ (as opposed to mere existence)?",
     rubric: {
       elements: [
         {
           id: "completeness",
-          description: "States that uniqueness of Q corresponds to market completeness — every contingent claim can be replicated by trading the underlying and a bond.",
+          description: "States that uniqueness of $\\mathbb{Q}$ corresponds to market completeness — every contingent claim can be replicated by trading the underlying and a bond.",
           weight: 4,
           required: true,
         },
@@ -745,16 +745,16 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "Once the risk-neutral price V_t = E^Q[e^(−r(T−t))Payoff | F_t] is computed, which real-world quantity does the formula still depend on?",
+    stem: "Once the risk-neutral price $V_t = \\mathbb{E}^{\\mathbb{Q}}\\left[e^{-r(T - t)}\\,\\text{Payoff} \\mid \\mathcal{F}_t\\right]$ is computed, which real-world quantity does the formula still depend on?",
     choices: [
-      { id: "a", text: "None of these — the real-world drift μ has been fully absorbed into the definition of Q and θ", correct: true },
+      { id: "a", text: "None of these — the real-world drift $\\mu$ has been fully absorbed into the definition of $\\mathbb{Q}$ and $\\theta$", correct: true },
       {
         id: "b",
-        text: "The real-world drift μ still appears explicitly, since it determines the stock's actual expected growth",
+        text: "The real-world drift $\\mu$ still appears explicitly, since it determines the stock's actual expected growth",
         correct: false,
         misconception: {
           id: "assumes-mu-still-appears",
-          description: "The entire point of the risk-neutral construction is that μ cancels out of the pricing formula once Q is fixed; two investors with different beliefs about μ compute the identical price.",
+          description: "The entire point of the risk-neutral construction is that $\\mu$ cancels out of the pricing formula once $\\mathbb{Q}$ is fixed; two investors with different beliefs about $\\mu$ compute the identical price.",
           blameConceptId: "risk-neutral-pricing",
         },
       },
@@ -773,7 +773,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Under Q, a derivative pays $80 with probability 0.4 and $20 with probability 0.6 in one year. The riskless rate is r = 0.05. Find today's risk-neutral price. Give a decimal to two places.",
+    stem: "Under $\\mathbb{Q}$, a derivative pays $\\$80$ with probability $0.4$ and $\\$20$ with probability $0.6$ in one year. The riskless rate is $r = 0.05$. Find today's risk-neutral price. Give a decimal to two places.",
     answerKey: 42.86,
     tolerance: 0.1,
     difficulty: -0.2,
@@ -789,7 +789,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "μ = 0.10, σ = 0.30, r = 0.02. After the Girsanov shift with θ = (μ−r)/σ, the stock's drift under Q becomes r. What numeric value replaces μ in the SDE under Q?",
+    stem: "$\\mu = 0.10$, $\\sigma = 0.30$, $r = 0.02$. After the Girsanov shift with $\\theta = (\\mu - r)/\\sigma$, the stock's drift under $\\mathbb{Q}$ becomes $r$. What numeric value replaces $\\mu$ in the SDE under $\\mathbb{Q}$?",
     answerKey: 0.02,
     tolerance: 0.0001,
     difficulty: -0.6,
@@ -805,7 +805,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "r = 0.06, T − t = 2 years. Under Q, E[Payoff | F_t] = 150. Compute the risk-neutral price V_t = e^(−r(T−t))·E^Q[Payoff]. Give a decimal to two places.",
+    stem: "$r = 0.06$, $T - t = 2$ years. Under $\\mathbb{Q}$, $\\mathbb{E}[\\text{Payoff} \\mid \\mathcal{F}_t] = 150$. Compute the risk-neutral price $V_t = e^{-r(T - t)} \\cdot \\mathbb{E}^{\\mathbb{Q}}[\\text{Payoff}]$. Give a decimal to two places.",
     answerKey: 132.94,
     tolerance: 0.2,
     difficulty: 0.0,
@@ -821,18 +821,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "derivation",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Under Q, S_T = S_0 exp((r − ½σ²)T + σW̃_T). Write E^Q[S_T] in closed form and simplify it in terms of S_0, r, T (no σ should remain).",
+    stem: "Under $\\mathbb{Q}$, $S_T = S_0 \\exp\\left(\\left(r - \\frac{1}{2}\\sigma^2\\right)T + \\sigma\\tilde{W}_T\\right)$. Write $\\mathbb{E}^{\\mathbb{Q}}[S_T]$ in closed form and simplify it in terms of $S_0$, $r$, $T$ (no $\\sigma$ should remain).",
     rubric: {
       elements: [
         {
           id: "lognormal-mean",
-          description: "Uses E[exp(σW̃_T)] = exp(½σ²T) (the lognormal mean formula) to write E^Q[S_T] = S_0 exp((r−½σ²)T)·exp(½σ²T).",
+          description: "Uses $\\mathbb{E}\\left[\\exp(\\sigma\\tilde{W}_T)\\right] = \\exp\\left(\\frac{1}{2}\\sigma^2 T\\right)$ (the lognormal mean formula) to write $\\mathbb{E}^{\\mathbb{Q}}[S_T] = S_0 \\exp\\left(\\left(r - \\frac{1}{2}\\sigma^2\\right)T\\right) \\cdot \\exp\\left(\\frac{1}{2}\\sigma^2 T\\right)$.",
           weight: 4,
           required: true,
         },
         {
           id: "simplify",
-          description: "Simplifies the σ² terms to cancel, concluding E^Q[S_T] = S_0 e^(rT) — the discounted stock is exactly a martingale.",
+          description: "Simplifies the $\\sigma^2$ terms to cancel, concluding $\\mathbb{E}^{\\mathbb{Q}}[S_T] = S_0 e^{rT}$ — the discounted stock is exactly a martingale.",
           weight: 3,
           required: true,
         },
@@ -852,7 +852,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "A stock trades at S_0 = 50, r = 0.04. Since the discounted price is a Q-martingale, E^Q[S_T] = S_0 e^(rT). Compute E^Q[S_T] for T = 2 years. Give a decimal to two places.",
+    stem: "A stock trades at $S_0 = 50$, $r = 0.04$. Since the discounted price is a $\\mathbb{Q}$-martingale, $\\mathbb{E}^{\\mathbb{Q}}[S_T] = S_0 e^{rT}$. Compute $\\mathbb{E}^{\\mathbb{Q}}[S_T]$ for $T = 2$ years. Give a decimal to two places.",
     answerKey: 54.16,
     tolerance: 0.1,
     difficulty: -0.1,
@@ -868,18 +868,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain mechanically why the real-world drift μ never appears in the final risk-neutral pricing formula, even though the derivation starts from an SDE that includes μ.",
+    stem: "Explain mechanically why the real-world drift $\\mu$ never appears in the final risk-neutral pricing formula, even though the derivation starts from an SDE that includes $\\mu$.",
     rubric: {
       elements: [
         {
           id: "theta-absorbs-mu",
-          description: "Explains θ = (μ−r)/σ is defined using μ specifically so that substituting dW = dW̃ − θdt replaces μ with r in the SDE.",
+          description: "Explains $\\theta = (\\mu - r)/\\sigma$ is defined using $\\mu$ specifically so that substituting $dW = d\\tilde{W} - \\theta\\,dt$ replaces $\\mu$ with $r$ in the SDE.",
           weight: 4,
           required: true,
         },
         {
           id: "same-price-different-beliefs",
-          description: "Notes two investors with different beliefs about μ build different θ and different Q, but the resulting SDE under each investor's own Q always has drift r, so both compute the same price.",
+          description: "Notes two investors with different beliefs about $\\mu$ build different $\\theta$ and different $\\mathbb{Q}$, but the resulting SDE under each investor's own $\\mathbb{Q}$ always has drift $r$, so both compute the same price.",
           weight: 3,
           required: true,
         },
@@ -903,13 +903,13 @@ export const stochasticCalculusPricingItems: Item[] = [
       elements: [
         {
           id: "existence-half",
-          description: "States existence of an equivalent martingale measure Q corresponds to the market having no arbitrage.",
+          description: "States existence of an equivalent martingale measure $\\mathbb{Q}$ corresponds to the market having no arbitrage.",
           weight: 3,
           required: true,
         },
         {
           id: "uniqueness-half",
-          description: "States uniqueness of Q corresponds to market completeness — every claim replicable by trading.",
+          description: "States uniqueness of $\\mathbb{Q}$ corresponds to market completeness — every claim replicable by trading.",
           weight: 4,
           required: true,
         },
@@ -933,13 +933,13 @@ export const stochasticCalculusPricingItems: Item[] = [
       elements: [
         {
           id: "mu-absent",
-          description: "Notes μ never enters V_t = E^Q[e^(−r(T−t))Payoff], so there is no drift parameter in the price to invert for.",
+          description: "Notes $\\mu$ never enters $V_t = \\mathbb{E}^{\\mathbb{Q}}\\left[e^{-r(T - t)}\\,\\text{Payoff}\\right]$, so there is no drift parameter in the price to invert for.",
           weight: 3,
           required: true,
         },
         {
           id: "sigma-present",
-          description: "Notes σ (through the risk-neutral SDE) genuinely determines V_t, so it is the one free parameter the market price can be inverted to recover.",
+          description: "Notes $\\sigma$ (through the risk-neutral SDE) genuinely determines $V_t$, so it is the one free parameter the market price can be inverted to recover.",
           weight: 4,
           required: true,
         },
@@ -958,12 +958,12 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "The Black-Scholes hedging argument finds μ cancels through no-arbitrage and a replicating portfolio. The Girsanov/risk-neutral argument finds the same cancellation through a measure change. Explain why these are 'two routes to the same destination' rather than two different facts that happen to agree.",
+    stem: "The Black–Scholes hedging argument finds $\\mu$ cancels through no-arbitrage and a replicating portfolio. The Girsanov/risk-neutral argument finds the same cancellation through a measure change. Explain why these are “two routes to the same destination” rather than two different facts that happen to agree.",
     rubric: {
       elements: [
         {
           id: "theta-is-the-hedge-mechanism",
-          description: "Explains θ = (μ−r)/σ is precisely the quantity a perfect hedge implicitly computes: reweighting probabilities to make the stock's drift irrelevant is the probabilistic mirror of eliminating risk via a replicating portfolio.",
+          description: "Explains $\\theta = (\\mu - r)/\\sigma$ is precisely the quantity a perfect hedge implicitly computes: reweighting probabilities to make the stock's drift irrelevant is the probabilistic mirror of eliminating risk via a replicating portfolio.",
           weight: 4,
           required: true,
         },
@@ -989,23 +989,23 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain why the risk-neutral pricing formula discounts the payoff by e^(−r(T−t)) rather than simply reporting E^Q[Payoff] directly.",
+    stem: "Explain why the risk-neutral pricing formula discounts the payoff by $e^{-r(T - t)}$ rather than simply reporting $\\mathbb{E}^{\\mathbb{Q}}[\\text{Payoff}]$ directly.",
     rubric: {
       elements: [
         {
           id: "martingale-is-of-discounted-price",
-          description: "Notes it is the *discounted* price e^(−rt)S_t that is a Q-martingale, not the raw price itself, so consistency with that structure requires the discount factor in the pricing formula too.",
+          description: "Notes it is the *discounted* price $e^{-rt}S_t$ that is a $\\mathbb{Q}$-martingale, not the raw price itself, so consistency with that structure requires the discount factor in the pricing formula too.",
           weight: 4,
           required: true,
           misconception: {
             id: "applies-q-martingale-to-undiscounted-price",
-            description: "Treats the raw (undiscounted) price process as already a Q-martingale, missing that the martingale property only holds after discounting by the riskless rate.",
+            description: "Treats the raw (undiscounted) price process as already a $\\mathbb{Q}$-martingale, missing that the martingale property only holds after discounting by the riskless rate.",
             blameConceptId: "risk-neutral-pricing",
           },
         },
         {
           id: "time-value-of-money",
-          description: "Notes a dollar payoff at T is worth less today than at T, and e^(−r(T−t)) is exactly the factor that converts a future certain cash flow to its present value.",
+          description: "Notes a dollar payoff at $T$ is worth less today than at $T$, and $e^{-r(T - t)}$ is exactly the factor that converts a future certain cash flow to its present value.",
           weight: 3,
           required: true,
         },
@@ -1024,7 +1024,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "The Black-Scholes formula can be derived either by solving a PDE, or as E^Q[e^(−r(T−t))max(S_T−K,0)] directly. Which theorem states these two routes always give the same answer, and why?",
+    stem: "The Black–Scholes formula can be derived either by solving a PDE, or as $\\mathbb{E}^{\\mathbb{Q}}\\left[e^{-r(T - t)}\\max(S_T - K, 0)\\right]$ directly. Which theorem states these two routes always give the same answer, and why?",
     rubric: {
       elements: [
         {
@@ -1056,16 +1056,16 @@ export const stochasticCalculusPricingItems: Item[] = [
     channels: ["typed"],
     stem: "Which statements about risk-neutral pricing are correct? Select all that apply.",
     choices: [
-      { id: "a", text: "Under Q, every traded asset's discounted price is a martingale", correct: true },
-      { id: "b", text: "A derivative's price does not depend on the real-world drift μ once Q is fixed", correct: true },
-      { id: "c", text: "New derivatives on assets already priced under Q are priced by the same discounted-expectation formula", correct: true },
+      { id: "a", text: "Under $\\mathbb{Q}$, every traded asset's discounted price is a martingale", correct: true },
+      { id: "b", text: "A derivative's price does not depend on the real-world drift $\\mu$ once $\\mathbb{Q}$ is fixed", correct: true },
+      { id: "c", text: "New derivatives on assets already priced under $\\mathbb{Q}$ are priced by the same discounted-expectation formula", correct: true },
       {
         id: "d",
-        text: "Under Q, the expected return on every asset equals its real-world expected return μ",
+        text: "Under $\\mathbb{Q}$, the expected return on every asset equals its real-world expected return $\\mu$",
         correct: false,
         misconception: {
           id: "confuses-q-and-p-expected-returns",
-          description: "Under Q every asset's expected return is the riskless rate r, not its real-world μ — that replacement of μ by r is the entire point of the measure change.",
+          description: "Under $\\mathbb{Q}$ every asset's expected return is the riskless rate $r$, not its real-world $\\mu$ — that replacement of $\\mu$ by $r$ is the entire point of the measure change.",
           blameConceptId: "risk-neutral-pricing",
         },
       },
@@ -1075,7 +1075,7 @@ export const stochasticCalculusPricingItems: Item[] = [
         correct: false,
         misconception: {
           id: "misreads-risk-neutral-as-literal-claim",
-          description: "'Risk-neutral' names the pricing measure Q, a mathematical device — it makes no claim that real investors are indifferent to risk under P.",
+          description: "“Risk-neutral” names the pricing measure $\\mathbb{Q}$, a mathematical device — it makes no claim that real investors are indifferent to risk under $\\mathbb{P}$.",
           blameConceptId: "risk-neutral-pricing",
         },
       },
@@ -1093,7 +1093,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "Two stocks have (μ₁,σ₁) = (0.15, 0.4) and (μ₂,σ₂) = (0.09, 0.2), with r = 0.03. For a single Q to price both consistently, both must yield the same θ. Compute θ from stock 1's data, and verify it matches stock 2's — report the common θ value.",
+    stem: "Two stocks have $(\\mu_1, \\sigma_1) = (0.15, 0.4)$ and $(\\mu_2, \\sigma_2) = (0.09, 0.2)$, with $r = 0.03$. For a single $\\mathbb{Q}$ to price both consistently, both must yield the same $\\theta$. Compute $\\theta$ from stock $1$'s data, and verify it matches stock $2$'s — report the common $\\theta$ value.",
     answerKey: 0.3,
     tolerance: 0.01,
     difficulty: 1.3,
@@ -1109,17 +1109,17 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "In an incomplete market, multiple equivalent martingale measures Q can exist. What does this imply about the price of a derivative that cannot be perfectly replicated?",
+    stem: "In an incomplete market, multiple equivalent martingale measures $\\mathbb{Q}$ can exist. What does this imply about the price of a derivative that cannot be perfectly replicated?",
     rubric: {
       elements: [
         {
           id: "no-unique-price",
-          description: "Explains that different choices of Q give different (but all arbitrage-free) prices, so no-arbitrage alone no longer pins down a single price for the unreplicable claim.",
+          description: "Explains that different choices of $\\mathbb{Q}$ give different (but all arbitrage-free) prices, so no-arbitrage alone no longer pins down a single price for the unreplicable claim.",
           weight: 4,
           required: true,
           misconception: {
             id: "assumes-price-still-unique",
-            description: "Assumes the fundamental theorem's existence half is enough to guarantee a single price even when completeness (uniqueness of Q) fails.",
+            description: "Assumes the fundamental theorem's existence half is enough to guarantee a single price even when completeness (uniqueness of $\\mathbb{Q}$) fails.",
             blameConceptId: "risk-neutral-pricing",
           },
         },
@@ -1145,18 +1145,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "The risk-neutral measure Q above uses the money-market account e^(rt) as numeraire. Explain, at a high level, why changing to a different numeraire (e.g. another traded asset) also changes which measure makes discounted prices martingales, while never changing the actual price V_t of a claim.",
+    stem: "The risk-neutral measure $\\mathbb{Q}$ above uses the money-market account $e^{rt}$ as numéraire. Explain, at a high level, why changing to a different numéraire (e.g. another traded asset) also changes which measure makes discounted prices martingales, while never changing the actual price $V_t$ of a claim.",
     rubric: {
       elements: [
         {
           id: "numeraire-defines-measure",
-          description: "Explains each choice of numeraire asset N_t defines its own equivalent martingale measure (via a Girsanov-style change), under which prices divided by N_t are martingales.",
+          description: "Explains each choice of numéraire asset $N_t$ defines its own equivalent martingale measure (via a Girsanov-style change), under which prices divided by $N_t$ are martingales.",
           weight: 4,
           required: true,
         },
         {
           id: "price-invariant",
-          description: "States the actual dollar price V_t is unchanged by the choice of numeraire — only the intermediate computation (which measure, which discounting) differs, since all consistent choices must value the same replicable payoff identically.",
+          description: "States the actual dollar price $V_t$ is unchanged by the choice of numéraire — only the intermediate computation (which measure, which discounting) differs, since all consistent choices must value the same replicable payoff identically.",
           weight: 3,
           required: true,
         },
@@ -1185,13 +1185,13 @@ export const stochasticCalculusPricingItems: Item[] = [
       elements: [
         {
           id: "formula",
-          description: "States M_t = M_0 + ∫₀ᵗ Δₛ dWₛ for some adapted, square-integrable Δ_s.",
+          description: "States $M_t = M_0 + \\int_0^t \\Delta_s\\,dW_s$ for some adapted, square-integrable $\\Delta_s$.",
           weight: 4,
           required: true,
         },
         {
           id: "which-martingales",
-          description: "Specifies this holds for every square-integrable martingale M_t adapted to the filtration generated by W.",
+          description: "Specifies this holds for every square-integrable martingale $M_t$ adapted to the filtration generated by $W$.",
           weight: 3,
           required: true,
         },
@@ -1210,12 +1210,12 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "In what sense is the representing process Δ_s in the martingale representation theorem unique?",
+    stem: "In what sense is the representing process $\\Delta_s$ in the martingale representation theorem unique?",
     rubric: {
       elements: [
         {
           id: "up-to-measure-zero",
-          description: "States that two representing processes agree except on a set of (time × probability) measure zero.",
+          description: "States that two representing processes agree except on a set of (time $\\times$ probability) measure zero.",
           weight: 4,
           required: true,
         },
@@ -1234,9 +1234,9 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The martingale representation theorem fails for a martingale adapted to a filtration that also carries a Poisson jump process independent of W. Why?",
+    stem: "The martingale representation theorem fails for a martingale adapted to a filtration that also carries a Poisson jump process independent of $W$. Why?",
     choices: [
-      { id: "a", text: "The filtration then contains information beyond what W reveals, so a martingale can depend on the jump process in a way no Itô integral against dW alone can capture", correct: true },
+      { id: "a", text: "The filtration then contains information beyond what $W$ reveals, so a martingale can depend on the jump process in a way no Itô integral against $dW$ alone can capture", correct: true },
       {
         id: "b",
         text: "Because Poisson processes are not martingales themselves",
@@ -1273,14 +1273,14 @@ export const stochasticCalculusPricingItems: Item[] = [
     channels: ["typed"],
     stem: "The martingale representation theorem is best described as:",
     choices: [
-      { id: "a", text: "A pure existence statement — it guarantees Δ_s exists but does not give a closed-form recipe for finding it", correct: true },
+      { id: "a", text: "A pure existence statement — it guarantees $\\Delta_s$ exists but does not give a closed-form recipe for finding it", correct: true },
       {
         id: "b",
-        text: "A constructive formula that always writes down Δ_s in closed form as a function of the martingale M",
+        text: "A constructive formula that always writes down $\\Delta_s$ in closed form as a function of the martingale $M$",
         correct: false,
         misconception: {
           id: "treats-theorem-as-constructive",
-          description: "The theorem's content is existence and uniqueness; computing Δ_s explicitly is a separate problem, solved case-by-case via tools like the Clark-Ocone formula or a PDE.",
+          description: "The theorem's content is existence and uniqueness; computing $\\Delta_s$ explicitly is a separate problem, solved case-by-case via tools like the Clark–Ocone formula or a PDE.",
           blameConceptId: "martingale-representation-theorem",
         },
       },
@@ -1298,12 +1298,12 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "The theorem is described as 'a statement about the filtration, not about M.' Explain what this means.",
+    stem: "The theorem is described as “a statement about the filtration, not about $M$.” Explain what this means.",
     rubric: {
       elements: [
         {
           id: "filtration-content",
-          description: "States that because F_t contains no information beyond what W itself reveals, there is nothing left for any martingale to depend on except the path of W.",
+          description: "States that because $\\mathcal{F}_t$ contains no information beyond what $W$ itself reveals, there is nothing left for any martingale to depend on except the path of $W$.",
           weight: 4,
           required: true,
         },
@@ -1334,7 +1334,7 @@ export const stochasticCalculusPricingItems: Item[] = [
       elements: [
         {
           id: "names-ito-integral-martingale-property",
-          description: "Names the fact (from the Itô integral article) that ∫₀ᵗΔₛdWₛ is always a martingale for adapted, square-integrable Δ.",
+          description: "Names the fact (from the Itô integral article) that $\\int_0^t \\Delta_s\\,dW_s$ is always a martingale for adapted, square-integrable $\\Delta$.",
           weight: 4,
           required: true,
         },
@@ -1353,18 +1353,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "The Black-Scholes hedge Δ = ∂V/∂S comes from differentiating a known closed-form price. State how the martingale representation theorem generalizes this to a claim with no closed-form price.",
+    stem: "The Black–Scholes hedge $\\Delta = \\frac{\\partial V}{\\partial S}$ comes from differentiating a known closed-form price. State how the martingale representation theorem generalizes this to a claim with no closed-form price.",
     rubric: {
       elements: [
         {
           id: "discounted-price-is-martingale",
-          description: "Notes that the discounted price of any attainable claim, e^(−rt)V_t, is a Q-martingale.",
+          description: "Notes that the discounted price of any attainable claim, $e^{-rt}V_t$, is a $\\mathbb{Q}$-martingale.",
           weight: 3,
           required: true,
         },
         {
           id: "theorem-supplies-delta",
-          description: "States the theorem then guarantees some adapted Δ_t exists with e^(−rt)V_t = V_0 + ∫₀ᵗΔₛ d(e^(−rs)S_s), which is a replicating strategy, whether or not V has a closed form.",
+          description: "States the theorem then guarantees some adapted $\\Delta_t$ exists with $e^{-rt}V_t = V_0 + \\int_0^t \\Delta_s\\,d\\left(e^{-rs}S_s\\right)$, which is a replicating strategy, whether or not $V$ has a closed form.",
           weight: 4,
           required: true,
         },
@@ -1383,7 +1383,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "M_t = 3∫₀ᵗ W_s dW_s + 2W_t is a martingale representable as M_0 + ∫₀ᵗΔ_s dW_s. Using Δ_s = 3W_s + 2, evaluate Δ_s at s such that W_s = 4.",
+    stem: "$M_t = 3\\int_0^t W_s\\,dW_s + 2W_t$ is a martingale representable as $M_0 + \\int_0^t \\Delta_s\\,dW_s$. Using $\\Delta_s = 3W_s + 2$, evaluate $\\Delta_s$ at $s$ such that $W_s = 4$.",
     answerKey: 14,
     tolerance: 0.001,
     difficulty: 0.3,
@@ -1399,9 +1399,9 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "mcq",
     cognitive: "apply",
     channels: ["typed"],
-    stem: "Which of these, if it were a martingale adapted to the Brownian filtration, would automatically be representable as M_0 + ∫Δ_s dW_s by the theorem?",
+    stem: "Which of these, if it were a martingale adapted to the Brownian filtration, would automatically be representable as $M_0 + \\int \\Delta_s\\,dW_s$ by the theorem?",
     choices: [
-      { id: "a", text: "Any square-integrable martingale M_t adapted to F_t = σ(W_s : s ≤ t)", correct: true },
+      { id: "a", text: "Any square-integrable martingale $M_t$ adapted to $\\mathcal{F}_t = \\sigma(W_s : s \\le t)$", correct: true },
       {
         id: "b",
         text: "Only martingales that are themselves already written as an explicit Itô integral",
@@ -1426,7 +1426,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "A single-Brownian-driver market has a risk-neutral measure Q (from Girsanov's theorem). Explain what additionally must be true, using the martingale representation theorem, to conclude the market is complete.",
+    stem: "A single-Brownian-driver market has a risk-neutral measure $\\mathbb{Q}$ (from Girsanov's theorem). Explain what additionally must be true, using the martingale representation theorem, to conclude the market is complete.",
     rubric: {
       elements: [
         {
@@ -1437,7 +1437,7 @@ export const stochasticCalculusPricingItems: Item[] = [
         },
         {
           id: "conclusion",
-          description: "Concludes every discounted claim price (a Q-martingale) is thus an Itô integral, giving a replicating strategy for every claim — i.e. completeness.",
+          description: "Concludes every discounted claim price (a $\\mathbb{Q}$-martingale) is thus an Itô integral, giving a replicating strategy for every claim — i.e. completeness.",
           weight: 4,
           required: true,
         },
@@ -1462,7 +1462,7 @@ export const stochasticCalculusPricingItems: Item[] = [
       elements: [
         {
           id: "no-extra-information",
-          description: "Explains F_t = σ(W_s : s ≤ t) contains exactly the information revealed by W and nothing else, so a martingale in it has no other source to draw dependence from.",
+          description: "Explains $\\mathcal{F}_t = \\sigma(W_s : s \\le t)$ contains exactly the information revealed by $W$ and nothing else, so a martingale in it has no other source to draw dependence from.",
           weight: 4,
           required: true,
         },
@@ -1527,13 +1527,13 @@ export const stochasticCalculusPricingItems: Item[] = [
       elements: [
         {
           id: "existence-is-abstract",
-          description: "Notes the theorem guarantees Δ_t exists abstractly, without constructing it — knowing something exists is weaker than having a formula for it.",
+          description: "Notes the theorem guarantees $\\Delta_t$ exists abstractly, without constructing it — knowing something exists is weaker than having a formula for it.",
           weight: 3,
           required: true,
         },
         {
           id: "names-a-computational-tool",
-          description: "Names at least one tool used to compute Δ_t in practice: the Clark-Ocone formula, solving a PDE and differentiating, or Monte Carlo Greeks.",
+          description: "Names at least one tool used to compute $\\Delta_t$ in practice: the Clark–Ocone formula, solving a PDE and differentiating, or Monte Carlo Greeks.",
           weight: 4,
           required: true,
         },
@@ -1552,18 +1552,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain how the Itô isometry is used to prove uniqueness of the representing process Δ_s (up to measure zero).",
+    stem: "Explain how the Itô isometry is used to prove uniqueness of the representing process $\\Delta_s$ (up to measure zero).",
     rubric: {
       elements: [
         {
           id: "difference-of-two-reps",
-          description: "Considers two representations Δ and Δ′ of the same M, so ∫₀ᵗ(Δₛ−Δ′ₛ)dWₛ = 0 for all t.",
+          description: "Considers two representations $\\Delta$ and $\\Delta'$ of the same $M$, so $\\int_0^t (\\Delta_s - \\Delta'_s)\\,dW_s = 0$ for all $t$.",
           weight: 3,
           required: true,
         },
         {
           id: "isometry-forces-zero",
-          description: "Applies the Itô isometry: E[(∫(Δ−Δ′)dW)²] = E[∫(Δ−Δ′)²ds] = 0 forces Δ = Δ′ except on a set of measure zero, since a nonnegative integral is zero only if the integrand is zero almost everywhere.",
+          description: "Applies the Itô isometry: $\\mathbb{E}\\left[\\left(\\int (\\Delta - \\Delta')\\,dW\\right)^2\\right] = \\mathbb{E}\\left[\\int (\\Delta - \\Delta')^2\\,ds\\right] = 0$ forces $\\Delta = \\Delta'$ except on a set of measure zero, since a nonnegative integral is zero only if the integrand is zero almost everywhere.",
           weight: 4,
           required: true,
         },
@@ -1583,18 +1583,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "The theorem requires M_t to be square-integrable (E[M_t²] < ∞). Explain, using the Itô isometry, why this condition is exactly what is needed for the representing Δ_s to make sense.",
+    stem: "The theorem requires $M_t$ to be square-integrable ($\\mathbb{E}[M_t^2] < \\infty$). Explain, using the Itô isometry, why this condition is exactly what is needed for the representing $\\Delta_s$ to make sense.",
     rubric: {
       elements: [
         {
           id: "isometry-needs-finite-second-moment",
-          description: "Notes the Itô isometry E[(∫Δ dW)²] = E[∫Δ² ds] requires the right-hand side to be finite for the integral to be well-defined as an L² object, which ties directly to M_t having finite second moment.",
+          description: "Notes the Itô isometry $\\mathbb{E}\\left[\\left(\\int \\Delta\\,dW\\right)^2\\right] = \\mathbb{E}\\left[\\int \\Delta^2\\,ds\\right]$ requires the right-hand side to be finite for the integral to be well-defined as an $L^2$ object, which ties directly to $M_t$ having finite second moment.",
           weight: 4,
           required: true,
         },
         {
           id: "without-it-integral-ill-defined",
-          description: "Explains that without square-integrability, the class of admissible integrands Δ (and hence the Itô integral construction itself) is not guaranteed to be well-defined, so the representation could not even be stated rigorously.",
+          description: "Explains that without square-integrability, the class of admissible integrands $\\Delta$ (and hence the Itô integral construction itself) is not guaranteed to be well-defined, so the representation could not even be stated rigorously.",
           weight: 3,
           required: true,
         },
@@ -1618,13 +1618,13 @@ export const stochasticCalculusPricingItems: Item[] = [
       elements: [
         {
           id: "girsanov-contribution",
-          description: "States Girsanov's theorem supplies existence of a risk-neutral measure Q.",
+          description: "States Girsanov's theorem supplies existence of a risk-neutral measure $\\mathbb{Q}$.",
           weight: 3,
           required: true,
         },
         {
           id: "mrt-contribution",
-          description: "States the martingale representation theorem then supplies, for that Q, an explicit replicating strategy for every claim (since every Q-martingale in the Brownian filtration is an Itô integral).",
+          description: "States the martingale representation theorem then supplies, for that $\\mathbb{Q}$, an explicit replicating strategy for every claim (since every $\\mathbb{Q}$-martingale in the Brownian filtration is an Itô integral).",
           weight: 4,
           required: true,
         },
@@ -1690,11 +1690,11 @@ export const stochasticCalculusPricingItems: Item[] = [
       },
       {
         id: "e",
-        text: "The representing process Δ_s is always computable in closed form once M is known",
+        text: "The representing process $\\Delta_s$ is always computable in closed form once $M$ is known",
         correct: false,
         misconception: {
           id: "assumes-closed-form-always-available",
-          description: "The theorem guarantees existence but says nothing about a closed form; computing Δ_s explicitly may require separate machinery like the Clark-Ocone formula.",
+          description: "The theorem guarantees existence but says nothing about a closed form; computing $\\Delta_s$ explicitly may require separate machinery like the Clark–Ocone formula.",
           blameConceptId: "martingale-representation-theorem",
         },
       },
@@ -1712,7 +1712,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "Two candidate representations give Δ_s − Δ′_s = c (a nonzero constant) on [0,5] with positive probability, and 0 elsewhere. By the Itô isometry argument, E[(∫₀⁵(Δ−Δ′)dW)²] = 5c². For uniqueness to hold (this must equal 0), what must c equal?",
+    stem: "Two candidate representations give $\\Delta_s - \\Delta'_s = c$ (a nonzero constant) on $[0, 5]$ with positive probability, and $0$ elsewhere. By the Itô isometry argument, $\\mathbb{E}\\left[\\left(\\int_0^5 (\\Delta - \\Delta')\\,dW\\right)^2\\right] = 5c^2$. For uniqueness to hold (this must equal $0$), what must $c$ equal?",
     answerKey: 0,
     tolerance: 1e-9,
     difficulty: 1.1,
@@ -1729,18 +1729,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "The Clark-Ocone formula gives an explicit expression for the representing process Δ_s of M_t = E[F | F_t] in terms of a Malliavin derivative of F. Explain, at a conceptual level, why such a formula is exactly what the martingale representation theorem's existence proof leaves as unfinished business.",
+    stem: "The Clark–Ocone formula gives an explicit expression for the representing process $\\Delta_s$ of $M_t = \\mathbb{E}[F \\mid \\mathcal{F}_t]$ in terms of a Malliavin derivative of $F$. Explain, at a conceptual level, why such a formula is exactly what the martingale representation theorem's existence proof leaves as unfinished business.",
     rubric: {
       elements: [
         {
           id: "gap-identified",
-          description: "Notes MRT proves some Δ_s exists but gives no formula, which is precisely the gap between 'a hedge exists' and 'here is the hedge.'",
+          description: "Notes the martingale representation theorem proves some $\\Delta_s$ exists but gives no formula, which is precisely the gap between “a hedge exists” and “here is the hedge.”",
           weight: 4,
           required: true,
         },
         {
           id: "clark-ocone-fills-gap",
-          description: "Explains Clark-Ocone is one concrete answer to that leftover problem for a specific class of F, turning existence into an explicit (if more advanced) computation.",
+          description: "Explains Clark–Ocone is one concrete answer to that leftover problem for a specific class of $F$, turning existence into an explicit (if more advanced) computation.",
           weight: 3,
           required: true,
         },
@@ -1764,12 +1764,12 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "For X_t solving dX_t = μ(X_t,t)dt + σ(X_t,t)dW_t, write the conditional expectation u(x,t) that the Feynman-Kac theorem connects to a PDE.",
+    stem: "For $X_t$ solving $dX_t = \\mu(X_t, t)\\,dt + \\sigma(X_t, t)\\,dW_t$, write the conditional expectation $u(x, t)$ that the Feynman–Kac theorem connects to a PDE.",
     rubric: {
       elements: [
         {
           id: "formula",
-          description: "Gives u(x,t) = E[e^(−∫ₜᵀ r(Xₛ,s)ds) g(X_T) | X_t = x].",
+          description: "Gives $u(x, t) = \\mathbb{E}\\left[e^{-\\int_t^T r(X_s, s)\\,ds}\\,g(X_T) \\mid X_t = x\\right]$.",
           weight: 4,
           required: true,
         },
@@ -1788,18 +1788,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Write the Feynman-Kac PDE that u(x,t) solves, including its terminal condition.",
+    stem: "Write the Feynman–Kac PDE that $u(x, t)$ solves, including its terminal condition.",
     rubric: {
       elements: [
         {
           id: "pde",
-          description: "Gives u_t + μ(x,t)u_x + ½σ(x,t)²u_xx − r(x,t)u = 0.",
+          description: "Gives $u_t + \\mu(x, t)u_x + \\frac{1}{2}\\sigma(x, t)^2 u_{xx} - r(x, t)u = 0$.",
           weight: 4,
           required: true,
         },
         {
           id: "terminal",
-          description: "States the terminal condition u(x,T) = g(x), not an initial condition.",
+          description: "States the terminal condition $u(x, T) = g(x)$, not an initial condition.",
           weight: 3,
           required: true,
         },
@@ -1818,16 +1818,16 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "mcq",
     cognitive: "recall",
     channels: ["typed"],
-    stem: "The Feynman-Kac PDE's condition u(x,T) = g(x) is imposed at time T, the end of the horizon. Why is this a 'terminal' rather than 'initial' condition?",
+    stem: "The Feynman–Kac PDE's condition $u(x, T) = g(x)$ is imposed at time $T$, the end of the horizon. Why is this a “terminal” rather than “initial” condition?",
     choices: [
-      { id: "a", text: "Because u(x,t) is defined by looking forward from t to a fixed future payoff at T, so the known value sits at the end of the time interval, and the PDE must be solved backward from T to t", correct: true },
+      { id: "a", text: "Because $u(x, t)$ is defined by looking forward from $t$ to a fixed future payoff at $T$, so the known value sits at the end of the time interval, and the PDE must be solved backward from $T$ to $t$", correct: true },
       {
         id: "b",
-        text: "It is only convention — the equation would be solved identically forward from t=0 if rewritten",
+        text: "It is only convention — the equation would be solved identically forward from $t = 0$ if rewritten",
         correct: false,
         misconception: {
           id: "treats-direction-as-arbitrary",
-          description: "The backward direction is forced by u's definition as a conditional expectation of a payoff fixed at the future time T; solving forward from an assumed u(x,0) is not the problem this equation poses.",
+          description: "The backward direction is forced by $u$'s definition as a conditional expectation of a payoff fixed at the future time $T$; solving forward from an assumed $u(x, 0)$ is not the problem this equation poses.",
           blameConceptId: "feynman-kac-theorem",
         },
       },
@@ -1847,16 +1847,16 @@ export const stochasticCalculusPricingItems: Item[] = [
     channels: ["typed"],
     stem: "In specializing Feynman-Kac to Black-Scholes-Merton, which substitutions are correct? Select all that apply.",
     choices: [
-      { id: "a", text: "X_t is the stock price S_t under the risk-neutral measure Q", correct: true },
-      { id: "b", text: "μ(x,t) is set to rS (the risk-neutral drift), not the real-world μS", correct: true },
-      { id: "c", text: "g(x) is the option's payoff at maturity, e.g. max(x−K,0) for a call", correct: true },
+      { id: "a", text: "$X_t$ is the stock price $S_t$ under the risk-neutral measure $\\mathbb{Q}$", correct: true },
+      { id: "b", text: "$\\mu(x, t)$ is set to $rx$ (the risk-neutral drift), not the real-world $\\mu x$", correct: true },
+      { id: "c", text: "$g(x)$ is the option's payoff at maturity, e.g. $\\max(x - K, 0)$ for a call", correct: true },
       {
         id: "d",
-        text: "r(x,t) is set to the stock's volatility σ",
+        text: "$r(x, t)$ is set to the stock's volatility $\\sigma$",
         correct: false,
         misconception: {
           id: "confuses-rate-and-volatility-substitution",
-          description: "r(x,t) in the Feynman-Kac PDE plays the role of the discounting rate, matched to the constant riskless rate r, not to the volatility σ (which instead enters through σ(x,t) = σS).",
+          description: "$r(x, t)$ in the Feynman–Kac PDE plays the role of the discounting rate, matched to the constant riskless rate $r$, not to the volatility $\\sigma$ (which instead enters through $\\sigma(x, t) = \\sigma x$).",
           blameConceptId: "feynman-kac-theorem",
         },
       },
@@ -1874,7 +1874,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "recall",
     channels: ["typed", "spoken"],
-    stem: "Name the two computational routes Feynman-Kac's theorem shows compute the identical quantity u(x,t).",
+    stem: "Name the two computational routes Feynman–Kac's theorem shows compute the identical quantity $u(x, t)$.",
     rubric: {
       elements: [
         {
@@ -1885,7 +1885,7 @@ export const stochasticCalculusPricingItems: Item[] = [
         },
         {
           id: "monte-carlo-route",
-          description: "Names simulating paths of X forward and averaging the discounted payoff (Monte Carlo).",
+          description: "Names simulating paths of $X$ forward and averaging the discounted payoff (Monte Carlo).",
           weight: 3,
           required: true,
         },
@@ -1905,12 +1905,12 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Substitute μ(x,t) = rx, σ(x,t) = σx, r(x,t) = r, g(x) = max(x−K,0) into the general Feynman-Kac PDE and write out the resulting equation for u(x,t) = V(S,t).",
+    stem: "Substitute $\\mu(x, t) = rx$, $\\sigma(x, t) = \\sigma x$, $r(x, t) = r$, $g(x) = \\max(x - K, 0)$ into the general Feynman–Kac PDE and write out the resulting equation for $u(x, t) = V(S, t)$.",
     rubric: {
       elements: [
         {
           id: "substituted-pde",
-          description: "Writes V_t + rS V_S + ½σ²S²V_SS − rV = 0.",
+          description: "Writes $V_t + rSV_S + \\frac{1}{2}\\sigma^2 S^2 V_{SS} - rV = 0$.",
           weight: 4,
           required: true,
         },
@@ -1935,7 +1935,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "r(X_s,s) = 0.05 constant. Compute the discount factor e^(−∫ₜᵀ r ds) for T − t = 3 years. Give a decimal to three places.",
+    stem: "$r(X_s, s) = 0.05$ constant. Compute the discount factor $e^{-\\int_t^T r\\,ds}$ for $T - t = 3$ years. Give a decimal to three places.",
     answerKey: 0.861,
     tolerance: 0.005,
     difficulty: -0.3,
@@ -1951,18 +1951,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "derivation",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "Define Y_t = e^(−∫₀ᵗr ds)u(X_t,t) with r constant. Apply Itô's formula to Y_t and identify the dt-coefficient in terms of u_t, u_x, u_xx and the SDE's μ, σ.",
+    stem: "Define $Y_t = e^{-\\int_0^t r\\,ds}\\,u(X_t, t)$ with $r$ constant. Apply Itô's formula to $Y_t$ and identify the $dt$-coefficient in terms of $u_t$, $u_x$, $u_{xx}$ and the SDE's $\\mu$, $\\sigma$.",
     rubric: {
       elements: [
         {
           id: "product-rule",
-          description: "Applies the product rule to the deterministic discount factor times u(X_t,t), plus Itô's formula on u itself: dY = e^(−rt)[−ru dt + u_t dt + u_x dX + ½u_xx(dX)²].",
+          description: "Applies the product rule to the deterministic discount factor times $u(X_t, t)$, plus Itô's formula on $u$ itself: $dY = e^{-rt}\\left[-ru\\,dt + u_t\\,dt + u_x\\,dX + \\frac{1}{2}u_{xx}(dX)^2\\right]$.",
           weight: 4,
           required: true,
         },
         {
           id: "collect-dt",
-          description: "Collects the dt-coefficient as e^(−rt)[u_t + μu_x + ½σ²u_xx − ru].",
+          description: "Collects the $dt$-coefficient as $e^{-rt}\\left[u_t + \\mu u_x + \\frac{1}{2}\\sigma^2 u_{xx} - ru\\right]$.",
           weight: 3,
           required: true,
         },
@@ -1981,7 +1981,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "apply",
     channels: ["typed", "handwritten"],
-    stem: "For the simplified case μ=0, σ=1, r=0, g(x)=x², a solution is u(x,t) = x² + (T−t). Verify the PDE u_t + ½u_xx = 0 by computing u_t + ½u_xx at any (x,t) — report the value (which should be 0).",
+    stem: "For the simplified case $\\mu = 0$, $\\sigma = 1$, $r = 0$, $g(x) = x^2$, a solution is $u(x, t) = x^2 + (T - t)$. Verify the PDE $u_t + \\frac{1}{2}u_{xx} = 0$ by computing $u_t + \\frac{1}{2}u_{xx}$ at any $(x, t)$ — report the value (which should be $0$).",
     answerKey: 0,
     tolerance: 1e-9,
     difficulty: 0.6,
@@ -1997,18 +1997,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "apply",
     channels: ["typed", "spoken"],
-    stem: "Once dY_t has dt-coefficient e^(−rt)[u_t + μu_x + ½σ²u_xx − ru], explain why setting this coefficient to exactly zero is the step that produces the Feynman-Kac PDE.",
+    stem: "Once $dY_t$ has $dt$-coefficient $e^{-rt}\\left[u_t + \\mu u_x + \\frac{1}{2}\\sigma^2 u_{xx} - ru\\right]$, explain why setting this coefficient to exactly zero is the step that produces the Feynman–Kac PDE.",
     rubric: {
       elements: [
         {
           id: "yt-is-martingale",
-          description: "States Y_t is a martingale (by the tower property, since Y_t = E[Y_T | F_t] up to relabeling), and a martingale has zero drift by definition.",
+          description: "States $Y_t$ is a martingale (by the tower property, since $Y_t = \\mathbb{E}[Y_T \\mid \\mathcal{F}_t]$ up to relabeling), and a martingale has zero drift by definition.",
           weight: 4,
           required: true,
         },
         {
           id: "sets-pde",
-          description: "Concludes u_t + μu_x + ½σ²u_xx − ru = 0 is exactly the Feynman-Kac PDE.",
+          description: "Concludes $u_t + \\mu u_x + \\frac{1}{2}\\sigma^2 u_{xx} - ru = 0$ is exactly the Feynman–Kac PDE.",
           weight: 3,
           required: true,
         },
@@ -2028,18 +2028,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Explain, using the tower property of conditional expectation, why Y_t = e^(−∫₀ᵗr ds)u(X_t,t) is a martingale.",
+    stem: "Explain, using the tower property of conditional expectation, why $Y_t = e^{-\\int_0^t r\\,ds}\\,u(X_t, t)$ is a martingale.",
     rubric: {
       elements: [
         {
           id: "u-is-conditional-expectation",
-          description: "Recalls u(X_t,t) = E[e^(−∫ₜᵀr ds)g(X_T) | F_t], so Y_t = E[e^(−∫₀ᵀr ds)g(X_T) | F_t] after absorbing the earlier discount factor.",
+          description: "Recalls $u(X_t, t) = \\mathbb{E}\\left[e^{-\\int_t^T r\\,ds}\\,g(X_T) \\mid \\mathcal{F}_t\\right]$, so $Y_t = \\mathbb{E}\\left[e^{-\\int_0^T r\\,ds}\\,g(X_T) \\mid \\mathcal{F}_t\\right]$ after absorbing the earlier discount factor.",
           weight: 4,
           required: true,
         },
         {
           id: "tower-property",
-          description: "Notes Y_t is thus a conditional expectation of the same fixed terminal random variable e^(−∫₀ᵀr ds)g(X_T) at every t, and the tower property guarantees E[Y_T | F_t] = Y_t exactly — the martingale property.",
+          description: "Notes $Y_t$ is thus a conditional expectation of the same fixed terminal random variable $e^{-\\int_0^T r\\,ds}\\,g(X_T)$ at every $t$, and the tower property guarantees $\\mathbb{E}[Y_T \\mid \\mathcal{F}_t] = Y_t$ exactly — the martingale property.",
           weight: 3,
           required: true,
         },
@@ -2069,7 +2069,7 @@ export const stochasticCalculusPricingItems: Item[] = [
         },
         {
           id: "risk-neutral-pricing-links-them",
-          description: "Explains risk-neutral pricing is defined precisely so the discounted price is a Q-martingale, which is exactly the hypothesis Feynman-Kac's argument needs — so the two 'independent' derivations are secretly using the same fact.",
+          description: "Explains risk-neutral pricing is defined precisely so the discounted price is a $\\mathbb{Q}$-martingale, which is exactly the hypothesis Feynman–Kac's argument needs — so the two “independent” derivations are secretly using the same fact.",
           weight: 3,
           required: true,
         },
@@ -2093,7 +2093,7 @@ export const stochasticCalculusPricingItems: Item[] = [
       elements: [
         {
           id: "same-function-required",
-          description: "Explains the theorem only holds when r(X_s,s) inside the expectation is the exact same function that appears as the −ru term in the PDE — the equivalence is a statement about one shared r, not two independently-chosen ones.",
+          description: "Explains the theorem only holds when $r(X_s, s)$ inside the expectation is the exact same function that appears as the $-ru$ term in the PDE — the equivalence is a statement about one shared $r$, not two independently-chosen ones.",
           weight: 4,
           required: true,
         },
@@ -2129,7 +2129,7 @@ export const stochasticCalculusPricingItems: Item[] = [
         },
         {
           id: "historical-origin",
-          description: "Mentions the theorem traces to Kac's 1949 work connecting Brownian motion to the heat equation, long before option pricing theory existed.",
+          description: "Mentions the theorem traces to Kac's $1949$ work connecting Brownian motion to the heat equation, long before option pricing theory existed.",
           weight: 4,
           required: true,
         },
@@ -2149,12 +2149,12 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "explain",
     channels: ["typed", "spoken"],
-    stem: "Outside of finance, r(x,t) in the Feynman-Kac PDE is sometimes called a 'killing rate.' Explain what role the −r(x,t)u term plays in the PDE and why 'killing' is an apt description.",
+    stem: "Outside of finance, $r(x, t)$ in the Feynman–Kac PDE is sometimes called a “killing rate.” Explain what role the $-r(x, t)u$ term plays in the PDE and why “killing” is an apt description.",
     rubric: {
       elements: [
         {
           id: "discount-as-decay",
-          description: "Explains −ru acts as an exponential decay term: the discount factor e^(−∫r ds) shrinks the contribution of the terminal payoff the longer the horizon, exactly as a particle being 'killed' at rate r would reduce the surviving probability mass.",
+          description: "Explains $-ru$ acts as an exponential decay term: the discount factor $e^{-\\int r\\,ds}$ shrinks the contribution of the terminal payoff the longer the horizon, exactly as a particle being “killed” at rate $r$ would reduce the surviving probability mass.",
           weight: 4,
           required: true,
         },
@@ -2184,7 +2184,7 @@ export const stochasticCalculusPricingItems: Item[] = [
       elements: [
         {
           id: "chain",
-          description: "Names, in order, roughly: simple random walk (the discrete process), Brownian motion (its continuous limit), Itô's lemma (the calculus to differentiate through it), Girsanov's theorem (the change of measure removing drift), and Feynman-Kac (the identity connecting the resulting expectation back to a PDE).",
+          description: "Names, in order, roughly: simple random walk (the discrete process), Brownian motion (its continuous limit), Itô's lemma (the calculus to differentiate through it), Girsanov's theorem (the change of measure removing drift), and Feynman–Kac (the identity connecting the resulting expectation back to a PDE).",
           weight: 5,
           required: true,
         },
@@ -2203,7 +2203,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "Feynman-Kac shows PDE-solving and Monte Carlo simulation compute the same u exactly. In practice, when would you prefer each method, and why doesn't the theorem's equivalence make the choice irrelevant?",
+    stem: "Feynman–Kac shows PDE-solving and Monte Carlo simulation compute the same $u$ exactly. In practice, when would you prefer each method, and why doesn't the theorem's equivalence make the choice irrelevant?",
     rubric: {
       elements: [
         {
@@ -2236,25 +2236,25 @@ export const stochasticCalculusPricingItems: Item[] = [
     stem: "Which statements about the Feynman-Kac theorem are correct? Select all that apply.",
     choices: [
       { id: "a", text: "It connects a conditional expectation of a diffusion's discounted payoff to a specific backward parabolic PDE", correct: true },
-      { id: "b", text: "The Black-Scholes-Merton equation is the special case where X is geometric Brownian motion under the risk-neutral measure", correct: true },
+      { id: "b", text: "The Black–Scholes–Merton equation is the special case where $X$ is geometric Brownian motion under the risk-neutral measure", correct: true },
       { id: "c", text: "Monte Carlo pricing and PDE pricing are two algorithms computing one theorem's output, not two competing models", correct: true },
       {
         id: "d",
-        text: "The theorem requires the payoff function g to be linear in x",
+        text: "The theorem requires the payoff function $g$ to be linear in $x$",
         correct: false,
         misconception: {
           id: "invents-linearity-requirement",
-          description: "The theorem places regularity conditions on g and the coefficients for the PDE to have a classical solution, but there is no requirement that g be linear — a call option's kinked max(x−K,0) payoff is a standard example.",
+          description: "The theorem places regularity conditions on $g$ and the coefficients for the PDE to have a classical solution, but there is no requirement that $g$ be linear — a call option's kinked $\\max(x - K, 0)$ payoff is a standard example.",
           blameConceptId: "feynman-kac-theorem",
         },
       },
       {
         id: "e",
-        text: "It was first developed specifically for pricing financial options in the 1970s",
+        text: "It was first developed specifically for pricing financial options in the $1970$s",
         correct: false,
         misconception: {
           id: "misattributes-historical-origin",
-          description: "The theorem traces to Kac's 1949 work connecting Brownian motion to the heat equation, well before the Black-Scholes-Merton finance application.",
+          description: "The theorem traces to Kac's $1949$ work connecting Brownian motion to the heat equation, well before the Black–Scholes–Merton finance application.",
           blameConceptId: "feynman-kac-theorem",
         },
       },
@@ -2272,18 +2272,18 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "short-answer",
     cognitive: "transfer",
     channels: ["typed", "spoken"],
-    stem: "Risk-neutral pricing defines V_t = E^Q[e^(−r(T−t))Payoff | F_t] essentially by fiat, motivated by no-arbitrage. Explain how Feynman-Kac's theorem retroactively justifies treating that same quantity as the solution to a specific PDE, closing the loop between the two articles.",
+    stem: "Risk-neutral pricing defines $V_t = \\mathbb{E}^{\\mathbb{Q}}\\left[e^{-r(T - t)}\\,\\text{Payoff} \\mid \\mathcal{F}_t\\right]$ essentially by fiat, motivated by no-arbitrage. Explain how Feynman–Kac's theorem retroactively justifies treating that same quantity as the solution to a specific PDE, closing the loop between the two articles.",
     rubric: {
       elements: [
         {
           id: "matches-the-hypothesis",
-          description: "Notes the risk-neutral pricing formula is exactly the Feynman-Kac conditional expectation u(x,t), with X = S under Q, r constant, and g the claim's payoff.",
+          description: "Notes the risk-neutral pricing formula is exactly the Feynman–Kac conditional expectation $u(x, t)$, with $X = S$ under $\\mathbb{Q}$, $r$ constant, and $g$ the claim's payoff.",
           weight: 4,
           required: true,
         },
         {
           id: "pde-follows-automatically",
-          description: "Concludes Feynman-Kac then guarantees this same V_t automatically solves the corresponding PDE — so the PDE approach and the risk-neutral-expectation approach were never two separate pricing theories, only two views of one object.",
+          description: "Concludes Feynman–Kac then guarantees this same $V_t$ automatically solves the corresponding PDE — so the PDE approach and the risk-neutral-expectation approach were never two separate pricing theories, only two views of one object.",
           weight: 3,
           required: true,
         },
@@ -2302,7 +2302,7 @@ export const stochasticCalculusPricingItems: Item[] = [
     format: "numeric",
     cognitive: "transfer",
     channels: ["typed", "handwritten"],
-    stem: "A zero-coupon bond paying $1 at T is priced as u(x,t) = E[e^(−∫ₜᵀr(X_s,s)ds) · 1 | X_t=x] — Feynman-Kac applied with g(x)=1. If the short rate is constant r=0.04 and T−t=5, compute u.",
+    stem: "A zero-coupon bond paying $\\$1$ at $T$ is priced as $u(x, t) = \\mathbb{E}\\left[e^{-\\int_t^T r(X_s, s)\\,ds} \\cdot 1 \\mid X_t = x\\right]$ — Feynman–Kac applied with $g(x) = 1$. If the short rate is constant $r = 0.04$ and $T - t = 5$, compute $u$.",
     answerKey: 0.8187,
     tolerance: 0.002,
     difficulty: 0.7,

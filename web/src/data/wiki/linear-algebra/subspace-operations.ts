@@ -34,9 +34,9 @@ export const subspaceOperations: WikiArticle = {
           problem:
             "Let $U$ be the $x$-axis and $W$ be the $y$-axis in $\\mathbb{R}^2$. Is $U \\cup W$ a subspace?",
           steps: [
-            "$(1,0) \\in U \\subseteq U\\cup W$ and $(0,1) \\in W \\subseteq U\\cup W$.",
-            "Their sum is $(1,0)+(0,1) = (1,1)$.",
-            "$(1,1)$ lies on neither axis, so it is not in $U \\cup W$.",
+            "$[1, 0] \\in U \\subseteq U\\cup W$ and $[0, 1] \\in W \\subseteq U\\cup W$.",
+            "Their sum is $[1, 0]+[0, 1] = [1, 1]$.",
+            "$[1, 1]$ lies on neither axis, so it is not in $U \\cup W$.",
           ],
           answer:
             "$U \\cup W$ fails closure under addition, so it is not a subspace — even though $U$ and $W$ individually are. The correct way to combine them is the *sum* $U+W$, which in this case is all of $\\mathbb{R}^2$.",
@@ -109,16 +109,16 @@ export const subspaceOperations: WikiArticle = {
       blocks: [
         {
           kind: "prose",
-          text: "For an $m\\times n$ matrix $A$ of rank $r$, the row space and null space are complementary subspaces of $\\mathbb{R}^n$, and the column space and left null space are complementary subspaces of $\\mathbb{R}^m$. Both pairs are not just direct sums but *orthogonal* direct sums — a much stronger relationship than merely intersecting trivially.",
+          text: "For an $m\\times n$ matrix $\\mathbf{A}$ of rank $r$, the row space and null space are complementary subspaces of $\\mathbb{R}^n$, and the column space and left null space are complementary subspaces of $\\mathbb{R}^m$. Both pairs are not just direct sums but *orthogonal* direct sums — a much stronger relationship than merely intersecting trivially.",
         },
         {
           kind: "formula",
-          latex: "\\underbrace{C(A^{\\mathsf T})}_{\\text{row space}} \\ \\oplus_{\\perp}\\ \\underbrace{N(A)}_{\\text{null space}} = \\mathbb{R}^n, \\qquad \\dim(\\text{row space}) + \\dim(\\text{null space}) = r + (n-r) = n",
+          latex: "\\underbrace{C(\\mathbf{A}^{\\mathsf T})}_{\\text{row space}} \\ \\oplus_{\\perp}\\ \\underbrace{N(\\mathbf{A})}_{\\text{null space}} = \\mathbb{R}^n, \\qquad \\dim(\\text{row space}) + \\dim(\\text{null space}) = r + (n-r) = n",
           caption: "Rank–nullity is the dimension formula for this pair, with zero overlap already built in",
         },
         {
           kind: "prose",
-          text: "Because the row space and null space are orthogonal complements, they intersect only at $\\mathbf{0}$ (an orthogonal vector to itself must be zero), so the general dimension formula $\\dim(U+W)=\\dim(U)+\\dim(W)-\\dim(U\\cap W)$ collapses to plain addition — which is exactly the rank–nullity theorem. Every vector $\\mathbf{x}\\in\\mathbb{R}^n$ splits uniquely into a row-space component and a null-space component, and this decomposition is the engine behind least-squares projection: the part of a vector already reachable by $A^{\\mathsf T}$'s rows is kept, and the part in the null space is exactly what gets discarded with no effect on $A\\mathbf{x}$.",
+          text: "Because the row space and null space are orthogonal complements, they intersect only at $\\mathbf{0}$ (an orthogonal vector to itself must be zero), so the general dimension formula $\\dim(U+W)=\\dim(U)+\\dim(W)-\\dim(U\\cap W)$ collapses to plain addition — which is exactly the rank–nullity theorem. Every vector $\\mathbf{x}\\in\\mathbb{R}^n$ splits uniquely into a row-space component and a null-space component, and this decomposition is the engine behind least-squares projection: the part of a vector already reachable by $\\mathbf{A}^{\\mathsf T}$'s rows is kept, and the part in the null space is exactly what gets discarded with no effect on $\\mathbf{A}\\mathbf{x}$.",
         },
         {
           kind: "callout",

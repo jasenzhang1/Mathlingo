@@ -266,7 +266,10 @@ apply consistently is treated as a defective rubric, not a defective learner.
 
 **Ideas, not keywords.** A rubric element names something the learner must show they understand,
 never particular wording: "the sum of the products of corresponding entries" earns the same credit as
-the formula it describes. Each item's rubric can carry **grader notes** — free-text guidance from
+the formula it describes. Implied understanding counts in full: the test is "ok, they get it". "They
+can't be added because they're different dimensions" fully establishes that addition needs matching
+dimensions — a principle applied, given for the specific case, or stated in its contrapositive form is
+never docked for not being stated as a general rule. Each item's rubric can carry **grader notes** — free-text guidance from
 whoever wrote or reviewed it (alternative phrasings to accept, elements to read loosely) — which the
 judge follows over the elements' wording. Developers edit criteria, weights, required flags, forbidden
 moves and notes in the question editor (`/dev/questions`, or "Edit question (dev)" mid-assessment).
