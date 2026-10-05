@@ -72,6 +72,8 @@ interface Filters {
   maxLevel: number;
   formats: ItemFormat[];
   cognitive: CognitiveLevel[];
+  /** Only questions with unpublished edits in this browser (edited or newly authored). */
+  editedOnly: boolean;
 }
 
 const NO_FILTERS: Filters = {
@@ -81,6 +83,7 @@ const NO_FILTERS: Filters = {
   maxLevel: MAX_DIFFICULTY_LEVEL,
   formats: [],
   cognitive: [],
+  editedOnly: false,
 };
 
 /**
@@ -101,8 +104,9 @@ function conceptInScope(conceptId: string, filters: Filters): boolean {
   return true;
 }
 
-function itemMatchesFilters(item: Item, filters: Filters, query: string): boolean {
+function itemMatchesFilters(item: Item, filters: Filters, query: string, store: ItemOverrideStore): boolean {
   if (!conceptInScope(item.conceptId, filters)) return false;
+  if (filters.editedOnly && !hasLocalEdit(store, item.id)) return false;
   const level = difficultyToLevel(item.difficulty);
   if (level < filters.minLevel || level > filters.maxLevel) return false;
   if (filters.formats.length > 0 && !filters.formats.includes(item.format)) return false;
@@ -171,11 +175,11 @@ export function DevQuestionsPage() {
     const map = new Map<string, Item[]>();
     if (!itemsByConcept) return map;
     for (const [conceptId, list] of itemsByConcept) {
-      const matching = list.filter((i) => itemMatchesFilters(i, filters, search));
+      const matching = list.filter((i) => itemMatchesFilters(i, filters, search, store));
       if (matching.length > 0) map.set(conceptId, matching);
     }
     return map;
-  }, [itemsByConcept, filters, search]);
+  }, [itemsByConcept, filters, search, store]);
 
   // The histogram shows what every *other* filter keeps, so moving the
   // difficulty range never changes the bars it is drawn over.
@@ -184,9 +188,9 @@ export function DevQuestionsPage() {
     const wide = { ...filters, minLevel: MIN_DIFFICULTY_LEVEL, maxLevel: MAX_DIFFICULTY_LEVEL };
     const levels: number[] = [];
     for (const list of itemsByConcept.values())
-      for (const item of list) if (itemMatchesFilters(item, wide, search)) levels.push(difficultyToLevel(item.difficulty));
+      for (const item of list) if (itemMatchesFilters(item, wide, search, store)) levels.push(difficultyToLevel(item.difficulty));
     return levels;
-  }, [itemsByConcept, filters, search]);
+  }, [itemsByConcept, filters, search, store]);
 
   const lessonNeedle = lessonQuery.trim().toLowerCase();
 
@@ -196,7 +200,8 @@ export function DevQuestionsPage() {
     filters.minLevel !== MIN_DIFFICULTY_LEVEL ||
     filters.maxLevel !== MAX_DIFFICULTY_LEVEL ||
     filters.formats.length > 0 ||
-    filters.cognitive.length > 0;
+    filters.cognitive.length > 0 ||
+    filters.editedOnly;
   const searching = filtersActive || search.trim() !== "";
 
   // With a topic picked, show its matches; without one, an active filter or
@@ -455,6 +460,18 @@ export function DevQuestionsPage() {
                   selected={filters.cognitive}
                   onToggle={(c) => updateFilters({ ...filters, cognitive: toggle(filters.cognitive, c) })}
                 />
+
+                <label className="font-body flex cursor-pointer items-center gap-2 text-sm text-[var(--ink)]">
+                  <input
+                    type="checkbox"
+                    checked={filters.editedOnly}
+                    onChange={(e) => updateFilters({ ...filters, editedOnly: e.target.checked })}
+                  />
+                  Edited locally only
+                  <span className="opacity-60">
+                    ({Object.keys(store.overrides).length + Object.keys(store.newItems).length})
+                  </span>
+                </label>
               </div>
 
               {searching && (
