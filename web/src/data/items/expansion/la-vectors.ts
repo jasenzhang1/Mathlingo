@@ -37,7 +37,7 @@ export const laVectorsItems: Item[] = [
   num({ concept: VE, slug: "x-apply-parallelogram", cognitive: "apply", level: 3.5, seconds: 40,
     stem: "A parallelogram has vertices $A = [0, 0]$, $B = [3, 1]$ and $D = [1, 2]$, with $C$ opposite $A$. What is the second coordinate of $C$?" }, 3),
   num({ concept: VE, slug: "x-apply-collinear", cognitive: "apply", level: 6, seconds: 60,
-    stem: "For which $k$ are the points $(1, 2)$, $[3, 5]$ and $[7, k]$ collinear?" }, 11),
+    stem: "For which $k$ are the points $(1, 2)$, $(3, 5)$ and $(7, k)$ collinear?" }, 11),
   short({ concept: VE, slug: "x-explain-diagonals", cognitive: "explain", level: 7, seconds: 150,
     stem: "Prove with vectors that the diagonals of a parallelogram bisect each other." },
     [["setup", "With $A$ at the origin and sides $\\mathbf{b}, \\mathbf{d}$, the vertices are $\\mathbf{0}, \\mathbf{b}, \\mathbf{b} + \\mathbf{d}, \\mathbf{d}$.", 3, true],

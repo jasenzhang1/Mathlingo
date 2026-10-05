@@ -32,14 +32,12 @@ const AnalogyFeed = lazy(() =>
     default: m.AnalogyFeed,
   })),
 );
-import { conceptById } from "../data/concepts";
+import { conceptById, domainMeta, type Domain } from "../data/concepts";
 import { prereqsOf, unlocksOf } from "../lib/prerequisiteGraph";
+import { useLessonAccess } from "../lib/lessonAccess";
+import type { UnmetPrerequisite } from "../lib/lessonLock";
 import { formatProficiency } from "../lib/assessment/formatProficiency";
 import { UNLOCK_THRESHOLD } from "../lib/assessment/exp";
-import { useAuth } from "../lib/auth/useAuth";
-import { useIsDeveloper } from "../lib/dev/devAuth";
-import { unmetPrerequisites, type UnmetPrerequisite } from "../lib/lessonLock";
-import { useProficiency } from "../lib/useProficiency";
 
 const TABS = [
   { id: "slides", label: "Slides" },
@@ -78,21 +76,24 @@ export function ConceptPage() {
     setAssessmentOpenedFor(concept.id);
   }
 
-  // Lessons open only once every prerequisite is at 65+. Developers bypass the
-  // gate; signed-out visitors can still browse (there is no progress to gate on).
-  const { user } = useAuth();
-  const isDeveloper = useIsDeveloper();
-  const { ceiling, loading: proficiencyLoading } = useProficiency();
-  const unmet = concept && user && !isDeveloper ? unmetPrerequisites(concept.id, ceiling) : [];
-  // Once a lesson has opened during this visit it stays open. Proficiency
+  // Every lesson can be read; only its assessment is gated, opening once every
+  // prerequisite is at 65+ (see lessonAccess). Signed-out visitors see only the
+  // public course(s), under the same assessment rule with nothing saved.
+  const access = useLessonAccess();
+  const viewable = !!concept && access.canView(concept.id);
+  const unmet = concept ? access.unmet(concept.id) : [];
+  // Once an assessment has opened during this visit it stays open. Proficiency
   // reloads when Supabase refreshes the login (window refocus, an expired
   // token), and for that moment every prerequisite reads 0 — re-locking then
   // would unmount the assessment and throw away the question in progress.
   const [openedFor, setOpenedFor] = useState<string | null>(null);
-  const gateSettled = !!concept && !proficiencyLoading;
+  const gateSettled = !!concept && access.ready;
   const gateOpen = gateSettled && unmet.length === 0;
   if (gateOpen && concept && openedFor !== concept.id) setOpenedFor(concept.id);
-  const locked = gateSettled && unmet.length > 0 && openedFor !== concept?.id;
+  const assessmentLocked = gateSettled && unmet.length > 0 && openedFor !== concept?.id;
+  // Until proficiency has loaded the gate can't be judged, so the assessment
+  // tab shows a placeholder rather than mounting a panel it may have to pull.
+  const checkingGate = !gateSettled && openedFor !== concept?.id;
   const backHref = from === "list" ? "/map?view=list" : "/map";
 
   function selectTab(tab: TabId) {
@@ -156,6 +157,9 @@ export function ConceptPage() {
               Submit question
             </Link>
           </div>
+          {viewable && gateSettled && (
+            <ProgressStatus open={!assessmentLocked} signedIn={access.courses.signedIn} />
+          )}
           {prerequisites.length > 0 && (
             <div className="font-body mt-6">
               <h2 className="text-xs font-semibold uppercase tracking-wide text-[var(--ink-soft)]">
@@ -175,8 +179,14 @@ export function ConceptPage() {
             </div>
           )}
 
-          {locked ? (
-            <LockedLesson unmet={unmet} />
+          {!viewable ? (
+            access.ready ? (
+              <CourseWall signedIn={access.courses.signedIn} freeCourse={access.courses.freeCourse} />
+            ) : (
+              <div className="mt-8">
+                <TabSkeleton />
+              </div>
+            )
           ) : (
           <>
           <div
@@ -187,7 +197,7 @@ export function ConceptPage() {
             {TABS.map((tab) => (
               <TabButton
                 key={tab.id}
-                label={tab.label}
+                label={tab.id === "assessment" && assessmentLocked ? `🔒 ${tab.label}` : tab.label}
                 active={activeTab === tab.id}
                 onClick={() => selectTab(tab.id)}
               />
@@ -230,7 +240,10 @@ export function ConceptPage() {
             {/* Once opened, the assessment stays mounted (just hidden) while
                 another tab is showing, so the learner comes back to the same
                 question instead of a fresh one. */}
-            {(activeTab === "assessment" || assessmentOpenedFor === concept.id) && (
+            {activeTab === "assessment" && checkingGate && <TabSkeleton />}
+            {activeTab === "assessment" && assessmentLocked && <LockedAssessment unmet={unmet} />}
+            {!checkingGate && !assessmentLocked &&
+              (activeTab === "assessment" || assessmentOpenedFor === concept.id) && (
               <div hidden={activeTab !== "assessment"}>
                 <AssessmentPanel
                   key={concept.id}
@@ -310,13 +323,82 @@ function TabButton({
   );
 }
 
-/** Shown in place of the lesson until every prerequisite reaches the unlock threshold. */
-function LockedLesson({ unmet }: { unmet: UnmetPrerequisite[] }) {
+/**
+ * Under the title: can the learner make progress here, or only read? The same
+ * two states the map and list mark with their 🔒.
+ */
+function ProgressStatus({ open, signedIn }: { open: boolean; signedIn: boolean }) {
+  return (
+    <p
+      className={`font-body mt-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ${
+        open
+          ? "bg-[var(--accent-soft)] text-[var(--ink)]"
+          : "border border-dashed border-[var(--line)] text-[var(--ink-soft)]"
+      }`}
+    >
+      {open
+        ? signedIn
+          ? "✓ Unlocked: the assessment counts toward your progress"
+          : "✓ Assessment open (sign in to save your progress)"
+        : "🔒 View only: read the slides and wiki; the assessment unlocks once the prerequisites reach 65"}
+    </p>
+  );
+}
+
+/**
+ * A lesson in a course the visitor can't see: signed out (only the public
+ * course), or on the free plan outside their one chosen course.
+ */
+function CourseWall({ signedIn, freeCourse }: { signedIn: boolean; freeCourse: Domain | undefined }) {
+  const primary =
+    "rounded-full bg-[var(--accent)] px-4 py-2 font-medium text-[var(--accent-ink)] hover:opacity-90";
+  const secondary = "px-2 py-2 font-medium text-[var(--accent)] hover:underline";
+
+  if (!signedIn) {
+    return (
+      <div className="font-body mt-8 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-6">
+        <p className="text-lg font-semibold text-[var(--ink)]">Sign up to see this course</p>
+        <p className="mt-1 text-sm text-[var(--ink-soft)]">
+          Without an account you can explore the Linear Algebra course. Create a free account to choose a course
+          of your own and keep your progress.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-3 text-sm">
+          <Link to="/signup" className={primary}>Sign up</Link>
+          <Link to="/login" className={secondary}>Log in</Link>
+          <Link to="/map?course=linear-algebra" className={secondary}>Browse Linear Algebra</Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="font-body mt-8 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-6">
-      <p className="text-lg font-semibold text-[var(--ink)]">🔒 This lesson is locked</p>
+      <p className="text-lg font-semibold text-[var(--ink)]">This course needs the Graded plan</p>
       <p className="mt-1 text-sm text-[var(--ink-soft)]">
-        Reach {UNLOCK_THRESHOLD} proficiency in {unmet.length === 1 ? "this prerequisite" : "each of these prerequisites"} to open it.
+        {freeCourse
+          ? `The free plan includes one course, and yours is ${domainMeta[freeCourse].label}. Upgrade to Graded or higher to open every course.`
+          : "The free plan includes one course of your choice. Choose it on the Courses page, or upgrade to Graded or higher to open every course."}
+      </p>
+      <div className="mt-4 flex flex-wrap gap-3 text-sm">
+        <Link to="/pricing" className={primary}>See plans</Link>
+        {freeCourse ? (
+          <Link to={`/map?course=${freeCourse}`} className={secondary}>Go to {domainMeta[freeCourse].label}</Link>
+        ) : (
+          <Link to="/courses" className={secondary}>Choose your free course</Link>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/** The assessment tab of a lesson whose prerequisites aren't at the unlock threshold yet. */
+function LockedAssessment({ unmet }: { unmet: UnmetPrerequisite[] }) {
+  return (
+    <div className="font-body rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-6">
+      <p className="text-lg font-semibold text-[var(--ink)]">🔒 This assessment is locked</p>
+      <p className="mt-1 text-sm text-[var(--ink-soft)]">
+        You can read this lesson's slides and wiki now. To make progress on it, reach {UNLOCK_THRESHOLD} proficiency
+        in {unmet.length === 1 ? "this prerequisite" : "each of these prerequisites"}:
       </p>
       <ul className="mt-4 space-y-2">
         {unmet.map(({ concept, ceiling }) => (

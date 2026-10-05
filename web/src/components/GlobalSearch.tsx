@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { concepts, domainMeta } from "../data/concepts";
+import { concepts, domainMeta, type Domain } from "../data/concepts";
+import { COURSES } from "../lib/courses";
+import { useCourseAccess } from "../lib/lessonAccess";
 import { chapters } from "../lib/learningOrder";
 import { searchProfiles } from "../lib/profiles";
 
@@ -28,7 +30,7 @@ const KIND_LABEL: Record<ResultKind, string> = {
  * Each category is capped so one broad match (e.g. "probability") doesn't
  * crowd out the others.
  */
-function curriculumResults(query: string): SearchResult[] {
+function curriculumResults(query: string, visible: (domain: Domain) => boolean): SearchResult[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];
 
@@ -38,6 +40,7 @@ function curriculumResults(query: string): SearchResult[] {
   let lessonCount = 0;
 
   for (const chapter of chapters) {
+    if (!visible(chapter.domain)) continue;
     if (subjectCount < 3 && chapter.label.toLowerCase().includes(q)) {
       subjectCount++;
       results.push({
@@ -65,6 +68,7 @@ function curriculumResults(query: string): SearchResult[] {
 
   for (const concept of concepts) {
     if (lessonCount >= 5) break;
+    if (!visible(concept.domain)) continue;
     if (
       concept.title.toLowerCase().includes(q) ||
       concept.blurb.toLowerCase().includes(q)
@@ -114,7 +118,14 @@ export function GlobalSearch({ className = "" }: { className?: string }) {
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const curriculum = useMemo(() => curriculumResults(query), [query]);
+  // Only courses the visitor can see (signed out: the public one; free plan:
+  // their chosen course), here as everywhere.
+  const { canViewCourse } = useCourseAccess();
+  const visibleKey = COURSES.filter((c) => canViewCourse(c.id)).map((c) => c.id).join(",");
+  const curriculum = useMemo(
+    () => curriculumResults(query, (domain) => visibleKey.split(",").includes(domain)),
+    [query, visibleKey],
+  );
   const results = useMemo(
     () => [...curriculum, ...userResults],
     [curriculum, userResults],

@@ -31,6 +31,13 @@ import {
   type SessionContext,
 } from "../../lib/assessment/review";
 import { canInstantiate, instantiate } from "../../lib/assessment/templating";
+import {
+  clearPendingItem,
+  loadPendingItem,
+  newSeed,
+  savePendingItem,
+  seededRandom,
+} from "../../lib/assessment/pendingItem";
 import type { ConceptState, Grade, Item, ItemFormat } from "../../lib/assessment/types";
 import { useAuth } from "../../lib/auth/useAuth";
 import { useSubscription } from "../../lib/billing/useSubscription";
@@ -272,7 +279,7 @@ export function AssessmentPanel({
           startFresh();
           session.current = { anchor: undefined, grades: [] };
           setState(blankState(conceptId));
-          setPhase({ kind: "idle" });
+          if (!resumePending()) setPhase({ kind: "idle" });
           loadedKey.current = key;
         }
         return;
@@ -286,7 +293,7 @@ export function AssessmentPanel({
       setState(loaded);
       setRecentIds(recent);
       session.current = { anchor: loaded.memory, grades: [] };
-      setPhase({ kind: "idle" });
+      if (!resumePending()) setPhase({ kind: "idle" });
       loadedKey.current = key;
     }
 
@@ -294,6 +301,10 @@ export function AssessmentPanel({
     return () => {
       cancelled = true;
     };
+    // resumePending reads this render's pool, like the pool.length check
+    // above; it changes identity every render, and re-running on that would
+    // be exactly the mid-question reset this effect is written to avoid.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, conceptId, pool.length, subLoading, bank, calibrationReady]);
 
   // The bar decays continuously, so it needs a clock rather than a render-time
@@ -314,6 +325,38 @@ export function AssessmentPanel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
+  /**
+   * Puts a question in front of the learner and remembers it as pending, so
+   * a refresh or a later visit comes back to this question (see pendingItem).
+   * Returns false if the template couldn't be drawn.
+   */
+  const serve = useCallback(
+    (template: Item, seed: number): boolean => {
+      // Draw concrete values and compute this instance's answer key. The
+      // learner never sees a template; `recentItemIds` still tracks the
+      // template id, so the same template is not drawn again immediately.
+      // The seed makes the draw repeatable.
+      let item: Item;
+      try {
+        item = instantiate(template, seededRandom(seed));
+      } catch (error) {
+        console.error(error);
+        return false;
+      }
+
+      savePendingItem(userId, conceptId, { itemId: template.id, seed });
+      setText(item.starterCode ?? "");
+      setSelected([]);
+      setImage(null);
+      setSpokenText("");
+      setSaveError(null);
+      shownAt.current = Date.now();
+      setPhase({ kind: "answering", item });
+      return true;
+    },
+    [userId, conceptId],
+  );
+
   const nextItem = useCallback(
     (currentState: ConceptState, recent: string[]) => {
       const template = selectNextItem(pool, currentState, {
@@ -322,48 +365,44 @@ export function AssessmentPanel({
         codeServed: codeServed.current,
         lastFormat: lastFormat.current,
       });
-      if (!template) {
+      if (!template || !serve(template, newSeed())) {
+        clearPendingItem(userId, conceptId);
         setPhase({ kind: "empty" });
-        return;
       }
-
-      // Draw concrete values and compute this instance's answer key. The
-      // learner never sees a template; `recentItemIds` still tracks the
-      // template id, so the same template is not drawn again immediately.
-      let item: Item;
-      try {
-        item = instantiate(template);
-      } catch (error) {
-        console.error(error);
-        setPhase({ kind: "empty" });
-        return;
-      }
-
-      setText(item.starterCode ?? "");
-      setSelected([]);
-      setImage(null);
-      setSpokenText("");
-      setSaveError(null);
-      shownAt.current = Date.now();
-      setPhase({ kind: "answering", item });
     },
-    [pool],
+    [pool, serve, userId, conceptId],
   );
+
+  /**
+   * Back to the question left unanswered last time, if it is still servable
+   * (not retired, and not an open question the current plan withholds).
+   */
+  function resumePending(): boolean {
+    const pending = loadPendingItem(userId, conceptId);
+    if (!pending) return false;
+    const template = pool.find((i) => i.id === pending.itemId);
+    if (template && serve(template, pending.seed)) return true;
+    clearPendingItem(userId, conceptId);
+    return false;
+  }
 
   function saveEdit(edited: Item) {
     const next =
       edited.id in devStore.newItems ? saveNewItem(edited) : saveOverride(edited);
     setDevStore(next);
     setEditing(null);
-    // Show the edit on the question in front of you. A templated item draws
-    // fresh values; if the edit broke it, show the raw item rather than crash.
+    // Show the edit on the question in front of you, redrawn with the same
+    // seed so a templated item keeps its numbers where it can; if the edit
+    // broke it, show the raw item rather than crash.
     const calibrated = withCalibration(
       edited,
       calibrationReady ? calibrations.map.get(edited.id) : undefined,
     );
+    const pending = loadPendingItem(userId, conceptId);
+    const seed = pending?.itemId === edited.id ? pending.seed : newSeed();
     let shown = calibrated;
     try {
-      shown = instantiate(calibrated);
+      shown = instantiate(calibrated, seededRandom(seed));
     } catch (error) {
       console.error(error);
     }
@@ -496,6 +535,8 @@ ${followText}`,
       session.current,
     );
     const target = outcome.states.get(conceptId) ?? state;
+    // Answered: a refresh from here should move on, not re-ask it.
+    clearPendingItem(userId, conceptId);
 
     // Only live items move the bar, so only their grades belong in the session.
     if (item.status === "live") {

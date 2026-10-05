@@ -1,5 +1,5 @@
 import katex from "katex";
-import { splitMath } from "../src/lib/wiki/inlineMath.ts";
+import { splitEmphasis, splitMath } from "../src/lib/wiki/inlineMath.ts";
 import { concepts } from "../src/data/concepts.ts";
 import { loadAllArticles } from "../src/data/wiki/index.ts";
 import type { WikiBlock } from "../src/data/wiki/types.ts";
@@ -39,6 +39,22 @@ eq("two formulas", splitMath("$a$ and $b$"), [
 ]);
 eq("escaped dollar", splitMath("costs \\$5 today"), [{ text: "costs $5 today", kind: "text" }]);
 eq("unclosed delimiter stays literal", splitMath("a $ b c"), [{ text: "a $ b c", kind: "text" }]);
+
+const styles = (text: string) =>
+  splitEmphasis(splitMath(text)).map((r) => [r.style, r.segments.map((s) => s.text).join("")]);
+eq("emphasis", styles("take them *from the original matrix*."), [
+  ["plain", "take them "],
+  ["em", "from the original matrix"],
+  ["plain", "."],
+]);
+eq("strong", styles("**Rank** counts pivots"), [["strong", "Rank"], ["plain", " counts pivots"]]);
+eq("emphasis around maths", styles("*the $x$ value*"), [["em", "the x value"]]);
+eq("star inside maths is not a delimiter", styles("$Q^*$ and *b*"), [
+  ["plain", "Q^* and "],
+  ["em", "b"],
+]);
+eq("spaced multiplication stays literal", styles("2 * 3 * 4"), [["plain", "2 * 3 * 4"]]);
+eq("starred notation stays literal", styles("m* = V*(a)"), [["plain", "m* = V*(a)"]]);
 eq("formula at the very start", splitMath("$X$ is a variable"), [
   { text: "X", kind: "math" },
   { text: " is a variable", kind: "text" },

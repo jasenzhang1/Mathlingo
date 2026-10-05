@@ -204,6 +204,11 @@ export interface Item {
   answerKey?: string | number;
   /** Relative tolerance for `numeric` items. */
   tolerance?: number;
+  /**
+   * Text before a numeric answer box, e.g. "$k$ =". Usually left unset: it is
+   * read off the stem ("For which $k$…") by `numericAnswerFormat`.
+   */
+  answerLabel?: string;
   choices?: Choice[];
   rubric?: Rubric;
   /** For `code` items: the executable checks the submission is run against. */
