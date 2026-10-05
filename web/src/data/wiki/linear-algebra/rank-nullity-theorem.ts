@@ -10,14 +10,14 @@ export const rankNullityTheorem: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "\\operatorname{rank}(A) + \\dim N(A) = n",
-          caption: "For $A \\in \\mathbb{R}^{m\\times n}$ — $n$ is the number of *columns*, the input dimension",
+          latex: "\\operatorname{rank}(\\mathbf{A}) + \\dim N(\\mathbf{A}) = n",
+          caption: "For $\\mathbf{A} \\in \\mathbb{R}^{m\\times n}$ — $n$ is the number of *columns*, the input dimension",
         },
         {
           kind: "callout",
           tone: "warning",
           title: "It is $n$, not $m$",
-          text: "The theorem is about the domain. A $3\\times7$ matrix has $\\operatorname{rank} + \\dim N(A) = 7$, regardless of having only three rows. Substituting the row count is the standard error, and it produces impossible results — such as a rank exceeding the number of columns.",
+          text: "The theorem is about the domain. A $3\\times7$ matrix has $\\operatorname{rank} + \\dim N(\\mathbf{A}) = 7$, regardless of having only three rows. Substituting the row count is the standard error, and it produces impossible results — such as a rank exceeding the number of columns.",
         },
         {
           kind: "prose",
@@ -41,7 +41,7 @@ export const rankNullityTheorem: WikiArticle = {
           kind: "callout",
           tone: "insight",
           title: "Immediate consequences",
-          text: "A map from a higher- to a lower-dimensional space must have a non-trivial null space — $r \\le m < n$ forces $\\dim N(A) \\ge n - m > 0$. So a $2\\times5$ system always has infinitely many solutions when it has any, and five vectors in $\\mathbb{R}^{2}$ are always dependent. Both facts are usually proved separately; both are this theorem.",
+          text: "A map from a higher- to a lower-dimensional space must have a non-trivial null space — $r \\le m < n$ forces $\\dim N(\\mathbf{A}) \\ge n - m > 0$. So a $2\\times5$ system always has infinitely many solutions when it has any, and five vectors in $\\mathbb{R}^{2}$ are always dependent. Both facts are usually proved separately; both are this theorem.",
         },
       ],
     },
@@ -55,13 +55,13 @@ export const rankNullityTheorem: WikiArticle = {
             "A $4\\times6$ matrix has rank 3. What are the dimensions of all four fundamental subspaces?",
           steps: [
             "$n = 6$ columns, $m = 4$ rows, $r = 3$.",
-            "$\\dim C(A) = r = 3$, a subspace of $\\mathbb{R}^{4}$.",
-            "$\\dim N(A) = n - r = 6 - 3 = 3$, in $\\mathbb{R}^{6}$.",
-            "$\\dim C(A^{\\top}) = r = 3$, in $\\mathbb{R}^{6}$. Note $3 + 3 = 6$. ✓",
-            "$\\dim N(A^{\\top}) = m - r = 4 - 3 = 1$, in $\\mathbb{R}^{4}$. And $3 + 1 = 4$. ✓",
+            "$\\dim C(\\mathbf{A}) = r = 3$, a subspace of $\\mathbb{R}^{4}$.",
+            "$\\dim N(\\mathbf{A}) = n - r = 6 - 3 = 3$, in $\\mathbb{R}^{6}$.",
+            "$\\dim C(\\mathbf{A}^{\\top}) = r = 3$, in $\\mathbb{R}^{6}$. Note $3 + 3 = 6$. ✓",
+            "$\\dim N(\\mathbf{A}^{\\top}) = m - r = 4 - 3 = 1$, in $\\mathbb{R}^{4}$. And $3 + 1 = 4$. ✓",
           ],
           answer:
-            "$3, 3, 3, 1$. The system $A\\mathbf{x}=\\mathbf{b}$ is solvable only for $\\mathbf{b}$ in a 3-dimensional slice of $\\mathbb{R}^{4}$, and solutions then form a 3-dimensional family.",
+            "$3, 3, 3, 1$. The system $\\mathbf{A}\\mathbf{x}=\\mathbf{b}$ is solvable only for $\\mathbf{b}$ in a 3-dimensional slice of $\\mathbb{R}^{4}$, and solutions then form a 3-dimensional family.",
         },
       ],
     },

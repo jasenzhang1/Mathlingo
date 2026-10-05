@@ -3,7 +3,7 @@ import type { WikiArticle } from "../types";
 export const span: WikiArticle = {
   conceptId: "span",
   summary:
-    "The span of a set of vectors is everything reachable by linear combination of them. It is always a subspace, it is the smallest subspace containing the vectors, and asking whether $A\\mathbf{x} = \\mathbf{b}$ is solvable is exactly asking whether $\\mathbf{b}$ lies in the span of $A$'s columns.",
+    "The span of a set of vectors is everything reachable by linear combination of them. It is always a subspace, it is the smallest subspace containing the vectors, and asking whether $\\mathbf{A}\\mathbf{x} = \\mathbf{b}$ is solvable is exactly asking whether $\\mathbf{b}$ lies in the span of $\\mathbf{A}$'s columns.",
   sections: [
     {
       heading: "Definition",
@@ -32,7 +32,7 @@ export const span: WikiArticle = {
           kind: "callout",
           tone: "warning",
           title: "Adding vectors need not enlarge the span",
-          text: "A vector already in the span contributes nothing — $\\operatorname{span}\\{(1,0),(2,0)\\}$ is the same line as $\\operatorname{span}\\{(1,0)\\}$. The span grows only when the new vector is independent of the existing ones, which is exactly the relationship between spanning and independence: a basis is a set that spans with nothing to spare.",
+          text: "A vector already in the span contributes nothing — $\\operatorname{span}\\{[1, 0],[2, 0]\\}$ is the same line as $\\operatorname{span}\\{[1, 0]\\}$. The span grows only when the new vector is independent of the existing ones, which is exactly the relationship between spanning and independence: a basis is a set that spans with nothing to spare.",
         },
       ],
     },
@@ -41,20 +41,20 @@ export const span: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "A\\mathbf{x} = \\mathbf{b} \\text{ has a solution} \\iff \\mathbf{b} \\in \\operatorname{span}\\{\\text{columns of } A\\} = C(A)",
+          latex: "\\mathbf{A}\\mathbf{x} = \\mathbf{b} \\text{ has a solution} \\iff \\mathbf{b} \\in \\operatorname{span}\\{\\text{columns of } \\mathbf{A}\\} = C(\\mathbf{A})",
           caption: "The column space is a span, and solvability is membership in it",
         },
         {
           kind: "prose",
-          text: "This follows from reading $A\\mathbf{x}$ as a linear combination of columns weighted by $\\mathbf{x}$. Solving the system means finding weights producing $\\mathbf{b}$; if no weights work, $\\mathbf{b}$ lies outside the span and the system is inconsistent. Least squares is the response: when $\\mathbf{b} \\notin C(A)$, project it onto $C(A)$ and solve for the closest reachable point instead.",
+          text: "This follows from reading $\\mathbf{A}\\mathbf{x}$ as a linear combination of columns weighted by $\\mathbf{x}$. Solving the system means finding weights producing $\\mathbf{b}$; if no weights work, $\\mathbf{b}$ lies outside the span and the system is inconsistent. Least squares is the response: when $\\mathbf{b} \\notin C(\\mathbf{A})$, project it onto $C(\\mathbf{A})$ and solve for the closest reachable point instead.",
         },
         {
           kind: "example",
           title: "Testing membership",
           problem:
-            "Is $\\mathbf{b} = (3,5,7)$ in the span of $(1,1,1)$ and $(1,2,3)$?",
+            "Is $\\mathbf{b} = [3, 5, 7]$ in the span of $[1, 1, 1]$ and $[1, 2, 3]$?",
           steps: [
-            "Seek $c_1, c_2$ with $c_1(1,1,1) + c_2(1,2,3) = (3,5,7)$.",
+            "Seek $c_1, c_2$ with $c_1(1,1,1) + c_2(1,2,3) = [3, 5, 7]$.",
             "First coordinate: $c_1 + c_2 = 3$. Second: $c_1 + 2c_2 = 5$.",
             "Subtracting: $c_2 = 2$, hence $c_1 = 1$.",
             "Check the third coordinate: $1 + 3(2) = 7$. ✓",

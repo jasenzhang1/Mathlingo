@@ -3,14 +3,14 @@ import type { WikiArticle } from "../types";
 export const determinant: WikiArticle = {
   conceptId: "determinant",
   summary:
-    "The determinant is the factor by which a matrix scales volume, carrying a sign for orientation. Everything it is used for follows from that: zero determinant means the transformation flattens space and cannot be inverted, and the product rule $\\det(AB) = \\det A \\det B$ is just the statement that scaling factors multiply under composition.",
+    "The determinant is the factor by which a matrix scales volume, carrying a sign for orientation. Everything it is used for follows from that: zero determinant means the transformation flattens space and cannot be inverted, and the product rule $\\det(\\mathbf{A}\\mathbf{B}) = \\det \\mathbf{A} \\det \\mathbf{B}$ is just the statement that scaling factors multiply under composition.",
   sections: [
     {
       heading: "What it measures",
       blocks: [
         {
           kind: "prose",
-          text: "Apply $A$ to the unit square (or cube, or $n$-cube). The image is a parallelogram whose area is $|\\det A|$, and the sign records whether orientation was preserved or flipped.",
+          text: "Apply $\\mathbf{A}$ to the unit square (or cube, or $n$-cube). The image is a parallelogram whose area is $|\\det \\mathbf{A}|$, and the sign records whether orientation was preserved or flipped.",
         },
         {
           kind: "formula",
@@ -21,7 +21,7 @@ export const determinant: WikiArticle = {
           kind: "callout",
           tone: "insight",
           title: "Zero determinant means collapse",
-          text: "If $\\det A = 0$, the unit cube is squashed into something of lower dimension — a plane, a line, a point — with zero volume. Information is irrecoverably lost, so no inverse can exist. This single picture explains why $\\det A = 0$, \"$A$ is singular\", \"columns are dependent\", \"$N(A) \\ne \\{\\mathbf{0}\\}$\", and \"0 is an eigenvalue\" are all the same statement.",
+          text: "If $\\det \\mathbf{A} = 0$, the unit cube is squashed into something of lower dimension — a plane, a line, a point — with zero volume. Information is irrecoverably lost, so no inverse can exist. This single picture explains why $\\det \\mathbf{A} = 0$, “$\\mathbf{A}$ is singular”, “columns are dependent”, “$N(\\mathbf{A}) \\ne \\{\\mathbf{0}\\}$”, and “0 is an eigenvalue” are all the same statement.",
         },
       ],
     },
@@ -32,10 +32,10 @@ export const determinant: WikiArticle = {
           kind: "table",
           headers: ["Property", "Statement", "Why"],
           rows: [
-            ["Product", "$\\det(AB) = \\det A \\cdot \\det B$", "volume scalings compose multiplicatively"],
-            ["Transpose", "$\\det A^{\\top} = \\det A$", "row rank = column rank, in effect"],
-            ["Inverse", "$\\det(A^{-1}) = 1/\\det A$", "undoing a scaling by $k$ scales by $1/k$"],
-            ["Scaling", "$\\det(cA) = c^{n}\\det A$", "**note the $n$** — scaling all $n$ directions"],
+            ["Product", "$\\det(\\mathbf{A}\\mathbf{B}) = \\det \\mathbf{A} \\cdot \\det \\mathbf{B}$", "volume scalings compose multiplicatively"],
+            ["Transpose", "$\\det \\mathbf{A}^{\\top} = \\det \\mathbf{A}$", "row rank = column rank, in effect"],
+            ["Inverse", "$\\det(\\mathbf{A}^{-1}) = 1/\\det \\mathbf{A}$", "undoing a scaling by $k$ scales by $1/k$"],
+            ["Scaling", "$\\det(cA) = c^{n}\\det \\mathbf{A}$", "**note the $n$** — scaling all $n$ directions"],
             ["Triangular", "product of the diagonal", "no mixing between directions"],
             ["Row swap", "flips the sign", "orientation reverses"],
             ["Row addition", "unchanged", "shearing preserves volume"],
@@ -44,7 +44,7 @@ export const determinant: WikiArticle = {
         {
           kind: "callout",
           tone: "warning",
-          title: "$\\det(A+B) \\ne \\det A + \\det B$",
+          title: "$\\det(\\mathbf{A}+\\mathbf{B}) \\ne \\det \\mathbf{A} + \\det \\mathbf{B}$",
           text: "The determinant is multiplicative, never additive. It is also not linear in the matrix as a whole — though it *is* linear in each row separately, which is what makes cofactor expansion work. Assuming additivity is the most common error with determinants, and the $c^{n}$ in the scaling rule is the second.",
         },
       ],
@@ -81,8 +81,8 @@ export const determinant: WikiArticle = {
           ordered: false,
           items: [
             "**Change of variables.** The Jacobian determinant is the local volume-scaling factor, which is exactly what a density must be divided by when transforming variables.",
-            "**Multivariate normal.** $\\det\\Sigma$ appears in the normalising constant, and $\\log\\det\\Sigma$ in the log-likelihood — a direct measure of how much volume the distribution occupies.",
-            "**Eigenvalues.** $\\det(A - \\lambda I) = 0$ is the characteristic equation, and $\\det A = \\prod\\lambda_i$.",
+            "**Multivariate normal.** $\\det\\boldsymbol{\\Sigma}$ appears in the normalising constant, and $\\log\\det\\boldsymbol{\\Sigma}$ in the log-likelihood — a direct measure of how much volume the distribution occupies.",
+            "**Eigenvalues.** $\\det(\\mathbf{A} - \\lambda \\mathbf{I}) = 0$ is the characteristic equation, and $\\det \\mathbf{A} = \\prod\\lambda_i$.",
             "**Invertibility tests** — though numerically the condition number is a far better diagnostic than a determinant near zero, since determinant magnitude confounds scale with singularity.",
           ],
         },
@@ -90,7 +90,7 @@ export const determinant: WikiArticle = {
           kind: "callout",
           tone: "insight",
           title: "A near-zero determinant does not mean ill-conditioned",
-          text: "The matrix $0.001 \\times I_{100}$ has determinant $10^{-300}$ and is perfectly conditioned — it just scales everything down uniformly. Conversely a matrix with determinant 1 can be catastrophically ill-conditioned. Use the ratio of largest to smallest singular value, not the determinant, to judge numerical trouble.",
+          text: "The matrix $0.001 \\times \\mathbf{I}_{100}$ has determinant $10^{-300}$ and is perfectly conditioned — it just scales everything down uniformly. Conversely a matrix with determinant 1 can be catastrophically ill-conditioned. Use the ratio of largest to smallest singular value, not the determinant, to judge numerical trouble.",
         },
       ],
     },

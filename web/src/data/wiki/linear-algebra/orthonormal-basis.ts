@@ -15,7 +15,7 @@ export const orthonormalBasis: WikiArticle = {
         },
         {
           kind: "prose",
-          text: "In a general basis, finding coordinates means solving $A\\mathbf{c} = \\mathbf{v}$ at $O(n^{3})$ cost. In an orthonormal basis each coefficient is one dot product, at $O(n)$ each — because dotting the expansion with $\\mathbf{q}_j$ annihilates every term but one.",
+          text: "In a general basis, finding coordinates means solving $\\mathbf{A}\\mathbf{c} = \\mathbf{v}$ at $O(n^{3})$ cost. In an orthonormal basis each coefficient is one dot product, at $O(n)$ each — because dotting the expansion with $\\mathbf{q}_j$ annihilates every term but one.",
         },
         {
           kind: "formula",
@@ -26,7 +26,7 @@ export const orthonormalBasis: WikiArticle = {
           kind: "callout",
           tone: "insight",
           title: "Why this identity matters beyond bookkeeping",
-          text: "It says the coordinate representation preserves geometry exactly: no information about length or angle is lost in the change of basis. In Fourier analysis it becomes \"energy in the signal equals energy in the spectrum\"; in PCA it is why the explained-variance ratios sum to one. Both are Pythagoras applied along orthogonal directions.",
+          text: "It says the coordinate representation preserves geometry exactly: no information about length or angle is lost in the change of basis. In Fourier analysis it becomes “energy in the signal equals energy in the spectrum”; in PCA it is why the explained-variance ratios sum to one. Both are Pythagoras applied along orthogonal directions.",
         },
       ],
     },
@@ -45,7 +45,7 @@ export const orthonormalBasis: WikiArticle = {
         },
         {
           kind: "prose",
-          text: "A square matrix $Q$ with orthonormal columns is an orthogonal matrix, so $Q^{-1} = Q^{\\top}$. Change of basis then costs a transpose instead of an inversion — and because orthogonal matrices have condition number 1, that change introduces no numerical error at all.",
+          text: "A square matrix $\\mathbf{Q}$ with orthonormal columns is an orthogonal matrix, so $\\mathbf{Q}^{-1} = \\mathbf{Q}^{\\top}$. Change of basis then costs a transpose instead of an inversion — and because orthogonal matrices have condition number 1, that change introduces no numerical error at all.",
         },
       ],
     },
@@ -56,12 +56,12 @@ export const orthonormalBasis: WikiArticle = {
           kind: "example",
           title: "Coordinates the easy way",
           problem:
-            "Express $\\mathbf{v} = (3,1)$ in the orthonormal basis $\\mathbf{q}_1 = \\tfrac{1}{\\sqrt2}(1,1)$, $\\mathbf{q}_2 = \\tfrac{1}{\\sqrt2}(1,-1)$.",
+            "Express $\\mathbf{v} = [3, 1]$ in the orthonormal basis $\\mathbf{q}_1 = \\tfrac{1}{\\sqrt2}(1,1)$, $\\mathbf{q}_2 = \\tfrac{1}{\\sqrt2}(1,-1)$.",
           steps: [
             "$c_1 = \\mathbf{v}\\cdot\\mathbf{q}_1 = (3+1)/\\sqrt2 = 4/\\sqrt2 = 2\\sqrt2$.",
             "$c_2 = \\mathbf{v}\\cdot\\mathbf{q}_2 = (3-1)/\\sqrt2 = 2/\\sqrt2 = \\sqrt2$.",
             "Check by Parseval: $c_1^{2} + c_2^{2} = 8 + 2 = 10 = 3^{2}+1^{2}$. ✓",
-            "Reconstruct: $2\\sqrt2\\,\\mathbf{q}_1 + \\sqrt2\\,\\mathbf{q}_2 = (2,2) + (1,-1) = (3,1)$. ✓",
+            "Reconstruct: $2\\sqrt2\\,\\mathbf{q}_1 + \\sqrt2\\,\\mathbf{q}_2 = [2, 2] + [1, -1] = [3, 1]$. ✓",
           ],
           answer:
             "$(2\\sqrt2,\\ \\sqrt2)$ — obtained by two dot products, with no linear system anywhere.",

@@ -21,7 +21,7 @@ export const basis: WikiArticle = {
           kind: "callout",
           tone: "insight",
           title: "Independence is precisely what makes coordinates unique",
-          text: "If $\\mathbf{v} = \\sum c_i\\mathbf{v}_i$ and also $\\mathbf{v} = \\sum d_i\\mathbf{v}_i$, subtracting gives $\\sum(c_i - d_i)\\mathbf{v}_i = \\mathbf{0}$. Independence forces every $c_i - d_i = 0$, so the two representations coincide. Without independence a vector would have many coordinate lists and \"the coordinates of $\\mathbf{v}$\" would be meaningless.",
+          text: "If $\\mathbf{v} = \\sum c_i\\mathbf{v}_i$ and also $\\mathbf{v} = \\sum d_i\\mathbf{v}_i$, subtracting gives $\\sum(c_i - d_i)\\mathbf{v}_i = \\mathbf{0}$. Independence forces every $c_i - d_i = 0$, so the two representations coincide. Without independence a vector would have many coordinate lists and “the coordinates of $\\mathbf{v}$” would be meaningless.",
         },
       ],
     },
@@ -30,7 +30,7 @@ export const basis: WikiArticle = {
       blocks: [
         {
           kind: "prose",
-          text: "A space has infinitely many bases, all of the same size. $\\{(1,0),(0,1)\\}$ and $\\{(1,1),(1,-1)\\}$ both work for $\\mathbb{R}^{2}$, and choosing between them is choosing a coordinate system — the vectors themselves are unchanged.",
+          text: "A space has infinitely many bases, all of the same size. $\\{[1, 0],[0, 1]\\}$ and $\\{[1, 1],[1, -1]\\}$ both work for $\\mathbb{R}^{2}$, and choosing between them is choosing a coordinate system — the vectors themselves are unchanged.",
         },
         {
           kind: "table",
@@ -60,21 +60,21 @@ export const basis: WikiArticle = {
         },
         {
           kind: "prose",
-          text: "In a general basis, finding coordinates means solving $A\\mathbf{c} = \\mathbf{v}$. In an orthonormal basis each coefficient is a single dot product, because every other basis vector contributes nothing. This is why Gram–Schmidt and QR exist: converting to an orthonormal basis converts an expensive, potentially ill-conditioned solve into $n$ independent projections.",
+          text: "In a general basis, finding coordinates means solving $\\mathbf{A}\\mathbf{c} = \\mathbf{v}$. In an orthonormal basis each coefficient is a single dot product, because every other basis vector contributes nothing. This is why Gram–Schmidt and QR exist: converting to an orthonormal basis converts an expensive, potentially ill-conditioned solve into $n$ independent projections.",
         },
         {
           kind: "example",
           title: "Coordinates in a non-standard basis",
           problem:
-            "Express $\\mathbf{v} = (3,1)$ in the basis $\\mathbf{b}_1 = (1,1)$, $\\mathbf{b}_2 = (1,-1)$.",
+            "Express $\\mathbf{v} = [3, 1]$ in the basis $\\mathbf{b}_1 = [1, 1]$, $\\mathbf{b}_2 = [1, -1]$.",
           steps: [
-            "Solve $c_1(1,1) + c_2(1,-1) = (3,1)$.",
+            "Solve $c_1(1,1) + c_2(1,-1) = [3, 1]$.",
             "$c_1 + c_2 = 3$ and $c_1 - c_2 = 1$.",
             "Adding: $2c_1 = 4$, so $c_1 = 2$ and $c_2 = 1$.",
             "This basis happens to be orthogonal, so the shortcut also works: $c_1 = \\dfrac{\\mathbf{v}\\cdot\\mathbf{b}_1}{\\|\\mathbf{b}_1\\|^{2}} = \\dfrac{4}{2} = 2$. ✓",
           ],
           answer:
-            "$\\mathbf{v}$ has coordinates $(2,1)$ in this basis, and $(3,1)$ in the standard one — the same vector, two descriptions.",
+            "$\\mathbf{v}$ has coordinates $[2, 1]$ in this basis, and $[3, 1]$ in the standard one — the same vector, two descriptions.",
         },
       ],
     },

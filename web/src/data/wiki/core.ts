@@ -10,6 +10,8 @@ import { conditionalIndependenceDSeparationWiki } from "./conditional-independen
 import { confidenceIntervalWiki } from "./confidence-interval";
 import { conjugatePriorsWiki } from "./conjugate-priors";
 import { covarianceMatrixWiki } from "./covariance-matrix";
+import { linearTransformationsRandomVectorsWiki } from "./linear-transformations-random-vectors";
+import { randomVectorsWiki } from "./random-vectors";
 import { dataTypesWiki } from "./data-types";
 import { dirichletProcessWiki } from "./dirichlet-process";
 import { directedVsUndirectedGraphsWiki } from "./directed-vs-undirected-graphs";
@@ -186,8 +188,10 @@ export const coreWikiArticles: WikiArticle[] = [
 
   // Multivariate Probability & Asymptotics
   centralLimitTheoremWiki,
+  randomVectorsWiki,
   changeOfVariablesJacobianWiki,
   covarianceMatrixWiki,
+  linearTransformationsRandomVectorsWiki,
   bivariateNormalWiki,
   multivariateNormalWiki,
   multivariateMgfWiki,

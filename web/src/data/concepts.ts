@@ -747,28 +747,28 @@ export const concepts: Concept[] = [
     title: "Vector Angles",
     domain: "linear-algebra",
     blurb: "Recovering the angle between two vectors from their dot product.",
-    prerequisites: ["cauchy-schwarz"],
+    prerequisites: ["cauchy-schwarz", "orthogonal-vectors"],
   },
   {
     id: "vector-projection",
     title: "Vector Projection",
     domain: "linear-algebra",
     blurb: "Casting one vector's shadow onto another.",
-    prerequisites: ["dot-product", "vector-norm"],
+    prerequisites: ["dot-product", "vector-norm", "orthogonal-vectors"],
   },
   {
     id: "linear-dependence",
     title: "Linear Dependence",
     domain: "linear-algebra",
     blurb: "When one vector can be written as a combination of the others.",
-    prerequisites: ["vector-operations"],
+    prerequisites: ["vector-operations", "matrices"],
   },
   {
     id: "orthogonal-vectors",
     title: "Orthogonal Vectors",
     domain: "linear-algebra",
     blurb: "Vectors that meet at a right angle — dot product zero.",
-    prerequisites: ["dot-product"],
+    prerequisites: ["dot-product", "vector-norm"],
   },
   {
     id: "matrix-multiplication",
@@ -789,14 +789,14 @@ export const concepts: Concept[] = [
     title: "Trace",
     domain: "linear-algebra",
     blurb: "The sum of a matrix's diagonal entries, and its surprising invariances.",
-    prerequisites: ["matrices"],
+    prerequisites: ["matrices", "matrix-multiplication"],
   },
   {
     id: "linear-transformations",
     title: "Linear Transformations",
     domain: "linear-algebra",
     blurb: "Functions between vector spaces that preserve addition and scaling.",
-    prerequisites: ["matrices"],
+    prerequisites: ["matrices", "matrix-multiplication"],
   },
   {
     // Added to give `gradient-descent` and the neural-network branch of
@@ -809,14 +809,14 @@ export const concepts: Concept[] = [
     title: "Matrix Calculus (Gradients & Jacobians)",
     domain: "linear-algebra",
     blurb: "The gradient of a scalar function and the Jacobian of a vector function, in vector form.",
-    prerequisites: ["linear-transformations", "vector-norm"],
+    prerequisites: ["linear-transformations", "vector-norm", "trace"],
   },
   {
     id: "vector-spaces",
     title: "Vector Spaces",
     domain: "linear-algebra",
     blurb: "The abstract rules any collection of 'vectors' must satisfy.",
-    prerequisites: ["vector-operations"],
+    prerequisites: ["vector-operations", "matrices"],
   },
   {
     id: "span",
@@ -837,14 +837,14 @@ export const concepts: Concept[] = [
     title: "Change of Basis",
     domain: "linear-algebra",
     blurb: "Rewriting the same vector's coordinates in a different basis.",
-    prerequisites: ["basis", "linear-transformations"],
+    prerequisites: ["basis", "linear-transformations", "invertible-matrices", "trace", "orthogonal-vectors", "eigenvalues-eigenvectors"],
   },
   {
     id: "four-fundamental-subspaces",
     title: "Four Fundamental Subspaces",
     domain: "linear-algebra",
     blurb: "The column, null, row, and left null spaces of a matrix.",
-    prerequisites: ["linear-transformations", "vector-spaces"],
+    prerequisites: ["linear-transformations", "vector-spaces", "basis", "rank"],
   },
   {
     id: "column-space",
@@ -865,35 +865,35 @@ export const concepts: Concept[] = [
     title: "Row Space",
     domain: "linear-algebra",
     blurb: "The span of a matrix's rows.",
-    prerequisites: ["four-fundamental-subspaces"],
+    prerequisites: ["four-fundamental-subspaces", "column-space"],
   },
   {
     id: "left-null-space",
     title: "Left Null Space",
     domain: "linear-algebra",
     blurb: "The null space of a matrix's transpose.",
-    prerequisites: ["four-fundamental-subspaces"],
+    prerequisites: ["four-fundamental-subspaces", "null-space", "column-space", "orthogonal-vectors"],
   },
   {
     id: "matmul-four-fundamental-subspaces",
     title: "Matmul on Four Fundamental Subspaces",
     domain: "linear-algebra",
     blurb: "How multiplying by a matrix moves vectors between the four subspaces.",
-    prerequisites: ["column-space", "null-space", "row-space", "left-null-space"],
+    prerequisites: ["column-space", "null-space", "row-space", "left-null-space", "rank-nullity-theorem"],
   },
   {
     id: "disjointness-four-fundamental-subspaces",
     title: "Disjointness of Four Fundamental Subspaces",
     domain: "linear-algebra",
     blurb: "Why the row space and null space (and column space and left null space) are orthogonal complements.",
-    prerequisites: ["matmul-four-fundamental-subspaces"],
+    prerequisites: ["matmul-four-fundamental-subspaces", "orthogonal-vectors", "subspace-operations"],
   },
   {
     id: "rank",
     title: "Rank",
     domain: "linear-algebra",
     blurb: "The dimension of a matrix's column space — its true degrees of freedom.",
-    prerequisites: ["column-space", "row-space"],
+    prerequisites: ["basis", "linear-transformations"],
   },
   {
     id: "rank-nullity-theorem",
@@ -907,28 +907,28 @@ export const concepts: Concept[] = [
     title: "Orthonormal Basis",
     domain: "linear-algebra",
     blurb: "A basis whose vectors are mutually perpendicular and unit length.",
-    prerequisites: ["basis", "orthogonal-vectors"],
+    prerequisites: ["basis", "orthogonal-vectors", "matrices"],
   },
   {
     id: "gram-schmidt",
     title: "Gram-Schmidt Algorithm",
     domain: "linear-algebra",
     blurb: "Turning any basis into an orthonormal one, one vector at a time.",
-    prerequisites: ["orthonormal-basis"],
+    prerequisites: ["orthonormal-basis", "vector-projection"],
   },
   {
     id: "qr-decomposition",
     title: "QR Decomposition",
     domain: "linear-algebra",
     blurb: "Factoring a matrix into an orthonormal part and an upper-triangular part.",
-    prerequisites: ["gram-schmidt"],
+    prerequisites: ["gram-schmidt", "rank", "column-space", "orthogonal-matrices", "determinant", "matrix-stability"],
   },
   {
     id: "invertible-matrices",
     title: "Invertible Matrices",
     domain: "linear-algebra",
     blurb: "When a matrix's transformation can be perfectly undone.",
-    prerequisites: ["rank", "matrices"],
+    prerequisites: ["rank-nullity-theorem", "matrices", "determinant"],
   },
   {
     id: "lu-decomposition",
@@ -949,119 +949,119 @@ export const concepts: Concept[] = [
     title: "Determinant Properties",
     domain: "linear-algebra",
     blurb: "How determinants behave under multiplication, transposition, and row operations.",
-    prerequisites: ["determinant"],
+    prerequisites: ["determinant", "matrix-multiplication", "invertible-matrices"],
   },
   {
     id: "eigenvalues-eigenvectors",
     title: "Eigenvalues and Eigenvectors",
     domain: "linear-algebra",
     blurb: "The directions a matrix only stretches, never rotates.",
-    prerequisites: ["invertible-matrices", "determinant"],
+    prerequisites: ["invertible-matrices", "determinant", "trace"],
   },
   {
     id: "diagonalization",
     title: "Diagonalization",
     domain: "linear-algebra",
     blurb: "Rewriting a matrix in a basis where it acts like pure scaling.",
-    prerequisites: ["eigenvalues-eigenvectors"],
+    prerequisites: ["eigenvalues-eigenvectors", "change-of-basis"],
   },
   {
     id: "eigendecomposition",
     title: "Eigendecomposition",
     domain: "linear-algebra",
     blurb: "Factoring a matrix into its eigenvectors and eigenvalues.",
-    prerequisites: ["diagonalization"],
+    prerequisites: ["diagonalization", "symmetric-matrices"],
   },
   {
     id: "symmetric-matrices",
     title: "Symmetric Matrices",
     domain: "linear-algebra",
     blurb: "Matrices that equal their own transpose, with unusually nice structure.",
-    prerequisites: ["matrices"],
+    prerequisites: ["matrices", "eigenvalues-eigenvectors", "orthogonal-vectors", "diagonalization", "matrix-calculus"],
   },
   {
     id: "spectral-theorem",
     title: "Spectral Theorem",
     domain: "linear-algebra",
     blurb: "Every symmetric matrix diagonalizes with an orthonormal eigenbasis.",
-    prerequisites: ["symmetric-matrices", "eigendecomposition", "orthonormal-basis"],
+    prerequisites: ["symmetric-matrices", "eigendecomposition", "orthonormal-basis", "positive-definite-matrices", "orthogonal-matrices"],
   },
   {
     id: "orthogonal-matrices",
     title: "Orthogonal Matrices",
     domain: "linear-algebra",
     blurb: "Matrices that rotate or reflect without distorting length.",
-    prerequisites: ["orthonormal-basis"],
+    prerequisites: ["orthonormal-basis", "invertible-matrices", "eigenvalues-eigenvectors", "vector-angles"],
   },
   {
     id: "positive-definite-matrices",
     title: "Positive Definite Matrices",
     domain: "linear-algebra",
     blurb: "Symmetric matrices that behave like a positive number — always positive eigenvalues.",
-    prerequisites: ["symmetric-matrices", "eigenvalues-eigenvectors"],
+    prerequisites: ["symmetric-matrices", "eigenvalues-eigenvectors", "matrix-calculus"],
   },
   {
     id: "cholesky-decomposition",
     title: "Cholesky Decomposition",
     domain: "linear-algebra",
     blurb: "Factoring a positive definite matrix into a triangular matrix times its transpose.",
-    prerequisites: ["positive-definite-matrices"],
+    prerequisites: ["positive-definite-matrices", "lu-decomposition"],
   },
   {
     id: "idempotent-matrices",
     title: "Idempotent Matrices",
     domain: "linear-algebra",
     blurb: "Matrices that do nothing the second time — P² = P — and why every linear model's hat matrix is one.",
-    prerequisites: ["symmetric-matrices", "eigenvalues-eigenvectors", "trace", "vector-projection"],
+    prerequisites: ["symmetric-matrices", "eigenvalues-eigenvectors", "trace", "vector-projection", "column-space", "orthonormal-basis", "orthogonal-matrices"],
   },
   {
     id: "schur-complement",
     title: "Schur Complement",
     domain: "linear-algebra",
     blurb: "A tool for inverting and reasoning about block-structured matrices.",
-    prerequisites: ["invertible-matrices"],
+    prerequisites: ["invertible-matrices", "determinant", "positive-definite-matrices"],
   },
   {
     id: "svd",
     title: "Singular Value Decomposition (SVD)",
     domain: "linear-algebra",
     blurb: "Factoring any matrix into rotate-scale-rotate.",
-    prerequisites: ["positive-definite-matrices", "eigendecomposition"],
+    prerequisites: ["positive-definite-matrices", "eigendecomposition", "spectral-theorem", "matrix-norms", "matrix-stability"],
   },
   {
     id: "uniqueness-of-svd",
     title: "Uniqueness of SVD",
     domain: "linear-algebra",
     blurb: "What's guaranteed to be unique about a matrix's SVD, and what isn't.",
-    prerequisites: ["svd"],
+    prerequisites: ["svd", "svd-four-fundamental-subspaces"],
   },
   {
     id: "svd-four-fundamental-subspaces",
     title: "SVD and Four Fundamental Subspaces",
     domain: "linear-algebra",
     blurb: "How the SVD hands you orthonormal bases for all four subspaces at once.",
-    prerequisites: ["svd", "four-fundamental-subspaces"],
+    prerequisites: ["svd", "matmul-four-fundamental-subspaces"],
   },
   {
     id: "moore-penrose-inverse",
     title: "Moore-Penrose Inverse",
     domain: "linear-algebra",
     blurb: "A best-possible 'inverse' for matrices that aren't actually invertible.",
-    prerequisites: ["svd"],
+    prerequisites: ["svd", "vector-projection", "column-space", "row-space", "svd-four-fundamental-subspaces"],
   },
   {
     id: "rayleigh-quotient",
     title: "Rayleigh Quotient",
     domain: "linear-algebra",
     blurb: "A ratio that's maximized exactly at a matrix's top eigenvector.",
-    prerequisites: ["symmetric-matrices", "eigenvalues-eigenvectors"],
+    prerequisites: ["symmetric-matrices", "eigenvalues-eigenvectors", "spectral-theorem"],
   },
   {
     id: "pca-matrix-edition",
     title: "Principal Component Analysis (Matrix Edition)",
     domain: "linear-algebra",
     blurb: "Deriving PCA from the SVD of a data matrix, with no statistics required.",
-    prerequisites: ["svd", "rayleigh-quotient", "covariance"],
+    prerequisites: ["svd", "rayleigh-quotient", "covariance", "eckart-young"],
   },
   {
     id: "eckart-young",
@@ -1075,28 +1075,28 @@ export const concepts: Concept[] = [
     title: "Matrix Norms",
     domain: "linear-algebra",
     blurb: "Measuring the 'size' of a matrix, several different ways.",
-    prerequisites: ["vector-norm"],
+    prerequisites: ["vector-norm", "matrix-multiplication", "trace"],
   },
   {
     id: "matrix-stability",
     title: "Matrix Stability",
     domain: "linear-algebra",
     blurb: "Condition numbers, and why some matrices amplify tiny errors.",
-    prerequisites: ["eigenvalues-eigenvectors", "matrix-norms"],
+    prerequisites: ["eigenvalues-eigenvectors", "matrix-norms", "symmetric-matrices", "orthogonal-vectors", "orthogonal-matrices", "positive-definite-matrices", "spectral-theorem"],
   },
   {
     id: "kronecker-product",
     title: "Kronecker Product",
     domain: "linear-algebra",
     blurb: "A way of combining two matrices into a much larger block matrix.",
-    prerequisites: ["matrix-multiplication"],
+    prerequisites: ["matrix-multiplication", "eigenvalues-eigenvectors", "trace"],
   },
   {
     id: "subspace-operations",
     title: "Subspace Operations",
     domain: "linear-algebra",
     blurb: "Taking sums and intersections of subspaces.",
-    prerequisites: ["vector-spaces", "span"],
+    prerequisites: ["vector-spaces", "span", "basis"],
   },
 
   // ---------------------------------------------------------------------
@@ -1110,6 +1110,20 @@ export const concepts: Concept[] = [
     prerequisites: ["pdf", "determinant"],
   },
   {
+    id: "random-vectors",
+    title: "Random Vectors",
+    domain: "multivariate-probability",
+    blurb: "Several random variables stacked into one vector — its joint distribution, its mean vector, and why its spread needs a whole matrix.",
+    /**
+     * The domain's entry point. Everything after it treats X as a single
+     * object, so this lesson is where "a joint distribution of k variables"
+     * becomes "the distribution of one vector": componentwise expectation,
+     * linearity in matrix form, and the k² covariances that a single variance
+     * can no longer summarise — the gap `covariance-matrix` exists to fill.
+     */
+    prerequisites: ["joint-distribution", "marginal-distribution", "expectation", "covariance", "matrices"],
+  },
+  {
     id: "covariance-matrix",
     title: "Covariance Matrix",
     domain: "multivariate-probability",
@@ -1117,7 +1131,29 @@ export const concepts: Concept[] = [
     // Variance was reachable only through Covariance's own ancestors, which do
     // not include it. The diagonal of Σ *is* the variances, and every quadratic
     // form aᵀΣa is one, so the edge is a real dependency rather than a tidy-up.
-    prerequisites: ["covariance", "variance", "positive-definite-matrices"],
+    prerequisites: ["random-vectors", "covariance", "variance", "positive-definite-matrices"],
+  },
+  {
+    id: "linear-transformations-random-vectors",
+    title: "Linear Transformations of Random Vectors",
+    domain: "multivariate-probability",
+    blurb: "The distribution of AX + b: its mean and covariance always, its density when A is invertible, and the whole law when X is Gaussian.",
+    /**
+     * `change-of-variables-jacobian` is what turns "mean and covariance of AX"
+     * into "density of AX" when A is square and invertible — the |det A| in
+     * that formula is the lesson's second half. `normal-distribution` is
+     * upstream because the Gaussian case (a sum of independent normals is
+     * normal) is where the transformation determines the entire law, and
+     * `multivariate-normal` is downstream: N(μ, Σ) is *built* as μ + LZ.
+     */
+    prerequisites: [
+      "random-vectors",
+      "covariance-matrix",
+      "matrix-multiplication",
+      "linear-transformations",
+      "change-of-variables-jacobian",
+      "normal-distribution",
+    ],
   },
   {
     id: "bivariate-normal",
@@ -1131,7 +1167,14 @@ export const concepts: Concept[] = [
     title: "Multivariate Normal",
     domain: "multivariate-probability",
     blurb: "The bell curve generalized to many correlated dimensions at once.",
-    prerequisites: ["bivariate-normal", "covariance-matrix", "eigendecomposition"],
+    prerequisites: [
+      "bivariate-normal",
+      "covariance-matrix",
+      "eigendecomposition",
+      // N(μ, Σ) is constructed as μ + LZ with LLᵀ = Σ, and its closure under
+      // affine maps is that lesson's Gaussian case — so it comes first.
+      "linear-transformations-random-vectors",
+    ],
   },
   {
     id: "pearson-correlation",
@@ -1909,7 +1952,7 @@ export const concepts: Concept[] = [
     title: "Quantile Regression",
     domain: "regression",
     blurb: "Modeling a conditional quantile of the response instead of its mean.",
-    prerequisites: ["ordinary-least-squares"],
+    prerequisites: ["robust-regression-overview"],
   },
   {
     id: "loess-smoothing",
@@ -2046,11 +2089,18 @@ export const concepts: Concept[] = [
 
   // Ch. 3.13 & 11.12 — robust regression
   {
+    id: "robust-regression-overview",
+    title: "Robust Regression",
+    domain: "regression",
+    blurb: "Why least squares is fragile — outliers, leverage and influence — and the map of fixes: M-estimators, median regression, and high-breakdown fits. (§3.13)",
+    prerequisites: ["ordinary-least-squares", "outliers-leverage-influence"],
+  },
+  {
     id: "m-estimators-regression",
     title: "M-Estimators for Regression",
     domain: "regression",
     blurb: "Replacing squared error with a loss that grows more slowly — Huber, L1, bisquare — and fitting it by iteratively reweighted least squares. (§3.13.1, §11.12)",
-    prerequisites: ["ordinary-least-squares", "outliers-leverage-influence", "weighted-least-squares"],
+    prerequisites: ["robust-regression-overview", "weighted-least-squares"],
   },
   {
     id: "breakdown-point-and-influence-function",
@@ -4249,6 +4299,27 @@ export const concepts: Concept[] = [
     domain: "stochastic-processes",
     blurb: "A random sum of random jumps — claim totals and jump risk — with mean λtE[Y] and variance λtE[Y²].",
     prerequisites: ["poisson-process", "law-of-total-expectation", "law-of-total-variance"],
+  },
+  {
+    id: "levy-processes",
+    title: "Lévy Processes",
+    domain: "stochastic-processes",
+    blurb: "Processes with independent, stationary increments — the continuous-time random walks. Brownian motion with drift, Poisson and compound Poisson processes are the first examples.",
+    prerequisites: ["brownian-motion", "compound-poisson-process"],
+  },
+  {
+    id: "levy-khintchine-formula",
+    title: "Infinite Divisibility & the Lévy–Khintchine Formula",
+    domain: "stochastic-processes",
+    blurb: "Every Lévy process has characteristic function exp(tψ(u)), and ψ is pinned down by a drift, a Gaussian variance and a jump measure: the triplet (b, σ², ν).",
+    prerequisites: ["levy-processes"],
+  },
+  {
+    id: "levy-ito-decomposition",
+    title: "Lévy–Itô Decomposition & Jumps",
+    domain: "stochastic-processes",
+    blurb: "Drift plus Brownian motion plus large jumps plus compensated small jumps: finite vs infinite activity, subordinators and stable processes.",
+    prerequisites: ["levy-khintchine-formula"],
   },
   {
     id: "conditional-intensity",

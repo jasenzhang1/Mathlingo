@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { InfoTip } from "./InfoTip";
+import { matchStemWithAI } from "../../lib/dev/reviseItem";
 import type { Concept } from "../../data/concepts";
 import type {
   CognitiveLevel,
@@ -147,20 +148,21 @@ export function ItemEditorForm({
     );
   }
 
-  function handleSave() {
+  /** The item as the form currently describes it, or null (with an error shown) if it is invalid. */
+  function buildItem(): Item | null {
     const trimmedId = id.trim();
     if (!trimmedId) {
       setIdError("An id is required.");
-      return;
+      return null;
     }
     if (isNew && existingIds.has(trimmedId)) {
       setIdError("An item with this id already exists.");
-      return;
+      return null;
     }
     if (!conceptId.trim()) {
       setIdError(null);
       setAdvancedError("Pick a concept.");
-      return;
+      return null;
     }
 
     let advanced: AdvancedFields;
@@ -169,7 +171,7 @@ export function ItemEditorForm({
       setAdvancedError(null);
     } catch (err) {
       setAdvancedError(err instanceof Error ? err.message : "Invalid JSON.");
-      return;
+      return null;
     }
 
     const parsedAnswerKey =
@@ -221,7 +223,40 @@ export function ItemEditorForm({
       source: advanced.source ?? BLANK_ITEM.source,
     };
     setIdError(null);
-    onSave(next);
+    return next;
+  }
+
+  function handleSave() {
+    const next = buildItem();
+    if (next) onSave(next);
+  }
+
+  // "I changed the question — update the rest." The AI rewrites the answer key,
+  // choices, rubric, difficulty and timing to match the new stem and fills the
+  // form with them; nothing is saved until the developer clicks Save.
+  const [aiBusy, setAiBusy] = useState(false);
+  const [aiResult, setAiResult] = useState<{ summary: string; changes: string[] } | { error: string } | null>(null);
+  async function matchRestToStem() {
+    const current = buildItem();
+    if (!current) return;
+    setAiBusy(true);
+    setAiResult(null);
+    const result = await matchStemWithAI({ item: current, previousStem: base.stem });
+    setAiBusy(false);
+    if (!result.ok) {
+      setAiResult({ error: result.message });
+      return;
+    }
+    const r = result.item;
+    setCognitive(r.cognitive);
+    setDifficulty(formatDifficultyLevel(r.difficulty));
+    setDiscrimination(String(r.discrimination));
+    setExpectedSeconds(String(r.expectedSeconds));
+    setAnswerKey(r.answerKey === undefined ? "" : String(r.answerKey));
+    setTolerance(r.tolerance === undefined ? "" : String(r.tolerance));
+    setRubric(r.rubric ?? { elements: [] });
+    setAdvancedJson(JSON.stringify(splitAdvanced(r), null, 2));
+    setAiResult({ summary: result.summary, changes: result.changes });
   }
 
   const inputClass =
@@ -279,6 +314,36 @@ export function ItemEditorForm({
           value={stem}
           onChange={(e) => setStem(e.target.value)}
         />
+        <div className="mt-2 flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={() => void matchRestToStem()}
+            disabled={aiBusy || !stem.trim()}
+            title="Rewrite the answer key, choices, rubric, difficulty and timing to match this wording. Nothing is saved until you click Save."
+            className="font-body rounded-full border border-[var(--accent)] px-3 py-1 text-xs font-medium text-[var(--accent)] hover:bg-[var(--accent-soft)] disabled:opacity-50"
+          >
+            {aiBusy ? "Updating the rest…" : "Update the rest to match (AI)"}
+          </button>
+          <span className="font-body text-[11px] text-[var(--ink-soft)]">
+            Change the wording above, then let AI redo everything else — review it below and Save.
+          </span>
+        </div>
+        {aiResult && "error" in aiResult && (
+          <p className="font-body mt-2 text-xs text-red-600">{aiResult.error}</p>
+        )}
+        {aiResult && "summary" in aiResult && (
+          <div className="font-body mt-2 rounded-lg border border-dashed border-[var(--line)] bg-[var(--paper)] p-3 text-xs">
+            <p className="text-[var(--ink)]">{aiResult.summary || "Updated."}</p>
+            {aiResult.changes.length > 0 && (
+              <ul className="mt-1 list-disc pl-5 text-[var(--ink-soft)]">
+                {aiResult.changes.map((c, i) => (
+                  <li key={i}>{c}</li>
+                ))}
+              </ul>
+            )}
+            <p className="mt-1 text-[var(--ink-soft)]">Not saved yet — check the fields below, adjust anything, then Save.</p>
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">

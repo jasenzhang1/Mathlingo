@@ -82,6 +82,7 @@ import { boxCoxTransformationWiki } from "./box-cox-transformation";
 import { caseDeletionDiagnosticsWiki } from "./case-deletion-diagnostics";
 import { principalComponentsRegressionWiki } from "./principal-components-regression";
 import { mEstimatorsRegressionWiki } from "./m-estimators-regression";
+import { robustRegressionOverviewWiki } from "./robust-regression-overview";
 import { breakdownPointAndInfluenceFunctionWiki } from "./breakdown-point-and-influence-function";
 import { highBreakdownRegressionWiki } from "./high-breakdown-regression";
 import { leastSquaresViaCholeskyWiki } from "./least-squares-via-cholesky";
@@ -223,6 +224,7 @@ export const regressionWikis: WikiArticle[] = [
 
   // Seber & Lee §3.13 and Ch. 11 — robust regression and computing the fit
   mEstimatorsRegressionWiki,
+  robustRegressionOverviewWiki,
   breakdownPointAndInfluenceFunctionWiki,
   highBreakdownRegressionWiki,
   leastSquaresViaCholeskyWiki,

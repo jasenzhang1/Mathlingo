@@ -3,15 +3,15 @@ import type { WikiArticle } from "../types";
 export const moorePenroseInverse: WikiArticle = {
   conceptId: "moore-penrose-inverse",
   summary:
-    "The pseudoinverse $A^{+}$ extends matrix inversion to every matrix — rectangular, rank-deficient, or singular. It returns the least-squares solution when the system has none, and the minimum-norm solution when it has many, reducing to $A^{-1}$ exactly when that exists.",
+    "The pseudoinverse $\\mathbf{A}^{+}$ extends matrix inversion to every matrix — rectangular, rank-deficient, or singular. It returns the least-squares solution when the system has none, and the minimum-norm solution when it has many, reducing to $\\mathbf{A}^{-1}$ exactly when that exists.",
   sections: [
     {
       heading: "Definition via the SVD",
       blocks: [
         {
           kind: "formula",
-          latex: "A = U\\Sigma V^{\\top} \\ \\Longrightarrow \\ A^{+} = V\\Sigma^{+}U^{\\top}",
-          caption: "$\\Sigma^{+}$ inverts each non-zero singular value and transposes the shape",
+          latex: "\\mathbf{A} = \\mathbf{U}\\boldsymbol{\\Sigma} \\mathbf{V}^{\\top} \\ \\Longrightarrow \\ \\mathbf{A}^{+} = \\mathbf{V}\\boldsymbol{\\Sigma}^{+}\\mathbf{U}^{\\top}",
+          caption: "$\\boldsymbol{\\Sigma}^{+}$ inverts each non-zero singular value and transposes the shape",
         },
         {
           kind: "prose",
@@ -20,8 +20,8 @@ export const moorePenroseInverse: WikiArticle = {
         {
           kind: "callout",
           tone: "insight",
-          title: "What $A^{+}$ returns in each case",
-          text: "For an *overdetermined* inconsistent system, $A^{+}\\mathbf{b}$ is the least-squares solution — the $\\mathbf{x}$ minimising $\\|A\\mathbf{x}-\\mathbf{b}\\|$. For an *underdetermined* system with infinitely many solutions, it returns the one of smallest norm. When both apply, it gives the minimum-norm least-squares solution, which is unique even when neither condition alone determines an answer.",
+          title: "What $\\mathbf{A}^{+}$ returns in each case",
+          text: "For an *overdetermined* inconsistent system, $\\mathbf{A}^{+}\\mathbf{b}$ is the least-squares solution — the $\\mathbf{x}$ minimising $\\|\\mathbf{A}\\mathbf{x}-\\mathbf{b}\\|$. For an *underdetermined* system with infinitely many solutions, it returns the one of smallest norm. When both apply, it gives the minimum-norm least-squares solution, which is unique even when neither condition alone determines an answer.",
         },
       ],
     },
@@ -30,17 +30,17 @@ export const moorePenroseInverse: WikiArticle = {
       blocks: [
         {
           kind: "table",
-          headers: ["Situation", "$A^{+}$ equals", "Interpretation"],
+          headers: ["Situation", "$\\mathbf{A}^{+}$ equals", "Interpretation"],
           rows: [
-            ["$A$ square, invertible", "$A^{-1}$", "the pseudoinverse generalises, not replaces"],
-            ["Full column rank", "$(A^{\\top}A)^{-1}A^{\\top}$", "the least-squares formula"],
-            ["Full row rank", "$A^{\\top}(AA^{\\top})^{-1}$", "the minimum-norm formula"],
+            ["$\\mathbf{A}$ square, invertible", "$\\mathbf{A}^{-1}$", "the pseudoinverse generalises, not replaces"],
+            ["Full column rank", "$(\\mathbf{A}^{\\top}\\mathbf{A})^{-1}\\mathbf{A}^{\\top}$", "the least-squares formula"],
+            ["Full row rank", "$\\mathbf{A}^{\\top}(\\mathbf{A}\\mathbf{A}^{\\top})^{-1}$", "the minimum-norm formula"],
             ["Rank deficient", "only via the SVD", "neither product is invertible"],
           ],
         },
         {
           kind: "prose",
-          text: "The full-column-rank row is worth recognising: $(A^{\\top}A)^{-1}A^{\\top}$ is the ordinary least squares estimator. So OLS is the pseudoinverse in the case where predictors are independent — and when they are not, the pseudoinverse still returns an answer while OLS breaks down.",
+          text: "The full-column-rank row is worth recognising: $(\\mathbf{A}^{\\top}\\mathbf{A})^{-1}\\mathbf{A}^{\\top}$ is the ordinary least squares estimator. So OLS is the pseudoinverse in the case where predictors are independent — and when they are not, the pseudoinverse still returns an answer while OLS breaks down.",
         },
       ],
     },
@@ -49,7 +49,7 @@ export const moorePenroseInverse: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "\\mathbf{x}^{+} = A^{+}\\mathbf{b} \\in C(A^{\\top}), \\qquad \\text{all solutions} = \\mathbf{x}^{+} + N(A)",
+          latex: "\\mathbf{x}^{+} = \\mathbf{A}^{+}\\mathbf{b} \\in C(\\mathbf{A}^{\\top}), \\qquad \\text{all solutions} = \\mathbf{x}^{+} + N(\\mathbf{A})",
           caption: "The pseudoinverse solution lies in the row space, with no null space component",
         },
         {
@@ -61,13 +61,13 @@ export const moorePenroseInverse: WikiArticle = {
           title: "An underdetermined system",
           problem: "Solve $x_1 + x_2 = 2$ for the minimum-norm solution.",
           steps: [
-            "$A = [1 \\ \\ 1]$, a $1\\times2$ matrix of full row rank.",
-            "$AA^{\\top} = 2$, so $A^{+} = A^{\\top}(AA^{\\top})^{-1} = \\tfrac{1}{2}(1,1)^{\\top}$.",
-            "$\\mathbf{x}^{+} = A^{+}\\cdot 2 = (1,1)$.",
+            "$\\mathbf{A} = [1 \\ \\ 1]$, a $1\\times2$ matrix of full row rank.",
+            "$\\mathbf{A}\\mathbf{A}^{\\top} = 2$, so $\\mathbf{A}^{+} = \\mathbf{A}^{\\top}(\\mathbf{A}\\mathbf{A}^{\\top})^{-1} = \\tfrac{1}{2}(1,1)^{\\top}$.",
+            "$\\mathbf{x}^{+} = \\mathbf{A}^{+}\\cdot 2 = [1, 1]$.",
             "Every $(1+t,\\ 1-t)$ solves the equation; its norm is $\\sqrt{2 + 2t^{2}}$, minimised at $t = 0$. ✓",
           ],
           answer:
-            "$(1,1)$ — the point on the solution line closest to the origin, which is the perpendicular foot.",
+            "$[1, 1]$ — the point on the solution line closest to the origin, which is the perpendicular foot.",
         },
       ],
     },
@@ -84,9 +84,9 @@ export const moorePenroseInverse: WikiArticle = {
           kind: "list",
           ordered: false,
           items: [
-            "**The four Penrose conditions** — $AA^{+}A = A$, $A^{+}AA^{+} = A^{+}$, and both $AA^{+}$ and $A^{+}A$ symmetric — characterise $A^{+}$ uniquely, and are how it is defined without reference to the SVD.",
-            "$AA^{+}$ and $A^{+}A$ are the orthogonal projections onto $C(A)$ and $C(A^{\\top})$ respectively.",
-            "$(A^{+})^{+} = A$, but **$(AB)^{+} \\ne B^{+}A^{+}$** in general — the reversal rule for inverses does not survive.",
+            "**The four Penrose conditions** — $\\mathbf{A}\\mathbf{A}^{+}\\mathbf{A} = \\mathbf{A}$, $\\mathbf{A}^{+}\\mathbf{A}\\mathbf{A}^{+} = \\mathbf{A}^{+}$, and both $\\mathbf{A}\\mathbf{A}^{+}$ and $\\mathbf{A}^{+}\\mathbf{A}$ symmetric — characterise $\\mathbf{A}^{+}$ uniquely, and are how it is defined without reference to the SVD.",
+            "$\\mathbf{A}\\mathbf{A}^{+}$ and $\\mathbf{A}^{+}\\mathbf{A}$ are the orthogonal projections onto $C(\\mathbf{A})$ and $C(\\mathbf{A}^{\\top})$ respectively.",
+            "$(\\mathbf{A}^{+})^{+} = \\mathbf{A}$, but **$(AB)^{+} \\ne B^{+}\\mathbf{A}^{+}$** in general — the reversal rule for inverses does not survive.",
             "**Use `lstsq`, not `pinv(A) @ b`.** Forming the pseudoinverse explicitly is more expensive and less accurate than solving directly, for the same reason as with ordinary inverses.",
           ],
         },

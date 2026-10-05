@@ -3,7 +3,7 @@ import type { WikiArticle } from "../types";
 export const gramSchmidt: WikiArticle = {
   conceptId: "gram-schmidt",
   summary:
-    "Gram–Schmidt converts any independent set into an orthonormal one spanning the same subspace. Each new vector has its components along the previous directions subtracted off, leaving only what is genuinely new — and the leftovers, recorded, are exactly the $R$ of a QR decomposition.",
+    "Gram–Schmidt converts any independent set into an orthonormal one spanning the same subspace. Each new vector has its components along the previous directions subtracted off, leaving only what is genuinely new — and the leftovers, recorded, are exactly the $\\mathbf{R}$ of a QR decomposition.",
   sections: [
     {
       heading: "The procedure",
@@ -21,7 +21,7 @@ export const gramSchmidt: WikiArticle = {
           kind: "callout",
           tone: "insight",
           title: "Why the span is preserved",
-          text: "Each $\\mathbf{q}_k$ is a combination of $\\mathbf{v}_1,\\ldots,\\mathbf{v}_k$, and conversely each $\\mathbf{v}_k$ is a combination of $\\mathbf{q}_1,\\ldots,\\mathbf{q}_k$ — the process is invertible at every step. So the first $k$ vectors of either set span the same subspace, for every $k$. That nested property is what makes the resulting $R$ upper triangular.",
+          text: "Each $\\mathbf{q}_k$ is a combination of $\\mathbf{v}_1,\\ldots,\\mathbf{v}_k$, and conversely each $\\mathbf{v}_k$ is a combination of $\\mathbf{q}_1,\\ldots,\\mathbf{q}_k$ — the process is invertible at every step. So the first $k$ vectors of either set span the same subspace, for every $k$. That nested property is what makes the resulting $\\mathbf{R}$ upper triangular.",
         },
       ],
     },
@@ -32,11 +32,11 @@ export const gramSchmidt: WikiArticle = {
           kind: "example",
           title: "Orthonormalising two vectors",
           problem:
-            "Apply Gram–Schmidt to $\\mathbf{v}_1 = (1,1,0)$ and $\\mathbf{v}_2 = (1,0,1)$.",
+            "Apply Gram–Schmidt to $\\mathbf{v}_1 = [1, 1, 0]$ and $\\mathbf{v}_2 = [1, 0, 1]$.",
           steps: [
             "$\\|\\mathbf{v}_1\\| = \\sqrt{2}$, so $\\mathbf{q}_1 = \\tfrac{1}{\\sqrt{2}}(1,1,0)$.",
             "$\\mathbf{v}_2 \\cdot \\mathbf{q}_1 = (1 + 0 + 0)/\\sqrt{2} = 1/\\sqrt{2}$.",
-            "$\\mathbf{w}_2 = (1,0,1) - \\tfrac{1}{\\sqrt{2}}\\cdot\\tfrac{1}{\\sqrt{2}}(1,1,0) = (1,0,1) - (0.5,0.5,0) = (0.5,-0.5,1)$.",
+            "$\\mathbf{w}_2 = [1, 0, 1] - \\tfrac{1}{\\sqrt{2}}\\cdot\\tfrac{1}{\\sqrt{2}}(1,1,0) = [1, 0, 1] - [0.5, 0.5, 0] = [0.5, -0.5, 1]$.",
             "$\\|\\mathbf{w}_2\\| = \\sqrt{0.25+0.25+1} = \\sqrt{1.5}$.",
             "$\\mathbf{q}_2 = \\tfrac{1}{\\sqrt{1.5}}(0.5,-0.5,1)$.",
             "Check: $\\mathbf{q}_1\\cdot\\mathbf{q}_2 \\propto (0.5 - 0.5 + 0) = 0$. ✓",
@@ -51,18 +51,18 @@ export const gramSchmidt: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "A = QR, \\qquad R_{jk} = \\mathbf{v}_k \\cdot \\mathbf{q}_j \\ (j \\le k)",
-          caption: "The coefficients discarded during orthogonalisation are the entries of $R$",
+          latex: "\\mathbf{A} = \\mathbf{Q}\\mathbf{R}, \\qquad \\mathbf{R}_{jk} = \\mathbf{v}_k \\cdot \\mathbf{q}_j \\ (j \\le k)",
+          caption: "The coefficients discarded during orthogonalisation are the entries of $\\mathbf{R}$",
         },
         {
           kind: "prose",
-          text: "Gram–Schmidt does not throw the projection coefficients away — collecting them gives an upper triangular $R$ such that $A = QR$. Upper triangular because $\\mathbf{v}_k$ involves only $\\mathbf{q}_1,\\ldots,\\mathbf{q}_k$, never later ones. This is the constructive proof that every full-column-rank matrix has a QR decomposition.",
+          text: "Gram–Schmidt does not throw the projection coefficients away — collecting them gives an upper triangular $\\mathbf{R}$ such that $\\mathbf{A} = \\mathbf{Q}\\mathbf{R}$. Upper triangular because $\\mathbf{v}_k$ involves only $\\mathbf{q}_1,\\ldots,\\mathbf{q}_k$, never later ones. This is the constructive proof that every full-column-rank matrix has a QR decomposition.",
         },
         {
           kind: "callout",
           tone: "insight",
           title: "Why this makes least squares stable",
-          text: "Substituting $A = QR$ into the normal equations gives $R\\boldsymbol{\\beta} = Q^{\\top}\\mathbf{b}$ — a triangular system solved by back-substitution, with no need to form $A^{\\top}A$. That matters because forming $A^{\\top}A$ squares the condition number, so a problem workable in double precision can become unsolvable. QR is what numerical libraries actually use for regression.",
+          text: "Substituting $\\mathbf{A} = \\mathbf{Q}\\mathbf{R}$ into the normal equations gives $\\mathbf{R}\\boldsymbol{\\beta} = \\mathbf{Q}^{\\top}\\mathbf{b}$ — a triangular system solved by back-substitution, with no need to form $\\mathbf{A}^{\\top}\\mathbf{A}$. That matters because forming $\\mathbf{A}^{\\top}\\mathbf{A}$ squares the condition number, so a problem workable in double precision can become unsolvable. QR is what numerical libraries actually use for regression.",
         },
       ],
     },

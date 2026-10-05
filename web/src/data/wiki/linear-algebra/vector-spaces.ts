@@ -49,7 +49,7 @@ export const vectorSpaces: WikiArticle = {
         },
         {
           kind: "prose",
-          text: "The last row is why probability and linear algebra keep converging. With $\\langle X,Y\\rangle = \\mathbb{E}[XY]$, centred random variables form an inner product space in which uncorrelated means orthogonal, standard deviation is a norm, and $\\operatorname{Var}(X+Y) = \\operatorname{Var}(X)+\\operatorname{Var}(Y)$ for uncorrelated variables is Pythagoras. Conditional expectation is orthogonal projection, and least squares regression is projection onto a subspace — the same theorem in two subjects.",
+          text: "The last row is why probability and linear algebra keep converging. With $\\langle X,Y\\rangle = \\mathbb{E}[XY]$, centred random variables form an inner product space in which uncorrelated means orthogonal, standard deviation is a norm, and $\\text{Var}(X+Y) = \\text{Var}(X)+\\text{Var}(Y)$ for uncorrelated variables is Pythagoras. Conditional expectation is orthogonal projection, and least squares regression is projection onto a subspace — the same theorem in two subjects.",
         },
       ],
     },
@@ -67,10 +67,10 @@ export const vectorSpaces: WikiArticle = {
           problem:
             "Is the line $y = 2x$ a subspace? Is the line $y = 2x + 1$?",
           steps: [
-            "$y = 2x$: contains $(0,0)$. ✓",
-            "Adding $(1,2)$ and $(3,6)$ gives $(4,8)$, still on the line. Scaling likewise. ✓ Subspace.",
-            "$y = 2x+1$: does it contain $(0,0)$? $0 \\ne 1$. ✗",
-            "Also fails closure: $(0,1)$ and $(1,3)$ sum to $(1,4)$, which is not on the line.",
+            "$y = 2x$: contains $[0, 0]$. ✓",
+            "Adding $[1, 2]$ and $[3, 6]$ gives $[4, 8]$, still on the line. Scaling likewise. ✓ Subspace.",
+            "$y = 2x+1$: does it contain $[0, 0]$? $0 \\ne 1$. ✗",
+            "Also fails closure: $[0, 1]$ and $[1, 3]$ sum to $[1, 4]$, which is not on the line.",
           ],
           answer:
             "The first is a subspace, the second is not — it is an affine set. Every subspace must pass through the origin, because scaling by 0 has to stay inside.",
@@ -79,7 +79,7 @@ export const vectorSpaces: WikiArticle = {
           kind: "callout",
           tone: "warning",
           title: "Unions of subspaces usually are not subspaces",
-          text: "Take the $x$-axis and the $y$-axis in $\\mathbb{R}^{2}$. Each is a subspace, but their union is not: $(1,0)$ and $(0,1)$ both lie in it while $(1,1)$ does not. Intersections *are* always subspaces, and the correct way to combine two is the sum $W_1 + W_2 = \\{\\mathbf{w}_1+\\mathbf{w}_2\\}$, which is the smallest subspace containing both.",
+          text: "Take the $x$-axis and the $y$-axis in $\\mathbb{R}^{2}$. Each is a subspace, but their union is not: $[1, 0]$ and $[0, 1]$ both lie in it while $[1, 1]$ does not. Intersections *are* always subspaces, and the correct way to combine two is the sum $W_1 + W_2 = \\{\\mathbf{w}_1+\\mathbf{w}_2\\}$, which is the smallest subspace containing both.",
         },
       ],
     },

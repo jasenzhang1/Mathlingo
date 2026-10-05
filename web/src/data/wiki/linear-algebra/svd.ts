@@ -10,12 +10,12 @@ export const svd: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "A = U\\Sigma V^{\\top}, \\qquad A \\in \\mathbb{R}^{m\\times n}",
-          caption: "$U$ ($m\\times m$) and $V$ ($n\\times n$) orthogonal; $\\Sigma$ diagonal with $\\sigma_1 \\ge \\sigma_2 \\ge \\cdots \\ge 0$",
+          latex: "\\mathbf{A} = \\mathbf{U}\\boldsymbol{\\Sigma} \\mathbf{V}^{\\top}, \\qquad \\mathbf{A} \\in \\mathbb{R}^{m\\times n}",
+          caption: "$\\mathbf{U}$ ($m\\times m$) and $\\mathbf{V}$ ($n\\times n$) orthogonal; $\\boldsymbol{\\Sigma}$ diagonal with $\\sigma_1 \\ge \\sigma_2 \\ge \\cdots \\ge 0$",
         },
         {
           kind: "prose",
-          text: "Read right to left as a sequence of geometric steps: $V^{\\top}$ rotates the input into a preferred coordinate system, $\\Sigma$ stretches each axis by a singular value, and $U$ rotates the result into the output space. Every linear map, however irregular, is exactly this — rotate, stretch, rotate.",
+          text: "Read right to left as a sequence of geometric steps: $\\mathbf{V}^{\\top}$ rotates the input into a preferred coordinate system, $\\boldsymbol{\\Sigma}$ stretches each axis by a singular value, and $\\mathbf{U}$ rotates the result into the output space. Every linear map, however irregular, is exactly this — rotate, stretch, rotate.",
         },
         {
           kind: "callout",
@@ -25,7 +25,7 @@ export const svd: WikiArticle = {
         },
         {
           kind: "formula",
-          latex: "A = \\sum_{k=1}^{r} \\sigma_k\\,\\mathbf{u}_k\\mathbf{v}_k^{\\top}",
+          latex: "\\mathbf{A} = \\sum_{k=1}^{r} \\sigma_k\\,\\mathbf{u}_k\\mathbf{v}_k^{\\top}",
           caption: "Equivalently, a sum of $r$ rank-one pieces ordered by importance",
         },
       ],
@@ -35,18 +35,18 @@ export const svd: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "A^{\\top}A = V\\Sigma^{2}V^{\\top}, \\qquad AA^{\\top} = U\\Sigma^{2}U^{\\top}",
-          caption: "Singular values are the square roots of the eigenvalues of $A^{\\top}A$",
+          latex: "\\mathbf{A}^{\\top}\\mathbf{A} = \\mathbf{V}\\boldsymbol{\\Sigma}^{2}\\mathbf{V}^{\\top}, \\qquad \\mathbf{A}\\mathbf{A}^{\\top} = \\mathbf{U}\\boldsymbol{\\Sigma}^{2}\\mathbf{U}^{\\top}",
+          caption: "Singular values are the square roots of the eigenvalues of $\\mathbf{A}^{\\top}\\mathbf{A}$",
         },
         {
           kind: "prose",
-          text: "Both $A^{\\top}A$ and $AA^{\\top}$ are symmetric and positive semidefinite, so the spectral theorem applies and their eigenvalues are non-negative — which is why $\\sigma_k = \\sqrt{\\lambda_k}$ is well defined. This also explains the two sets of vectors: $V$ holds eigenvectors of $A^{\\top}A$ and $U$ those of $AA^{\\top}$.",
+          text: "Both $\\mathbf{A}^{\\top}\\mathbf{A}$ and $\\mathbf{A}\\mathbf{A}^{\\top}$ are symmetric and positive semidefinite, so the spectral theorem applies and their eigenvalues are non-negative — which is why $\\sigma_k = \\sqrt{\\lambda_k}$ is well defined. This also explains the two sets of vectors: $\\mathbf{V}$ holds eigenvectors of $\\mathbf{A}^{\\top}\\mathbf{A}$ and $\\mathbf{U}$ those of $\\mathbf{A}\\mathbf{A}^{\\top}$.",
         },
         {
           kind: "callout",
           tone: "warning",
-          title: "Forming $A^{\\top}A$ is a bad way to compute it",
-          text: "Squaring the matrix squares the condition number, so small singular values are lost to rounding. A matrix with $\\sigma_{\\min}/\\sigma_{\\max} = 10^{-8}$ is workable directly and hopeless after squaring in double precision. Real implementations use Golub–Kahan bidiagonalisation on $A$ itself. The identity above is for understanding, not for computing.",
+          title: "Forming $\\mathbf{A}^{\\top}\\mathbf{A}$ is a bad way to compute it",
+          text: "Squaring the matrix squares the condition number, so small singular values are lost to rounding. A matrix with $\\sigma_{\\min}/\\sigma_{\\max} = 10^{-8}$ is workable directly and hopeless after squaring in double precision. Real implementations use Golub–Kahan bidiagonalisation on $\\mathbf{A}$ itself. The identity above is for understanding, not for computing.",
         },
       ],
     },
@@ -67,11 +67,11 @@ export const svd: WikiArticle = {
             ],
             [
               "Pseudoinverse",
-              "$A^{+} = V\\Sigma^{+}U^{\\top}$, inverting the non-zero $\\sigma_k$",
+              "$\\mathbf{A}^{+} = \\mathbf{V}\\boldsymbol{\\Sigma}^{+}\\mathbf{U}^{\\top}$, inverting the non-zero $\\sigma_k$",
             ],
             [
               "PCA",
-              "SVD of the centred data matrix; $V$ holds the principal directions",
+              "SVD of the centred data matrix; $\\mathbf{V}$ holds the principal directions",
             ],
             [
               "Condition number",
@@ -79,7 +79,7 @@ export const svd: WikiArticle = {
             ],
             [
               "Four subspaces",
-              "$U,V$ columns split into bases for $C(A)$, $N(A^{\\top})$, $C(A^{\\top})$, $N(A)$",
+              "$\\mathbf{U},\\mathbf{V}$ columns split into bases for $C(\\mathbf{A})$, $N(\\mathbf{A}^{\\top})$, $C(\\mathbf{A}^{\\top})$, $N(\\mathbf{A})$",
             ],
           ],
         },
@@ -96,7 +96,7 @@ export const svd: WikiArticle = {
             "A $1000\\times800$ image matrix is approximated by its top 50 singular values. How much is stored, and what fraction of the original?",
           steps: [
             "Full storage: $1000 \\times 800 = 800{,}000$ numbers.",
-            "Rank-50: $U$ needs $1000\\times50$, $V$ needs $800\\times50$, plus 50 singular values.",
+            "Rank-50: $\\mathbf{U}$ needs $1000\\times50$, $\\mathbf{V}$ needs $800\\times50$, plus 50 singular values.",
             "$50{,}000 + 40{,}000 + 50 = 90{,}050$.",
           ],
           answer:
@@ -111,7 +111,7 @@ export const svd: WikiArticle = {
           kind: "list",
           ordered: false,
           items: [
-            "**Singular values are always real and non-negative**, unlike eigenvalues. They are ordered by convention, so $\\sigma_1$ is the largest stretch factor — which equals the spectral norm $\\|A\\|_2$.",
+            "**Singular values are always real and non-negative**, unlike eigenvalues. They are ordered by convention, so $\\sigma_1$ is the largest stretch factor — which equals the spectral norm $\\|\\mathbf{A}\\|_2$.",
             "**Uniqueness is partial.** The singular values are unique; the vectors are not when singular values repeat, and each $(\\mathbf{u}_k,\\mathbf{v}_k)$ pair can flip sign together. Sign flips between library versions are expected, not a bug.",
             "**Truncated SVD is what to compute** for large matrices — algorithms like randomised SVD find the top $k$ without forming the full decomposition.",
             "**A gradual decay of singular values** means there is no natural rank, and any cutoff is a judgement call rather than a discovery.",

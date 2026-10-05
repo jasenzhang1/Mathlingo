@@ -43,7 +43,7 @@ export const vectorAngles: WikiArticle = {
           kind: "example",
           title: "Two worked angles",
           problem:
-            "Find the angle between $\\mathbf{u} = (1,0)$ and $\\mathbf{v} = (1,1)$, and between $\\mathbf{a} = (2,0,0)$ and $\\mathbf{b} = (1,1,1)$.",
+            "Find the angle between $\\mathbf{u} = [1, 0]$ and $\\mathbf{v} = [1, 1]$, and between $\\mathbf{a} = [2, 0, 0]$ and $\\mathbf{b} = [1, 1, 1]$.",
           steps: [
             "$\\mathbf{u}\\cdot\\mathbf{v} = 1$, $\\|\\mathbf{u}\\| = 1$, $\\|\\mathbf{v}\\| = \\sqrt2$, so $\\cos\\theta = 1/\\sqrt2$, giving $\\theta = 45°$.",
             "$\\mathbf{a}\\cdot\\mathbf{b} = 2$, $\\|\\mathbf{a}\\| = 2$, $\\|\\mathbf{b}\\| = \\sqrt3$, so $\\cos\\theta = 2/(2\\sqrt3) = 1/\\sqrt3 \\approx 0.577$.",
@@ -62,12 +62,12 @@ export const vectorAngles: WikiArticle = {
         },
         {
           kind: "formula",
-          latex: "\\langle X,Y\\rangle := \\operatorname{Cov}(X,Y), \\quad \\|X\\| := \\sqrt{\\operatorname{Var}(X)} = \\sigma_X",
+          latex: "\\langle X,Y\\rangle := \\text{Cov}(X,Y), \\quad \\|X\\| := \\sqrt{\\text{Var}(X)} = \\sigma_X",
           caption: "Covariance as an inner product on centered random variables",
         },
         {
           kind: "formula",
-          latex: "\\cos\\theta = \\frac{\\langle X,Y\\rangle}{\\|X\\|\\,\\|Y\\|} = \\frac{\\operatorname{Cov}(X,Y)}{\\sigma_X\\sigma_Y} = \\rho_{XY}",
+          latex: "\\cos\\theta = \\frac{\\langle X,Y\\rangle}{\\|X\\|\\,\\|Y\\|} = \\frac{\\text{Cov}(X,Y)}{\\sigma_X\\sigma_Y} = \\rho_{XY}",
           caption: "Substituting the statistical inner product reproduces Pearson correlation exactly",
         },
         {
@@ -85,7 +85,7 @@ export const vectorAngles: WikiArticle = {
           kind: "list",
           ordered: false,
           items: [
-            "**Cosine similarity** in search, recommendation, and NLP is $\\cos\\theta$ between two feature vectors — dividing out the norms so that a long document isn't automatically judged \"more similar\" to everything just because its word counts are larger.",
+            "**Cosine similarity** in search, recommendation, and NLP is $\\cos\\theta$ between two feature vectors — dividing out the norms so that a long document isn't automatically judged “more similar” to everything just because its word counts are larger.",
             "**Physical work** $W = \\mathbf{F}\\cdot\\mathbf{d} = \\|\\mathbf{F}\\|\\|\\mathbf{d}\\|\\cos\\theta$ vanishes at $\\theta = 90°$ regardless of how large the force or displacement are — carrying a heavy box at constant height does zero work because gravity is perpendicular to the motion.",
             "**PCA** chooses directions to minimize the angle between data points and the retained axes, equivalently maximizing $\\cos^2\\theta$ summed over the data.",
             "**Correlation and regression**: the angle between a predictor and the response vector, after centering, determines $R^2$ in simple linear regression — $R^2 = \\rho^2 = \\cos^2\\theta$.",
@@ -95,7 +95,7 @@ export const vectorAngles: WikiArticle = {
           kind: "callout",
           tone: "warning",
           title: "Angle is undefined for the zero vector",
-          text: "$\\cos\\theta$ divides by $\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|$, so the \"angle to the zero vector\" is not a meaningful quantity — the zero vector has no direction to measure from. Any claim like \"the zero vector is orthogonal to everything\" is a convention about the dot product being zero, not a statement that a $90°$ angle has been measured.",
+          text: "$\\cos\\theta$ divides by $\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|$, so the “angle to the zero vector” is not a meaningful quantity — the zero vector has no direction to measure from. Any claim like “the zero vector is orthogonal to everything” is a convention about the dot product being zero, not a statement that a $90°$ angle has been measured.",
         },
       ],
     },

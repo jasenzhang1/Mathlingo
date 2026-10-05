@@ -10,18 +10,18 @@ export const rank: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "\\operatorname{rank}(A) = \\dim C(A) = \\dim C(A^{\\top}) = \\#\\text{pivots}",
+          latex: "\\operatorname{rank}(\\mathbf{A}) = \\dim C(\\mathbf{A}) = \\dim C(\\mathbf{A}^{\\top}) = \\#\\text{pivots}",
           caption: "Column rank, row rank, and pivot count are all the same number",
         },
         {
           kind: "callout",
           tone: "insight",
           title: "Row rank = column rank is genuinely surprising",
-          text: "The column space lives in $\\mathbb{R}^{m}$ and the row space in $\\mathbb{R}^{n}$. They contain different vectors and sit in different ambient spaces, yet always have the same dimension. A short proof: writing $A = CR$ with $C$ holding a basis for the column space, the rows of $A$ are combinations of the rows of $R$ — so row rank $\\le$ column rank. Applying the same to $A^{\\top}$ gives the reverse inequality.",
+          text: "The column space lives in $\\mathbb{R}^{m}$ and the row space in $\\mathbb{R}^{n}$. They contain different vectors and sit in different ambient spaces, yet always have the same dimension. A short proof: writing $\\mathbf{A} = \\mathbf{C}\\mathbf{R}$ with $\\mathbf{C}$ holding a basis for the column space, the rows of $\\mathbf{A}$ are combinations of the rows of $\\mathbf{R}$ — so row rank $\\le$ column rank. Applying the same to $\\mathbf{A}^{\\top}$ gives the reverse inequality.",
         },
         {
           kind: "prose",
-          text: "For an $m\\times n$ matrix, $\\operatorname{rank}(A) \\le \\min(m,n)$. A matrix attaining that bound has *full rank*; anything less is rank-deficient, meaning some directions are redundant.",
+          text: "For an $m\\times n$ matrix, $\\operatorname{rank}(\\mathbf{A}) \\le \\min(m,n)$. A matrix attaining that bound has *full rank*; anything less is rank-deficient, meaning some directions are redundant.",
         },
       ],
     },
@@ -30,18 +30,18 @@ export const rank: WikiArticle = {
       blocks: [
         {
           kind: "table",
-          headers: ["Condition", "Consequence for $A\\mathbf{x}=\\mathbf{b}$"],
+          headers: ["Condition", "Consequence for $\\mathbf{A}\\mathbf{x}=\\mathbf{b}$"],
           rows: [
             [
               "full column rank ($r = n$)",
-              "$N(A)=\\{\\mathbf{0}\\}$ — at most one solution",
+              "$N(\\mathbf{A})=\\{\\mathbf{0}\\}$ — at most one solution",
             ],
             [
               "full row rank ($r = m$)",
-              "$C(A)=\\mathbb{R}^{m}$ — at least one solution, for every $\\mathbf{b}$",
+              "$C(\\mathbf{A})=\\mathbb{R}^{m}$ — at least one solution, for every $\\mathbf{b}$",
             ],
             [
-              "both, so $A$ is square and $r=n=m$",
+              "both, so $\\mathbf{A}$ is square and $r=n=m$",
               "invertible: exactly one solution always",
             ],
             [
@@ -56,7 +56,7 @@ export const rank: WikiArticle = {
         },
         {
           kind: "formula",
-          latex: "\\operatorname{rank}(A) + \\dim N(A) = n",
+          latex: "\\operatorname{rank}(\\mathbf{A}) + \\dim N(\\mathbf{A}) = n",
           caption: "Rank–nullity: every input dimension either survives or is destroyed",
         },
       ],
@@ -66,7 +66,7 @@ export const rank: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "A = \\sum_{k=1}^{r} \\sigma_k \\mathbf{u}_k\\mathbf{v}_k^{\\top}",
+          latex: "\\mathbf{A} = \\sum_{k=1}^{r} \\sigma_k \\mathbf{u}_k\\mathbf{v}_k^{\\top}",
           caption: "A rank-$r$ matrix is a sum of exactly $r$ rank-one pieces",
         },
         {
@@ -77,20 +77,20 @@ export const rank: WikiArticle = {
           kind: "callout",
           tone: "warning",
           title: "Numerical rank is a threshold, not a count",
-          text: "In floating point, singular values that should be zero come out around $10^{-16}$, so counting non-zero ones gives full rank for every matrix. The practical definition is the number of singular values above a tolerance — and matrices with a gradual decay have no clean answer. This is why \"the rank\" of a real data matrix is a modelling choice, and why scree plots and explained-variance thresholds exist in PCA.",
+          text: "In floating point, singular values that should be zero come out around $10^{-16}$, so counting non-zero ones gives full rank for every matrix. The practical definition is the number of singular values above a tolerance — and matrices with a gradual decay have no clean answer. This is why “the rank” of a real data matrix is a modelling choice, and why scree plots and explained-variance thresholds exist in PCA.",
         },
         {
           kind: "example",
           title: "Reading rank off structure",
           problem:
-            "What is the rank of $A = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\\\ 1 & 1 & 1\\end{bmatrix}$?",
+            "What is the rank of $\\mathbf{A} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\\\ 1 & 1 & 1\\end{bmatrix}$?",
           steps: [
             "Row 2 is $2\\times$ row 1, so it contributes nothing.",
             "Rows 1 and 3 are not multiples of one another, so both count.",
             "Rank is 2 — the third row is where the second independent direction comes from.",
-            "By rank–nullity, $\\dim N(A) = 3 - 2 = 1$, so the matrix is singular and $\\det A = 0$.",
+            "By rank–nullity, $\\dim N(\\mathbf{A}) = 3 - 2 = 1$, so the matrix is singular and $\\det \\mathbf{A} = 0$.",
           ],
-          answer: "$\\operatorname{rank}(A) = 2$.",
+          answer: "$\\operatorname{rank}(\\mathbf{A}) = 2$.",
         },
       ],
     },
@@ -101,9 +101,9 @@ export const rank: WikiArticle = {
           kind: "list",
           ordered: false,
           items: [
-            "$\\operatorname{rank}(AB) \\le \\min\\{\\operatorname{rank}(A),\\ \\operatorname{rank}(B)\\}$ — multiplying can never create new independent directions.",
-            "$\\operatorname{rank}(A+B) \\le \\operatorname{rank}(A) + \\operatorname{rank}(B)$.",
-            "$\\operatorname{rank}(A^{\\top}A) = \\operatorname{rank}(A)$ — which is why the normal equations are solvable exactly when the columns are independent.",
+            "$\\operatorname{rank}(AB) \\le \\min\\{\\operatorname{rank}(\\mathbf{A}),\\ \\operatorname{rank}(B)\\}$ — multiplying can never create new independent directions.",
+            "$\\operatorname{rank}(\\mathbf{A}+B) \\le \\operatorname{rank}(\\mathbf{A}) + \\operatorname{rank}(B)$.",
+            "$\\operatorname{rank}(\\mathbf{A}^{\\top}\\mathbf{A}) = \\operatorname{rank}(\\mathbf{A})$ — which is why the normal equations are solvable exactly when the columns are independent.",
             "A rank-one matrix is precisely an outer product $\\mathbf{u}\\mathbf{v}^{\\top}$.",
           ],
         },

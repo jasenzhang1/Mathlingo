@@ -35,6 +35,7 @@ import { regDeparturesAItems } from "./reg-departures-a";
 import { regDiagnosticsAItems } from "./reg-diagnostics-a";
 import { regDiagnosticsBItems } from "./reg-diagnostics-b";
 import { regRobustItems } from "./reg-robust";
+import { regRobustOverviewItems } from "./reg-robust-overview";
 import { regComputationItems } from "./reg-computation";
 import { regSelectionAItems } from "./reg-selection-a";
 import { regSelectionBItems } from "./reg-selection-b";
@@ -64,6 +65,7 @@ import { gmSamplingBItems } from "./gm-sampling-b";
 import { gmVariationalItems } from "./gm-variational";
 import { spClassicItems } from "./sp-classic";
 import { spPointItems } from "./sp-point";
+import { spLevyItems } from "./sp-levy";
 import { scItoItems } from "./sc-ito";
 import { scPricingItems } from "./sc-pricing";
 import { fiBasicsItems } from "./fi-basics";
@@ -176,6 +178,7 @@ export const expansionItems: Item[] = [
   ...regDiagnosticsAItems,
   ...regDiagnosticsBItems,
   ...regRobustItems,
+  ...regRobustOverviewItems,
   ...regComputationItems,
   ...regSelectionAItems,
   ...regSelectionBItems,
@@ -205,6 +208,7 @@ export const expansionItems: Item[] = [
   ...gmVariationalItems,
   ...spClassicItems,
   ...spPointItems,
+  ...spLevyItems,
   ...scItoItems,
   ...scPricingItems,
   ...fiBasicsItems,

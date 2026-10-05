@@ -3,7 +3,7 @@ import type { WikiArticle } from "../types";
 export const vectorNorm: WikiArticle = {
   conceptId: "vector-norm",
   summary:
-    "A norm assigns a length to a vector. The Euclidean norm is the familiar one, but it is not the only sensible choice — and which norm you pick changes what \"close\", \"small\", and \"best fit\" mean. The differences between $\\ell_1$, $\\ell_2$, and $\\ell_\\infty$ are the reason lasso produces sparse models and ridge does not.",
+    "A norm assigns a length to a vector. The Euclidean norm is the familiar one, but it is not the only sensible choice — and which norm you pick changes what “close”, “small”, and “best fit” mean. The differences between $\\ell_1$, $\\ell_2$, and $\\ell_\\infty$ are the reason lasso produces sparse models and ridge does not.",
   sections: [
     {
       heading: "The Euclidean norm",
@@ -30,7 +30,7 @@ export const vectorNorm: WikiArticle = {
       blocks: [
         {
           kind: "prose",
-          text: "Any function $\\|\\cdot\\|$ is a norm if it satisfies three conditions. They are what make \"length\" behave the way the word implies:",
+          text: "Any function $\\|\\cdot\\|$ is a norm if it satisfies three conditions. They are what make “length” behave the way the word implies:",
         },
         {
           kind: "list",
@@ -85,7 +85,7 @@ export const vectorNorm: WikiArticle = {
         {
           kind: "example",
           title: "The same vector, three lengths",
-          problem: "For $\\mathbf{v} = (3, -4, 12)$, compute the three standard norms.",
+          problem: "For $\\mathbf{v} = [3, -4, 12]$, compute the three standard norms.",
           steps: [
             "$\\|\\mathbf{v}\\|_1 = 3 + 4 + 12 = 19$.",
             "$\\|\\mathbf{v}\\|_2 = \\sqrt{9 + 16 + 144} = \\sqrt{169} = 13$.",
@@ -102,7 +102,7 @@ export const vectorNorm: WikiArticle = {
           kind: "callout",
           tone: "warning",
           title: "$p < 1$ does not give a norm",
-          text: "The so-called $\\ell_0$ \"norm\" — counting non-zero entries — violates homogeneity, and $\\ell_p$ for $0 < p < 1$ violates the triangle inequality. Both are genuinely useful sparsity measures, but neither is a norm, and optimising them is non-convex. The $\\ell_1$ norm is the tightest convex relaxation of $\\ell_0$, which is exactly why lasso is tractable while direct subset selection is not.",
+          text: "The so-called $\\ell_0$ “norm” — counting non-zero entries — violates homogeneity, and $\\ell_p$ for $0 < p < 1$ violates the triangle inequality. Both are genuinely useful sparsity measures, but neither is a norm, and optimising them is non-convex. The $\\ell_1$ norm is the tightest convex relaxation of $\\ell_0$, which is exactly why lasso is tractable while direct subset selection is not.",
         },
       ],
     },

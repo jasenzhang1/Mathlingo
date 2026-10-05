@@ -10,7 +10,7 @@ export const trace: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "\\operatorname{tr}(A) = \\sum_{i=1}^{n} a_{ii} = \\sum_{i=1}^{n} \\lambda_i",
+          latex: "\\operatorname{tr}(\\mathbf{A}) = \\sum_{i=1}^{n} a_{ii} = \\sum_{i=1}^{n} \\lambda_i",
           caption: "Diagonal sum — and eigenvalue sum, counting multiplicity",
         },
         {
@@ -26,7 +26,7 @@ export const trace: WikiArticle = {
         },
         {
           kind: "prose",
-          text: "The eigenvalue identity follows from the characteristic polynomial: the coefficient of $\\lambda^{n-1}$ is $-\\operatorname{tr}(A)$, and it is also $-\\sum\\lambda_i$. Together with $\\det A = \\prod\\lambda_i$, this gives two free checks on any computed eigendecomposition.",
+          text: "The eigenvalue identity follows from the characteristic polynomial: the coefficient of $\\lambda^{n-1}$ is $-\\operatorname{tr}(\\mathbf{A})$, and it is also $-\\sum\\lambda_i$. Together with $\\det \\mathbf{A} = \\prod\\lambda_i$, this gives two free checks on any computed eigendecomposition.",
         },
       ],
     },
@@ -35,7 +35,7 @@ export const trace: WikiArticle = {
       blocks: [
         {
           kind: "formula",
-          latex: "\\operatorname{tr}(P^{-1}AP) = \\operatorname{tr}(APP^{-1}) = \\operatorname{tr}(A)",
+          latex: "\\operatorname{tr}(\\mathbf{P}^{-1}\\mathbf{A}\\mathbf{P}) = \\operatorname{tr}(\\mathbf{A}\\mathbf{P}\\mathbf{P}^{-1}) = \\operatorname{tr}(\\mathbf{A})",
           caption: "A one-line consequence of cyclicity",
         },
         {
@@ -46,18 +46,18 @@ export const trace: WikiArticle = {
           kind: "table",
           headers: ["Property", "Statement"],
           rows: [
-            ["Linear", "$\\operatorname{tr}(A+B) = \\operatorname{tr}A + \\operatorname{tr}B$, $\\operatorname{tr}(cA) = c\\operatorname{tr}A$"],
-            ["Transpose", "$\\operatorname{tr}(A^{\\top}) = \\operatorname{tr}(A)$"],
-            ["Frobenius norm", "$\\|A\\|_F^{2} = \\operatorname{tr}(A^{\\top}A) = \\sum_i \\sigma_i^{2}$"],
-            ["Projection", "$\\operatorname{tr}(P) = \\operatorname{rank}(P)$ for an orthogonal projection"],
-            ["Not multiplicative", "$\\operatorname{tr}(AB) \\ne \\operatorname{tr}(A)\\operatorname{tr}(B)$ in general"],
+            ["Linear", "$\\operatorname{tr}(\\mathbf{A}+B) = \\operatorname{tr}\\mathbf{A} + \\operatorname{tr}B$, $\\operatorname{tr}(cA) = c\\operatorname{tr}\\mathbf{A}$"],
+            ["Transpose", "$\\operatorname{tr}(\\mathbf{A}^{\\top}) = \\operatorname{tr}(\\mathbf{A})$"],
+            ["Frobenius norm", "$\\|\\mathbf{A}\\|_F^{2} = \\operatorname{tr}(\\mathbf{A}^{\\top}\\mathbf{A}) = \\sum_i \\sigma_i^{2}$"],
+            ["Projection", "$\\operatorname{tr}(\\mathbf{P}) = \\operatorname{rank}(\\mathbf{P})$ for an orthogonal projection"],
+            ["Not multiplicative", "$\\operatorname{tr}(AB) \\ne \\operatorname{tr}(\\mathbf{A})\\operatorname{tr}(B)$ in general"],
           ],
         },
         {
           kind: "callout",
           tone: "insight",
           title: "Trace of a projection counts dimensions",
-          text: "An orthogonal projection has eigenvalues 1 (on the subspace) and 0 (on its complement), so the trace counts the 1s — giving the dimension of the subspace projected onto. In regression this makes $\\operatorname{tr}(H)$ the number of parameters, which is where the *effective degrees of freedom* of a smoother comes from: for ridge regression $\\operatorname{tr}(H)$ is not an integer, and that non-integer value is the honest parameter count.",
+          text: "An orthogonal projection has eigenvalues 1 (on the subspace) and 0 (on its complement), so the trace counts the 1s — giving the dimension of the subspace projected onto. In regression this makes $\\operatorname{tr}(\\mathbf{H})$ the number of parameters, which is where the *effective degrees of freedom* of a smoother comes from: for ridge regression $\\operatorname{tr}(\\mathbf{H})$ is not an integer, and that non-integer value is the honest parameter count.",
         },
       ],
     },
@@ -68,13 +68,13 @@ export const trace: WikiArticle = {
           kind: "example",
           title: "A statistics identity",
           problem:
-            "Show that $\\mathbb{E}[\\mathbf{x}^{\\top}A\\mathbf{x}] = \\operatorname{tr}(A\\Sigma) + \\boldsymbol{\\mu}^{\\top}A\\boldsymbol{\\mu}$ for $\\mathbf{x}$ with mean $\\boldsymbol{\\mu}$ and covariance $\\Sigma$.",
+            "Show that $\\mathbb{E}[\\mathbf{x}^{\\top}\\mathbf{A}\\mathbf{x}] = \\operatorname{tr}(\\mathbf{A}\\boldsymbol{\\Sigma}) + \\boldsymbol{\\mu}^{\\top}\\mathbf{A}\\boldsymbol{\\mu}$ for $\\mathbf{x}$ with mean $\\boldsymbol{\\mu}$ and covariance $\\boldsymbol{\\Sigma}$.",
           steps: [
-            "$\\mathbf{x}^{\\top}A\\mathbf{x}$ is a scalar, so it equals its own trace.",
-            "By cyclicity, $\\operatorname{tr}(\\mathbf{x}^{\\top}A\\mathbf{x}) = \\operatorname{tr}(A\\mathbf{x}\\mathbf{x}^{\\top})$.",
-            "Trace and expectation are both linear, so they commute: $\\mathbb{E}[\\operatorname{tr}(A\\mathbf{x}\\mathbf{x}^{\\top})] = \\operatorname{tr}(A\\,\\mathbb{E}[\\mathbf{x}\\mathbf{x}^{\\top}])$.",
-            "$\\mathbb{E}[\\mathbf{x}\\mathbf{x}^{\\top}] = \\Sigma + \\boldsymbol{\\mu}\\boldsymbol{\\mu}^{\\top}$.",
-            "Expanding gives $\\operatorname{tr}(A\\Sigma) + \\operatorname{tr}(A\\boldsymbol{\\mu}\\boldsymbol{\\mu}^{\\top})$, and the second term is the scalar $\\boldsymbol{\\mu}^{\\top}A\\boldsymbol{\\mu}$.",
+            "$\\mathbf{x}^{\\top}\\mathbf{A}\\mathbf{x}$ is a scalar, so it equals its own trace.",
+            "By cyclicity, $\\operatorname{tr}(\\mathbf{x}^{\\top}\\mathbf{A}\\mathbf{x}) = \\operatorname{tr}(\\mathbf{A}\\mathbf{x}\\mathbf{x}^{\\top})$.",
+            "Trace and expectation are both linear, so they commute: $\\mathbb{E}[\\operatorname{tr}(\\mathbf{A}\\mathbf{x}\\mathbf{x}^{\\top})] = \\operatorname{tr}(\\mathbf{A}\\,\\mathbb{E}[\\mathbf{x}\\mathbf{x}^{\\top}])$.",
+            "$\\mathbb{E}[\\mathbf{x}\\mathbf{x}^{\\top}] = \\boldsymbol{\\Sigma} + \\boldsymbol{\\mu}\\boldsymbol{\\mu}^{\\top}$.",
+            "Expanding gives $\\operatorname{tr}(\\mathbf{A}\\boldsymbol{\\Sigma}) + \\operatorname{tr}(\\mathbf{A}\\boldsymbol{\\mu}\\boldsymbol{\\mu}^{\\top})$, and the second term is the scalar $\\boldsymbol{\\mu}^{\\top}\\mathbf{A}\\boldsymbol{\\mu}$.",
           ],
           answer:
             "The identity, in five lines. The trick — turn a scalar into a trace, then rotate — is the standard move for these derivations.",
@@ -83,10 +83,10 @@ export const trace: WikiArticle = {
           kind: "list",
           ordered: false,
           items: [
-            "**Matrix calculus.** $\\dfrac{\\partial}{\\partial A}\\operatorname{tr}(AB) = B^{\\top}$ and $\\dfrac{\\partial}{\\partial A}\\operatorname{tr}(A^{\\top}A) = 2A$ — trace form is how matrix derivatives are usually stated.",
-            "**Frobenius inner product.** $\\langle A,B\\rangle = \\operatorname{tr}(A^{\\top}B)$ makes matrices an inner product space, which is what gives them a geometry at all.",
+            "**Matrix calculus.** $\\dfrac{\\partial}{\\partial \\mathbf{A}}\\operatorname{tr}(AB) = B^{\\top}$ and $\\dfrac{\\partial}{\\partial \\mathbf{A}}\\operatorname{tr}(\\mathbf{A}^{\\top}\\mathbf{A}) = 2\\mathbf{A}$ — trace form is how matrix derivatives are usually stated.",
+            "**Frobenius inner product.** $\\langle \\mathbf{A},B\\rangle = \\operatorname{tr}(\\mathbf{A}^{\\top}B)$ makes matrices an inner product space, which is what gives them a geometry at all.",
             "**Nuclear norm.** $\\sum_i\\sigma_i$ is the convex relaxation of rank, and low-rank matrix recovery minimises it — the matrix analogue of lasso.",
-            "**Hutchinson's estimator.** $\\operatorname{tr}(A) \\approx \\frac{1}{m}\\sum_j \\mathbf{z}_j^{\\top}A\\mathbf{z}_j$ for random $\\pm1$ vectors, estimating a trace using only matrix–vector products — essential when $A$ is too large to form.",
+            "**Hutchinson's estimator.** $\\operatorname{tr}(\\mathbf{A}) \\approx \\frac{1}{m}\\sum_j \\mathbf{z}_j^{\\top}\\mathbf{A}\\mathbf{z}_j$ for random $\\pm1$ vectors, estimating a trace using only matrix–vector products — essential when $\\mathbf{A}$ is too large to form.",
           ],
         },
       ],

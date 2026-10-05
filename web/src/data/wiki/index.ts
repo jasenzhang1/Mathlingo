@@ -16,17 +16,16 @@ import type { WikiArticle } from "./types";
  * so a learner who opens one is very likely to open its neighbours — and one
  * chunk per article would trade a large bundle for a few hundred round trips.
  *
- * `linear-algebra` is deliberately absent below. It has an article module on
- * disk (`./linear-algebra`) that no version of this file has ever imported;
- * wiring it in would put ~35 unreviewed articles in front of learners as a
- * side effect of a refactor, so it stays unwired until someone lands it on
- * purpose. `probability` was in the same state — its ~55 articles, including
- * the one for `set-theory`, existed on disk but were never wired in, which
- * left the Set Theory lesson's wiki tab permanently on "coming soon" — and is
- * now wired below.
+ * `linear-algebra` sat on disk unwired until 2026-10-03, when its 55 articles
+ * (one per lesson) were reviewed, checked to render, and brought up to the
+ * formatting standard (bold vectors and matrices, square brackets, curly
+ * quotes) before being landed on purpose. `probability` was in the same state
+ * earlier — its articles existed on disk but were never wired in, which left
+ * the Set Theory lesson's wiki tab permanently on "coming soon".
  */
 const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
   "discrete-math": () => import("./discrete-math").then((m) => m.default),
+  "linear-algebra": () => import("./linear-algebra").then((m) => m.default),
   statistics: () => import("./core").then((m) => m.coreWikiArticles),
   "multivariate-probability": () =>
     Promise.all([import("./core"), import("./copulas")]).then(([core, cop]) => [
