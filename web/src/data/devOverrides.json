@@ -1,4 +1,230 @@
 {
-  "overrides": {},
+  "overrides": {
+    "vectors--x-apply-distance": {
+      "source": {
+        "id": "mathlingo-authored-expansion",
+        "tier": "generated",
+        "title": "Mathlingo authored item (full-range expansion)"
+      },
+      "id": "vectors--x-apply-distance",
+      "conceptId": "vector-operations",
+      "format": "numeric",
+      "cognitive": "apply",
+      "channels": [
+        "typed",
+        "handwritten"
+      ],
+      "stem": "What is the distance between $P = (1, 2)$ and $Q = (4, 6)$?",
+      "difficulty": -3,
+      "discrimination": 1.2,
+      "expectedSeconds": 25,
+      "prereqClosure": [
+        "vectors"
+      ],
+      "answerKey": 5,
+      "tolerance": 0.01,
+      "status": "live"
+    },
+    "law-of-total-expectation--r5": {
+      "id": "law-of-total-expectation--r5",
+      "conceptId": "law-of-total-expectation",
+      "format": "mcq",
+      "cognitive": "recall",
+      "channels": [
+        "typed",
+        "handwritten"
+      ],
+      "stem": "A common error when applying the law of total expectation is:",
+      "choices": [
+        {
+          "id": "choice-1",
+          "text": "forgetting to weight each $\\mathbb{E}[X|Y=y]$ by $P(Y=y)$, and just averaging the conditional means with equal weight",
+          "correct": true
+        },
+        {
+          "id": "choice-2",
+          "text": "using too many decimal places",
+          "correct": false,
+          "misconception": {
+            "id": "law-of-total-expectation--r5--misconception-2",
+            "description": "not a real conceptual error in applying the law",
+            "blameConceptId": "law-of-total-expectation"
+          }
+        },
+        {
+          "id": "choice-3",
+          "text": "applying it only when $Y$ is continuous",
+          "correct": false,
+          "misconception": {
+            "id": "law-of-total-expectation--r5--misconception-3",
+            "description": "the law applies to both discrete and continuous conditioning variables, so restricting it to continuous $Y$ is a fabricated restriction",
+            "blameConceptId": "law-of-total-expectation"
+          }
+        },
+        {
+          "id": "choice-4",
+          "text": "applying it more than once in a multi-stage problem",
+          "correct": false,
+          "misconception": {
+            "id": "law-of-total-expectation--r5--misconception-4",
+            "description": "the law can be legitimately applied repeatedly, e.g. across several stages of conditioning",
+            "blameConceptId": "law-of-total-expectation"
+          }
+        }
+      ],
+      "difficulty": -0.9,
+      "discrimination": 1.15,
+      "expectedSeconds": 30,
+      "prereqClosure": [
+        "law-of-total-expectation"
+      ],
+      "source": {
+        "id": "mathlingo-authored-probability-expansion",
+        "tier": "generated",
+        "title": "Mathlingo authored item (probability 20-per-concept expansion)"
+      },
+      "status": "retired"
+    },
+    "law-of-total-expectation--r2": {
+      "source": {
+        "id": "bank-joint-and-conditional-structure",
+        "tier": "generated",
+        "title": "Mathlingo authored bank — joint-and-conditional-structure.md",
+        "locator": "law-of-total-expectation R2"
+      },
+      "rubric": {
+        "elements": [
+          {
+            "id": "element-1",
+            "description": "a random variable — a function of $Y$",
+            "weight": 1,
+            "required": false
+          }
+        ],
+        "forbiddenMoves": [
+          {
+            "id": "misconception",
+            "description": "treats $\\mathbb{E}[X \\mid Y]$ as a fixed number, missing the conceptual leap the whole law depends on",
+            "weight": 0,
+            "misconception": {
+              "id": "law-of-total-expectation--r2--misconception",
+              "description": "treats $\\mathbb{E}[X \\mid Y]$ as a fixed number, missing the conceptual leap the whole law depends on",
+              "blameConceptId": "law-of-total-expectation"
+            }
+          }
+        ]
+      },
+      "id": "law-of-total-expectation--r2",
+      "conceptId": "law-of-total-expectation",
+      "format": "short-answer",
+      "cognitive": "recall",
+      "channels": [
+        "typed",
+        "handwritten",
+        "spoken"
+      ],
+      "stem": "Is $\\mathbb{E}[X \\mid Y]$ a constant or a variable?",
+      "difficulty": 0.12,
+      "discrimination": 1.2,
+      "expectedSeconds": 45,
+      "prereqClosure": [
+        "law-of-total-expectation"
+      ],
+      "status": "live"
+    },
+    "vectors--a5": {
+      "source": {
+        "id": "bank-la-01-vectors-and-operations",
+        "tier": "generated",
+        "title": "Mathlingo authored bank — la-01-vectors-and-operations.md",
+        "locator": "vectors A5"
+      },
+      "rubric": {
+        "elements": [
+          {
+            "id": "element-1",
+            "description": "no — they live in different dimensions ($\\mathbb{R}^3$ vs $\\mathbb{R}^4$)",
+            "weight": 1,
+            "required": false
+          },
+          {
+            "id": "element-2",
+            "description": "vector addition requires matching dimension",
+            "weight": 1,
+            "required": false
+          }
+        ],
+        "forbiddenMoves": [
+          {
+            "id": "misconception",
+            "description": "pads $[1, 2, 3]$ with a trailing $0$ and adds anyway, treating dimension as flexible",
+            "weight": 0,
+            "misconception": {
+              "id": "vectors--a5--misconception",
+              "description": "pads $[1, 2, 3]$ with a trailing $0$ and adds anyway, treating dimension as flexible",
+              "blameConceptId": "vectors"
+            }
+          }
+        ]
+      },
+      "id": "vectors--a5",
+      "conceptId": "vectors",
+      "format": "short-answer",
+      "cognitive": "apply",
+      "channels": [
+        "typed",
+        "handwritten",
+        "spoken"
+      ],
+      "stem": "Can $[1, 2, 3]$ and $[1, 2, 3, 0]$ can be added? Why or why not?",
+      "difficulty": -0.26,
+      "discrimination": 1.2,
+      "expectedSeconds": 90,
+      "prereqClosure": [
+        "vectors"
+      ],
+      "status": "live"
+    },
+    "vectors--r2": {
+      "source": {
+        "id": "bank-la-01-vectors-and-operations",
+        "tier": "generated",
+        "title": "Mathlingo authored bank — la-01-vectors-and-operations.md",
+        "locator": "vectors R2"
+      },
+      "rubric": {
+        "elements": [
+          {
+            "id": "element-1",
+            "description": "Points out that a vector in $\\mathbb{R}^1$ and a scalar are essentially the same. ",
+            "weight": 0.8,
+            "required": true
+          },
+          {
+            "id": "criterion-2",
+            "description": "Explains why they are the same. This is because they can both express any real number, with any magnitude and either direction (negative or positive).",
+            "weight": 0.2
+          }
+        ]
+      },
+      "id": "vectors--r2",
+      "conceptId": "vectors",
+      "format": "short-answer",
+      "cognitive": "explain",
+      "channels": [
+        "typed",
+        "handwritten",
+        "spoken"
+      ],
+      "stem": "Is a vector in $\\mathbb{R}^1$ different than a scalar? Why or why not?",
+      "difficulty": -1,
+      "discrimination": 1.2,
+      "expectedSeconds": 45,
+      "prereqClosure": [
+        "vectors"
+      ],
+      "status": "live"
+    }
+  },
   "newItems": {}
 }
