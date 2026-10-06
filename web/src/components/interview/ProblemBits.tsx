@@ -1,0 +1,58 @@
+import { difficultyBand, solveRate, type DifficultyBand, type ProblemStatus, type QuestionStats } from "../../lib/interview/problemStats";
+
+/** Shared by the problem list and the problem page. */
+
+const BAND_COLOR: Record<DifficultyBand, string> = {
+  easy: "text-[var(--teal)]",
+  medium: "text-amber-600",
+  hard: "text-red-600",
+  new: "text-[var(--ink-soft)]",
+};
+
+/** The difficulty: the share of students who got it right, coloured by band. */
+export function DifficultyTag({ stats, className = "" }: { stats: QuestionStats | undefined; className?: string }) {
+  const rate = solveRate(stats);
+  const band = difficultyBand(rate);
+  if (rate === null || !stats) {
+    return (
+      <span className={`text-xs ${BAND_COLOR.new} ${className}`} title="Nobody has answered this yet">
+        New
+      </span>
+    );
+  }
+  return (
+    <span
+      className={`text-sm font-medium tabular-nums ${BAND_COLOR[band]} ${className}`}
+      title={`${stats.solved.toLocaleString()} of ${stats.students.toLocaleString()} student${stats.students === 1 ? "" : "s"} got it right`}
+    >
+      {(rate * 100).toFixed(1)}%
+    </span>
+  );
+}
+
+export function StatusIcon({ status }: { status: ProblemStatus | undefined }) {
+  if (status === "solved") {
+    return (
+      <svg viewBox="0 0 20 20" className="h-4 w-4 text-[var(--teal)]" fill="none" stroke="currentColor" strokeWidth="2.2" aria-label="Solved">
+        <path d="m4 10.5 4 4 8-9" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+  if (status === "attempted") {
+    return (
+      <svg viewBox="0 0 20 20" className="h-4 w-4 text-amber-600" fill="none" stroke="currentColor" strokeWidth="1.8" aria-label="Attempted">
+        <circle cx="10" cy="10" r="6.5" />
+        <path d="M10 3.5a6.5 6.5 0 0 1 0 13z" fill="currentColor" stroke="none" />
+      </svg>
+    );
+  }
+  return null;
+}
+
+export function LockIcon() {
+  return (
+    <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 shrink-0 text-amber-600" fill="currentColor" aria-label="Interview Prep only">
+      <path d="M6 8V6a4 4 0 1 1 8 0v2h1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1zm2 0h4V6a2 2 0 1 0-4 0z" />
+    </svg>
+  );
+}
