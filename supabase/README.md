@@ -22,6 +22,7 @@ paste → Run. "Success. No rows returned" is what success looks like.
 | `migrations/0014_item_feedback.sql` | `item_feedback` and `is_developer()` — feedback on questions from learners and developers, read at `/dev/questions` (after `0001`) |
 | `migrations/0015_social_leaderboards.sql` | Leaderboards (`leaderboard()`), follows, chat requests and direct messages, stored leaderboard achievements, and the `show_on_leaderboards` opt-out (after `0007` and `0014`) |
 | `migrations/0016_stored_proficiency.sql` | `concept_states.proficiency`: the number learners see is stored and only answers move it, so engine changes never reset anyone; backfilled from each learner's last logged value; course leaderboard reads it (after `0015`) |
+| `migrations/0017_interview_problem_list.sql` | `interview_question_stats()` — the share of students who get each interview question right, the difficulty on the `/interview/problems` list; adds the `problems` attempt mode (after `0008`) |
 
 `0002` depends on `0001` (it references `public.profiles`), so don't skip it.
 

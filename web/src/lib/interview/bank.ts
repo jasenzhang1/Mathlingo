@@ -91,3 +91,13 @@ export function sectionsByTopic(): { topic: string; sections: InterviewSection[]
 export function questionsInSection(sectionId: string): InterviewQuestion[] {
   return liveQuestions.filter((q) => techniquesOf(q).includes(sectionId));
 }
+
+/** The list number: `iq-0042` is problem 42. */
+export function problemNumber(q: InterviewQuestion): number {
+  return Number.parseInt(q.id.replace(/^\D+/, ""), 10) || 0;
+}
+
+/** Questions have no titles, so the problem list shows the opening line. */
+export function problemTitle(q: InterviewQuestion): string {
+  return q.question.trim().split("\n")[0].trim();
+}

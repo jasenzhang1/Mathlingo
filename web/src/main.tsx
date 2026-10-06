@@ -32,6 +32,8 @@ import { WelcomePage } from "./pages/WelcomePage.tsx";
 // chunk, fetched only by people who open that section.
 const InterviewPage = lazy(() => import("./pages/InterviewPage.tsx").then((m) => ({ default: m.InterviewPage })));
 const InterviewMockPage = lazy(() => import("./pages/InterviewMockPage.tsx").then((m) => ({ default: m.InterviewMockPage })));
+const InterviewProblemsPage = lazy(() => import("./pages/InterviewProblemsPage.tsx").then((m) => ({ default: m.InterviewProblemsPage })));
+const InterviewProblemPage = lazy(() => import("./pages/InterviewProblemPage.tsx").then((m) => ({ default: m.InterviewProblemPage })));
 const InterviewTrainPage = lazy(() => import("./pages/InterviewTrainPage.tsx").then((m) => ({ default: m.InterviewTrainPage })));
 const DevBundlesPage = lazy(() => import("./pages/DevBundlesPage.tsx").then((m) => ({ default: m.DevBundlesPage })));
 
@@ -71,6 +73,8 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/dev/bundles" element={<DevBundlesPage />} />
             <Route path="/interview" element={<InterviewPage />} />
             <Route path="/interview/mock" element={<InterviewMockPage />} />
+            <Route path="/interview/problems" element={<InterviewProblemsPage />} />
+            <Route path="/interview/problems/:id" element={<InterviewProblemPage />} />
             <Route path="/interview/train/:sectionId" element={<InterviewTrainPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
