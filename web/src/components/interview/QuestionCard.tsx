@@ -3,6 +3,7 @@ import { useIsDeveloper } from "../../lib/dev/devAuth";
 import { familyById, sectionLabel } from "../../lib/interview/bank";
 import { autoGrade, expectedSeconds, type AutoGrade } from "../../lib/interview/scoring";
 import type { InterviewQuestion } from "../../lib/interview/types";
+import { CodeText } from "../assessment/CodeText";
 import { DevQuestionTools } from "./DevQuestionTools";
 
 export interface QuestionResult {
@@ -96,7 +97,7 @@ export function QuestionCard({
 
       {isDeveloper && <DevQuestionTools question={q} onChange={setEdited} />}
 
-      <p className="font-body whitespace-pre-wrap text-[var(--ink)]">{q.question}</p>
+      <p className="font-body whitespace-pre-wrap text-[var(--ink)]"><CodeText text={q.question} /></p>
 
       {!revealed && (
         <form
@@ -164,12 +165,12 @@ export function QuestionCard({
 
           <div>
             <p className="font-body text-xs font-semibold uppercase tracking-wide text-[var(--ink-soft)]">Answer</p>
-            <p className="font-body mt-1 whitespace-pre-wrap text-[var(--ink)]">{q.answer}</p>
+            <p className="font-body mt-1 whitespace-pre-wrap text-[var(--ink)]"><CodeText text={q.answer} /></p>
           </div>
           {q.notes && (
             <div>
               <p className="font-body text-xs font-semibold uppercase tracking-wide text-[var(--ink-soft)]">Solution</p>
-              <p className="font-body mt-1 whitespace-pre-wrap text-sm text-[var(--ink)]">{q.notes}</p>
+              <p className="font-body mt-1 whitespace-pre-wrap text-sm text-[var(--ink)]"><CodeText text={q.notes} /></p>
             </div>
           )}
           <p className="font-body text-xs text-[var(--ink-soft)]">

@@ -37,6 +37,12 @@ techniques depending on what is asked:
 | 4. …not through (2, 2)? | 211 Combinatorics › Complementary Counting |
 | 5. …never below y = x? | 234 Combinatorics › Reflection Principle |
 
+**Formatting.** Question and answer text follow the course formatting standard: numbers and
+variables in `$…$` LaTeX, `\mathbb{E}`, `\text{Var}`, `\sim`, curly quotes, and so on. Question
+cards render it with the same `CodeText` as lesson items, and a literal dollar sign is written `\$`.
+Worked solutions (`notes`) render the same way but have not been converted yet. Titles stay plain
+text.
+
 **Difficulty** is 0–10. 11–12 means "they are going to murder you in the interview." Unrated
 questions are treated as 4.
 
