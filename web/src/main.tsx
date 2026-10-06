@@ -6,6 +6,7 @@ import App from "./App.tsx";
 import { AuthProvider } from "./lib/auth/AuthContext.tsx";
 import { ProfileProvider } from "./lib/ProfileProvider.tsx";
 import { OnboardingGate } from "./components/OnboardingGate.tsx";
+import { FeedbackBubble } from "./components/FeedbackBubble.tsx";
 import { AccountPage } from "./pages/AccountPage.tsx";
 import { ConceptMapPage } from "./pages/ConceptMapPage.tsx";
 import { ConceptPage } from "./pages/ConceptPage.tsx";
@@ -35,6 +36,7 @@ const InterviewMockPage = lazy(() => import("./pages/InterviewMockPage.tsx").the
 const InterviewProblemsPage = lazy(() => import("./pages/InterviewProblemsPage.tsx").then((m) => ({ default: m.InterviewProblemsPage })));
 const InterviewProblemPage = lazy(() => import("./pages/InterviewProblemPage.tsx").then((m) => ({ default: m.InterviewProblemPage })));
 const InterviewTrainPage = lazy(() => import("./pages/InterviewTrainPage.tsx").then((m) => ({ default: m.InterviewTrainPage })));
+const DevFeedbackPage = lazy(() => import("./pages/DevFeedbackPage.tsx").then((m) => ({ default: m.DevFeedbackPage })));
 const DevBundlesPage = lazy(() => import("./pages/DevBundlesPage.tsx").then((m) => ({ default: m.DevBundlesPage })));
 
 createRoot(document.getElementById("root")!).render(
@@ -43,6 +45,7 @@ createRoot(document.getElementById("root")!).render(
       <AuthProvider>
         <ProfileProvider>
         <OnboardingGate />
+        <FeedbackBubble />
         <Suspense fallback={null}>
           <Routes>
             <Route path="/welcome" element={<WelcomePage />} />
@@ -71,6 +74,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/submit/analogies" element={<SubmitAnalogyPage />} />
             <Route path="/dev/questions" element={<DevQuestionsPage />} />
             <Route path="/dev/bundles" element={<DevBundlesPage />} />
+            <Route path="/dev/feedback" element={<DevFeedbackPage />} />
             <Route path="/interview" element={<InterviewPage />} />
             <Route path="/interview/mock" element={<InterviewMockPage />} />
             <Route path="/interview/problems" element={<InterviewProblemsPage />} />

@@ -211,7 +211,7 @@ export function CoursesPage() {
         </div>
       </main>
 
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-[var(--line)] bg-[var(--paper)]/95 backdrop-blur">
+      <div data-bottom-bar className="fixed inset-x-0 bottom-0 z-30 border-t border-[var(--line)] bg-[var(--paper)]/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-4">
           <p className="font-body text-sm text-[var(--ink)]">
             {lockedIn ? (
