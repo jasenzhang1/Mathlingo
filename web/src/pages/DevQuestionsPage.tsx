@@ -5,6 +5,7 @@ import { DifficultyHistogram } from "../components/dev/DifficultyHistogram";
 import { FeedbackInbox } from "../components/dev/FeedbackInbox";
 import { ItemEditorForm } from "../components/dev/ItemEditorForm";
 import { ItemPreviewPanel } from "../components/dev/ItemPreviewPanel";
+import { PublishPicker } from "../components/dev/PublishPicker";
 import { Footer } from "../components/Footer";
 import { Nav } from "../components/Nav";
 import { concepts, type Concept, type Domain } from "../data/concepts";
@@ -24,11 +25,13 @@ import {
   deleteNewItem,
   hasLocalEdit,
   loadStore,
+  pickFromStore,
+  pruneMerged,
   saveNewItem,
   saveOverride,
   type ItemOverrideStore,
 } from "../lib/dev/itemOverrides";
-import { publishOverrides } from "../lib/dev/publishOverrides";
+import { fetchPublishedOverrides, publishOverrides } from "../lib/dev/publishOverrides";
 import { chapters as courses } from "../lib/learningOrder";
 
 const conceptById = new Map<string, Concept>(concepts.map((c) => [c.id, c]));
@@ -143,6 +146,9 @@ export function DevQuestionsPage() {
   const [editing, setEditing] = useState<Item | null | undefined>(undefined);
   const [previewing, setPreviewing] = useState<Item | null>(null);
   const [publishing, setPublishing] = useState(false);
+  const [pickingPublish, setPickingPublish] = useState(false);
+  /** How many local edits were cleared on load because they're already merged. */
+  const [mergedCleared, setMergedCleared] = useState(0);
   const [publishResult, setPublishResult] = useState<
     { ok: true; prUrl: string } | { ok: false; message: string } | null
   >(null);
@@ -150,6 +156,27 @@ export function DevQuestionsPage() {
   useEffect(() => {
     if (!isDeveloper) return;
     loadItemBank().then(setBank);
+  }, [isDeveloper]);
+
+  // Local edits that are now merged (identical to the published overrides,
+  // bundled or on main) stop counting as local.
+  useEffect(() => {
+    if (!isDeveloper) return;
+    let cancelled = false;
+    Promise.all([
+      import("../data/devOverrides.json").then((m) => m.default as unknown as ItemOverrideStore),
+      fetchPublishedOverrides(),
+    ]).then(([bundled, onMain]) => {
+      if (cancelled) return;
+      const { store: next, removed } = pruneMerged([bundled, ...(onMain ? [onMain] : [])]);
+      if (removed > 0) {
+        setStore(next);
+        setMergedCleared(removed);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [isDeveloper]);
 
   const itemsByConcept = useMemo(() => {
@@ -260,20 +287,13 @@ export function DevQuestionsPage() {
     refresh(deleteNewItem(item.id));
   }
 
-  async function handlePublish() {
-    const pendingCount = Object.keys(store.overrides).length + Object.keys(store.newItems).length;
-    if (pendingCount === 0) return;
-    if (
-      !confirm(
-        `Open a pull request with ${pendingCount} edited/new question(s)? A maintainer will still need to review and merge it.`,
-      )
-    ) {
-      return;
-    }
+  async function handlePublish(ids: Set<string>) {
+    if (ids.size === 0) return;
     setPublishing(true);
     setPublishResult(null);
-    const result = await publishOverrides(store);
+    const result = await publishOverrides(pickFromStore(store, ids));
     setPublishing(false);
+    if (result.ok) setPickingPublish(false);
     setPublishResult(result.ok ? { ok: true, prUrl: result.prUrl } : { ok: false, message: result.message });
   }
 
@@ -337,17 +357,26 @@ export function DevQuestionsPage() {
             </button>
             <button
               type="button"
-              onClick={handlePublish}
+              onClick={() => {
+                setPublishResult(null);
+                setPickingPublish(true);
+              }}
               disabled={
                 publishing || Object.keys(store.overrides).length + Object.keys(store.newItems).length === 0
               }
               className="font-body rounded-lg px-4 py-2 text-sm font-medium text-[var(--accent-ink)] disabled:opacity-50"
               style={{ background: "var(--accent)" }}
             >
-              {publishing ? "Opening PR…" : "Publish to GitHub"}
+              Publish to GitHub…
             </button>
           </div>
         </div>
+
+        {mergedCleared > 0 && (
+          <div className="font-body mt-3 rounded-lg border border-green-600/30 bg-green-600/10 px-4 py-2 text-sm text-green-800">
+            {mergedCleared} local change{mergedCleared === 1 ? " has" : "s have"} been merged and no longer show as local.
+          </div>
+        )}
 
         {publishResult && (
           <div
@@ -734,6 +763,17 @@ export function DevQuestionsPage() {
             />
           </div>
         </div>
+      )}
+
+      {pickingPublish && (
+        <PublishPicker
+          store={store}
+          publishing={publishing}
+          error={publishResult && !publishResult.ok ? publishResult.message : null}
+          onPublish={handlePublish}
+          onPreview={setPreviewing}
+          onClose={() => setPickingPublish(false)}
+        />
       )}
 
       {previewing && (

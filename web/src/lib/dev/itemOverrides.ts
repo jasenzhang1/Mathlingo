@@ -78,6 +78,51 @@ export function applyOverrides(baseItems: Item[], store: ItemOverrideStore): Ite
   return [...merged, ...Object.values(store.newItems)];
 }
 
+/** JSON with object keys sorted, so two items compare equal regardless of key order. */
+function canonical(value: unknown): string {
+  return JSON.stringify(value, (_key, v) =>
+    v && typeof v === "object" && !Array.isArray(v)
+      ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, (v as Record<string, unknown>)[k]]))
+      : v,
+  );
+}
+
+/**
+ * Drops local edits that have been merged: an override or new item whose
+ * content is identical to the version in a published overrides file (the
+ * bundled `devOverrides.json`, or the one on main). An item edited again after
+ * publishing differs from the published copy and so is kept.
+ */
+export function pruneMerged(
+  published: ItemOverrideStore[],
+): { store: ItemOverrideStore; removed: number } {
+  const store = loadStore();
+  let removed = 0;
+  const isPublished = (item: Item) => {
+    const mine = canonical(item);
+    return published.some((file) => {
+      const theirs = file.overrides[item.id] ?? file.newItems[item.id];
+      return theirs !== undefined && canonical(theirs) === mine;
+    });
+  };
+  for (const map of [store.overrides, store.newItems]) {
+    for (const [id, item] of Object.entries(map)) {
+      if (isPublished(item)) {
+        delete map[id];
+        removed++;
+      }
+    }
+  }
+  if (removed > 0) saveStore(store);
+  return { store, removed };
+}
+
+/** The subset of the store holding only the given item ids. */
+export function pickFromStore(store: ItemOverrideStore, ids: Set<string>): ItemOverrideStore {
+  const pick = (map: Record<string, Item>) => Object.fromEntries(Object.entries(map).filter(([id]) => ids.has(id)));
+  return { overrides: pick(store.overrides), newItems: pick(store.newItems) };
+}
+
 export function hasLocalEdit(store: ItemOverrideStore, id: string): boolean {
   return id in store.overrides || id in store.newItems;
 }

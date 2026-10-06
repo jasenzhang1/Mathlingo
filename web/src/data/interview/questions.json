@@ -1,6 +1,7 @@
 [
  {
   "id": "iq-0001",
+  "title": "Candies Around the Table",
   "section": "141-simple-induction",
   "family": "adjacencies",
   "difficulty": 7,
@@ -16,6 +17,7 @@
  },
  {
   "id": "iq-0002",
+  "title": "Three-Player Number Game",
   "section": "716-nash-equilibrium",
   "family": null,
   "difficulty": 8,
@@ -32,6 +34,7 @@
  },
  {
   "id": "iq-0003",
+  "title": "Complete Pairs in a Card Pack",
   "section": "203-permutations-with-replacement",
   "family": "card-draw",
   "difficulty": 6,
@@ -49,6 +52,7 @@
  },
  {
   "id": "iq-0004",
+  "title": "Two Primes with Even Sum",
   "section": "206-definition",
   "family": "primes",
   "difficulty": 1,
@@ -65,6 +69,7 @@
  },
  {
   "id": "iq-0005",
+  "title": "Tasty Bottles in Two Coolers",
   "section": "722-qualitative-strategy",
   "family": null,
   "difficulty": 7,
@@ -79,6 +84,7 @@
  },
  {
   "id": "iq-0006",
+  "title": "Five Dice Totaling 20",
   "section": "316-stars-and-bars",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 7,
@@ -96,6 +102,7 @@
  },
  {
   "id": "iq-0007",
+  "title": "Two Submarines Meeting",
   "section": "112-local-minima",
   "family": "rays-and-lines",
   "difficulty": 7,
@@ -113,6 +120,7 @@
  },
  {
   "id": "iq-0008",
+  "title": "Lattice Path with 6+ Turns",
   "section": "216-stars-and-bars",
   "family": "lattice-walk",
   "difficulty": 4,
@@ -130,6 +138,7 @@
  },
  {
   "id": "iq-0009",
+  "title": "Pointing Game with Five Players",
   "section": "205-circular",
   "family": "adjacencies",
   "difficulty": 7,
@@ -145,6 +154,7 @@
  },
  {
   "id": "iq-0010",
+  "title": "Theater Row Seating Rules",
   "section": "230-recursion-fibonacci",
   "family": "adjacencies",
   "difficulty": 5,
@@ -160,6 +170,7 @@
  },
  {
   "id": "iq-0011",
+  "title": "No Adjacent Standers in a Circle",
   "section": "231-recursion-characteristic-polynomial",
   "family": "adjacencies",
   "difficulty": 7,
@@ -176,6 +187,7 @@
  },
  {
   "id": "iq-0012",
+  "title": "Even Gaps Between Marble Pairs",
   "section": "300-multiplication-rule",
   "family": "adjacencies",
   "difficulty": 6,
@@ -191,6 +203,7 @@
  },
  {
   "id": "iq-0013",
+  "title": "Seats Blocked by Neighbors",
   "section": "432-recursion",
   "family": "adjacencies",
   "difficulty": 3,
@@ -206,6 +219,7 @@
  },
  {
   "id": "iq-0014",
+  "title": "First Card Given 10 After 1",
   "section": "451-law-of-total-expectation-discrete",
   "family": "adjacencies",
   "difficulty": 4,
@@ -222,6 +236,7 @@
  },
  {
   "id": "iq-0015",
+  "title": "Three Light Switches",
   "section": "470-linearity-of-expectation",
   "family": "adjacencies",
   "difficulty": 8,
@@ -237,6 +252,7 @@
  },
  {
   "id": "iq-0016",
+  "title": "Adjacent GB Pairs in a Row",
   "section": "473-linearity-of-expectation-indicators",
   "family": "adjacencies",
   "difficulty": 0,
@@ -249,6 +265,7 @@
  },
  {
   "id": "iq-0017",
+  "title": "Married Couples Seated Together",
   "section": "473-linearity-of-expectation-indicators",
   "family": "adjacencies",
   "difficulty": 1,
@@ -264,6 +281,7 @@
  },
  {
   "id": "iq-0018",
+  "title": "Random Seating at a Round Table",
   "section": "473-linearity-of-expectation-indicators",
   "family": "adjacencies",
   "difficulty": 3,
@@ -280,6 +298,7 @@
  },
  {
   "id": "iq-0019",
+  "title": "Boy–Girl Adjacencies in a Line",
   "section": "473-linearity-of-expectation-indicators",
   "family": "adjacencies",
   "difficulty": 3,
@@ -295,6 +314,7 @@
  },
  {
   "id": "iq-0020",
+  "title": "Fourteen Chairs, Move One Seat",
   "section": "230-recursion-fibonacci",
   "family": "adjacencies",
   "difficulty": 3,
@@ -309,6 +329,7 @@
  },
  {
   "id": "iq-0021",
+  "title": "Expected Local Maxima",
   "section": "473-linearity-of-expectation-indicators",
   "family": "adjacencies",
   "difficulty": 6,
@@ -324,6 +345,7 @@
  },
  {
   "id": "iq-0022",
+  "title": "Truck Needs Two Parking Spots",
   "section": "211-complementary-counting",
   "family": "adjacency",
   "difficulty": 5,
@@ -339,6 +361,7 @@
  },
  {
   "id": "iq-0023",
+  "title": "Palindrome Multiples of n",
   "section": "141-simple-induction",
   "family": "anagram",
   "difficulty": 7,
@@ -352,6 +375,7 @@
  },
  {
   "id": "iq-0024",
+  "title": "Buttons Drawn Until G",
   "section": "200-multiplication-rule",
   "family": "anagram",
   "difficulty": 1,
@@ -366,6 +390,7 @@
  },
  {
   "id": "iq-0025",
+  "title": "Palindromes Below 1000",
   "section": "200-multiplication-rule",
   "family": "anagram",
   "difficulty": 1,
@@ -381,6 +406,7 @@
  },
  {
   "id": "iq-0026",
+  "title": "Monotone Even and Odd Subsequences",
   "section": "200-multiplication-rule",
   "family": "anagram",
   "difficulty": 2,
@@ -396,6 +422,7 @@
  },
  {
   "id": "iq-0027",
+  "title": "n and 2n Both Palindromes",
   "section": "200-multiplication-rule",
   "family": "anagram",
   "difficulty": 2,
@@ -410,6 +437,7 @@
  },
  {
   "id": "iq-0028",
+  "title": "Lumese Words with Emphasis",
   "section": "200-multiplication-rule",
   "family": "anagram",
   "difficulty": 2,
@@ -424,6 +452,7 @@
  },
  {
   "id": "iq-0029",
+  "title": "Each Face Six Times in 36 Rolls",
   "section": "204-permutations-with-identical-objects",
   "family": "anagram",
   "difficulty": 3,
@@ -437,6 +466,7 @@
  },
  {
   "id": "iq-0030",
+  "title": "Five Vowels, No Repeats Adjacent",
   "section": "214-pie",
   "family": "anagram",
   "difficulty": 2,
@@ -452,6 +482,7 @@
  },
  {
   "id": "iq-0031",
+  "title": "BOOLAHUBBOO: All B's First",
   "section": "221-derangements",
   "family": "anagram",
   "difficulty": 2,
@@ -466,6 +497,7 @@
  },
  {
   "id": "iq-0032",
+  "title": "BOOLAHUBBOO: Two B's First",
   "section": "221-derangements",
   "family": "anagram",
   "difficulty": 3,
@@ -480,6 +512,7 @@
  },
  {
   "id": "iq-0033",
+  "title": "A Right of B in a Line",
   "section": "222-symmetry",
   "family": "anagram",
   "difficulty": 0,
@@ -491,6 +524,7 @@
  },
  {
   "id": "iq-0034",
+  "title": "A Right of B Right of C",
   "section": "222-symmetry",
   "family": "anagram",
   "difficulty": 0,
@@ -502,6 +536,7 @@
  },
  {
   "id": "iq-0035",
+  "title": "Four Letters in Increasing Order",
   "section": "232-bijection",
   "family": "anagram",
   "difficulty": 0,
@@ -513,6 +548,7 @@
  },
  {
   "id": "iq-0036",
+  "title": "Arrangements of STATISTICS",
   "section": "300-multiplication-rule",
   "family": "anagram",
   "difficulty": 3,
@@ -526,6 +562,7 @@
  },
  {
   "id": "iq-0037",
+  "title": "Running Sum Never Divisible by 3",
   "section": "300-multiplication-rule",
   "family": "anagram",
   "difficulty": 3,
@@ -542,6 +579,7 @@
  },
  {
   "id": "iq-0038",
+  "title": "Ceiling of Y/X Is Even",
   "section": "321-geometric-probability",
   "family": "area",
   "difficulty": 4,
@@ -556,6 +594,7 @@
  },
  {
   "id": "iq-0039",
+  "title": "Ages in Order Around a Table",
   "section": "205-circular",
   "family": "arrangements",
   "difficulty": 1,
@@ -571,6 +610,7 @@
  },
  {
   "id": "iq-0040",
+  "title": "Minimum Languages for 69 People",
   "section": "206-definition",
   "family": "arrangements",
   "difficulty": 7,
@@ -585,6 +625,7 @@
  },
  {
   "id": "iq-0041",
+  "title": "No Adjacent Lit Bulbs in 3×3",
   "section": "220-casework",
   "family": "arrangements",
   "difficulty": 2,
@@ -599,6 +640,7 @@
  },
  {
   "id": "iq-0042",
+  "title": "Handshake Lists at a Party",
   "section": "220-casework",
   "family": "arrangements",
   "difficulty": 4,
@@ -611,6 +653,7 @@
  },
  {
   "id": "iq-0043",
+  "title": "Frogs Swapping on a 2×8 Grid",
   "section": "230-recursion-fibonacci",
   "family": "arrangements",
   "difficulty": 7,
@@ -626,6 +669,7 @@
  },
  {
   "id": "iq-0044",
+  "title": "Even White Marbles in Every Line",
   "section": "320-reduced-sample-space",
   "family": "arrangements",
   "difficulty": 5,
@@ -640,6 +684,7 @@
  },
  {
   "id": "iq-0045",
+  "title": "Glove Pairs Differing by at Most 1",
   "section": "330-recursion-fibonacci",
   "family": "arrangements",
   "difficulty": 2,
@@ -653,6 +698,7 @@
  },
  {
   "id": "iq-0046",
+  "title": "Passing the Parcel in a Circle",
   "section": "334-recursion-markov-chain",
   "family": "arrangements",
   "difficulty": 5,
@@ -668,6 +714,7 @@
  },
  {
   "id": "iq-0047",
+  "title": "Letters in Correct Envelopes",
   "section": "470-linearity-of-expectation",
   "family": "arrangements",
   "difficulty": 0,
@@ -680,6 +727,7 @@
  },
  {
   "id": "iq-0048",
+  "title": "Handshakes on a Chessboard",
   "section": "470-linearity-of-expectation",
   "family": "arrangements",
   "difficulty": 4,
@@ -695,6 +743,7 @@
  },
  {
   "id": "iq-0049",
+  "title": "Elevator Between Floors 1 and 50",
   "section": "350-conditional-probability",
   "family": "arrivals",
   "difficulty": 2,
@@ -710,6 +759,7 @@
  },
  {
   "id": "iq-0050",
+  "title": "Optimal Number of Bidders",
   "section": "703-optimal-parameters",
   "family": "auction",
   "difficulty": 4,
@@ -724,6 +774,7 @@
  },
  {
   "id": "iq-0051",
+  "title": "Randomly Generated Digits",
   "section": "450-conditional-expectation",
   "family": "sequences",
   "difficulty": 8,
@@ -741,6 +792,7 @@
  },
  {
   "id": "iq-0052",
+  "title": "Smallest Ball in Ball 10's Box",
   "section": "462-tail-sum",
   "family": "balls-in-boxes",
   "difficulty": 4,
@@ -752,6 +804,7 @@
  },
  {
   "id": "iq-0053",
+  "title": "Calculator with Two Buttons",
   "section": "104-bases",
   "family": "bases",
   "difficulty": 8,
@@ -766,6 +819,7 @@
  },
  {
   "id": "iq-0054",
+  "title": "Binary Digit Sum Differences",
   "section": "104-bases",
   "family": "bases",
   "difficulty": 8,
@@ -780,6 +834,7 @@
  },
  {
   "id": "iq-0055",
+  "title": "Three Biased Coin Flippers",
   "section": "211-complementary-counting",
   "family": "biased-coin",
   "difficulty": 1,
@@ -794,6 +849,7 @@
  },
  {
   "id": "iq-0056",
+  "title": "Alice and Bob Coin Payout Game I",
   "section": "720-minimax",
   "family": "biased-coin-game-ii",
   "difficulty": 4,
@@ -806,6 +862,7 @@
  },
  {
   "id": "iq-0057",
+  "title": "Alice and Bob Coin Payout Game II",
   "section": "720-minimax",
   "family": "biased-coin-game-ii",
   "difficulty": 5,
@@ -819,6 +876,7 @@
  },
  {
   "id": "iq-0058",
+  "title": "Three Coins, Heads Showing",
   "section": "310-bayes-rule",
   "family": "biased-coin-toss",
   "difficulty": 0,
@@ -833,6 +891,7 @@
  },
  {
   "id": "iq-0059",
+  "title": "Nine Fair Coins and a Double-Header",
   "section": "310-bayes-rule",
   "family": "biased-coin-toss",
   "difficulty": 0,
@@ -847,6 +906,7 @@
  },
  {
   "id": "iq-0060",
+  "title": "Two-H, One-H, No-H Coins",
   "section": "310-bayes-rule",
   "family": "biased-coin-toss",
   "difficulty": 0,
@@ -861,6 +921,7 @@
  },
  {
   "id": "iq-0061",
+  "title": "Five Heads: Fair or Double-Headed?",
   "section": "310-bayes-rule",
   "family": "biased-coin-toss",
   "difficulty": 1,
@@ -875,6 +936,7 @@
  },
  {
   "id": "iq-0062",
+  "title": "98 Fair Coins, One Double-Headed",
   "section": "310-bayes-rule",
   "family": "biased-coin-toss",
   "difficulty": 2,
@@ -889,6 +951,7 @@
  },
  {
   "id": "iq-0063",
+  "title": "Ten Heads from 100 Coins",
   "section": "310-bayes-rule",
   "family": "biased-coin-toss",
   "difficulty": 2,
@@ -903,6 +966,7 @@
  },
  {
   "id": "iq-0064",
+  "title": "Heads Needed for 95% Certainty",
   "section": "310-bayes-rule",
   "family": "biased-coin-toss",
   "difficulty": 3,
@@ -917,6 +981,7 @@
  },
  {
   "id": "iq-0065",
+  "title": "Odd Heads with One Fair Coin",
   "section": "341-symmetry-last-state",
   "family": "biased-coin-toss",
   "difficulty": 2,
@@ -931,6 +996,7 @@
  },
  {
   "id": "iq-0066",
+  "title": "Best p for Two Consecutive Heads",
   "section": "721-maximizing-single-player",
   "family": "biased-coin-toss",
   "difficulty": 2,
@@ -945,6 +1011,7 @@
  },
  {
   "id": "iq-0067",
+  "title": "Odd Heads from Ten Biased Coins",
   "section": "209-binomial-theorem",
   "family": "biased-coin",
   "difficulty": 5,
@@ -959,6 +1026,7 @@
  },
  {
   "id": "iq-0068",
+  "title": "Even Heads with One Fair Coin",
   "section": "342-symmetry-stealing",
   "family": "biased-coin",
   "difficulty": 2,
@@ -974,6 +1042,7 @@
  },
  {
   "id": "iq-0069",
+  "title": "Coin with Random Bias f(t) = 2t",
   "section": "351-law-of-total-probability",
   "family": "biased-coin",
   "difficulty": 2,
@@ -988,6 +1057,7 @@
  },
  {
   "id": "iq-0070",
+  "title": "Doubling Bacteria in a Petri Dish",
   "section": "101-general",
   "family": "birth-death",
   "difficulty": 4,
@@ -1002,6 +1072,7 @@
  },
  {
   "id": "iq-0071",
+  "title": "Bacterial Colony Extinction",
   "section": "200-multiplication-rule",
   "family": "birth-death",
   "difficulty": 1,
@@ -1017,6 +1088,7 @@
  },
  {
   "id": "iq-0072",
+  "title": "Bacterium Dies, Stays, or Divides",
   "section": "332-recursion",
   "family": "birth-death",
   "difficulty": 2,
@@ -1031,6 +1103,7 @@
  },
  {
   "id": "iq-0073",
+  "title": "Bankroll Ruin: Win $2, Lose $1",
   "section": "391-recurrence-relation-equation",
   "family": "birth-death",
   "difficulty": 6,
@@ -1045,6 +1118,7 @@
  },
  {
   "id": "iq-0074",
+  "title": "Days with Exactly One Birthday",
   "section": "473-linearity-of-expectation-indicators",
   "family": "birthday-problem",
   "difficulty": 6,
@@ -1059,6 +1133,7 @@
  },
  {
   "id": "iq-0075",
+  "title": "Classic Birthday Problem",
   "section": "311-complementary-counting",
   "family": "birthday-problem",
   "difficulty": 2,
@@ -1072,6 +1147,7 @@
  },
  {
   "id": "iq-0076",
+  "title": "E[X | X + Y = s]",
   "section": "513-bivariate-normal",
   "family": "bivariate-normal",
   "difficulty": 10,
@@ -1085,6 +1161,7 @@
  },
  {
   "id": "iq-0077",
+  "title": "E[X | X + Y = 1]",
   "section": "513-bivariate-normal",
   "family": "bivariate-normal",
   "difficulty": 10,
@@ -1099,6 +1176,7 @@
  },
  {
   "id": "iq-0078",
+  "title": "Conditional Normal with Unequal Variances",
   "section": "513-bivariate-normal",
   "family": "bivariate-normal",
   "difficulty": 10,
@@ -1112,6 +1190,7 @@
  },
  {
   "id": "iq-0079",
+  "title": "Mislabeled Fruit Bags",
   "section": "101-general",
   "family": "brainteaser",
   "difficulty": 1,
@@ -1127,6 +1206,7 @@
  },
  {
   "id": "iq-0080",
+  "title": "Burning Ropes to Measure Time",
   "section": "101-general",
   "family": "brainteaser",
   "difficulty": 1,
@@ -1140,6 +1220,7 @@
  },
  {
   "id": "iq-0081",
+  "title": "Locked Box by Messenger",
   "section": "101-general",
   "family": "brainteaser",
   "difficulty": 2,
@@ -1153,6 +1234,7 @@
  },
  {
   "id": "iq-0082",
+  "title": "Green and Blue Socks",
   "section": "101-general",
   "family": "brainteaser",
   "difficulty": 4,
@@ -1167,6 +1249,7 @@
  },
  {
   "id": "iq-0083",
+  "title": "Cutting a 21-Link Chain",
   "section": "103-binary-representation",
   "family": "brainteaser",
   "difficulty": 2,
@@ -1182,6 +1265,7 @@
  },
  {
   "id": "iq-0084",
+  "title": "Bulbs Toggled by Primes",
   "section": "107-primes-and-factorization",
   "family": "bulb-toggle",
   "difficulty": 5,
@@ -1197,6 +1281,7 @@
  },
  {
   "id": "iq-0085",
+  "title": "Bulbs Toggled by Odd Steps",
   "section": "107-primes-and-factorization",
   "family": "bulb-toggle",
   "difficulty": 6,
@@ -1211,6 +1296,7 @@
  },
  {
   "id": "iq-0086",
+  "title": "One of Each Suit in Four Cards",
   "section": "200-multiplication-rule",
   "family": "card-draw",
   "difficulty": 1,
@@ -1224,6 +1310,7 @@
  },
  {
   "id": "iq-0087",
+  "title": "King, Queen, Jack Before the Ace",
   "section": "200-multiplication-rule",
   "family": "card-draw",
   "difficulty": 1,
@@ -1238,6 +1325,7 @@
  },
  {
   "id": "iq-0088",
+  "title": "Four of a Kind",
   "section": "200-multiplication-rule",
   "family": "card-draw",
   "difficulty": 1,
@@ -1252,6 +1340,7 @@
  },
  {
   "id": "iq-0089",
+  "title": "Plain Straight in Poker",
   "section": "200-multiplication-rule",
   "family": "card-draw",
   "difficulty": 2,
@@ -1266,6 +1355,7 @@
  },
  {
   "id": "iq-0090",
+  "title": "Two of One Suit, Three of Another",
   "section": "200-multiplication-rule",
   "family": "card-draw",
   "difficulty": 2,
@@ -1280,6 +1370,7 @@
  },
  {
   "id": "iq-0091",
+  "title": "Three of a Kind",
   "section": "200-multiplication-rule",
   "family": "card-draw",
   "difficulty": 3,
@@ -1295,6 +1386,7 @@
  },
  {
   "id": "iq-0092",
+  "title": "Sixteen-Card Deck, One of Each Rank",
   "section": "200-multiplication-rule",
   "family": "card-draw",
   "difficulty": 5,
@@ -1310,6 +1402,7 @@
  },
  {
   "id": "iq-0093",
+  "title": "Kings, Queens, Jacks to Four Players",
   "section": "202-permutations",
   "family": "card-draw",
   "difficulty": 2,
@@ -1325,6 +1418,7 @@
  },
  {
   "id": "iq-0094",
+  "title": "Last Red Cherry",
   "section": "206-definition",
   "family": "card-draw",
   "difficulty": 2,
@@ -1339,6 +1433,7 @@
  },
  {
   "id": "iq-0095",
+  "title": "Expected Maximum of 10 Balls",
   "section": "207-hockeystick",
   "family": "card-draw",
   "difficulty": 7,
@@ -1357,6 +1452,7 @@
  },
  {
   "id": "iq-0096",
+  "title": "Ace Then Queen",
   "section": "300-multiplication-rule",
   "family": "card-draw",
   "difficulty": 0,
@@ -1369,6 +1465,7 @@
  },
  {
   "id": "iq-0097",
+  "title": "Ace, Queen, King in Order",
   "section": "300-multiplication-rule",
   "family": "card-draw",
   "difficulty": 0,
@@ -1382,6 +1479,7 @@
  },
  {
   "id": "iq-0098",
+  "title": "Marbles Until One Color Remains",
   "section": "300-multiplication-rule",
   "family": "card-draw",
   "difficulty": 2,
@@ -1396,6 +1494,7 @@
  },
  {
   "id": "iq-0099",
+  "title": "Fourth Green Ball on 9th Draw",
   "section": "302-permutations",
   "family": "card-draw",
   "difficulty": 3,
@@ -1411,6 +1510,7 @@
  },
  {
   "id": "iq-0100",
+  "title": "Matching Cards Between Two Players",
   "section": "311-complementary-counting",
   "family": "card-draw",
   "difficulty": 9,
@@ -1428,6 +1528,7 @@
  },
  {
   "id": "iq-0101",
+  "title": "Last Queen Before Last King",
   "section": "320-reduced-sample-space",
   "family": "card-draw",
   "difficulty": 2,
@@ -1442,6 +1543,7 @@
  },
  {
   "id": "iq-0102",
+  "title": "One Ball Is the Average of Two",
   "section": "322-casework",
   "family": "card-draw",
   "difficulty": 2,
@@ -1457,6 +1559,7 @@
  },
  {
   "id": "iq-0103",
+  "title": "Lottery Stops on an Odd Ticket",
   "section": "347-reduction-in-states",
   "family": "card-draw",
   "difficulty": 4,
@@ -1472,6 +1575,7 @@
  },
  {
   "id": "iq-0104",
+  "title": "Complete Color Set at Marble 700",
   "section": "350-conditional-probability",
   "family": "card-draw",
   "difficulty": 1,
@@ -1486,6 +1590,7 @@
  },
  {
   "id": "iq-0105",
+  "title": "Card After the First Ace",
   "section": "350-conditional-probability",
   "family": "card-draw",
   "difficulty": 3,
@@ -1500,6 +1605,7 @@
  },
  {
   "id": "iq-0106",
+  "title": "Deal Until Two Kings or King and Ace",
   "section": "414-pie-for-ev",
   "family": "card-draw",
   "difficulty": 6,
@@ -1516,6 +1622,7 @@
  },
  {
   "id": "iq-0107",
+  "title": "Draws Until an Ace and a King",
   "section": "414-pie-for-ev",
   "family": "card-draw",
   "difficulty": 8,
@@ -1530,6 +1637,7 @@
  },
  {
   "id": "iq-0108",
+  "title": "Socks Left After All Reds",
   "section": "450-conditional-expectation",
   "family": "card-draw",
   "difficulty": 8,
@@ -1546,6 +1654,7 @@
  },
  {
   "id": "iq-0109",
+  "title": "Expected Value with Doubled Diamonds",
   "section": "451-law-of-total-expectation-discrete",
   "family": "card-draw",
   "difficulty": 2,
@@ -1561,6 +1670,7 @@
  },
  {
   "id": "iq-0110",
+  "title": "Payout from Four Numbered Cards",
   "section": "470-linearity-of-expectation",
   "family": "card-draw",
   "difficulty": 1,
@@ -1575,6 +1685,7 @@
  },
  {
   "id": "iq-0111",
+  "title": "Draws Until All Four Suits",
   "section": "473-linearity-of-expectation-indicators",
   "family": "card-draw",
   "difficulty": 9,
@@ -1591,6 +1702,7 @@
  },
  {
   "id": "iq-0112",
+  "title": "Draws Until the First Ace",
   "section": "480-random-points-on-a-segment",
   "family": "card-draw",
   "difficulty": 2,
@@ -1607,6 +1719,7 @@
  },
  {
   "id": "iq-0113",
+  "title": "Oranges Left After All Apples",
   "section": "480-random-points-on-a-segment",
   "family": "card-draw",
   "difficulty": 2,
@@ -1621,6 +1734,7 @@
  },
  {
   "id": "iq-0114",
+  "title": "Third Largest in the First Row",
   "section": "480-random-points-on-a-segment",
   "family": "card-draw",
   "difficulty": 5,
@@ -1635,6 +1749,7 @@
  },
  {
   "id": "iq-0115",
+  "title": "Draws Until King and (Queen or Ace)",
   "section": "480-random-points-on-a-segment",
   "family": "card-draw",
   "difficulty": 7,
@@ -1649,6 +1764,7 @@
  },
  {
   "id": "iq-0116",
+  "title": "Cards Between First King and First Ace",
   "section": "480-random-points-on-a-segment",
   "family": "card-draw",
   "difficulty": 8,
@@ -1665,6 +1781,7 @@
  },
  {
   "id": "iq-0117",
+  "title": "Draws Until King, or Queen and Ace",
   "section": "480-random-points-on-a-segment",
   "family": "card-draw",
   "difficulty": 8,
@@ -1679,6 +1796,7 @@
  },
  {
   "id": "iq-0118",
+  "title": "Cards Left When One Color Remains",
   "section": "480-random-points-on-a-segment",
   "family": "card-draw",
   "difficulty": 9,
@@ -1693,6 +1811,7 @@
  },
  {
   "id": "iq-0119",
+  "title": "Red and Black Pairs Card Game",
   "section": "701-fair-value",
   "family": "card-draw",
   "difficulty": 2,
@@ -1708,6 +1827,7 @@
  },
  {
   "id": "iq-0120",
+  "title": "Ten Decks, Until the Fifth King",
   "section": "219-simple-counting",
   "family": "cards",
   "difficulty": 4,
@@ -1724,6 +1844,7 @@
  },
  {
   "id": "iq-0121",
+  "title": "Checker Moving Diagonally Up",
   "section": "220-casework",
   "family": "checkers",
   "difficulty": 2,
@@ -1739,6 +1860,7 @@
  },
  {
   "id": "iq-0122",
+  "title": "Knights Checking Kings on 4×4",
   "section": "473-linearity-of-expectation-indicators",
   "family": "chess",
   "difficulty": 3,
@@ -1754,6 +1876,7 @@
  },
  {
   "id": "iq-0123",
+  "title": "Placing Kings on a 9×9 Board",
   "section": "731-mirror-strategies",
   "family": "chess",
   "difficulty": 2,
@@ -1768,6 +1891,7 @@
  },
  {
   "id": "iq-0124",
+  "title": "Rook Race to the Corner",
   "section": "731-mirror-strategies",
   "family": "chess",
   "difficulty": 2,
@@ -1782,6 +1906,7 @@
  },
  {
   "id": "iq-0125",
+  "title": "Knight's Squared Distance",
   "section": "440-symmetry-ad-hoc",
   "family": "chess-knights",
   "difficulty": 4,
@@ -1797,6 +1922,7 @@
  },
  {
   "id": "iq-0126",
+  "title": "Twelve Points Paired into Chords",
   "section": "231-recursion-characteristic-polynomial",
   "family": "chords",
   "difficulty": 5,
@@ -1813,6 +1939,7 @@
  },
  {
   "id": "iq-0127",
+  "title": "Non-Crossing Segments on Eight Points",
   "section": "231-recursion-characteristic-polynomial",
   "family": "chords",
   "difficulty": 6,
@@ -1830,6 +1957,7 @@
  },
  {
   "id": "iq-0128",
+  "title": "Four Chords Forming a Quadrilateral",
   "section": "232-bijection",
   "family": "chords",
   "difficulty": 1,
@@ -1844,6 +1972,7 @@
  },
  {
   "id": "iq-0129",
+  "title": "Two Random Chords Intersect",
   "section": "344-symmetry-continuous-rv",
   "family": "chords",
   "difficulty": 0,
@@ -1856,6 +1985,7 @@
  },
  {
   "id": "iq-0130",
+  "title": "Self-Intersections of a Random Polygon I",
   "section": "473-linearity-of-expectation-indicators",
   "family": "chords",
   "difficulty": 5,
@@ -1870,6 +2000,7 @@
  },
  {
   "id": "iq-0131",
+  "title": "Self-Intersections of a Random Polygon II",
   "section": "473-linearity-of-expectation-indicators",
   "family": "chords",
   "difficulty": 5,
@@ -1884,6 +2015,7 @@
  },
  {
   "id": "iq-0132",
+  "title": "Intersections of 10 Random Chords",
   "section": "473-linearity-of-expectation-indicators",
   "family": "chords",
   "difficulty": 5,
@@ -1899,6 +2031,7 @@
  },
  {
   "id": "iq-0133",
+  "title": "Non-Crossing Chord Game",
   "section": "731-mirror-strategies",
   "family": "chords",
   "difficulty": 2,
@@ -1913,6 +2046,7 @@
  },
  {
   "id": "iq-0134",
+  "title": "Regions from Two Random Chords",
   "section": "999-law-of-total-expectation",
   "family": "chords",
   "difficulty": 2,
@@ -1928,6 +2062,7 @@
  },
  {
   "id": "iq-0135",
+  "title": "Six Points in a Semicircle",
   "section": "473-linearity-of-expectation-indicators",
   "family": "circle-problem",
   "difficulty": 3,
@@ -1943,6 +2078,7 @@
  },
  {
   "id": "iq-0136",
+  "title": "Regions from Random Chords",
   "section": "473-linearity-of-expectation-indicators",
   "family": "circle-problem",
   "difficulty": 8,
@@ -1957,6 +2093,7 @@
  },
  {
   "id": "iq-0137",
+  "title": "Eight Points, Four Chords, Quadrilateral",
   "section": "219-simple-counting",
   "family": "circles",
   "difficulty": 3,
@@ -1971,6 +2108,7 @@
  },
  {
   "id": "iq-0138",
+  "title": "Three Points 90° Apart I",
   "section": "321-geometric-probability",
   "family": "circles",
   "difficulty": 3,
@@ -1986,6 +2124,7 @@
  },
  {
   "id": "iq-0139",
+  "title": "Circle Containing the Origin",
   "section": "321-geometric-probability",
   "family": "circles",
   "difficulty": 5,
@@ -1999,6 +2138,7 @@
  },
  {
   "id": "iq-0140",
+  "title": "Three Points 90° Apart II",
   "section": "321-geometric-probability",
   "family": "circles",
   "difficulty": 7,
@@ -2013,6 +2153,7 @@
  },
  {
   "id": "iq-0141",
+  "title": "Hexagon Contains the Center",
   "section": "322-casework",
   "family": "circles",
   "difficulty": 6,
@@ -2029,6 +2170,7 @@
  },
  {
   "id": "iq-0142",
+  "title": "Obtuse Triangle from 1153 Points",
   "section": "340-symmetry",
   "family": "circles",
   "difficulty": 4,
@@ -2042,6 +2184,7 @@
  },
  {
   "id": "iq-0143",
+  "title": "Two Points Picked in Sequence",
   "section": "351-law-of-total-probability",
   "family": "circles",
   "difficulty": 10,
@@ -2055,6 +2198,7 @@
  },
  {
   "id": "iq-0144",
+  "title": "E[Z²] on the Unit Circle",
   "section": "440-symmetry-ad-hoc",
   "family": "circles",
   "difficulty": 3,
@@ -2070,6 +2214,7 @@
  },
  {
   "id": "iq-0145",
+  "title": "E[PQ] in the Unit Disc",
   "section": "440-symmetry-ad-hoc",
   "family": "circles",
   "difficulty": 3,
@@ -2085,6 +2230,7 @@
  },
  {
   "id": "iq-0146",
+  "title": "Closest of Four Points in a Disk",
   "section": "463-tail-integral",
   "family": "circles",
   "difficulty": 8,
@@ -2099,6 +2245,7 @@
  },
  {
   "id": "iq-0147",
+  "title": "Three Points Within One Radius",
   "section": "473-linearity-of-expectation-indicators",
   "family": "circles",
   "difficulty": 5,
@@ -2113,6 +2260,7 @@
  },
  {
   "id": "iq-0148",
+  "title": "N Points in a Semicircle",
   "section": "473-linearity-of-expectation-indicators",
   "family": "circles",
   "difficulty": 7,
@@ -2127,6 +2275,7 @@
  },
  {
   "id": "iq-0149",
+  "title": "Arc to Nearest Neighbor",
   "section": "480-random-points-on-a-segment",
   "family": "circles",
   "difficulty": 6,
@@ -2141,6 +2290,7 @@
  },
  {
   "id": "iq-0150",
+  "title": "Smallest Circle Around Two Points",
   "section": "481-order-statistics",
   "family": "circles",
   "difficulty": 8,
@@ -2156,6 +2306,7 @@
  },
  {
   "id": "iq-0151",
+  "title": "Six Points, Three Non-Crossing Chords",
   "section": "220-casework",
   "family": "circles",
   "difficulty": 2,
@@ -2171,6 +2322,7 @@
  },
  {
   "id": "iq-0152",
+  "title": "Expected Distance from the Center",
   "section": "402-introduction-continuous",
   "family": "circles",
   "difficulty": 0,
@@ -2183,6 +2335,7 @@
  },
  {
   "id": "iq-0153",
+  "title": "Expected Perimeter of a Random Triangle",
   "section": "451-law-of-total-expectation-discrete",
   "family": "circles",
   "difficulty": 9,
@@ -2198,6 +2351,7 @@
  },
  {
   "id": "iq-0154",
+  "title": "Red and Green Arcs Overlap",
   "section": "346-rotational-symmetry",
   "family": "circles-arc-length",
   "difficulty": 3,
@@ -2212,6 +2366,7 @@
  },
  {
   "id": "iq-0155",
+  "title": "Arc to Nearest of 29 Points",
   "section": "480-random-points-on-a-segment",
   "family": "circles-arc-length",
   "difficulty": 5,
@@ -2226,6 +2381,7 @@
  },
  {
   "id": "iq-0156",
+  "title": "Arc Containing (1, 0)",
   "section": "480-random-points-on-a-segment",
   "family": "circles-arc-length",
   "difficulty": 6,
@@ -2241,6 +2397,7 @@
  },
  {
   "id": "iq-0157",
+  "title": "Arc Containing (0, 1) and (1, 0)",
   "section": "480-random-points-on-a-segment",
   "family": "circles-arc-length",
   "difficulty": 6,
@@ -2255,6 +2412,7 @@
  },
  {
   "id": "iq-0158",
+  "title": "Random Obtuse Triangle on a Circle",
   "section": "321-geometric-probability",
   "family": "circles-tables",
   "difficulty": 4,
@@ -2269,6 +2427,7 @@
  },
  {
   "id": "iq-0159",
+  "title": "Three-Legged Table Stands",
   "section": "321-geometric-probability",
   "family": "circles-tables",
   "difficulty": 5,
@@ -2284,6 +2443,7 @@
  },
  {
   "id": "iq-0160",
+  "title": "Random Acute Triangle on a Circle",
   "section": "321-geometric-probability",
   "family": "circles-tables",
   "difficulty": 5,
@@ -2298,6 +2458,7 @@
  },
  {
   "id": "iq-0161",
+  "title": "Pentagon Contains the Center",
   "section": "473-linearity-of-expectation-indicators",
   "family": "circles-tables",
   "difficulty": 6,
@@ -2313,6 +2474,7 @@
  },
  {
   "id": "iq-0162",
+  "title": "Four Consecutive Girls at a Round Table",
   "section": "346-rotational-symmetry",
   "family": "circular-anagram",
   "difficulty": 5,
@@ -2331,6 +2493,7 @@
  },
  {
   "id": "iq-0163",
+  "title": "Three Ants on a Triangle",
   "section": "211-complementary-counting",
   "family": "circular-ants",
   "difficulty": 0,
@@ -2345,6 +2508,7 @@
  },
  {
   "id": "iq-0164",
+  "title": "Nine Ants Bouncing on a Circle I",
   "section": "804-circular-collisions",
   "family": "circular-ants",
   "difficulty": 2,
@@ -2356,6 +2520,7 @@
  },
  {
   "id": "iq-0165",
+  "title": "Nine Ants Return to Start",
   "section": "804-circular-collisions",
   "family": "circular-ants",
   "difficulty": 4,
@@ -2370,6 +2535,7 @@
  },
  {
   "id": "iq-0166",
+  "title": "Ten Ants Bouncing on a Circle",
   "section": "804-circular-collisions",
   "family": "circular-ants",
   "difficulty": 6,
@@ -2384,6 +2550,7 @@
  },
  {
   "id": "iq-0167",
+  "title": "Alice Among 24 Ants on a Track",
   "section": "804-circular-collisions",
   "family": "circular-ants",
   "difficulty": 9,
@@ -2396,6 +2563,7 @@
  },
  {
   "id": "iq-0168",
+  "title": "Ant Covering a Square's Vertices",
   "section": "219-simple-counting",
   "family": "circular-walk",
   "difficulty": 4,
@@ -2410,6 +2578,7 @@
  },
  {
   "id": "iq-0169",
+  "title": "Frog Reaching Lily Pad 50",
   "section": "338-circular-random-walk",
   "family": "circular-walk",
   "difficulty": 5,
@@ -2425,6 +2594,7 @@
  },
  {
   "id": "iq-0170",
+  "title": "Frog's Last Visited Point",
   "section": "338-circular-random-walk",
   "family": "circular-walk",
   "difficulty": 7,
@@ -2438,6 +2608,7 @@
  },
  {
   "id": "iq-0171",
+  "title": "Frog Visiting Every Point on a Circle",
   "section": "338-circular-random-walk",
   "family": "circular-walk",
   "difficulty": 8,
@@ -2453,6 +2624,7 @@
  },
  {
   "id": "iq-0172",
+  "title": "Walk Back to Point 0",
   "section": "445-conditional-symmetry",
   "family": "circular-walk",
   "difficulty": 3,
@@ -2467,6 +2639,7 @@
  },
  {
   "id": "iq-0173",
+  "title": "Clock Hands at 90 Degrees",
   "section": "101-general",
   "family": "clocks",
   "difficulty": 3,
@@ -2479,6 +2652,7 @@
  },
  {
   "id": "iq-0174",
+  "title": "Clock Hands Swapped",
   "section": "101-general",
   "family": "clocks",
   "difficulty": 3,
@@ -2492,6 +2666,7 @@
  },
  {
   "id": "iq-0175",
+  "title": "Expected Angle at 3 O'Clock",
   "section": "422-casework",
   "family": "clocks",
   "difficulty": 2,
@@ -2505,6 +2680,7 @@
  },
  {
   "id": "iq-0176",
+  "title": "Weighing Coins of Weight 2^i",
   "section": "219-simple-counting",
   "family": "coin-toss",
   "difficulty": 5,
@@ -2520,6 +2696,7 @@
  },
  {
   "id": "iq-0177",
+  "title": "Alice's Tosses Given She Wins",
   "section": "450-conditional-expectation",
   "family": "coin-toss",
   "difficulty": 9,
@@ -2534,6 +2711,7 @@
  },
  {
   "id": "iq-0178",
+  "title": "A < B < C First Heads",
   "section": "221-derangements",
   "family": "coin-toss-competition",
   "difficulty": 6,
@@ -2546,6 +2724,7 @@
  },
  {
   "id": "iq-0179",
+  "title": "Alice Needs 4× Bob's Flips",
   "section": "233-recursion-geometric-series",
   "family": "coin-toss-competition",
   "difficulty": 1,
@@ -2560,6 +2739,7 @@
  },
  {
   "id": "iq-0180",
+  "title": "Alice Needs More Flips Than Bob",
   "section": "250-complimentary-symmetry",
   "family": "coin-toss-competition",
   "difficulty": 2,
@@ -2575,6 +2755,7 @@
  },
  {
   "id": "iq-0181",
+  "title": "Alice Gets Heads First",
   "section": "331-recursion-square-1",
   "family": "coin-toss-competition",
   "difficulty": 0,
@@ -2589,6 +2770,7 @@
  },
  {
   "id": "iq-0182",
+  "title": "First Heads Among 10 Friends",
   "section": "331-recursion-square-1",
   "family": "coin-toss-competition",
   "difficulty": 2,
@@ -2603,6 +2785,7 @@
  },
  {
   "id": "iq-0183",
+  "title": "Alice Gets Heads First, Biased Coin",
   "section": "331-recursion-square-1",
   "family": "coin-toss-competition",
   "difficulty": 2,
@@ -2617,6 +2800,7 @@
  },
  {
   "id": "iq-0184",
+  "title": "Five Players Passing a Biased Coin",
   "section": "331-recursion-square-1",
   "family": "coin-toss-competition",
   "difficulty": 2,
@@ -2630,6 +2814,7 @@
  },
  {
   "id": "iq-0185",
+  "title": "Taking Turns for $30",
   "section": "331-recursion-square-1",
   "family": "coin-toss-competition",
   "difficulty": 2,
@@ -2642,6 +2827,7 @@
  },
  {
   "id": "iq-0186",
+  "title": "First to Flip HT",
   "section": "331-recursion-square-1",
   "family": "coin-toss-competition",
   "difficulty": 4,
@@ -2657,6 +2843,7 @@
  },
  {
   "id": "iq-0187",
+  "title": "Fair Price for Flipping Until HH",
   "section": "331-recursion-square-1",
   "family": "coin-toss-competition",
   "difficulty": 4,
@@ -2672,6 +2859,7 @@
  },
  {
   "id": "iq-0188",
+  "title": "Alice and Bob $30 Coin Game",
   "section": "332-recursion",
   "family": "coin-toss-competition",
   "difficulty": 2,
@@ -2687,6 +2875,7 @@
  },
  {
   "id": "iq-0189",
+  "title": "First Heads Wins, Biased Coin",
   "section": "332-recursion",
   "family": "coin-toss-competition",
   "difficulty": 2,
@@ -2701,6 +2890,7 @@
  },
  {
   "id": "iq-0190",
+  "title": "HHT Before HTH",
   "section": "334-recursion-markov-chain",
   "family": "coin-toss-competition",
   "difficulty": 1,
@@ -2715,6 +2905,7 @@
  },
  {
   "id": "iq-0191",
+  "title": "HHH Before THH I",
   "section": "334-recursion-markov-chain",
   "family": "coin-toss-competition",
   "difficulty": 2,
@@ -2729,6 +2920,7 @@
  },
  {
   "id": "iq-0192",
+  "title": "P1 < P2 < P3 < P4 First Heads",
   "section": "334-recursion-markov-chain",
   "family": "coin-toss-competition",
   "difficulty": 4,
@@ -2741,6 +2933,7 @@
  },
  {
   "id": "iq-0193",
+  "title": "n+1 Coins vs n Coins",
   "section": "340-symmetry",
   "family": "coin-toss-competition",
   "difficulty": 7,
@@ -2755,6 +2948,7 @@
  },
  {
   "id": "iq-0194",
+  "title": "Pay $d for d Flips",
   "section": "391-recurrence-relation-equation",
   "family": "coin-toss-competition",
   "difficulty": 11,
@@ -2767,6 +2961,7 @@
  },
  {
   "id": "iq-0195",
+  "title": "Capped St. Petersburg Game",
   "section": "433-recursion-geometric-series",
   "family": "coin-toss-competition",
   "difficulty": 1,
@@ -2781,6 +2976,7 @@
  },
  {
   "id": "iq-0196",
+  "title": "Coloring Coin Sides Game",
   "section": "734-coloring-strategies",
   "family": "coin-toss-competition",
   "difficulty": 2,
@@ -2796,6 +2992,7 @@
  },
  {
   "id": "iq-0197",
+  "title": "Same Number of Heads in Four Flips",
   "section": "206-definition",
   "family": "coin-toss-fixed-flips",
   "difficulty": 1,
@@ -2810,6 +3007,7 @@
  },
  {
   "id": "iq-0198",
+  "title": "Exactly 3 Consecutive Heads in 5 Tosses",
   "section": "220-casework",
   "family": "coin-toss-fixed-flips",
   "difficulty": 0,
@@ -2824,6 +3022,7 @@
  },
  {
   "id": "iq-0199",
+  "title": "Heads Only in Pairs",
   "section": "220-casework",
   "family": "coin-toss-fixed-flips",
   "difficulty": 2,
@@ -2838,6 +3037,7 @@
  },
  {
   "id": "iq-0200",
+  "title": "THTH Given 4 Heads and 7 Tails",
   "section": "221-derangements",
   "family": "coin-toss-fixed-flips",
   "difficulty": 6,
@@ -2852,6 +3052,7 @@
  },
  {
   "id": "iq-0201",
+  "title": "Exactly 3 Consecutive Heads in 6 Flips",
   "section": "322-casework",
   "family": "coin-toss-fixed-flips",
   "difficulty": 1,
@@ -2867,6 +3068,7 @@
  },
  {
   "id": "iq-0202",
+  "title": "Coin Walk Reaching 4",
   "section": "322-casework",
   "family": "coin-toss-fixed-flips",
   "difficulty": 9,
@@ -2882,6 +3084,7 @@
  },
  {
   "id": "iq-0203",
+  "title": "No Odd-Length Tail Runs",
   "section": "330-recursion-fibonacci",
   "family": "coin-toss-fixed-flips",
   "difficulty": 5,
@@ -2897,6 +3100,7 @@
  },
  {
   "id": "iq-0204",
+  "title": "No Three Heads in a Row",
   "section": "332-recursion",
   "family": "coin-toss-fixed-flips",
   "difficulty": 5,
@@ -2912,6 +3116,7 @@
  },
  {
   "id": "iq-0205",
+  "title": "No Four in a Row in 11 Tosses",
   "section": "332-recursion",
   "family": "coin-toss-fixed-flips",
   "difficulty": 8,
@@ -2927,6 +3132,7 @@
  },
  {
   "id": "iq-0206",
+  "title": "HT More Often Than TH",
   "section": "340-symmetry",
   "family": "coin-toss-fixed-flips",
   "difficulty": 0,
@@ -2939,6 +3145,7 @@
  },
  {
   "id": "iq-0207",
+  "title": "First Flip Is Dominant",
   "section": "340-symmetry",
   "family": "coin-toss-fixed-flips",
   "difficulty": 3,
@@ -2953,6 +3160,7 @@
  },
  {
   "id": "iq-0208",
+  "title": "Odd Heads from Twelve Mixed Coins",
   "section": "340-symmetry",
   "family": "coin-toss-fixed-flips",
   "difficulty": 4,
@@ -2967,6 +3175,7 @@
  },
  {
   "id": "iq-0209",
+  "title": "Flipping Pairs of Coins",
   "section": "341-symmetry-last-state",
   "family": "coin-toss-fixed-flips",
   "difficulty": 2,
@@ -2982,6 +3191,7 @@
  },
  {
   "id": "iq-0210",
+  "title": "Odd Heads in 150 Flips",
   "section": "342-symmetry-stealing",
   "family": "coin-toss-fixed-flips",
   "difficulty": 4,
@@ -2997,6 +3207,7 @@
  },
  {
   "id": "iq-0211",
+  "title": "First Toss Heads, No Consecutive Heads",
   "section": "390-recurrence-relation-bash",
   "family": "coin-toss-fixed-flips",
   "difficulty": 4,
@@ -3011,6 +3222,7 @@
  },
  {
   "id": "iq-0212",
+  "title": "Four Coins with One Reflip",
   "section": "411-complementary-counting",
   "family": "coin-toss-fixed-flips",
   "difficulty": 2,
@@ -3025,6 +3237,7 @@
  },
  {
   "id": "iq-0213",
+  "title": "Eight Coins with Optional Reflips",
   "section": "470-linearity-of-expectation",
   "family": "coin-toss-fixed-flips",
   "difficulty": 1,
@@ -3039,6 +3252,7 @@
  },
  {
   "id": "iq-0214",
+  "title": "Expected HT Count in 10 Flips",
   "section": "470-linearity-of-expectation",
   "family": "coin-toss-fixed-flips",
   "difficulty": 2,
@@ -3054,6 +3268,7 @@
  },
  {
   "id": "iq-0215",
+  "title": "E[XY] for Heads and Tails",
   "section": "516-binomial-rv",
   "family": "coin-toss-fixed-flips",
   "difficulty": 2,
@@ -3067,6 +3282,7 @@
  },
  {
   "id": "iq-0216",
+  "title": "One Yes/No Question for 100 Flips",
   "section": "860-information-theory",
   "family": "coin-toss-fixed-flips",
   "difficulty": 1,
@@ -3080,6 +3296,7 @@
  },
  {
   "id": "iq-0217",
+  "title": "Flips Until 1000-Long HTHT Pattern",
   "section": "999-unsorted",
   "family": "coin-toss-fixed-flips",
   "difficulty": 5,
@@ -3093,6 +3310,7 @@
  },
  {
   "id": "iq-0218",
+  "title": "Tosses Until 3 Heads or 3 Tails",
   "section": "220-casework",
   "family": "coin-toss-till-criteria",
   "difficulty": 1,
@@ -3107,6 +3325,7 @@
  },
  {
   "id": "iq-0219",
+  "title": "HH Stops on the 10th Toss I",
   "section": "231-recursion-characteristic-polynomial",
   "family": "coin-toss-till-criteria",
   "difficulty": 2,
@@ -3118,6 +3337,7 @@
  },
  {
   "id": "iq-0220",
+  "title": "HH Stops on the 10th Toss II",
   "section": "231-recursion-characteristic-polynomial",
   "family": "coin-toss-till-criteria",
   "difficulty": 4,
@@ -3133,6 +3353,7 @@
  },
  {
   "id": "iq-0221",
+  "title": "Even Tosses Until HH I",
   "section": "331-recursion-square-1",
   "family": "coin-toss-till-criteria",
   "difficulty": 2,
@@ -3147,6 +3368,7 @@
  },
  {
   "id": "iq-0222",
+  "title": "2019 Identical Flips in a Row",
   "section": "331-recursion-square-1",
   "family": "coin-toss-till-criteria",
   "difficulty": 3,
@@ -3160,6 +3382,7 @@
  },
  {
   "id": "iq-0223",
+  "title": "Even Tosses Until HH II",
   "section": "331-recursion-square-1",
   "family": "coin-toss-till-criteria",
   "difficulty": 3,
@@ -3174,6 +3397,7 @@
  },
  {
   "id": "iq-0224",
+  "title": "Even Tosses Until Two Heads",
   "section": "333-recursion-geometric-series",
   "family": "coin-toss-till-criteria",
   "difficulty": 3,
@@ -3189,6 +3413,7 @@
  },
  {
   "id": "iq-0225",
+  "title": "HHT Before HTT I",
   "section": "334-recursion-markov-chain",
   "family": "coin-toss-till-criteria",
   "difficulty": 1,
@@ -3202,6 +3427,7 @@
  },
  {
   "id": "iq-0226",
+  "title": "HHH Before THH II",
   "section": "334-recursion-markov-chain",
   "family": "coin-toss-till-criteria",
   "difficulty": null,
@@ -3214,6 +3440,7 @@
  },
  {
   "id": "iq-0227",
+  "title": "Even Flips Until HH or TT I",
   "section": "342-symmetry-stealing",
   "family": "coin-toss-till-criteria",
   "difficulty": 3,
@@ -3228,6 +3455,7 @@
  },
  {
   "id": "iq-0228",
+  "title": "Even Flips Until HH or TT II",
   "section": "342-symmetry-stealing",
   "family": "coin-toss-till-criteria",
   "difficulty": 4,
@@ -3243,6 +3471,7 @@
  },
  {
   "id": "iq-0229",
+  "title": "HHT Before HTT II",
   "section": "343-symmetry-markov-chain",
   "family": "coin-toss-till-criteria",
   "difficulty": 2,
@@ -3258,6 +3487,7 @@
  },
  {
   "id": "iq-0230",
+  "title": "Simulating Probability 1/3",
   "section": "434-recursion-markov-chain",
   "family": "coin-toss-till-criteria",
   "difficulty": 2,
@@ -3272,6 +3502,7 @@
  },
  {
   "id": "iq-0231",
+  "title": "Flips Until 10 Consecutive Heads",
   "section": "434-recursion-markov-chain",
   "family": "coin-toss-till-criteria",
   "difficulty": 5,
@@ -3287,6 +3518,7 @@
  },
  {
   "id": "iq-0232",
+  "title": "Paying $50 with Fake Notes",
   "section": "434-recursion-markov-chain",
   "family": "coin-toss-till-criteria",
   "difficulty": 5,
@@ -3301,6 +3533,7 @@
  },
  {
   "id": "iq-0233",
+  "title": "Flips Until HH vs HT",
   "section": "434-recursion-markov-chain",
   "family": "coin-toss-till-criteria",
   "difficulty": 4,
@@ -3316,6 +3549,7 @@
  },
  {
   "id": "iq-0234",
+  "title": "Flips Until HHHHH",
   "section": "434-recursion-markov-chain",
   "family": "coin-toss-till-criteria",
   "difficulty": 4,
@@ -3331,6 +3565,7 @@
  },
  {
   "id": "iq-0235",
+  "title": "Flips Until HHHH, Biased Coin",
   "section": "434-recursion-markov-chain",
   "family": "coin-toss-till-criteria",
   "difficulty": 6,
@@ -3343,6 +3578,7 @@
  },
  {
   "id": "iq-0236",
+  "title": "Tails Proportion When Tails Lead",
   "section": "437-1-sided-absorption-random-walk",
   "family": "coin-toss-till-criteria",
   "difficulty": 11,
@@ -3357,6 +3593,7 @@
  },
  {
   "id": "iq-0237",
+  "title": "Tosses Until 3 in a Row",
   "section": "443-symmetry-reduction-in-states",
   "family": "coin-toss-till-criteria",
   "difficulty": 2,
@@ -3372,6 +3609,7 @@
  },
  {
   "id": "iq-0238",
+  "title": "Increasing Rolls on a d10",
   "section": "491-recurrence-relation-equation",
   "family": "coin-toss-till-criteria",
   "difficulty": 7,
@@ -3384,6 +3622,7 @@
  },
  {
   "id": "iq-0239",
+  "title": "Friends Meeting at a Restaurant",
   "section": "321-geometric-probability",
   "family": "coincidence",
   "difficulty": 0,
@@ -3398,6 +3637,7 @@
  },
  {
   "id": "iq-0240",
+  "title": "Meeting at the Station",
   "section": "321-geometric-probability",
   "family": "coincidence",
   "difficulty": 1,
@@ -3412,6 +3652,7 @@
  },
  {
   "id": "iq-0241",
+  "title": "Waiting for the 10-Minute Bus",
   "section": "402-introduction-continuous",
   "family": "coincidence",
   "difficulty": 1,
@@ -3426,6 +3667,7 @@
  },
  {
   "id": "iq-0242",
+  "title": "Waiting for Two Periodic Buses",
   "section": "438-renewal-process-hitting-times",
   "family": "coincidence",
   "difficulty": 5,
@@ -3442,6 +3684,7 @@
  },
  {
   "id": "iq-0243",
+  "title": "Two Buses, Random Start Times",
   "section": "438-renewal-process-hitting-times",
   "family": "coincidence",
   "difficulty": 6,
@@ -3458,6 +3701,7 @@
  },
  {
   "id": "iq-0244",
+  "title": "Two Buses, Chosen Start Times",
   "section": "438-renewal-process-hitting-times",
   "family": "coincidence",
   "difficulty": 7,
@@ -3473,6 +3717,7 @@
  },
  {
   "id": "iq-0245",
+  "title": "All 10 Cars Parked at Once",
   "section": "473-linearity-of-expectation-indicators",
   "family": "coincidence",
   "difficulty": 6,
@@ -3487,6 +3732,7 @@
  },
  {
   "id": "iq-0246",
+  "title": "40 vs 80 Ants Colliding",
   "section": "801-number-of-collisions",
   "family": "collision-problems",
   "difficulty": 2,
@@ -3499,6 +3745,7 @@
  },
  {
   "id": "iq-0247",
+  "title": "Collisions Among 25 Ants",
   "section": "801-number-of-collisions",
   "family": "collision-problems",
   "difficulty": 7,
@@ -3513,6 +3760,7 @@
  },
  {
   "id": "iq-0248",
+  "title": "Center Ant's Collisions",
   "section": "801-number-of-collisions",
   "family": "collision-problems",
   "difficulty": 11,
@@ -3526,6 +3774,7 @@
  },
  {
   "id": "iq-0249",
+  "title": "Infection Spreading Among Ants",
   "section": "803-infection",
   "family": "collision-problems",
   "difficulty": 8,
@@ -3537,6 +3786,7 @@
  },
  {
   "id": "iq-0250",
+  "title": "Three Colors Sharing a Cube Vertex",
   "section": "219-simple-counting",
   "family": "coloring",
   "difficulty": 2,
@@ -3552,6 +3802,7 @@
  },
  {
   "id": "iq-0251",
+  "title": "Three Couples Paired Randomly",
   "section": "221-derangements",
   "family": "couples",
   "difficulty": 4,
@@ -3567,6 +3818,7 @@
  },
  {
   "id": "iq-0252",
+  "title": "Collecting Five Cereal Toys",
   "section": "471-linearity-of-expectation-coupon-collector",
   "family": "coupon-collector",
   "difficulty": 2,
@@ -3582,6 +3834,7 @@
  },
  {
   "id": "iq-0253",
+  "title": "Draws Until All Four Suits, With Replacement",
   "section": "471-linearity-of-expectation-coupon-collector",
   "family": "coupon-collector",
   "difficulty": 2,
@@ -3597,6 +3850,7 @@
  },
  {
   "id": "iq-0254",
+  "title": "Covering a 10-Node Graph",
   "section": "471-linearity-of-expectation-coupon-collector",
   "family": "coupon-collector",
   "difficulty": 3,
@@ -3612,6 +3866,7 @@
  },
  {
   "id": "iq-0255",
+  "title": "Removing Matching Pairs from 30 Cards",
   "section": "471-linearity-of-expectation-coupon-collector",
   "family": "coupon-collector",
   "difficulty": 3,
@@ -3627,6 +3882,7 @@
  },
  {
   "id": "iq-0256",
+  "title": "Unique Stickers from 7 Purchases",
   "section": "471-linearity-of-expectation-coupon-collector",
   "family": "coupon-collector",
   "difficulty": 3,
@@ -3642,6 +3898,7 @@
  },
  {
   "id": "iq-0257",
+  "title": "Nonempty Buckets",
   "section": "471-linearity-of-expectation-coupon-collector",
   "family": "coupon-collector",
   "difficulty": 4,
@@ -3656,6 +3913,7 @@
  },
  {
   "id": "iq-0258",
+  "title": "Minimum Common Correlation",
   "section": "503-definition",
   "family": "covariance-matrices",
   "difficulty": 7,
@@ -3672,6 +3930,7 @@
  },
  {
   "id": "iq-0259",
+  "title": "Rectangular Prisms in a 5×5×5 Cube",
   "section": "206-definition",
   "family": "cubes",
   "difficulty": 1,
@@ -3684,6 +3943,7 @@
  },
  {
   "id": "iq-0260",
+  "title": "Names from a Hat: Groups I",
   "section": "417-summation-using-expectation",
   "family": "cycles",
   "difficulty": 10,
@@ -3698,6 +3958,7 @@
  },
  {
   "id": "iq-0261",
+  "title": "Names from a Hat: Groups II",
   "section": "472-linearity-of-expectation-harmonic-sum",
   "family": "cycles",
   "difficulty": 4,
@@ -3713,6 +3974,7 @@
  },
  {
   "id": "iq-0262",
+  "title": "Car Clusters on a Road",
   "section": "472-linearity-of-expectation-harmonic-sum",
   "family": "cycles",
   "difficulty": 6,
@@ -3728,6 +3990,7 @@
  },
  {
   "id": "iq-0263",
+  "title": "PDF of a Frog's Jump Distance",
   "section": "502-definition-continuous",
   "family": "density",
   "difficulty": 1,
@@ -3739,6 +4002,7 @@
  },
  {
   "id": "iq-0264",
+  "title": "PDF of the Minimum of Ten Uniforms",
   "section": "502-definition-continuous",
   "family": "density-uniform-distribution",
   "difficulty": 1,
@@ -3752,6 +4016,7 @@
  },
  {
   "id": "iq-0265",
+  "title": "Distribution of (XY)^Z",
   "section": "520-uniform-distribution",
   "family": "density-uniform-distribution",
   "difficulty": 10,
@@ -3766,6 +4031,7 @@
  },
  {
   "id": "iq-0266",
+  "title": "Disease Test I",
   "section": "310-bayes-rule",
   "family": "diagnostic-test",
   "difficulty": 0,
@@ -3780,6 +4046,7 @@
  },
  {
   "id": "iq-0267",
+  "title": "Disease Test II",
   "section": "310-bayes-rule",
   "family": "diagnostic-test",
   "difficulty": 1,
@@ -3794,6 +4061,7 @@
  },
  {
   "id": "iq-0268",
+  "title": "Disease Test, Positive Twice",
   "section": "310-bayes-rule",
   "family": "diagnostic-test",
   "difficulty": 3,
@@ -3807,6 +4075,7 @@
  },
  {
   "id": "iq-0269",
+  "title": "Sum ≤ 7 Given Two Evens I",
   "section": "200-multiplication-rule",
   "family": "dice-roll",
   "difficulty": 2,
@@ -3821,6 +4090,7 @@
  },
  {
   "id": "iq-0270",
+  "title": "At Least One 6 in Four Rolls",
   "section": "211-complementary-counting",
   "family": "dice-roll",
   "difficulty": 1,
@@ -3835,6 +4105,7 @@
  },
  {
   "id": "iq-0271",
+  "title": "Highest of Three Rolls Is 4",
   "section": "211-complementary-counting",
   "family": "dice-roll",
   "difficulty": 1,
@@ -3849,6 +4120,7 @@
  },
  {
   "id": "iq-0272",
+  "title": "Tetrahedral Dice Game",
   "section": "434-recursion-markov-chain",
   "family": "dice-roll",
   "difficulty": 3,
@@ -3864,6 +4136,7 @@
  },
  {
   "id": "iq-0273",
+  "title": "Rolls Until Close Consecutive Values",
   "section": "499-symmetry-reduction-in-states",
   "family": "dice-roll",
   "difficulty": 4,
@@ -3880,6 +4153,7 @@
  },
  {
   "id": "iq-0274",
+  "title": "All Faces in n Rolls",
   "section": "215-pie-for-n-sets",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 8,
@@ -3893,6 +4167,7 @@
  },
  {
   "id": "iq-0275",
+  "title": "Four Dice Summing to 20",
   "section": "216-stars-and-bars",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 2,
@@ -3908,6 +4183,7 @@
  },
  {
   "id": "iq-0276",
+  "title": "Nondecreasing Rolls Include a 3",
   "section": "216-stars-and-bars",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 4,
@@ -3922,6 +4198,7 @@
  },
  {
   "id": "iq-0277",
+  "title": "Prime-Faced Dice, Prime Sum",
   "section": "219-simple-counting",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 0,
@@ -3937,6 +4214,7 @@
  },
  {
   "id": "iq-0278",
+  "title": "Sum at Least Product",
   "section": "219-simple-counting",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 0,
@@ -3951,6 +4229,7 @@
  },
  {
   "id": "iq-0279",
+  "title": "Top Three of Five Dice Sum to 18",
   "section": "220-casework",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 2,
@@ -3966,6 +4245,7 @@
  },
  {
   "id": "iq-0280",
+  "title": "Range of Three Dice Is 4",
   "section": "220-casework",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 2,
@@ -3981,6 +4261,7 @@
  },
  {
   "id": "iq-0281",
+  "title": "Three Consecutive 1's in 5 Rolls",
   "section": "220-casework",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 3,
@@ -3996,6 +4277,7 @@
  },
  {
   "id": "iq-0282",
+  "title": "Same Three Numbers on a Reroll",
   "section": "220-casework",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 3,
@@ -4011,6 +4293,7 @@
  },
  {
   "id": "iq-0283",
+  "title": "First Die Less Than Second",
   "section": "223-complimentary-symmetry",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 1,
@@ -4025,6 +4308,7 @@
  },
  {
   "id": "iq-0284",
+  "title": "Nondecreasing Rolls",
   "section": "316-stars-and-bars",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 7,
@@ -4038,6 +4322,7 @@
  },
  {
   "id": "iq-0285",
+  "title": "Sum ≤ 7 Given Two Evens II",
   "section": "322-casework",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 2,
@@ -4053,6 +4338,7 @@
  },
  {
   "id": "iq-0286",
+  "title": "Three Dice Form a Triangle",
   "section": "340-symmetry",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 3,
@@ -4068,6 +4354,7 @@
  },
  {
   "id": "iq-0287",
+  "title": "Three Rolls Strictly Increasing",
   "section": "350-conditional-probability",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 2,
@@ -4083,6 +4370,7 @@
  },
  {
   "id": "iq-0288",
+  "title": "Median of Three Dice",
   "section": "440-symmetry-ad-hoc",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 1,
@@ -4097,6 +4385,7 @@
  },
  {
   "id": "iq-0289",
+  "title": "Lowest of Three d100 Rolls",
   "section": "462-tail-sum",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 7,
@@ -4111,6 +4400,7 @@
  },
  {
   "id": "iq-0290",
+  "title": "Expected Sum of Three Rolls",
   "section": "470-linearity-of-expectation",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 0,
@@ -4125,6 +4415,7 @@
  },
  {
   "id": "iq-0291",
+  "title": "E[N1 N2 ⋯ N6] in 10 Rolls",
   "section": "473-linearity-of-expectation-indicators",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 9,
@@ -4140,6 +4431,7 @@
  },
  {
   "id": "iq-0292",
+  "title": "Negative Correlation of 3's and 6's",
   "section": "504-definition",
   "family": "dice-rolls-fixed-rolls",
   "difficulty": 5,
@@ -4154,6 +4446,7 @@
  },
  {
   "id": "iq-0293",
+  "title": "Minimum Roll Before a 5",
   "section": "224-order-symmetry",
   "family": "dice-rolls-till-criteria",
   "difficulty": 5,
@@ -4168,6 +4461,7 @@
  },
  {
   "id": "iq-0294",
+  "title": "Roll Before Passing 100",
   "section": "232-bijection",
   "family": "dice-rolls-till-criteria",
   "difficulty": 7,
@@ -4183,6 +4477,7 @@
  },
  {
   "id": "iq-0295",
+  "title": "All Odds Before Any Even",
   "section": "300-multiplication-rule",
   "family": "dice-rolls-till-criteria",
   "difficulty": 2,
@@ -4197,6 +4492,7 @@
  },
  {
   "id": "iq-0296",
+  "title": "Two 2's and Two 3's Before a 6",
   "section": "320-reduced-sample-space",
   "family": "dice-rolls-till-criteria",
   "difficulty": 0,
@@ -4211,6 +4507,7 @@
  },
  {
   "id": "iq-0297",
+  "title": "No 5 Before the First 6",
   "section": "320-reduced-sample-space",
   "family": "dice-rolls-till-criteria",
   "difficulty": 1,
@@ -4225,6 +4522,7 @@
  },
  {
   "id": "iq-0298",
+  "title": "Two 6's Before a 2 and a 3",
   "section": "320-reduced-sample-space",
   "family": "dice-rolls-till-criteria",
   "difficulty": 6,
@@ -4240,6 +4538,7 @@
  },
  {
   "id": "iq-0299",
+  "title": "Even Sum Until a 6",
   "section": "342-symmetry-stealing",
   "otherSections": [
    "343-symmetry-markov-chain"
@@ -4259,6 +4558,7 @@
  },
  {
   "id": "iq-0300",
+  "title": "First to a Multiple of 7",
   "section": "342-symmetry-stealing",
   "family": "dice-rolls-till-criteria",
   "difficulty": 3,
@@ -4274,6 +4574,7 @@
  },
  {
   "id": "iq-0301",
+  "title": "Six Players Passing a Die",
   "section": "343-symmetry-markov-chain",
   "family": "dice-rolls-till-criteria",
   "difficulty": 2,
@@ -4286,6 +4587,7 @@
  },
  {
   "id": "iq-0302",
+  "title": "Roll 7 Before 11",
   "section": "350-conditional-probability",
   "family": "dice-rolls-till-criteria",
   "difficulty": 2,
@@ -4298,6 +4600,7 @@
  },
  {
   "id": "iq-0303",
+  "title": "Rounds of Two d8 Rolls",
   "section": "432-recursion",
   "family": "dice-rolls-till-criteria",
   "difficulty": 2,
@@ -4312,6 +4615,7 @@
  },
  {
   "id": "iq-0304",
+  "title": "Green and Yellow d10 Game",
   "section": "432-recursion",
   "family": "dice-rolls-till-criteria",
   "difficulty": 4,
@@ -4327,6 +4631,7 @@
  },
  {
   "id": "iq-0305",
+  "title": "Expected Sum Until a 6",
   "section": "432-recursion",
   "family": "dice-rolls-till-criteria",
   "difficulty": 4,
@@ -4339,6 +4644,7 @@
  },
  {
   "id": "iq-0306",
+  "title": "Sum of an Increasing Run on a d10",
   "section": "432-recursion",
   "family": "dice-rolls-till-criteria",
   "difficulty": 7,
@@ -4355,6 +4661,7 @@
  },
  {
   "id": "iq-0307",
+  "title": "Rolls Until Even on a d12",
   "section": "433-recursion-geometric-series",
   "family": "dice-rolls-till-criteria",
   "difficulty": 0,
@@ -4369,6 +4676,7 @@
  },
  {
   "id": "iq-0308",
+  "title": "Total Rolls Given Alice Rolls the First 6",
   "section": "433-recursion-double-geometric-series",
   "family": "dice-rolls-till-criteria",
   "difficulty": 5,
@@ -4384,6 +4692,7 @@
  },
  {
   "id": "iq-0309",
+  "title": "Rolls Until 6 Then 5",
   "section": "434-recursion-markov-chain",
   "family": "dice-rolls-till-criteria",
   "difficulty": 2,
@@ -4398,6 +4707,7 @@
  },
  {
   "id": "iq-0310",
+  "title": "Rolls Until a 2 or Two 1's",
   "section": "434-recursion-markov-chain",
   "family": "dice-rolls-till-criteria",
   "difficulty": 2,
@@ -4412,6 +4722,7 @@
  },
  {
   "id": "iq-0311",
+  "title": "4-Then-5 vs 4-Then-4",
   "section": "434-recursion-markov-chain",
   "family": "dice-rolls-till-criteria",
   "difficulty": 3,
@@ -4425,6 +4736,7 @@
  },
  {
   "id": "iq-0312",
+  "title": "Tetrahedral Die with Discards",
   "section": "434-recursion-markov-chain",
   "family": "dice-rolls-till-criteria",
   "difficulty": 5,
@@ -4440,6 +4752,7 @@
  },
  {
   "id": "iq-0313",
+  "title": "Two 5's or a 4 and a 6",
   "section": "434-recursion-markov-chain",
   "family": "dice-rolls-till-criteria",
   "difficulty": 5,
@@ -4454,6 +4767,7 @@
  },
  {
   "id": "iq-0314",
+  "title": "Rolling Two Dice Until All Faces",
   "section": "434-recursion-markov-chain",
   "family": "dice-rolls-till-criteria",
   "difficulty": 6,
@@ -4468,6 +4782,7 @@
  },
  {
   "id": "iq-0315",
+  "title": "Six Distinct Faces in a Row",
   "section": "434-recursion-markov-chain",
   "family": "dice-rolls-till-criteria",
   "difficulty": 6,
@@ -4482,6 +4797,7 @@
  },
  {
   "id": "iq-0316",
+  "title": "Rolls Until Sum ≥ 6",
   "section": "438-renewal-process-hitting-times",
   "family": "dice-rolls-till-criteria",
   "difficulty": 7,
@@ -4497,6 +4813,7 @@
  },
  {
   "id": "iq-0317",
+  "title": "Rolls Until Sum ≥ n on an n-Sided Die",
   "section": "438-renewal-process-hitting-times",
   "family": "dice-rolls-till-criteria",
   "difficulty": 9,
@@ -4511,6 +4828,7 @@
  },
  {
   "id": "iq-0318",
+  "title": "Double 6s for $100",
   "section": "443-symmetry-reduction-in-states",
   "family": "dice-rolls-till-criteria",
   "difficulty": 1,
@@ -4524,6 +4842,7 @@
  },
  {
   "id": "iq-0319",
+  "title": "Rolls Until Sum Divisible by 6",
   "section": "443-symmetry-reduction-in-states",
   "family": "dice-rolls-till-criteria",
   "difficulty": 2,
@@ -4540,6 +4859,7 @@
  },
  {
   "id": "iq-0320",
+  "title": "Every Face an Odd Number of Times",
   "section": "443-symmetry-reduction-in-states",
   "family": "dice-rolls-till-criteria",
   "difficulty": 3,
@@ -4555,6 +4875,7 @@
  },
  {
   "id": "iq-0321",
+  "title": "Highest Roll Before a 4",
   "section": "443-symmetry-reduction-in-states",
   "family": "dice-rolls-till-criteria",
   "difficulty": 4,
@@ -4569,6 +4890,7 @@
  },
  {
   "id": "iq-0322",
+  "title": "Consecutive Rolls Differing by 2",
   "section": "443-symmetry-reduction-in-states",
   "family": "dice-rolls-till-criteria",
   "difficulty": 4,
@@ -4584,6 +4906,7 @@
  },
  {
   "id": "iq-0323",
+  "title": "Rolls Given 6 Before 5",
   "section": "450-conditional-expectation",
   "family": "dice-rolls-till-criteria",
   "difficulty": 7,
@@ -4600,6 +4923,7 @@
  },
  {
   "id": "iq-0324",
+  "title": "Rolls Until Matching the First",
   "section": "451-law-of-total-expectation-discrete",
   "family": "dice-rolls-till-criteria",
   "difficulty": 2,
@@ -4615,6 +4939,7 @@
  },
  {
   "id": "iq-0325",
+  "title": "Distinct Faces Before a Repeat",
   "section": "462-tail-sum",
   "family": "dice-rolls-till-criteria",
   "difficulty": 4,
@@ -4630,6 +4955,7 @@
  },
  {
   "id": "iq-0326",
+  "title": "Tetrahedral Die Until Nondecreasing",
   "section": "462-tail-sum",
   "family": "dice-rolls-till-criteria",
   "difficulty": 5,
@@ -4644,6 +4970,7 @@
  },
  {
   "id": "iq-0327",
+  "title": "Rolls to See All Six Faces",
   "section": "470-linearity-of-expectation",
   "family": "dice-rolls-till-criteria",
   "difficulty": 3,
@@ -4659,6 +4986,7 @@
  },
  {
   "id": "iq-0328",
+  "title": "Appending Digits Until 2018",
   "section": "390-recurrence-relation-bash",
   "family": "dice-rolls-till-criteria",
   "difficulty": 7,
@@ -4674,6 +5002,7 @@
  },
  {
   "id": "iq-0329",
+  "title": "Die Weighted Like a Two-Dice Sum",
   "section": "161-polynomials",
   "family": "dice-rolls-unique",
   "difficulty": 2,
@@ -4688,6 +5017,7 @@
  },
  {
   "id": "iq-0330",
+  "title": "d60 Beats d40",
   "section": "220-casework",
   "family": "dice-rolls-unique",
   "difficulty": 1,
@@ -4703,6 +5033,7 @@
  },
  {
   "id": "iq-0331",
+  "title": "Picking Between Two Dice",
   "section": "310-bayes-rule",
   "family": "dice-rolls-unique",
   "difficulty": 2,
@@ -4717,6 +5048,7 @@
  },
  {
   "id": "iq-0332",
+  "title": "One Face Reduced by 1",
   "section": "322-casework",
   "family": "dice-rolls-unique",
   "difficulty": 1,
@@ -4732,6 +5064,7 @@
  },
  {
   "id": "iq-0333",
+  "title": "Fair Die Plus Weighted Die, Odd Sum",
   "section": "341-symmetry-last-state",
   "family": "dice-rolls-unique",
   "difficulty": 1,
@@ -4747,6 +5080,7 @@
  },
  {
   "id": "iq-0334",
+  "title": "100 d500 Sum Divisible by 500",
   "section": "341-symmetry-last-state",
   "family": "dice-rolls-unique",
   "difficulty": 3,
@@ -4761,6 +5095,7 @@
  },
  {
   "id": "iq-0335",
+  "title": "d20 vs Best of Two d15",
   "section": "350-conditional-probability",
   "family": "dice-rolls-unique",
   "difficulty": 5,
@@ -4775,6 +5110,7 @@
  },
  {
   "id": "iq-0336",
+  "title": "E|X − Y| for Two d30",
   "section": "403-combinatorial-expectation",
   "family": "dice-rolls-unique",
   "difficulty": 3,
@@ -4790,6 +5126,7 @@
  },
  {
   "id": "iq-0337",
+  "title": "Reroll to Hit a Sum of 7",
   "section": "220-casework",
   "family": "dice-value-game",
   "difficulty": 9,
@@ -4805,6 +5142,7 @@
  },
  {
   "id": "iq-0338",
+  "title": "Betting Even or Odd",
   "section": "701-fair-value",
   "family": "dice-value-game",
   "difficulty": 1,
@@ -4817,6 +5155,7 @@
  },
  {
   "id": "iq-0339",
+  "title": "Roll Until a Different Number",
   "section": "701-fair-value",
   "family": "dice-value-game",
   "difficulty": 4,
@@ -4832,6 +5171,7 @@
  },
  {
   "id": "iq-0340",
+  "title": "Roll for $1 Until 4, 5, or 6",
   "section": "701-fair-value",
   "family": "dice-value-game",
   "difficulty": 5,
@@ -4847,6 +5187,7 @@
  },
  {
   "id": "iq-0341",
+  "title": "Push Your Luck with a d10",
   "section": "702-stopping-rule-game-strategy-ev",
   "family": "dice-value-game",
   "difficulty": 1,
@@ -4861,6 +5202,7 @@
  },
  {
   "id": "iq-0342",
+  "title": "Keep or Reroll for the Sum I",
   "section": "702-stopping-rule-game-strategy-ev",
   "family": "dice-value-game",
   "difficulty": 2,
@@ -4875,6 +5217,7 @@
  },
  {
   "id": "iq-0343",
+  "title": "Keep or Reroll for the Sum II",
   "section": "702-stopping-rule-game-strategy-ev",
   "family": "dice-value-game",
   "difficulty": 2,
@@ -4887,6 +5230,7 @@
  },
  {
   "id": "iq-0344",
+  "title": "Up to Three Rolls",
   "section": "702-stopping-rule-game-strategy-ev",
   "family": "dice-value-game",
   "difficulty": 2,
@@ -4900,6 +5244,7 @@
  },
  {
   "id": "iq-0345",
+  "title": "One Optional Reroll",
   "section": "702-stopping-rule-game-strategy-ev",
   "family": "dice-value-game",
   "difficulty": 2,
@@ -4913,6 +5258,7 @@
  },
  {
   "id": "iq-0346",
+  "title": "Rerolling at $1 per Roll",
   "section": "702-stopping-rule-game-strategy-ev",
   "family": "dice-value-game",
   "difficulty": 5,
@@ -4926,6 +5272,7 @@
  },
  {
   "id": "iq-0347",
+  "title": "100 Rounds with a d20",
   "section": "702-stopping-rule-game-strategy-ev",
   "family": "dice-value-game",
   "difficulty": 6,
@@ -4939,6 +5286,7 @@
  },
  {
   "id": "iq-0348",
+  "title": "Rerolling a d100 at $1 Each",
   "section": "702-stopping-rule-game-strategy-ev",
   "family": "dice-value-game",
   "difficulty": 11,
@@ -4952,6 +5300,7 @@
  },
  {
   "id": "iq-0349",
+  "title": "Drawing from 1–100 at $1 per Draw",
   "section": "703-optimal-parameters",
   "family": "dice-value-game",
   "difficulty": 10,
@@ -4963,6 +5312,7 @@
  },
  {
   "id": "iq-0350",
+  "title": "Designing a Die Against Bob",
   "section": "722-qualitative-strategy",
   "family": "dice-value-game",
   "difficulty": 6,
@@ -4977,6 +5327,7 @@
  },
  {
   "id": "iq-0351",
+  "title": "5's Before the First 6",
   "section": "451-law-of-total-expectation-discrete",
   "family": "die-rolls",
   "difficulty": 7,
@@ -4992,6 +5343,7 @@
  },
  {
   "id": "iq-0352",
+  "title": "Units Digit of p^p Is 1",
   "section": "101-general",
   "family": "digits",
   "difficulty": 1,
@@ -5006,6 +5358,7 @@
  },
  {
   "id": "iq-0353",
+  "title": "Trailing Zeros of 142!",
   "section": "101-general",
   "family": "digits",
   "difficulty": 2,
@@ -5019,6 +5372,7 @@
  },
  {
   "id": "iq-0354",
+  "title": "Smallest Digit Sum of n + 1",
   "section": "101-general",
   "family": "digits",
   "difficulty": 2,
@@ -5034,6 +5388,7 @@
  },
  {
   "id": "iq-0355",
+  "title": "Smallest Palindromic n-String",
   "section": "101-general",
   "family": "digits",
   "difficulty": 4,
@@ -5046,6 +5401,7 @@
  },
  {
   "id": "iq-0356",
+  "title": "Sum of Digit Products to 2019",
   "section": "101-general",
   "family": "digits",
   "difficulty": 4,
@@ -5061,6 +5417,7 @@
  },
  {
   "id": "iq-0357",
+  "title": "Nonzero Digit Products of 100-Digit Numbers",
   "section": "141-simple-induction",
   "family": "digits",
   "difficulty": 5,
@@ -5073,6 +5430,7 @@
  },
  {
   "id": "iq-0358",
+  "title": "Five-Digit Numbers with b = a + c",
   "section": "207-hockeystick",
   "family": "digits",
   "difficulty": 2,
@@ -5088,6 +5446,7 @@
  },
  {
   "id": "iq-0359",
+  "title": "Average of Interesting Numbers",
   "section": "207-hockeystick",
   "family": "digits",
   "difficulty": 8,
@@ -5105,6 +5464,7 @@
  },
  {
   "id": "iq-0360",
+  "title": "Eight-Digit Numbers of 1's and 9's",
   "section": "240-linearity-of-expectation",
   "family": "digits",
   "difficulty": 3,
@@ -5120,6 +5480,7 @@
  },
  {
   "id": "iq-0361",
+  "title": "Six-Digit Numbers with Digit Sum 9",
   "section": "216-stars-and-bars",
   "family": "digits",
   "difficulty": 2,
@@ -5134,6 +5495,7 @@
  },
  {
   "id": "iq-0362",
+  "title": "Digit Sum 9 up to 100,000",
   "section": "216-stars-and-bars",
   "family": "digits",
   "difficulty": 2,
@@ -5148,6 +5510,7 @@
  },
  {
   "id": "iq-0363",
+  "title": "Nondecreasing 7-Digit Codes",
   "section": "216-stars-and-bars",
   "family": "digits",
   "difficulty": 2,
@@ -5162,6 +5525,7 @@
  },
  {
   "id": "iq-0364",
+  "title": "p^p Is a Perfect Square",
   "section": "101-general",
   "family": "divisibility",
   "difficulty": 3,
@@ -5176,6 +5540,7 @@
  },
  {
   "id": "iq-0365",
+  "title": "Sum of 1/k³ over Terminating Decimals",
   "section": "101-general",
   "family": "divisibility",
   "difficulty": 5,
@@ -5188,6 +5553,7 @@
  },
  {
   "id": "iq-0366",
+  "title": "Nine Children's Ages",
   "section": "101-general",
   "family": "divisibility",
   "difficulty": 6,
@@ -5200,6 +5566,7 @@
  },
  {
   "id": "iq-0367",
+  "title": "Merging and Splitting Pebble Piles",
   "section": "101-general",
   "family": "divisibility",
   "difficulty": 9,
@@ -5214,6 +5581,7 @@
  },
  {
   "id": "iq-0368",
+  "title": "Numbers Generated on a Board",
   "section": "107-primes-and-factorization",
   "family": "divisibility",
   "difficulty": 6,
@@ -5229,6 +5597,7 @@
  },
  {
   "id": "iq-0369",
+  "title": "Divisor of 10^99 Divisible by 10^85",
   "section": "200-multiplication-rule",
   "family": "divisibility",
   "difficulty": 2,
@@ -5244,6 +5613,7 @@
  },
  {
   "id": "iq-0370",
+  "title": "Pairs with LCM 216",
   "section": "214-pie",
   "family": "divisibility",
   "difficulty": 2,
@@ -5259,6 +5629,7 @@
  },
  {
   "id": "iq-0371",
+  "title": "Divisible by 2, 3, or 5",
   "section": "215-pie-for-n-sets",
   "family": "divisibility",
   "difficulty": 0,
@@ -5271,6 +5642,7 @@
  },
  {
   "id": "iq-0372",
+  "title": "Sum of Repeating Decimals 0.abc",
   "section": "217-counting-sums",
   "family": "divisibility",
   "difficulty": 4,
@@ -5285,6 +5657,7 @@
  },
  {
   "id": "iq-0373",
+  "title": "Perfect-Square Divisor",
   "section": "300-multiplication-rule",
   "family": "divisibility",
   "difficulty": 1,
@@ -5299,6 +5672,7 @@
  },
  {
   "id": "iq-0374",
+  "title": "Divisor of 20! Divisible by 2000",
   "section": "300-multiplication-rule",
   "family": "divisibility",
   "difficulty": 2,
@@ -5311,6 +5685,7 @@
  },
  {
   "id": "iq-0375",
+  "title": "E[gcd(d, 2025)]",
   "section": "460-independent-rv",
   "family": "divisibility",
   "difficulty": 4,
@@ -5324,6 +5699,7 @@
  },
  {
   "id": "iq-0376",
+  "title": "Erasing Numbers and Their Factors",
   "section": "732-stealing-strategies",
   "family": "divisibility",
   "difficulty": 4,
@@ -5335,6 +5711,7 @@
  },
  {
   "id": "iq-0377",
+  "title": "Powers of 2: v(a) > v(b)",
   "section": "223-complimentary-symmetry",
   "family": "divisibility",
   "difficulty": 2,
@@ -5349,6 +5726,7 @@
  },
  {
   "id": "iq-0378",
+  "title": "Drunk Passenger I",
   "section": "345-conditional-symmetry",
   "family": "drunk-passenger",
   "difficulty": 9,
@@ -5363,6 +5741,7 @@
  },
  {
   "id": "iq-0379",
+  "title": "Drunk Passenger II",
   "section": "445-conditional-symmetry",
   "family": "drunk-passenger",
   "difficulty": 10,
@@ -5379,6 +5758,7 @@
  },
  {
   "id": "iq-0380",
+  "title": "Ten Drunk Passengers",
   "section": "445-conditional-symmetry",
   "family": "drunk-passenger",
   "difficulty": 10,
@@ -5394,6 +5774,7 @@
  },
  {
   "id": "iq-0381",
+  "title": "Two Eggs, 100 Floors",
   "section": "720-minimax",
   "family": "egg-drop",
   "difficulty": 5,
@@ -5409,6 +5790,7 @@
  },
  {
   "id": "iq-0382",
+  "title": "Value of x1 + 512 x10",
   "section": "162-system-of-equations",
   "family": "equations",
   "difficulty": 3,
@@ -5423,6 +5805,7 @@
  },
  {
   "id": "iq-0383",
+  "title": "Heads Lead by 4 or Tails by 6",
   "section": "436-random-walk",
   "family": "expected-time-to-fall-off",
   "difficulty": 2,
@@ -5437,6 +5820,7 @@
  },
  {
   "id": "iq-0384",
+  "title": "Steps to Point 0 on a 100-Point Circle",
   "section": "436-random-walk",
   "family": "expected-time-to-fall-off",
   "difficulty": 9,
@@ -5451,6 +5835,7 @@
  },
  {
   "id": "iq-0385",
+  "title": "Taking Numbers and Their Factors",
   "section": "722-qualitative-strategy",
   "family": "factors",
   "difficulty": 3,
@@ -5465,6 +5850,7 @@
  },
  {
   "id": "iq-0386",
+  "title": "Roll or Take with a d20",
   "section": "702-stopping-rule-game-strategy-ev",
   "family": "fair-value",
   "difficulty": 3,
@@ -5481,6 +5867,7 @@
  },
  {
   "id": "iq-0387",
+  "title": "Guessing Aces and Jacks",
   "section": "702-stopping-rule-game-strategy-ev",
   "family": "fair-value",
   "difficulty": 6,
@@ -5498,6 +5885,7 @@
  },
  {
   "id": "iq-0388",
+  "title": "Guessing Red or Blue Balls",
   "section": "705-fair-value-dynamic-programming",
   "family": "fair-value",
   "difficulty": 5,
@@ -5513,6 +5901,7 @@
  },
  {
   "id": "iq-0389",
+  "title": "Quitting a Red/Black Card Game",
   "section": "705-fair-value-dynamic-programming",
   "family": "fair-value",
   "difficulty": 5,
@@ -5529,6 +5918,7 @@
  },
  {
   "id": "iq-0390",
+  "title": "St. Petersburg Paradox",
   "section": "701-fair-value",
   "family": "famous-gambling-setups",
   "difficulty": 1,
@@ -5542,6 +5932,7 @@
  },
  {
   "id": "iq-0391",
+  "title": "Fibonacci Error Propagation",
   "section": "101-general",
   "family": "fibonacci",
   "difficulty": 2,
@@ -5556,6 +5947,7 @@
  },
  {
   "id": "iq-0392",
+  "title": "25 Horses, Fastest 3",
   "section": "101-general",
   "family": "finding-fastest",
   "difficulty": 6,
@@ -5570,6 +5962,7 @@
  },
  {
   "id": "iq-0393",
+  "title": "Frog Jumps of 1 or 2",
   "section": "230-recursion-fibonacci",
   "family": "frog-jump",
   "difficulty": 0,
@@ -5584,6 +5977,7 @@
  },
  {
   "id": "iq-0394",
+  "title": "Frog Jumps of More Than 1",
   "section": "230-recursion-fibonacci",
   "family": "frog-jump",
   "difficulty": 4,
@@ -5598,6 +5992,7 @@
  },
  {
   "id": "iq-0395",
+  "title": "Frog Jumps of Odd Length",
   "section": "230-recursion-fibonacci",
   "family": "frog-jump",
   "difficulty": 5,
@@ -5612,6 +6007,7 @@
  },
  {
   "id": "iq-0396",
+  "title": "Frog Jumps of Any Length",
   "section": "232-bijection",
   "family": "frog-jump",
   "difficulty": 3,
@@ -5627,6 +6023,7 @@
  },
  {
   "id": "iq-0397",
+  "title": "Frog Lands on 10, Geometric Jumps",
   "section": "232-bijection",
   "family": "frog-jump",
   "difficulty": 4,
@@ -5639,6 +6036,7 @@
  },
  {
   "id": "iq-0398",
+  "title": "Odd Number of Jumps to 10",
   "section": "232-bijection",
   "family": "frog-jump",
   "difficulty": 5,
@@ -5655,6 +6053,7 @@
  },
  {
   "id": "iq-0399",
+  "title": "Frog Avoiding 3 and 6",
   "section": "390-recurrence-relation-bash",
   "family": "frog-jump",
   "difficulty": 3,
@@ -5669,6 +6068,7 @@
  },
  {
   "id": "iq-0400",
+  "title": "Maximum Probability of Reaching k",
   "section": "391-recurrence-relation-equation",
   "family": "frog-jump",
   "difficulty": 5,
@@ -5683,6 +6083,7 @@
  },
  {
   "id": "iq-0401",
+  "title": "Frog Jumping i Units on Move i",
   "section": "130-odd-even-parity",
   "family": "frog-jump",
   "difficulty": 2,
@@ -5697,6 +6098,7 @@
  },
  {
   "id": "iq-0402",
+  "title": "p20 − p15 for a Frog",
   "section": "392-recurrence-relation-closed-form",
   "family": "frog-jump",
   "difficulty": 5,
@@ -5710,6 +6112,7 @@
  },
  {
   "id": "iq-0403",
+  "title": "f(3/2) When Sums Are n³",
   "section": "110-functions",
   "family": "functions",
   "difficulty": 3,
@@ -5722,6 +6125,7 @@
  },
  {
   "id": "iq-0404",
+  "title": "Gambler's Ruin: $1 vs $2",
   "section": "336-random-walk",
   "family": "gamblers-ruin",
   "difficulty": 2,
@@ -5737,6 +6141,7 @@
  },
  {
   "id": "iq-0405",
+  "title": "Gambler's Ruin from $7 to $10",
   "section": "336-random-walk",
   "family": "gamblers-ruin",
   "difficulty": 6,
@@ -5751,6 +6156,7 @@
  },
  {
   "id": "iq-0406",
+  "title": "Cheating at Rock Paper Scissors",
   "section": "336-random-walk",
   "family": "gamblers-ruin",
   "difficulty": 8,
@@ -5765,6 +6171,7 @@
  },
  {
   "id": "iq-0407",
+  "title": "Visits to 995 Before −5",
   "section": "436-random-walk",
   "family": "gamblers-ruin",
   "difficulty": 5,
@@ -5781,6 +6188,7 @@
  },
  {
   "id": "iq-0408",
+  "title": "Four Players Until One Remains",
   "section": "436-random-walk",
   "family": "gamblers-ruin",
   "difficulty": 8,
@@ -5796,6 +6204,7 @@
  },
  {
   "id": "iq-0409",
+  "title": "Winning Once Before Ruin",
   "section": "516-binomial-rv",
   "family": "gamblers-ruin",
   "difficulty": 2,
@@ -5810,6 +6219,7 @@
  },
  {
   "id": "iq-0410",
+  "title": "100 Tigers and a Sheep",
   "section": "101-general",
   "family": "game-theory",
   "difficulty": 3,
@@ -5823,6 +6233,7 @@
  },
  {
   "id": "iq-0411",
+  "title": "Rock Paper Scissors Without Rock",
   "section": "714-probabilistic-game-theory",
   "family": "game-theory",
   "difficulty": 5,
@@ -5837,6 +6248,7 @@
  },
  {
   "id": "iq-0412",
+  "title": "Six Mathematicians' Hats",
   "section": "715-cooperation",
   "family": "game-theory",
   "difficulty": 8,
@@ -5849,6 +6261,7 @@
  },
  {
   "id": "iq-0413",
+  "title": "Marbles in a Box, Two Draws",
   "section": "716-nash-equilibrium",
   "family": "game-theory",
   "difficulty": 4,
@@ -5864,6 +6277,7 @@
  },
  {
   "id": "iq-0414",
+  "title": "Marbles in a Box, One Draw",
   "section": "716-nash-equilibrium",
   "family": "game-theory",
   "difficulty": 4,
@@ -5879,6 +6293,7 @@
  },
  {
   "id": "iq-0415",
+  "title": "Race to 200",
   "section": "733-winning-losing-states",
   "family": "game-theory",
   "difficulty": 2,
@@ -5892,6 +6307,7 @@
  },
  {
   "id": "iq-0416",
+  "title": "Triangle Contains the Center of a 17-gon",
   "section": "219-simple-counting",
   "family": "geometry",
   "difficulty": 5,
@@ -5907,6 +6323,7 @@
  },
  {
   "id": "iq-0417",
+  "title": "Expected Complete Circuits",
   "section": "473-linearity-of-expectation-indicators",
   "family": "graphs",
   "difficulty": 3,
@@ -5922,6 +6339,7 @@
  },
  {
   "id": "iq-0418",
+  "title": "Most Central Cities",
   "section": "851-degrees",
   "family": "graphs",
   "difficulty": 2,
@@ -5936,6 +6354,7 @@
  },
  {
   "id": "iq-0419",
+  "title": "Squares Crossed by a Diagonal",
   "section": "101-general",
   "family": "grid-adjacencies",
   "difficulty": 5,
@@ -5950,6 +6369,7 @@
  },
  {
   "id": "iq-0420",
+  "title": "Adding to Adjacent Grid Cells",
   "section": "131-checkerboard-parity",
   "family": "grid-adjacencies",
   "difficulty": 4,
@@ -5963,6 +6383,7 @@
  },
  {
   "id": "iq-0421",
+  "title": "Row with 15 Blue Squares",
   "section": "150-regular",
   "family": "grid-adjacencies",
   "difficulty": 3,
@@ -5977,6 +6398,7 @@
  },
  {
   "id": "iq-0422",
+  "title": "Placing Numbers on an 8×8 Grid",
   "section": "150-regular",
   "family": "grid-adjacencies",
   "difficulty": 4,
@@ -5991,6 +6413,7 @@
  },
  {
   "id": "iq-0423",
+  "title": "Marbles Forming a Tic-Tac-Toe Win",
   "section": "200-multiplication-rule",
   "family": "grid-adjacencies",
   "difficulty": 1,
@@ -6005,6 +6428,7 @@
  },
  {
   "id": "iq-0424",
+  "title": "Odd Row and Column Sums in 3×3",
   "section": "200-multiplication-rule",
   "family": "grid-adjacencies",
   "difficulty": 2,
@@ -6020,6 +6444,7 @@
  },
  {
   "id": "iq-0425",
+  "title": "Squares Marked by Rectangles on 9×9",
   "section": "211-complementary-counting",
   "family": "grid-adjacencies",
   "difficulty": 3,
@@ -6035,6 +6460,7 @@
  },
  {
   "id": "iq-0426",
+  "title": "Lines in 5×5×5 Tic-Tac-Toe",
   "section": "220-casework",
   "family": "grid-adjacencies",
   "difficulty": 2,
@@ -6049,6 +6475,7 @@
  },
  {
   "id": "iq-0427",
+  "title": "Two Green Cells per Line in 6×6",
   "section": "220-casework",
   "family": "grid-adjacencies",
   "difficulty": 8,
@@ -6060,6 +6487,7 @@
  },
  {
   "id": "iq-0428",
+  "title": "Largest Red Square in 3×3",
   "section": "414-pie-for-ev",
   "family": "grid-adjacencies",
   "difficulty": 5,
@@ -6076,6 +6504,7 @@
  },
  {
   "id": "iq-0429",
+  "title": "Three in a Row with 0s and 1s",
   "section": "732-stealing-strategies",
   "family": "grid-adjacencies",
   "difficulty": 8,
@@ -6090,6 +6519,7 @@
  },
  {
   "id": "iq-0430",
+  "title": "Completing a 2×2 Square Loses",
   "section": "734-coloring-strategies",
   "family": "grid-adjacencies",
   "difficulty": 8,
@@ -6101,6 +6531,7 @@
  },
  {
   "id": "iq-0431",
+  "title": "Random Rook on 8×8",
   "section": "320-reduced-sample-space",
   "family": "grid-walk",
   "difficulty": 5,
@@ -6116,6 +6547,7 @@
  },
  {
   "id": "iq-0432",
+  "title": "Broken Elevator Paths",
   "section": "234-reflection-principle",
   "family": "grid-walk-with-boundaries",
   "difficulty": 8,
@@ -6132,6 +6564,7 @@
  },
  {
   "id": "iq-0433",
+  "title": "Red Ball from the Third Bag",
   "section": "310-bayes-rule",
   "family": "hierarchical-setup",
   "difficulty": 0,
@@ -6145,6 +6578,7 @@
  },
  {
   "id": "iq-0434",
+  "title": "Two Chocolate Chip Cookies",
   "section": "310-bayes-rule",
   "family": "hierarchical-setup",
   "difficulty": 2,
@@ -6159,6 +6593,7 @@
  },
  {
   "id": "iq-0435",
+  "title": "Coin Decides Whether to Roll",
   "section": "350-conditional-probability",
   "family": "hierarchical-setup",
   "difficulty": 2,
@@ -6174,6 +6609,7 @@
  },
  {
   "id": "iq-0436",
+  "title": "K Balls into Three Bins",
   "section": "351-law-of-total-probability",
   "family": "hierarchical-setup",
   "difficulty": 5,
@@ -6190,6 +6626,7 @@
  },
  {
   "id": "iq-0437",
+  "title": "Paths on a Cube's Surface",
   "section": "220-casework",
   "family": "hypercube",
   "difficulty": 4,
@@ -6204,6 +6641,7 @@
  },
  {
   "id": "iq-0438",
+  "title": "Paths Through a 3×3×3 Room",
   "section": "232-bijection",
   "family": "hypercube",
   "difficulty": 2,
@@ -6219,6 +6657,7 @@
  },
  {
   "id": "iq-0439",
+  "title": "Icosahedron: Opposite After 3 Moves",
   "section": "300-multiplication-rule",
   "family": "hypercube",
   "difficulty": 0,
@@ -6231,6 +6670,7 @@
  },
  {
   "id": "iq-0440",
+  "title": "Icosahedron: Return After 6 Moves",
   "section": "334-recursion-markov-chain",
   "family": "hypercube",
   "difficulty": 3,
@@ -6246,6 +6686,7 @@
  },
  {
   "id": "iq-0441",
+  "title": "Mouse, Trap, and Cheese on a Cube",
   "section": "343-symmetry-markov-chain",
   "family": "hypercube",
   "difficulty": 3,
@@ -6261,6 +6702,7 @@
  },
  {
   "id": "iq-0442",
+  "title": "Ant to the Opposite Cube Vertex",
   "section": "443-symmetry-reduction-in-states",
   "family": "hypercube",
   "difficulty": 2,
@@ -6277,6 +6719,7 @@
  },
  {
   "id": "iq-0443",
+  "title": "Ant Returning on a Cube",
   "section": "443-symmetry-reduction-in-states",
   "family": "hypercube",
   "difficulty": 2,
@@ -6294,6 +6737,7 @@
  },
  {
   "id": "iq-0444",
+  "title": "Five Bulbs Back to All Off",
   "section": "449-stationarity",
   "family": "hypercube",
   "difficulty": 3,
@@ -6309,6 +6753,7 @@
  },
  {
   "id": "iq-0445",
+  "title": "Return Time on a Tetrahedron",
   "section": "449-stationarity",
   "family": "hypercube",
   "difficulty": 3,
@@ -6323,6 +6768,7 @@
  },
  {
   "id": "iq-0446",
+  "title": "Hypercube Hitting Times",
   "section": "449-stationarity",
   "family": "hypercube",
   "difficulty": 9,
@@ -6336,6 +6782,7 @@
  },
  {
   "id": "iq-0447",
+  "title": "Five Bulbs from All Off to All On",
   "section": "449-stationarity",
   "family": "hypercube",
   "difficulty": 10,
@@ -6350,6 +6797,7 @@
  },
  {
   "id": "iq-0448",
+  "title": "Cover Time on a Tetrahedron",
   "section": "471-linearity-of-expectation-coupon-collector",
   "family": "hypercube",
   "difficulty": 2,
@@ -6364,6 +6812,7 @@
  },
  {
   "id": "iq-0449",
+  "title": "P(X − Y > 0.5 | X + Y < 1)",
   "section": "321-geometric-probability",
   "family": "inequalities",
   "difficulty": 2,
@@ -6378,6 +6827,7 @@
  },
  {
   "id": "iq-0450",
+  "title": "Largest Is Twice the Others",
   "section": "321-geometric-probability",
   "family": "inequalities",
   "difficulty": 3,
@@ -6393,6 +6843,7 @@
  },
  {
   "id": "iq-0451",
+  "title": "Uniforms on [0,1], [0,2], [0,3] in Order",
   "section": "362-integration",
   "family": "inequalities",
   "difficulty": 4,
@@ -6408,6 +6859,7 @@
  },
  {
   "id": "iq-0452",
+  "title": "A1 Is the Largest of Four Uniforms",
   "section": "362-integration",
   "family": "inequalities",
   "difficulty": 4,
@@ -6422,6 +6874,7 @@
  },
  {
   "id": "iq-0453",
+  "title": "Paying 0.045 to Redraw",
   "section": "704-optimal-stopping",
   "family": "infinite-rerolls",
   "difficulty": 9,
@@ -6436,6 +6889,7 @@
  },
  {
   "id": "iq-0454",
+  "title": "Frog on Seven Stones",
   "section": "220-casework",
   "family": "integer-walk",
   "difficulty": 4,
@@ -6450,6 +6904,7 @@
  },
  {
   "id": "iq-0455",
+  "title": "Six Random Intervals Overlap",
   "section": "232-bijection",
   "family": "intervals",
   "difficulty": 3,
@@ -6465,6 +6920,7 @@
  },
  {
   "id": "iq-0456",
+  "title": "Origin Between Two Points",
   "section": "300-multiplication-rule",
   "family": "intervals",
   "difficulty": 1,
@@ -6479,6 +6935,7 @@
  },
  {
   "id": "iq-0457",
+  "title": "Five Random Intervals",
   "section": "300-multiplication-rule",
   "family": "intervals",
   "difficulty": 4,
@@ -6496,6 +6953,7 @@
  },
  {
   "id": "iq-0458",
+  "title": "One Interval Contains the Rest",
   "section": "340-symmetry",
   "family": "intervals",
   "difficulty": 3,
@@ -6512,6 +6970,7 @@
  },
  {
   "id": "iq-0459",
+  "title": "Range of Ten Frogs",
   "section": "381-order-statistics",
   "family": "intervals",
   "difficulty": 9,
@@ -6527,6 +6986,7 @@
  },
  {
   "id": "iq-0460",
+  "title": "Mutual Nearest Neighbors",
   "section": "440-symmetry-ad-hoc",
   "family": "intervals",
   "difficulty": 8,
@@ -6543,6 +7003,7 @@
  },
  {
   "id": "iq-0461",
+  "title": "First Non-Record Index",
   "section": "462-tail-sum",
   "family": "intervals",
   "difficulty": 4,
@@ -6556,6 +7017,7 @@
  },
  {
   "id": "iq-0462",
+  "title": "Walking to a Random Lattice Point",
   "section": "107-primes-and-factorization",
   "family": "lattice-points",
   "difficulty": 5,
@@ -6571,6 +7033,7 @@
  },
  {
   "id": "iq-0463",
+  "title": "Lattice Paths to (8, 10)",
   "section": "206-definition",
   "family": "lattice-walk",
   "difficulty": 1,
@@ -6586,6 +7049,7 @@
  },
  {
   "id": "iq-0464",
+  "title": "No Three Moves in a Row",
   "section": "215-pie-for-n-sets",
   "family": "lattice-walk",
   "difficulty": 10,
@@ -6598,6 +7062,7 @@
  },
  {
   "id": "iq-0465",
+  "title": "Four Turns to (8, 8)",
   "section": "216-stars-and-bars",
   "family": "lattice-walk",
   "difficulty": 4,
@@ -6612,6 +7077,7 @@
  },
  {
   "id": "iq-0466",
+  "title": "Odd Turns to (8, 8)",
   "section": "220-casework",
   "family": "lattice-walk",
   "difficulty": 8,
@@ -6624,6 +7090,7 @@
  },
  {
   "id": "iq-0467",
+  "title": "Moth Reaching the Opposite Corner",
   "section": "221-derangements",
   "family": "lattice-walk",
   "difficulty": 2,
@@ -6638,6 +7105,7 @@
  },
  {
   "id": "iq-0468",
+  "title": "Self-Avoiding Paths: Right, Up, Down I",
   "section": "231-recursion-characteristic-polynomial",
   "family": "lattice-walk",
   "difficulty": 7,
@@ -6652,6 +7120,7 @@
  },
  {
   "id": "iq-0469",
+  "title": "Lattice Paths to (4, 3)",
   "section": "232-bijection",
   "family": "lattice-walk",
   "difficulty": 0,
@@ -6664,6 +7133,7 @@
  },
  {
   "id": "iq-0470",
+  "title": "Sequences with x10 = 4",
   "section": "232-bijection",
   "family": "lattice-walk",
   "difficulty": 2,
@@ -6676,6 +7146,7 @@
  },
  {
   "id": "iq-0471",
+  "title": "Mario Meets the Monster",
   "section": "232-bijection",
   "family": "lattice-walk",
   "difficulty": 3,
@@ -6691,6 +7162,7 @@
  },
  {
   "id": "iq-0472",
+  "title": "Lattice Paths Avoiding Odd–Odd Points",
   "section": "232-bijection",
   "family": "lattice-walk",
   "difficulty": 3,
@@ -6703,6 +7175,7 @@
  },
  {
   "id": "iq-0473",
+  "title": "Odd Turns to (16, 16)",
   "section": "232-bijection",
   "family": "lattice-walk",
   "difficulty": 4,
@@ -6715,6 +7188,7 @@
  },
  {
   "id": "iq-0474",
+  "title": "First Tie on the 10th Flip",
   "section": "234-reflection-principle",
   "family": "lattice-walk",
   "difficulty": 3,
@@ -6731,6 +7205,7 @@
  },
  {
   "id": "iq-0475",
+  "title": "Box Office Change: 12 People",
   "section": "234-reflection-principle",
   "family": "lattice-walk",
   "difficulty": 6,
@@ -6745,6 +7220,7 @@
  },
  {
   "id": "iq-0476",
+  "title": "Paths to (5, 3) Not Crossing y = x",
   "section": "234-reflection-principle",
   "family": "lattice-walk",
   "difficulty": 8,
@@ -6759,6 +7235,7 @@
  },
  {
   "id": "iq-0477",
+  "title": "Box Office Change: 2n People",
   "section": "234-reflection-principle",
   "family": "lattice-walk",
   "difficulty": 8,
@@ -6772,6 +7249,7 @@
  },
  {
   "id": "iq-0478",
+  "title": "Heaven or Hell Lattice Walk",
   "section": "343-symmetry-markov-chain",
   "family": "lattice-walk",
   "difficulty": 5,
@@ -6788,6 +7266,7 @@
  },
  {
   "id": "iq-0479",
+  "title": "Marko's Walk After 2019 Seconds",
   "section": "460-independent-rv",
   "family": "lattice-walk",
   "difficulty": 2,
@@ -6802,6 +7281,7 @@
  },
  {
   "id": "iq-0480",
+  "title": "Expected Coordinate Product of an Ant",
   "section": "460-indep-dependent-rv",
   "family": "lattice-walk",
   "difficulty": 3,
@@ -6817,6 +7297,7 @@
  },
  {
   "id": "iq-0481",
+  "title": "Local Maxima of 1 to 14",
   "section": "473-linearity-of-expectation-indicators",
   "family": "local-maxima",
   "difficulty": 6,
@@ -6832,6 +7313,7 @@
  },
  {
   "id": "iq-0482",
+  "title": "25 Random Swaps of 1 to 100",
   "section": "130-odd-even-parity",
   "family": "marble-swap",
   "difficulty": 6,
@@ -6846,6 +7328,7 @@
  },
  {
   "id": "iq-0483",
+  "title": "Swapping Three Marbles, 25 Moves",
   "section": "132-coloring",
   "family": "marble-swap",
   "difficulty": 4,
@@ -6862,6 +7345,7 @@
  },
  {
   "id": "iq-0484",
+  "title": "Swapping Green, Red, Green",
   "section": "341-symmetry-last-state",
   "family": "marble-swap",
   "difficulty": 5,
@@ -6875,6 +7359,7 @@
  },
  {
   "id": "iq-0485",
+  "title": "Swapping the Center Marble",
   "section": "392-recurrence-relation-closed-form",
   "family": "marble-swap",
   "difficulty": 6,
@@ -6888,6 +7373,7 @@
  },
  {
   "id": "iq-0486",
+  "title": "Even Row and Column Sums in 3×3",
   "section": "130-odd-even-parity",
   "family": "matrix-attack",
   "difficulty": 0,
@@ -6902,6 +7388,7 @@
  },
  {
   "id": "iq-0487",
+  "title": "Symmetric Latin Square Diagonal",
   "section": "130-odd-even-parity",
   "family": "matrix-attack",
   "difficulty": 4,
@@ -6916,6 +7403,7 @@
  },
  {
   "id": "iq-0488",
+  "title": "Flipping 3×3 and 4×4 Submatrices",
   "section": "150-regular",
   "family": "matrix-attack",
   "difficulty": 11,
@@ -6929,6 +7417,7 @@
  },
  {
   "id": "iq-0489",
+  "title": "Row and Column Operations on 3×20",
   "section": "215-pie-for-n-sets",
   "family": "matrix-attack",
   "difficulty": 9,
@@ -6942,6 +7431,7 @@
  },
  {
   "id": "iq-0490",
+  "title": "Divisibility Grid Ending in 171",
   "section": "216-stars-and-bars",
   "family": "matrix-attack",
   "difficulty": 8,
@@ -6957,6 +7447,7 @@
  },
  {
   "id": "iq-0491",
+  "title": "Sums Divisible by 3 in a 3×2 Matrix",
   "section": "219-simple-counting",
   "family": "matrix-attack",
   "difficulty": 2,
@@ -6969,6 +7460,7 @@
  },
  {
   "id": "iq-0492",
+  "title": "±1 Matrices with Zero Sums",
   "section": "220-casework",
   "family": "matrix-attack",
   "difficulty": 4,
@@ -6985,6 +7477,7 @@
  },
  {
   "id": "iq-0493",
+  "title": "Every 2×2 Subgrid Sums to 2",
   "section": "220-casework",
   "family": "matrix-attack",
   "difficulty": 7,
@@ -6996,6 +7489,7 @@
  },
  {
   "id": "iq-0494",
+  "title": "Row and Column Sums 1, 2, 3, 4",
   "section": "232-bijection",
   "family": "matrix-attack",
   "difficulty": 4,
@@ -7010,6 +7504,7 @@
  },
  {
   "id": "iq-0495",
+  "title": "Sums Divisible by 3 in a 2×3 Grid",
   "section": "320-reduced-sample-space",
   "family": "matrix-attack",
   "difficulty": 2,
@@ -7025,6 +7520,7 @@
  },
  {
   "id": "iq-0496",
+  "title": "Flipping Entries Until Singular",
   "section": "434-recursion-markov-chain",
   "family": "matrix-attack",
   "difficulty": 2,
@@ -7040,6 +7536,7 @@
  },
  {
   "id": "iq-0497",
+  "title": "Expected Determinant of a Random Matrix",
   "section": "440-symmetry-ad-hoc",
   "family": "matrix-attack",
   "difficulty": 2,
@@ -7055,6 +7552,7 @@
  },
  {
   "id": "iq-0498",
+  "title": "Assigning Numbers to Lattice Points",
   "section": "450-conditional-expectation",
   "family": "matrix-attack",
   "difficulty": 4,
@@ -7072,6 +7570,7 @@
  },
  {
   "id": "iq-0499",
+  "title": "E[det(A − Aᵀ)]",
   "section": "515-bernoulli-rv",
   "family": "matrix-attack",
   "difficulty": 2,
@@ -7087,6 +7586,7 @@
  },
  {
   "id": "iq-0500",
+  "title": "Median of Three Uniforms Below 2/3",
   "section": "220-casework",
   "family": "medians",
   "difficulty": 2,
@@ -7102,6 +7602,7 @@
  },
  {
   "id": "iq-0501",
+  "title": "Middle of Three Points on a Segment",
   "section": "220-casework",
   "family": "medians",
   "difficulty": 4,
@@ -7116,6 +7617,7 @@
  },
  {
   "id": "iq-0502",
+  "title": "Median of Five d100 Rolls",
   "section": "440-symmetry-ad-hoc",
   "family": "medians",
   "difficulty": 0,
@@ -7128,6 +7630,7 @@
  },
  {
   "id": "iq-0503",
+  "title": "Mixture of Two Normals",
   "section": "512-mixture-normal-distribution",
   "family": "mixture-distribution",
   "difficulty": 10,
@@ -7141,6 +7644,7 @@
  },
  {
   "id": "iq-0504",
+  "title": "Moving the Last Digit 4 to the Front",
   "section": "105-modular-arithmetic",
   "family": "modular-arithmetic",
   "difficulty": 7,
@@ -7155,6 +7659,7 @@
  },
  {
   "id": "iq-0505",
+  "title": "Digital Root of 19^100",
   "section": "105-modular-arithmetic",
   "family": "modular-arithmetic",
   "difficulty": 8,
@@ -7169,6 +7674,7 @@
  },
  {
   "id": "iq-0506",
+  "title": "Units Digit of m^n Is 1",
   "section": "351-law-of-total-probability",
   "family": "modular-arithmetic",
   "difficulty": 2,
@@ -7184,6 +7690,7 @@
  },
  {
   "id": "iq-0507",
+  "title": "Cutting a 1985×2015 Grid",
   "section": "731-mirror-strategies",
   "family": "nim-like",
   "difficulty": 2,
@@ -7197,6 +7704,7 @@
  },
  {
   "id": "iq-0508",
+  "title": "X > 0 Given X + Y > 0",
   "section": "510-normal-distribution",
   "family": "normal-distribution",
   "difficulty": 9,
@@ -7212,6 +7720,7 @@
  },
  {
   "id": "iq-0509",
+  "title": "Y > √3 X Given Y > 0",
   "section": "510-normal-distribution",
   "family": "normal-distribution",
   "difficulty": 9,
@@ -7227,6 +7736,7 @@
  },
  {
   "id": "iq-0510",
+  "title": "X1 Exceeds the Product of Nine Normals",
   "section": "510-normal-distribution",
   "family": "normal-distribution",
   "difficulty": 9,
@@ -7243,6 +7753,7 @@
  },
  {
   "id": "iq-0511",
+  "title": "E[X² | X > 0]",
   "section": "511-truncated-normal-distribution",
   "family": "normal-distribution",
   "difficulty": 3,
@@ -7257,6 +7768,7 @@
  },
  {
   "id": "iq-0512",
+  "title": "Standard Normal: E[X | X > a]",
   "section": "511-truncated-normal-distribution",
   "family": "normal-distribution",
   "difficulty": 6,
@@ -7270,6 +7782,7 @@
  },
  {
   "id": "iq-0513",
+  "title": "N(0, σ²): E[X | X > a]",
   "section": "511-truncated-normal-distribution",
   "family": "normal-distribution",
   "difficulty": 6,
@@ -7283,6 +7796,7 @@
  },
  {
   "id": "iq-0514",
+  "title": "N(μ, σ²): E[X | X > a]",
   "section": "511-truncated-normal-distribution",
   "family": "normal-distribution",
   "difficulty": 6,
@@ -7296,6 +7810,7 @@
  },
  {
   "id": "iq-0515",
+  "title": "E[X | X > 0]",
   "section": "511-truncated-normal-distribution",
   "family": "normal-distribution",
   "difficulty": 7,
@@ -7310,6 +7825,7 @@
  },
  {
   "id": "iq-0516",
+  "title": "Frog on Eight Lilypads",
   "section": "220-casework",
   "family": "number-line-jumps",
   "difficulty": 4,
@@ -7322,6 +7838,7 @@
  },
  {
   "id": "iq-0517",
+  "title": "Tosses Until HTH",
   "section": "434-recursion-markov-chain",
   "family": "number-of-coin-flips",
   "difficulty": 2,
@@ -7338,6 +7855,7 @@
  },
  {
   "id": "iq-0518",
+  "title": "Rolls Until at Least the First Roll",
   "section": "451-law-of-total-expectation-discrete",
   "family": "number-of-die-rolls",
   "difficulty": 2,
@@ -7353,6 +7871,7 @@
  },
  {
   "id": "iq-0519",
+  "title": "Smallest Number with Digit Product 10,000",
   "section": "101-general",
   "family": "number-theory",
   "difficulty": 2,
@@ -7368,6 +7887,7 @@
  },
  {
   "id": "iq-0520",
+  "title": "Digits Multiplying to 96",
   "section": "101-general",
   "family": "number-theory",
   "difficulty": 2,
@@ -7383,6 +7903,7 @@
  },
  {
   "id": "iq-0521",
+  "title": "Power of 3 Ending in 001",
   "section": "101-general",
   "family": "number-theory",
   "difficulty": 3,
@@ -7396,6 +7917,7 @@
  },
  {
   "id": "iq-0522",
+  "title": "100 Dates, One Ruins Everything",
   "section": "703-optimal-parameters",
   "family": "overconsumption-problem",
   "difficulty": 4,
@@ -7408,6 +7930,7 @@
  },
  {
   "id": "iq-0523",
+  "title": "Ant with Random Steps and Durations",
   "section": "321-geometric-probability",
   "family": "overflow",
   "difficulty": 4,
@@ -7422,6 +7945,7 @@
  },
  {
   "id": "iq-0524",
+  "title": "Sum of Uniforms Below 1",
   "section": "321-geometric-probability",
   "family": "overflow",
   "difficulty": 10,
@@ -7436,6 +7960,7 @@
  },
  {
   "id": "iq-0525",
+  "title": "Uniforms Until the Sum Reaches 1",
   "section": "438-renewal-process-hitting-times",
   "family": "overflow",
   "difficulty": 10,
@@ -7450,6 +7975,7 @@
  },
  {
   "id": "iq-0526",
+  "title": "Uniforms Until the Sum Reaches ln 2",
   "section": "462-tail-sum",
   "family": "overflow",
   "difficulty": 10,
@@ -7465,6 +7991,7 @@
  },
  {
   "id": "iq-0527",
+  "title": "Variance of Draws Past ln 2",
   "section": "462-tail-sum",
   "family": "overflow",
   "difficulty": 11,
@@ -7479,6 +8006,7 @@
  },
  {
   "id": "iq-0528",
+  "title": "Red Face on a Corner Piece",
   "section": "310-bayes-rule",
   "family": "painted-surface",
   "difficulty": 3,
@@ -7493,6 +8021,7 @@
  },
  {
   "id": "iq-0529",
+  "title": "Four Vertical Faces the Same Color",
   "section": "322-casework",
   "family": "painted-surface",
   "difficulty": 2,
@@ -7507,6 +8036,7 @@
  },
  {
   "id": "iq-0530",
+  "title": "One Painted Face Given Five Unpainted",
   "section": "350-conditional-probability",
   "family": "painted-surface",
   "difficulty": 0,
@@ -7521,6 +8051,7 @@
  },
  {
   "id": "iq-0531",
+  "title": "Green Face on a 5×5×5 Cube Piece",
   "section": "350-conditional-probability",
   "family": "painted-surface",
   "difficulty": 1,
@@ -7536,6 +8067,7 @@
  },
  {
   "id": "iq-0532",
+  "title": "Red Faces on a 10×10×10 Cube Piece",
   "section": "473-linearity-of-expectation-indicators",
   "family": "painting",
   "difficulty": 3,
@@ -7552,6 +8084,7 @@
  },
  {
   "id": "iq-0533",
+  "title": "E[d10²] for a Random Walk",
   "section": "135-increase-by-same-amount",
   "family": "particle-walk",
   "difficulty": 4,
@@ -7570,6 +8103,7 @@
  },
  {
   "id": "iq-0534",
+  "title": "Self-Avoiding Paths: Right, Up, Down II",
   "section": "231-recursion-characteristic-polynomial",
   "family": "particle-walk",
   "difficulty": 4,
@@ -7584,6 +8118,7 @@
  },
  {
   "id": "iq-0535",
+  "title": "Baby Walking from the Couch",
   "section": "337-1-sided-absorption-random-walk",
   "family": "particle-walk",
   "difficulty": 7,
@@ -7600,6 +8135,7 @@
  },
  {
   "id": "iq-0536",
+  "title": "Biased Random Walk, p = 1/3",
   "section": "337-1-sided-absorption-random-walk",
   "family": "particle-walk",
   "difficulty": 7,
@@ -7612,6 +8148,7 @@
  },
  {
   "id": "iq-0537",
+  "title": "Penguin from 4 Given It Reaches 7",
   "section": "310-bayes-rule",
   "family": "penguin-walk",
   "difficulty": 4,
@@ -7627,6 +8164,7 @@
  },
  {
   "id": "iq-0538",
+  "title": "Penguin Steps, p = 1/3",
   "section": "337-1-sided-absorption-random-walk",
   "family": "penguin-walk",
   "difficulty": 3,
@@ -7641,6 +8179,7 @@
  },
  {
   "id": "iq-0539",
+  "title": "Penguin Steps to 7, p = 2/3",
   "section": "337-1-sided-absorption-random-walk",
   "family": "penguin-walk",
   "difficulty": 3,
@@ -7658,6 +8197,7 @@
  },
  {
   "id": "iq-0540",
+  "title": "Penguin Ever Reaches 7",
   "section": "337-1-sided-absorption-random-walk",
   "family": "penguin-walk",
   "difficulty": 4,
@@ -7673,6 +8213,7 @@
  },
  {
   "id": "iq-0541",
+  "title": "Penguin Steps to 1, p = 2/3",
   "section": "337-1-sided-absorption-random-walk",
   "family": "penguin-walk",
   "difficulty": 5,
@@ -7688,6 +8229,7 @@
  },
  {
   "id": "iq-0542",
+  "title": "Penguin Steps to 1, p = 1/2",
   "section": "337-1-sided-absorption-random-walk",
   "family": "penguin-walk",
   "difficulty": 5,
@@ -7702,6 +8244,7 @@
  },
  {
   "id": "iq-0543",
+  "title": "Variance of Penguin Steps I",
   "section": "502-second-moment-continuation",
   "family": "penguin-walk",
   "difficulty": 3,
@@ -7719,6 +8262,7 @@
  },
  {
   "id": "iq-0544",
+  "title": "Variance of Penguin Steps II",
   "section": "502-second-moment-continuation",
   "family": "penguin-walk",
   "difficulty": 8,
@@ -7736,6 +8280,7 @@
  },
  {
   "id": "iq-0545",
+  "title": "Penguin Steps to 1, Drift 2/3",
   "section": null,
   "family": "penguin-walk",
   "difficulty": 3,
@@ -7752,6 +8297,7 @@
  },
  {
   "id": "iq-0546",
+  "title": "Half Permutations of 14",
   "section": "332-recursion",
   "family": "permutations",
   "difficulty": 5,
@@ -7767,6 +8313,7 @@
  },
  {
   "id": "iq-0547",
+  "title": "Merging and Splitting Pebbles II",
   "section": "106-bases",
   "family": "piles",
   "difficulty": 10,
@@ -7778,6 +8325,7 @@
  },
  {
   "id": "iq-0548",
+  "title": "Taking Piles from the Ends",
   "section": "130-odd-even-parity",
   "family": "piles",
   "difficulty": 4,
@@ -7791,6 +8339,7 @@
  },
  {
   "id": "iq-0549",
+  "title": "Penalty Kicks at a Running Rate",
   "section": "141-simple-induction",
   "family": "polya-urn",
   "difficulty": 8,
@@ -7805,6 +8354,7 @@
  },
  {
   "id": "iq-0550",
+  "title": "Bob's Archery Hits",
   "section": "340-symmetry",
   "family": "polya-urn",
   "difficulty": 5,
@@ -7817,6 +8367,7 @@
  },
  {
   "id": "iq-0551",
+  "title": "Diagonal Intersections in a 12-gon",
   "section": "232-bijection",
   "family": "polygon",
   "difficulty": 0,
@@ -7829,6 +8380,7 @@
  },
  {
   "id": "iq-0552",
+  "title": "Intersecting Octagon Diagonals I",
   "section": "232-bijection",
   "family": "polygon",
   "difficulty": 3,
@@ -7844,6 +8396,7 @@
  },
  {
   "id": "iq-0553",
+  "title": "Three Vertices on One Cube Face",
   "section": "322-casework",
   "family": "polygon",
   "difficulty": 3,
@@ -7859,6 +8412,7 @@
  },
  {
   "id": "iq-0554",
+  "title": "Intersecting Octagon Diagonals II",
   "section": "322-casework",
   "family": "polygon",
   "difficulty": 4,
@@ -7875,6 +8429,7 @@
  },
  {
   "id": "iq-0555",
+  "title": "Intersecting Segments in a 21-gon",
   "section": "322-casework",
   "family": "polygon",
   "difficulty": 5,
@@ -7891,6 +8446,7 @@
  },
  {
   "id": "iq-0556",
+  "title": "Six Ants on an Octahedron",
   "section": "322-casework",
   "family": "polygon",
   "difficulty": 8,
@@ -7905,6 +8461,7 @@
  },
  {
   "id": "iq-0557",
+  "title": "Variance of z on a Sphere",
   "section": "344-symmetry-continuous-rv",
   "family": "polygon",
   "difficulty": 4,
@@ -7920,6 +8477,7 @@
  },
  {
   "id": "iq-0558",
+  "title": "Two Points on a Square's Sides",
   "section": "350-conditional-probability",
   "family": "polygon",
   "difficulty": 3,
@@ -7936,6 +8494,7 @@
  },
  {
   "id": "iq-0559",
+  "title": "Coordinate Variance in a 10-D Ball",
   "section": "452-law-of-total-expectation-continuous",
   "family": "polygon",
   "difficulty": 6,
@@ -7952,6 +8511,7 @@
  },
  {
   "id": "iq-0560",
+  "title": "Inner Hexagon Area",
   "section": "470-linearity-of-expectation",
   "family": "polygon",
   "difficulty": 2,
@@ -7966,6 +8526,7 @@
  },
  {
   "id": "iq-0561",
+  "title": "Exponentials Forming a Pentagon",
   "section": "517-exponential-rv",
   "family": "polygon",
   "difficulty": 6,
@@ -7982,6 +8543,7 @@
  },
  {
   "id": "iq-0562",
+  "title": "Labeling an n-gon's Vertices",
   "section": "850-eulerian-tour",
   "family": "polygon",
   "difficulty": 8,
@@ -7997,6 +8559,7 @@
  },
  {
   "id": "iq-0563",
+  "title": "Monochrome Rectangle in a 12-gon",
   "section": "220-casework",
   "family": "polygon",
   "difficulty": 4,
@@ -8012,6 +8575,7 @@
  },
  {
   "id": "iq-0564",
+  "title": "Four-Color Tetrahedron Faces",
   "section": "132-coloring",
   "family": "polyhedra",
   "difficulty": 2,
@@ -8026,6 +8590,7 @@
  },
  {
   "id": "iq-0565",
+  "title": "Coloring Tetrahedron Vertices",
   "section": "219-simple-counting",
   "family": "polyhedra",
   "difficulty": 2,
@@ -8040,6 +8605,7 @@
  },
  {
   "id": "iq-0566",
+  "title": "Digits Until a Prime Sum",
   "section": "334-recursion-markov-chain",
   "family": "prime-numbers",
   "difficulty": 2,
@@ -8054,6 +8620,7 @@
  },
  {
   "id": "iq-0567",
+  "title": "Three Wizards' Hats",
   "section": "715-cooperation",
   "family": "probabilistic-game-theory",
   "difficulty": 3,
@@ -8068,6 +8635,7 @@
  },
  {
   "id": "iq-0568",
+  "title": "Alice and Bob Guess Each Other's Coins",
   "section": "715-cooperation",
   "family": "probabilistic-game-theory",
   "difficulty": 7,
@@ -8082,6 +8650,7 @@
  },
  {
   "id": "iq-0569",
+  "title": "Higher Number Wins, Unless Two Less",
   "section": "720-minimax",
   "family": "probabilistic-strategies",
   "difficulty": 8,
@@ -8099,6 +8668,7 @@
  },
  {
   "id": "iq-0570",
+  "title": "Maximum Variance on [−1, 1]",
   "section": "502-definition-continuous",
   "family": "random-variables",
   "difficulty": 3,
@@ -8114,6 +8684,7 @@
  },
  {
   "id": "iq-0571",
+  "title": "Rabbit with 100 Joules",
   "section": "219-simple-counting",
   "family": "random-walk",
   "difficulty": 2,
@@ -8128,6 +8699,7 @@
  },
  {
   "id": "iq-0572",
+  "title": "Rabbit and Frog Back Home",
   "section": "234-reflection-principle",
   "family": "random-walk",
   "difficulty": 9,
@@ -8143,6 +8715,7 @@
  },
  {
   "id": "iq-0573",
+  "title": "Frog Reaching the Square's Boundary",
   "section": "340-symmetry",
   "family": "random-walk",
   "difficulty": 2,
@@ -8158,6 +8731,7 @@
  },
  {
   "id": "iq-0574",
+  "title": "Random Walk on a Triangular Grid",
   "section": "390-recurrence-relation-bash",
   "family": "random-walk",
   "difficulty": 3,
@@ -8172,6 +8746,7 @@
  },
  {
   "id": "iq-0575",
+  "title": "Rabbit Stopped at ±2 or 8 Steps",
   "section": "450-conditional-expectation",
   "family": "random-walk",
   "difficulty": 5,
@@ -8187,6 +8762,7 @@
  },
  {
   "id": "iq-0576",
+  "title": "E[X⁴] After 30 Steps",
   "section": "460-independent-rv",
   "family": "random-walk",
   "difficulty": 2,
@@ -8204,6 +8780,7 @@
  },
  {
   "id": "iq-0577",
+  "title": "Particle Ever Reaches 1, p = 1/3",
   "section": "337-1-sided-absorption-random-walk",
   "family": "random-walk-absorption",
   "difficulty": 4,
@@ -8219,6 +8796,7 @@
  },
  {
   "id": "iq-0578",
+  "title": "Particle Steps to 1, p = 2/3",
   "section": "436-random-walk",
   "family": "random-walk-absorption",
   "difficulty": 5,
@@ -8234,6 +8812,7 @@
  },
  {
   "id": "iq-0579",
+  "title": "Reflecting Walk from 1 to n",
   "section": "436-random-walk",
   "family": "random-walk-absorption",
   "difficulty": 5,
@@ -8247,6 +8826,7 @@
  },
  {
   "id": "iq-0580",
+  "title": "Pairing Rock Paper Scissors Rounds",
   "section": "101-general",
   "family": "rationality",
   "difficulty": 2,
@@ -8262,6 +8842,7 @@
  },
  {
   "id": "iq-0581",
+  "title": "Pirate Captain's Chests",
   "section": "101-general",
   "family": "rationality",
   "difficulty": 10,
@@ -8276,6 +8857,7 @@
  },
  {
   "id": "iq-0582",
+  "title": "Five Pirates Splitting Gold",
   "section": "713-multiplayer-setups",
   "family": "rationality",
   "difficulty": 3,
@@ -8290,6 +8872,7 @@
  },
  {
   "id": "iq-0583",
+  "title": "69 Segments Each Crossing Three",
   "section": "130-odd-even-parity",
   "family": "rays-and-lines",
   "difficulty": 2,
@@ -8303,6 +8886,7 @@
  },
  {
   "id": "iq-0584",
+  "title": "Lattice Points with a Collinear Triple",
   "section": "151-generalized",
   "family": "rays-and-lines",
   "difficulty": 4,
@@ -8317,6 +8901,7 @@
  },
  {
   "id": "iq-0585",
+  "title": "Two Jet Trails Intersect",
   "section": "321-geometric-probability",
   "family": "rays-and-lines",
   "difficulty": 3,
@@ -8331,6 +8916,7 @@
  },
  {
   "id": "iq-0586",
+  "title": "Line Hits Left and Bottom Sides",
   "section": "321-geometric-probability",
   "family": "rays-and-lines",
   "difficulty": 10,
@@ -8348,6 +8934,7 @@
  },
  {
   "id": "iq-0587",
+  "title": "Line Through Two Points Hits AB",
   "section": "340-symmetry",
   "family": "rays-and-lines",
   "difficulty": 2,
@@ -8362,6 +8949,7 @@
  },
  {
   "id": "iq-0588",
+  "title": "Line Hits Opposite Hexagon Sides",
   "section": "321-geometric-probability",
   "family": "rays-and-lines",
   "difficulty": 10,
@@ -8379,6 +8967,7 @@
  },
  {
   "id": "iq-0589",
+  "title": "Line Hits the Bottom of a Square",
   "section": "340-symmetry",
   "family": "rays-and-lines",
   "difficulty": 4,
@@ -8393,6 +8982,7 @@
  },
  {
   "id": "iq-0590",
+  "title": "Segments AP and BQ Cross",
   "section": "340-symmetry",
   "family": "rays-and-lines",
   "difficulty": 6,
@@ -8407,6 +8997,7 @@
  },
  {
   "id": "iq-0591",
+  "title": "Regions from 20 Random Lines",
   "section": "470-linearity-of-expectation",
   "family": "rays-and-lines",
   "difficulty": 3,
@@ -8421,6 +9012,7 @@
  },
  {
   "id": "iq-0592",
+  "title": "Rectangles from 20 Random Lines",
   "section": "470-linearity-of-expectation",
   "family": "rays-and-lines",
   "difficulty": 4,
@@ -8432,6 +9024,7 @@
  },
  {
   "id": "iq-0593",
+  "title": "Rectangles in a Donut Grid",
   "section": "214-pie",
   "family": "rectangles",
   "difficulty": 3,
@@ -8447,6 +9040,7 @@
  },
  {
   "id": "iq-0594",
+  "title": "Distance to the Nearest Diagonal",
   "section": "463-tail-integral",
   "family": "rectangles",
   "difficulty": 5,
@@ -8465,6 +9059,7 @@
  },
  {
   "id": "iq-0595",
+  "title": "Fibonacci Error Propagation II",
   "section": "230-recursion-fibonacci",
   "family": "recursion-tricks",
   "difficulty": 1,
@@ -8479,6 +9074,7 @@
  },
  {
   "id": "iq-0596",
+  "title": "Sum of a Fibonacci-Like Sequence",
   "section": "230-recursion-fibonacci",
   "family": "recursion-tricks",
   "difficulty": 3,
@@ -8494,6 +9090,7 @@
  },
  {
   "id": "iq-0597",
+  "title": "Sum of F_k / 10^(k+1)",
   "section": "230-recursion-fibonacci",
   "family": "recursion-tricks",
   "difficulty": 4,
@@ -8509,6 +9106,7 @@
  },
  {
   "id": "iq-0598",
+  "title": "Regions Cut by 10 Lines",
   "section": "141-simple-induction",
   "family": "regions",
   "difficulty": 2,
@@ -8522,6 +9120,7 @@
  },
  {
   "id": "iq-0599",
+  "title": "Regions Cut by 10 Circles",
   "section": "141-simple-induction",
   "family": "regions",
   "difficulty": 4,
@@ -8535,6 +9134,7 @@
  },
  {
   "id": "iq-0600",
+  "title": "Regions Cut by 10 Planes",
   "section": "141-simple-induction",
   "family": "regions",
   "difficulty": 7,
@@ -8549,6 +9149,7 @@
  },
  {
   "id": "iq-0601",
+  "title": "Regions Cut by 10 Spheres",
   "section": "141-simple-induction",
   "family": "regions",
   "difficulty": 10,
@@ -8563,6 +9164,7 @@
  },
  {
   "id": "iq-0602",
+  "title": "Frog Jumping Down from 10 Hits 5",
   "section": "141-simple-induction",
   "family": "reverse-frog-jump",
   "difficulty": 7,
@@ -8575,6 +9177,7 @@
  },
  {
   "id": "iq-0603",
+  "title": "Countdown from 1000 Hits 200 and 300",
   "section": "350-conditional-probability",
   "family": "reverse-frog-jump",
   "difficulty": 3,
@@ -8586,6 +9189,7 @@
  },
  {
   "id": "iq-0604",
+  "title": "Frog from 14 Hits 7, 5, and 3",
   "section": "350-conditional-probability",
   "family": "reverse-frog-jump",
   "difficulty": 6,
@@ -8600,6 +9204,7 @@
  },
  {
   "id": "iq-0605",
+  "title": "31^11 vs 17^14",
   "section": "101-general",
   "family": "rough-comparisons",
   "difficulty": 3,
@@ -8611,6 +9216,7 @@
  },
  {
   "id": "iq-0606",
+  "title": "99! vs 50^99",
   "section": "101-general",
   "family": "rough-comparisons",
   "difficulty": 3,
@@ -8622,6 +9228,7 @@
  },
  {
   "id": "iq-0607",
+  "title": "7^92 vs 8^91",
   "section": "101-general",
   "family": "rough-comparisons",
   "difficulty": 3,
@@ -8633,6 +9240,7 @@
  },
  {
   "id": "iq-0608",
+  "title": "Russian Roulette Without Respinning",
   "section": "219-simple-counting",
   "family": "russian-roulette",
   "difficulty": 0,
@@ -8645,6 +9253,7 @@
  },
  {
   "id": "iq-0609",
+  "title": "Russian Roulette with Respinning",
   "section": "331-recursion-square-1",
   "family": "russian-roulette",
   "difficulty": 3,
@@ -8659,6 +9268,7 @@
  },
  {
   "id": "iq-0610",
+  "title": "Two Adjacent Bullets: Spin or Not?",
   "section": "999-unsorted",
   "family": "russian-roulette",
   "difficulty": 2,
@@ -8672,6 +9282,7 @@
  },
  {
   "id": "iq-0611",
+  "title": "Two Random Bullets: Spin or Not?",
   "section": "999-unsorted",
   "family": "russian-roulette",
   "difficulty": 3,
@@ -8685,6 +9296,7 @@
  },
  {
   "id": "iq-0612",
+  "title": "Three Random Bullets: Spin or Not?",
   "section": "999-unsorted",
   "family": "russian-roulette",
   "difficulty": 3,
@@ -8698,6 +9310,7 @@
  },
  {
   "id": "iq-0613",
+  "title": "Arrows in the Innermost Ring",
   "section": "311-complementary-counting",
   "family": "rv-exercises",
   "difficulty": 2,
@@ -8712,6 +9325,7 @@
  },
  {
   "id": "iq-0614",
+  "title": "Ratio y/x Between 1 and 2",
   "section": "321-geometric-probability",
   "family": "rv-exercises",
   "difficulty": 0,
@@ -8726,6 +9340,7 @@
  },
  {
   "id": "iq-0615",
+  "title": "xy < 1/2",
   "section": "321-geometric-probability",
   "family": "rv-exercises",
   "difficulty": 0,
@@ -8739,6 +9354,7 @@
  },
  {
   "id": "iq-0616",
+  "title": "Same Floor of log₂",
   "section": "333-recursion-geometric-series",
   "family": "rv-exercises",
   "difficulty": 3,
@@ -8754,6 +9370,7 @@
  },
  {
   "id": "iq-0617",
+  "title": "P1 Beats Three Others",
   "section": "340-symmetry",
   "family": "rv-exercises",
   "difficulty": 1,
@@ -8768,6 +9385,7 @@
  },
  {
   "id": "iq-0618",
+  "title": "1 < X/Y < √3",
   "section": "346-rotational-symmetry",
   "family": "rv-exercises",
   "difficulty": 4,
@@ -8784,6 +9402,7 @@
  },
  {
   "id": "iq-0619",
+  "title": "√2 < X/Y < √6",
   "section": "346-rotational-symmetry",
   "family": "rv-exercises",
   "difficulty": 4,
@@ -8800,6 +9419,7 @@
  },
  {
   "id": "iq-0620",
+  "title": "P(P1 > P10 | P10 < P20)",
   "section": "350-conditional-probability",
   "family": "rv-exercises",
   "difficulty": 3,
@@ -8816,6 +9436,7 @@
  },
  {
   "id": "iq-0621",
+  "title": "E[min / max] of Ten Uniforms",
   "section": "452-law-of-total-expectation-continuous",
   "family": "rv-exercises",
   "difficulty": 6,
@@ -8831,6 +9452,7 @@
  },
  {
   "id": "iq-0622",
+  "title": "Expected Area of a Mismeasured Field",
   "section": "460-independent-rv",
   "family": "rv-exercises",
   "difficulty": 1,
@@ -8846,6 +9468,7 @@
  },
  {
   "id": "iq-0623",
+  "title": "Expected Maximum of n Uniforms",
   "section": "463-tail-integral",
   "family": "rv-exercises",
   "difficulty": 4,
@@ -8859,6 +9482,7 @@
  },
  {
   "id": "iq-0624",
+  "title": "Smallest Mean with Density ≤ 1",
   "section": "463-tail-integral",
   "family": "rv-exercises",
   "difficulty": 6,
@@ -8874,6 +9498,7 @@
  },
  {
   "id": "iq-0625",
+  "title": "E[max] of Exponentials with Rates 1–4",
   "section": "463-tail-integral",
   "family": "rv-exercises",
   "difficulty": 7,
@@ -8890,6 +9515,7 @@
  },
  {
   "id": "iq-0626",
+  "title": "Standard Deviation of Total Pizzas",
   "section": "502-definition-continuous",
   "family": "rv-exercises",
   "difficulty": 1,
@@ -8904,6 +9530,7 @@
  },
  {
   "id": "iq-0627",
+  "title": "Variance of the Longer Piece",
   "section": "502-definition-continuous",
   "family": "rv-exercises",
   "difficulty": 2,
@@ -8919,6 +9546,7 @@
  },
  {
   "id": "iq-0628",
+  "title": "E[X | X⁴]",
   "section": "510-normal-distribution",
   "family": "rv-exercises",
   "difficulty": 3,
@@ -8935,6 +9563,7 @@
  },
  {
   "id": "iq-0629",
+  "title": "P(Y > 4X)",
   "section": "510-normal-distribution",
   "family": "rv-exercises",
   "difficulty": 3,
@@ -8949,6 +9578,7 @@
  },
  {
   "id": "iq-0630",
+  "title": "E[X | X⁴ + Y⁴]",
   "section": "510-normal-distribution",
   "family": "rv-exercises",
   "difficulty": 4,
@@ -8964,6 +9594,7 @@
  },
  {
   "id": "iq-0631",
+  "title": "Time Between Signals from Two Sensors",
   "section": "514-poisson-rv",
   "family": "rv-exercises",
   "difficulty": 6,
@@ -8978,6 +9609,7 @@
  },
  {
   "id": "iq-0632",
+  "title": "Fixed Points of a Random Function",
   "section": "516-binomial-rv",
   "family": "rv-exercises",
   "difficulty": 6,
@@ -8992,6 +9624,7 @@
  },
  {
   "id": "iq-0633",
+  "title": "1 < X/Y < 2 for Exponentials",
   "section": "517-exponential-rv",
   "family": "rv-exercises",
   "difficulty": 3,
@@ -9007,6 +9640,7 @@
  },
  {
   "id": "iq-0634",
+  "title": "P(X < Y) for Exponentials",
   "section": "517-exponential-rv",
   "family": "rv-exercises",
   "difficulty": 4,
@@ -9021,6 +9655,7 @@
  },
  {
   "id": "iq-0635",
+  "title": "Exp(5) Exceeds a Sum of Five Exp(1)",
   "section": "517-exponential-rv",
   "family": "rv-exercises",
   "difficulty": 7,
@@ -9036,6 +9671,7 @@
  },
  {
   "id": "iq-0636",
+  "title": "Variance of a Nested Uniform Limit",
   "section": "520-uniform-distribution",
   "family": "rv-exercises",
   "difficulty": 4,
@@ -9052,6 +9688,7 @@
  },
  {
   "id": "iq-0637",
+  "title": "Min Plus Max Exceeds 1",
   "section": "520-uniform-distribution",
   "family": "rv-exercises",
   "difficulty": 9,
@@ -9068,6 +9705,7 @@
  },
  {
   "id": "iq-0638",
+  "title": "Density of a Product of Seven Uniforms",
   "section": "528-change-of-variables",
   "family": "rv-exercises",
   "difficulty": 10,
@@ -9084,6 +9722,7 @@
  },
  {
   "id": "iq-0639",
+  "title": "Sums of Uniforms Below 1",
   "section": "321-geometric-probability",
   "family": "rv-exercises-unif-inequalities",
   "difficulty": 0,
@@ -9096,6 +9735,7 @@
  },
  {
   "id": "iq-0640",
+  "title": "P(X + Y > 2|X − Y|)",
   "section": "321-geometric-probability",
   "family": "rv-exercises-unif-inequalities",
   "difficulty": 3,
@@ -9111,6 +9751,7 @@
  },
  {
   "id": "iq-0641",
+  "title": "a1 < a2 < a3 for Uniforms on [0, i]",
   "section": "321-geometric-probability",
   "family": "rv-exercises-unif-inequalities",
   "difficulty": 3,
@@ -9126,6 +9767,7 @@
  },
  {
   "id": "iq-0642",
+  "title": "a5 > a4 > ⋯ > a1 for Uniforms on [0, i]",
   "section": "321-geometric-probability",
   "family": "rv-exercises-unif-inequalities",
   "difficulty": 7,
@@ -9141,6 +9783,7 @@
  },
  {
   "id": "iq-0643",
+  "title": "E[Y | Y > X]",
   "section": "520-uniform-distribution",
   "family": "rv-exercises-unif-inequalities",
   "difficulty": 4,
@@ -9155,6 +9798,7 @@
  },
  {
   "id": "iq-0644",
+  "title": "Secretary Problem with 6 Candidates",
   "section": "703-optimal-parameters",
   "family": "secretary-problem",
   "difficulty": 10,
@@ -9168,6 +9812,7 @@
  },
  {
   "id": "iq-0645",
+  "title": "Two Random Segments Overlap",
   "section": "222-symmetry-wlog",
   "family": "segments",
   "difficulty": 2,
@@ -9182,6 +9827,7 @@
  },
  {
   "id": "iq-0646",
+  "title": "Ten Points at Least 1/20 Apart",
   "section": "321-geometric-probability",
   "family": "segments",
   "difficulty": 8,
@@ -9196,6 +9842,7 @@
  },
  {
   "id": "iq-0647",
+  "title": "Replacing a, b with ab + a + b",
   "section": "132-order",
   "family": "sequences",
   "difficulty": 6,
@@ -9210,6 +9857,7 @@
  },
  {
   "id": "iq-0648",
+  "title": "Ternary Strings Without Consecutive Zeros",
   "section": "231-recursion-characteristic-polynomial",
   "family": "sequences",
   "difficulty": 2,
@@ -9222,6 +9870,7 @@
  },
  {
   "id": "iq-0649",
+  "title": "Talking to Sally Four Days Straight",
   "section": "331-recursion-square-1",
   "family": "sequences",
   "difficulty": 3,
@@ -9236,6 +9885,7 @@
  },
  {
   "id": "iq-0650",
+  "title": "First Non-Record Uniform",
   "section": "451-law-of-total-expectation-discrete",
   "family": "sequences",
   "difficulty": 9,
@@ -9253,6 +9903,7 @@
  },
  {
   "id": "iq-0651",
+  "title": "E[X5] with X_{n+1} on [0, X_n³]",
   "section": "452-law-of-total-expectation-continuous",
   "family": "sequences",
   "difficulty": 10,
@@ -9268,6 +9919,7 @@
  },
  {
   "id": "iq-0652",
+  "title": "Draw Until Less Than Twice the Next",
   "section": "462-tail-sum",
   "family": "sequences",
   "difficulty": 11,
@@ -9284,6 +9936,7 @@
  },
  {
   "id": "iq-0653",
+  "title": "Limit of 6 / (1 + a)",
   "section": "392-recurrence-relation-closed-form",
   "family": "sequences",
   "difficulty": 3,
@@ -9298,6 +9951,7 @@
  },
  {
   "id": "iq-0654",
+  "title": "Blue and Red Balls Replacement Rule",
   "section": "101-general",
   "family": "sequential-game",
   "difficulty": 2,
@@ -9309,6 +9963,7 @@
  },
  {
   "id": "iq-0655",
+  "title": "Sum or Product Game",
   "section": "141-simple-induction",
   "family": "sequential-game",
   "difficulty": 4,
@@ -9323,6 +9978,7 @@
  },
  {
   "id": "iq-0656",
+  "title": "Merging 2017 Turtles",
   "section": "332-recursion",
   "family": "sequential-game",
   "difficulty": 3,
@@ -9339,6 +9995,7 @@
  },
  {
   "id": "iq-0657",
+  "title": "Leo's Segments Turning 120°",
   "section": "333-recursion-geometric-series",
   "family": "sequential-game",
   "difficulty": 4,
@@ -9354,6 +10011,7 @@
  },
  {
   "id": "iq-0658",
+  "title": "Win Probability Depends on Last Round",
   "section": "392-recurrence-relation-closed-form",
   "family": "sequential-game",
   "difficulty": 4,
@@ -9367,6 +10025,7 @@
  },
  {
   "id": "iq-0659",
+  "title": "Five-Player Rock Paper Scissors",
   "section": "434-recursion-markov-chain",
   "family": "sequential-game",
   "difficulty": 3,
@@ -9382,6 +10041,7 @@
  },
  {
   "id": "iq-0660",
+  "title": "Expected Stock Price, Biased Moves",
   "section": "460-independent-rv",
   "family": "sequential-game",
   "difficulty": 4,
@@ -9396,6 +10056,7 @@
  },
  {
   "id": "iq-0661",
+  "title": "Expected Stock Price, ±5%",
   "section": "460-independent-rv",
   "family": "sequential-game",
   "difficulty": 3,
@@ -9411,6 +10072,7 @@
  },
  {
   "id": "iq-0662",
+  "title": "Erasing Numbers to a Sum Divisible by 5",
   "section": "730-parity",
   "family": "sequential-game",
   "difficulty": 2,
@@ -9425,6 +10087,7 @@
  },
  {
   "id": "iq-0663",
+  "title": "Filling +, −, × Between 1 and 100",
   "section": "730-parity",
   "family": "sequential-game",
   "difficulty": 5,
@@ -9438,6 +10101,7 @@
  },
  {
   "id": "iq-0664",
+  "title": "Ordered Pairs in a Random Permutation",
   "section": "474-linearity-of-expectation-permutations",
   "family": "set-permutation",
   "difficulty": 5,
@@ -9453,6 +10117,7 @@
  },
  {
   "id": "iq-0665",
+  "title": "Set Generated by 3x and 3x + 1",
   "section": "104-bases",
   "family": "sets",
   "difficulty": 7,
@@ -9468,6 +10133,7 @@
  },
  {
   "id": "iq-0666",
+  "title": "Permutations with Divisibility Rule",
   "section": "107-primes-and-factorization",
   "family": "sets",
   "difficulty": 5,
@@ -9483,6 +10149,7 @@
  },
  {
   "id": "iq-0667",
+  "title": "Forcing a Difference of 9",
   "section": "150-regular",
   "family": "sets",
   "difficulty": 3,
@@ -9498,6 +10165,7 @@
  },
  {
   "id": "iq-0668",
+  "title": "Differences Not Dividing Sums",
   "section": "150-regular",
   "family": "sets",
   "difficulty": 4,
@@ -9514,6 +10182,7 @@
  },
  {
   "id": "iq-0669",
+  "title": "Ten Numbers with Distinct Subset Sums",
   "section": "150-regular",
   "family": "sets",
   "difficulty": 5,
@@ -9527,6 +10196,7 @@
  },
  {
   "id": "iq-0670",
+  "title": "Largest Plus Smallest Is 13",
   "section": "200-multiplication-rule",
   "family": "sets",
   "difficulty": 1,
@@ -9542,6 +10212,7 @@
  },
  {
   "id": "iq-0671",
+  "title": "Each Number Next to a Neighbor Value",
   "section": "206-definition",
   "family": "sets",
   "difficulty": 3,
@@ -9554,6 +10225,7 @@
  },
  {
   "id": "iq-0672",
+  "title": "Subsets of 1–64 Summing to 2072",
   "section": "211-complementary-counting",
   "family": "sets",
   "difficulty": 3,
@@ -9568,6 +10240,7 @@
  },
  {
   "id": "iq-0673",
+  "title": "Group with the 206g Weight Is Heavier",
   "section": "219-simple-counting",
   "family": "sets",
   "difficulty": 2,
@@ -9583,6 +10256,7 @@
  },
  {
   "id": "iq-0674",
+  "title": "Quadruples with x < w, x < y, z < y",
   "section": "220-casework",
   "family": "sets",
   "difficulty": 3,
@@ -9598,6 +10272,7 @@
  },
  {
   "id": "iq-0675",
+  "title": "Subsets of 1–30 with Sum Over 232",
   "section": "222-symmetry",
   "family": "sets",
   "difficulty": 1,
@@ -9612,6 +10287,7 @@
  },
  {
   "id": "iq-0676",
+  "title": "Pairs Differing by 1 or 10 I",
   "section": "230-recursion-fibonacci",
   "family": "sets",
   "difficulty": 3,
@@ -9627,6 +10303,7 @@
  },
  {
   "id": "iq-0677",
+  "title": "Pairs Differing by 1 or 10 II",
   "section": "231-recursion-characteristic-polynomial",
   "family": "sets",
   "difficulty": 4,
@@ -9639,6 +10316,7 @@
  },
  {
   "id": "iq-0678",
+  "title": "Fractions with ab = 10!",
   "section": "232-bijection",
   "family": "sets",
   "difficulty": 3,
@@ -9654,6 +10332,7 @@
  },
  {
   "id": "iq-0679",
+  "title": "Total of Alternating Subset Sums",
   "section": "232-bijection",
   "family": "sets",
   "difficulty": 4,
@@ -9667,6 +10346,7 @@
  },
  {
   "id": "iq-0680",
+  "title": "Subsets of 1–13 with Sums 46 to 86",
   "section": "232-bijection",
   "family": "sets",
   "difficulty": 4,
@@ -9682,6 +10362,7 @@
  },
  {
   "id": "iq-0681",
+  "title": "Sum of ijk over i + j + k = 17",
   "section": "232-bijection",
   "family": "sets",
   "difficulty": 9,
@@ -9697,6 +10378,7 @@
  },
  {
   "id": "iq-0682",
+  "title": "Sampling from Overlapping Sets",
   "section": "240-linearity-of-expectation",
   "family": "sets",
   "difficulty": 4,
@@ -9712,6 +10394,7 @@
  },
  {
   "id": "iq-0683",
+  "title": "Two Primes with Even Sum II",
   "section": "300-multiplication-rule",
   "family": "sets",
   "difficulty": 1,
@@ -9727,6 +10410,7 @@
  },
  {
   "id": "iq-0684",
+  "title": "max{0, a} = min{0, b}",
   "section": "300-multiplication-rule",
   "family": "sets",
   "difficulty": 1,
@@ -9741,6 +10425,7 @@
  },
  {
   "id": "iq-0685",
+  "title": "Product's Units Digit Is Odd and Not 5",
   "section": "300-multiplication-rule",
   "family": "sets",
   "difficulty": 1,
@@ -9755,6 +10440,7 @@
  },
  {
   "id": "iq-0686",
+  "title": "W-Permutations",
   "section": "322-casework",
   "family": "sets",
   "difficulty": 2,
@@ -9769,6 +10455,7 @@
  },
  {
   "id": "iq-0687",
+  "title": "Encircled Numbers on a Board",
   "section": "351-law-of-total-probability",
   "family": "sets",
   "difficulty": 12,
@@ -9785,6 +10472,7 @@
  },
  {
   "id": "iq-0688",
+  "title": "X Is a Subset of Y",
   "section": "360-independent-rv",
   "family": "sets",
   "difficulty": 2,
@@ -9796,6 +10484,7 @@
  },
  {
   "id": "iq-0689",
+  "title": "Average Median of Subsets",
   "section": "440-symmetry-ad-hoc",
   "family": "sets",
   "difficulty": 3,
@@ -9810,6 +10499,7 @@
  },
  {
   "id": "iq-0690",
+  "title": "Minimum of Five Picks from 1–5",
   "section": "462-tail-sum",
   "family": "sets",
   "difficulty": 3,
@@ -9824,6 +10514,7 @@
  },
  {
   "id": "iq-0691",
+  "title": "Expected Distinct Values",
   "section": "471-linearity-of-expectation-coupon-collector",
   "family": "sets",
   "difficulty": 7,
@@ -9838,6 +10529,7 @@
  },
  {
   "id": "iq-0692",
+  "title": "Sortable Block Partitions",
   "section": "473-linearity-of-expectation-indicators",
   "family": "sets",
   "difficulty": 10,
@@ -9852,6 +10544,7 @@
  },
  {
   "id": "iq-0693",
+  "title": "Var(N) / E[N] for a Union",
   "section": "516-binomial-rv",
   "family": "sets",
   "difficulty": 3,
@@ -9866,6 +10559,7 @@
  },
  {
   "id": "iq-0694",
+  "title": "5000 Pairwise-Intersecting Sets",
   "section": "723-bound",
   "family": "sets",
   "difficulty": 6,
@@ -9882,6 +10576,7 @@
  },
  {
   "id": "iq-0695",
+  "title": "Only 7 Is Unpicked",
   "section": "200-multiplication-rule",
   "family": "sets",
   "difficulty": 3,
@@ -9896,6 +10591,7 @@
  },
  {
   "id": "iq-0696",
+  "title": "Bob's Number Beats Alice's",
   "section": "340-symmetry",
   "family": "sets",
   "difficulty": 3,
@@ -9912,6 +10608,7 @@
  },
  {
   "id": "iq-0697",
+  "title": "Expected 6-Inversions",
   "section": "473-linearity-of-expectation-indicators",
   "family": "sets",
   "difficulty": 4,
@@ -9927,6 +10624,7 @@
  },
  {
   "id": "iq-0698",
+  "title": "Plane Separating Two Points on a Sphere",
   "section": "219-simple-counting",
   "family": "spheres",
   "difficulty": 4,
@@ -9942,6 +10640,7 @@
  },
  {
   "id": "iq-0699",
+  "title": "Calling a Raise",
   "section": "701-fair-value",
   "family": "sports-betting",
   "difficulty": 3,
@@ -9956,6 +10655,7 @@
  },
  {
   "id": "iq-0700",
+  "title": "Marks in Separate Pieces",
   "section": "202-permutations",
   "family": "stick-breaking",
   "difficulty": 3,
@@ -9970,6 +10670,7 @@
  },
  {
   "id": "iq-0701",
+  "title": "Middle Piece Longer Than 1/3",
   "section": "321-geometric-probability",
   "family": "stick-breaking",
   "difficulty": 5,
@@ -9985,6 +10686,7 @@
  },
  {
   "id": "iq-0702",
+  "title": "Broken Stick Forms a Triangle",
   "section": "321-geometric-probability",
   "family": "stick-breaking",
   "difficulty": 5,
@@ -9999,6 +10701,7 @@
  },
  {
   "id": "iq-0703",
+  "title": "Three Pieces All at Least 1/8",
   "section": "321-geometric-probability",
   "family": "stick-breaking",
   "difficulty": 5,
@@ -10014,6 +10717,7 @@
  },
  {
   "id": "iq-0704",
+  "title": "Coin Inside a Square",
   "section": "321-geometric-probability",
   "family": "tessellations",
   "difficulty": 1,
@@ -10028,6 +10732,7 @@
  },
  {
   "id": "iq-0705",
+  "title": "Dominoes on a Board Missing Two Corners I",
   "section": "132-coloring",
   "family": "tiling",
   "difficulty": 3,
@@ -10041,6 +10746,7 @@
  },
  {
   "id": "iq-0706",
+  "title": "Dominoes on a Board Missing Two Corners II",
   "section": "133-black-and-white-coloring",
   "family": "tiling",
   "difficulty": 1,
@@ -10052,6 +10758,7 @@
  },
  {
   "id": "iq-0707",
+  "title": "Corner-to-Corner Tour of 8×8",
   "section": "133-black-and-white-coloring",
   "family": "tiling",
   "difficulty": 1,
@@ -10063,6 +10770,7 @@
  },
  {
   "id": "iq-0708",
+  "title": "Tiling 6×6 with 4×1 Tiles",
   "section": "134-advanced-coloring",
   "family": "tiling",
   "difficulty": 4,
@@ -10074,6 +10782,7 @@
  },
  {
   "id": "iq-0709",
+  "title": "Grid Game from the Corner",
   "section": "134-advanced-coloring",
   "family": "tiling",
   "difficulty": 5,
@@ -10087,6 +10796,7 @@
  },
  {
   "id": "iq-0710",
+  "title": "Grid Game from the Second Column",
   "section": "134-advanced-coloring",
   "family": "tiling",
   "difficulty": 5,
@@ -10100,6 +10810,7 @@
  },
  {
   "id": "iq-0711",
+  "title": "Counting 5-Runs of Black Squares",
   "section": "215-pie-for-n-sets",
   "family": "tiling",
   "difficulty": 9,
@@ -10114,6 +10825,7 @@
  },
  {
   "id": "iq-0712",
+  "title": "Domino Tilings of 2×10",
   "section": "231-recursion-characteristic-polynomial",
   "family": "tiling",
   "difficulty": 2,
@@ -10129,6 +10841,7 @@
  },
  {
   "id": "iq-0713",
+  "title": "Domino Tilings of 3×10",
   "section": "231-recursion-characteristic-polynomial",
   "family": "tiling",
   "difficulty": 7,
@@ -10143,6 +10856,7 @@
  },
  {
   "id": "iq-0714",
+  "title": "Domino Tilings of 3×8",
   "section": "231-recursion-characteristic-polynomial",
   "family": "tiling",
   "difficulty": 7,
@@ -10157,6 +10871,7 @@
  },
  {
   "id": "iq-0715",
+  "title": "Frogs Swapping on a 3×8 Grid",
   "section": "231-recursion-characteristic-polynomial",
   "family": "tiling",
   "difficulty": 7,
@@ -10171,6 +10886,7 @@
  },
  {
   "id": "iq-0716",
+  "title": "Connected Components in a Colored Row",
   "section": "473-linearity-of-expectation-indicators",
   "family": "tiling",
   "difficulty": 4,
@@ -10186,6 +10902,7 @@
  },
  {
   "id": "iq-0717",
+  "title": "Product of 2020 Uniforms Is Positive",
   "section": "209-binomial-theorem",
   "family": "total-number-of-evens-biased-coins",
   "difficulty": 6,
@@ -10199,6 +10916,7 @@
  },
  {
   "id": "iq-0718",
+  "title": "32-Team Knockout Tournament",
   "section": "200-multiplication-rule",
   "family": "tournament",
   "difficulty": 3,
@@ -10213,6 +10931,7 @@
  },
  {
   "id": "iq-0719",
+  "title": "Top Two Meet in King of the Hill",
   "section": "300-multiplication-rule",
   "family": "tournament",
   "difficulty": 4,
@@ -10229,6 +10948,7 @@
  },
  {
   "id": "iq-0720",
+  "title": "Second Seed Makes the Final",
   "section": "300-multiplication-rule",
   "family": "tournament",
   "difficulty": 3,
@@ -10241,6 +10961,7 @@
  },
  {
   "id": "iq-0721",
+  "title": "Top Two Meet in the Final",
   "section": "300-multiplication-rule",
   "family": "tournament",
   "difficulty": 3,
@@ -10257,6 +10978,7 @@
  },
  {
   "id": "iq-0722",
+  "title": "1st and 3rd Meet in the Final",
   "section": "300-multiplication-rule",
   "family": "tournament",
   "difficulty": 3,
@@ -10273,6 +10995,7 @@
  },
  {
   "id": "iq-0723",
+  "title": "Second Seed Survives 10 Rounds",
   "section": "300-multiplication-rule",
   "family": "tournament",
   "difficulty": 4,
@@ -10288,6 +11011,7 @@
  },
  {
   "id": "iq-0724",
+  "title": "2nd Beats 1st in the Final",
   "section": "300-multiplication-rule",
   "family": "tournament",
   "difficulty": 5,
@@ -10302,6 +11026,7 @@
  },
  {
   "id": "iq-0725",
+  "title": "First to 2 Points",
   "section": "331-recursion-square-1",
   "family": "tournament",
   "difficulty": 2,
@@ -10317,6 +11042,7 @@
  },
  {
   "id": "iq-0726",
+  "title": "Tennis from 30-30",
   "section": "331-recursion-square-1",
   "family": "tournament",
   "difficulty": 4,
@@ -10332,6 +11058,7 @@
  },
  {
   "id": "iq-0727",
+  "title": "Best of Seven with Catch-Up",
   "section": "334-recursion-markov-chain",
   "family": "tournament",
   "difficulty": 1,
@@ -10344,6 +11071,7 @@
  },
  {
   "id": "iq-0728",
+  "title": "Red Sox vs Yankees Series",
   "section": "340-symmetry",
   "family": "tournament",
   "difficulty": 2,
@@ -10358,6 +11086,7 @@
  },
  {
   "id": "iq-0729",
+  "title": "Alice Faces Bob, Winner Draws Next",
   "section": "340-symmetry",
   "family": "tournament",
   "difficulty": 4,
@@ -10370,6 +11099,7 @@
  },
  {
   "id": "iq-0730",
+  "title": "Alice Faces Bob, Winner Rejoins the Pool",
   "section": "345-conditional-symmetry",
   "family": "tournament",
   "difficulty": 5,
@@ -10384,6 +11114,7 @@
  },
  {
   "id": "iq-0731",
+  "title": "Alice and Bob Meet in a Knockout",
   "section": "351-law-of-total-probability",
   "family": "tournament",
   "difficulty": 3,
@@ -10400,6 +11131,7 @@
  },
  {
   "id": "iq-0732",
+  "title": "First to 21 Ping-Pong Games",
   "section": "403-combinatorial-expectation",
   "family": "tournament",
   "difficulty": 10,
@@ -10412,6 +11144,7 @@
  },
  {
   "id": "iq-0733",
+  "title": "Pruning a Seven-Node Tree",
   "section": "473-linearity-of-expectation-indicators",
   "family": "tree",
   "difficulty": 9,
@@ -10429,6 +11162,7 @@
  },
  {
   "id": "iq-0734",
+  "title": "Equal Side Sums on a Triangle",
   "section": "101-general",
   "family": "triangles",
   "difficulty": 3,
@@ -10443,6 +11177,7 @@
  },
  {
   "id": "iq-0735",
+  "title": "Tiling a Right Triangle",
   "section": "200-multiplication-rule",
   "family": "triangles",
   "difficulty": 2,
@@ -10457,6 +11192,7 @@
  },
  {
   "id": "iq-0736",
+  "title": "Triangles from Dots on a Triangle",
   "section": "214-pie",
   "family": "triangles",
   "difficulty": 2,
@@ -10472,6 +11208,7 @@
  },
  {
   "id": "iq-0737",
+  "title": "X, Y, 1 Form an Obtuse Triangle",
   "section": "321-geometric-probability",
   "family": "triangles",
   "difficulty": 2,
@@ -10485,6 +11222,7 @@
  },
  {
   "id": "iq-0738",
+  "title": "Three Uniforms Form a Triangle",
   "section": "321-geometric-probability",
   "family": "triangles",
   "difficulty": 3,
@@ -10500,6 +11238,7 @@
  },
  {
   "id": "iq-0739",
+  "title": "Angle in a Random Right Triangle",
   "section": "340-symmetry",
   "family": "triangles",
   "difficulty": 2,
@@ -10514,6 +11253,7 @@
  },
  {
   "id": "iq-0740",
+  "title": "Obtuse Triangle with the Center",
   "section": "350-conditional-probability",
   "family": "triangles",
   "difficulty": 8,
@@ -10530,6 +11270,7 @@
  },
  {
   "id": "iq-0741",
+  "title": "Random Right Triangle on a Grid",
   "section": "460-independent-rv",
   "family": "triangles",
   "difficulty": 1,
@@ -10544,6 +11285,7 @@
  },
  {
   "id": "iq-0742",
+  "title": "Expected Height in a Triangle",
   "section": "463-tail-integral",
   "family": "triangles",
   "difficulty": 4,
@@ -10555,6 +11297,7 @@
  },
  {
   "id": "iq-0743",
+  "title": "Regions from Cevians on Two Sides",
   "section": "214-pie",
   "family": "triangles",
   "difficulty": 4,
@@ -10569,6 +11312,7 @@
  },
  {
   "id": "iq-0744",
+  "title": "Regions from Cevians on Three Sides",
   "section": "214-pie",
   "family": "triangles",
   "difficulty": 5,
@@ -10583,6 +11327,7 @@
  },
  {
   "id": "iq-0745",
+  "title": "Removing Tails Until All Heads",
   "section": "350-conditional-probability",
   "family": "truncations",
   "difficulty": 4,
@@ -10598,6 +11343,7 @@
  },
  {
   "id": "iq-0746",
+  "title": "Countdown from 1000 Hits 15, 30, 45",
   "section": "350-conditional-probability",
   "family": "truncations",
   "difficulty": 5,
@@ -10612,6 +11358,7 @@
  },
  {
   "id": "iq-0747",
+  "title": "Robot Clicks the Letter H",
   "section": "350-conditional-probability",
   "family": "truncations",
   "difficulty": 10,
@@ -10627,6 +11374,7 @@
  },
  {
   "id": "iq-0748",
+  "title": "Loaded Dice with a Uniform Sum",
   "section": "160-algebraic-inequalities",
   "family": "unfair-die",
   "difficulty": 4,
@@ -10640,6 +11388,7 @@
  },
  {
   "id": "iq-0749",
+  "title": "Correlation of Min and Max",
   "section": "570-covariance",
   "family": "uniform-distribution",
   "difficulty": 7,
@@ -10651,6 +11400,7 @@
  },
  {
   "id": "iq-0750",
+  "title": "No Ugly Marbles Drawn",
   "section": "450-conditional-expectation",
   "family": "urn",
   "difficulty": 3,
@@ -10666,6 +11416,7 @@
  },
  {
   "id": "iq-0751",
+  "title": "Two Urns, Drawing a 2 Again",
   "section": "310-bayes-rule",
   "family": "urn-draw",
   "difficulty": 2,
@@ -10680,6 +11431,7 @@
  },
  {
   "id": "iq-0752",
+  "title": "First Spade Among Three Players",
   "section": "342-symmetry-stealing",
   "family": "urn-draw",
   "difficulty": 4,
@@ -10693,6 +11445,7 @@
  },
  {
   "id": "iq-0753",
+  "title": "Sum of Six Draws Given Max 15",
   "section": "450-conditional-expectation",
   "family": "urn-draw",
   "difficulty": 8,
@@ -10708,6 +11461,7 @@
  },
  {
   "id": "iq-0754",
+  "title": "Kate's Two Bags of Marbles",
   "section": "219-simple-counting",
   "family": "urn",
   "difficulty": 8,
@@ -10725,6 +11479,7 @@
  },
  {
   "id": "iq-0755",
+  "title": "Uniform Prior on Black Balls",
   "section": "350-conditional-probability",
   "family": "urn",
   "difficulty": 10,
@@ -10740,6 +11495,7 @@
  },
  {
   "id": "iq-0756",
+  "title": "Odd Dot Product of Random Vectors",
   "section": "209-binomial-theorem",
   "family": "vectors",
   "difficulty": 9,
@@ -10754,6 +11510,7 @@
  },
  {
   "id": "iq-0757",
+  "title": "Expected Bubble Sort Swaps",
   "section": "240-linearity-of-expectation",
   "family": "vectors",
   "difficulty": 10,
@@ -10768,6 +11525,7 @@
  },
  {
   "id": "iq-0758",
+  "title": "Bus with Random Refueling Delays",
   "section": "451-law-of-total-expectation-discrete",
   "family": "waiting-times",
   "difficulty": 3,
@@ -10782,6 +11540,7 @@
  },
  {
   "id": "iq-0759",
+  "title": "Weights on One Pan, 1 to 100",
   "section": "101-general",
   "family": "weights",
   "difficulty": 1,
@@ -10797,6 +11556,7 @@
  },
  {
   "id": "iq-0760",
+  "title": "Twelve Balls, One Odd",
   "section": "101-general",
   "family": "weights",
   "difficulty": 9,
@@ -10811,6 +11571,7 @@
  },
  {
   "id": "iq-0761",
+  "title": "Clock Angle at 3:15",
   "section": "101-general",
   "family": null,
   "difficulty": 1,
@@ -10823,6 +11584,7 @@
  },
  {
   "id": "iq-0762",
+  "title": "Average Group Size at a Party",
   "section": "101-general",
   "family": null,
   "difficulty": 1,
@@ -10837,6 +11599,7 @@
  },
  {
   "id": "iq-0763",
+  "title": "Lily Pads Starting from Eight",
   "section": "101-general",
   "family": null,
   "difficulty": 1,
@@ -10851,6 +11614,7 @@
  },
  {
   "id": "iq-0764",
+  "title": "Spreading an Illness in a Hall",
   "section": "101-general",
   "family": null,
   "difficulty": 1,
@@ -10864,6 +11628,7 @@
  },
  {
   "id": "iq-0765",
+  "title": "Sagging 80-Foot Chain",
   "section": "101-general",
   "family": null,
   "difficulty": 1,
@@ -10876,6 +11641,7 @@
  },
  {
   "id": "iq-0766",
+  "title": "Largest x + y from Numerators and Denominators",
   "section": "101-general",
   "family": null,
   "difficulty": 2,
@@ -10890,6 +11656,7 @@
  },
  {
   "id": "iq-0767",
+  "title": "Non-Crossing Tour of 12 Points",
   "section": "101-general",
   "family": null,
   "difficulty": 2,
@@ -10902,6 +11669,7 @@
  },
  {
   "id": "iq-0768",
+  "title": "Finding the Heavy Coin Among 8",
   "section": "101-general",
   "family": null,
   "difficulty": 2,
@@ -10915,6 +11683,7 @@
  },
  {
   "id": "iq-0769",
+  "title": "Price Unchanged After ±20% Moves",
   "section": "101-general",
   "family": null,
   "difficulty": 2,
@@ -10927,6 +11696,7 @@
  },
  {
   "id": "iq-0770",
+  "title": "log_1111 1112 vs log_1112 1113",
   "section": "101-general",
   "family": null,
   "difficulty": 2,
@@ -10941,6 +11711,7 @@
  },
  {
   "id": "iq-0771",
+  "title": "Largest Mean Minus Median",
   "section": "101-general",
   "family": null,
   "difficulty": 2,
@@ -10955,6 +11726,7 @@
  },
  {
   "id": "iq-0772",
+  "title": "Broken Clock with Equal Sums",
   "section": "101-general",
   "family": null,
   "difficulty": 2,
@@ -10968,6 +11740,7 @@
  },
  {
   "id": "iq-0773",
+  "title": "Largest Shadow of a Cube",
   "section": "101-general",
   "family": null,
   "difficulty": 3,
@@ -10980,6 +11753,7 @@
  },
  {
   "id": "iq-0774",
+  "title": "Blindfolded Coin Piles",
   "section": "101-general",
   "family": null,
   "difficulty": 3,
@@ -10991,6 +11765,7 @@
  },
  {
   "id": "iq-0775",
+  "title": "Bridge and Torch",
   "section": "101-general",
   "family": null,
   "difficulty": 3,
@@ -11002,6 +11777,7 @@
  },
  {
   "id": "iq-0776",
+  "title": "Simpson's Paradox in Pass Completion",
   "section": "101-general",
   "family": null,
   "difficulty": 3,
@@ -11015,6 +11791,7 @@
  },
  {
   "id": "iq-0777",
+  "title": "Two Glass Balls, 100 Floors",
   "section": "101-general",
   "family": null,
   "difficulty": 3,
@@ -11027,6 +11804,7 @@
  },
  {
   "id": "iq-0778",
+  "title": "Truck Driver Eating Apples",
   "section": "101-general",
   "family": null,
   "difficulty": 4,
@@ -11040,6 +11818,7 @@
  },
  {
   "id": "iq-0779",
+  "title": "Rearranging HHMMMMTT",
   "section": "101-general",
   "family": null,
   "difficulty": 4,
@@ -11052,6 +11831,7 @@
  },
  {
   "id": "iq-0780",
+  "title": "Catching a Thief on a Line",
   "section": "101-general",
   "family": null,
   "difficulty": 4,
@@ -11065,6 +11845,7 @@
  },
  {
   "id": "iq-0781",
+  "title": "Six Players Guessing Dice",
   "section": "101-general",
   "family": null,
   "difficulty": 5,
@@ -11080,6 +11861,7 @@
  },
  {
   "id": "iq-0782",
+  "title": "e^π vs π^e",
   "section": "101-general",
   "family": null,
   "difficulty": 6,
@@ -11094,6 +11876,7 @@
  },
  {
   "id": "iq-0783",
+  "title": "Duck Escaping a Fox",
   "section": "101-general",
   "family": null,
   "difficulty": 7,
@@ -11108,6 +11891,7 @@
  },
  {
   "id": "iq-0784",
+  "title": "Locks for a Majority of Five",
   "section": "101-general",
   "family": null,
   "difficulty": 9,
@@ -11122,6 +11906,7 @@
  },
  {
   "id": "iq-0785",
+  "title": "Deleting Every Other Number on a Circle",
   "section": "101-general",
   "family": null,
   "difficulty": null,
@@ -11135,6 +11920,7 @@
  },
  {
   "id": "iq-0786",
+  "title": "Next Date with Distinct Digits",
   "section": "102-date",
   "family": null,
   "difficulty": 1,
@@ -11148,6 +11934,7 @@
  },
  {
   "id": "iq-0787",
+  "title": "Poisoned Wine with 10 Servants",
   "section": "103-binary-representation",
   "family": null,
   "difficulty": 3,
@@ -11162,6 +11949,7 @@
  },
  {
   "id": "iq-0788",
+  "title": "Skipping Numbers with a 2",
   "section": "104-bases",
   "family": null,
   "difficulty": 3,
@@ -11176,6 +11964,7 @@
  },
  {
   "id": "iq-0789",
+  "title": "Antipodal Points with Equal Temperature",
   "section": "104-bases",
   "family": null,
   "difficulty": 5,
@@ -11189,6 +11978,7 @@
  },
  {
   "id": "iq-0790",
+  "title": "Consecutive Numbers with Digit Sums Divisible by 7",
   "section": "105-modular-arithmetic",
   "family": null,
   "difficulty": 1,
@@ -11200,6 +11990,7 @@
  },
  {
   "id": "iq-0791",
+  "title": "Remainder 1, Divisible by 11",
   "section": "105-modular-arithmetic",
   "family": null,
   "difficulty": 2,
@@ -11212,6 +12003,7 @@
  },
  {
   "id": "iq-0792",
+  "title": "x³ Ends in 11",
   "section": "105-modular-arithmetic",
   "family": null,
   "difficulty": 2,
@@ -11226,6 +12018,7 @@
  },
  {
   "id": "iq-0793",
+  "title": "Digits of 2^1989 and 5^1989",
   "section": "105-modular-arithmetic",
   "family": null,
   "difficulty": 3,
@@ -11238,6 +12031,7 @@
  },
  {
   "id": "iq-0794",
+  "title": "Digits of 2^1000 and 5^1000",
   "section": "105-modular-arithmetic",
   "family": null,
   "difficulty": 3,
@@ -11250,6 +12044,7 @@
  },
  {
   "id": "iq-0795",
+  "title": "100 Lightbulbs and 100 People",
   "section": "105-modular-arithmetic",
   "family": "bulb-toggle",
   "difficulty": 5,
@@ -11267,6 +12062,7 @@
  },
  {
   "id": "iq-0796",
+  "title": "Discarding from the Top of a Deck",
   "section": "451-law-of-total-expectation-discrete",
   "family": "sequential-game",
   "difficulty": 4,
@@ -11282,6 +12078,7 @@
  },
  {
   "id": "iq-0797",
+  "title": "Power of 3 Ending in 100 Zeros Then 1",
   "section": "105-modular-arithmetic",
   "family": null,
   "difficulty": 4,
@@ -11295,6 +12092,7 @@
  },
  {
   "id": "iq-0798",
+  "title": "Renumbered Die for a Prime Sum",
   "section": "105-modular-arithmetic",
   "family": null,
   "difficulty": 4,
@@ -11309,6 +12107,7 @@
  },
  {
   "id": "iq-0799",
+  "title": "Guessing a Polynomial with Evaluations",
   "section": "105-modular-arithmetic",
   "family": null,
   "difficulty": 12,
@@ -11321,6 +12120,7 @@
  },
  {
   "id": "iq-0800",
+  "title": "Cyclic Shifts Divisible by 37",
   "section": "105-modular-arithmetic",
   "family": null,
   "difficulty": null,
@@ -11333,6 +12133,7 @@
  },
  {
   "id": "iq-0801",
+  "title": "2050th Evenbin Number",
   "section": "106-bases",
   "family": null,
   "difficulty": 3,
@@ -11349,6 +12150,7 @@
  },
  {
   "id": "iq-0802",
+  "title": "Adults at a Party Before the Bus",
   "section": "106-bases",
   "family": null,
   "difficulty": 3,
@@ -11361,6 +12163,7 @@
  },
  {
   "id": "iq-0803",
+  "title": "Pairwise Products of Four Numbers",
   "section": "107-primes-and-factorization",
   "family": null,
   "difficulty": 3,
@@ -11373,6 +12176,7 @@
  },
  {
   "id": "iq-0804",
+  "title": "Largest Prime with Average 27",
   "section": "107-primes-and-factorization",
   "family": null,
   "difficulty": 3,
@@ -11385,6 +12189,7 @@
  },
  {
   "id": "iq-0805",
+  "title": "Equalizing Numbers on a Circle",
   "section": "130-odd-even-parity",
   "family": null,
   "difficulty": 1,
@@ -11396,6 +12201,7 @@
  },
  {
   "id": "iq-0806",
+  "title": "15 Telephones, 5 Connections Each",
   "section": "130-odd-even-parity",
   "family": null,
   "difficulty": 1,
@@ -11407,6 +12213,7 @@
  },
  {
   "id": "iq-0807",
+  "title": "Signs Between 1 and 10 Sum to Zero",
   "section": "130-odd-even-parity",
   "family": null,
   "difficulty": 1,
@@ -11419,6 +12226,7 @@
  },
  {
   "id": "iq-0808",
+  "title": "Grasshopper Back on Jump 25",
   "section": "130-odd-even-parity",
   "family": null,
   "difficulty": 2,
@@ -11431,6 +12239,7 @@
  },
  {
   "id": "iq-0809",
+  "title": "Replacing a, b with |a − b|",
   "section": "130-odd-even-parity",
   "family": null,
   "difficulty": 2,
@@ -11442,6 +12251,7 @@
  },
  {
   "id": "iq-0810",
+  "title": "Signs Between 1 and 9 Sum to Zero",
   "section": "130-odd-even-parity",
   "family": null,
   "difficulty": 2,
@@ -11456,6 +12266,7 @@
  },
  {
   "id": "iq-0811",
+  "title": "Jumping Pegs on a Grid",
   "section": "130-odd-even-parity",
   "family": null,
   "difficulty": 6,
@@ -11467,6 +12278,7 @@
  },
  {
   "id": "iq-0812",
+  "title": "Mario Escaping the Monster on 100×100",
   "section": "131-checkerboard-parity",
   "family": null,
   "difficulty": 1,
@@ -11481,6 +12293,7 @@
  },
  {
   "id": "iq-0813",
+  "title": "Splitting Alice's 753 Coins",
   "section": "132-order",
   "family": null,
   "difficulty": 3,
@@ -11495,6 +12308,7 @@
  },
  {
   "id": "iq-0814",
+  "title": "Incrementing Cells to Make Neighbors Differ",
   "section": "133-black-and-white-coloring",
   "family": null,
   "difficulty": 2,
@@ -11506,6 +12320,7 @@
  },
  {
   "id": "iq-0815",
+  "title": "Splitting Piles of Stones",
   "section": "135-increase-by-same-amount",
   "family": null,
   "difficulty": 3,
@@ -11517,6 +12332,7 @@
  },
  {
   "id": "iq-0816",
+  "title": "Spreading Stones Along a Line",
   "section": "135-increase-by-same-amount",
   "family": null,
   "difficulty": 4,
@@ -11528,6 +12344,7 @@
  },
  {
   "id": "iq-0817",
+  "title": "Infection on a Checkerboard",
   "section": "136-a-quantity-that-can-only-stay-constant-or-decrease",
   "family": null,
   "difficulty": 8,
@@ -11539,6 +12356,7 @@
  },
  {
   "id": "iq-0818",
+  "title": "Sum of the First n Naturals",
   "section": "140-teaching-examples",
   "family": null,
   "difficulty": 1,
@@ -11550,6 +12368,7 @@
  },
  {
   "id": "iq-0819",
+  "title": "Two-Coloring Regions Cut by Lines",
   "section": "141-simple-induction",
   "family": null,
   "difficulty": 3,
@@ -11561,6 +12380,7 @@
  },
  {
   "id": "iq-0820",
+  "title": "Clusters of Cars Driving to Work",
   "section": "141-simple-induction",
   "family": null,
   "difficulty": 3,
@@ -11574,6 +12394,7 @@
  },
  {
   "id": "iq-0821",
+  "title": "Gas Cans on a Circular Track",
   "section": "141-simple-induction",
   "family": null,
   "difficulty": 4,
@@ -11585,6 +12406,7 @@
  },
  {
   "id": "iq-0822",
+  "title": "Stacks with Maximum Product",
   "section": "141-simple-induction",
   "family": null,
   "difficulty": 5,
@@ -11596,6 +12418,7 @@
  },
  {
   "id": "iq-0823",
+  "title": "Expected 1's in Binary of a + b",
   "section": "141-simple-induction",
   "family": null,
   "difficulty": 9,
@@ -11613,6 +12436,7 @@
  },
  {
   "id": "iq-0824",
+  "title": "Breaking a Chocolate Bar",
   "section": "142-strong-induction",
   "family": null,
   "difficulty": 4,
@@ -11628,6 +12452,7 @@
  },
  {
   "id": "iq-0825",
+  "title": "Splitting 1000 Coins into Piles",
   "section": "142-strong-induction",
   "family": null,
   "difficulty": 7,
@@ -11639,6 +12464,7 @@
  },
  {
   "id": "iq-0826",
+  "title": "Water Pistols, Odd Number of People",
   "section": "143-modified-induction",
   "family": null,
   "difficulty": 6,
@@ -11650,6 +12476,7 @@
  },
  {
   "id": "iq-0827",
+  "title": "Odd Number of Soldiers Watching",
   "section": "143-modified-induction",
   "family": null,
   "difficulty": 8,
@@ -11664,6 +12491,7 @@
  },
  {
   "id": "iq-0828",
+  "title": "Monochrome Rectangle, Two Colors",
   "section": "150-regular",
   "family": null,
   "difficulty": 2,
@@ -11677,6 +12505,7 @@
  },
  {
   "id": "iq-0829",
+  "title": "Two People with Equal Friend Counts",
   "section": "150-regular",
   "family": null,
   "difficulty": 3,
@@ -11688,6 +12517,7 @@
  },
  {
   "id": "iq-0830",
+  "title": "Five Lattice Points, Clear Segments",
   "section": "150-regular",
   "family": null,
   "difficulty": 4,
@@ -11702,6 +12532,7 @@
  },
  {
   "id": "iq-0831",
+  "title": "Six Points in a 3×4 Rectangle",
   "section": "150-regular",
   "family": null,
   "difficulty": 6,
@@ -11715,6 +12546,7 @@
  },
  {
   "id": "iq-0832",
+  "title": "Monochrome Rectangle, 100 Colors",
   "section": "150-regular",
   "family": null,
   "difficulty": 6,
@@ -11726,6 +12558,7 @@
  },
  {
   "id": "iq-0833",
+  "title": "51 Ants on a Table",
   "section": "151-generalized",
   "family": null,
   "difficulty": 2,
@@ -11737,6 +12570,7 @@
  },
  {
   "id": "iq-0834",
+  "title": "Insect Following Arrows",
   "section": "152-infinite",
   "family": null,
   "difficulty": 8,
@@ -11748,6 +12582,7 @@
  },
  {
   "id": "iq-0835",
+  "title": "Bob, Charlie, Bob or Charlie, Bob, Charlie",
   "section": "160-algebraic-inequalities",
   "family": null,
   "difficulty": 2,
@@ -11761,6 +12596,7 @@
  },
  {
   "id": "iq-0836",
+  "title": "One Math Book and One Physics Book",
   "section": "200-multiplication-rule",
   "family": null,
   "difficulty": 0,
@@ -11773,6 +12609,7 @@
  },
  {
   "id": "iq-0837",
+  "title": "5 Objects into 3 Boxes",
   "section": "200-multiplication-rule",
   "family": null,
   "difficulty": 0,
@@ -11785,6 +12622,7 @@
  },
  {
   "id": "iq-0838",
+  "title": "Fractions with ab = 25!",
   "section": "200-multiplication-rule",
   "family": null,
   "difficulty": 1,
@@ -11800,6 +12638,7 @@
  },
  {
   "id": "iq-0839",
+  "title": "Arrows Forming a Cycle on a Die",
   "section": "200-multiplication-rule",
   "family": null,
   "difficulty": 5,
@@ -11814,6 +12653,7 @@
  },
  {
   "id": "iq-0840",
+  "title": "Buying One Book",
   "section": "201-addition-rule",
   "family": null,
   "difficulty": 0,
@@ -11826,6 +12666,7 @@
  },
  {
   "id": "iq-0841",
+  "title": "Arranging 3 of 3 People",
   "section": "202-permutations",
   "family": null,
   "difficulty": 0,
@@ -11838,6 +12679,7 @@
  },
  {
   "id": "iq-0842",
+  "title": "Arranging 3 of 5 People",
   "section": "202-permutations",
   "family": null,
   "difficulty": 0,
@@ -11850,6 +12692,7 @@
  },
  {
   "id": "iq-0843",
+  "title": "Three-Letter Words from A, B, C",
   "section": "203-permutations-with-replacement",
   "family": null,
   "difficulty": 0,
@@ -11862,6 +12705,7 @@
  },
  {
   "id": "iq-0844",
+  "title": "Four-Digit Passwords",
   "section": "203-permutations-with-replacement",
   "family": null,
   "difficulty": 0,
@@ -11874,6 +12718,7 @@
  },
  {
   "id": "iq-0845",
+  "title": "Arrangements of BALLOON",
   "section": "204-permutations-with-identical-objects",
   "family": null,
   "difficulty": 0,
@@ -11886,6 +12731,7 @@
  },
  {
   "id": "iq-0846",
+  "title": "Six People at a Round Table",
   "section": "205-circular",
   "family": null,
   "difficulty": 0,
@@ -11898,6 +12744,7 @@
  },
  {
   "id": "iq-0847",
+  "title": "Necklaces from Six Beads",
   "section": "205-circular",
   "family": null,
   "difficulty": 0,
@@ -11910,6 +12757,7 @@
  },
  {
   "id": "iq-0848",
+  "title": "Choosing 2 of 3 Players",
   "section": "206-definition",
   "family": null,
   "difficulty": 0,
@@ -11922,6 +12770,7 @@
  },
  {
   "id": "iq-0849",
+  "title": "Subsets of Size 4 from 10",
   "section": "206-definition",
   "family": null,
   "difficulty": 0,
@@ -11934,6 +12783,7 @@
  },
  {
   "id": "iq-0850",
+  "title": "Plus Signs Between 15 Ones",
   "section": "206-definition",
   "family": null,
   "difficulty": 7,
@@ -11949,6 +12799,7 @@
  },
  {
   "id": "iq-0851",
+  "title": "Sum of Squared Binomial Coefficients",
   "section": "208-vandermonde",
   "family": null,
   "difficulty": 0,
@@ -11960,6 +12811,7 @@
  },
  {
   "id": "iq-0852",
+  "title": "Selecting from Red and Green Bags",
   "section": "208-vandermonde",
   "family": null,
   "difficulty": 0,
@@ -11971,6 +12823,7 @@
  },
  {
   "id": "iq-0853",
+  "title": "Soup Orders One More Than Salads",
   "section": "208-vandermonde",
   "family": null,
   "difficulty": 2,
@@ -11984,6 +12837,7 @@
  },
  {
   "id": "iq-0854",
+  "title": "Coefficient of x²y⁶",
   "section": "209-binomial-theorem",
   "family": null,
   "difficulty": 0,
@@ -11998,6 +12852,7 @@
  },
  {
   "id": "iq-0855",
+  "title": "Sum of Odd Binomials of 18",
   "section": "209-binomial-theorem",
   "family": null,
   "difficulty": 0,
@@ -12009,6 +12864,7 @@
  },
  {
   "id": "iq-0856",
+  "title": "Sum of 18Ck / (k + 1) over Even k",
   "section": "209-binomial-theorem",
   "family": null,
   "difficulty": 3,
@@ -12020,6 +12876,7 @@
  },
  {
   "id": "iq-0857",
+  "title": "Passing a Binary Message",
   "section": "209-binomial-theorem",
   "family": null,
   "difficulty": 4,
@@ -12034,6 +12891,7 @@
  },
  {
   "id": "iq-0858",
+  "title": "100th Digit of (1 + √2)^3000",
   "section": "209-binomial-theorem",
   "family": null,
   "difficulty": 8,
@@ -12048,6 +12906,7 @@
  },
  {
   "id": "iq-0859",
+  "title": "Four-Letter Words with an A",
   "section": "211-complementary-counting",
   "family": null,
   "difficulty": 0,
@@ -12060,6 +12919,7 @@
  },
  {
   "id": "iq-0860",
+  "title": "A and B Not Adjacent",
   "section": "211-complementary-counting",
   "family": null,
   "difficulty": 0,
@@ -12072,6 +12932,7 @@
  },
  {
   "id": "iq-0861",
+  "title": "Car Accident Within Half an Hour",
   "section": "211-complementary-counting",
   "family": null,
   "difficulty": 1,
@@ -12086,6 +12947,7 @@
  },
  {
   "id": "iq-0862",
+  "title": "A and B Always Together",
   "section": "212-block-rule",
   "family": null,
   "difficulty": 0,
@@ -12097,6 +12959,7 @@
  },
  {
   "id": "iq-0863",
+  "title": "A and B Never Together",
   "section": "213-gap-rule",
   "family": null,
   "difficulty": 0,
@@ -12108,6 +12971,7 @@
  },
  {
   "id": "iq-0864",
+  "title": "Four Non-Consecutive Points of 10",
   "section": "213-gap-rule",
   "family": null,
   "difficulty": 0,
@@ -12120,6 +12984,7 @@
  },
  {
   "id": "iq-0865",
+  "title": "Soccer or Hockey",
   "section": "214-pie",
   "family": null,
   "difficulty": 0,
@@ -12132,6 +12997,7 @@
  },
  {
   "id": "iq-0866",
+  "title": "Math, Physics, and Chemistry Enrollment",
   "section": "214-pie",
   "family": null,
   "difficulty": 0,
@@ -12144,6 +13010,7 @@
  },
  {
   "id": "iq-0867",
+  "title": "Bombing Ships on a 4×4 Grid",
   "section": "214-pie",
   "family": null,
   "difficulty": 2,
@@ -12158,6 +13025,7 @@
  },
  {
   "id": "iq-0868",
+  "title": "No Four-Term Progression",
   "section": "214-pie",
   "family": null,
   "difficulty": 4,
@@ -12172,6 +13040,7 @@
  },
  {
   "id": "iq-0869",
+  "title": "Five Pairs of Twins",
   "section": "215-pie-for-n-sets",
   "family": null,
   "difficulty": 4,
@@ -12184,6 +13053,7 @@
  },
  {
   "id": "iq-0870",
+  "title": "Solutions to x1 + x2 + x3 = 12",
   "section": "216-stars-and-bars",
   "family": null,
   "difficulty": 0,
@@ -12196,6 +13066,7 @@
  },
  {
   "id": "iq-0871",
+  "title": "Solutions with Lower Bounds",
   "section": "216-stars-and-bars",
   "family": null,
   "difficulty": 0,
@@ -12208,6 +13079,7 @@
  },
  {
   "id": "iq-0872",
+  "title": "Positive Solutions to x1 + x2 + x3 = 12",
   "section": "216-stars-and-bars",
   "family": null,
   "difficulty": 0,
@@ -12220,6 +13092,7 @@
  },
  {
   "id": "iq-0873",
+  "title": "Odd Solutions Summing to 96",
   "section": "216-stars-and-bars",
   "family": null,
   "difficulty": 2,
@@ -12232,6 +13105,7 @@
  },
  {
   "id": "iq-0874",
+  "title": "Solutions to x1 + x2 + x3 ≤ 12",
   "section": "216-stars-and-bars",
   "family": null,
   "difficulty": null,
@@ -12244,6 +13118,7 @@
  },
  {
   "id": "iq-0875",
+  "title": "Sum of All Permutations of 12345",
   "section": "217-counting-sums",
   "family": null,
   "difficulty": 0,
@@ -12255,6 +13130,7 @@
  },
  {
   "id": "iq-0876",
+  "title": "Five Gold Bars' Pair Weights",
   "section": "218-piecewise-total",
   "family": null,
   "difficulty": 1,
@@ -12269,6 +13145,7 @@
  },
  {
   "id": "iq-0877",
+  "title": "Rabbit's Reachable Locations",
   "section": "219-simple-counting",
   "family": null,
   "difficulty": 4,
@@ -12283,6 +13160,7 @@
  },
  {
   "id": "iq-0878",
+  "title": "Running Sum Never Divisible by 3 II",
   "section": "219-simple-counting",
   "family": null,
   "difficulty": 4,
@@ -12294,6 +13172,7 @@
  },
  {
   "id": "iq-0879",
+  "title": "4×4 Sudoku Grids",
   "section": "219-simple-counting",
   "family": null,
   "difficulty": 4,
@@ -12308,6 +13187,7 @@
  },
  {
   "id": "iq-0880",
+  "title": "Four Integers with an Odd Sum",
   "section": "220-casework",
   "family": null,
   "difficulty": 2,
@@ -12323,6 +13203,7 @@
  },
  {
   "id": "iq-0881",
+  "title": "Triangle from Dice Sums",
   "section": "220-casework",
   "family": null,
   "difficulty": 3,
@@ -12337,6 +13218,7 @@
  },
  {
   "id": "iq-0882",
+  "title": "Four Players Passing Coins",
   "section": "220-casework",
   "family": null,
   "difficulty": 7,
@@ -12352,6 +13234,7 @@
  },
  {
   "id": "iq-0883",
+  "title": "Fathers Leaving with the Wrong Sons",
   "section": "221-derangements",
   "family": null,
   "difficulty": 1,
@@ -12366,6 +13249,7 @@
  },
  {
   "id": "iq-0884",
+  "title": "No Card in Its Own Box",
   "section": "221-derangements",
   "family": null,
   "difficulty": 1,
@@ -12380,6 +13264,7 @@
  },
  {
   "id": "iq-0885",
+  "title": "Labeling a Die up to Rotation",
   "section": "221-derangements",
   "family": null,
   "difficulty": 1,
@@ -12394,6 +13279,7 @@
  },
  {
   "id": "iq-0886",
+  "title": "Placing Powers of 2 on a Balance",
   "section": "230-recursion",
   "family": null,
   "difficulty": 9,
@@ -12407,6 +13293,7 @@
  },
  {
   "id": "iq-0887",
+  "title": "Committee of 10 vs Committee of 11",
   "section": "232-bijection",
   "family": null,
   "difficulty": 0,
@@ -12418,6 +13305,7 @@
  },
  {
   "id": "iq-0888",
+  "title": "Even White Marbles in Every Row and Column",
   "section": "232-bijection",
   "family": null,
   "difficulty": 0,
@@ -12429,6 +13317,7 @@
  },
  {
   "id": "iq-0889",
+  "title": "Drinking Half the Can in Turns",
   "section": "233-recursion-geometric-series",
   "family": null,
   "difficulty": 0,
@@ -12443,6 +13332,7 @@
  },
  {
   "id": "iq-0890",
+  "title": "Valid Bracket Sequences",
   "section": "234-reflection-principle",
   "family": null,
   "difficulty": 1,
@@ -12457,6 +13347,7 @@
  },
  {
   "id": "iq-0891",
+  "title": "Walks Returning to 0 Through a Point",
   "section": "234-reflection-principle",
   "family": null,
   "difficulty": 4,
@@ -12472,6 +13363,7 @@
  },
  {
   "id": "iq-0892",
+  "title": "Walk Ending at 4 Through 6",
   "section": "234-reflection-principle",
   "family": null,
   "difficulty": 4,
@@ -12487,6 +13379,7 @@
  },
  {
   "id": "iq-0893",
+  "title": "Reaching y by Time t",
   "section": "234-reflection-principle",
   "family": null,
   "difficulty": 7,
@@ -12501,6 +13394,7 @@
  },
  {
   "id": "iq-0894",
+  "title": "Never Below Zero Given S10 ≥ 0",
   "section": "234-reflection-principle",
   "family": null,
   "difficulty": 7,
@@ -12515,6 +13409,7 @@
  },
  {
   "id": "iq-0895",
+  "title": "Never Negative Equals Ending at 0",
   "section": "234-reflection-principle",
   "family": null,
   "difficulty": 7,
@@ -12529,6 +13424,7 @@
  },
  {
   "id": "iq-0896",
+  "title": "Ending at 0 Given Nonnegative",
   "section": "234-reflection-principle",
   "family": null,
   "difficulty": 7,
@@ -12544,6 +13440,7 @@
  },
  {
   "id": "iq-0897",
+  "title": "Nonnegative Given Ending at 0",
   "section": "234-reflection-principle",
   "family": null,
   "difficulty": 7,
@@ -12558,6 +13455,7 @@
  },
  {
   "id": "iq-0898",
+  "title": "Shuffling the Front Person",
   "section": "240-linearity-of-expectation",
   "family": null,
   "difficulty": 3,
@@ -12570,6 +13468,7 @@
  },
  {
   "id": "iq-0899",
+  "title": "Balls and Buckets by Type",
   "section": "240-linearity-of-expectation",
   "family": null,
   "difficulty": 9,
@@ -12581,6 +13480,7 @@
  },
  {
   "id": "iq-0900",
+  "title": "Average Median of Subsets of 1–100",
   "section": "250-compliment",
   "family": null,
   "difficulty": 3,
@@ -12593,6 +13493,7 @@
  },
  {
   "id": "iq-0901",
+  "title": "Sum of Five-Digit Palindromes",
   "section": "250-compliment",
   "family": null,
   "difficulty": 4,
@@ -12604,6 +13505,7 @@
  },
  {
   "id": "iq-0902",
+  "title": "Red Then Green from an Urn",
   "section": "300-multiplication-rule",
   "family": null,
   "difficulty": 0,
@@ -12616,6 +13518,7 @@
  },
  {
   "id": "iq-0903",
+  "title": "Artist Performing in Baltimore",
   "section": "310-bayes-rule",
   "family": null,
   "difficulty": 0,
@@ -12630,6 +13533,7 @@
  },
  {
   "id": "iq-0904",
+  "title": "Buffon's Needle",
   "section": "321-geometric-probability",
   "family": null,
   "difficulty": 5,
@@ -12643,6 +13547,7 @@
  },
  {
   "id": "iq-0905",
+  "title": "Home Run Contest",
   "section": "333-recursion-geometric-series",
   "family": null,
   "difficulty": 3,
@@ -12660,6 +13565,7 @@
  },
  {
   "id": "iq-0906",
+  "title": "Discarding Marbles: 3 and 4 I",
   "section": "340-symmetry",
   "family": null,
   "difficulty": 0,
@@ -12672,6 +13578,7 @@
  },
  {
   "id": "iq-0907",
+  "title": "Growing Die from 99 Sides",
   "section": "340-symmetry",
   "family": null,
   "difficulty": 0,
@@ -12684,6 +13591,7 @@
  },
  {
   "id": "iq-0908",
+  "title": "6th Smaller Than Its Neighbors",
   "section": "340-symmetry",
   "family": null,
   "difficulty": 0,
@@ -12696,6 +13604,7 @@
  },
  {
   "id": "iq-0909",
+  "title": "Discarding Marbles: 3 and 4 II",
   "section": "340-symmetry",
   "family": null,
   "difficulty": 4,
@@ -12708,6 +13617,7 @@
  },
  {
   "id": "iq-0910",
+  "title": "Tetrahedron: Back After 6 Moves",
   "section": "343-symmetry-markov-chain",
   "family": null,
   "difficulty": 1,
@@ -12720,6 +13630,7 @@
  },
  {
   "id": "iq-0911",
+  "title": "Two Uniform Segments Overlap",
   "section": "344-symmetry-continuous-rv",
   "family": null,
   "difficulty": 0,
@@ -12732,6 +13643,7 @@
  },
  {
   "id": "iq-0912",
+  "title": "Two Normal Segments Overlap",
   "section": "344-symmetry-continuous-rv",
   "family": null,
   "difficulty": 0,
@@ -12744,6 +13656,7 @@
  },
  {
   "id": "iq-0913",
+  "title": "Kicks Past the Goalkeeper",
   "section": "344-symmetry-continuous-rv",
   "family": null,
   "difficulty": 0,
@@ -12756,6 +13669,7 @@
  },
  {
   "id": "iq-0914",
+  "title": "Above 3 Given Even",
   "section": "350-conditional-probability",
   "family": null,
   "difficulty": 0,
@@ -12768,6 +13682,7 @@
  },
  {
   "id": "iq-0915",
+  "title": "Ternary Sequences Without 00",
   "section": "390-recurrence-relation-bash",
   "family": null,
   "difficulty": 2,
@@ -12783,6 +13698,7 @@
  },
  {
   "id": "iq-0916",
+  "title": "Ceiling of X/Y Is a Perfect Square",
   "section": "391-recurrence-relation-equation",
   "family": null,
   "difficulty": 7,
@@ -12798,6 +13714,7 @@
  },
  {
   "id": "iq-0917",
+  "title": "Valet Parking Arrangements",
   "section": "392-recurrence-relation-closed-form",
   "family": null,
   "difficulty": 3,
@@ -12812,6 +13729,7 @@
  },
  {
   "id": "iq-0918",
+  "title": "Expected Value of a Die Roll",
   "section": "401-introduction-discrete",
   "family": null,
   "difficulty": 0,
@@ -12824,6 +13742,7 @@
  },
  {
   "id": "iq-0919",
+  "title": "d4 Rolls Until a Repeat",
   "section": "401-introduction-discrete",
   "family": null,
   "difficulty": 0,
@@ -12836,6 +13755,7 @@
  },
  {
   "id": "iq-0920",
+  "title": "E|X − Y| for Two d30 II",
   "section": "401-introduction-discrete",
   "family": null,
   "difficulty": 2,
@@ -12848,6 +13768,7 @@
  },
  {
   "id": "iq-0921",
+  "title": "E[X] for Density 3x²",
   "section": "402-introduction-continuous",
   "family": null,
   "difficulty": 0,
@@ -12860,6 +13781,7 @@
  },
  {
   "id": "iq-0922",
+  "title": "Waiting for a Rotating Ride",
   "section": "402-introduction-continuous",
   "family": null,
   "difficulty": 0,
@@ -12872,6 +13794,7 @@
  },
  {
   "id": "iq-0923",
+  "title": "Rolls to See Both 5 and 6",
   "section": "414-pie-for-ev",
   "family": null,
   "difficulty": 4,
@@ -12884,6 +13807,7 @@
  },
  {
   "id": "iq-0924",
+  "title": "Flips Until Both Heads and Tails",
   "section": "414-pie-for-ev",
   "family": null,
   "difficulty": 5,
@@ -12896,6 +13820,7 @@
  },
  {
   "id": "iq-0925",
+  "title": "Rolls Until 7, 8, 9, and 5 or 10",
   "section": "414-pie-for-ev",
   "family": null,
   "difficulty": 5,
@@ -12908,6 +13833,7 @@
  },
  {
   "id": "iq-0926",
+  "title": "Average of Digits Near Their Index",
   "section": "417-summation-using-expectation",
   "family": null,
   "difficulty": 3,
@@ -12920,6 +13846,7 @@
  },
  {
   "id": "iq-0927",
+  "title": "Sum of 1-and-9 Eight-Digit Numbers",
   "section": "417-summation-using-expectation",
   "family": null,
   "difficulty": 3,
@@ -12931,6 +13858,7 @@
  },
  {
   "id": "iq-0928",
+  "title": "Sum of Numbers Without Consecutive 1's",
   "section": "417-summation-using-expectation",
   "family": null,
   "difficulty": 5,
@@ -12943,6 +13871,7 @@
  },
  {
   "id": "iq-0929",
+  "title": "Bob's Three Routes",
   "section": "432-recursion",
   "family": null,
   "difficulty": 0,
@@ -12955,6 +13884,7 @@
  },
  {
   "id": "iq-0930",
+  "title": "Tying Noodle Ends into Loops",
   "section": "432-recursion",
   "family": null,
   "difficulty": 6,
@@ -12969,6 +13899,7 @@
  },
  {
   "id": "iq-0931",
+  "title": "Tosses Until THH",
   "section": "434-recursion-markov-chain",
   "family": null,
   "difficulty": 0,
@@ -12981,6 +13912,7 @@
  },
  {
   "id": "iq-0932",
+  "title": "Good and Bad Bulbs Markov Chain",
   "section": "434-recursion-markov-chain",
   "family": null,
   "difficulty": 2,
@@ -12996,6 +13928,7 @@
  },
  {
   "id": "iq-0933",
+  "title": "Flips Until 3 Heads and 3 Tails",
   "section": "434-recursion-markov-chain",
   "family": null,
   "difficulty": 2,
@@ -13008,6 +13941,7 @@
  },
  {
   "id": "iq-0934",
+  "title": "Two Cars Moving Forward",
   "section": "434-recursion-markov-chain",
   "family": null,
   "difficulty": 3,
@@ -13022,6 +13956,7 @@
  },
  {
   "id": "iq-0935",
+  "title": "Drunk Man on a Bridge",
   "section": "436-random-walk",
   "family": null,
   "difficulty": null,
@@ -13033,6 +13968,7 @@
  },
  {
   "id": "iq-0936",
+  "title": "Stopping When Girls Outnumber Boys",
   "section": "437-1-sided-absorption-random-walk",
   "family": null,
   "difficulty": 10,
@@ -13044,6 +13980,7 @@
  },
  {
   "id": "iq-0937",
+  "title": "Rolls Until Sum ≥ 10",
   "section": "438-renewal-process-hitting-times",
   "family": null,
   "difficulty": 6,
@@ -13057,6 +13994,7 @@
  },
  {
   "id": "iq-0938",
+  "title": "Uniforms Until a Decrease",
   "section": "438-renewal-process-hitting-times",
   "family": null,
   "difficulty": 9,
@@ -13068,6 +14006,7 @@
  },
  {
   "id": "iq-0939",
+  "title": "Sum Until a Non-Increase on a d10",
   "section": "438-renewal-process-hitting-times",
   "family": null,
   "difficulty": 10,
@@ -13081,6 +14020,7 @@
  },
  {
   "id": "iq-0940",
+  "title": "Expected Determinant of a 5×5 Matrix",
   "section": "440-symmetry-ad-hoc",
   "family": null,
   "difficulty": 3,
@@ -13093,6 +14033,7 @@
  },
  {
   "id": "iq-0941",
+  "title": "Return Time in a Two-State Chain",
   "section": "449-stationarity",
   "family": null,
   "difficulty": 5,
@@ -13106,6 +14047,7 @@
  },
  {
   "id": "iq-0942",
+  "title": "Knight Returning to the Corner",
   "section": "449-stationarity",
   "family": null,
   "difficulty": 7,
@@ -13120,6 +14062,7 @@
  },
  {
   "id": "iq-0943",
+  "title": "Column of 13 in a Sorted Grid",
   "section": "450-conditional-expectation",
   "family": null,
   "difficulty": 4,
@@ -13136,6 +14079,7 @@
  },
  {
   "id": "iq-0944",
+  "title": "E[X | X < Y]",
   "section": "450-conditional-expectation",
   "family": null,
   "difficulty": 10,
@@ -13148,6 +14092,7 @@
  },
  {
   "id": "iq-0945",
+  "title": "E[X1 | X1 + X2 = 5]",
   "section": "450-conditional-expectation",
   "family": null,
   "difficulty": 10,
@@ -13164,6 +14109,7 @@
  },
  {
   "id": "iq-0946",
+  "title": "Random Die of 6, 7, or 9 Faces",
   "section": "451-law-of-total-expectation-discrete",
   "family": null,
   "difficulty": 0,
@@ -13176,6 +14122,7 @@
  },
  {
   "id": "iq-0947",
+  "title": "Poisson Cards, Choose 4",
   "section": "451-law-of-total-expectation-discrete",
   "family": null,
   "difficulty": 3,
@@ -13191,6 +14138,7 @@
  },
  {
   "id": "iq-0948",
+  "title": "E[X] for X | Y ~ unif[0, Y]",
   "section": "452-law-of-total-expectation-continuous",
   "family": null,
   "difficulty": 0,
@@ -13203,6 +14151,7 @@
  },
  {
   "id": "iq-0949",
+  "title": "Expected Area of a Random Right Triangle",
   "section": "460-independent-rv",
   "family": null,
   "difficulty": 1,
@@ -13217,6 +14166,7 @@
  },
  {
   "id": "iq-0950",
+  "title": "Squared Distance After 10 Random Jumps",
   "section": "460-independent-rv",
   "family": null,
   "difficulty": 3,
@@ -13229,6 +14179,7 @@
  },
  {
   "id": "iq-0951",
+  "title": "Martha's Random Expression",
   "section": "460-independent-rv",
   "family": null,
   "difficulty": 5,
@@ -13246,6 +14197,7 @@
  },
  {
   "id": "iq-0952",
+  "title": "Squared Area of a Random Grid Triangle",
   "section": "460-independent-rv",
   "family": null,
   "difficulty": 6,
@@ -13258,6 +14210,7 @@
  },
  {
   "id": "iq-0953",
+  "title": "E[X²] for a Die Roll",
   "section": "461-lotus",
   "family": null,
   "difficulty": 0,
@@ -13270,6 +14223,7 @@
  },
  {
   "id": "iq-0954",
+  "title": "E[X²] for a Uniform",
   "section": "461-lotus",
   "family": null,
   "difficulty": 0,
@@ -13282,6 +14236,7 @@
  },
  {
   "id": "iq-0955",
+  "title": "Lowest Card Sharing 100's Bin I",
   "section": "462-tail-sum",
   "family": null,
   "difficulty": 3,
@@ -13295,6 +14250,7 @@
  },
  {
   "id": "iq-0956",
+  "title": "Lowest Card Sharing 100's Bin II",
   "section": "462-tail-sum",
   "family": null,
   "difficulty": 7,
@@ -13306,6 +14262,7 @@
  },
  {
   "id": "iq-0957",
+  "title": "Undominated Employees",
   "section": "472-linearity-of-expectation-harmonic-sum",
   "family": null,
   "difficulty": 8,
@@ -13321,6 +14278,7 @@
  },
  {
   "id": "iq-0958",
+  "title": "Expected Records Among Ten Uniforms",
   "section": "473-linearity-of-expectation-indicators",
   "family": null,
   "difficulty": 0,
@@ -13333,6 +14291,7 @@
  },
  {
   "id": "iq-0959",
+  "title": "Expected 2-Cycles in a Permutation",
   "section": "473-linearity-of-expectation-indicators",
   "family": null,
   "difficulty": 0,
@@ -13345,6 +14304,7 @@
  },
  {
   "id": "iq-0960",
+  "title": "Expected Color Blocks in 10 Squares",
   "section": "473-linearity-of-expectation-indicators",
   "family": null,
   "difficulty": 1,
@@ -13357,6 +14317,7 @@
  },
  {
   "id": "iq-0961",
+  "title": "Removing Numbers and Their Factors",
   "section": "473-linearity-of-expectation-indicators",
   "family": null,
   "difficulty": 9,
@@ -13369,6 +14330,7 @@
  },
  {
   "id": "iq-0962",
+  "title": "Piece with the Blue Dot",
   "section": "480-random-points-on-a-segment",
   "family": null,
   "difficulty": 2,
@@ -13381,6 +14343,7 @@
  },
  {
   "id": "iq-0963",
+  "title": "Expected Shorter Piece",
   "section": "480-random-points-on-a-segment",
   "family": null,
   "difficulty": 2,
@@ -13393,6 +14356,7 @@
  },
  {
   "id": "iq-0964",
+  "title": "Smallest Circle Around Two of Five Points",
   "section": "480-random-points-on-a-segment",
   "family": null,
   "difficulty": 4,
@@ -13404,6 +14368,7 @@
  },
  {
   "id": "iq-0965",
+  "title": "Square Around Four Closest Points",
   "section": "480-random-points-on-a-segment",
   "family": null,
   "difficulty": 6,
@@ -13416,6 +14381,7 @@
  },
  {
   "id": "iq-0966",
+  "title": "Largest Empty Square",
   "section": "480-random-points-on-a-segment",
   "family": null,
   "difficulty": 7,
@@ -13428,6 +14394,7 @@
  },
  {
   "id": "iq-0967",
+  "title": "Socks Left When One Color Runs Out",
   "section": "480-random-points-on-a-segment",
   "family": null,
   "difficulty": 7,
@@ -13443,6 +14410,7 @@
  },
  {
   "id": "iq-0968",
+  "title": "Splitting Large Chocolates",
   "section": "480-random-points-on-a-segment",
   "family": null,
   "difficulty": 8,
@@ -13457,6 +14425,7 @@
  },
  {
   "id": "iq-0969",
+  "title": "Square Containing Four of Eight Points",
   "section": "480-random-points-on-a-segment",
   "family": null,
   "difficulty": 9,
@@ -13472,6 +14441,7 @@
  },
  {
   "id": "iq-0970",
+  "title": "German Tank Problem",
   "section": "480-random-points-on-a-segment",
   "family": null,
   "difficulty": 10,
@@ -13487,6 +14457,7 @@
  },
  {
   "id": "iq-0971",
+  "title": "Cards Left When Two Colors Remain",
   "section": "480-random-points-on-a-segment",
   "family": null,
   "difficulty": 11,
@@ -13499,6 +14470,7 @@
  },
  {
   "id": "iq-0972",
+  "title": "Expected Max and Min of n Uniforms",
   "section": "481-order-statistics",
   "family": null,
   "difficulty": 4,
@@ -13514,6 +14486,7 @@
  },
  {
   "id": "iq-0973",
+  "title": "Variance of a Die Roll",
   "section": "501-definition-discrete",
   "family": null,
   "difficulty": 0,
@@ -13526,6 +14499,7 @@
  },
  {
   "id": "iq-0974",
+  "title": "PMF of the Max of Five d10",
   "section": "501-definition-discrete",
   "family": null,
   "difficulty": 1,
@@ -13537,6 +14511,7 @@
  },
  {
   "id": "iq-0975",
+  "title": "Variance of a Monte Carlo π Estimate",
   "section": "501-definition-discrete",
   "family": null,
   "difficulty": 2,
@@ -13551,6 +14526,7 @@
  },
  {
   "id": "iq-0976",
+  "title": "Variance of Fixed Points",
   "section": "501-definition-discrete",
   "family": null,
   "difficulty": 3,
@@ -13563,6 +14539,7 @@
  },
  {
   "id": "iq-0977",
+  "title": "Variance of x on a Sphere",
   "section": "502-definition-continuous",
   "family": null,
   "difficulty": 3,
@@ -13575,6 +14552,7 @@
  },
  {
   "id": "iq-0978",
+  "title": "Correlation of Overlapping Patterns",
   "section": "503-definition",
   "family": null,
   "difficulty": 3,
@@ -13589,6 +14567,7 @@
  },
  {
   "id": "iq-0979",
+  "title": "Correlation Bounds from 0.8 and 0.8",
   "section": "504-definition",
   "family": null,
   "difficulty": 7,
@@ -13602,6 +14581,7 @@
  },
  {
   "id": "iq-0980",
+  "title": "E[X | X > Y]",
   "section": "513-bivariate-normal",
   "family": null,
   "difficulty": 10,
@@ -13614,6 +14594,7 @@
  },
  {
   "id": "iq-0981",
+  "title": "Expected Heads Times Tails",
   "section": "515-bernoulli-rv",
   "family": null,
   "difficulty": 2,
@@ -13627,6 +14608,7 @@
  },
  {
   "id": "iq-0982",
+  "title": "Variance of Flips Until HHHH",
   "section": "534-recursion-markov-chain",
   "family": null,
   "difficulty": 10,
@@ -13641,6 +14623,7 @@
  },
  {
   "id": "iq-0983",
+  "title": "Rain Given Random Humidity",
   "section": "551-law-of-total-variance-discrete",
   "family": null,
   "difficulty": 0,
@@ -13653,6 +14636,7 @@
  },
  {
   "id": "iq-0984",
+  "title": "Variance of Heads from a Die Count",
   "section": "551-law-of-total-variance-discrete",
   "family": null,
   "difficulty": 0,
@@ -13665,6 +14649,7 @@
  },
  {
   "id": "iq-0985",
+  "title": "Bernoulli with Uniform Parameter",
   "section": "551-law-of-total-variance-discrete",
   "family": null,
   "difficulty": 2,
@@ -13678,6 +14663,7 @@
  },
  {
   "id": "iq-0986",
+  "title": "P(Y > 0.5) for Y ~ unif[X, 1]",
   "section": "551-law-of-total-variance-discrete",
   "family": null,
   "difficulty": 8,
@@ -13692,6 +14678,7 @@
  },
  {
   "id": "iq-0987",
+  "title": "Variance of a Normal Mixture",
   "section": "551-law-of-total-variance-discrete",
   "family": null,
   "difficulty": 10,
@@ -13703,6 +14690,7 @@
  },
  {
   "id": "iq-0988",
+  "title": "Variance of |A ∪ B|",
   "section": "560-independent-rv",
   "family": null,
   "difficulty": 3,
@@ -13715,6 +14703,7 @@
  },
  {
   "id": "iq-0989",
+  "title": "Fair Fee: Guessing a Ball's Color",
   "section": "701-fair-value",
   "family": null,
   "difficulty": 0,
@@ -13727,6 +14716,7 @@
  },
  {
   "id": "iq-0990",
+  "title": "Fair Fee: Unknown Urn Mix",
   "section": "701-fair-value",
   "family": null,
   "difficulty": 2,
@@ -13739,6 +14729,7 @@
  },
  {
   "id": "iq-0991",
+  "title": "Red Cards Before the First Spade",
   "section": "701-fair-value",
   "family": null,
   "difficulty": 3,
@@ -13751,6 +14742,7 @@
  },
  {
   "id": "iq-0992",
+  "title": "Bidding on a Painting, 1.8× Resale",
   "section": "701-fair-value",
   "family": null,
   "difficulty": 4,
@@ -13765,6 +14757,7 @@
  },
  {
   "id": "iq-0993",
+  "title": "Bidding on a Painting, 1.5× Resale",
   "section": "701-fair-value",
   "family": null,
   "difficulty": 8,
@@ -13779,6 +14772,7 @@
  },
  {
   "id": "iq-0994",
+  "title": "Red/Black Card Game, Quit Anytime",
   "section": "702-stopping-rule-game-strategy-ev",
   "family": null,
   "difficulty": 3,
@@ -13794,6 +14788,7 @@
  },
  {
   "id": "iq-0995",
+  "title": "Three Cards n, n+1, n+2",
   "section": "702-stopping-rule-game-strategy-ev",
   "family": null,
   "difficulty": 3,
@@ -13806,6 +14801,7 @@
  },
  {
   "id": "iq-0996",
+  "title": "Larger Number Pays the Smaller",
   "section": "703-optimal-parameters",
   "family": null,
   "difficulty": 7,
@@ -13821,6 +14817,7 @@
  },
  {
   "id": "iq-0997",
+  "title": "Stopping Before a Red Card",
   "section": "704-optimal-stopping",
   "family": null,
   "difficulty": 7,
@@ -13836,6 +14833,7 @@
  },
  {
   "id": "iq-0998",
+  "title": "Guessing Rank of X1",
   "section": "706-probabilistic-betting",
   "family": null,
   "difficulty": 4,
@@ -13850,6 +14848,7 @@
  },
  {
   "id": "iq-0999",
+  "title": "Red or Green Card Game",
   "section": "714-probabilistic-game-theory",
   "family": null,
   "difficulty": 3,
@@ -13864,6 +14863,7 @@
  },
  {
   "id": "iq-1000",
+  "title": "Guessing Discarded Cards",
   "section": "714-probabilistic-game-theory",
   "family": null,
   "difficulty": 9,
@@ -13875,6 +14875,7 @@
  },
  {
   "id": "iq-1001",
+  "title": "50 Wise Men and a Glass",
   "section": "715-cooperation",
   "family": null,
   "difficulty": 3,
@@ -13888,6 +14889,7 @@
  },
  {
   "id": "iq-1002",
+  "title": "Seven Prisoners, Rainbow Hats",
   "section": "715-cooperation",
   "family": null,
   "difficulty": 4,
@@ -13901,6 +14903,7 @@
  },
  {
   "id": "iq-1003",
+  "title": "100 Prisoners, Red and Black Hats",
   "section": "715-cooperation",
   "family": null,
   "difficulty": 4,
@@ -13915,6 +14918,7 @@
  },
  {
   "id": "iq-1004",
+  "title": "Hats in a Line, Two Colors",
   "section": "715-cooperation",
   "family": null,
   "difficulty": 4,
@@ -13929,6 +14933,7 @@
  },
  {
   "id": "iq-1005",
+  "title": "N People, Numbered Hats",
   "section": "715-cooperation",
   "family": null,
   "difficulty": 6,
@@ -13942,6 +14947,7 @@
  },
  {
   "id": "iq-1006",
+  "title": "Hats in a Line, 10 Colors",
   "section": "715-cooperation",
   "family": null,
   "difficulty": 6,
@@ -13956,6 +14962,7 @@
  },
  {
   "id": "iq-1007",
+  "title": "Three Eggs, 10 Drops",
   "section": "720-minimax",
   "family": null,
   "difficulty": 5,
@@ -13968,6 +14975,7 @@
  },
  {
   "id": "iq-1008",
+  "title": "Designing Dice, Both Players",
   "section": "720-minimax",
   "family": null,
   "difficulty": 7,
@@ -13981,6 +14989,7 @@
  },
  {
   "id": "iq-1009",
+  "title": "Beating Bob's 1-1-1-6-6-6 Die",
   "section": "722-qualitative-strategy",
   "family": null,
   "difficulty": 2,
@@ -13994,6 +15003,7 @@
  },
  {
   "id": "iq-1010",
+  "title": "Weighted Die vs a Standard Die",
   "section": "722-qualitative-strategy",
   "family": null,
   "difficulty": 4,
@@ -14007,6 +15017,7 @@
  },
  {
   "id": "iq-1011",
+  "title": "Alice Designs Both Dice",
   "section": "722-qualitative-strategy",
   "family": null,
   "difficulty": 9,
@@ -14020,6 +15031,7 @@
  },
  {
   "id": "iq-1012",
+  "title": "Keeping Red and Blue Marbles",
   "section": "730-parity",
   "family": null,
   "difficulty": 2,
@@ -14033,6 +15045,7 @@
  },
  {
   "id": "iq-1013",
+  "title": "Race to 50",
   "section": "730-parity",
   "family": null,
   "difficulty": 3,
@@ -14046,6 +15059,7 @@
  },
  {
   "id": "iq-1014",
+  "title": "Signs Between 1 and 100, Odd Wins",
   "section": "730-parity",
   "family": null,
   "difficulty": 5,
@@ -14062,6 +15076,7 @@
  },
  {
   "id": "iq-1015",
+  "title": "Powers of 2 vs Powers of 3",
   "section": "730-parity",
   "family": null,
   "difficulty": 8,
@@ -14075,6 +15090,7 @@
  },
  {
   "id": "iq-1016",
+  "title": "Placing Knights on 8×8",
   "section": "731-mirror-strategies",
   "family": null,
   "difficulty": 2,
@@ -14089,6 +15105,7 @@
  },
  {
   "id": "iq-1017",
+  "title": "Placing Coins on a Table",
   "section": "731-mirror-strategies",
   "family": null,
   "difficulty": 3,
@@ -14100,6 +15117,7 @@
  },
  {
   "id": "iq-1018",
+  "title": "Non-Crossing Segments Game",
   "section": "731-mirror-strategies",
   "family": null,
   "difficulty": 4,
@@ -14111,6 +15129,7 @@
  },
  {
   "id": "iq-1019",
+  "title": "Two-Pile Nim",
   "section": "731-mirror-strategies",
   "family": null,
   "difficulty": 5,
@@ -14122,6 +15141,7 @@
  },
  {
   "id": "iq-1020",
+  "title": "Tearing Petals",
   "section": "731-mirror-strategies",
   "family": null,
   "difficulty": 8,
@@ -14133,6 +15153,7 @@
  },
  {
   "id": "iq-1021",
+  "title": "Chomp on 4×5",
   "section": "732-stealing-strategies",
   "family": null,
   "difficulty": 6,
@@ -14146,6 +15167,7 @@
  },
  {
   "id": "iq-1022",
+  "title": "Prime Number Game",
   "section": "732-stealing-strategies",
   "family": null,
   "difficulty": 6,
@@ -14157,6 +15179,7 @@
  },
  {
   "id": "iq-1023",
+  "title": "Replacing the Largest Number",
   "section": "732-stealing-strategies",
   "family": null,
   "difficulty": 10,
@@ -14168,6 +15191,7 @@
  },
  {
   "id": "iq-1024",
+  "title": "King Moving Up and Right",
   "section": "733-winning-losing-states",
   "family": null,
   "difficulty": 3,
@@ -14179,6 +15203,7 @@
  },
  {
   "id": "iq-1025",
+  "title": "Coprime Selection Game",
   "section": "733-winning-losing-states",
   "family": null,
   "difficulty": 4,
@@ -14190,6 +15215,7 @@
  },
  {
   "id": "iq-1026",
+  "title": "Subtracting Digits from 1234",
   "section": "733-winning-losing-states",
   "family": null,
   "difficulty": 4,
@@ -14203,6 +15229,7 @@
  },
  {
   "id": "iq-1027",
+  "title": "Racing Real Numbers on a Board",
   "section": "733-winning-losing-states",
   "family": null,
   "difficulty": 5,
@@ -14214,6 +15241,7 @@
  },
  {
   "id": "iq-1028",
+  "title": "Removing At Most Half the Marbles",
   "section": "733-winning-losing-states",
   "family": null,
   "difficulty": 5,
@@ -14225,6 +15253,7 @@
  },
  {
   "id": "iq-1029",
+  "title": "Removing a Factor of the Pile",
   "section": "733-winning-losing-states",
   "family": null,
   "difficulty": 6,
@@ -14238,6 +15267,7 @@
  },
  {
   "id": "iq-1030",
+  "title": "Guessing a Number in Turns",
   "section": "733-winning-losing-states",
   "family": null,
   "difficulty": 7,
@@ -14252,6 +15282,7 @@
  },
  {
   "id": "iq-1031",
+  "title": "Subtracting Divisors from 60",
   "section": "733-winning-losing-states",
   "family": null,
   "difficulty": 7,
@@ -14263,6 +15294,7 @@
  },
  {
   "id": "iq-1032",
+  "title": "SOS Game",
   "section": "733-winning-losing-states",
   "family": null,
   "difficulty": null,
@@ -14274,6 +15306,7 @@
  },
  {
   "id": "iq-1033",
+  "title": "Turning Down Cards",
   "section": "734-coloring-strategies",
   "family": null,
   "difficulty": 11,
@@ -14289,6 +15322,7 @@
  },
  {
   "id": "iq-1034",
+  "title": "Alice Is the Last Ant Off the Rod",
   "section": "802-last-to-exit",
   "family": null,
   "difficulty": 10,
@@ -14300,6 +15334,7 @@
  },
  {
   "id": "iq-1035",
+  "title": "Adjacent Differences of at Least 50",
   "section": "999-invariants",
   "family": null,
   "difficulty": 1,
@@ -14311,6 +15346,7 @@
  },
  {
   "id": "iq-1036",
+  "title": "Cutting a 3×3×3 Cube",
   "section": "999-unsorted",
   "family": null,
   "difficulty": 3,
@@ -14326,6 +15362,7 @@
  },
  {
   "id": "iq-1037",
+  "title": "Expected Heads with No Consecutive Heads",
   "section": "999-unsorted",
   "family": null,
   "difficulty": 5,
@@ -14338,6 +15375,7 @@
  },
  {
   "id": "iq-1038",
+  "title": "Passing a Bottle Around a Table",
   "section": "999-symmetry",
   "family": null,
   "difficulty": 10,
@@ -14350,6 +15388,7 @@
  },
  {
   "id": "iq-1039",
+  "title": "Sum of Fibonacci Numbers",
   "section": "141-simple-induction",
   "family": "recursion-tricks",
   "difficulty": 1,
@@ -14364,6 +15403,7 @@
  },
  {
   "id": "iq-1040",
+  "title": "Compact Cars and SUVs",
   "section": "230-recursion-fibonacci",
   "family": "tiling",
   "difficulty": 1,
@@ -14379,6 +15419,7 @@
  },
  {
   "id": "iq-1041",
+  "title": "Fibonacci Telescoping Product",
   "section": "230-recursion-fibonacci",
   "family": "recursion-tricks",
   "difficulty": 2,
@@ -14392,6 +15433,7 @@
  },
  {
   "id": "iq-1042",
+  "title": "Paths Through Hexagons",
   "section": "230-recursion-fibonacci",
   "family": "grid-walk",
   "difficulty": 2,
@@ -14407,6 +15449,7 @@
  },
  {
   "id": "iq-1043",
+  "title": "Base-4 Digits Differing by 1",
   "section": "230-recursion-fibonacci",
   "family": "digits",
   "difficulty": 2,
@@ -14421,6 +15464,7 @@
  },
  {
   "id": "iq-1044",
+  "title": "Ancestors of a Male Venusian",
   "section": "230-recursion-fibonacci",
   "family": "recursion-tricks",
   "difficulty": 2,
@@ -14435,6 +15479,7 @@
  },
  {
   "id": "iq-1045",
+  "title": "Sum of F_n / 3^n",
   "section": "230-recursion-fibonacci",
   "family": "recursion-tricks",
   "difficulty": 3,
@@ -14449,6 +15494,7 @@
  },
  {
   "id": "iq-1046",
+  "title": "Rain on the Weekend",
   "section": null,
   "family": null,
   "difficulty": 3,
@@ -14465,6 +15511,7 @@
  },
  {
   "id": "iq-1047",
+  "title": "Compositions into Parts Greater Than 1",
   "section": "230-recursion-fibonacci",
   "family": "recursion-tricks",
   "difficulty": 4,
@@ -14478,6 +15525,7 @@
  },
  {
   "id": "iq-1048",
+  "title": "Handy Subsets",
   "section": "232-bijection",
   "family": "sets",
   "difficulty": 5,
@@ -14494,6 +15542,7 @@
  },
  {
   "id": "iq-1049",
+  "title": "Simplified Fractions Stay Simplified",
   "section": null,
   "family": null,
   "difficulty": null,
@@ -14507,6 +15556,7 @@
  },
  {
   "id": "iq-1050",
+  "title": "Lattice Paths to (5, 5)",
   "section": "206-definition",
   "family": "lattice-walk",
   "difficulty": 1,
@@ -14521,6 +15571,7 @@
  },
  {
   "id": "iq-1051",
+  "title": "Lattice Paths with Even Turns",
   "section": "232-bijection",
   "family": "lattice-walk",
   "difficulty": 4,
@@ -14536,6 +15587,7 @@
  },
  {
   "id": "iq-1052",
+  "title": "Exactly 2 Turns Given Even Turns",
   "section": "350-conditional-probability",
   "family": "lattice-walk",
   "difficulty": 4,
@@ -14551,6 +15603,7 @@
  },
  {
   "id": "iq-1053",
+  "title": "Lattice Paths Avoiding (2, 2)",
   "section": "211-complementary-counting",
   "family": "lattice-walk",
   "difficulty": 3,
@@ -14566,6 +15619,7 @@
  },
  {
   "id": "iq-1054",
+  "title": "Lattice Paths Never Below y = x",
   "section": "234-reflection-principle",
   "family": "lattice-walk",
   "difficulty": 5,

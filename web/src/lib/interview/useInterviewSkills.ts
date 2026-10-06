@@ -5,6 +5,7 @@ import type { Ability } from "../assessment/types";
 import { useAuth } from "../auth/useAuth";
 import { supabase } from "../supabase";
 import { questions } from "./bank";
+import { markSolved } from "./solved";
 import {
   authoredDifficultyLogit,
   DISCRIMINATION,
@@ -137,6 +138,7 @@ export function useInterviewSkills() {
       const { question: q, correctness, seconds, mode } = attempt;
       const score = effectiveScore(q, correctness, seconds);
       const sectionId = attempt.section ?? q.section;
+      if (user && correctness === 1) markSolved(user.id, q.id);
       if (!user || !sectionId) return { score };
 
       const before = current.current.get(sectionId);

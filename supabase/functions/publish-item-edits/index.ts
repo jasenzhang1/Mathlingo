@@ -96,6 +96,7 @@ function isInterviewQuestion(value: unknown): value is InterviewQuestion {
     (q.section === null || isString(q.section)) &&
     (q.family === null || isString(q.family)) &&
     (q.difficulty === null || typeof q.difficulty === "number") &&
+    optional(q.title, isString) &&
     isString(q.question) &&
     isString(q.answer) &&
     isString(q.notes) &&
@@ -227,6 +228,24 @@ Deno.serve(async (req) => {
     body = await req.json();
   } catch {
     return json({ error: "Request body must be valid JSON." }, 400);
+  }
+
+  // Read-only: the item overrides file as it is on the base branch, so the
+  // dev editor can drop local edits that have since been merged.
+  if ((body as { action?: unknown })?.action === "published") {
+    const githubToken = Deno.env.get("GITHUB_TOKEN");
+    const owner = Deno.env.get("GITHUB_OWNER");
+    const repo = Deno.env.get("GITHUB_REPO");
+    if (!githubToken || !owner || !repo) {
+      return json({ error: "Publishing isn't configured yet: GITHUB_TOKEN, GITHUB_OWNER and GITHUB_REPO must be set." }, 500);
+    }
+    const baseBranch = Deno.env.get("GITHUB_BASE_BRANCH") || "main";
+    const res = await githubFetch(`/repos/${owner}/${repo}/contents/${OVERRIDES_PATH}?ref=${baseBranch}`, githubToken);
+    if (res.status === 404) return json({ overrides: {}, newItems: {} });
+    if (!res.ok) return json({ error: `Could not read ${OVERRIDES_PATH} (${res.status}).` }, 502);
+    const data = await res.json();
+    const file: OverridesFile = JSON.parse(b64decode(data.content.replace(/\n/g, "")));
+    return json({ overrides: file.overrides ?? {}, newItems: file.newItems ?? {} });
   }
 
   const validated = validatePayload(body);
