@@ -61,6 +61,8 @@ function FreeHome() {
         </p>
       </div>
 
+      <ProblemListLink />
+
       <section>
         <h2 className="font-display text-2xl text-[var(--ink)]">Free decks</h2>
         <div className="mt-4 grid gap-4 md:grid-cols-2">
@@ -141,6 +143,8 @@ function FullHome() {
       <div>
         <h1 className="font-display text-3xl text-[var(--ink)] md:text-4xl">Interview Prep</h1>
       </div>
+
+      <ProblemListLink />
 
       <section className="grid gap-5 md:grid-cols-2">
         <div className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-6 shadow-sm">
@@ -260,5 +264,23 @@ function FullHome() {
         </div>
       </section>
     </div>
+  );
+}
+
+/** The way into the full problem list, on both tiers (locked questions show a lock there). */
+function ProblemListLink() {
+  return (
+    <Link
+      to="/interview/problems"
+      className="font-body flex items-center justify-between gap-4 rounded-2xl border border-[var(--line)] bg-[var(--panel)] px-6 py-4 shadow-sm hover:border-[var(--accent)]"
+    >
+      <span>
+        <span className="font-display block text-lg text-[var(--ink)]">Problem list</span>
+        <span className="block text-sm text-[var(--ink-soft)]">
+          Browse every question. Filter by concept, scenario, and difficulty (the share of students who get it right).
+        </span>
+      </span>
+      <span className="shrink-0 text-sm font-semibold text-[var(--accent)]">Browse →</span>
+    </Link>
   );
 }

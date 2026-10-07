@@ -31,7 +31,7 @@ interface SkillRow {
   observations: number;
 }
 
-export type AttemptMode = "mock" | "train";
+export type AttemptMode = "mock" | "train" | "problems";
 
 export interface Attempt {
   question: InterviewQuestion;

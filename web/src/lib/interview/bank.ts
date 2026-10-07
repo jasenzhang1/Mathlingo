@@ -144,8 +144,12 @@ export function difficultyBand(q: InterviewQuestion): DifficultyBand {
   return d <= 3 ? "Easy" : d <= 6 ? "Medium" : "Hard";
 }
 
-/** The number a problem list shows: `iq-0042` → 42. Ids without a number keep their text. */
-export function problemNumber(q: InterviewQuestion): number | null {
-  const m = /^iq-(\d+)$/.exec(q.id);
-  return m ? Number(m[1]) : null;
+/** The list number: `iq-0042` is problem 42. */
+export function problemNumber(q: InterviewQuestion): number {
+  return Number.parseInt(q.id.replace(/^\D+/, ""), 10) || 0;
+}
+
+/** The name a problem list shows: the question's title, or the start of its text for an untitled draft. */
+export function problemTitle(q: InterviewQuestion): string {
+  return questionTitle(q);
 }

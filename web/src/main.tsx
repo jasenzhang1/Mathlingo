@@ -6,6 +6,7 @@ import App from "./App.tsx";
 import { AuthProvider } from "./lib/auth/AuthContext.tsx";
 import { ProfileProvider } from "./lib/ProfileProvider.tsx";
 import { OnboardingGate } from "./components/OnboardingGate.tsx";
+import { FeedbackBubble } from "./components/FeedbackBubble.tsx";
 import { AccountPage } from "./pages/AccountPage.tsx";
 import { ConceptMapPage } from "./pages/ConceptMapPage.tsx";
 import { ConceptPage } from "./pages/ConceptPage.tsx";
@@ -32,8 +33,14 @@ import { WelcomePage } from "./pages/WelcomePage.tsx";
 // chunk, fetched only by people who open that section.
 const InterviewPage = lazy(() => import("./pages/InterviewPage.tsx").then((m) => ({ default: m.InterviewPage })));
 const InterviewMockPage = lazy(() => import("./pages/InterviewMockPage.tsx").then((m) => ({ default: m.InterviewMockPage })));
-const InterviewTrainPage = lazy(() => import("./pages/InterviewTrainPage.tsx").then((m) => ({ default: m.InterviewTrainPage })));
+const InterviewProblemsPage = lazy(() => import("./pages/InterviewProblemsPage.tsx").then((m) => ({ default: m.InterviewProblemsPage })));
 const InterviewProblemPage = lazy(() => import("./pages/InterviewProblemPage.tsx").then((m) => ({ default: m.InterviewProblemPage })));
+const InterviewTrainPage = lazy(() => import("./pages/InterviewTrainPage.tsx").then((m) => ({ default: m.InterviewTrainPage })));
+<<<<<<< HEAD
+const InterviewProblemPage = lazy(() => import("./pages/InterviewProblemPage.tsx").then((m) => ({ default: m.InterviewProblemPage })));
+=======
+const DevFeedbackPage = lazy(() => import("./pages/DevFeedbackPage.tsx").then((m) => ({ default: m.DevFeedbackPage })));
+>>>>>>> origin/main
 const DevBundlesPage = lazy(() => import("./pages/DevBundlesPage.tsx").then((m) => ({ default: m.DevBundlesPage })));
 
 createRoot(document.getElementById("root")!).render(
@@ -42,6 +49,7 @@ createRoot(document.getElementById("root")!).render(
       <AuthProvider>
         <ProfileProvider>
         <OnboardingGate />
+        <FeedbackBubble />
         <Suspense fallback={null}>
           <Routes>
             <Route path="/welcome" element={<WelcomePage />} />
@@ -70,8 +78,11 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/submit/analogies" element={<SubmitAnalogyPage />} />
             <Route path="/dev/questions" element={<DevQuestionsPage />} />
             <Route path="/dev/bundles" element={<DevBundlesPage />} />
+            <Route path="/dev/feedback" element={<DevFeedbackPage />} />
             <Route path="/interview" element={<InterviewPage />} />
             <Route path="/interview/mock" element={<InterviewMockPage />} />
+            <Route path="/interview/problems" element={<InterviewProblemsPage />} />
+            <Route path="/interview/problems/:id" element={<InterviewProblemPage />} />
             <Route path="/interview/train/:sectionId" element={<InterviewTrainPage />} />
 
             <Route path="/interview/problem/:id" element={<InterviewProblemPage />} />

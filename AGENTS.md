@@ -30,3 +30,8 @@ See `assessment.md` for the full framework — where problems come from, how ope
 A separate tab (`/interview`), sold as its own monthly subscription, and not part of the learning path. It is a databank of quant interview questions, labelled by **section** (technique) and **family** (scenario). Candidates take **mock interviews**: chains of questions on one scenario that get harder as they go, timed and graded. They can also **train** one technique. Speed and accuracy move per-technique interview skill bars, which are completely separate from lesson proficiency.
 
 The questions live in `web/src/data/interview/`, and developers curate the mock-interview chains at `/dev/bundles`. See `interview.md`.
+
+## 3 Feedback bubble
+
+Signed-in students see a feedback bubble in the bottom-right corner of every page. When they open it, it records where they are and what they see: the route, the text in the viewport, what they have typed or selected, any open dialog, recent errors, the pages they came from, and a screenshot, which they can leave out. Developers read and resolve reports at `/dev/feedback`. The code is in `web/src/components/FeedbackBubble.tsx` and `web/src/lib/feedback/siteFeedback.ts`, and the table is in migration 0018. A page with a fixed bottom bar marks it `data-bottom-bar` so the bubble sits above it.
+

@@ -82,6 +82,31 @@ still gets harder as it goes. They are a starting point, and each one should be 
 whose difficulty sits just above the candidate's current level, and questions only repeat once
 the pool is exhausted.
 
+## Problem list
+
+`/interview/problems` lists every question in one LeetCode-style list. It starts in id order,
+which is arbitrary.
+
+- **Filters:** search, **Concepts** (techniques, matching a question's main section or any of its
+  `otherSections`), **Scenario** (family), **Difficulty**, and **Status** (Todo, Solved, Attempted).
+  Picking several concepts or scenarios matches questions with any of them. Filters live in the
+  query string, so Back and shared links keep them.
+- **Difficulty** is literally the percentage of students who get the question right. Only each
+  student's first answer counts, and only a fully right answer ("Partly" does not). The numbers
+  come from `interview_question_stats()` (migration 0017), because `interview_attempts` is
+  readable only by its owner. The colour and the Difficulty filter use LeetCode's three bands:
+  Easy at 60% or more, Medium at 30–60%, Hard under 30%. Questions nobody has answered yet show
+  *New* and sort last in both directions.
+- **Sort:** click the Difficulty header, or use **Sort**, for easiest or hardest first.
+- **Concept tags** are hidden by default, since recognising the technique is part of the
+  question. *Show concept tags* turns them on, and the choice is remembered in the browser.
+- **Pick one** opens a random unsolved question from the filtered list.
+- **Locked questions** show a lock on the free tier and open to the upgrade card.
+
+Opening a question (`/interview/problems/:id`) works like training: timed, technique hidden
+until answered, and it moves the main technique's bar. Answers are logged with mode `problems`.
+*Next problem* follows the filtered list the student came from.
+
 ## Skill bars
 
 Each section has one bar, stored per user in `interview_skills` (migration 0008) and mirrored to

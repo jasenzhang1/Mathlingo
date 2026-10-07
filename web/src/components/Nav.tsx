@@ -118,6 +118,16 @@ function UserMenu() {
                 Interview databank (dev)
               </Link>
             )}
+            {isDeveloper && (
+              <Link
+                to="/dev/feedback"
+                role="menuitem"
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-3 py-2 text-left text-sm text-[var(--ink)] hover:bg-[var(--paper)]"
+              >
+                Student feedback (dev)
+              </Link>
+            )}
             {isRealDeveloper && <StudentViewControls />}
             <button
               type="button"
