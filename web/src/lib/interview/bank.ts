@@ -100,3 +100,52 @@ export function sectionsByTopic(): { topic: string; sections: InterviewSection[]
 export function questionsInSection(sectionId: string): InterviewQuestion[] {
   return liveQuestions.filter((q) => techniquesOf(q).includes(sectionId));
 }
+
+/** The broad topic a problem list shows, one level above a section's topic. */
+export type ProblemTopic = "Brainteasers" | "Probability" | "Combinatorics" | "Number Theory" | "Algebra" | "Game Theory";
+
+/** Section topic → broad topic. Anything not listed (including "Unsorted") is a brainteaser. */
+const TOPIC_OF: Record<string, ProblemTopic> = {
+  Probability: "Probability",
+  "Expected Values": "Probability",
+  Variance: "Probability",
+  Covariance: "Probability",
+  Correlation: "Probability",
+  "Random Variables": "Probability",
+  Combinatorics: "Combinatorics",
+  Permutations: "Combinatorics",
+  Combinations: "Combinatorics",
+  "Combinatorial Identities": "Combinatorics",
+  "Counting Tricks": "Combinatorics",
+  Pigeonhole: "Combinatorics",
+  "Graph Theory": "Combinatorics",
+  "Number Theory": "Number Theory",
+  Algebra: "Algebra",
+  Optimization: "Algebra",
+  "Betting Games": "Game Theory",
+  "Game Theory": "Game Theory",
+  "Game Thoery": "Game Theory",
+  "Winning strategies": "Game Theory",
+};
+
+export const PROBLEM_TOPICS: ProblemTopic[] = ["Brainteasers", "Probability", "Combinatorics", "Number Theory", "Algebra", "Game Theory"];
+
+export function problemTopic(q: InterviewQuestion): ProblemTopic {
+  const s = q.section ? sectionById.get(q.section) : undefined;
+  return (s && TOPIC_OF[s.topic]) || "Brainteasers";
+}
+
+export type DifficultyBand = "Easy" | "Medium" | "Hard";
+export const DIFFICULTY_BANDS: DifficultyBand[] = ["Easy", "Medium", "Hard"];
+
+/** 0–3 easy, 4–6 medium, 7 and up hard. Unrated questions count as the default (medium). */
+export function difficultyBand(q: InterviewQuestion): DifficultyBand {
+  const d = difficultyOf(q);
+  return d <= 3 ? "Easy" : d <= 6 ? "Medium" : "Hard";
+}
+
+/** The number a problem list shows: `iq-0042` → 42. Ids without a number keep their text. */
+export function problemNumber(q: InterviewQuestion): number | null {
+  const m = /^iq-(\d+)$/.exec(q.id);
+  return m ? Number(m[1]) : null;
+}
