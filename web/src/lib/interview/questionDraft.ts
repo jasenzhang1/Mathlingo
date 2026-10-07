@@ -84,3 +84,36 @@ export function applyQuestionDraft(repo: InterviewQuestion[], draft: QuestionDra
   for (const q of Object.values(draft)) if (!seen.has(q.id) && !gone.has(q.id)) merged.push(q);
   return merged;
 }
+
+/**
+ * Drops optional fields that are empty or at their default, and keeps the
+ * repo version's key order, so an untouched field never shows up in the PR.
+ */
+export function normalizeQuestion(q: InterviewQuestion, original?: InterviewQuestion): InterviewQuestion {
+  const c: Record<string, unknown> = { ...q };
+  if (!q.otherSections?.length) delete c.otherSections;
+  if (q.numericAnswer === undefined || !Number.isFinite(q.numericAnswer)) delete c.numericAnswer;
+  if (q.status !== "draft") delete c.status;
+  if (!q.free) delete c.free;
+  if (!q.reviewNote) delete c.reviewNote;
+  if (!q.instructional) delete c.instructional;
+  const canonical = ["id", "title", "section", "otherSections", "family", "difficulty", "question", "answer", "notes", "tags", "source", "instructional", "numericAnswer", "status", "free", "reviewNote"];
+  const order = [...Object.keys(original ?? {}), ...canonical, ...Object.keys(c)];
+  const out: Record<string, unknown> = {};
+  for (const k of order) if (k in c && !(k in out)) out[k] = c[k];
+  return out as unknown as InterviewQuestion;
+}
+
+/**
+ * Stores one question edit in this browser's draft, or drops it once it
+ * matches the published version again. `original` is the published question,
+ * if there is one. Returns the new draft.
+ */
+export function saveQuestionEdit(q: InterviewQuestion, original?: InterviewQuestion): QuestionDraft {
+  const draft = { ...loadQuestionDraft() };
+  const normalized = normalizeQuestion(q, original);
+  if (original && JSON.stringify(normalized) === JSON.stringify(original)) delete draft[q.id];
+  else draft[q.id] = normalized;
+  saveQuestionDraft(draft);
+  return draft;
+}

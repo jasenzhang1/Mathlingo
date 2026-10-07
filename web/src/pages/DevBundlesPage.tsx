@@ -1,12 +1,16 @@
 import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Footer } from "../components/Footer";
+import { InterviewQuestionForm } from "../components/dev/InterviewQuestionForm";
+import { btn, field, fieldLabel, freeBadge, lockedBadge, sortedFamilies, sortedSections } from "../components/dev/interviewEditorStyles";
+import { SolvedMark } from "../components/interview/SolvedMark";
 import { Nav } from "../components/Nav";
 import { useAuth } from "../lib/auth/useAuth";
 import { useIsDeveloper } from "../lib/dev/devAuth";
 import { publishInterview } from "../lib/dev/publishOverrides";
-import { DEFAULT_DIFFICULTY, families, familyById, isLive, repoBundles, repoQuestions, sectionById, sectionLabel, sections, techniquesOf } from "../lib/interview/bank";
+import { DEFAULT_DIFFICULTY, familyById, isLive, questionTitle, repoBundles, repoQuestions, sectionLabel, techniquesOf } from "../lib/interview/bank";
 import { clearBundleDraft, loadBundleDraft, saveBundleDraft } from "../lib/interview/bundleDraft";
+import { useSolvedQuestions } from "../lib/interview/solved";
 import { findDuplicateGroups, pairKey, tokenize, type DuplicateGroup } from "../lib/interview/duplicates";
 import {
   applyQuestionDraft,
@@ -14,6 +18,7 @@ import {
   clearQuestionDraft,
   loadDeletedQuestions,
   loadQuestionDraft,
+  normalizeQuestion,
   saveDeletedQuestions,
   saveQuestionDraft,
   type QuestionDraft,
@@ -59,34 +64,7 @@ function warningsFor(b: Bundle, qById: Map<string, InterviewQuestion>): string[]
   return out;
 }
 
-/**
- * Drops optional fields that are empty or at their default, and keeps the
- * repo version's key order, so an untouched field never shows up in the PR.
- */
-function normalizeQuestion(q: InterviewQuestion, original?: InterviewQuestion): InterviewQuestion {
-  const c: Record<string, unknown> = { ...q };
-  if (!q.otherSections?.length) delete c.otherSections;
-  if (q.numericAnswer === undefined || !Number.isFinite(q.numericAnswer)) delete c.numericAnswer;
-  if (q.status !== "draft") delete c.status;
-  if (!q.free) delete c.free;
-  if (!q.reviewNote) delete c.reviewNote;
-  if (!q.instructional) delete c.instructional;
-  const canonical = ["id", "section", "otherSections", "family", "difficulty", "question", "answer", "notes", "tags", "source", "instructional", "numericAnswer", "status", "free", "reviewNote"];
-  const order = [...Object.keys(original ?? {}), ...canonical, ...Object.keys(c)];
-  const out: Record<string, unknown> = {};
-  for (const k of order) if (k in c && !(k in out)) out[k] = c[k];
-  return out as unknown as InterviewQuestion;
-}
-
-const btn = "font-body rounded-full border border-[var(--line)] px-3 py-1.5 text-xs font-medium text-[var(--ink)] hover:border-[var(--accent)] disabled:opacity-40";
 const primary = "font-body rounded-full bg-[var(--accent)] px-4 py-1.5 text-xs font-semibold text-white hover:opacity-90 disabled:opacity-40";
-const field = "font-body mt-1 block w-full rounded-lg border border-[var(--line)] bg-[var(--paper)] px-3 py-1.5 text-sm font-normal normal-case tracking-normal text-[var(--ink)]";
-const fieldLabel = "font-body text-xs font-semibold uppercase tracking-wide text-[var(--ink-soft)]";
-const freeBadge = "rounded-full bg-[var(--accent-soft)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[var(--accent)]";
-const lockedBadge = "rounded-full bg-[var(--paper)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[var(--ink-soft)]";
-
-const sortedSections = [...sections].sort((a, b) => a.number - b.number || a.subtopic.localeCompare(b.subtopic));
-const sortedFamilies = [...families].sort((a, b) => a.name.localeCompare(b.name));
 
 export function DevBundlesPage() {
   const { user, loading } = useAuth();
@@ -116,7 +94,8 @@ function InterviewEditor() {
   const [qDraft, setQDraftState] = useState<QuestionDraft>(() => loadQuestionDraft());
   const [deleted, setDeletedState] = useState<string[]>(() => loadDeletedQuestions());
   const [selectedBundleId, setSelectedBundleId] = useState<string | null>(bundles[0]?.id ?? null);
-  const [selectedQuestionId, setSelectedQuestionId] = useState<string | null>(null);
+  // `?q=iq-0001` opens that question, e.g. from "Question bank (dev)" on an interview question.
+  const [selectedQuestionId, setSelectedQuestionId] = useState<string | null>(() => searchParams.get("q"));
   const [showDuplicates, setShowDuplicates] = useState(false);
   const [status, setStatus] = useState<{ kind: "ok" | "error"; text: string } | null>(null);
   const [publishing, setPublishing] = useState(false);
@@ -187,6 +166,7 @@ function InterviewEditor() {
       section: current?.section ?? null,
       family: current?.family ?? null,
       difficulty: null,
+      title: "",
       question: "",
       answer: "",
       notes: "",
@@ -558,9 +538,10 @@ function BundleDetail({
               <div className="flex items-start gap-3">
                 <span className="font-body mt-0.5 w-6 shrink-0 text-sm font-semibold text-[var(--ink-soft)]">{i + 1}</span>
                 <button type="button" onClick={() => setOpen(open === id ? null : id)} className="min-w-0 flex-1 text-left">
-                  <p className={`font-body text-sm text-[var(--ink)] ${open === id ? "whitespace-pre-wrap" : "line-clamp-2"}`}>
-                    {q ? q.question || "(no question text yet)" : `Missing question ${id}`}
-                  </p>
+                  <p className="font-body text-sm font-medium text-[var(--ink)]">{q ? questionTitle(q) : `Missing question ${id}`}</p>
+                  {q && open === id && (
+                    <p className="font-body mt-1 whitespace-pre-wrap text-sm text-[var(--ink-soft)]">{q.question || "(no question text yet)"}</p>
+                  )}
                   {q && (
                     <p className="font-body mt-1 flex flex-wrap items-center gap-x-1.5 text-xs text-[var(--ink-soft)]">
                       <span className={free ? freeBadge : lockedBadge}>{free ? "free" : "locked"}</span>
@@ -617,7 +598,7 @@ function BundleDetail({
 function matchesSearch(q: InterviewQuestion, text: string): boolean {
   const t = text.trim().toLowerCase();
   if (!t) return true;
-  const hay = [q.id, q.question, q.answer, ...q.tags, ...techniquesOf(q).map(sectionLabel)].join(" ").toLowerCase();
+  const hay = [q.id, q.title ?? "", q.question, q.answer, ...q.tags, ...techniquesOf(q).map(sectionLabel)].join(" ").toLowerCase();
   return t.split(/\s+/).every((w) => hay.includes(w));
 }
 
@@ -656,7 +637,9 @@ function QuestionPicker({ bundle, allQuestions, onAdd }: { bundle: Bundle; allQu
               Add
             </button>
             <span className="min-w-0 flex-1">
-              <span className="font-body line-clamp-2 text-sm text-[var(--ink)]">{q.question || "(no question text yet)"}</span>
+              <span className="font-body block truncate text-sm text-[var(--ink)]" title={q.question}>
+                {questionTitle(q)}
+              </span>
               <span className="font-body text-xs text-[var(--ink-soft)]">
                 {q.id} · difficulty {q.difficulty ?? "unrated"} · {sectionLabel(q.section)}
                 {!isLive(q) && " · DRAFT"}
@@ -876,6 +859,7 @@ function QuestionWorkspace({
   const [access, setAccess] = useState<AccessFilter>("all");
   const [technique, setTechnique] = useState("");
   const [family, setFamily] = useState("");
+  const solved = useSolvedQuestions();
 
   const isFree = (q: InterviewQuestion) => Boolean(q.free) || freeViaBundle.has(q.id);
   const matched = useMemo(
@@ -942,15 +926,22 @@ function QuestionWorkspace({
               <button
                 type="button"
                 onClick={() => setSelectedId(q.id)}
-                className={`font-body block w-full rounded-lg px-2.5 py-1.5 text-left ${q.id === selectedId ? "bg-[var(--accent-soft)]" : "hover:bg-[var(--paper)]"}`}
+                className={`font-body flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-left ${q.id === selectedId ? "bg-[var(--accent-soft)]" : "hover:bg-[var(--paper)]"}`}
               >
-                <span className="flex items-center gap-1.5 text-xs text-[var(--ink-soft)]">
-                  <span className={isFree(q) ? freeBadge : lockedBadge}>{isFree(q) ? "free" : "locked"}</span>
-                  {q.id}
-                  {!isLive(q) && " · draft"}
-                  {qDraft[q.id] && <span className="text-amber-600">· {repoById.has(q.id) ? "edited" : "new"}</span>}
+                <span className="w-9 shrink-0 text-xs tabular-nums text-[var(--ink-soft)]" title={q.id}>
+                  {q.id.replace(/^iq-/, "")}
                 </span>
-                <span className="mt-0.5 line-clamp-2 text-sm text-[var(--ink)]">{q.question || "(no question text yet)"}</span>
+                <span className="min-w-0 flex-1">
+                  <span className="flex items-center gap-1.5 text-xs text-[var(--ink-soft)]">
+                    <span className={isFree(q) ? freeBadge : lockedBadge}>{isFree(q) ? "free" : "locked"}</span>
+                    {!isLive(q) && " · draft"}
+                    {qDraft[q.id] && <span className="text-amber-600">· {repoById.has(q.id) ? "edited" : "new"}</span>}
+                  </span>
+                  <span className="mt-0.5 block truncate text-sm text-[var(--ink)]" title={q.question}>
+                    {questionTitle(q)}
+                  </span>
+                </span>
+                <SolvedMark solved={solved.has(q.id)} />
               </button>
             </li>
           ))}
@@ -959,7 +950,7 @@ function QuestionWorkspace({
       </aside>
 
       {selected ? (
-        <QuestionForm
+        <InterviewQuestionForm
           key={selected.id}
           question={selected}
           isNew={!repoById.has(selected.id)}
@@ -976,266 +967,5 @@ function QuestionWorkspace({
         <p className="font-body text-[var(--ink-soft)]">Select a question, or add a new one.</p>
       )}
     </div>
-  );
-}
-
-function QuestionForm({
-  question: q,
-  isNew,
-  edited,
-  bundles,
-  freeViaBundle,
-  allQuestions,
-  onSave,
-  onRevert,
-  onDelete,
-  openBundle,
-}: {
-  question: InterviewQuestion;
-  isNew: boolean;
-  edited: boolean;
-  bundles: Bundle[];
-  freeViaBundle: Set<string>;
-  allQuestions: InterviewQuestion[];
-  onSave: (q: InterviewQuestion) => void;
-  onRevert: () => void;
-  onDelete: () => void;
-  openBundle: (id: string) => void;
-}) {
-  const [tagText, setTagText] = useState("");
-  // Kept as text so a half-typed number ("0.", "-") isn't thrown away.
-  const [numericText, setNumericText] = useState(q.numericAnswer === undefined ? "" : String(q.numericAnswer));
-  const set = (patch: Partial<InterviewQuestion>) => onSave({ ...q, ...patch });
-
-  const inBundles = bundles.filter((b) => b.questions.includes(q.id));
-  const freeBundles = inBundles.filter((b) => b.free);
-  const effectiveFree = Boolean(q.free) || freeViaBundle.has(q.id);
-  const allTags = useMemo(() => [...new Set(allQuestions.flatMap((x) => x.tags))].sort((a, b) => a.localeCompare(b)), [allQuestions]);
-
-  function addTags(raw: string) {
-    const fresh = raw
-      .split(",")
-      .map((t) => t.trim())
-      .filter((t) => t && !q.tags.includes(t));
-    if (fresh.length) set({ tags: [...q.tags, ...fresh] });
-    setTagText("");
-  }
-
-  return (
-    <section className="space-y-5">
-      <div className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5">
-        <div className="flex flex-wrap items-center gap-3">
-          <h2 className="font-display text-xl text-[var(--ink)]">{q.id}</h2>
-          <span className={effectiveFree ? freeBadge : lockedBadge}>{effectiveFree ? "free" : "locked"}</span>
-          {!isLive(q) && <span className={lockedBadge}>draft</span>}
-          {(isNew || edited) && <span className="font-body text-xs text-amber-600">{isNew ? "new — not yet published" : "edited — not yet published"}</span>}
-          <span className="flex-1" />
-          {edited && !isNew && (
-            <button
-              type="button"
-              className={btn}
-              onClick={() => {
-                if (confirm(`Revert ${q.id} to the published version?`)) onRevert();
-              }}
-            >
-              Revert
-            </button>
-          )}
-          <button type="button" className={`${btn} hover:border-red-400`} onClick={onDelete}>
-            Delete
-          </button>
-        </div>
-
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          <div className="font-body rounded-xl border border-[var(--line)] bg-[var(--paper)] p-3 text-sm">
-            <p className={fieldLabel}>Access</p>
-            <div className="mt-2 flex gap-2">
-              <button
-                type="button"
-                onClick={() => set({ free: true })}
-                className={`rounded-full px-3 py-1 text-xs font-semibold ${q.free ? "bg-[var(--accent)] text-white" : "border border-[var(--line)] text-[var(--ink)]"}`}
-              >
-                Free
-              </button>
-              <button
-                type="button"
-                onClick={() => set({ free: undefined })}
-                className={`rounded-full px-3 py-1 text-xs font-semibold ${!q.free ? "bg-[var(--ink)] text-[var(--paper)]" : "border border-[var(--line)] text-[var(--ink)]"}`}
-              >
-                Locked
-              </button>
-            </div>
-            {freeBundles.length > 0 && (
-              <p className="mt-2 text-xs text-[var(--ink-soft)]">
-                Always free while it's in {freeBundles.length === 1 ? "the free bundle" : "the free bundles"}{" "}
-                {freeBundles.map((b) => `“${b.title}”`).join(", ")}, whatever this says.
-              </p>
-            )}
-          </div>
-          <div className="font-body rounded-xl border border-[var(--line)] bg-[var(--paper)] p-3 text-sm">
-            <p className={fieldLabel}>Status</p>
-            <label className="mt-2 flex items-center gap-2 text-[var(--ink)]">
-              <input type="checkbox" checked={!isLive(q)} onChange={(e) => set({ status: e.target.checked ? "draft" : undefined })} />
-              Draft (never served)
-            </label>
-            <p className="mt-2 text-xs text-[var(--ink-soft)]">
-              In bundles:{" "}
-              {inBundles.length === 0
-                ? "none"
-                : inBundles.map((b, i) => (
-                    <span key={b.id}>
-                      {i > 0 && ", "}
-                      <button type="button" className="text-[var(--accent)] hover:underline" onClick={() => openBundle(b.id)}>
-                        {b.title}
-                      </button>
-                    </span>
-                  ))}
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-4 space-y-4">
-          <label className={`${fieldLabel} block`}>
-            Question
-            <textarea value={q.question} onChange={(e) => set({ question: e.target.value })} rows={4} className={field} />
-          </label>
-          <div className="grid gap-4 md:grid-cols-[1fr_200px]">
-            <label className={`${fieldLabel} block`}>
-              Answer
-              <textarea value={q.answer} onChange={(e) => set({ answer: e.target.value })} rows={2} className={field} />
-            </label>
-            <label className={`${fieldLabel} block`}>
-              Numeric answer
-              <input
-                value={numericText}
-                inputMode="decimal"
-                placeholder="(self-graded)"
-                onChange={(e) => {
-                  setNumericText(e.target.value);
-                  const v = e.target.value.trim();
-                  const n = Number(v);
-                  set({ numericAnswer: v === "" || !Number.isFinite(n) ? undefined : n });
-                }}
-                className={field}
-              />
-            </label>
-          </div>
-          <label className={`${fieldLabel} block`}>
-            Solution
-            <textarea value={q.notes} onChange={(e) => set({ notes: e.target.value })} rows={6} className={field} />
-          </label>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            <label className={`${fieldLabel} block`}>
-              Main technique
-              <select value={q.section ?? ""} onChange={(e) => set({ section: e.target.value || null })} className={field}>
-                <option value="">(unsorted)</option>
-                {sortedSections.map((s) => (
-                  <option key={s.id} value={s.id}>
-                    {s.number} · {s.topic} › {s.subtopic}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className={`${fieldLabel} block`}>
-              Scenario
-              <select value={q.family ?? ""} onChange={(e) => set({ family: e.target.value || null })} className={field}>
-                <option value="">(none)</option>
-                {sortedFamilies.map((f) => (
-                  <option key={f.id} value={f.id}>
-                    {f.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className={`${fieldLabel} block`}>
-              Difficulty (0–12)
-              <input
-                type="number"
-                min={0}
-                max={12}
-                value={q.difficulty ?? ""}
-                placeholder="unrated"
-                onChange={(e) => set({ difficulty: e.target.value === "" ? null : Math.max(0, Math.min(12, Number(e.target.value))) })}
-                className={field}
-              />
-            </label>
-          </div>
-
-          <div>
-            <p className={fieldLabel}>Also solvable by</p>
-            <div className="mt-1 flex flex-wrap items-center gap-2">
-              {(q.otherSections ?? []).map((id) => (
-                <span key={id} className="font-body flex items-center gap-1 rounded-full border border-[var(--line)] bg-[var(--paper)] px-2.5 py-0.5 text-xs text-[var(--ink)]">
-                  {sectionLabel(id)}
-                  <button type="button" aria-label={`Remove ${sectionLabel(id)}`} onClick={() => set({ otherSections: (q.otherSections ?? []).filter((x) => x !== id) })}>
-                    ✕
-                  </button>
-                </span>
-              ))}
-              <select
-                value=""
-                onChange={(e) => e.target.value && set({ otherSections: [...(q.otherSections ?? []), e.target.value] })}
-                className="font-body rounded-lg border border-[var(--line)] bg-[var(--paper)] px-2 py-1 text-xs text-[var(--ink)]"
-              >
-                <option value="">+ add technique</option>
-                {sortedSections
-                  .filter((s) => s.id !== q.section && !(q.otherSections ?? []).includes(s.id))
-                  .map((s) => (
-                    <option key={s.id} value={s.id}>
-                      {s.number} · {s.topic} › {s.subtopic}
-                    </option>
-                  ))}
-              </select>
-            </div>
-            {q.section && sectionById.get(q.section) === undefined && <p className="font-body mt-1 text-xs text-amber-700">Main technique id {q.section} isn't in sections.json.</p>}
-          </div>
-
-          <div>
-            <p className={fieldLabel}>Tags</p>
-            <div className="mt-1 flex flex-wrap items-center gap-2">
-              {q.tags.map((t) => (
-                <span key={t} className="font-body flex items-center gap-1 rounded-full bg-[var(--accent-soft)] px-2.5 py-0.5 text-xs text-[var(--ink)]">
-                  {t}
-                  <button type="button" aria-label={`Remove tag ${t}`} onClick={() => set({ tags: q.tags.filter((x) => x !== t) })}>
-                    ✕
-                  </button>
-                </span>
-              ))}
-              <input
-                value={tagText}
-                list="interview-tags"
-                placeholder="Add tag, then Enter"
-                onChange={(e) => setTagText(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === ",") {
-                    e.preventDefault();
-                    addTags(tagText);
-                  }
-                }}
-                onBlur={() => tagText.trim() && addTags(tagText)}
-                className="font-body min-w-40 rounded-lg border border-[var(--line)] bg-[var(--paper)] px-2 py-1 text-xs text-[var(--ink)]"
-              />
-              <datalist id="interview-tags">
-                {allTags.map((t) => (
-                  <option key={t} value={t} />
-                ))}
-              </datalist>
-            </div>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2">
-            <label className={`${fieldLabel} block`}>
-              Source
-              <input value={q.source} onChange={(e) => set({ source: e.target.value })} className={field} />
-            </label>
-            <label className={`${fieldLabel} block`}>
-              Review note (internal)
-              <input value={q.reviewNote ?? ""} onChange={(e) => set({ reviewNote: e.target.value || undefined })} className={field} />
-            </label>
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }

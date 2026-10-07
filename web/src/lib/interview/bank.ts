@@ -41,6 +41,15 @@ export function sectionLabel(id: string | null): string {
   return s ? `${s.topic} › ${s.subtopic}` : "Unsorted";
 }
 
+/** The name lists show. A question without a title (a new draft) falls back to the start of its text. */
+export function questionTitle(q: InterviewQuestion): string {
+  const title = q.title?.trim();
+  if (title) return title;
+  const text = q.question.replace(/\s+/g, " ").trim();
+  if (!text) return "(untitled)";
+  return text.length > 60 ? `${text.slice(0, 57)}…` : text;
+}
+
 /**
  * The bundles the app serves. A developer with unpublished edits from
  * `/dev/bundles` sees those instead, so a reordered chain can be tried in a

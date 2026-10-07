@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { InterviewGate } from "../components/interview/InterviewGate";
 import { QuestionCard, type QuestionResult } from "../components/interview/QuestionCard";
 import { SkillBar } from "../components/interview/SkillBar";
-import { activeBundles, bundleQuestions, familyById, sectionById, sectionLabel } from "../lib/interview/bank";
+import { activeBundles, bundleQuestions, familyById, questionTitle, sectionById, sectionLabel } from "../lib/interview/bank";
 import { isFreeBundle, useInterviewAccess } from "../lib/interview/access";
 import { skillBar } from "../lib/interview/scoring";
 import type { Bundle, InterviewQuestion } from "../lib/interview/types";
@@ -209,7 +209,7 @@ function Summary({
                 {i + 1}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="line-clamp-2 text-[var(--ink)]">{o.question.question}</span>
+                <span className="block text-[var(--ink)]">{questionTitle(o.question)}</span>
                 <span className="text-xs text-[var(--ink-soft)]">
                   {sectionLabel(o.question.section)} · {Math.round(o.seconds)} s
                 </span>

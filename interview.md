@@ -16,7 +16,7 @@ There is no database copy and no external sync: to change a question, edit the J
 
 | File | What it holds |
 |---|---|
-| `questions.json` | Every question: text, answer, worked solution (`notes`), difficulty, tags, source, and its **section** and **family**. |
+| `questions.json` | Every question: a short **title** (the name lists show), text, answer, worked solution (`notes`), difficulty, tags, source, and its **section** and **family**. |
 | `sections.json` | **Techniques**, e.g. `234 · Combinatorics › Reflection Principle`. The id is `number-subtopic`, because some numbers are shared (230 is both "Recursion" and "Recursion (Fibonacci)"). |
 | `families.json` | **Scenarios**: the setup a candidate recognizes, e.g. *Lattice Walk*, *Dice Rolls Till Criteria*. `group` links related families. |
 | `bundles.json` | **Mock-interview chains**: an ordered list of question ids on one scenario. |
@@ -36,6 +36,12 @@ techniques depending on what is asked:
 | 3. Given an even number of turns, P(exactly 2)? | 350 Probability › Conditional Probability |
 | 4. …not through (2, 2)? | 211 Combinatorics › Complementary Counting |
 | 5. …never below y = x? | 234 Combinatorics › Reflection Principle |
+
+**Formatting.** Question and answer text follow the course formatting standard: numbers and
+variables in `$…$` LaTeX, `\mathbb{E}`, `\text{Var}`, `\sim`, curly quotes, and so on. Question
+cards render it with the same `CodeText` as lesson items, and a literal dollar sign is written `\$`.
+Worked solutions (`notes`) render the same way but have not been converted yet. Titles stay plain
+text.
 
 **Difficulty** is 0–10. 11–12 means "they are going to murder you in the interview." Unrated
 questions are treated as 4.
@@ -164,15 +170,21 @@ This page is for developers (the `useIsDeveloper` allowlist). It has two views.
 
 **Questions** (`/dev/bundles?view=questions`) shows every question individually:
 
-- **Find:** search text, answers, tags, techniques, and ids. Filter by free, locked, draft, or
+- **Find:** search titles, text, answers, tags, techniques, and ids. Filter by free, locked, draft, or
   edited, and by technique or scenario.
-- **Edit:** change the question, answer, numeric answer, solution, main technique, other
+- **Edit:** change the title, question, answer, numeric answer, solution, main technique, other
   techniques, scenario, difficulty, tags, source, and review note. Set it free or locked, and draft
   or live. The editor shows which bundles hold the question and whether a free bundle makes it free
   regardless of its own flag.
 - **Add:** *New question* creates the next `iq-NNNN` id as a draft, so nothing half-written is
   served.
 - **Delete:** removes the question and takes it out of every bundle that holds it.
+
+**On an interview question.** Developers see *Edit question (dev)* and *Question bank (dev)* on every
+question in a mock interview or in training, as on a lesson's assessment. *Edit* opens the same
+editor in a dialog. Changes save to the same browser draft as `/dev/bundles` and show on the card
+straight away. *Question bank* opens the question in `/dev/bundles?view=questions&q=<id>`, which
+is also where edits are published.
 
 **Find duplicates** (header button) checks all questions, including unpublished edits, for
 duplicates and near-duplicates. The logic is in

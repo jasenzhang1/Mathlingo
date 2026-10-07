@@ -27,6 +27,18 @@ export async function publishOverrides(store: ItemOverrideStore): Promise<Publis
 }
 
 /**
+ * `devOverrides.json` as it is on main right now, or null if it can't be read
+ * (publishing not configured, offline). Used to clear local edits once merged.
+ */
+export async function fetchPublishedOverrides(): Promise<ItemOverrideStore | null> {
+  const { data, error } = await supabase.functions.invoke<ItemOverrideStore>("publish-item-edits", {
+    body: { action: "published" },
+  });
+  if (error || !data) return null;
+  return { overrides: data.overrides ?? {}, newItems: data.newItems ?? {} };
+}
+
+/**
  * Sends interview edits from `/dev/bundles` to the same function, which opens
  * one PR: the full bundle list replaces `web/src/data/interview/bundles.json`,
  * edited or new questions are merged by id into `questions.json`, and deleted

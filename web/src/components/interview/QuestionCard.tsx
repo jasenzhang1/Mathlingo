@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { useIsDeveloper } from "../../lib/dev/devAuth";
 import { familyById, sectionLabel } from "../../lib/interview/bank";
 import { autoGrade, expectedSeconds, type AutoGrade } from "../../lib/interview/scoring";
 import type { InterviewQuestion } from "../../lib/interview/types";
+import { CodeText } from "../assessment/CodeText";
+import { DevQuestionTools } from "./DevQuestionTools";
 
 export interface QuestionResult {
   /** 1 correct, 0.5 partly, 0 missed or skipped. */
@@ -27,7 +30,7 @@ function formatClock(seconds: number): string {
  * component on the question id so every question starts fresh.
  */
 export function QuestionCard({
-  question: q,
+  question,
   stepLabel,
   onResult,
   showLabels = false,
@@ -38,6 +41,10 @@ export function QuestionCard({
   /** Show section and family up front. Off in mock interviews — recognising the technique is part of the test. */
   showLabels?: boolean;
 }) {
+  const isDeveloper = useIsDeveloper();
+  // A developer's in-place edit, shown straight away (see DevQuestionTools).
+  const [edited, setEdited] = useState<InterviewQuestion | null>(null);
+  const q = edited ?? question;
   const [startedAt] = useState(() => Date.now());
   const [now, setNow] = useState(startedAt);
   const [input, setInput] = useState("");
@@ -88,7 +95,9 @@ export function QuestionCard({
         </span>
       </div>
 
-      <p className="font-body whitespace-pre-wrap text-[var(--ink)]">{q.question}</p>
+      {isDeveloper && <DevQuestionTools question={q} onChange={setEdited} />}
+
+      <p className="font-body whitespace-pre-wrap text-[var(--ink)]"><CodeText text={q.question} /></p>
 
       {!revealed && (
         <form
@@ -156,12 +165,12 @@ export function QuestionCard({
 
           <div>
             <p className="font-body text-xs font-semibold uppercase tracking-wide text-[var(--ink-soft)]">Answer</p>
-            <p className="font-body mt-1 whitespace-pre-wrap text-[var(--ink)]">{q.answer}</p>
+            <p className="font-body mt-1 whitespace-pre-wrap text-[var(--ink)]"><CodeText text={q.answer} /></p>
           </div>
           {q.notes && (
             <div>
               <p className="font-body text-xs font-semibold uppercase tracking-wide text-[var(--ink-soft)]">Solution</p>
-              <p className="font-body mt-1 whitespace-pre-wrap text-sm text-[var(--ink)]">{q.notes}</p>
+              <p className="font-body mt-1 whitespace-pre-wrap text-sm text-[var(--ink)]"><CodeText text={q.notes} /></p>
             </div>
           )}
           <p className="font-body text-xs text-[var(--ink-soft)]">

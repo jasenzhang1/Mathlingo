@@ -48,6 +48,8 @@ export interface InterviewQuestion {
   family: string | null;
   /** 0–10; 11–12 is "they are trying to end you". null when not yet rated. */
   difficulty: number | null;
+  /** Short name shown in question lists, e.g. "Buffon's Needle". The full text is `question`. */
+  title?: string;
   question: string;
   /** The key exactly as authored — may be several parts, a proof, or "Alice". */
   answer: string;
