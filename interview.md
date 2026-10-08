@@ -95,15 +95,21 @@ fixed seed. A problem's number is its position in that order, not its id. Questi
   `otherSections`), **Scenario** (family), **Difficulty**, and **Status** (Todo, Solved, Attempted).
   Picking several concepts or scenarios matches questions with any of them. Filters live in the
   query string, so Back and shared links keep them.
-- **Difficulty** shows *Easy*, *Medium*, or *Hard*, cut on the percentage of students who get
-  the question right: Easy at 60% or more, Medium at 30–60%, Hard under 30%. Only each
-  student's first answer counts, and only a fully right answer ("Partly" does not). The numbers
-  come from `interview_question_stats()` (migration 0017), because `interview_attempts` is
-  readable only by its owner. Questions nobody has answered yet use their rated difficulty
-  instead (0–3 Easy, 4–6 Medium, 7+ Hard). Hovering shows the exact percentage.
+- **Acceptance** is the percentage of students who got the question right on their first try.
+  Each student is one vote: only their first answer counts, and only a fully right answer
+  ("Partly" does not). It shows a dash until 10 students have answered (`MIN_STUDENTS`). The
+  numbers come from `interview_question_stats()` (migration 0019), because `interview_attempts`
+  is readable only by its owner. (LeetCode's acceptance counts every submission instead, so
+  retries pull it down. Here a retry after seeing the key says nothing about the question.)
+- **Difficulty** shows *Easy*, *Medium*, or *Hard*, cut on the acceptance rate: Easy at 60% or
+  more, Medium at 30–60%, Hard under 30%. Until 10 students have answered, it uses the rated
+  difficulty instead (0–3 Easy, 4–6 Medium, 7+ Hard).
 - **Sort:** click the Difficulty header, or use **Sort**, for easiest or hardest first.
 - **Concept tags** are hidden by default, since recognising the technique is part of the
   question. *Show concept tags* turns them on, and the choice is remembered in the browser.
+- **Pages** of 25, with Google-style page links at the bottom and a *Go to page* box once some page
+  numbers are hidden. The page is in the query string (`?page=`), and changing a filter goes back
+  to page 1.
 - **Pick one** opens a random unsolved question from the filtered list.
 - **Locked questions** show a lock on the free tier and open to the upgrade card.
 

@@ -11,7 +11,7 @@ const BAND_COLOR: Record<DifficultyBand, string> = {
 
 const BAND_LABEL: Record<DifficultyBand, string> = { easy: "Easy", medium: "Medium", hard: "Hard" };
 
-/** Easy, Medium or Hard: from the share of students who got it right, or its rated difficulty until anyone has. */
+/** Easy, Medium or Hard: from the share of students who got it right, or its rated difficulty until enough have answered. */
 export function DifficultyTag({
   question,
   stats,
@@ -28,7 +28,7 @@ export function DifficultyTag({
       className={`text-sm font-medium ${BAND_COLOR[band]} ${className}`}
       title={
         rate === null || !stats
-          ? "Rated difficulty — nobody has answered this yet"
+          ? "Rated difficulty — too few students have answered this yet"
           : `${(rate * 100).toFixed(1)}% · ${stats.solved.toLocaleString()} of ${stats.students.toLocaleString()} student${stats.students === 1 ? "" : "s"} got it right`
       }
     >
