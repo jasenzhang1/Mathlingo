@@ -8,7 +8,7 @@ import { Nav } from "../components/Nav";
 import { useAuth } from "../lib/auth/useAuth";
 import { useIsDeveloper } from "../lib/dev/devAuth";
 import { publishInterview } from "../lib/dev/publishOverrides";
-import { DEFAULT_DIFFICULTY, familyById, isLive, questionTitle, repoBundles, repoQuestions, sectionLabel, techniquesOf } from "../lib/interview/bank";
+import { DEFAULT_DIFFICULTY, familyById, freeProblemIds, isLive, questionTitle, repoBundles, repoQuestions, sectionLabel, techniquesOf } from "../lib/interview/bank";
 import { clearBundleDraft, loadBundleDraft, saveBundleDraft } from "../lib/interview/bundleDraft";
 import { useSolvedQuestions } from "../lib/interview/solved";
 import { findDuplicateGroups, pairKey, tokenize, type DuplicateGroup } from "../lib/interview/duplicates";
@@ -103,7 +103,7 @@ function InterviewEditor() {
   const repoById = useMemo(() => new Map(repoQuestions.map((q) => [q.id, q])), []);
   const allQuestions = useMemo(() => applyQuestionDraft(repoQuestions, qDraft, deleted), [qDraft, deleted]);
   const qById = useMemo(() => new Map(allQuestions.map((q) => [q.id, q])), [allQuestions]);
-  const freeViaBundle = useMemo(() => new Set(bundles.filter((b) => b.free).flatMap((b) => b.questions)), [bundles]);
+  const freeByPosition = useMemo(() => freeProblemIds(), []);
 
   const bundlesDirty = useMemo(() => JSON.stringify(bundles) !== JSON.stringify(repoBundles), [bundles]);
   const editedCount = Object.keys(qDraft).length;
@@ -223,7 +223,7 @@ function InterviewEditor() {
         <div>
           <h1 className="font-display text-3xl text-[var(--ink)]">Interview databank</h1>
           <p className="font-body mt-1 text-sm text-[var(--ink-soft)]">
-            {bundles.length} bundles ({bundles.filter((b) => b.free).length} free) · {allQuestions.length} questions ·{" "}
+            {bundles.length} bundles · {allQuestions.length} questions ·{" "}
             {dirty ? `unpublished changes to ${changes} in this browser` : "matches the repo"}.{" "}
             <Link to="/interview" className="text-[var(--accent)] hover:underline">
               Try them in Interview Prep
@@ -285,7 +285,7 @@ function InterviewEditor() {
         <DuplicatePanel
           allQuestions={allQuestions}
           bundles={bundles}
-          freeViaBundle={freeViaBundle}
+          freeByPosition={freeByPosition}
           onEdit={(id) => {
             setShowDuplicates(false);
             setSelectedQuestionId(id);
@@ -301,7 +301,7 @@ function InterviewEditor() {
           setSelectedId={setSelectedBundleId}
           qById={qById}
           allQuestions={allQuestions}
-          freeViaBundle={freeViaBundle}
+          freeByPosition={freeByPosition}
           openQuestion={(id) => {
             setSelectedQuestionId(id);
             setView("questions");
@@ -313,7 +313,7 @@ function InterviewEditor() {
           qDraft={qDraft}
           repoById={repoById}
           bundles={bundles}
-          freeViaBundle={freeViaBundle}
+          freeByPosition={freeByPosition}
           selectedId={selectedQuestionId}
           setSelectedId={setSelectedQuestionId}
           onSave={saveQuestion}
@@ -333,7 +333,7 @@ function InterviewEditor() {
 // Bundles view
 // ---------------------------------------------------------------------------
 
-type ListFilter = "all" | "curated" | "auto" | "free" | "warnings";
+type ListFilter = "all" | "curated" | "auto" | "warnings";
 
 function BundleWorkspace({
   bundles,
@@ -342,7 +342,7 @@ function BundleWorkspace({
   setSelectedId,
   qById,
   allQuestions,
-  freeViaBundle,
+  freeByPosition,
   openQuestion,
 }: {
   bundles: Bundle[];
@@ -351,7 +351,7 @@ function BundleWorkspace({
   setSelectedId: (id: string | null) => void;
   qById: Map<string, InterviewQuestion>;
   allQuestions: InterviewQuestion[];
-  freeViaBundle: Set<string>;
+  freeByPosition: Set<string>;
   openQuestion: (id: string) => void;
 }) {
   const [search, setSearch] = useState("");
@@ -363,7 +363,6 @@ function BundleWorkspace({
     if (search && !text.includes(search.toLowerCase())) return false;
     if (filter === "curated") return b.curated;
     if (filter === "auto") return !b.curated;
-    if (filter === "free") return Boolean(b.free);
     if (filter === "warnings") return warningsFor(b, qById).length > 0;
     return true;
   });
@@ -379,7 +378,7 @@ function BundleWorkspace({
           className="font-body w-full rounded-lg border border-[var(--line)] bg-[var(--paper)] px-3 py-1.5 text-sm text-[var(--ink)]"
         />
         <div className="mt-2 flex flex-wrap gap-1">
-          {(["all", "curated", "auto", "free", "warnings"] as ListFilter[]).map((f) => (
+          {(["all", "curated", "auto", "warnings"] as ListFilter[]).map((f) => (
             <button
               key={f}
               type="button"
@@ -405,7 +404,6 @@ function BundleWorkspace({
                     {b.title}
                   </span>
                   <span className="flex shrink-0 items-center gap-1 text-xs text-[var(--ink-soft)]">
-                    {b.free && <span className={freeBadge}>free</span>}
                     {w > 0 && <span className="text-amber-600" title={`${w} warning(s)`}>⚠</span>}
                     {b.questions.length}
                   </span>
@@ -423,7 +421,7 @@ function BundleWorkspace({
           bundle={selected}
           qById={qById}
           allQuestions={allQuestions}
-          freeViaBundle={freeViaBundle}
+          freeByPosition={freeByPosition}
           openQuestion={openQuestion}
           onChange={(patch) => setBundles(bundles.map((b) => (b.id === selected.id ? { ...b, ...patch } : b)))}
           onDelete={() => {
@@ -444,7 +442,7 @@ function BundleDetail({
   bundle,
   qById,
   allQuestions,
-  freeViaBundle,
+  freeByPosition,
   openQuestion,
   onChange,
   onDelete,
@@ -452,7 +450,7 @@ function BundleDetail({
   bundle: Bundle;
   qById: Map<string, InterviewQuestion>;
   allQuestions: InterviewQuestion[];
-  freeViaBundle: Set<string>;
+  freeByPosition: Set<string>;
   openQuestion: (id: string) => void;
   onChange: (patch: Partial<Bundle>) => void;
   onDelete: () => void;
@@ -492,10 +490,6 @@ function BundleDetail({
             <input type="checkbox" checked={bundle.curated} onChange={(e) => onChange({ curated: e.target.checked })} />
             Curated (checked by a person; served 3× as often)
           </label>
-          <label className="font-body flex items-center gap-2 text-sm text-[var(--ink)]">
-            <input type="checkbox" checked={Boolean(bundle.free)} onChange={(e) => onChange({ free: e.target.checked || undefined })} />
-            Free (playable without a subscription; makes all its questions free)
-          </label>
           <span className="font-body text-xs text-[var(--ink-soft)]">id: {bundle.id}</span>
         </div>
         <div className="mt-3 flex flex-wrap gap-2">
@@ -532,7 +526,7 @@ function BundleDetail({
       <ol className="space-y-2">
         {bundle.questions.map((id, i) => {
           const q = qById.get(id);
-          const free = q ? Boolean(q.free) || freeViaBundle.has(q.id) : false;
+          const free = q ? Boolean(q.free) || freeByPosition.has(q.id) : false;
           return (
             <li key={`${id}-${i}`} className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3">
               <div className="flex items-start gap-3">
@@ -679,13 +673,13 @@ const GROUP_PAGE = 30;
 function DuplicatePanel({
   allQuestions,
   bundles,
-  freeViaBundle,
+  freeByPosition,
   onEdit,
   onDelete,
 }: {
   allQuestions: InterviewQuestion[];
   bundles: Bundle[];
-  freeViaBundle: Set<string>;
+  freeByPosition: Set<string>;
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
 }) {
@@ -771,7 +765,7 @@ function DuplicatePanel({
             </div>
             <div className={`mt-3 grid gap-3 ${members.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
               {members.map((q) => {
-                const free = Boolean(q.free) || freeViaBundle.has(q.id);
+                const free = Boolean(q.free) || freeByPosition.has(q.id);
                 const holders = bundles.filter((b) => b.questions.includes(q.id));
                 return (
                   <div key={q.id} className="font-body flex flex-col rounded-xl border border-[var(--line)] bg-[var(--paper)] p-3">
@@ -835,7 +829,7 @@ function QuestionWorkspace({
   qDraft,
   repoById,
   bundles,
-  freeViaBundle,
+  freeByPosition,
   selectedId,
   setSelectedId,
   onSave,
@@ -847,7 +841,7 @@ function QuestionWorkspace({
   qDraft: QuestionDraft;
   repoById: Map<string, InterviewQuestion>;
   bundles: Bundle[];
-  freeViaBundle: Set<string>;
+  freeByPosition: Set<string>;
   selectedId: string | null;
   setSelectedId: (id: string | null) => void;
   onSave: (q: InterviewQuestion) => void;
@@ -861,11 +855,11 @@ function QuestionWorkspace({
   const [family, setFamily] = useState("");
   const solved = useSolvedQuestions();
 
-  const isFree = (q: InterviewQuestion) => Boolean(q.free) || freeViaBundle.has(q.id);
+  const isFree = (q: InterviewQuestion) => Boolean(q.free) || freeByPosition.has(q.id);
   const matched = useMemo(
     () =>
       allQuestions.filter((q) => {
-        const free = Boolean(q.free) || freeViaBundle.has(q.id);
+        const free = Boolean(q.free) || freeByPosition.has(q.id);
         if (access === "free" && !free) return false;
         if (access === "locked" && free) return false;
         if (access === "draft" && isLive(q)) return false;
@@ -874,7 +868,7 @@ function QuestionWorkspace({
         if (family && q.family !== family) return false;
         return matchesSearch(q, search);
       }),
-    [allQuestions, access, technique, family, search, qDraft, freeViaBundle],
+    [allQuestions, access, technique, family, search, qDraft, freeByPosition],
   );
   const selected = selectedId ? allQuestions.find((q) => q.id === selectedId) ?? null : null;
   const freeCount = allQuestions.filter(isFree).length;
@@ -956,7 +950,7 @@ function QuestionWorkspace({
           isNew={!repoById.has(selected.id)}
           edited={Boolean(qDraft[selected.id])}
           bundles={bundles}
-          freeViaBundle={freeViaBundle}
+          freeByPosition={freeByPosition}
           allQuestions={allQuestions}
           onSave={onSave}
           onRevert={() => onRevert(selected.id)}

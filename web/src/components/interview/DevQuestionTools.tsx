@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { repoBundles, repoQuestions } from "../../lib/interview/bank";
+import { freeProblemIds, repoBundles, repoQuestions } from "../../lib/interview/bank";
 import { loadBundleDraft } from "../../lib/interview/bundleDraft";
 import { applyQuestionDraft, loadDeletedQuestions, loadQuestionDraft, saveQuestionEdit } from "../../lib/interview/questionDraft";
 import type { InterviewQuestion } from "../../lib/interview/types";
@@ -22,7 +22,7 @@ export function DevQuestionTools({ question, onChange }: { question: InterviewQu
   const [draft, setDraft] = useState(() => loadQuestionDraft());
   const original = useMemo(() => repoQuestions.find((x) => x.id === question.id), [question.id]);
   const bundles = useMemo(() => loadBundleDraft() ?? repoBundles, []);
-  const freeViaBundle = useMemo(() => new Set(bundles.filter((b) => b.free).flatMap((b) => b.questions)), [bundles]);
+  const freeByPosition = useMemo(() => freeProblemIds(), []);
   const allQuestions = useMemo(() => applyQuestionDraft(repoQuestions, draft, loadDeletedQuestions()), [draft]);
 
   function save(q: InterviewQuestion) {
@@ -63,7 +63,7 @@ export function DevQuestionTools({ question, onChange }: { question: InterviewQu
               isNew={!original}
               edited={Boolean(draft[question.id])}
               bundles={bundles}
-              freeViaBundle={freeViaBundle}
+              freeByPosition={freeByPosition}
               allQuestions={allQuestions}
               onSave={save}
               onRevert={() => {

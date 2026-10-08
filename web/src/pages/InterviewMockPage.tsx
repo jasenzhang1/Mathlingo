@@ -1,10 +1,10 @@
 import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { InterviewGate } from "../components/interview/InterviewGate";
+import { InterviewGate, InterviewUpgradeCard } from "../components/interview/InterviewGate";
 import { QuestionCard, type QuestionResult } from "../components/interview/QuestionCard";
 import { SkillBar } from "../components/interview/SkillBar";
 import { activeBundles, bundleQuestions, familyById, questionTitle, sectionById, sectionLabel } from "../lib/interview/bank";
-import { isFreeBundle, useInterviewAccess } from "../lib/interview/access";
+import { useInterviewAccess } from "../lib/interview/access";
 import { skillBar } from "../lib/interview/scoring";
 import type { Bundle, InterviewQuestion } from "../lib/interview/types";
 import { useInterviewSkills } from "../lib/interview/useInterviewSkills";
@@ -30,13 +30,11 @@ function rememberBundle(id: string) {
 /**
  * Picks the interview. Hand-curated chains are three times as likely as the
  * auto-generated ones, and the last few bundles done are skipped while there
- * is anything else left to choose from. The free tier only ever draws from the
- * free decks; asking for any other bundle falls back to one of those.
+ * is anything else left to choose from.
  */
-function chooseBundle(bundleId: string | null, familyId: string | null, freeOnly: boolean): Bundle | undefined {
-  const all = activeBundles().filter((b) => bundleQuestions(b).length > 0 && (!freeOnly || isFreeBundle(b)));
-  const requested = bundleId ? all.find((b) => b.id === bundleId) : undefined;
-  if (requested || (bundleId && !freeOnly)) return requested;
+function chooseBundle(bundleId: string | null, familyId: string | null): Bundle | undefined {
+  const all = activeBundles().filter((b) => bundleQuestions(b).length > 0);
+  if (bundleId) return all.find((b) => b.id === bundleId);
   const inFamily = familyId ? all.filter((b) => b.family === familyId) : all;
   const pool = inFamily.length ? inFamily : all;
   const recent = new Set(readRecent().slice(0, familyId ? 2 : 10));
@@ -67,7 +65,31 @@ export function InterviewMockPage() {
   );
 }
 
+/** Mock interviews come with the subscription; the free tier gets the upgrade card. */
 function MockInterview() {
+  const { full } = useInterviewAccess();
+  return full ? <MockInterviews /> : <MockLocked />;
+}
+
+function MockLocked() {
+  return (
+    <div className="mx-auto max-w-xl">
+      <Link to="/interview" className="font-body text-sm text-[var(--ink-soft)] hover:text-[var(--ink)]">
+        ← Interview Prep
+      </Link>
+      <h1 className="font-display mt-1 text-2xl text-[var(--ink)]">Mock interviews</h1>
+      <p className="font-body mt-2 text-[var(--ink-soft)]">
+        A mock interview is one scenario with follow-ups that get harder, every answer timed. It comes with Interview
+        Prep.
+      </p>
+      <div className="mt-6">
+        <InterviewUpgradeCard />
+      </div>
+    </div>
+  );
+}
+
+function MockInterviews() {
   const [searchParams, setSearchParams] = useSearchParams();
   // Bumped to start a fresh interview without a page reload.
   const [run, setRun] = useState(0);
@@ -95,9 +117,8 @@ function MockRun({
   onAgain: (familyId?: string) => void;
 }) {
   const { record, saveError } = useInterviewSkills();
-  const { full } = useInterviewAccess();
   // Chosen once per run.
-  const [bundle] = useState(() => chooseBundle(bundleId, familyId, !full));
+  const [bundle] = useState(() => chooseBundle(bundleId, familyId));
   const steps = useMemo(() => (bundle ? bundleQuestions(bundle) : []), [bundle]);
   const [outcomes, setOutcomes] = useState<StepOutcome[]>([]);
 

@@ -13,8 +13,8 @@ import { Nav } from "../Nav";
 
 /**
  * Wraps every interview page. Subscribers (and developers) get everything;
- * signed-in users without the subscription get the free tier (a couple of
- * mock-interview decks), which pages read through `useInterviewAccess`;
+ * signed-in users without the subscription get the free tier (the first
+ * problems of the list), which pages read through `useInterviewAccess`;
  * signed-out visitors see the sales page.
  *
  * This is presentation, not protection — the question bank ships with the
@@ -74,7 +74,7 @@ export function InterviewGate({ children }: { children: ReactNode }) {
         <Link to="/signup" className="font-medium text-[var(--accent)] hover:underline">
           Create a free account
         </Link>{" "}
-        to try a couple of mock-interview decks first.
+        to try the first 50 problems free.
       </p>
       <div className="mt-8 text-left">
         <InterviewUpgradeCard />

@@ -5,8 +5,9 @@ import { DifficultyTag, LockIcon, StatusIcon } from "../components/interview/Pro
 import { useAuth } from "../lib/auth/useAuth";
 import { useInterviewAccess } from "../lib/interview/access";
 import {
+  difficultyOf,
+  FREE_PROBLEMS,
   familyById,
-  freeBundleQuestionIds,
   isFreeQuestion,
   liveQuestions,
   problemNumber,
@@ -16,6 +17,7 @@ import {
   techniquesOf,
 } from "../lib/interview/bank";
 import {
+  BAND_RANK,
   DIFFICULTY_BANDS,
   difficultyBand,
   loadMyStatuses,
@@ -134,7 +136,6 @@ function ProblemList() {
   }
 
   const rows = useMemo<Row[]>(() => {
-    const viaBundle = freeBundleQuestionIds();
     return liveQuestions.map((q) => {
       const rate = solveRate(stats?.get(q.id));
       const techniques = techniquesOf(q);
@@ -143,9 +144,9 @@ function ProblemList() {
         number: problemNumber(q),
         title: problemTitle(q),
         rate,
-        band: difficultyBand(rate),
+        band: difficultyBand(q, rate),
         status: statuses.get(q.id),
-        locked: !full && !isFreeQuestion(q, viaBundle),
+        locked: !full && !isFreeQuestion(q),
         techniques,
         haystack: `${problemNumber(q)} ${q.question}`.toLowerCase(),
       };
@@ -165,10 +166,14 @@ function ProblemList() {
         (!status || (status === "todo" ? !r.status : r.status === status)),
     );
     if (sort) {
-      // Unrated questions sit at the bottom either way. The sort is stable, so ties keep list order.
+      // By band; within one, answered questions by solve rate, then the rest by rated difficulty.
+      // The sort is stable, so ties keep list order.
+      const dir = sort === "easy" ? 1 : -1;
       out.sort((a, b) => {
-        if (a.rate === null || b.rate === null) return (a.rate === null ? 1 : 0) - (b.rate === null ? 1 : 0);
-        return sort === "easy" ? b.rate - a.rate : a.rate - b.rate;
+        if (a.band !== b.band) return dir * (BAND_RANK[a.band] - BAND_RANK[b.band]);
+        if (a.rate !== null && b.rate !== null) return dir * (b.rate - a.rate);
+        if (a.rate !== null || b.rate !== null) return a.rate === null ? 1 : -1;
+        return dir * (difficultyOf(a.q) - difficultyOf(b.q));
       });
     }
     return out;
@@ -232,7 +237,9 @@ function ProblemList() {
         <div>
           <h1 className="font-display text-3xl text-[var(--ink)]">Problems</h1>
           <p className="mt-1 max-w-2xl text-sm text-[var(--ink-soft)]">
-            The whole bank. Difficulty is the share of students who get a question right on their first try.
+            The whole bank, classics first. Difficulty comes from the share of students who get a question right on
+            their first try.
+            {!full && ` The first ${FREE_PROBLEMS} are free.`}
           </p>
         </div>
         <ProgressSummary solved={solved} total={rows.length} />
@@ -375,7 +382,7 @@ function ProblemList() {
                     {r.q.family ? (familyById.get(r.q.family)?.name ?? r.q.family) : "—"}
                   </span>
                   <span className="text-right">
-                    <DifficultyTag stats={stats?.get(r.q.id)} />
+                    <DifficultyTag question={r.q} stats={stats?.get(r.q.id)} />
                   </span>
                 </Link>
               </li>

@@ -1,4 +1,6 @@
 import { supabase } from "../supabase";
+import { difficultyOf } from "./bank";
+import type { InterviewQuestion } from "./types";
 
 /**
  * What the problem list (`/interview/problems`) shows beside each question:
@@ -22,20 +24,25 @@ export function solveRate(stats: QuestionStats | undefined): number | null {
 }
 
 /**
- * LeetCode's three bands, cut on the solve rate. The number is the
- * difficulty; the band only colours it and backs the difficulty filter.
+ * LeetCode's three bands, cut on the solve rate. A question nobody has
+ * answered yet falls back to its authored difficulty (0–3 easy, 4–6 medium,
+ * 7 and up hard), so every question has a band.
  */
-export type DifficultyBand = "easy" | "medium" | "hard" | "new";
+export type DifficultyBand = "easy" | "medium" | "hard";
 
 export const DIFFICULTY_BANDS: { id: DifficultyBand; label: string; hint: string }[] = [
   { id: "easy", label: "Easy", hint: "60% or more get it right" },
   { id: "medium", label: "Medium", hint: "30–60% get it right" },
   { id: "hard", label: "Hard", hint: "Under 30% get it right" },
-  { id: "new", label: "New", hint: "Nobody has answered it yet" },
 ];
 
-export function difficultyBand(rate: number | null): DifficultyBand {
-  if (rate === null) return "new";
+export const BAND_RANK: Record<DifficultyBand, number> = { easy: 0, medium: 1, hard: 2 };
+
+export function difficultyBand(q: InterviewQuestion, rate: number | null): DifficultyBand {
+  if (rate === null) {
+    const d = difficultyOf(q);
+    return d <= 3 ? "easy" : d <= 6 ? "medium" : "hard";
+  }
   if (rate >= 0.6) return "easy";
   if (rate >= 0.3) return "medium";
   return "hard";

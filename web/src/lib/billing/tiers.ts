@@ -123,12 +123,11 @@ export const INTERVIEW_FREE_PLAN: InterviewPlanCard = {
   lifetime: 0,
   tagline: "Try the format before you commit.",
   features: [
-    "A selection of free mock-interview decks",
-    "Free practice questions for training",
+    "50 classic interview problems",
     "Timed answers and automatic grading",
     "Skill bars for the techniques you practise",
   ],
-  excludes: ["The full question bank", "Every mock interview and every training drill"],
+  excludes: ["The full question bank", "Mock interviews", "Technique training"],
 };
 
 /**
