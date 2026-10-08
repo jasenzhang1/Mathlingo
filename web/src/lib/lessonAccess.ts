@@ -18,9 +18,9 @@ import { useProficiency } from "./useProficiency";
  *
  * Within a visible course, reading is open — any lesson's slides, wiki and the
  * rest — while making progress is gated: a lesson's assessment opens once every
- * direct prerequisite reaches the unlock threshold (see lessonLock). Signed-out
- * visitors live under the same rule with nothing saved, so for them only
- * lessons without prerequisites can be assessed.
+ * direct prerequisite in the same course reaches the unlock threshold (see
+ * lessonLock). Signed-out visitors live under the same rule with nothing saved,
+ * so for them only lessons without in-course prerequisites can be assessed.
  *
  * Developers bypass all of it; "Student view" turns them back into students,
  * on whichever plan it previews.
