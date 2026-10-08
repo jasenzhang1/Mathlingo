@@ -36,11 +36,7 @@ const InterviewMockPage = lazy(() => import("./pages/InterviewMockPage.tsx").the
 const InterviewProblemsPage = lazy(() => import("./pages/InterviewProblemsPage.tsx").then((m) => ({ default: m.InterviewProblemsPage })));
 const InterviewProblemPage = lazy(() => import("./pages/InterviewProblemPage.tsx").then((m) => ({ default: m.InterviewProblemPage })));
 const InterviewTrainPage = lazy(() => import("./pages/InterviewTrainPage.tsx").then((m) => ({ default: m.InterviewTrainPage })));
-<<<<<<< HEAD
-const InterviewProblemPage = lazy(() => import("./pages/InterviewProblemPage.tsx").then((m) => ({ default: m.InterviewProblemPage })));
-=======
 const DevFeedbackPage = lazy(() => import("./pages/DevFeedbackPage.tsx").then((m) => ({ default: m.DevFeedbackPage })));
->>>>>>> origin/main
 const DevBundlesPage = lazy(() => import("./pages/DevBundlesPage.tsx").then((m) => ({ default: m.DevBundlesPage })));
 
 createRoot(document.getElementById("root")!).render(

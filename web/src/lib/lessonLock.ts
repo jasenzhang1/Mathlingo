@@ -7,6 +7,11 @@ import { UNLOCK_THRESHOLD } from "./assessment/exp";
  * gate always has been: a prerequisite that has merely faded since it was
  * proven doesn't relock what it opened. Direct prerequisites are enough — each
  * of them was itself gated on its own prerequisites.
+ *
+ * Only prerequisites in the lesson's own course gate it. A course's entry
+ * lessons often build on another course (probability on set theory), and a
+ * free student may have only this one course — so a lesson with no
+ * prerequisite inside its course is open from the start.
  */
 export interface UnmetPrerequisite {
   concept: Concept;
@@ -21,7 +26,7 @@ export function unmetPrerequisites(
   if (!concept) return [];
   return concept.prerequisites
     .map((id) => conceptById.get(id))
-    .filter((c): c is Concept => c !== undefined)
+    .filter((c): c is Concept => c !== undefined && c.domain === concept.domain)
     .map((c) => ({ concept: c, ceiling: ceiling.get(c.id) ?? 0 }))
     .filter((p) => p.ceiling < UNLOCK_THRESHOLD);
 }
