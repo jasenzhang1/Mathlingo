@@ -18,9 +18,12 @@ export interface QuestionStats {
   solved: number;
 }
 
-/** null when nobody has answered yet. */
+/** Fewer students than this and the rate is too noisy to show; the list shows a dash. */
+export const MIN_STUDENTS = 10;
+
+/** The share of students right on their first answer; null until `MIN_STUDENTS` have answered. */
 export function solveRate(stats: QuestionStats | undefined): number | null {
-  return stats && stats.students > 0 ? stats.solved / stats.students : null;
+  return stats && stats.students >= MIN_STUDENTS ? stats.solved / stats.students : null;
 }
 
 /**

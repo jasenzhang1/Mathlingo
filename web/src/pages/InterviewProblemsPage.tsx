@@ -22,6 +22,7 @@ import {
   difficultyBand,
   loadMyStatuses,
   loadQuestionStats,
+  MIN_STUDENTS,
   solveRate,
   type DifficultyBand,
   type ProblemStatus,
@@ -53,8 +54,8 @@ const STATUS_FILTERS: { id: StatusFilter; label: string }[] = [
   { id: "attempted", label: "Attempted" },
 ];
 
-/** Rows rendered at a time; more load as the list scrolls. */
-const PAGE = 100;
+/** Problems per page. */
+const PAGE = 25;
 const SHOW_TAGS_KEY = "mathlingo:interview-problems:show-tags";
 
 interface Row {
@@ -124,6 +125,8 @@ function ProblemList() {
     setParams(
       (prev) => {
         const next = new URLSearchParams(prev);
+        // Any change of filters starts again from the first page.
+        if (!("page" in changes)) next.delete("page");
         for (const [k, v] of Object.entries(changes)) {
           const value = Array.isArray(v) ? v.join(",") : v;
           if (value) next.set(k, value);
@@ -179,20 +182,14 @@ function ProblemList() {
     return out;
   }, [rows, search, topics, scenarios, difficulty, status, sort]);
 
-  // Back to the first page whenever the filters change.
-  const filterKey = params.toString();
-  const [shown, setShown] = useState({ key: filterKey, limit: PAGE });
-  const limit = shown.key === filterKey ? shown.limit : PAGE;
-  const sentinel = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = sentinel.current;
-    if (!el) return;
-    const io = new IntersectionObserver((entries) => {
-      if (entries[0]?.isIntersecting) setShown({ key: filterKey, limit: limit + PAGE });
-    });
-    io.observe(el);
-    return () => io.disconnect();
-  }, [filterKey, limit]);
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE));
+  const page = Math.min(pageCount, Math.max(1, Number.parseInt(params.get("page") ?? "1", 10) || 1));
+  const pageRows = filtered.slice((page - 1) * PAGE, page * PAGE);
+  const listTop = useRef<HTMLDivElement>(null);
+  function goToPage(p: number) {
+    update({ page: p > 1 ? String(p) : null });
+    listTop.current?.scrollIntoView({ block: "start" });
+  }
 
   const topicOptions = useMemo(() => {
     const counts = new Map<string, number>();
@@ -304,6 +301,7 @@ function ProblemList() {
 
       <div className="mt-3 flex items-center justify-between text-xs text-[var(--ink-soft)]">
         <span>
+          {pageCount > 1 && `${((page - 1) * PAGE + 1).toLocaleString()}–${((page - 1) * PAGE + pageRows.length).toLocaleString()} of `}
           {filtered.length.toLocaleString()} question{filtered.length === 1 ? "" : "s"}
           {stats === null && " · loading difficulty…"}
         </span>
@@ -324,14 +322,23 @@ function ProblemList() {
         </label>
       </div>
 
-      <div className="mt-2 overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--panel)]">
-        <div role="row" className="grid grid-cols-[1.75rem_minmax(0,1fr)_4rem] sm:gap-3 items-center gap-2 border-b border-[var(--line)] px-3 py-2.5 sm:px-4 text-xs font-semibold text-[var(--ink-soft)] sm:grid-cols-[2.5rem_minmax(0,1fr)_12rem_7rem]">
+      <div ref={listTop} className="mt-2 scroll-mt-4 overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--panel)]">
+        <div role="row" className={`${ROW_GRID} border-b border-[var(--line)] text-xs font-semibold text-[var(--ink-soft)]`}>
+          <span role="columnheader" aria-label="Number" />
           <span role="columnheader" aria-label="Status">
             <span className="hidden sm:inline">Status</span>
           </span>
           <span role="columnheader">Title</span>
           <span role="columnheader" className="hidden sm:block">
             Scenario
+          </span>
+          <span
+            role="columnheader"
+            className="text-right"
+            title={`Share of students right on their first try. Shown once ${MIN_STUDENTS} students have answered.`}
+          >
+            <span className="sm:hidden">Acc.</span>
+            <span className="hidden sm:inline">Acceptance</span>
           </span>
           <button
             type="button"
@@ -349,23 +356,20 @@ function ProblemList() {
           <p className="px-4 py-12 text-center text-sm text-[var(--ink-soft)]">No questions match these filters.</p>
         ) : (
           <ul>
-            {filtered.slice(0, limit).map((r, i) => (
+            {pageRows.map((r, i) => (
               <li key={r.q.id}>
                 <Link
                   to={`/interview/problems/${encodeURIComponent(r.q.id)}`}
                   state={{ ids: listIds, from: `?${params}` }}
-                  className={`grid grid-cols-[1.75rem_minmax(0,1fr)_4rem] sm:gap-3 items-center gap-2 px-3 py-2.5 text-sm sm:px-4 hover:bg-[var(--accent-soft)] sm:grid-cols-[2.5rem_minmax(0,1fr)_12rem_7rem] ${
-                    i % 2 === 1 ? "bg-[var(--paper)]" : ""
-                  }`}
+                  className={`${ROW_GRID} text-sm hover:bg-[var(--accent-soft)] ${i % 2 === 1 ? "bg-[var(--paper)]" : ""}`}
                 >
+                  <span className="text-right tabular-nums text-[var(--ink-soft)]">{r.number}</span>
                   <span className="flex justify-center">
                     <StatusIcon status={r.status} />
                   </span>
                   <span className="min-w-0">
                     <span className="flex items-center gap-1.5">
-                      <span className="truncate text-[var(--ink)]">
-                        {r.number}. {r.title}
-                      </span>
+                      <span className="truncate text-[var(--ink)]">{r.title}</span>
                       {r.locked && <LockIcon />}
                     </span>
                     {showTags && r.techniques.length > 0 && (
@@ -381,6 +385,7 @@ function ProblemList() {
                   <span className="hidden truncate text-xs text-[var(--ink-soft)] sm:block">
                     {r.q.family ? (familyById.get(r.q.family)?.name ?? r.q.family) : "—"}
                   </span>
+                  <AcceptanceCell rate={r.rate} stats={stats?.get(r.q.id)} />
                   <span className="text-right">
                     <DifficultyTag question={r.q} stats={stats?.get(r.q.id)} />
                   </span>
@@ -390,8 +395,118 @@ function ProblemList() {
           </ul>
         )}
       </div>
-      {limit < filtered.length && <div ref={sentinel} className="h-12" />}
+      {pageCount > 1 && <Pagination page={page} pageCount={pageCount} onPage={goToPage} />}
     </div>
+  );
+}
+
+/** Row layout shared by the header and every row: number, status, title, scenario (sm+), acceptance, difficulty. */
+const ROW_GRID =
+  "grid grid-cols-[2rem_1.25rem_minmax(0,1fr)_3.25rem_3.75rem] items-center gap-2 px-3 py-2.5 sm:grid-cols-[2.5rem_2.5rem_minmax(0,1fr)_11rem_6rem_5rem] sm:gap-3 sm:px-4";
+
+/** First-try success rate, or a dash until enough students have answered for it to mean anything. */
+function AcceptanceCell({ rate, stats }: { rate: number | null; stats: QuestionStats | undefined }) {
+  const students = stats?.students ?? 0;
+  return (
+    <span
+      className="text-right text-sm tabular-nums text-[var(--ink-soft)]"
+      title={
+        rate === null
+          ? `${students} of the ${MIN_STUDENTS} students needed have answered`
+          : `${stats!.solved.toLocaleString()} of ${students.toLocaleString()} students right on their first try`
+      }
+    >
+      {rate === null ? "—" : `${(rate * 100).toFixed(1)}%`}
+    </span>
+  );
+}
+
+/** Page numbers either side of the current one before the run is cut with "…". */
+const PAGE_WINDOW = 2;
+
+/** The page numbers to show: first, last, and a window around the current page, with gaps as null. */
+function pageItems(page: number, pageCount: number): (number | null)[] {
+  const shown = new Set([1, pageCount]);
+  for (let p = page - PAGE_WINDOW; p <= page + PAGE_WINDOW; p++) if (p >= 1 && p <= pageCount) shown.add(p);
+  const sorted = [...shown].sort((a, b) => a - b);
+  const out: (number | null)[] = [];
+  sorted.forEach((p, i) => {
+    if (i > 0 && p - sorted[i - 1] > 1) out.push(p - sorted[i - 1] === 2 ? p - 1 : null);
+    out.push(p);
+  });
+  return out;
+}
+
+/** Google-style pager: Previous, page numbers with gaps, Next, and a box to jump to any page once some are hidden. */
+function Pagination({ page, pageCount, onPage }: { page: number; pageCount: number; onPage: (p: number) => void }) {
+  const [jump, setJump] = useState("");
+  const items = pageItems(page, pageCount);
+  const hidden = items.length < pageCount;
+  const step = "rounded-lg px-3 py-1.5 text-sm text-[var(--accent)] hover:bg-[var(--accent-soft)] disabled:pointer-events-none disabled:opacity-0";
+
+  function submitJump() {
+    const p = Number.parseInt(jump, 10);
+    if (!Number.isFinite(p)) return;
+    onPage(Math.min(pageCount, Math.max(1, p)));
+    setJump("");
+  }
+
+  return (
+    <nav aria-label="Pages" className="mt-6 flex flex-col items-center gap-3">
+      <div className="flex flex-wrap items-center justify-center gap-1">
+        <button type="button" className={step} disabled={page === 1} onClick={() => onPage(page - 1)}>
+          ‹ Previous
+        </button>
+        {items.map((p, i) =>
+          p === null ? (
+            <span key={`gap-${i}`} className="px-1 text-sm text-[var(--ink-soft)]" aria-hidden>
+              …
+            </span>
+          ) : (
+            <button
+              key={p}
+              type="button"
+              onClick={() => onPage(p)}
+              aria-current={p === page ? "page" : undefined}
+              className={`min-w-[2.25rem] rounded-lg px-2 py-1.5 text-sm tabular-nums ${
+                p === page ? "bg-[var(--accent)] font-semibold text-white" : "text-[var(--ink)] hover:bg-[var(--accent-soft)]"
+              }`}
+            >
+              {p}
+            </button>
+          ),
+        )}
+        <button type="button" className={step} disabled={page === pageCount} onClick={() => onPage(page + 1)}>
+          Next ›
+        </button>
+      </div>
+      {hidden && (
+        <form
+          className="flex items-center gap-2 text-sm text-[var(--ink-soft)]"
+          onSubmit={(e) => {
+            e.preventDefault();
+            submitJump();
+          }}
+        >
+          <label htmlFor="jump-to-page">Go to page</label>
+          <input
+            id="jump-to-page"
+            type="number"
+            inputMode="numeric"
+            min={1}
+            max={pageCount}
+            value={jump}
+            onChange={(e) => setJump(e.target.value)}
+            placeholder={String(page)}
+            className="w-20 rounded-lg border border-[var(--line)] bg-[var(--panel)] px-2 py-1 text-center text-[var(--ink)] focus:border-[var(--accent)] focus:outline-none"
+          />
+          <span>of {pageCount}</span>
+          <button type="submit" className="rounded-lg border border-[var(--line)] px-3 py-1 text-[var(--ink)] hover:border-[var(--accent)]">
+            Go
+          </button>
+        </form>
+      )}
+    </nav>
   );
 }
 

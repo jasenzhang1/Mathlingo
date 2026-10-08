@@ -15,6 +15,7 @@ import {
   type DifficultyBand,
   type ProblemTopic,
 } from "../../lib/interview/bank";
+import { MIN_STUDENTS } from "../../lib/interview/problemStats";
 import { useSolvedQuestions } from "../../lib/interview/solved";
 import { useQuestionStats, type QuestionStats } from "../../lib/interview/stats";
 import type { InterviewQuestion } from "../../lib/interview/types";
@@ -39,9 +40,9 @@ type StatusFilter = "all" | "solved" | "unsolved";
 type SortKey = "number" | "title" | "difficulty" | "acceptance";
 const PAGE = 50;
 
-/** Correct answers as a share of all answers, or null before anyone has tried it. */
+/** Share of students right on their first answer, or null until `MIN_STUDENTS` have answered. */
 function acceptance(s: QuestionStats | undefined): number | null {
-  return s && s.attempts > 0 ? s.solved / s.attempts : null;
+  return s && s.attempts >= MIN_STUDENTS ? s.solved / s.attempts : null;
 }
 
 function matches(q: InterviewQuestion, text: string): boolean {

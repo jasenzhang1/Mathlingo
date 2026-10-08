@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 
-/** Every candidate's answers to one question, totalled. */
+/** One question's answers, one vote per student (their first answer), totalled. */
 export interface QuestionStats {
+  /** Students who have answered it. */
   attempts: number;
-  /** Answers graded fully correct. */
+  /** Of those, how many were fully right on their first answer. */
   solved: number;
 }
 
 let loading: Promise<Map<string, QuestionStats>> | null = null;
 
-/** Loaded once per page load, from `interview_question_stats()` (migration 0017). Empty if that isn't there yet. */
+/** Loaded once per page load, from `interview_question_stats()` (migration 0019). Empty if that isn't there yet. */
 function loadStats(): Promise<Map<string, QuestionStats>> {
   loading ??= (async () => {
     const out = new Map<string, QuestionStats>();
@@ -20,15 +21,15 @@ function loadStats(): Promise<Map<string, QuestionStats>> {
       loading = null;
       return out;
     }
-    for (const row of data as { question_id: string; attempts: number; solved: number }[]) {
-      out.set(row.question_id, { attempts: Number(row.attempts), solved: Number(row.solved) });
+    for (const row of data as { question_id: string; students: number; solved: number }[]) {
+      out.set(row.question_id, { attempts: Number(row.students), solved: Number(row.solved) });
     }
     return out;
   })();
   return loading;
 }
 
-/** Acceptance rates for the problem list: share of all answers to a question that were correct. */
+/** Acceptance rates for the problem list: share of students right on their first answer. */
 export function useQuestionStats(): Map<string, QuestionStats> {
   const [stats, setStats] = useState<Map<string, QuestionStats>>(new Map());
   useEffect(() => {
