@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { InterviewGate, InterviewUpgradeCard } from "../components/interview/InterviewGate";
+import { ProblemTable } from "../components/interview/ProblemTable";
 import { SkillBar } from "../components/interview/SkillBar";
 import {
   activeBundles,
@@ -141,10 +142,6 @@ function FullHome() {
     <div className="space-y-10">
       <div>
         <h1 className="font-display text-3xl text-[var(--ink)] md:text-4xl">Interview Prep</h1>
-        <p className="font-body mt-2 max-w-2xl text-[var(--ink-soft)]">
-          {liveQuestions.length.toLocaleString()} quant interview questions. A mock interview asks one scenario at a
-          time, getting harder as it goes, and times every answer, because in the room speed counts too.
-        </p>
       </div>
 
       <ProblemListLink />
@@ -258,6 +255,13 @@ function FullHome() {
             or tick the box above to browse every technique.
           </p>
         )}
+      </section>
+
+      <section>
+        <h2 className="font-display text-2xl text-[var(--ink)]">Problems</h2>
+        <div className="mt-4">
+          <ProblemTable />
+        </div>
       </section>
     </div>
   );

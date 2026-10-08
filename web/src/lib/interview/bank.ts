@@ -101,12 +101,55 @@ export function questionsInSection(sectionId: string): InterviewQuestion[] {
   return liveQuestions.filter((q) => techniquesOf(q).includes(sectionId));
 }
 
+/** The broad topic a problem list shows, one level above a section's topic. */
+export type ProblemTopic = "Brainteasers" | "Probability" | "Combinatorics" | "Number Theory" | "Algebra" | "Game Theory";
+
+/** Section topic → broad topic. Anything not listed (including "Unsorted") is a brainteaser. */
+const TOPIC_OF: Record<string, ProblemTopic> = {
+  Probability: "Probability",
+  "Expected Values": "Probability",
+  Variance: "Probability",
+  Covariance: "Probability",
+  Correlation: "Probability",
+  "Random Variables": "Probability",
+  Combinatorics: "Combinatorics",
+  Permutations: "Combinatorics",
+  Combinations: "Combinatorics",
+  "Combinatorial Identities": "Combinatorics",
+  "Counting Tricks": "Combinatorics",
+  Pigeonhole: "Combinatorics",
+  "Graph Theory": "Combinatorics",
+  "Number Theory": "Number Theory",
+  Algebra: "Algebra",
+  Optimization: "Algebra",
+  "Betting Games": "Game Theory",
+  "Game Theory": "Game Theory",
+  "Game Thoery": "Game Theory",
+  "Winning strategies": "Game Theory",
+};
+
+export const PROBLEM_TOPICS: ProblemTopic[] = ["Brainteasers", "Probability", "Combinatorics", "Number Theory", "Algebra", "Game Theory"];
+
+export function problemTopic(q: InterviewQuestion): ProblemTopic {
+  const s = q.section ? sectionById.get(q.section) : undefined;
+  return (s && TOPIC_OF[s.topic]) || "Brainteasers";
+}
+
+export type DifficultyBand = "Easy" | "Medium" | "Hard";
+export const DIFFICULTY_BANDS: DifficultyBand[] = ["Easy", "Medium", "Hard"];
+
+/** 0–3 easy, 4–6 medium, 7 and up hard. Unrated questions count as the default (medium). */
+export function difficultyBand(q: InterviewQuestion): DifficultyBand {
+  const d = difficultyOf(q);
+  return d <= 3 ? "Easy" : d <= 6 ? "Medium" : "Hard";
+}
+
 /** The list number: `iq-0042` is problem 42. */
 export function problemNumber(q: InterviewQuestion): number {
   return Number.parseInt(q.id.replace(/^\D+/, ""), 10) || 0;
 }
 
-/** Questions have no titles, so the problem list shows the opening line. */
+/** The name a problem list shows: the question's title, or the start of its text for an untitled draft. */
 export function problemTitle(q: InterviewQuestion): string {
-  return q.question.trim().split("\n")[0].trim();
+  return questionTitle(q);
 }
