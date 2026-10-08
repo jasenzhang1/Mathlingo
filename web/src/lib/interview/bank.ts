@@ -1,5 +1,6 @@
 import bundlesJson from "../../data/interview/bundles.json";
 import familiesJson from "../../data/interview/families.json";
+import orderJson from "../../data/interview/order.json";
 import questionsJson from "../../data/interview/questions.json";
 import sectionsJson from "../../data/interview/sections.json";
 import { loadBundleDraft } from "./bundleDraft";
@@ -30,7 +31,18 @@ export const familyById = new Map(families.map((f) => [f.id, f]));
 export const questionById = new Map(questions.map((q) => [q.id, q]));
 
 export const isLive = (q: InterviewQuestion) => q.status !== "draft";
-export const liveQuestions = questions.filter(isLive);
+
+/**
+ * List order (`order.json`): the classic interview problems first, then the
+ * rest shuffled once. Questions missing from it (new ones) follow, by id.
+ */
+const listRank = new Map((orderJson as string[]).map((id, i) => [id, i]));
+const byListOrder = (a: InterviewQuestion, b: InterviewQuestion) =>
+  (listRank.get(a.id) ?? Infinity) - (listRank.get(b.id) ?? Infinity) || a.id.localeCompare(b.id);
+
+/** Servable questions, in list order. */
+export const liveQuestions = questions.filter(isLive).sort(byListOrder);
+const numberById = new Map(liveQuestions.map((q, i) => [q.id, i + 1]));
 
 /** What unrated questions are treated as, for ordering and scoring. */
 export const DEFAULT_DIFFICULTY = 4;
@@ -59,17 +71,17 @@ export function activeBundles(): Bundle[] {
   return loadBundleDraft() ?? repoBundles;
 }
 
-/** Ids of every question in a free bundle — free whatever their own flag says. */
-export function freeBundleQuestionIds(bundles: Bundle[] = activeBundles()): Set<string> {
-  return new Set(bundles.filter((b) => b.free).flatMap((b) => b.questions));
+/** The free tier gets the first this-many problems of the list: the classics. */
+export const FREE_PROBLEMS = 50;
+
+/** Ids of the first `FREE_PROBLEMS` in the list, free to everyone. */
+export function freeProblemIds(): Set<string> {
+  return new Set(liveQuestions.slice(0, FREE_PROBLEMS).map((q) => q.id));
 }
 
-/**
- * Free to everyone: marked free itself, or in a free bundle. A free bundle
- * guarantees its questions are free; a locked bundle may still hold free ones.
- */
-export function isFreeQuestion(q: InterviewQuestion, freeViaBundle: Set<string> = freeBundleQuestionIds()): boolean {
-  return Boolean(q.free) || freeViaBundle.has(q.id);
+/** Free to everyone: one of the first `FREE_PROBLEMS` in the list, or marked free itself. */
+export function isFreeQuestion(q: InterviewQuestion): boolean {
+  return Boolean(q.free) || problemNumber(q) <= FREE_PROBLEMS;
 }
 
 /** A bundle's questions in order, skipping drafts and ids that no longer exist. */
@@ -144,9 +156,9 @@ export function difficultyBand(q: InterviewQuestion): DifficultyBand {
   return d <= 3 ? "Easy" : d <= 6 ? "Medium" : "Hard";
 }
 
-/** The list number: `iq-0042` is problem 42. */
+/** The list number: its position in list order, from 1. Drafts, which aren't listed, get Infinity. */
 export function problemNumber(q: InterviewQuestion): number {
-  return Number.parseInt(q.id.replace(/^\D+/, ""), 10) || 0;
+  return numberById.get(q.id) ?? Infinity;
 }
 
 /** The name a problem list shows: the question's title, or the start of its text for an untitled draft. */

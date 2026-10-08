@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { isLive, sectionById, sectionLabel } from "../../lib/interview/bank";
+import { FREE_PROBLEMS, isLive, sectionById, sectionLabel } from "../../lib/interview/bank";
 import type { Bundle, InterviewQuestion } from "../../lib/interview/types";
 import { btn, field, fieldLabel, freeBadge, lockedBadge, sortedFamilies, sortedSections } from "./interviewEditorStyles";
 
@@ -13,7 +13,7 @@ export function InterviewQuestionForm({
   isNew,
   edited,
   bundles,
-  freeViaBundle,
+  freeByPosition,
   allQuestions,
   onSave,
   onRevert,
@@ -24,7 +24,7 @@ export function InterviewQuestionForm({
   isNew: boolean;
   edited: boolean;
   bundles: Bundle[];
-  freeViaBundle: Set<string>;
+  freeByPosition: Set<string>;
   allQuestions: InterviewQuestion[];
   onSave: (q: InterviewQuestion) => void;
   onRevert: () => void;
@@ -39,8 +39,7 @@ export function InterviewQuestionForm({
   const set = (patch: Partial<InterviewQuestion>) => onSave({ ...q, ...patch });
 
   const inBundles = bundles.filter((b) => b.questions.includes(q.id));
-  const freeBundles = inBundles.filter((b) => b.free);
-  const effectiveFree = Boolean(q.free) || freeViaBundle.has(q.id);
+  const effectiveFree = Boolean(q.free) || freeByPosition.has(q.id);
   const allTags = useMemo(() => [...new Set(allQuestions.flatMap((x) => x.tags))].sort((a, b) => a.localeCompare(b)), [allQuestions]);
 
   function addTags(raw: string) {
@@ -98,10 +97,9 @@ export function InterviewQuestionForm({
                 Locked
               </button>
             </div>
-            {freeBundles.length > 0 && (
+            {freeByPosition.has(q.id) && (
               <p className="mt-2 text-xs text-[var(--ink-soft)]">
-                Always free while it's in {freeBundles.length === 1 ? "the free bundle" : "the free bundles"}{" "}
-                {freeBundles.map((b) => `“${b.title}”`).join(", ")}, whatever this says.
+                Always free as one of the first {FREE_PROBLEMS} problems in the list, whatever this says.
               </p>
             )}
           </div>

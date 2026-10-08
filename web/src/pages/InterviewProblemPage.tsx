@@ -81,7 +81,7 @@ function Problem() {
         </h1>
       </div>
       <p className="font-body mt-1 flex flex-wrap items-center gap-3 text-sm text-[var(--ink-soft)]">
-        <DifficultyTag stats={stats} />
+        <DifficultyTag question={q} stats={stats} />
         {stats && stats.students > 0 && (
           <span>
             {stats.solved.toLocaleString()} / {stats.students.toLocaleString()} students got it right

@@ -4,7 +4,7 @@ import { InterviewGate, InterviewUpgradeCard } from "../components/interview/Int
 import { QuestionCard } from "../components/interview/QuestionCard";
 import { SkillBar } from "../components/interview/SkillBar";
 import { useInterviewAccess } from "../lib/interview/access";
-import { freeBundleQuestionIds, isFreeQuestion, questionsInSection, sectionById } from "../lib/interview/bank";
+import { questionsInSection, sectionById } from "../lib/interview/bank";
 import type { InterviewQuestion } from "../lib/interview/types";
 import { pickTrainingQuestion, skillBar } from "../lib/interview/scoring";
 import { useInterviewSkills } from "../lib/interview/useInterviewSkills";
@@ -21,18 +21,14 @@ export function InterviewTrainPage() {
   );
 }
 
-/** Subscribers drill the whole technique; the free tier drills its free questions, if it has any. */
+/** Training comes with the subscription; the free tier gets the upgrade card. */
 function Train() {
   const { full } = useInterviewAccess();
   const { sectionId = "" } = useParams();
-  const all = questionsInSection(sectionId);
-  if (full) return <TrainSection pool={all} />;
-  const freeViaBundle = freeBundleQuestionIds();
-  const free = all.filter((q) => isFreeQuestion(q, freeViaBundle));
-  return free.length > 0 ? <TrainSection pool={free} lockedCount={all.length - free.length} /> : <TrainLocked />;
+  return full ? <TrainSection pool={questionsInSection(sectionId)} /> : <TrainLocked />;
 }
 
-/** A technique with no free questions, for someone without the subscription. */
+/** Training, for someone without the subscription. */
 function TrainLocked() {
   const { sectionId = "" } = useParams();
   const section = sectionById.get(sectionId);
@@ -55,7 +51,7 @@ function TrainLocked() {
   );
 }
 
-function TrainSection({ pool, lockedCount = 0 }: { pool: InterviewQuestion[]; lockedCount?: number }) {
+function TrainSection({ pool }: { pool: InterviewQuestion[] }) {
   const { sectionId = "" } = useParams();
   const section = sectionById.get(sectionId);
   const { skills, record, saveError } = useInterviewSkills();
@@ -88,15 +84,7 @@ function TrainSection({ pool, lockedCount = 0 }: { pool: InterviewQuestion[]; lo
         Train: {section.subtopic}
       </h1>
       <p className="font-body text-sm text-[var(--ink-soft)]">
-        {section.number} · {section.topic} · {pool.length} {lockedCount > 0 ? "free " : ""}question{pool.length === 1 ? "" : "s"}
-        {lockedCount > 0 && (
-          <>
-            {" "}·{" "}
-            <Link to="/pricing" className="text-[var(--accent)] hover:underline">
-              {lockedCount} more with Interview Prep
-            </Link>
-          </>
-        )}
+        {section.number} · {section.topic} · {pool.length} question{pool.length === 1 ? "" : "s"}
       </p>
 
       <div className="my-6 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5">

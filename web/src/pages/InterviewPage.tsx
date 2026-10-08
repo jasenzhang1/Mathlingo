@@ -7,15 +7,12 @@ import {
   activeBundles,
   bundleQuestions,
   familyById,
-  freeBundleQuestionIds,
-  isFreeQuestion,
+  FREE_PROBLEMS,
   liveQuestions,
-  sectionById,
   sectionLabel,
   sectionsByTopic,
-  techniquesOf,
 } from "../lib/interview/bank";
-import { isFreeBundle, useInterviewAccess } from "../lib/interview/access";
+import { useInterviewAccess } from "../lib/interview/access";
 import { skillBar } from "../lib/interview/scoring";
 import { useInterviewSkills } from "../lib/interview/useInterviewSkills";
 
@@ -33,78 +30,20 @@ function InterviewHome() {
   return full ? <FullHome /> : <FreeHome />;
 }
 
-/** The free tier: the free mock-interview decks, and what subscribing adds. */
+/** The free tier: the first problems of the list, and what subscribing adds. */
 function FreeHome() {
-  const navigate = useNavigate();
-  const decks = useMemo(() => activeBundles().filter((b) => isFreeBundle(b) && bundleQuestions(b).length > 0), []);
-  /** Techniques with at least one free question, and how many. */
-  const practice = useMemo(() => {
-    const viaBundle = freeBundleQuestionIds();
-    const counts = new Map<string, number>();
-    for (const q of liveQuestions) {
-      if (!isFreeQuestion(q, viaBundle)) continue;
-      for (const t of techniquesOf(q)) counts.set(t, (counts.get(t) ?? 0) + 1);
-    }
-    return [...counts]
-      .filter(([id]) => sectionById.has(id))
-      .sort((a, b) => sectionById.get(a[0])!.number - sectionById.get(b[0])!.number);
-  }, []);
-
   return (
     <div className="space-y-10">
       <div>
         <h1 className="font-display text-3xl text-[var(--ink)] md:text-4xl">Interview Prep</h1>
         <p className="font-body mt-2 max-w-2xl text-[var(--ink-soft)]">
-          Try a mock interview: one scenario, follow-ups that get harder, every answer timed. These decks and
-          questions are free; the full bank of {liveQuestions.length.toLocaleString()} questions comes with Interview
-          Prep.
+          The first {FREE_PROBLEMS} problems are free: the classic quant interview questions, timed and graded.
+          Interview Prep adds the full bank of {liveQuestions.length.toLocaleString()} questions, mock interviews
+          (one scenario, follow-ups that get harder), and technique training.
         </p>
       </div>
 
       <ProblemListLink />
-
-      <section>
-        <h2 className="font-display text-2xl text-[var(--ink)]">Free decks</h2>
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          {decks.map((b) => (
-            <div key={b.id} className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-6 shadow-sm">
-              <h3 className="font-display text-lg text-[var(--ink)]">{b.title}</h3>
-              <p className="font-body mt-1 text-sm text-[var(--ink-soft)]">
-                {bundleQuestions(b).length} questions{b.family ? ` · ${familyById.get(b.family)?.name ?? b.family}` : ""}
-              </p>
-              <button
-                type="button"
-                onClick={() => navigate(`/interview/mock?bundle=${encodeURIComponent(b.id)}`)}
-                className="font-body mt-5 w-full rounded-full bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:opacity-90"
-              >
-                Start mock interview
-              </button>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {practice.length > 0 && (
-        <section>
-          <h2 className="font-display text-2xl text-[var(--ink)]">Free practice</h2>
-          <p className="font-body mt-1 text-sm text-[var(--ink-soft)]">Drill a technique with its free questions.</p>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-            {practice.map(([id, n]) => (
-              <li key={id}>
-                <Link
-                  to={`/interview/train/${encodeURIComponent(id)}`}
-                  className="font-body flex items-center justify-between gap-3 rounded-xl border border-[var(--line)] bg-[var(--panel)] px-4 py-2.5 text-sm text-[var(--ink)] hover:border-[var(--accent)]"
-                >
-                  <span className="min-w-0 truncate">{sectionLabel(id)}</span>
-                  <span className="shrink-0 text-xs text-[var(--ink-soft)]">
-                    {n} free
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
 
       <section className="max-w-xl">
         <h2 className="font-display text-2xl text-[var(--ink)]">Get the full bank</h2>

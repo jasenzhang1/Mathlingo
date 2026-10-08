@@ -1,4 +1,5 @@
 import { difficultyBand, solveRate, type DifficultyBand, type ProblemStatus, type QuestionStats } from "../../lib/interview/problemStats";
+import type { InterviewQuestion } from "../../lib/interview/types";
 
 /** Shared by the problem list and the problem page. */
 
@@ -6,26 +7,32 @@ const BAND_COLOR: Record<DifficultyBand, string> = {
   easy: "text-[var(--teal)]",
   medium: "text-amber-600",
   hard: "text-red-600",
-  new: "text-[var(--ink-soft)]",
 };
 
-/** The difficulty: the share of students who got it right, coloured by band. */
-export function DifficultyTag({ stats, className = "" }: { stats: QuestionStats | undefined; className?: string }) {
+const BAND_LABEL: Record<DifficultyBand, string> = { easy: "Easy", medium: "Medium", hard: "Hard" };
+
+/** Easy, Medium or Hard: from the share of students who got it right, or its rated difficulty until anyone has. */
+export function DifficultyTag({
+  question,
+  stats,
+  className = "",
+}: {
+  question: InterviewQuestion;
+  stats: QuestionStats | undefined;
+  className?: string;
+}) {
   const rate = solveRate(stats);
-  const band = difficultyBand(rate);
-  if (rate === null || !stats) {
-    return (
-      <span className={`text-xs ${BAND_COLOR.new} ${className}`} title="Nobody has answered this yet">
-        New
-      </span>
-    );
-  }
+  const band = difficultyBand(question, rate);
   return (
     <span
-      className={`text-sm font-medium tabular-nums ${BAND_COLOR[band]} ${className}`}
-      title={`${stats.solved.toLocaleString()} of ${stats.students.toLocaleString()} student${stats.students === 1 ? "" : "s"} got it right`}
+      className={`text-sm font-medium ${BAND_COLOR[band]} ${className}`}
+      title={
+        rate === null || !stats
+          ? "Rated difficulty — nobody has answered this yet"
+          : `${(rate * 100).toFixed(1)}% · ${stats.solved.toLocaleString()} of ${stats.students.toLocaleString()} student${stats.students === 1 ? "" : "s"} got it right`
+      }
     >
-      {(rate * 100).toFixed(1)}%
+      {BAND_LABEL[band]}
     </span>
   );
 }

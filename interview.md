@@ -20,6 +20,7 @@ There is no database copy and no external sync: to change a question, edit the J
 | `sections.json` | **Techniques**, e.g. `234 · Combinatorics › Reflection Principle`. The id is `number-subtopic`, because some numbers are shared (230 is both "Recursion" and "Recursion (Fibonacci)"). |
 | `families.json` | **Scenarios**: the setup a candidate recognizes, e.g. *Lattice Walk*, *Dice Rolls Till Criteria*. `group` links related families. |
 | `bundles.json` | **Mock-interview chains**: an ordered list of question ids on one scenario. |
+| `order.json` | **List order** of the problem list: classics first. The first 50 are the free tier. |
 
 A question has one main **section** (the technique it hinges on: the most efficient solution, and
 the one an interviewer is looking for) and at most one **family** (its scenario). It may also list
@@ -84,19 +85,22 @@ the pool is exhausted.
 
 ## Problem list
 
-`/interview/problems` lists every question in one LeetCode-style list. It starts in id order,
-which is arbitrary.
+`/interview/problems` lists every question in one LeetCode-style list, in the order of
+[`order.json`](web/src/data/interview/order.json): about 70 hand-picked classics first (birthday
+problem, two eggs, coupon collector, HH vs HT, and so on), then the rest shuffled once with a
+fixed seed. A problem's number is its position in that order, not its id. Questions missing from
+`order.json` (new ones) go at the end, by id.
 
 - **Filters:** search, **Concepts** (techniques, matching a question's main section or any of its
   `otherSections`), **Scenario** (family), **Difficulty**, and **Status** (Todo, Solved, Attempted).
   Picking several concepts or scenarios matches questions with any of them. Filters live in the
   query string, so Back and shared links keep them.
-- **Difficulty** is literally the percentage of students who get the question right. Only each
+- **Difficulty** shows *Easy*, *Medium*, or *Hard*, cut on the percentage of students who get
+  the question right: Easy at 60% or more, Medium at 30–60%, Hard under 30%. Only each
   student's first answer counts, and only a fully right answer ("Partly" does not). The numbers
   come from `interview_question_stats()` (migration 0017), because `interview_attempts` is
-  readable only by its owner. The colour and the Difficulty filter use LeetCode's three bands:
-  Easy at 60% or more, Medium at 30–60%, Hard under 30%. Questions nobody has answered yet show
-  *New* and sort last in both directions.
+  readable only by its owner. Questions nobody has answered yet use their rated difficulty
+  instead (0–3 Easy, 4–6 Medium, 7+ Hard). Hovering shows the exact percentage.
 - **Sort:** click the Difficulty header, or use **Sort**, for easiest or hardest first.
 - **Concept tags** are hidden by default, since recognising the technique is part of the
   question. *Show concept tags* turns them on, and the choice is remembered in the browser.
@@ -135,16 +139,14 @@ subscription on the same Stripe customer:
 - **Access check:** `has_interview_access()` applies the same "paying, with a 3-day grace" rule as
   `effective_tier()`.
 - **Developers:** always get in.
-- **Free tier:** any signed-in user without the subscription gets the free bundles and free
-  questions. Signed-out visitors see the sales page. Pages read the access level through
+- **Free tier:** any signed-in user without the subscription gets the free questions in the
+  problem list, and nothing else. Signed-out visitors see the sales page. Pages read the access level through
   `useInterviewAccess()`.
-  - **Free bundles** have `"free": true` in `bundles.json` (currently *Lattice walk to (5, 5)*
-    and *Dice Rolls Till Criteria 1*). Mock interviews on the free tier only draw from these.
-  - **Free questions** are any question with `"free": true`, plus every question in a free
-    bundle (`isFreeQuestion` in [`bank.ts`](web/src/lib/interview/bank.ts)). A free bundle
-    guarantees its questions are free, but a locked bundle can still contain free questions.
-  - **Training** on the free tier drills a technique's free questions and links to the rest.
-    Techniques with no free questions show the upgrade card.
+  - **Free questions** are the first 50 problems of the list (`FREE_PROBLEMS`), which are the
+    classics, plus any question with `"free": true` (`isFreeQuestion` in
+    [`bank.ts`](web/src/lib/interview/bank.ts)). Reordering `order.json` changes which are free.
+  - **Mock interviews and training** are subscriber-only. On the free tier both show the upgrade
+    card. Bundles no longer have a `free` flag that does anything.
 
 The Plans page shows interview prep as its own row (Free and Interview Prep), separate from the
 learning plans.
