@@ -93,7 +93,7 @@ fixed seed. A problem's number is its position in that order, not its id. Questi
 
 - **Filters:** search, **Concepts** (techniques, matching a question's main section or any of its
   `otherSections`), **Scenario** (family), **Difficulty**, and **Status** (Todo, Solved, Attempted).
-  Picking several concepts or scenarios matches questions with any of them. Filters live in the
+  Concepts and Scenario take one option at a time; picking another switches to it. Filters live in the
   query string, so Back and shared links keep them.
 - **Acceptance** is the percentage of students who got the question right on their first try.
   Each student is one vote: only their first answer counts, and only a fully right answer

@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { numericAnswerFormat } from "../../lib/assessment/answerFormat";
 import { isVectorKey } from "../../lib/assessment/vectorAnswer";
 import { useSpeechInput } from "../../lib/assessment/useSpeechInput";
-import type { Item, ResponseChannel } from "../../lib/assessment/types";
+import type { Choice, Item, ResponseChannel } from "../../lib/assessment/types";
 import { CodeText } from "./CodeText";
 import { DrawingPad } from "./DrawingPad";
+
+/** "None of the above", "Both of these" and the like refer to the other choices, so they stay last. */
+const REFERS_TO_OTHERS = /\b(all|none|both|neither) of (the above|these|them)\b/i;
+
+/** Fisher–Yates over the choices, keeping any that refer to the others at the end in their authored order. */
+function shuffleChoices(choices: Choice[]): Choice[] {
+  const free = choices.filter((c) => !REFERS_TO_OTHERS.test(c.text));
+  for (let i = free.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [free[i], free[j]] = [free[j], free[i]];
+  }
+  return [...free, ...choices.filter((c) => REFERS_TO_OTHERS.test(c.text))];
+}
 
 /**
  * Renders the input surface for whichever format the item declares. Kept
@@ -32,6 +45,11 @@ export function AnswerInput({
   disabled: boolean;
   onSubmit: () => void;
 }) {
+  // Shuffled once per item served, so the right answer isn't always first.
+  // Keyed on content rather than the object, so a re-render mid-question can't reshuffle.
+  const choiceKey = `${item.id}|${(item.choices ?? []).map((c) => c.id).join(",")}`;
+  const choices = useMemo(() => shuffleChoices(item.choices ?? []), [choiceKey]);
+
   if (item.format === "mcq" || item.format === "multi-select") {
     const multiple = item.format === "multi-select";
 
@@ -57,7 +75,7 @@ export function AnswerInput({
             Select all that apply
           </p>
         )}
-        {(item.choices ?? []).map((choice) => {
+        {choices.map((choice) => {
           const active = selected.includes(choice.id);
           return (
             <label
