@@ -421,7 +421,9 @@ can browse.
 number the learner sees. Each answer moves it by however much the model moved (`carryProficiency` in
 `review.ts`), so a change to the engine's formulas never moves anyone's existing number; it only
 changes how far future answers push it. A learner's first answer on a lesson sets it to the model's
-estimate ("Starting proficiency"). Rows saved before 0016 are backfilled from the last logged
+estimate ("Starting proficiency"). After that, a right answer always adds at least 0.5
+(`MIN_CORRECT_GAIN`), up to the evidence cap and 100. Without that, an easy question near the top
+of the bar added nothing. Rows saved before 0016 are backfilled from the last logged
 `mastery_after`, or frozen at their current value on first load.
 
 **Minimum move follows surprise.** Every answer moves the bar at least `2 + 8 × |score − expected|`

@@ -6,7 +6,6 @@ import { useAuth } from "../lib/auth/useAuth";
 import { useInterviewAccess } from "../lib/interview/access";
 import {
   difficultyOf,
-  FREE_PROBLEMS,
   familyById,
   isFreeQuestion,
   liveQuestions,
@@ -233,11 +232,6 @@ function ProblemList() {
       <div className="mt-1 flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="font-display text-3xl text-[var(--ink)]">Problems</h1>
-          <p className="mt-1 max-w-2xl text-sm text-[var(--ink-soft)]">
-            The whole bank, classics first. Difficulty comes from the share of students who get a question right on
-            their first try.
-            {!full && ` The first ${FREE_PROBLEMS} are free.`}
-          </p>
         </div>
         <ProgressSummary solved={solved} total={rows.length} />
       </div>
@@ -256,8 +250,8 @@ function ProblemList() {
             className="w-full rounded-lg border border-[var(--line)] bg-[var(--panel)] py-2 pl-9 pr-3 text-sm text-[var(--ink)] focus:border-[var(--accent)] focus:outline-none"
           />
         </div>
-        <MultiSelect label="Concepts" selected={topics} groups={topicOptions} onChange={(v) => update({ topics: v })} />
-        <MultiSelect label="Scenario" selected={scenarios} groups={scenarioOptions} onChange={(v) => update({ scenarios: v })} />
+        <TagSelect label="Concepts" selected={topics} groups={topicOptions} onChange={(v) => update({ topics: v })} />
+        <TagSelect label="Scenario" selected={scenarios} groups={scenarioOptions} onChange={(v) => update({ scenarios: v })} />
         <SingleSelect
           label="Difficulty"
           value={difficulty}
@@ -363,7 +357,7 @@ function ProblemList() {
                   state={{ ids: listIds, from: `?${params}` }}
                   className={`${ROW_GRID} text-sm hover:bg-[var(--accent-soft)] ${i % 2 === 1 ? "bg-[var(--paper)]" : ""}`}
                 >
-                  <span className="text-right tabular-nums text-[var(--ink-soft)]">{r.number}</span>
+                  <span className="text-center font-bold tabular-nums text-[var(--ink-soft)]">{r.number}</span>
                   <span className="flex justify-center">
                     <StatusIcon status={r.status} />
                   </span>
@@ -650,18 +644,18 @@ interface OptionGroup {
   options: { id: string; label: string; count: number }[];
 }
 
-/** Tag-style multi-select with its own search box, like LeetCode's Topics filter. Matches any selected option. */
-function MultiSelect({ label, selected, groups, onChange }: { label: string; selected: string[]; groups: OptionGroup[]; onChange: (v: string[]) => void }) {
+/** Tag-style picker with its own search box, like LeetCode's Topics filter. One option at a time: picking another switches to it, picking the current one clears it. */
+function TagSelect({ label, selected, groups, onChange }: { label: string; selected: string[]; groups: OptionGroup[]; onChange: (v: string[]) => void }) {
   const [query, setQuery] = useState("");
   const chosen = new Set(selected);
   const needle = query.trim().toLowerCase();
   const visible = groups
     .map((g) => ({ ...g, options: g.options.filter((o) => !needle || o.label.toLowerCase().includes(needle) || g.group.toLowerCase().includes(needle)) }))
     .filter((g) => g.options.length > 0);
-  const toggle = (id: string) => onChange(chosen.has(id) ? selected.filter((s) => s !== id) : [...selected, id]);
+  const pick = (id: string) => onChange(chosen.has(id) ? [] : [id]);
   return (
     <Dropdown label={selected.length ? `${label} · ${selected.length}` : label} active={selected.length > 0} wide>
-      {() => (
+      {(close) => (
         <div>
           <div className="flex items-center gap-2 p-1">
             <input
@@ -687,7 +681,10 @@ function MultiSelect({ label, selected, groups, onChange }: { label: string; sel
                     <button
                       key={o.id}
                       type="button"
-                      onClick={() => toggle(o.id)}
+                      onClick={() => {
+                        pick(o.id);
+                        close();
+                      }}
                       aria-pressed={chosen.has(o.id)}
                       className={`rounded-full px-2.5 py-1 text-xs ${
                         chosen.has(o.id)

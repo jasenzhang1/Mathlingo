@@ -178,7 +178,7 @@ export function applyReview(
         memory,
       }
     : target;
-  if (counts) nextTarget.proficiency = carryProficiency(target, nextTarget);
+  if (counts) nextTarget.proficiency = carryProficiency(target, nextTarget, rawScore >= PASS_THRESHOLD);
   updated.set(item.conceptId, nextTarget);
 
   if (counts) {
@@ -219,8 +219,12 @@ export function applyReview(
  * anyone: the number a learner has is theirs, and the engine only decides how
  * far each new answer pushes it. The evidence cap still limits how fast it can
  * rise, but never pulls an existing number down.
+ *
+ * A right answer (`passed`, direct answers only) always gains at least
+ * `MIN_CORRECT_GAIN`. Near the top of the bar the model barely moves on an easy
+ * question, which read to learners as a right answer earning nothing.
  */
-export function carryProficiency(before: ConceptState, after: ConceptState): number {
+export function carryProficiency(before: ConceptState, after: ConceptState, passed = false): number {
   // The first direct answer on a lesson sets the bar to the engine's honest
   // estimate. (Moving from the 0 an unassessed lesson shows would leave the
   // bar permanently ~19 below the estimate — the prior's offset — forever.)
@@ -230,9 +234,13 @@ export function carryProficiency(before: ConceptState, after: ConceptState): num
   const stored = before.proficiency ?? modelProficiency(before);
   let next = stored + (modelProficiency(after) - modelProficiency(before));
   const cap = evidenceCap(after.ability.observations);
+  if (passed) next = Math.max(next, Math.min(stored + MIN_CORRECT_GAIN, cap));
   if (next > stored && next > cap) next = Math.max(stored, cap);
   return clamp(next, 0, 100);
 }
+
+/** The least a right answer adds to the bar (until it reaches the evidence cap or 100). */
+export const MIN_CORRECT_GAIN = 0.5;
 
 function applyPropagation(
   states: Map<string, ConceptState>,
