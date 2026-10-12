@@ -423,7 +423,15 @@ number the learner sees. Each answer moves it by however much the model moved (`
 changes how far future answers push it. A learner's first answer on a lesson sets it to the model's
 estimate ("Starting proficiency"). After that, a right answer always adds at least 0.5
 (`MIN_CORRECT_GAIN`), up to the evidence cap and 100. Without that, an easy question near the top
-of the bar added nothing. Rows saved before 0016 are backfilled from the last logged
+of the bar added nothing.
+
+**Saved progress is protected.** An answer is applied against every saved state (`loadStatesForReview`),
+because it also moves prerequisites, and a prerequisite missing from the map would start from blank and be
+saved over the real row. A failed read stops the lesson instead of being treated as "no progress".
+Migration 0020 adds two safety nets in the database. A guard trigger drops any update that would lower a
+row's `observations`, since nothing legitimately removes an answer. And `concept_states_history` keeps the
+previous version of a row on every update or delete. The answer log (`assessment_responses`) is
+append-only, so progress can also be rebuilt from it. Rows saved before 0016 are backfilled from the last logged
 `mastery_after`, or frozen at their current value on first load.
 
 **Minimum move follows surprise.** Every answer moves the bar at least `2 + 8 × |score − expected|`
