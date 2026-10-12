@@ -6,7 +6,7 @@ import { supabase } from "../supabase";
  * profile fields and one number each, and records placements as achievements.
  */
 
-export type BoardId = "mastery" | "answered" | "improvement" | "karma" | "posts" | "analogies";
+export type BoardId = "mastery" | "answered" | "improvement" | "solved" | "karma" | "posts" | "analogies";
 export type Period = "day" | "week" | "month" | "year" | "all";
 
 export interface BoardDef {
@@ -27,6 +27,7 @@ export const BOARDS: BoardDef[] = [
   { id: "mastery", label: "Course ranking", blurb: "Average proficiency across every lesson in the course (unattempted lessons count as 0).", unit: "/100", periodic: false, perCourse: true, decimals: 2 },
   { id: "answered", label: "Questions answered", blurb: "Graded assessment answers.", unit: "answered", periodic: true, perCourse: false, decimals: 0 },
   { id: "improvement", label: "Knowledge gained", blurb: "Net rise in proficiency, summed over every lesson — wrong answers count against it.", unit: "pts", periodic: true, perCourse: false, decimals: 2 },
+  { id: "solved", label: "Interview questions solved", blurb: "Interview prep questions answered fully correct. Each question counts once, when first solved.", unit: "solved", periodic: true, perCourse: false, decimals: 0 },
   { id: "karma", label: "Karma", blurb: "Net votes other people gave your forum posts and analogies.", unit: "karma", periodic: true, perCourse: false, decimals: 0 },
   { id: "posts", label: "Forum posts", blurb: "Questions and problems posted to the forums.", unit: "posts", periodic: true, perCourse: false, decimals: 0 },
   { id: "analogies", label: "Analogies", blurb: "Analogies submitted to lesson boards.", unit: "analogies", periodic: true, perCourse: false, decimals: 0 },
@@ -76,7 +77,9 @@ export async function loadLeaderboard(input: {
       rows: [],
       error: /function|schema cache/i.test(error.message)
         ? "Leaderboards aren't set up yet — run supabase/migrations/0015_social_leaderboards.sql."
-        : error.message,
+        : /unknown leaderboard/i.test(error.message)
+          ? "This board isn't set up yet — run supabase/migrations/0021_interview_solved_leaderboard.sql."
+          : error.message,
     };
   }
   return {
