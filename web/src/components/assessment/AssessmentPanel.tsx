@@ -19,6 +19,7 @@ import { explainScore } from "../../lib/assessment/rubric";
 import {
   loadConceptState,
   loadRecentItemIds,
+  loadStatesForReview,
   logResponse,
   RECENT_WINDOW,
   saveConceptStates,
@@ -284,10 +285,18 @@ export function AssessmentPanel({
         }
         return;
       }
-      const [loaded, recent] = await Promise.all([
-        loadConceptState(userId, conceptId),
-        loadRecentItemIds(userId, conceptId),
-      ]);
+      let loaded: ConceptState;
+      let recent: string[];
+      try {
+        [loaded, recent] = await Promise.all([
+          loadConceptState(userId, conceptId),
+          loadRecentItemIds(userId, conceptId),
+        ]);
+      } catch {
+        // Don't start: answering against a blank state would overwrite the saved one.
+        if (!cancelled) setSaveError("Couldn't load your saved progress. Reload the page to try again.");
+        return;
+      }
       if (cancelled) return;
       startFresh();
       setState(loaded);
@@ -527,13 +536,22 @@ ${followText}`,
 
   /** Scores a graded answer: moves the bar, votes on the item, saves. */
   async function finalize(item: Item, grade: Grade, answer: string) {
-    const outcome = applyReview(
-      new Map([[conceptId, state]]),
-      item,
-      grade,
-      Date.now(),
-      session.current,
-    );
+    // The review also moves prerequisites, so it needs their real saved states;
+    // any it isn't given would start from blank and be saved over the real rows.
+    let states = new Map([[conceptId, state]]);
+    if (user) {
+      try {
+        states = await loadStatesForReview(user.id);
+      } catch {
+        setSaveError("Couldn't reach your saved progress, so this answer wasn't counted. Try submitting again.");
+        setPhase({ kind: "answering", item });
+        return;
+      }
+      // This lesson's state here is newer than the saved row if the last save failed.
+      const saved = states.get(conceptId);
+      if (!saved || saved.ability.observations <= state.ability.observations) states.set(conceptId, state);
+    }
+    const outcome = applyReview(states, item, grade, Date.now(), session.current);
     const target = outcome.states.get(conceptId) ?? state;
     // Answered: a refresh from here should move on, not re-ask it.
     clearPendingItem(userId, conceptId);

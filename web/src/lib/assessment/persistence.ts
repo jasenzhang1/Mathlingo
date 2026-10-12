@@ -123,13 +123,16 @@ export async function loadConceptState(
   userId: string,
   conceptId: string,
 ): Promise<ConceptState> {
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from("concept_states")
     .select("*")
     .eq("user_id", userId)
     .eq("concept_id", conceptId)
     .maybeSingle();
 
+  // A failed read is not "no progress": treating it as blank would let the next
+  // answer save a fresh row over the learner's real one.
+  if (error) throw new Error(error.message);
   if (!data) return blankState(conceptId);
   const [repaired] = await repairPinned(userId, [rowToState(data as ConceptStateRow)]);
   return freezeMissing(userId, [repaired])[0];
@@ -153,6 +156,18 @@ export async function loadAllConceptStates(
 
   const states = ((data as ConceptStateRow[]) ?? []).map(rowToState);
   return freeze ? freezeMissing(userId, await repairPinned(userId, states)) : states;
+}
+
+/**
+ * Every saved state, as the starting point for one review. A review also moves
+ * prerequisites, and any it isn't given start from blank — which the save
+ * would then write over their real rows. Throws on a failed read for the same
+ * reason; the answer must not be saved against made-up state.
+ */
+export async function loadStatesForReview(userId: string): Promise<Map<string, ConceptState>> {
+  const { data, error } = await supabase.from("concept_states").select("*").eq("user_id", userId);
+  if (error) throw new Error(error.message);
+  return new Map(((data as ConceptStateRow[]) ?? []).map((row) => [row.concept_id, rowToState(row)]));
 }
 
 /** Upserts one or more concept states — the review may have touched prerequisites too. */
