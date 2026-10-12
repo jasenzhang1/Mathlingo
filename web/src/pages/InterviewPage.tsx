@@ -7,8 +7,6 @@ import {
   activeBundles,
   bundleQuestions,
   familyById,
-  FREE_PROBLEMS,
-  liveQuestions,
   sectionLabel,
   sectionsByTopic,
 } from "../lib/interview/bank";
@@ -34,14 +32,7 @@ function InterviewHome() {
 function FreeHome() {
   return (
     <div className="space-y-10">
-      <div>
-        <h1 className="font-display text-3xl text-[var(--ink)] md:text-4xl">Interview Prep</h1>
-        <p className="font-body mt-2 max-w-2xl text-[var(--ink-soft)]">
-          The first {FREE_PROBLEMS} problems are free: the classic quant interview questions, timed and graded.
-          Interview Prep adds the full bank of {liveQuestions.length.toLocaleString()} questions, mock interviews
-          (one scenario, follow-ups that get harder), and technique training.
-        </p>
-      </div>
+      <h1 className="font-display text-3xl text-[var(--ink)] md:text-4xl">Interview Prep</h1>
 
       <ProblemListLink />
 
@@ -211,15 +202,9 @@ function ProblemListLink() {
   return (
     <Link
       to="/interview/problems"
-      className="font-body flex items-center justify-between gap-4 rounded-2xl border border-[var(--line)] bg-[var(--panel)] px-6 py-4 shadow-sm hover:border-[var(--accent)]"
+      className="font-display inline-block rounded-full bg-[var(--accent)] px-8 py-4 text-2xl text-white shadow-sm transition-opacity hover:opacity-90"
     >
-      <span>
-        <span className="font-display block text-lg text-[var(--ink)]">Problem list</span>
-        <span className="block text-sm text-[var(--ink-soft)]">
-          Browse every question. Filter by concept, scenario, and difficulty (the share of students who get it right).
-        </span>
-      </span>
-      <span className="shrink-0 text-sm font-semibold text-[var(--accent)]">Browse →</span>
+      View all questions →
     </Link>
   );
 }
