@@ -1,0 +1,157 @@
+import type { Item } from "../../../lib/assessment/types";
+import { m, n, s } from "./fifty";
+
+/** Probability: the continuous families and the sampling distributions (40 → 50 items each). */
+const NORM = "normal-distribution";
+const UNI = "uniform-distribution";
+const EXP = "exponential-distribution";
+const GAM = "gamma-distribution";
+const BETA = "beta-distribution";
+const CHI = "chi-square-distribution";
+const T = "t-distribution";
+const F = "f-distribution";
+
+export const probFiftyCItems: Item[] = [
+  // --- normal-distribution ---------------------------------------------------
+  m(NORM, "affine", 2, "If $X \\sim \\mathcal{N}(\\mu, \\sigma^2)$ and $a \\ne 0$, then $aX + b$ is distributed as:", "$\\mathcal{N}(a\\mu + b, a^2\\sigma^2)$",
+    [["$\\mathcal{N}(a\\mu + b, a\\sigma^2)$", "Variance scales by $a^2$, not $a$."], ["$\\mathcal{N}(a\\mu, a^2\\sigma^2 + b)$", "Adding a constant shifts the mean, not the variance."], ["Not normal unless $a = 1$", "Any nonzero affine map of a normal is normal."]]),
+  n(NORM, "interval", 3, "$Z \\sim \\mathcal{N}(0, 1)$. Find $P(-1 < Z < 2)$. Give $4$ decimal places.", 0.8186, 0.002),
+  n(NORM, "battery", 4, "Battery life is $\\mathcal{N}(400, 25^2)$ hours. Find the probability that a battery lasts more than $450$ hours. Give $4$ decimal places.", 0.02275, 0.01),
+  n(NORM, "solve-mean", 4.5, "$X \\sim \\mathcal{N}(\\mu, 2^2)$ and $P(X < 10) = 0.9$. Find $\\mu$ (use $z_{0.9} = 1.2816$).", 7.437, 0.002),
+  n(NORM, "x-beats-y", 5, "$X \\sim \\mathcal{N}(5, 4)$ and $Y \\sim \\mathcal{N}(3, 9)$ are independent (variances given). Find $P(X > Y)$.", 0.7105, 0.003),
+  n(NORM, "sample-mean", 5.5, "$9$ i.i.d. observations come from $\\mathcal{N}(50, 6^2)$. Find $P(\\bar X > 53)$. Give $4$ decimal places.", 0.0668, 0.005),
+  n(NORM, "truncated-mean", 6.5, "$Z \\sim \\mathcal{N}(0, 1)$. Compute $\\mathbb{E}[Z \\mid Z > 1] = \\varphi(1)/(1 - \\Phi(1))$, where $\\varphi(1) = 0.2420$ and $1 - \\Phi(1) = 0.1587$.", 1.525, 0.003),
+  m(NORM, "random-sign", 7, "$X \\sim \\mathcal{N}(0, 1)$, and $S = \\pm 1$ is an independent fair random sign. $Y = SX$ is also $\\mathcal{N}(0, 1)$. What is the distribution of $X + Y$?", "It is not normal: $X + Y = 0$ with probability $\\tfrac12$",
+    [["$\\mathcal{N}(0, 2)$", "That would need $X$ and $Y$ independent, or jointly normal; here $Y$ is built from $X$."], ["$\\mathcal{N}(0, 4)$", "$X + Y = 2X$ only when $S = 1$."], ["$\\mathcal{N}(0, 1)$", "Half the time the sum is exactly $0$, an atom no normal has."]]),
+  s(NORM, "mean-mgf", 7, "Using MGFs, show that the mean of $n$ i.i.d. $\\mathcal{N}(\\mu, \\sigma^2)$ observations is $\\mathcal{N}(\\mu, \\sigma^2/n)$.",
+    "$M_{X_i}(t) = \\exp(\\mu t + \\sigma^2t^2/2)$, so $M_{\\bar X}(t) = \\big[M_X(t/n)\\big]^n = \\exp\\big(\\mu t + \\sigma^2t^2/(2n)\\big)$ by independence.",
+    "This is the MGF of $\\mathcal{N}(\\mu, \\sigma^2/n)$, and an MGF finite near $0$ determines the distribution."),
+  s(NORM, "six-sigma", 9, "Six Sigma claims $3.4$ defects per million when specification limits sit $6\\sigma$ from the target and the process mean may drift by $1.5\\sigma$. Explain where $3.4$ ppm comes from.",
+    "With the mean shifted $1.5\\sigma$ toward one limit, that limit is $6 - 1.5 = 4.5\\sigma$ away, and $P(Z > 4.5) \\approx 3.4 \\times 10^{-6}$.",
+    "The far limit is $7.5\\sigma$ away and contributes a negligible amount. The figure assumes the process stays normal far into the tails, which real processes may not."),
+
+  // --- uniform-distribution --------------------------------------------------
+  m(UNI, "reflection", 2, "If $U \\sim \\mathrm{Uniform}(0, 1)$, then $1 - U$ is:", "$\\mathrm{Uniform}(0, 1)$",
+    [["$\\mathrm{Uniform}(-1, 0)$", "$1 - U$ still lies in $(0, 1)$."], ["Exponential", "That's $-\\ln U$."], ["Concentrated near $1$", "Reflecting a flat density leaves it flat."]]),
+  n(UNI, "shifted", 3, "$X \\sim \\mathrm{Uniform}(-2, 6)$. Find $P(X > 0)$.", 0.75, 0.001),
+  n(UNI, "from-moments", 4, "A uniform distribution has mean $10$ and variance $12$. Find $P(X < 7)$.", 0.25, 0.001),
+  n(UNI, "third-moment", 4.5, "$X \\sim \\mathrm{Uniform}(0, 2)$. Find $\\mathbb{E}[X^3]$.", 2, 0.001),
+  n(UNI, "band", 5, "$U_1, U_2$ are i.i.d. $\\mathrm{Uniform}(0, 1)$. Find $P(0.2 < \\min < \\max < 0.7)$, i.e. both lie in $(0.2, 0.7)$.", 0.25, 0.001),
+  n(UNI, "log-transform", 5.5, "$U \\sim \\mathrm{Uniform}(0, 1)$ and $Y = -2\\ln U$. Find $P(Y > 2)$.", 0.3679, 0.003),
+  n(UNI, "product", 6.5, "$U_1, U_2$ are i.i.d. $\\mathrm{Uniform}(0, 1)$. Find $P(U_1U_2 < 0.25)$, using $P(U_1U_2 \\le t) = t - t\\ln t$.", 0.5966, 0.003),
+  m(UNI, "sum-shape", 5, "The sum of two i.i.d. $\\mathrm{Uniform}(0, 1)$ variables has a density that is:", "Triangular on $[0, 2]$, peaking at $1$",
+    [["Uniform on $[0, 2]$", "Sums near $1$ arise in more ways than sums near $0$ or $2$."], ["Normal", "Only approximately, for many summands."], ["U-shaped", "The extremes are the least likely."]]),
+  s(UNI, "simulate", 7, "Show how to simulate $\\mathrm{Uniform}(a, b)$ and a fair die roll from a single $U \\sim \\mathrm{Uniform}(0, 1)$, and justify each.",
+    "$X = a + (b - a)U$: an increasing affine map sends $(0, 1)$ to $(a, b)$ and keeps the density flat at $1/(b - a)$.",
+    "$D = \\lceil 6U \\rceil$: each subinterval $((k - 1)/6, k/6]$ has length $1/6$, so each face has probability $1/6$."),
+  s(UNI, "sheppard", 9, "Lengths are recorded to the nearest $0.1$ mm. Model the rounding error, find its standard deviation, and explain how it affects the sample variance (Sheppard's correction).",
+    "The error is approximately $\\mathrm{Uniform}(-0.05, 0.05)$, with variance $h^2/12$ for $h = 0.1$, so its SD is $0.1/\\sqrt{12} \\approx 0.029$ mm.",
+    "If the error is roughly independent of the true value, the rounded data have variance $\\approx \\sigma^2 + h^2/12$, so subtracting $h^2/12$ from the sample variance corrects for grouping."),
+
+  // --- exponential-distribution ----------------------------------------------
+  m(EXP, "variance", 2, "The variance of $\\mathrm{Exp}(\\lambda)$ (rate $\\lambda$) is:", "$1/\\lambda^2$",
+    [["$1/\\lambda$", "That's the mean."], ["$\\lambda^2$", "Rate and scale are reciprocals."], ["$\\lambda$", "That's the Poisson variance, for counts."]]),
+  n(EXP, "under-ten", 3, "Waiting time is exponential with mean $20$ minutes. Find the probability of waiting less than $10$ minutes.", 0.3935, 0.003),
+  n(EXP, "rate-from-median", 4, "An exponential lifetime has median $5$ years. Find its rate $\\lambda$ per year.", 0.1386, 0.003),
+  n(EXP, "percentile", 4.5, "Find the $90$th percentile of an exponential distribution with mean $3$.", 6.9078, 0.002),
+  n(EXP, "max-two", 5, "$X \\sim \\mathrm{Exp}(1)$ and $Y \\sim \\mathrm{Exp}(2)$ are independent (rates). Find $\\mathbb{E}[\\max(X, Y)]$.", 1.1667, 0.003),
+  n(EXP, "second-moment", 5.5, "$X \\sim \\mathrm{Exp}(2)$ (rate). Find $\\mathbb{E}[X^2]$.", 0.5, 0.001),
+  n(EXP, "sum-two", 6.5, "$X_1, X_2$ are i.i.d. $\\mathrm{Exp}(1)$. Find $P(X_1 + X_2 > 3)$.", 0.1991, 0.003),
+  m(EXP, "scaling", 5, "$X \\sim \\mathrm{Exp}(\\lambda)$ (rate) and $c > 0$. Then $cX$ is:", "$\\mathrm{Exp}(\\lambda/c)$",
+    [["$\\mathrm{Exp}(c\\lambda)$", "Stretching time lowers the rate."], ["$\\mathrm{Gamma}(c, \\lambda)$", "Scaling doesn't change the shape."], ["Not exponential", "Exponentials form a scale family."]]),
+  s(EXP, "competing-risks", 7, "$X_1, \\ldots, X_k$ are independent $\\mathrm{Exp}(\\lambda_i)$. Show that $\\min_i X_i \\sim \\mathrm{Exp}(\\sum_i \\lambda_i)$ and that $P(X_j \\text{ is the minimum}) = \\lambda_j/\\sum_i \\lambda_i$.",
+    "$P(\\min > t) = \\prod_i e^{-\\lambda_i t} = e^{-(\\sum \\lambda_i)t}$, the survival function of $\\mathrm{Exp}(\\sum \\lambda_i)$.",
+    "$P(X_j = \\min) = \\int_0^\\infty \\lambda_j e^{-\\lambda_j t}\\prod_{i \\ne j} e^{-\\lambda_i t}\\,dt = \\lambda_j/\\sum_i \\lambda_i$."),
+  s(EXP, "wear-out", 9, "A warranty analyst fits an exponential lifetime model, but the observed failure rate rises with age. What goes wrong, and what model would you use?",
+    "The exponential has constant hazard, so it ignores wear-out: it overpredicts early failures and underpredicts late ones, mispricing long warranties.",
+    "Use a Weibull with shape $k > 1$, whose hazard $(k/\\lambda)(t/\\lambda)^{k - 1}$ increases. Check by plotting $\\log(-\\log \\hat S(t))$ against $\\log t$, which is linear with slope $k$."),
+
+  // --- gamma-distribution ----------------------------------------------------
+  m(GAM, "kernel", 2, "In the shape–rate parameterisation, the $\\mathrm{Gamma}(\\alpha, \\beta)$ density is proportional to:", "$x^{\\alpha - 1}e^{-\\beta x}$ for $x > 0$",
+    [["$x^{\\alpha}e^{-\\beta x}$", "The power is $\\alpha - 1$, so that $\\alpha = 1$ gives the exponential."], ["$x^{\\alpha - 1}e^{-x/\\beta}$", "That's the shape–scale form."], ["$e^{-\\beta x^{\\alpha}}$", "That's a Weibull-type kernel."]]),
+  n(GAM, "mean", 3, "Find the mean of $\\mathrm{Gamma}(\\text{shape } 4, \\text{rate } 0.5)$.", 8, 0.001),
+  n(GAM, "cdf-erlang", 4, "$X \\sim \\mathrm{Gamma}(\\text{shape } 2, \\text{rate } 3)$. Find $P(X \\le 1)$.", 0.8009, 0.003),
+  n(GAM, "solve-shape", 4.5, "A gamma distribution has mean $12$ and variance $48$. Find its shape $\\alpha$.", 3, 0.001),
+  n(GAM, "gamma-fn", 5, "Compute $\\Gamma(3.5)$. Give $4$ decimal places.", 3.3234, 0.002),
+  n(GAM, "mode", 5.5, "Find the mode of $\\mathrm{Gamma}(\\text{shape } 5, \\text{rate } 2)$.", 2, 0.001),
+  n(GAM, "sum-tail", 6.5, "$X_1, X_2, X_3$ are i.i.d. $\\mathrm{Gamma}(\\text{shape } 2, \\text{rate } 1.5)$. Find $P(X_1 + X_2 + X_3 > 4)$. Give $4$ decimal places.", 0.4457, 0.005),
+  m(GAM, "inverse-mean", 6, "$X \\sim \\mathrm{Gamma}(\\alpha, \\beta)$ (rate) with $\\alpha > 1$. $\\mathbb{E}[1/X]$ equals:", "$\\beta/(\\alpha - 1)$",
+    [["$\\beta/\\alpha$", "That's $1/\\mathbb{E}[X]$, and $\\mathbb{E}[1/X] > 1/\\mathbb{E}[X]$ by Jensen."], ["$\\alpha/\\beta$", "That's $\\mathbb{E}[X]$."], ["$\\beta^2/\\alpha$", "Use $\\int x^{\\alpha - 2}e^{-\\beta x}\\,dx = \\Gamma(\\alpha - 1)/\\beta^{\\alpha - 1}$."]]),
+  s(GAM, "mean-derivation", 7, "Derive $\\mathbb{E}[X] = \\alpha/\\beta$ for $\\mathrm{Gamma}(\\alpha, \\beta)$ from the density, using $\\Gamma(\\alpha + 1) = \\alpha\\Gamma(\\alpha)$.",
+    "$\\mathbb{E}[X] = \\dfrac{\\beta^\\alpha}{\\Gamma(\\alpha)}\\int_0^\\infty x^{\\alpha}e^{-\\beta x}\\,dx = \\dfrac{\\beta^\\alpha}{\\Gamma(\\alpha)}\\cdot\\dfrac{\\Gamma(\\alpha + 1)}{\\beta^{\\alpha + 1}}$, recognising a $\\mathrm{Gamma}(\\alpha + 1, \\beta)$ kernel.",
+    "Using $\\Gamma(\\alpha + 1) = \\alpha\\Gamma(\\alpha)$, this simplifies to $\\alpha/\\beta$."),
+  s(GAM, "rainfall", 9, "Wet-day rainfall amounts are often modelled as gamma. Explain what shape $\\alpha < 1$ versus $\\alpha > 1$ says about the data, and how you would estimate $\\alpha$ and $\\beta$ by the method of moments.",
+    "With $\\alpha < 1$ the density is infinite at $0$ and decreasing (mostly drizzle with occasional downpours); with $\\alpha > 1$ it rises to an interior mode (typical amounts are moderate).",
+    "Match the mean $\\alpha/\\beta$ and variance $\\alpha/\\beta^2$: $\\hat\\alpha = \\bar x^2/s^2$ and $\\hat\\beta = \\bar x/s^2$."),
+
+  // --- beta-distribution -----------------------------------------------------
+  m(BETA, "mean", 2, "The mean of $\\mathrm{Beta}(\\alpha, \\beta)$ is:", "$\\alpha/(\\alpha + \\beta)$",
+    [["$\\beta/(\\alpha + \\beta)$", "That's $\\mathbb{E}[1 - X]$."], ["$(\\alpha - 1)/(\\alpha + \\beta - 2)$", "That's the mode."], ["$\\alpha/\\beta$", "That's a gamma mean form."]]),
+  n(BETA, "power", 3, "$X \\sim \\mathrm{Beta}(3, 1)$, with density $3x^2$. Find $P(X > 0.5)$.", 0.875, 0.001),
+  n(BETA, "beta13", 4, "$X \\sim \\mathrm{Beta}(1, 3)$. Find $P(X < 0.2)$.", 0.488, 0.002),
+  n(BETA, "symmetric-tail", 4.5, "$X \\sim \\mathrm{Beta}(2, 2)$, with density $6x(1 - x)$. Find $P(X > 0.75)$.", 0.15625, 0.003),
+  n(BETA, "mode", 4.5, "Find the mode of $\\mathrm{Beta}(6, 4)$.", 0.625, 0.001),
+  n(BETA, "posterior", 5, "A $\\mathrm{Beta}(2, 2)$ prior on a success probability is updated with $9$ successes in $12$ trials. Find the posterior mean.", 0.6875, 0.002),
+  n(BETA, "variance", 5.5, "Find the variance of $\\mathrm{Beta}(2, 5)$. Give $4$ decimal places.", 0.02551, 0.005),
+  n(BETA, "product-moment", 6.5, "$X \\sim \\mathrm{Beta}(2, 3)$. Find $\\mathbb{E}[X(1 - X)]$.", 0.2, 0.002),
+  s(BETA, "conjugacy", 7, "Show that a $\\mathrm{Beta}(\\alpha, \\beta)$ prior with $k$ successes in $n$ Bernoulli trials gives a $\\mathrm{Beta}(\\alpha + k, \\beta + n - k)$ posterior.",
+    "Posterior $\\propto$ likelihood $\\times$ prior $= p^k(1 - p)^{n - k}\\cdot p^{\\alpha - 1}(1 - p)^{\\beta - 1}$.",
+    "This is $p^{\\alpha + k - 1}(1 - p)^{\\beta + n - k - 1}$, the kernel of $\\mathrm{Beta}(\\alpha + k, \\beta + n - k)$; the constant follows by normalisation."),
+  s(BETA, "rank-pages", 9, "A dashboard ranks a new page with $2$ conversions out of $3$ above an old page with $200$ out of $400$. Use beta posteriors (uniform priors) to explain why this ranking is misleading, and suggest a better rule.",
+    "The posteriors are $\\mathrm{Beta}(3, 2)$, with mean $0.6$ but a very wide spread, and $\\mathrm{Beta}(201, 201)$, tightly around $0.5$. The new page's higher rate is mostly noise.",
+    "Rank by a posterior quantity that accounts for uncertainty, such as a lower credible bound or the probability of beating the old page (only modestly above $\\tfrac12$ here), or shrink small-sample rates toward a common prior."),
+
+  // --- chi-square-distribution -----------------------------------------------
+  m(CHI, "support", 2, "A $\\chi^2_k$ random variable takes values in:", "$[0, \\infty)$",
+    [["$(-\\infty, \\infty)$", "It's a sum of squares, so it can't be negative."], ["$[0, k]$", "There's no upper bound."], ["$\\{0, 1, \\ldots, k\\}$", "It's continuous."]]),
+  n(CHI, "variance", 3, "Find the variance of $\\chi^2_7$.", 14, 0.001),
+  n(CHI, "two-df-cdf", 4, "Find $P(\\chi^2_2 \\le 3)$. Give $4$ decimal places.", 0.7769, 0.003),
+  n(CHI, "two-df-quantile", 4.5, "Find the $95$th percentile of $\\chi^2_2$, using its exponential form.", 5.9915, 0.002),
+  n(CHI, "mode", 5, "Find the mode of $\\chi^2_9$.", 7, 0.001),
+  n(CHI, "sample-variance", 6, "A sample of $n = 16$ comes from $\\mathcal{N}(\\mu, 4)$. Find $P(S^2 > 6)$. Give $4$ decimal places.", 0.0953, 0.01),
+  n(CHI, "sigma-ci", 6.5, "With $n = 21$ and $s = 3$ from a normal sample, find the lower end of the $95\\%$ confidence interval for $\\sigma$ (use $\\chi^2_{20, 0.975} = 34.170$).", 2.2952, 0.003),
+  m(CHI, "lln", 5, "As $k \\to \\infty$, $\\chi^2_k/k$ converges in probability to:", "$1$",
+    [["$0$", "Each $Z_i^2$ has mean $1$, so the average does too."], ["$\\infty$", "Dividing by $k$ removes the growth."], ["A $\\mathcal{N}(0, 1)$ variable", "The LLN gives a constant; the CLT describes the fluctuations around it."]]),
+  s(CHI, "additivity", 7, "Show two ways that independent $\\chi^2_a$ and $\\chi^2_b$ variables sum to $\\chi^2_{a + b}$.",
+    "By definition: the sum of $a$ squared i.i.d. standard normals plus $b$ more, all independent, is a sum of $a + b$ such squares.",
+    "By MGFs: $(1 - 2t)^{-a/2}(1 - 2t)^{-b/2} = (1 - 2t)^{-(a + b)/2}$, the $\\chi^2_{a + b}$ MGF."),
+  s(CHI, "wilks-boundary", 9, "Wilks' theorem says $-2\\log\\Lambda \\approx \\chi^2_q$. Explain where $q$ comes from, and why the approximation fails when testing whether a variance component equals $0$.",
+    "$q$ is the number of free parameters fixed by the null: the difference in dimension between the full and null parameter spaces.",
+    "With a variance component, $\\sigma^2 = 0$ is on the boundary of the parameter space, so the regularity conditions fail; the limit is a $50{:}50$ mixture of $\\chi^2_0$ and $\\chi^2_1$, and the naive $\\chi^2_1$ test is conservative."),
+
+  // --- t-distribution --------------------------------------------------------
+  m(T, "tail-decay", 2, "For large $|t|$, the $t_k$ density decays like:", "A power $|t|^{-(k + 1)}$",
+    [["$e^{-t^2/2}$", "That's the normal's much lighter tail."], ["$e^{-|t|}$", "That's a Laplace tail."], ["It doesn't decay", "It must integrate to $1$."]]),
+  n(T, "variance", 3, "Find the variance of $t_8$.", 1.3333, 0.002),
+  n(T, "ci-lower", 4, "A sample of $n = 16$ has $\\bar x = 50$ and $s = 8$. Using $t_{0.025, 15} = 2.131$, find the lower end of the $95\\%$ confidence interval for $\\mu$.", 45.738, 0.002),
+  n(T, "statistic", 4, "A sample of $n = 9$ has $\\bar x = 103$ and $s = 6$. Find the $t$ statistic for $H_0: \\mu = 100$.", 1.5, 0.001),
+  n(T, "cauchy", 5, "$T \\sim t_1$ (Cauchy). Find $P(T < -\\sqrt{3})$.", 0.1667, 0.003),
+  n(T, "two-df", 5.5, "For $t_2$, $P(T > t) = \\tfrac12 - \\dfrac{t}{2\\sqrt{t^2 + 2}}$. Find $P(|T| > 2)$. Give $4$ decimal places.", 0.1835, 0.003),
+  n(T, "sample-size", 6.5, "Using $t_{0.975, 18} = 2.101$ and $t_{0.975, 19} = 2.093$, what is the smallest sample size $n$ for which the two-sided $95\\%$ critical value $t_{0.975, n - 1}$ is below $2.1$?", 20, 0.001),
+  m(T, "exactness", 5, "The one-sample statistic $(\\bar X - \\mu)/(S/\\sqrt n)$ follows $t_{n - 1}$ exactly when:", "The observations are i.i.d. normal",
+    [["$n \\ge 30$", "Large $n$ gives an approximation, not exactness."], ["The population is symmetric", "Symmetry alone isn't enough."], ["$\\sigma$ is known", "Then you'd use $\\sigma$, and the statistic would be $z$."]]),
+  s(T, "independence", 7, "In $T = (\\bar X - \\mu)/(S/\\sqrt n)$, why are the numerator and denominator independent, and why does this matter?",
+    "For a normal sample, $\\bar X$ and $S^2$ are independent (e.g. by Cochran's theorem or Basu's theorem), so $T = Z/\\sqrt{V/(n - 1)}$ with $Z$ independent of $V \\sim \\chi^2_{n - 1}$.",
+    "The $t$ distribution is defined for independent $Z$ and $V$. For non-normal data, $\\bar X$ and $S$ are dependent, which is one reason $T$ is only approximately $t$."),
+  s(T, "robust-regression", 9, "Regression with $t$-distributed errors is called robust. Explain why it downweights outliers.",
+    "The $t$ log-likelihood gives score $\\psi(r) \\propto (\\nu + 1)r/(\\nu + r^2)$, which is bounded and returns to $0$ for large residuals, unlike the normal's $\\psi(r) = r$.",
+    "Fitting by iteratively reweighted least squares uses weights $(\\nu + 1)/(\\nu + r^2/\\sigma^2)$, so observations with large residuals get small weight, while the normal weights every point equally."),
+
+  // --- f-distribution --------------------------------------------------------
+  m(F, "definition", 2, "With $V_1 \\sim \\chi^2_{d_1}$ and $V_2 \\sim \\chi^2_{d_2}$ independent, $F_{d_1, d_2}$ is the distribution of:", "$(V_1/d_1)/(V_2/d_2)$",
+    [["$V_1/V_2$", "Each chi-square must be divided by its degrees of freedom."], ["$(V_1/d_1) - (V_2/d_2)$", "It's a ratio, not a difference."], ["$\\sqrt{V_1/V_2}$", "No square root is taken."]]),
+  n(F, "mean", 3, "Find the mean of $F(3, 12)$.", 1.2, 0.001),
+  n(F, "reciprocal", 4, "The upper $5\\%$ point of $F(10, 6)$ is $4.06$. Find the lower $5\\%$ point of $F(6, 10)$.", 0.2463, 0.003),
+  n(F, "two-two", 5, "For $F(2, 2)$, $P(F > x) = 1/(1 + x)$. Find $P(F > 3)$.", 0.25, 0.001),
+  n(F, "regression-overall", 5, "A regression with $p = 2$ predictors on $n = 33$ observations has $R^2 = 0.4$. Compute the overall $F$ statistic $\\dfrac{R^2/p}{(1 - R^2)/(n - p - 1)}$.", 10, 0.002),
+  n(F, "two-d-tail", 5.5, "For $F(2, d)$, $P(F > x) = (1 + 2x/d)^{-d/2}$. Find $P(F(2, 10) > 3)$. Give $4$ decimal places.", 0.09537, 0.005),
+  n(F, "anova", 6, "A one-way ANOVA has $k = 4$ groups, $N = 24$ observations, $SS_B = 60$ and $SS_W = 100$. Compute $F$.", 4, 0.001),
+  m(F, "variance-ratio", 5, "Testing $H_0: \\sigma_1^2 = \\sigma_2^2$ with $F = S_1^2/S_2^2$, a very large $F$ indicates:", "Sample 1 varies more than sample 2",
+    [["The means differ", "The $F$ statistic here compares variances, not means."], ["Sample 2 varies more", "That would give a small $F$."], ["The samples are dependent", "The test assumes independent samples; $F$ doesn't measure dependence."]]),
+  s(F, "mean-derivation", 7, "Show that $\\mathbb{E}[F_{d_1, d_2}] = d_2/(d_2 - 2)$ for $d_2 > 2$, using $\\mathbb{E}[1/\\chi^2_k] = 1/(k - 2)$.",
+    "By independence, $\\mathbb{E}[F] = \\mathbb{E}[V_1/d_1]\\cdot\\mathbb{E}[d_2/V_2] = 1 \\cdot d_2\\,\\mathbb{E}[1/V_2]$.",
+    "With $\\mathbb{E}[1/V_2] = 1/(d_2 - 2)$, $\\mathbb{E}[F] = d_2/(d_2 - 2)$, which doesn't depend on $d_1$ and exceeds $1$ by Jensen's inequality."),
+  s(F, "partial-f", 9, "When adding a block of $q$ predictors to a linear model with $p$ parameters, why is the test statistic $F_{q, n - p}$, and how does it relate to the change in $R^2$?",
+    "$F = \\dfrac{(RSS_{red} - RSS_{full})/q}{RSS_{full}/(n - p)}$. Under $H_0$, the numerator is $\\sigma^2\\chi^2_q/q$ and the denominator is an independent $\\sigma^2\\chi^2_{n - p}/(n - p)$, so $\\sigma^2$ cancels and the ratio is $F_{q, n - p}$.",
+    "Dividing through by the total sum of squares gives $F = \\dfrac{(R^2_{full} - R^2_{red})/q}{(1 - R^2_{full})/(n - p)}$."),
+];

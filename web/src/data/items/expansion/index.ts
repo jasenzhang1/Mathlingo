@@ -8,6 +8,12 @@ import { probabilityRvDiscreteItems } from "./probability-rv-discrete";
 import { probabilityContinuousJointItems } from "./probability-continuous-joint";
 import { probabilityMgfLikelihoodItems } from "./probability-mgf-likelihood";
 import { probabilityConvergenceEstimationItems } from "./probability-convergence-estimation";
+import { probFiftyAItems } from "./prob-fifty-a";
+import { probFiftyBItems } from "./prob-fifty-b";
+import { probFiftyCItems } from "./prob-fifty-c";
+import { probFiftyDItems } from "./prob-fifty-d";
+import { probFiftyEItems } from "./prob-fifty-e";
+import { probFiftyFItems } from "./prob-fifty-f";
 import { laVectorsItems } from "./la-vectors";
 import { laMatricesItems } from "./la-matrices";
 import { laSpacesSubspacesItems } from "./la-spaces-subspaces";
@@ -20,6 +26,10 @@ import { infoTheoryBItems } from "./info-theory-b";
 import { statsFoundationsMachineryItems } from "./stats-foundations-machinery";
 import { statsOptimalMultipleQqItems } from "./stats-optimal-multiple-qq";
 import { statsTestsComparisonsItems } from "./stats-tests-comparisons";
+import { statsFiftyAItems } from "./stats-fifty-a";
+import { statsFiftyBItems } from "./stats-fifty-b";
+import { statsFiftyCItems } from "./stats-fifty-c";
+import { statsFiftyDItems } from "./stats-fifty-d";
 import { regFoundationsAItems } from "./reg-foundations-a";
 import { regFoundationsBItems } from "./reg-foundations-b";
 import { regFitMeasuresItems } from "./reg-fit-measures";
@@ -151,6 +161,12 @@ export const expansionItems: Item[] = [
   ...probabilityContinuousJointItems,
   ...probabilityMgfLikelihoodItems,
   ...probabilityConvergenceEstimationItems,
+  ...probFiftyAItems,
+  ...probFiftyBItems,
+  ...probFiftyCItems,
+  ...probFiftyDItems,
+  ...probFiftyEItems,
+  ...probFiftyFItems,
   ...laVectorsItems,
   ...laMatricesItems,
   ...laSpacesSubspacesItems,
@@ -163,6 +179,10 @@ export const expansionItems: Item[] = [
   ...statsFoundationsMachineryItems,
   ...statsOptimalMultipleQqItems,
   ...statsTestsComparisonsItems,
+  ...statsFiftyAItems,
+  ...statsFiftyBItems,
+  ...statsFiftyCItems,
+  ...statsFiftyDItems,
   ...regFoundationsAItems,
   ...regFoundationsBItems,
   ...regFitMeasuresItems,
