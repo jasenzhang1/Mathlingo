@@ -1,3 +1,9 @@
+## Calculus
+
+- Calculus: Early Transcendentals, 8th ed. by James Stewart
+- Calculus by Michael Spivak
+- Calculus Volumes 1–3 (OpenStax) by Gilbert Strang and Edwin Herman
+
 ## Linear Algebra
 
 - Linear Algebra and Matrix Analysis for Statistics (Banerjee, Roy)
@@ -13,6 +19,14 @@
 ## Multivaraite Statistics
 
 - Linear Regression Analysis (Seber, Lee)
+
+## Optimization
+
+- Numerical Optimization by Jorge Nocedal and Stephen J. Wright
+- Convex Optimization by Stephen Boyd and Lieven Vandenberghe
+- First-Order Methods in Optimization by Amir Beck
+- Distributed Optimization and Statistical Learning via the Alternating Direction Method of Multipliers by Stephen Boyd, Neal Parikh, Eric Chu, Borja Peleato and Jonathan Eckstein
+- Numerical Analysis by Richard L. Burden and J. Douglas Faires (root finding)
 
 ## Machine Learning
 

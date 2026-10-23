@@ -95,6 +95,65 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
     },
   ],
 
+  // Cut along Stewart, Calculus: Early Transcendentals, chs. 2–7, 11, 14–15.
+  calculus: [
+    {
+      id: "limits-and-continuity",
+      label: "Limits & Continuity",
+      conceptIds: ["limits", "evaluating-limits", "limits-at-infinity", "continuity"],
+    },
+    {
+      id: "derivatives",
+      label: "Derivatives",
+      conceptIds: [
+        "derivative-definition",
+        "differentiation-rules",
+        "chain-rule",
+        "transcendental-derivatives",
+        "implicit-differentiation",
+      ],
+    },
+    {
+      id: "applications-of-derivatives",
+      label: "Applications of Derivatives",
+      conceptIds: [
+        "mean-value-theorem",
+        "curve-sketching",
+        "applied-optimization",
+        "lhopitals-rule",
+        "linear-approximation",
+      ],
+    },
+    {
+      id: "integration",
+      label: "Integration",
+      conceptIds: [
+        "riemann-sums",
+        "fundamental-theorem-of-calculus",
+        "u-substitution",
+        "integration-by-parts",
+        "partial-fractions",
+        "improper-integrals",
+        "applications-of-integration",
+      ],
+    },
+    {
+      id: "sequences-and-series",
+      label: "Sequences & Series",
+      conceptIds: ["sequences", "infinite-series", "power-series", "taylor-series"],
+    },
+    {
+      id: "multivariable-calculus",
+      label: "Multivariable Calculus",
+      conceptIds: [
+        "partial-derivatives",
+        "gradient-and-directional-derivatives",
+        "multivariable-extrema",
+        "multiple-integrals",
+      ],
+    },
+  ],
+
   probability: [
     {
       id: "foundations",
@@ -492,6 +551,26 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "qq-plots",
       ],
     },
+    {
+      id: "inference-with-predictions",
+      label: "Inference with Machine-Learning Predictions",
+      conceptIds: [
+        "conformal-prediction",
+        "selection-bias",
+        "prediction-powered-inference",
+        "active-statistical-inference",
+      ],
+    },
+    {
+      id: "missing-data-causal",
+      label: "Missing Data & Causal Effects",
+      conceptIds: [
+        "missing-data-mechanisms",
+        "potential-outcomes",
+        "doubly-robust-estimation",
+        "double-sampling-mnar",
+      ],
+    },
   ],
 
   /**
@@ -664,6 +743,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "ridge-regression",
         "lasso",
         "elastic-net",
+        "adaptive-lasso",
         "stein-shrinkage",
         "post-selection-inference",
       ],
@@ -706,6 +786,11 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       id: "volatility-multivariate",
       label: "Volatility & Multivariate Time Series",
       conceptIds: ["garch", "cointegration"],
+    },
+    {
+      id: "path-signatures",
+      label: "Path Signatures",
+      conceptIds: ["path-signatures", "signature-methods-time-series"],
     },
   ],
 
@@ -869,6 +954,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "feature-selection",
         "class-imbalance",
         "distribution-shift",
+        "performative-prediction",
       ],
     },
     {
@@ -1303,6 +1389,56 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       conceptIds: [
         "functional-regression",
       ],
+    },
+  ],
+
+  optimization: [
+    {
+      id: "optimality-and-convexity",
+      label: "Problems, Optimality and Convexity",
+      conceptIds: ["optimization-problems-and-optimality", "convexity-for-optimization"],
+    },
+    {
+      id: "root-finding-and-newton",
+      label: "Root Finding and Newton's Method",
+      conceptIds: ["bisection-method", "newton-raphson-method", "secant-method", "newton-method-optimization"],
+    },
+    {
+      id: "first-order-methods",
+      label: "Line Search and First-Order Methods",
+      conceptIds: [
+        "line-search-methods",
+        "gradient-method-convergence",
+        "momentum-and-acceleration",
+        "conjugate-gradient-method",
+        "coordinate-descent",
+      ],
+    },
+    {
+      id: "nonsmooth-optimization",
+      label: "Nonsmooth Optimization",
+      conceptIds: ["subgradient-method", "proximal-gradient-method"],
+    },
+    {
+      id: "quasi-newton-and-least-squares",
+      label: "Quasi-Newton and Least-Squares Methods",
+      conceptIds: ["quasi-newton-methods", "nonlinear-least-squares"],
+    },
+    {
+      id: "constraints-and-duality",
+      label: "Constraints and Duality",
+      conceptIds: [
+        "lagrange-multipliers",
+        "kkt-conditions",
+        "lagrangian-duality",
+        "linear-programming",
+        "interior-point-methods",
+      ],
+    },
+    {
+      id: "augmented-lagrangians-and-admm",
+      label: "Augmented Lagrangians and ADMM",
+      conceptIds: ["augmented-lagrangian-method", "admm"],
     },
   ],
 

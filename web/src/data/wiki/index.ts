@@ -25,8 +25,13 @@ import type { WikiArticle } from "./types";
  */
 const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
   "discrete-math": () => import("./discrete-math").then((m) => m.default),
+  calculus: () => import("./calculus").then((m) => m.calculusWikis),
   "linear-algebra": () => import("./linear-algebra").then((m) => m.default),
-  statistics: () => import("./core").then((m) => m.coreWikiArticles),
+  statistics: () =>
+    Promise.all([import("./core"), import("./inference")]).then(([core, inf]) => [
+      ...core.coreWikiArticles,
+      ...inf.inferenceWikis,
+    ]),
   "multivariate-probability": () =>
     Promise.all([import("./core"), import("./copulas")]).then(([core, cop]) => [
       ...core.coreWikiArticles,
@@ -64,6 +69,8 @@ const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
       ...ml.mlWikiArticles,
       ...core.coreWikiArticles,
     ]),
+  "financial-instruments": () => import("./finance").then((m) => m.financeWikis),
+  optimization: () => import("./optimization").then((m) => m.optimizationWikis),
   python: () => import("./python").then((m) => m.pythonWikiArticles),
   "stochastic-processes": () => import("./stochastic").then((m) => m.stochasticWikiArticles),
   "stochastic-calculus": () => import("./stochastic").then((m) => m.stochasticWikiArticles),

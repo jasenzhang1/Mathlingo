@@ -86,6 +86,55 @@ import { pythonIterationClassesItems } from "./items/python-iteration-classes";
 import { pythonCodeIterationClassesItems } from "./items/python-code-iteration-classes";
 import { pythonStdlibNumpyItems } from "./items/python-stdlib-numpy";
 import { pythonCodeStdlibNumpyItems } from "./items/python-code-stdlib-numpy";
+import { pythonSixtyBasicsItems } from "./items/python-sixty-basics";
+import { pythonSixtyLoopsListsItems } from "./items/python-sixty-loops-lists";
+import { pythonSixtyContainersItems } from "./items/python-sixty-containers";
+import { pythonSixtyNumpyPandasItems } from "./items/python-sixty-numpy-pandas";
+import { pythonSixtyFunctionsItems } from "./items/python-sixty-functions";
+import { pythonSixtyPandasAItems } from "./items/python-sixty-pandas-a";
+import { pythonSixtyPandasBItems } from "./items/python-sixty-pandas-b";
+import { pythonSixtyStringsErrorsItems } from "./items/python-sixty-strings-errors";
+import { pythonSixtyIterationClassesItems } from "./items/python-sixty-iteration-classes";
+import { pythonSixtyStdlibNumpyItems } from "./items/python-sixty-stdlib-numpy";
+import { pythonSixtyTopupItems } from "./items/python-sixty-topup";
+import { mlSixty01Items } from "./items/ml-sixty-01";
+import { mlSixty02Items } from "./items/ml-sixty-02";
+import { mlSixty03Items } from "./items/ml-sixty-03";
+import { mlSixty04Items } from "./items/ml-sixty-04";
+import { mlSixty05Items } from "./items/ml-sixty-05";
+import { mlSixty06Items } from "./items/ml-sixty-06";
+import { mlSixty07Items } from "./items/ml-sixty-07";
+import { mlSixty08Items } from "./items/ml-sixty-08";
+import { mlSixty09Items } from "./items/ml-sixty-09";
+import { mlSixty10Items } from "./items/ml-sixty-10";
+import { mlSixty11Items } from "./items/ml-sixty-11";
+import { mlSixty12Items } from "./items/ml-sixty-12";
+import { dlSixty01Items } from "./items/dl-sixty-01";
+import { dlSixty02Items } from "./items/dl-sixty-02";
+import { dlSixty03Items } from "./items/dl-sixty-03";
+import { dlSixty04Items } from "./items/dl-sixty-04";
+import { dlSixty05Items } from "./items/dl-sixty-05";
+import { dlSixty06Items } from "./items/dl-sixty-06";
+import { opt01Items } from "./items/opt-01";
+import { opt02Items } from "./items/opt-02";
+import { opt03Items } from "./items/opt-03";
+import { opt04Items } from "./items/opt-04";
+import { opt05Items } from "./items/opt-05";
+import { opt06Items } from "./items/opt-06";
+import { infer01Items } from "./items/infer-01";
+import { infer02Items } from "./items/infer-02";
+import { infer03Items } from "./items/infer-03";
+import { infer04Items } from "./items/infer-04";
+import { infer05Items } from "./items/infer-05";
+import { infer06Items } from "./items/infer-06";
+import { infer07Items } from "./items/infer-07";
+import { calc01Items } from "./items/calc-01";
+import { calc02Items } from "./items/calc-02";
+import { calc03Items } from "./items/calc-03";
+import { calc04Items } from "./items/calc-04";
+import { calc05Items } from "./items/calc-05";
+import { calc06Items } from "./items/calc-06";
+import { calc07Items } from "./items/calc-07";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -5198,6 +5247,61 @@ export const items: Item[] = [
 
   // `code` items for the standard-library and final NumPy concepts, 3 per concept.
   ...pythonCodeStdlibNumpyItems,
+  // Every Python lesson brought to 60 questions, weighted toward levels 1–3 and
+  // 8–10 where the pools were thin. See items/python-sixty-basics.ts.
+  ...pythonSixtyBasicsItems,
+  ...pythonSixtyLoopsListsItems,
+  ...pythonSixtyContainersItems,
+  ...pythonSixtyNumpyPandasItems,
+  ...pythonSixtyFunctionsItems,
+  ...pythonSixtyPandasAItems,
+  ...pythonSixtyPandasBItems,
+  ...pythonSixtyStringsErrorsItems,
+  ...pythonSixtyIterationClassesItems,
+  ...pythonSixtyStdlibNumpyItems,
+  ...pythonSixtyTopupItems,
+  // Machine Learning lessons brought to 60 questions each (items/ml-sixty-*.ts).
+  ...mlSixty01Items,
+  ...mlSixty02Items,
+  ...mlSixty03Items,
+  ...mlSixty04Items,
+  ...mlSixty05Items,
+  ...mlSixty06Items,
+  ...mlSixty07Items,
+  ...mlSixty08Items,
+  ...mlSixty09Items,
+  ...mlSixty10Items,
+  ...mlSixty11Items,
+  ...mlSixty12Items,
+  // Deep-learning lessons brought from 40 to 60 questions.
+  ...dlSixty01Items,
+  ...dlSixty02Items,
+  ...dlSixty03Items,
+  ...dlSixty04Items,
+  ...dlSixty05Items,
+  ...dlSixty06Items,
+  // Optimization course (root finding through ADMM).
+  ...opt01Items,
+  ...opt02Items,
+  ...opt03Items,
+  ...opt04Items,
+  ...opt05Items,
+  ...opt06Items,
+  ...infer01Items,
+  ...infer02Items,
+  ...infer03Items,
+  ...infer04Items,
+  ...infer05Items,
+  ...infer06Items,
+  ...infer07Items,
+  // Calculus course (limits through multiple integrals).
+  ...calc01Items,
+  ...calc02Items,
+  ...calc03Items,
+  ...calc04Items,
+  ...calc05Items,
+  ...calc06Items,
+  ...calc07Items,
 
 ];
 
