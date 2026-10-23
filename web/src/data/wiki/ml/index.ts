@@ -19,6 +19,7 @@ import { ml17SsmAndGnn } from "./ml-17-ssm-and-gnn";
 import { ml18ScoreBasedGenerative } from "./ml-18-score-based-generative";
 import { ml19OptimizationAndMetrics } from "./ml-19-optimization-and-metrics";
 import { ml20FocusedTopics } from "./ml-20-focused-topics";
+import { performativePredictionWikis } from "./performative-prediction";
 
 /**
  * All 100 `machine-learning` domain articles, grouped into the same fifteen
@@ -48,6 +49,7 @@ export const mlWikiArticles: WikiArticle[] = [
   ...ml08NeuralNetworks,
   ...ml09GaussianProcesses,
   ...ml10PracticalModelling,
+  ...performativePredictionWikis,
   ...ml11DeepLearning,
   ...ml13NeuralArchitectures,
   ...ml16CnnPractice,

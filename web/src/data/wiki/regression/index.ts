@@ -4,6 +4,7 @@ import { aicBicWiki } from "./aic-bic";
 import { anovaWiki } from "./anova";
 import { coxProportionalHazardsModelWiki } from "./cox-proportional-hazards-model";
 import { effectOfAddingAnotherVariableWiki } from "./effect-of-adding-another-variable";
+import { adaptiveLassoWiki } from "./adaptive-lasso";
 import { elasticNetWiki } from "./elastic-net";
 import { forwardBackwardStepwiseSelectionWiki } from "./forward-backward-stepwise-selection";
 import { geometricInterpretationOfOlsWiki } from "./geometric-interpretation-of-ols";
@@ -155,6 +156,7 @@ export const regressionWikis: WikiArticle[] = [
   lassoWiki,
   ridgeRegressionWiki,
   elasticNetWiki,
+  adaptiveLassoWiki,
   polynomialRegressionWiki,
   quantileRegressionWiki,
   loessSmoothingWiki,

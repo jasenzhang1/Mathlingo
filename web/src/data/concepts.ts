@@ -7,6 +7,7 @@ export type Domain =
   | "statistics"
   | "regression"
   | "bayesian-statistics"
+  | "optimization"
   | "machine-learning"
   | "deep-learning"
   | "graphical-models"
@@ -34,6 +35,7 @@ export const domainMeta: Record<Domain, DomainMeta> = {
   statistics: { label: "Statistical Inference", color: "#e0a72f" },
   regression: { label: "Linear Models", color: "#2f6fed" },
   "bayesian-statistics": { label: "Bayesian Statistics", color: "#0d9488" },
+  optimization: { label: "Optimization", color: "#b45309" },
   "machine-learning": { label: "Machine Learning", color: "#16a34a" },
   "deep-learning": { label: "Deep Learning", color: "#ec4899" },
   "graphical-models": { label: "Graphical Models & Computation", color: "#a855f7" },
@@ -1682,6 +1684,67 @@ export const concepts: Concept[] = [
     blurb: "A range for the next observation, not for a parameter — and it never shrinks to zero.",
     prerequisites: ["confidence-interval", "sampling-distribution"],
   },
+  // Inference with machine-learning predictions: the toolkit behind
+  // prediction-powered and active inference (Angelopoulos, Zrnic, Candès et
+  // al.). Conformal and selection bias are the two foundations it rests on.
+  {
+    id: "conformal-prediction",
+    title: "Conformal Prediction",
+    domain: "statistics",
+    blurb: "Prediction sets with guaranteed coverage around any black-box model, from nothing but exchangeability and a calibration set.",
+    prerequisites: ["prediction-interval"],
+  },
+  {
+    id: "selection-bias",
+    title: "Selection Bias & Inverse Probability Weighting",
+    domain: "statistics",
+    blurb: "When which data you see depends on the data itself, and how reweighting by one over the inclusion probability undoes it.",
+    prerequisites: ["sampling-methods", "standard-error"],
+  },
+  {
+    id: "prediction-powered-inference",
+    title: "Prediction-Powered Inference",
+    domain: "statistics",
+    blurb: "Use a model's predictions on lots of unlabeled data, debiased by a small labeled set, to get tighter confidence intervals that stay valid.",
+    prerequisites: ["confidence-interval", "standard-error"],
+  },
+  {
+    id: "active-statistical-inference",
+    title: "Active Statistical Inference",
+    domain: "statistics",
+    blurb: "Spend a labeling budget where the model is least sure, and correct with inverse probability weights so the estimate stays unbiased.",
+    prerequisites: ["prediction-powered-inference", "selection-bias"],
+  },
+  // Missing data and causal contrasts: the toolkit behind double-sampling
+  // designs for outcomes missing not at random (Haneuse et al., EHR studies).
+  {
+    id: "missing-data-mechanisms",
+    title: "Missing Data: MCAR, MAR & MNAR",
+    domain: "statistics",
+    blurb: "Why data are missing decides what you can recover: completely at random, at random given covariates, or not at random — and why the last is untestable.",
+    prerequisites: ["selection-bias"],
+  },
+  {
+    id: "potential-outcomes",
+    title: "Potential Outcomes & the Average Treatment Effect",
+    domain: "statistics",
+    blurb: "Counterfactual outcomes Y(1) and Y(0), the assumptions that identify their mean difference, and the outcome-regression and propensity-weighting estimators.",
+    prerequisites: ["selection-bias"],
+  },
+  {
+    id: "doubly-robust-estimation",
+    title: "Doubly Robust Estimation",
+    domain: "statistics",
+    blurb: "Augmented inverse probability weighting: an estimator that stays consistent if either the outcome model or the propensity model is right, and is efficient when both are.",
+    prerequisites: ["potential-outcomes", "missing-data-mechanisms"],
+  },
+  {
+    id: "double-sampling-mnar",
+    title: "Double Sampling for MNAR Outcomes",
+    domain: "statistics",
+    blurb: "Chase a random subsample of the missing outcomes to turn an untestable MNAR problem into an identified one — and test MAR along the way.",
+    prerequisites: ["doubly-robust-estimation"],
+  },
   {
     id: "permutation-test",
     title: "Permutation Test",
@@ -1931,6 +1994,13 @@ export const concepts: Concept[] = [
     domain: "regression",
     blurb: "Blending LASSO and Ridge penalties into one regularizer.",
     prerequisites: ["lasso", "ridge-regression"],
+  },
+  {
+    id: "adaptive-lasso",
+    title: "Adaptive LASSO",
+    domain: "regression",
+    blurb: "Weighting each coefficient's L1 penalty by a pilot estimate so large effects go unshrunk and the right variables are selected.",
+    prerequisites: ["lasso"],
   },
   {
     id: "polynomial-regression",
@@ -2534,6 +2604,23 @@ export const concepts: Concept[] = [
     blurb: "When two non-stationary series share a stationary combination — and why regressing one on the other can look significant for no real reason.",
     prerequisites: ["arima"],
   },
+  // Rough-path signatures: a model-free feature map for streams, used with
+  // linear models (e.g. signature + adaptive LASSO) where deep nets are too
+  // data-hungry or opaque.
+  {
+    id: "path-signatures",
+    title: "Path Signatures",
+    domain: "time-series",
+    blurb: "Describe a path by its iterated integrals — increments, signed areas and beyond — a feature map that is invariant to how fast the path is traversed.",
+    prerequisites: ["stochastic-processes"],
+  },
+  {
+    id: "signature-methods-time-series",
+    title: "Signature Methods for Time Series",
+    domain: "time-series",
+    blurb: "Turning irregular, multivariate series into signature features — time and lead-lag augmentation, truncation, log-signatures — and fitting a sparse linear model on top.",
+    prerequisites: ["path-signatures", "adaptive-lasso"],
+  },
 
   // ---------------------------------------------------------------------
   // Machine Learning
@@ -3053,6 +3140,13 @@ export const concepts: Concept[] = [
     // A deployed model shapes the data it is next retrained on, which is a
     // leakage-shaped failure and needs `data-leakage` to state.
     prerequisites: ["training-validation-test-set", "generative-vs-discriminative-models", "data-leakage"],
+  },
+  {
+    id: "performative-prediction",
+    title: "Performative Prediction",
+    domain: "machine-learning",
+    blurb: "When deploying a model changes the very distribution it predicts — retraining to stability versus optimising for the shift you cause.",
+    prerequisites: ["distribution-shift", "gradient-descent"],
   },
   {
     id: "model-interpretability",
@@ -4755,6 +4849,196 @@ export const concepts: Concept[] = [
     blurb:
       "Insurance on a bond issuer's default: the protection buyer pays a periodic premium, and the seller pays out if a specified credit event occurs — pricing one means estimating a default probability.",
     prerequisites: ["interest-rate-and-currency-swaps", "bonds-and-fixed-income"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Optimization
+  //
+  // Numerical optimisation from root finding to operator splitting, cut along
+  // Nocedal & Wright (unconstrained and second-order methods) and Boyd &
+  // Vandenberghe (convexity, duality, interior points), ending in the Boyd et
+  // al. ADMM monograph. Two spines run through it: Newton's idea of solving a
+  // local model (Newton–Raphson → Newton for minimisation → quasi-Newton,
+  // Gauss–Newton, interior points) and the Lagrangian (multipliers → KKT →
+  // duality → augmented Lagrangian → ADMM). The entry lessons lean on
+  // `matrix-calculus` and `positive-definite-matrices` across the domain
+  // boundary, which by `lessonLock.ts` doesn't gate them.
+  // ---------------------------------------------------------------------
+  {
+    id: "optimization-problems-and-optimality",
+    title: "Optimization Problems and Optimality Conditions",
+    domain: "optimization",
+    blurb:
+      "Objectives, constraints, local versus global minima, and the first- and second-order conditions a minimiser must satisfy.",
+    prerequisites: ["matrix-calculus", "positive-definite-matrices"],
+  },
+  {
+    id: "convexity-for-optimization",
+    title: "Convex Sets and Functions",
+    domain: "optimization",
+    blurb:
+      "Why convexity turns every local minimum into a global one, and how to recognise convex sets, functions, strong convexity and smoothness.",
+    prerequisites: ["optimization-problems-and-optimality"],
+  },
+  {
+    id: "bisection-method",
+    title: "Bisection and Bracketing",
+    domain: "optimization",
+    blurb:
+      "Halving an interval that brackets a root: slow, linear convergence, but guaranteed by the intermediate value theorem.",
+    prerequisites: [],
+  },
+  {
+    id: "newton-raphson-method",
+    title: "Newton–Raphson Root Finding",
+    domain: "optimization",
+    blurb:
+      "Follow the tangent line to its zero: quadratic convergence near a simple root, and the ways it can fail far from one.",
+    prerequisites: ["bisection-method"],
+  },
+  {
+    id: "secant-method",
+    title: "The Secant Method",
+    domain: "optimization",
+    blurb:
+      "Newton–Raphson with the derivative replaced by a finite-difference slope through the last two iterates, converging with order about 1.618.",
+    prerequisites: ["newton-raphson-method"],
+  },
+  {
+    id: "newton-method-optimization",
+    title: "Newton's Method for Optimization",
+    domain: "optimization",
+    blurb:
+      "Apply Newton–Raphson to the gradient: minimise the local quadratic model using the Hessian, with damping to make it globally reliable.",
+    prerequisites: ["newton-raphson-method", "optimization-problems-and-optimality"],
+  },
+  {
+    id: "line-search-methods",
+    title: "Line Search: Armijo and Wolfe Conditions",
+    domain: "optimization",
+    blurb:
+      "Choosing how far to step along a descent direction: backtracking, sufficient decrease and curvature conditions.",
+    prerequisites: ["optimization-problems-and-optimality"],
+  },
+  {
+    id: "gradient-method-convergence",
+    title: "Gradient Descent: Convergence Theory",
+    domain: "optimization",
+    blurb:
+      "Step sizes from the Lipschitz constant, sublinear rates for convex functions, linear rates under strong convexity, and the role of the condition number.",
+    prerequisites: ["convexity-for-optimization", "line-search-methods"],
+  },
+  {
+    id: "momentum-and-acceleration",
+    title: "Momentum and Nesterov Acceleration",
+    domain: "optimization",
+    blurb:
+      "Heavy-ball momentum and Nesterov's accelerated gradient, which improve the dependence on the condition number from κ to √κ.",
+    prerequisites: ["gradient-method-convergence"],
+  },
+  {
+    id: "conjugate-gradient-method",
+    title: "The Conjugate Gradient Method",
+    domain: "optimization",
+    blurb:
+      "Solving positive definite linear systems (and minimising quadratics) along mutually conjugate directions, exactly in at most n steps.",
+    prerequisites: ["gradient-method-convergence"],
+  },
+  {
+    id: "coordinate-descent",
+    title: "Coordinate Descent",
+    domain: "optimization",
+    blurb:
+      "Minimise over one coordinate (or block) at a time — cheap exact updates that power lasso and other separable problems.",
+    prerequisites: ["gradient-method-convergence"],
+  },
+  {
+    id: "subgradient-method",
+    title: "Subgradients and the Subgradient Method",
+    domain: "optimization",
+    blurb:
+      "Generalised gradients for non-differentiable convex functions, and the slow but robust method built on them.",
+    prerequisites: ["convexity-for-optimization", "gradient-method-convergence"],
+  },
+  {
+    id: "proximal-gradient-method",
+    title: "Proximal Gradient Methods (ISTA and FISTA)",
+    domain: "optimization",
+    blurb:
+      "Split an objective into a smooth part and a simple nonsmooth part, take a gradient step on one and a proximal step on the other.",
+    prerequisites: ["subgradient-method", "momentum-and-acceleration"],
+  },
+  {
+    id: "quasi-newton-methods",
+    title: "Quasi-Newton Methods (BFGS and L-BFGS)",
+    domain: "optimization",
+    blurb:
+      "Build a Hessian approximation from gradient differences via the secant condition, getting superlinear convergence without second derivatives.",
+    prerequisites: ["newton-method-optimization", "line-search-methods", "secant-method"],
+  },
+  {
+    id: "nonlinear-least-squares",
+    title: "Gauss–Newton and Levenberg–Marquardt",
+    domain: "optimization",
+    blurb:
+      "Minimise a sum of squared residuals by linearising them: Gauss–Newton drops second-order terms, Levenberg–Marquardt adds damping.",
+    prerequisites: ["newton-method-optimization"],
+  },
+  {
+    id: "lagrange-multipliers",
+    title: "Lagrange Multipliers",
+    domain: "optimization",
+    blurb:
+      "Equality-constrained optimisation: at a constrained optimum the objective's gradient is a combination of the constraint gradients.",
+    prerequisites: ["optimization-problems-and-optimality"],
+  },
+  {
+    id: "kkt-conditions",
+    title: "The KKT Conditions",
+    domain: "optimization",
+    blurb:
+      "Stationarity, feasibility, dual feasibility and complementary slackness — the optimality conditions for inequality-constrained problems.",
+    prerequisites: ["lagrange-multipliers", "convexity-for-optimization"],
+  },
+  {
+    id: "lagrangian-duality",
+    title: "Lagrangian Duality",
+    domain: "optimization",
+    blurb:
+      "The dual function gives lower bounds on the optimum; weak duality always holds, and strong duality holds for convex problems under Slater's condition.",
+    prerequisites: ["kkt-conditions"],
+  },
+  {
+    id: "linear-programming",
+    title: "Linear Programming and the Simplex Method",
+    domain: "optimization",
+    blurb:
+      "Linear objectives over polyhedra: optima at vertices, the simplex method's walk between them, and LP duality.",
+    prerequisites: ["lagrangian-duality"],
+  },
+  {
+    id: "interior-point-methods",
+    title: "Barrier and Interior-Point Methods",
+    domain: "optimization",
+    blurb:
+      "Replace inequality constraints with a logarithmic barrier and follow the central path with Newton steps as the barrier weight shrinks.",
+    prerequisites: ["newton-method-optimization", "kkt-conditions"],
+  },
+  {
+    id: "augmented-lagrangian-method",
+    title: "Penalty and Augmented Lagrangian Methods",
+    domain: "optimization",
+    blurb:
+      "Quadratic penalties enforce constraints only in the limit; adding multiplier estimates (the method of multipliers) fixes that with a finite penalty.",
+    prerequisites: ["lagrangian-duality"],
+  },
+  {
+    id: "admm",
+    title: "ADMM (Alternating Direction Method of Multipliers)",
+    domain: "optimization",
+    blurb:
+      "Split a problem into two blocks, minimise the augmented Lagrangian over each in turn, then update the multiplier — the workhorse for large, distributed and structured convex problems.",
+    prerequisites: ["augmented-lagrangian-method", "proximal-gradient-method"],
   },
 
   // ---------------------------------------------------------------------

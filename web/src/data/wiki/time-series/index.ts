@@ -10,9 +10,11 @@ import { maModelsWiki } from "./ma-models";
 import { pacfWiki } from "./pacf";
 import { stationarityWhiteNoiseWiki } from "./stationarity-white-noise";
 import { stochasticProcessesWiki } from "./stochastic-processes";
+import { pathSignaturesWiki } from "./path-signatures";
+import { signatureMethodsTimeSeriesWiki } from "./signature-methods-time-series";
 import { woldDecompositionWiki } from "./wold-decomposition";
 
-/** All 11 concepts of the `time-series` domain, in teaching order. */
+/** All 13 concepts of the `time-series` domain, in teaching order. */
 export const timeSeriesWikis: WikiArticle[] = [
   stochasticProcessesWiki,
   stationarityWhiteNoiseWiki,
@@ -25,4 +27,6 @@ export const timeSeriesWikis: WikiArticle[] = [
   arimaWiki,
   garchWiki,
   cointegrationWiki,
+  pathSignaturesWiki,
+  signatureMethodsTimeSeriesWiki,
 ];

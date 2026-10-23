@@ -17,6 +17,7 @@ const SUMMARIES: Record<Domain, string> = {
   statistics: "Estimation, confidence intervals, hypothesis tests from Neyman–Pearson to permutation tests, and comparing many things at once.",
   regression: "Linear models end to end: least squares, inference, diagnostics, ANOVA, model selection, regularisation and GLMs.",
   "bayesian-statistics": "Priors and posteriors, conjugate models, prediction, hierarchical models, MCMC, Gaussian processes and Bayesian inversion.",
+  optimization: "Root finding and Newton's method, gradient and accelerated methods, proximal and quasi-Newton methods, KKT and duality, interior points and ADMM.",
   "machine-learning": "The core of applied ML: losses, optimisation, validation, trees and ensembles, kernels, clustering, interpretability and RL.",
   "deep-learning": "Neural networks from backprop to transformers, CNNs, state-space models, graph networks and generative models.",
   "graphical-models": "Graphs as probability models, causal inference with DAGs, latent variables and EM, and numerical integration.",
