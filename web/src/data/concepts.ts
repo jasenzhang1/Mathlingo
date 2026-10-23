@@ -354,11 +354,32 @@ export const concepts: Concept[] = [
     prerequisites: ["evaluating-limits", "continuity"],
   },
   {
-    id: "differentiation-rules",
-    title: "Differentiation Rules",
+    id: "derivative-linearity",
+    title: "Linearity of Differentiation",
     domain: "calculus",
-    blurb: "The power, sum, product and quotient rules — differentiating any polynomial or rational function without a limit.",
+    blurb: "Constants differentiate to zero, constant factors pass through, and the derivative of a sum is the sum of the derivatives.",
     prerequisites: ["derivative-definition"],
+  },
+  {
+    id: "power-rule",
+    title: "The Power Rule",
+    domain: "calculus",
+    blurb: "d/dx xⁿ = nxⁿ⁻¹ for every real n — roots, reciprocals, polynomials, tangent lines and higher derivatives.",
+    prerequisites: ["derivative-linearity"],
+  },
+  /*
+   * `differentiation-rules` and `transcendental-derivatives` launched as broad
+   * lessons and were narrowed — to the product/quotient rules and to inverse
+   * functions — when linearity, the power rule and the exp/log/trig
+   * derivatives became lessons of their own. The ids stay because saved
+   * progress is keyed on them.
+   */
+  {
+    id: "differentiation-rules",
+    title: "The Product & Quotient Rules",
+    domain: "calculus",
+    blurb: "(fg)′ = f′g + fg′ and (f/g)′ = (f′g − fg′)/g² — why the derivative of a product is not the product of the derivatives.",
+    prerequisites: ["power-rule"],
   },
   {
     id: "chain-rule",
@@ -368,18 +389,39 @@ export const concepts: Concept[] = [
     prerequisites: ["differentiation-rules"],
   },
   {
-    id: "transcendental-derivatives",
-    title: "Derivatives of Exponential, Log & Trig Functions",
+    id: "exponential-derivatives",
+    title: "Derivatives of Exponential Functions",
     domain: "calculus",
-    blurb: "Why eˣ is its own derivative, d/dx ln x = 1/x, the trig derivatives, inverse functions and logarithmic differentiation.",
+    blurb: "Why eˣ is its own derivative, aˣ picks up a factor ln a, and why y′ = ky describes growth and decay.",
     prerequisites: ["chain-rule"],
+  },
+  {
+    id: "logarithmic-derivatives",
+    title: "Derivatives of Logarithms",
+    domain: "calculus",
+    blurb: "d/dx ln x = 1/x, logs in other bases, the logarithmic derivative g′/g, and logarithmic differentiation for xˣ and long products.",
+    prerequisites: ["exponential-derivatives"],
+  },
+  {
+    id: "trig-derivatives",
+    title: "Derivatives of Trigonometric Functions",
+    domain: "calculus",
+    blurb: "sin′ = cos and cos′ = −sin from two limits, then tan, sec, cot and csc, the four-step cycle, and why radians matter.",
+    prerequisites: ["chain-rule", "evaluating-limits"],
+  },
+  {
+    id: "transcendental-derivatives",
+    title: "Derivatives of Inverse Functions",
+    domain: "calculus",
+    blurb: "(f⁻¹)′ = 1/f′(f⁻¹): the slope of a reflected graph, and the derivatives of arcsin, arccos and arctan.",
+    prerequisites: ["logarithmic-derivatives", "trig-derivatives"],
   },
   {
     id: "implicit-differentiation",
     title: "Implicit Differentiation & Related Rates",
     domain: "calculus",
     blurb: "Differentiating an equation in x and y without solving for y, and linking the rates of quantities that change together.",
-    prerequisites: ["chain-rule"],
+    prerequisites: ["chain-rule", "transcendental-derivatives"],
   },
   {
     id: "mean-value-theorem",

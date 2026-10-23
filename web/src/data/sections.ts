@@ -107,8 +107,19 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "Derivatives",
       conceptIds: [
         "derivative-definition",
+        "derivative-linearity",
+        "power-rule",
         "differentiation-rules",
         "chain-rule",
+      ],
+    },
+    {
+      id: "transcendental-derivatives",
+      label: "Derivatives of Transcendental Functions",
+      conceptIds: [
+        "exponential-derivatives",
+        "logarithmic-derivatives",
+        "trig-derivatives",
         "transcendental-derivatives",
         "implicit-differentiation",
       ],

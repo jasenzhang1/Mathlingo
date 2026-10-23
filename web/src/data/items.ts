@@ -135,6 +135,8 @@ import { calc04Items } from "./items/calc-04";
 import { calc05Items } from "./items/calc-05";
 import { calc06Items } from "./items/calc-06";
 import { calc07Items } from "./items/calc-07";
+import { calc08Items } from "./items/calc-08";
+import { calc09Items } from "./items/calc-09";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -5302,6 +5304,8 @@ export const items: Item[] = [
   ...calc05Items,
   ...calc06Items,
   ...calc07Items,
+  ...calc08Items,
+  ...calc09Items,
 
 ];
 

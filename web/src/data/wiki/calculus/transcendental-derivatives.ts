@@ -4,100 +4,106 @@ export const transcendentalDerivativesWiki: WikiArticle = {
   conceptId: "transcendental-derivatives",
 
   summary:
-    "Beyond polynomials, three families appear everywhere: exponentials, logarithms and trigonometric functions. " +
-    "Their derivatives come from two limits — $\\lim_{h \\to 0} \\frac{e^{h} - 1}{h} = 1$ and " +
-    "$\\lim_{h \\to 0} \\frac{\\sin h}{h} = 1$ — and from the rule for differentiating an inverse function. With the chain " +
-    "rule, these give the derivative of almost any formula you will meet.",
+    "Reflecting a graph in the line $y = x$ swaps rise and run, so it turns a slope $m$ into $\\frac{1}{m}$. That is the " +
+    "whole content of the inverse function rule, $(f^{-1})'(y) = \\frac{1}{f'(f^{-1}(y))}$. It gives the derivative of " +
+    "$\\ln$ from $e^{x}$, of roots from powers, and — most usefully — of the inverse trig functions, whose derivatives " +
+    "turn out to be algebraic.",
 
   sections: [
     {
-      heading: "The table",
+      heading: "The inverse function rule",
       blocks: [
         {
-          kind: "table",
-          headers: ["$f(x)$", "$f'(x)$", "$f(x)$", "$f'(x)$"],
-          rows: [
-            ["$e^{x}$", "$e^{x}$", "$\\sin x$", "$\\cos x$"],
-            ["$a^{x}$", "$a^{x} \\ln a$", "$\\cos x$", "$-\\sin x$"],
-            ["$\\ln x$", "$\\frac{1}{x}$", "$\\tan x$", "$\\sec^{2} x$"],
-            ["$\\log_a x$", "$\\frac{1}{x \\ln a}$", "$\\arcsin x$", "$\\frac{1}{\\sqrt{1 - x^{2}}}$"],
-            ["$\\ln |x|$", "$\\frac{1}{x}$", "$\\arctan x$", "$\\frac{1}{1 + x^{2}}$"],
-          ],
-          caption: "Angles in radians — the trig formulas are false in degrees",
+          kind: "formula",
+          latex: "(f^{-1})'(y) = \\frac{1}{f'(f^{-1}(y))} \\qquad \\text{equivalently} \\qquad \\frac{dx}{dy} = \\frac{1}{dy/dx}",
+          caption: "Valid where $f$ is differentiable and one-to-one with $f'(f^{-1}(y)) \\ne 0$",
         },
         {
           kind: "prose",
           text:
-            "$e$ is defined as the base for which $\\frac{e^{h} - 1}{h} \\to 1$, i.e. the exponential whose slope at $0$ is " +
-            "$1$. Then $\\frac{e^{x + h} - e^{x}}{h} = e^{x} \\cdot \\frac{e^{h} - 1}{h} \\to e^{x}$: $e^{x}$ is its own derivative. " +
-            "Any other base is $a^{x} = e^{x \\ln a}$, and the chain rule gives the factor $\\ln a$.",
-        },
-      ],
-    },
-    {
-      heading: "Inverse functions",
-      blocks: [
-        {
-          kind: "formula",
-          latex: "(f^{-1})'(y) = \\frac{1}{f'(f^{-1}(y))}",
-          caption: "Reflecting a graph in $y = x$ turns a slope $m$ into $\\frac{1}{m}$",
+            "Proof: differentiate $f(f^{-1}(y)) = y$ with the chain rule to get $f'(f^{-1}(y)) \\cdot (f^{-1})'(y) = 1$. The " +
+            "rule is most useful at a single point: you rarely need a formula for $f^{-1}$, only the input $x$ with " +
+            "$f(x) = y$.",
         },
         {
           kind: "example",
-          title: "The derivative of $\\ln x$",
-          problem: "Derive $\\frac{d}{dx} \\ln x$ from $e^{\\ln x} = x$.",
+          title: "Without a formula for the inverse",
+          problem: "Let $f(x) = x^{3} + x$ and $g = f^{-1}$. Find $g'(2)$.",
           steps: [
-            "Differentiate both sides with the chain rule: $e^{\\ln x} \\cdot \\frac{d}{dx}\\ln x = 1$.",
-            "But $e^{\\ln x} = x$, so $x \\cdot \\frac{d}{dx}\\ln x = 1$.",
+            "Find the input: $f(1) = 2$, so $g(2) = 1$.",
+            "$f'(x) = 3x^{2} + 1$, so $f'(1) = 4$.",
           ],
-          answer: "$\\frac{d}{dx}\\ln x = \\frac{1}{x}$. The same trick on $\\sin(\\arcsin x) = x$ gives $\\frac{1}{\\cos(\\arcsin x)} = \\frac{1}{\\sqrt{1 - x^{2}}}$.",
-        },
-      ],
-    },
-    {
-      heading: "Combining with the chain rule",
-      blocks: [
-        {
-          kind: "list",
-          items: [
-            "$\\frac{d}{dx} e^{g(x)} = e^{g(x)} g'(x)$ — e.g. $\\frac{d}{dx} e^{-x^{2}} = -2x e^{-x^{2}}$.",
-            "$\\frac{d}{dx} \\ln g(x) = \\frac{g'(x)}{g(x)}$, the **logarithmic derivative** — e.g. $\\frac{d}{dx} \\ln(x^{2} + 1) = \\frac{2x}{x^{2} + 1}$.",
-            "$\\frac{d}{dx} \\sin(kx) = k\\cos(kx)$, and $\\frac{d}{dx} \\sin^{2} x = 2\\sin x \\cos x = \\sin 2x$.",
-          ],
-        },
-        {
-          kind: "example",
-          title: "Logarithmic differentiation",
-          problem: "Differentiate $y = x^{x}$ for $x > 0$.",
-          steps: [
-            "Neither the power rule (variable exponent) nor the exponential rule (variable base) applies.",
-            "Take logs: $\\ln y = x \\ln x$.",
-            "Differentiate: $\\frac{y'}{y} = \\ln x + 1$.",
-          ],
-          answer: "$y' = x^{x}(\\ln x + 1)$. At $x = 1$, the slope is $1$.",
+          answer: "$g'(2) = \\frac{1}{4}$, though solving $x^{3} + x = y$ for $x$ would be painful.",
         },
         {
           kind: "callout",
           tone: "warning",
-          title: "Power rule versus exponential rule",
+          title: "Evaluate at the right point",
           text:
-            "$\\frac{d}{dx} x^{3} = 3x^{2}$ (variable base, fixed exponent), but $\\frac{d}{dx} 3^{x} = 3^{x}\\ln 3$ " +
-            "(fixed base, variable exponent). Applying the power rule to $3^{x}$ to get $x \\cdot 3^{x - 1}$ is wrong.",
+            "$(f^{-1})'(y)$ uses $f'$ at $f^{-1}(y)$, not at $y$. In the example, $f'(2) = 13$ is irrelevant; the slope of " +
+            "$f$ at $x = 1$ is what matters.",
+        },
+      ],
+    },
+    {
+      heading: "Inverse trigonometric functions",
+      blocks: [
+        {
+          kind: "table",
+          headers: ["$f(x)$", "Domain", "$f'(x)$"],
+          rows: [
+            ["$\\arcsin x$", "$[-1, 1]$", "$\\frac{1}{\\sqrt{1 - x^{2}}}$"],
+            ["$\\arccos x$", "$[-1, 1]$", "$-\\frac{1}{\\sqrt{1 - x^{2}}}$"],
+            ["$\\arctan x$", "$\\mathbb{R}$", "$\\frac{1}{1 + x^{2}}$"],
+          ],
+          caption: "Differentiable on the open intervals; the derivatives of $\\arcsin$ and $\\arccos$ blow up at $\\pm 1$",
+        },
+        {
+          kind: "example",
+          title: "Deriving $\\arcsin'$",
+          problem: "Find $\\frac{d}{dx}\\arcsin x$.",
+          steps: [
+            "Let $y = \\arcsin x$, so $\\sin y = x$ with $y \\in \\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$.",
+            "Differentiate: $\\cos y \\cdot y' = 1$, so $y' = \\frac{1}{\\cos y}$.",
+            "On that interval $\\cos y \\ge 0$, so $\\cos y = \\sqrt{1 - \\sin^{2} y} = \\sqrt{1 - x^{2}}$.",
+          ],
+          answer: "$\\frac{1}{\\sqrt{1 - x^{2}}}$. The restricted range is what fixes the sign of the root.",
         },
         {
           kind: "callout",
           tone: "insight",
-          title: "Growth proportional to size",
+          title: "Why $\\arccos' = -\\arcsin'$",
           text:
-            "$y' = ky$ says the rate of change is proportional to the current amount; its solutions are exactly " +
-            "$y = Ce^{kt}$. That is why exponentials model populations, compound interest and radioactive decay.",
+            "$\\arcsin x + \\arccos x = \\frac{\\pi}{2}$ for every $x \\in [-1, 1]$, so their derivatives add to $0$. Likewise " +
+            "$\\arctan x + \\arctan\\frac{1}{x} = \\frac{\\pi}{2}$ for $x > 0$.",
+        },
+      ],
+    },
+    {
+      heading: "With the chain rule",
+      blocks: [
+        {
+          kind: "list",
+          items: [
+            "$\\frac{d}{dx}\\arctan(2x) = \\frac{2}{1 + 4x^{2}}$.",
+            "$\\frac{d}{dx}\\arcsin\\frac{x}{a} = \\frac{1}{\\sqrt{a^{2} - x^{2}}}$ for $a > 0$.",
+            "$\\frac{d}{dx}\\arctan(e^{x}) = \\frac{e^{x}}{1 + e^{2x}}$.",
+          ],
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Algebra from transcendental functions",
+          text:
+            "The inverse trig derivatives are algebraic, so read backwards they give antiderivatives that no polynomial " +
+            "rule can: $\\int \\frac{dx}{1 + x^{2}} = \\arctan x + C$ and $\\int \\frac{dx}{\\sqrt{1 - x^{2}}} = \\arcsin x + C$.",
         },
       ],
     },
   ],
 
   references: [
-    { source: "Stewart, Calculus: Early Transcendentals, 8th ed.", locator: "§3.1 (exponentials); §3.3 Derivatives of Trigonometric Functions; §3.6 Derivatives of Logarithmic Functions; §3.5 (inverse trig)" },
-    { source: "OpenStax, Calculus Volume 1", locator: "§3.5, §3.7, §3.9" },
+    { source: "Stewart, Calculus: Early Transcendentals, 8th ed.", locator: "§1.5 Inverse Functions and Logarithms; §3.5 (derivatives of inverse trigonometric functions)" },
+    { source: "OpenStax, Calculus Volume 1", locator: "§3.7 Derivatives of Inverse Functions" },
   ],
 };

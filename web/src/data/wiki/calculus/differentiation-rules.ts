@@ -4,46 +4,39 @@ export const differentiationRulesWiki: WikiArticle = {
   conceptId: "differentiation-rules",
 
   summary:
-    "A handful of rules, each proved once from the limit definition, differentiate every polynomial and rational " +
-    "function mechanically: the power rule for $x^{n}$, linearity for sums and constant multiples, and the product and " +
-    "quotient rules for products and ratios. The product rule is the one people get wrong — the derivative of a " +
-    "product is $\\textbf{NOT}$ the product of the derivatives.",
+    "Linearity handles sums; the product and quotient rules handle the other two ways of combining functions. The " +
+    "derivative of a product is $\\textbf{NOT}$ the product of the derivatives: $(fg)' = f'g + fg'$, one term for each " +
+    "factor taking its turn to change. The quotient rule follows from it. With the power rule, these two differentiate " +
+    "every rational function.",
 
   sections: [
     {
       heading: "The rules",
       blocks: [
         {
-          kind: "table",
-          headers: ["Rule", "Formula"],
-          rows: [
-            ["Constant", "$\\frac{d}{dx} c = 0$"],
-            ["Power", "$\\frac{d}{dx} x^{n} = n x^{n - 1}$ (any real $n$)"],
-            ["Constant multiple", "$(cf)' = c f'$"],
-            ["Sum", "$(f + g)' = f' + g'$"],
-            ["Product", "$(fg)' = f'g + fg'$"],
-            ["Quotient", "$\\left(\\frac{f}{g}\\right)' = \\frac{f'g - fg'}{g^{2}}$"],
-          ],
+          kind: "formula",
+          latex: "(fg)' = f'g + fg' \\qquad \\left(\\frac{f}{g}\\right)' = \\frac{f'g - fg'}{g^{2}}",
+          caption: "Product rule and quotient rule (where $g \\ne 0$)",
         },
-        {
-          kind: "prose",
-          text:
-            "The power rule holds for every real exponent, which covers roots and reciprocals once they are rewritten: " +
-            "$\\sqrt{x} = x^{1/2}$ has derivative $\\frac{1}{2}x^{-1/2}$, and $\\frac{1}{x^{3}} = x^{-3}$ has derivative $-3x^{-4}$.",
-        },
-      ],
-    },
-    {
-      heading: "Why the product rule looks the way it does",
-      blocks: [
         {
           kind: "prose",
           text:
             "Think of $f(x)g(x)$ as the area of a rectangle with sides $f$ and $g$. Nudge $x$ by $h$: the sides grow by " +
-            "$\\Delta f$ and $\\Delta g$, and the area grows by $\\Delta f \\cdot g + f \\cdot \\Delta g + \\Delta f \\, \\Delta g$. " +
-            "Divide by $h$ and let $h \\to 0$: the first two strips give $f'g + fg'$, and the corner $\\Delta f \\, \\Delta g$ " +
-            "is second-order small and vanishes.",
+            "$\\Delta f$ and $\\Delta g$, and the area grows by $\\Delta f \\cdot g + f \\cdot \\Delta g + \\Delta f\\,\\Delta g$. " +
+            "Divide by $h$ and let $h \\to 0$: the two strips give $f'g + fg'$, and the corner $\\Delta f\\,\\Delta g$ is " +
+            "second-order small and vanishes.",
         },
+        {
+          kind: "prose",
+          text:
+            "The quotient rule comes from the product rule: write $f = q \\cdot g$ with $q = \\frac{f}{g}$, differentiate to " +
+            "get $f' = q'g + qg'$, and solve for $q'$.",
+        },
+      ],
+    },
+    {
+      heading: "Worked examples",
+      blocks: [
         {
           kind: "example",
           title: "Product rule",
@@ -65,10 +58,20 @@ export const differentiationRulesWiki: WikiArticle = {
           ],
           answer: "$y' = \\frac{1 - x^{2}}{(x^{2} + 1)^{2}}$, horizontal at $x = \\pm 1$.",
         },
+        {
+          kind: "example",
+          title: "From values alone",
+          problem: "$f(2) = 3$, $f'(2) = -1$, $g(2) = 4$, $g'(2) = 5$. Find $(fg)'(2)$ and $\\left(\\frac{f}{g}\\right)'(2)$.",
+          steps: [
+            "$(fg)'(2) = (-1)(4) + (3)(5) = 11$.",
+            "$\\left(\\frac{f}{g}\\right)'(2) = \\frac{(-1)(4) - (3)(5)}{4^{2}} = -\\frac{19}{16}$.",
+          ],
+          answer: "$11$ and $-\\frac{19}{16}$.",
+        },
       ],
     },
     {
-      heading: "Pitfalls and higher derivatives",
+      heading: "Pitfalls and extensions",
       blocks: [
         {
           kind: "callout",
@@ -79,26 +82,19 @@ export const differentiationRulesWiki: WikiArticle = {
             "answer. When the denominator is a constant or a single power, skip the rule: $\\frac{x^{3} + 1}{x} = x^{2} + x^{-1}$.",
         },
         {
-          kind: "prose",
-          text:
-            "Differentiating again gives the **second derivative** $f''$ (acceleration, if $f$ is position), then " +
-            "$f'''$ and $f^{(n)}$. A polynomial of degree $n$ has $f^{(n)}$ constant ($n!$ times the leading " +
-            "coefficient) and $f^{(n + 1)} = 0$.",
-        },
-        {
-          kind: "callout",
-          tone: "insight",
-          title: "Leibniz's rule",
-          text:
-            "The product rule iterates like the binomial theorem: $(fg)^{(n)} = \\sum_{k=0}^{n} \\binom{n}{k} f^{(k)} g^{(n - k)}$. " +
-            "For $n = 2$: $(fg)'' = f''g + 2f'g' + fg''$.",
+          kind: "list",
+          items: [
+            "Three factors: $(fgh)' = f'gh + fg'h + fgh'$ — each factor takes one turn.",
+            "Reciprocal rule: $\\left(\\frac{1}{g}\\right)' = -\\frac{g'}{g^{2}}$, the quotient rule with $f = 1$.",
+            "Second derivative of a product: $(fg)'' = f''g + 2f'g' + fg''$, the start of Leibniz's rule $(fg)^{(n)} = \\sum_{k} \\binom{n}{k} f^{(k)}g^{(n - k)}$.",
+          ],
         },
       ],
     },
   ],
 
   references: [
-    { source: "Stewart, Calculus: Early Transcendentals, 8th ed.", locator: "§3.1 Derivatives of Polynomials and Exponential Functions; §3.2 The Product and Quotient Rules" },
+    { source: "Stewart, Calculus: Early Transcendentals, 8th ed.", locator: "§3.2 The Product and Quotient Rules" },
     { source: "OpenStax, Calculus Volume 1", locator: "§3.3 Differentiation Rules" },
   ],
 };
