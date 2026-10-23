@@ -35,6 +35,7 @@ const InterviewPage = lazy(() => import("./pages/InterviewPage.tsx").then((m) =>
 const InterviewMockPage = lazy(() => import("./pages/InterviewMockPage.tsx").then((m) => ({ default: m.InterviewMockPage })));
 const InterviewProblemsPage = lazy(() => import("./pages/InterviewProblemsPage.tsx").then((m) => ({ default: m.InterviewProblemsPage })));
 const InterviewProblemPage = lazy(() => import("./pages/InterviewProblemPage.tsx").then((m) => ({ default: m.InterviewProblemPage })));
+const InterviewSkillsPage = lazy(() => import("./pages/InterviewSkillsPage.tsx").then((m) => ({ default: m.InterviewSkillsPage })));
 const InterviewTrainPage = lazy(() => import("./pages/InterviewTrainPage.tsx").then((m) => ({ default: m.InterviewTrainPage })));
 const DevFeedbackPage = lazy(() => import("./pages/DevFeedbackPage.tsx").then((m) => ({ default: m.DevFeedbackPage })));
 const DevBundlesPage = lazy(() => import("./pages/DevBundlesPage.tsx").then((m) => ({ default: m.DevBundlesPage })));
@@ -80,6 +81,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/interview/problems" element={<InterviewProblemsPage />} />
             <Route path="/interview/problems/:id" element={<InterviewProblemPage />} />
             <Route path="/interview/train/:sectionId" element={<InterviewTrainPage />} />
+            <Route path="/interview/skills" element={<InterviewSkillsPage />} />
 
             <Route path="/interview/problem/:id" element={<InterviewProblemPage />} />
             <Route path="/login" element={<LoginPage />} />

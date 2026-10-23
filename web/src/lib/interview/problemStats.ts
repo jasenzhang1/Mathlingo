@@ -88,6 +88,47 @@ export function noteResult(questionId: string, correctness: number) {
   else if (!sessionResults.has(questionId)) sessionResults.set(questionId, "attempted");
 }
 
+/** `YYYY-MM-DD` in the student's own time zone, the key the activity grid is drawn on. */
+export function localDayKey(d: Date): string {
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+export interface AttemptHistory {
+  statuses: Map<string, ProblemStatus>;
+  /** Answers given per local day. */
+  days: Map<string, number>;
+}
+
+/**
+ * The home dashboard's one read: each problem's status, as `loadMyStatuses`
+ * gives it, plus how many answers were given on each day.
+ */
+export async function loadMyHistory(userId: string): Promise<AttemptHistory> {
+  const statuses = new Map<string, ProblemStatus>();
+  const days = new Map<string, number>();
+  const note = (id: string, status: ProblemStatus) => {
+    if (status === "solved" || !statuses.has(id)) statuses.set(id, status);
+  };
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await supabase
+      .from("interview_attempts")
+      .select("question_id, correctness, created_at")
+      .eq("user_id", userId)
+      .order("id")
+      .range(from, from + PAGE - 1);
+    if (error || !data) break;
+    for (const row of data as { question_id: string; correctness: number; created_at: string }[]) {
+      note(row.question_id, row.correctness >= 1 ? "solved" : "attempted");
+      const day = localDayKey(new Date(row.created_at));
+      days.set(day, (days.get(day) ?? 0) + 1);
+    }
+    if (data.length < PAGE) break;
+  }
+  for (const [id, status] of sessionResults) note(id, status);
+  return { statuses, days };
+}
+
 /** Solved if any answer was fully right, attempted if there are only misses. */
 export async function loadMyStatuses(userId: string): Promise<Map<string, ProblemStatus>> {
   const out = new Map<string, ProblemStatus>();
