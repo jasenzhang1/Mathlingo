@@ -10,6 +10,7 @@ import { chapters } from "./learningOrder";
 
 const SUMMARIES: Record<Domain, string> = {
   "discrete-math": "Logic, proofs, sets, counting, graphs and number theory — the language the rest of mathematics is written in.",
+  calculus: "Limits, derivatives and their applications, integration techniques, sequences and series, and calculus in several variables.",
   probability: "From the axioms to random variables, the named distributions, conditioning, expectation and the moment-generating function.",
   "linear-algebra": "Vectors, matrices, the four fundamental subspaces, orthogonality, eigenvalues and the SVD — with the intuition, not just the algebra.",
   "multivariate-probability": "Random vectors, the multivariate normal, quadratic forms, copulas and the limit theorems behind every large-sample method.",

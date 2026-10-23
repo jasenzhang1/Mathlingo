@@ -1,5 +1,6 @@
 export type Domain =
   | "discrete-math"
+  | "calculus"
   | "probability"
   | "linear-algebra"
   | "multivariate-probability"
@@ -25,6 +26,7 @@ export interface DomainMeta {
 
 export const domainMeta: Record<Domain, DomainMeta> = {
   "discrete-math": { label: "Discrete Math Fundamentals", color: "#be185d" },
+  calculus: { label: "Calculus", color: "#0369a1" },
   probability: { label: "Probability", color: "#5b3df0" },
   "linear-algebra": { label: "Linear Algebra", color: "#0f9a8e" },
   "multivariate-probability": {
@@ -312,6 +314,212 @@ export const concepts: Concept[] = [
     domain: "discrete-math",
     blurb: "Solving several congruences with coprime moduli at once, and why the combined solution is unique mod their product.",
     prerequisites: ["modular-inverses"],
+  },
+  // ---------------------------------------------------------------------
+  // Calculus
+  // ---------------------------------------------------------------------
+  {
+    id: "limits",
+    title: "Limits",
+    domain: "calculus",
+    blurb: "What value f(x) approaches as x approaches a — one-sided limits, limits that fail to exist, and the ε–δ definition.",
+    prerequisites: [],
+  },
+  {
+    id: "evaluating-limits",
+    title: "Evaluating Limits",
+    domain: "calculus",
+    blurb: "Limit laws, factoring and rationalising away 0/0, and the squeeze theorem behind sin(x)/x → 1.",
+    prerequisites: ["limits"],
+  },
+  {
+    id: "limits-at-infinity",
+    title: "Limits at Infinity & Asymptotes",
+    domain: "calculus",
+    blurb: "End behaviour: dominant terms, horizontal and vertical asymptotes, and the growth ladder log ≪ power ≪ exponential.",
+    prerequisites: ["evaluating-limits"],
+  },
+  {
+    id: "continuity",
+    title: "Continuity & the Intermediate Value Theorem",
+    domain: "calculus",
+    blurb: "When the limit equals the value: removable, jump and infinite discontinuities, and why a continuous function can't skip a value.",
+    prerequisites: ["limits"],
+  },
+  {
+    id: "derivative-definition",
+    title: "The Derivative",
+    domain: "calculus",
+    blurb: "The limit of difference quotients: slope of the tangent line, instantaneous rate of change, and where differentiability fails.",
+    prerequisites: ["evaluating-limits", "continuity"],
+  },
+  {
+    id: "differentiation-rules",
+    title: "Differentiation Rules",
+    domain: "calculus",
+    blurb: "The power, sum, product and quotient rules — differentiating any polynomial or rational function without a limit.",
+    prerequisites: ["derivative-definition"],
+  },
+  {
+    id: "chain-rule",
+    title: "The Chain Rule",
+    domain: "calculus",
+    blurb: "Differentiating a composition: (f ∘ g)′ = f′(g) · g′, and why rates multiply along a chain.",
+    prerequisites: ["differentiation-rules"],
+  },
+  {
+    id: "transcendental-derivatives",
+    title: "Derivatives of Exponential, Log & Trig Functions",
+    domain: "calculus",
+    blurb: "Why eˣ is its own derivative, d/dx ln x = 1/x, the trig derivatives, inverse functions and logarithmic differentiation.",
+    prerequisites: ["chain-rule"],
+  },
+  {
+    id: "implicit-differentiation",
+    title: "Implicit Differentiation & Related Rates",
+    domain: "calculus",
+    blurb: "Differentiating an equation in x and y without solving for y, and linking the rates of quantities that change together.",
+    prerequisites: ["chain-rule"],
+  },
+  {
+    id: "mean-value-theorem",
+    title: "The Mean Value Theorem",
+    domain: "calculus",
+    blurb: "Somewhere the instantaneous rate equals the average rate — Rolle's theorem, the MVT, and why f′ = 0 forces f constant.",
+    prerequisites: ["derivative-definition", "continuity"],
+  },
+  {
+    id: "curve-sketching",
+    title: "Extrema & Curve Sketching",
+    domain: "calculus",
+    blurb: "Critical points, the first and second derivative tests, concavity and inflection points, and the closed-interval method.",
+    prerequisites: ["mean-value-theorem", "differentiation-rules"],
+  },
+  {
+    id: "applied-optimization",
+    title: "Applied Optimization",
+    domain: "calculus",
+    blurb: "Turning a word problem into a function of one variable, then finding and certifying its best value.",
+    prerequisites: ["curve-sketching"],
+  },
+  {
+    id: "lhopitals-rule",
+    title: "L'Hôpital's Rule",
+    domain: "calculus",
+    blurb: "Resolving 0/0 and ∞/∞ by differentiating top and bottom, and rewriting 0 · ∞, ∞ − ∞, 1^∞ and 0⁰ into those forms.",
+    prerequisites: ["transcendental-derivatives", "mean-value-theorem", "limits-at-infinity"],
+  },
+  {
+    id: "linear-approximation",
+    title: "Linear Approximation & Differentials",
+    domain: "calculus",
+    blurb: "The tangent line as the best local linear model: estimating values, propagating small errors, and the size of the mistake.",
+    prerequisites: ["transcendental-derivatives"],
+  },
+  {
+    id: "riemann-sums",
+    title: "Riemann Sums & the Definite Integral",
+    domain: "calculus",
+    blurb: "Area as a limit of sums of rectangles: left, right and midpoint sums, signed area, and the properties of the integral.",
+    prerequisites: ["limits", "continuity"],
+  },
+  {
+    id: "fundamental-theorem-of-calculus",
+    title: "The Fundamental Theorem of Calculus",
+    domain: "calculus",
+    blurb: "Differentiation and integration undo each other: antiderivatives, ∫ₐᵇ f = F(b) − F(a), and d/dx ∫ₐˣ f = f(x).",
+    prerequisites: ["riemann-sums", "mean-value-theorem", "transcendental-derivatives"],
+  },
+  {
+    id: "u-substitution",
+    title: "Integration by Substitution",
+    domain: "calculus",
+    blurb: "The chain rule run backwards: choosing u, changing the limits, and recognising f(g(x)) g′(x) inside an integrand.",
+    prerequisites: ["fundamental-theorem-of-calculus"],
+  },
+  {
+    id: "integration-by-parts",
+    title: "Integration by Parts",
+    domain: "calculus",
+    blurb: "The product rule run backwards: ∫ u dv = uv − ∫ v du, choosing u well, tabular integration and integrals that return to themselves.",
+    prerequisites: ["fundamental-theorem-of-calculus"],
+  },
+  {
+    id: "partial-fractions",
+    title: "Partial Fractions",
+    domain: "calculus",
+    blurb: "Splitting a rational function into simple pieces — distinct, repeated and quadratic factors — so each integrates to a log or arctan.",
+    prerequisites: ["u-substitution"],
+  },
+  {
+    id: "improper-integrals",
+    title: "Improper Integrals",
+    domain: "calculus",
+    blurb: "Integrals over infinite intervals or through vertical asymptotes as limits, the p-integrals, and the comparison test.",
+    prerequisites: ["fundamental-theorem-of-calculus", "limits-at-infinity"],
+  },
+  {
+    id: "applications-of-integration",
+    title: "Area, Volume & Average Value",
+    domain: "calculus",
+    blurb: "Slice, approximate, sum: area between curves, volumes by disks, washers and shells, and the average value of a function.",
+    prerequisites: ["u-substitution"],
+  },
+  {
+    id: "sequences",
+    title: "Sequences & Convergence",
+    domain: "calculus",
+    blurb: "Limits of infinite lists of numbers: convergence, the monotone convergence theorem, and standard limits like (1 + 1/n)ⁿ → e.",
+    prerequisites: ["limits-at-infinity"],
+  },
+  {
+    id: "infinite-series",
+    title: "Infinite Series & Convergence Tests",
+    domain: "calculus",
+    blurb: "Adding infinitely many terms: geometric and telescoping series, and the divergence, integral, comparison, ratio and alternating tests.",
+    prerequisites: ["sequences", "improper-integrals"],
+  },
+  {
+    id: "power-series",
+    title: "Power Series",
+    domain: "calculus",
+    blurb: "Series in powers of (x − a): radius and interval of convergence, and differentiating and integrating term by term.",
+    prerequisites: ["infinite-series"],
+  },
+  {
+    id: "taylor-series",
+    title: "Taylor Series",
+    domain: "calculus",
+    blurb: "Matching every derivative at a point: Taylor polynomials, the standard Maclaurin series, and bounding the remainder.",
+    prerequisites: ["power-series", "linear-approximation"],
+  },
+  {
+    id: "partial-derivatives",
+    title: "Partial Derivatives",
+    domain: "calculus",
+    blurb: "Functions of several variables: differentiating in one variable at a time, higher-order partials, tangent planes and the multivariable chain rule.",
+    prerequisites: ["chain-rule"],
+  },
+  {
+    id: "gradient-and-directional-derivatives",
+    title: "The Gradient & Directional Derivatives",
+    domain: "calculus",
+    blurb: "The rate of change in any direction, and why the gradient points uphill and is perpendicular to level curves.",
+    prerequisites: ["partial-derivatives"],
+  },
+  {
+    id: "multivariable-extrema",
+    title: "Extrema of Functions of Several Variables",
+    domain: "calculus",
+    blurb: "Critical points in the plane, the second derivative test with the Hessian determinant, and extrema on closed bounded regions.",
+    prerequisites: ["gradient-and-directional-derivatives", "curve-sketching"],
+  },
+  {
+    id: "multiple-integrals",
+    title: "Double & Triple Integrals",
+    domain: "calculus",
+    blurb: "Integrating over regions: iterated integrals, Fubini's theorem, switching the order, polar coordinates and the Jacobian.",
+    prerequisites: ["u-substitution", "partial-derivatives"],
   },
   // ---------------------------------------------------------------------
   // Probability

@@ -128,6 +128,13 @@ import { infer04Items } from "./items/infer-04";
 import { infer05Items } from "./items/infer-05";
 import { infer06Items } from "./items/infer-06";
 import { infer07Items } from "./items/infer-07";
+import { calc01Items } from "./items/calc-01";
+import { calc02Items } from "./items/calc-02";
+import { calc03Items } from "./items/calc-03";
+import { calc04Items } from "./items/calc-04";
+import { calc05Items } from "./items/calc-05";
+import { calc06Items } from "./items/calc-06";
+import { calc07Items } from "./items/calc-07";
 
 /**
  * A worked seed bank — one item per format and cognitive level, so the shapes in
@@ -5287,6 +5294,14 @@ export const items: Item[] = [
   ...infer05Items,
   ...infer06Items,
   ...infer07Items,
+  // Calculus course (limits through multiple integrals).
+  ...calc01Items,
+  ...calc02Items,
+  ...calc03Items,
+  ...calc04Items,
+  ...calc05Items,
+  ...calc06Items,
+  ...calc07Items,
 
 ];
 

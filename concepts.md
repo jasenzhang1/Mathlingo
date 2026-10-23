@@ -5,7 +5,7 @@ It mirrors `web/src/data/concepts.ts`, which is the source of truth the app actu
 
 When adding a new concept: add it to `web/src/data/concepts.ts` (id, title, domain, blurb, prerequisites, and an `embedUrl` once a lesson exists), then update this file to match.
 
-**Total: 442 concepts.**
+**Total: 471 concepts.**
 
 ## Discrete Math Fundamentals (24)
 
@@ -42,6 +42,45 @@ Graphical Models already did.
 | Stars and Bars | Combinations | — |
 | Integer Partitions | Stars and Bars | — |
 | Binomial Theorem | Combinations | — |
+
+## Calculus (29)
+
+Single-variable calculus from limits to Taylor series, then partial derivatives, gradients,
+extrema and multiple integrals. Chapters follow Stewart, *Calculus: Early Transcendentals*
+(chs. 2–7, 11, 14–15). Nothing here gates other courses; `Matrix Calculus`, `Lagrange
+Multipliers` and the Optimization chapter build on it informally.
+
+| Concept | Prerequisites | Lesson |
+|---|---|---|
+| Limits | — | — |
+| Evaluating Limits | Limits | — |
+| Limits at Infinity & Asymptotes | Evaluating Limits | — |
+| Continuity & the Intermediate Value Theorem | Limits | — |
+| The Derivative | Evaluating Limits, Continuity & the Intermediate Value Theorem | — |
+| Differentiation Rules | The Derivative | — |
+| The Chain Rule | Differentiation Rules | — |
+| Derivatives of Exponential, Log & Trig Functions | The Chain Rule | — |
+| Implicit Differentiation & Related Rates | The Chain Rule | — |
+| The Mean Value Theorem | The Derivative, Continuity & the Intermediate Value Theorem | — |
+| Extrema & Curve Sketching | The Mean Value Theorem, Differentiation Rules | — |
+| Applied Optimization | Extrema & Curve Sketching | — |
+| L'Hôpital's Rule | Derivatives of Exponential, Log & Trig Functions, The Mean Value Theorem, Limits at Infinity & Asymptotes | — |
+| Linear Approximation & Differentials | Derivatives of Exponential, Log & Trig Functions | — |
+| Riemann Sums & the Definite Integral | Limits, Continuity & the Intermediate Value Theorem | — |
+| The Fundamental Theorem of Calculus | Riemann Sums & the Definite Integral, The Mean Value Theorem, Derivatives of Exponential, Log & Trig Functions | — |
+| Integration by Substitution | The Fundamental Theorem of Calculus | — |
+| Integration by Parts | The Fundamental Theorem of Calculus | — |
+| Partial Fractions | Integration by Substitution | — |
+| Improper Integrals | The Fundamental Theorem of Calculus, Limits at Infinity & Asymptotes | — |
+| Area, Volume & Average Value | Integration by Substitution | — |
+| Sequences & Convergence | Limits at Infinity & Asymptotes | — |
+| Infinite Series & Convergence Tests | Sequences & Convergence, Improper Integrals | — |
+| Power Series | Infinite Series & Convergence Tests | — |
+| Taylor Series | Power Series, Linear Approximation & Differentials | — |
+| Partial Derivatives | The Chain Rule | — |
+| The Gradient & Directional Derivatives | Partial Derivatives | — |
+| Extrema of Functions of Several Variables | The Gradient & Directional Derivatives, Extrema & Curve Sketching | — |
+| Double & Triple Integrals | Integration by Substitution, Partial Derivatives | — |
 
 ## Probability (53)
 

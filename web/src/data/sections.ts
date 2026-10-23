@@ -95,6 +95,65 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
     },
   ],
 
+  // Cut along Stewart, Calculus: Early Transcendentals, chs. 2–7, 11, 14–15.
+  calculus: [
+    {
+      id: "limits-and-continuity",
+      label: "Limits & Continuity",
+      conceptIds: ["limits", "evaluating-limits", "limits-at-infinity", "continuity"],
+    },
+    {
+      id: "derivatives",
+      label: "Derivatives",
+      conceptIds: [
+        "derivative-definition",
+        "differentiation-rules",
+        "chain-rule",
+        "transcendental-derivatives",
+        "implicit-differentiation",
+      ],
+    },
+    {
+      id: "applications-of-derivatives",
+      label: "Applications of Derivatives",
+      conceptIds: [
+        "mean-value-theorem",
+        "curve-sketching",
+        "applied-optimization",
+        "lhopitals-rule",
+        "linear-approximation",
+      ],
+    },
+    {
+      id: "integration",
+      label: "Integration",
+      conceptIds: [
+        "riemann-sums",
+        "fundamental-theorem-of-calculus",
+        "u-substitution",
+        "integration-by-parts",
+        "partial-fractions",
+        "improper-integrals",
+        "applications-of-integration",
+      ],
+    },
+    {
+      id: "sequences-and-series",
+      label: "Sequences & Series",
+      conceptIds: ["sequences", "infinite-series", "power-series", "taylor-series"],
+    },
+    {
+      id: "multivariable-calculus",
+      label: "Multivariable Calculus",
+      conceptIds: [
+        "partial-derivatives",
+        "gradient-and-directional-derivatives",
+        "multivariable-extrema",
+        "multiple-integrals",
+      ],
+    },
+  ],
+
   probability: [
     {
       id: "foundations",

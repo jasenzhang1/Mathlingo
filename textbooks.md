@@ -1,3 +1,9 @@
+## Calculus
+
+- Calculus: Early Transcendentals, 8th ed. by James Stewart
+- Calculus by Michael Spivak
+- Calculus Volumes 1–3 (OpenStax) by Gilbert Strang and Edwin Herman
+
 ## Linear Algebra
 
 - Linear Algebra and Matrix Analysis for Statistics (Banerjee, Roy)

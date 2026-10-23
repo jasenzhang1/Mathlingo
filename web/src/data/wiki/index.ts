@@ -25,6 +25,7 @@ import type { WikiArticle } from "./types";
  */
 const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
   "discrete-math": () => import("./discrete-math").then((m) => m.default),
+  calculus: () => import("./calculus").then((m) => m.calculusWikis),
   "linear-algebra": () => import("./linear-algebra").then((m) => m.default),
   statistics: () =>
     Promise.all([import("./core"), import("./inference")]).then(([core, inf]) => [
