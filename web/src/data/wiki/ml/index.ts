@@ -1,3 +1,4 @@
+import { rademacherComplexityWikis } from "./rademacher-complexity";
 import type { WikiArticle } from "../types";
 import { ml01Foundations } from "./ml-01-foundations";
 import { ml02ModelEvaluation } from "./ml-02-model-evaluation";
@@ -42,6 +43,7 @@ export const mlWikiArticles: WikiArticle[] = [
   ...ml01Foundations,
   ...ml02ModelEvaluation,
   ...ml03BiasVarianceAndOptimization,
+  ...rademacherComplexityWikis,
   ...ml04ClassicClassifiers,
   ...ml05Kernels,
   ...ml06TreesAndEnsembles,

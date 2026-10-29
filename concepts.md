@@ -261,9 +261,9 @@ Multipliers` and the Optimization chapter build on it informally.
 | McNemar's Test | Chi Square Test of Independence, Paired T-Test | — |
 | Kolmogorov-Smirnov Test | Chi Square Goodness of Fit Test, CDF | — |
 
-## Linear Models (88)
+## Linear Models (93)
 
-The unit covers Seber & Lee, *Linear Regression Analysis* (2nd ed.) end to end; the rows after Cox Proportional Hazards were added for that. The domain id in `concepts.ts` is still `regression`.
+The unit covers Seber & Lee, *Linear Regression Analysis* (2nd ed.) end to end; the rows after Cox Proportional Hazards were added for that, and the last five fill gaps found while importing the regression interview problems. The domain id in `concepts.ts` is still `regression`.
 
 | Concept | Prerequisites | Lesson |
 |---|---|---|
@@ -355,6 +355,11 @@ The unit covers Seber & Lee, *Linear Regression Analysis* (2nd ed.) end to end; 
 | Stein Shrinkage & the Garrote | Ridge Regression, LASSO, Distribution of β̂ | — |
 | Bayesian Prediction & Model Averaging | Bayesian Linear Regression, AIC, BIC | — |
 | Inference after Model Selection | Forward, Backward, Stepwise Selection, Subset Selection Criteria: Mallows' Cp & PRESS | — |
+| Partial Correlation & Suppression | Effect of Adding Another Variable, Partitioned Regression & Frisch–Waugh–Lovell | — |
+| Structural Breaks & the Chow Test | Dummy Variables & Comparing Regression Lines, The General Linear Hypothesis F-Test | — |
+| Newey–West (HAC) Standard Errors | Sandwich Estimator, Serial Correlation & the Durbin–Watson Test | — |
+| Partial Least Squares | Principal Components Regression | — |
+| Least Angle Regression & Forward Stagewise | LASSO, Forward, Backward, Stepwise Selection | — |
 
 ## Optimization (22)
 
@@ -557,6 +562,87 @@ the Stochastic Processes chapter above rather than redefined here.
 | Risk-Neutral Pricing | Girsanov's Theorem | — |
 | Martingale Representation Theorem | Itô Integral, Girsanov's Theorem | — |
 | Feynman-Kac Theorem | Stochastic Differential Equations (SDEs), Black-Scholes-Merton Equation | — |
+
+## Quantitative Investing (32)
+
+Follows Giuseppe Paleologo's *The Elements of Quantitative Investing* in its three parts: before the
+trade (returns, volatility, factor models, backtesting), during the trade (mean-variance portfolios,
+market impact, hedging) and after the trade (Kelly sizing, performance attribution). The math it
+uses lives in the other chapters and appears here as cross-course prerequisites; five tools were
+added there for it: Exponential Smoothing (time series), Rademacher Complexity (machine learning),
+Covariance Shrinkage and Random Matrices (multivariate), and the Linear-Quadratic Regulator
+(optimization).
+
+| Concept | Prerequisites | Lesson |
+|---|---|---|
+| Securities, Venues & Market Participants | Equities and Stock Markets, Derivatives: An Overview | — |
+| Where Excess Returns Come From | Securities, Venues & Market Participants | — |
+| Returns, Excess Returns & Log Returns | Where Excess Returns Come From, Time Value of Money, Expectation | — |
+| Stylized Facts of Returns | Returns, Excess Returns & Log Returns, Autocorrelation Function (ACF), Student's t-Distribution | — |
+| GARCH & Realized Volatility | Stylized Facts of Returns, ARCH & GARCH, Quadratic Variation | — |
+| EWMA & State-Space Volatility | GARCH & Realized Volatility, Exponential Smoothing (EWMA), Kalman Filter | — |
+| Linear Factor Models | Returns, Excess Returns & Log Returns, Covariance Matrix, Multiple Linear Regression | — |
+| Alpha Spanned, Alpha Orthogonal & Model Transformations | Linear Factor Models, Vector Projection, Partitioned Regression & Frisch–Waugh–Lovell | — |
+| Risk Decomposition & Uses of Factor Models | Linear Factor Models | — |
+| Backtesting Best Practices | Linear Factor Models, K-Fold Cross-Validation, Data Leakage, Multiple Testing | — |
+| The Rademacher Anti-Serum | Backtesting Best Practices, Rademacher Complexity | — |
+| Evaluating Risk Models | Risk Decomposition & Uses of Factor Models, EWMA & State-Space Volatility, Precision Matrices | — |
+| Fundamental Factor Models & Cross-Sectional Regression | Linear Factor Models, Weighted Least Squares, Fama–MacBeth Regression, Least Squares under Linear Restrictions | — |
+| Estimating the Factor Covariance Matrix | Fundamental Factor Models & Cross-Sectional Regression, EWMA & State-Space Volatility, Covariance Shrinkage (Ledoit–Wolf), Newey–West (HAC) Standard Errors | — |
+| Idiosyncratic Risk & Winsorization | Fundamental Factor Models & Cross-Sectional Regression, EWMA & State-Space Volatility | — |
+| A Tour of Factors: Market, Industry, Momentum, Value & Low Volatility | Fundamental Factor Models & Cross-Sectional Regression, Where Excess Returns Come From | — |
+| Statistical Factor Models & PCA | Linear Factor Models, Principal Component Analysis (Matrix Edition), Eckart-Young Theorem | — |
+| Spiked Covariance & Eigenvalue Shrinkage | Statistical Factor Models & PCA, Random Matrices: Marchenko–Pastur & Spiked Covariance | — |
+| Statistical Models in Practice | Spiked Covariance & Eigenvalue Shrinkage | — |
+| Mean-Variance Optimization | Risk Decomposition & Uses of Factor Models, Lagrange Multipliers, Positive Definite Matrices | — |
+| Information Ratio & the Fundamental Law | Mean-Variance Optimization, Correlation | — |
+| Sharpe Ratio, Volatility & Capacity | Mean-Variance Optimization, Standard Error | — |
+| Constraints & Penalties in Portfolio Optimization | Mean-Variance Optimization, The KKT Conditions | — |
+| Estimation Error & Sharpe Efficiency | Constraints & Penalties in Portfolio Optimization, Sharpe Ratio, Volatility & Capacity | — |
+| Market Impact & Transaction Costs | Sharpe Ratio, Volatility & Capacity | — |
+| Multiperiod Optimization with Market Impact | Market Impact & Transaction Costs, Linear-Quadratic Regulator & Dynamic Programming, Autoregressive (AR) Models | — |
+| Factor Hedging | Risk Decomposition & Uses of Factor Models, Mean-Variance Optimization | — |
+| Time-Series Betas & Factor-Mimicking Portfolios | Factor Hedging, Simple Linear Regression | — |
+| The Kelly Criterion | Sharpe Ratio, Volatility & Capacity, Jensen's Inequality, Law of Large Numbers | — |
+| Fractional Kelly & Drawdown Control | The Kelly Criterion, Geometric Brownian Motion | — |
+| Ex-Post Performance Attribution | Risk Decomposition & Uses of Factor Models, Sharpe Ratio, Volatility & Capacity | — |
+| Selection vs. Sizing Attribution | Ex-Post Performance Attribution, Information Ratio & the Fundamental Law | — |
+
+## Algorithmic & High-Frequency Trading (26)
+
+Follows Cartea, Jaimungal & Penalva's *Algorithmic and High-Frequency Trading* (2015): electronic markets and
+the limit order book, microstructure theory (Grossman–Miller, Kyle, Glosten–Milgrom), the empirical facts of
+high-frequency data, the stochastic control and stopping toolkit, and the algorithms built on it — optimal
+execution, volume targeting, market making, pairs trading and order imbalance.
+
+| Concept | Prerequisites | Lesson |
+|---|---|---|
+| Electronic Markets & Their Participants | Equities and Stock Markets, ETFs and Index Funds | — |
+| The Limit Order Book | Electronic Markets & Their Participants | — |
+| Market Making, Inventory Risk & Liquidity | The Limit Order Book | — |
+| Informed Trading: The Kyle Model | Market Making, Inventory Risk & Liquidity, Conditional Distributions of the Multivariate Normal | — |
+| Adverse Selection: The Glosten–Milgrom Model | Market Making, Inventory Risk & Liquidity, Bayes' Rule | — |
+| High-Frequency Data & Return Properties | The Limit Order Book | — |
+| Interarrival Times, Latency, Tick Size & Fragmentation | High-Frequency Data & Return Properties | — |
+| Intraday Volume, Volatility & Price Patterns | High-Frequency Data & Return Properties | — |
+| Spreads, Depth & Price Impact | Intraday Volume, Volatility & Price Patterns | — |
+| Stochastic Calculus with Jumps | Itô's Lemma (Itô-Doeblin Formula), Poisson Process | — |
+| Stochastic Optimal Control & the HJB Equation | Stochastic Calculus with Jumps | — |
+| Controlling Counting Processes | Stochastic Optimal Control & the HJB Equation | — |
+| Optimal Stopping & Variational Inequalities | Stochastic Optimal Control & the HJB Equation | — |
+| Optimal Execution with Market Orders | Stochastic Optimal Control & the HJB Equation, Spreads, Depth & Price Impact | — |
+| Execution with Utility & Non-Linear Impact | Optimal Execution with Market Orders | — |
+| Execution with a Price Limit & Order Flow | Optimal Execution with Market Orders, Optimal Stopping & Variational Inequalities | — |
+| Execution in Lit Markets & Dark Pools | Optimal Execution with Market Orders, Controlling Counting Processes | — |
+| Execution with Limit Orders | Optimal Execution with Market Orders, Controlling Counting Processes | — |
+| Execution with Limit & Market Orders | Execution with Limit Orders, Optimal Stopping & Variational Inequalities | — |
+| Targeting Volume: POV & VWAP | Optimal Execution with Market Orders | — |
+| Optimal Market Making | Controlling Counting Processes, Market Making, Inventory Risk & Liquidity | — |
+| Market Making with Risk Aversion & Adverse Selection | Optimal Market Making, Adverse Selection: The Glosten–Milgrom Model | — |
+| Pairs Trading & Optimal Entry–Exit Bands | Optimal Stopping & Variational Inequalities, Ornstein-Uhlenbeck Process, Cointegration | — |
+| Cointegrated Portfolios with Short-Term Alpha | Pairs Trading & Optimal Entry–Exit Bands | — |
+| Order Imbalance & Markov Chain Models | The Limit Order Book, Continuous-Time Markov Chains | — |
+| Liquidation Using Order Imbalance | Order Imbalance & Markov Chain Models, Execution with Limit Orders | — |
 
 ## Python for Data Work (8)
 

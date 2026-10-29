@@ -111,9 +111,25 @@ export const generalLinearHypothesisWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "prose",
+          text: "Several classical tests are special cases of $H_0: C\\boldsymbol{\\beta} = \\mathbf{0}$. Regressing on an intercept and a group dummy reproduces the pooled two-sample $t$-test, and regressing on $J$ group indicators reproduces Fisher’s one-way ANOVA $F$. With one row, $T_c^2 = F_C$. In simple regression the slope’s $t$-statistic is $\\hat{\\rho}_{xy}/\\sqrt{(1 - \\hat{\\rho}_{xy}^2)/(n - 2)}$, a function of the correlation alone.",
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "OLS has no direction",
+          text: "Because that $t$-statistic depends only on $\\hat{\\rho}_{xy}$ and $n$, regressing $y$ on $x$ and $x$ on $y$ give identical classical $t$-statistics: the data say nothing about which variable is the “cause”. The symmetry breaks once EHW standard errors are used.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 5, Normal Linear Model: Inference and Prediction" },
     { source: "Seber & Lee, Linear Regression Analysis (2nd ed.)", locator: "§4.1–4.3, Likelihood Ratio Test and F-Test" },
     { source: "Seber & Lee, Linear Regression Analysis (2nd ed.)", locator: "§4.5, Canonical Form for H; §4.7, F-Test and Projection Matrices" },
   ],

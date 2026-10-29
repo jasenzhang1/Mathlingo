@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { conceptById } from "../../data/concepts";
 import { useIsDeveloper } from "../../lib/dev/devAuth";
 import { familyById, sectionLabel } from "../../lib/interview/bank";
 import { autoGrade, expectedSeconds, type AutoGrade } from "../../lib/interview/scoring";
@@ -81,6 +83,7 @@ export function QuestionCard({
   const seconds = elapsed;
   const finish = (correctness: number) => onResult({ correctness, seconds });
   const family = q.family ? familyById.get(q.family) : undefined;
+  const lessons = (q.lessons ?? []).flatMap((id) => conceptById.get(id) ?? []);
 
   return (
     <div className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-6 shadow-sm">
@@ -184,6 +187,22 @@ export function QuestionCard({
               </>
             ) : null}
           </p>
+          {lessons.length > 0 && (
+            <div className="font-body flex flex-wrap items-center gap-2 text-xs">
+              <span className="font-semibold uppercase tracking-wide text-[var(--ink-soft)]">Study</span>
+              {lessons.map((c) => (
+                <Link
+                  key={c.id}
+                  to={`/concepts/${c.id}`}
+                  target="_blank"
+                  rel="noopener"
+                  className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-2.5 py-0.5 text-[var(--accent)] hover:border-[var(--accent)]"
+                >
+                  {c.title}
+                </Link>
+              ))}
+            </div>
+          )}
 
           {grade?.kind === "correct" || grade?.kind === "incorrect" || skipped ? (
             <button

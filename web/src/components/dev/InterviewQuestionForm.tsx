@@ -1,7 +1,10 @@
 import { useMemo, useState } from "react";
+import { conceptById, concepts } from "../../data/concepts";
 import { FREE_PROBLEMS, isLive, sectionById, sectionLabel } from "../../lib/interview/bank";
 import type { Bundle, InterviewQuestion } from "../../lib/interview/types";
 import { btn, field, fieldLabel, freeBadge, lockedBadge, sortedFamilies, sortedSections } from "./interviewEditorStyles";
+
+const sortedConcepts = [...concepts].sort((a, b) => a.title.localeCompare(b.title));
 
 /**
  * The interview question editor: used by the Questions view of `/dev/bundles`
@@ -233,6 +236,34 @@ export function InterviewQuestionForm({
               </select>
             </div>
             {q.section && sectionById.get(q.section) === undefined && <p className="font-body mt-1 text-xs text-amber-700">Main technique id {q.section} isn't in sections.json.</p>}
+          </div>
+
+          <div>
+            <p className={fieldLabel}>Study lessons</p>
+            <div className="mt-1 flex flex-wrap items-center gap-2">
+              {(q.lessons ?? []).map((id) => (
+                <span key={id} className="font-body flex items-center gap-1 rounded-full border border-[var(--line)] bg-[var(--paper)] px-2.5 py-0.5 text-xs text-[var(--ink)]">
+                  {conceptById.get(id)?.title ?? id}
+                  <button type="button" aria-label={`Remove ${conceptById.get(id)?.title ?? id}`} onClick={() => set({ lessons: (q.lessons ?? []).filter((x) => x !== id) })}>
+                    ✕
+                  </button>
+                </span>
+              ))}
+              <select
+                value=""
+                onChange={(e) => e.target.value && set({ lessons: [...(q.lessons ?? []), e.target.value] })}
+                className="font-body rounded-lg border border-[var(--line)] bg-[var(--paper)] px-2 py-1 text-xs text-[var(--ink)]"
+              >
+                <option value="">+ add lesson</option>
+                {sortedConcepts
+                  .filter((c) => !(q.lessons ?? []).includes(c.id))
+                  .map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.title} ({c.domain})
+                    </option>
+                  ))}
+              </select>
+            </div>
           </div>
 
           <div>

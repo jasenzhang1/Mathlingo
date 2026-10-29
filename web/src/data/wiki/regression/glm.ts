@@ -168,9 +168,25 @@ export const glmWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Closed forms with one binary regressor",
+          text: "With $\\mathbf{x} = (1, z)$ and binary $z$, the GLM MLEs are explicit: the Normal model gives $\\bar{y}_1 - \\bar{y}_0$, the logistic gives $\\text{logit}\\,\\bar{y}_1 - \\text{logit}\\,\\bar{y}_0$, and the Poisson gives $\\log\\bar{y}_1 - \\log\\bar{y}_0$. Each is the group contrast on its link scale.",
+        },
+        {
+          kind: "prose",
+          text: "Under a Gamma regression with log link and common shape $\\nu$, $\\log y$ has mean $\\psi(\\nu) - \\log\\nu + \\mathbf{x}^{\\top}\\boldsymbol{\\beta}$ and constant variance $\\psi'(\\nu)$, so OLS of $\\log y$ on $\\mathbf{x}$ recovers every slope; only the intercept is shifted.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 23, Generalized Linear Models: A Unification" },
     { source: "Hastie, Tibshirani & Friedman, The Elements of Statistical Learning", locator: "§4.4 and §9.1, Logistic Regression and Generalized Additive Models" },
     { source: "Bishop, Pattern Recognition and Machine Learning", locator: "§4.3.6, Canonical Link Functions" },
     { source: "Murphy, Probabilistic Machine Learning: An Introduction", locator: "Ch. 12, Generalized Linear Models" },

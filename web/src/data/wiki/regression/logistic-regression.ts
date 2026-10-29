@@ -175,9 +175,25 @@ export const logisticRegressionWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "prose",
+          text: "The linear probability model is a legitimate restricted mean model for a binary $y$, but it is heteroskedastic by construction, $\\text{Var}(y \\mid \\mathbf{x}) = \\mathbf{x}^{\\top}\\boldsymbol{\\beta}(1 - \\mathbf{x}^{\\top}\\boldsymbol{\\beta})$, so it needs EHW standard errors. Different links (logit, probit, cloglog, cauchit) give coefficients on different scales but nearly the same predicted probabilities.",
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Two reasons the logit is special",
+          text: "**Case-control sampling**: if cases and controls are sampled at rates $p_1$ and $p_0$, the sample still follows a logit model with the same slopes and intercept shifted by $\\log(p_1/p_0)$, and the logit is the only link with this property. **Discriminant analysis**: if $\\mathbf{x} \\mid y = k \\sim \\mathcal{N}(\\boldsymbol{\\mu}_k, \\Sigma)$, then $\\text{logit}\\,\\Pr(y = 1 \\mid \\mathbf{x})$ is exactly linear with slope $\\Sigma^{-1}(\\boldsymbol{\\mu}_1 - \\boldsymbol{\\mu}_0)$; unequal covariances add quadratic terms.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 20, Logistic Regression for Binary Outcomes" },
     { source: "James, Witten, Hastie & Tibshirani, An Introduction to Statistical Learning", locator: "§4.3, Logistic Regression" },
     { source: "Hastie, Tibshirani & Friedman, The Elements of Statistical Learning", locator: "§4.4, Logistic Regression" },
     { source: "Bishop, Pattern Recognition and Machine Learning", locator: "§4.3, Probabilistic Discriminative Models" },

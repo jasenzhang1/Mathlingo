@@ -204,9 +204,31 @@ export const coxProportionalHazardsModelWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "The log-rank test is a Cox score test",
+          text: "With a binary treatment, the Cox score at $b = 0$ is $\\sum_k (x_k - r_{k1}/r_k)$, observed minus expected treated failures over the risk sets, and the information is $\\sum_k (r_{k1}/r_k)(1 - r_{k1}/r_k)$. Their standardised ratio is the log-rank statistic.",
+        },
+        {
+          kind: "prose",
+          text: "Proportional hazards is invariant to any strictly increasing transformation of time: only the baseline hazard changes, which is why the partial likelihood depends on the event times only through their order. Stratified Cox models give each stratum its own baseline hazard while sharing $\\boldsymbol{\\beta}$.",
+        },
+        {
+          kind: "callout",
+          tone: "warning",
+          title: "Hazard ratios after randomisation",
+          text: "Hernán (2010): the hazard at $t$ conditions on surviving to $t$, and survivors differ between effective and ineffective arms, so hazard ratios are not randomised comparisons. When curves cross, report survival differences or restricted mean survival instead.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 27, Modeling Time-to-Event Outcomes" },
     { source: "Singer & Willett, Applied Longitudinal Data Analysis", locator: "Ch. 14–15, Fitting Cox Regression Models" },
     { source: "Hastie, Tibshirani & Friedman, The Elements of Statistical Learning", locator: "§18.8, Survival Analysis" },
     { source: "Murphy, Probabilistic Machine Learning: An Introduction", locator: "Ch. 12, Generalized Linear Models and Extensions" },

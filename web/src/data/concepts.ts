@@ -17,6 +17,8 @@ export type Domain =
   | "functional-data"
   | "financial-instruments"
   | "time-series"
+  | "quantitative-investing"
+  | "algorithmic-trading"
   | "python";
 
 export interface DomainMeta {
@@ -46,6 +48,8 @@ export const domainMeta: Record<Domain, DomainMeta> = {
   "functional-data": { label: "Functional Data Analysis", color: "#4f46e5" },
   "financial-instruments": { label: "Financial Instruments", color: "#7c3aed" },
   "time-series": { label: "Stochastic Processes & Time Series", color: "#c2410c" },
+  "quantitative-investing": { label: "Quantitative Investing", color: "#9f1239" },
+  "algorithmic-trading": { label: "Algorithmic & High-Frequency Trading", color: "#0e7490" },
   /**
    * Deliberately last. Chapter order is an editorial call (see
    * `lib/learningOrder.ts`), and the math spine is the book — Python is the
@@ -1573,6 +1577,22 @@ export const concepts: Concept[] = [
     prerequisites: ["covariance-matrix", "conditional-multivariate-normal"],
   },
   {
+    id: "covariance-shrinkage",
+    title: "Covariance Shrinkage (Ledoit–Wolf)",
+    domain: "multivariate-probability",
+    blurb:
+      "When assets outnumber observations the sample covariance is singular and over-confident; blending it with a simple target trades a little bias for a lot of variance.",
+    prerequisites: ["covariance-matrix", "stein-shrinkage"],
+  },
+  {
+    id: "random-matrix-theory",
+    title: "Random Matrices: Marchenko–Pastur & Spiked Covariance",
+    domain: "multivariate-probability",
+    blurb:
+      "Pure-noise sample covariances spread their eigenvalues over a predictable band, and a true signal is visible only once it clears the band's edge.",
+    prerequisites: ["covariance-shrinkage", "eigenvalues-eigenvectors"],
+  },
+  {
     id: "cochrans-theorem",
     title: "Cochran's Theorem",
     domain: "multivariate-probability",
@@ -2317,6 +2337,13 @@ export const concepts: Concept[] = [
     prerequisites: ["logistic-regression", "normal-distribution"],
   },
   {
+    id: "multinomial-and-ordinal-logistic",
+    title: "Multinomial & Ordinal Logistic Regression",
+    domain: "regression",
+    blurb: "Categorical outcomes: the multinomial logit and its Gumbel-utility form, McFadden’s discrete choice model and IIA, and the proportional odds model for ordered categories. (Ding Ch. 21)",
+    prerequisites: ["logistic-regression"],
+  },
+  {
     id: "glm",
     title: "Generalized Linear Model (GLM)",
     domain: "regression",
@@ -2331,6 +2358,13 @@ export const concepts: Concept[] = [
     prerequisites: ["glm", "poisson-distribution"],
   },
   {
+    id: "count-regression-overdispersion",
+    title: "Overdispersed & Zero-Inflated Count Regression",
+    domain: "regression",
+    blurb: "When counts vary more than Poisson allows: Negative-Binomial regression as a Poisson–Gamma mixture, and zero-inflated Poisson and Negative-Binomial models. (Ding Ch. 22)",
+    prerequisites: ["poisson-regression", "negative-binomial-distribution"],
+  },
+  {
     id: "deviance-residuals",
     title: "Deviance & Deviance Residuals",
     domain: "regression",
@@ -2343,6 +2377,13 @@ export const concepts: Concept[] = [
     domain: "regression",
     blurb: "Modeling how predictors affect the risk of an event over time.",
     prerequisites: ["glm", "mle"],
+  },
+  {
+    id: "kaplan-meier-estimator",
+    title: "Survival Curves: Kaplan–Meier & the Log-Rank Test",
+    domain: "regression",
+    blurb: "Hazard and survival functions, censoring, the product-limit estimator with Greenwood’s variance, and the log-rank test for comparing two curves. (Ding Ch. 27)",
+    prerequisites: ["exponential-distribution", "mle"],
   },
 
   // ---------------------------------------------------------------------
@@ -2511,6 +2552,13 @@ export const concepts: Concept[] = [
     domain: "regression",
     blurb: "Two lines joined at a change point — linear once the join is known, a profile-likelihood search when it is not. (§6.5)",
     prerequisites: ["dummy-variables-comparing-lines", "mle"],
+  },
+  {
+    id: "interactions-in-ols",
+    title: "Interactions in OLS",
+    domain: "regression",
+    blurb: "Product terms: difference-in-differences cell means, effects that vary with a covariate, Johnson–Neyman regions, Blinder–Oaxaca decompositions and why interactions are hard to detect and to interpret. (Ding Ch. 17)",
+    prerequisites: ["dummy-variables-comparing-lines"],
   },
 
   // Ch. 7 — polynomial and spline regression
@@ -2762,6 +2810,42 @@ export const concepts: Concept[] = [
     blurb: "Why coefficients and p-values from a selected model are biased and overconfident, and what sample splitting buys back. (§12.7, §12.9)",
     prerequisites: ["forward-backward-stepwise-selection", "subset-selection-criteria"],
   },
+  // Gap lessons for the regression interview problems (Interview Prep).
+  {
+    id: "partial-and-semipartial-correlation",
+    title: "Partial Correlation & Suppression",
+    domain: "regression",
+    blurb: "Simple, semipartial and partial correlation as angles, why a standardized coefficient is none of them, and how a regressor uncorrelated with y can still strengthen another.",
+    prerequisites: ["effect-of-adding-another-variable", "partitioned-regression"],
+  },
+  {
+    id: "structural-breaks-chow-test",
+    title: "Structural Breaks & the Chow Test",
+    domain: "regression",
+    blurb: "Testing whether coefficients changed at a known date, and why searching over dates needs Andrews' sup-F critical values.",
+    prerequisites: ["dummy-variables-comparing-lines", "general-linear-hypothesis"],
+  },
+  {
+    id: "hac-standard-errors",
+    title: "Newey–West (HAC) Standard Errors",
+    domain: "regression",
+    blurb: "Standard errors that stay valid when errors are autocorrelated as well as heteroskedastic: the long-run variance and the Bartlett kernel.",
+    prerequisites: ["sandwich-estimator", "durbin-watson-test"],
+  },
+  {
+    id: "partial-least-squares",
+    title: "Partial Least Squares",
+    domain: "regression",
+    blurb: "Components chosen for their covariance with y rather than their variance alone: the supervised alternative to principal components regression.",
+    prerequisites: ["principal-components-regression"],
+  },
+  {
+    id: "least-angle-regression",
+    title: "Least Angle Regression & Forward Stagewise",
+    domain: "regression",
+    blurb: "Growing a model along the equiangular direction, and the one-line change that makes it trace the entire lasso path.",
+    prerequisites: ["lasso", "forward-backward-stepwise-selection"],
+  },
 
   // ---------------------------------------------------------------------
   // Stochastic Processes & Time Series
@@ -2848,11 +2932,49 @@ export const concepts: Concept[] = [
     prerequisites: ["arma", "variance"],
   },
   {
+    id: "exponential-smoothing",
+    title: "Exponential Smoothing (EWMA)",
+    domain: "time-series",
+    blurb:
+      "Average the past with geometrically decaying weights: one recursion, a half-life to tune, and the optimal filter for a random walk observed in noise.",
+    prerequisites: ["stationarity-white-noise", "ar-models"],
+  },
+  {
     id: "cointegration",
     title: "Cointegration",
     domain: "time-series",
     blurb: "When two non-stationary series share a stationary combination — and why regressing one on the other can look significant for no real reason.",
     prerequisites: ["arima"],
+  },
+  // Regression with time series and panels: gap lessons for the regression
+  // interview problems (Interview Prep).
+  {
+    id: "unit-root-tests",
+    title: "Unit-Root Tests (ADF & KPSS)",
+    domain: "time-series",
+    blurb: "Deciding whether a series has a unit root: the Dickey–Fuller distribution, augmenting with lags, and reading ADF and KPSS together.",
+    prerequisites: ["arima"],
+  },
+  {
+    id: "predictive-regression-stambaugh-bias",
+    title: "Predictive Regressions & Stambaugh Bias",
+    domain: "time-series",
+    blurb: "Forecasting returns with a persistent predictor such as the dividend yield, and why OLS overstates the predictability in finite samples.",
+    prerequisites: ["ar-models", "unit-root-tests"],
+  },
+  {
+    id: "granger-causality",
+    title: "Granger Causality",
+    domain: "time-series",
+    blurb: "Does the past of x help forecast y beyond y's own past? The VAR F-test, and why predictive precedence is not causation.",
+    prerequisites: ["ar-models"],
+  },
+  {
+    id: "fama-macbeth-regression",
+    title: "Fama–MacBeth Regression",
+    domain: "time-series",
+    blurb: "Estimating risk premia from a cross-sectional regression each period, and standard errors from the time series of the slopes.",
+    prerequisites: ["stationarity-white-noise"],
   },
   // Rough-path signatures: a model-free feature map for streams, used with
   // linear models (e.g. signature + adaptive LASSO) where deep nets are too
@@ -2991,6 +3113,14 @@ export const concepts: Concept[] = [
     domain: "machine-learning",
     blurb: "The tension between a model that's too simple and one that's too flexible.",
     prerequisites: ["loss-functions", "variance"],
+  },
+  {
+    id: "rademacher-complexity",
+    title: "Rademacher Complexity",
+    domain: "machine-learning",
+    blurb:
+      "How well a family of models can fit random ±1 noise — the quantity that bounds how far the best in-sample score can sit above its out-of-sample truth.",
+    prerequisites: ["overfitting-underfitting", "law-of-large-numbers"],
   },
   {
     id: "overfitting-underfitting",
@@ -5102,6 +5232,241 @@ export const concepts: Concept[] = [
   },
 
   // ---------------------------------------------------------------------
+  // Quantitative Investing
+  //
+  // Follows Paleologo's *The Elements of Quantitative Investing* in its three
+  // parts — before the trade (returns, volatility, factor models, backtesting),
+  // during the trade (mean-variance portfolios, market impact, hedging) and
+  // after the trade (Kelly sizing, performance attribution). The mathematical
+  // tools (Kalman filter, GARCH, PCA, KKT, LQR, …) live in the math courses
+  // and appear here as cross-course prerequisites rather than being re-taught.
+  // ---------------------------------------------------------------------
+  {
+    id: "markets-and-participants",
+    title: "Securities, Venues & Market Participants",
+    domain: "quantitative-investing",
+    blurb: "What gets traded, where (exchanges, OTC, dark pools), and who is on the other side: dealers, brokers, indexers, hedgers, active managers, informed traders and retail.",
+    prerequisites: ["equities-and-stock-markets", "derivatives-overview"],
+  },
+  {
+    id: "sources-of-excess-returns",
+    title: "Where Excess Returns Come From",
+    domain: "quantitative-investing",
+    blurb: "Arbitrage, risk premia, liquidity, funding, predictable flows and information — the edges behind every strategy, and the pipeline that turns them into a portfolio.",
+    prerequisites: ["markets-and-participants"],
+  },
+  {
+    id: "asset-returns",
+    title: "Returns, Excess Returns & Log Returns",
+    domain: "quantitative-investing",
+    blurb: "Total, excess and log returns, how they compound and aggregate, and how corporate actions and bid–ask noise get in the way of measuring them.",
+    prerequisites: ["sources-of-excess-returns", "time-value-of-money", "expectation"],
+  },
+  {
+    id: "stylized-facts-of-returns",
+    title: "Stylized Facts of Returns",
+    domain: "quantitative-investing",
+    blurb: "Fat tails, no autocorrelation in returns but plenty in their size, volatility clustering, leverage effects and correlations that rise in a crisis.",
+    prerequisites: ["asset-returns", "acf", "t-distribution"],
+  },
+  {
+    id: "volatility-forecasting",
+    title: "GARCH & Realized Volatility",
+    domain: "quantitative-investing",
+    blurb: "Forecasting tomorrow's volatility two ways: a GARCH(1,1) recursion on daily returns, and realized variance summed from intraday returns.",
+    prerequisites: ["stylized-facts-of-returns", "garch", "quadratic-variation"],
+  },
+  {
+    id: "ewma-volatility",
+    title: "EWMA & State-Space Volatility",
+    domain: "quantitative-investing",
+    blurb: "Why the exponentially weighted average of squared returns is the Kalman filter of a hidden random-walk variance, and how to choose its half-life.",
+    prerequisites: ["volatility-forecasting", "exponential-smoothing", "kalman-filter"],
+  },
+  {
+    id: "linear-factor-models",
+    title: "Linear Factor Models",
+    domain: "quantitative-investing",
+    blurb: "r = α + Bf + ε: a few factor returns plus independent idiosyncratic noise, giving a covariance matrix BΩBᵀ + Ω_ε that is cheap to estimate and to invert.",
+    prerequisites: ["asset-returns", "covariance-matrix", "multiple-linear-regression"],
+  },
+  {
+    id: "alpha-spanned-and-orthogonal",
+    title: "Alpha Spanned, Alpha Orthogonal & Model Transformations",
+    domain: "quantitative-investing",
+    blurb: "Splitting expected returns into the part factors explain and the part they can't, and the rotations, projections and push-outs that leave a model's risk unchanged.",
+    prerequisites: ["linear-factor-models", "vector-projection", "partitioned-regression"],
+  },
+  {
+    id: "factor-risk-decomposition",
+    title: "Risk Decomposition & Uses of Factor Models",
+    domain: "quantitative-investing",
+    blurb: "Factor versus idiosyncratic variance, marginal contributions to risk, ex-ante attribution, and the three model families: fundamental, statistical and macroeconomic.",
+    prerequisites: ["linear-factor-models"],
+  },
+  {
+    id: "backtesting-protocol",
+    title: "Backtesting Best Practices",
+    domain: "quantitative-investing",
+    blurb: "Point-in-time data, survivorship and look-ahead bias, walk-forward versus cross-validation, and why the best of many backtests is always too good.",
+    prerequisites: ["linear-factor-models", "k-fold-cross-validation", "data-leakage", "multiple-testing"],
+  },
+  {
+    id: "rademacher-anti-serum",
+    title: "The Rademacher Anti-Serum",
+    domain: "quantitative-investing",
+    blurb: "A haircut for the best Sharpe ratio among many tested strategies: subtract a data-snooping term measured by how well the strategy set fits random signs.",
+    prerequisites: ["backtesting-protocol", "rademacher-complexity"],
+  },
+  {
+    id: "evaluating-risk-models",
+    title: "Evaluating Risk Models",
+    domain: "quantitative-investing",
+    blurb: "Testing a covariance matrix: bias statistics and QLIKE loss for volatility, minimum-variance portfolios and Mahalanobis distances for the precision matrix, plus turnover and beta checks.",
+    prerequisites: ["factor-risk-decomposition", "ewma-volatility", "precision-matrix"],
+  },
+  {
+    id: "cross-sectional-factor-regression",
+    title: "Fundamental Factor Models & Cross-Sectional Regression",
+    domain: "quantitative-investing",
+    blurb: "Known characteristics as loadings, factor returns estimated each day by weighted cross-sectional regression, and constraints that fix the industry–market collinearity.",
+    prerequisites: ["linear-factor-models", "weighted-least-squares", "fama-macbeth-regression", "restricted-least-squares"],
+  },
+  {
+    id: "factor-covariance-estimation",
+    title: "Estimating the Factor Covariance Matrix",
+    domain: "quantitative-investing",
+    blurb: "Exponentially weighted factor covariances, shrinkage, dynamic conditional correlation, short-term volatility updates and Newey–West corrections for autocorrelation.",
+    prerequisites: ["cross-sectional-factor-regression", "ewma-volatility", "covariance-shrinkage", "hac-standard-errors"],
+  },
+  {
+    id: "idiosyncratic-risk-estimation",
+    title: "Idiosyncratic Risk & Winsorization",
+    domain: "quantitative-investing",
+    blurb: "Estimating stock-specific variances from residuals, shrinking them toward peers, handling residual clusters, and taming outliers before they poison the regression.",
+    prerequisites: ["cross-sectional-factor-regression", "ewma-volatility"],
+  },
+  {
+    id: "style-factors",
+    title: "A Tour of Factors: Market, Industry, Momentum, Value & Low Volatility",
+    domain: "quantitative-investing",
+    blurb: "The classic factor strategies — what each loading measures, the economic story behind its premium, and how to tell a real factor from a member of the factor zoo.",
+    prerequisites: ["cross-sectional-factor-regression", "sources-of-excess-returns"],
+  },
+  {
+    id: "statistical-factor-models",
+    title: "Statistical Factor Models & PCA",
+    domain: "quantitative-investing",
+    blurb: "When neither loadings nor factor returns are known: principal components as the best low-rank fit to returns, and as the Gaussian maximum-likelihood factor model.",
+    prerequisites: ["linear-factor-models", "pca-matrix-edition", "eckart-young"],
+  },
+  {
+    id: "eigenvalue-shrinkage",
+    title: "Spiked Covariance & Eigenvalue Shrinkage",
+    domain: "quantitative-investing",
+    blurb: "Sample eigenvalues overshoot the true factor variances and eigenvectors point partly at noise; shrinking them and picking the number of factors from the bulk edge.",
+    prerequisites: ["statistical-factor-models", "random-matrix-theory"],
+  },
+  {
+    id: "pca-models-in-practice",
+    title: "Statistical Models in Practice",
+    domain: "quantitative-investing",
+    blurb: "Eigenvalue concentration, controlling eigenvector turnover, interpreting components by clustering and regression, and weighted and two-stage PCA.",
+    prerequisites: ["eigenvalue-shrinkage"],
+  },
+  {
+    id: "mean-variance-optimization",
+    title: "Mean-Variance Optimization",
+    domain: "quantitative-investing",
+    blurb: "Maximise expected return minus a risk penalty: the solution w ∝ Σ⁻¹α, its Sharpe ratio √(αᵀΣ⁻¹α), and trading factor and idiosyncratic alpha separately.",
+    prerequisites: ["factor-risk-decomposition", "lagrange-multipliers", "positive-definite-matrices"],
+  },
+  {
+    id: "fundamental-law-of-active-management",
+    title: "Information Ratio & the Fundamental Law",
+    domain: "quantitative-investing",
+    blurb: "IR ≈ IC × √breadth: the information ratio of an optimal portfolio is set by forecast skill and by the number of independent bets.",
+    prerequisites: ["mean-variance-optimization", "correlation"],
+  },
+  {
+    id: "performance-metrics",
+    title: "Sharpe Ratio, Volatility & Capacity",
+    domain: "quantitative-investing",
+    blurb: "Measuring a strategy: expected return, volatility, the Sharpe ratio and its standard error, annualisation, and how much capital a strategy can absorb.",
+    prerequisites: ["mean-variance-optimization", "standard-error"],
+  },
+  {
+    id: "constrained-portfolio-optimization",
+    title: "Constraints & Penalties in Portfolio Optimization",
+    domain: "quantitative-investing",
+    blurb: "Why naive MVO misbehaves, the common constraints (dollar and factor neutrality, position and turnover limits), and when to impose them as penalties instead.",
+    prerequisites: ["mean-variance-optimization", "kkt-conditions"],
+  },
+  {
+    id: "estimation-error-in-mvo",
+    title: "Estimation Error & Sharpe Efficiency",
+    domain: "quantitative-investing",
+    blurb: "How errors in alphas and in the covariance matrix erode the realised Sharpe ratio, measured as the cosine between intended and optimal portfolios.",
+    prerequisites: ["constrained-portfolio-optimization", "performance-metrics"],
+  },
+  {
+    id: "market-impact",
+    title: "Market Impact & Transaction Costs",
+    domain: "quantitative-investing",
+    blurb: "Spread, temporary and permanent impact, the square-root law, and why trading costs cap a strategy's size and favour trading slowly.",
+    prerequisites: ["performance-metrics"],
+  },
+  {
+    id: "multiperiod-portfolio-optimization",
+    title: "Multiperiod Optimization with Market Impact",
+    domain: "quantitative-investing",
+    blurb: "Trading toward a moving target: the optimal policy partially closes the gap each period, at a rate set by impact costs and how fast the alpha decays.",
+    prerequisites: ["market-impact", "linear-quadratic-regulator", "ar-models"],
+  },
+  {
+    id: "factor-hedging",
+    title: "Factor Hedging",
+    domain: "quantitative-investing",
+    blurb: "Removing unwanted factor exposure with a few hedge instruments: the hedge ratios, what they cost, and how much risk they actually take off.",
+    prerequisites: ["factor-risk-decomposition", "mean-variance-optimization"],
+  },
+  {
+    id: "factor-mimicking-portfolios",
+    title: "Time-Series Betas & Factor-Mimicking Portfolios",
+    domain: "quantitative-investing",
+    blurb: "Hedging tradable factors with betas estimated over time, and building portfolios of stocks that track a factor or a macro time series.",
+    prerequisites: ["factor-hedging", "simple-linear-regression"],
+  },
+  {
+    id: "kelly-criterion",
+    title: "The Kelly Criterion",
+    domain: "quantitative-investing",
+    blurb: "Sizing bets to maximise long-run growth: the Kelly fraction, its link to log utility and mean-variance, and why over-betting destroys wealth.",
+    prerequisites: ["performance-metrics", "jensen-inequality", "law-of-large-numbers"],
+  },
+  {
+    id: "fractional-kelly-and-drawdowns",
+    title: "Fractional Kelly & Drawdown Control",
+    domain: "quantitative-investing",
+    blurb: "Betting a fraction of Kelly gives up a little growth for much less volatility and drawdown — and covers the error in your own Sharpe estimate.",
+    prerequisites: ["kelly-criterion", "geometric-brownian-motion"],
+  },
+  {
+    id: "performance-attribution",
+    title: "Ex-Post Performance Attribution",
+    domain: "quantitative-investing",
+    blurb: "Splitting realised PnL into factor and idiosyncratic parts, the errors in that split, and the maximal attribution to a chosen set of factors.",
+    prerequisites: ["factor-risk-decomposition", "performance-metrics"],
+  },
+  {
+    id: "selection-vs-sizing-attribution",
+    title: "Selection vs. Sizing Attribution",
+    domain: "quantitative-investing",
+    blurb: "Did you pick the right stocks, or size them well? Decomposing idiosyncratic PnL into selection, sizing and timing skill.",
+    prerequisites: ["performance-attribution", "fundamental-law-of-active-management"],
+  },
+
+  // ---------------------------------------------------------------------
   // Optimization
   //
   // Numerical optimisation from root finding to operator splitting, cut along
@@ -5289,6 +5654,14 @@ export const concepts: Concept[] = [
     blurb:
       "Split a problem into two blocks, minimise the augmented Lagrangian over each in turn, then update the multiplier — the workhorse for large, distributed and structured convex problems.",
     prerequisites: ["augmented-lagrangian-method", "proximal-gradient-method"],
+  },
+  {
+    id: "linear-quadratic-regulator",
+    title: "Linear-Quadratic Regulator & Dynamic Programming",
+    domain: "optimization",
+    blurb:
+      "Linear dynamics, quadratic costs: Bellman's recursion keeps the value function quadratic, the optimal control is linear in the state, and a Riccati equation gives the gain.",
+    prerequisites: ["optimization-problems-and-optimality", "positive-definite-matrices"],
   },
 
   // ---------------------------------------------------------------------
@@ -5781,6 +6154,191 @@ export const concepts: Concept[] = [
     domain: "python",
     blurb: "default_rng, reproducibility, sampling, and shuffling without surprises.",
     prerequisites: ["numpy-array-creation"],
+  },
+
+  // ---------------------------------------------------------------------
+  // Algorithmic & High-Frequency Trading — Cartea, Jaimungal & Penalva (2015)
+  {
+    id: "electronic-markets-and-participants",
+    title: "Electronic Markets & Their Participants",
+    domain: "algorithmic-trading",
+    blurb: "Shares, funds and ETFs; noise, informed and market-making traders; how exchanges match orders, from price–time priority to dark pools and colocation.",
+    prerequisites: ["equities-and-stock-markets", "etfs-and-index-funds"],
+  },
+  {
+    id: "limit-order-book",
+    title: "The Limit Order Book",
+    domain: "algorithmic-trading",
+    blurb: "Order types, maker–taker fees, and the book itself: bid, ask, spread, midprice, microprice, depth, and market orders walking the book.",
+    prerequisites: ["electronic-markets-and-participants"],
+  },
+  {
+    id: "market-making-and-liquidity",
+    title: "Market Making, Inventory Risk & Liquidity",
+    domain: "algorithmic-trading",
+    blurb: "Grossman–Miller: why liquidity traders pay market makers a discount for immediacy, how fees and competition move it, and the trade-off in placing a limit order.",
+    prerequisites: ["limit-order-book"],
+  },
+  {
+    id: "kyle-model",
+    title: "Informed Trading: The Kyle Model",
+    domain: "algorithmic-trading",
+    blurb: "An insider who knows the asset's value hides among noise traders; the equilibrium price impact is Kyle's lambda.",
+    prerequisites: ["market-making-and-liquidity", "conditional-multivariate-normal"],
+  },
+  {
+    id: "glosten-milgrom-model",
+    title: "Adverse Selection: The Glosten–Milgrom Model",
+    domain: "algorithmic-trading",
+    blurb: "Competitive market makers facing informed traders set the bid and ask as conditional expectations; the spread prices the toxicity of order flow.",
+    prerequisites: ["market-making-and-liquidity", "bayes-rule"],
+  },
+  {
+    id: "hft-data-and-returns",
+    title: "High-Frequency Data & Return Properties",
+    domain: "algorithmic-trading",
+    blurb: "Message data and LOB reconstruction, order flow and daily returns, and the fat tails and negative autocorrelation of one-second returns.",
+    prerequisites: ["limit-order-book"],
+  },
+  {
+    id: "interarrival-latency-and-fragmentation",
+    title: "Interarrival Times, Latency, Tick Size & Fragmentation",
+    domain: "algorithmic-trading",
+    blurb: "Heavy-tailed and clustered event times, what latency costs, price reversals, many venues, and the empirics of a cointegrated pair.",
+    prerequisites: ["hft-data-and-returns"],
+  },
+  {
+    id: "intraday-activity-patterns",
+    title: "Intraday Volume, Volatility & Price Patterns",
+    domain: "algorithmic-trading",
+    blurb: "Volume and volatility move together and follow intraday shapes; trades cluster at round prices.",
+    prerequisites: ["hft-data-and-returns"],
+  },
+  {
+    id: "market-quality-and-price-impact",
+    title: "Spreads, Depth & Price Impact",
+    domain: "algorithmic-trading",
+    blurb: "Quoted and effective spreads, depth, how market orders move prices, estimating temporary and permanent impact, cancellations and hidden orders.",
+    prerequisites: ["intraday-activity-patterns"],
+  },
+  {
+    id: "stochastic-calculus-with-jumps",
+    title: "Stochastic Calculus with Jumps",
+    domain: "algorithmic-trading",
+    blurb: "Poisson and doubly stochastic counting processes, compensators, Itô's formula for jump-diffusions, and generators for the models of algorithmic trading.",
+    prerequisites: ["ito-doeblin-formula", "poisson-process"],
+  },
+  {
+    id: "stochastic-control-and-hjb",
+    title: "Stochastic Optimal Control & the HJB Equation",
+    domain: "algorithmic-trading",
+    blurb: "Value functions, the dynamic programming principle, the Hamilton–Jacobi–Bellman equation, verification, and the Merton problem.",
+    prerequisites: ["stochastic-calculus-with-jumps"],
+  },
+  {
+    id: "control-of-counting-processes",
+    title: "Controlling Counting Processes",
+    domain: "algorithmic-trading",
+    blurb: "When the agent controls jump intensities: the DPE for counting processes and jump-diffusions, bang-bang controls, and optimal limit-order depth.",
+    prerequisites: ["stochastic-control-and-hjb"],
+  },
+  {
+    id: "optimal-stopping-variational-inequalities",
+    title: "Optimal Stopping & Variational Inequalities",
+    domain: "algorithmic-trading",
+    blurb: "When to stop: continuation and stopping regions, the variational inequality, and combined stopping and control through quasi-variational inequalities.",
+    prerequisites: ["stochastic-control-and-hjb"],
+  },
+  {
+    id: "optimal-execution-continuous-trading",
+    title: "Optimal Execution with Market Orders",
+    domain: "algorithmic-trading",
+    blurb: "Liquidating a large position against temporary and permanent impact: TWAP, terminal and running penalties, and the Almgren–Chriss sinh schedule.",
+    prerequisites: ["stochastic-control-and-hjb", "market-quality-and-price-impact"],
+  },
+  {
+    id: "execution-utility-and-nonlinear-impact",
+    title: "Execution with Utility & Non-Linear Impact",
+    domain: "algorithmic-trading",
+    blurb: "Exponential utility is a running inventory penalty in disguise; power-law impact and the Legendre transform.",
+    prerequisites: ["optimal-execution-continuous-trading"],
+  },
+  {
+    id: "execution-price-limiter-and-order-flow",
+    title: "Execution with a Price Limit & Order Flow",
+    domain: "algorithmic-trading",
+    blurb: "Acquiring under a price cap, and speeding up or slowing down as other traders' order flow pushes the price.",
+    prerequisites: ["optimal-execution-continuous-trading", "optimal-stopping-variational-inequalities"],
+  },
+  {
+    id: "execution-lit-and-dark-pools",
+    title: "Execution in Lit Markets & Dark Pools",
+    domain: "algorithmic-trading",
+    blurb: "Splitting a liquidation between a lit market with impact and a dark pool with execution risk.",
+    prerequisites: ["optimal-execution-continuous-trading", "control-of-counting-processes"],
+  },
+  {
+    id: "execution-with-limit-orders",
+    title: "Execution with Limit Orders",
+    domain: "algorithmic-trading",
+    blurb: "Liquidating by posting limit orders: fill probabilities, the optimal depth, reservation prices and exponential utility.",
+    prerequisites: ["optimal-execution-continuous-trading", "control-of-counting-processes"],
+  },
+  {
+    id: "execution-with-limit-and-market-orders",
+    title: "Execution with Limit & Market Orders",
+    domain: "algorithmic-trading",
+    blurb: "Posting limit orders and crossing the spread when behind schedule: a quasi-variational inequality and its execution boundary.",
+    prerequisites: ["execution-with-limit-orders", "optimal-stopping-variational-inequalities"],
+  },
+  {
+    id: "targeting-volume",
+    title: "Targeting Volume: POV & VWAP",
+    domain: "algorithmic-trading",
+    blurb: "Execution that tracks the market's own volume: percentage of volume, percentage of cumulative volume, and VWAP.",
+    prerequisites: ["optimal-execution-continuous-trading"],
+  },
+  {
+    id: "optimal-market-making",
+    title: "Optimal Market Making",
+    domain: "algorithmic-trading",
+    blurb: "A market maker chooses quote depths to earn the spread while controlling inventory: the Cartea–Jaimungal solution, posting at the touch, and choosing volume.",
+    prerequisites: ["control-of-counting-processes", "market-making-and-liquidity"],
+  },
+  {
+    id: "market-making-utility-and-adverse-selection",
+    title: "Market Making with Risk Aversion & Adverse Selection",
+    domain: "algorithmic-trading",
+    blurb: "Utility-maximising market makers, market orders that move the midprice, and quoting around short-term alpha.",
+    prerequisites: ["optimal-market-making", "glosten-milgrom-model"],
+  },
+  {
+    id: "pairs-trading-optimal-bands",
+    title: "Pairs Trading & Optimal Entry–Exit Bands",
+    domain: "algorithmic-trading",
+    blurb: "Trading a mean-reverting cointegration factor: ad hoc bands, and optimal exit and entry levels as stopping problems.",
+    prerequisites: ["optimal-stopping-variational-inequalities", "ornstein-uhlenbeck-process", "cointegration"],
+  },
+  {
+    id: "cointegrated-portfolios-short-term-alpha",
+    title: "Cointegrated Portfolios with Short-Term Alpha",
+    domain: "algorithmic-trading",
+    blurb: "Many assets whose log prices share a mean-reverting factor; the exponential-utility investor's optimal dollar positions.",
+    prerequisites: ["pairs-trading-optimal-bands"],
+  },
+  {
+    id: "order-imbalance-models",
+    title: "Order Imbalance & Markov Chain Models",
+    domain: "algorithmic-trading",
+    blurb: "Volume imbalance at the touch predicts trades and price moves; discrete and continuous-time Markov chain models and their estimation.",
+    prerequisites: ["limit-order-book", "continuous-time-markov-chains"],
+  },
+  {
+    id: "liquidation-with-order-imbalance",
+    title: "Liquidation Using Order Imbalance",
+    domain: "algorithmic-trading",
+    blurb: "An agent posting limit orders adjusts depth to the imbalance regime, which drives market-order arrivals and price jumps.",
+    prerequisites: ["order-imbalance-models", "execution-with-limit-orders"],
   },
 ];
 

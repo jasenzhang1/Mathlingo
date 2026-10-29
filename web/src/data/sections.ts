@@ -453,6 +453,11 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "Asymptotics",
       conceptIds: ["central-limit-theorem"],
     },
+    {
+      id: "high-dimensional-covariance",
+      label: "High-Dimensional Covariance",
+      conceptIds: ["covariance-shrinkage", "random-matrix-theory"],
+    },
   ],
 
   /**
@@ -630,6 +635,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "effect-of-adding-another-variable",
         "vif",
         "partitioned-regression",
+        "partial-and-semipartial-correlation",
         "restricted-least-squares",
         "less-than-full-rank-models",
         "estimable-functions",
@@ -665,6 +671,8 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "inverse-prediction-calibration",
         "regression-through-the-origin",
         "dummy-variables-comparing-lines",
+        "interactions-in-ols",
+        "structural-breaks-chow-test",
         "two-phase-regression",
         "loess-smoothing",
       ],
@@ -715,9 +723,11 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "partial-residual-plots",
         "heteroskedasticity-tests",
         "durbin-watson-test",
+        "hac-standard-errors",
         "normal-probability-plots",
         "box-cox-transformation",
         "principal-components-regression",
+        "partial-least-squares",
       ],
     },
     {
@@ -753,6 +763,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "regularization",
         "ridge-regression",
         "lasso",
+        "least-angle-regression",
         "elastic-net",
         "adaptive-lasso",
         "stein-shrinkage",
@@ -767,11 +778,14 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "logistic-regression",
         "odds-ratio",
         "probit-regression",
+        "multinomial-and-ordinal-logistic",
         "glm",
         "poisson-regression",
+        "count-regression-overdispersion",
         "deviance-residuals",
         "generalized-estimating-equations",
         "mixed-effect-models",
+        "kaplan-meier-estimator",
         "cox-proportional-hazards-model",
       ],
     },
@@ -796,7 +810,17 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
     {
       id: "volatility-multivariate",
       label: "Volatility & Multivariate Time Series",
-      conceptIds: ["garch", "cointegration"],
+      conceptIds: ["exponential-smoothing", "garch", "cointegration"],
+    },
+    {
+      id: "time-series-regression",
+      label: "Regression with Time Series & Panels",
+      conceptIds: [
+        "unit-root-tests",
+        "predictive-regression-stambaugh-bias",
+        "granger-causality",
+        "fama-macbeth-regression",
+      ],
     },
     {
       id: "path-signatures",
@@ -836,6 +860,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "bias-variance-tradeoff",
         "overfitting-underfitting",
         "learning-curves",
+        "rademacher-complexity",
       ],
     },
     {
@@ -1451,6 +1476,11 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "Augmented Lagrangians and ADMM",
       conceptIds: ["augmented-lagrangian-method", "admm"],
     },
+    {
+      id: "dynamic-programming-and-control",
+      label: "Dynamic Programming and Control",
+      conceptIds: ["linear-quadratic-regulator"],
+    },
   ],
 
   "financial-instruments": [
@@ -1485,6 +1515,147 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       id: "swaps-and-credit",
       label: "Swaps and Credit Derivatives",
       conceptIds: ["interest-rate-and-currency-swaps", "credit-default-swaps"],
+    },
+  ],
+
+  "algorithmic-trading": [
+    {
+      id: "electronic-markets",
+      label: "Ch. 1 · Electronic Markets & the Limit Order Book",
+      conceptIds: [
+        "electronic-markets-and-participants",
+        "limit-order-book",
+      ],
+    },
+    {
+      id: "microstructure-primer",
+      label: "Ch. 2 · A Primer on Market Microstructure",
+      conceptIds: [
+        "market-making-and-liquidity",
+        "kyle-model",
+        "glosten-milgrom-model",
+      ],
+    },
+    {
+      id: "empirical-evidence",
+      label: "Ch. 3–4 · Empirical & Statistical Evidence",
+      conceptIds: [
+        "hft-data-and-returns",
+        "interarrival-latency-and-fragmentation",
+        "intraday-activity-patterns",
+        "market-quality-and-price-impact",
+      ],
+    },
+    {
+      id: "control-and-stopping",
+      label: "Ch. 5 & App. A · Stochastic Control & Stopping",
+      conceptIds: [
+        "stochastic-calculus-with-jumps",
+        "stochastic-control-and-hjb",
+        "control-of-counting-processes",
+        "optimal-stopping-variational-inequalities",
+      ],
+    },
+    {
+      id: "execution-market-orders",
+      label: "Ch. 6–7 · Optimal Execution with Market Orders",
+      conceptIds: [
+        "optimal-execution-continuous-trading",
+        "execution-utility-and-nonlinear-impact",
+        "execution-price-limiter-and-order-flow",
+        "execution-lit-and-dark-pools",
+      ],
+    },
+    {
+      id: "execution-limit-orders",
+      label: "Ch. 8–9 · Execution with Limit Orders & Volume Targets",
+      conceptIds: [
+        "execution-with-limit-orders",
+        "execution-with-limit-and-market-orders",
+        "targeting-volume",
+      ],
+    },
+    {
+      id: "market-making",
+      label: "Ch. 10 · Market Making",
+      conceptIds: [
+        "optimal-market-making",
+        "market-making-utility-and-adverse-selection",
+      ],
+    },
+    {
+      id: "statarb-and-imbalance",
+      label: "Ch. 11–12 · Statistical Arbitrage & Order Imbalance",
+      conceptIds: [
+        "pairs-trading-optimal-bands",
+        "cointegrated-portfolios-short-term-alpha",
+        "order-imbalance-models",
+        "liquidation-with-order-imbalance",
+      ],
+    },
+  ],
+
+  "quantitative-investing": [
+    {
+      id: "map-and-territory",
+      label: "The Map and the Territory",
+      conceptIds: ["markets-and-participants", "sources-of-excess-returns"],
+    },
+    {
+      id: "returns-and-volatility",
+      label: "Returns and Volatility",
+      conceptIds: ["asset-returns", "stylized-facts-of-returns", "volatility-forecasting", "ewma-volatility"],
+    },
+    {
+      id: "factor-model-basics",
+      label: "Linear Factor Models",
+      conceptIds: ["linear-factor-models", "alpha-spanned-and-orthogonal", "factor-risk-decomposition"],
+    },
+    {
+      id: "evaluating-models",
+      label: "Backtesting and Evaluating Models",
+      conceptIds: ["backtesting-protocol", "rademacher-anti-serum", "evaluating-risk-models"],
+    },
+    {
+      id: "fundamental-factor-models",
+      label: "Fundamental Factor Models",
+      conceptIds: [
+        "cross-sectional-factor-regression",
+        "factor-covariance-estimation",
+        "idiosyncratic-risk-estimation",
+        "style-factors",
+      ],
+    },
+    {
+      id: "statistical-factor-models",
+      label: "Statistical Factor Models",
+      conceptIds: ["statistical-factor-models", "eigenvalue-shrinkage", "pca-models-in-practice"],
+    },
+    {
+      id: "portfolio-construction",
+      label: "Portfolio Construction",
+      conceptIds: [
+        "mean-variance-optimization",
+        "fundamental-law-of-active-management",
+        "performance-metrics",
+        "constrained-portfolio-optimization",
+        "estimation-error-in-mvo",
+      ],
+    },
+    {
+      id: "trading-and-hedging",
+      label: "Market Impact and Hedging",
+      conceptIds: ["market-impact", "multiperiod-portfolio-optimization", "factor-hedging", "factor-mimicking-portfolios"],
+    },
+    {
+      id: "after-the-trade",
+      label: "Risk Allocation and Attribution",
+      conceptIds: [
+        "kelly-criterion",
+        "fractional-kelly-and-drawdowns",
+        "performance-attribution",
+        "selection-vs-sizing-attribution",
+      ],
     },
   ],
 

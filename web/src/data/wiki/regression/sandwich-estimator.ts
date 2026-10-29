@@ -67,8 +67,30 @@ export const sandwichEstimatorWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Familiar tests in disguise",
+          text: "Regress $y$ on $(1, z)$ with a binary $z$: the classical $t$-statistic is the pooled two-sample $t$, and the HC2 robust $t$-statistic is exactly Welch’s unequal-variance $t$. Under homoskedasticity $\\mathbb{E}(\\hat{\\varepsilon}_i^2) = \\sigma^2(1 - h_{ii})$, so HC0 is biased downward and HC2, dividing by $1 - h_{ii}$, is exactly unbiased.",
+        },
+        {
+          kind: "prose",
+          text: "Ding’s headline for large samples: Normality hardly matters, but homoskedasticity does, unless the covariance is replaced by the sandwich. The same sandwich extends to GLMs as restricted mean models: if $\\mathbb{E}(y \\mid \\mathbf{x})$ is right, the Poisson MLE stays consistent under overdispersion and only its standard errors need fixing.",
+        },
+        {
+          kind: "callout",
+          tone: "warning",
+          title: "Robust standard errors do not fix a wrong mean",
+          text: "If the conditional mean is misspecified, the MLE converges to a pseudo-true parameter, and the sandwich gives correct uncertainty for the wrong target (Freedman, 2006). For binary outcomes the mean is the whole distribution, so there is no robust middle ground.",
+        },
+      ],
+    },
   ],
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 6, Eicker–Huber–White Robust Standard Errors; Ch. 24, Misspecified GLMs" },
     { source: "White (1980), A Heteroskedasticity-Consistent Covariance Matrix Estimator", locator: "Econometrica 48(4)" },
     { source: "Wooldridge, Introductory Econometrics", locator: "Ch. 8" },
   ],

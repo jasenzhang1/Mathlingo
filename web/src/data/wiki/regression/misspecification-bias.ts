@@ -90,9 +90,30 @@ export const misspecificationBiasWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "formula",
+          latex: "\\tilde{\\boldsymbol{\\beta}}_2 = \\hat{\\boldsymbol{\\beta}}_2 + \\hat{\\delta}\\,\\hat{\\boldsymbol{\\beta}}_1",
+          caption: "Cochran’s formula: short $=$ long $+$ (auxiliary slope of $X_1$ on $X_2$) $\\times$ (omitted coefficient). It is an exact sample identity.",
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Mediation and paths",
+          text: "In the Baron–Kenny setup the “difference” estimator of the indirect effect equals the “product” estimator exactly, by Cochran’s formula. More generally, the short-regression coefficient is the sum over all directed paths of the products of path coefficients.",
+        },
+        {
+          kind: "prose",
+          text: "Ding’s population view makes misspecification precise: whatever $\\mathbb{E}(y \\mid \\mathbf{x})$ is, the population OLS coefficient is the best linear approximation to it. For $x \\sim \\mathcal{N}(0, 1)$ and $y = x^3 + \\varepsilon$ the best line has slope $\\mathbb{E}(x^4) = 3$. Prediction can still be valid without a correct model: conformal prediction refits with each candidate $y_{n+1}$ and keeps the values whose absolute residual ranks within the bottom $(1 - \\alpha)(n + 1)$, which gives finite-sample coverage from exchangeability alone.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 9, Cochran’s Formula; Ch. 12, Population OLS and the Misspecified Linear Model" },
     { source: "Seber & Lee, Linear Regression Analysis (2nd ed.)", locator: "§9.2, Bias (underfitting and overfitting)" },
     { source: "Seber & Lee, Linear Regression Analysis (2nd ed.)", locator: "§5.4, Enlarging the Regression Matrix; §12.2, Why Select?" },
   ],

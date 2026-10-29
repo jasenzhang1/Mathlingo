@@ -90,9 +90,25 @@ export const restrictedLeastSquaresWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "prose",
+          text: "Restricted OLS unifies several familiar fits. The short regression is restricted OLS with $C = [0, I]$ and $\\mathbf{r} = \\mathbf{0}$. The minimum-norm solution of an under-determined system, $X^{\\top}(XX^{\\top})^{-1}Y$, is restricted least squares with the data as the constraint. And the bordered system $\\begin{bmatrix} X^{\\top}X & C^{\\top} \\\\ C & 0 \\end{bmatrix}$ is invertible whenever the stacked matrix $\\begin{bmatrix} X \\\\ C \\end{bmatrix}$ has full column rank, so the restrictions can identify what $X$ alone cannot.",
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "A true restriction never hurts",
+          text: "Under the Gauss–Markov model with a correct restriction, restricted OLS is BLUE among estimators unbiased under the restriction, which implies $\\text{cov}(\\hat{\\boldsymbol{\\beta}}_r) \\preceq \\text{cov}(\\hat{\\boldsymbol{\\beta}})$. A false restriction buys that precision with bias.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 18, Restricted OLS" },
     { source: "Seber & Lee, Linear Regression Analysis (2nd ed.)", locator: "§3.8.1, Method of Lagrange Multipliers" },
     { source: "Seber & Lee, Linear Regression Analysis (2nd ed.)", locator: "§3.8.2, Method of Orthogonal Projections" },
   ],

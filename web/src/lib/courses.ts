@@ -26,6 +26,8 @@ const SUMMARIES: Record<Domain, string> = {
   "stochastic-calculus": "Martingales, the Itô integral and formula, SDEs, Girsanov and risk-neutral pricing, and the link to PDEs.",
   "functional-data": "Curves as data: function spaces, smoothing and registration, operators, functional PCA and functional regression.",
   "financial-instruments": "Bonds and the yield curve, equities and funds, forwards, futures and options, and swaps and credit derivatives.",
+  "quantitative-investing": "Returns and volatility, factor risk models, backtesting, mean-variance portfolios, market impact, hedging, Kelly sizing and performance attribution.",
+  "algorithmic-trading": "How electronic markets and the limit order book work, the microstructure theory and empirical facts behind them, stochastic control, and the algorithms for execution, market making, pairs trading and order imbalance.",
   "time-series": "Stationarity, autocorrelation, ARMA and ARIMA models, and volatility models like GARCH.",
   python: "Python for data work: the language itself, then NumPy and pandas, text, errors, iterators and classes.",
 };

@@ -148,9 +148,25 @@ export const quantileRegressionWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "prose",
+          text: "With a binary regressor, quantile regression simply differences the group quantiles: for $y \\mid x = 1 \\sim \\text{Exponential}(1)$ and $y \\mid x = 0 \\sim \\text{Exponential}(2)$, the median-regression slope is $\\log 2 - \\tfrac{1}{2}\\log 2 \\approx 0.347$. Under bivariate Normality every conditional quantile is linear with the same slope, so differing slopes across $\\tau$ are evidence of heteroskedasticity or non-Normal structure, as in the U.S. wage data, where returns to education differ across the wage distribution.",
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Likelihood view",
+          text: "Least absolute deviations is the MLE under Laplace errors, just as OLS is the MLE under Normal errors.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 26, Quantile Regression" },
     { source: "Wasserman, All of Statistics", locator: "§13.7, Quantile Regression" },
     { source: "Hastie, Tibshirani & Friedman, The Elements of Statistical Learning", locator: "§1.4, Robustness and Alternative Loss Functions" },
     { source: "Koenker & Bassett, Regression Quantiles (Econometrica, 1978)", locator: "The original construction of the estimator" },

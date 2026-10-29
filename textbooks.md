@@ -19,6 +19,7 @@
 ## Multivaraite Statistics
 
 - Linear Regression Analysis (Seber, Lee)
+- Linear Model and Extensions (Peng Ding)
 
 ## Optimization
 
@@ -73,3 +74,13 @@
 - Stochastic Calculus for Finance I: The Binomial Model by Steven E. Shreve
 - Stochastic Calculus for Finance II: Continuous-Time Models by Steven E. Shreve
 - Financial Calculus: An Introduction to Derivative Pricing by Martin Baxter and Andrew Rennie
+
+## Quantitative Investing
+
+- The Elements of Quantitative Investing by Giuseppe A. Paleologo (Draft 7, 2024)
+- Active Portfolio Management by Richard C. Grinold and Ronald N. Kahn
+- Trades, Quotes and Prices by Jean-Philippe Bouchaud, Julius Bonart, Jonathan Donier and Martin Gould
+
+## Algorithmic Trading
+
+- Algorithmic and High-Frequency Trading by Álvaro Cartea, Sebastian Jaimungal and José Penalva (2015)

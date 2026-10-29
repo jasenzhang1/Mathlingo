@@ -33,10 +33,9 @@ const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
       ...inf.inferenceWikis,
     ]),
   "multivariate-probability": () =>
-    Promise.all([import("./core"), import("./copulas")]).then(([core, cop]) => [
-      ...core.coreWikiArticles,
-      ...cop.copulaWikis,
-    ]),
+    Promise.all([import("./core"), import("./copulas"), import("./high-dimensional-covariance")]).then(
+      ([core, cop, hd]) => [...core.coreWikiArticles, ...cop.copulaWikis, ...hd.highDimensionalCovarianceWikis],
+    ),
   // KL divergence moved into this chapter but its article stayed in `./core`.
   "information-theory": () =>
     Promise.all([import("./information-theory"), import("./core")]).then(([it, core]) => [
@@ -70,6 +69,8 @@ const loaders: Partial<Record<Domain, () => Promise<WikiArticle[]>>> = {
       ...core.coreWikiArticles,
     ]),
   "financial-instruments": () => import("./finance").then((m) => m.financeWikis),
+  "quantitative-investing": () => import("./quant").then((m) => m.quantWikis),
+  "algorithmic-trading": () => import("./trading").then((m) => m.tradingWikis),
   optimization: () => import("./optimization").then((m) => m.optimizationWikis),
   python: () => import("./python").then((m) => m.pythonWikiArticles),
   "stochastic-processes": () => import("./stochastic").then((m) => m.stochasticWikiArticles),

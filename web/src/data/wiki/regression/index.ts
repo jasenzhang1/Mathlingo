@@ -1,4 +1,8 @@
 import type { WikiArticle } from "../types";
+import { kaplanMeierEstimatorWiki } from "./kaplan-meier-estimator";
+import { countRegressionOverdispersionWiki } from "./count-regression-overdispersion";
+import { multinomialAndOrdinalLogisticWiki } from "./multinomial-and-ordinal-logistic";
+import { interactionsInOlsWiki } from "./interactions-in-ols";
 
 import { aicBicWiki } from "./aic-bic";
 import { anovaWiki } from "./anova";
@@ -12,6 +16,7 @@ import { glmWiki } from "./glm";
 import { hatMatrixWiki } from "./hat-matrix";
 import { homoskedasticityWiki } from "./homoskedasticity";
 import { lassoWiki } from "./lasso";
+import { leastAngleRegressionWiki } from "./least-angle-regression";
 import { linearRegressionProbabilisticVersionWiki } from "./linear-regression-probabilistic-version";
 import { linearRegressionTerminologyWiki } from "./linear-regression-terminology";
 import { loessSmoothingWiki } from "./loess-smoothing";
@@ -42,6 +47,7 @@ import { weightedLeastSquaresWiki } from "./weighted-least-squares";
 
 // Seber & Lee expansion
 import { partitionedRegressionWiki } from "./partitioned-regression";
+import { partialAndSemipartialCorrelationWiki } from "./partial-and-semipartial-correlation";
 import { restrictedLeastSquaresWiki } from "./restricted-least-squares";
 import { lessThanFullRankModelsWiki } from "./less-than-full-rank-models";
 import { estimableFunctionsWiki } from "./estimable-functions";
@@ -57,6 +63,7 @@ import { confidenceBandsRegressionSurfaceWiki } from "./confidence-bands-regress
 import { inversePredictionCalibrationWiki } from "./inverse-prediction-calibration";
 import { regressionThroughTheOriginWiki } from "./regression-through-the-origin";
 import { dummyVariablesComparingLinesWiki } from "./dummy-variables-comparing-lines";
+import { structuralBreaksChowTestWiki } from "./structural-breaks-chow-test";
 import { twoPhaseRegressionWiki } from "./two-phase-regression";
 import { orthogonalPolynomialsWiki } from "./orthogonal-polynomials";
 import { regressionSplinesWiki } from "./regression-splines";
@@ -78,10 +85,12 @@ import { studentizedResidualsWiki } from "./studentized-residuals";
 import { partialResidualPlotsWiki } from "./partial-residual-plots";
 import { heteroskedasticityTestsWiki } from "./heteroskedasticity-tests";
 import { durbinWatsonTestWiki } from "./durbin-watson-test";
+import { hacStandardErrorsWiki } from "./hac-standard-errors";
 import { normalProbabilityPlotsWiki } from "./normal-probability-plots";
 import { boxCoxTransformationWiki } from "./box-cox-transformation";
 import { caseDeletionDiagnosticsWiki } from "./case-deletion-diagnostics";
 import { principalComponentsRegressionWiki } from "./principal-components-regression";
+import { partialLeastSquaresWiki } from "./partial-least-squares";
 import { mEstimatorsRegressionWiki } from "./m-estimators-regression";
 import { robustRegressionOverviewWiki } from "./robust-regression-overview";
 import { breakdownPointAndInfluenceFunctionWiki } from "./breakdown-point-and-influence-function";
@@ -154,6 +163,7 @@ export const regressionWikis: WikiArticle[] = [
   forwardBackwardStepwiseSelectionWiki,
   regularizationWiki,
   lassoWiki,
+  leastAngleRegressionWiki,
   ridgeRegressionWiki,
   elasticNetWiki,
   adaptiveLassoWiki,
@@ -167,14 +177,18 @@ export const regressionWikis: WikiArticle[] = [
   logisticRegressionWiki,
   oddsRatioWiki,
   probitRegressionWiki,
+  multinomialAndOrdinalLogisticWiki,
   glmWiki,
   poissonRegressionWiki,
+  countRegressionOverdispersionWiki,
   devianceResidualsWiki,
+  kaplanMeierEstimatorWiki,
   coxProportionalHazardsModelWiki,
   generalizedEstimatingEquationsWiki,
 
   // Seber & Lee Ch. 3 — estimation beyond the full-rank, spherical-error case
   partitionedRegressionWiki,
+  partialAndSemipartialCorrelationWiki,
   restrictedLeastSquaresWiki,
   lessThanFullRankModelsWiki,
   estimableFunctionsWiki,
@@ -194,6 +208,8 @@ export const regressionWikis: WikiArticle[] = [
   inversePredictionCalibrationWiki,
   regressionThroughTheOriginWiki,
   dummyVariablesComparingLinesWiki,
+  interactionsInOlsWiki,
+  structuralBreaksChowTestWiki,
   twoPhaseRegressionWiki,
   orthogonalPolynomialsWiki,
   regressionSplinesWiki,
@@ -219,10 +235,12 @@ export const regressionWikis: WikiArticle[] = [
   partialResidualPlotsWiki,
   heteroskedasticityTestsWiki,
   durbinWatsonTestWiki,
+  hacStandardErrorsWiki,
   normalProbabilityPlotsWiki,
   boxCoxTransformationWiki,
   caseDeletionDiagnosticsWiki,
   principalComponentsRegressionWiki,
+  partialLeastSquaresWiki,
 
   // Seber & Lee §3.13 and Ch. 11 — robust regression and computing the fit
   mEstimatorsRegressionWiki,

@@ -182,9 +182,25 @@ export const olsPropertiesWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "prose",
+          text: "Ding draws three design lessons from $\\text{Var}(\\hat{\\beta}) = \\sigma^2/\\sum_i (x_i - \\bar{x})^2$ and the Gauss–Markov theorem. With $x_i \\in [0, 1]$, putting half the points at each end gives $\\sum_i (x_i - \\bar{x})^2 = n/4$, the most precise slope possible. Adding regressors whose true coefficients are zero can only inflate $\\text{cov}(\\hat{\\boldsymbol{\\beta}}_1)$. And among linear unbiased estimators of a common mean, $\\bar{y}$ is BLUE.",
+        },
+        {
+          kind: "callout",
+          tone: "warning",
+          title: "Gauss–Markov needs equal variances",
+          text: "With $y_i = \\beta x_i + \\varepsilon_i$, $\\mathbf{x} = [1, 2, 3]$ and error variances $[1, 100, 1]$, the no-intercept OLS slope has variance $410/196 \\approx 2.09$, while the slope that (needlessly) includes an intercept has variance $0.5$: it puts zero weight on the noisy middle point. Under heteroskedasticity the “best” in BLUE is lost.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 4, Gauss–Markov Model and Gauss–Markov Theorem" },
     { source: "Casella & Berger, Statistical Inference (2nd ed.)", locator: "§11.3, Properties of Least Squares Estimators" },
     { source: "Wasserman, All of Statistics", locator: "§13.4, Properties of the Least Squares Estimators" },
     { source: "Banerjee & Roy, Linear Algebra and Matrix Analysis for Statistics", locator: "Ch. 11, Distribution Theory for the Linear Model" },

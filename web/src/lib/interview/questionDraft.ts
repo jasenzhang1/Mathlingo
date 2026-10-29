@@ -92,12 +92,13 @@ export function applyQuestionDraft(repo: InterviewQuestion[], draft: QuestionDra
 export function normalizeQuestion(q: InterviewQuestion, original?: InterviewQuestion): InterviewQuestion {
   const c: Record<string, unknown> = { ...q };
   if (!q.otherSections?.length) delete c.otherSections;
+  if (!q.lessons?.length) delete c.lessons;
   if (q.numericAnswer === undefined || !Number.isFinite(q.numericAnswer)) delete c.numericAnswer;
   if (q.status !== "draft") delete c.status;
   if (!q.free) delete c.free;
   if (!q.reviewNote) delete c.reviewNote;
   if (!q.instructional) delete c.instructional;
-  const canonical = ["id", "title", "section", "otherSections", "family", "difficulty", "question", "answer", "notes", "tags", "source", "instructional", "numericAnswer", "status", "free", "reviewNote"];
+  const canonical = ["id", "title", "section", "otherSections", "family", "difficulty", "question", "answer", "notes", "tags", "lessons", "source", "instructional", "numericAnswer", "status", "free", "reviewNote"];
   const order = [...Object.keys(original ?? {}), ...canonical, ...Object.keys(c)];
   const out: Record<string, unknown> = {};
   for (const k of order) if (k in c && !(k in out)) out[k] = c[k];

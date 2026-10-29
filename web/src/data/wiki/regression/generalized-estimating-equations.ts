@@ -75,8 +75,25 @@ export const generalizedEstimatingEquationsWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "formula",
+          latex: "\\widehat{\\text{cov}}(\\hat{\\boldsymbol{\\beta}}) = \\left(\\sum_i X_i^{\\top}X_i\\right)^{-1}\\left(\\sum_i X_i^{\\top}\\hat{\\boldsymbol{\\varepsilon}}_i\\hat{\\boldsymbol{\\varepsilon}}_i^{\\top}X_i\\right)\\left(\\sum_i X_i^{\\top}X_i\\right)^{-1}",
+          caption: "The Liang–Zeger cluster-robust covariance of pooled OLS: the same bread as EHW, with a meat that keeps within-cluster cross-products.",
+        },
+        {
+          kind: "callout",
+          tone: "warning",
+          title: "What cluster-robust inference needs",
+          text: "Each cluster is one independent contribution to the meat, so the effective sample size is the number of clusters; with few clusters the intervals under-cover. A non-independence working covariance also needs $\\mathbb{E}(y_{it} \\mid X_i) = \\mathbb{E}(y_{it} \\mid \\mathbf{x}_{it})$, which fails with feedback between past outcomes and future covariates; the independence working covariance needs only the marginal mean (Pepe and Anderson).",
+        },
+      ],
+    },
   ],
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 25, Generalized Estimating Equation for Correlated Multivariate Data" },
     { source: "Liang & Zeger (1986), Longitudinal Data Analysis Using Generalized Linear Models", locator: "Biometrika 73(1)" },
     { source: "Wooldridge, Econometric Analysis of Cross Section and Panel Data", locator: "Ch. 12" },
   ],

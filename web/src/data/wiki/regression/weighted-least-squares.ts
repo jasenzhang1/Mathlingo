@@ -174,9 +174,25 @@ export const weightedLeastSquaresWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "prose",
+          text: "Ding lists three motives for weights beyond a known variance function. **Aggregate data**: if the individual model is homoskedastic, group means have variance $\\sigma^2/n_j$, so weight by $n_j$. **Ecological regression**: Goodman models precinct turnout as $\\bar{y}_i = p_1\\bar{x}_i + p_0(1 - \\bar{x}_i)$ and estimates group-level rates $p_1, p_0$ by WLS with weights $n_i$ and EHW standard errors. **Survey weights**: units sampled with probability $\\pi_i$ get weight $1/\\pi_i$ (Horvitz–Thompson), which targets the population OLS. Local linear regression is WLS with kernel weights.",
+        },
+        {
+          kind: "callout",
+          tone: "warning",
+          title: "Why FGLS is rarely used",
+          text: "EHW standard errors already make OLS inference valid; the efficiency gain is usually small and can be negative if the variance model is wrong; and under misspecification OLS and FGLS estimate different things, so a large gap between them is itself a warning sign.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 19, Weighted Least Squares" },
     { source: "Wasserman, All of Statistics", locator: "§13.5, Weighted Least Squares" },
     { source: "NIST/SEMATECH e-Handbook of Statistical Methods", locator: "§4.5.1, Accounting for Non-Constant Variance Across the Data" },
     { source: "Casella & Berger, Statistical Inference (2nd ed.)", locator: "§11.3, The General Linear Model" },

@@ -862,5 +862,137 @@
   "name": "Waiting Times",
   "group": null,
   "meaning": ""
+ },
+ {
+  "id": "population-regression",
+  "name": "Population Regression",
+  "group": 100,
+  "meaning": "Regression coefficients from population moments"
+ },
+ {
+  "id": "nested-regressions",
+  "name": "Short vs Long Regression",
+  "group": 100,
+  "meaning": "Compare a regression with and without extra regressors"
+ },
+ {
+  "id": "design-matrix-transform",
+  "name": "Transforming the Design",
+  "group": 100,
+  "meaning": "Rescale, recenter, duplicate or drop columns and rows"
+ },
+ {
+  "id": "leave-one-out",
+  "name": "Leave One Out",
+  "group": 100,
+  "meaning": "Delete or add one observation without refitting"
+ },
+ {
+  "id": "reverse-regression",
+  "name": "Reverse Regression",
+  "group": 100,
+  "meaning": "Regress y on x and x on y"
+ },
+ {
+  "id": "uniform-region-regression",
+  "name": "Regression on a Region",
+  "group": 100,
+  "meaning": "(X, Y) uniform on a shape"
+ },
+ {
+  "id": "pooled-groups",
+  "name": "Pooled Groups",
+  "group": 100,
+  "meaning": "Data made of subgroups or group means"
+ },
+ {
+  "id": "two-regressor-correlations",
+  "name": "Two Regressors, Known Correlations",
+  "group": 101,
+  "meaning": "Bounds from a correlation matrix"
+ },
+ {
+  "id": "spurious-fit",
+  "name": "Spurious Fit",
+  "group": 101,
+  "meaning": "In-sample fit from noise"
+ },
+ {
+  "id": "collinear-signals",
+  "name": "Collinear Signals",
+  "group": 101,
+  "meaning": "Highly correlated predictors"
+ },
+ {
+  "id": "noisy-regressor",
+  "name": "Noisy Regressor",
+  "group": 102,
+  "meaning": "Measurement error in X or Y"
+ },
+ {
+  "id": "proxy-control",
+  "name": "Proxy Control",
+  "group": 102,
+  "meaning": "Controlling for a noisy proxy"
+ },
+ {
+  "id": "causal-dag-regression",
+  "name": "Causal Graph Regression",
+  "group": 102,
+  "meaning": "Confounders, mediators and colliders"
+ },
+ {
+  "id": "trading-signal-regression",
+  "name": "Trading Signal Regression",
+  "group": 103,
+  "meaning": "Regressing returns on a signal"
+ },
+ {
+  "id": "cross-sectional-returns",
+  "name": "Cross-Sectional Returns",
+  "group": 103,
+  "meaning": "Cross-sectional asset pricing regressions"
+ },
+ {
+  "id": "regime-change",
+  "name": "Regime Change",
+  "group": 103,
+  "meaning": "Coefficients that shift over time"
+ },
+ {
+  "id": "penalized-path",
+  "name": "Penalized Regression Path",
+  "group": 104,
+  "meaning": "Ridge, lasso, LARS, PCR and PLS"
+ },
+ {
+  "id": "correlated-errors",
+  "name": "Correlated Errors",
+  "group": 105,
+  "meaning": "Non-spherical error covariance"
+ },
+ {
+  "id": "random-walk-regression",
+  "name": "Persistent Time Series",
+  "group": 105,
+  "meaning": "Random walks and near-unit-root series"
+ },
+ {
+  "id": "regression-identities",
+  "name": "Core Regression Identities",
+  "group": 100,
+  "meaning": "The standard OLS identities interviewers expect you to derive on the spot"
+ },
+ {
+  "id": "ols-sampling-theory",
+  "name": "OLS Sampling Distributions",
+  "group": 100,
+  "meaning": "Derive the χ², t and F results behind regression inference"
+ },
+ {
+  "id": "regression-perturbations",
+  "name": "Perturb the Data",
+  "group": 100,
+  "meaning": "Duplicate, add, drop or transform data and say what moves"
  }
 ]

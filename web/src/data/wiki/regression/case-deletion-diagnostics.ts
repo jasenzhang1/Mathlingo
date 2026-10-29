@@ -83,9 +83,26 @@ export const caseDeletionDiagnosticsWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "formula",
+          latex: "y_i - \\mathbf{x}_i^{\\top}\\hat{\\boldsymbol{\\beta}}_{[-i]} = \\frac{\\hat{\\varepsilon}_i}{1 - h_{ii}}, \\qquad (n - p - 1)\\hat{\\sigma}^2_{[-i]} = (n - p)\\hat{\\sigma}^2 - \\frac{\\hat{\\varepsilon}_i^2}{1 - h_{ii}}",
+          caption: "Every leave-one-out quantity follows from the full fit, with no refitting.",
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Jackknife and leverage facts",
+          text: "$\\hat{\\boldsymbol{\\beta}}$ is not the plain average of the $\\hat{\\boldsymbol{\\beta}}_{[-i]}$, but it is their weighted average with weights $(1 - h_{ii})/(n - p)$. The externally studentized residual is a monotone function of the standardised one, $r_i\\sqrt{(n - p - 1)/(n - p - r_i^2)}$. And $\\det(X_{[-i]}^{\\top}X_{[-i]}) = (1 - h_{ii})\\det(X^{\\top}X)$, so a point with $h_{ii} = 1$ cannot be deleted without losing identification.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 11, Leverage Scores and Leave-One-Out Formulas" },
     { source: "Seber & Lee, Linear Regression Analysis (2nd ed.)", locator: "§10.6.1–10.6.3, Types of Outliers; High-Leverage Points; Leave-One-Out Case Diagnostics" },
     { source: "Seber & Lee, Linear Regression Analysis (2nd ed.)", locator: "§10.6.5, Other Methods" },
   ],

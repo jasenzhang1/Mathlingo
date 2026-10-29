@@ -89,9 +89,24 @@ export const twoPhaseRegressionWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "formula",
+          latex: "y_i = \\beta_1 + \\beta_2(x_i - c) + \\beta_3\\mathbb{1}(x_i > c) + \\beta_4(x_i - c)\\mathbb{1}(x_i > c) + \\varepsilon_i",
+          caption: "Regression discontinuity: centring at the cutoff $c$ makes the jump at $c$ equal to $\\beta_3$ (uncentred, it is $\\beta_3 + \\beta_4 c$).",
+        },
+        {
+          kind: "prose",
+          text: "A regression kink keeps the line continuous and lets only the slope change: $y_i = \\beta_1 + \\beta_2\\max(0, x_i - c) + \\beta_3(x_i - c) + \\varepsilon_i$, with slope $\\beta_3$ to the left of $c$, $\\beta_2 + \\beta_3$ to the right, and the kink test $\\beta_2 = 0$. With a known join point both are ordinary linear regressions.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 16, §16.2.2 Regression discontinuity and regression kink" },
     { source: "Seber & Lee, Linear Regression Analysis (2nd ed.)", locator: "§6.5, Two-Phase Linear Regression" },
   ],
 };

@@ -1,6 +1,7 @@
 import type { WikiArticle } from "../types";
 
 import { admmWiki } from "./admm";
+import { linearQuadraticRegulatorWiki } from "./linear-quadratic-regulator";
 import { augmentedLagrangianMethodWiki } from "./augmented-lagrangian-method";
 import { bisectionMethodWiki } from "./bisection-method";
 import { conjugateGradientMethodWiki } from "./conjugate-gradient-method";
@@ -47,4 +48,5 @@ export const optimizationWikis: WikiArticle[] = [
   interiorPointMethodsWiki,
   augmentedLagrangianMethodWiki,
   admmWiki,
+  linearQuadraticRegulatorWiki,
 ];

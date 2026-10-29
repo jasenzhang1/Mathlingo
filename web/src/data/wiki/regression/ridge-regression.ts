@@ -176,9 +176,30 @@ export const ridgeRegressionWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "formula",
+          latex: "\\hat{\\boldsymbol{\\beta}}_{\\text{ridge}}(\\lambda) = (X^{\\top}X + \\lambda I_p)^{-1}X^{\\top}Y = X^{\\top}(XX^{\\top} + \\lambda I_n)^{-1}Y",
+          caption: "The dual form inverts an $n \\times n$ matrix (useful when $p > n$) and shows the estimate lies in the row space of $X$; as $\\lambda \\to 0$ it tends to the minimum-norm solution $X^{+}Y$.",
+        },
+        {
+          kind: "prose",
+          text: "Ridge is the posterior mode under a $\\mathcal{N}(\\mathbf{0}, \\tau^2 I)$ prior with $\\lambda = \\sigma^2/\\tau^2$, and has degrees of freedom $\\sum_j d_j^2/(d_j^2 + \\lambda)$. Because the variance falls at rate $O(\\lambda)$ while the squared bias grows only at $O(\\lambda^2)$, $\\text{MSE}'(0) < 0$: some $\\lambda > 0$ always beats OLS (Hoerl and Kennard).",
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "One formula for OLS, ridge and PCR",
+          text: "All three fit $\\hat{Y} = \\sum_j s_j U_jU_j^{\\top}Y$ with $s_j = 1$ (OLS), $d_j^2/(d_j^2 + \\lambda)$ (ridge) or $\\mathbb{1}(j \\le k)$ (PCR). Ridge shrinks every direction smoothly, most where $d_j$ is small; PCR keeps or drops whole directions.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 14, Ridge Regression" },
     { source: "Hastie, Tibshirani & Friedman, The Elements of Statistical Learning", locator: "§3.4.1, Ridge Regression" },
     { source: "James, Witten, Hastie & Tibshirani, An Introduction to Statistical Learning", locator: "§6.2.1, Ridge Regression" },
     { source: "Strang, Linear Algebra and Its Applications", locator: "Ch. 6, Positive Definite Matrices and the SVD" },

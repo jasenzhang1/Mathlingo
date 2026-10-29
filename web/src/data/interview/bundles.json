@@ -2170,5 +2170,431 @@
    "iq-0755"
   ],
   "curated": false
+ },
+ {
+  "id": "nested-regressions-1",
+  "title": "Short vs Long Regression 1",
+  "family": "nested-regressions",
+  "questions": [
+   "iq-1082",
+   "iq-1059",
+   "iq-1086",
+   "iq-1056",
+   "iq-1120"
+  ],
+  "curated": false
+ },
+ {
+  "id": "nested-regressions-2",
+  "title": "Short vs Long Regression 2",
+  "family": "nested-regressions",
+  "questions": [
+   "iq-1119",
+   "iq-1078",
+   "iq-1092",
+   "iq-1093",
+   "iq-1063"
+  ],
+  "curated": false
+ },
+ {
+  "id": "nested-regressions-3",
+  "title": "Short vs Long Regression 3",
+  "family": "nested-regressions",
+  "questions": [
+   "iq-1121",
+   "iq-1083",
+   "iq-1131",
+   "iq-1118"
+  ],
+  "curated": false
+ },
+ {
+  "id": "design-matrix-transform-1",
+  "title": "Transforming the Design 1",
+  "family": "design-matrix-transform",
+  "questions": [
+   "iq-1124",
+   "iq-1057",
+   "iq-1127",
+   "iq-1125",
+   "iq-1091"
+  ],
+  "curated": false
+ },
+ {
+  "id": "design-matrix-transform-2",
+  "title": "Transforming the Design 2",
+  "family": "design-matrix-transform",
+  "questions": [
+   "iq-1126",
+   "iq-1122",
+   "iq-1072",
+   "iq-1089",
+   "iq-1090"
+  ],
+  "curated": false
+ },
+ {
+  "id": "leave-one-out-1",
+  "title": "Leave One Out 1",
+  "family": "leave-one-out",
+  "questions": [
+   "iq-1066",
+   "iq-1135",
+   "iq-1065",
+   "iq-1134",
+   "iq-1139"
+  ],
+  "curated": false
+ },
+ {
+  "id": "uniform-region-regression-1",
+  "title": "Regression on a Region 1",
+  "family": "uniform-region-regression",
+  "questions": [
+   "iq-1076",
+   "iq-1075"
+  ],
+  "curated": false
+ },
+ {
+  "id": "pooled-groups-1",
+  "title": "Pooled Groups 1",
+  "family": "pooled-groups",
+  "questions": [
+   "iq-1112",
+   "iq-1123"
+  ],
+  "curated": false
+ },
+ {
+  "id": "two-regressor-correlations-1",
+  "title": "Two Regressors, Known Correlations 1",
+  "family": "two-regressor-correlations",
+  "questions": [
+   "iq-1081",
+   "iq-1084",
+   "iq-1079",
+   "iq-1080",
+   "iq-1097"
+  ],
+  "curated": false
+ },
+ {
+  "id": "spurious-fit-1",
+  "title": "Spurious Fit 1",
+  "family": "spurious-fit",
+  "questions": [
+   "iq-1074",
+   "iq-1140",
+   "iq-1141",
+   "iq-1095",
+   "iq-1142"
+  ],
+  "curated": false
+ },
+ {
+  "id": "collinear-signals-1",
+  "title": "Collinear Signals 1",
+  "family": "collinear-signals",
+  "questions": [
+   "iq-1137",
+   "iq-1147",
+   "iq-1087",
+   "iq-1088",
+   "iq-1132"
+  ],
+  "curated": false
+ },
+ {
+  "id": "noisy-regressor-1",
+  "title": "Noisy Regressor 1",
+  "family": "noisy-regressor",
+  "questions": [
+   "iq-1104",
+   "iq-1106",
+   "iq-1100",
+   "iq-1102"
+  ],
+  "curated": false
+ },
+ {
+  "id": "noisy-regressor-2",
+  "title": "Noisy Regressor 2",
+  "family": "noisy-regressor",
+  "questions": [
+   "iq-1105",
+   "iq-1107",
+   "iq-1103",
+   "iq-1108"
+  ],
+  "curated": false
+ },
+ {
+  "id": "noisy-regressor-3",
+  "title": "Noisy Regressor 3",
+  "family": "noisy-regressor",
+  "questions": [
+   "iq-1098",
+   "iq-1099",
+   "iq-1101",
+   "iq-1109"
+  ],
+  "curated": false
+ },
+ {
+  "id": "causal-dag-regression-1",
+  "title": "Causal Graph Regression 1",
+  "family": "causal-dag-regression",
+  "questions": [
+   "iq-1116",
+   "iq-1113",
+   "iq-1117"
+  ],
+  "curated": false
+ },
+ {
+  "id": "trading-signal-regression-1",
+  "title": "Trading Signal Regression 1",
+  "family": "trading-signal-regression",
+  "questions": [
+   "iq-1094",
+   "iq-1144",
+   "iq-1145"
+  ],
+  "curated": false
+ },
+ {
+  "id": "cross-sectional-returns-1",
+  "title": "Cross-Sectional Returns 1",
+  "family": "cross-sectional-returns",
+  "questions": [
+   "iq-1146",
+   "iq-1171"
+  ],
+  "curated": false
+ },
+ {
+  "id": "regime-change-1",
+  "title": "Regime Change 1",
+  "family": "regime-change",
+  "questions": [
+   "iq-1148",
+   "iq-1149",
+   "iq-1150"
+  ],
+  "curated": false
+ },
+ {
+  "id": "penalized-path-1",
+  "title": "Penalized Regression Path 1",
+  "family": "penalized-path",
+  "questions": [
+   "iq-1158",
+   "iq-1152",
+   "iq-1154",
+   "iq-1155"
+  ],
+  "curated": false
+ },
+ {
+  "id": "penalized-path-2",
+  "title": "Penalized Regression Path 2",
+  "family": "penalized-path",
+  "questions": [
+   "iq-1157",
+   "iq-1153",
+   "iq-1159",
+   "iq-1156"
+  ],
+  "curated": false
+ },
+ {
+  "id": "penalized-path-3",
+  "title": "Penalized Regression Path 3",
+  "family": "penalized-path",
+  "questions": [
+   "iq-1151",
+   "iq-1160",
+   "iq-1161"
+  ],
+  "curated": false
+ },
+ {
+  "id": "correlated-errors-1",
+  "title": "Correlated Errors 1",
+  "family": "correlated-errors",
+  "questions": [
+   "iq-1164",
+   "iq-1165",
+   "iq-1166",
+   "iq-1167"
+  ],
+  "curated": false
+ },
+ {
+  "id": "random-walk-regression-1",
+  "title": "Persistent Time Series 1",
+  "family": "random-walk-regression",
+  "questions": [
+   "iq-1172",
+   "iq-1168",
+   "iq-1169",
+   "iq-1170"
+  ],
+  "curated": false
+ },
+ {
+  "id": "regression-identities-1",
+  "title": "Core Regression Identities 1",
+  "family": "regression-identities",
+  "questions": [
+   "iq-1173",
+   "iq-1180",
+   "iq-1176",
+   "iq-1182",
+   "iq-1188"
+  ],
+  "curated": false
+ },
+ {
+  "id": "regression-identities-2",
+  "title": "Core Regression Identities 2",
+  "family": "regression-identities",
+  "questions": [
+   "iq-1174",
+   "iq-1183",
+   "iq-1177",
+   "iq-1184",
+   "iq-1189"
+  ],
+  "curated": false
+ },
+ {
+  "id": "regression-identities-3",
+  "title": "Core Regression Identities 3",
+  "family": "regression-identities",
+  "questions": [
+   "iq-1175",
+   "iq-1185",
+   "iq-1178",
+   "iq-1186",
+   "iq-1190"
+  ],
+  "curated": false
+ },
+ {
+  "id": "regression-identities-4",
+  "title": "Core Regression Identities 4",
+  "family": "regression-identities",
+  "questions": [
+   "iq-1179",
+   "iq-1192",
+   "iq-1181",
+   "iq-1187",
+   "iq-1191"
+  ],
+  "curated": false
+ },
+ {
+  "id": "ols-sampling-theory-1",
+  "title": "OLS Sampling Distributions 1",
+  "family": "ols-sampling-theory",
+  "questions": [
+   "iq-1193",
+   "iq-1204",
+   "iq-1200",
+   "iq-1202",
+   "iq-1212"
+  ],
+  "curated": false
+ },
+ {
+  "id": "ols-sampling-theory-2",
+  "title": "OLS Sampling Distributions 2",
+  "family": "ols-sampling-theory",
+  "questions": [
+   "iq-1199",
+   "iq-1210",
+   "iq-1197",
+   "iq-1205",
+   "iq-1206"
+  ],
+  "curated": false
+ },
+ {
+  "id": "ols-sampling-theory-3",
+  "title": "OLS Sampling Distributions 3",
+  "family": "ols-sampling-theory",
+  "questions": [
+   "iq-1196",
+   "iq-1211",
+   "iq-1198",
+   "iq-1208"
+  ],
+  "curated": false
+ },
+ {
+  "id": "ols-sampling-theory-4",
+  "title": "OLS Sampling Distributions 4",
+  "family": "ols-sampling-theory",
+  "questions": [
+   "iq-1201",
+   "iq-1194",
+   "iq-1207",
+   "iq-1209"
+  ],
+  "curated": false
+ },
+ {
+  "id": "ols-sampling-theory-5",
+  "title": "OLS Sampling Distributions 5",
+  "family": "ols-sampling-theory",
+  "questions": [
+   "iq-1203",
+   "iq-1195",
+   "iq-1213",
+   "iq-1214"
+  ],
+  "curated": false
+ },
+ {
+  "id": "regression-perturbations-1",
+  "title": "Perturb the Data 1",
+  "family": "regression-perturbations",
+  "questions": [
+   "iq-1224",
+   "iq-1223",
+   "iq-1215",
+   "iq-1221",
+   "iq-1228"
+  ],
+  "curated": false
+ },
+ {
+  "id": "regression-perturbations-2",
+  "title": "Perturb the Data 2",
+  "family": "regression-perturbations",
+  "questions": [
+   "iq-1225",
+   "iq-1226",
+   "iq-1217",
+   "iq-1222",
+   "iq-1216"
+  ],
+  "curated": false
+ },
+ {
+  "id": "regression-perturbations-3",
+  "title": "Perturb the Data 3",
+  "family": "regression-perturbations",
+  "questions": [
+   "iq-1220",
+   "iq-1227",
+   "iq-1219",
+   "iq-1218"
+  ],
+  "curated": false
  }
 ]

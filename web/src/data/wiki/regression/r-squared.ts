@@ -156,9 +156,32 @@ export const rSquaredWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "formula",
+          latex: "1 - R^2_{Y.XW} = \\left(1 - R^2_{Y.W}\\right)\\left(1 - R^2_{Y.X|W}\\right)",
+          caption: "Partial $R^2$ is relative to the variation $W$ leaves unexplained, so unexplained fractions multiply.",
+        },
+        {
+          kind: "callout",
+          tone: "warning",
+          title: "Noise regressors buy $R^2$",
+          text: "Under the null, $R^2 \\sim \\text{Beta}\\{(p - 1)/2, (n - p)/2\\}$, so $\\mathbb{E}(R^2) = (p - 1)/(n - 1)$. Freedman’s simulation with $n = 100$ and $p = 50$ pure-noise columns gives $R^2$ near $0.5$.",
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Sensitivity analysis in $R^2$ units",
+          text: "Cinelli and Hazlett rewrite omitted-variable bias in terms of two partial $R^2$ values, of the confounder with the outcome and with the treatment, times an estimable ratio of residual sums of squares. Unlike $\\hat{\\gamma}\\hat{\\delta}$, the partial $R^2$ values do not depend on the unknown scale of the confounder.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 10, Multiple Correlation Coefficient; Ch. 13, Perils of Overfitting" },
     { source: "James, Witten, Hastie & Tibshirani, An Introduction to Statistical Learning", locator: "§3.1.3 and §6.1.3, R² and Adjusted R²" },
     { source: "Wasserman, All of Statistics", locator: "§13.2, The Coefficient of Determination" },
     { source: "NIST/SEMATECH e-Handbook of Statistical Methods", locator: "§4.4.4, Assessing Model Adequacy" },

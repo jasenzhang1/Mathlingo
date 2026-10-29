@@ -120,9 +120,31 @@ export const partitionedRegressionWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "prose",
+          text: "FWL gives far more than the coefficient. Leverages add across the two stages: $h_{ii}$ from the long fit equals the leverage from regressing on $X_1$ plus the leverage from regressing on $\\tilde{X}_2 = (I - H_1)X_2$. The squared EHW standard error of a single $\\hat{\\beta}_2$ is a weighted sum of squared residuals, $\\sum_i \\tilde{x}_{i2}^2\\hat{\\varepsilon}_i^2/(\\sum_k \\tilde{x}_{k2}^2)^2$. Gram–Schmidt orthogonalisation, and hence the QR decomposition used by `lm`, is FWL applied one column at a time.",
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Applications",
+          text: "Fixed-effects panel regressions are FWL with unit dummies: demean within units (or two-way demean, $y_{it} - \\bar{y}_{i\\cdot} - \\bar{y}_{\\cdot t} + \\bar{y}_{\\cdot\\cdot}$) and run one small regression. The $t$-statistic of $\\hat{\\beta}_1$ is a function of the partial correlation alone, $\\hat{\\rho}/\\sqrt{(1 - \\hat{\\rho}^2)/(n - p)}$. And when $X_1$ and $X_2$ are positively correlated, $\\hat{\\beta}_1$ and $\\hat{\\beta}_2$ are negatively correlated.",
+        },
+        {
+          kind: "callout",
+          tone: "warning",
+          title: "Simpson’s paradox is FWL",
+          text: "The long coefficient is the within-$w$ slope, after residualising on $w$. When $w$ drives both $x$ and $y$, the between-group trend can dominate the raw slope and give it the opposite sign.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 7–8, The Frisch–Waugh–Lovell Theorem and its Applications" },
     { source: "Seber & Lee, Linear Regression Analysis (2nd ed.)", locator: "§3.6, Orthogonal Columns in the Regression Matrix" },
     { source: "Seber & Lee, Linear Regression Analysis (2nd ed.)", locator: "§3.7, Introducing Further Explanatory Variables" },
   ],

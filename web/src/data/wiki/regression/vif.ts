@@ -167,9 +167,26 @@ export const vifWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "formula",
+          latex: "\\frac{\\text{Var}(\\hat{\\beta}_1 \\text{ long})}{\\text{Var}(\\tilde{\\beta}_1 \\text{ short})} = \\frac{1 - R^2_{X_1.\\text{short}}}{1 - R^2_{X_1.\\text{long}}} \\ \\ge\\ 1",
+          caption: "Under homoskedasticity, adding covariates never decreases the true variance of a coefficient.",
+        },
+        {
+          kind: "callout",
+          tone: "warning",
+          title: "The estimated variance can still fall",
+          text: "The ratio of *estimated* variances has three factors: $(1 - R^2_{Y.\\text{long}})/(1 - R^2_{Y.\\text{short}}) \\le 1$, because extra covariates shrink $\\hat{\\sigma}^2$, times the variance ratio above and a degrees-of-freedom ratio, both $\\ge 1$. So a reported standard error can go down when covariates are added, even though the true variance went up.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 13, §13.2 Variance inflation factor" },
     { source: "James, Witten, Hastie & Tibshirani, An Introduction to Statistical Learning", locator: "§3.3.3, Collinearity" },
     { source: "NIST/SEMATECH e-Handbook of Statistical Methods", locator: "§4.5.2, Multicollinearity Diagnostics" },
     { source: "Banerjee & Roy, Linear Algebra and Matrix Analysis for Statistics", locator: "Ch. 12, Ill-Conditioning in the Linear Model" },

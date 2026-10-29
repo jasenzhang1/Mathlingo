@@ -16,7 +16,7 @@ There is no database copy and no external sync: to change a question, edit the J
 
 | File | What it holds |
 |---|---|
-| `questions.json` | Every question: a short **title** (the name lists show), text, answer, worked solution (`notes`), difficulty, tags, source, and its **section** and **family**. |
+| `questions.json` | Every question: a short **title** (the name lists show), text, answer, worked solution (`notes`), difficulty, tags, source, its **section** and **family**, and optionally the **lessons** that teach it. |
 | `sections.json` | **Techniques**, e.g. `234 · Combinatorics › Reflection Principle`. The id is `number-subtopic`, because some numbers are shared (230 is both "Recursion" and "Recursion (Fibonacci)"). |
 | `families.json` | **Scenarios**: the setup a candidate recognizes, e.g. *Lattice Walk*, *Dice Rolls Till Criteria*. `group` links related families. |
 | `bundles.json` | **Mock-interview chains**: an ordered list of question ids on one scenario. |
@@ -58,9 +58,47 @@ carries `numericAnswer` and is graded automatically. The candidate can type `1/1
 held for review (a duplicate, a part without an answer, one with no answer at all) and one with no
 answer in the source. Their `reviewNote` says why.
 
+**Study lessons.** A question may list `lessons`: concept ids of the lessons that teach what it
+needs. Once the answer is revealed, the card links to them under *Study* (opening in a new tab).
+They are links only and move no lesson bar. Developers edit them in the question editor.
+
 The bank was imported once from the *Quant Interview Prep* workbook. The 18 rows that had no
 section were labelled and their answers checked. One row that exactly duplicated another was
 dropped.
+
+**Regression problems (iq-1055 to iq-1172).** The 118 problems of Liu's *Quantitative Interview
+Questions and Solutions: Linear Regression* (`textbooks/interview prep/regression.pdf`; the PDF
+repeats problems 56–57 as 58–59, so 120 numbers give 118 questions). Their source reads
+`Liu, Quantitative Interview Questions (Regression) #N`.
+
+- **Labels:** they brought techniques 900–924 (topic *Regression*) and 930–934 (*Time Series
+  Regression*), and scenario groups 100–105, each with starter chains in `bundles.json`.
+- **Solutions:** the PDF's solutions were condensed into `notes`, in LaTeX like the questions.
+- **Corrections:** where a PDF solution was wrong or a part could not be answered as posed, the
+  answer was corrected and the `reviewNote` says what changed (problems 57, 65, 93, 94, 98, 104,
+  109, 116, 118, 119 and 120).
+- **Lessons:** every question links to its lessons. Nine lessons were added to cover the gaps:
+  partial correlation and suppression, Chow tests, Newey–West errors, partial least squares, and
+  LARS in Linear Models; unit-root tests, Stambaugh bias, Granger causality, and Fama–MacBeth in
+  Time Series.
+
+**Core regression identities (iq-1173 to iq-1192).** Twenty short derivations interviewers expect
+on the spot: derive $\hat{\boldsymbol{\beta}}$, $\text{tr}(\mathbf{H}) = p$, $\mathbf{H}^2 = \mathbf{H}$,
+$\mathbf{X}^T\mathbf{e} = \mathbf{0}$, SST = SSR + SSE, $R^2 = \text{Corr}(y, \hat{y})^2$,
+$\text{Cov}(\hat{\boldsymbol{\beta}}) = \sigma^2(\mathbf{X}^T\mathbf{X})^{-1}$, $\mathbb{E}[\text{SSE}] = (n - p)\sigma^2$, and so
+on. They form the *Core Regression Identities* scenario (source `Mathlingo`), with four starter chains.
+
+**OLS sampling theory and data perturbations (iq-1193 to iq-1228).** Two more `Mathlingo` scenarios.
+*OLS Sampling Distributions* (22 questions) asks for the proofs behind regression inference. They
+cover $\text{SSE}/\sigma^2 \sim \chi^2_{n-p}$, the independence of $\hat{\boldsymbol{\beta}}$ and $\hat{\sigma}^2$, the $t$ and $F$
+pivots, Cochran’s theorem for the overall $F$, $\text{Var}(\hat{\sigma}^2)$, the MSE-optimal divisor, the
+bias of $\hat{\sigma}$, studentized residuals, noncentrality, and the Wald, LR and score ordering.
+*Perturb the Data* (14 questions) asks what moves when the data change: duplicating rows (the exact
+$t$-inflation, a follow-up to iq-1122), copying one row $k$ times, duplicating a column, dropping
+an orthogonal or a correlated regressor, adding points at $\bar{x}$ or on the fitted line, deleting
+a zero-residual point, changing units, regressing $y - x$, adding the residuals as a regressor,
+and selecting on $x$ versus $y$. They come with five and three starter chains. The course carries
+matching drills in `web/src/data/items/linear-models-interview.ts`.
 
 ## Mock interviews
 
@@ -72,7 +110,7 @@ bar moved, and links to **Train** for anything missed.
 Bundles are chosen at random, with curated bundles three times as likely as the rest, and the
 last few bundles done are skipped. Candidates can also pick a scenario.
 
-Of the 181 bundles, only *Lattice walk to (5, 5)* is curated. The other 180 were generated
+Of the 216 bundles, only *Lattice walk to (5, 5)* is curated. The other 215 were generated
 per family: its questions sorted by difficulty and dealt into chains of up to five, so each chain
 still gets harder as it goes. They are a starting point, and each one should be curated in
 `/dev/bundles`.

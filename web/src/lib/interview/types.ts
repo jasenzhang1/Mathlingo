@@ -56,6 +56,11 @@ export interface InterviewQuestion {
   /** Worked solution. */
   notes: string;
   tags: string[];
+  /**
+   * Lessons (concept ids) that teach what the question needs, shown as study
+   * links once the answer is revealed. A link only: it moves no lesson bar.
+   */
+  lessons?: string[];
   source: string;
   /**
    * Set when `answer` is one number (possibly written two ways, "21/4 = 5.25"),

@@ -97,9 +97,25 @@ export const boxCoxTransformationWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "prose",
+          text: "Interpreting the log scale: in $\\log y = \\mathbf{x}^{\\top}\\boldsymbol{\\beta} + \\varepsilon$, $\\beta_j$ is a semi-elasticity, about $100\\beta_j\\%$ change in $y$ per unit of $x_j$; with $\\log x_j$ on the right too, $\\beta_j$ is an elasticity, the percentage change in $y$ per $1\\%$ change in $x_j$. The log is the $\\lambda \\to 0$ limit of $(y^{\\lambda} - 1)/\\lambda$, which is why Box–Cox defines it there.",
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Why the Jacobian is there",
+          text: "The Box–Cox likelihood includes $\\prod_i y_i^{\\lambda - 1}$, the Jacobian of $y \\mapsto g_\\lambda(y)$. It puts the likelihoods for different $\\lambda$ on the scale of the original data; without it, the criterion would reward transformations that merely shrink the data.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 16, Transformations in OLS" },
     { source: "Seber & Lee, Linear Regression Analysis (2nd ed.)", locator: "§10.5.2, Transforming the Response" },
     { source: "Seber & Lee, Linear Regression Analysis (2nd ed.)", locator: "§10.3.2, Transforming to Remove Curvature; §10.5.3, Transforming Both Sides" },
   ],

@@ -58,6 +58,8 @@ import { functionalDataExpansionItems } from "./items/functional-data-expansion"
 import { functionalDataToThirtyItems } from "./items/functional-data-to-thirty";
 import { expansionItems } from "./items/expansion";
 import { robustRegressionItems } from "./items/robust-regression";
+import { dingItems } from "./items/ding";
+import { ahtItems } from "./items/aht";
 import { linearModelsEstimationItems } from "./items/linear-models-estimation";
 import { linearModelsInferenceItems } from "./items/linear-models-inference";
 import { linearModelsLinesAndCurvesItems } from "./items/linear-models-lines-and-curves";
@@ -65,12 +67,26 @@ import { linearModelsAnovaItems } from "./items/linear-models-anova";
 import { linearModelsDiagnosticsItems } from "./items/linear-models-diagnostics";
 import { linearModelsRobustComputationItems } from "./items/linear-models-robust-computation";
 import { linearModelsSelectionItems } from "./items/linear-models-selection";
+import { linearModelsInterviewItems } from "./items/linear-models-interview";
 import { functionalDataAnalysisItems } from "./items/functional-data-analysis";
 import { financialFixedIncome1Items } from "./items/financial-fixed-income-1";
 import { financialFixedIncome2Items } from "./items/financial-fixed-income-2";
 import { financialEquitiesFundsItems } from "./items/financial-equities-funds";
 import { financialDerivativesItems } from "./items/financial-derivatives";
 import { financialSwapsCreditItems } from "./items/financial-swaps-credit";
+import { qi01Items } from "./items/qi-01";
+import { qi02Items } from "./items/qi-02";
+import { qi03Items } from "./items/qi-03";
+import { qi04Items } from "./items/qi-04";
+import { qi05Items } from "./items/qi-05";
+import { qi06Items } from "./items/qi-06";
+import { qi07Items } from "./items/qi-07";
+import { qi08Items } from "./items/qi-08";
+import { qi09Items } from "./items/qi-09";
+import { qi10Items } from "./items/qi-10";
+import { qi11Items } from "./items/qi-11";
+import { qi12Items } from "./items/qi-12";
+import { quantToolsItems } from "./items/quant-tools";
 import { stochasticCalculusFiltrationsMartingalesItems } from "./items/stochastic-calculus-filtrations-martingales";
 import { stochasticCalculusItoItems } from "./items/stochastic-calculus-ito";
 import { stochasticCalculusSdesItems } from "./items/stochastic-calculus-sdes";
@@ -121,6 +137,10 @@ import { opt03Items } from "./items/opt-03";
 import { opt04Items } from "./items/opt-04";
 import { opt05Items } from "./items/opt-05";
 import { opt06Items } from "./items/opt-06";
+import { regressionGaps01Items } from "./items/regression-gaps-01";
+import { regressionGaps02Items } from "./items/regression-gaps-02";
+import { regressionGaps03Items } from "./items/regression-gaps-03";
+import { regressionGaps04Items } from "./items/regression-gaps-04";
 import { infer01Items } from "./items/infer-01";
 import { infer02Items } from "./items/infer-02";
 import { infer03Items } from "./items/infer-03";
@@ -997,6 +1017,10 @@ export const items: Item[] = [
   ...regressionGeometryItems,
   ...regressionDiagnosticsItems,
   ...regressionSelectionItems,
+  // Peng Ding, *Linear Model and Extensions*: every chapter, see items/ding/.
+  ...dingItems,
+  // Algorithmic & High-Frequency Trading (Cartea, Jaimungal & Penalva), see items/aht/.
+  ...ahtItems,
   ...regressionGeneralizedItems,
   ...regressionExtensionsItems,
   ...robustRegressionItems,
@@ -1008,6 +1032,7 @@ export const items: Item[] = [
   ...linearModelsDiagnosticsItems,
   ...linearModelsRobustComputationItems,
   ...linearModelsSelectionItems,
+  ...linearModelsInterviewItems,
   ...timeSeriesItems,
   ...stochasticProcessesBuffupItems,
   ...stochasticProcessesRandomWalkBrownianItems,
@@ -1029,6 +1054,22 @@ export const items: Item[] = [
   ...financialEquitiesFundsItems,
   ...financialDerivativesItems,
   ...financialSwapsCreditItems,
+  // Quantitative Investing (Paleologo), and the math lessons it added to
+  // other courses (exponential smoothing, Rademacher complexity, covariance
+  // shrinkage, random matrices, the linear-quadratic regulator).
+  ...qi01Items,
+  ...qi02Items,
+  ...qi03Items,
+  ...qi04Items,
+  ...qi05Items,
+  ...qi06Items,
+  ...qi07Items,
+  ...qi08Items,
+  ...qi09Items,
+  ...qi10Items,
+  ...qi11Items,
+  ...qi12Items,
+  ...quantToolsItems,
 
   // --- Probability / Statistics / Multivariate Probability: 20-per-concept
   // expansion. Brings every concept in these three domains up to 20 live
@@ -5289,6 +5330,10 @@ export const items: Item[] = [
   ...opt04Items,
   ...opt05Items,
   ...opt06Items,
+  ...regressionGaps01Items,
+  ...regressionGaps02Items,
+  ...regressionGaps03Items,
+  ...regressionGaps04Items,
   ...infer01Items,
   ...infer02Items,
   ...infer03Items,

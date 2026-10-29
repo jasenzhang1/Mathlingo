@@ -160,9 +160,30 @@ export const lassoWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "table",
+          headers: ["Penalty (orthonormal $X$)","Coordinate $j$"],
+          rows: [
+            ["Ridge, $\\lambda\\lVert\\mathbf{b}\\rVert_2^2$","$\\hat{\\beta}_j/(1 + \\lambda)$: proportional shrinkage"],
+            ["Lasso, $\\lambda\\lVert\\mathbf{b}\\rVert_1$","$\\text{sign}(\\hat{\\beta}_j)(|\\hat{\\beta}_j| - \\lambda/2)_{+}$: soft thresholding"],
+            ["Best subset, $\\lambda\\lVert\\mathbf{b}\\rVert_0$","$\\hat{\\beta}_j\\,\\mathbb{1}(|\\hat{\\beta}_j| > \\sqrt{\\lambda})$: hard thresholding"],
+          ],
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Facts about the solution",
+          text: "Lasso solutions may be non-unique when $p > n$, but all of them give the same fitted values, and convex combinations of solutions are solutions. Writing $\\mathbf{b} = \\mathbf{u} \\circ \\mathbf{v}$ with penalty $\\lambda(\\lVert\\mathbf{u}\\rVert^2 + \\lVert\\mathbf{v}\\rVert^2)/2$ recovers the $\\ell_1$ penalty (since $\\min_{ac = b}(a^2 + c^2)/2 = |b|$) and turns the lasso into alternating ridge regressions (Hoff, 2017).",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 15, Lasso" },
     { source: "Hastie, Tibshirani & Friedman, The Elements of Statistical Learning", locator: "§3.4.2–3.4.3, The Lasso and Least Angle Regression" },
     { source: "James, Witten, Hastie & Tibshirani, An Introduction to Statistical Learning", locator: "§6.2.2, The Lasso" },
     { source: "Bishop, Pattern Recognition and Machine Learning", locator: "§3.1.4, Regularized Least Squares" },

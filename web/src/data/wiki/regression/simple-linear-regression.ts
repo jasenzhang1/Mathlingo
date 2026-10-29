@@ -295,9 +295,26 @@ export const simpleLinearRegressionWiki: WikiArticle = {
         },
       ],
     },
+    {
+      heading: "Further results from Ding",
+      blocks: [
+        {
+          kind: "formula",
+          latex: "\\hat{\\beta} = \\sum_{i < j} w_{ij}\\,\\frac{y_i - y_j}{x_i - x_j}, \\qquad w_{ij} = \\frac{(x_i - x_j)^2}{\\sum_{k < l}(x_k - x_l)^2}",
+          caption: "The OLS slope is a weighted average of every pairwise slope, weighted by the squared horizontal distance between the pair.",
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Regression versus “no regression”",
+          text: "In standardised form OLS reads $(\\hat{y} - \\bar{y})/\\hat{\\sigma}_y = \\hat{\\rho}_{xy}(x - \\bar{x})/\\hat{\\sigma}_x$. Woolley’s area-minimising line drops the factor $\\hat{\\rho}_{xy}$, giving slope $\\hat{\\sigma}_y/\\hat{\\sigma}_x$: it treats $x$ and $y$ symmetrically and never pulls predictions toward the mean. The shrinkage factor $|\\hat{\\rho}_{xy}| < 1$ is exactly what makes least squares a *regression*.",
+        },
+      ],
+    },
   ],
 
   references: [
+    { source: "Peng Ding, Linear Model and Extensions", locator: "Ch. 2, Ordinary Least Squares with a Univariate Covariate" },
     { source: "James, Witten, Hastie & Tibshirani, An Introduction to Statistical Learning", locator: "§3.1, Simple Linear Regression" },
     { source: "Wasserman, All of Statistics", locator: "§13.1–13.2, Simple Linear Regression and Least Squares" },
     { source: "Casella & Berger, Statistical Inference (2nd ed.)", locator: "§11.3, Simple Linear Regression" },
