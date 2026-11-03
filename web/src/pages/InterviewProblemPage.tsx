@@ -71,27 +71,33 @@ function Problem() {
   const family = q.family ? familyById.get(q.family) : undefined;
   const locked = !full && !isFreeQuestion(q);
   const title = problemTitle(q);
+  const heading = `${problemNumber(q)}. ${title.length > 80 ? `${title.slice(0, 80).trimEnd()}…` : title}`;
+  const metaLine = (
+    <>
+      <DifficultyTag question={q} stats={stats} />
+      {stats && stats.students > 0 && (
+        <span>
+          {stats.solved.toLocaleString()} / {stats.students.toLocaleString()} students got it right
+        </span>
+      )}
+      {family && <span className="rounded-full bg-[var(--panel)] px-2 py-0.5 text-xs">{family.name}</span>}
+      {locked && <LockIcon />}
+    </>
+  );
 
   return (
     <div className="mx-auto max-w-3xl">
       {back}
-      <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-        <h1 className="font-display min-w-0 text-2xl text-[var(--ink)]">
-          {problemNumber(q)}. {title.length > 80 ? `${title.slice(0, 80).trimEnd()}…` : title}
-        </h1>
-      </div>
-      <p className="font-body mt-1 flex flex-wrap items-center gap-3 text-sm text-[var(--ink-soft)]">
-        <DifficultyTag question={q} stats={stats} />
-        {stats && stats.students > 0 && (
-          <span>
-            {stats.solved.toLocaleString()} / {stats.students.toLocaleString()} students got it right
-          </span>
-        )}
-        {family && <span className="rounded-full bg-[var(--panel)] px-2 py-0.5 text-xs">{family.name}</span>}
-        {locked && <LockIcon />}
-      </p>
+      {(locked || result !== null) && (
+        <>
+          <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h1 className="font-display min-w-0 text-2xl text-[var(--ink)]">{heading}</h1>
+          </div>
+          <p className="font-body mt-1 flex flex-wrap items-center gap-3 text-sm text-[var(--ink-soft)]">{metaLine}</p>
+        </>
+      )}
 
-      <div className="mt-6">
+      <div className={locked || result !== null ? "mt-6" : "mt-3"}>
         {locked ? (
           <div className="max-w-xl">
             <p className="font-body mb-4 text-[var(--ink-soft)]">This question comes with Interview Prep.</p>
@@ -104,6 +110,8 @@ function Problem() {
               <QuestionCard
                 key={q.id}
                 question={q}
+                title={heading}
+                meta={metaLine}
                 onResult={(r) => {
                   record({ question: q, correctness: r.correctness, seconds: r.seconds, mode: "problems" });
                   noteResult(q.id, r.correctness);

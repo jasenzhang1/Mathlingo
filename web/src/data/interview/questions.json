@@ -590,7 +590,7 @@
    "Taylor Expansion"
   ],
   "source": "Quantprof Hard Probability | Quantprof Even Ratio",
-  "numericAnswer": 0.347
+  "numericAnswer": 0.34657359027997264
  },
  {
   "id": "iq-0039",
@@ -898,6 +898,11 @@
   "question": "There are $9$ fair coins and $1$ double-headed coin in a box. You randomly select one coin and flip it, and it comes up heads. What is the probability that you picked the double-headed coin?",
   "answer": "$\\tfrac{2}{11}$",
   "notes": "Bayes rule definition",
+  "hints": [
+   "Seeing heads makes the double-headed coin more likely. Which rule updates a prior on evidence?",
+   "Prior: $P(\\text{double}) = \\tfrac{1}{10}$. Likelihood of heads: $1$ for the double-headed coin, $\\tfrac{1}{2}$ for a fair one.",
+   "$P(\\text{double} \\mid H) = \\dfrac{\\tfrac{1}{10} \\cdot 1}{\\tfrac{1}{10} \\cdot 1 + \\tfrac{9}{10} \\cdot \\tfrac{1}{2}}$."
+  ],
   "tags": [
    "Bayes Rule"
   ],
@@ -1007,7 +1012,7 @@
    "Single variable optimization"
   ],
   "source": "Quantprof Exactly 2 Consecutive Heads",
-  "numericAnswer": 0.634
+  "numericAnswer": 0.6339745962155614
  },
  {
   "id": "iq-0067",
@@ -1140,6 +1145,11 @@
   "question": "In a class of $23$ students, each born in the same year with $365$ days, what is the probability that at least two students share the same date of birth?",
   "answer": "$1 - \\dfrac{365!}{342!} \\cdot \\dfrac{1}{365^{23}}$\n$= 0.507$",
   "notes": "Find the probability that nobody share a common birthday:\n(365/365) * (364/365) * (363/365) * ... * (343/365)\n\nThen take the complement",
+  "hints": [
+   "“At least two share” has many cases. What is its complement?",
+   "Find the probability that all $23$ birthdays are different by seating the students one at a time.",
+   "The $k$-th student must avoid $k - 1$ dates already taken: $P(\\text{all different}) = \\dfrac{365}{365} \\cdot \\dfrac{364}{365} \\cdots \\dfrac{343}{365}$. Subtract this from $1$."
+  ],
   "tags": [
    "Complimentary Counting"
   ],
@@ -1157,7 +1167,8 @@
   "tags": [
    "Conditional Expectation"
   ],
-  "source": ""
+  "source": "",
+  "expressionAnswer": "s/2"
  },
  {
   "id": "iq-0077",
@@ -1197,6 +1208,11 @@
   "question": "You are given three bags of fruits. One contains apples, one contains oranges, and one contains a mix of apples and oranges. Each bag has a label on it (apple, orange, or mix). However, you know that all bags are mislabeled. Develop a strategy to identify the bags by taking out a minimum number of fruits. You can take any number of fruits from any bag.",
   "answer": "$1$. Take from the bag labeled mixed.",
   "notes": "If the bag labeled mix has an apple, it's the apple bag, and by process of elimination the apple bag is orange, and orange is mixed. \n\nAnd corresponding situation happens if the bag labeled mix has an orange.",
+  "hints": [
+   "Every label is wrong. Which bag’s label tells you the most about what it can’t be?",
+   "The bag labelled “mix” is not the mix, so it is pure apples or pure oranges. How many fruits from it do you need to tell which?",
+   "Once you know what the “mix” bag really holds, the other two bags are forced, because their labels must also be wrong."
+  ],
   "tags": [
    "Brainteaser",
    "Process of Elimination",
@@ -1213,6 +1229,11 @@
   "question": "We have two ropes that take $60$ minutes to burn completely if lit from one end. How can we measure $15$, $30$, $45$, and $60$ minutes?",
   "answer": "Answer in notes",
   "notes": "60 mins: light one end and wait\n30 mins: at the beginning, light both ends of one rope and wait.\n45 mins: light two ends of one rope and one end of the second rope all at the beginning. Once the first rope dies, 30 minutes have passed, and then light the remaining end of the second rope.\n15 mins: start the timer as soon as you light the remaining end of the second rope",
+  "hints": [
+   "A rope burns unevenly, so you can’t cut it at the halfway point. What happens if you light it at both ends?",
+   "Lit at both ends, a $60$-minute rope burns out in exactly $30$ minutes, wherever the two flames meet.",
+   "Light rope A at both ends and rope B at one end at the same time. When A burns out, $30$ minutes have passed and B has $30$ minutes left. What happens if you now light B’s other end?"
+  ],
   "tags": [
    "Brainteaser"
   ],
@@ -1398,7 +1419,8 @@
    "WLOG"
   ],
   "source": "Regular Question",
-  "numericAnswer": 0.0052610246895961185
+  "numericAnswer": 0.0052610246895961185,
+  "numericPrecision": 4
  },
  {
   "id": "iq-0093",
@@ -1807,7 +1829,7 @@
    "Random Points on a Segment"
   ],
   "source": "",
-  "numericAnswer": 1.515
+  "numericAnswer": 1.5149881036421156
  },
  {
   "id": "iq-0119",
@@ -2011,7 +2033,8 @@
    "Linearity of Expectation",
    "Indicator Variables"
   ],
-  "source": "Quant Prof Hard Probability"
+  "source": "Quant Prof Hard Probability",
+  "expressionAnswer": "(C(n,2) - n)/3"
  },
  {
   "id": "iq-0132",
@@ -2271,6 +2294,7 @@
    "Mutually Exclusive"
   ],
   "source": "Quantprof 20",
+  "expressionAnswer": "N/2^(N-1)",
   "instructional": "Yes"
  },
  {
@@ -2559,7 +2583,8 @@
   "notes": "Observation 1: all ants finish at an ant's starting position via the flag analogy.\nObservation 2: the ants have angular momementum depending on whether the majority of them go CW or CCW. \n\nSo the answer is when the angular momentum is 0 or +24 or -24, which is when they all march in a circle then end in their original spot.\n(24c0) + (24c12) + (24c24)",
   "tags": [],
   "source": "",
-  "numericAnswer": 0.161
+  "numericAnswer": 0.16118037700653076,
+  "numericPrecision": 3
  },
  {
   "id": "iq-0168",
@@ -2762,6 +2787,11 @@
   "question": "Alice and Bob each toss their own fair coin repeatedly until each of them obtains heads for the first time. What is the probability that Alice obtains her first heads in strictly fewer tosses than Bob?",
   "answer": "$\\tfrac{1}{3}$",
   "notes": "Recursion happens when both of them flip T.\np = 1/4 + 1/4 * p",
+  "hints": [
+   "Look at the first round, where both flip once. Which outcomes decide the question, and which reset it?",
+   "Alice wins in round one with H vs T (probability $\\tfrac{1}{4}$). If both flip T (probability $\\tfrac{1}{4}$), the game restarts.",
+   "So $p = \\tfrac{1}{4} + \\tfrac{1}{4}p$. Alternatively, by symmetry $P(A < B) = P(B < A)$, and $P(A = B) = \\tfrac{1}{3}$."
+  ],
   "tags": [
    "Square 1 Recursion"
   ],
@@ -2850,6 +2880,11 @@
   "question": "The casino has a game where you pay $\\$30$ to flip a biased coin until you see HH in the sequence. Your payout is the number of tosses it took to get there. What is the maximum probability of getting H on the biased coin so that this game is fair?",
   "answer": "$\\tfrac{1}{5}$",
   "notes": "Expected profits is just the markov chain problem of expected number of rolls till HH. \n\nx = q*(1+x) + pq * (2+x) + pp(2)\n\nLet x = 30, q = 1-p, we solve and get p = 1/5",
+  "hints": [
+   "The game is fair when the expected payout, the expected number of tosses until HH, equals $\\$30$. Find that expectation as a function of $p$.",
+   "Condition on the first tosses. A T restarts the game; HT restarts it after two tosses; HH ends it.",
+   "With $x$ the expected number of tosses and $q = 1 - p$: $x = q(1 + x) + pq(2 + x) + 2p^2$. Set $x = 30$ and solve for $p$."
+  ],
   "tags": [
    "Markov Chain",
    "Going First Recursion"
@@ -2886,7 +2921,8 @@
    "Infinite Geometric Series",
    "Recursion"
   ],
-  "source": ""
+  "source": "",
+  "expressionAnswer": "1/(2-p)"
  },
  {
   "id": "iq-0190",
@@ -2957,7 +2993,8 @@
   "notes": "We have a desired P(winning) = 0.29 so that the expected profits is 0 for the player.\n\nSo now, we want to find p such that P(HH appears) = 0.29. This is equivalent to P(HH doesn't appear) = 0.71\n\nLet A_n = probability that after n flips, we have seen no HH and we recently got H\nLet B_n = probability that after n flips, we have seen no HH and we recently got T\n\nA_{i+1} = B_i * p\nB_{i+1} = (A_i + B_i) * q\n\nWant to solve for p such that A_29 + B_29 = 0.71.\n\nThrough complicated recursive solver, we get p = 0.1156",
   "tags": [],
   "source": "",
-  "numericAnswer": 0.1156
+  "numericAnswer": 0.1156,
+  "numericPrecision": 4
  },
  {
   "id": "iq-0195",
@@ -3278,7 +3315,8 @@
   "tags": [
    "Binomial RV"
   ],
-  "source": "Quantprof Easy Probability"
+  "source": "Quantprof Easy Probability",
+  "expressionAnswer": "n*(n-1)/4"
  },
  {
   "id": "iq-0216",
@@ -3540,6 +3578,11 @@
   "question": "Expected number of coin flips until you see HH? HT?",
   "answer": "$6$ and $4$ respectively.",
   "notes": "ABRACADABRA rule",
+  "hints": [
+   "Set up states for how much of the pattern you have matched so far.",
+   "For HT, a wrong flip after H doesn’t lose progress: after H, a T finishes and an H leaves you at H. For HH, a T after H sends you back to the start.",
+   "Solve the state equations, or use the overlap (ABRACADABRA) rule: the expected waiting time is $\\sum 2^k$ over every $k$ where the length-$k$ prefix equals the length-$k$ suffix."
+  ],
   "tags": [
    "Recursion",
    "ABRACADABRA",
@@ -3894,7 +3937,7 @@
    "Linearity of Expectation"
   ],
   "source": "",
-  "numericAnswer": 3.95
+  "numericAnswer": 3.9514239999999994
  },
  {
   "id": "iq-0257",
@@ -3970,7 +4013,8 @@
    "Recursion"
   ],
   "source": "",
-  "numericAnswer": 4.5
+  "numericAnswer": 4.499205338329423,
+  "numericPrecision": 2
  },
  {
   "id": "iq-0262",
@@ -3986,7 +4030,8 @@
    "Recursion"
   ],
   "source": "",
-  "numericAnswer": 2.93
+  "numericAnswer": 2.9289682539682538,
+  "numericPrecision": 2
  },
  {
   "id": "iq-0263",
@@ -3998,7 +4043,8 @@
   "answer": "$f(x) = 2x$",
   "notes": "P(X < x) = pi x^2 / pi\nP(X = x) = 2x",
   "tags": [],
-  "source": ""
+  "source": "",
+  "expressionAnswer": "2*x"
  },
  {
   "id": "iq-0264",
@@ -4012,7 +4058,8 @@
   "tags": [
    "Order Statistics"
   ],
-  "source": ""
+  "source": "",
+  "expressionAnswer": "10*(1-y)^9"
  },
  {
   "id": "iq-0265",
@@ -4038,6 +4085,11 @@
   "question": "The probability of having a disease is $\\tfrac{1}{100}$. The probability of testing positive if you have it is $0.9$. The probability of testing positive if you don’t have it is $0.05$. So if you test positive, what is the probability you actually have it?",
   "answer": "$\\tfrac{2}{13}$",
   "notes": "Bayes rule definition",
+  "hints": [
+   "You want $P(\\text{disease} \\mid +)$, but you are given $P(+ \\mid \\text{disease})$. Which rule flips a conditional?",
+   "By Bayes’ rule, $P(D \\mid +) = \\dfrac{P(+ \\mid D)P(D)}{P(+)}$. Find $P(+)$ by the law of total probability over $D$ and not $D$.",
+   "$P(+) = 0.9 \\cdot 0.01 + 0.05 \\cdot 0.99$. Divide $0.9 \\cdot 0.01$ by this."
+  ],
   "tags": [
    "Bayes Rule"
   ],
@@ -4163,7 +4215,8 @@
   "tags": [
    "PIE"
   ],
-  "source": "Quantprof Medium Probability"
+  "source": "Quantprof Medium Probability",
+  "expressionAnswer": "(6^n - 6*5^n + 15*4^n - 20*3^n + 15*2^n - 6)/6^n"
  },
  {
   "id": "iq-0275",
@@ -4824,7 +4877,8 @@
    "Induction",
    "Finite Geometric Sum"
   ],
-  "source": "Quantprof At Least Six II"
+  "source": "Quantprof At Least Six II",
+  "expressionAnswer": "((n+1)/n)^(n-1)"
  },
  {
   "id": "iq-0318",
@@ -5754,7 +5808,8 @@
    "Linearity of Expectation"
   ],
   "source": "Quantprof Drunk Passenger II",
-  "numericAnswer": 94.82
+  "numericAnswer": 94.82262248236037,
+  "numericPrecision": 2
  },
  {
   "id": "iq-0380",
@@ -5781,6 +5836,11 @@
   "question": "You are given two identical eggs and are situated in a building with $100$ floors. An egg will break if dropped from any floor equal to or above a certain unknown threshold floor $X$. Otherwise, it will remain intact. What is the minimum number of drops needed to find the threshold floor $X$ in the worst-case scenario?",
   "answer": "$14$",
   "notes": "Strategy is to drop at the N-th floor, and if it is still unbroken, drop at N+1 more floors higher. Keep increasing by 1 less floor, because once it does break, we have to go up a floor one by one. This strategy keeps the worst case scenario always at N total drops.\n\nQuestion is now, find min N such that 1 + ... + N >= 100, and N = 14.",
+  "hints": [
+   "With one egg left, you must test floor by floor. How does that limit where you drop the first egg?",
+   "If the worst case is $N$ drops, the first egg should go at floor $N$. If it survives, the next drop should be $N - 1$ floors higher, and so on.",
+   "Find the smallest $N$ with $N + (N - 1) + \\cdots + 1 \\ge 100$, that is $\\tfrac{N(N + 1)}{2} \\ge 100$."
+  ],
   "tags": [
    "Minimax",
    "Fundamental Green Book"
@@ -7245,7 +7305,8 @@
   "tags": [
    "Reflection Principle"
   ],
-  "source": "Green Book"
+  "source": "Green Book",
+  "expressionAnswer": "1/(n+1)"
  },
  {
   "id": "iq-0478",
@@ -7821,7 +7882,7 @@
    "Conditional Expectation"
   ],
   "source": "",
-  "numericAnswer": 0.798
+  "numericAnswer": 0.7978845608028654
  },
  {
   "id": "iq-0516",
@@ -8490,7 +8551,7 @@
    "Geometric Probability"
   ],
   "source": "",
-  "numericAnswer": 0.35700000000000004
+  "numericAnswer": 0.35730091830127586
  },
  {
   "id": "iq-0559",
@@ -8822,7 +8883,8 @@
   "tags": [
    "Random Walk"
   ],
-  "source": ""
+  "source": "",
+  "expressionAnswer": "(n-1)^2"
  },
  {
   "id": "iq-0580",
@@ -9055,7 +9117,7 @@
    "Tail Integral"
   ],
   "source": "Quantprof Nearest Diagonal II",
-  "numericAnswer": 0.14907
+  "numericAnswer": 0.14907119849998599
  },
  {
   "id": "iq-0595",
@@ -9478,7 +9540,8 @@
   "tags": [
    "Order Statistics"
   ],
-  "source": ""
+  "source": "",
+  "expressionAnswer": "n/(n+1)"
  },
  {
   "id": "iq-0624",
@@ -11140,7 +11203,7 @@
   "notes": "P(T = t) is calculated as player A having 20 pts, player B having t-1 - 20 pts, then player A winning the t-th point. Or, vice versa for player B. Thus:\n\nP(T = t) = (t-1 choose 20) * (p^21 q^{t-21} + q^21 p^{t-21})\n\nThen get E[T] = sum_{t=21}^41 t*P(T = t)\n\nWe get about 29.9856",
   "tags": [],
   "source": "",
-  "numericAnswer": 29.9856
+  "numericAnswer": 29.985555206101548
  },
  {
   "id": "iq-0733",
@@ -11293,7 +11356,8 @@
   "answer": "$\\dfrac{h}{3}$",
   "notes": "P(X > x) = [(h-x) / h]^2\nint_0^h P(X > x) dx = E[X]",
   "tags": [],
-  "source": ""
+  "source": "",
+  "expressionAnswer": "h/3"
  },
  {
   "id": "iq-0743",
@@ -11521,7 +11585,8 @@
    "Linearity of Expectation",
    "Indicator Variables"
   ],
-  "source": ""
+  "source": "",
+  "expressionAnswer": "n*(n-1)/4"
  },
  {
   "id": "iq-0758",
@@ -11941,6 +12006,11 @@
   "question": "A king has $10$ servants who are tasked with determining which of the bottles of wine is poisoned. It is known that exactly one of the bottles is poisonous. If a servant drinks from the poisoned bottle, they will die within one month. Otherwise, they will remain unharmed. The servants have agreed to participate in this wine tasting process for one month. What is the maximum number of bottles $n$ that can be tested while ensuring the king can accurately identify the poisoned one?",
   "answer": "$2^{10} = 1024$",
   "notes": "Allocate drinks in a way such that every combination of deaths implies one bottle is poisoned. \nAccording to a bottle number's binary representation, give it to the servants' corresponding place value. \nSo for bottle 0, nobody drinks it. And for bottle 1023, all 10 servants drink it.",
+  "hints": [
+   "After a month each servant is either dead or alive. How many different outcomes can $10$ servants show?",
+   "There are $2^{10}$ patterns of deaths. If each bottle produces a different pattern, the poisoned bottle can be read off.",
+   "Number the bottles in binary. Servant $k$ drinks from every bottle whose $k$-th bit is $1$."
+  ],
   "tags": [
    "Binary Representation"
   ],
@@ -13436,7 +13506,8 @@
    "Reflection Principle",
    "Catalan Numbers"
   ],
-  "source": "Fundamental Problem"
+  "source": "Fundamental Problem",
+  "expressionAnswer": "1/(n+1)"
  },
  {
   "id": "iq-0897",
@@ -13451,7 +13522,8 @@
    "Simple Random Walk",
    "Reflection Principle"
   ],
-  "source": "Fundamental Problem"
+  "source": "Fundamental Problem",
+  "expressionAnswer": "1/(n+1)"
  },
  {
   "id": "iq-0898",
@@ -13476,7 +13548,8 @@
   "answer": "$m^2\\left(\\dfrac{m-1}{m}\\right)^m$",
   "notes": "Step 1: notice that each type can be treated as a separate process. So for one type, find the expected number of discards.\n\nStep 2: the chance that a bucket doesn't receive a ball of type A = [(m-1) / (m)]^m. And from linearity of expectation, this means m * [(m-1) / (m)]^m buckets don't receive balls, which corresponds exactly to the number of discards.\n\nStep 3: zoom out and there are m colors, so multiply this by m to get m^2 [(m-1) / (m)]^m",
   "tags": [],
-  "source": ""
+  "source": "",
+  "expressionAnswer": "m^2*((m-1)/m)^m"
  },
  {
   "id": "iq-0900",
@@ -14043,7 +14116,8 @@
   "tags": [
    "Kac's Lemma"
   ],
-  "source": "Fundamental Problem"
+  "source": "Fundamental Problem",
+  "expressionAnswer": "(p+q)/q"
  },
  {
   "id": "iq-0942",
@@ -14466,7 +14540,8 @@
   "notes": "",
   "tags": [],
   "source": "Quantprof Youtube",
-  "numericAnswer": 4.655
+  "numericAnswer": 4.655,
+  "numericPrecision": 3
  },
  {
   "id": "iq-0972",
@@ -14507,7 +14582,8 @@
   "answer": "$P(X = k) = \\left(\\dfrac{k}{10}\\right)^5 - \\left(\\dfrac{k-1}{10}\\right)^5$",
   "notes": "Inclusion exclusion",
   "tags": [],
-  "source": ""
+  "source": "",
+  "expressionAnswer": "(k/10)^5 - ((k-1)/10)^5"
  },
  {
   "id": "iq-0975",
@@ -14522,7 +14598,8 @@
    "Variance",
    "Binomial Distribution"
   ],
-  "source": ""
+  "source": "",
+  "expressionAnswer": "(pi/4)*(1 - pi/4)/N"
  },
  {
   "id": "iq-0976",
@@ -14590,7 +14667,7 @@
   "notes": "Transformation of random variables\nU = X+Y/sqrt(2)\nV = X-Y/sqrt(2)\n\nX | X > Y ---> (U+V)/sqrt(2) | U > 0\n\nThen use conditional expectation of E[X | X > 0]",
   "tags": [],
   "source": "",
-  "numericAnswer": 0.564
+  "numericAnswer": 0.5641895835477563
  },
  {
   "id": "iq-0981",
@@ -14604,7 +14681,8 @@
   "tags": [
    "Expectation Variance Formula"
   ],
-  "source": ""
+  "source": "",
+  "expressionAnswer": "(n^2 - n)/4"
  },
  {
   "id": "iq-0982",
@@ -14674,7 +14752,7 @@
    "Law of total probability"
   ],
   "source": "",
-  "numericAnswer": 0.847
+  "numericAnswer": 0.8465735902799727
  },
  {
   "id": "iq-0987",
@@ -18332,7 +18410,8 @@
    "hat-matrix",
    "geometric-interpretation-of-ols"
   ],
-  "source": "Mathlingo"
+  "source": "Mathlingo",
+  "expressionAnswer": "p"
  },
  {
   "id": "iq-1175",
@@ -18352,7 +18431,8 @@
    "hat-matrix",
    "geometric-interpretation-of-ols"
   ],
-  "source": "Mathlingo"
+  "source": "Mathlingo",
+  "expressionAnswer": "n - p"
  },
  {
   "id": "iq-1176",
@@ -18693,7 +18773,8 @@
   "lessons": [
    "hat-matrix"
   ],
-  "source": "Mathlingo"
+  "source": "Mathlingo",
+  "expressionAnswer": "p/n"
  },
  {
   "id": "iq-1193",
@@ -18840,7 +18921,7 @@
    "general-linear-hypothesis"
   ],
   "source": "Mathlingo",
-  "numericAnswer": 4.821
+  "numericAnswer": 4.821428571428571
  },
  {
   "id": "iq-1200",
@@ -18861,7 +18942,7 @@
    "distribution-of-beta-hat"
   ],
   "source": "Mathlingo",
-  "numericAnswer": 0.945
+  "numericAnswer": 0.9449111825230682
  },
  {
   "id": "iq-1201",
@@ -18923,7 +19004,7 @@
    "confidence-interval"
   ],
   "source": "Mathlingo",
-  "numericAnswer": 4.17
+  "numericAnswer": 4.170576582212491
  },
  {
   "id": "iq-1204",
@@ -18943,7 +19024,7 @@
    "general-linear-hypothesis"
   ],
   "source": "Mathlingo",
-  "numericAnswer": 1.111
+  "numericAnswer": 1.1111111111111112
  },
  {
   "id": "iq-1205",
@@ -19072,7 +19153,8 @@
    "distribution-of-beta-hat"
   ],
   "source": "Mathlingo",
-  "numericAnswer": -0.9487
+  "numericAnswer": -0.9486832980505138,
+  "numericPrecision": 4
  },
  {
   "id": "iq-1211",
@@ -19093,7 +19175,8 @@
    "simple-linear-regression"
   ],
   "source": "Mathlingo",
-  "numericAnswer": 2.236
+  "numericAnswer": 2.23606797749979,
+  "numericPrecision": 3
  },
  {
   "id": "iq-1212",
@@ -19135,7 +19218,8 @@
    "distribution-of-beta-hat"
   ],
   "source": "Mathlingo",
-  "numericAnswer": 0.94
+  "numericAnswer": 0.9399856029866253,
+  "numericPrecision": 4
  },
  {
   "id": "iq-1214",
@@ -19157,7 +19241,8 @@
    "distribution-of-beta-hat"
   ],
   "source": "Mathlingo",
-  "numericAnswer": 0.9285
+  "numericAnswer": 0.9284766908852593,
+  "numericPrecision": 4
  },
  {
   "id": "iq-1215",
@@ -19179,7 +19264,8 @@
    "sandwich-estimator"
   ],
   "source": "Mathlingo",
-  "numericAnswer": 1.453
+  "numericAnswer": 1.4529663145135578,
+  "numericPrecision": 4
  },
  {
   "id": "iq-1216",
@@ -19243,7 +19329,8 @@
    "partitioned-regression"
   ],
   "source": "Mathlingo",
-  "numericAnswer": 0.851
+  "numericAnswer": 0.8509629433967631,
+  "numericPrecision": 3
  },
  {
   "id": "iq-1219",
@@ -19286,7 +19373,8 @@
    "outliers-leverage-influence"
   ],
   "source": "Mathlingo",
-  "numericAnswer": 0.4545
+  "numericAnswer": 0.45454545454545453,
+  "numericPrecision": 4
  },
  {
   "id": "iq-1221",
@@ -19328,7 +19416,8 @@
    "ols-properties"
   ],
   "source": "Mathlingo",
-  "numericAnswer": 1.0526
+  "numericAnswer": 1.0526315789473684,
+  "numericPrecision": 4
  },
  {
   "id": "iq-1223",

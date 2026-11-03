@@ -4,6 +4,11 @@
  * `5!`. Anything else returns null, and the question falls back to the
  * candidate grading themselves against the revealed answer.
  *
+ * With an `env`, letters name variables, so an algebraic answer such as
+ * `[(n+1)/n]^(n-1)`, `n(n-1)/2` or `2np` can be evaluated at sample points
+ * (see `expressionMatches` in scoring.ts). Square and curly brackets read as
+ * parentheses, and a run of variable letters (`np`) is their product.
+ *
  * A small recursive-descent parser rather than `eval`/`Function`: the input is
  * arbitrary user text, and the grammar interviewers actually accept is tiny.
  */
@@ -12,7 +17,13 @@ type Tok = { kind: "num"; value: number } | { kind: "id"; value: string } | { ki
 
 function tokenize(src: string): Tok[] | null {
   const out: Tok[] = [];
-  const s = src.replace(/\s+/g, "").replace(/×|·/g, "*").replace(/−/g, "-").replace(/,(?=\d{3}\b)/g, "");
+  const s = src
+    .replace(/\s+/g, "")
+    .replace(/×|·|⋅/g, "*")
+    .replace(/−|–/g, "-")
+    .replace(/[[{]/g, "(")
+    .replace(/[\]}]/g, ")")
+    .replace(/,(?=\d{3}\b)/g, "");
   let i = 0;
   while (i < s.length) {
     const rest = s.slice(i);
@@ -64,7 +75,29 @@ const FUNCS: Record<string, (...xs: number[]) => number> = {
 };
 const CONSTS: Record<string, number> = { pi: Math.PI, e: Math.E };
 
-export function evaluate(src: string): number | null {
+/**
+ * The variables an expression uses: every identifier that isn't a function
+ * call or a constant, with runs like `np` split into single letters. Keys
+ * must write a product with a function letter explicitly (`p*(1-p)`, not
+ * `p(1-p)`), or `p(` reads as the permutation function.
+ */
+export function variablesOf(src: string): string[] | null {
+  const toks = tokenize(src);
+  if (!toks) return null;
+  const vars = new Set<string>();
+  toks.forEach((t, i) => {
+    if (t.kind !== "id") return;
+    const next = toks[i + 1];
+    if (t.value in FUNCS && next?.kind === "op" && next.value === "(") return;
+    // "10c5": a choose written between two numbers.
+    if ((t.value === "c" || t.value === "choose") && toks[i - 1]?.kind === "num" && next?.kind === "num") return;
+    if (t.value in CONSTS) return;
+    for (const ch of t.value) vars.add(ch);
+  });
+  return [...vars].sort();
+}
+
+export function evaluate(src: string, env?: Record<string, number>): number | null {
   const tokenized = tokenize(src);
   if (!tokenized || tokenized.length === 0) return null;
   const toks: Tok[] = tokenized;
@@ -143,6 +176,13 @@ export function evaluate(src: string): number | null {
     }
     if (t.kind === "id") {
       pos++;
+      if (env) {
+        // A variable, or a run of variables ("np") read as their product.
+        if (t.value in env) return env[t.value];
+        if (!(t.value in FUNCS) && !(t.value in CONSTS) && [...t.value].every((ch) => ch in env)) {
+          return [...t.value].reduce((acc, ch) => acc * env[ch], 1);
+        }
+      }
       if (t.value in CONSTS && !isOp("(")) return CONSTS[t.value];
       const fn = FUNCS[t.value] ?? fail();
       if (!isOp("(")) fail();

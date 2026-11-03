@@ -1,4 +1,4 @@
-import { formatProficiency, roundProficiency } from "../../lib/assessment/formatProficiency";
+import { formatDelta, formatProficiency, proficiencyDelta, roundProficiency } from "../../lib/assessment/formatProficiency";
 import {
   MASTERY_THRESHOLD,
   PROFICIENCY_THRESHOLD,
@@ -12,12 +12,28 @@ const TIER_MARKS = [
   { label: "Mastered", value: MASTERY_THRESHOLD },
 ];
 
-/** The bar’s fill colour for each tier, so crossing a threshold is visible at a glance. */
-function fillColor(value: number): string {
-  if (value >= MASTERY_THRESHOLD) return "#d4a017"; // gold — mastered
-  if (value >= PROFICIENCY_THRESHOLD) return "#2563eb"; // blue — proficient
-  if (value >= SATISFACTION_THRESHOLD) return "var(--teal)"; // teal — satisfactory, unlocked
-  return "var(--accent)";
+/**
+ * The fill is one gradient laid across the whole track and revealed up to the
+ * current value: violet at 0, teal at the unlock line, blue at Proficient and
+ * gold at Mastered. The tip of the bar is therefore always the colour of the
+ * tier you're heading into, and each answer visibly shifts it — progress you
+ * can see change hue, not just length (see gamification.md).
+ */
+const GRADIENT = `linear-gradient(to right, var(--accent) 0%, var(--teal) ${SATISFACTION_THRESHOLD}%, #2563eb ${PROFICIENCY_THRESHOLD}%, #d4a017 ${MASTERY_THRESHOLD}%, #d4a017 100%)`;
+
+/** Index of the highest tier reached (0 = none yet). */
+function tierIndex(value: number): number {
+  return TIER_MARKS.filter((m) => value >= m.value).length;
+}
+
+/** The last answer's movement, so the bar can show it in place. */
+export interface BarGain {
+  /** Changes on every answer, so the animation replays. */
+  key: string;
+  before: number;
+  after: number;
+  /** The first answer sets a starting value rather than moving one. */
+  first: boolean;
 }
 
 /**
@@ -27,10 +43,19 @@ function fillColor(value: number): string {
  * restore. That distinction is the honest reading of the model: forgetting is
  * recoverable, and showing only the decayed number reads as lost progress.
  */
-export function ProficiencyBar({ exp }: { exp: ExpSnapshot }) {
+export function ProficiencyBar({ exp, gain }: { exp: ExpSnapshot; gain?: BarGain }) {
   const value = roundProficiency(exp.value);
   const ceiling = roundProficiency(exp.ceiling);
   const showGhost = ceiling - value >= 2;
+  const fill = Math.max(value, 1);
+  // Goal-gradient cue: name the next line and how close it is.
+  const next = TIER_MARKS.find((m) => value < m.value);
+  const toNext = next ? roundProficiency(next.value - value) : 0;
+  const delta = gain && !gain.first ? proficiencyDelta(gain.before, gain.after) : 0;
+  const crossed =
+    gain && tierIndex(roundProficiency(gain.after)) > tierIndex(roundProficiency(gain.before))
+      ? TIER_MARKS[tierIndex(roundProficiency(gain.after)) - 1]
+      : undefined;
 
   return (
     <div>
@@ -38,18 +63,33 @@ export function ProficiencyBar({ exp }: { exp: ExpSnapshot }) {
         <span className="font-body text-xs font-semibold uppercase tracking-wide text-[var(--ink-soft)]">
           Proficiency
         </span>
-        <span className="font-display text-2xl text-[var(--ink)]">
-          {formatProficiency(value)}
-          <span className="font-body text-sm text-[var(--ink-soft)]">/100</span>
+        <span className="flex items-baseline gap-2">
+          {delta !== 0 && (
+            <span
+              key={gain?.key}
+              className={`ml-gain font-body text-sm font-semibold ${
+                delta > 0 ? "text-[var(--teal)]" : "text-red-600"
+              }`}
+            >
+              {formatDelta(delta)}
+            </span>
+          )}
+          <span className="font-display text-2xl text-[var(--ink)]">
+            {formatProficiency(value)}
+            <span className="font-body text-sm text-[var(--ink-soft)]">/100</span>
+          </span>
         </span>
       </div>
 
       <div className="relative h-3 w-full overflow-hidden rounded-full bg-[var(--line)]">
         <div
-          className="h-full rounded-full transition-[width] duration-500"
+          className="h-full rounded-full transition-[width,background-size] duration-500"
           style={{
-            width: `${Math.max(value, 1)}%`,
-            background: fillColor(value),
+            width: `${fill}%`,
+            backgroundImage: GRADIENT,
+            // Stretch the gradient to the full track so its stops sit on the tier lines.
+            backgroundSize: `${10000 / fill}% 100%`,
+            backgroundRepeat: "no-repeat",
           }}
         />
         {showGhost && (
@@ -85,6 +125,18 @@ export function ProficiencyBar({ exp }: { exp: ExpSnapshot }) {
           </span>
         ))}
       </div>
+
+      {crossed ? (
+        <p key={gain?.key} className="ml-pop font-body mt-2 text-sm font-semibold text-[var(--ink)]">
+          {crossed.label} reached.
+        </p>
+      ) : (
+        next && (
+          <p className="font-body mt-2 text-sm text-[var(--ink)]">
+            <span className="font-semibold">{formatProficiency(toNext)}</span> to {next.label}
+          </p>
+        )
+      )}
 
       <p className="font-body mt-1 text-xs text-[var(--ink-soft)]">
         {exp.unlocked

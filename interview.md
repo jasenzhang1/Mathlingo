@@ -47,12 +47,37 @@ text.
 **Difficulty** is 0–10. 11–12 means "they are going to murder you in the interview." Unrated
 questions are treated as 4.
 
-**Answers.** When a key is one number, even one written two ways ("21/4 = 5.25"), the question
-carries `numericAnswer` and is graded automatically. The candidate can type `1/14`, `0.0714`,
-`7.1%`, `C(10,5)`, `10c5`, `sqrt`, `ln`, `!` and so on (see
-[`evaluate.ts`](web/src/lib/interview/evaluate.ts)). Every other key (multi-part answers, proofs,
-"Alice") is shown after the attempt, and the candidate marks themselves *Got it*, *Partly*, or
-*Missed it*.
+**Answers.** Three kinds of key are graded automatically (see
+[`scoring.ts`](web/src/lib/interview/scoring.ts) and [`evaluate.ts`](web/src/lib/interview/evaluate.ts)):
+
+- **Numbers** (`numericAnswer`). The candidate gives an exact form (`1/14`, `ln(2)/2`, `C(10,5)`,
+  `10c5`, `sqrt`, `!`, `7.1%`) or rounds to **five decimal places**. The key must therefore be the
+  exact value, not a rounded copy. A decimal that is right as far as it goes but stops short
+  (`0.347` for $\ln 2/2$) is not marked wrong: the card asks for more places and the clock keeps
+  running. When a question states its own precision ("Give $4$ decimal places", "nearest
+  ten-thousandth"), or the key is only known approximately (a numerical solution), `numericPrecision`
+  sets the number of places instead.
+- **Formulas** (`expressionAnswer`). A plain-text formula such as `((n+1)/n)^(n-1)`. The candidate
+  types any equivalent form (`[(n+1)/n]^(n-1)`, `(1+1/n)^(n-1)`, `n(n-1)/4`, `2np`, `f(x) = 2x`),
+  and both are evaluated at eight sample points: integers for `n`, `m`, `k`, `N` and so on, and
+  values in $(0, 1)$ for `p` and `q`. Write products with `p` or `c` explicitly (`p*(1-p)`), since
+  `p(` and `C(` read as the permutation and choose functions.
+- **Everything else** (multi-part answers, proofs, "Alice") is shown after the attempt, and the
+  candidate marks themselves *Got it*, *Partly*, or *Missed it*.
+
+`npx tsx scripts/audit-interview-keys.ts` (from `web/`) checks the keys: it finds numeric keys
+that are rounded copies of an exact form in the answer (`--write` replaces them), lists short keys
+to review, checks each formula key against its LaTeX answer, and with `--suggest` lists
+self-graded answers that read as a single formula. `npm run verify:interview` tests the grader.
+Two formula keys show as mismatches in the audit only because the LaTeX is not a single
+expression: iq-0317 gives two forms side by side, and iq-0941 ends in "steps".
+
+**The question page** is laid out like quantprof.org: tabs for **Problem**, **Hints**, **Solution**
+and **Notes**, with the level and clock on the right. Hints (`hints`, weakest first) open one at a
+time, so the candidate chooses how much help to take. Opening the Solution before answering ends
+the attempt as a pass. Notes are the candidate’s own and are kept in their browser. Developers edit
+hints in the question editor, separated by a line containing only `---`. So far only the first ten
+problems of the list have hints.
 
 **Drafts.** A question with `"status": "draft"` is never served. Four are drafts at import: three
 held for review (a duplicate, a part without an answer, one with no answer at all) and one with no

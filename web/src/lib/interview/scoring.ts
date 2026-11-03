@@ -3,7 +3,7 @@ import { clamp } from "../assessment/numeric";
 import type { Ability } from "../assessment/types";
 import type { Calibration } from "../assessment/itemCalibration";
 import { difficultyOf } from "./bank";
-import { evaluate } from "./evaluate";
+import { evaluate, variablesOf } from "./evaluate";
 import type { InterviewQuestion } from "./types";
 
 /**
@@ -19,30 +19,95 @@ import type { InterviewQuestion } from "./types";
 // Correctness
 // ---------------------------------------------------------------------------
 
+/** Decimal places a numeric answer must be given to, when not given exactly. */
+export const ANSWER_DECIMALS = 5;
+
 /**
- * Keys are often rounded ("ln(2)/2 = 0.347"), so a candidate who types the exact
- * value must still pass: half a percent relative, or 5e-4 absolute for answers
- * near zero.
+ * Within half a unit of the last required decimal: a candidate who rounds to
+ * five places, or types an exact form (`1/3`, `ln(2)/2`), passes. A key that
+ * is itself only known to `precision` places (a simulated or quoted value)
+ * is matched at that precision instead.
  */
-export function numericMatches(input: number, key: number): boolean {
-  return Math.abs(input - key) <= Math.max(5e-3 * Math.abs(key), 5e-4);
+export function numericMatches(input: number, key: number, precision = ANSWER_DECIMALS): boolean {
+  const half = 0.5 * 10 ** -precision;
+  return Math.abs(input - key) <= half * (1 + 1e-9) + 1e-12 * Math.abs(key);
 }
 
-export type AutoGrade = { kind: "correct" } | { kind: "incorrect"; parsed: number } | { kind: "unparsed" } | { kind: "manual" };
+/** Decimal places in a plain decimal the candidate typed ("0.3333" → 4), or null for any other form. */
+function typedDecimals(input: string): number | null {
+  const m = input.trim().match(/^[+-]?\d*\.(\d+)$/);
+  return m ? m[1].length : null;
+}
 
 /**
- * `manual`: the key is not a single number, so the candidate compares against
- * the revealed answer. `unparsed`: it is, but what they typed isn't a number
- * we can read — shown as such rather than marked wrong.
+ * True when `input`, evaluated at sample values of the key's variables,
+ * agrees with `key` everywhere the key is defined. Integer samples (for
+ * `n`, `m`, `k`, `N`, which may sit inside `!` or `C(·,·)`), and values in
+ * (0, 1) for `p` and `q`. "f(n) = …" is read from its right-hand side.
+ */
+export function expressionMatches(input: string, key: string): boolean | null {
+  const vars = variablesOf(key);
+  if (!vars || vars.length === 0) return null;
+  const rhs = input.includes("=") ? input.slice(input.lastIndexOf("=") + 1) : input;
+  const INTS = [3, 4, 5, 7, 10, 12, 6, 9];
+  const PROBS = [0.13, 0.29, 0.37, 0.61, 0.77, 0.83, 0.45, 0.21];
+  let compared = 0;
+  for (let t = 0; t < INTS.length; t++) {
+    const env: Record<string, number> = {};
+    vars.forEach((v, i) => {
+      const k = (t + 3 * i) % INTS.length;
+      env[v] = v === "p" || v === "q" ? PROBS[k] : INTS[k];
+    });
+    const want = evaluate(key, env);
+    if (want === null) continue;
+    const got = evaluate(rhs, env);
+    if (got === null) return false;
+    if (Math.abs(got - want) > 1e-9 * Math.max(1, Math.abs(want))) return false;
+    compared++;
+  }
+  return compared >= 3 ? true : null;
+}
+
+export type AutoGrade =
+  | { kind: "correct" }
+  | { kind: "incorrect"; parsed?: number }
+  | { kind: "imprecise"; decimals: number }
+  | { kind: "unparsed"; expression?: boolean }
+  | { kind: "manual" };
+
+/**
+ * `manual`: the key is neither one number nor one formula, so the candidate
+ * compares against the revealed answer. `unparsed`: what they typed can't be
+ * read — shown as such rather than marked wrong. `imprecise`: a decimal that
+ * agrees with the key as far as it goes but stops short of five places — the
+ * candidate is asked for more digits, not marked wrong.
  */
 export function autoGrade(q: InterviewQuestion, input: string): AutoGrade {
+  if (q.expressionAnswer !== undefined) {
+    const vars = variablesOf(q.expressionAnswer) ?? [];
+    // Readability check at a point no sensible answer is undefined at.
+    const env = Object.fromEntries(vars.map((v) => [v, v === "p" || v === "q" ? 0.37 : 11]));
+    const rhs = input.includes("=") ? input.slice(input.lastIndexOf("=") + 1) : input;
+    if (evaluate(rhs, env) === null) return { kind: "unparsed", expression: true };
+    const ok = expressionMatches(input, q.expressionAnswer);
+    return ok ? { kind: "correct" } : { kind: "incorrect" };
+  }
   if (q.numericAnswer === undefined) return { kind: "manual" };
   const value = evaluate(input);
   if (value === null) return { kind: "unparsed" };
-  if (numericMatches(value, q.numericAnswer)) return { kind: "correct" };
+  const precision = q.numericPrecision ?? ANSWER_DECIMALS;
+  if (numericMatches(value, q.numericAnswer, precision)) return { kind: "correct" };
   // A key written as a percentage ("8.4%") also accepts "8.4" typed without the sign.
-  if (q.answer.includes("%") && !input.includes("%") && numericMatches(value / 100, q.numericAnswer)) {
-    return { kind: "correct" };
+  const percent = q.answer.includes("%") && !input.includes("%");
+  if (percent && numericMatches(value / 100, q.numericAnswer, precision + 2)) return { kind: "correct" };
+  // Right as far as it goes, but rounded too early: ask for more places.
+  const decimals = typedDecimals(input.replace("%", ""));
+  if (decimals !== null && decimals < precision) {
+    // A typed "%" is already divided out by the evaluator; a bare number on a
+    // percentage key is not.
+    const scaled = percent ? value / 100 : value;
+    const places = input.includes("%") || percent ? decimals + 2 : decimals;
+    if (numericMatches(scaled, q.numericAnswer, places)) return { kind: "imprecise", decimals: precision };
   }
   return { kind: "incorrect", parsed: value };
 }

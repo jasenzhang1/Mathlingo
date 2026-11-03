@@ -39,6 +39,7 @@ export function InterviewQuestionForm({
   const [tagText, setTagText] = useState("");
   // Kept as text so a half-typed number ("0.", "-") isn't thrown away.
   const [numericText, setNumericText] = useState(q.numericAnswer === undefined ? "" : String(q.numericAnswer));
+  const [hintsText, setHintsText] = useState((q.hints ?? []).join("\n---\n"));
   const set = (patch: Partial<InterviewQuestion>) => onSave({ ...q, ...patch });
 
   const inBundles = bundles.filter((b) => b.questions.includes(q.id));
@@ -168,8 +169,33 @@ export function InterviewQuestionForm({
             </label>
           </div>
           <label className={`${fieldLabel} block`}>
+            Formula answer
+            <input
+              value={q.expressionAnswer ?? ""}
+              placeholder="(none) — plain text the grader reads, e.g. ((n+1)/n)^(n-1), n*(n-1)/2, p*(1-p)"
+              onChange={(e) => set({ expressionAnswer: e.target.value.trim() === "" ? undefined : e.target.value })}
+              className={`${field} font-mono`}
+            />
+          </label>
+          <label className={`${fieldLabel} block`}>
             Solution
             <textarea value={q.notes} onChange={(e) => set({ notes: e.target.value })} rows={6} className={field} />
+          </label>
+          <label className={`${fieldLabel} block`}>
+            Hints (weakest first; separate hints with a line containing only ---)
+            <textarea
+              value={hintsText}
+              onChange={(e) => {
+                setHintsText(e.target.value);
+                const hints = e.target.value
+                  .split(/^\s*---\s*$/m)
+                  .map((h) => h.trim())
+                  .filter(Boolean);
+                set({ hints: hints.length ? hints : undefined });
+              }}
+              rows={6}
+              className={field}
+            />
           </label>
 
           <div className="grid gap-4 md:grid-cols-3">

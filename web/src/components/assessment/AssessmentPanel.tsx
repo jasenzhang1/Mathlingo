@@ -54,6 +54,7 @@ import {
 import { UpgradePrompt } from "../billing/UpgradePrompt";
 import { ItemEditorForm } from "../dev/ItemEditorForm";
 import { AnswerInput } from "./AnswerInput";
+import { DailyGoal } from "./DailyGoal";
 import { ProficiencyBar } from "./ProficiencyBar";
 import { QuestionFeedback } from "./QuestionFeedback";
 import { RubricBreakdown } from "./RubricBreakdown";
@@ -123,6 +124,8 @@ export function AssessmentPanel({
   const [followText, setFollowText] = useState("");
   const [recentIds, setRecentIds] = useState<string[]>([]);
   const [saveError, setSaveError] = useState<string | null>(null);
+  /** Answers logged from this panel since it mounted — feeds the daily goal. */
+  const [answeredHere, setAnsweredHere] = useState(0);
 
   /** Levels covered this session, so one sitting can't be all arithmetic. */
   const coveredLevels = useRef<Set<string>>(new Set());
@@ -601,6 +604,7 @@ ${followText}`,
       ]);
       const error = saved.error ?? logged.error;
       if (error) setSaveError(error);
+      if (!logged.error) setAnsweredHere((n) => n + 1);
     }
   }
 
@@ -632,7 +636,20 @@ ${followText}`,
   return (
     <div className="space-y-4">
       <div className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5 shadow-sm">
-        <ProficiencyBar exp={exp} />
+        <ProficiencyBar
+          exp={exp}
+          gain={
+            phase.kind === "graded" && phase.item.status === "live"
+              ? {
+                  key: phase.item.id,
+                  before: phase.outcome.expBefore.value,
+                  after: phase.outcome.expAfter.value,
+                  first: phase.outcome.firstAnswer,
+                }
+              : undefined
+          }
+        />
+        {user && <DailyGoal userId={user.id} answeredHere={answeredHere} />}
         {!user && (
           <p className="font-body mt-3 rounded-lg bg-[var(--paper)] px-3 py-2 text-xs text-[var(--ink-soft)]">
             You're not signed in, so this session won't be saved.{" "}

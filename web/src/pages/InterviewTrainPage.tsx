@@ -4,7 +4,7 @@ import { InterviewGate, InterviewUpgradeCard } from "../components/interview/Int
 import { QuestionCard } from "../components/interview/QuestionCard";
 import { SkillBar } from "../components/interview/SkillBar";
 import { useInterviewAccess } from "../lib/interview/access";
-import { questionsInSection, sectionById } from "../lib/interview/bank";
+import { questionTitle, questionsInSection, sectionById } from "../lib/interview/bank";
 import type { InterviewQuestion } from "../lib/interview/types";
 import { pickTrainingQuestion, skillBar } from "../lib/interview/scoring";
 import { useInterviewSkills } from "../lib/interview/useInterviewSkills";
@@ -106,6 +106,7 @@ function TrainSection({ pool }: { pool: InterviewQuestion[] }) {
       <QuestionCard
         key={`${current.id}-${answered}`}
         question={current}
+        title={questionTitle(current)}
         showLabels
         onResult={(r) => {
           const { before, after } = record({ question: current, correctness: r.correctness, seconds: r.seconds, mode: "train", section: sectionId });

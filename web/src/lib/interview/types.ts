@@ -55,6 +55,11 @@ export interface InterviewQuestion {
   answer: string;
   /** Worked solution. */
   notes: string;
+  /**
+   * Progressive hints, weakest first. The Hints tab reveals them one at a
+   * time, so each should help a little more without giving the answer away.
+   */
+  hints?: string[];
   tags: string[];
   /**
    * Lessons (concept ids) that teach what the question needs, shown as study
@@ -68,6 +73,18 @@ export interface InterviewQuestion {
    * against the revealed answer.
    */
   numericAnswer?: number;
+  /**
+   * Set only when the key is known to fewer than five places (a simulated or
+   * quoted value): the answer is matched to this many decimals instead.
+   */
+  numericPrecision?: number;
+  /**
+   * Set when `answer` is one formula in variables, written in plain text the
+   * grader reads (`((n+1)/n)^(n-1)`, `n*(n-1)/2`, `p*(1-p)`). The candidate's
+   * expression is checked by evaluating both at sample points, so any
+   * equivalent form passes.
+   */
+  expressionAnswer?: string;
   instructional?: string;
   /** Drafts are never served. */
   status?: "draft";
