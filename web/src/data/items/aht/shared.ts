@@ -15,6 +15,17 @@ export const cjp = (locator: string): SourceRef => ({
   rewriteApprovedBy: "pending-review",
 });
 
+/**
+ * Keys below one get half a unit in their last stated decimal rather than the
+ * default ±0.01 absolute window, which would accept almost anything for small
+ * keys (as in qi-shared.ts).
+ */
+function precisionTolerance(key: number): number | undefined {
+  if (Math.abs(key) >= 1 || key === 0) return undefined;
+  const decimals = (key.toFixed(12).replace(/0+$/, "").split(".")[1] ?? "").length;
+  return Math.min(0.01, 0.5 * 10 ** -decimals);
+}
+
 /** Compact builders whose items cite one chapter or section of the book. */
 export function chapter(locator: string) {
   const { mcq, short, num } = makeBuilders(cjp(locator));
@@ -27,8 +38,8 @@ export function chapter(locator: string) {
       wrong.map(([t, why], i) => [t, `${concept}-${slug}-${i}`, why] as [string, string, string]),
     );
 
-  const n = (concept: string, slug: string, level: number, stem: string, key: number, tol = 0.01) =>
-    num({ concept, slug, cognitive: "apply", level, seconds: level >= 7 ? 120 : level >= 4 ? 75 : 40, stem }, key, tol);
+  const n = (concept: string, slug: string, level: number, stem: string, key: number, tol?: number) =>
+    num({ concept, slug, cognitive: "apply", level, seconds: level >= 7 ? 120 : level >= 4 ? 75 : 40, stem }, key, tol ?? precisionTolerance(key));
 
   /** Short answer graded on two required rubric elements. */
   const s = (concept: string, slug: string, level: number, stem: string, a: string, b: string) =>

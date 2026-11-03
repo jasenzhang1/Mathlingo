@@ -1,5 +1,6 @@
 import type { WikiArticle } from "./types";
 import { bayesianModelWikis } from "./bayesian-models";
+import { empiricalBayesChapterWikis } from "./empirical-bayes";
 import { bayesianInversionWikis } from "./bayesian-inversion";
 
 /**
@@ -411,5 +412,6 @@ export const bayesianWikis: WikiArticle[] = [
   hierarchicalModelsWiki,
   bayesFactorsWiki,
   ...bayesianModelWikis,
+  ...empiricalBayesChapterWikis,
   ...bayesianInversionWikis,
 ];

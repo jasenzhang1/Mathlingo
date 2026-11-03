@@ -60,6 +60,7 @@ import { expansionItems } from "./items/expansion";
 import { robustRegressionItems } from "./items/robust-regression";
 import { dingItems } from "./items/ding";
 import { ahtItems } from "./items/aht";
+import { empiricalBayesItems } from "./items/empirical-bayes";
 import { linearModelsEstimationItems } from "./items/linear-models-estimation";
 import { linearModelsInferenceItems } from "./items/linear-models-inference";
 import { linearModelsLinesAndCurvesItems } from "./items/linear-models-lines-and-curves";
@@ -1021,6 +1022,8 @@ export const items: Item[] = [
   ...dingItems,
   // Algorithmic & High-Frequency Trading (Cartea, Jaimungal & Penalva), see items/aht/.
   ...ahtItems,
+  // Empirical Bayes chapter: parametric, nonparametric, deconvolution and local fdr
+  ...empiricalBayesItems,
   ...regressionGeneralizedItems,
   ...regressionExtensionsItems,
   ...robustRegressionItems,

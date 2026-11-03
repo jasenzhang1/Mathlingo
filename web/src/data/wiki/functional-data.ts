@@ -755,6 +755,136 @@ export const crossCovarianceOperatorsWiki: WikiArticle = {
   ],
 };
 
+export const blockCovarianceOperatorsWiki: WikiArticle = {
+  conceptId: "block-covariance-operators",
+  summary:
+    "When you observe $p$ random functions at once — say the log-intensity $X_i$ of each of $p$ neurons — every pair $(i, j)$ " +
+    "has its own cross-covariance kernel $G_{i,j}(s, t)$. Each kernel defines an integral operator $\\Sigma_{X_iX_j}$, and the " +
+    "$p \\times p$ array of these operators is the covariance operator of the whole vector $\\mathbf{X} = (X_1, \\dots, X_p)$. " +
+    "It is a covariance matrix in which every entry has become an operator, and every matrix-vector product has become an integral.",
+  sections: [
+    {
+      heading: "One kernel, one operator",
+      blocks: [
+        {
+          kind: "prose",
+          text:
+            "Let $X_i$ be a random function in $\\mathcal{H}_{X_i} = L^2[0, T]$. Its covariance with $X_j$ is a function of two times: " +
+            "$s$ for $X_i$ and $t$ for $X_j$.",
+        },
+        {
+          kind: "formula",
+          latex: "G_{i,j}(s, t) = \\operatorname{Cov}\\{X_i(s), X_j(t)\\}, \\qquad (\\Sigma_{X_iX_j}\\, g)(s) = \\int_0^T G_{i,j}(s, t)\\, g(t)\\, dt",
+        },
+        {
+          kind: "prose",
+          text:
+            "$\\Sigma_{X_iX_j}$ eats a function $g$ of $t$ (an element of $\\mathcal{H}_{X_j}$) and returns a function of $s$ (an element of " +
+            "$\\mathcal{H}_{X_i}$). So $\\Sigma_{X_iX_j} : \\mathcal{H}_{X_j} \\to \\mathcal{H}_{X_i}$ — the kernel's **second** argument is integrated out, " +
+            "and the **first** is what survives.",
+        },
+        {
+          kind: "table",
+          headers: ["", "Matrix acting on a vector", "Integral operator acting on a function"],
+          rows: [
+            ["Input", "$\\mathbf{g} = (g_{r'})$", "$g(t)$"],
+            ["Kernel", "$S_{rr'}$ — row $r$, column $r'$", "$G_{i,j}(s, t)$ — row-time $s$, column-time $t$"],
+            ["Product", "$(S\\mathbf{g})_r = \\sum_{r'} S_{rr'}\\, g_{r'}$", "$(\\Sigma g)(s) = \\int G(s, t)\\, g(t)\\, dt$"],
+            ["Sum over", "column index $r'$", "column time $t$"],
+          ],
+        },
+        {
+          kind: "callout",
+          tone: "insight",
+          title: "Why the analogy is exact",
+          text: "Put $t$ on a grid $t_1, \\dots, t_m$ with spacing $\\Delta = T/m$. Then $\\int G(s, t)g(t)\\,dt \\approx \\sum_b G(s, t_b)\\,g(t_b)\\,\\Delta$, which is the matrix $S_{ab} = G(s_a, t_b)\\Delta$ applied to the vector $(g(t_b))_b$. The operator is the limit of these matrices as $m \\to \\infty$.",
+        },
+        {
+          kind: "example",
+          title: "Applying an operator",
+          problem: "On $[0, 1]$, let $G(s, t) = st$ and $g(t) = 1$. Find $(\\Sigma g)(s)$ and the variance $\\langle \\Sigma g, g\\rangle = \\operatorname{Var}\\big(\\int_0^1 X(s)\\,ds\\big)$.",
+          steps: [
+            "$(\\Sigma g)(s) = \\int_0^1 st \\cdot 1\\, dt = s \\cdot \\tfrac12 = s/2$.",
+            "$\\langle \\Sigma g, g\\rangle = \\int_0^1 \\tfrac{s}{2}\\, ds = \\tfrac14$.",
+          ],
+          answer: "$(\\Sigma g)(s) = s/2$ and $\\operatorname{Var}\\big(\\int X\\big) = 1/4$.",
+        },
+      ],
+    },
+    {
+      heading: "The block operator for the whole vector",
+      blocks: [
+        {
+          kind: "prose",
+          text:
+            "Stack the functions: $\\mathbf{X} = (X_1, \\dots, X_p)$ lives in the product space $\\mathcal{H} = \\mathcal{H}_{X_1} \\times \\dots \\times \\mathcal{H}_{X_p}$ with " +
+            "$\\langle \\mathbf{g}, \\mathbf{h}\\rangle = \\sum_i \\int g_i h_i$. The covariance operator $\\Sigma_X$ acts on $\\mathbf{g} = (g_1, \\dots, g_p)$ block-row by block-row, exactly as a block matrix would:",
+        },
+        {
+          kind: "formula",
+          latex: "\\Sigma_X = \\big(\\Sigma_{X_iX_j}\\big)_{i,j=1}^p, \\qquad (\\Sigma_X \\mathbf{g})_i = \\sum_{j=1}^p \\Sigma_{X_iX_j}\\, g_j, \\qquad \\langle \\Sigma_X \\mathbf{g}, \\mathbf{g}\\rangle = \\operatorname{Var}\\Big(\\sum_{i=1}^p \\langle X_i, g_i\\rangle\\Big)",
+        },
+        {
+          kind: "list",
+          items: [
+            "**Diagonal blocks** $\\Sigma_{X_iX_i}$ are ordinary covariance operators: self-adjoint, positive semi-definite, compact.",
+            "**Off-diagonal blocks** $\\Sigma_{X_iX_j}$ are cross-covariance operators. They map $\\mathcal{H}_{X_j} \\to \\mathcal{H}_{X_i}$ and are *not* self-adjoint: $\\Sigma_{X_iX_j}^* = \\Sigma_{X_jX_i}$ (the kernel transposes, $G_{i,j}(t, s) = G_{j,i}(s, t)$).",
+            "Only the **whole** $\\Sigma_X$ is guaranteed positive semi-definite, because $\\operatorname{Var}\\big(\\sum_i \\langle X_i, g_i\\rangle\\big) \\ge 0$ includes the cross terms $2\\langle \\Sigma_{X_iX_j} g_j, g_i\\rangle$.",
+            "$\\operatorname{tr}\\Sigma_X = \\sum_i \\int G_{i,i}(t, t)\\,dt = \\mathbb{E}\\|\\mathbf{X} - \\mathbb{E}\\mathbf{X}\\|^2$, and $\\|\\Sigma_X\\|_{HS}^2 = \\sum_{i,j}\\iint G_{i,j}(s, t)^2\\,ds\\,dt$.",
+            "$\\Sigma_{X_iX_j} = 0$ means $X_i$ and $X_j$ are uncorrelated at every pair of times. That is independence only if $(X_i, X_j)$ is jointly Gaussian.",
+          ],
+        },
+        {
+          kind: "example",
+          title: "A two-neuron block operator",
+          problem: "On $[0, 1]$ let $X_i(s) = s Z_i$ with $\\operatorname{Cov}(\\mathbf{Z})$ equal to $\\begin{bmatrix}1 & 1\\\\ 1 & 2\\end{bmatrix}$, so $G_{1,1} = G_{1,2} = G_{2,1} = st$ and $G_{2,2} = 2st$. Take $\\mathbf{g} = (1, 1)$. Find $(\\Sigma_X\\mathbf{g})_1(s)$ and $\\langle \\Sigma_X\\mathbf{g}, \\mathbf{g}\\rangle$.",
+          steps: [
+            "Each $\\Sigma_{X_iX_j}$ applied to the constant $1$ gives $c_{ij}\\, s/2$, where $c_{ij}$ is the $(i, j)$ entry of the $\\mathbf{Z}$-covariance.",
+            "$(\\Sigma_X\\mathbf{g})_1(s) = (1 + 1)\\,s/2 = s$ and $(\\Sigma_X\\mathbf{g})_2(s) = (1 + 2)\\,s/2 = 1.5s$.",
+            "$\\langle \\Sigma_X\\mathbf{g}, \\mathbf{g}\\rangle = \\int_0^1 (s + 1.5s)\\,ds = 1.25$.",
+            "Check: $\\operatorname{Var}(Z_1/2 + Z_2/2) = (1 + 2 + 2\\cdot 1)/4 = 1.25$.",
+          ],
+          answer: "$(\\Sigma_X\\mathbf{g})_1(s) = s$ and $\\langle \\Sigma_X\\mathbf{g}, \\mathbf{g}\\rangle = 1.25$.",
+        },
+      ],
+    },
+    {
+      heading: "Estimating the kernels from spike trains",
+      blocks: [
+        {
+          kind: "prose",
+          text:
+            "For neuron $i$ with random intensity $\\Lambda_i$ and log-intensity $X_i = \\log\\Lambda_i$, the first- and second-order intensities are " +
+            "$\\rho_i(s) = \\mathbb{E}\\Lambda_i(s)$ and $\\rho_{i,j}(s, t) = \\mathbb{E}[\\Lambda_i(s)\\Lambda_j(t)]$. For a **log-Gaussian Cox process** " +
+            "the pair-correlation ratio is $\\rho_{i,j}(s, t)/\\{\\rho_i(s)\\rho_j(t)\\} = \\exp\\{G_{i,j}(s, t)\\}$, so taking logs recovers the kernel:",
+        },
+        {
+          kind: "formula",
+          latex: "\\hat G_{i,j}(s, t) = \\log\\frac{\\hat\\rho_{i,j}(s, t)}{\\hat\\rho_i(s)\\,\\hat\\rho_j(t)}",
+        },
+        {
+          kind: "list",
+          items: [
+            "Ratio $= 1$ (so $\\hat G = 0$): no co-fluctuation between $i$ at $s$ and $j$ at $t$.",
+            "Ratio $> 1$ ($\\hat G > 0$): the two neurons tend to be excited together.",
+            "To act on data, evaluate $\\hat G_{i,j}$ on a grid and assemble the $pm \\times pm$ block matrix with blocks $\\hat G_{i,j}(s_a, t_b)\\Delta$; its eigen-decomposition approximates that of $\\Sigma_X$.",
+          ],
+        },
+        {
+          kind: "callout",
+          tone: "warning",
+          title: "Where the matrix picture misleads",
+          text: "A covariance operator is compact: its eigenvalues decay to $0$, so it has no bounded inverse. You cannot 'solve $\\Sigma_X \\mathbf{g} = \\mathbf{h}$' the way you invert a covariance matrix; the discretised block matrix becomes ever more ill-conditioned as the grid refines, and any precision-style quantity needs truncation or a penalty. Also, $\\log$ of a zero pair count is undefined, so $\\hat G$ needs smoothing.",
+        },
+      ],
+    },
+  ],
+  references: [
+    { source: he, locator: "§7.2–7.3" },
+    { source: rs, locator: "Ch. 8, §8.5" },
+  ],
+};
+
 export const functionalDataWikis: WikiArticle[] = [
   l2SpaceWiki,
   orthonormalFunctionBasesWiki,
@@ -769,4 +899,5 @@ export const functionalDataWikis: WikiArticle[] = [
   projectedVarianceWiki,
   fpcScoresWiki,
   crossCovarianceOperatorsWiki,
+  blockCovarianceOperatorsWiki,
 ];

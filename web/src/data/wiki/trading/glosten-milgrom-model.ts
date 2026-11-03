@@ -3,99 +3,56 @@ import type { WikiArticle } from "../types";
 export const glostenMilgromModelWiki: WikiArticle = {
   conceptId: "glosten-milgrom-model",
 
-  summary:
-    "Glosten–Milgrom explains the bid–ask spread as protection against adverse selection. A competitive " +
-    "market maker faces traders who arrive one at a time; some know the asset’s value, the rest trade for " +
-    "liquidity. She sets the ask to her expected value given that someone buys, and the bid to her expected " +
-    "value given that someone sells. The more informed the flow, the wider the spread — and each trade " +
-    "teaches her something, so quotes drift toward the truth.",
+  summary: "Glosten and Milgrom put the market maker at the centre. She quotes a bid and an ask for one unit, not knowing whether the next trader is informed. Competition forces each quote to equal the asset’s expected value given that a trade arrives on that side, so the spread exists purely to recover losses to informed traders from uninformed ones. As trades arrive she updates her beliefs by Bayes’ rule, quotes drift toward the true value, and when liquidity traders are price-sensitive the market can even collapse.",
 
   sections: [
     {
-      heading: "The model",
+      heading: "Quotes as conditional expectations",
       blocks: [
         {
-          kind: "definitions",
-          items: [
-            { term: "Value", description: "$V \\in \\lbrace V_L, V_H \\rbrace$ with $\\Pr(V_H) = p$, so $\\mu = pV_H + (1 - p)V_L$." },
-            { term: "Informed traders (fraction $\\alpha$)", description: "Buy if $V = V_H$, sell if $V = V_L$." },
-            { term: "Uninformed traders (fraction $1 - \\alpha$)", description: "Buy or sell with probability $\\frac{1}{2}$ each, regardless of $V$." },
-            { term: "Quotes", description: "$a = \\mathbb{E}[V \\mid \\text{buy}]$, $b = \\mathbb{E}[V \\mid \\text{sell}]$: zero expected profit on each side." },
-          ],
-        },
-        {
           kind: "formula",
-          latex: "a - \\mu = \\frac{\\alpha p}{\\alpha p + \\frac{1 - \\alpha}{2}}\\,(V_H - \\mu), \\qquad \\mu - b = \\frac{\\alpha(1 - p)}{\\alpha(1 - p) + \\frac{1 - \\alpha}{2}}\\,(\\mu - V_L)",
-          caption: "Half-spreads: the probability a buy (sell) is informed, times what an informed trader gains",
+          latex: "\\Delta_a = \\frac{\\alpha p}{\\alpha p + (1 - \\alpha)/2}(V_H - \\mu), \\qquad \\Delta_b = \\frac{\\alpha(1 - p)}{\\alpha(1 - p) + (1 - \\alpha)/2}(\\mu - V_L)",
+          caption: "Half-spreads with informed fraction $\\alpha$, probability $p$ of the high value $V_H$, and $\\mu = pV_H + (1 - p)V_L$.",
         },
         {
           kind: "prose",
-          text:
-            "The derivation is the zero-profit condition. Per order, the market maker loses $\\alpha p(V_H - a)$ to " +
-            "informed buyers and gains $\\frac{1 - \\alpha}{2}(a - \\mu)$ from uninformed ones; setting the two equal " +
-            "gives the ask formula. Uninformed traders pay the spread so that she breaks even against the informed.",
-        },
-      ],
-    },
-
-    {
-      heading: "Learning from order flow",
-      blocks: [
-        {
-          kind: "formula",
-          latex: "p' = \\Pr(V_H \\mid \\text{buy}) = \\frac{p\\left(\\alpha + \\frac{1 - \\alpha}{2}\\right)}{\\alpha p + \\frac{1 - \\alpha}{2}}",
-          caption: "Bayes’ rule after a buy; after a sell, replace $\\alpha + \\frac{1 - \\alpha}{2}$ by $\\frac{1 - \\alpha}{2}$",
+          text: "The ask is $a = \\mathbb{E}[v \\mid \\text{buy}]$: the probability that a buyer is informed times how much she knows. The book reads $\\alpha$ as the prevalence of toxicity and $V_H - \\mu$ as its magnitude.",
         },
         {
           kind: "example",
-          title: "Quotes before and after a buy",
-          problem:
-            "$V_H = 110$, $V_L = 90$, $p = 0.5$, $\\alpha = 0.4$. Find the quotes, then update after one buy and find the new quotes.",
+          title: "A symmetric example",
+          problem: "Let $V_H = 105$, $V_L = 95$, $p = 0.5$ and $\\alpha = 0.2$.",
+          answer: "Expected losses to informed buyers ($0.1 \\times 4 = 0.4$) equal expected gains from uninformed buyers ($0.4 \\times 1 = 0.4$).",
           steps: [
-            "$\\mu = 100$. Ask half-spread $\\frac{0.2}{0.2 + 0.3} \\times 10 = 4$, so $a = 104$; by symmetry $b = 96$. Spread $8$.",
-            "After a buy: $p' = \\frac{0.5 \\times 0.7}{0.5} = 0.7$, so $\\mu' = 0.7 \\times 110 + 0.3 \\times 90 = 104$ — exactly the old ask.",
-            "New ask: $\\frac{0.28}{0.28 + 0.3} \\times (110 - 104) \\approx 2.897$, so $a' \\approx 106.90$.",
-            "New bid: $\\frac{0.12}{0.12 + 0.3} \\times (104 - 90) = 4$, so $b' = 100$.",
+            "A buy comes from an informed trader with probability $0.1/(0.1 + 0.4) = 0.2$.",
+            "$\\Delta_a = 0.2 \\times 5 = 1$, so the quotes are $99$ and $101$.",
+            "After a buy the market maker updates to $p' = 0.5 \\times 0.6/0.5 = 0.6$, and the new mean is $101$.",
           ],
-          answer: "Quotes jump up after the buy, and the spread narrows from $8$ to about $6.90$ as uncertainty about $V$ falls.",
-        },
-        {
-          kind: "callout",
-          tone: "insight",
-          title: "Odds multiply",
-          text:
-            "In odds form, each buy multiplies $p/(1 - p)$ by $\\frac{\\alpha + (1 - \\alpha)/2}{(1 - \\alpha)/2}$ " +
-            "and each sell divides by it. A run of same-sided trades drives the price toward one value " +
-            "exponentially fast — the model’s picture of price discovery, and why spreads are widest just after " +
-            "news and narrow through the day.",
         },
       ],
     },
-
     {
-      heading: "Extensions and comparisons",
+      heading: "Dynamics and collapse",
       blocks: [
         {
           kind: "list",
           items: [
-            "**$\\alpha = 0$**: no adverse selection, zero spread (in this model, which has no inventory or order-processing costs).",
-            "**Price-sensitive liquidity traders** trade only if their urgency exceeds the half-spread. A wider spread drives some away, which raises the informed share and widens the spread further; if urgency is low, the market can collapse entirely.",
-            "**Versus Kyle**: Kyle has one batch auction and a linear price in net flow, with $\\lambda$ as impact; Glosten–Milgrom has sequential unit trades and a spread. The half-spread plays the role of $\\lambda$.",
+            "Each buy multiplies the odds of $V_H$ by $\\frac{\\alpha + (1 - \\alpha)/2}{(1 - \\alpha)/2}$; transaction prices form a martingale.",
+            "As information is revealed, beliefs converge and the spread narrows.",
+            "If liquidity traders only trade when their urgency exceeds the half-spread, wider spreads drive them away and raise the informed share; with low urgency the only solution is $\\Delta_a = V_H - \\mu$, and the market shuts down.",
           ],
         },
         {
           kind: "callout",
-          tone: "warning",
-          title: "Dark pools and toxic flow",
-          text:
-            "If a dark pool crossing at the midprice skims off mostly uninformed orders, the flow that remains on " +
-            "the lit market is more toxic, so its spread widens. Segmenting flow helps those who leave and hurts those who stay.",
+          tone: "insight",
+          title: "Toxic flow in practice",
+          text: "The same logic explains why lit spreads widen when uninformed flow migrates to dark pools, and why market makers who can predict short-term price moves quote tighter: Chapter 10 builds both effects into optimal quoting.",
         },
       ],
     },
   ],
 
   references: [
-    { source: "Cartea, Jaimungal & Penalva, Algorithmic and High-Frequency Trading", locator: "Ch. 2, A Primer on the Microstructure of Financial Markets (§2.3 Market Making with an Informational Disadvantage)" },
+    { source: "Cartea, Jaimungal & Penalva, Algorithmic and High-Frequency Trading (2015)", locator: "Ch. 2, §2.3 Market making with an informational disadvantage (Glosten–Milgrom 1985)" },
   ],
 };

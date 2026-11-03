@@ -119,6 +119,8 @@ import { bayesFoundationsItems } from "./bayes-foundations";
 import { bayesModelsItems } from "./bayes-models";
 import { fdaFoundationsItems } from "./fda-foundations";
 import { fdaOperatorsItems } from "./fda-operators";
+import { fdaBlockOperatorsItems } from "./fda-block-operators";
+import { campbellTheoremItems, logPairCorrelationItems } from "./point-process-moments";
 import { bayesInversionItems } from "./bayes-inversion";
 import { copulaItems } from "./copulas";
 import { fdaBayesCopulaTopupItems } from "./fda-bayes-copula-topups";
@@ -272,6 +274,9 @@ export const expansionItems: Item[] = [
   ...bayesModelsItems,
   ...fdaFoundationsItems,
   ...fdaOperatorsItems,
+  ...fdaBlockOperatorsItems,
+  ...campbellTheoremItems,
+  ...logPairCorrelationItems,
   ...bayesInversionItems,
   ...copulaItems,
   ...fdaBayesCopulaTopupItems,

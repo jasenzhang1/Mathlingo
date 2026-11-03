@@ -9,6 +9,7 @@ import {
   poissonThinningSuperpositionWiki,
 } from "./point-processes";
 import { coxProcessWiki, logGaussianCoxProcessWiki } from "./cox-processes";
+import { campbellTheoremWiki, logPairCorrelationEstimatorWiki } from "./campbell-and-pair-correlation";
 import { levyItoDecompositionWiki, levyKhintchineFormulaWiki, levyProcessesWiki } from "./levy-processes";
 import { continuousTimeMarkovChainsWiki } from "./continuous-time-markov-chains";
 import { kalmanFilterWiki } from "./kalman-filter";
@@ -56,8 +57,10 @@ export const stochasticWikiArticles: WikiArticle[] = [
   compoundPoissonProcessWiki,
   conditionalIntensityWiki,
   hawkesProcessWiki,
+  campbellTheoremWiki,
   coxProcessWiki,
   logGaussianCoxProcessWiki,
+  logPairCorrelationEstimatorWiki,
   levyProcessesWiki,
   levyKhintchineFormulaWiki,
   levyItoDecompositionWiki,

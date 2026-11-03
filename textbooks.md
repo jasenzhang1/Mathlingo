@@ -61,6 +61,8 @@
 - Bayesian Data Analysis (BDA3) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, Donald Rubin
 - Monte Carlo Statistical Methods by Christian P. Robert and George Casella
 - Computational Statistics by Geof H. Givens and Jennifer A. Hoeting
+- Large-Scale Inference: Empirical Bayes Methods for Estimation, Testing, and Prediction by Bradley Efron
+- Computer Age Statistical Inference by Bradley Efron and Trevor Hastie
 
 ## Functional Data Analysis
 

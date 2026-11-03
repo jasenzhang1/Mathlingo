@@ -3,12 +3,7 @@ import type { WikiArticle } from "../types";
 export const marketQualityAndPriceImpactWiki: WikiArticle = {
   conceptId: "market-quality-and-price-impact",
 
-  summary:
-    "Market quality is measured along several dimensions: what it costs to trade (quoted and effective " +
-    "spreads), how much can be traded (depth), and how much the price moves when you trade (price impact). " +
-    "Impact splits into a temporary part, paid while walking the book and gone once it refills, and a " +
-    "permanent part, a lasting move of the midprice. These two coefficients, $k$ and $b$, are exactly the " +
-    "inputs of the optimal execution models that follow.",
+  summary: "Market quality has several dimensions: spreads (the cost of small trades), volatility, depth (how much trades without moving price) and price impact (how much large orders move it). Effective spreads, measured at the moment of trade, are smaller and steadier than quoted spreads because traders time their orders and hidden orders trade inside the quotes. Temporary impact can be estimated from the cost of walking snapshots of the book, permanent impact from the regression of price changes on net order flow, and both feed directly into the execution models.",
 
   sections: [
     {
@@ -17,90 +12,60 @@ export const marketQualityAndPriceImpactWiki: WikiArticle = {
         {
           kind: "definitions",
           items: [
-            { term: "Quoted spread", description: "$P^{a} - P^{b}$ at a moment in time." },
-            { term: "Effective spread", description: "$2\\lvert p - m_t \\rvert$ for a trade at price $p$ when the midprice is $m_t$: what traders actually paid, including price improvement and walking the book." },
-            { term: "Realised spread", description: "$2(p - m_{t + 5})$ for a buy (sign flipped for a sell): what the liquidity provider kept after the price moved over the next five minutes." },
-            { term: "Price impact", description: "$2(m_{t + 5} - m_t)$ for a buy: what the provider lost to the information in the trade. Effective spread $=$ realised spread $+$ price impact." },
-            { term: "Depth", description: "Shares or dollars at the touch; an imperfect guide to impact because it ignores deeper levels, hidden orders and fast cancellations." },
+            { term: "Quoted spread", description: "Ask minus bid; median relative spreads range from $2.9$ bps for AAPL to over $400$ bps for a rarely traded stock." },
+            { term: "Effective spread", description: "$2|p - m|$ at the time of the trade; negative when a trade gets price improvement, for example from hidden orders." },
+            { term: "Realised spread and price impact", description: "Effective spread $=$ realised spread ($2(p - m_{t+\\Delta})$) $+$ price impact ($2(m_{t+\\Delta} - m_t)$), separating the liquidity provider’s profit from her loss to information." },
+            { term: "Depth at the touch", description: "Volume at the best quotes, often small (a few hundred shares for AAPL) relative to institutional orders." },
           ],
-        },
-        {
-          kind: "example",
-          title: "Decomposing the spread",
-          problem: "A buy MO executes at $\\$20.03$ when the midprice is $\\$20.01$; five minutes later the midprice is $\\$20.02$. Compute the effective spread, realised spread and price impact.",
-          steps: [
-            "Effective: $2(20.03 - 20.01) = 4$ cents.",
-            "Realised: $2(20.03 - 20.02) = 2$ cents.",
-            "Impact: $2(20.02 - 20.01) = 2$ cents; $2 + 2 = 4$ ✓.",
-          ],
-          answer: "Half of what the buyer paid went to the liquidity provider; the other half compensated her for the information the trade carried.",
-        },
-        {
-          kind: "callout",
-          tone: "insight",
-          title: "Effective spreads are usually smaller",
-          text:
-            "MOs tend to arrive when spreads are narrow, and some execute inside the quotes against hidden orders. " +
-            "So the average effective spread is smaller and less volatile than the average quoted spread.",
         },
       ],
     },
-
     {
-      heading: "Temporary and permanent impact",
+      heading: "Estimating impact",
       blocks: [
         {
           kind: "formula",
-          latex: "\\hat{S}(q) - S = \\frac{\\Delta}{2} + k\\,q, \\qquad \\Delta S_{\\text{5 min}} = b\\,\\mu + \\varepsilon",
-          caption: "Left: average price of an MO of $q$ shares over the midprice. Right: midprice change regressed on net order flow $\\mu$.",
-        },
-        {
-          kind: "list",
-          items: [
-            "**Temporary impact $k$**: at each LOB snapshot, compute the average price of hypothetical MOs of several sizes walking the book; regress the premium on size with intercept fixed at the half-spread. Estimate every second and average.",
-            "**Permanent impact $b$**: regress five-minute midprice changes on five-minute net order flow.",
-            "Both vary through the day — $k$ is highest in the morning, when books are thin, and lowest near the close.",
-          ],
+          latex: "\\hat{S} - S^{\\text{best}} = \\tfrac{\\Delta}{2} + k\\,q, \\qquad \\Delta S = b\\,\\mu + \\varepsilon",
+          caption: "Temporary impact $k$ from walking the book with MOs of size $q$; permanent impact $b$ from five-minute price changes on net order flow $\\mu$.",
         },
         {
           kind: "example",
-          title: "Which impact dominates?",
-          problem: "With $k = 2.5 \\times 10^{-7}$ and $b = 6.15 \\times 10^{-7}$ dollars per share, compare the immediate premium $kq$ and the permanent move $bq$ for $q = 40{,}000$ shares.",
+          title: "Two impact channels",
+          problem: "With $k = 3 \\times 10^{-6}$, $b = 6 \\times 10^{-6}$ dollars per share and a half-spread of $0.5$ cents, a seller sends one $10{,}000$-share MO and still holds $50{,}000$ shares.",
+          answer: "Total \\$3{,}350: the permanent part, paid on the whole remaining position, can dominate.",
           steps: [
-            "$kq = 2.5 \\times 10^{-7} \\times 40{,}000 = \\$0.01$, i.e. $1$ cent.",
-            "$bq = 6.15 \\times 10^{-7} \\times 40{,}000 = \\$0.0246$, about $2.46$ cents.",
+            "Immediate cost: $(0.005 + 3 \\times 10^{-6} \\times 10{,}000) \\times 10{,}000 = \\$350$.",
+            "Permanent shift: $6 \\times 10^{-6} \\times 10{,}000 = 0.06$ per share on the remaining $50{,}000$, a further \\$3{,}000.",
           ],
-          answer: "The permanent move is about $2.5$ times the temporary premium. The ratio $b/k$ matters because only temporary impact can be reduced by trading more slowly.",
+        },
+        {
+          kind: "prose",
+          text: "Table 4.13 reports $b/k$ from about $1$ to over $7$ across stocks. The ratio decides how much a trader gains by slowing down, since temporary impact punishes speed while permanent impact is paid regardless of timing.",
         },
       ],
     },
-
     {
-      heading: "Cancellations, hidden orders and order flow",
+      heading: "Cancellations and hidden liquidity",
       blocks: [
         {
           kind: "list",
           items: [
-            "Most posted LOs are cancelled rather than executed: traders constantly revise quotes as information arrives, so displayed depth is fleeting.",
-            "The fraction of LOs executed falls roughly exponentially with distance from the midprice, $e^{-\\kappa d}$ — the shape that the market-making and limit-order execution models assume.",
-            "A noticeable share of volume executes against hidden orders, so visible depth understates true depth.",
-            "Large MOs are followed by more MOs on the same side far more often than by opposite ones: order flow is autocorrelated, partly because large parents are split into many children.",
+            "Most posted LOs are cancelled: low-latency providers constantly reposition as information arrives, so displayed depth is fleeting.",
+            "The fraction of LOs that execute falls roughly exponentially with distance from the mid, the empirical basis for the fill model $e^{-\\kappa\\delta}$.",
+            "Large MOs are followed by same-side MOs (order splitting and herding), and MOs arrive when spreads are narrow.",
           ],
         },
         {
           kind: "callout",
           tone: "warning",
-          title: "Estimating your own impact",
-          text:
-            "Regressing price changes on your own trades is biased: you tend to trade when prices are already " +
-            "moving, and the market’s other flow is correlated with yours. Control for market-wide order flow " +
-            "and returns, or use randomised trade timing, before reading the slope as your impact.",
+          title: "Impact models explain little variance",
+          text: "Linear impact regressions often have $R^2$ below $5\\%$; that reflects how noisy prices are, not that impact is negligible. Validate models on realised execution costs.",
         },
       ],
     },
   ],
 
   references: [
-    { source: "Cartea, Jaimungal & Penalva, Algorithmic and High-Frequency Trading", locator: "Ch. 4, Empirical and Statistical Evidence: Activity and Market Quality (§4.3–4.5)" },
+    { source: "Cartea, Jaimungal & Penalva, Algorithmic and High-Frequency Trading (2015)", locator: "Ch. 4, §4.3–4.5 Spreads, volatility, depth, price impact, walking the book, cancellations and hidden orders" },
   ],
 };

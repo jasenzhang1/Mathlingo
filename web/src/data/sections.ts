@@ -1167,10 +1167,23 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
       label: "Bayesian Models & Model Comparison",
       conceptIds: [
         "hierarchical-bayesian-models",
-        "empirical-bayes",
         "bayesian-linear-regression",
         "bayes-factors",
         "bayesian-model-averaging",
+      ],
+    },
+    {
+      id: "empirical-bayes-methods",
+      label: "Empirical Bayes",
+      conceptIds: [
+        "empirical-bayes",
+        "parametric-empirical-bayes",
+        "empirical-bayes-rates-and-proportions",
+        "empirical-bayes-intervals",
+        "robbins-formula",
+        "tweedies-formula",
+        "local-false-discovery-rate",
+        "g-modeling-deconvolution",
       ],
     },
     {
@@ -1319,8 +1332,10 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "compound-poisson-process",
         "conditional-intensity",
         "hawkes-process",
+        "campbell-theorem",
         "cox-process",
         "log-gaussian-cox-process",
+        "log-pair-correlation-estimator",
         "ogata-thinning",
       ],
     },
@@ -1406,6 +1421,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "linear-differential-operators",
         "hilbert-schmidt-operators",
         "cross-covariance-operators",
+        "block-covariance-operators",
       ],
     },
     {
