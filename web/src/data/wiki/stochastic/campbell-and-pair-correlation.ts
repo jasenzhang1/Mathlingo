@@ -108,7 +108,7 @@ export const campbellTheoremWiki: WikiArticle = {
   ],
   references: [
     { source: mw, locator: "Ch. 4 (moment measures and product densities)" },
-    { source: "Daley & Vere-Jones, An Introduction to the Theory of Point Processes, Vol. I" },
+    { source: "Daley & Vere-Jones, An Introduction to the Theory of Point Processes, Vol. I", locator: "Ch. 5 (moment measures)" },
   ],
 };
 
@@ -203,7 +203,7 @@ export const logPairCorrelationEstimatorWiki: WikiArticle = {
     },
   ],
   references: [
-    { source: "Møller, Syversveen & Waagepetersen, Log Gaussian Cox processes (Scandinavian Journal of Statistics, 1998)" },
+    { source: "Møller, Syversveen & Waagepetersen, Log Gaussian Cox processes (Scandinavian Journal of Statistics, 1998)", locator: "§2–4" },
     { source: mw, locator: "Ch. 5 (Cox processes)" },
   ],
 };
