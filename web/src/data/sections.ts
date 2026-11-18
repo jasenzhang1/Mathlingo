@@ -1130,6 +1130,16 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "quantization",
       ],
     },
+    {
+      id: "event-sequence-foundation-models",
+      label: "Foundation Models for Event Sequences",
+      conceptIds: [
+        "bespoke-vs-foundation-models",
+        "masked-code-prediction",
+        "next-event-prediction",
+        "time-to-event-pretraining",
+      ],
+    },
   ],
 
   "bayesian-statistics": [

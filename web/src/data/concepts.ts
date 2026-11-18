@@ -4184,6 +4184,53 @@ export const concepts: Concept[] = [
   },
 
   // ---------------------------------------------------------------------
+  // Deep Learning — foundation models for event sequences.
+  //
+  // Pretraining on patient timelines: a sequence of timestamped medical codes
+  // rather than words. The chapter opens with the build-or-adapt decision,
+  // then takes the three pretraining objectives in the order they grew more
+  // faithful to the data — masked codes (order-free context), next events
+  // (the generative chain rule, with time), and time-to-event pretraining
+  // (MOTOR), which makes the pretraining target itself a censored survival
+  // problem.
+  // ---------------------------------------------------------------------
+  {
+    id: "bespoke-vs-foundation-models",
+    title: "Bespoke vs. Foundation Models",
+    domain: "deep-learning",
+    blurb:
+      "Training one model per task, or pretraining once and adapting many times — and the label, compute and risk arithmetic that decides between them.",
+    prerequisites: ["transfer-learning", "self-supervised-learning", "scaling-laws"],
+  },
+  {
+    id: "masked-code-prediction",
+    title: "Masked Code Prediction",
+    domain: "deep-learning",
+    blurb:
+      "BERT-style pretraining on medical codes: hide part of a patient's record and recover it from the rest.",
+    prerequisites: ["bespoke-vs-foundation-models", "transformers", "embeddings"],
+  },
+  {
+    id: "next-event-prediction",
+    title: "Next-Event Prediction",
+    domain: "deep-learning",
+    blurb:
+      "Autoregressive pretraining on patient timelines: predict what happens next, and when, then sample futures.",
+    prerequisites: ["masked-code-prediction", "autoregressive-models"],
+  },
+  {
+    id: "time-to-event-pretraining",
+    title: "Time-to-Event Pretraining (MOTOR)",
+    domain: "deep-learning",
+    blurb:
+      "Pretraining on thousands of censored survival tasks at once with a piecewise-exponential head.",
+    // The pretraining loss is a censored survival likelihood, so the survival
+    // function, hazard and censoring from the Kaplan–Meier lesson are used
+    // directly, not cited; cross-domain, so it informs rather than gates.
+    prerequisites: ["next-event-prediction", "kaplan-meier-estimator"],
+  },
+
+  // ---------------------------------------------------------------------
   // Graphical Models & Bayesian ML
   // ---------------------------------------------------------------------
   {
