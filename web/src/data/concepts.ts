@@ -4141,6 +4141,18 @@ export const concepts: Concept[] = [
     prerequisites: ["self-supervised-learning", "cross-entropy-loss", "embeddings"],
   },
   {
+    id: "jepa-world-models",
+    title: "JEPA World Models",
+    domain: "deep-learning",
+    blurb:
+      "Predicting the representation of what is hidden or what comes next, not its pixels — I-JEPA, V-JEPA, and planning in latent space.",
+    // Read as the non-contrastive answer to the collapse problem contrastive
+    // learning solves with negatives, so `contrastive-learning` is needed. The
+    // world-model half plans against a goal, which is the setting of
+    // `reinforcement-learning` (cross-domain, so informational only).
+    prerequisites: ["contrastive-learning", "transformers", "reinforcement-learning"],
+  },
+  {
     id: "parameter-efficient-fine-tuning",
     title: "Parameter-Efficient Fine-Tuning",
     domain: "deep-learning",

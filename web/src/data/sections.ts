@@ -1124,6 +1124,7 @@ export const sectionSpecs: Record<Domain, SectionSpec[]> = {
         "scaling-laws",
         "tokenization",
         "contrastive-learning",
+        "jepa-world-models",
         "parameter-efficient-fine-tuning",
         "instruction-tuning-and-rlhf",
         "knowledge-distillation",

@@ -22,6 +22,7 @@ import { ml19OptimizationAndMetrics } from "./ml-19-optimization-and-metrics";
 import { ml20FocusedTopics } from "./ml-20-focused-topics";
 import { performativePredictionWikis } from "./performative-prediction";
 import { ml21EventSequenceFoundationModels } from "./ml-21-event-sequence-foundation-models";
+import { ml22JepaWorldModels } from "./ml-22-jepa-world-models";
 
 /**
  * All 100 `machine-learning` domain articles, grouped into the same fifteen
@@ -63,5 +64,6 @@ export const mlWikiArticles: WikiArticle[] = [
   ...ml12FurtherParadigms,
   ...ml20FocusedTopics,
   ...ml15AdaptingAndServing,
+  ...ml22JepaWorldModels,
   ...ml21EventSequenceFoundationModels,
 ];

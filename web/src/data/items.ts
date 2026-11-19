@@ -133,6 +133,7 @@ import { dlSixty04Items } from "./items/dl-sixty-04";
 import { dlSixty05Items } from "./items/dl-sixty-05";
 import { dlSixty06Items } from "./items/dl-sixty-06";
 import { dlEvseq01Items } from "./items/dl-evseq-01";
+import { dlJepa01Items } from "./items/dl-jepa-01";
 import { opt01Items } from "./items/opt-01";
 import { opt02Items } from "./items/opt-02";
 import { opt03Items } from "./items/opt-03";
@@ -5328,6 +5329,7 @@ export const items: Item[] = [
   ...dlSixty05Items,
   ...dlSixty06Items,
   ...dlEvseq01Items,
+  ...dlJepa01Items,
   // Optimization course (root finding through ADMM).
   ...opt01Items,
   ...opt02Items,
